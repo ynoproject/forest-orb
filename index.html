@@ -34,6 +34,11 @@
       text-align: center;
     }
 
+    #game_container {
+      width: 100%;
+      height: calc(100% - 42px);
+    }
+
     #controls {
       position: relative;
       text-align: right;
@@ -46,7 +51,6 @@
       display: inline-flex;
       background: transparent;
       border: 0;
-      color: white;
       font-family: inherit;
       font-size: 1em;
       line-height: inherit;
@@ -137,34 +141,179 @@
     @media (min-width: 5440px) and (min-height: 4080px) { #canvas { width: 5440px; height: 4080px; } }
     @media (min-width: 5760px) and (min-height: 4320px) { #canvas { width: 5760px; height: 4320px; } }*/
   </style>
+  <style id="themeStyles">
+    html, input[type='text'], select {
+      color: rgba(216, 216, 216, 1) !important; /*base*/
+      background-color: black;
+    }
+    
+    #controls button path {
+      stroke: rgba(216, 216, 216, 1) !important; /*base*/
+    }
+
+    #messages, #chatInputContainer, #enterNameContainer {
+      border: 8px solid transparent;
+      border-image: url('images/ui/border.png') 10 repeat !important;
+    }
+  
+    #messages, #enterNameContainer {
+      border-image: url('images/ui/Default/border.png') 10 repeat !important;
+    }
+  
+    #messages::-webkit-scrollbar-track {
+      border: 8px solid transparent;
+      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+      background-color: rgba(45, 17, 23, 1); /*basebg*/
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    #messages::-webkit-scrollbar-thumb {
+      border: 8px solid transparent;
+      border-image: url('images/ui/Default/border.png') 6 round !important;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+  
+    #enterNameInstruction, .message, label {
+      background-image: url('images/ui/Default/font1.png') !important; /*base*/
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(1.5px 1.5px black /*shadow*/);
+    }
+  
+    .messageContainer {
+      border-bottom: 4px solid transparent;
+      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+    }
+
+    a {
+      color: rgba(255, 255, 157, 1); /*alt*/
+    }
+  
+    tr, td, div, input[type='text'] {
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    tr, td {
+      background-size: 70px;
+      background-image: url('images/ui/Default/containerbg.png') !important;
+      border-image: url('images/ui/Default/border.png') 10 repeat !important;
+      border: 24px solid transparent;
+    }
+  
+    input[type='text'], select {
+      border: 12px solid transparent;
+      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+      color: rgba(216, 216, 216, 1) !important; /*base*/
+      background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
+      text-shadow: 1.5px 1.5px black; /*shadow*/
+    }
+  </style>
 </head>
 <body>
   <table>
     <tr style="height: 100%; width: 100%;">
-      <td id="game_container" style="width: 700px; height: 517px">
-        <div id="controls">
-          <button id="controls-fullscreen" class="unselectable">
-            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4" stroke="white"></path></svg>
-          </button>
+      <td style="width: 700px; height: 617px">
+        <div id="game_container">
+            <div id="controls">
+              <button id="controls-fullscreen" class="unselectable">
+                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
+              </button>
+            </div>
+
+            <div id="status"></div>
+
+            <canvas id="canvas" tabindex="-1"></canvas>
+
+            <div id="dpad" class="unselectable">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+                <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
+                <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
+                <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
+                <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
+                <rect id="dpad-center" x="24" y="24" width="24" height="24" />
+              </svg>
+            </div>
+
+            <div id="apad" class="unselectable">
+              <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
+              <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
+            </div>
         </div>
+        
+        <div id="uiControls">
+          <div>
+            <label for="uiTheme">
+              UI Theme:
+            </label>
+            <select id="uiTheme">
+              <option value="Default">Default</option>
+              <option value="Default_2">Default 2</option>
+              <option value="Default_3">Default 3</option>
+              <option value="Default_4">Default 4</option>
+              <option value="Default_5">Default 5</option>
+              <option value="Developer_Room">Developer Room</option>
+              <option value="Glitch_Ending">Bleak Future</option>
+              <option value="Glitch_Ending_2">Bleak Future 2</option>
+              <option value="Black_Building">Black Building</option>
+              <option value="Cog_Maze">Cog Maze</option>
+              <option value="Square_Square_World">Square-Square World</option>
+              <option value="Verdant_Promenade">Verdant Promenade</option>
+              <option value="Urotsukis_Dream_Apartments">Urotsuki's Dream Apartments</option>
+              <option value="Sofa_Room">Sofa Room</option>
+              <option value="Depths">Depths</option>
+              <option value="Depths_2">Depths 2</option>
+              <option value="Guts_World">Guts World</option>
+              <option value="Maple_Shrine">Maple Shrine</option>
+              <option value="Pencil_World">Pencil World</option>
+              <option value="Chocolate_World">Chocolate World</option>
+              <option value="Blue_Cactus_Islands">Blue Cactus Islands</option>
+              <option value="Stone_Towers">Stone Towers</option>
+              <option value="Constellation_World">Star Building</option>
+              <option value="Blob_Desert">Blob Desert</option>
+              <option value="Cipher_Keyboard">Cipher Keyboard</option>
+              <option value="Viridian_Wetlands">Viridian Wetlands</option>
+              <option value="Polluted_Swamp">Polluted Swamp</option>
+              <option value="Snowy_Village">Snowy Village</option>
+              <option value="Decrepit_Dwellings">Decrepit Dwellings</option>
+              <option value="Verdant_Promenade_2">Verdant Promenade 2</option>
+              <option value="Black_Ink_World">Black Ink World</option>
+              <option value="Forgotten_Megalopolis">Forgotten Megalopolis</option>
+              <option value="Tomb_of_Velleities">Tomb of Velleities</option>
+              <option value="Visine_Spacecraft">Visine Spacecraft</option>
+              <option value="Data_Stream">Data Stream</option>
+              <option value="Lavender_Waters">Lavender Waters</option>
+              <option value="Originator_Garden">Originator Garden</option>
+              <option value="Fluorescent_Halls">Fluorescent Halls</option>
+              <option value="City_of_Liars">City of Liars</option>
+              <option value="Misc">Misc. Theme</option>
+              <option value="Monochrome_GB_World">Monochrome GB World</option>
+              <option value="Smiley_Signs_World">Smiley Signs World</option>
+              <option value="Lovesick_World">Lovesick World</option>
+              <option value="Corrupted_Love_World">Corrupted Love World</option>
+              <option value="Saturated_Eyeball_Zone">Saturated Eyeball Zone</option>
+              <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
+              <option value="Shop_Ruins">Shop Ruins</option>
+            </select>
+          </div>
 
-        <div id="status"></div>
-
-        <canvas id="canvas" tabindex="-1"></canvas>
-
-        <div id="dpad" class="unselectable">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-            <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
-            <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
-            <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
-            <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
-            <rect id="dpad-center" x="24" y="24" width="24" height="24" />
-          </svg>
-        </div>
-
-        <div id="apad" class="unselectable">
-          <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
-          <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
+          <div>
+            <label for="fontStyle">
+              Font Style:
+            </label>
+            <select id="fontStyle">
+              <option value="0">Style 1</option>
+              <option value="1">Style 2</option>
+              <option value="2">Style 3</option>
+              <option value="3">Style 4</option>
+              <option value="4">Style 5</option>
+              <option value="5">Style 6</option>
+              <option value="6">Style 7</option>
+            </select>
+          </div>
         </div>
       </td>
       <td id="chatbox" style="display: none">
@@ -325,8 +474,166 @@ if (hasTouchscreen) {
   // });
 }
 </script>
+<script>
+  let config = {
+    uiTheme: 'Default',
+    fontStyle: 0
+  };
+
+  document.getElementById('uiTheme').onchange = function () {
+    setUiTheme(this.value);
+  };
+  
+  document.getElementById('fontStyle').onchange = function () {
+    setFontStyle(parseInt(this.value));
+  };
+  
+  function setUiTheme(uiTheme, isInit) {
+    config.uiTheme = uiTheme;
+    const themeStyles = document.getElementById('themeStyles');
+    getBaseBgColor(config.uiTheme || (config.uiTheme = 'Default'), function (color) {
+      const bgColorPixel = uiThemeBgColors[config.uiTheme];
+      const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
+      getFontShadow(config.uiTheme, function (shadow) {
+        themeStyles.textContent = themeStyles.textContent.replace(/url\('images\/ui\/[a-zA-Z0-9\_]+\/(containerbg|border(?:2)?|font\d)\.png'\)/g, 'url(\'images/ui/' + config.uiTheme + '/$1.png\')')
+          .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
+          .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
+          .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
+        if (!isInit) {
+          document.getElementById('fontStyle').onchange();
+          updateConfig(config);
+        }
+      });
+    });
+  }
+  
+  function setFontStyle(fontStyle, isInit) {
+    config.fontStyle = fontStyle;
+    const themeStyles = document.getElementById('themeStyles');
+    const defaultAltFontStyleIndex = 4;
+    getFontColor(config.uiTheme, config.fontStyle, function (baseColor) {
+      const altFontStyle = config.fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
+      const altColorCallback = function (altColor) {
+        themeStyles.textContent = themeStyles.textContent = themeStyles.textContent = themeStyles.textContent
+          .replace(/url\('images\/ui\/([a-zA-Z0-9\_]+)\/font\d\.png'\)( *!important)?;( *)\/\*base\*\//g, 'url(\'images/ui/$1/font' + (config.fontStyle + 1) + '.png\')$2;$3/*base*/')
+          .replace(/url\('images\/ui\/([a-zA-Z0-9\_]+)\/font\d\.png'\)( *!important)?;( *)\/\*alt\*\//g, 'url(\'images/ui/$1/font' + (altFontStyle + 1) + '.png\')$2;$3/*alt*/')
+          .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
+          .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
+        if (!isInit)
+          updateConfig(config);
+      };
+      getFontColor(config.uiTheme, altFontStyle, function (altColor) {
+        if (altColor !== baseColor)
+          altColorCallback(altColor);
+        else {
+          const fallbackAltFontStyle = config.fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex + 1 : 1;
+          getFontColor(config.uiTheme, fallbackAltFontStyle, altColorCallback);
+        }
+      });
+    });
+  }
+  
+  let uiThemeBgColors = {};
+  let uiThemeFontShadows = {};
+  let uiThemeFontColors = {};
+  
+  function getFontColor(uiTheme, fontStyle, callback) {
+    if (!uiThemeFontColors[uiTheme])
+      uiThemeFontColors[uiTheme] = {};
+    let pixel = uiThemeFontColors[uiTheme][fontStyle];
+    if (pixel)
+      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+    const img = new Image();
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.drawImage(img, 0, 0);
+      pixel = context.getImageData(0, 8, 1, 1).data;
+      uiThemeFontColors[uiTheme][fontStyle] = [ pixel[0], pixel[1], pixel[2] ];
+      callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      canvas.remove();
+    };
+    img.src = 'images/ui/' + uiTheme + '/font' + (fontStyle + 1) + '.png';
+  }
+
+  function getFontShadow(uiTheme, callback) {
+    let pixel = uiThemeFontShadows[uiTheme];
+    if (pixel)
+      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+    const img = new Image();
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.drawImage(img, 0, 0);
+      pixel = context.getImageData(0, 8, 1, 1).data;
+      uiThemeFontShadows[uiTheme] = [ pixel[0], pixel[1], pixel[2] ];
+      callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      canvas.remove();
+    };
+    img.src = 'images/ui/' + uiTheme + '/fontshadow.png';
+  }
+
+  function getBaseBgColor(uiTheme, callback) {
+    const img = new Image();
+    let pixel = uiThemeBgColors[uiTheme];
+    if (pixel)
+      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      context.drawImage(img, 0, 0);
+      pixel = context.getImageData(0, 0, 1, 1).data;
+      const pixel2 = context.getImageData(4, 4, 1, 1).data;
+      const pixel3 = context.getImageData(8, 8, 1, 1).data;
+      const r = Math.round((pixel[0] + pixel2[0] + pixel3[0]) / 3);
+      const g = Math.round((pixel[1] + pixel2[1] + pixel3[1]) / 3);
+      const b = Math.round((pixel[2] + pixel2[2] + pixel3[2]) / 3);
+      uiThemeBgColors[uiTheme] = [ r, g, b ];
+      callback('rgba(' + r + ', ' + g + ', ' + b + ', 1)');
+      canvas.remove();
+    };
+    img.src = 'images/ui/' + uiTheme + '/containerbg.png';
+  }
+  
+  function loadOrInitConfig() {
+    try {
+      if (!window.localStorage.hasOwnProperty('config'))
+        window.localStorage.setItem('config', JSON.stringify(config));
+      else {
+        const savedConfig = JSON.parse(window.localStorage.getItem('config'));
+        const savedConfigKeys = Object.keys(savedConfig);
+        for (let k in savedConfigKeys) {
+          const key = savedConfigKeys[k];
+          if (config.hasOwnProperty(key)) {
+            let value = savedConfig[key];
+            switch (key) {
+              case 'uiTheme':
+                document.getElementById('uiTheme').value = value;
+                setUiTheme(value, true);
+                break;
+              case 'fontStyle':
+                document.getElementById('fontStyle').value = value;
+                setFontStyle(value, true);
+                break;
+            }
+            config[key] = value;
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  function updateConfig(config) {
+    try {
+      window.localStorage.config = JSON.stringify(config);
+    } catch (error) {
+    }
+  }
+  
+  loadOrInitConfig();
+</script>
 
 </body>
 </html>
-
-
