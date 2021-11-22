@@ -5,10 +5,13 @@
 }
 
 html {
-  font-family: 'MS Gothic', 'Gothic';
-  font-size: 16px;
   color: rgba(216, 216, 216, 1);
   background-color: black;
+}
+
+html, input[type='text'] {
+  font-family: 'MS Gothic', 'Gothic';
+  font-size: 16px;
 }
 
 #game_frame {
@@ -24,14 +27,21 @@ html {
 
 #messages, #chatInputContainer, #enterNameContainer {
   border: 8px solid transparent;
+}
+
+#messages, #enterNameContainer {
   border-image: url('images/ui/border.png') 10 repeat !important;
 }
 
 #messages {
   margin-right: 1px;
   width: 283px;
-  height: 70%;
+  height: calc(100% - (222px));
   overflow-y: auto;
+}
+
+#messages.expanded {
+  height: calc(100% - (82px));
 }
 
 #messages::-webkit-scrollbar {
@@ -55,10 +65,9 @@ html {
 
 #chatInputContainer {
   width: auto;
-  height: 36px;
+  height: 48px;
   margin-right: 1px;
   margin-top: 2px;
-  margin-bottom: 5px;
 }
 
 #chatInput {
@@ -66,12 +75,18 @@ html {
   width:    -moz-calc(100% - 11px);
   width:         calc(100% - 11px);
   height: 26px;
+  right: 8px;
 }
 
 #enterNameContainer {
+  margin-top: 5px;
   margin-right: 1px;
   width: auto;
   height: auto;
+}
+
+#nameInput {
+  width: calc(100% - 28px);
 }
 
 #enterNameInstruction, .message {
@@ -86,7 +101,7 @@ html {
   text-align: center;
 }
 
-.message {
+.messageContainer {
   border-bottom: 4px solid transparent;
   border-image: url('images/ui/border.png') 8 repeat !important;
   word-wrap: break-word;
@@ -98,7 +113,8 @@ tr, td, div, input[type='text'] {
 }
 
 tr, td {
-  background: url('images/ui/containerbg.png') !important;
+  background-size: 70px;
+  background-image: url('images/ui/containerbg.png') !important;
   border-image: url('images/ui/border.png') 10 repeat !important;
   border: 24px solid transparent;
 }
@@ -110,9 +126,10 @@ table {
 }
 
 input[type='text'] {
-  border: 4px solid transparent;
+  border: 12px solid transparent;
   border-image: url('images/ui/border.png') 8 repeat !important;
   color: white;
-  background-color: transparent;
+  background-color: #ffffff10;
   text-shadow: 1.5px 1.5px black;
+  position: relative;
 }

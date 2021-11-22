@@ -7,9 +7,13 @@ function chatboxAddMessage(msg) {
   scroll = (messages.scrollHeight - messages.scrollTop === messages.clientHeight)
 
   msgContainer = document.createElement("div")
-  msgContainer.classList.add("message")
-  msgContainer.appendChild(document.createTextNode(msg))
-
+  msgContainer.classList.add("messageContainer")
+  
+  message = document.createElement("span")
+  message.classList.add("message")
+  
+  message.appendChild(document.createTextNode(msg))
+  msgContainer.appendChild(message)
   messages.appendChild(msgContainer)
 
   if (scroll) {
@@ -32,7 +36,8 @@ function chatNameCheck() {
   if (nameInput.value == "") return;
   if (!(/^[A-Za-z0-9]+$/.test(nameInput.value))) return;
   document.getElementById("enterNameContainer").style.display = 'none';
-  document.getElementById("chatInput").disabled = false
+  document.getElementById("messages").classList.add("expanded");
+  document.getElementById("chatInput").disabled = false;
   nameInput = document.getElementById("nameInput")
   ptr = Module.allocate(Module.intArrayFromString(nameInput.value), Module.ALLOC_NORMAL)
   Module._ChangeName(ptr)
