@@ -4,12 +4,7 @@
        url('fonts/ms-gothic.woff') format('woff');
 }
 
-html {
-  color: rgba(216, 216, 216, 1);
-  background-color: black;
-}
-
-html, input[type='text'] {
+html, input[type='text'], select {
   font-family: 'MS Gothic', 'Gothic';
   font-size: 16px;
 }
@@ -21,16 +16,14 @@ html, input[type='text'] {
   margin: 0 auto;
 }
 
+#uiControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 #chatbox {
   height: 617px;
-}
-
-#messages, #chatInputContainer, #enterNameContainer {
-  border: 8px solid transparent;
-}
-
-#messages, #enterNameContainer {
-  border-image: url('images/ui/border.png') 10 repeat !important;
 }
 
 #messages {
@@ -46,21 +39,6 @@ html, input[type='text'] {
 
 #messages::-webkit-scrollbar {
   width: 18px;
-}
-
-#messages::-webkit-scrollbar-track {
-  border: 8px solid transparent;
-  border-image: url('images/ui/border.png') 8 repeat !important;
-  background-color: rgba(45, 17, 23, 1);
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-}
-
-#messages::-webkit-scrollbar-thumb {
-  border: 8px solid transparent;
-  border-image: url('images/ui/border.png') 6 round !important;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
 }
 
 #chatInputContainer {
@@ -89,34 +67,21 @@ html, input[type='text'] {
   width: calc(100% - 28px);
 }
 
-#enterNameInstruction, .message {
-  background-image: url('images/ui/font1.png') !important;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(1.5px 1.5px black);
-}
-
 #instructions {
   text-align: center;
 }
 
 .messageContainer {
-  border-bottom: 4px solid transparent;
-  border-image: url('images/ui/border.png') 8 repeat !important;
   word-wrap: break-word;
+}
+
+label {
+  font-weight: bold;
 }
 
 tr, td, div, input[type='text'] {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
-}
-
-tr, td {
-  background-size: 70px;
-  background-image: url('images/ui/containerbg.png') !important;
-  border-image: url('images/ui/border.png') 10 repeat !important;
-  border: 24px solid transparent;
 }
 
 table {
@@ -125,11 +90,6 @@ table {
   height: 623px;
 }
 
-input[type='text'] {
-  border: 12px solid transparent;
-  border-image: url('images/ui/border.png') 8 repeat !important;
-  color: white;
-  background-color: #ffffff10;
-  text-shadow: 1.5px 1.5px black;
+input[type='text'], select {
   position: relative;
 }
