@@ -46,7 +46,7 @@ function chatNameCheck() {
 }
 
 function ChatInit() {
-  document.getElementById("chatbox").style.display = 'block'
+  document.getElementById("chatbox").style.display = 'table-cell'
 }
 
 //called from easyrpg player
