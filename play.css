@@ -97,6 +97,10 @@ html, input[type='text'] {
   filter: drop-shadow(1.5px 1.5px black);
 }
 
+#instructions {
+  text-align: center;
+}
+
 .messageContainer {
   border-bottom: 4px solid transparent;
   border-image: url('images/ui/border.png') 8 repeat !important;
