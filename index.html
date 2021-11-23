@@ -317,26 +317,28 @@
           </div>
         </div>
       </td>
-      <td id="chatbox" style="display: none">
-        <div id="messages"></div>
-        <div id="chatInputContainer" style="display: none">
-          <form action="javascript:chatInputActionFired()">
-            <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled=true></input>
-          </form>
-        </div>
-        <div id="enterNameContainer">
-          <span id="enterNameInstruction">
-            <span>You must set a nickname before you can chat.</span>
-            <br>
-            <small>
-              * Maximum 7 characters
+      <td id="chatboxContainer" style="display: none">
+        <div id="chatbox">
+          <div id="messages"></div>
+          <div id="chatInputContainer" style="display: none">
+            <form action="javascript:chatInputActionFired()">
+              <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
+            </form>
+          </div>
+          <div id="enterNameContainer">
+            <span id="enterNameInstruction">
+              <span>You must set a nickname before you can chat.</span>
               <br>
-              * Alphanumeric characters only
-            </small>
-          </span>
-          <form id="enterNameForm" action="javascript:chatNameCheck()">
-            <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
-          </form>
+              <small>
+                * Maximum 7 characters
+                <br>
+                * Alphanumeric characters only
+              </small>
+            </span>
+            <form id="enterNameForm" action="javascript:chatNameCheck()">
+              <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
+            </form>
+          </div>
         </div>
       </td>
     </tr>

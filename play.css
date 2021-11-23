@@ -22,19 +22,22 @@ html, input[type='text'], select {
   justify-content: space-around;
 }
 
-#chatbox {
+#chatboxContainer {
+  width: 300px;
   height: 617px;
 }
 
-#messages {
-  margin-right: 1px;
-  width: 283px;
-  height: calc(100% - (152px));
-  overflow-y: auto;
+#chatbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
-#messages.expanded {
-  height: calc(100% - (78px));
+#messages {
+  width: 284px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 #messages::-webkit-scrollbar {
@@ -44,7 +47,6 @@ html, input[type='text'], select {
 #chatInputContainer {
   width: auto;
   height: 48px;
-  margin-right: 1px;
   margin-top: 1px;
 }
 
@@ -57,7 +59,6 @@ html, input[type='text'], select {
 
 #enterNameContainer {
   margin-top: 12px;
-  margin-right: 1px;
   width: auto;
   height: auto;
 }
