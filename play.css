@@ -31,7 +31,7 @@ html, input[type='text'], select {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 617px;
 }
 
 #messages {
