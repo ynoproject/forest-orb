@@ -4,7 +4,7 @@ ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
 function chatboxAddMessage(msg) {
   const messages = document.getElementById("messages");
   
-  const shouldScroll = (messages.scrollHeight - messages.scrollTop) === messages.clientHeight;
+  const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
 
   const msgContainer = document.createElement("div");
   msgContainer.classList.add("messageContainer");
