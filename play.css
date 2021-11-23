@@ -27,16 +27,14 @@ html, input[type='text'], select {
 }
 
 #messages {
-  margin-top: 15px;
   margin-right: 1px;
   width: 283px;
-  height: calc(100% - (148px));
+  height: calc(100% - (152px));
   overflow-y: auto;
 }
 
 #messages.expanded {
-  margin-top: 21px;
-  height: calc(100% - (82px));
+  height: calc(100% - (78px));
 }
 
 #messages::-webkit-scrollbar {
