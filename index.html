@@ -319,14 +319,14 @@
       </td>
       <td id="chatbox" style="display: none">
         <div id="messages"></div>
-        <div id="chatInputContainer">
+        <div id="chatInputContainer" style="display: none">
           <form action="javascript:chatInputActionFired()">
             <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled=true></input>
           </form>
         </div>
         <div id="enterNameContainer">
           <span id="enterNameInstruction">
-            You must set a nickname before you can chat.
+            <span>You must set a nickname before you can chat.</span>
             <br>
             <small>
               * Maximum 7 characters
@@ -334,7 +334,7 @@
               * Alphanumeric characters only
             </small>
           </span>
-          <form action="javascript:chatNameCheck()">
+          <form id="enterNameForm" action="javascript:chatNameCheck()">
             <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
           </form>
         </div>
@@ -489,6 +489,7 @@ if (hasTouchscreen) {
 </script>
 <script>
   let config = {
+    name: '',
     uiTheme: 'Default',
     fontStyle: 0
   };
@@ -500,6 +501,15 @@ if (hasTouchscreen) {
   document.getElementById('fontStyle').onchange = function () {
     setFontStyle(parseInt(this.value));
   };
+  
+  document.getElementById('enterNameForm').onsubmit = function () {
+    setName(this.value);
+  };
+  
+  function setName(name, isInit) {
+    config.name = document.getElementById('nameInput').value;
+    updateConfig(config);
+  }
   
   function setUiTheme(uiTheme, isInit) {
     config.uiTheme = uiTheme;
@@ -620,6 +630,10 @@ if (hasTouchscreen) {
           if (config.hasOwnProperty(key)) {
             let value = savedConfig[key];
             switch (key) {
+              case 'name':
+                document.getElementById('nameInput').value = value;
+                setName(name, true);
+                break;
               case 'uiTheme':
                 document.getElementById('uiTheme').value = value;
                 setUiTheme(value, true);

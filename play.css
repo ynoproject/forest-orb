@@ -27,13 +27,15 @@ html, input[type='text'], select {
 }
 
 #messages {
+  margin-top: 15px;
   margin-right: 1px;
   width: 283px;
-  height: calc(100% - (222px));
+  height: calc(100% - (148px));
   overflow-y: auto;
 }
 
 #messages.expanded {
+  margin-top: 21px;
   height: calc(100% - (82px));
 }
 
@@ -45,22 +47,29 @@ html, input[type='text'], select {
   width: auto;
   height: 48px;
   margin-right: 1px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 #chatInput {
   width: -webkit-calc(100% - 11px);
   width:    -moz-calc(100% - 11px);
   width:         calc(100% - 11px);
-  height: 26px;
   right: 8px;
 }
 
 #enterNameContainer {
-  margin-top: 5px;
+  margin-top: 12px;
   margin-right: 1px;
   width: auto;
   height: auto;
+}
+
+#enterNameForm {
+  margin-top: 8px;
+}
+
+#enterNameInstruction span {
+  letter-spacing: -0.625px;
 }
 
 #nameInput {
