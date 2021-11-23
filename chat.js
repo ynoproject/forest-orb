@@ -22,10 +22,10 @@ function chatboxAddMessage(msg) {
 }
 
 function chatInputActionFired() {
+  const chatInput = document.getElementById("chatInput")
   if (chatInput.value === "") {
     return
   }
-  const chatInput = document.getElementById("chatInput")
   const ptr = Module.allocate(Module.intArrayFromString(chatInput.value), Module.ALLOC_NORMAL);
   Module._SendChatMessageToServer(ptr);
   Module._free(ptr);
