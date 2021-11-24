@@ -510,6 +510,10 @@ if (hasTouchscreen) {
     setName(this.value);
   };
   
+  window.onbeforeunload = function () {
+    return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
+  };
+  
   function setName(name, isInit) {
     config.name = document.getElementById('nameInput').value;
     updateConfig(config);
