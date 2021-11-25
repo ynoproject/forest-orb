@@ -16,26 +16,33 @@ html, input[type='text'], select {
   margin: 0 auto;
 }
 
+#layout {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+}
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 48px);
+}
+
 #uiControls {
   display: flex;
   align-items: center;
   justify-content: space-around;
-}
-
-#chatboxContainer {
-  width: 300px;
-  height: 617px;
+  flex-wrap: wrap;
 }
 
 #chatbox {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 617px;
 }
 
 #messages {
-  width: 284px;
   height: 100%;
   overflow-y: auto;
 }
@@ -51,9 +58,7 @@ html, input[type='text'], select {
 }
 
 #chatInput {
-  width: -webkit-calc(100% - 11px);
-  width:    -moz-calc(100% - 11px);
-  width:         calc(100% - 11px);
+  width: calc(100% - 11px);
   right: 8px;
 }
 
@@ -75,13 +80,12 @@ html, input[type='text'], select {
   width: calc(100% - 28px);
 }
 
-#notice {
-  font-weight: bold;
+.notice, .instruction {
   text-align: center;
 }
 
-#instructions {
-  text-align: center;
+.notice {
+  font-weight: bold;
 }
 
 .messageContainer {
@@ -92,17 +96,51 @@ label {
   font-weight: bold;
 }
 
-tr, td, div, input[type='text'] {
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
-}
-
-table {
-  width: 1000px;
-  margin: 0 auto;
-  height: 623px;
-}
-
 input[type='text'], select {
   position: relative;
+}
+
+@media only screen and (min-width: 1037px) {
+  #layout {
+    max-height: 667px;
+  }
+
+  #chatboxContainer {
+    width: 300px;
+  }
+
+  #chatbox {
+    height: calc(100vh - 50px);
+    max-height: 617px;
+  }
+
+  #messages {
+    width: 284px;
+  }
+
+  .container {
+    height: calc(100vh - 58px);
+    max-height: 617px;
+  }
+}
+
+@media only screen and (max-width: 1036px) {
+  #layout {
+    flex-wrap: wrap;
+  }
+
+  #chatboxContainer {
+    width: 100%;
+    height: calc(100vh - 724px);
+    min-height: 188px;
+  }
+
+  #chatbox {
+    height: calc(100vh - 720px);
+    min-height: 200px;
+  }
+
+  #messages {
+    width: calc(100% - 16px);
+  }
 }
