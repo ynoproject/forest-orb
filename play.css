@@ -131,13 +131,15 @@ input[type='text'], select {
 
   #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 724px);
+    height: calc(100vh - 638px);
     min-height: 188px;
+    max-height: 328px;
   }
 
   #chatbox {
-    height: calc(100vh - 720px);
+    height: calc(100vh - 634px);
     min-height: 200px;
+    max-height: 340px;
   }
 
   #messages {
