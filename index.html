@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Yume 2kki Multiplayer</title>
+  <title>Yume Nikki Multiplayer</title>
   <meta charset="utf-8">
-  <meta name="description" content="Play Yume 2kki online with your friends, no downloads required.">
+  <meta name="description" content="Play Yume Nikki online with your friends, no downloads required.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="play.css">
   <style>
@@ -157,12 +157,12 @@
     }
   
     #messages, #enterNameContainer {
-      border-image: url('images/ui/Default/border.png') 10 repeat !important;
+      border-image: url('images/ui/yume/border.png') 10 repeat !important;
     }
   
     #messages::-webkit-scrollbar-track {
       border: 8px solid transparent;
-      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
       image-rendering: crisp-edges;
       image-rendering: pixelated;
@@ -170,13 +170,13 @@
 
     #messages::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
-      border-image: url('images/ui/Default/border.png') 6 round !important;
+      border-image: url('images/ui/yume/border.png') 6 round !important;
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
   
     #enterNameInstruction, #instructions, .message, label {
-      background-image: url('images/ui/Default/font1.png') !important; /*base*/
+      background-image: url('images/ui/yume/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -185,7 +185,7 @@
   
     .messageContainer {
       border-bottom: 4px solid transparent;
-      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/border.png') 8 repeat !important;
     }
 
     a {
@@ -199,14 +199,14 @@
 
     tr, td {
       background-size: 70px;
-      background-image: url('images/ui/Default/containerbg.png') !important;
-      border-image: url('images/ui/Default/border.png') 10 repeat !important;
+      background-image: url('images/ui/yume/containerbg.png') !important;
+      border-image: url('images/ui/yume/border.png') 10 repeat !important;
       border: 24px solid transparent;
     }
   
     input[type='text'], select {
       border: 12px solid transparent;
-      border-image: url('images/ui/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -244,7 +244,7 @@
             </div>
         </div>
         
-        <div id="uiControls">
+        <div id="uiControls" data-game-id="2kki" style="display: none;">
           <div>
             <label for="uiTheme">
               UI Theme:
@@ -343,15 +343,17 @@
     </tr>
   </table>
 <br>
-<div id="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
-<br>
+<div data-game-id="2kki" style="display: none;">
+  <div id="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
+  <br>
+</div>
 <div id="instructions">Press 3 to hide/show the connection status window</div>
 <br>
 <div id="instructions">Press 4 to hide/show nametags</div>
 <script>
   Module = {
-    EASYRPG_GAME: "2kki",
-    EASYRPG_WS_URL: "wss://heaven.kekami.dev/2kki/"
+    EASYRPG_GAME: "yume",
+    EASYRPG_WS_URL: "wss://heaven.kekami.dev/yume/"
   };
 </script>
 <script type="text/javascript" src="index.js"></script>
@@ -491,23 +493,37 @@ if (hasTouchscreen) {
 }
 </script>
 <script>
+  const gameId = Module.EASYRPG_GAME;
+  const is2kki = gameId === '2kki';
+
   let config = {
-    name: '',
-    uiTheme: 'Default',
-    fontStyle: 0
+    name: ''
   };
 
-  document.getElementById('uiTheme').onchange = function () {
-    setUiTheme(this.value);
-  };
-  
-  document.getElementById('fontStyle').onchange = function () {
-    setFontStyle(parseInt(this.value));
-  };
-  
+  if (is2kki) {
+    config.uiTheme = 'Default';
+    config.fontStyle = 0;
+
+    document.getElementById('uiTheme').onchange = function () {
+      setUiTheme(this.value);
+    };
+    
+    document.getElementById('fontStyle').onchange = function () {
+      setFontStyle(parseInt(this.value));
+    };
+  }
+
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
   };
+
+  const gameIdElements = document.querySelectorAll('[data-game-id]');
+  for (let el of gameIdElements) {
+    if (el.dataset.gameId === gameId)
+      el.style.display = '';
+    else
+      el.remove();
+  }
   
   window.onbeforeunload = function () {
     return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
@@ -519,45 +535,50 @@ if (hasTouchscreen) {
   }
   
   function setUiTheme(uiTheme, isInit) {
-    config.uiTheme = uiTheme;
+    if (!uiTheme)
+      uiTheme = 'Default';
+    if (is2kki)
+      config.uiTheme = uiTheme;
     const themeStyles = document.getElementById('themeStyles');
-    getBaseBgColor(config.uiTheme || (config.uiTheme = 'Default'), function (color) {
-      const bgColorPixel = uiThemeBgColors[config.uiTheme];
+    getBaseBgColor(uiTheme, function (color) {
+      const bgColorPixel = uiThemeBgColors[uiTheme];
       const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
-      getFontShadow(config.uiTheme, function (shadow) {
-        themeStyles.textContent = themeStyles.textContent.replace(/url\('images\/ui\/[a-zA-Z0-9\_]+\/(containerbg|border(?:2)?|font\d)\.png'\)/g, 'url(\'images/ui/' + config.uiTheme + '/$1.png\')')
+      getFontShadow(uiTheme, function (shadow) {
+        themeStyles.textContent = themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/$1.png\')')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
         if (!isInit) {
           document.getElementById('fontStyle').onchange();
-          updateConfig(config);
+          if (is2kki)
+            updateConfig(config);
         }
       });
     });
   }
   
   function setFontStyle(fontStyle, isInit) {
-    config.fontStyle = fontStyle;
+    if (is2kki)
+      config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
     const defaultAltFontStyleIndex = 4;
-    getFontColor(config.uiTheme, config.fontStyle, function (baseColor) {
-      const altFontStyle = config.fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
+    getFontColor(config.uiTheme || 'Default', fontStyle, function (baseColor) {
+      const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
       const altColorCallback = function (altColor) {
         themeStyles.textContent = themeStyles.textContent = themeStyles.textContent = themeStyles.textContent
-          .replace(/url\('images\/ui\/([a-zA-Z0-9\_]+)\/font\d\.png'\)( *!important)?;( *)\/\*base\*\//g, 'url(\'images/ui/$1/font' + (config.fontStyle + 1) + '.png\')$2;$3/*base*/')
-          .replace(/url\('images\/ui\/([a-zA-Z0-9\_]+)\/font\d\.png'\)( *!important)?;( *)\/\*alt\*\//g, 'url(\'images/ui/$1/font' + (altFontStyle + 1) + '.png\')$2;$3/*alt*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
-        if (!isInit)
+        if (!isInit && is2kki)
           updateConfig(config);
       };
-      getFontColor(config.uiTheme, altFontStyle, function (altColor) {
+      getFontColor(config.uiTheme || 'Default', altFontStyle, function (altColor) {
         if (altColor !== baseColor)
           altColorCallback(altColor);
         else {
-          const fallbackAltFontStyle = config.fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex + 1 : 1;
-          getFontColor(config.uiTheme, fallbackAltFontStyle, altColorCallback);
+          const fallbackAltFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex + 1 : 1;
+          getFontColor(config.uiTheme || 'Default', fallbackAltFontStyle, altColorCallback);
         }
       });
     });
@@ -583,7 +604,7 @@ if (hasTouchscreen) {
       callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + uiTheme + '/font' + (fontStyle + 1) + '.png';
+    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png';
   }
 
   function getFontShadow(uiTheme, callback) {
@@ -600,7 +621,7 @@ if (hasTouchscreen) {
       callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + uiTheme + '/fontshadow.png';
+    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/fontshadow.png';
   }
 
   function getBaseBgColor(uiTheme, callback) {
@@ -622,7 +643,7 @@ if (hasTouchscreen) {
       callback('rgba(' + r + ', ' + g + ', ' + b + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + uiTheme + '/containerbg.png';
+    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/containerbg.png';
   }
   
   function loadOrInitConfig() {
@@ -642,11 +663,13 @@ if (hasTouchscreen) {
                 setName(name, true);
                 break;
               case 'uiTheme':
-                document.getElementById('uiTheme').value = value;
+                if (is2kki)
+                  document.getElementById('uiTheme').value = value;
                 setUiTheme(value, true);
                 break;
               case 'fontStyle':
-                document.getElementById('fontStyle').value = value;
+                if (is2kki)
+                  document.getElementById('fontStyle').value = value;
                 setFontStyle(value, true);
                 break;
             }
@@ -667,6 +690,10 @@ if (hasTouchscreen) {
   }
   
   loadOrInitConfig();
+  if (!config.hasOwnProperty('uiTheme'))
+    setUiTheme('Default', true);
+  if (!config.hasOwnProperty('fontStyle'))
+    setFontStyle(0, true);
 </script>
 
 </body>
