@@ -351,9 +351,12 @@
 <br>
 <div id="instructions">Press 4 to hide/show nametags</div>
 <script>
+  const gameIds = ['yume', '2kki', 'lcddem', 'flow'];;
+  const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
+  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
   Module = {
-    EASYRPG_GAME: "yume",
-    EASYRPG_WS_URL: "wss://heaven.kekami.dev/yume/"
+    EASYRPG_GAME: gameId,
+    EASYRPG_WS_URL: 'wss://heaven.kekami.dev/' + gameId + '/'
   };
 </script>
 <script type="text/javascript" src="index.js"></script>
@@ -493,7 +496,6 @@ if (hasTouchscreen) {
 }
 </script>
 <script>
-  const gameId = Module.EASYRPG_GAME;
   const is2kki = gameId === '2kki';
 
   let config = {
