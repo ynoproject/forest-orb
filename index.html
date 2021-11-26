@@ -163,12 +163,12 @@
     }
   
     #messages, #enterNameContainer {
-      border-image: url('images/ui/yume/border.png') 10 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
     #messages::-webkit-scrollbar-track {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
       image-rendering: crisp-edges;
       image-rendering: pixelated;
@@ -176,13 +176,13 @@
 
     #messages::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/border.png') 6 round !important;
+      border-image: url('images/ui/yume/Default/border.png') 6 round !important;
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
   
     #enterNameInstruction, .instruction, .message, label {
-      background-image: url('images/ui/yume/font1.png') !important; /*base*/
+      background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -191,7 +191,7 @@
   
     .messageContainer {
       border-bottom: 4px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
     }
 
     a {
@@ -205,14 +205,19 @@
 
     .container {
       background-size: 70px;
-      background-image: url('images/ui/yume/containerbg.png') !important;
-      border-image: url('images/ui/yume/border.png') 10 repeat !important;
+      background-position-y: -16px;
+      background-image: url('images/ui/yume/Default/containerbg.png') !important;
+      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
       border: 24px solid transparent;
+    }
+
+    .container.fullBg {
+      background-size: 650px;
     }
   
     input[type='text'], select {
       border: 12px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -256,7 +261,7 @@
           </label>
           <select class="uiTheme" data-game-id="yume">
             <option value="Default">Default</option>
-            <option value="Alternate_1">Alternate 1</option>
+            <option value="Alternate_1" class="fullBg">Alternate 1</option>
             <option value="Alternate_2">Alternate 2</option>
           </select>
           <select class="uiTheme" data-game-id="2kki">
@@ -577,6 +582,10 @@ if (hasTouchscreen) {
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
+        const useFullBg = document.querySelector('.uiTheme option[value="' + uiTheme + '"]').classList.contains('fullBg');
+        const containers = document.querySelectorAll('.container');
+        for (let container of containers)
+          container.classList.toggle('fullBg', useFullBg);
         if (!isInit) {
           document.querySelector('.fontStyle').onchange();
           if (hasUiThemes)
