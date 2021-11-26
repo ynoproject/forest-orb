@@ -255,16 +255,16 @@
       </div>
       
       <div id="uiControls">
-        <div data-game-ids="yume,2kki,flow" style="display: none;">
+        <div ]s="yume,2kki,flow" style="display: none;">
           <label for="uiTheme">
             UI Theme:
           </label>
-          <select class="uiTheme" data-game-id="yume">
+          <select class="uiTheme" data-game-ids="yume">
             <option value="Default">Default</option>
             <option value="Alternate_1" class="fullBg">Alternate 1</option>
             <option value="Alternate_2">Alternate 2</option>
           </select>
-          <select class="uiTheme" data-game-id="2kki">
+          <select class="uiTheme" data-game-ids="2kki">
             <option value="Default">Default</option>
             <option value="Default_2">Default 2</option>
             <option value="Default_3">Default 3</option>
@@ -313,7 +313,7 @@
             <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
             <option value="Shop_Ruins">Shop Ruins</option>
           </select>
-          <select class="uiTheme" data-game-id="flow">
+          <select class="uiTheme" data-game-ids="flow">
             <option value="Default">Default</option>
             <option value="Famicom">Famicom</option>
             <option value="Dot">Dot</option>
@@ -367,7 +367,7 @@
     </div>
   </div>
 <br>
-<div data-game-id="2kki" style="display: none;">
+<div data-game-ids="2kki" style="display: none;">
   <div class="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
   <br>
 </div>
@@ -520,14 +520,6 @@ if (hasTouchscreen) {
 }
 </script>
 <script>
-  const gameIdElements = document.querySelectorAll('[data-game-id]');
-  for (let el of gameIdElements) {
-    if (el.dataset.gameId === gameId)
-      el.style.display = '';
-    else
-      el.remove();
-  }
-
   const gameIdsElements = document.querySelectorAll('[data-game-ids]');
   for (let el of gameIdsElements) {
     if (el.dataset.gameIds.split(',').indexOf(gameId) > -1)
