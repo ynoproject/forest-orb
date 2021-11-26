@@ -157,12 +157,12 @@
     }
   
     #messages, #enterNameContainer {
-      border-image: url('images/ui/yume/border.png') 10 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
     #messages::-webkit-scrollbar-track {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
       image-rendering: crisp-edges;
       image-rendering: pixelated;
@@ -170,13 +170,13 @@
 
     #messages::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/border.png') 6 round !important;
+      border-image: url('images/ui/yume/Default/border.png') 6 round !important;
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
   
     #enterNameInstruction, #instructions, .message, label {
-      background-image: url('images/ui/yume/font1.png') !important; /*base*/
+      background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -185,7 +185,7 @@
   
     .messageContainer {
       border-bottom: 4px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
     }
 
     a {
@@ -199,14 +199,14 @@
 
     tr, td {
       background-size: 70px;
-      background-image: url('images/ui/yume/containerbg.png') !important;
-      border-image: url('images/ui/yume/border.png') 10 repeat !important;
+      background-image: url('images/ui/yume/Default/containerbg.png') !important;
+      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
       border: 24px solid transparent;
     }
   
     input[type='text'], select {
       border: 12px solid transparent;
-      border-image: url('images/ui/yume/border.png') 8 repeat !important;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -244,8 +244,8 @@
             </div>
         </div>
         
-        <div id="uiControls" data-game-ids="yume,2kki,flow" style="display: none;">
-          <div>
+        <div id="uiControls">
+          <div data-game-ids="yume,2kki,flow" style="display: none;">
             <label for="uiTheme">
               UI Theme:
             </label>
@@ -326,7 +326,7 @@
               <option value="3">Style 4</option>
               <option value="4">Style 5</option>
               <option value="5">Style 6</option>
-              <option value="6">Style 7</option>
+              <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
             </select>
           </div>
         </div>
@@ -530,21 +530,21 @@ if (hasTouchscreen) {
   const hasUiThemes = !!document.querySelector('.uiTheme');
 
   let config = {
-    name: ''
+    name: '',
+    fontStyle: 0
   };
 
   if (hasUiThemes) {
     config.uiTheme = 'Default';
-    config.fontStyle = 0;
 
     document.querySelector('.uiTheme').onchange = function () {
       setUiTheme(this.value);
     };
-    
-    document.querySelector('.fontStyle').onchange = function () {
-      setFontStyle(parseInt(this.value));
-    };
   }
+
+  document.querySelector('.fontStyle').onchange = function () {
+    setFontStyle(parseInt(this.value));
+  };
 
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
@@ -583,8 +583,7 @@ if (hasTouchscreen) {
   }
   
   function setFontStyle(fontStyle, isInit) {
-    if (hasUiThemes)
-      config.fontStyle = fontStyle;
+    config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
     const defaultAltFontStyleIndex = 4;
     getFontColor(config.uiTheme || 'Default', fontStyle, function (baseColor) {
@@ -595,7 +594,7 @@ if (hasTouchscreen) {
           .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
-        if (!isInit && hasUiThemes)
+        if (!isInit)
           updateConfig(config);
       };
       getFontColor(config.uiTheme || 'Default', altFontStyle, function (altColor) {
@@ -693,8 +692,7 @@ if (hasTouchscreen) {
                 setUiTheme(value, true);
                 break;
               case 'fontStyle':
-                if (hasUiThemes)
-                  document.querySelector('.fontStyle').value = value;
+                document.querySelector('.fontStyle').value = value;
                 setFontStyle(value, true);
                 break;
             }
