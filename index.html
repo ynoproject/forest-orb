@@ -244,12 +244,12 @@
             </div>
         </div>
         
-        <div id="uiControls" data-game-id="2kki" style="display: none;">
+        <div id="uiControls" data-game-ids="2kki,flow" style="display: none;">
           <div>
             <label for="uiTheme">
               UI Theme:
             </label>
-            <select id="uiTheme">
+            <select class="uiTheme" data-game-id="2kki">
               <option value="Default">Default</option>
               <option value="Default_2">Default 2</option>
               <option value="Default_3">Default 3</option>
@@ -298,13 +298,23 @@
               <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
               <option value="Shop_Ruins">Shop Ruins</option>
             </select>
+            <select class="uiTheme" data-game-id="flow">
+              <option value="Default">Default</option>
+              <option value="Famicom">Famicom</option>
+              <option value="Dot">Dot</option>
+              <option value="Orange">Orange</option>
+              <option value="Flower">Flower</option>
+              <option value="Sugar">Sugar</option>
+              <option value="Rust">Rust</option>
+              <option value="Smile">Smile</option>
+            </select>
           </div>
 
           <div>
             <label for="fontStyle">
               Font Style:
             </label>
-            <select id="fontStyle">
+            <select class="fontStyle">
               <option value="0">Style 1</option>
               <option value="1">Style 2</option>
               <option value="2">Style 3</option>
@@ -351,7 +361,7 @@
 <br>
 <div id="instructions">Press 4 to hide/show nametags</div>
 <script>
-  const gameIds = ['yume', '2kki', 'lcddem', 'flow'];;
+  const gameIds = ['yume', '2kki', 'lcddem', 'flow'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
   const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
   Module = {
@@ -496,29 +506,6 @@ if (hasTouchscreen) {
 }
 </script>
 <script>
-  const is2kki = gameId === '2kki';
-
-  let config = {
-    name: ''
-  };
-
-  if (is2kki) {
-    config.uiTheme = 'Default';
-    config.fontStyle = 0;
-
-    document.getElementById('uiTheme').onchange = function () {
-      setUiTheme(this.value);
-    };
-    
-    document.getElementById('fontStyle').onchange = function () {
-      setFontStyle(parseInt(this.value));
-    };
-  }
-
-  document.getElementById('enterNameForm').onsubmit = function () {
-    setName(this.value);
-  };
-
   const gameIdElements = document.querySelectorAll('[data-game-id]');
   for (let el of gameIdElements) {
     if (el.dataset.gameId === gameId)
@@ -526,6 +513,37 @@ if (hasTouchscreen) {
     else
       el.remove();
   }
+
+  const gameIdsElements = document.querySelectorAll('[data-game-ids]');
+  for (let el of gameIdsElements) {
+    if (el.dataset.gameIds.split(',').indexOf(gameId) > -1)
+      el.style.display = '';
+    else
+      el.remove();
+  }
+
+  const hasUiThemes = !!document.querySelector('.uiTheme');
+
+  let config = {
+    name: ''
+  };
+
+  if (hasUiThemes) {
+    config.uiTheme = 'Default';
+    config.fontStyle = 0;
+
+    document.querySelector('.uiTheme').onchange = function () {
+      setUiTheme(this.value);
+    };
+    
+    document.querySelector('.fontStyle').onchange = function () {
+      setFontStyle(parseInt(this.value));
+    };
+  }
+
+  document.getElementById('enterNameForm').onsubmit = function () {
+    setName(this.value);
+  };
   
   window.onbeforeunload = function () {
     return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
@@ -539,20 +557,20 @@ if (hasTouchscreen) {
   function setUiTheme(uiTheme, isInit) {
     if (!uiTheme)
       uiTheme = 'Default';
-    if (is2kki)
+    if (hasUiThemes)
       config.uiTheme = uiTheme;
     const themeStyles = document.getElementById('themeStyles');
     getBaseBgColor(uiTheme, function (color) {
       const bgColorPixel = uiThemeBgColors[uiTheme];
       const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
       getFontShadow(uiTheme, function (shadow) {
-        themeStyles.textContent = themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/$1.png\')')
+        themeStyles.textContent = themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/$1.png\')')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
         if (!isInit) {
-          document.getElementById('fontStyle').onchange();
-          if (is2kki)
+          document.querySelector('.fontStyle').onchange();
+          if (hasUiThemes)
             updateConfig(config);
         }
       });
@@ -560,7 +578,7 @@ if (hasTouchscreen) {
   }
   
   function setFontStyle(fontStyle, isInit) {
-    if (is2kki)
+    if (hasUiThemes)
       config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
     const defaultAltFontStyleIndex = 4;
@@ -568,11 +586,11 @@ if (hasTouchscreen) {
       const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
       const altColorCallback = function (altColor) {
         themeStyles.textContent = themeStyles.textContent = themeStyles.textContent = themeStyles.textContent
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (is2kki ? '/' + config.uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
-        if (!isInit && is2kki)
+        if (!isInit && hasUiThemes)
           updateConfig(config);
       };
       getFontColor(config.uiTheme || 'Default', altFontStyle, function (altColor) {
@@ -606,7 +624,7 @@ if (hasTouchscreen) {
       callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png';
+    img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png';
   }
 
   function getFontShadow(uiTheme, callback) {
@@ -623,7 +641,7 @@ if (hasTouchscreen) {
       callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/fontshadow.png';
+    img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/fontshadow.png';
   }
 
   function getBaseBgColor(uiTheme, callback) {
@@ -645,7 +663,7 @@ if (hasTouchscreen) {
       callback('rgba(' + r + ', ' + g + ', ' + b + ', 1)');
       canvas.remove();
     };
-    img.src = 'images/ui/' + gameId + (is2kki ? '/' + uiTheme : '') + '/containerbg.png';
+    img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/containerbg.png';
   }
   
   function loadOrInitConfig() {
@@ -665,13 +683,13 @@ if (hasTouchscreen) {
                 setName(name, true);
                 break;
               case 'uiTheme':
-                if (is2kki)
-                  document.getElementById('uiTheme').value = value;
+                if (hasUiThemes)
+                  document.querySelector('.uiTheme').value = value;
                 setUiTheme(value, true);
                 break;
               case 'fontStyle':
-                if (is2kki)
-                  document.getElementById('fontStyle').value = value;
+                if (hasUiThemes)
+                  document.querySelector('.fontStyle').value = value;
                 setFontStyle(value, true);
                 break;
             }
