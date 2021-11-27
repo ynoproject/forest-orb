@@ -66,10 +66,10 @@
       display: block;
       top: 0;
       margin: 0 auto;
-      margin-top: 48px;
       width: 640px;
       max-width: calc(100vw - 64px);
       height: 480px;
+      max-height: calc((100vw - 64px) * 0.75);
       border: 0;
       image-rendering: pixelated;
       image-rendering: crisp-edges;
@@ -117,15 +117,27 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
-      #apad,
-      #dpad {
+      #apad, #dpad {
         display: none;
       }
     }
 
-    @media only screen and (max-width: 1036px) {
+    @media only screen and (max-width: 1050px) {
       #dpad, #apad {
-        padding-bottom: calc(100vh - 574px);
+        padding-bottom: calc(100vh - 526px);
+      }
+    }
+
+    @media only screen and (min-width: 705px) and (max-height: 594px) {
+      #canvas {
+        max-width: calc((100vh - 96px) * 1.3333);
+        max-height: calc(100vh - 96px);
+      }
+    }
+
+    @media only screen and (max-width: 704px) {
+      #dpad, #apad {
+        padding-bottom: calc(100vh - (((100vw - 64px) * 0.75) + 48px));
       }
     }
 
@@ -255,8 +267,8 @@
       </div>
       
       <div id="uiControls">
-        <div data-game-ids="yume,2kki,flow" style="display: none;">
-          <label for="uiTheme">
+        <div class="uiControl" data-game-ids="yume,2kki,flow" style="display: none;">
+          <label for="uiTheme" class="unselectable">
             UI Theme:
           </label>
           <select class="uiTheme" data-game-ids="yume">
@@ -325,8 +337,8 @@
           </select>
         </div>
 
-        <div>
-          <label for="fontStyle">
+        <div class="uiControl">
+          <label for="fontStyle" class="unselectable">
             Font Style:
           </label>
           <select class="fontStyle">
@@ -550,6 +562,16 @@ if (hasTouchscreen) {
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
   };
+
+  let ignoreSizeChanged = false;
+
+  function onResize() {
+    const layout = document.getElementById('layout');
+    layout.classList.toggle('overflow', window.innerWidth < 934 && window.innerHeight <= 594 && (window.innerWidth <= 694 || document.getElementById('gameContainer').offsetWidth < document.getElementById('canvas').width + (layout.classList.contains('overflow') ? 288 : 0)));
+  }
+
+  Module.postRun.push(onResize);
+  window.onresize = function () { window.setTimeout(onResize, 0); };
   
   window.onbeforeunload = function () {
     return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
@@ -716,6 +738,8 @@ if (hasTouchscreen) {
     } catch (error) {
     }
   }
+
+  onResize();
   
   loadOrInitConfig();
   if (!config.hasOwnProperty('uiTheme'))

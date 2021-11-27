@@ -20,7 +20,9 @@ html, input[type='text'], select {
   display: flex;
   margin: 0 auto;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1036px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #mainContainer {
@@ -33,7 +35,7 @@ html, input[type='text'], select {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-wrap: wrap;
+  margin-top: 16px;
 }
 
 #chatbox {
@@ -80,6 +82,10 @@ html, input[type='text'], select {
   width: calc(100% - 28px);
 }
 
+.uiControl {
+  text-align: center;
+}
+
 .notice, .instruction {
   text-align: center;
 }
@@ -100,7 +106,7 @@ input[type='text'], select {
   position: relative;
 }
 
-@media only screen and (min-width: 1037px) {
+@media only screen and (min-width: 1051px) and (min-height: 595px) {
   #layout {
     max-height: 667px;
   }
@@ -124,7 +130,7 @@ input[type='text'], select {
   }
 }
 
-@media only screen and (max-width: 1036px) {
+@media only screen and (max-width: 1050px) and (min-height: 595px) {
   #layout {
     flex-wrap: wrap;
   }
@@ -144,5 +150,51 @@ input[type='text'], select {
 
   #messages {
     width: calc(100% - 16px);
+  }
+}
+
+#layout.overflow {
+  flex-wrap: wrap;
+}
+
+#layout.overflow #chatboxContainer {
+  width: 100%;
+  height: calc(100vh - 638px);
+  min-height: 188px;
+  max-height: 328px;
+}
+
+#layout.overflow #chatbox {
+  height: calc(100vh - 634px);
+  min-height: 200px;
+  max-height: 340px;
+}
+
+#layout.overflow #messages {
+  width: calc(100% - 16px);
+}
+
+@media only screen and (min-width: 705px) and (max-height: 594px) {
+  #layout:not(.overflow) #mainContainer {
+    width: calc(100vw - 348px);
+  }
+
+  #layout:not(.overflow) #chatbox {
+    width: 240px;
+    height: 100%;
+  }
+
+  #layout:not(.overflow) #messages {
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 704px) and (max-height: 594px) {
+  #chatboxContainer {
+    height: calc(100vh - (((100vw - 64px) * 0.75) + 158px));
+  }
+
+  #chatbox {
+    height: calc(100vh - (((100vw - 64px) * 0.75) + 154px));
   }
 }
