@@ -165,6 +165,21 @@
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: black;
     }
+
+    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
+      border: 8px solid transparent;
+      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
+      background-color: rgba(45, 17, 23, 1); /*basebg*/
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb {
+      border: 8px solid transparent;
+      border-image: url('images/ui/yume/Default/border.png') 6 round !important;
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
     
     #controls button path {
       stroke: rgba(216, 216, 216, 1) !important; /*base*/
@@ -176,21 +191,6 @@
   
     #messages, #enterNameContainer {
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
-    }
-  
-    #messages::-webkit-scrollbar-track {
-      border: 8px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
-      background-color: rgba(45, 17, 23, 1); /*basebg*/
-      image-rendering: crisp-edges;
-      image-rendering: pixelated;
-    }
-
-    #messages::-webkit-scrollbar-thumb {
-      border: 8px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 6 round !important;
-      image-rendering: crisp-edges;
-      image-rendering: pixelated;
     }
   
     #enterNameInstruction, .instruction, .message, label {

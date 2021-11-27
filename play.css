@@ -22,7 +22,7 @@ html, input[type='text'], select {
   width: 100%;
   max-width: 1036px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #mainContainer {
@@ -49,7 +49,7 @@ html, input[type='text'], select {
   overflow-y: auto;
 }
 
-#messages::-webkit-scrollbar {
+#layout::-webkit-scrollbar, #messages::-webkit-scrollbar {
   width: 18px;
 }
 
