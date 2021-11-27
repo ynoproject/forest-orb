@@ -562,7 +562,6 @@ if (hasTouchscreen) {
   config.fontStyle = 0;
 
   document.querySelector('.fontStyle').onchange = function () {
-    console.log(this.value)
     setFontStyle(parseInt(this.value));
   };
 
@@ -711,10 +710,11 @@ if (hasTouchscreen) {
   
   function loadOrInitConfig() {
     try {
-      if (!window.localStorage.hasOwnProperty('config'))
-        window.localStorage.setItem('config', JSON.stringify(config));
+      const configKey = `config_${gameId}`;
+      if (!window.localStorage.hasOwnProperty(configKey))
+        window.localStorage.setItem(configKey, JSON.stringify(config));
       else {
-        const savedConfig = JSON.parse(window.localStorage.getItem('config'));
+        const savedConfig = JSON.parse(window.localStorage.getItem(configKey));
         const savedConfigKeys = Object.keys(savedConfig);
         for (let k in savedConfigKeys) {
           const key = savedConfigKeys[k];
@@ -740,13 +740,13 @@ if (hasTouchscreen) {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
   
   function updateConfig(config) {
     try {
-      window.localStorage.config = JSON.stringify(config);
+      window.localStorage[`config_${gameId}`] = JSON.stringify(config);
     } catch (error) {
     }
   }
