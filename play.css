@@ -31,6 +31,12 @@ html, input[type='text'], select {
   width: calc(100% - 48px);
 }
 
+#canvasContainer {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
 #uiControls {
   display: flex;
   align-items: center;
