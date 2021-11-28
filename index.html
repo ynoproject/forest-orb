@@ -114,11 +114,11 @@
         padding-bottom: calc(100vh - 526px);
       }
 
-      #mainContainer.downscale #dpad,  #mainContainer.downscale #apad {
+      #layout.downscale #dpad,  #layout.downscale #apad {
         padding-bottom: calc(100vh - 406px);
       }
 
-      #mainContainer.downscale2 #dpad,  #mainContainer.downscale2 #apad {
+      #layout.downscale2 #dpad,  #layout.downscale2 #apad {
         padding-bottom: calc(100vh - 286px);
       }
     }
@@ -538,32 +538,30 @@ if (hasTouchscreen) {
 
   function onResize() {
     const layout = document.getElementById('layout');
-    const mainContainer = document.getElementById('mainContainer');
     const canvas = document.getElementById('canvas');
 
-    const noSideBorders = window.innerWidth < 384;
     const downscale = window.innerWidth < 704 || window.innerHeight < 577;
     const downscale2 = window.innerWidth < 544 || window.innerHeight < 457;
 
-    mainContainer.classList.toggle('noSideBorders', noSideBorders);
+    document.getElementById('mainContainer').classList.toggle('noSideBorders', window.innerWidth < 384);
 
     if (window.innerWidth < window.innerHeight) {
-      mainContainer.classList.toggle('downscale', downscale);
-      mainContainer.classList.toggle('downscale2', downscale2);
+      layout.classList.toggle('downscale', downscale);
+      layout.classList.toggle('downscale2', downscale2);
       layout.classList.toggle('overflow', isOverflow(downscale2 ? 0.5 : downscale ? 0.75 : 1));
     } else {
       const overflow = isOverflow();
       if (overflow !== isOverflow(0.75)) {
-        mainContainer.classList.toggle('downscale', downscale || overflow);
-        mainContainer.classList.remove('downscale2');
+        layout.classList.toggle('downscale', downscale || overflow);
+        layout.classList.remove('downscale2');
         layout.classList.toggle('overflow', !overflow);
       } else if (overflow !== isOverflow(0.5)) {
-        mainContainer.classList.toggle('downscale', downscale || overflow);
-        mainContainer.classList.toggle('downscale2', downscale2 || overflow);
+        layout.classList.toggle('downscale', downscale || overflow);
+        layout.classList.toggle('downscale2', downscale2 || overflow);
         layout.classList.toggle('overflow', !overflow);
       } else {
-        mainContainer.classList.toggle('downscale', downscale);
-        mainContainer.classList.toggle('downscale2', downscale2);
+        layout.classList.toggle('downscale', downscale);
+        layout.classList.toggle('downscale2', downscale2);
         layout.classList.toggle('overflow', overflow);
       }
     }

@@ -57,19 +57,19 @@ html, input[type='text'], select {
   outline: none;
 }
 
-#mainContainer.noSideBorders #canvas {
-  max-width: calc(100vw - 16px);
-  max-height: calc((100vw - 16px) * 0.75);
-}
-
-#mainContainer.downscale canvas {
+#layout.downscale canvas {
   width: 480px;
   height: 360px;
 }
 
-#mainContainer.downscale2 canvas {
+#layout.downscale2 canvas {
   width: 320px;
   height: 240px;
+}
+
+#mainContainer.noSideBorders #canvas {
+  max-width: calc(100vw - 16px);
+  max-height: calc((100vw - 16px) * 0.75);
 }
 
 #uiControls {
@@ -185,6 +185,32 @@ input[type='text'], select {
 
   #chatbox {
     height: calc(100vh - 634px);
+    min-height: 200px;
+    max-height: 340px;
+  }
+
+  #layout.downscale #chatboxContainer {
+    width: 100%;
+    height: calc(100vh - 518px);
+    min-height: 188px;
+    max-height: 328px;
+  }
+
+  #layout.downscale #chatbox {
+    height: calc(100vh - 514px);
+    min-height: 200px;
+    max-height: 340px;
+  }
+
+  #layout.downscale2 #chatboxContainer {
+    width: 100%;
+    height: calc(100vh - 398px);
+    min-height: 188px;
+    max-height: 328px;
+  }
+
+  #layout.downscale2 #chatbox {
+    height: calc(100vh - 394px);
     min-height: 200px;
     max-height: 340px;
   }
