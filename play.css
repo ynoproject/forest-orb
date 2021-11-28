@@ -62,7 +62,12 @@ html, input[type='text'], select {
   max-height: calc((100vw - 16px) * 0.75);
 }
 
-#canvasContainer.scaleDown canvas {
+#mainContainer.downscale canvas {
+  width: 480px;
+  height: 360px;
+}
+
+#mainContainer.downscale2 canvas {
   width: 320px;
   height: 240px;
 }

@@ -113,11 +113,13 @@
       #dpad, #apad {
         padding-bottom: calc(100vh - 526px);
       }
-    }
 
-    @media only screen and (max-width: 704px) {
-      #dpad, #apad {
-        padding-bottom: calc(100vh - (((100vw - 64px) * 0.75) + 48px));
+      #mainContainer.downscale #dpad,  #mainContainer.downscale #apad {
+        padding-bottom: calc(100vh - 406px);
+      }
+
+      #mainContainer.downscale2 #dpad,  #mainContainer.downscale2 #apad {
+        padding-bottom: calc(100vh - 286px);
       }
     }
   </style>
@@ -537,31 +539,38 @@ if (hasTouchscreen) {
   function onResize() {
     const layout = document.getElementById('layout');
     const mainContainer = document.getElementById('mainContainer');
-    const canvasContainer = document.getElementById('canvasContainer');
     const canvas = document.getElementById('canvas');
 
     const noSideBorders = window.innerWidth < 384;
-    const scaleDown = window.innerWidth < 704;
+    const downscale = window.innerWidth < 704 || window.innerHeight < 577;
+    const downscale2 = window.innerWidth < 544 || window.innerHeight < 457;
 
     mainContainer.classList.toggle('noSideBorders', noSideBorders);
 
     if (window.innerWidth < window.innerHeight) {
-      canvasContainer.classList.toggle('scaleDown', scaleDown);
-      layout.classList.toggle('overflow', isOverflow(scaleDown));
+      mainContainer.classList.toggle('downscale', downscale);
+      mainContainer.classList.toggle('downscale2', downscale2);
+      layout.classList.toggle('overflow', isOverflow(downscale2 ? 0.5 : downscale ? 0.75 : 1));
     } else {
       const overflow = isOverflow();
-      if (overflow !== isOverflow(true)) {
-        canvasContainer.classList.toggle('scaleDown', overflow);
+      if (overflow !== isOverflow(0.75)) {
+        mainContainer.classList.toggle('downscale', downscale || overflow);
+        mainContainer.classList.remove('downscale2');
+        layout.classList.toggle('overflow', !overflow);
+      } else if (overflow !== isOverflow(0.5)) {
+        mainContainer.classList.toggle('downscale', downscale || overflow);
+        mainContainer.classList.toggle('downscale2', downscale2 || overflow);
         layout.classList.toggle('overflow', !overflow);
       } else {
-        canvasContainer.classList.remove('scaleDown');
-        layout.classList.remove('overflow');
+        mainContainer.classList.toggle('downscale', downscale);
+        mainContainer.classList.toggle('downscale2', downscale2);
+        layout.classList.toggle('overflow', overflow);
       }
     }
   }
 
-  function isOverflow(scaleDown) {
-    return window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 704 || document.getElementById('gameContainer').offsetWidth < (scaleDown ? 320 : 640) + (document.getElementById('layout').classList.contains('overflow') ? 288 : 0));
+  function isOverflow(scale) {
+    return window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 704 || document.getElementById('gameContainer').offsetWidth < (640 * (scale || 1)) + (document.getElementById('layout').classList.contains('overflow') ? 288 : 0));
   }
 
   if (Module.postRun)
