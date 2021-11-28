@@ -31,10 +31,40 @@ html, input[type='text'], select {
   width: calc(100% - 48px);
 }
 
+#mainContainer.noSideBorders {
+  border-left-width: 0;
+  border-right-width: 0;
+  width: 100%;
+}
+
 #canvasContainer {
   display: flex;
   align-items: center;
   height: 100%;
+}
+
+#canvas {
+  display: block;
+  top: 0;
+  margin: 0 auto;
+  width: 640px;
+  max-width: calc(100vw - 64px);
+  height: 480px;
+  max-height: calc((100vw - 64px) * 0.75);
+  border: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  outline: none;
+}
+
+#mainContainer.noSideBorders #canvas {
+  max-width: calc(100vw - 16px);
+  max-height: calc((100vw - 16px) * 0.75);
+}
+
+#canvasContainer.scaleDown canvas {
+  width: 320px;
+  height: 240px;
 }
 
 #uiControls {
@@ -192,6 +222,16 @@ input[type='text'], select {
 
   #layout:not(.overflow) #messages {
     height: 100%;
+  }
+
+  #canvas {
+    max-width: calc((100vh - 96px) * 1.3333);
+    max-height: calc(100vh - 96px);
+  }
+
+  #mainContainer.noSideBorders #canvas {
+    max-width: calc((100vh - 48px) * 1.3333);
+    max-height: calc(100vh - 48px);
   }
 }
 

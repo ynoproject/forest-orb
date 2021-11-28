@@ -63,20 +63,6 @@
       pointer-events: none;
     }
 
-    #canvas {
-      display: block;
-      top: 0;
-      margin: 0 auto;
-      width: 640px;
-      max-width: calc(100vw - 64px);
-      height: 480px;
-      max-height: calc((100vw - 64px) * 0.75);
-      border: 0;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-      outline: none;
-    }
-
     #dpad, #apad {
       position: fixed;
       bottom: 1rem;
@@ -129,37 +115,11 @@
       }
     }
 
-    @media only screen and (min-width: 705px) and (max-height: 594px) {
-      #canvas {
-        max-width: calc((100vh - 96px) * 1.3333);
-        max-height: calc(100vh - 96px);
-      }
-    }
-
     @media only screen and (max-width: 704px) {
       #dpad, #apad {
         padding-bottom: calc(100vh - (((100vw - 64px) * 0.75) + 48px));
       }
     }
-
-    /*@media (min-width: 320px) and (min-height: 240px) { #canvas { width: 320px; height: 240px; } }
-    @media (min-width: 640px) and (min-height: 480px) { #canvas { width: 640px; height: 480px; } }
-    @media (min-width: 960px) and (min-height: 720px) { #canvas { width: 960px; height: 720px; } }
-    @media (min-width: 1280px) and (min-height: 720px) { #canvas { width: 1280px; height: 720px; } }
-    @media (min-width: 1600px) and (min-height: 1200px) { #canvas { width: 1600px; height: 1200px; } }
-    @media (min-width: 1920px) and (min-height: 1440px) { #canvas { width: 1920px; height: 1440px; } }
-    @media (min-width: 2240px) and (min-height: 1680px) { #canvas { width: 2240px; height: 1680px; } }
-    @media (min-width: 2560px) and (min-height: 1920px) { #canvas { width: 2560px; height: 1920px; } }
-    @media (min-width: 2880px) and (min-height: 2160px) { #canvas { width: 2880px; height: 2160px; } }
-    @media (min-width: 3200px) and (min-height: 2400px) { #canvas { width: 3200px; height: 2400px; } }
-    @media (min-width: 3520px) and (min-height: 2640px) { #canvas { width: 3520px; height: 2640px; } }
-    @media (min-width: 3840px) and (min-height: 2880px) { #canvas { width: 3840px; height: 2880px; } }
-    @media (min-width: 4160px) and (min-height: 3120px) { #canvas { width: 4160px; height: 3120px; } }
-    @media (min-width: 4480px) and (min-height: 3360px) { #canvas { width: 4480px; height: 3360px; } }
-    @media (min-width: 4800px) and (min-height: 3600px) { #canvas { width: 4800px; height: 3600px; } }
-    @media (min-width: 5120px) and (min-height: 3840px) { #canvas { width: 5120px; height: 3840px; } }
-    @media (min-width: 5440px) and (min-height: 4080px) { #canvas { width: 5440px; height: 4080px; } }
-    @media (min-width: 5760px) and (min-height: 4320px) { #canvas { width: 5760px; height: 4320px; } }*/
   </style>
   <style id="themeStyles">
     html, input[type='text'], select {
@@ -576,7 +536,32 @@ if (hasTouchscreen) {
 
   function onResize() {
     const layout = document.getElementById('layout');
-    layout.classList.toggle('overflow', window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 694 || document.getElementById('gameContainer').offsetWidth < document.getElementById('canvas').width + (layout.classList.contains('overflow') ? 288 : 0)));
+    const mainContainer = document.getElementById('mainContainer');
+    const canvasContainer = document.getElementById('canvasContainer');
+    const canvas = document.getElementById('canvas');
+
+    const noSideBorders = window.innerWidth < 384;
+    const scaleDown = window.innerWidth < 704;
+
+    mainContainer.classList.toggle('noSideBorders', noSideBorders);
+
+    if (window.innerWidth < window.innerHeight) {
+      canvasContainer.classList.toggle('scaleDown', scaleDown);
+      layout.classList.toggle('overflow', isOverflow(scaleDown));
+    } else {
+      const overflow = isOverflow();
+      if (overflow !== isOverflow(true)) {
+        canvasContainer.classList.toggle('scaleDown', overflow);
+        layout.classList.toggle('overflow', !overflow);
+      } else {
+        canvasContainer.classList.remove('scaleDown');
+        layout.classList.remove('overflow');
+      }
+    }
+  }
+
+  function isOverflow(scaleDown) {
+    return window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 704 || document.getElementById('gameContainer').offsetWidth < (scaleDown ? 320 : 640) + (document.getElementById('layout').classList.contains('overflow') ? 288 : 0));
   }
 
   if (Module.postRun)
