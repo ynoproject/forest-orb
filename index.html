@@ -576,7 +576,7 @@ if (hasTouchscreen) {
 
   function onResize() {
     const layout = document.getElementById('layout');
-    layout.classList.toggle('overflow', window.innerWidth < 934 && window.innerHeight <= 594 && (window.innerWidth <= 694 || document.getElementById('gameContainer').offsetWidth < document.getElementById('canvas').width + (layout.classList.contains('overflow') ? 288 : 0)));
+    layout.classList.toggle('overflow', window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 694 || document.getElementById('gameContainer').offsetWidth < document.getElementById('canvas').width + (layout.classList.contains('overflow') ? 288 : 0)));
   }
 
   if (Module.postRun)
