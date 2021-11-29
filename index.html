@@ -66,6 +66,7 @@
     #dpad, #apad {
       position: fixed;
       bottom: 1rem;
+      z-index: 1;
     }
 
     #dpad {
@@ -98,28 +99,13 @@
       right: var(--controls-size);
     }
 
-    #dpad path:not(.active),
-    #apad > *:not(.active) {
+    #dpad path:not(.active), #apad > *:not(.active) {
       opacity: 0.4;
     }
 
     @media (hover: hover) and (pointer: fine) {
       #apad, #dpad {
         display: none;
-      }
-    }
-
-    @media only screen and (max-width: 1050px) {
-      #dpad, #apad {
-        padding-bottom: calc(100vh - 526px);
-      }
-
-      #layout.downscale #dpad,  #layout.downscale #apad {
-        padding-bottom: calc(100vh - 406px);
-      }
-
-      #layout.downscale2 #dpad,  #layout.downscale2 #apad {
-        padding-bottom: calc(100vh - 286px);
       }
     }
   </style>
@@ -306,7 +292,7 @@
           <label for="fontStyle" class="unselectable">
             Font Style:
           </label>
-          <select class="fontStyle">
+          <select id="fontStyle" class="fontStyle">
             <option value="0">Style 1</option>
             <option value="1">Style 2</option>
             <option value="2">Style 3</option>
@@ -516,9 +502,12 @@ if (hasTouchscreen) {
   if (hasUiThemes) {
     config.uiTheme = 'Default';
 
-    document.querySelector('.uiTheme').onchange = function () {
+    const uiTheme = document.querySelector('.uiTheme');
+    uiTheme.onchange = function () {
       setUiTheme(this.value);
     };
+    // Set ID so the associated label will be attached
+    uiTheme.id = 'uiTheme';
   }
 
   config.fontStyle = 0;
