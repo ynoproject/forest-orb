@@ -588,7 +588,7 @@ if (hasTouchscreen) {
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
-        const useFullBg = document.querySelector('.uiTheme option[value="' + uiTheme + '"]').classList.contains('fullBg');
+        const useFullBg = hasUiThemes && document.querySelector('.uiTheme option[value="' + uiTheme + '"]').classList.contains('fullBg');
         const containers = document.querySelectorAll('.container');
         for (let container of containers)
           container.classList.toggle('fullBg', useFullBg);
