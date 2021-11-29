@@ -9,11 +9,24 @@ html, input[type='text'], select {
   font-size: 16px;
 }
 
-#game_frame {
-  display: block;
+body {
+  margin: 0 0 16px 0;
+  padding: 8px;
+}
+
+#background {
+  position: fixed;
+  background-color: black;
+  margin: -8px;
   width: 100%;
-  height: 480px;
-  margin: 0 auto;
+  height: 100%;
+  opacity: 0.325;
+}
+
+#backgroundTransition {
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  height: 128px;
+  margin: -128px -8px -16px -8px;
 }
 
 #layout {
@@ -21,14 +34,14 @@ html, input[type='text'], select {
   margin: 0 auto;
   width: 100%;
   max-width: 1036px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 #mainContainer {
   display: flex;
   flex-direction: column;
   width: calc(100% - 48px);
+  z-index: 2;
 }
 
 #mainContainer.noSideBorders {
@@ -57,6 +70,13 @@ html, input[type='text'], select {
   outline: none;
 }
 
+#game_frame {
+  display: block;
+  width: 100%;
+  height: 480px;
+  margin: 0 auto;
+}
+
 #layout.downscale canvas {
   width: 480px;
   height: 360px;
@@ -79,6 +99,10 @@ html, input[type='text'], select {
   margin-top: 16px;
 }
 
+#chatboxContainer {
+  z-index: 1;
+}
+
 #chatbox {
   display: flex;
   flex-direction: column;
@@ -88,10 +112,6 @@ html, input[type='text'], select {
 #messages {
   height: 100%;
   overflow-y: auto;
-}
-
-#layout::-webkit-scrollbar, #messages::-webkit-scrollbar {
-  width: 18px;
 }
 
 #chatInputContainer {
