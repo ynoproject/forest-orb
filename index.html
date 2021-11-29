@@ -125,8 +125,12 @@
       background-position-y: -16px;
       background-image: url('images/ui/2kki/Default/containerbg.png') !important;
     }
+    
+    body.fullBg {
+      background-size: 100%;
+    }
 
-    body::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
+    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
@@ -134,15 +138,11 @@
       image-rendering: pixelated;
     }
 
-    body::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb {
+    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 6 round !important;
       image-rendering: crisp-edges;
       image-rendering: pixelated;
-    }
-    
-    body.fullBg {
-      background-size: 100%;
     }
 
     #controls button path {

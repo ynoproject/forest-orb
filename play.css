@@ -37,6 +37,10 @@ body {
   overflow: hidden;
 }
 
+#layout::-webkit-scrollbar, #messages::-webkit-scrollbar {
+  width: 18px;
+}
+
 #mainContainer {
   display: flex;
   flex-direction: column;
@@ -112,10 +116,6 @@ body {
 #messages {
   height: 100%;
   overflow-y: auto;
-}
-
-#messages::-webkit-scrollbar {
-  width: 18px;
 }
 
 #chatInputContainer {
