@@ -66,7 +66,7 @@
     #dpad, #apad {
       position: fixed;
       bottom: 1rem;
-      z-index: 1;
+      z-index: 3;
     }
 
     #dpad {
@@ -115,6 +115,21 @@
       background-color: black;
     }
 
+    body, .container, div, input[type='text'] {
+      image-rendering: crisp-edges;
+      image-rendering: pixelated;
+    }
+
+    body {
+      background-size: 210px;
+      background-position-y: -16px;
+      background-image: url('images/ui/2kki/Default/containerbg.png') !important;
+    }
+    
+    body.fullBg {
+      background-size: 100%;
+    }
+
     #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
@@ -129,7 +144,7 @@
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
-    
+
     #controls button path {
       stroke: rgba(216, 216, 216, 1) !important; /*base*/
     }
@@ -158,11 +173,6 @@
       border-bottom: 4px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
     }
-  
-    .container, div, input[type='text'] {
-      image-rendering: crisp-edges;
-      image-rendering: pixelated;
-    }
 
     .container {
       background-size: 70px;
@@ -175,6 +185,14 @@
     .container.fullBg {
       background-size: 650px;
     }
+
+    #layout.downscale .container.fullBg {
+      background-size: 530px;
+    }
+
+    #layout.downscale2 .container.fullBg {
+      background-size: 410px;
+    }
   
     input[type='text'], select {
       border: 12px solid transparent;
@@ -186,158 +204,162 @@
   </style>
 </head>
 <body>
-  <div id="layout">
-    <div id="mainContainer" class="container">
-      <div id="gameContainer">
-          <div id="controls">
-            <button id="controls-fullscreen" class="unselectable">
-              <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
-            </button>
+  <div id="background"></div>
+  <div id="content">
+    <div id="layout">
+      <div id="mainContainer" class="container">
+        <div id="gameContainer">
+            <div id="controls">
+              <button id="controls-fullscreen" class="unselectable">
+                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
+              </button>
+            </div>
+
+            <div id="status"></div>
+
+            <div id="canvasContainer">
+              <canvas id="canvas" tabindex="-1"></canvas>
+            </div>
+
+            <div id="dpad" class="unselectable">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+                <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
+                <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
+                <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
+                <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
+                <rect id="dpad-center" x="24" y="24" width="24" height="24" />
+              </svg>
+            </div>
+
+            <div id="apad" class="unselectable">
+              <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
+              <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
+            </div>
+        </div>
+        
+        <div id="uiControls">
+          <div class="uiControl" data-game-ids="yume,2kki,flow" style="display: none;">
+            <label for="uiTheme" class="unselectable">
+              UI Theme:
+            </label>
+            <select class="uiTheme" data-game-ids="yume">
+              <option value="Default">Default</option>
+              <option value="Alternate_1" class="fullBg">Alternate 1</option>
+              <option value="Alternate_2">Alternate 2</option>
+            </select>
+            <select class="uiTheme" data-game-ids="2kki">
+              <option value="Default">Default</option>
+              <option value="Default_2">Default 2</option>
+              <option value="Default_3">Default 3</option>
+              <option value="Default_4">Default 4</option>
+              <option value="Default_5">Default 5</option>
+              <option value="Developer_Room">Developer Room</option>
+              <option value="Glitch_Ending">Bleak Future</option>
+              <option value="Glitch_Ending_2">Bleak Future 2</option>
+              <option value="Black_Building">Black Building</option>
+              <option value="Cog_Maze">Cog Maze</option>
+              <option value="Square_Square_World">Square-Square World</option>
+              <option value="Verdant_Promenade">Verdant Promenade</option>
+              <option value="Urotsukis_Dream_Apartments">Urotsuki's Dream Apartments</option>
+              <option value="Sofa_Room">Sofa Room</option>
+              <option value="Depths">Depths</option>
+              <option value="Depths_2">Depths 2</option>
+              <option value="Guts_World">Guts World</option>
+              <option value="Maple_Shrine">Maple Shrine</option>
+              <option value="Pencil_World">Pencil World</option>
+              <option value="Chocolate_World">Chocolate World</option>
+              <option value="Blue_Cactus_Islands">Blue Cactus Islands</option>
+              <option value="Stone_Towers">Stone Towers</option>
+              <option value="Constellation_World">Star Building</option>
+              <option value="Blob_Desert">Blob Desert</option>
+              <option value="Cipher_Keyboard">Cipher Keyboard</option>
+              <option value="Viridian_Wetlands">Viridian Wetlands</option>
+              <option value="Polluted_Swamp">Polluted Swamp</option>
+              <option value="Snowy_Village">Snowy Village</option>
+              <option value="Decrepit_Dwellings">Decrepit Dwellings</option>
+              <option value="Verdant_Promenade_2">Verdant Promenade 2</option>
+              <option value="Black_Ink_World">Black Ink World</option>
+              <option value="Forgotten_Megalopolis">Forgotten Megalopolis</option>
+              <option value="Tomb_of_Velleities">Tomb of Velleities</option>
+              <option value="Visine_Spacecraft">Visine Spacecraft</option>
+              <option value="Data_Stream">Data Stream</option>
+              <option value="Lavender_Waters">Lavender Waters</option>
+              <option value="Originator_Garden">Originator Garden</option>
+              <option value="Fluorescent_Halls">Fluorescent Halls</option>
+              <option value="City_of_Liars">City of Liars</option>
+              <option value="Misc">Misc. Theme</option>
+              <option value="Monochrome_GB_World">Monochrome GB World</option>
+              <option value="Smiley_Signs_World">Smiley Signs World</option>
+              <option value="Lovesick_World">Lovesick World</option>
+              <option value="Corrupted_Love_World">Corrupted Love World</option>
+              <option value="Saturated_Eyeball_Zone">Saturated Eyeball Zone</option>
+              <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
+              <option value="Shop_Ruins">Shop Ruins</option>
+            </select>
+            <select class="uiTheme" data-game-ids="flow">
+              <option value="Default">Default</option>
+              <option value="Famicom">Famicom</option>
+              <option value="Dot">Dot</option>
+              <option value="Orange">Orange</option>
+              <option value="Flower">Flower</option>
+              <option value="Sugar">Sugar</option>
+              <option value="Rust">Rust</option>
+              <option value="Smile">Smile</option>
+            </select>
           </div>
 
-          <div id="status"></div>
-
-          <div id="canvasContainer">
-            <canvas id="canvas" tabindex="-1"></canvas>
+          <div class="uiControl">
+            <label for="fontStyle" class="unselectable">
+              Font Style:
+            </label>
+            <select id="fontStyle" class="fontStyle">
+              <option value="0">Style 1</option>
+              <option value="1">Style 2</option>
+              <option value="2">Style 3</option>
+              <option value="3">Style 4</option>
+              <option value="4">Style 5</option>
+              <option value="5">Style 6</option>
+              <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
+            </select>
           </div>
-
-          <div id="dpad" class="unselectable">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-              <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
-              <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
-              <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
-              <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
-              <rect id="dpad-center" x="24" y="24" width="24" height="24" />
-            </svg>
-          </div>
-
-          <div id="apad" class="unselectable">
-            <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
-            <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
-          </div>
+        </div>
       </div>
-      
-      <div id="uiControls">
-        <div class="uiControl" data-game-ids="yume,2kki,flow" style="display: none;">
-          <label for="uiTheme" class="unselectable">
-            UI Theme:
-          </label>
-          <select class="uiTheme" data-game-ids="yume">
-            <option value="Default">Default</option>
-            <option value="Alternate_1" class="fullBg">Alternate 1</option>
-            <option value="Alternate_2">Alternate 2</option>
-          </select>
-          <select class="uiTheme" data-game-ids="2kki">
-            <option value="Default">Default</option>
-            <option value="Default_2">Default 2</option>
-            <option value="Default_3">Default 3</option>
-            <option value="Default_4">Default 4</option>
-            <option value="Default_5">Default 5</option>
-            <option value="Developer_Room">Developer Room</option>
-            <option value="Glitch_Ending">Bleak Future</option>
-            <option value="Glitch_Ending_2">Bleak Future 2</option>
-            <option value="Black_Building">Black Building</option>
-            <option value="Cog_Maze">Cog Maze</option>
-            <option value="Square_Square_World">Square-Square World</option>
-            <option value="Verdant_Promenade">Verdant Promenade</option>
-            <option value="Urotsukis_Dream_Apartments">Urotsuki's Dream Apartments</option>
-            <option value="Sofa_Room">Sofa Room</option>
-            <option value="Depths">Depths</option>
-            <option value="Depths_2">Depths 2</option>
-            <option value="Guts_World">Guts World</option>
-            <option value="Maple_Shrine">Maple Shrine</option>
-            <option value="Pencil_World">Pencil World</option>
-            <option value="Chocolate_World">Chocolate World</option>
-            <option value="Blue_Cactus_Islands">Blue Cactus Islands</option>
-            <option value="Stone_Towers">Stone Towers</option>
-            <option value="Constellation_World">Star Building</option>
-            <option value="Blob_Desert">Blob Desert</option>
-            <option value="Cipher_Keyboard">Cipher Keyboard</option>
-            <option value="Viridian_Wetlands">Viridian Wetlands</option>
-            <option value="Polluted_Swamp">Polluted Swamp</option>
-            <option value="Snowy_Village">Snowy Village</option>
-            <option value="Decrepit_Dwellings">Decrepit Dwellings</option>
-            <option value="Verdant_Promenade_2">Verdant Promenade 2</option>
-            <option value="Black_Ink_World">Black Ink World</option>
-            <option value="Forgotten_Megalopolis">Forgotten Megalopolis</option>
-            <option value="Tomb_of_Velleities">Tomb of Velleities</option>
-            <option value="Visine_Spacecraft">Visine Spacecraft</option>
-            <option value="Data_Stream">Data Stream</option>
-            <option value="Lavender_Waters">Lavender Waters</option>
-            <option value="Originator_Garden">Originator Garden</option>
-            <option value="Fluorescent_Halls">Fluorescent Halls</option>
-            <option value="City_of_Liars">City of Liars</option>
-            <option value="Misc">Misc. Theme</option>
-            <option value="Monochrome_GB_World">Monochrome GB World</option>
-            <option value="Smiley_Signs_World">Smiley Signs World</option>
-            <option value="Lovesick_World">Lovesick World</option>
-            <option value="Corrupted_Love_World">Corrupted Love World</option>
-            <option value="Saturated_Eyeball_Zone">Saturated Eyeball Zone</option>
-            <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
-            <option value="Shop_Ruins">Shop Ruins</option>
-          </select>
-          <select class="uiTheme" data-game-ids="flow">
-            <option value="Default">Default</option>
-            <option value="Famicom">Famicom</option>
-            <option value="Dot">Dot</option>
-            <option value="Orange">Orange</option>
-            <option value="Flower">Flower</option>
-            <option value="Sugar">Sugar</option>
-            <option value="Rust">Rust</option>
-            <option value="Smile">Smile</option>
-          </select>
-        </div>
-
-        <div class="uiControl">
-          <label for="fontStyle" class="unselectable">
-            Font Style:
-          </label>
-          <select id="fontStyle" class="fontStyle">
-            <option value="0">Style 1</option>
-            <option value="1">Style 2</option>
-            <option value="2">Style 3</option>
-            <option value="3">Style 4</option>
-            <option value="4">Style 5</option>
-            <option value="5">Style 6</option>
-            <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div id="chatboxContainer" class="container" style="display: none">
-      <div id="chatbox">
-        <div id="messages"></div>
-        <div id="chatInputContainer" style="display: none">
-          <form action="javascript:chatInputActionFired()">
-            <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
-          </form>
-        </div>
-        <div id="enterNameContainer">
-          <span id="enterNameInstruction">
-            <span>You must set a nickname before you can chat.</span>
-            <br>
-            <small>
-              * Maximum 7 characters
+      <div id="chatboxContainer" class="container" style="display: none">
+        <div id="chatbox">
+          <div id="messages"></div>
+          <div id="chatInputContainer" style="display: none">
+            <form action="javascript:chatInputActionFired()">
+              <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
+            </form>
+          </div>
+          <div id="enterNameContainer">
+            <span id="enterNameInstruction">
+              <span>You must set a nickname before you can chat.</span>
               <br>
-              * Alphanumeric characters only
-            </small>
-          </span>
-          <form id="enterNameForm" action="javascript:chatNameCheck()">
-            <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
-          </form>
+              <small>
+                * Maximum 7 characters
+                <br>
+                * Alphanumeric characters only
+              </small>
+            </span>
+            <form id="enterNameForm" action="javascript:chatNameCheck()">
+              <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  <br>
+  <div class="instruction">Press 3 to hide/show the connection status window</div>
+  <br>
+  <div class="instruction">Press 4 to hide/show nametags</div>
+  <div data-game-ids="2kki" style="display: none;">
+    <br>
+    <div class="notice">Yume 2kki Version <span id="2kkiVersion"></span></div>
+    <br>
+    <div class="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
   </div>
-<br>
-<div class="instruction">Press 3 to hide/show the connection status window</div>
-<br>
-<div class="instruction">Press 4 to hide/show nametags</div>
-<div data-game-ids="2kki" style="display: none;">
-  <br>
-  <div class="notice">Yume 2kki Version <span id="2kkiVersion"></span></div>
-  <br>
-  <div class="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
+  <div id="backgroundTransition"></div>
 </div>
 <script>
   const gameIds = ['yume', '2kki', 'lcddem', 'flow'];
@@ -592,6 +614,7 @@ if (hasTouchscreen) {
         const containers = document.querySelectorAll('.container');
         for (let container of containers)
           container.classList.toggle('fullBg', useFullBg);
+        document.querySelector('body').classList.toggle('fullBg', useFullBg);
         if (!isInit) {
           document.querySelector('.fontStyle').onchange();
           if (hasUiThemes)
