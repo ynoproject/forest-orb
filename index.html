@@ -307,9 +307,16 @@
   const gameIds = ['yume', 'flow', 'someday', 'deepdreams'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
   const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
+  const portTable = {
+    yume: '8080',
+    deepdreams: '8081',
+    flow: '8083',
+    someday: '8085',
+  };
+  const wsPort = portTable[gameId];
   Module = {
     EASYRPG_GAME: gameId,
-    EASYRPG_WS_URL: 'wss://heaven.kekami.dev/' + gameId + '/'
+    EASYRPG_WS_URL: 'ws://heaven.kekami.dev:' + wsPort + '/'
   };
 </script>
 <script type="text/javascript" src="index.js"></script>
