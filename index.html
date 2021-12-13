@@ -129,7 +129,7 @@
       background-size: 100%;
     }
 
-    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
+    #layout::-webkit-scrollbar-track {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
@@ -137,7 +137,7 @@
       image-rendering: pixelated;
     }
 
-    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb {
+    #layout::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 6 round !important;
       image-rendering: crisp-edges;
@@ -147,16 +147,8 @@
     #controls button path {
       stroke: rgba(216, 216, 216, 1) !important; /*base*/
     }
-
-    #messages, #chatInputContainer, #enterNameContainer {
-      border: 8px solid transparent;
-    }
   
-    #messages, #enterNameContainer {
-      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
-    }
-  
-    #enterNameInstruction, .notice, .instruction, .message, label {
+    .notice, .instruction, .message, label {
       background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -267,30 +259,6 @@
               <option value="5">Style 6</option>
               <option value="6" data-game-ids="yume,flow">Style 7</option>
             </select>
-          </div>
-        </div>
-      </div>
-      <div id="chatboxContainer" class="container" style="display: none">
-        <div id="chatbox">
-          <div id="messages"></div>
-          <div id="chatInputContainer" style="display: none">
-            <form action="javascript:chatInputActionFired()">
-              <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
-            </form>
-          </div>
-          <div id="enterNameContainer">
-            <span id="enterNameInstruction">
-              <span>You must set a nickname before you can chat.</span>
-              <br>
-              <small>
-                * Maximum 7 characters
-                <br>
-                * Alphanumeric characters only
-              </small>
-            </span>
-            <form id="enterNameForm" action="javascript:chatNameCheck()">
-              <input id="nameInput" type="text" autocomplete="off" maxlength="7"></input>
-            </form>
           </div>
         </div>
       </div>
@@ -480,10 +448,6 @@ if (hasTouchscreen) {
     setFontStyle(parseInt(this.value));
   };
 
-  document.getElementById('enterNameForm').onsubmit = function () {
-    setName(this.value);
-  };
-
   let ignoreSizeChanged = false;
 
   function onResize() {
@@ -530,7 +494,7 @@ if (hasTouchscreen) {
   };
   
   function setName(name, isInit) {
-    config.name = document.getElementById('nameInput').value;
+    //config.name = document.getElementById('nameInput').value;
     if (!isInit)
       updateConfig(config);
   }
@@ -665,7 +629,7 @@ if (hasTouchscreen) {
             let value = savedConfig[key];
             switch (key) {
               case 'name':
-                document.getElementById('nameInput').value = value;
+                //document.getElementById('nameInput').value = value;
                 setName(name, true);
                 break;
               case 'uiTheme':
