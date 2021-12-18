@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="Play Yume Nikki (and fangames) online with your friends, no downloads required.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="2kkiVersion" content="" data-game-ids="2kki"> <!-- eg. 0.117g Patch 4 -->
   <link rel="stylesheet" href="play.css">
   <style>
     :root {
@@ -233,7 +234,7 @@
         </div>
         
         <div id="uiControls">
-          <div class="uiControl" data-game-ids="yume,flow" style="display: none;">
+          <div class="uiControl" data-game-ids="yume,flow,2kki" style="display: none;">
             <label for="uiTheme" class="unselectable">
               UI Theme:
             </label>
@@ -252,6 +253,55 @@
               <option value="Rust">Rust</option>
               <option value="Smile">Smile</option>
             </select>
+            <select class="uiTheme" data-game-ids="2kki">
+              <option value="Default">Default</option>
+              <option value="Default_2">Default 2</option>
+              <option value="Default_3">Default 3</option>
+              <option value="Default_4">Default 4</option>
+              <option value="Default_5">Default 5</option>
+              <option value="Developer_Room">Developer Room</option>
+              <option value="Glitch_Ending">Bleak Future</option>
+              <option value="Glitch_Ending_2">Bleak Future 2</option>
+              <option value="Black_Building">Black Building</option>
+              <option value="Cog_Maze">Cog Maze</option>
+              <option value="Square_Square_World">Square-Square World</option>
+              <option value="Verdant_Promenade">Verdant Promenade</option>
+              <option value="Urotsukis_Dream_Apartments">Urotsuki's Dream Apartments</option>
+              <option value="Sofa_Room">Sofa Room</option>
+              <option value="Depths">Depths</option>
+              <option value="Depths_2">Depths 2</option>
+              <option value="Guts_World">Guts World</option>
+              <option value="Maple_Shrine">Maple Shrine</option>
+              <option value="Pencil_World">Pencil World</option>
+              <option value="Chocolate_World">Chocolate World</option>
+              <option value="Blue_Cactus_Islands">Blue Cactus Islands</option>
+              <option value="Stone_Towers">Stone Towers</option>
+              <option value="Constellation_World">Star Building</option>
+              <option value="Blob_Desert">Blob Desert</option>
+              <option value="Cipher_Keyboard">Cipher Keyboard</option>
+              <option value="Viridian_Wetlands">Viridian Wetlands</option>
+              <option value="Polluted_Swamp">Polluted Swamp</option>
+              <option value="Snowy_Village">Snowy Village</option>
+              <option value="Decrepit_Dwellings">Decrepit Dwellings</option>
+              <option value="Verdant_Promenade_2">Verdant Promenade 2</option>
+              <option value="Black_Ink_World">Black Ink World</option>
+              <option value="Forgotten_Megalopolis">Forgotten Megalopolis</option>
+              <option value="Tomb_of_Velleities">Tomb of Velleities</option>
+              <option value="Visine_Spacecraft">Visine Spacecraft</option>
+              <option value="Data_Stream">Data Stream</option>
+              <option value="Lavender_Waters">Lavender Waters</option>
+              <option value="Originator_Garden">Originator Garden</option>
+              <option value="Fluorescent_Halls">Fluorescent Halls</option>
+              <option value="City_of_Liars">City of Liars</option>
+              <option value="Misc">Misc. Theme</option>
+              <option value="Monochrome_GB_World">Monochrome GB World</option>
+              <option value="Smiley_Signs_World">Smiley Signs World</option>
+              <option value="Lovesick_World">Lovesick World</option>
+              <option value="Corrupted_Love_World">Corrupted Love World</option>
+              <option value="Saturated_Eyeball_Zone">Saturated Eyeball Zone</option>
+              <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
+              <option value="Shop_Ruins">Shop Ruins</option>
+            </select>
           </div>
 
           <div class="uiControl">
@@ -265,7 +315,7 @@
               <option value="3">Style 4</option>
               <option value="4">Style 5</option>
               <option value="5">Style 6</option>
-              <option value="6" data-game-ids="yume,flow">Style 7</option>
+              <option value="6" data-game-ids="yume,flow,2kki">Style 7</option>
             </select>
           </div>
         </div>
@@ -301,10 +351,16 @@
   <div class="instruction">Press 4 to hide/show nametags</div>
   <br>
   <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN">Join our Discord!</a></div>
+  <div data-game-ids="2kki" style="display: none;">
+    <br>
+    <div class="notice">Yume 2kki Version <span id="2kkiVersion"></span></div>
+    <br>
+    <div class="notice">This project is in no way affiliated with or endorsed by the Yume 2kki developers</div>
+  </div>
   <div id="backgroundTransition"></div>
 </div>
 <script>
-  const gameIds = ['yume', 'deepdreams', 'prayers', 'flow', 'someday',];
+  const gameIds = ['yume', 'deepdreams', 'prayers', 'flow', 'someday', '2kki'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
   const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
   Module = {
@@ -483,6 +539,9 @@ if (hasTouchscreen) {
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
   };
+
+  if (gameId === '2kki')
+     document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
 
   let ignoreSizeChanged = false;
 
