@@ -157,12 +157,16 @@
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
-    #enterNameInstruction, .notice, .instruction, .message, label {
+    #enterNameInstruction, .notice, .instruction, .message, a, label {
       background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
+    }
+
+    a {
+      background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
   
     .messageContainer {
@@ -234,7 +238,7 @@
         </div>
         
         <div id="uiControls">
-          <div class="uiControl" data-game-ids="yume,2kki,flow,deepdreams,someday" style="display: none;">
+          <div class="uiControl" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday" style="display: none;">
             <label for="uiTheme" class="unselectable">
               UI Theme:
             </label>
@@ -302,6 +306,11 @@
               <option value="Rust">Rust</option>
               <option value="Smile">Smile</option>
             </select>
+            <select class="uiTheme" data-game-ids="prayers">
+              <option value="Default" class="fullBg">Default</option>
+              <option value="Alternate_1" class="fullBg">Alternate 1</option>
+              <option value="Alternate_2" class="fullBg">Alternate 2</option>
+            </select>
             <select class="uiTheme" data-game-ids="deepdreams">
               <option value="Default">Default</option>
               <option value="Arabian">Arabian</option>
@@ -312,7 +321,7 @@
             </select>
             <select class="uiTheme" data-game-ids="someday">
               <option value="Default">Default</option>
-              <option value="8_Bit" class="fullBg">8-Bit</option>
+              <option value="8_Bit">8-Bit</option>
               <option value="Blue">Binary</option>
               <option value="Clock">Clock</option>
               <option value="Edible">Edible</option>
@@ -329,8 +338,8 @@
             <select id="fontStyle" class="fontStyle">
               <option value="0">Style 1</option>
               <option value="1">Style 2</option>
-              <option value="2" data-game-ids="yume,2kki,flow,deepdreams,someday">Style 3</option>
-              <option value="3" data-game-ids="yume,2kki,flow,someday">Style 4</option>
+              <option value="2" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday">Style 3</option>
+              <option value="3" data-game-ids="yume,2kki,flow,prayers,someday">Style 4</option>
               <option value="4" data-game-ids="yume,2kki,flow">Style 5</option>
               <option value="5" data-game-ids="yume,2kki,flow">Style 6</option>
               <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
@@ -658,7 +667,7 @@ if (hasTouchscreen) {
         if (altColor !== baseColor)
           altColorCallback(altColor);
         else {
-          const fallbackAltFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex + 1 : 1;
+          const fallbackAltFontStyle = fontStyle !== defaultAltFontStyleIndex ? parseInt(document.querySelector('.fontStyle option:first-child').value) : 1;
           getFontColor(config.uiTheme || 'Default', fallbackAltFontStyle, altColorCallback);
         }
       });
