@@ -64,10 +64,10 @@ body {
   display: block;
   top: 0;
   margin: 0 auto;
-  width: 960px;
+  width: 640px;
   max-width: calc(100vw - 64px);
   height: 480px;
-  max-height: calc((100vw - 64px) * 0.5);
+  max-height: calc((100vw - 64px) * 0.75);
   border: 0;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
@@ -82,18 +82,18 @@ body {
 }
 
 #layout.downscale canvas {
-  width: 720px;
+  width: 480px;
   height: 360px;
 }
 
 #layout.downscale2 canvas {
-  width: 480px;
+  width: 320px;
   height: 240px;
 }
 
 #mainContainer.noSideBorders #canvas {
   max-width: calc(100vw - 16px);
-  max-height: calc((100vw - 16px) * 0.5);
+  max-height: calc((100vw - 16px) * 0.75);
 }
 
 #uiControls {
@@ -280,22 +280,22 @@ input[type='text'], select {
   }
 
   #canvas {
-    max-width: calc((100vh - 96px) * 2);
+    max-width: calc((100vh - 96px) * 1.3333);
     max-height: calc(100vh - 96px);
   }
 
   #mainContainer.noSideBorders #canvas {
-    max-width: calc((100vh - 48px) * 2);
+    max-width: calc((100vh - 48px) * 1.3333);
     max-height: calc(100vh - 48px);
   }
 }
 
 @media only screen and (max-width: 704px) and (max-height: 594px) {
   #chatboxContainer {
-    height: calc(100vh - (((100vw - 64px) * 0.5) + 158px));
+    height: calc(100vh - (((100vw - 64px) * 0.75) + 158px));
   }
 
   #chatbox {
-    height: calc(100vh - (((100vw - 64px) * 0.5) + 154px));
+    height: calc(100vh - (((100vw - 64px) * 0.75) + 154px));
   }
 }
