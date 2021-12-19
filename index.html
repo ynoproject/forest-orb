@@ -225,7 +225,7 @@
         </div>
         
         <div id="uiControls">
-          <div class="uiControl" data-game-ids="yume,flow" style="display: none;">
+          <div class="uiControl" data-game-ids="yume,2kki,flow,deepdreams,someday" style="display: none;">
             <label for="uiTheme" class="unselectable">
               UI Theme:
             </label>
@@ -245,6 +245,24 @@
               <option value="Smile">Smile</option>
             </select>
           </div>
+          <select class="uiTheme" data-game-ids="deepdreams">
+            <option value="Default">Default</option>
+            <option value="Arabian">Arabian</option>
+            <option value="Crystalline">Crystalline</option>
+            <option value="Kaleidoscope">Kaleidoscope</option>
+            <option value="Rainbow">Rainbow</option>
+            <option value="Spider_Lily">Spider Lily</option>
+          </select>
+          <select class="uiTheme" data-game-ids="someday">
+            <option value="Default">Default</option>
+            <option value="8_Bit" class="fullBg">8-Bit</option>
+            <option value="Blue">Binary</option>
+            <option value="Clock">Clock</option>
+            <option value="Edible">Edible</option>
+            <option value="Rainbow">Rainbow</option>
+            <option value="311">Three-One-One</option>
+            <option value="Turquoise">Turquoise</option>
+          </select>
 
           <div class="uiControl">
             <label for="fontStyle" class="unselectable">
@@ -253,11 +271,11 @@
             <select id="fontStyle" class="fontStyle">
               <option value="0">Style 1</option>
               <option value="1">Style 2</option>
-              <option value="2">Style 3</option>
-              <option value="3">Style 4</option>
-              <option value="4">Style 5</option>
-              <option value="5">Style 6</option>
-              <option value="6" data-game-ids="yume,flow">Style 7</option>
+              <option value="2" data-game-ids="yume,2kki,flow,deepdreams,someday">Style 3</option>
+              <option value="3" data-game-ids="yume,2kki,flow,someday">Style 4</option>
+              <option value="4" data-game-ids="yume,2kki,flow">Style 5</option>
+              <option value="5" data-game-ids="yume,2kki,flow">Style 6</option>
+              <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
             </select>
           </div>
         </div>
@@ -272,7 +290,8 @@
   <div id="backgroundTransition"></div>
 </div>
 <script>
-  const gameIds = ['yume', 'deepdreams', 'prayers', 'flow', 'someday',];
+
+  const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
   const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
   Module = {
@@ -530,7 +549,7 @@ if (hasTouchscreen) {
   function setFontStyle(fontStyle, isInit) {
     config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
-    const defaultAltFontStyleIndex = 4;
+    const defaultAltFontStyleIndex = parseInt(document.querySelector('.fontStyle option:last-child').value);
     getFontColor(config.uiTheme || 'Default', fontStyle, function (baseColor) {
       const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
       const altColorCallback = function (altColor) {
