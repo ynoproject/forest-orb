@@ -81,12 +81,12 @@ body {
   margin: 0 auto;
 }
 
-#layout.downscale canvas {
+#layout:not(:fullscreen).downscale canvas {
   width: 480px;
   height: 360px;
 }
 
-#layout.downscale2 canvas {
+#layout:not(:fullscreen).downscale2 canvas {
   width: 320px;
   height: 240px;
 }
@@ -104,6 +104,7 @@ body {
 }
 
 #chatboxContainer {
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -111,6 +112,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  pointer-events: all;
 }
 
 #messages {
@@ -242,6 +244,10 @@ input[type='text'], select {
   #messages {
     width: calc(100% - 16px);
   }
+
+  #layout:fullscreen #chatboxContainer {
+    width: calc(100% - 48px);
+  }
 }
 
 #layout.overflow {
@@ -298,4 +304,33 @@ input[type='text'], select {
   #chatbox {
     height: calc(100vh - (((100vw - 64px) * 0.75) + 154px));
   }
+}
+
+#layout:fullscreen #mainContainer, #layout:fullscreen #chatboxContainer, #layout:fullscreen #chatbox {
+  height: 100%;
+  max-height: 100%;
+}
+
+#layout:fullscreen #mainContainer {
+  border: none;
+  background-image: none !important;
+  width: 100%;
+}
+
+#layout:fullscreen #controls {
+  display: none;
+}
+
+#layout:fullscreen #chatboxContainer {
+  position: absolute;
+  right: 0;
+  height: calc(100% - 48px);
+  border-image: none !important;
+  background-image: none !important;
+  opacity: 50%;
+  z-index: 2;
+}
+
+#layout:fullscreen #uiControls {
+  display: none;
 }

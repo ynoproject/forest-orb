@@ -108,6 +108,16 @@
         display: none;
       }
     }
+
+    @media only screen and (max-width: 1050px) and (min-height: 595px) {
+      #layout:fullscreen #dpad {
+        bottom: 6rem;
+      }
+    }
+
+    #layout:fullscreen #apad {
+      bottom: 6rem;
+    }
   </style>
   <style id="themeStyles">
     html, input[type='text'], select {
@@ -412,9 +422,9 @@ gameContainer.addEventListener('click', () => canvas.focus());
 
 // Handle clicking on the fullscreen button
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {
-  if (canvas.requestFullscreen) {
-    canvas.requestFullscreen();
-  }
+  const layout = document.getElementById('layout');
+  if (layout.requestFullscreen)
+    layout.requestFullscreen();
 });
 
 /**
@@ -600,15 +610,30 @@ if (hasTouchscreen) {
         layout.classList.toggle('overflow', overflow);
       }
     }
+
+    updateCanvasFullscreenSize();
   }
 
   function isOverflow(scale) {
     return window.innerWidth < 984 && window.innerHeight <= 594 && (window.innerWidth <= 704 || document.getElementById('gameContainer').offsetWidth < (640 * (scale || 1)) + (document.getElementById('layout').classList.contains('overflow') ? 288 : 0));
   }
 
+  function updateCanvasFullscreenSize() {
+    const canvasElement = document.getElementById('canvas');
+    if (document.fullscreenElement) {
+      const scaleX = window.innerWidth / canvasElement.offsetWidth;
+      const scaleY = window.innerHeight / canvasElement.offsetHeight;
+      canvasElement.style.transform = `scale(${Math.min(scaleX, scaleY)})`;
+    } else {
+      canvasElement.style.transform = null;
+    }
+  }
+
   if (Module.postRun)
     Module.postRun.push(onResize);
   window.onresize = function () { window.setTimeout(onResize, 0); };
+
+  document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
   
   window.onbeforeunload = function () {
     return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
