@@ -325,7 +325,7 @@ input[type='text'], select {
 }
 
 #layout:fullscreen #controls {
-  display: none;
+  margin: 8px 8px 0 0;
 }
 
 #layout:fullscreen #chatboxContainer {

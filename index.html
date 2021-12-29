@@ -417,8 +417,12 @@ gameContainer.addEventListener('click', () => canvas.focus());
 // Handle clicking on the fullscreen button
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {
   const layout = document.getElementById('layout');
-  if (layout.requestFullscreen)
-    layout.requestFullscreen();
+  if (layout.requestFullscreen) {
+    if (!document.fullscreenElement)
+      layout.requestFullscreen();
+    else
+      document.exitFullscreen();
+  }
 });
 
 /**
