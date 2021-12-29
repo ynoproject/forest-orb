@@ -257,20 +257,20 @@ input[type='text'], select {
   flex-wrap: wrap;
 }
 
-#layout.overflow #chatboxContainer {
+#layout:not(:fullscreen).overflow #chatboxContainer {
   width: 100%;
   height: calc(100vh - 638px);
   min-height: 188px;
   max-height: 328px;
 }
 
-#layout.overflow #chatbox {
+#layout:not(:fullscreen).overflow #chatbox {
   height: calc(100vh - 634px);
   min-height: 200px;
   max-height: 340px;
 }
 
-#layout.overflow #messages {
+#layout:not(:fullscreen).overflow #messages {
   width: calc(100% - 16px);
 }
 
