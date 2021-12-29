@@ -84,6 +84,7 @@ body {
 #layout:not(:fullscreen).downscale canvas {
   width: 480px;
   height: 360px;
+  image-rendering: auto;
 }
 
 #layout:not(:fullscreen).downscale2 canvas {
