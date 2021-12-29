@@ -112,7 +112,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  pointer-events: all;
 }
 
 #messages {
@@ -124,6 +123,10 @@ body {
   width: auto;
   height: 48px;
   margin-top: 1px;
+}
+
+#chatInput, #nameInput {
+  pointer-events: all;
 }
 
 #chatInput {
