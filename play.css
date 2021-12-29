@@ -320,6 +320,10 @@ input[type='text'], select {
   width: 100%;
 }
 
+#layout:fullscreen #canvas {
+  image-rendering: auto;
+}
+
 #layout:fullscreen #controls {
   display: none;
 }
