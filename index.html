@@ -622,9 +622,10 @@ if (hasTouchscreen) {
       const scaleX = window.innerWidth / canvasElement.offsetWidth;
       const scaleY = window.innerHeight / canvasElement.offsetHeight;
       canvasElement.style.transform = `scale(${Math.min(scaleX, scaleY)})`;
-    } else {
+    } else
       canvasElement.style.transform = null;
-    }
+    const messagesElement = document.getElementById("messages");
+    messagesElement.scrollTop = messages.scrollHeight;
   }
 
   if (Module.postRun)
