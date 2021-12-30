@@ -57,6 +57,7 @@ body {
 #canvasContainer {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
 }
 
@@ -64,8 +65,10 @@ body {
   display: block;
   top: 0;
   margin: 0 auto;
+  min-width: 320px;
   width: 640px;
   max-width: calc(100vw - 64px);
+  min-height: 240px;
   height: 480px;
   max-height: calc((100vw - 64px) * 0.75);
   border: 0;
