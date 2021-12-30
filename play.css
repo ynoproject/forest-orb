@@ -95,6 +95,20 @@ body {
   height: 240px;
 }
 
+/* Ignore :fullscreen on iOS since it's not supported */
+@supports (-webkit-touch-callout: none) {
+  #layout.downscale canvas {
+    width: 480px;
+    height: 360px;
+    image-rendering: auto;
+  }
+  
+  #layout.downscale2 canvas {
+    width: 320px;
+    height: 240px;
+  }
+}
+
 #mainContainer.noSideBorders #canvas {
   max-width: calc(100vw - 16px);
   max-height: calc((100vw - 16px) * 0.75);
@@ -275,6 +289,26 @@ input[type='text'], select {
 
 #layout:not(:fullscreen).overflow #messages {
   width: calc(100% - 16px);
+}
+
+/* Ignore :fullscreen on iOS since it's not supported */
+@supports (-webkit-touch-callout: none) {
+  #layout.overflow #chatboxContainer {
+    width: 100%;
+    height: calc(100vh - 638px);
+    min-height: 188px;
+    max-height: 328px;
+  }
+  
+  #layout.overflow #chatbox {
+    height: calc(100vh - 634px);
+    min-height: 200px;
+    max-height: 340px;
+  }
+  
+  #layout.overflow #messages {
+    width: calc(100% - 16px);
+  }
 }
 
 @media only screen and (min-width: 705px) and (max-height: 594px) {
