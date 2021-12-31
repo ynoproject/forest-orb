@@ -618,14 +618,46 @@ if (hasTouchscreen) {
 
   function updateCanvasFullscreenSize() {
     const canvasElement = document.getElementById('canvas');
+    const canvasContainerElement = document.getElementById('canvasContainer');
+    const chatboxContainerElement = document.getElementById('chatboxContainer');
+
+    let canvasContainerHeight = null;
+    let canvasContainerPaddingRight = null;
+    let canvasContainerMarginTop = null;
+    let chatboxContainerMarginTop = null;
+    let chatboxHeight = null;
+    
     if (document.fullscreenElement) {
       const scaleX = window.innerWidth / canvasElement.offsetWidth;
       const scaleY = window.innerHeight / canvasElement.offsetHeight;
-      canvasElement.style.transform = `scale(${Math.min(scaleX, scaleY)})`;
-    } else
+      const scale = Math.min(scaleX, scaleY);
+      canvasElement.style.transform = `scale(${scale})`;
+
+      if (window.innerWidth > 1050 || window.innerHeight < 595) {
+        const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
+        if (chatboxContainerWidth + 48 <= window.innerWidth - (canvasElement.offsetWidth * scale))
+          canvasContainerPaddingRight = `${chatboxContainerWidth}px`;
+      } else {
+        const canvasScaledHeight = canvasElement.offsetHeight * scale;
+        const unusedHeight = window.innerHeight - (canvasScaledHeight + 32);
+        if (unusedHeight >= 376) {
+          canvasContainerMarginTop = `-${(window.innerHeight - canvasScaledHeight) / 2}px`
+          chatboxContainerMarginTop = `${(window.innerHeight - unusedHeight) - 40}px`;
+          chatboxHeight = `${unusedHeight}px`;
+        }
+      }
+    } else {
       canvasElement.style.transform = null;
-    const messagesElement = document.getElementById("messages");
-    messagesElement.scrollTop = messages.scrollHeight;
+      canvasContainer.style.paddingRight = null;
+    }
+
+    canvasContainerElement.style.height = canvasContainerHeight;
+    canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
+    canvasContainerElement.style.marginTop = canvasContainerMarginTop;
+    chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
+    document.getElementById('chatbox').style.height = chatboxHeight;
+
+    document.getElementById("messages").scrollTop = messages.scrollHeight;
   }
 
   if (Module.postRun)
