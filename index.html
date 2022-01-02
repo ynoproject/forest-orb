@@ -895,7 +895,7 @@ if (hasTouchscreen) {
       if (!locationLink && unknownLocations.indexOf(locationKey) > -1)
         locationLink = 'Unknown Location';
 
-      if (!prevMapId)
+      if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
       
       if (locationLink) {
