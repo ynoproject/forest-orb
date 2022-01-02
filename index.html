@@ -877,25 +877,33 @@ if (hasTouchscreen) {
 <script data-game-ids="2kki">
   let cachedMapId = null;
   let cachedLocationLink = null;
-  let unknownLocations = [];
+  const unknownLocationLabel = 'Unknown Location';
+  const queryingLocationLabel = 'Querying Location...';
+  const unknownLocations = [];
+  const ignoredMapIds = ['0899', '0900'];
+  let defaultLocationLinks;
 
   // called from EasyRPG player
   function onLoadMap(mapName) {
     if (gameId !== '2kki')
       return;
-    var mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
+    let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
     if (mapIdMatch) {
       const mapId = mapIdMatch[1];
 
-      if (mapId === cachedMapId)
+      if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
         return;
 
       const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
 
       let locationLink = locationCache[locationKey] || null;
 
-      if (!locationLink && unknownLocations.indexOf(locationKey) > -1)
-        locationLink = 'Unknown Location';
+      if (defaultLocationLinks.hasOwnProperty(mapId))
+        locationLink = defaultLocationLinks[mapId];
+      else if (locationLink === queryingLocationLabel)
+        locationLink = null;
+      else if (unknownLocations.indexOf(locationKey) > -1)
+        locationLink = unknownLocationLabel;
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
@@ -948,7 +956,7 @@ if (hasTouchscreen) {
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || 'Unknown Location';
+    document.getElementById('locationText').innerHTML = locationLink || unknownLocationLabel;
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -968,11 +976,34 @@ if (hasTouchscreen) {
     }
   }
 
-  function getLocationLink(location) {
-    const url = `https://yume2kki.fandom.com/wiki/${location.title}`;
-    const urlJP = `https://wikiwiki.jp/yume2kki-t/${(location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP)}`;
+  function getLocationLink(location, urlTitle, urlTitleJP) {
+    if (!urlTitle)
+      urlTitle = location.title;
+    if (!urlTitleJP)
+      urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
+    const url = `https://yume2kki.fandom.com/wiki/${urlTitle}`;
+    const urlJP = `https://wikiwiki.jp/yume2kki-t/${urlTitleJP}`;
     return `<a href="${url}" target="_blank">${location.title}</a> (<a href="${urlJP}" target="_blank">${location.titleJP}</a>)`;
   }
+
+  function getDefaultLocationLinks() {
+    const ret = {
+      '0150': getLocationLink({ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム' }, 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', 'ミニゲーム/パズルゲーム'),
+      '0620': getLocationLink({ title: 'Sound Room', titleJP: 'SR分室の曲' }, 'Soundtrack', '収集要素/SR分室の曲・演出の解放条件')
+    };
+
+    const wavyUpLocationLink = getLocationLink({ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑'}, 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', 'ミニゲーム/↑v↑');
+    for (let i = 121; i <= 130; i++)
+      ret[`0${i}`] = wavyUpLocationLink;
+
+    const platedSnowCountryLink = getLocationLink({ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき'}, 'Console#Plated_Snow_Country', 'ミニゲーム/ゆきぐにっき');
+    for (let i = 249; i <= 250; i++)
+      ret[`0${i}`] = platedSnowCountryLink;
+
+    return ret;
+  }
+
+  defaultLocationLinks = getDefaultLocationLinks();
 </script>
 
 </body>
