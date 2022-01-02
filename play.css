@@ -361,6 +361,11 @@ input[type='text'], select {
   image-rendering: auto;
 }
 
+#layout:fullscreen.downscale canvas {
+  min-width: 640px;
+  min-height: 480px;
+}
+
 #layout:fullscreen #controls button {
   margin: 8px 8px 0 0;
 }

@@ -628,8 +628,11 @@ if (hasTouchscreen) {
     let chatboxHeight = null;
     
     if (document.fullscreenElement) {
-      const scaleX = window.innerWidth / canvasElement.offsetWidth;
-      const scaleY = window.innerHeight / canvasElement.offsetHeight;
+      let scaleX = window.innerWidth / canvasElement.offsetWidth;
+      let scaleY = window.innerHeight / canvasElement.offsetHeight;
+      const scaleFraction = document.getElementById('layout').classList.contains('downscale') ? 0.25 : 0.5;
+      scaleX -= scaleX % scaleFraction;
+      scaleY -= scaleY % scaleFraction;
       const scale = Math.min(scaleX, scaleY);
       canvasElement.style.transform = `scale(${scale})`;
 
