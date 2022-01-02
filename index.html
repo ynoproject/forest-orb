@@ -206,6 +206,21 @@
       text-shadow: 1.5px 1.5px black; /*shadow*/
     }
   </style>
+  <style data-game-ids="2kki">
+    #location {
+      display: flex;
+      padding-bottom: 8px;
+    }
+
+    #location.hidden {
+      display: none;
+    }
+
+    #locationText {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
   <div id="background"></div>
@@ -353,7 +368,7 @@
       </div>
       <div id="chatboxContainer" class="container" style="display: none">
         <div id="chatbox">
-          <div id="location" style="display: none" data-game-ids="2kki">
+          <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
             Location: <span id="locationText"></span>
           </div>
           <div id="messages"></div>
@@ -877,7 +892,7 @@ if (hasTouchscreen) {
   
   function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
     if (!prevMapId)
-      document.getElementById('location').style.display = 'block';
+      document.getElementById('location').classList.remove('hidden');
 
     const req = new XMLHttpRequest();
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
