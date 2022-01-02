@@ -898,7 +898,9 @@ if (hasTouchscreen) {
 
       let locationLink = locationCache[locationKey] || null;
 
-      if (defaultLocationLinks.hasOwnProperty(mapId))
+      const useDefaultLocation = defaultLocationLinks.hasOwnProperty(mapId);
+
+      if (useDefaultLocation)
         locationLink = defaultLocationLinks[mapId];
       else if (locationLink === queryingLocationLabel)
         locationLink = null;
@@ -909,7 +911,8 @@ if (hasTouchscreen) {
         document.getElementById('location').classList.remove('hidden');
       
       if (locationLink) {
-        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink);
+        const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
+        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation, cacheLocation);
         cachedMapId = mapId;
         cachedLocationLink = locationLink;
       } else
