@@ -353,6 +353,9 @@
       </div>
       <div id="chatboxContainer" class="container" style="display: none">
         <div id="chatbox">
+          <div id="location" style="display: none" data-game-ids="2kki">
+            Location: <span id="locationText"></span>
+          </div>
           <div id="messages"></div>
           <div id="chatInputContainer" style="display: none">
             <form action="javascript:chatInputActionFired()">
@@ -846,6 +849,87 @@ if (hasTouchscreen) {
     setFontStyle(0, true);
   if (!config.hasOwnProperty('uiTheme'))
     setUiTheme('Default', true);
+</script>
+<script data-game-ids="2kki">
+  let cachedMapId = null;
+  let cachedLocationLink = null;
+  let locationCache = {};
+
+  // called from EasyRPG player
+  function onLoadMap(mapName) {
+    var mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
+    if (mapIdMatch) {
+      const mapId = mapIdMatch[1];
+
+      if (mapId === cachedMapId)
+        return;
+
+      let locationLink = locationCache[`${(cachedMapId || '0000')}_${mapId}`] || null;
+      
+      if (locationLink) {
+        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink);
+        cachedMapId = mapId;
+        cachedLocationLink = locationLink;
+      } else
+        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink);
+    }
+  }
+  
+  function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
+    if (!prevMapId)
+      document.getElementById('location').style.display = 'block';
+
+    const req = new XMLHttpRequest();
+      let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+      if (prevMapId)
+          url += `&prevMapId=${prevMapId}`;
+      req.responseType = 'json';
+      req.open("GET", url);
+      req.send();
+
+      setLocation(mapId, prevMapId, 'Querying Location...', prevLocationLink, true);
+
+      req.onreadystatechange = (e) => {
+        const locationsArray = req.response;
+
+        if (Array.isArray(locationsArray) && locationsArray.length) {
+          let location = locationsArray[0];
+          if (locationsArray.length > 1 && prevLocationLink) {
+            for (let l of locationsArray) {
+              if (getLocationLink(l) === prevLocationLink) {
+                location = l;
+                break;
+              }
+            }
+          }
+          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true);
+        } else {
+          if (prevMapId) {
+            queryAndSetLocation(mapId, null, null);
+            return;
+          }
+          setLocation(mapId, prevMapId, null, prevLocationLink, true);
+        }
+
+        cachedMapId = mapId;
+        cachedLocationLink = document.getElementById('locationText').innerHTML;
+      }
+  }
+
+  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation) {
+    document.getElementById('locationText').innerHTML = locationLink || 'Unknown Location';
+    if (cacheLocation) {
+      locationCache[`${(prevMapId || '0000')}_${mapId}`] = locationLink;
+      if (prevLocationLink)
+        locationCache[`${mapId}_${(prevMapId || '0000')}`] = prevLocationLink;
+    }
+  }
+
+  function getLocationLink(location) {
+    const url = `https://yume2kki.fandom.com/wiki/${location.title}`;
+    const urlJP = `https://wikiwiki.jp/yume2kki-t/${(location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP)}`;
+    return `<a href="${url}" target="_blank">${location.title}</a> (<a href="${urlJP}" target="_blank">${location.titleJP}</a>)`;
+  }
 </script>
 
 </body>
