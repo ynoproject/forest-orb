@@ -572,6 +572,8 @@ if (hasTouchscreen) {
     name: ''
   };
 
+  let locationCache;
+
   if (hasUiThemes) {
     config.uiTheme = 'Default';
 
@@ -593,8 +595,11 @@ if (hasTouchscreen) {
     setName(this.value);
   };
 
-  if (gameId === '2kki')
+  if (gameId === '2kki') {
     document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
+    locationCache = {};
+    config.locationCache = {};
+  }
 
   let ignoreSizeChanged = false;
 
@@ -840,6 +845,9 @@ if (hasTouchscreen) {
                 document.querySelector('.fontStyle').value = value;
                 setFontStyle(value, true);
                 break;
+              case 'locationCache':
+                locationCache = Object.assign({}, value);
+                break;
             }
             config[key] = value;
           }
@@ -869,7 +877,7 @@ if (hasTouchscreen) {
 <script data-game-ids="2kki">
   let cachedMapId = null;
   let cachedLocationLink = null;
-  let locationCache = {};
+  let unknownLocations = [];
 
   // called from EasyRPG player
   function onLoadMap(mapName) {
@@ -880,7 +888,15 @@ if (hasTouchscreen) {
       if (mapId === cachedMapId)
         return;
 
-      let locationLink = locationCache[`${(cachedMapId || '0000')}_${mapId}`] || null;
+      const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
+
+      let locationLink = locationCache[locationKey] || null;
+
+      if (!locationLink && unknownLocations.indexOf(locationKey) > -1)
+        locationLink = 'Unknown Location';
+
+      if (!prevMapId)
+        document.getElementById('location').classList.remove('hidden');
       
       if (locationLink) {
         setLocation(mapId, cachedMapId, locationLink, cachedLocationLink);
@@ -892,9 +908,6 @@ if (hasTouchscreen) {
   }
   
   function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
-    if (!prevMapId)
-      document.getElementById('location').classList.remove('hidden');
-
     const req = new XMLHttpRequest();
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
       if (prevMapId)
@@ -918,13 +931,13 @@ if (hasTouchscreen) {
               }
             }
           }
-          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true);
+          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
         } else {
           if (prevMapId) {
             queryAndSetLocation(mapId, null, null);
             return;
           }
-          setLocation(mapId, prevMapId, null, prevLocationLink, true);
+          setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
         }
 
         cachedMapId = mapId;
@@ -932,12 +945,24 @@ if (hasTouchscreen) {
       }
   }
 
-  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation) {
+  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
     document.getElementById('locationText').innerHTML = locationLink || 'Unknown Location';
     if (cacheLocation) {
-      locationCache[`${(prevMapId || '0000')}_${mapId}`] = locationLink;
+      const locationKey = `${(prevMapId || '0000')}_${mapId}`;
+      const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
+      if (locationLink)
+        locationCache[locationKey] = locationLink;
+      else
+        unknownLocations.push(locationKey)
       if (prevLocationLink)
-        locationCache[`${mapId}_${(prevMapId || '0000')}`] = prevLocationLink;
+        locationCache[prevLocationKey] = prevLocationLink;
+      if (saveLocation && (locationLink || prevLocationLink)) {
+        if (locationLink)
+          config.locationCache[locationKey] = locationLink;
+        if (prevLocationLink)
+          config.locationCache[prevLocationKey] = prevLocationLink;
+        updateConfig(config);
+      }
     }
   }
 
