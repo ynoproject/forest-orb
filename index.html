@@ -881,6 +881,8 @@ if (hasTouchscreen) {
 
   // called from EasyRPG player
   function onLoadMap(mapName) {
+    if (gameId !== '2kki')
+      return;
     var mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
     if (mapIdMatch) {
       const mapId = mapIdMatch[1];
