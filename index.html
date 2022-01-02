@@ -633,7 +633,7 @@ if (hasTouchscreen) {
       const scaleFraction = document.getElementById('layout').classList.contains('downscale') ? 0.25 : 0.5;
       scaleX -= scaleX % scaleFraction;
       scaleY -= scaleY % scaleFraction;
-      const scale = Math.min(scaleX, scaleY);
+      const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
       canvasElement.style.transform = `scale(${scale})`;
 
       if (window.innerWidth > 1050 || window.innerHeight < 595) {
