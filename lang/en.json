@@ -10,7 +10,7 @@
   },
   "ui": {
     "uiTheme": {
-      "name": "UI Theme:",
+      "label": "UI Theme:",
       "values": {
         "2kki": {
           "Default": "Default",
