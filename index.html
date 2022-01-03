@@ -578,8 +578,8 @@ if (hasTouchscreen) {
 <script data-game-ids="2kki">
   const is2kki = gameId === '2kki';
   let cachedMapId = null;
-  let cachedLocationName = null;
   let cachedLocationLink = null;
+  let cachedLocationName = null;
   const unknownLocationLabel = 'Unknown Location';
   const queryingLocationLabel = 'Querying Location...';
   const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
@@ -829,6 +829,7 @@ if (hasTouchscreen) {
     let canvasContainerMarginTop = null;
     let chatboxContainerMarginTop = null;
     let chatboxHeight = null;
+    let chatboxOverlap = false;
     
     if (document.fullscreenElement) {
       let scaleX = window.innerWidth / canvasElement.offsetWidth;
@@ -843,6 +844,8 @@ if (hasTouchscreen) {
         const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
         if (chatboxContainerWidth + 48 <= window.innerWidth - (canvasElement.offsetWidth * scale))
           canvasContainerPaddingRight = `${chatboxContainerWidth}px`;
+        else
+          chatboxOverlap = true;
       } else {
         const canvasScaledHeight = canvasElement.offsetHeight * scale;
         const unusedHeight = window.innerHeight - (canvasScaledHeight + 32);
@@ -850,7 +853,8 @@ if (hasTouchscreen) {
           canvasContainerMarginTop = `-${(window.innerHeight - canvasScaledHeight) / 2}px`
           chatboxContainerMarginTop = `${(window.innerHeight - unusedHeight) - 40}px`;
           chatboxHeight = `${unusedHeight}px`;
-        }
+        } else
+          chatboxOverlap = true;
       }
     } else {
       canvasElement.style.transform = null;
@@ -861,6 +865,7 @@ if (hasTouchscreen) {
     canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
     canvasContainerElement.style.marginTop = canvasContainerMarginTop;
     chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
+    chatboxContainerElement.classList.toggle('overlap', chatboxOverlap);
     document.getElementById('chatbox').style.height = chatboxHeight;
 
     document.getElementById("messages").scrollTop = messages.scrollHeight;
