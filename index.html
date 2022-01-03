@@ -757,11 +757,10 @@ if (hasTouchscreen) {
     if (saveFile)
       saveFile.remove();
 
-    document.getElementById('layout').innerHTML += '<input type="file" id="saveFile" name="saveFile" style="display: none" />';
-    saveFile = document.getElementById('saveFile');
-
+    saveFile = document.createElement('file');
+    saveFile.id = 'saveFile';
+    saveFile.style.display = 'none';
     saveFile.addEventListener('change', handleSaveFileUpload);
-    
     saveFile.click();
   };
 
@@ -1060,11 +1059,11 @@ if (hasTouchscreen) {
   }
 
   function getSaveSlot() {
-    let fileIndex = prompt('Enter the save file slot to upload to (1 to 15).', 1);
+    let fileIndex = prompt('Enter the save file slot number to upload to (1 to 15).', 1);
     let fileIndexInt;
 
     while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
-      fileIndex = prompt('The provided slot was not valid: please enter a save file slot from 1 to 15.');
+      fileIndex = prompt('The provided slot was not valid: please enter a save file slot number from 1 to 15.');
 
     if (fileIndex == null)
       return null;
