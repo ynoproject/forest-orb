@@ -373,12 +373,12 @@ input[type='text'], select {
   height: calc(100% - 48px);
   border-image: none !important;
   background-image: none !important;
-  pointer-events: none;
   z-index: 2;
 }
 
 #layout:fullscreen #chatboxContainer.overlap {
   opacity: 50%;
+  pointer-events: none;
 }
 
 #layout:fullscreen #uiControls {
