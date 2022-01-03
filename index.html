@@ -577,16 +577,13 @@ if (hasTouchscreen) {
 </script>
 <script data-game-ids="2kki">
   const is2kki = gameId === '2kki';
-
-  if (is2kki) {
-    let cachedMapId = null;
-    let cachedLocationLink = null;
-    const unknownLocationLabel = 'Unknown Location';
-    const queryingLocationLabel = 'Querying Location...';
-    const unknownLocations = [];
-    const ignoredMapIds = ['0899', '0900'];
-    let defaultLocationLinks;
-  }
+  let cachedMapId = null;
+  let cachedLocationLink = null;
+  const unknownLocationLabel = 'Unknown Location';
+  const queryingLocationLabel = 'Querying Location...';
+  const unknownLocations = [];
+  const ignoredMapIds = ['0899', '0900'];
+  let defaultLocationLinks;
 
   // called from EasyRPG player
   function onLoadMap(mapName) {
@@ -757,7 +754,8 @@ if (hasTouchscreen) {
     if (saveFile)
       saveFile.remove();
 
-    saveFile = document.createElement('file');
+    saveFile = document.createElement('input');
+    saveFile.type = 'file';
     saveFile.id = 'saveFile';
     saveFile.style.display = 'none';
     saveFile.addEventListener('change', handleSaveFileUpload);
