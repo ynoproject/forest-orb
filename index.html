@@ -578,9 +578,11 @@ if (hasTouchscreen) {
 <script data-game-ids="2kki">
   const is2kki = gameId === '2kki';
   let cachedMapId = null;
+  let cachedLocationName = null;
   let cachedLocationLink = null;
   const unknownLocationLabel = 'Unknown Location';
   const queryingLocationLabel = 'Querying Location...';
+  const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900'];
   let defaultLocationLinks;
@@ -614,27 +616,33 @@ if (hasTouchscreen) {
       
       if (locationLink) {
         const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
+        const locationNameResult = locationNamePattern.exec(locationLink);
         setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation, cacheLocation);
         cachedMapId = mapId;
         cachedLocationLink = locationLink;
+        cachedLocationName = locationNameResult ? locationNameResult[1] : null;
       } else
-        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink);
+        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationName);
     }
   }
   
-  function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
+  function queryAndSetLocation(mapId, prevMapId, prevLocationLink, prevLocationName) {
     const req = new XMLHttpRequest();
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
-      if (prevMapId)
+      if (prevMapId) {
           url += `&prevMapId=${prevMapId}`;
+          if (prevLocationName)
+            url += `&prevLocationName=${prevLocationName}`;
+      }
       req.responseType = 'json';
       req.open("GET", url);
       req.send();
 
       setLocation(mapId, prevMapId, 'Querying Location...', prevLocationLink, true);
 
-      req.onreadystatechange = (e) => {
+      req.onload = (e) => {
         const locationsArray = req.response;
+        let locationName = null;
 
         if (Array.isArray(locationsArray) && locationsArray.length) {
           let location = locationsArray[0];
@@ -647,9 +655,10 @@ if (hasTouchscreen) {
             }
           }
           setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
+          locationName = location.title;
         } else {
           if (prevMapId) {
-            queryAndSetLocation(mapId, null, null);
+            queryAndSetLocation(mapId, null, null, null);
             return;
           }
           setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
@@ -657,7 +666,8 @@ if (hasTouchscreen) {
 
         cachedMapId = mapId;
         cachedLocationLink = document.getElementById('locationText').innerHTML;
-      }
+        cachedLocationName = locationName;
+      };
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
