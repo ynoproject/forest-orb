@@ -119,7 +119,7 @@
       background-color: black;
     }
 
-    body, .container, div, input[type='text'] {
+    body, .container, div, input[type='text'], #ioControls .button {
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
@@ -198,12 +198,25 @@
       background-size: 410px;
     }
   
-    input[type='text'], select {
+    input[type='text'], select, #ioControls button {
       border: 12px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
+    }
+
+    #ioControls {
+      display: flex;
+      justify-content: center;
+    }
+
+    #ioControls button {
+      z-index: 1;
+    }
+
+    #ioControls button:not(:last-child) {
+      margin-right: 32px;
     }
   </style>
   <style data-game-ids="2kki">
@@ -404,6 +417,11 @@
     <div class="notice">Hosted with permission from the Yume 2kki developers</div>
   </div>
   <br>
+  <div id="ioControls">
+    <button id="uploadButton">Upload Save File</button>
+    <button id="downloadButton">Download Save File</button>
+  </div>
+  <br>
   <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN">Join our Discord!</a></div>
   <div id="backgroundTransition"></div>
 </div>
@@ -557,6 +575,145 @@ if (hasTouchscreen) {
   // });
 }
 </script>
+<script data-game-ids="2kki">
+  const is2kki = gameId === '2kki';
+
+  if (is2kki) {
+    let cachedMapId = null;
+    let cachedLocationLink = null;
+    const unknownLocationLabel = 'Unknown Location';
+    const queryingLocationLabel = 'Querying Location...';
+    const unknownLocations = [];
+    const ignoredMapIds = ['0899', '0900'];
+    let defaultLocationLinks;
+  }
+
+  // called from EasyRPG player
+  function onLoadMap(mapName) {
+    if (gameId !== '2kki')
+      return;
+    let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
+    if (mapIdMatch) {
+      const mapId = mapIdMatch[1];
+
+      if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
+        return;
+
+      const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
+
+      let locationLink = locationCache[locationKey] || null;
+
+      const useDefaultLocation = defaultLocationLinks.hasOwnProperty(mapId);
+
+      if (useDefaultLocation)
+        locationLink = defaultLocationLinks[mapId];
+      else if (locationLink === queryingLocationLabel)
+        locationLink = null;
+      else if (unknownLocations.indexOf(locationKey) > -1)
+        locationLink = unknownLocationLabel;
+
+      if (!cachedMapId)
+        document.getElementById('location').classList.remove('hidden');
+      
+      if (locationLink) {
+        const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
+        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation, cacheLocation);
+        cachedMapId = mapId;
+        cachedLocationLink = locationLink;
+      } else
+        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink);
+    }
+  }
+  
+  function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
+    const req = new XMLHttpRequest();
+      let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+      if (prevMapId)
+          url += `&prevMapId=${prevMapId}`;
+      req.responseType = 'json';
+      req.open("GET", url);
+      req.send();
+
+      setLocation(mapId, prevMapId, 'Querying Location...', prevLocationLink, true);
+
+      req.onreadystatechange = (e) => {
+        const locationsArray = req.response;
+
+        if (Array.isArray(locationsArray) && locationsArray.length) {
+          let location = locationsArray[0];
+          if (locationsArray.length > 1 && prevLocationLink) {
+            for (let l of locationsArray) {
+              if (getLocationLink(l) === prevLocationLink) {
+                location = l;
+                break;
+              }
+            }
+          }
+          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
+        } else {
+          if (prevMapId) {
+            queryAndSetLocation(mapId, null, null);
+            return;
+          }
+          setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
+        }
+
+        cachedMapId = mapId;
+        cachedLocationLink = document.getElementById('locationText').innerHTML;
+      }
+  }
+
+  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
+    document.getElementById('locationText').innerHTML = locationLink || unknownLocationLabel;
+    if (cacheLocation) {
+      const locationKey = `${(prevMapId || '0000')}_${mapId}`;
+      const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
+      if (locationLink)
+        locationCache[locationKey] = locationLink;
+      else
+        unknownLocations.push(locationKey)
+      if (prevLocationLink)
+        locationCache[prevLocationKey] = prevLocationLink;
+      if (saveLocation && (locationLink || prevLocationLink)) {
+        if (locationLink)
+          config.locationCache[locationKey] = locationLink;
+        if (prevLocationLink)
+          config.locationCache[prevLocationKey] = prevLocationLink;
+        updateConfig(config);
+      }
+    }
+  }
+
+  function getLocationLink(location, urlTitle, urlTitleJP) {
+    if (!urlTitle)
+      urlTitle = location.title;
+    if (!urlTitleJP)
+      urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
+    const url = `https://yume2kki.fandom.com/wiki/${urlTitle}`;
+    const urlJP = `https://wikiwiki.jp/yume2kki-t/${urlTitleJP}`;
+    return `<a href="${url}" target="_blank">${location.title}</a> (<a href="${urlJP}" target="_blank">${location.titleJP}</a>)`;
+  }
+
+  function getDefaultLocationLinks() {
+    const ret = {
+      '0150': getLocationLink({ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム' }, 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', 'ミニゲーム/パズルゲーム'),
+      '0620': getLocationLink({ title: 'Sound Room', titleJP: 'SR分室の曲' }, 'Soundtrack', '収集要素/SR分室の曲・演出の解放条件')
+    };
+
+    const wavyUpLocationLink = getLocationLink({ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑'}, 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', 'ミニゲーム/↑v↑');
+    for (let i = 121; i <= 130; i++)
+      ret[`0${i}`] = wavyUpLocationLink;
+
+    const platedSnowCountryLink = getLocationLink({ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき'}, 'Console#Plated_Snow_Country', 'ミニゲーム/ゆきぐにっき');
+    for (let i = 249; i <= 250; i++)
+      ret[`0${i}`] = platedSnowCountryLink;
+
+    return ret;
+  }
+
+  if (is2kki)
+    defaultLocationLinks = getDefaultLocationLinks();
+</script>
 <script>
   const gameIdsElements = document.querySelectorAll('[data-game-ids]');
   for (let el of gameIdsElements) {
@@ -594,6 +751,21 @@ if (hasTouchscreen) {
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
   };
+
+  document.getElementById('uploadButton').onclick = function () {
+    let saveFile = document.getElementById('saveFile');
+    if (saveFile)
+      saveFile.remove();
+
+    document.getElementById('layout').innerHTML += '<input type="file" id="saveFile" name="saveFile" style="display: none" />';
+    saveFile = document.getElementById('saveFile');
+
+    saveFile.addEventListener('change', handleSaveFileUpload);
+    
+    saveFile.click();
+  };
+
+  document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 
   if (gameId === '2kki') {
     document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
@@ -818,6 +990,87 @@ if (hasTouchscreen) {
     };
     img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/containerbg.png';
   }
+
+  function handleSaveFileUpload(evt) {
+    const save = evt.target.files[0];
+
+    if (!/^Save\d{2}\.lsd$/.test(save.name)) {
+      alert("Please select a valid save file (.lsd format).");
+      document.getElementById('uploadButton').click();
+      return;
+    }
+
+    const saveSlot = getSaveSlot();
+
+    if (saveSlot == null)
+      return;
+
+    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+
+    request.onsuccess = function (e) {
+
+      const reader = new FileReader();
+      let readerResult;
+
+      reader.onload = function (file) {
+        readerResult = file.currentTarget.result;
+        const saveFile = { timestamp: new Date(), mode: 33206, contents: new Uint8Array(readerResult) };
+    
+        const db = request.result; 
+        const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+        transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
+
+        window.location = window.location;
+      };
+
+      reader.readAsArrayBuffer(save);
+    };
+  }
+
+  function handleSaveFileDownload() {
+    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+
+    request.onsuccess = function (e) {
+      const saveSlot = getSaveSlot();
+
+      if (saveSlot == null)
+        return;
+
+      const db = request.result; 
+      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+      const objectStore = transaction.objectStore('FILE_DATA');
+      const objectStoreRequest = objectStore.get(`/easyrpg/2kki/Save/Save${saveSlot}.lsd`);
+
+      objectStoreRequest.onsuccess = function (event) {
+        const record = objectStoreRequest.result;
+
+        if (!record) {
+          alert('Oops! The save file for the provided slot appears to be empty.');
+          return;
+        }
+
+        const blob = new Blob([record.contents], {type: 'text/json'});
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `Save${saveSlot}.lsd`;
+        link.click();
+        link.remove();
+      };
+    };
+  }
+
+  function getSaveSlot() {
+    let fileIndex = prompt('Enter the save file slot to upload to (1 to 15).', 1);
+    let fileIndexInt;
+
+    while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
+      fileIndex = prompt('The provided slot was not valid: please enter a save file slot from 1 to 15.');
+
+    if (fileIndex == null)
+      return null;
+
+    return fileIndexInt < 10 ? `0${fileIndexInt}` : fileIndexInt.toString();
+  }
   
   function loadOrInitConfig() {
     try {
@@ -873,140 +1126,6 @@ if (hasTouchscreen) {
     setFontStyle(0, true);
   if (!config.hasOwnProperty('uiTheme'))
     setUiTheme('Default', true);
-</script>
-<script data-game-ids="2kki">
-  let cachedMapId = null;
-  let cachedLocationLink = null;
-  const unknownLocationLabel = 'Unknown Location';
-  const queryingLocationLabel = 'Querying Location...';
-  const unknownLocations = [];
-  const ignoredMapIds = ['0899', '0900'];
-  let defaultLocationLinks;
-
-  // called from EasyRPG player
-  function onLoadMap(mapName) {
-    if (gameId !== '2kki')
-      return;
-    let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
-    if (mapIdMatch) {
-      const mapId = mapIdMatch[1];
-
-      if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
-        return;
-
-      const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
-
-      let locationLink = locationCache[locationKey] || null;
-
-      const useDefaultLocation = defaultLocationLinks.hasOwnProperty(mapId);
-
-      if (useDefaultLocation)
-        locationLink = defaultLocationLinks[mapId];
-      else if (locationLink === queryingLocationLabel)
-        locationLink = null;
-      else if (unknownLocations.indexOf(locationKey) > -1)
-        locationLink = unknownLocationLabel;
-
-      if (!cachedMapId)
-        document.getElementById('location').classList.remove('hidden');
-      
-      if (locationLink) {
-        const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
-        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation, cacheLocation);
-        cachedMapId = mapId;
-        cachedLocationLink = locationLink;
-      } else
-        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink);
-    }
-  }
-  
-  function queryAndSetLocation(mapId, prevMapId, prevLocationLink) {
-    const req = new XMLHttpRequest();
-      let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
-      if (prevMapId)
-          url += `&prevMapId=${prevMapId}`;
-      req.responseType = 'json';
-      req.open("GET", url);
-      req.send();
-
-      setLocation(mapId, prevMapId, 'Querying Location...', prevLocationLink, true);
-
-      req.onreadystatechange = (e) => {
-        const locationsArray = req.response;
-
-        if (Array.isArray(locationsArray) && locationsArray.length) {
-          let location = locationsArray[0];
-          if (locationsArray.length > 1 && prevLocationLink) {
-            for (let l of locationsArray) {
-              if (getLocationLink(l) === prevLocationLink) {
-                location = l;
-                break;
-              }
-            }
-          }
-          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
-        } else {
-          if (prevMapId) {
-            queryAndSetLocation(mapId, null, null);
-            return;
-          }
-          setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
-        }
-
-        cachedMapId = mapId;
-        cachedLocationLink = document.getElementById('locationText').innerHTML;
-      }
-  }
-
-  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || unknownLocationLabel;
-    if (cacheLocation) {
-      const locationKey = `${(prevMapId || '0000')}_${mapId}`;
-      const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
-      if (locationLink)
-        locationCache[locationKey] = locationLink;
-      else
-        unknownLocations.push(locationKey)
-      if (prevLocationLink)
-        locationCache[prevLocationKey] = prevLocationLink;
-      if (saveLocation && (locationLink || prevLocationLink)) {
-        if (locationLink)
-          config.locationCache[locationKey] = locationLink;
-        if (prevLocationLink)
-          config.locationCache[prevLocationKey] = prevLocationLink;
-        updateConfig(config);
-      }
-    }
-  }
-
-  function getLocationLink(location, urlTitle, urlTitleJP) {
-    if (!urlTitle)
-      urlTitle = location.title;
-    if (!urlTitleJP)
-      urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
-    const url = `https://yume2kki.fandom.com/wiki/${urlTitle}`;
-    const urlJP = `https://wikiwiki.jp/yume2kki-t/${urlTitleJP}`;
-    return `<a href="${url}" target="_blank">${location.title}</a> (<a href="${urlJP}" target="_blank">${location.titleJP}</a>)`;
-  }
-
-  function getDefaultLocationLinks() {
-    const ret = {
-      '0150': getLocationLink({ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム' }, 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', 'ミニゲーム/パズルゲーム'),
-      '0620': getLocationLink({ title: 'Sound Room', titleJP: 'SR分室の曲' }, 'Soundtrack', '収集要素/SR分室の曲・演出の解放条件')
-    };
-
-    const wavyUpLocationLink = getLocationLink({ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑'}, 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', 'ミニゲーム/↑v↑');
-    for (let i = 121; i <= 130; i++)
-      ret[`0${i}`] = wavyUpLocationLink;
-
-    const platedSnowCountryLink = getLocationLink({ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき'}, 'Console#Plated_Snow_Country', 'ミニゲーム/ゆきぐにっき');
-    for (let i = 249; i <= 250; i++)
-      ret[`0${i}`] = platedSnowCountryLink;
-
-    return ret;
-  }
-
-  defaultLocationLinks = getDefaultLocationLinks();
 </script>
 
 </body>

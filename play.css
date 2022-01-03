@@ -4,7 +4,7 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input[type='text'], select {
+html, input[type='text'], select, #ioControls button {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
