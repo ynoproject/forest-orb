@@ -1,0 +1,121 @@
+{
+  "version": {
+    "2kki": {
+      "label": "ゆめ２っきver{VERSION}",
+      "substitutes": {
+        " Patch ": "パッチ",
+        "?": "？"
+      }
+    }
+  },
+  "ui": {
+    "uiTheme": {
+      "label": "メニュー タイプ",
+      "values": {
+        "2kki": {
+          "Default": "デフォルト",
+          "Default_2": "デフォルト２",
+          "Default_3": "デフォルト３",
+          "Default_4": "デフォルト４",
+          "Default_5": "デフォルト５",
+          "Developer_Room": "製作者の部屋",
+          "Glitch_Ending": "似非エンディング",
+          "Glitch_Ending_2": "似非エンディング２",
+          "Black_Building": "黒ビル",
+          "Cog_Maze": "歯車",
+          "Square_Square_World": "四角四角",
+          "Verdant_Promenade": "森林公園",
+          "Urotsukis_Dream_Apartments": "うろつき邸",
+          "Sofa_Room": "ソファ",
+          "Depths": "みなぞこ",
+          "Depths_2": "すいそう",
+          "Guts_World": "コンクリートマンション",
+          "Maple_Shrine": "楓神社",
+          "Pencil_World": "白い樹",
+          "Chocolate_World": "チョコレートの通路",
+          "Blue_Cactus_Islands": "青仙人掌島",
+          "Stone_Towers": "地底通路",
+          "Constellation_World": "星営鉄道",
+          "Blob_Desert": "荒野",
+          "Cipher_Keyboard": "立椅子館",
+          "Viridian_Wetlands": "ビリジアン湿地",
+          "Polluted_Swamp": "機密",
+          "Snowy_Village": "冬の村",
+          "Decrepit_Dwellings": "集合住宅",
+          "Verdant_Promenade_2": "森林公園２",
+          "Black_Ink_World": "黒インク世界",
+          "Forgotten_Megalopolis": "忘れられた街",
+          "Tomb_of_Velleities": "Butterfly",
+          "Visine_Spacecraft": "未確認飛行物体",
+          "Data_Stream": "データストリーム",
+          "Lavender_Waters": "紫湖",
+          "Originator_Garden": "始祖庭",
+          "Fluorescent_Halls": "繁華道",
+          "City_of_Liars": "嘘つきの街",
+          "Misc": "雑多なメンユータイプ",
+          "Monochrome_GB_World": "グレーボーイ",
+          "Smiley_Signs_World": "黒白世界",
+          "Lovesick_World": "恋",
+          "Corrupted_Love_World": "恋楔",
+          "Saturated_Eyeball_Zone": "彩愛蝶",
+          "NES_Glitch_Tunnel": "NESトンネル",
+          "Shop_Ruins": "廃墟商店"
+        }
+      }
+    },
+    "fontStyle": {
+      "label": "フォント スタイル",
+      "values": {
+        "style1": "スタイル１",
+        "style2": "スタイル２",
+        "style3": "スタイル３",
+        "style4": "スタイル４",
+        "style5": "スタイル５",
+        "style6": "スタイル６",
+        "style7": "スタイル７"
+      }
+    },
+    "chatbox": {
+      "location": "場所：",
+      "nickname": {
+        "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
+        "rule": {
+          "maxLength": "※12 文字 限定",
+          "alphanumeric": "※英数字 のみ"
+        }
+      }
+    },
+    "instruction": {
+      "connStatusToggle": "3キーを 押すと、 接続状態 ウィンドウが 切り替わります",
+      "nametagToggle": "3キーを 押すと、 プレーヤー 名札を 切り替わります",
+      "discord": "Discordに 参加 する"
+    },
+    "io": {
+      "upload": "保存 ファイルを アップロード",
+      "download": "保存 ファイルを ダウンロード"
+    },
+    "lang": {
+      "label": "言語"
+    },
+    "2kki": {
+      "hostedWithPermission": "ゆめ２っきの　開発者の　許可を　得て　掲載しています"
+    }
+  },
+  "messages": {
+    "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
+    "io": {
+      "common": {
+        "slotInput": {
+          "initial": "アップロード先の保存ファイルスロット番号（1～15）を入力します。",
+          "subsequent": "入力されたスロットが無効です。保存ファイルのスロット番号を1～15で入力してください。"
+        }
+      },
+      "upload": {
+        "invalidSaveFile": "有効な保存ファイル（.lsd形式）を選択してください。"
+      },
+      "download": {
+        "emptySlot": "おっと! 入力されたスロット番号のセーブファイルが空になっているようです。"
+      }
+    }
+  }
+}

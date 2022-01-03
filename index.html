@@ -223,6 +223,7 @@
     #location {
       display: flex;
       padding-bottom: 8px;
+      white-space: nowrap;
     }
 
     #location.hidden {
@@ -235,6 +236,8 @@
       word-break: keep-all;
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/loc-i18next@0.1.4/dist/umd/loc-i18next.min.js"></script>
 </head>
 <body>
   <div id="background"></div>
@@ -272,9 +275,7 @@
         
         <div id="uiControls">
           <div class="uiControl" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday" style="display: none;">
-            <label for="uiTheme" class="unselectable">
-              UI Theme:
-            </label>
+            <label for="uiTheme" class="unselectable" data-i18n="[html]uiTheme.label">UI Theme:</label>
             <select class="uiTheme" data-game-ids="yume">
               <option value="Default">Default</option>
               <option value="Alternate_1" class="fullBg">Alternate 1</option>
@@ -365,17 +366,15 @@
           </div>
 
           <div class="uiControl">
-            <label for="fontStyle" class="unselectable">
-              Font Style:
-            </label>
+            <label for="fontStyle" class="unselectable" data-i18n="[html]fontStyle.label">Font Style:</label>
             <select id="fontStyle" class="fontStyle">
-              <option value="0">Style 1</option>
-              <option value="1">Style 2</option>
-              <option value="2" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday">Style 3</option>
-              <option value="3" data-game-ids="yume,2kki,flow,prayers,someday">Style 4</option>
-              <option value="4" data-game-ids="yume,2kki,flow">Style 5</option>
-              <option value="5" data-game-ids="yume,2kki,flow">Style 6</option>
-              <option value="6" data-game-ids="yume,2kki,flow">Style 7</option>
+              <option value="0" data-i18n="[html]fontStyle.values.style1">Style 1</option>
+              <option value="1" data-i18n="[html]fontStyle.values.style2">Style 2</option>
+              <option value="2" data-i18n="[html]fontStyle.values.style3" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday">Style 3</option>
+              <option value="3" data-i18n="[html]fontStyle.values.style4" data-game-ids="yume,2kki,flow,prayers,someday">Style 4</option>
+              <option value="4" data-i18n="[html]fontStyle.values.style5" data-game-ids="yume,2kki,flow">Style 5</option>
+              <option value="5" data-i18n="[html]fontStyle.values.style6" data-game-ids="yume,2kki,flow">Style 6</option>
+              <option value="6" data-i18n="[html]fontStyle.values.style7" data-game-ids="yume,2kki,flow">Style 7</option>
             </select>
           </div>
         </div>
@@ -383,7 +382,7 @@
       <div id="chatboxContainer" class="container" style="display: none">
         <div id="chatbox">
           <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
-            Location: <span id="locationText"></span>
+            <span data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
           </div>
           <div id="messages"></div>
           <div id="chatInputContainer" style="display: none">
@@ -393,12 +392,12 @@
           </div>
           <div id="enterNameContainer">
             <span id="enterNameInstruction">
-              <span>You must set a nickname before you can chat.</span>
+              <span data-i18n="[html]chatbox.nickname.header">You must set a nickname before you can chat.</span>
               <br>
               <small>
-                * Maximum 12 characters
+                <span data-i18n="[html]chatbox.nickname.rule.maxLength">* Maximum 12 characters</span>
                 <br>
-                * Alphanumeric characters only
+                <span data-i18n="[html]chatbox.nickname.rule.alphanumeric">* Alphanumeric characters only</span>
               </small>
             </span>
             <form id="enterNameForm" action="javascript:chatNameCheck()">
@@ -409,20 +408,28 @@
       </div>
     </div>
   <br>
-  <div class="instruction">Press 3 to hide/show the connection status window</div>
-  <div class="instruction">Press 4 to hide/show nametags</div>
+  <div class="instruction" data-i18n="[html]instruction.connStatusToggle">Press 3 to hide/show the connection status window</div>
+  <div class="instruction" data-i18n="[html]instruction.nametagToggle">Press 4 to hide/show nametags</div>
   <div data-game-ids="2kki" style="display: none;">
     <br>
-    <div class="notice">Yume 2kki Version <span id="2kkiVersion"></span></div>
-    <div class="notice">Hosted with permission from the Yume 2kki developers</div>
+    <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
+    <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
   </div>
   <br>
   <div id="ioControls">
-    <button id="uploadButton">Upload Save File</button>
-    <button id="downloadButton">Download Save File</button>
+    <button id="uploadButton" data-i18n="[html]io.upload">Upload Save File</button>
+    <button id="downloadButton" data-i18n="[html]io.download">Download Save File</button>
   </div>
   <br>
-  <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN">Join our Discord!</a></div>
+  <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN" data-i18n="[html]instruction.discord">Join our Discord!</a></div>
+  <br>
+  <div id="langContainer">
+    <label for="lang" class="unselectable" data-i18n="[html]lang.label">Language:</label>
+    <select id="lang">
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+    </select>
+  </div>
   <div id="backgroundTransition"></div>
 </div>
 <script>
@@ -581,7 +588,9 @@ if (hasTouchscreen) {
   let cachedLocationLink = null;
   let cachedLocationName = null;
   const unknownLocationLabel = 'Unknown Location';
+  const unknownLocationLabelJP = '場所不明';
   const queryingLocationLabel = 'Querying Location...';
+  const queryingLocationLabelJP = '場所を探す…';
   const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900'];
@@ -606,10 +615,10 @@ if (hasTouchscreen) {
 
       if (useDefaultLocation)
         locationLink = defaultLocationLinks[mapId];
-      else if (locationLink === queryingLocationLabel)
+      else if (locationLink === queryingLocationLabel || locationLink === queryingLocationLabelJP)
         locationLink = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
-        locationLink = unknownLocationLabel;
+        locationLink = config.lang === 'en' ? unknownLocationLabel : unknownLocationLabelJP;
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
@@ -638,7 +647,7 @@ if (hasTouchscreen) {
       req.open("GET", url);
       req.send();
 
-      setLocation(mapId, prevMapId, 'Querying Location...', prevLocationLink, true);
+      setLocation(mapId, prevMapId, config.lang === 'en' ? queryingLocationLabel : queryingLocationLabelJP, prevLocationLink, true);
 
       req.onload = (e) => {
         const locationsArray = req.response;
@@ -671,7 +680,7 @@ if (hasTouchscreen) {
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || unknownLocationLabel;
+    document.getElementById('locationText').innerHTML = locationLink || (config.lang === 'en' ? unknownLocationLabel : unknownLocationLabelJP);
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -730,13 +739,20 @@ if (hasTouchscreen) {
       el.remove();
   }
 
+  let localizedMessages;
+
   const hasUiThemes = !!document.querySelector('.uiTheme');
 
   let config = {
+    lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
     name: ''
   };
 
   let locationCache;
+
+  document.getElementById('lang').onchange = function () {
+    setLang(this.value);
+  };
 
   if (hasUiThemes) {
     config.uiTheme = 'Default';
@@ -878,8 +894,15 @@ if (hasTouchscreen) {
   document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
   
   window.onbeforeunload = function () {
-    return 'Are you sure you want to leave the page? Any unsaved in-game progress will be lost.';
+    return localizedMessages.leavePage;
   };
+
+  function setLang(lang, isInit) {
+    config.lang = document.getElementById('lang').value;
+    initLocalization(lang);
+    if (!isInit)
+      updateConfig(config);
+  }
   
   function setName(name, isInit) {
     config.name = document.getElementById('nameInput').value;
@@ -1007,7 +1030,7 @@ if (hasTouchscreen) {
     const save = evt.target.files[0];
 
     if (!/^Save\d{2}\.lsd$/.test(save.name)) {
-      alert("Please select a valid save file (.lsd format).");
+      alert(localizedMessages.io.upload.invalidSaveFile);
       document.getElementById('uploadButton').click();
       return;
     }
@@ -1057,7 +1080,7 @@ if (hasTouchscreen) {
         const record = objectStoreRequest.result;
 
         if (!record) {
-          alert('Oops! The save file for the provided slot appears to be empty.');
+          alert(localizedMessages.io.download.emptySlot);
           return;
         }
 
@@ -1072,17 +1095,76 @@ if (hasTouchscreen) {
   }
 
   function getSaveSlot() {
-    let fileIndex = prompt('Enter the save file slot number to upload to (1 to 15).', 1);
+    let fileIndex = prompt(localizedMessages.io.common.slotInput.initial, 1);
     let fileIndexInt;
 
     while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
-      fileIndex = prompt('The provided slot was not valid: please enter a save file slot number from 1 to 15.');
+      fileIndex = prompt(localizedMessages.io.common.slotInput.subsequent);
 
     if (fileIndex == null)
       return null;
 
     return fileIndexInt < 10 ? `0${fileIndexInt}` : fileIndexInt.toString();
   }
+
+  function initLocalization(isInitial) {
+    if (isInitial && gameId === '2kki') {
+      const uiThemeOptions = document.querySelectorAll('.uiTheme option');
+      for (let option of uiThemeOptions)
+        option.setAttribute('data-i18n', `[html]uiTheme.values.2kki.${option.value}`);
+    }
+    fetch(`lang/${config.lang}.json`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (jsonResponse) {
+        const version = jsonResponse.version[gameId];
+        if (version) {
+          const versionElement = document.querySelector('.version');
+          const versionMeta = document.querySelector(`meta[name="${gameId}Version"]`);
+          if (versionElement && versionMeta) {
+            const substituteKeys = Object.keys(version.substitutes);
+            let versionLabel = version.label.replace('{VERSION}', versionMeta.content || '?');
+            for (let sk of substituteKeys)
+              versionLabel = versionLabel.replace(sk, version.substitutes[sk]);
+            versionElement.innerHTML = versionLabel;
+          }
+        }
+        if (config.lang === 'ja')
+          convertJPLabels(jsonResponse.ui);
+        localizedMessages = jsonResponse.messages;
+        const resourcesJson = {};
+        resourcesJson[config.lang] = { translation: jsonResponse.ui };
+        i18next.init({
+          lng: config.lang,
+          resources: resourcesJson,
+          preventValueFromContent: false
+        }, function (err, t) {
+          if (err)
+            console.error(err);
+          locI18next.init(i18next)('[data-i18n]');
+        });
+      });
+  }
+
+  function convertJPLabels(data) {
+    if (data) {
+        Object.keys(data).forEach(function (key) {
+            const value = data[key];
+            if (value) {
+                switch (typeof value) {
+                    case 'object':
+                        convertJPLabels(value);
+                        break;
+                    case 'string':
+                        if (value.indexOf(' ') > -1)
+                            data[key] = value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
+                        break;
+                }
+            }
+        });
+    }
+}
   
   function loadOrInitConfig() {
     try {
@@ -1097,9 +1179,13 @@ if (hasTouchscreen) {
           if (config.hasOwnProperty(key)) {
             let value = savedConfig[key];
             switch (key) {
+              case 'lang':
+                document.getElementById('lang').value = value;
+                setLang(value, true);
+                break;
               case 'name':
                 document.getElementById('nameInput').value = value;
-                setName(name, true);
+                setName(value, true);
                 break;
               case 'uiTheme':
                 if (hasUiThemes)

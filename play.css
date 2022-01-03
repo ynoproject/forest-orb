@@ -169,6 +169,17 @@ body {
   width: calc(100% - 28px);
 }
 
+#langContainer {
+  margin: 0 auto;
+  text-align: right;
+  width: 100%;
+  max-width: 1036px;
+}
+
+.jp-word-break {
+  white-space: nowrap;
+}
+
 .uiControl {
   text-align: center;
 }
