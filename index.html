@@ -1130,7 +1130,7 @@ if (hasTouchscreen) {
           const versionMeta = document.querySelector(`meta[name="${gameId}Version"]`);
           if (versionElement && versionMeta) {
             const substituteKeys = Object.keys(version.substitutes);
-            let versionLabel = version.label.replace('{VERSION}', versionMeta.content || '?');
+            let versionLabel = version.label.replace('{VERSION}', `<span class="preserve-spacing">${versionMeta.content || '?'}</span>`);
             for (let sk of substituteKeys)
               versionLabel = versionLabel.replace(sk, version.substitutes[sk]);
             versionElement.innerHTML = versionLabel;

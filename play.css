@@ -181,7 +181,7 @@ html:not([lang='ru']) #enterNameInstruction span {
   max-width: 1036px;
 }
 
-.uiTheme, .fontStyle, .message {
+.preserve-spacing, .uiTheme, .fontStyle, .message {
   letter-spacing: 0 !important;
   word-spacing: 0 !important;
 }
