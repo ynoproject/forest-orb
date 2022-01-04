@@ -590,7 +590,6 @@ if (hasTouchscreen) {
   const unknownLocationLabel = 'Unknown Location';
   const unknownLocationLabelJP = '場所不明';
   const queryingLocationLabel = 'Querying Location...';
-  const queryingLocationLabelJP = '場所を探す…';
   const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900'];
@@ -615,7 +614,7 @@ if (hasTouchscreen) {
 
       if (useDefaultLocation)
         locationLink = defaultLocationLinks[mapId];
-      else if (locationLink === queryingLocationLabel || locationLink === queryingLocationLabelJP)
+      else if (locationLink === queryingLocationLabel)
         locationLink = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
         locationLink = config.lang === 'en' ? unknownLocationLabel : unknownLocationLabelJP;
@@ -647,7 +646,7 @@ if (hasTouchscreen) {
       req.open("GET", url);
       req.send();
 
-      setLocation(mapId, prevMapId, config.lang === 'en' ? queryingLocationLabel : queryingLocationLabelJP, prevLocationLink, true);
+      setLocation(mapId, prevMapId, queryingLocationLabel, prevLocationLink, true);
 
       req.onload = (e) => {
         const locationsArray = req.response;
