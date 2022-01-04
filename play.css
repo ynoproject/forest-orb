@@ -9,6 +9,11 @@ html, input[type='text'], select, #ioControls button {
   font-size: 16px;
 }
 
+html[lang='ru'], html[lang='ru'] input[type='text'], html[lang='ru'] select, html[lang='ru'] #ioControls button {
+  letter-spacing: -4px;
+  word-spacing: 4px;
+}
+
 body {
   margin: 0 0 16px 0;
   padding: 8px;
@@ -161,7 +166,7 @@ body {
   margin-top: 8px;
 }
 
-#enterNameInstruction span {
+html:not([lang='ru']) #enterNameInstruction span {
   letter-spacing: -0.675px;
 }
 
@@ -174,6 +179,11 @@ body {
   text-align: right;
   width: 100%;
   max-width: 1036px;
+}
+
+.uiTheme, .fontStyle, .message {
+  letter-spacing: 0 !important;
+  word-spacing: 0 !important;
 }
 
 .jp-word-break {
