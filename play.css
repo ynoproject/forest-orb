@@ -45,7 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   width: calc(100% - 48px);
-  z-index: 2;
+  z-index: auto;
 }
 
 #mainContainer.noSideBorders {
