@@ -1,16 +1,16 @@
 {
   "version": {
     "2kki": {
-      "label": "Yume 2kki Version {VERSION}",
+      "label": "Yume 2kki Versión {VERSION}",
       "substitutes": {
-        " Patch ": " Patch ",
+        " Patch ": " Parche ",
         "?": "?"
       }
     }
   },
   "ui": {
     "uiTheme": {
-      "label": "UI Theme:",
+      "label": "Tema de Inferfaz:",
       "values": {
         "2kki": {
           "Default": "Default",
@@ -52,7 +52,7 @@
           "Originator_Garden": "Originator Garden",
           "Fluorescent_Halls": "Fluorescent Halls",
           "City_of_Liars": "City of Liars",
-          "Misc": "Misc. Theme",
+          "Misc": "Tema Misceláneo",
           "Monochrome_GB_World": "Monochrome GB World",
           "Smiley_Signs_World": "Smiley Signs World",
           "Lovesick_World": "Lovesick World",
@@ -64,60 +64,60 @@
       }
     },
     "fontStyle": {
-      "label": "Font Style:",
+      "label": "Estilo de Fuente:",
       "values": {
-        "style1": "Style 1",
-        "style2": "Style 2",
-        "style3": "Style 3",
-        "style4": "Style 4",
-        "style5": "Style 5",
-        "style6": "Style 6",
-        "style7": "Style 7"
+        "style1": "Estilo 1",
+        "style2": "Estilo 2",
+        "style3": "Estilo 3",
+        "style4": "Estilo 4",
+        "style5": "Estilo 5",
+        "style6": "Estilo 6",
+        "style7": "Estilo 7"
       }
     },
     "chatbox": {
-      "location": "Location:&nbsp;",
+      "location": "Ubicación:&nbsp;",
       "nickname": {
-        "header": "You must set a nickname before you can chat.",
+        "header": "Debes seleccionar un apodo antes de poder usar el chat.",
         "rule": {
-          "maxLength": "* Maximum 12 characters",
-          "alphanumeric": "* Alphanumeric characters only"
+          "maxLength": "* Máximo de 12 caracteres",
+          "alphanumeric": "* Solo caracteres alfanuméricos"
         }
       }
     },
     "instruction": {
-      "connStatusToggle": "Press 3 to hide/show the connection status window",
-      "nametagToggle": "Press 4 to hide/show nametags",
-      "discord": "Join our Discord!"
+      "connStatusToggle": "Presiona 3 para mostrar o esconder la ventana de estado de conexión",
+      "nametagToggle": "Presiona 4 para mostar o esconder etiquetas de nombre",
+      "discord": "¡Únete a nuestro servidor de Discord!"
     },
     "io": {
-      "upload": "Upload Save File",
-      "download": "Download Save File"
+      "upload": "Cargar archivo de guardado",
+      "download": "Descargar archivo de guardado"
     },
     "lang": {
-      "label": "Language:"
+      "label": "Lenguaje:"
     },
     "2kki": {
-      "hostedWithPermission": "Hosted with permission from the Yume 2kki developers"
+      "hostedWithPermission": "Hosteado con la autorización de los desarrolladores de Yume 2kki"
     }
   },
   "messages": {
-    "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
+    "leavePage": "¿Estás seguro de que quieres abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "io": {
       "common": {
-        "failedSlotInput": "The provided slot was not valid: please enter a save file slot number from 1 to 15."
+        "failedSlotInput": "La ranura seleccionada no es válida: Ingrese un número de ranura para el archivo de guardado entre 1 y 15."
       },
       "upload": {
-        "slotInput": "Enter the save file slot number to upload to (1 to 15).",
-        "invalidSaveFile": "Please select a valid save file (.lsd format)."
+        "slotInput": "Ingresa el número de ranura en el cual se desea cargar el archivo de guardado (1 al 15).",
+        "invalidSaveFile": "Selecciona un archivo de guardado válido (formato .lsd)."
       },
       "download": {
-        "slotInput": "Enter the save file slot number to download for (1 to 15).",
-        "emptySlot": "Oops! The save file for the provided slot appears to be empty."
+        "slotInput": "Ingresa el número de ranura en el cual se encuentra el archivo de guardado que se quiere descargar (1 al 15).",
+        "emptySlot": "¡Ups! El archivo de guardado en la ranura seleccionada parece estar vacío."
       }
     },
     "location": {
-      "unknownLocation": "Unknown Location"
+      "unknownLocation": "Ubicación Desconocida"
     }
   }
 }

@@ -428,12 +428,12 @@
     <select id="lang">
       <option value="en">English</option>
       <option value="ja">日本語</option>
+      <option value="es">Español</option>
     </select>
   </div>
   <div id="backgroundTransition"></div>
 </div>
 <script>
-
   const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
   const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
@@ -587,9 +587,11 @@ if (hasTouchscreen) {
   let cachedMapId = null;
   let cachedLocationLink = null;
   let cachedLocationName = null;
-  const unknownLocationLabel = 'Unknown Location';
-  const unknownLocationLabelJP = '場所不明';
-  const queryingLocationLabel = 'Querying Location...';
+  const queryingLocationLabels = {
+    'en': 'Querying Location...',
+    'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
+    'es': 'Buscando Ubicación...'
+  };
   const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900'];
@@ -614,10 +616,10 @@ if (hasTouchscreen) {
 
       if (useDefaultLocation)
         locationLink = defaultLocationLinks[mapId];
-      else if (locationLink === queryingLocationLabel)
+      else if (Object.values(queryingLocationLabels).indexOf(locationLink) > -1)
         locationLink = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
-        locationLink = config.lang === 'en' ? unknownLocationLabel : unknownLocationLabelJP;
+        locationLink = localizedMessages.location.unknownLocation;
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
@@ -646,7 +648,7 @@ if (hasTouchscreen) {
       req.open("GET", url);
       req.send();
 
-      setLocation(mapId, prevMapId, queryingLocationLabel, prevLocationLink, true);
+      setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocationLink, true);
 
       req.onload = (e) => {
         const locationsArray = req.response;
@@ -679,7 +681,7 @@ if (hasTouchscreen) {
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || (config.lang === 'en' ? unknownLocationLabel : unknownLocationLabelJP);
+    document.getElementById('locationText').innerHTML = locationLink || localizedMessages.location.unknownLocation;
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -1065,7 +1067,7 @@ if (hasTouchscreen) {
     const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
     request.onsuccess = function (e) {
-      const saveSlot = getSaveSlot();
+      const saveSlot = getSaveSlot(true);
 
       if (saveSlot == null)
         return;
@@ -1093,12 +1095,12 @@ if (hasTouchscreen) {
     };
   }
 
-  function getSaveSlot() {
-    let fileIndex = prompt(localizedMessages.io.common.slotInput.initial, 1);
+  function getSaveSlot(download) {
+    let fileIndex = prompt(localizedMessages.io[download ? 'download' : 'upload'].slotInput, 1);
     let fileIndexInt;
 
     while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
-      fileIndex = prompt(localizedMessages.io.common.slotInput.subsequent);
+      fileIndex = prompt(localizedMessages.io.common.failedSlotInput);
 
     if (fileIndex == null)
       return null;
