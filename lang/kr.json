@@ -1,7 +1,7 @@
 {
   "version": {
     "2kki": {
-      "label": "유메2키 {버전}",
+      "label": "유메2키 {VERSION}",
       "substitutes": {
         " Patch ": " 패치 ",
         "?": "?"
