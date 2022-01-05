@@ -59,6 +59,43 @@ body {
   width: 100%;
 }
 
+#controls {
+  display: flex;
+  justify-content: right;
+  z-index: 10;
+}
+
+#controls .mapButton {
+  margin-right: 8px;
+}
+
+#layout:not(:fullscreen) #controls {
+  height: 24px;
+  margin-bottom: -24px;
+  position: relative;
+}
+
+/* Ignore :fullscreen on iOS since it's not supported */
+@supports (-webkit-touch-callout: none) {
+  #controls {
+    height: 24px;
+    margin-bottom: -24px;
+    position: relative;
+  }
+}
+
+#controls button {
+  padding-right: 1px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+#controls svg {
+  pointer-events: none;
+}
+
 #canvasContainer {
   display: flex;
   align-items: center;
@@ -372,11 +409,20 @@ input[type='text'], select {
   max-height: 100%;
 }
 
+#layout:fullscreen #chatboxContainer, #layout:fullscreen #chatbox {
+  height: calc(100% - 24px);
+}
+
 #layout:fullscreen #mainContainer {
   border: none;
   background-image: none !important;
   width: 100%;
   z-index: auto;
+}
+
+#layout:fullscreen #controls {
+  position: fixed;
+  right: 0;
 }
 
 #layout:fullscreen.downscale canvas {

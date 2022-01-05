@@ -40,31 +40,6 @@
       height: 100%;
     }
 
-    #controls {
-      display: flex;
-      position: relative;
-      justify-content: right;
-      z-index: 10;
-      height: 24px;
-      margin-bottom: -24px;
-    }
-
-    #controls button {
-      -webkit-appearance: button;
-      display: inline-flex;
-      background: transparent;
-      border: 0;
-      font-family: inherit;
-      font-size: 1em;
-      line-height: inherit;
-      cursor: pointer;
-      padding-right: 1px;
-    }
-
-    #controls svg {
-      pointer-events: none;
-    }
-
     #dpad, #apad {
       position: fixed;
       bottom: 1rem;
@@ -945,6 +920,7 @@ if (hasTouchscreen) {
 
       if (window.innerWidth > 1050 || window.innerHeight < 595) {
         const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
+        chatboxContainerMarginTop = '24px';
         if (chatboxContainerWidth + 48 <= window.innerWidth - (canvasElement.offsetWidth * scale))
           canvasContainerPaddingRight = `${chatboxContainerWidth}px`;
         else
@@ -956,8 +932,10 @@ if (hasTouchscreen) {
           canvasContainerMarginTop = `-${(window.innerHeight - canvasScaledHeight) / 2}px`
           chatboxContainerMarginTop = `${(window.innerHeight - unusedHeight) - 40}px`;
           chatboxHeight = `${unusedHeight}px`;
-        } else
+        } else {
+          chatboxContainerMarginTop = '24px';
           chatboxOverlap = true;
+        }
       }
     } else {
       canvasElement.style.transform = null;
