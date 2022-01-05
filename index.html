@@ -986,7 +986,7 @@ if (hasTouchscreen) {
 
   function setLang(lang, isInit) {
     config.lang = document.getElementById('lang').value;
-    initLocalization(lang);
+    initLocalization(isInit);
     if (!isInit)
       updateConfig(config);
   }
@@ -1315,6 +1315,8 @@ if (hasTouchscreen) {
     setFontStyle(0, true);
   if (!config.hasOwnProperty('uiTheme'))
     setUiTheme('Default', true);
+  if (!localizedMessages)
+    initLocalization(true);
 </script>
 
 </body>
