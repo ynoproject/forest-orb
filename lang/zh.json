@@ -1,94 +1,94 @@
 {
   "version": {
     "2kki": {
-      "label": "梦2记 版本 {VERSION}",
+      "label": "梦２记 当前版本： {VERSION}",
       "substitutes": {
-        " Patch ": " 补丁 ",
+        " Patch ": " patch ",
         "?": "？"
       }
     }
   },
   "ui": {
     "uiTheme": {
-      "label": "页面主题：",
+      "label": "界面风格：",
       "values": {
         "2kki": {
-          "Default": "默认",
-          "Default_2": "默认2",
-          "Default_3": "默认3",
-          "Default_4": "默认4",
-          "Default_5": "默认5",
-          "Developer_Room": "Developer Room",
-          "Glitch_Ending": "Bleak Future",
-          "Glitch_Ending_2": "Bleak Future 2",
-          "Black_Building": "Black Building",
-          "Cog_Maze": "Cog Maze",
-          "Square_Square_World": "Square-Square World",
-          "Verdant_Promenade": "Verdant Promenade",
-          "Urotsukis_Dream_Apartments": "Urotsuki's Dream Apartments",
-          "Sofa_Room": "Sofa Room",
-          "Depths": "Depths",
-          "Depths_2": "Depths 2",
-          "Guts_World": "Guts World",
-          "Maple_Shrine": "Maple Shrine",
-          "Pencil_World": "Pencil World",
-          "Chocolate_World": "Chocolate World",
-          "Blue_Cactus_Islands": "Blue Cactus Islands",
-          "Stone_Towers": "Stone Towers",
-          "Constellation_World": "Star Building",
-          "Blob_Desert": "Blob Desert",
-          "Cipher_Keyboard": "Cipher Keyboard",
-          "Viridian_Wetlands": "Viridian Wetlands",
-          "Polluted_Swamp": "Polluted Swamp",
-          "Snowy_Village": "Snowy Village",
-          "Decrepit_Dwellings": "Decrepit Dwellings",
-          "Verdant_Promenade_2": "Verdant Promenade 2",
-          "Black_Ink_World": "Black Ink World",
-          "Forgotten_Megalopolis": "Forgotten Megalopolis",
-          "Tomb_of_Velleities": "Tomb of Velleities",
-          "Visine_Spacecraft": "Visine Spacecraft",
-          "Data_Stream": "Data Stream",
-          "Lavender_Waters": "Lavender Waters",
-          "Originator_Garden": "Originator Garden",
-          "Fluorescent_Halls": "Fluorescent Halls",
-          "City_of_Liars": "City of Liars",
+          "Default": "默认１",
+          "Default_2": "默认２",
+          "Default_3": "默认３",
+          "Default_4": "默认４",
+          "Default_5": "默认５",
+          "Developer_Room": "开发者的房间",
+          "Glitch_Ending": "错误结局",
+          "Glitch_Ending_2": "错误结局２",
+          "Black_Building": "暗黑大楼",
+          "Cog_Maze": "齿轮迷宫",
+          "Square_Square_World": "立方体通路",
+          "Verdant_Promenade": "青翠长廊",
+          "Urotsukis_Dream_Apartments": "伪现实部屋",
+          "Sofa_Room": "沙发部屋",
+          "Depths": "深渊之下",
+          "Depths_2": "深渊之下２",
+          "Guts_World": "混凝土世界",
+          "Maple_Shrine": "枫树神社",
+          "Pencil_World": "铅笔画世界",
+          "Chocolate_World": "巧克力通路",
+          "Blue_Cactus_Islands": "蓝色仙人掌之岛",
+          "Stone_Towers": "地底通路",
+          "Constellation_World": "星座世界",
+          "Blob_Desert": "斑点荒野",
+          "Cipher_Keyboard": "板凳之馆",
+          "Viridian_Wetlands": "深翠绿的湿地",
+          "Polluted_Swamp": "腐化之地",
+          "Snowy_Village": "冬之村庄",
+          "Decrepit_Dwellings": "集体宿舍",
+          "Verdant_Promenade_2": "森林公园２",
+          "Black_Ink_World": "浓墨世界",
+          "Forgotten_Megalopolis": "遗忘之城",
+          "Tomb_of_Velleities": "维利提斯之墓",
+          "Visine_Spacecraft": "不明飞行物",
+          "Data_Stream": "数据流通路",
+          "Lavender_Waters": "薰衣草之湖",
+          "Originator_Garden": "始祖庭",
+          "Fluorescent_Halls": "繁华道",
+          "City_of_Liars": "谎言之都",
           "Misc": "杂项主题",
-          "Monochrome_GB_World": "Monochrome GB World",
-          "Smiley_Signs_World": "Smiley Signs World",
-          "Lovesick_World": "Lovesick World",
-          "Corrupted_Love_World": "Corrupted Love World",
-          "Saturated_Eyeball_Zone": "Saturated Eyeball Zone",
-          "NES_Glitch_Tunnel": "NES Glitch Tunnel",
-          "Shop_Ruins": "Shop Ruins"
+          "Monochrome_GB_World": "黑白游戏机世界",
+          "Smiley_Signs_World": "微笑标志世界",
+          "Lovesick_World": "相思之恋",
+          "Corrupted_Love_World": "恋之楔",
+          "Saturated_Eyeball_Zone": "彩爱蝶",
+          "NES_Glitch_Tunnel": "NES隧道",
+          "Shop_Ruins": "废墟商店"
         }
       }
     },
     "fontStyle": {
       "label": "字体样式：",
       "values": {
-        "style1": "样式1",
-        "style2": "样式2",
-        "style3": "样式3",
-        "style4": "样式4",
-        "style5": "样式5",
-        "style6": "样式6",
-        "style7": "样式7"
+        "style1": "样式１",
+        "style2": "样式２",
+        "style3": "样式３",
+        "style4": "样式４",
+        "style5": "样式５",
+        "style6": "样式６",
+        "style7": "样式７"
       }
     },
     "chatbox": {
-      "location": "地点：&nbsp;",
+      "location": "当前位置：&nbsp;",
       "nickname": {
-        "header": "在聊天前必须设置昵称。",
+        "header": "设置一个名字即可开始和大家聊天！",
         "rule": {
-          "maxLength": "* 最长12个字符",
-          "alphanumeric": "* 仅限英文字母和数字"
+          "maxLength": "※长度限12个字符",
+          "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
         }
       }
     },
     "instruction": {
-      "connStatusToggle": "按3隐藏/显示连接状态窗口",
-      "nametagToggle": "按4隐藏/显示玩家名",
-      "discord": "加入我们的Discord!"
+      "connStatusToggle": "按数字键３可隐藏/显示连接状态窗口",
+      "nametagToggle": "按数字键４可隐藏/显示玩家名字",
+      "discord": "点此加入我们的Discord频道！"
     },
     "io": {
       "upload": "上传存档文件",
@@ -98,7 +98,7 @@
       "label": "语言："
     },
     "2kki": {
-      "hostedWithPermission": "本服务器的公开已取得梦2记制作组的许可"
+      "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
     }
   },
   "messages": {
