@@ -41,10 +41,12 @@
     }
 
     #controls {
+      display: flex;
       position: relative;
-      text-align: right;
+      justify-content: right;
       z-index: 10;
-      height: 0px;
+      height: 24px;
+      margin-bottom: -24px;
     }
 
     #controls button {
@@ -248,6 +250,7 @@
       <div id="mainContainer" class="container">
         <div id="gameContainer">
             <div id="controls">
+              <div id="mapControls"></div>
               <button id="controls-fullscreen" class="unselectable">
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
               </button>
@@ -599,9 +602,9 @@ if (hasTouchscreen) {
     'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
     'es': 'Buscando Ubicación...',
     'pt': 'Procurando Localização...',
+    'fr': 'Récupération du Lieu...',
     'ru': 'Вычисляем место нахождения...',
     'zh': '正在查询地点...',
-    'fr': 'Récupération du Lieu...',
     'kr': '위치 검색 중...'
   };
   const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
@@ -639,57 +642,75 @@ if (hasTouchscreen) {
       if (locationLink) {
         const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
         const locationNameResult = locationNamePattern.exec(locationLink);
-        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation, cacheLocation);
+        const locationName = locationNameResult ? locationNameResult[1] : null;
+        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation);
         cachedMapId = mapId;
         cachedLocationLink = locationLink;
-        cachedLocationName = locationNameResult ? locationNameResult[1] : null;
-      } else
-        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationName);
+        cachedLocationName = locationName;
+        if (mapCache.hasOwnProperty(locationName))
+          setMaps(mapCache[locationName], locationName);
+        else if (useDefaultLocation) {
+          const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationName);
+          setMaps([], locationName, cacheMap, cacheMap);
+        } else
+          queryAndSetMaps(locationName);
+      } else {
+        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationName)
+          .then(locationName => {
+            if (locationName)
+              queryAndSetMaps(locationName);
+            else
+              setMaps([], true, true);
+          }).catch(err => console.error(err));
+      }
     }
   }
   
   function queryAndSetLocation(mapId, prevMapId, prevLocationLink, prevLocationName) {
-    const req = new XMLHttpRequest();
-      let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
-      if (prevMapId) {
-          url += `&prevMapId=${prevMapId}`;
-          if (prevLocationName)
-            url += `&prevLocationName=${prevLocationName}`;
-      }
-      req.responseType = 'json';
-      req.open("GET", url);
-      req.send();
+    return new Promise((resolve, reject) => {
+      const req = new XMLHttpRequest();
+        let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+        if (prevMapId) {
+            url += `&prevMapId=${prevMapId}`;
+            if (prevLocationName)
+              url += `&prevLocationName=${prevLocationName}`;
+        }
+        req.responseType = 'json';
+        req.open("GET", url);
+        req.send();
 
-      setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocationLink, true);
+        setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocationLink, true);
 
-      req.onload = (e) => {
-        const locationsArray = req.response;
-        let locationName = null;
+        req.onload = (e) => {
+          const locationsArray = req.response;
+          let locationName = null;
 
-        if (Array.isArray(locationsArray) && locationsArray.length) {
-          let location = locationsArray[0];
-          if (locationsArray.length > 1 && prevLocationLink) {
-            for (let l of locationsArray) {
-              if (getLocationLink(l) === prevLocationLink) {
-                location = l;
-                break;
+          if (Array.isArray(locationsArray) && locationsArray.length) {
+            let location = locationsArray[0];
+            if (locationsArray.length > 1 && prevLocationLink) {
+              for (let l of locationsArray) {
+                if (getLocationLink(l) === prevLocationLink) {
+                  location = l;
+                  break;
+                }
               }
             }
+            setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
+            locationName = location.title;
+          } else {
+            if (prevMapId) {
+              queryAndSetLocation(mapId, null, null, null).then(() => resolve(null)).catch(err => reject(err));
+              return;
+            }
+            setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
           }
-          setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
-          locationName = location.title;
-        } else {
-          if (prevMapId) {
-            queryAndSetLocation(mapId, null, null, null);
-            return;
-          }
-          setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
-        }
 
-        cachedMapId = mapId;
-        cachedLocationLink = document.getElementById('locationText').innerHTML;
-        cachedLocationName = locationName;
-      };
+          cachedMapId = mapId;
+          cachedLocationLink = document.getElementById('locationText').innerHTML;
+          cachedLocationName = locationName;
+          resolve(locationName);
+        };
+    });
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
@@ -737,6 +758,57 @@ if (hasTouchscreen) {
     for (let i = 249; i <= 250; i++)
       ret[`0${i}`] = platedSnowCountryLink;
 
+    return ret;
+  }
+
+  function queryAndSetMaps(locationName) {
+    return new Promise((resolve, reject) => {
+      const req = new XMLHttpRequest();
+        let url = `https://2kki.app/getLocationMaps?locationName=${locationName}`;
+        req.responseType = 'json';
+        req.open("GET", url);
+        req.send();
+
+        setMaps([], true);
+
+        req.onload = (e) => {
+          const mapsArray = req.response;
+
+          if (Array.isArray(mapsArray))
+            setMaps(mapsArray, locationName, true, true);
+
+          resolve();
+        };
+    });
+  }
+
+  function setMaps(maps, locationName, cacheMaps, saveMaps) {
+    const mapControls = document.getElementById('mapControls');
+    mapControls.innerHTML = '';
+    if (maps && maps.length) {
+      for (let map of maps)
+        mapControls.appendChild(getMapButton(map.url, map.label));
+    }
+    if (cacheMaps && locationName) {
+      mapCache[locationName] = maps;
+      if (saveMaps) {
+        config.mapCache[locationName] = maps;
+        updateConfig(config);
+      }
+    }
+  }
+
+  function getMapButton(url, label) {
+    const ret = document.createElement('button');
+    ret.classList.add('mapButton');
+    ret.classList.add('unselectable');
+    ret.title = label;
+    ret.onclick = () => {
+      const handle = window.open(url, '_blank', 'noreferrer');
+      if (handle)
+          handle.focus();
+    };
+    ret.innerHTML = '<svg viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l6 3 6-3 6 3v15l-6-3-6 3-6-3v-15m6 3v15m6-18v15"></path></svg>';
     return ret;
   }
 
@@ -806,7 +878,9 @@ if (hasTouchscreen) {
   if (gameId === '2kki') {
     document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
     locationCache = {};
+    mapCache = {};
     config.locationCache = {};
+    config.mapCache = {};
   }
 
   let ignoreSizeChanged = false;
@@ -1212,6 +1286,9 @@ if (hasTouchscreen) {
                 break;
               case 'locationCache':
                 locationCache = Object.assign({}, value);
+                break;
+              case 'mapCache':
+                mapCache = Object.assign({}, value);
                 break;
             }
             config[key] = value;
