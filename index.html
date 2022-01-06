@@ -215,20 +215,22 @@
       <div id="mainContainer" class="container">
         <div id="gameContainer">
             <div id="controls">
-              <div id="ioControls">
+              <div id="leftControls">
                 <button id="uploadButton" class="unselectable" data-i18n="[title]tooltips.io.upload">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 18v-3.25h-2.25l3.75-4.25 3.75 4.25h-2.25v3.25h-3m-12.75-16.5q0-1.5 1.5-1.5h11.25l2.25 2.25v9.1m-2.25 5.15h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v3.25m0 1.75v1.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
                 </button><button id="downloadButton" class="unselectable" data-i18n="[title]tooltips.io.download">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
                 </button>
               </div>
-              <div id="mapControls" data-game-ids="2kki"></div>
-              <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
-                <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
-              </button>
-              <button id="controls-fullscreen" class="unselectable">
-                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
-              </button>
+              <div id="rightControls">
+                <div id="mapControls" data-game-ids="2kki"></div>
+                <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
+                  <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
+                </button>
+                <button id="controls-fullscreen" class="unselectable">
+                  <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
+                </button>
+              </div>
             </div>
 
             <div id="status"></div>
@@ -938,6 +940,7 @@ if (hasTouchscreen) {
   }
 
   function updateCanvasFullscreenSize() {
+    const layoutElement = document.getElementById('layout');
     const canvasElement = document.getElementById('canvas');
     const canvasContainerElement = document.getElementById('canvasContainer');
     const chatboxContainerElement = document.getElementById('chatboxContainer');
@@ -952,7 +955,7 @@ if (hasTouchscreen) {
     if (document.fullscreenElement) {
       let scaleX = window.innerWidth / canvasElement.offsetWidth;
       let scaleY = window.innerHeight / canvasElement.offsetHeight;
-      const scaleFraction = document.getElementById('layout').classList.contains('downscale') ? 0.25 : 0.5;
+      const scaleFraction = layoutElement.classList.contains('downscale') ? 0.25 : 0.5;
       scaleX -= scaleX % scaleFraction;
       scaleY -= scaleY % scaleFraction;
       const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
@@ -986,7 +989,7 @@ if (hasTouchscreen) {
     canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
     canvasContainerElement.style.marginTop = canvasContainerMarginTop;
     chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
-    chatboxContainerElement.classList.toggle('overlap', chatboxOverlap);
+    layoutElement.classList.toggle('chatboxOverlap', chatboxOverlap);
     document.getElementById('chatbox').style.height = chatboxHeight;
 
     document.getElementById("messages").scrollTop = messages.scrollHeight;
