@@ -91,8 +91,8 @@
       "discord": "Discordに 参加 する"
     },
     "io": {
-      "upload": "セーブデータを アップロード",
-      "download": "セーブデータを ダウンロード"
+      "upload": "セーブデータをアップロード",
+      "download": "セーブデータをダウンロード"
     },
     "lang": {
       "label": "言語"

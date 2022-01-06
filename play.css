@@ -4,12 +4,12 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input[type='text'], select, #ioControls button {
+html, input[type='text'], select {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
 
-html[lang='ru'], html[lang='ru'] select, html[lang='ru'] #ioControls button {
+html[lang='ru'], html[lang='ru'] select {
   letter-spacing: -4px;
   word-spacing: 4px;
 }
@@ -60,12 +60,25 @@ body {
 }
 
 #controls {
+  width: 100%;
   display: flex;
   justify-content: right;
   z-index: 10;
 }
 
-#controls .mapButton {
+#ioControls {
+  width: 100%;
+}
+
+#mapControls {
+  display: flex;
+}
+
+#ioControls button, #mapControls button {
+  margin-right: 8px;
+}
+
+#mapControls button {
   margin-right: 8px;
 }
 
@@ -420,19 +433,23 @@ input[type='text'], select {
   z-index: auto;
 }
 
-#layout:fullscreen #controls {
-  position: fixed;
-  right: 0;
-}
-
 #layout:fullscreen.downscale canvas {
   image-rendering: auto;
   min-width: 640px;
   min-height: 480px;
 }
 
+#layout:fullscreen #controls {
+  position: fixed;
+  right: 0;
+}
+
 #layout:fullscreen #controls button {
   margin: 8px 8px 0 0;
+}
+
+#layout:fullscreen #ioControls {
+  margin-left: 8px;
 }
 
 #layout:fullscreen #chatboxContainer {
