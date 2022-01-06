@@ -96,7 +96,7 @@
       background-color: black;
     }
 
-    body, .container, div, input[type='text'], #ioControls .button {
+    body, .container, div, input[type='text'] {
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
@@ -175,25 +175,12 @@
       background-size: 410px;
     }
   
-    input[type='text'], select, #ioControls button {
+    input[type='text'], select {
       border: 12px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
-    }
-
-    #ioControls {
-      display: flex;
-      justify-content: center;
-    }
-
-    #ioControls button {
-      z-index: 1;
-    }
-
-    #ioControls button:not(:last-child) {
-      margin-right: 32px;
     }
   </style>
   <style data-game-ids="2kki">
@@ -225,6 +212,13 @@
       <div id="mainContainer" class="container">
         <div id="gameContainer">
             <div id="controls">
+              <div id="ioControls">
+                <button id="uploadButton" class="unselectable" data-i18n="[title]io.upload">
+                  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 18v-3.25h-2.25l3.75-4.25 3.75 4.25h-2.25v3.25h-3m-12.75-16.5q0-1.5 1.5-1.5h11.25l2.25 2.25v9.1m-2.25 5.15h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v3.25m0 1.75v1.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
+                </button><button id="downloadButton" class="unselectable" data-i18n="[title]io.download">
+                  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
+                </button>
+              </div>
               <div id="mapControls"></div>
               <button id="controls-fullscreen" class="unselectable">
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
@@ -394,11 +388,6 @@
     <br>
     <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
     <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
-  </div>
-  <br>
-  <div id="ioControls">
-    <button id="uploadButton" data-i18n="[html]io.upload">Upload Save File</button>
-    <button id="downloadButton" data-i18n="[html]io.download">Download Save File</button>
   </div>
   <br>
   <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN" data-i18n="[html]instruction.discord">Join our Discord!</a></div>
@@ -783,7 +772,7 @@ if (hasTouchscreen) {
       if (handle)
           handle.focus();
     };
-    ret.innerHTML = '<svg viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l6 3 6-3 6 3v15l-6-3-6 3-6-3v-15m6 3v15m6-18v15"></path></svg>';
+    ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
     return ret;
   }
 
