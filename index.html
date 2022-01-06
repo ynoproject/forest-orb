@@ -193,6 +193,10 @@
       display: none;
     }
 
+    #locationLabel {
+      white-space: nowrap;
+    }
+
     #locationText {
       width: 100%;
       text-align: center;
@@ -218,7 +222,7 @@
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
                 </button>
               </div>
-              <div id="mapControls"></div>
+              <div id="mapControls" data-game-ids="2kki"></div>
               <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
                 <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
               </button>
@@ -358,7 +362,7 @@
       <div id="chatboxContainer" class="container" style="display: none">
         <div id="chatbox">
           <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
-            <span data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
+            <span id="locationLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
           </div>
           <div id="messages"></div>
           <div id="chatInputContainer" style="display: none">
