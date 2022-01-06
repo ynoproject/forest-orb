@@ -90,15 +90,20 @@
       "nametagToggle": "4번 키를 눌러 이름표를 표시하거나 가리기",
       "discord": "저희 디스코드 서버에 들어오세요!"
     },
-    "io": {
-      "upload": "세이브 파일 불러오기",
-      "download": "세이브 파일 다운로드"
-    },
     "lang": {
       "label": "언어"
     },
     "2kki": {
       "hostedWithPermission": "본 서버는 유메2키 개발자의 허가를 받아 운영됩니다."
+    },
+    "tooltips": {
+      "io": {
+        "upload": "세이브 파일 불러오기",
+        "download": "세이브 파일 다운로드"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

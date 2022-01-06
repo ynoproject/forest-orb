@@ -74,11 +74,7 @@ body {
   display: flex;
 }
 
-#ioControls button, #mapControls button {
-  margin-right: 8px;
-}
-
-#mapControls button {
+#ioControls button, #explorerButton, #mapControls button {
   margin-right: 8px;
 }
 

@@ -90,15 +90,20 @@
       "nametagToggle": "Pressione 4 para esconder/mostrar os nomes dos outros jogadores",
       "discord": "Junte-se ao nosso Discord!"
     },
-    "io": {
-      "upload": "Enviar arquivo salvo",
-      "download": "Baixar arquivo salvo"
-    },
     "lang": {
       "label": "Idioma:"
     },
     "2kki": {
       "hostedWithPermission": "Hospedados com a permissão dos desenvolvedores de Yume 2kki"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Enviar arquivo salvo",
+        "download": "Baixar arquivo salvo"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

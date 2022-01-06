@@ -90,15 +90,20 @@
       "nametagToggle": "Press 4 to hide/show nametags",
       "discord": "Join our Discord!"
     },
-    "io": {
-      "upload": "Upload Save File",
-      "download": "Download Save File"
-    },
     "lang": {
       "label": "Language:"
     },
     "2kki": {
       "hostedWithPermission": "Hosted with permission from the Yume 2kki developers"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Upload Save File",
+        "download": "Download Save File"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

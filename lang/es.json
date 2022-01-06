@@ -90,15 +90,20 @@
       "nametagToggle": "Presiona 4 para mostar o esconder etiquetas de nombre",
       "discord": "¡Únete a nuestro servidor de Discord!"
     },
-    "io": {
-      "upload": "Cargar archivo de guardado",
-      "download": "Descargar archivo de guardado"
-    },
     "lang": {
       "label": "Lenguaje:"
     },
     "2kki": {
       "hostedWithPermission": "Hosteado con la autorización de los desarrolladores de Yume 2kki"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Cargar archivo de guardado",
+        "download": "Descargar archivo de guardado"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

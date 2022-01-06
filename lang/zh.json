@@ -90,15 +90,20 @@
       "nametagToggle": "按数字键４可隐藏/显示玩家名字",
       "discord": "点此加入我们的Discord频道！"
     },
-    "io": {
-      "upload": "上传存档文件",
-      "download": "下载存档文件"
-    },
     "lang": {
       "label": "语言："
     },
     "2kki": {
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "上传存档文件",
+        "download": "下载存档文件"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

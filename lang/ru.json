@@ -90,15 +90,20 @@
       "nametagToggle": "Нажмите 4 чтобы показать/спрятать ники на карте .&nbsp;",
       "discord": "Присоединяйтесь к нашему &nbsp;D i s c o r d !"
     },
-    "io": {
-      "upload": "Загрузить сохранение",
-      "download": "Скачать сохранение"
-    },
     "lang": {
       "label": "Язык:"
     },
     "2kki": {
       "hostedWithPermission": "Размещено с разрешения разработчиков &nbsp;Y u m e &nbsp;2 k k i"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Загрузить сохранение",
+        "download": "Скачать сохранение"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {

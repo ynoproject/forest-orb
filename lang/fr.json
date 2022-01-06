@@ -90,15 +90,20 @@
       "nametagToggle": "Pressez 4 pour cacher/montrer les noms de joueurs",
       "discord": "Rejoignez notre Discord !"
     },
-    "io": {
-      "upload": "Ouvrir un Fichier de Sauvegarde",
-      "download": "Télécharger un Fichier de Sauvegarde"
-    },
     "lang": {
       "label": "Langue&nbsp;:"
     },
     "2kki": {
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Ouvrir un Fichier de Sauvegarde",
+        "download": "Télécharger un Fichier de Sauvegarde"
+      },
+      "2kki": {
+        "explorerLink": "View in Yume 2kki Explorer"
+      }
     }
   },
   "messages": {
