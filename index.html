@@ -808,6 +808,8 @@ if (hasTouchscreen) {
 
   function setExplorerLink(locationName) {
     const explorerButton = document.getElementById('explorerButton');
+    if (!explorerButton)
+      return null;
     explorerButton.classList.toggle('hidden', !locationName);
     if (locationName) {
       let url = `https://2kki.app/?location=${locationName}`;
@@ -821,8 +823,12 @@ if (hasTouchscreen) {
     }
   }
 
-  if (is2kki)
+  if (is2kki) {
+    // Yume 2kki Explorer doesn't support mobile
+    if (hasTouchscreen)
+      document.getElementById('explorerButton').remove();
     defaultLocationLinks = getDefaultLocationLinks();
+  }
 </script>
 <script>
   const gameIdsElements = document.querySelectorAll('[data-game-ids]');
