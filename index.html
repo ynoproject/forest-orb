@@ -149,6 +149,10 @@
     a:not(.modalClose) {
       background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
+    
+    h1 {
+      background-size: 36px;
+    }
   
     .messageContainer {
       border-bottom: 4px solid transparent;
@@ -163,12 +167,12 @@
       border: 24px solid transparent;
     }
 
-    h1 {
-      background-size: 36px;
-    }
-
     .container.fullBg {
       background-size: 650px;
+    }
+
+    .modal.fullBg {
+      background-size: calc(100vh - 80px);
     }
 
     #layout.downscale .container.fullBg {
@@ -342,7 +346,7 @@
 <script>
   const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
+  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
   Module = {
     EASYRPG_GAME: gameId,
     EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
@@ -1093,8 +1097,11 @@ if (hasTouchscreen) {
           newSelectedTheme.parentElement.classList.add('selected');
         const useFullBg = hasUiThemes && gameFullBgUiThemes.indexOf(uiTheme) > -1;
         const containers = document.querySelectorAll('.container');
+        const modals = document.querySelectorAll('.modal');
         for (let container of containers)
           container.classList.toggle('fullBg', useFullBg);
+        for (let modal of modals)
+          modal.classList.toggle('fullBg', useFullBg);
         document.querySelector('body').classList.toggle('fullBg', useFullBg);
         if (!isInit) {
           document.querySelector('.fontStyle').onchange();
