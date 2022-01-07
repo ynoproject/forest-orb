@@ -1,0 +1,133 @@
+{
+  "version": {
+    "2kki": {
+      "label": "Yume 2kki Version {VERSION}",
+      "substitutes": {
+        " Patch ": " Patch ",
+        "?": "?"
+      }
+    }
+  },
+  "ui": {
+    "fontStyle": {
+      "label": "Font Stil:",
+      "values": {
+        "style1": "Stil 1",
+        "style2": "Stil 2",
+        "style3": "Stil 3",
+        "style4": "Stil 4",
+        "style5": "Stil 5",
+        "style6": "Stil 6",
+        "style7": "Stil 7"
+      }
+    },
+    "chatbox": {
+      "location": "Ort:&nbsp;",
+      "nickname": {
+        "header": "Du musst einen Chat-Namen angeben um zu chatten.",
+        "rule": {
+          "maxLength": "* Maximal 12 Zeichen",
+          "alphanumeric": "* Nur Alphanumerische zahlen"
+        }
+      }
+    },
+    "instruction": {
+      "connStatusToggle": "Drücke 3, um die Onlineanzeige an/ab zu schalten",
+      "nametagToggle": "Drücke 4 um Namen an/ab zu schalten",
+      "discord": "Trete unserem Discord bei!"
+    },
+    "lang": {
+      "label": "Sprache:"
+    },
+    "2kki": {
+      "hostedWithPermission": "Mit der Erlaubnis der Yume 2kki Entwickler gehostet"
+    },
+    "modal": {
+      "uiTheme": {
+        "title": "UI Stil"
+      }
+    },
+    "tooltips": {
+      "io": {
+        "upload": "Save hochladen",
+        "download": "Save runterladen"
+      },
+      "uiTheme": "UI Stil",
+      "2kki": {
+        "explorerLink": "Im Yume 2kki Explorer ansehen"
+      }
+    }
+  },
+  "labels": {
+    "uiTheme": {
+      "2kki": {
+        "Default": "Standart",
+        "Default_2": "Standart 2",
+        "Default_3": "Standart 3",
+        "Default_4": "Standart 4",
+        "Default_5": "Standart 5",
+        "Developer_Room": "Developer Room",
+        "Glitch_Ending": "Bleak Future",
+        "Glitch_Ending_2": "Bleak Future 2",
+        "Black_Building": "Black Building",
+        "Cog_Maze": "Cog Maze",
+        "Square_Square_World": "Square-Square World",
+        "Verdant_Promenade": "Verdant Promenade",
+        "Urotsukis_Dream_Apartments": "Urotsuki's Dream Apartments",
+        "Sofa_Room": "Sofa Room",
+        "Depths": "Depths",
+        "Depths_2": "Depths 2",
+        "Guts_World": "Guts World",
+        "Maple_Shrine": "Maple Shrine",
+        "Pencil_World": "Pencil World",
+        "Chocolate_World": "Chocolate World",
+        "Blue_Cactus_Islands": "Blue Cactus Islands",
+        "Stone_Towers": "Stone Towers",
+        "Constellation_World": "Star Building",
+        "Blob_Desert": "Blob Desert",
+        "Cipher_Keyboard": "Cipher Keyboard",
+        "Viridian_Wetlands": "Viridian Wetlands",
+        "Polluted_Swamp": "Polluted Swamp",
+        "Snowy_Village": "Snowy Village",
+        "Decrepit_Dwellings": "Decrepit Dwellings",
+        "Verdant_Promenade_2": "Verdant Promenade 2",
+        "Black_Ink_World": "Black Ink World",
+        "Forgotten_Megalopolis": "Forgotten Megalopolis",
+        "Tomb_of_Velleities": "Tomb of Velleities",
+        "Visine_Spacecraft": "Visine Spacecraft",
+        "Data_Stream": "Data Stream",
+        "Lavender_Waters": "Lavender Waters",
+        "Originator_Garden": "Originator Garden",
+        "Fluorescent_Halls": "Fluorescent Halls",
+        "City_of_Liars": "City of Liars",
+        "Misc": "Misc. Theme",
+        "Monochrome_GB_World": "Monochrome GB World",
+        "Smiley_Signs_World": "Smiley Signs World",
+        "Lovesick_World": "Lovesick World",
+        "Corrupted_Love_World": "Corrupted Love World",
+        "Saturated_Eyeball_Zone": "Saturated Eyeball Zone",
+        "NES_Glitch_Tunnel": "NES Glitch Tunnel",
+        "Shop_Ruins": "Shop Ruins"
+      }
+    }
+  },
+  "messages": {
+    "leavePage": "Bist du dir sicher, dass du diese Seite verlassen möchtest? Nicht gespeicherte Fortschritte werden verloren gehen.",
+    "io": {
+      "common": {
+        "failedSlotInput": "Der angegebene Speicherplatz war nicht gültig. Bitte gebe eine Speicherplatz Nummer von 1-15 an."
+      },
+      "upload": {
+        "slotInput": "Gebe den Speicherplatz an in dem du speichern möchtest. (1 bis 15).",
+        "invalidSaveFile": "Bitte benutze eine Datei im gültigen Format. (.lsd Format)."
+      },
+      "download": {
+        "slotInput": "Gebe einen Speicherstand an, den du runterladen möchstest. (1 bis 15).",
+        "emptySlot": "Oops! Der angegebene Speicherplatz scheint leer zu sein."
+      }
+    },
+    "location": {
+      "unknownLocation": "Unbekannter Ort"
+    }
+  }
+}

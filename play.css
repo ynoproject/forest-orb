@@ -391,13 +391,13 @@ input[type='text'], select {
 
   #layout.downscale #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 518px);
+    height: calc(100vh - 474px);
     min-height: 188px;
     max-height: 328px;
   }
 
   #layout.downscale #chatbox {
-    height: calc(100vh - 514px);
+    height: calc(100vh - 470px);
     min-height: 200px;
     max-height: 340px;
   }
