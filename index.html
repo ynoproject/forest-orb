@@ -1284,7 +1284,7 @@ if (hasTouchscreen) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/2kki/Save/Save${saveSlot}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
       objectStoreRequest.onsuccess = function (event) {
         const record = objectStoreRequest.result;
