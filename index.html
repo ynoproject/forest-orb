@@ -111,7 +111,7 @@
       background-size: 100%;
     }
 
-    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track {
+    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
@@ -119,7 +119,7 @@
       image-rendering: pixelated;
     }
 
-    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb {
+    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
       border-image: url('images/ui/yume/Default/border.png') 6 round !important;
       image-rendering: crisp-edges;
@@ -138,7 +138,7 @@
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
-    #enterNameInstruction, .notice, .instruction, .message, a, label {
+    #enterNameInstruction, .notice, .instruction, .message, h1, a, label {
       background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -146,7 +146,7 @@
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
-    a {
+    a:not(.modalClose) {
       background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
   
@@ -155,12 +155,16 @@
       border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
     }
 
-    .container {
+    .container, .modal {
       background-size: 70px;
       background-position-y: -16px;
       background-image: url('images/ui/yume/Default/containerbg.png') !important;
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
       border: 24px solid transparent;
+    }
+
+    h2 {
+      background-size: 36px;
     }
 
     .container.fullBg {
@@ -214,149 +218,84 @@
     <div id="layout">
       <div id="mainContainer" class="container">
         <div id="gameContainer">
-            <div id="controls">
-              <div id="leftControls">
-                <button id="uploadButton" class="unselectable" data-i18n="[title]tooltips.io.upload">
-                  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 18v-3.25h-2.25l3.75-4.25 3.75 4.25h-2.25v3.25h-3m-12.75-16.5q0-1.5 1.5-1.5h11.25l2.25 2.25v9.1m-2.25 5.15h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v3.25m0 1.75v1.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
-                </button><button id="downloadButton" class="unselectable" data-i18n="[title]tooltips.io.download">
-                  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
-                </button>
-              </div>
-              <div id="rightControls">
-                <div id="mapControls" data-game-ids="2kki"></div>
-                <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
-                  <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
-                </button>
-                <button id="controls-fullscreen" class="unselectable">
-                  <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
-                </button>
-              </div>
+          <div id="controls">
+            <div id="leftControls">
+              <button id="uploadButton" class="unselectable" data-i18n="[title]tooltips.io.upload">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 18v-3.25h-2.25l3.75-4.25 3.75 4.25h-2.25v3.25h-3m-12.75-16.5q0-1.5 1.5-1.5h11.25l2.25 2.25v9.1m-2.25 5.15h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v3.25m0 1.75v1.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
+              </button><button id="downloadButton" class="unselectable" data-i18n="[title]tooltips.io.download">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6"></path></svg>
+              </button><button id="uiThemeButton" class="unselectable" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion" data-i18n="[title]tooltips.uiTheme" style="display: none;">
+                <svg viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m4.5 3c4.5-4.5 13.5-3 13.5-0.375m-4.125 6.375c-1.875 0-3.375 1.5-1.875 1.875m3 2.625c3 1.5-4.5 6-10.5 4.5-7.5-3-4.5-12 0-15m9-0.75a1.5 1.5 90 0 0 0 3.75 1.5 1.5 90 0 0 0-3.75m-6 0.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m-3.75 4.5a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m1.5 5.25a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m6-0.75a1.5 1.5 90 0 0-0.75 4.5q2.25 0 3-1.875m7.5-14.625q-6 4.5-7.5 10.5l1.5 0.75q4.5-3.75 6-11.25m-7.5 10.5c-3 0-1.5 3-3 4.5 6 0 4.5-3 4.5-3.75m-3.75 2.25c0.75 1.5 1.5 0 1.5 1.275"></path></svg>
+              </button>
             </div>
-
-            <div id="status"></div>
-
-            <div id="canvasContainer">
-              <canvas id="canvas" tabindex="-1"></canvas>
+            <div id="rightControls">
+              <div id="mapControls" data-game-ids="2kki"></div>
+              <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
+                <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
+              </button>
+              <button id="controls-fullscreen" class="unselectable">
+                <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
+              </button>
             </div>
-
-            <div id="dpad" class="unselectable">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
-                <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
-                <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
-                <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
-                <rect id="dpad-center" x="24" y="24" width="24" height="24" />
-              </svg>
-            </div>
-
-            <div id="apad" class="unselectable">
-              <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
-              <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
-            </div>
-        </div>
-        
-        <div id="uiControls">
-          <div class="uiControl" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion" style="display: none;">
-            <label for="uiTheme" class="unselectable" data-i18n="[html]uiTheme.label">UI Theme:</label>
-            <select class="uiTheme" data-game-ids="yume">
-              <option value="Default">Default</option>
-              <option value="Alternate_1" class="fullBg">Alternate 1</option>
-              <option value="Alternate_2">Alternate 2</option>
-            </select>
-            <select class="uiTheme" data-game-ids="2kki">
-              <option value="Default">Default</option>
-              <option value="Default_2">Default 2</option>
-              <option value="Default_3">Default 3</option>
-              <option value="Default_4">Default 4</option>
-              <option value="Default_5">Default 5</option>
-              <option value="Developer_Room">Developer Room</option>
-              <option value="Glitch_Ending">Bleak Future</option>
-              <option value="Glitch_Ending_2">Bleak Future 2</option>
-              <option value="Black_Building">Black Building</option>
-              <option value="Cog_Maze">Cog Maze</option>
-              <option value="Square_Square_World">Square-Square World</option>
-              <option value="Verdant_Promenade">Verdant Promenade</option>
-              <option value="Urotsukis_Dream_Apartments">Urotsuki's Dream Apartments</option>
-              <option value="Sofa_Room">Sofa Room</option>
-              <option value="Depths">Depths</option>
-              <option value="Depths_2">Depths 2</option>
-              <option value="Guts_World">Guts World</option>
-              <option value="Maple_Shrine">Maple Shrine</option>
-              <option value="Pencil_World">Pencil World</option>
-              <option value="Chocolate_World">Chocolate World</option>
-              <option value="Blue_Cactus_Islands">Blue Cactus Islands</option>
-              <option value="Stone_Towers">Stone Towers</option>
-              <option value="Constellation_World">Star Building</option>
-              <option value="Blob_Desert">Blob Desert</option>
-              <option value="Cipher_Keyboard">Cipher Keyboard</option>
-              <option value="Viridian_Wetlands">Viridian Wetlands</option>
-              <option value="Polluted_Swamp">Polluted Swamp</option>
-              <option value="Snowy_Village">Snowy Village</option>
-              <option value="Decrepit_Dwellings">Decrepit Dwellings</option>
-              <option value="Verdant_Promenade_2">Verdant Promenade 2</option>
-              <option value="Black_Ink_World">Black Ink World</option>
-              <option value="Forgotten_Megalopolis">Forgotten Megalopolis</option>
-              <option value="Tomb_of_Velleities">Tomb of Velleities</option>
-              <option value="Visine_Spacecraft">Visine Spacecraft</option>
-              <option value="Data_Stream">Data Stream</option>
-              <option value="Lavender_Waters">Lavender Waters</option>
-              <option value="Originator_Garden">Originator Garden</option>
-              <option value="Fluorescent_Halls">Fluorescent Halls</option>
-              <option value="City_of_Liars">City of Liars</option>
-              <option value="Misc">Misc. Theme</option>
-              <option value="Monochrome_GB_World">Monochrome GB World</option>
-              <option value="Smiley_Signs_World">Smiley Signs World</option>
-              <option value="Lovesick_World">Lovesick World</option>
-              <option value="Corrupted_Love_World">Corrupted Love World</option>
-              <option value="Saturated_Eyeball_Zone">Saturated Eyeball Zone</option>
-              <option value="NES_Glitch_Tunnel">NES Glitch Tunnel</option>
-              <option value="Shop_Ruins">Shop Ruins</option>
-            </select>
-            <select class="uiTheme" data-game-ids="flow">
-              <option value="Default">Default</option>
-              <option value="Famicom">Famicom</option>
-              <option value="Dot">Dot</option>
-              <option value="Orange">Orange</option>
-              <option value="Flower">Flower</option>
-              <option value="Sugar">Sugar</option>
-              <option value="Rust">Rust</option>
-              <option value="Smile">Smile</option>
-            </select>
-            <select class="uiTheme" data-game-ids="prayers">
-              <option value="Default" class="fullBg">Default</option>
-              <option value="Alternate_1" class="fullBg">Alternate 1</option>
-              <option value="Alternate_2" class="fullBg">Alternate 2</option>
-            </select>
-            <select class="uiTheme" data-game-ids="deepdreams">
-              <option value="Default">Default</option>
-              <option value="Arabian">Arabian</option>
-              <option value="Crystalline">Crystalline</option>
-              <option value="Kaleidoscope">Kaleidoscope</option>
-              <option value="Rainbow">Rainbow</option>
-              <option value="Spider_Lily">Spider Lily</option>
-            </select>
-            <select class="uiTheme" data-game-ids="someday">
-              <option value="Default">Default</option>
-              <option value="8_Bit">8-Bit</option>
-              <option value="Blue">Binary</option>
-              <option value="Clock">Clock</option>
-              <option value="Edible">Edible</option>
-              <option value="Rainbow">Rainbow</option>
-              <option value="311">Three-One-One</option>
-              <option value="Turquoise">Turquoise</option>
-            </select>
           </div>
-          <select class="uiTheme" data-game-ids="amillusion">
-            <option value="Default">Antique Brown</option>
-            <option value="Azur" class="fullBg">Azur</option>
-            <option value="Bubbles">Bubbles</option>
-            <option value="Crazy_Maze">Crazy Maze</option>
-            <option value="Engraving">Engraving</option>
-            <option value="EPACSE">EPACSE</option>
-            <option value="Golden_Luck">Golden Luck</option>
-            <option value="Sunflower">Sunflower</option>
-          </select>
 
+          <div id="status"></div>
+
+          <div id="canvasContainer">
+            <canvas id="canvas" tabindex="-1"></canvas>
+          </div>
+
+          <div id="dpad" class="unselectable">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+              <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
+              <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
+              <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
+              <path id="dpad-left" data-key="ArrowLeft" data-key-code="37" d="M5.7,24C2.4,24,0,26.5,0,29.9V42c0,3.3,2.3,6,5.7,6H24V24H5.7z" />
+              <rect id="dpad-center" x="24" y="24" width="24" height="24" />
+            </svg>
+          </div>
+
+          <div id="apad" class="unselectable">
+            <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
+            <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
+          </div>
+      </div>
+    </div>
+    <div id="chatboxContainer" class="container" style="display: none">
+      <div id="chatbox">
+        <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
+          <span id="locationLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
+        </div>
+        <div id="messages"></div>
+        <div id="chatInputContainer" style="display: none">
+          <form action="javascript:chatInputActionFired()">
+            <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
+          </form>
+        </div>
+        <div id="enterNameContainer">
+          <span id="enterNameInstruction">
+            <span data-i18n="[html]chatbox.nickname.header">You must set a nickname before you can chat.</span>
+            <br>
+            <small>
+              <span data-i18n="[html]chatbox.nickname.rule.maxLength">* Maximum 12 characters</span>
+              <br>
+              <span data-i18n="[html]chatbox.nickname.rule.alphanumeric">* Alphanumeric characters only</span>
+            </small>
+          </span>
+          <form id="enterNameForm" action="javascript:chatNameCheck()">
+            <input id="nameInput" type="text" autocomplete="off" maxlength="12"></input>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="modalContainer" class="hidden">
+      <div id="uiThemesModal" class="modal hidden">
+        <a href="javascript:void(0);" class="modalClose">✖</a>
+        <div class="modalHeader">
+          <h1 data-i18n="[html]modal.uiTheme.title">UI Theme</h1>
+        </div>
+        <div class="modalContent"></div>
+        <div class="modalFooter">
           <div class="uiControl">
             <label for="fontStyle" class="unselectable" data-i18n="[html]fontStyle.label">Font Style:</label>
             <select id="fontStyle" class="fontStyle">
@@ -371,34 +310,9 @@
           </div>
         </div>
       </div>
-      <div id="chatboxContainer" class="container" style="display: none">
-        <div id="chatbox">
-          <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
-            <span id="locationLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
-          </div>
-          <div id="messages"></div>
-          <div id="chatInputContainer" style="display: none">
-            <form action="javascript:chatInputActionFired()">
-              <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
-            </form>
-          </div>
-          <div id="enterNameContainer">
-            <span id="enterNameInstruction">
-              <span data-i18n="[html]chatbox.nickname.header">You must set a nickname before you can chat.</span>
-              <br>
-              <small>
-                <span data-i18n="[html]chatbox.nickname.rule.maxLength">* Maximum 12 characters</span>
-                <br>
-                <span data-i18n="[html]chatbox.nickname.rule.alphanumeric">* Alphanumeric characters only</span>
-              </small>
-            </span>
-            <form id="enterNameForm" action="javascript:chatNameCheck()">
-              <input id="nameInput" type="text" autocomplete="off" maxlength="12"></input>
-            </form>
-          </div>
-        </div>
-      </div>
+      <div class="modalOverlay"></div>
     </div>
+  </div>
   <br>
   <div class="instruction" data-i18n="[html]instruction.connStatusToggle">Press 3 to hide/show the connection status window</div>
   <div class="instruction" data-i18n="[html]instruction.nametagToggle">Press 4 to hide/show nametags</div>
@@ -428,7 +342,7 @@
 <script>
   const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
+  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
   Module = {
     EASYRPG_GAME: gameId,
     EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
@@ -851,9 +765,120 @@ if (hasTouchscreen) {
       el.remove();
   }
 
-  let localizedMessages;
+  const gameUiThemes = {
+    'yume': [
+      'Default',
+      'Alternate_1',
+      'Alternate_2'
+    ],
+    '2kki': [
+      'Default',
+      'Default_2',
+      'Default_3',
+      'Default_4',
+      'Default_5',
+      'Developer_Room',
+      'Glitch_Ending',
+      'Glitch_Ending_2',
+      'Black_Building',
+      'Cog_Maze',
+      'Square_Square_World',
+      'Verdant_Promenade',
+      'Urotsukis_Dream_Apartments',
+      'Sofa_Room',
+      'Depths',
+      'Depths_2',
+      'Guts_World',
+      'Maple_Shrine',
+      'Pencil_World',
+      'Chocolate_World',
+      'Blue_Cactus_Islands',
+      'Stone_Towers',
+      'Constellation_World',
+      'Blob_Desert',
+      'Cipher_Keyboard',
+      'Viridian_Wetlands',
+      'Polluted_Swamp',
+      'Snowy_Village',
+      'Decrepit_Dwellings',
+      'Verdant_Promenade_2',
+      'Black_Ink_World',
+      'Forgotten_Megalopolis',
+      'Tomb_of_Velleities',
+      'Visine_Spacecraft',
+      'Data_Stream',
+      'Lavender_Waters',
+      'Originator_Garden',
+      'Fluorescent_Halls',
+      'City_of_Liars',
+      'Misc',
+      'Monochrome_GB_World',
+      'Smiley_Signs_World',
+      'Lovesick_World',
+      'Corrupted_Love_World',
+      'Saturated_Eyeball_Zone',
+      'NES_Glitch_Tunnel',
+      'Shop_Ruins'
+    ],
+    'flow': [
+      'Default',
+      'Famicom',
+      'Dot',
+      'Orange',
+      'Flower',
+      'Sugar',
+      'Rust',
+      'Smile'
+    ],
+    'prayers': [
+      'Default',
+      'Alternate_1',
+      'Alternate_2'
+    ],
+    'deepdreams': [
+      'Default',
+      'Arabian',
+      'Crystalline',
+      'Kaleidoscope',
+      'Rainbow',
+      'Spider_Lily'
+    ],
+    'someday': [
+      'Default',
+      '8_Bit',
+      'Blue',
+      'Clock',
+      'Edible',
+      'Rainbow',
+      '311',
+      'Turquoise'
+    ],
+    'amillusion': [
+      'Default',
+      'Azur',
+      'Bubbles',
+      'Crazy_Maze',
+      'Engraving',
+      'EPACSE',
+      'Golden_Luck',
+      'Sunflower'
+    ]
+  }[gameId];
 
-  const hasUiThemes = !!document.querySelector('.uiTheme');
+  const gameFullBgUiThemes = {
+    'yume': [ 'Alternate_1' ],
+    '2kki': [],
+    'flow': [],
+    'prayers': [ 'Default', 'Alternate_1', 'Alternate_2' ],
+    'deepdreams': [],
+    'someday': [],
+    'amillusion': [ 'Azur' ]
+  }[gameId];
+
+  if (gameUiThemes.length)
+    populateUiThemes();
+
+  let localizedMessages;
 
   let config = {
     lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
@@ -866,21 +891,43 @@ if (hasTouchscreen) {
     setLang(this.value);
   };
 
-  if (hasUiThemes) {
-    const uiTheme = document.querySelector('.uiTheme');
-    uiTheme.onchange = function () {
-      setUiTheme(this.value);
+  {
+    const closeModal = function () {
+      document.getElementById('modalContainer').classList.add('hidden');
+      const activeModal = document.querySelector('.modal:not(.hidden)');
+      if (activeModal)
+        activeModal.classList.add('hidden');
     };
-    // Set ID so the associated label will be attached
-    uiTheme.id = 'uiTheme';
+    const modalCloseButtons = document.querySelectorAll('.modalClose');
+    for (let button of modalCloseButtons)
+      button.onclick = closeModal;
+    document.querySelector('.modalOverlay').onclick = closeModal;
   }
-
-  document.querySelector('.fontStyle').onchange = function () {
-    setFontStyle(parseInt(this.value));
-  };
 
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
+  };
+
+  const hasUiThemes = gameUiThemes.length > 0;
+
+  if (hasUiThemes) {
+    config.uiTheme = 'Default';
+
+    document.getElementById('uiThemeButton').onclick = function () {
+      document.getElementById('modalContainer').classList.remove('hidden');
+      document.getElementById('uiThemesModal').classList.remove('hidden');
+    };
+
+    const uiThemes = document.querySelectorAll('.uiTheme');
+
+    for (uiTheme of uiThemes)
+      uiTheme.onclick = onSelectUiTheme;
+  }
+
+  config.fontStyle = 0;
+
+  document.querySelector('.fontStyle').onchange = function () {
+    setFontStyle(parseInt(this.value));
   };
 
   document.getElementById('uploadButton').onclick = function () {
@@ -1038,7 +1085,13 @@ if (hasTouchscreen) {
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
-        const useFullBg = hasUiThemes && document.querySelector('.uiTheme option[value="' + uiTheme + '"]').classList.contains('fullBg');
+        const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
+        const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${uiTheme}"]`);
+        if (lastSelectedThemeContainer)
+          lastSelectedThemeContainer.classList.remove('selected');
+        if (newSelectedTheme)
+          newSelectedTheme.parentElement.classList.add('selected');
+        const useFullBg = hasUiThemes && gameFullBgUiThemes.indexOf(uiTheme) > -1;
         const containers = document.querySelectorAll('.container');
         for (let container of containers)
           container.classList.toggle('fullBg', useFullBg);
@@ -1076,6 +1129,42 @@ if (hasTouchscreen) {
         }
       });
     });
+  }
+
+  function populateUiThemes() {
+    const modalContent = document.querySelector('#uiThemesModal .modalContent');
+    modalContent.innerHTML = '';
+    for (let uiTheme of gameUiThemes)
+      modalContent.appendChild(getUiThemeOption(uiTheme));
+  }
+
+  function onSelectUiTheme(e) {
+    setUiTheme(e.target.dataset.uiTheme);
+  }
+
+  function getUiThemeOption(uiTheme) {
+    const container = document.createElement('div');
+    container.classList.add('uiThemeContainer');
+
+    const option = document.createElement('div');
+    option.classList.add('uiTheme');
+    if (gameFullBgUiThemes.indexOf(uiTheme) > -1)
+      option.classList.add('fullBg');
+    option.dataset.uiTheme = uiTheme;
+    option.style.backgroundImage = `url('images/ui/${gameId}/${uiTheme}/containerbg.png')`;
+    option.style.borderImage = `url('images/ui/${gameId}/${uiTheme}/border.png') 10 repeat`;
+
+    const arrowUp = document.createElement('img');
+    arrowUp.src = `images/ui/${gameId}/${uiTheme}/arrowUp.png`;
+    option.appendChild(arrowUp);
+
+    const arrowDown = document.createElement('img');
+    arrowDown.src = `images/ui/${gameId}/${uiTheme}/arrowDown.png`;
+    option.appendChild(arrowDown);
+
+    container.appendChild(option);
+
+    return container;
   }
   
   let uiThemeBgColors = {};
@@ -1247,6 +1336,14 @@ if (hasTouchscreen) {
         }
         if (config.lang === 'ja')
           convertJPLabels(jsonResponse.ui);
+
+        const uiThemeLabels = jsonResponse.labels.uiTheme;
+        const uiThemes = document.querySelectorAll('.uiTheme');
+        for (let uiTheme of uiThemes)
+          uiTheme.title = uiThemeLabels.hasOwnProperty(gameId) && uiThemeLabels[gameId].hasOwnProperty(uiTheme.dataset.uiTheme)
+            ? uiThemeLabels[gameId][uiTheme.dataset.uiTheme]
+            : '';
+
         localizedMessages = jsonResponse.messages;
         const resourcesJson = {};
         resourcesJson[config.lang] = { translation: jsonResponse.ui };
@@ -1280,6 +1377,9 @@ if (hasTouchscreen) {
       });
     }
   }
+
+  let loadedUiTheme = false;
+  let loadedFontStyle = false;
   
   function loadOrInitConfig() {
     try {
@@ -1306,10 +1406,12 @@ if (hasTouchscreen) {
                 if (hasUiThemes)
                   document.querySelector('.uiTheme').value = value;
                 setUiTheme(value, true);
+                loadedUiTheme = true;
                 break;
               case 'fontStyle':
                 document.querySelector('.fontStyle').value = value;
                 setFontStyle(value, true);
+                loadedFontStyle = true;
                 break;
               case 'locationCache':
                 locationCache = Object.assign({}, value);
@@ -1338,9 +1440,9 @@ if (hasTouchscreen) {
   
   loadOrInitConfig();
 
-  if (!config.hasOwnProperty('fontStyle'))
+  if (!loadedFontStyle)
     setFontStyle(0, true);
-  if (!config.hasOwnProperty('uiTheme'))
+  if (!loadedUiTheme)
     setUiTheme('Default', true);
   if (!localizedMessages)
     initLocalization(true);

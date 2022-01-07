@@ -9,60 +9,6 @@
     }
   },
   "ui": {
-    "uiTheme": {
-      "label": "界面风格：",
-      "values": {
-        "2kki": {
-          "Default": "默认１",
-          "Default_2": "默认２",
-          "Default_3": "默认３",
-          "Default_4": "默认４",
-          "Default_5": "默认５",
-          "Developer_Room": "开发者的房间",
-          "Glitch_Ending": "错误结局",
-          "Glitch_Ending_2": "错误结局２",
-          "Black_Building": "暗黑大楼",
-          "Cog_Maze": "齿轮迷宫",
-          "Square_Square_World": "立方体通路",
-          "Verdant_Promenade": "青翠长廊",
-          "Urotsukis_Dream_Apartments": "伪现实部屋",
-          "Sofa_Room": "沙发部屋",
-          "Depths": "深渊之下",
-          "Depths_2": "深渊之下２",
-          "Guts_World": "混凝土世界",
-          "Maple_Shrine": "枫树神社",
-          "Pencil_World": "铅笔画世界",
-          "Chocolate_World": "巧克力通路",
-          "Blue_Cactus_Islands": "蓝色仙人掌之岛",
-          "Stone_Towers": "地底通路",
-          "Constellation_World": "星座世界",
-          "Blob_Desert": "斑点荒野",
-          "Cipher_Keyboard": "板凳之馆",
-          "Viridian_Wetlands": "深翠绿的湿地",
-          "Polluted_Swamp": "腐化之地",
-          "Snowy_Village": "冬之村庄",
-          "Decrepit_Dwellings": "集体宿舍",
-          "Verdant_Promenade_2": "森林公园２",
-          "Black_Ink_World": "浓墨世界",
-          "Forgotten_Megalopolis": "遗忘之城",
-          "Tomb_of_Velleities": "维利提斯之墓",
-          "Visine_Spacecraft": "不明飞行物",
-          "Data_Stream": "数据流通路",
-          "Lavender_Waters": "薰衣草之湖",
-          "Originator_Garden": "始祖庭",
-          "Fluorescent_Halls": "繁华道",
-          "City_of_Liars": "谎言之都",
-          "Misc": "杂项主题",
-          "Monochrome_GB_World": "黑白游戏机世界",
-          "Smiley_Signs_World": "微笑标志世界",
-          "Lovesick_World": "相思之恋",
-          "Corrupted_Love_World": "恋之楔",
-          "Saturated_Eyeball_Zone": "彩爱蝶",
-          "NES_Glitch_Tunnel": "NES隧道",
-          "Shop_Ruins": "废墟商店"
-        }
-      }
-    },
     "fontStyle": {
       "label": "字体样式：",
       "values": {
@@ -96,13 +42,72 @@
     "2kki": {
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
     },
+    "modal": {
+      "uiTheme": {
+        "title": "界面风格"
+      }
+    },
     "tooltips": {
       "io": {
         "upload": "上传存档文件",
         "download": "下载存档文件"
       },
+      "uiTheme": "界面风格",
       "2kki": {
         "explorerLink": "View in Yume 2kki Explorer"
+      }
+    }
+  },
+  "labels": {
+    "uiTheme": {
+      "2kki": {
+        "Default": "默认１",
+        "Default_2": "默认２",
+        "Default_3": "默认３",
+        "Default_4": "默认４",
+        "Default_5": "默认５",
+        "Developer_Room": "开发者的房间",
+        "Glitch_Ending": "错误结局",
+        "Glitch_Ending_2": "错误结局２",
+        "Black_Building": "暗黑大楼",
+        "Cog_Maze": "齿轮迷宫",
+        "Square_Square_World": "立方体通路",
+        "Verdant_Promenade": "青翠长廊",
+        "Urotsukis_Dream_Apartments": "伪现实部屋",
+        "Sofa_Room": "沙发部屋",
+        "Depths": "深渊之下",
+        "Depths_2": "深渊之下２",
+        "Guts_World": "混凝土世界",
+        "Maple_Shrine": "枫树神社",
+        "Pencil_World": "铅笔画世界",
+        "Chocolate_World": "巧克力通路",
+        "Blue_Cactus_Islands": "蓝色仙人掌之岛",
+        "Stone_Towers": "地底通路",
+        "Constellation_World": "星座世界",
+        "Blob_Desert": "斑点荒野",
+        "Cipher_Keyboard": "板凳之馆",
+        "Viridian_Wetlands": "深翠绿的湿地",
+        "Polluted_Swamp": "腐化之地",
+        "Snowy_Village": "冬之村庄",
+        "Decrepit_Dwellings": "集体宿舍",
+        "Verdant_Promenade_2": "森林公园２",
+        "Black_Ink_World": "浓墨世界",
+        "Forgotten_Megalopolis": "遗忘之城",
+        "Tomb_of_Velleities": "维利提斯之墓",
+        "Visine_Spacecraft": "不明飞行物",
+        "Data_Stream": "数据流通路",
+        "Lavender_Waters": "薰衣草之湖",
+        "Originator_Garden": "始祖庭",
+        "Fluorescent_Halls": "繁华道",
+        "City_of_Liars": "谎言之都",
+        "Misc": "杂项主题",
+        "Monochrome_GB_World": "黑白游戏机世界",
+        "Smiley_Signs_World": "微笑标志世界",
+        "Lovesick_World": "相思之恋",
+        "Corrupted_Love_World": "恋之楔",
+        "Saturated_Eyeball_Zone": "彩爱蝶",
+        "NES_Glitch_Tunnel": "NES隧道",
+        "Shop_Ruins": "废墟商店"
       }
     }
   },

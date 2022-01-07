@@ -9,60 +9,6 @@
     }
   },
   "ui": {
-    "uiTheme": {
-      "label": "メニュー タイプ",
-      "values": {
-        "2kki": {
-          "Default": "デフォルト",
-          "Default_2": "デフォルト２",
-          "Default_3": "デフォルト３",
-          "Default_4": "デフォルト４",
-          "Default_5": "デフォルト５",
-          "Developer_Room": "製作者の部屋",
-          "Glitch_Ending": "似非エンディング",
-          "Glitch_Ending_2": "似非エンディング２",
-          "Black_Building": "黒ビル",
-          "Cog_Maze": "歯車",
-          "Square_Square_World": "四角四角",
-          "Verdant_Promenade": "森林公園",
-          "Urotsukis_Dream_Apartments": "うろつき邸",
-          "Sofa_Room": "ソファ",
-          "Depths": "みなぞこ",
-          "Depths_2": "すいそう",
-          "Guts_World": "コンクリートマンション",
-          "Maple_Shrine": "楓神社",
-          "Pencil_World": "白い樹",
-          "Chocolate_World": "チョコレートの通路",
-          "Blue_Cactus_Islands": "青仙人掌島",
-          "Stone_Towers": "地底通路",
-          "Constellation_World": "星営鉄道",
-          "Blob_Desert": "荒野",
-          "Cipher_Keyboard": "立椅子館",
-          "Viridian_Wetlands": "ビリジアン湿地",
-          "Polluted_Swamp": "機密",
-          "Snowy_Village": "冬の村",
-          "Decrepit_Dwellings": "集合住宅",
-          "Verdant_Promenade_2": "森林公園２",
-          "Black_Ink_World": "黒インク世界",
-          "Forgotten_Megalopolis": "忘れられた街",
-          "Tomb_of_Velleities": "Butterfly",
-          "Visine_Spacecraft": "未確認飛行物体",
-          "Data_Stream": "データストリーム",
-          "Lavender_Waters": "紫湖",
-          "Originator_Garden": "始祖庭",
-          "Fluorescent_Halls": "繁華道",
-          "City_of_Liars": "嘘つきの街",
-          "Misc": "雑多なメンユータイプ",
-          "Monochrome_GB_World": "グレーボーイ",
-          "Smiley_Signs_World": "黒白世界",
-          "Lovesick_World": "恋",
-          "Corrupted_Love_World": "恋楔",
-          "Saturated_Eyeball_Zone": "彩愛蝶",
-          "NES_Glitch_Tunnel": "NESトンネル",
-          "Shop_Ruins": "廃墟商店"
-        }
-      }
-    },
     "fontStyle": {
       "label": "フォント スタイル",
       "values": {
@@ -96,13 +42,72 @@
     "2kki": {
       "hostedWithPermission": "ゆめ２っきの 開発者の 許可を 得て 掲載しています"
     },
+    "modal": {
+      "uiTheme": {
+        "title": "メニュー タイプ"
+      }
+    },
     "tooltips": {
+      "uiTheme": "メニュータイプ",
       "io": {
         "upload": "セーブデータをアップロード",
         "download": "セーブデータをダウンロード"
       },
       "2kki": {
         "explorerLink": "ゆめ２っきエクスプローラーで見る"
+      }
+    }
+  },
+  "labels": {
+    "uiTheme": {
+      "2kki": {
+        "Default": "デフォルト",
+        "Default_2": "デフォルト２",
+        "Default_3": "デフォルト３",
+        "Default_4": "デフォルト４",
+        "Default_5": "デフォルト５",
+        "Developer_Room": "製作者の部屋",
+        "Glitch_Ending": "似非エンディング",
+        "Glitch_Ending_2": "似非エンディング２",
+        "Black_Building": "黒ビル",
+        "Cog_Maze": "歯車",
+        "Square_Square_World": "四角四角",
+        "Verdant_Promenade": "森林公園",
+        "Urotsukis_Dream_Apartments": "うろつき邸",
+        "Sofa_Room": "ソファ",
+        "Depths": "みなぞこ",
+        "Depths_2": "すいそう",
+        "Guts_World": "コンクリートマンション",
+        "Maple_Shrine": "楓神社",
+        "Pencil_World": "白い樹",
+        "Chocolate_World": "チョコレートの通路",
+        "Blue_Cactus_Islands": "青仙人掌島",
+        "Stone_Towers": "地底通路",
+        "Constellation_World": "星営鉄道",
+        "Blob_Desert": "荒野",
+        "Cipher_Keyboard": "立椅子館",
+        "Viridian_Wetlands": "ビリジアン湿地",
+        "Polluted_Swamp": "機密",
+        "Snowy_Village": "冬の村",
+        "Decrepit_Dwellings": "集合住宅",
+        "Verdant_Promenade_2": "森林公園２",
+        "Black_Ink_World": "黒インク世界",
+        "Forgotten_Megalopolis": "忘れられた街",
+        "Tomb_of_Velleities": "Butterfly",
+        "Visine_Spacecraft": "未確認飛行物体",
+        "Data_Stream": "データストリーム",
+        "Lavender_Waters": "紫湖",
+        "Originator_Garden": "始祖庭",
+        "Fluorescent_Halls": "繁華道",
+        "City_of_Liars": "嘘つきの街",
+        "Misc": "雑多なメンユータイプ",
+        "Monochrome_GB_World": "グレーボーイ",
+        "Smiley_Signs_World": "黒白世界",
+        "Lovesick_World": "恋",
+        "Corrupted_Love_World": "恋楔",
+        "Saturated_Eyeball_Zone": "彩愛蝶",
+        "NES_Glitch_Tunnel": "NESトンネル",
+        "Shop_Ruins": "廃墟商店"
       }
     }
   },
