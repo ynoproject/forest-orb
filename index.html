@@ -857,8 +857,6 @@ if (hasTouchscreen) {
   };
 
   if (hasUiThemes) {
-    config.uiTheme = 'Default';
-
     const uiTheme = document.querySelector('.uiTheme');
     uiTheme.onchange = function () {
       setUiTheme(this.value);
@@ -866,8 +864,6 @@ if (hasTouchscreen) {
     // Set ID so the associated label will be attached
     uiTheme.id = 'uiTheme';
   }
-
-  config.fontStyle = 0;
 
   document.querySelector('.fontStyle').onchange = function () {
     setFontStyle(parseInt(this.value));
@@ -1258,22 +1254,22 @@ if (hasTouchscreen) {
 
   function convertJPLabels(data) {
     if (data) {
-        Object.keys(data).forEach(function (key) {
-            const value = data[key];
-            if (value) {
-                switch (typeof value) {
-                    case 'object':
-                        convertJPLabels(value);
-                        break;
-                    case 'string':
-                        if (value.indexOf(' ') > -1)
-                            data[key] = value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
-                        break;
-                }
-            }
-        });
+      Object.keys(data).forEach(function (key) {
+        const value = data[key];
+        if (value) {
+          switch (typeof value) {
+            case 'object':
+              convertJPLabels(value);
+              break;
+            case 'string':
+              if (value.indexOf(' ') > -1)
+                  data[key] = value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
+              break;
+          }
+        }
+      });
     }
-}
+  }
   
   function loadOrInitConfig() {
     try {
