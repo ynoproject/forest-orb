@@ -52,10 +52,7 @@
         "upload": "Cargar archivo de guardado",
         "download": "Descargar archivo de guardado"
       },
-      "uiTheme": "Tema de Inferfaz",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "Tema de Inferfaz"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "¡Ups! El archivo de guardado en la ranura seleccionada parece estar vacío."
       }
     },
-    "location": {
-      "unknownLocation": "Ubicación Desconocida"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Ubicación Desconocida"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

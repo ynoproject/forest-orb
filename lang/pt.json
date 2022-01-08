@@ -52,10 +52,7 @@
         "upload": "Enviar arquivo salvo",
         "download": "Baixar arquivo salvo"
       },
-      "uiTheme": "Tema da Interace",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "Tema da Interace"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "Ué? Parece que o arquivo salvo do slot fornecido está vazio."
       }
     },
-    "location": {
-      "unknownLocation": "Localização Desconhecida"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Localização Desconhecida"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

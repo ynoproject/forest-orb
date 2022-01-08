@@ -52,10 +52,7 @@
         "upload": "上传存档文件",
         "download": "下载存档文件"
       },
-      "uiTheme": "界面风格",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "界面风格"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "哎呀！输入编号对应的存档好像是空的。"
       }
     },
-    "location": {
-      "unknownLocation": "未知地点"
+    "2kki": {
+      "location": {
+        "unknownLocation": "未知地点"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

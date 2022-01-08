@@ -52,9 +52,6 @@
       "io": {
         "upload": "セーブデータをアップロード",
         "download": "セーブデータをダウンロード"
-      },
-      "2kki": {
-        "explorerLink": "ゆめ２っきエクスプローラーで見る"
       }
     }
   },
@@ -126,8 +123,14 @@
         "emptySlot": "おっと! 入力されたスロット番号のセーブファイルが空になっているようです。"
       }
     },
-    "location": {
-      "unknownLocation": "場所不明"
+    "2kki": {
+      "location": {
+        "unknownLocation": "場所不明"
+      },
+      "explorerLink": {
+        "generic": "ゆめ２っきエクスプローラーで見る",
+        "multi": "「{LOCATION}」をゆめ２っきエクスプローラーで見る"
+      }
     }
   }
 }

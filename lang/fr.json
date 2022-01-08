@@ -52,10 +52,7 @@
         "upload": "Ouvrir un Fichier de Sauvegarde",
         "download": "Télécharger un Fichier de Sauvegarde"
       },
-      "uiTheme": "Thème UI",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "Thème UI"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "Oups ! Le fichier de sauvegarde pour cet emplacement semble être vide."
       }
     },
-    "location": {
-      "unknownLocation": "Lieu Inconnu"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Lieu Inconnu"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }
