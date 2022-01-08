@@ -52,10 +52,7 @@
         "upload": "세이브 파일 불러오기",
         "download": "세이브 파일 다운로드"
       },
-      "uiTheme": "UI 테마",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "UI 테마"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "이런! 입력한 슬롯에 대한 세이브 파일이 비어 있습니다."
       }
     },
-    "location": {
-      "unknownLocation": "알 수 없는 장소"
+    "2kki": {
+      "location": {
+        "unknownLocation": "알 수 없는 장소"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

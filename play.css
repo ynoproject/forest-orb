@@ -72,11 +72,11 @@ body {
   z-index: 10;
 }
 
-#mapControls {
+#explorerControls, #mapControls {
   display: flex;
 }
 
-#leftControls button, #explorerButton, #mapControls button {
+#leftControls button, #explorerControls button, #mapControls button {
   margin-right: 8px;
   margin-bottom: 8px;
 }

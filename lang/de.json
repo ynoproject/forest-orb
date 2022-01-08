@@ -52,10 +52,7 @@
         "upload": "Save hochladen",
         "download": "Save runterladen"
       },
-      "uiTheme": "UI Stil",
-      "2kki": {
-        "explorerLink": "Im Yume 2kki Explorer ansehen"
-      }
+      "uiTheme": "UI Stil"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "Oops! Der angegebene Speicherplatz scheint leer zu sein."
       }
     },
-    "location": {
-      "unknownLocation": "Unbekannter Ort"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Unbekannter Ort"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

@@ -197,7 +197,7 @@
       padding-bottom: 8px;
     }
 
-    #explorerButton.hidden, #location.hidden {
+    #location.hidden {
       display: none;
     }
 
@@ -234,9 +234,7 @@
             </div>
             <div id="rightControls">
               <div id="mapControls" data-game-ids="2kki"></div>
-              <button id="explorerButton" class="unselectable hidden" style="display: none;" data-i18n="[title]tooltips.2kki.explorerLink" data-game-ids="2kki">
-                <svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>
-              </button>
+              <div id="explorerControls" data-game-ids="2kki" style="display: none;"></div>
               <button id="controls-fullscreen" class="unselectable">
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="25" height="25"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
               </button>
@@ -497,7 +495,7 @@ if (hasTouchscreen) {
   const is2kki = gameId === '2kki';
   let cachedMapId = null;
   let cachedLocationLink = null;
-  let cachedLocationName = null;
+  let cachedLocationNames = null;
   const queryingLocationLabels = {
     'en': 'Querying Location...',
     'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
@@ -509,9 +507,9 @@ if (hasTouchscreen) {
     'zh': '正在查询地点...',
     'kr': '위치 검색 중...'
   };
-  const locationNamePattern = /^<a .*?>(.*?)<\/a>/;
+  const locationNamePattern = /<a .*?>(.*?)<\/a>.*?\)/;
   const unknownLocations = [];
-  const ignoredMapIds = ['0899', '0900'];
+  const ignoredMapIds = ['0899', '0900', '1581'];
   let defaultLocationLinks;
 
   // called from EasyRPG player
@@ -536,7 +534,7 @@ if (hasTouchscreen) {
       else if (Object.values(queryingLocationLabels).indexOf(locationLink) > -1)
         locationLink = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
-        locationLink = localizedMessages.location.unknownLocation;
+        locationLink = localizedMessages['2kki'].location.unknownLocation;
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
@@ -544,47 +542,47 @@ if (hasTouchscreen) {
       if (locationLink) {
         const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
         const locationNameResult = locationNamePattern.exec(locationLink);
-        const locationName = locationNameResult ? locationNameResult[1] : null;
+        const locationNames = locationNameResult ? locationNameResult.slice(1) : null;
         setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation);
         cachedMapId = mapId;
         cachedLocationLink = locationLink;
-        cachedLocationName = locationName;
-        if (!locationName) {
-          setExplorerLink(null);
+        cachedLocationNames = locationNames;
+        if (!locationNames) {
+          setExplorerLinks(null);
           setMaps([]);
         } else {
-          setExplorerLink(!useDefaultLocation ? locationName : null);
+          setExplorerLinks(!useDefaultLocation ? locationNames : null);
           if (useDefaultLocation) {
-            const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationName);
-            setMaps([], locationName, cacheMap, cacheMap);
-          } else if (mapCache.hasOwnProperty(locationName))
-            setMaps(mapCache[locationName], locationName);
+            const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationNames.join(','));
+            setMaps([], locationNames, cacheMap, cacheMap);
+          } else if (mapCache.hasOwnProperty(locationNames.join(',')))
+            setMaps(mapCache[locationNames.join(',')], locationNames);
           else
-            queryAndSetMaps(locationName).catch(err => console.error(err));
+            queryAndSetMaps(locationNames).catch(err => console.error(err));
         }
       } else {
-        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationName)
-          .then(locationName => {
-            setExplorerLink(locationName);
-            if (locationName)
-              queryAndSetMaps(locationName).catch(err => console.error(err));
+        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationNames)
+          .then(locationNames => {
+            setExplorerLinks(locationNames);
+            if (locationNames)
+              queryAndSetMaps(locationNames).catch(err => console.error(err));
             else {
-              setMaps([], true, true);
-              setExplorerLink(null);
+              setMaps([], null, true, true);
+              setExplorerLinks(null);
             }
           }).catch(err => console.error(err));
       }
     }
   }
   
-  function queryAndSetLocation(mapId, prevMapId, prevLocationLink, prevLocationName) {
+  function queryAndSetLocation(mapId, prevMapId, prevLocationLink, prevLocationNames) {
     return new Promise((resolve, reject) => {
       const req = new XMLHttpRequest();
         let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
         if (prevMapId) {
             url += `&prevMapId=${prevMapId}`;
-            if (prevLocationName)
-              url += `&prevLocationName=${prevLocationName}`;
+            if (prevLocationNames)
+              url += `&prevLocationNames=${prevLocationNames.join('&prevLocationNames=')}`;
         }
         req.responseType = 'json';
         req.open("GET", url);
@@ -594,20 +592,48 @@ if (hasTouchscreen) {
 
         req.onload = (e) => {
           const locationsArray = req.response;
-          let locationName = null;
+          const locations = [];
+
+          const cacheAndResolve = function () {
+            const locationNames = locations.map(l => l.title);
+
+            cachedMapId = mapId;
+            cachedLocationLink = document.getElementById('locationText').innerHTML;
+            cachedLocationNames = locationNames;
+            resolve(locationNames);
+          };
 
           if (Array.isArray(locationsArray) && locationsArray.length) {
             let location = locationsArray[0];
+            let usePrevLocation = false;
+
             if (locationsArray.length > 1 && prevLocationLink) {
               for (let l of locationsArray) {
                 if (getLocationLink(l) === prevLocationLink) {
                   location = l;
+                  usePrevLocation = true;
                   break;
                 }
               }
             }
-            setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
-            locationName = location.title;
+
+            locations.push(location);
+
+            if (usePrevLocation) {
+              queryConnectedLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
+                .then(connectedLocationNames => {
+                  const connectedLocations = locationsArray.filter(l => connectedLocationNames.indexOf(l.title) > -1);
+                  for (let cl of connectedLocations)
+                    locations.push(cl);
+
+                  setLocation(mapId, prevMapId, locations.map(l => getLocationLink(l)).join('<br>'), prevLocationLink, true, true);
+
+                  cacheAndResolve();
+                }).catch(err => reject(err));
+                
+              return;
+            } else
+              setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
           } else {
             const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
             
@@ -620,17 +646,13 @@ if (hasTouchscreen) {
             }
             setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
           }
-
-          cachedMapId = mapId;
-          cachedLocationLink = document.getElementById('locationText').innerHTML;
-          cachedLocationName = locationName;
-          resolve(locationName);
+          cacheAndResolve();
         };
     });
   }
 
   function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || localizedMessages.location.unknownLocation;
+    document.getElementById('locationText').innerHTML = locationLink || localizedMessages['2kki'].location.unknownLocation;
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -677,48 +699,68 @@ if (hasTouchscreen) {
     return ret;
   }
 
-  function queryAndSetMaps(locationName) {
+  function queryConnectedLocationNames(locationName, connLocationNames) {
     return new Promise((resolve, reject) => {
       const req = new XMLHttpRequest();
-        let url = `https://2kki.app/getLocationMaps?locationName=${locationName}`;
+        const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
         req.responseType = 'json';
         req.open("GET", url);
         req.send();
 
-        setMaps([], true);
+        req.onload = (e) => {
+          let ret = [];
+          let errCode = null;
+
+          if (Array.isArray(req.response))
+            ret = req.response;
+          else
+            errCode = req.response.err_code;
+            
+          if (errCode)
+            console.error({ error: req.response.error, errCode: errCode });
+
+          resolve(ret);
+        };
+    });
+  }
+
+  function queryAndSetMaps(locationNames) {
+    return new Promise((resolve, reject) => {
+      const req = new XMLHttpRequest();
+        const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
+        req.responseType = 'json';
+        req.open("GET", url);
+        req.send();
+
+        setMaps([], null, true);
 
         req.onload = (e) => {
           let errCode = null;
 
           if (Array.isArray(req.response))
-            setMaps(req.response, locationName, true, true);
+            setMaps(req.response, locationNames, true, true);
           else
             errCode = req.response.err_code;
             
-          if (errCode) {
-            const error = { error: req.response.error, errCode: errCode };
-            if (errCode === 'LOCATION_NOT_FOUND')
-              console.warn(error);
-            else
-              console.error(error);
-          }
+          if (errCode)
+            console.error({ error: req.response.error, errCode: errCode });
 
           resolve();
         };
     });
   }
 
-  function setMaps(maps, locationName, cacheMaps, saveMaps) {
+  function setMaps(maps, locationNames, cacheMaps, saveMaps) {
     const mapControls = document.getElementById('mapControls');
     mapControls.innerHTML = '';
     if (maps && maps.length) {
       for (let map of maps)
         mapControls.appendChild(getMapButton(map.url, map.label));
     }
-    if (cacheMaps && locationName) {
-      mapCache[locationName] = maps;
+    if (cacheMaps && locationNames) {
+      mapCache[locationNames.join(',')] = maps;
       if (saveMaps) {
-        config.mapCache[locationName] = maps;
+        config.mapCache[locationNames.join(',')] = maps;
         updateConfig(config);
       }
     }
@@ -738,27 +780,42 @@ if (hasTouchscreen) {
     return ret;
   }
 
-  function setExplorerLink(locationName) {
-    const explorerButton = document.getElementById('explorerButton');
-    if (!explorerButton)
-      return null;
-    explorerButton.classList.toggle('hidden', !locationName);
-    if (locationName) {
-      let url = `https://2kki.app/?location=${locationName}`;
-      if (/^(?:en|ja)$/.test(config.lang))
-        url += `&lang=${config.lang}`;
-      explorerButton.onclick = () => {
-        const handle = window.open(url, '_blank');
-        if (handle)
-            handle.focus();
-      };
-    }
+  function setExplorerLinks(locationNames) {
+    const explorerControls = document.getElementById('explorerControls');
+    if (!explorerControls)
+      return;
+    explorerControls.innerHTML = '';
+    if (!locationNames)
+      return;
+    for (let locationName of locationNames)
+      explorerControls.appendChild(getExplorerButton(locationName, locationNames.length > 1))
+  }
+
+  function getExplorerButton(locationName, isMulti) {
+    const ret = document.createElement('button');
+    const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
+    ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
+    ret.classList.add('unselectable');
+
+    let url = `https://2kki.app/?location=${locationName}`;
+    if (/^(?:en|ja)$/.test(config.lang))
+      url += `&lang=${config.lang}`;
+
+    ret.onclick = () => {
+      const handle = window.open(url, '_blank');
+      if (handle)
+          handle.focus();
+    };
+
+    ret.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>';
+
+    return ret;
   }
 
   if (is2kki) {
     // Yume 2kki Explorer doesn't support mobile
     if (hasTouchscreen)
-      document.getElementById('explorerButton').remove();
+      document.getElementById('explorerControls').remove();
     defaultLocationLinks = getDefaultLocationLinks();
   }
 </script>

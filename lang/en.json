@@ -52,10 +52,7 @@
         "upload": "Upload Save File",
         "download": "Download Save File"
       },
-      "uiTheme": "UI Theme",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "UI Theme"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "Oops! The save file for the provided slot appears to be empty."
       }
     },
-    "location": {
-      "unknownLocation": "Unknown Location"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Unknown Location"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }

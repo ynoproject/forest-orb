@@ -52,10 +52,7 @@
         "upload": "Загрузить сохранение",
         "download": "Скачать сохранение"
       },
-      "uiTheme": "Стиль Интерфейса",
-      "2kki": {
-        "explorerLink": "View in Yume 2kki Explorer"
-      }
+      "uiTheme": "Стиль Интерфейса"
     }
   },
   "labels": {
@@ -126,8 +123,14 @@
         "emptySlot": "Ой! Похоже, указанный вами слот сохранения пуст."
       }
     },
-    "location": {
-      "unknownLocation": "Неизвестная локация"
+    "2kki": {
+      "location": {
+        "unknownLocation": "Неизвестная локация"
+      },
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
     }
   }
 }
