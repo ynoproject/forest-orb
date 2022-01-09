@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "Status:&nbsp;",
       "location": "Location:&nbsp;",
       "nickname": {
         "header": "You must set a nickname before you can chat.",
@@ -122,6 +123,10 @@
         "slotInput": "Enter the save file slot number to download for (1 to 15).",
         "emptySlot": "Oops! The save file for the provided slot appears to be empty."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

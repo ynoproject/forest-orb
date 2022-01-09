@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "연결 상태",
       "location": "현위치",
       "nickname": {
         "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
@@ -122,6 +123,10 @@
         "slotInput": "1 ~ 15 범위의 세이브 파일 슬롯 번호를 입력해주세요.",
         "emptySlot": "이런! 입력한 슬롯에 대한 세이브 파일이 비어 있습니다."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

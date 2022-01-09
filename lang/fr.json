@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "Status:&nbsp;",
       "location": "Lieu&nbsp;:&nbsp;",
       "nickname": {
         "header": "Choisissez un pseudonyme pour pouvoir discuter.",
@@ -122,6 +123,10 @@
         "slotInput": "Entrez le numéro de l'emplacement de sauvegarde à télécharger (de 1 à 15).",
         "emptySlot": "Oups ! Le fichier de sauvegarde pour cet emplacement semble être vide."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

@@ -146,12 +146,29 @@
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
-    a:not(.modalClose) {
+    .altText, a:not(.modalClose) {
       background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
     
-    h1 {
-      background-size: 36px;
+    .info {
+      display: flex;
+      padding-bottom: 8px;
+    }
+
+    .info.hidden {
+      display: none;
+    }
+
+    .infoLabel {
+      white-space: nowrap;
+    }
+
+    .infoText {
+      width: 100%;
+      text-align: center;
+      word-break: keep-all;
+      letter-spacing: 0;
+      word-spacing: 0;
     }
   
     .messageContainer {
@@ -182,6 +199,10 @@
     #layout.downscale2 .container.fullBg {
       background-size: 410px;
     }
+    
+    h1 {
+      background-size: 36px;
+    }
   
     input[type='text'], select {
       border: 12px solid transparent;
@@ -189,28 +210,6 @@
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
-    }
-  </style>
-  <style data-game-ids="2kki">
-    #location {
-      display: flex;
-      padding-bottom: 8px;
-    }
-
-    #location.hidden {
-      display: none;
-    }
-
-    #locationLabel {
-      white-space: nowrap;
-    }
-
-    #locationText {
-      width: 100%;
-      text-align: center;
-      word-break: keep-all;
-      letter-spacing: 0;
-      word-spacing: 0;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
@@ -265,8 +264,11 @@
     </div>
     <div id="chatboxContainer" class="container" style="display: none">
       <div id="chatbox">
-        <div id="location" style="display: none" class="hidden" data-game-ids="2kki">
-          <span id="locationLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText"></span>
+        <div id="connStatus" class="info hidden">
+          <span id="connStatusLabel" class="infoLabel" data-i18n="[html]chatbox.connStatus">Status:&nbsp;</span><label id="connStatusText" class="infoText"></label>
+        </div>
+        <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
+          <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
         </div>
         <div id="messages"></div>
         <div id="chatInputContainer" style="display: none">
@@ -948,6 +950,13 @@ if (hasTouchscreen) {
     name: ''
   };
 
+  function onUpdateConnectionStatus(status) {
+    document.getElementById('connStatus').classList.remove('hidden');
+    const connStatusText = document.getElementById('connStatusText');
+    connStatusText.innerText = localizedMessages.connStatus[status];
+    connStatusText.classList.toggle('altText', !status);
+  }
+
   let locationCache;
 
   document.getElementById('lang').onchange = function () {
@@ -1512,12 +1521,6 @@ if (hasTouchscreen) {
     setUiTheme('Default', true);
   if (!localizedMessages)
     initLocalization(true);
-
-  function onUpdateConnectionStatus(status) {
-    //we're not using this yet but we will in the future
-    // int 0 - disconnected
-    // int 1 - connected
-  };
 </script>
 
 </body>

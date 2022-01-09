@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "连接状态：&nbsp;",
       "location": "当前位置：&nbsp;",
       "nickname": {
         "header": "设置一个名字即可开始和大家聊天！",
@@ -122,6 +123,10 @@
         "slotInput": "输入想要下载的存档编号（1~15）",
         "emptySlot": "哎呀！输入编号对应的存档好像是空的。"
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

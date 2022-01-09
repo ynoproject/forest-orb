@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "Status:&nbsp;",
       "location": "Localização:&nbsp;",
       "nickname": {
         "header": "Defina seu nickname antes de acessar o chat.",
@@ -122,6 +123,10 @@
         "slotInput": "Insira o número de slot do arquivo salvo para baixar (1 á 15).",
         "emptySlot": "Ué? Parece que o arquivo salvo do slot fornecido está vazio."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

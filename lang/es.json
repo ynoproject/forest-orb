@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "Status:&nbsp;",
       "location": "Ubicación:&nbsp;",
       "nickname": {
         "header": "Debes seleccionar un apodo antes de poder usar el chat.",
@@ -122,6 +123,10 @@
         "slotInput": "Ingresa el número de ranura en el cual se encuentra el archivo de guardado que se quiere descargar (1 al 15).",
         "emptySlot": "¡Ups! El archivo de guardado en la ranura seleccionada parece estar vacío."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {

@@ -22,6 +22,7 @@
       }
     },
     "chatbox": {
+      "connStatus": "Status:&nbsp;",
       "location": "Ort:&nbsp;",
       "nickname": {
         "header": "Du musst einen Chat-Namen angeben um zu chatten.",
@@ -122,6 +123,10 @@
         "slotInput": "Gebe den Speicherstand an, den du runterladen möchstest. (1 bis 15).",
         "emptySlot": "Oops! Der angegebene Speicherplatz scheint leer zu sein."
       }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected"
     },
     "2kki": {
       "location": {
