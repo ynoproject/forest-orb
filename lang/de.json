@@ -27,7 +27,7 @@
         "header": "Du musst einen Chat-Namen angeben um zu chatten.",
         "rule": {
           "maxLength": "* Maximal 12 Zeichen",
-          "alphanumeric": "* Nur Alphanumerische zahlen"
+          "alphanumeric": "* Nur Alphanumerische Zeichen"
         }
       }
     },
@@ -119,7 +119,7 @@
         "invalidSaveFile": "Bitte benutze eine Datei im gültigen Format. (.lsd Format)."
       },
       "download": {
-        "slotInput": "Gebe einen Speicherstand an, den du runterladen möchstest. (1 bis 15).",
+        "slotInput": "Gebe den Speicherstand an, den du runterladen möchstest. (1 bis 15).",
         "emptySlot": "Oops! Der angegebene Speicherplatz scheint leer zu sein."
       }
     },
@@ -128,7 +128,7 @@
         "unknownLocation": "Unbekannter Ort"
       },
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
+        "generic": "Im Yume 2kki Explorer ansehen",
         "multi": "View {LOCATION} in Yume 2kki Explorer"
       }
     }
