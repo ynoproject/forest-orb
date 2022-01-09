@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "Pressione a tecla 3 para esconder/mostrar o estado de conexão",
       "nametagToggle": "Pressione 4 para esconder/mostrar os nomes dos outros jogadores",
       "discord": "Junte-se ao nosso Discord!"
     },

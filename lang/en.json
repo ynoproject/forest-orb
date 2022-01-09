@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "Press 3 to hide/show the connection status window",
       "nametagToggle": "Press 4 to hide/show nametags",
       "discord": "Join our Discord!"
     },

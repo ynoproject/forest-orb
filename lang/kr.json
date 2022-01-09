@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "3번 키를 눌러 접속 상태 창을 띄우거나 가리기",
       "nametagToggle": "4번 키를 눌러 이름표를 표시하거나 가리기",
       "discord": "저희 디스코드 서버에 들어오세요!"
     },

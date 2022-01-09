@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "Presiona 3 para mostrar o esconder la ventana de estado de conexión",
       "nametagToggle": "Presiona 4 para mostar o esconder etiquetas de nombre",
       "discord": "¡Únete a nuestro servidor de Discord!"
     },

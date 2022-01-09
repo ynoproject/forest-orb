@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "3キーを 押すと、 接続状態 ウィンドウが 切り替わります",
       "nametagToggle": "4キーを 押すと、 プレーヤー名 表示が 切り替わります",
       "discord": "Discordに 参加 する"
     },

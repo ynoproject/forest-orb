@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "按数字键３可隐藏/显示连接状态窗口",
       "nametagToggle": "按数字键４可隐藏/显示玩家名字",
       "discord": "点此加入我们的Discord频道！"
     },

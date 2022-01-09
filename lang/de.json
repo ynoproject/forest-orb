@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "connStatusToggle": "Drücke 3, um die Onlineanzeige an/ab zu schalten",
       "nametagToggle": "Drücke 4 um Namen an/ab zu schalten",
       "discord": "Trete unserem Discord bei!"
     },
