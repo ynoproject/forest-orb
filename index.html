@@ -138,7 +138,7 @@
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
-    #enterNameInstruction, .notice, .instruction, .message, h1, a, label {
+    #enterNameInstruction, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
       background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -210,6 +210,30 @@
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
+    }
+
+     /* Safari only */
+     @media not all and (min-resolution:.001dpcm) {
+      #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, #messages, #enterNameContainer, .container, .modal, input[type='text'], select {
+        border-color: unset !important;
+      }
+
+      .messageContainer {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom-color: unset !important;
+      }
+
+      /* Don't use text background on Safari since it doesn't repeat properly */
+      #enterNameInstruction, .notice, .instruction, .message, .infoLabel, .infoText, .altText, h1, a, label {
+        -webkit-text-fill-color: unset;
+        background-image: none !important;
+      }
+
+      .altText, a:not(.modalClose) {
+        color: rgba(255, 255, 157, 1); /*alt*/
+      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
