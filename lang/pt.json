@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Pressione 4 para esconder/mostrar os nomes dos outros jogadores",
       "discord": "Junte-se ao nosso Discord!"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Enviar arquivo salvo",
         "download": "Baixar arquivo salvo"
       },
-      "uiTheme": "Tema da Interace"
+      "uiTheme": "Tema da Interace",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "4キーを 押すと、 プレーヤー名 表示が 切り替わります",
       "discord": "Discordに 参加 する"
     },
     "lang": {
@@ -48,11 +47,13 @@
       }
     },
     "tooltips": {
-      "uiTheme": "メニュータイプ",
       "io": {
         "upload": "セーブデータをアップロード",
         "download": "セーブデータをダウンロード"
-      }
+      },
+      "uiTheme": "メニュータイプ",
+      "toggleChat": "チャットのオン／オフ",
+      "toggleNametags": "プレーヤー名表示のオン／オフ"
     }
   },
   "labels": {

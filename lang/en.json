@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Press 4 to hide/show nametags",
       "discord": "Join our Discord!"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Upload Save File",
         "download": "Download Save File"
       },
-      "uiTheme": "UI Theme"
+      "uiTheme": "UI Theme",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "按数字键４可隐藏/显示玩家名字",
       "discord": "点此加入我们的Discord频道！"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "上传存档文件",
         "download": "下载存档文件"
       },
-      "uiTheme": "界面风格"
+      "uiTheme": "界面风格",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

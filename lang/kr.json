@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "4번 키를 눌러 이름표를 표시하거나 가리기",
       "discord": "저희 디스코드 서버에 들어오세요!"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "세이브 파일 불러오기",
         "download": "세이브 파일 다운로드"
       },
-      "uiTheme": "UI 테마"
+      "uiTheme": "UI 테마",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

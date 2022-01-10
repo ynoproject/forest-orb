@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Presiona 4 para mostar o esconder etiquetas de nombre",
       "discord": "¡Únete a nuestro servidor de Discord!"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Cargar archivo de guardado",
         "download": "Descargar archivo de guardado"
       },
-      "uiTheme": "Tema de Inferfaz"
+      "uiTheme": "Tema de Inferfaz",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Drücke 4 um Namen an/ab zu schalten",
       "discord": "Trete unserem Discord bei!"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Save hochladen",
         "download": "Save runterladen"
       },
-      "uiTheme": "UI Stil"
+      "uiTheme": "UI Stil",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

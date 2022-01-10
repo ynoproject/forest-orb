@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Pressez 4 pour cacher/montrer les noms de joueurs",
       "discord": "Rejoignez notre Discord !"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Ouvrir un Fichier de Sauvegarde",
         "download": "Télécharger un Fichier de Sauvegarde"
       },
-      "uiTheme": "Thème UI"
+      "uiTheme": "Thème UI",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {

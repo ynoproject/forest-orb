@@ -179,6 +179,10 @@ body {
   z-index: 1;
 }
 
+#layout.hideChat #chatboxContainer {
+  display: none;
+}
+
 #chatbox {
   display: flex;
   flex-direction: column;
@@ -482,7 +486,7 @@ input[type='text'], select {
 }
 
 @media only screen and (min-width: 705px) and (max-height: 594px) {
-  #layout:not(.overflow) #mainContainer {
+  #layout:not(.overflow):not(.hideChat) #mainContainer {
     width: calc(100vw - 348px);
   }
 

@@ -33,7 +33,6 @@
       }
     },
     "instruction": {
-      "nametagToggle": "Нажмите 4 чтобы показать/спрятать ники на карте .&nbsp;",
       "discord": "Присоединяйтесь к нашему &nbsp;D i s c o r d !"
     },
     "lang": {
@@ -52,7 +51,9 @@
         "upload": "Загрузить сохранение",
         "download": "Скачать сохранение"
       },
-      "uiTheme": "Стиль Интерфейса"
+      "uiTheme": "Стиль Интерфейса",
+      "toggleChat": "Toggle Chat",
+      "toggleNametags": "Toggle Nametags"
     }
   },
   "labels": {
