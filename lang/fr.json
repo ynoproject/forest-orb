@@ -22,7 +22,7 @@
       }
     },
     "chatbox": {
-      "connStatus": "Status:&nbsp;",
+      "connStatus": "Statut&nbsp;:&nbsp;",
       "location": "Lieu&nbsp;:&nbsp;",
       "nickname": {
         "header": "Choisissez un pseudonyme pour pouvoir discuter.",
@@ -52,8 +52,8 @@
         "download": "Télécharger un Fichier de Sauvegarde"
       },
       "uiTheme": "Thème UI",
-      "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags"
+      "toggleChat": "Afficher le Tchat",
+      "toggleNametags": "Afficher les Noms"
     }
   },
   "labels": {
@@ -125,16 +125,17 @@
       }
     },
     "connStatus": {
-      "0": "Disconnected",
-      "1": "Connected"
+      "0": "Déconnecté",
+      "1": "Connecté"
     },
+    "playersOnline": "{COUNT} Joueurs En Ligne",
     "2kki": {
       "location": {
         "unknownLocation": "Lieu Inconnu"
       },
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "generic": "Voir dans Yume 2kki Explorer",
+        "multi": "Voir {LOCATION} dans Yume 2kki Explorer"
       }
     }
   }
