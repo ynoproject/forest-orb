@@ -180,7 +180,7 @@ body {
 }
 
 #layout.hideChat #chatboxContainer {
-  display: none;
+  display: none !important;
 }
 
 #chatbox {
