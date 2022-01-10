@@ -798,9 +798,7 @@ if (hasTouchscreen) {
     ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
     ret.classList.add('unselectable');
 
-    let url = `https://2kki.app/?location=${locationName}`;
-    if (/^(?:en|ja)$/.test(config.lang))
-      url += `&lang=${config.lang}`;
+    const url = `https://2kki.app/?location=${locationName}&lang=${config.lang}`;
 
     ret.onclick = () => {
       const handle = window.open(url, '_blank');
