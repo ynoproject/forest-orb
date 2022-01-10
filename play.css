@@ -382,13 +382,13 @@ input[type='text'], select {
 
   #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 638px);
+    height: calc(100vh - 594px);
     min-height: 188px;
     max-height: 328px;
   }
 
   #chatbox {
-    height: calc(100vh - 634px);
+    height: calc(100vh - 590px);
     min-height: 200px;
     max-height: 340px;
   }
@@ -408,13 +408,13 @@ input[type='text'], select {
 
   #layout.downscale2 #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 398px);
+    height: calc(100vh - 354px);
     min-height: 188px;
     max-height: 328px;
   }
 
   #layout.downscale2 #chatbox {
-    height: calc(100vh - 394px);
+    height: calc(100vh - 350px);
     min-height: 200px;
     max-height: 340px;
   }
