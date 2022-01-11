@@ -1492,11 +1492,16 @@ if (hasTouchscreen) {
             : '';
 
         localizedMessages = jsonResponse.messages;
-
-        if (connStatus !== undefined)
-          onUpdateConnectionStatus(connStatus);
-        if (playerCount !== undefined)
-          updatePlayerCount(playerCount);
+        
+        if (isInitial) {
+          onUpdateConnectionStatus(0);
+          updatePlayerCount('?');
+        } else {
+          if (connStatus !== undefined)
+            onUpdateConnectionStatus(connStatus);
+          if (playerCount !== undefined)
+            updatePlayerCount(playerCount);
+        }
 
         const resourcesJson = {};
         resourcesJson[config.lang] = { translation: jsonResponse.ui };
