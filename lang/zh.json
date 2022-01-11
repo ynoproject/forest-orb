@@ -131,6 +131,7 @@
     "playersOnline": "当前有 {COUNT} 位玩家同时在线",
     "2kki": {
       "location": {
+        "template": "{LOCATION_JP}（{LOCATION}）",
         "unknownLocation": "未知地点"
       },
       "explorerLink": {

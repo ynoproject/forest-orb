@@ -520,8 +520,7 @@ if (hasTouchscreen) {
 <script data-game-ids="2kki">
   const is2kki = gameId === '2kki';
   let cachedMapId = null;
-  let cachedLocationLink = null;
-  let cachedLocationNames = null;
+  let cachedLocations = null;
   const queryingLocationLabels = {
     'en': 'Querying Location...',
     'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
@@ -533,10 +532,9 @@ if (hasTouchscreen) {
     'de': 'Fragt standort ab...',
     'ru': 'Вычисляем место нахождения...'
   };
-  const locationNamePattern = /<a .*?>(.*?)<\/a>.*?\)/;
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900', '1581'];
-  let defaultLocationLinks;
+  let defaultLocations;
 
   // called from EasyRPG player
   function onLoadMap(mapName) {
@@ -551,28 +549,29 @@ if (hasTouchscreen) {
 
       const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
 
-      let locationLink = locationCache[locationKey] || null;
+      let locations = locationCache[locationKey] || null;
 
-      const useDefaultLocation = defaultLocationLinks.hasOwnProperty(mapId);
+      if (locations && typeof locations === 'string')
+        locations = null;
+
+      const useDefaultLocation = defaultLocations.hasOwnProperty(mapId);
 
       if (useDefaultLocation)
-        locationLink = defaultLocationLinks[mapId];
-      else if (Object.values(queryingLocationLabels).indexOf(locationLink) > -1)
-        locationLink = null;
+        locations = defaultLocations[mapId];
+      else if (Object.values(queryingLocationLabels).indexOf(location.title) > -1)
+        locations = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
-        locationLink = localizedMessages['2kki'].location.unknownLocation;
+        locations = localizedMessages['2kki'].location.unknownLocation;
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
       
-      if (locationLink) {
+      if (locations && locations.length) {
         const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
-        const locationNameResult = locationNamePattern.exec(locationLink);
-        const locationNames = locationNameResult ? locationNameResult.slice(1) : null;
-        setLocation(mapId, cachedMapId, locationLink, cachedLocationLink, cacheLocation);
+        const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
+        setLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
         cachedMapId = mapId;
-        cachedLocationLink = locationLink;
-        cachedLocationNames = locationNames;
+        cachedLocations = locationNames ? locations : null;
         if (!locationNames) {
           setExplorerLinks(null);
           setMaps([]);
@@ -587,7 +586,7 @@ if (hasTouchscreen) {
             queryAndSetMaps(locationNames).catch(err => console.error(err));
         }
       } else {
-        queryAndSetLocation(mapId, cachedMapId, cachedLocationLink, cachedLocationNames)
+        queryAndSetLocation(mapId, cachedMapId, cachedLocations)
           .then(locationNames => {
             setExplorerLinks(locationNames);
             if (locationNames)
@@ -601,20 +600,20 @@ if (hasTouchscreen) {
     }
   }
   
-  function queryAndSetLocation(mapId, prevMapId, prevLocationLink, prevLocationNames) {
+  function queryAndSetLocation(mapId, prevMapId, prevLocations) {
     return new Promise((resolve, reject) => {
       const req = new XMLHttpRequest();
         let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
         if (prevMapId) {
             url += `&prevMapId=${prevMapId}`;
-            if (prevLocationNames)
-              url += `&prevLocationNames=${prevLocationNames.join('&prevLocationNames=')}`;
+            if (prevLocations && prevLocations.length && !prevLocations[0].default)
+              url += `&prevLocationNames=${prevLocations.map(l => l.title).join('&prevLocationNames=')}`;
         }
         req.responseType = 'json';
         req.open("GET", url);
         req.send();
 
-        setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocationLink, true);
+        setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocations, true);
 
         req.onload = (e) => {
           const locationsArray = req.response;
@@ -624,20 +623,19 @@ if (hasTouchscreen) {
             const locationNames = locations.map(l => l.title);
 
             cachedMapId = mapId;
-            cachedLocationLink = document.getElementById('locationText').innerHTML;
-            cachedLocationNames = locationNames;
+            cachedLocations = locations;
             resolve(locationNames);
           };
 
           if (Array.isArray(locationsArray) && locationsArray.length) {
             let location = locationsArray[0];
-            let usePrevLocation = false;
+            let usePrevLocations = false;
 
-            if (locationsArray.length > 1 && prevLocationLink) {
+            if (locationsArray.length > 1 && prevLocations) {
               for (let l of locationsArray) {
-                if (getLocationLink(l) === prevLocationLink) {
+                if (l.title === prevLocations[0].title) {
                   location = l;
-                  usePrevLocation = true;
+                  usePrevLocations = true;
                   break;
                 }
               }
@@ -645,21 +643,21 @@ if (hasTouchscreen) {
 
             locations.push(location);
 
-            if (usePrevLocation) {
+            if (usePrevLocations) {
               queryConnectedLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
                 .then(connectedLocationNames => {
                   const connectedLocations = locationsArray.filter(l => connectedLocationNames.indexOf(l.title) > -1);
                   for (let cl of connectedLocations)
                     locations.push(cl);
 
-                  setLocation(mapId, prevMapId, locations.map(l => getLocationLink(l)).join('<br>'), prevLocationLink, true, true);
+                  setLocation(mapId, prevMapId, locations, prevLocations, true, true);
 
                   cacheAndResolve();
                 }).catch(err => reject(err));
                 
               return;
             } else
-              setLocation(mapId, prevMapId, getLocationLink(location), prevLocationLink, true, true);
+              setLocation(mapId, prevMapId, locations, prevLocations, true, true);
           } else {
             const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
             
@@ -667,32 +665,36 @@ if (hasTouchscreen) {
               console.error({ error: req.response.error, errCode: errCode });
 
             if (prevMapId) {
-              queryAndSetLocation(mapId, null, null, null).then(() => resolve(null)).catch(err => reject(err));
+              queryAndSetLocation(mapId, null, null).then(() => resolve(null)).catch(err => reject(err));
               return;
             }
-            setLocation(mapId, prevMapId, null, prevLocationLink, true, true);
+            setLocation(mapId, prevMapId, null, prevLocations, true, true);
           }
           cacheAndResolve();
         };
     });
   }
 
-  function setLocation(mapId, prevMapId, locationLink, prevLocationLink, cacheLocation, saveLocation) {
-    document.getElementById('locationText').innerHTML = locationLink || localizedMessages['2kki'].location.unknownLocation;
+  function setLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
+    document.getElementById('locationText').innerHTML = locations && locations.length
+      ? Array.isArray(locations)
+        ? locations.map(l => getLocationLink(l)).join('<br>')
+        : locations
+      : localizedMessages['2kki'].location.unknownLocation;
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
-      if (locationLink)
-        locationCache[locationKey] = locationLink;
+      if (locations)
+        locationCache[locationKey] = locations;
       else
         unknownLocations.push(locationKey)
-      if (prevLocationLink)
-        locationCache[prevLocationKey] = prevLocationLink;
-      if (saveLocation && (locationLink || prevLocationLink)) {
-        if (locationLink)
-          config.locationCache[locationKey] = locationLink;
-        if (prevLocationLink)
-          config.locationCache[prevLocationKey] = prevLocationLink;
+      if (prevLocations)
+        locationCache[prevLocationKey] = prevLocations;
+      if (saveLocation && (locations || prevLocations)) {
+        if (locations)
+          config.locationCache[locationKey] = locations;
+        if (prevLocations)
+          config.locationCache[prevLocationKey] = prevLocations;
         updateConfig(config);
       }
     }
@@ -703,24 +705,24 @@ if (hasTouchscreen) {
       urlTitle = location.title;
     if (!urlTitleJP)
       urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
-    const url = `https://yume2kki.fandom.com/wiki/${urlTitle}`;
-    const urlJP = `https://wikiwiki.jp/yume2kki-t/${urlTitleJP}`;
-    return `<a href="${url}" target="_blank">${location.title}</a> (<a href="${urlJP}" target="_blank">${location.titleJP}</a>)`;
+    const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
+    const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>)`;
+    return localizedMessages['2kki'].location.template.replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP);
   }
 
-  function getDefaultLocationLinks() {
+  function getDefaultLocations() {
     const ret = {
-      '0150': getLocationLink({ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム' }, 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', 'ミニゲーム/パズルゲーム'),
-      '0620': getLocationLink({ title: 'Sound Room', titleJP: 'SR分室の曲' }, 'Soundtrack', '収集要素/SR分室の曲・演出の解放条件')
+      '0150': [{ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム', urlTitle: 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', urlTitleJP: 'ミニゲーム/パズルゲーム', default: true }],
+      '0620': [{ title: 'Sound Room', titleJP: 'SR分室の曲', urlTitle: 'Soundtrack', urlTitleJP: '収集要素/SR分室の曲・演出の解放条件', default: true }]
     };
 
-    const wavyUpLocationLink = getLocationLink({ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑'}, 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', 'ミニゲーム/↑v↑');
+    const wavyUpLocation = [{ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑', urlTitle: 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', urlTitleJP: 'ミニゲーム/↑v↑', default: true }];
     for (let i = 121; i <= 130; i++)
-      ret[`0${i}`] = wavyUpLocationLink;
+      ret[`0${i}`] = wavyUpLocation;
 
-    const platedSnowCountryLink = getLocationLink({ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき'}, 'Console#Plated_Snow_Country', 'ミニゲーム/ゆきぐにっき');
+    const platedSnowCountry = [{ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき', urlTitle: 'Console#Plated_Snow_Country', urlTitleJP: 'ミニゲーム/ゆきぐにっき', default: true }];
     for (let i = 249; i <= 250; i++)
-      ret[`0${i}`] = platedSnowCountryLink;
+      ret[`0${i}`] = platedSnowCountry;
 
     return ret;
   }
@@ -840,7 +842,7 @@ if (hasTouchscreen) {
     // Yume 2kki Explorer doesn't support mobile
     if (hasTouchscreen)
       document.getElementById('explorerControls').remove();
-    defaultLocationLinks = getDefaultLocationLinks();
+    defaultLocations = getDefaultLocations();
   }
 </script>
 <script>
