@@ -294,8 +294,6 @@ html:not([lang='ru']) #enterNameInstruction span {
 .infoText {
   width: 100%;
   word-break: keep-all;
-  letter-spacing: 0;
-  word-spacing: 0;
 }
 
 .infoContainer .infoText {
