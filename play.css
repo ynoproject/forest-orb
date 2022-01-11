@@ -231,6 +231,11 @@ html:not([lang='ru']) #enterNameInstruction span {
   width: calc(100% - 28px);
 }
 
+#onlineInfo {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 #langContainer {
   margin: 0 auto;
   text-align: right;
@@ -261,6 +266,31 @@ html:not([lang='ru']) #enterNameInstruction span {
 
 .messageContainer {
   word-wrap: break-word;
+}
+
+.info {
+  display: flex;
+  padding-bottom: 8px;
+}
+
+.info.hidden {
+  display: none;
+}
+
+.infoLabel {
+  white-space: nowrap;
+}
+
+.infoText {
+  width: 100%;
+  text-align: center;
+  word-break: keep-all;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+.infoContainer .infoText {
+  width: unset;
 }
 
 .modal {

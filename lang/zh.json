@@ -128,6 +128,7 @@
       "0": "已断开",
       "1": "已连接"
     },
+    "playersOnline": "{COUNT} Players Online",
     "2kki": {
       "location": {
         "unknownLocation": "未知地点"

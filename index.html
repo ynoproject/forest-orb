@@ -149,26 +149,16 @@
     .altText, a:not(.modalClose) {
       background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
-    
-    .info {
-      display: flex;
-      padding-bottom: 8px;
+
+    #connStatusIcon {
+      background: linear-gradient(#b30000, #800000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .info.hidden {
-      display: none;
-    }
-
-    .infoLabel {
-      white-space: nowrap;
-    }
-
-    .infoText {
-      width: 100%;
-      text-align: center;
-      word-break: keep-all;
-      letter-spacing: 0;
-      word-spacing: 0;
+    #connStatusIcon.online {
+      background-image: linear-gradient(#00b33c, #00802b);
     }
   
     .messageContainer {
@@ -292,8 +282,8 @@
     </div>
     <div id="chatboxContainer" class="container" style="display: none">
       <div id="chatbox">
-        <div id="connStatus" class="info hidden">
-          <span id="connStatusLabel" class="infoLabel" data-i18n="[html]chatbox.connStatus">Status:&nbsp;</span><label id="connStatusText" class="infoText"></label>
+        <div id="onlineInfo" class="info hidden">
+          <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel"></span>
         </div>
         <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
           <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
@@ -973,11 +963,26 @@ if (hasTouchscreen) {
     name: ''
   };
 
+  let connStatus;
+
   function onUpdateConnectionStatus(status) {
-    document.getElementById('connStatus').classList.remove('hidden');
+    const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
+    connStatusIcon.classList.toggle('online', status);
     connStatusText.innerText = localizedMessages.connStatus[status];
     connStatusText.classList.toggle('altText', !status);
+    connStatus = status;
+  }
+
+  let playerCount;
+
+  function updatePlayerCount(count) {
+    const playerCountLabel = document.getElementById('playerCountLabel');
+    const playerCountString = config.lang === 'ru' ? count.toString().split('').join(' ') : count.toString();
+    playerCountLabel.innerText = localizedMessages.playersOnline.replace('{COUNT}', playerCountString);
+    if (playerCount === undefined)
+      document.getElementById('onlineInfo').classList.remove('hidden');
+    playerCount = count;
   }
 
   let locationCache;
@@ -1455,6 +1460,12 @@ if (hasTouchscreen) {
             : '';
 
         localizedMessages = jsonResponse.messages;
+
+        if (connStatus !== undefined)
+          onUpdateConnectionStatus(connStatus);
+        if (playerCount !== undefined)
+          updatePlayerCount(playerCount);
+
         const resourcesJson = {};
         resourcesJson[config.lang] = { translation: jsonResponse.ui };
         i18next.init({
@@ -1556,10 +1567,6 @@ if (hasTouchscreen) {
     setUiTheme('Default', true);
   if (!localizedMessages)
     initLocalization(true);
-
-  function updatePlayerCount(num) {
-    //to be implemented soon, called by game whenever a player connects or disconnects. num is an integer that's the total number of players in the game.
-  }
 </script>
 
 </body>

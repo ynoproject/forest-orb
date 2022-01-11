@@ -128,6 +128,7 @@
       "0": "Verbindung unterbrochen",
       "1": "Verbunden"
     },
+    "playersOnline": "{COUNT} Players Online",
     "2kki": {
       "location": {
         "unknownLocation": "Unbekannter Ort"
