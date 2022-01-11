@@ -27,8 +27,8 @@
       "nickname": {
         "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
         "rule": {
-          "maxLength": "※最大12文字まで",
-          "alphanumeric": "※半角英数字のみ"
+          "maxLength": "※最大 12 文字 まで",
+          "alphanumeric": "※半角 英数字 のみ"
         }
       }
     },

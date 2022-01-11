@@ -1,7 +1,7 @@
 {
   "version": {
     "2kki": {
-      "label": "Y u m e &nbsp;2 k k i &nbsp;Версия {VERSION}",
+      "label": "Yume 2kki Версия {VERSION}",
       "substitutes": {
         " Patch ": " Патч № ",
         "?": "?"
@@ -22,24 +22,24 @@
       }
     },
     "chatbox": {
-      "connStatus": "Статус :&nbsp;",
-      "location": "Локация :&nbsp;",
+      "connStatus": "Статус:&nbsp;",
+      "location": "Локация:&nbsp;",
       "nickname": {
-        "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату .&nbsp;",
+        "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
         "rule": {
-          "maxLength": "* Не более 1 2 символов .&nbsp;",
-          "alphanumeric": "* Только латиница и цифры .&nbsp;"
+          "maxLength": "* Не более 12 символов.",
+          "alphanumeric": "* Только латиница и цифры."
         }
       }
     },
     "instruction": {
-      "discord": "Присоединяйтесь к нашему &nbsp;D i s c o r d !"
+      "discord": "Присоединяйтесь к нашему Discord!"
     },
     "lang": {
       "label": "Язык:"
     },
     "2kki": {
-      "hostedWithPermission": "Размещено с разрешения разработчиков &nbsp;Y u m e &nbsp;2 k k i"
+      "hostedWithPermission": "Размещено с разрешения разработчиков Yume 2kki"
     },
     "modal": {
       "uiTheme": {

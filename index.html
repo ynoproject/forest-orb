@@ -166,8 +166,6 @@
     }
 
     #locationText {
-      letter-spacing: 0;
-      word-spacing: 0;
       text-align: right;
     }
   
@@ -563,7 +561,7 @@ if (hasTouchscreen) {
       else if (Object.values(queryingLocationLabels).indexOf(location.title) > -1)
         locations = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
-        locations = localizedMessages['2kki'].location.unknownLocation;
+        locations = getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
 
       if (!cachedMapId)
         document.getElementById('location').classList.remove('hidden');
@@ -682,7 +680,7 @@ if (hasTouchscreen) {
       ? Array.isArray(locations)
         ? locations.map(l => getLocationLink(l)).join('<br>')
         : locations
-      : localizedMessages['2kki'].location.unknownLocation;
+      : getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -709,7 +707,7 @@ if (hasTouchscreen) {
       urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
     const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
     const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-    return localizedMessages['2kki'].location.template.replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP);
+    return getMassagedLabel(localizedMessages['2kki'].location.template.replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP));
   }
 
   function getDefaultLocations() {
@@ -971,6 +969,17 @@ if (hasTouchscreen) {
 
   let localizedMessages;
 
+  const langLabelMassageFunctions = {
+    'ja': value => {
+      if (value.indexOf(' ') > -1)
+        return value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
+      return value;
+    },
+    'ru': value => {
+      return value.replace(/([\u0400-\u04FF]+)/g, '<span class="ru-spacing-fix">$1</span>');
+    }
+  };
+
   let config = {
     lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
     name: ''
@@ -982,7 +991,7 @@ if (hasTouchscreen) {
     const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
     connStatusIcon.classList.toggle('online', status);
-    connStatusText.innerText = localizedMessages.connStatus[status];
+    connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
     connStatusText.classList.toggle('altText', !status);
     connStatus = status;
   }
@@ -991,8 +1000,7 @@ if (hasTouchscreen) {
 
   function updatePlayerCount(count) {
     const playerCountLabel = document.getElementById('playerCountLabel');
-    const playerCountString = config.lang === 'ru' ? count.toString().split('').join(' ') : count.toString();
-    playerCountLabel.innerText = localizedMessages.playersOnline.replace('{COUNT}', playerCountString);
+    playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline.replace('{COUNT}', count));
     if (playerCount === undefined)
       document.getElementById('onlineInfo').classList.remove('hidden');
     playerCount = count;
@@ -1485,8 +1493,8 @@ if (hasTouchscreen) {
             versionElement.innerHTML = versionLabel;
           }
         }
-        if (config.lang === 'ja')
-          convertJPLabels(jsonResponse.ui);
+
+        massageLabels(jsonResponse.ui);
 
         const uiThemeLabels = jsonResponse.labels.uiTheme;
         const uiThemes = document.querySelectorAll('.uiTheme');
@@ -1521,23 +1529,28 @@ if (hasTouchscreen) {
       });
   }
 
-  function convertJPLabels(data) {
-    if (data) {
+  function massageLabels(data) {
+    if (langLabelMassageFunctions.hasOwnProperty(config.lang) && data) {
       Object.keys(data).forEach(function (key) {
         const value = data[key];
         if (value) {
           switch (typeof value) {
             case 'object':
-              convertJPLabels(value);
+              massageLabels(value);
               break;
             case 'string':
-              if (value.indexOf(' ') > -1)
-                  data[key] = value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
+              data[key] = getMassagedLabel(value);
               break;
           }
         }
       });
     }
+  }
+
+  function getMassagedLabel(label) {
+    if (langLabelMassageFunctions.hasOwnProperty(config.lang) && label)
+      return langLabelMassageFunctions[config.lang](label);
+    return label;
   }
 
   let loadedUiTheme = false;
