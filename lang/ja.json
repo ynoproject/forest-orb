@@ -128,6 +128,7 @@
       "0": "接続なし",
       "1": "接続済み"
     },
+    "playersOnline": "{COUNT}人が接続中",
     "2kki": {
       "location": {
         "unknownLocation": "場所不明"

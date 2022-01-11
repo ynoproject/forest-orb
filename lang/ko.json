@@ -52,8 +52,8 @@
         "download": "세이브 파일 다운로드"
       },
       "uiTheme": "UI 테마",
-      "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags"
+      "toggleChat": "채팅 표시",
+      "toggleNametags": "이름표 표시"
     }
   },
   "labels": {
@@ -125,16 +125,17 @@
       }
     },
     "connStatus": {
-      "0": "Disconnected",
-      "1": "Connected"
+      "0": "연결 끊김",
+      "1": "연결됨"
     },
+    "playersOnline": "{COUNT} Players Online",
     "2kki": {
       "location": {
         "unknownLocation": "알 수 없는 장소"
       },
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "generic": "Yume 2kki Explorer 열기",
+        "multi": "Yume 2kki Explorer 에서 {LOCATION} 보기"
       }
     }
   }

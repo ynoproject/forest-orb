@@ -70,6 +70,16 @@ body {
 
 #controls {
   z-index: 10;
+  opacity: 1;
+}
+
+#layout:fullscreen #controls.fshidden {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
 #explorerControls, #mapControls {
@@ -231,6 +241,11 @@ html:not([lang='ru']) #enterNameInstruction span {
   width: calc(100% - 28px);
 }
 
+#onlineInfo {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 #langContainer {
   margin: 0 auto;
   text-align: right;
@@ -261,6 +276,30 @@ html:not([lang='ru']) #enterNameInstruction span {
 
 .messageContainer {
   word-wrap: break-word;
+}
+
+.info {
+  display: flex;
+  padding-bottom: 8px;
+}
+
+.info.hidden {
+  display: none;
+}
+
+.infoLabel {
+  white-space: nowrap;
+}
+
+.infoText {
+  width: 100%;
+  word-break: keep-all;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+.infoContainer .infoText {
+  width: unset;
 }
 
 .modal {
@@ -382,13 +421,13 @@ input[type='text'], select {
 
   #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 638px);
+    height: calc(100vh - 594px);
     min-height: 188px;
     max-height: 328px;
   }
 
   #chatbox {
-    height: calc(100vh - 634px);
+    height: calc(100vh - 590px);
     min-height: 200px;
     max-height: 340px;
   }
@@ -408,13 +447,13 @@ input[type='text'], select {
 
   #layout.downscale2 #chatboxContainer {
     width: 100%;
-    height: calc(100vh - 398px);
+    height: calc(100vh - 354px);
     min-height: 188px;
     max-height: 328px;
   }
 
   #layout.downscale2 #chatbox {
-    height: calc(100vh - 394px);
+    height: calc(100vh - 350px);
     min-height: 200px;
     max-height: 340px;
   }

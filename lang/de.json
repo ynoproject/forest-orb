@@ -52,8 +52,8 @@
         "download": "Save runterladen"
       },
       "uiTheme": "UI Stil",
-      "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags"
+      "toggleChat": "Chat an/aus",
+      "toggleNametags": "Namen an/aus"
     }
   },
   "labels": {
@@ -125,16 +125,17 @@
       }
     },
     "connStatus": {
-      "0": "Disconnected",
-      "1": "Connected"
+      "0": "Verbindung unterbrochen",
+      "1": "Verbunden"
     },
+    "playersOnline": "{COUNT} Players Online",
     "2kki": {
       "location": {
         "unknownLocation": "Unbekannter Ort"
       },
       "explorerLink": {
         "generic": "Im Yume 2kki Explorer ansehen",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "multi": "{LOCATION} im Yume 2kki Explorer ansehen"
       }
     }
   }

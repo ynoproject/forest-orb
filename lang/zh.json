@@ -52,8 +52,8 @@
         "download": "下载存档文件"
       },
       "uiTheme": "界面风格",
-      "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags"
+      "toggleChat": "显示/隐藏聊天屏幕",
+      "toggleNametags": "显示/隐藏玩家名称标签"
     }
   },
   "labels": {
@@ -125,16 +125,17 @@
       }
     },
     "connStatus": {
-      "0": "Disconnected",
-      "1": "Connected"
+      "0": "已断开",
+      "1": "已连接"
     },
+    "playersOnline": "{COUNT} Players Online",
     "2kki": {
       "location": {
         "unknownLocation": "未知地点"
       },
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "generic": "在梦2记探索辅助工具中查看当前地点",
+        "multi": "在梦2记探索辅助工具中查看当前地点：{LOCATION}"
       }
     }
   }

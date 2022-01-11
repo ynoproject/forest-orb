@@ -138,7 +138,7 @@
       border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
     }
   
-    #enterNameInstruction, .notice, .instruction, .message, h1, a, label {
+    #enterNameInstruction, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
       background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -149,26 +149,24 @@
     .altText, a:not(.modalClose) {
       background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
     }
-    
-    .info {
-      display: flex;
-      padding-bottom: 8px;
+
+    #connStatusIcon {
+      background: linear-gradient(#b30000, #800000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .info.hidden {
-      display: none;
+    #connStatusIcon.online {
+      background-image: linear-gradient(#00b33c, #00802b);
     }
 
-    .infoLabel {
-      white-space: nowrap;
+    #locationLabel {
+      padding-left: 22px;
     }
 
-    .infoText {
-      width: 100%;
-      text-align: center;
-      word-break: keep-all;
-      letter-spacing: 0;
-      word-spacing: 0;
+    #locationText {
+      text-align: right;
     }
   
     .messageContainer {
@@ -210,6 +208,30 @@
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
+    }
+
+     /* Safari only */
+     @media not all and (min-resolution:.001dpcm) {
+      #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, #messages, #enterNameContainer, .container, .modal, input[type='text'], select {
+        border-color: unset !important;
+      }
+
+      .messageContainer {
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom-color: unset !important;
+      }
+
+      /* Don't use text background on Safari since it doesn't repeat properly */
+      #enterNameInstruction, .notice, .instruction, .message, .infoLabel, .infoText, .altText, h1, a, label {
+        -webkit-text-fill-color: unset;
+        background-image: none !important;
+      }
+
+      .altText, a:not(.modalClose) {
+        color: rgba(255, 255, 157, 1); /*alt*/
+      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
@@ -268,8 +290,8 @@
     </div>
     <div id="chatboxContainer" class="container" style="display: none">
       <div id="chatbox">
-        <div id="connStatus" class="info hidden">
-          <span id="connStatusLabel" class="infoLabel" data-i18n="[html]chatbox.connStatus">Status:&nbsp;</span><label id="connStatusText" class="infoText"></label>
+        <div id="onlineInfo" class="info hidden">
+          <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel"></span>
         </div>
         <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
           <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
@@ -334,13 +356,13 @@
     <select id="lang">
       <option value="en">English</option>
       <option value="ja">日本語</option>
+      <option value="zh">中文</option>
+      <option value="ko">한국어</option>
       <option value="es">Español</option>
       <option value="pt">Português</option>
       <option value="fr">Français</option>
       <option value="de">Deutsch</option>
       <option value="ru">Русский</option>
-      <option value="zh">中文</option>
-      <option value="kr">한국어</option>
     </select>
   </div>
   <div id="backgroundTransition"></div>
@@ -374,9 +396,10 @@ gameContainer.addEventListener('click', () => canvas.focus());
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {
   const layout = document.getElementById('layout');
   if (layout.requestFullscreen) {
-    if (!document.fullscreenElement)
+    if (!document.fullscreenElement) {
       layout.requestFullscreen();
-    else
+      setFullscreenControlsHideTimer();
+    } else
       document.exitFullscreen();
   }
 });
@@ -502,13 +525,13 @@ if (hasTouchscreen) {
   const queryingLocationLabels = {
     'en': 'Querying Location...',
     'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
+    'zh': '正在查询地点...',
+    'ko': '위치 검색 중...',
     'es': 'Buscando Ubicación...',
     'pt': 'Procurando Localização...',
     'fr': 'Récupération du Lieu...',
     'de': 'Fragt standort ab...',
-    'ru': 'Вычисляем место нахождения...',
-    'zh': '正在查询地点...',
-    'kr': '위치 검색 중...'
+    'ru': 'Вычисляем место нахождения...'
   };
   const locationNamePattern = /<a .*?>(.*?)<\/a>.*?\)/;
   const unknownLocations = [];
@@ -949,11 +972,26 @@ if (hasTouchscreen) {
     name: ''
   };
 
+  let connStatus;
+
   function onUpdateConnectionStatus(status) {
-    document.getElementById('connStatus').classList.remove('hidden');
+    const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
+    connStatusIcon.classList.toggle('online', status);
     connStatusText.innerText = localizedMessages.connStatus[status];
     connStatusText.classList.toggle('altText', !status);
+    connStatus = status;
+  }
+
+  let playerCount;
+
+  function updatePlayerCount(count) {
+    const playerCountLabel = document.getElementById('playerCountLabel');
+    const playerCountString = config.lang === 'ru' ? count.toString().split('').join(' ') : count.toString();
+    playerCountLabel.innerText = localizedMessages.playersOnline.replace('{COUNT}', playerCountString);
+    if (playerCount === undefined)
+      document.getElementById('onlineInfo').classList.remove('hidden');
+    playerCount = count;
   }
 
   let locationCache;
@@ -1136,6 +1174,29 @@ if (hasTouchscreen) {
   window.onresize = function () { window.setTimeout(onResize, 0); };
 
   document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
+
+  function toggleControls(show) {
+    document.getElementById('controls').classList.toggle('fshidden', !show);
+  }
+
+  let fullscreenControlsTimer;
+
+  function setFullscreenControlsHideTimer() {
+    if (fullscreenControlsTimer)
+      clearInterval(fullscreenControlsTimer);
+    fullscreenControlsTimer = setTimeout(function () {
+      if (!document.querySelector("#controls button:hover"))
+        toggleControls(false);
+      fullscreenControlsTimer = null;
+    }, 5000);
+  }
+
+  document.onmousemove = function () {
+    if (document.fullscreenElement) {
+      toggleControls(true);
+      setFullscreenControlsHideTimer();
+    }
+  };
   
   window.onbeforeunload = function () {
     return localizedMessages.leavePage;
@@ -1431,6 +1492,17 @@ if (hasTouchscreen) {
             : '';
 
         localizedMessages = jsonResponse.messages;
+        
+        if (isInitial) {
+          onUpdateConnectionStatus(0);
+          updatePlayerCount('?');
+        } else {
+          if (connStatus !== undefined)
+            onUpdateConnectionStatus(connStatus);
+          if (playerCount !== undefined)
+            updatePlayerCount(playerCount);
+        }
+
         const resourcesJson = {};
         resourcesJson[config.lang] = { translation: jsonResponse.ui };
         i18next.init({
