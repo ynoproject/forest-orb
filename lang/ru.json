@@ -131,6 +131,7 @@
     "playersOnline": "{COUNT} игроков онлайн",
     "2kki": {
       "location": {
+        "template": "{LOCATION}",
         "unknownLocation": "Неизвестная локация"
       },
       "explorerLink": {
