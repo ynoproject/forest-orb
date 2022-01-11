@@ -70,6 +70,16 @@ body {
 
 #controls {
   z-index: 10;
+  opacity: 1;
+}
+
+#layout:fullscreen #controls.fshidden {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
 }
 
 #explorerControls, #mapControls {
@@ -283,7 +293,6 @@ html:not([lang='ru']) #enterNameInstruction span {
 
 .infoText {
   width: 100%;
-  text-align: center;
   word-break: keep-all;
   letter-spacing: 0;
   word-spacing: 0;

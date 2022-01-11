@@ -160,6 +160,14 @@
     #connStatusIcon.online {
       background-image: linear-gradient(#00b33c, #00802b);
     }
+
+    #locationLabel {
+      padding-left: 22px;
+    }
+
+    #locationText {
+      text-align: right;
+    }
   
     .messageContainer {
       border-bottom: 4px solid transparent;
@@ -388,9 +396,10 @@ gameContainer.addEventListener('click', () => canvas.focus());
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {
   const layout = document.getElementById('layout');
   if (layout.requestFullscreen) {
-    if (!document.fullscreenElement)
+    if (!document.fullscreenElement) {
       layout.requestFullscreen();
-    else
+      setFullscreenControlsHideTimer();
+    } else
       document.exitFullscreen();
   }
 });
@@ -1165,6 +1174,29 @@ if (hasTouchscreen) {
   window.onresize = function () { window.setTimeout(onResize, 0); };
 
   document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
+
+  function toggleControls(show) {
+    document.getElementById('controls').classList.toggle('fshidden', !show);
+  }
+
+  let fullscreenControlsTimer;
+
+  function setFullscreenControlsHideTimer() {
+    if (fullscreenControlsTimer)
+      clearInterval(fullscreenControlsTimer);
+    fullscreenControlsTimer = setTimeout(function () {
+      if (!document.querySelector("#controls button:hover"))
+        toggleControls(false);
+      fullscreenControlsTimer = null;
+    }, 5000);
+  }
+
+  document.onmousemove = function () {
+    if (document.fullscreenElement) {
+      toggleControls(true);
+      setFullscreenControlsHideTimer();
+    }
+  };
   
   window.onbeforeunload = function () {
     return localizedMessages.leavePage;
