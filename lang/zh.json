@@ -128,7 +128,7 @@
       "0": "已断开",
       "1": "已连接"
     },
-    "playersOnline": "{COUNT} Players Online",
+    "playersOnline": "当前有 {COUNT} 位玩家同时在线",
     "2kki": {
       "location": {
         "unknownLocation": "未知地点"
