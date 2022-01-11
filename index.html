@@ -521,17 +521,6 @@ if (hasTouchscreen) {
   const is2kki = gameId === '2kki';
   let cachedMapId = null;
   let cachedLocations = null;
-  const queryingLocationLabels = {
-    'en': 'Querying Location...',
-    'ja': 'Querying Location...', // Keep English translation by recommendation of qxy
-    'zh': '正在查询地点...',
-    'ko': '위치 검색 중...',
-    'es': 'Buscando Ubicación...',
-    'pt': 'Procurando Localização...',
-    'fr': 'Récupération du Lieu...',
-    'de': 'Fragt standort ab...',
-    'ru': 'Вычисляем место нахождения...'
-  };
   const unknownLocations = [];
   const ignoredMapIds = ['0899', '0900', '1581'];
   let defaultLocations;
@@ -558,8 +547,6 @@ if (hasTouchscreen) {
 
       if (useDefaultLocation)
         locations = defaultLocations[mapId];
-      else if (Object.values(queryingLocationLabels).indexOf(location.title) > -1)
-        locations = null;
       else if (unknownLocations.indexOf(locationKey) > -1)
         locations = getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
 
@@ -613,7 +600,7 @@ if (hasTouchscreen) {
         req.open("GET", url);
         req.send();
 
-        setLocation(mapId, prevMapId, queryingLocationLabels[config.lang], prevLocations, true);
+        setLocation(mapId, prevMapId, getMassagedLabel(localizedMessages['2kki'].location.queryingLocation), prevLocations, true);
 
         req.onload = (e) => {
           const locationsArray = req.response;

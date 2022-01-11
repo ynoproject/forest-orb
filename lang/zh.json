@@ -132,6 +132,7 @@
     "2kki": {
       "location": {
         "template": "{LOCATION_JP}（{LOCATION}）",
+        "queryingLocation": "正在查询地点...",
         "unknownLocation": "未知地点"
       },
       "explorerLink": {

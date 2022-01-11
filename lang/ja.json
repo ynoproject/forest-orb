@@ -131,7 +131,8 @@
     "playersOnline": "{COUNT}人が接続中",
     "2kki": {
       "location": {
-        "template": "{LOCATION_JP}「{LOCATION}」",
+        "template": "{LOCATION_JP} 「{LOCATION}」",
+        "queryingLocation": "Querying Location...",
         "unknownLocation": "場所不明"
       },
       "explorerLink": {

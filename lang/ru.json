@@ -132,6 +132,7 @@
     "2kki": {
       "location": {
         "template": "{LOCATION}",
+        "queryingLocation": "Вычисляем место нахождения...",
         "unknownLocation": "Неизвестная локация"
       },
       "explorerLink": {
