@@ -128,7 +128,7 @@
       "0": "Déconnecté",
       "1": "Connecté"
     },
-    "playersOnline": "{COUNT} Joueurs En Ligne",
+    "playersOnline": "{COUNT} Joueurs en Ligne",
     "2kki": {
       "location": {
         "unknownLocation": "Lieu Inconnu"
