@@ -694,7 +694,7 @@ if (hasTouchscreen) {
       urlTitleJP = (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
     const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
     const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-    return getMassagedLabel(localizedMessages['2kki'].location.template.replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP));
+    return getMassagedLabel(localizedMessages['2kki'].location.template).replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP);
   }
 
   function getDefaultLocations() {
