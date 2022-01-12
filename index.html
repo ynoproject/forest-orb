@@ -957,12 +957,12 @@ if (hasTouchscreen) {
   let localizedMessages;
 
   const langLabelMassageFunctions = {
-    'ja': value => {
-      if (value.indexOf(' ') > -1)
+    'ja': (value, isUI) => {
+      if (isUI && value.indexOf(' ') > -1)
         return value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
       return value;
     },
-    'ru': value => {
+    'ru': (value, isUI) => {
       return value.replace(/([\u0400-\u04FF]+)/g, '<span class="ru-spacing-fix">$1</span>');
     }
   };
@@ -1526,7 +1526,7 @@ if (hasTouchscreen) {
               massageLabels(value);
               break;
             case 'string':
-              data[key] = getMassagedLabel(value);
+              data[key] = getMassagedLabel(value, true);
               break;
           }
         }
@@ -1534,9 +1534,9 @@ if (hasTouchscreen) {
     }
   }
 
-  function getMassagedLabel(label) {
+  function getMassagedLabel(label, isUI) {
     if (langLabelMassageFunctions.hasOwnProperty(config.lang) && label)
-      return langLabelMassageFunctions[config.lang](label);
+      return langLabelMassageFunctions[config.lang](label, isUI);
     return label;
   }
 
