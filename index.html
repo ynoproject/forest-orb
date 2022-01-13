@@ -996,13 +996,21 @@ if (hasTouchscreen) {
   let systemName;
 
   function onUpdateSystemGraphic(name) {
-    systemName = /^(.*)\./.exec(name.replace(/'/g, ''))[1];
-    if (gameUiThemes.indexOf(name) > -1 && hasAutoUiTheme) {
-      const lastAutoButton = document.querySelector('.uiThemeContainer.auto');
-      if (lastAutoButton)
-        lastAutoButton.remove();
-      const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
-      uiThemeModalContent.prepend(getUiThemeOption('auto'));
+    if (name)
+      name = name.replace(/'/g, '');
+    if (gameUiThemes.indexOf(name) > -1) {
+      systemName = name;
+      if (hasAutoUiTheme) {
+        const lastAutoButton = document.querySelector('.uiThemeContainer.auto');
+        if (lastAutoButton)
+          lastAutoButton.remove();
+        const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
+        const autoUiThemeOption = getUiThemeOption('auto');
+        autoUiThemeOption.onclick = onSelectUiTheme;
+        uiThemeModalContent.prepend(autoUiThemeOption);
+        if (config.uiTheme === 'auto')
+          setUiTheme('auto');
+      }
     }
   }
 
@@ -1244,7 +1252,7 @@ if (hasTouchscreen) {
       const bgColorPixel = uiThemeBgColors[uiTheme];
       const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
       getFontShadow(uiTheme, function (shadow) {
-        themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/$1.png\')')
+        themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/$1.png\')')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
@@ -1283,8 +1291,8 @@ if (hasTouchscreen) {
       const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
       const altColorCallback = function (altColor) {
         themeStyles.textContent = themeStyles.textContent
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
         if (!isInit)
