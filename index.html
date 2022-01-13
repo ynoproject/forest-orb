@@ -104,7 +104,7 @@
     body {
       background-size: 210px;
       background-position-y: -16px;
-      background-image: url('images/ui/yume/Default/containerbg.png') !important;
+      background-image: url('images/ui/2kki/system0/containerbg.png') !important;
     }
     
     body.fullBg {
@@ -113,7 +113,7 @@
 
     #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
       image-rendering: crisp-edges;
       image-rendering: pixelated;
@@ -121,7 +121,7 @@
 
     #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 6 round !important;
+      border-image: url('images/ui/2kki/system1/border.png') 6 round !important;
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
@@ -135,11 +135,11 @@
     }
   
     #messages, #enterNameContainer {
-      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
+      border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
     }
   
     #enterNameInstruction, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
-      background-image: url('images/ui/yume/Default/font1.png') !important; /*base*/
+      background-image: url('images/ui/2kki/system1/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -147,7 +147,7 @@
     }
 
     .altText, a:not(.modalClose) {
-      background-image: url('images/ui/yume/Default/font4.png') !important; /*alt*/
+      background-image: url('images/ui/2kki/system1/font4.png') !important; /*alt*/
     }
 
     #connStatusIcon {
@@ -171,14 +171,14 @@
   
     .messageContainer {
       border-bottom: 4px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
     }
 
     .container, .modal {
       background-size: 70px;
       background-position-y: -16px;
-      background-image: url('images/ui/yume/Default/containerbg.png') !important;
-      border-image: url('images/ui/yume/Default/border.png') 10 repeat !important;
+      background-image: url('images/ui/2kki/system1/containerbg.png') !important;
+      border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
       border: 24px solid transparent;
     }
 
@@ -204,7 +204,7 @@
   
     input[type='text'], select {
       border: 12px solid transparent;
-      border-image: url('images/ui/yume/Default/border.png') 8 repeat !important;
+      border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -370,7 +370,7 @@
 <script>
   const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
+  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
   Module = {
     EASYRPG_GAME: gameId,
     EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
@@ -951,6 +951,9 @@ if (hasTouchscreen) {
     'amillusion': [ 'Azur' ]
   }[gameId];
 
+  const hasUiThemes = gameUiThemes.length > 0;
+  const hasAutoUiTheme = hasUiThemes && gameUiThemes[0] !== 'Default';
+
   let localizedMessages;
 
   const langLabelMassageFunctions = {
@@ -994,16 +997,16 @@ if (hasTouchscreen) {
 
   function onUpdateSystemGraphic(name) {
     systemName = /^(.*)\./.exec(name.replace(/'/g, ''))[1];
-    if (gameUiThemes.indexOf(name) > -1 && gameUiThemes.length && gameUiThemes[0] !== 'Default') {
+    if (gameUiThemes.indexOf(name) > -1 && hasAutoUiTheme) {
       const lastAutoButton = document.querySelector('.uiThemeContainer.auto');
       if (lastAutoButton)
         lastAutoButton.remove();
       const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
-      uiThemeModalContent.prepend(getUiThemeOption(systemName, true));
+      uiThemeModalContent.prepend(getUiThemeOption('auto'));
     }
   }
 
-  if (gameUiThemes.length)
+  if (hasUiThemes)
     populateUiThemes();
 
   let locationCache;
@@ -1037,8 +1040,6 @@ if (hasTouchscreen) {
   document.getElementById('nametagButton').onclick = function () {
     simulateKeyboardInput('4', 52);
   };
-
-  const hasUiThemes = gameUiThemes.length > 0;
 
   if (hasUiThemes) {
     config.uiTheme = 'Default';
@@ -1226,13 +1227,14 @@ if (hasTouchscreen) {
     if (!isInit)
       updateConfig(config);
   }
+
+  function getDefaultUiTheme() {
+    return !hasAutoUiTheme ? 'Default' : gameUiThemes[0];
+  }
   
   function setUiTheme(value, isInit) {
-    let uiTheme;
-    if (!value)
-      value = !gameUiThemes.length || gameUiThemes[0] === 'Default' ? 'Default' : 'auto';
     const isAuto = value === 'auto';
-    uiTheme = isAuto ? value : systemName;
+    const uiTheme = isAuto ? systemName || getDefaultUiTheme() : value;
     if (gameUiThemes.indexOf(uiTheme) === -1)
       return;
     if (hasUiThemes)
@@ -1242,12 +1244,12 @@ if (hasTouchscreen) {
       const bgColorPixel = uiThemeBgColors[uiTheme];
       const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
       getFontShadow(uiTheme, function (shadow) {
-        themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/$1.png\')')
+        themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/$1.png\')')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
         const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
-        const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${uiTheme}"]`);
+        const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
         if (lastSelectedThemeContainer)
           lastSelectedThemeContainer.classList.remove('selected');
         if (newSelectedTheme)
@@ -1270,26 +1272,30 @@ if (hasTouchscreen) {
   }
   
   function setFontStyle(fontStyle, isInit) {
+    const isAuto = config.uiTheme == 'auto';
+    const uiTheme = (isAuto ? systemName : config.uiTheme) || getDefaultUiTheme();
+    if (gameUiThemes.indexOf(uiTheme) === -1)
+      return;
     config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
     const defaultAltFontStyleIndex = parseInt(document.querySelector('.fontStyle option:last-child').value);
-    getFontColor(config.uiTheme || 'Default', fontStyle, function (baseColor) {
+    getFontColor(uiTheme, fontStyle, function (baseColor) {
       const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
       const altColorCallback = function (altColor) {
         themeStyles.textContent = themeStyles.textContent
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + config.uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
+          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[a-zA-Z0-9\\_]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
           .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
         if (!isInit)
           updateConfig(config);
       };
-      getFontColor(config.uiTheme || 'Default', altFontStyle, function (altColor) {
+      getFontColor(uiTheme, altFontStyle, function (altColor) {
         if (altColor !== baseColor)
           altColorCallback(altColor);
         else {
           const fallbackAltFontStyle = fontStyle !== defaultAltFontStyleIndex ? parseInt(document.querySelector('.fontStyle option:first-child').value) : 1;
-          getFontColor(config.uiTheme || 'Default', fallbackAltFontStyle, altColorCallback);
+          getFontColor(uiTheme, fallbackAltFontStyle, altColorCallback);
         }
       });
     });
@@ -1298,8 +1304,8 @@ if (hasTouchscreen) {
   function populateUiThemes() {
     const modalContent = document.querySelector('#uiThemesModal .modalContent');
     modalContent.innerHTML = '';
-    if (gameUiThemes.length && gameUiThemes[0] !== 'Default')
-      modalContent.appendChild(getUiThemeOption(systemName || gameUiThemes[0], true));
+    if (hasUiThemes && hasAutoUiTheme)
+      modalContent.appendChild(getUiThemeOption('auto'));
     for (let uiTheme of gameUiThemes)
       modalContent.appendChild(getUiThemeOption(uiTheme));
   }
@@ -1308,7 +1314,11 @@ if (hasTouchscreen) {
     setUiTheme(e.target.dataset.uiTheme);
   }
 
-  function getUiThemeOption(uiTheme, isAuto) {
+  function getUiThemeOption(uiTheme) {
+    const isAuto = uiTheme === 'auto';
+    if (isAuto)
+      uiTheme = systemName || getDefaultUiTheme();
+    
     const container = document.createElement('div');
     container.classList.add('uiThemeContainer');
     if (isAuto)
@@ -1318,7 +1328,7 @@ if (hasTouchscreen) {
     option.classList.add('uiTheme');
     if (gameFullBgUiThemes.indexOf(uiTheme) > -1)
       option.classList.add('fullBg');
-    option.dataset.uiTheme = uiTheme;
+    option.dataset.uiTheme = isAuto ? 'auto' : uiTheme;
     option.style.backgroundImage = `url('images/ui/${gameId}/${uiTheme}/containerbg.png')`;
     option.style.borderImage = `url('images/ui/${gameId}/${uiTheme}/border.png') 10 repeat`;
 
@@ -1587,15 +1597,19 @@ if (hasTouchscreen) {
                 setName(value, true);
                 break;
               case 'uiTheme':
-                if (hasUiThemes)
-                  document.querySelector('.uiTheme').value = value;
-                setUiTheme(value, true);
-                loadedUiTheme = true;
+                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
+                  if (hasUiThemes)
+                    document.querySelector('.uiTheme').value = value;
+                  setUiTheme(value, true);
+                  loadedUiTheme = true;
+                }
                 break;
               case 'fontStyle':
-                document.querySelector('.fontStyle').value = value;
-                setFontStyle(value, true);
-                loadedFontStyle = true;
+                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
+                  document.querySelector('.fontStyle').value = value;
+                  setFontStyle(value, true);
+                  loadedFontStyle = true;
+                }
                 break;
               case 'locationCache':
                 locationCache = Object.assign({}, value);
@@ -1627,7 +1641,7 @@ if (hasTouchscreen) {
   if (!loadedFontStyle)
     setFontStyle(0, true);
   if (!loadedUiTheme)
-    setUiTheme('Default', true);
+    setUiTheme(hasAutoUiTheme ? 'auto' : getDefaultUiTheme(), true);
   if (!localizedMessages)
     initLocalization(true);
 </script>
