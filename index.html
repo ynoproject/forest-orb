@@ -843,68 +843,68 @@ if (hasTouchscreen) {
 
   const gameUiThemes = {
     'yume': [
-      'Default',
-      'Alternate_1',
-      'Alternate_2'
+      'マイシステムa',
+      'マイシステムb',
+      'マイシステムc'
     ],
     '2kki': [
-      'Default',
-      'Default_2',
-      'Default_3',
-      'Default_4',
-      'Default_5',
-      'Developer_Room',
-      'Glitch_Ending',
-      'Glitch_Ending_2',
-      'Black_Building',
-      'Cog_Maze',
-      'Square_Square_World',
-      'Verdant_Promenade',
-      'Urotsukis_Dream_Apartments',
-      'Sofa_Room',
-      'Depths',
-      'Depths_2',
-      'Guts_World',
-      'Maple_Shrine',
-      'Pencil_World',
-      'Chocolate_World',
-      'Blue_Cactus_Islands',
-      'Stone_Towers',
-      'Constellation_World',
-      'Blob_Desert',
-      'Cipher_Keyboard',
-      'Viridian_Wetlands',
-      'Polluted_Swamp',
-      'Snowy_Village',
-      'Decrepit_Dwellings',
-      'Verdant_Promenade_2',
-      'Black_Ink_World',
-      'Forgotten_Megalopolis',
-      'Tomb_of_Velleities',
-      'Visine_Spacecraft',
-      'Data_Stream',
-      'Lavender_Waters',
-      'Originator_Garden',
-      'Fluorescent_Halls',
-      'City_of_Liars',
-      'Misc',
-      'Monochrome_GB_World',
-      'Smiley_Signs_World',
-      'Lovesick_World',
-      'Corrupted_Love_World',
-      'Saturated_Eyeball_Zone',
-      'NES_Glitch_Tunnel',
-      'Shop_Ruins'
+      'system1',
+      'system2',
+      'system3',
+      'system4',
+      'system5',
+      'system0',
+      'systemyaguruma',
+      'systemrenge',
+      'system-b',
+      'system-g',
+      'system-i',
+      'system-iiii2',
+      'system-k',
+      'system-n',
+      'system-o',
+      'system-r',
+      'system-hw',
+      'system_Ca0',
+      'Yeris_System_Rainbow',
+      'system_Suzume_choco',
+      'menu 20',
+      'menu 21',
+      '2i9_sys1',
+      '2i9_sys2',
+      '2i9_sys3',
+      'Noil-menu25',
+      'Noil-menu26',
+      'Noil-menu27',
+      'RioSystem1-28',
+      'RioSystem2-29',
+      'Nuaahs_menu',
+      'RioSystem3',
+      'RioSystem4',
+      'system_nantai_33',
+      'system_Nulsdodage_Digital',
+      'system-lav',
+      'Kon_sys_1',
+      'Kon_sys_2',
+      '2i9_sys4',
+      'system_K4_April2021',
+      'Nulsdodage_Mono',
+      'Kon_sys_3',
+      'Kon_sys_4',
+      'Kon_sys_5',
+      'system_E_eye',
+      'Kong_SystemFC',
+      'natl_sys_PinkRibbon'
     ],
     'flow': [
-      'Default',
-      'Famicom',
-      'Dot',
-      'Orange',
-      'Flower',
-      'Sugar',
-      'Rust',
-      'Smile'
+      'system',
+      'FCシムテム',
+      'systemdot',
+      'systemorange',
+      'system flower',
+      'systemsugar',
+      'system rust',
+      'systemsmile'
     ],
     'prayers': [
       'Default',
@@ -942,7 +942,7 @@ if (hasTouchscreen) {
   }[gameId];
 
   const gameFullBgUiThemes = {
-    'yume': [ 'Alternate_1' ],
+    'yume': [ 'マイシステムb' ],
     '2kki': [],
     'flow': [],
     'prayers': [ 'Default', 'Alternate_1', 'Alternate_2' ],
@@ -950,9 +950,6 @@ if (hasTouchscreen) {
     'someday': [],
     'amillusion': [ 'Azur' ]
   }[gameId];
-
-  if (gameUiThemes.length)
-    populateUiThemes();
 
   let localizedMessages;
 
@@ -975,20 +972,11 @@ if (hasTouchscreen) {
   let connStatus;
 
   function onUpdateConnectionStatus(status) {
-    const updateStatusText = function () {
-      const connStatusIcon = document.getElementById('connStatusIcon');
-      const connStatusText = document.getElementById('connStatusText');
-      connStatusIcon.classList.toggle('online', status);
-      connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
-      connStatusText.classList.toggle('altText', !status);
-    }; 
-    if (connStatus !== undefined && !status)
-      window.setTimeout(function () {
-        if (!connStatus)
-          updateStatusText();
-      }, 2000);
-    else
-      updateStatusText();
+    const connStatusIcon = document.getElementById('connStatusIcon');
+    const connStatusText = document.getElementById('connStatusText');
+    connStatusIcon.classList.toggle('online', status);
+    connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
+    connStatusText.classList.toggle('altText', !status);
     connStatus = status;
   }
 
@@ -1005,8 +993,18 @@ if (hasTouchscreen) {
   let systemName;
 
   function onUpdateSystemGraphic(name) {
-    systemName = name;
+    systemName = /^(.*)\./.exec(name.replace(/'/g, ''))[1];
+    if (gameUiThemes.indexOf(name) > -1 && gameUiThemes.length && gameUiThemes[0] !== 'Default') {
+      const lastAutoButton = document.querySelector('.uiThemeContainer.auto');
+      if (lastAutoButton)
+        lastAutoButton.remove();
+      const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
+      uiThemeModalContent.prepend(getUiThemeOption(systemName, true));
+    }
   }
+
+  if (gameUiThemes.length)
+    populateUiThemes();
 
   let locationCache;
 
@@ -1229,11 +1227,16 @@ if (hasTouchscreen) {
       updateConfig(config);
   }
   
-  function setUiTheme(uiTheme, isInit) {
-    if (!uiTheme)
-      uiTheme = 'Default';
+  function setUiTheme(value, isInit) {
+    let uiTheme;
+    if (!value)
+      value = !gameUiThemes.length || gameUiThemes[0] === 'Default' ? 'Default' : 'auto';
+    const isAuto = value === 'auto';
+    uiTheme = isAuto ? value : systemName;
+    if (gameUiThemes.indexOf(uiTheme) === -1)
+      return;
     if (hasUiThemes)
-      config.uiTheme = uiTheme;
+      config.uiTheme = value;
     const themeStyles = document.getElementById('themeStyles');
     getBaseBgColor(uiTheme, function (color) {
       const bgColorPixel = uiThemeBgColors[uiTheme];
@@ -1295,6 +1298,8 @@ if (hasTouchscreen) {
   function populateUiThemes() {
     const modalContent = document.querySelector('#uiThemesModal .modalContent');
     modalContent.innerHTML = '';
+    if (gameUiThemes.length && gameUiThemes[0] !== 'Default')
+      modalContent.appendChild(getUiThemeOption(systemName || gameUiThemes[0], true));
     for (let uiTheme of gameUiThemes)
       modalContent.appendChild(getUiThemeOption(uiTheme));
   }
@@ -1303,9 +1308,11 @@ if (hasTouchscreen) {
     setUiTheme(e.target.dataset.uiTheme);
   }
 
-  function getUiThemeOption(uiTheme) {
+  function getUiThemeOption(uiTheme, isAuto) {
     const container = document.createElement('div');
     container.classList.add('uiThemeContainer');
+    if (isAuto)
+      container.classList.add('auto');
 
     const option = document.createElement('div');
     option.classList.add('uiTheme');
