@@ -975,11 +975,20 @@ if (hasTouchscreen) {
   let connStatus;
 
   function onUpdateConnectionStatus(status) {
-    const connStatusIcon = document.getElementById('connStatusIcon');
-    const connStatusText = document.getElementById('connStatusText');
-    connStatusIcon.classList.toggle('online', status);
-    connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
-    connStatusText.classList.toggle('altText', !status);
+    const updateStatusText = function () {
+      const connStatusIcon = document.getElementById('connStatusIcon');
+      const connStatusText = document.getElementById('connStatusText');
+      connStatusIcon.classList.toggle('online', status);
+      connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
+      connStatusText.classList.toggle('altText', !status);
+    }; 
+    if (connStatus !== undefined && !status)
+      window.setTimeout(function () {
+        if (!connStatus)
+          updateStatusText();
+      }, 2000);
+    else
+      updateStatusText();
     connStatus = status;
   }
 
