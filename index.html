@@ -1002,6 +1002,12 @@ if (hasTouchscreen) {
     playerCount = count;
   }
 
+  let systemName;
+
+  function onUpdateSystemGraphic(name) {
+    systemName = name;
+  }
+
   let locationCache;
 
   document.getElementById('lang').onchange = function () {
