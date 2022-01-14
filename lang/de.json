@@ -53,7 +53,8 @@
       },
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
-      "toggleNametags": "Namen an/aus"
+      "toggleNametags": "Namen an/aus",
+      "togglePlayerSounds": "Toggle Player Sounds"
     }
   },
   "labels": {

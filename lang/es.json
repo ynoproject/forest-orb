@@ -53,7 +53,8 @@
       },
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags"
+      "toggleNametags": "Toggle Nametags",
+      "togglePlayerSounds": "Toggle Player Sounds"
     }
   },
   "labels": {

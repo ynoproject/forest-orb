@@ -53,7 +53,8 @@
       },
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar bate papo",
-      "toggleNametags": "Alternar nome dos jogadores"
+      "toggleNametags": "Alternar nome dos jogadores",
+      "togglePlayerSounds": "Toggle Player Sounds"
     }
   },
   "labels": {

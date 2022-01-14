@@ -53,7 +53,8 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleNametags": "プレーヤー名表示のオン／オフ"
+      "toggleNametags": "プレーヤー名表示のオン／オフ",
+      "togglePlayerSounds": "プレーヤー効果音のオン／オフ"
     }
   },
   "labels": {

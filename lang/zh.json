@@ -53,7 +53,8 @@
       },
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
-      "toggleNametags": "显示/隐藏玩家名称标签"
+      "toggleNametags": "显示/隐藏玩家名称标签",
+      "togglePlayerSounds": "Toggle Player Sounds"
     }
   },
   "labels": {

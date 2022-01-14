@@ -53,7 +53,8 @@
       },
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Tchat",
-      "toggleNametags": "Afficher les Noms"
+      "toggleNametags": "Afficher les Noms",
+      "togglePlayerSounds": "Toggle Player Sounds"
     }
   },
   "labels": {
