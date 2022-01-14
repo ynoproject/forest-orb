@@ -518,10 +518,6 @@ input[type='text'], select {
 }
 
 @media only screen and (min-width: 705px) and (max-height: 594px) {
-  #layout:not(.overflow):not(.hideChat) #mainContainer {
-    width: calc(100vw - 348px);
-  }
-
   #layout:not(.overflow) #chatbox {
     width: 240px;
     height: 100%;
