@@ -43,7 +43,8 @@
     },
     "modal": {
       "uiTheme": {
-        "title": "Tema de Inferfaz"
+        "title": "Tema de Inferfaz",
+        "auto": "AUTO"
       }
     },
     "tooltips": {

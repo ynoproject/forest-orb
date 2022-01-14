@@ -43,7 +43,8 @@
     },
     "modal": {
       "uiTheme": {
-        "title": "メニュー タイプ"
+        "title": "メニュー タイプ",
+        "auto": "AUTO"
       }
     },
     "tooltips": {

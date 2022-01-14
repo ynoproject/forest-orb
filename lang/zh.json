@@ -43,7 +43,8 @@
     },
     "modal": {
       "uiTheme": {
-        "title": "界面风格"
+        "title": "界面风格",
+        "auto": "AUTO"
       }
     },
     "tooltips": {

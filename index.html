@@ -1016,7 +1016,7 @@ if (hasTouchscreen) {
     if (gameUiThemes.indexOf(name) > -1) {
       systemName = name;
       if (hasAutoUiTheme) {
-        const lastAutoButton = document.querySelector('.uiThemeContainer.auto');
+        const lastAutoButton = document.querySelector('.uiThemeItem.auto');
         if (lastAutoButton)
           lastAutoButton.remove();
         const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
@@ -1334,8 +1334,10 @@ if (hasTouchscreen) {
   function populateUiThemes() {
     const modalContent = document.querySelector('#uiThemesModal .modalContent');
     modalContent.innerHTML = '';
-    if (hasUiThemes && hasAutoUiTheme)
+    if (hasUiThemes && hasAutoUiTheme) {
       modalContent.appendChild(getUiThemeOption('auto'));
+      locI18next.init(i18next)('.uiThemeItem.auto label');
+    }
     for (let uiTheme of gameUiThemes)
       modalContent.appendChild(getUiThemeOption(uiTheme));
   }
@@ -1348,11 +1350,14 @@ if (hasTouchscreen) {
     const isAuto = uiTheme === 'auto';
     if (isAuto)
       uiTheme = systemName || getDefaultUiTheme();
+
+    const item = document.createElement('div');
+    item.classList.add('uiThemeItem');
+    if (isAuto)
+      item.classList.add('auto');
     
     const container = document.createElement('div');
     container.classList.add('uiThemeContainer');
-    if (isAuto)
-      container.classList.add('auto');
 
     const option = document.createElement('div');
     option.classList.add('uiTheme');
@@ -1372,7 +1377,15 @@ if (hasTouchscreen) {
 
     container.appendChild(option);
 
-    return container;
+    if (isAuto) {
+      const autoLabel = document.createElement('label');
+      autoLabel.dataset.i18n = '[html]modal.uiTheme.auto';
+      item.appendChild(autoLabel);
+    }
+
+    item.appendChild(container);
+
+    return item;
   }
   
   let uiThemeBgColors = {};

@@ -43,7 +43,8 @@
     },
     "modal": {
       "uiTheme": {
-        "title": "Thème UI"
+        "title": "Thème UI",
+        "auto": "AUTO"
       }
     },
     "tooltips": {

@@ -328,16 +328,24 @@ body {
 }
 
 .modalContent > div {
-  border: 2px solid transparent;
   margin: 22px;
+  text-align: center;
+}
+
+.modalContent > .uiThemeItem.auto {
+  margin-top: 2px;
+}
+
+.modalContent > div > div {
+  border: 2px solid transparent;
+}
+
+.modalContent > div > div.selected {
+  border-color: white;
 }
 
 .modalHeader {
   text-align: center;
-}
-
-.modalContent > div.selected {
-  border-color: white;
 }
 
 .modalFooter {
