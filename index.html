@@ -1023,6 +1023,7 @@ if (hasTouchscreen) {
         const autoUiThemeOption = getUiThemeOption('auto');
         autoUiThemeOption.onclick = onSelectUiTheme;
         uiThemeModalContent.prepend(autoUiThemeOption);
+        locI18next.init(i18next)('.uiThemeItem.auto label');
         if (config.uiTheme === 'auto')
           setUiTheme('auto');
       }
@@ -1334,10 +1335,8 @@ if (hasTouchscreen) {
   function populateUiThemes() {
     const modalContent = document.querySelector('#uiThemesModal .modalContent');
     modalContent.innerHTML = '';
-    if (hasUiThemes && hasAutoUiTheme) {
+    if (hasUiThemes && hasAutoUiTheme)
       modalContent.appendChild(getUiThemeOption('auto'));
-      locI18next.init(i18next)('.uiThemeItem.auto label');
-    }
     for (let uiTheme of gameUiThemes)
       modalContent.appendChild(getUiThemeOption(uiTheme));
   }
