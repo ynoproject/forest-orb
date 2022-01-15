@@ -53,12 +53,13 @@ function initChat() {
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
     { p: /<\/?[bisu] *>/ig, r: '' },
-    { p: /\*\*\*(.*?)\*\*\*/ig, r: '<b><i>$1</i></b>' },
-    { p: /\*\*(.*?)\*\*/ig, r: '<b>$1</b>' },
-    { p: /\*(.*?)\*/ig, r: '<i>$1</i>' },
-    { p: /\_\_(.*?)\_\_/ig, r: '<u>$1</u>' },
-    { p: /\_(.*?)\_/ig, r: '<i>$1</i>' },
-    { p: /\~\~(.*?)\~\~/ig, r: '<s>$1</s>' },
+    { p: /\*{3,}([^\*\_\~]+)\*{3,}/g, r: '<b><i>$1</i></b>' },
+    { p: /\*{2}([^\*\_\~]+)\*{2}/g, r: '<b>$1</b>' },
+    { p: /\*([^\*\_\~]+)\*/g, r: '<i>$1</i>' },
+    { p: /\_{3,}([^\*\_\~]+)\_{3,}/g, r: '<u><i>$1</i></u>' },
+    { p: /\_{2}([^\*\_\~]+)\_{2}/g, r: '<u>$1</u>' },
+    { p: /\_([^\*\_\~]+)\_/g, r: '<i>$1</i>' },
+    { p: /\~{2,}([^\*\_\~]+)\~{2,}/g, r: '<s>$1</s>' },
   ];
   for (let e of replacements)
     msg = msg.replace(e.p, e.r);
@@ -70,7 +71,7 @@ function populateMessageNodes(msg, node) {
   const tagPattern = /<([bisu])>(.*?)<\/\1>/;
   let cursor = 0;
   let result;
-  
+
   while ((result = tagPattern.exec(msg.slice(cursor)))) {
     if (result.index) {
       const textNode = document.createTextNode(msg.slice(cursor, cursor + result.index));
