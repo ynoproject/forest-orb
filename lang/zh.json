@@ -44,7 +44,7 @@
     "modal": {
       "uiTheme": {
         "title": "界面风格",
-        "auto": "AUTO"
+        "auto": "自动"
       }
     },
     "tooltips": {
@@ -55,15 +55,15 @@
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
       "toggleNametags": "显示/隐藏玩家名称标签",
-      "togglePlayerSounds": "Toggle Player Sounds"
+      "togglePlayerSounds": "开启/关闭其他玩家音效"
     }
   },
   "labels": {
     "uiTheme": {
       "yume": {
         "マイシステムa": "默认",
-        "マイシステムb": "Alternate 1",
-        "マイシステムc": "Alternate 2"
+        "マイシステムb": "备选１",
+        "マイシステムc": "备选２"
       },
       "2kki": {
         "system1": "默认",
@@ -116,13 +116,13 @@
       },
       "flow": {
         "system": "默认",
-        "FCシムテム": "Famicom",
-        "systemdot": "Dot",
-        "systemorange": "Orange",
-        "system flower": "Flower",
-        "system sugar": "Sugar",
-        "system rust": "Rust",
-        "system smile": "Smile"
+        "FCシムテム": "FC游戏机",
+        "systemdot": "点阵",
+        "systemorange": "橙色",
+        "system flower": "花朵",
+        "system sugar": "糖",
+        "system rust": "锈迹",
+        "system smile": "微笑"
       }
     }
   },
