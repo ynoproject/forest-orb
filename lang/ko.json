@@ -55,7 +55,7 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleNametags": "이름표 표시",
-      "togglePlayerSounds": "Toggle Player Sounds"
+      "togglePlayerSounds": "다른 플레이어의 소리 듣기"
     }
   },
   "labels": {
@@ -145,7 +145,7 @@
       "0": "연결 끊김",
       "1": "연결됨"
     },
-    "playersOnline": "{COUNT} Players Online",
+    "playersOnline": "{COUNT}명이 온라인입니다",
     "2kki": {
       "location": {
         "template": "{LOCATION_JP} ({LOCATION})",
