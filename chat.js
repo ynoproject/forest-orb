@@ -53,6 +53,7 @@ function initChat() {
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
     { p: /<\/?[bisu] *>/ig, r: '' },
+    { p: /\*\*\*(.*?)\*\*\*/ig, r: '<b><i>$1</i></b>' },
     { p: /\*\*(.*?)\*\*/ig, r: '<b>$1</b>' },
     { p: /\*(.*?)\*/ig, r: '<i>$1</i>' },
     { p: /\_\_(.*?)\_\_/ig, r: '<u>$1</u>' },
