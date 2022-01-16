@@ -624,7 +624,7 @@ if (hasTouchscreen) {
             let location = locationsArray[0];
             let usePrevLocations = false;
 
-            if (locationsArray.length > 1 && prevLocations) {
+            if (locationsArray.length > 1 && prevLocations && prevLocations.length) {
               for (let l of locationsArray) {
                 if (l.title === prevLocations[0].title) {
                   location = l;
