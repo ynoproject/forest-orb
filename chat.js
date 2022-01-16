@@ -11,8 +11,20 @@ function chatboxAddMessage(msg) {
   
   const message = document.createElement("span");
   message.classList.add("message");
+
+  const msgTextResult = /^(<.*?>) (.*)/.exec(msg);
+  const nameText = msgTextResult ? msgTextResult[1] : null;
+  const msgText = msgTextResult ? msgTextResult[2] : msg;
+
+  if (nameText) {
+    const name = document.createElement("span");
+    name.classList.add('nameText');
+    name.innerText = nameText;
+    message.appendChild(name);
+    message.appendChild(document.createTextNode(' '));
+  }
   
-  populateMessageNodes(parseMessageTextForMarkdown(msg), message);
+  populateMessageNodes(parseMessageTextForMarkdown(msgText), message);
 
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
