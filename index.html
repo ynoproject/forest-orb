@@ -960,6 +960,9 @@ if (hasTouchscreen) {
   const hasUiThemes = gameUiThemes.length > 0;
   const hasAutoUiTheme = hasUiThemes && gameUiThemes[0] !== 'Default';
 
+  if (hasAutoUiTheme)
+    document.getElementById('messages').dataset.useSystemForName = true;
+
   let localizedMessages;
 
   const langLabelMassageFunctions = {
