@@ -305,7 +305,7 @@
         <div id="messages"></div>
         <div id="chatInputContainer" style="display: none">
           <form action="javascript:chatInputActionFired()">
-            <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" />
+            <input id="chatInput" type="text" autocomplete="off" maxlength="200" disabled="true" data-sys="" />
           </form>
         </div>
         <div id="enterNameContainer">
@@ -1015,6 +1015,7 @@ if (hasTouchscreen) {
       name = name.replace(/'/g, '');
     if (gameUiThemes.indexOf(name) > -1) {
       systemName = name;
+      document.getElementById('chatInput').dataset.sys = systemName;
       if (hasAutoUiTheme) {
         const lastAutoButton = document.querySelector('.uiThemeItem.auto');
         if (lastAutoButton)

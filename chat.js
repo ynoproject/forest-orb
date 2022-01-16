@@ -1,7 +1,7 @@
 Module['onRuntimeInitialized'] = initChat;
 ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
 
-function chatboxAddMessage(msg) {
+function chatboxAddMessage(systemName, msg) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -12,15 +12,26 @@ function chatboxAddMessage(msg) {
   const message = document.createElement("span");
   message.classList.add("message");
 
-  const msgTextResult = /^(<.*?>) (.*)/.exec(msg);
+  const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
   const nameText = msgTextResult ? msgTextResult[1] : null;
   const msgText = msgTextResult ? msgTextResult[2] : msg;
 
   if (nameText) {
+    const nameContainer = document.createElement("span");
     const name = document.createElement("span");
-    name.classList.add('nameText');
+    nameContainer.classList.add("nameText");
+    name.classList.add("nameText");
+    if (messages.dataset.useSystemForName) {
+      name.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/font1.png') !important`);
+      getFontShadow(systemName, function (shadow) {
+        name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
+      });
+    }
     name.innerText = nameText;
-    message.appendChild(name);
+    nameContainer.appendChild(document.createTextNode('<'));
+    nameContainer.appendChild(name);
+    nameContainer.appendChild(document.createTextNode('>'));
+    message.appendChild(nameContainer);
     message.appendChild(document.createTextNode(' '));
   }
   
@@ -35,13 +46,15 @@ function chatboxAddMessage(msg) {
 }
 
 function chatInputActionFired() {
-  const chatInput = document.getElementById("chatInput")
+  const chatInput = document.getElementById("chatInput");
   if (chatInput.value === "") {
     return
   }
-  const ptr = Module.allocate(Module.intArrayFromString(chatInput.value), Module.ALLOC_NORMAL);
-  Module._SendChatMessageToServer(ptr);
-  Module._free(ptr);
+  const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);
+  const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value), Module.ALLOC_NORMAL);
+  Module._SendChatMessageToServer(sysPtr, msgPtr);
+  Module._free(sysPtr);
+  Module._free(msgPtr);
   chatInput.value = "";
 }
 
@@ -103,6 +116,6 @@ function populateMessageNodes(msg, node) {
 }
 
 //called from easyrpg player
-function GotChatMsg(msg) {
-  chatboxAddMessage(msg);
+function onChatMessageReceived(systemName, msg) {
+  chatboxAddMessage(systemName, msg);
 }
