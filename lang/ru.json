@@ -44,7 +44,7 @@
     "modal": {
       "uiTheme": {
         "title": "Стиль Интерфейса",
-        "auto": "AUTO"
+        "auto": "Обычный"
       }
     },
     "tooltips": {
@@ -53,17 +53,17 @@
         "download": "Скачать сохранение"
       },
       "uiTheme": "Стиль Интерфейса",
-      "toggleChat": "Toggle Chat",
-      "toggleNametags": "Toggle Nametags",
-      "togglePlayerSounds": "Toggle Player Sounds"
+      "toggleChat": "Переключить Чат",
+      "toggleNametags": "Переключить Ники",
+      "togglePlayerSounds": "Переключить Звуки Игроков"
     }
   },
   "labels": {
     "uiTheme": {
       "yume": {
         "マイシステムa": "Обычный",
-        "マイシステムb": "Alternate 1",
-        "マイシステムc": "Alternate 2"
+        "マイシステムb": "Альтернативный 1",
+        "マイシステムc": "Альтернативный 2"
       },
       "2kki": {
         "system1": "Обычный",
@@ -142,19 +142,19 @@
       }
     },
     "connStatus": {
-      "0": "Отключено",
-      "1": "Связанный"
+      "0": "Вне сети",
+      "1": "В сети"
     },
     "playersOnline": "{COUNT} игроков онлайн",
     "2kki": {
       "location": {
         "template": "{LOCATION}",
-        "queryingLocation": "Вычисляем место нахождения...",
-        "unknownLocation": "Неизвестная локация"
+        "queryingLocation": "Вычисляем место...",
+        "unknownLocation": "Неизвестно"
       },
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "generic": "Просмотреть в Yume 2kki Explorer",
+        "multi": "Просмотреть {LOCATION} в Yume 2kki Explorer"
       }
     }
   }
