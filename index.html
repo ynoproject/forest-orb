@@ -962,8 +962,6 @@ if (hasTouchscreen) {
 
   if (hasAutoUiTheme)
     document.getElementById('messages').dataset.useSystemForName = true;
-    
-  systemName = getDefaultUiTheme();
 
   let localizedMessages;
 
@@ -1013,7 +1011,7 @@ if (hasTouchscreen) {
     playerCount = count;
   }
 
-  let systemName;
+  let systemName = getDefaultUiTheme();
 
   function onUpdateSystemGraphic(name) {
     if (name)
