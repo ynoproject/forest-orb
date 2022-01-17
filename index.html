@@ -1011,14 +1011,20 @@ if (hasTouchscreen) {
     playerCount = count;
   }
 
-  let systemName = getDefaultUiTheme();
+  let systemName;
+
+  function setSystemName(name) {
+    systemName = name;
+    document.getElementById('chatInput').dataset.sys = name;
+  }
+
+  setSystemName(getDefaultUiTheme());
 
   function onUpdateSystemGraphic(name) {
     if (name)
       name = name.replace(/'/g, '');
     if (gameUiThemes.indexOf(name) > -1) {
-      systemName = name;
-      document.getElementById('chatInput').dataset.sys = systemName;
+      setSystemName(name);
       if (hasAutoUiTheme) {
         const lastAutoButton = document.querySelector('.uiThemeItem.auto');
         if (lastAutoButton)
