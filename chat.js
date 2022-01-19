@@ -51,7 +51,7 @@ function chatInputActionFired() {
     return
   }
   const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);
-  const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value), Module.ALLOC_NORMAL);
+  const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
   Module._SendChatMessageToServer(sysPtr, msgPtr);
   Module._free(sysPtr);
   Module._free(msgPtr);
