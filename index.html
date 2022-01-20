@@ -963,6 +963,8 @@ if (hasTouchscreen) {
   if (hasAutoUiTheme)
     document.getElementById('messages').dataset.useSystemForName = true;
 
+  let emojiPattern;
+
   let localizedMessages;
 
   const langLabelMassageFunctions = {
@@ -1714,6 +1716,10 @@ if (hasTouchscreen) {
     setUiTheme(hasAutoUiTheme ? 'auto' : getDefaultUiTheme(), true);
   if (!localizedMessages)
     initLocalization(true);
+
+  fetch('https://cdn.jsdelivr.net/npm/rgi-emoji-regex-pattern/dist/latest/javascript.txt')
+    .then(response => response.text())
+    .then(patternText => emojiPattern = new RegExp(`((?:${patternText})+)`, 'g'));
 </script>
 
 </body>

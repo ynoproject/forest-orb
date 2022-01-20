@@ -36,7 +36,8 @@ function chatboxAddMessage(systemName, msg) {
   }
   
   populateMessageNodes(parseMessageTextForMarkdown(msgText), message);
-  wrapMessageEmojis(message);
+  if (emojiPattern)
+    wrapMessageEmojis(message);
 
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
@@ -119,7 +120,7 @@ function populateMessageNodes(msg, node) {
 function wrapMessageEmojis(node, force) {
   if (node.childNodes.length && !force) {
     for (let childNode of node.childNodes) {
-      if (/(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])/.test(childNode.textContent)) {
+      if (emojiPattern.test(childNode.textContent)) {
         if (childNode.nodeType === Node.TEXT_NODE) {
           const newChildNode = document.createElement('span');
           newChildNode.innerText = childNode.textContent;
@@ -130,7 +131,7 @@ function wrapMessageEmojis(node, force) {
       }
     }
   } else
-    node.innerHTML = node.innerHTML.replace(/((?:\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])+)/g, '<span class="emoji">$1</span>');
+    node.innerHTML = node.innerHTML.replace(emojiPattern, '<span class="emoji">$1</span>');
 }
 
 //called from easyrpg player
