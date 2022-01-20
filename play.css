@@ -257,6 +257,10 @@ body {
   padding-right: 2px;
 }
 
+.emoji {
+  -webkit-text-fill-color: white;
+}
+
 .uiControl {
   text-align: center;
 }
