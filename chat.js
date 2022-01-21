@@ -36,8 +36,7 @@ function chatboxAddMessage(systemName, msg) {
   }
   
   populateMessageNodes(parseMessageTextForMarkdown(msgText), message);
-  if (emojiPattern)
-    wrapMessageEmojis(message);
+  wrapMessageEmojis(message);
 
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
@@ -120,7 +119,7 @@ function populateMessageNodes(msg, node) {
 function wrapMessageEmojis(node, force) {
   if (node.childNodes.length && !force) {
     for (let childNode of node.childNodes) {
-      if (emojiPattern.test(childNode.textContent)) {
+      if (/\p{Extended_Pictographic}/u.test(childNode.textContent)) {
         if (childNode.nodeType === Node.TEXT_NODE) {
           const newChildNode = document.createElement('span');
           newChildNode.innerText = childNode.textContent;
@@ -131,7 +130,7 @@ function wrapMessageEmojis(node, force) {
       }
     }
   } else
-    node.innerHTML = node.innerHTML.replace(emojiPattern, '<span class="emoji">$1</span>');
+    node.innerHTML = node.innerHTML.replace(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>');
 }
 
 //called from easyrpg player
