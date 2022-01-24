@@ -143,7 +143,8 @@
     },
     "connStatus": {
       "0": "Déconnecté",
-      "1": "Connecté"
+      "1": "Connecté",
+      "2": "Connecting..."
     },
     "playersOnline": "{COUNT} Joueurs en Ligne",
     "2kki": {

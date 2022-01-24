@@ -143,7 +143,8 @@
     },
     "connStatus": {
       "0": "연결 끊김",
-      "1": "연결됨"
+      "1": "연결됨",
+      "2": "Connecting..."
     },
     "playersOnline": "{COUNT}명이 온라인입니다",
     "2kki": {

@@ -161,7 +161,11 @@
       background-clip: text;
     }
 
-    #connStatusIcon.online {
+    #connStatusIcon.connecting {
+      background-image: linear-gradient(#b35900, #804000);
+    }
+
+    #connStatusIcon.connected {
       background-image: linear-gradient(#00b33c, #00802b);
     }
 
@@ -990,13 +994,14 @@ if (hasTouchscreen) {
     const updateStatusText = function () {
       const connStatusIcon = document.getElementById('connStatusIcon');
       const connStatusText = document.getElementById('connStatusText');
-      connStatusIcon.classList.toggle('online', status);
+      connStatusIcon.classList.toggle('connecting', status === 2);
+      connStatusIcon.classList.toggle('connected', status === 1);
       connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
       connStatusText.classList.toggle('altText', !status);
     }; 
-    if (connStatus !== undefined && !status)
+    if (connStatus !== undefined && status !== 1)
       window.setTimeout(function () {
-        if (!connStatus)
+        if (connStatus !== 1)
           updateStatusText();
       }, 2000);
     else

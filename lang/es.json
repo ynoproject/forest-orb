@@ -143,7 +143,8 @@
     },
     "connStatus": {
       "0": "Disconnected",
-      "1": "Connected"
+      "1": "Connected",
+      "2": "Connecting..."
     },
     "playersOnline": "{COUNT} Players Online",
     "2kki": {

@@ -143,7 +143,8 @@
     },
     "connStatus": {
       "0": "已断开",
-      "1": "已连接"
+      "1": "已连接",
+      "2": "Connecting..."
     },
     "playersOnline": "当前有 {COUNT} 位玩家同时在线",
     "2kki": {
