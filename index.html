@@ -169,6 +169,10 @@
       background-image: linear-gradient(#00b33c, #00802b);
     }
 
+    #connStatusIcon.singlePlayer {
+      background-image: linear-gradient(#595959, #404040);
+    }
+
     #locationLabel {
       padding-left: 22px;
     }
@@ -253,7 +257,9 @@
         <div id="gameContainer">
           <div id="controls">
             <div id="leftControls">
-              <button id="uploadButton" class="unselectable" data-i18n="[title]tooltips.io.upload">
+              <button id="singlePlayerButton" class="unselectable" data-i18n="[title]tooltips.toggleSinglePlayer">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m9 15.5a1 1 0 0 0 0-3 1 1 0 0 0 0 3m-4-4q4-4 8 0m-10.5-3q6.5-5 13 0m-15.5-3q9-7 18 0" /></svg>
+              </button><button id="uploadButton" class="unselectable" data-i18n="[title]tooltips.io.upload">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 18v-3.25h-2.25l3.75-4.25 3.75 4.25h-2.25v3.25h-3m-12.75-16.5q0-1.5 1.5-1.5h11.25l2.25 2.25v9.1m-2.25 5.15h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v3.25m0 1.75v1.75m-7.5-6h6m-6 2.25h6m-6 2.25h6" /></svg>
               </button><button id="downloadButton" class="unselectable" data-i18n="[title]tooltips.io.download">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m12.75 10.5v3.75h-2.25l3.75 3.75 3.75-3.75h-2.25v-3.75h-3m-12.75-9q0-1.5 1.5-1.5h11.25l2.25 2.25v8.25m-2.25 6h-11.25q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v4.5m0 1.5v0.75m-7.5-6h6m-6 2.25h6m-6 2.25h6" /></svg>
@@ -261,9 +267,9 @@
                 <svg viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m4.5 3c4.5-4.5 13.5-3 13.5-0.375m-4.125 6.375c-1.875 0-3.375 1.5-1.875 1.875m3 2.625c3 1.5-4.5 6-10.5 4.5-7.5-3-4.5-12 0-15m9-0.75a1.5 1.5 90 0 0 0 3.75 1.5 1.5 90 0 0 0-3.75m-6 0.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m-3.75 4.5a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m1.5 5.25a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m6-0.75a1.5 1.5 90 0 0-0.75 4.5q2.25 0 3-1.875m7.5-14.625q-6 4.5-7.5 10.5l1.5 0.75q4.5-3.75 6-11.25m-7.5 10.5c-3 0-1.5 3-3 4.5 6 0 4.5-3 4.5-3.75m-3.75 2.25c0.75 1.5 1.5 0 1.5 1.275"></path></svg>
               </button><button id="chatButton" class="unselectable" data-i18n="[title]tooltips.toggleChat">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m15 18l-6-4.5h-6q-3 0-3-3v-7.5q0-3 3-3h12q3 0 3 3v7.5q0 3-3 3h-1.5l1.5 4.5m-11.25-12.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0 -3m5.25 0a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0 -3m5.25 0a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0 -3" /></svg>
-              </button><button id="nametagButton" class="unselectable" data-i18n="[title]tooltips.toggleNametags">
+              </button><button id="nametagButton" class="unselectable multiplayerOnly" data-i18n="[title]tooltips.toggleNametags">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m0 4.5h18v9h-18v-9m1.5 7.5v-6l3 6v-6m1 6l1.5-6 1.5 6m-2.5-2h2m1.5 2l1-6 1 6 1-6 1 6m1-6v6m0-6h2m-2 3h2m-2 3h2" /></svg>
-              </button><button id="playerSoundsButton" class="unselectable" data-i18n="[title]tooltips.togglePlayerSounds">
+              </button><button id="playerSoundsButton" class="unselectable multiplayerOnly" data-i18n="[title]tooltips.togglePlayerSounds">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m2.5 0a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 18v-12q2.5-1 5 0v12h-5m10-15q5 5 0 10m-2-8.5q3.5 3.5 0 7m-2-5.5q2 2 0 4m9.5-10a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 6q2.5-1 5 0v12h-5v-12" /></svg>
               </button>
             </div>
@@ -301,18 +307,18 @@
     <div id="chatboxContainer" class="container" style="display: none">
       <div id="chatbox">
         <div id="onlineInfo" class="info hidden">
-          <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel"></span>
+          <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel multiplayerOnly"></span>
         </div>
         <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
           <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
         </div>
         <div id="messages"></div>
-        <div id="chatInputContainer" style="display: none">
+        <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
           <form action="javascript:chatInputActionFired()">
             <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" data-sys="" />
           </form>
         </div>
-        <div id="enterNameContainer">
+        <div id="enterNameContainer" class="multiplayerOnly">
           <span id="enterNameInstruction">
             <span data-i18n="[html]chatbox.nickname.header">You must set a nickname before you can chat.</span>
             <br>
@@ -983,6 +989,7 @@ if (hasTouchscreen) {
   let config = {
     lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
     name: '',
+    singlePlayer: false,
     disableChat: false,
     disableNametags: false,
     disablePlayerSounds: false
@@ -996,10 +1003,11 @@ if (hasTouchscreen) {
       const connStatusText = document.getElementById('connStatusText');
       connStatusIcon.classList.toggle('connecting', status === 2);
       connStatusIcon.classList.toggle('connected', status === 1);
+      connStatusIcon.classList.toggle('singlePlayer', status === 3);
       connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
       connStatusText.classList.toggle('altText', !status);
     }; 
-    if (connStatus !== undefined && status !== 1)
+    if (connStatus !== undefined && (!status || status === 2))
       window.setTimeout(function () {
         if (connStatus !== 1)
           updateStatusText();
@@ -1072,6 +1080,14 @@ if (hasTouchscreen) {
 
   document.getElementById('enterNameForm').onsubmit = function () {
     setName(this.value);
+  };
+
+  document.getElementById('singlePlayerButton').onclick = function () {
+    this.classList.toggle('toggled');
+    simulateKeyboardInput('1', 49);
+    document.getElementById('layout').classList.toggle('singlePlayer');
+    config.singlePlayer = this.classList.contains('toggled');
+    updateConfig(config);
   };
 
   document.getElementById('chatButton').onclick = function () {

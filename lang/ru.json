@@ -48,6 +48,7 @@
       }
     },
     "tooltips": {
+      "toggleSinglePlayer": "Toggle Single Player",
       "io": {
         "upload": "Загрузить сохранение",
         "download": "Скачать сохранение"
@@ -144,7 +145,8 @@
     "connStatus": {
       "0": "Вне сети",
       "1": "В сети",
-      "2": "Соединение..."
+      "2": "Соединение...",
+      "3": "Single Player"
     },
     "playersOnline": "{COUNT} игроков онлайн",
     "2kki": {

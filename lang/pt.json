@@ -48,6 +48,7 @@
       }
     },
     "tooltips": {
+      "toggleSinglePlayer": "Toggle Single Player",
       "io": {
         "upload": "Enviar arquivo salvo",
         "download": "Baixar arquivo salvo"
@@ -144,7 +145,8 @@
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
-      "2": "Connecting..."
+      "2": "Connecting...",
+      "3": "Single Player"
     },
     "playersOnline": "{COUNT} Jogadores Online",
     "2kki": {

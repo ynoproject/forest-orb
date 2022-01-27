@@ -48,6 +48,7 @@
       }
     },
     "tooltips": {
+      "toggleSinglePlayer": "Toggle Single Player",
       "io": {
         "upload": "上传存档文件",
         "download": "下载存档文件"
@@ -144,7 +145,8 @@
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
-      "2": "连接中"
+      "2": "连接中",
+      "3": "Single Player"
     },
     "playersOnline": "当前有 {COUNT} 位玩家同时在线",
     "2kki": {
