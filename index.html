@@ -998,22 +998,24 @@ if (hasTouchscreen) {
   let connStatus;
 
   function onUpdateConnectionStatus(status) {
-    const updateStatusText = function () {
-      const connStatusIcon = document.getElementById('connStatusIcon');
-      const connStatusText = document.getElementById('connStatusText');
-      connStatusIcon.classList.toggle('connecting', status === 2);
-      connStatusIcon.classList.toggle('connected', status === 1);
-      connStatusIcon.classList.toggle('singlePlayer', status === 3);
-      connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
-      connStatusText.classList.toggle('altText', !status);
-    }; 
-    if (connStatus !== undefined && (!status || status === 2))
-      window.setTimeout(function () {
-        if (connStatus !== 1)
-          updateStatusText();
-      }, 500);
-    else
-      updateStatusText();
+    if (!config.singlePlayer || status === 3) {
+      const updateStatusText = function () {
+        const connStatusIcon = document.getElementById('connStatusIcon');
+        const connStatusText = document.getElementById('connStatusText');
+        connStatusIcon.classList.toggle('connecting', status === 2);
+        connStatusIcon.classList.toggle('connected', status === 1);
+        connStatusIcon.classList.toggle('singlePlayer', status === 3);
+        connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
+        connStatusText.classList.toggle('altText', !status);
+      }; 
+      if (connStatus !== undefined && (!status || status === 2))
+        window.setTimeout(function () {
+          if (connStatus !== 1)
+            updateStatusText();
+        }, 500);
+      else
+        updateStatusText();
+    }
     connStatus = status;
   }
 
@@ -1056,6 +1058,33 @@ if (hasTouchscreen) {
     }
   }
 
+  function onReceiveInputFeedback(inputId) {
+    if (inputId) {
+      let buttonElement;
+      let configKey;
+      switch (inputId) {
+        case 1:
+          buttonElement = document.getElementById('singlePlayerButton');
+          configKey = 'singlePlayer';
+          document.getElementById('layout').classList.toggle('singlePlayer');
+          break;
+        case 2:
+          buttonElement = document.getElementById('nametagButton');
+          configKey = 'disableNametags';
+          break;
+        case 3:
+          buttonElement = document.getElementById('playerSoundsButton');
+          configKey = 'disablePlayerSounds';
+          break;
+      }
+      if (configKey) {
+        buttonElement.classList.toggle('toggled');
+        config[configKey] = buttonElement.classList.contains('toggled');
+        updateConfig(config);
+      }
+    }
+  }
+
   if (hasUiThemes)
     populateUiThemes();
 
@@ -1083,11 +1112,7 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('singlePlayerButton').onclick = function () {
-    this.classList.toggle('toggled');
     simulateKeyboardInput('1', 49);
-    document.getElementById('layout').classList.toggle('singlePlayer');
-    config.singlePlayer = this.classList.contains('toggled');
-    updateConfig(config);
   };
 
   document.getElementById('chatButton').onclick = function () {
@@ -1099,17 +1124,11 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('nametagButton').onclick = function () {
-    this.classList.toggle('toggled');
     simulateKeyboardInput('2', 50);
-    config.disableNametags = this.classList.contains('toggled');
-    updateConfig(config);
   };
 
   document.getElementById('playerSoundsButton').onclick = function () {
-    this.classList.toggle('toggled');
     simulateKeyboardInput('3', 51);
-    config.disablePlayerSounds = this.classList.contains('toggled');
-    updateConfig(config);
   };
 
   if (hasUiThemes) {
