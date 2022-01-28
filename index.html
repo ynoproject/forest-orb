@@ -130,7 +130,7 @@
       stroke: rgba(216, 216, 216, 1) !important; /*base*/
     }
 
-    #controls button.toggled path {
+    #controls button.toggled path, #controls button.preToggled path {
       stroke: rgba(255, 255, 157, 1) !important; /*alt*/
     }
 
@@ -1085,6 +1085,17 @@ if (hasTouchscreen) {
     }
   }
 
+  function preToggle(buttonElement) {
+    buttonElement.classList.add('preToggled');
+    const tryToggleTimer = window.setInterval(function () {
+      if (buttonElement.classList.contains('toggled')) {
+        buttonElement.classList.remove('preToggled');
+        clearInterval(tryToggleTimer);
+      } else
+        buttonElement.click();
+    }, 500);
+  }
+
   if (hasUiThemes)
     populateUiThemes();
 
@@ -1272,17 +1283,8 @@ if (hasTouchscreen) {
     document.getElementById("messages").scrollTop = messages.scrollHeight;
   }
 
-  if (Module.postRun) {
+  if (Module.postRun)
     Module.postRun.push(onResize);
-    Module.postRun.push(function () {
-      if (config.disableChat)
-        document.getElementById('chatButton').click();
-      /*if (config.disableNametags)
-        document.getElementById('nametagButton').click();
-      if (config.disablePlayerSounds)
-        document.getElementById('playerSoundsButton').click();*/
-    });
-  }
   window.onresize = function () { window.setTimeout(onResize, 0); };
 
   document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
@@ -1705,6 +1707,22 @@ if (hasTouchscreen) {
               case 'name':
                 document.getElementById('nameInput').value = value;
                 setName(value, true);
+                break;
+              case 'singlePlayer':
+                if (value)
+                  preToggle(document.getElementById('singlePlayerButton'));
+                break;
+              case 'disableChat':
+                if (value)
+                  document.getElementById('chatButton').click();
+                break;
+              case 'disableNametags':
+                if (value)
+                  preToggle(document.getElementById('nametagButton'));
+                break;
+              case 'disablePlayerSounds':
+                if (value)
+                  preToggle(document.getElementById('playerSoundsButton'));
                 break;
               case 'uiTheme':
                 if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
