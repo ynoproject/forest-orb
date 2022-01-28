@@ -1080,6 +1080,8 @@ if (hasTouchscreen) {
       if (configKey) {
         buttonElement.classList.toggle('toggled');
         config[configKey] = buttonElement.classList.contains('toggled');
+        if (inputId === 1)
+          onUpdateConnectionStatus(config.singlePlayer ? 3 : 2);
         updateConfig(config);
       }
     }
