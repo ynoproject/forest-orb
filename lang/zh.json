@@ -48,7 +48,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Toggle Single Player",
+      "toggleSinglePlayer": "单人/多人模式切换",
       "io": {
         "upload": "上传存档文件",
         "download": "下载存档文件"
@@ -146,7 +146,7 @@
       "0": "已断开",
       "1": "已连接",
       "2": "连接中",
-      "3": "Single Player"
+      "3": "单人模式"
     },
     "playersOnline": "当前有 {COUNT} 位玩家同时在线",
     "2kki": {
