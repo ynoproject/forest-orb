@@ -78,7 +78,7 @@ body {
 }
 
 #layout.singlePlayer .multiplayerOnly {
-  display: none;
+  display: none !important;
 }
 
 #explorerControls, #mapControls {
