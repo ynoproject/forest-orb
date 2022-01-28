@@ -998,24 +998,22 @@ if (hasTouchscreen) {
   let connStatus;
 
   function onUpdateConnectionStatus(status) {
-    if (!config.singlePlayer || status === 3) {
-      const updateStatusText = function () {
-        const connStatusIcon = document.getElementById('connStatusIcon');
-        const connStatusText = document.getElementById('connStatusText');
-        connStatusIcon.classList.toggle('connecting', status === 2);
-        connStatusIcon.classList.toggle('connected', status === 1);
-        connStatusIcon.classList.toggle('singlePlayer', status === 3);
-        connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
-        connStatusText.classList.toggle('altText', !status);
-      }; 
-      if (connStatus !== undefined && (!status || status === 2))
-        window.setTimeout(function () {
-          if (connStatus !== 1)
-            updateStatusText();
-        }, 500);
-      else
-        updateStatusText();
-    }
+    const updateStatusText = function () {
+      const connStatusIcon = document.getElementById('connStatusIcon');
+      const connStatusText = document.getElementById('connStatusText');
+      connStatusIcon.classList.toggle('connecting', status === 2);
+      connStatusIcon.classList.toggle('connected', status === 1);
+      connStatusIcon.classList.toggle('singlePlayer', status === 3);
+      connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
+      connStatusText.classList.toggle('altText', !status);
+    }; 
+    if (connStatus !== undefined && (!status || status === 2))
+      window.setTimeout(function () {
+        if (connStatus === status)
+          updateStatusText();
+      }, 500);
+    else
+      updateStatusText();
     connStatus = status;
   }
 
@@ -1080,8 +1078,6 @@ if (hasTouchscreen) {
       if (configKey) {
         buttonElement.classList.toggle('toggled');
         config[configKey] = buttonElement.classList.contains('toggled');
-        if (inputId === 1)
-          onUpdateConnectionStatus(config.singlePlayer ? 3 : 2);
         updateConfig(config);
       }
     }
