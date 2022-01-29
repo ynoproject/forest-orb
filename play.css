@@ -198,8 +198,12 @@ body {
   width: 100%;
 }
 
+#chatboxContent {
+  height: calc(100% - 16px);
+}
+
 #messages {
-  height: 100%;
+  height: inherit;
   overflow-y: auto;
 }
 
@@ -539,8 +543,12 @@ input[type='text'], select {
     height: 100%;
   }
 
+  #layout:not(.overflow) #chatboxContent {
+    height: calc(100% - 16px);
+  }
+
   #layout:not(.overflow) #messages {
-    height: 100%;
+    height: inherit;
   }
 
   #canvas {

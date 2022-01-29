@@ -312,7 +312,9 @@
         <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
           <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
         </div>
-        <div id="messages"></div>
+        <div id="chatboxContent">
+          <div id="messages"></div>
+        </div>
         <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
           <form action="javascript:chatInputActionFired()">
             <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" data-sys="" />
@@ -1120,24 +1122,12 @@ if (hasTouchscreen) {
     setName(this.value);
   };
 
-  document.getElementById('singlePlayerButton').onclick = function () {
-    Module._ToggleSinglePlayer();
-  };
-
   document.getElementById('chatButton').onclick = function () {
     this.classList.toggle('toggled');
     document.getElementById('layout').classList.toggle('hideChat');
     onResize();
     config.disableChat = this.classList.contains('toggled');
     updateConfig(config);
-  };
-
-  document.getElementById('nametagButton').onclick = function () {
-    Module._ToggleNametags();
-  };
-
-  document.getElementById('playerSoundsButton').onclick = function () {
-    Module._TogglePlayerSounds();
   };
 
   if (hasUiThemes) {
@@ -1281,8 +1271,22 @@ if (hasTouchscreen) {
     document.getElementById("messages").scrollTop = messages.scrollHeight;
   }
 
-  if (Module.postRun)
+  if (Module.postRun) {
+    Module.postRun.push(function () {
+      document.getElementById('singlePlayerButton').onclick = function () {
+        Module._ToggleSinglePlayer();
+      };
+
+      document.getElementById('nametagButton').onclick = function () {
+        Module._ToggleNametags();
+      };
+
+      document.getElementById('playerSoundsButton').onclick = function () {
+        Module._TogglePlayerSounds();
+      };
+    });
     Module.postRun.push(onResize);
+  }
   window.onresize = function () { window.setTimeout(onResize, 0); };
 
   document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
