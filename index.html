@@ -1061,7 +1061,7 @@ if (hasTouchscreen) {
       let buttonElement;
       let configKey;
       switch (inputId) {
-        case 0:
+        case 1:
           buttonElement = document.getElementById('singlePlayerButton');
           configKey = 'singlePlayer';
           document.getElementById('layout').classList.toggle('singlePlayer');
@@ -1070,7 +1070,7 @@ if (hasTouchscreen) {
           buttonElement = document.getElementById('nametagButton');
           configKey = 'disableNametags';
           break;
-        case 4:
+        case 3:
           buttonElement = document.getElementById('playerSoundsButton');
           configKey = 'disablePlayerSounds';
           break;
