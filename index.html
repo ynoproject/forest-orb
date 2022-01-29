@@ -1061,7 +1061,7 @@ if (hasTouchscreen) {
       let buttonElement;
       let configKey;
       switch (inputId) {
-        case 1:
+        case 0:
           buttonElement = document.getElementById('singlePlayerButton');
           configKey = 'singlePlayer';
           document.getElementById('layout').classList.toggle('singlePlayer');
@@ -1070,7 +1070,7 @@ if (hasTouchscreen) {
           buttonElement = document.getElementById('nametagButton');
           configKey = 'disableNametags';
           break;
-        case 3:
+        case 4:
           buttonElement = document.getElementById('playerSoundsButton');
           configKey = 'disablePlayerSounds';
           break;
@@ -1121,7 +1121,7 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('singlePlayerButton').onclick = function () {
-    simulateKeyboardInput('1', 49);
+    simulateKeyboardInput('0', 48);
   };
 
   document.getElementById('chatButton').onclick = function () {
@@ -1137,7 +1137,7 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('playerSoundsButton').onclick = function () {
-    simulateKeyboardInput('3', 51);
+    simulateKeyboardInput('4', 52);
   };
 
   if (hasUiThemes) {
