@@ -1121,7 +1121,7 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('singlePlayerButton').onclick = function () {
-    simulateKeyboardInput('0', 48);
+    Module._ToggleSinglePlayer();
   };
 
   document.getElementById('chatButton').onclick = function () {
@@ -1133,11 +1133,11 @@ if (hasTouchscreen) {
   };
 
   document.getElementById('nametagButton').onclick = function () {
-    simulateKeyboardInput('2', 50);
+    Module._ToggleNametags();
   };
 
   document.getElementById('playerSoundsButton').onclick = function () {
-    simulateKeyboardInput('4', 52);
+    Module._TogglePlayerSounds();
   };
 
   if (hasUiThemes) {
