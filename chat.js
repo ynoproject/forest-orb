@@ -115,6 +115,9 @@ function chatInputActionFired() {
   if (chatInput.value === "") {
     return
   }
+  const chatTab = document.querySelector('.chatboxTab[data-tab-section="messages"]');
+  if (!chatTab.classList.contains('active'))
+    chatTab.click();
   const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);
   const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
   Module._SendChatMessageToServer(sysPtr, msgPtr);
