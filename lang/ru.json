@@ -25,8 +25,8 @@
       "connStatus": "Статус:&nbsp;",
       "location": "Локация:&nbsp;",
       "tab": {
-        "chat": "Chat",
-        "players": "Players"
+        "chat": "Чат",
+        "players": "Игроки"
       },
       "nickname": {
         "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
@@ -52,7 +52,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Toggle Single Player",
+      "toggleSinglePlayer": "Переключить режим Одиночной Игры",
       "io": {
         "upload": "Загрузить сохранение",
         "download": "Скачать сохранение"
@@ -150,11 +150,11 @@
       "0": "Вне сети",
       "1": "В сети",
       "2": "Соединение...",
-      "3": "Single Player"
+      "3": "Одиночная игра"
     },
     "playersOnline": "{COUNT} игроков онлайн",
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "Безымянный игрок"
     },
     "2kki": {
       "location": {
