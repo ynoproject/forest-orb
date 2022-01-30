@@ -1027,7 +1027,7 @@ if (hasTouchscreen) {
     else
       updateStatusText();
     if (status === 1)
-      addOrUpdatePlayerListEntry(systemName, document.getElementById("nameInput").value, -1);
+      addOrUpdatePlayerListEntry(systemName, null, -1);
     else
       clearPlayerList();
     connStatus = status;
@@ -1049,7 +1049,7 @@ if (hasTouchscreen) {
     systemName = name;
     document.getElementById('chatInput').dataset.sys = name;
     if (connStatus === 1)
-      addOrUpdatePlayerListEntry(systemName, document.getElementById("nameInput").value, -1);
+      addOrUpdatePlayerListEntry(systemName, null, -1);
   }
 
   setSystemName(getDefaultUiTheme());
