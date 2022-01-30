@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "연결 상태",
       "location": "현위치",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "싱글 플레이"
     },
     "playersOnline": "{COUNT}명이 온라인입니다",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION_JP} ({LOCATION})",

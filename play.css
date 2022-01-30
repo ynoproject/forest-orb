@@ -37,7 +37,7 @@ body {
   overflow: hidden;
 }
 
-#layout::-webkit-scrollbar, #messages::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
+#layout::-webkit-scrollbar, .chatboxTabSection::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
   width: 18px;
 }
 
@@ -200,12 +200,49 @@ body {
 
 #chatboxContent {
   display: contents;
-  height: calc(100% - 16px);
 }
 
-#messages {
-  height: inherit;
+#chatboxTabs {
+  display: flex;
+  height: 0;
+}
+
+.chatboxTab {
+  height: 22px;
+  padding: 4px;
+  padding-bottom: 0;
+  margin-right: 4px;
+  border-bottom-width: 8px;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.chatboxTab.active {
+  padding-bottom: 10px;
+  border-bottom-width: 0;
+  z-index: 2;
+  pointer-events: none;
+  cursor: default;
+}
+
+.chatboxTabLabel {
+  pointer-events: none;
+  font-weight: normal;
+}
+
+.chatboxTabSection {
+  height: 100%;
+  margin-top: 40px;
   overflow-y: auto;
+}
+
+.playerListEntry {
+  background-size: 35px;
+  background-position-x: -1px;
+  background-position-y: -4px;
+  border: 4px solid transparent;
+  padding: 4px;
+  margin-bottom: 4px;
 }
 
 #chatInputContainer {
@@ -233,7 +270,7 @@ body {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden {
+#modalContainer.hidden, .modal.hidden, .chatboxTabSection.hidden {
   display: none;
 }
 
@@ -418,7 +455,7 @@ input[type='text'], select {
     max-height: 617px;
   }
 
-  #messages {
+  .chatboxTabSection {
     width: 284px;
   }
 
@@ -472,7 +509,7 @@ input[type='text'], select {
     max-height: 340px;
   }
 
-  #messages {
+  .chatboxTabSection {
     width: calc(100% - 16px);
   }
 
@@ -514,7 +551,7 @@ input[type='text'], select {
   max-height: 340px;
 }
 
-#layout:not(:fullscreen).overflow #messages {
+#layout:not(:fullscreen).overflow .chatboxTabSection {
   width: calc(100% - 16px);
 }
 
@@ -533,7 +570,7 @@ input[type='text'], select {
     max-height: 340px;
   }
   
-  #layout.overflow #messages {
+  #layout.overflow .chatboxTabSection {
     width: calc(100% - 16px);
   }
 }
@@ -544,12 +581,8 @@ input[type='text'], select {
     height: 100%;
   }
 
-  #layout:not(.overflow) #chatboxContent {
-    height: calc(100% - 16px);
-  }
-
-  #layout:not(.overflow) #messages {
-    height: inherit;
+  #layout:not(.overflow) .chatboxTabSection {
+    height: 100%;
   }
 
   #canvas {

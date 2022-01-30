@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "接続状態:&nbsp;",
       "location": "場所：",
+      "tab": {
+        "chat": "チャット",
+        "players": "プレーヤー"
+      },
       "nickname": {
         "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "シングルプレイヤー"
     },
     "playersOnline": "{COUNT}人が接続中",
+    "playerList": {
+      "unnamed": "無名プレーヤー"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION_JP} 「{LOCATION}」",

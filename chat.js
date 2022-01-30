@@ -46,6 +46,70 @@ function chatboxAddMessage(systemName, msg) {
   }
 }
 
+function addOrUpdatePlayerListEntry(systemName, name, id) {
+  const playerList = document.getElementById("playerList");
+
+  let playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
+
+  const nameText = playerListEntry ? playerListEntry.childNodes[0] : document.createElement("span");
+
+  if (!playerListEntry) {
+    playerListEntry = document.createElement("div");
+    playerListEntry.classList.add("playerListEntry");
+    playerListEntry.dataset.id = id;
+
+    nameText.classList.add("nameText");
+    playerListEntry.appendChild(nameText);
+
+    playerList.appendChild(playerListEntry);
+  }
+
+  if (name || !nameText.innerText) {
+    nameText.innerText = name || localizedMessages.playerList.unnamed;
+    if (name)
+      delete playerListEntry.dataset.unnamed;
+    else
+      playerListEntry.dataset.unnamed = 'unnamed';
+  }
+
+  if (systemName && messages.dataset.useSystemForName) {
+    playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
+    nameText.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/font1.png') !important`);
+    getFontShadow(systemName, function (shadow) {
+      nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
+    });
+  }
+
+  if (playerList.childElementCount > 1) {
+    const playerListEntries = document.getElementsByClassName("playerListEntry");
+
+    const entries = [].slice.call(playerListEntries).sort(function (a, b) {
+      if (a.dataset.unnamed)
+        return b.dataset.unnamed ? 0 : 1;
+      else if (b.dataset.unnamed)
+        return -1;
+      const nameA = a.dataset.id > -1 ? a.innerText : ' ';
+      const nameB = b.dataset.id > -1 ? b.innerText : ' ';
+      return nameA.localeCompare(nameB);
+    });
+
+    entries.forEach(function (ple) {
+        playerList.appendChild(ple);
+    });
+  }
+}
+
+function removePlayerListEntry(id) {
+  const playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
+  if (playerListEntry)
+    playerListEntry.remove();
+}
+
+function clearPlayerList() {
+  const playerList = document.getElementById("playerList");
+  playerList.innerHTML = "";
+}
+
 function chatInputActionFired() {
   const chatInput = document.getElementById("chatInput");
   if (chatInput.value === "") {
@@ -140,8 +204,10 @@ function onChatMessageReceived(systemName, msg) {
 
 //called from easyrpg player
 function onPlayerConnectedOrUpdated(systemName, name, id) {
+  addOrUpdatePlayerListEntry(systemName, name, id);
 }
 
 //called from easyrpg player
 function onPlayerDisconnected(id) {
+  removePlayerListEntry(id);
 }

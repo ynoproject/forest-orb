@@ -111,7 +111,7 @@
       background-size: 100%;
     }
 
-    #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
+    #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .chatboxTabSection::-webkit-scrollbar-track {
       border: 8px solid transparent;
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
       background-color: rgba(45, 17, 23, 1); /*basebg*/
@@ -119,7 +119,7 @@
       image-rendering: pixelated;
     }
 
-    #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb {
+    #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .chatboxTabSection::-webkit-scrollbar-thumb {
       border: 8px solid transparent;
       border-image: url('images/ui/2kki/system1/border.png') 6 round !important;
       image-rendering: crisp-edges;
@@ -134,15 +134,15 @@
       stroke: rgba(255, 255, 157, 1) !important; /*alt*/
     }
 
-    #messages, #chatInputContainer, #enterNameContainer {
+    #chatInputContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection {
       border: 8px solid transparent;
     }
   
-    #messages, #enterNameContainer {
+    #enterNameContainer, .chatboxTab, .chatboxTabSection {
       border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
     }
   
-    #enterNameInstruction, .nameText, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
+    #enterNameInstruction, .nameText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
       background-image: url('images/ui/2kki/system1/font1.png') !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -209,6 +209,11 @@
     #layout.downscale2 .container.fullBg {
       background-size: 410px;
     }
+
+    .chatboxTab.active {
+      background-size: 70px;
+      background-image: url('images/ui/2kki/system1/containerbg.png') !important;
+    }
     
     h1 {
       background-size: 36px;
@@ -224,7 +229,7 @@
 
      /* Safari only */
      @media not all and (min-resolution:.001dpcm) {
-      #layout::-webkit-scrollbar-track, #messages::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, #messages::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, #messages, #enterNameContainer, .container, .modal, input[type='text'], select {
+      #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .chatboxTabSection::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .chatboxTabSection::-webkit-scrollbar-thumb, #enterNameContainer, .container, .modal, .chatboxTabSection, input[type='text'], select {
         border-color: unset !important;
       }
 
@@ -313,7 +318,12 @@
           <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
         </div>
         <div id="chatboxContent">
-          <div id="messages"></div>
+          <div id="chatboxTabs">
+            <div class="chatboxTab active" data-tab-section="messages"><label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.chat">Chat</label></div>
+            <div class="chatboxTab" data-tab-section="playerList"><label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label></div>
+          </div>
+          <div id="messages" class="chatboxTabSection"></div>
+          <div id="playerList" class="chatboxTabSection hidden"></div>
         </div>
         <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
           <form action="javascript:chatInputActionFired()">
@@ -1016,6 +1026,10 @@ if (hasTouchscreen) {
       }, 500);
     else
       updateStatusText();
+    if (status === 1)
+      addOrUpdatePlayerListEntry(systemName, document.getElementById("nameInput").value, -1);
+    else
+      clearPlayerList();
     connStatus = status;
   }
 
@@ -1034,6 +1048,8 @@ if (hasTouchscreen) {
   function setSystemName(name) {
     systemName = name;
     document.getElementById('chatInput').dataset.sys = name;
+    if (connStatus === 1)
+      addOrUpdatePlayerListEntry(systemName, document.getElementById("nameInput").value, -1);
   }
 
   setSystemName(getDefaultUiTheme());
@@ -1173,6 +1189,21 @@ if (hasTouchscreen) {
     config.mapCache = {};
   }
 
+  let activeChatboxTabSection = 'messages';
+
+  function onClickChatboxTab() {
+    if (this.dataset.tabSection !== activeChatboxTabSection) {
+      activeChatboxTabSection = this.dataset.tabSection;
+      for (let tab of document.getElementsByClassName('chatboxTab'))
+        tab.classList.toggle('active', tab === this);
+      for (let tabSection of document.getElementsByClassName('chatboxTabSection'))
+        tabSection.classList.toggle('hidden', tabSection.id !== activeChatboxTabSection);
+    }
+  }
+
+  for (let tab of document.getElementsByClassName('chatboxTab'))
+    tab.onclick = onClickChatboxTab;
+
   let ignoreSizeChanged = false;
 
   function onResize() {
@@ -1183,6 +1214,17 @@ if (hasTouchscreen) {
     const downscale2 = window.innerWidth < 544 || window.innerHeight < 457;
 
     document.getElementById('mainContainer').classList.toggle('noSideBorders', window.innerWidth < 384);
+
+    const chatboxContainer = document.getElementById('chatboxContainer');
+    const chatboxTabs = document.getElementsByClassName('chatboxTab');
+
+    const backgroundSize = chatboxContainer.classList.contains('fullBg') ? window.getComputedStyle(chatboxContainer).backgroundSize : null;
+
+    for (let tab of chatboxTabs) {
+      tab.style.backgroundSize = backgroundSize;
+      tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
+      tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
+    }
 
     if (window.innerWidth < window.innerHeight) {
       layout.classList.toggle('downscale', downscale);

@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "连接状态：&nbsp;",
       "location": "当前位置：&nbsp;",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "设置一个名字即可开始和大家聊天！",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "单人模式"
     },
     "playersOnline": "当前有 {COUNT} 位玩家同时在线",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION_JP}（{LOCATION}）",

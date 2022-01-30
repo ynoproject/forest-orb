@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "Статус:&nbsp;",
       "location": "Локация:&nbsp;",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "Single Player"
     },
     "playersOnline": "{COUNT} игроков онлайн",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION}",

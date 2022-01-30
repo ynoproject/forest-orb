@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "Statut&nbsp;:&nbsp;",
       "location": "Lieu&nbsp;:&nbsp;",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "Choisissez un pseudonyme pour pouvoir discuter.",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "Single Player"
     },
     "playersOnline": "{COUNT} Joueurs en Ligne",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION}",

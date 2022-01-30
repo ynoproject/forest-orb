@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "Status:&nbsp;",
       "location": "Localização:&nbsp;",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "Defina seu nickname antes de acessar o bate papo.",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "Single Player"
     },
     "playersOnline": "{COUNT} Jogadores Online",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION}",

@@ -24,6 +24,10 @@
     "chatbox": {
       "connStatus": "Status:&nbsp;",
       "location": "Location:&nbsp;",
+      "tab": {
+        "chat": "Chat",
+        "players": "Players"
+      },
       "nickname": {
         "header": "You must set a nickname before you can chat.",
         "rule": {
@@ -149,6 +153,9 @@
       "3": "Single Player"
     },
     "playersOnline": "{COUNT} Players Online",
+    "playerList": {
+      "unnamed": "Unnamed Player"
+    },
     "2kki": {
       "location": {
         "template": "{LOCATION}",
