@@ -25,8 +25,8 @@
       "connStatus": "연결 상태",
       "location": "현위치",
       "tab": {
-        "chat": "Chat",
-        "players": "Players"
+        "chat": "채팅",
+        "players": "플레이어"
       },
       "nickname": {
         "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
@@ -43,7 +43,7 @@
       "label": "언어"
     },
     "2kki": {
-      "hostedWithPermission": "본 서버는 유메2키 개발자의 허가를 받아 운영됩니다."
+      "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
     },
     "modal": {
       "uiTheme": {
@@ -154,7 +154,7 @@
     },
     "playersOnline": "{COUNT}명이 온라인입니다",
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "익명의 플레이어"
     },
     "2kki": {
       "location": {
