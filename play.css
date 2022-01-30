@@ -274,6 +274,10 @@ body {
   display: none;
 }
 
+.tabSectionLinked.hidden {
+  display: none !important;
+}
+
 #enterNameInstruction span {
   letter-spacing: -0.675px;
 }

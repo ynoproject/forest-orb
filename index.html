@@ -325,7 +325,7 @@
           <div id="messages" class="chatboxTabSection"></div>
           <div id="playerList" class="chatboxTabSection hidden"></div>
         </div>
-        <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
+        <div id="chatInputContainer" class="multiplayerOnly tabSectionLinked" style="display: none" data-linked-tab-section="messages">
           <form action="javascript:chatInputActionFired()">
             <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" data-sys="" />
           </form>
@@ -1197,8 +1197,11 @@ if (hasTouchscreen) {
       activeChatboxTabSection = this.dataset.tabSection;
       for (let tab of document.getElementsByClassName('chatboxTab'))
         tab.classList.toggle('active', tab === this);
-      for (let tabSection of document.getElementsByClassName('chatboxTabSection'))
-        tabSection.classList.toggle('hidden', tabSection.id !== activeChatboxTabSection);
+      for (let tabSection of document.getElementsByClassName('chatboxTabSection')) {
+        const tabSectionHidden = tabSection.id !== activeChatboxTabSection;
+        tabSection.classList.toggle('hidden', tabSectionHidden);
+        document.querySelectorAll(`.tabSectionLinked[data-linked-tab-section="${tabSection.id}"]`).forEach(el => el.classList.toggle('hidden', tabSectionHidden));
+      }
     }
   }
 
