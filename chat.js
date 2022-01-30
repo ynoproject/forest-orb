@@ -137,3 +137,11 @@ function wrapMessageEmojis(node, force) {
 function onChatMessageReceived(systemName, msg) {
   chatboxAddMessage(systemName, msg);
 }
+
+//called from easyrpg player
+function onPlayerConnectedOrUpdated(systemName, name, id) {
+}
+
+//called from easyrpg player
+function onPlayerDisconnected(id) {
+}
