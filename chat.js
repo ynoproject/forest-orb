@@ -126,12 +126,14 @@ function chatInputActionFired() {
 function chatNameCheck() {
   const nameInput = document.getElementById("nameInput");
   if (nameInput.value == "") return;
-  if (!(/^[A-Za-z0-9]+$/.test(nameInput.value))) return;
+  if (!(/^[A-Za-z0-9]+$/.test(nameInput.value)))
+    return;
   document.getElementById("enterNameContainer").style.display = "none";
   document.getElementById("chatInput").disabled = false;
   document.getElementById("chatInputContainer").style.display = "block";
-  onPlayerConnectedOrUpdated(null, nameInput.value, -1);
-  ptr = Module.allocate(Module.intArrayFromString(nameInput.value), Module.ALLOC_NORMAL);
+  playerName = nameInput.value;
+  onPlayerConnectedOrUpdated(null, playerName, -1);
+  ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
   Module._ChangeName(ptr);
   Module._free(ptr);
   nameInput.value = "";
