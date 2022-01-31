@@ -239,12 +239,18 @@ body {
 }
 
 .playerListEntry {
+  display: flex;
+  align-items: center;
   background-size: 35px;
   background-position-x: -1px;
   background-position-y: -4px;
   border: 4px solid transparent;
   padding: 4px;
   margin-bottom: 4px;
+}
+
+.playerListEntrySprite {
+  margin-right: 8px;
 }
 
 #unreadMessageCountContainer {

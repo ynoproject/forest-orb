@@ -64,12 +64,28 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
 
   let playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
 
-  const nameText = playerListEntry ? playerListEntry.childNodes[0] : document.createElement("span");
+  const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement("span");
 
   if (!playerListEntry) {
     playerListEntry = document.createElement("div");
     playerListEntry.classList.add("playerListEntry");
     playerListEntry.dataset.id = id;
+
+    const playerListEntrySprite = document.createElement("img");
+    playerListEntrySprite.width = 24;
+    playerListEntrySprite.height = 24;
+    playerListEntrySprite.classList.add("playerListEntrySprite");
+
+    let playerSpriteCacheEntry = playerSpriteCache[id];
+    if (!playerSpriteCacheEntry && id > -1)
+      playerSpriteCacheEntry = playerSpriteCache[-1];
+    if (playerSpriteCacheEntry) {
+      getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
+        playerListEntrySprite.src = spriteImg;
+      });
+    }
+
+    playerListEntry.appendChild(playerListEntrySprite);
 
     nameText.classList.add("nameText");
     playerListEntry.appendChild(nameText);
@@ -119,6 +135,20 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
   }
 }
 
+function updatePlayerListEntrySprite(sprite, idx, id) {
+  const playerListEntrySprite = document.querySelector(`.playerListEntry[data-id="${id}"] > img.playerListEntrySprite`);
+
+  if (!playerListEntrySprite)
+    return;
+
+  const callback = function (spriteImg) {
+    playerListEntrySprite.src = spriteImg;
+  };
+
+  getSpriteImg(sprite, idx, callback);
+  playerSpriteCache[id] = { sprite: sprite, idx: idx };
+}
+
 function removePlayerListEntry(id) {
   const playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
   if (playerListEntry)
@@ -128,6 +158,66 @@ function removePlayerListEntry(id) {
 function clearPlayerList() {
   const playerList = document.getElementById("playerList");
   playerList.innerHTML = "";
+}
+
+function getSpriteImg(sprite, idx, callback, dir) {
+  if (!spriteData[sprite])
+    spriteData[sprite] = {};
+  if (!spriteData[sprite][idx])
+    spriteData[sprite][idx] = null;
+  let spriteUrl = spriteData[sprite][idx]
+  if (spriteUrl)
+    return callback(spriteUrl);
+  const img = new Image();
+  img.onload = function () {
+    const canvas = document.createElement('canvas');
+    canvas.width = 24;
+    canvas.height = 32;
+    const context = canvas.getContext('2d');
+    const startX = (idx % 4) * 72 + 24;
+    const startY = (idx >> 2) * 128 + 64;
+    context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
+    const transPixel = context.getImageData(0, 0, 1, 1).data;
+    const imageData = context.getImageData(0, 0, 24, 32);
+    const data = imageData.data;
+    let yOffset = -1;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] === transPixel[0] && data[i + 1] === transPixel[1] && data[i + 2] === transPixel[2]) {
+        data[i + 3] = 0;
+      } else if (yOffset === -1) {
+        yOffset = Math.min(i >> 7, 16);
+      }
+    }
+    if (yOffset === -1)
+      yOffset = 0;
+    canvas.width = 16;
+    canvas.height = 16;
+    context.putImageData(imageData, -4, yOffset * -1, 4, 0, 16, 32);
+    canvas.toBlob(function (blob) {
+      const blobImg = document.createElement('img');
+      const url = URL.createObjectURL(blob);
+    
+      blobImg.onload = function () {
+        URL.revokeObjectURL(url);
+      };
+    
+      spriteData[sprite][idx] = url;
+      canvas.remove();
+      callback(url);
+    });
+  };
+  if (!dir) {
+    dir = `../data/${gameId}/CharSet/`;
+    img.onerror = function () {
+      getSpriteImg(sprite, idx, callback, `images/charsets/${gameId}/`);
+    };
+  } else {
+    img.onerror = function () {
+      console.error(`Charset '${sprite}' not found`);
+    };
+  }
+
+  img.src = `${dir}${sprite}.png`;
 }
 
 function chatInputActionFired() {
@@ -231,6 +321,11 @@ function onChatMessageReceived(systemName, msg) {
 //called from easyrpg player
 function onPlayerConnectedOrUpdated(systemName, name, id) {
   addOrUpdatePlayerListEntry(systemName, name, id);
+}
+
+//called from easyrpg player
+function onPlayerSpriteUpdated(sprite, idx, id) {
+  updatePlayerListEntrySprite(sprite, idx, id !== undefined ? id : -1);
 }
 
 //called from easyrpg player
