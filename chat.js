@@ -180,11 +180,10 @@ function getSpriteImg(sprite, idx, callback, dir) {
     const data = imageData.data;
     let yOffset = -1;
     for (let i = 0; i < data.length; i += 4) {
-      if (data[i] === transPixel[0] && data[i + 1] === transPixel[1] && data[i + 2] === transPixel[2]) {
+      if (data[i] === transPixel[0] && data[i + 1] === transPixel[1] && data[i + 2] === transPixel[2])
         data[i + 3] = 0;
-      } else if (yOffset === -1) {
-        yOffset = Math.min(i >> 7, 16);
-      }
+      else if (yOffset === -1)
+        yOffset = Math.max(Math.min(i >> 7, 15), 3);
     }
     if (yOffset === -1)
       yOffset = 0;
