@@ -72,8 +72,6 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     playerListEntry.dataset.id = id;
 
     const playerListEntrySprite = document.createElement("img");
-    playerListEntrySprite.width = 30;
-    playerListEntrySprite.height = 24;
     playerListEntrySprite.classList.add("playerListEntrySprite");
 
     let playerSpriteCacheEntry = playerSpriteCache[id];
