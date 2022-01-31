@@ -85,7 +85,9 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
       playerListEntry.dataset.unnamed = 'unnamed';
   }
 
-  if (systemName && messages.dataset.useSystemForName) {
+  if (systemName) {
+    if (!messages.dataset.useSystemForName || gameUiThemes.indexOf(name) === -1)
+      systemName = getDefaultUiTheme();
     playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
     nameText.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/font1.png') !important`);
     getFontShadow(systemName, function (shadow) {
