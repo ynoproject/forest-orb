@@ -243,7 +243,7 @@ function chatNameCheck() {
   document.getElementById("chatInput").disabled = false;
   document.getElementById("chatInputContainer").style.display = "block";
   playerName = nameInput.value;
-  onPlayerConnectedOrUpdated(null, playerName, -1);
+  addOrUpdatePlayerListEntry(systemName, playerName, -1);
   ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
   Module._ChangeName(ptr);
   Module._free(ptr);
