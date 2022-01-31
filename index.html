@@ -186,6 +186,12 @@
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
     }
 
+    #unreadMessageCount {
+      background-size: 20px;
+      background-image: url('images/ui/2kki/system1/font4.png') !important; /*alt*/
+      filter: drop-shadow(1.5px 1.5px black /*shadow*/);
+    }
+
     .container, .modal {
       background-size: 70px;
       background-position-y: -16px;
@@ -241,7 +247,7 @@
       }
 
       /* Don't use text background on Safari since it doesn't repeat properly */
-      #enterNameInstruction, .notice, .instruction, .message, .infoLabel, .infoText, .altText, h1, a, label {
+      #enterNameInstruction, .nameText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .message, .altText, h1, a, label {
         -webkit-text-fill-color: unset;
         background-image: none !important;
       }
@@ -319,8 +325,17 @@
         </div>
         <div id="chatboxContent">
           <div id="chatboxTabs">
-            <div class="chatboxTab active" data-tab-section="messages"><label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.chat">Chat</label></div>
-            <div class="chatboxTab" data-tab-section="playerList"><label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label></div>
+            <div class="chatboxTab active" data-tab-section="messages">
+              <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.chat">Chat</label>
+              <div id="unreadMessageCountContainer" class="hidden">
+                <div id="unreadMessageCount">
+                  <label id="unreadMessageCountLabel">0</label>
+                </div>
+              </div>
+            </div>
+            <div class="chatboxTab" data-tab-section="playerList">
+              <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label>
+            </div>
           </div>
           <div id="messages" class="chatboxTabSection"></div>
           <div id="playerList" class="chatboxTabSection hidden"></div>
@@ -1195,6 +1210,8 @@ if (hasTouchscreen) {
   function onClickChatboxTab() {
     if (this.dataset.tabSection !== activeChatboxTabSection) {
       activeChatboxTabSection = this.dataset.tabSection;
+      if (activeChatboxTabSection === 'messages')
+        document.getElementById("unreadMessageCountContainer").classList.add('hidden');
       for (let tab of document.getElementsByClassName('chatboxTab'))
         tab.classList.toggle('active', tab === this);
       for (let tabSection of document.getElementsByClassName('chatboxTabSection'))

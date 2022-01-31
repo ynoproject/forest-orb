@@ -208,6 +208,8 @@ body {
 }
 
 .chatboxTab {
+  display: flex;
+  flex-wrap: wrap;
   height: 22px;
   padding: 4px;
   padding-bottom: 0;
@@ -245,6 +247,27 @@ body {
   margin-bottom: 4px;
 }
 
+#unreadMessageCountContainer {
+  width: 0;
+  height: 0;
+  margin-top: -16px;
+  margin-left: -8px;
+}
+
+#unreadMessageCount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 2px;
+  border-radius: 12px;
+}
+
+#unreadMessageCountLabel {
+  font-weight: normal;
+}
+
 #chatInputContainer {
   width: auto;
   height: 48px;
@@ -270,7 +293,7 @@ body {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .chatboxTabSection.hidden {
+#modalContainer.hidden, .modal.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden {
   display: none;
 }
 

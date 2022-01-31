@@ -41,6 +41,19 @@ function chatboxAddMessage(systemName, msg) {
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
+  if (!document.querySelector(".chatboxTab.active[data-tab-section='messages']")) {
+    const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
+    const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
+    if (unreadMessageCountContainer.classList.contains("hidden")) {
+      unreadMessageCountLabel.textContent = "0";
+      unreadMessageCountContainer.classList.remove("hidden");
+    }
+    let unreadMessageCount = parseInt(unreadMessageCountLabel.textContent);
+    if (!unreadMessageCount || unreadMessageCount < 9) {
+      unreadMessageCountLabel.textContent = ++unreadMessageCount < 9 ? unreadMessageCount : `${unreadMessageCount}+`;
+    }
+  }
+
   if (shouldScroll) {
     messages.scrollTop = messages.scrollHeight;
   }
