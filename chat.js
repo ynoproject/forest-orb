@@ -99,13 +99,18 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     const playerListEntries = document.getElementsByClassName("playerListEntry");
 
     const entries = [].slice.call(playerListEntries).sort(function (a, b) {
-      if (a.dataset.unnamed)
-        return b.dataset.unnamed ? 0 : 1;
-      else if (b.dataset.unnamed)
+      if (a.dataset.id == -1)
         return -1;
-      const nameA = a.dataset.id > -1 ? a.innerText : ' ';
-      const nameB = b.dataset.id > -1 ? b.innerText : ' ';
-      return nameA.localeCompare(nameB);
+      if (b.dataset.id == -1)
+        return 1;
+      if (a.dataset.unnamed) {
+        if (b.dataset.unnamed)
+          return a.dataset.id >= b.dataset.id ? 1 : -1;
+        return 1;
+      }
+      if (b.dataset.unnamed)
+        return -1;
+      return a.innerText.localeCompare(b.innerText);
     });
 
     entries.forEach(function (ple) {
