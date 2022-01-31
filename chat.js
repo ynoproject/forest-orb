@@ -72,7 +72,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     playerListEntry.dataset.id = id;
 
     const playerListEntrySprite = document.createElement("img");
-    playerListEntrySprite.width = 24;
+    playerListEntrySprite.width = 30;
     playerListEntrySprite.height = 24;
     playerListEntrySprite.classList.add("playerListEntrySprite");
 
@@ -190,9 +190,9 @@ function getSpriteImg(sprite, idx, callback, dir) {
     }
     if (yOffset === -1)
       yOffset = 0;
-    canvas.width = 16;
+    canvas.width = 20;
     canvas.height = 16;
-    context.putImageData(imageData, -4, yOffset * -1, 4, 0, 16, 32);
+    context.putImageData(imageData, -2, yOffset * -1, 2, 0, 20, 32);
     canvas.toBlob(function (blob) {
       const blobImg = document.createElement('img');
       const url = URL.createObjectURL(blob);
