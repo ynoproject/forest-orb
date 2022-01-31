@@ -1046,7 +1046,8 @@ if (hasTouchscreen) {
       connStatusIcon.classList.toggle('connecting', status === 2);
       connStatusIcon.classList.toggle('connected', status === 1);
       connStatusIcon.classList.toggle('singlePlayer', status === 3);
-      connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
+      if (localizedMessages)
+        connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
       connStatusText.classList.toggle('altText', !status);
     }; 
     if (connStatus !== undefined && (!status || status === 2))
@@ -1067,7 +1068,8 @@ if (hasTouchscreen) {
 
   function updatePlayerCount(count) {
     const playerCountLabel = document.getElementById('playerCountLabel');
-    playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline.replace('{COUNT}', count));
+    if (localizedMessages)
+      playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline.replace('{COUNT}', count));
     if (playerCount === undefined)
       document.getElementById('onlineInfo').classList.remove('hidden');
     playerCount = count;
