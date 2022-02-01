@@ -153,7 +153,14 @@
       "2": "连接中",
       "3": "单人模式"
     },
-    "playersOnline": "当前有 {COUNT} 位玩家同时在线",
+    "playersOnline": {
+      "singular": "当前有 {COUNT} 位玩家同时在线",
+      "plural": "当前有 {COUNT} 位玩家同时在线"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
+    },
     "playerList": {
       "unnamed": "Unnamed Player"
     },

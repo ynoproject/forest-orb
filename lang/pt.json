@@ -153,7 +153,14 @@
       "2": "Connecting...",
       "3": "Single Player"
     },
-    "playersOnline": "{COUNT} Jogadores Online",
+    "playersOnline": {
+      "singular": "{COUNT} Jogador Online",
+      "plural": "{COUNT} Jogadores Online"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
+    },
     "playerList": {
       "unnamed": "Unnamed Player"
     },

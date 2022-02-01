@@ -131,6 +131,8 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
         playerList.appendChild(ple);
     });
   }
+
+  updateMapPlayerCount(playerList.childElementCount);
 }
 
 function updatePlayerListEntrySprite(sprite, idx, id) {
@@ -151,11 +153,13 @@ function removePlayerListEntry(id) {
   const playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
   if (playerListEntry)
     playerListEntry.remove();
+  updateMapPlayerCount(document.getElementById("playerList").childElementCount);
 }
 
 function clearPlayerList() {
   const playerList = document.getElementById("playerList");
   playerList.innerHTML = "";
+  updateMapPlayerCount(0);
 }
 
 function getSpriteImg(sprite, idx, callback, dir) {

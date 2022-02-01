@@ -153,7 +153,14 @@
       "2": "接続中…",
       "3": "シングルプレイヤー"
     },
-    "playersOnline": "{COUNT}人が接続中",
+    "playersOnline": {
+      "singular": "{COUNT}人が接続中",
+      "plural": "{COUNT}人が接続中"
+    },
+    "playersInMap": {
+      "singular": "{COUNT}人が接続中 (同マップ)",
+      "plural": "{COUNT}人が接続中 (同マップ)"
+    },
     "playerList": {
       "unnamed": "無名プレーヤー"
     },

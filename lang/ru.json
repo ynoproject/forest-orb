@@ -153,7 +153,14 @@
       "2": "Соединение...",
       "3": "Одиночная игра"
     },
-    "playersOnline": "{COUNT} игроков онлайн",
+    "playersOnline": {
+      "singular": "{COUNT} игроков онлайн",
+      "plural": "{COUNT} игроков онлайн"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
+    },
     "playerList": {
       "unnamed": "Безымянный игрок"
     },

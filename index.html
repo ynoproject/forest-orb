@@ -334,10 +334,10 @@
       <div id="chatbox">
         <div id="chatboxInfo">
           <div id="onlineInfo" class="info hidden">
-            <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel multiplayerOnly"></span>
+            <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel nowrap unselectable multiplayerOnly"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span>
           </div>
           <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
-            <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
+            <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
           </div>
         </div>
         <div id="chatboxContent">
@@ -1030,7 +1030,7 @@ if (hasTouchscreen) {
   const langLabelMassageFunctions = {
     'ja': (value, isUI) => {
       if (isUI && value.indexOf(' ') > -1)
-        return value.split(/ +/g).map(v => `<span class="jp-word-break">${v}</span>`).join('');
+        return value.split(/ +/g).map(v => `<span class="nowrap">${v}</span>`).join('');
       return value;
     },
     'ru': (value, isUI) => {
@@ -1079,10 +1079,16 @@ if (hasTouchscreen) {
   function updatePlayerCount(count) {
     const playerCountLabel = document.getElementById('playerCountLabel');
     if (localizedMessages)
-      playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline.replace('{COUNT}', count));
+      playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline[count === 1 ? 'singular' : 'plural'].replace('{COUNT}', count));
     if (playerCount === undefined)
       document.getElementById('onlineInfo').classList.remove('hidden');
     playerCount = count;
+  }
+
+  function updateMapPlayerCount(count) {
+    const mapPlayerCountLabel = document.getElementById('mapPlayerCountLabel');
+    if (localizedMessages)
+      mapPlayerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersInMap[count === 1 ? 'singular' : 'plural'].replace('{COUNT}', count), true);
   }
 
   let playerName;
@@ -1231,6 +1237,14 @@ if (hasTouchscreen) {
     config.locationCache = {};
     config.mapCache = {};
   }
+  
+  Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
+    pc.onclick = function () {
+      const playerCountLabels = document.querySelectorAll('.playerCountLabel');
+      for (let pcl of playerCountLabels)
+        pcl.classList.toggle('hidden');
+    };
+  });
 
   let activeChatboxTabSection = 'messages';
 

@@ -305,7 +305,7 @@ body {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden {
+#modalContainer.hidden, .modal.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden {
   display: none;
 }
 
@@ -318,7 +318,6 @@ body {
 }
 
 #onlineInfo {
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -329,7 +328,7 @@ body {
   max-width: 1036px;
 }
 
-.jp-word-break {
+.nowrap {
   white-space: nowrap;
 }
 
@@ -367,8 +366,8 @@ body {
   display: none;
 }
 
-.infoLabel {
-  white-space: nowrap;
+.playerCountLabel {
+  cursor: pointer;
 }
 
 .infoText {

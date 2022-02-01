@@ -153,7 +153,14 @@
       "2": "연결 중...",
       "3": "싱글 플레이"
     },
-    "playersOnline": "{COUNT}명이 온라인입니다",
+    "playersOnline": {
+      "singular": "{COUNT}명이 온라인입니다",
+      "plural": "{COUNT}명이 온라인입니다"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
+    },
     "playerList": {
       "unnamed": "익명의 플레이어"
     },
