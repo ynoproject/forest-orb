@@ -305,7 +305,7 @@ body {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, #translationInstruction.hidden {
   display: none;
 }
 
@@ -322,10 +322,16 @@ body {
 }
 
 #langContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
   margin: 0 auto;
-  text-align: right;
   width: 100%;
   max-width: 1036px;
+}
+
+#translationInstruction {
+  font-size: small;
 }
 
 .nowrap {
@@ -360,10 +366,6 @@ body {
 .info {
   display: flex;
   padding-bottom: 8px;
-}
-
-.info.hidden {
-  display: none;
 }
 
 .playerCountLabel {

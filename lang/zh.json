@@ -1,4 +1,5 @@
 {
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -37,7 +38,8 @@
       }
     },
     "instruction": {
-      "discord": "点此加入我们的Discord频道！"
+      "discord": "点此加入我们的Discord频道！",
+      "translation": "Translation Work Needed"
     },
     "lang": {
       "label": "语言："
@@ -61,75 +63,6 @@
       "toggleChat": "显示/隐藏聊天屏幕",
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效"
-    }
-  },
-  "labels": {
-    "uiTheme": {
-      "yume": {
-        "マイシステムa": "默认",
-        "マイシステムb": "备选１",
-        "マイシステムc": "备选２"
-      },
-      "2kki": {
-        "system1": "默认",
-        "system2": "默认２",
-        "system3": "默认３",
-        "system4": "默认４",
-        "system5": "默认５",
-        "system0": "开发者的房间",
-        "systemyaguruma": "错误结局",
-        "systemrenge": "错误结局２",
-        "system-b": "暗黑大楼",
-        "system-g": "齿轮迷宫",
-        "system-i": "立方体通路",
-        "system-iiii2": "青翠长廊",
-        "system-k": "伪现实部屋",
-        "system-n": "沙发部屋",
-        "system-o": "深渊之下",
-        "system-r": "深渊之下２",
-        "system-hw": "混凝土世界",
-        "system_Ca0": "枫树神社",
-        "Yeris_System_Rainbow": "铅笔画世界",
-        "system_Suzume_choco": "巧克力通路",
-        "menu 20": "蓝色仙人掌之岛",
-        "menu 21": "地底通路",
-        "2i9_sys1": "星座世界",
-        "2i9_sys2": "斑点荒野",
-        "2i9_sys3": "板凳之馆",
-        "Noil-menu25": "深翠绿的湿地",
-        "Noil-menu26": "腐化之地",
-        "Noil-menu27": "冬之村庄",
-        "RioSystem1-28": "集体宿舍",
-        "RioSystem2-29": "森林公园２",
-        "Nuaahs_menu": "浓墨世界",
-        "RioSystem3": "遗忘之城",
-        "RioSystem4": "维利提斯之墓",
-        "system_nantai_33": "不明飞行物",
-        "system_Nulsdodage_Digital": "数据流通路",
-        "system-lav": "薰衣草之湖",
-        "Kon_sys_1": "始祖庭",
-        "Kon_sys_2": "繁华道",
-        "2i9_sys4": "谎言之都",
-        "system_K4_April2021": "杂项主题",
-        "Nulsdodage_Mono": "黑白游戏机世界",
-        "Kon_sys_3": "微笑标志世界",
-        "Kon_sys_4": "相思之恋",
-        "Kon_sys_5": "恋之楔",
-        "Kon_sys_6": "Pastel Chalk World",
-        "system_E_eye": "彩爱蝶",
-        "Kong_SystemFC": "NES隧道",
-        "natl_sys_PinkRibbon": "废墟商店"
-      },
-      "flow": {
-        "system": "默认",
-        "FCシムテム": "FC游戏机",
-        "systemdot": "点阵",
-        "systemorange": "橙色",
-        "system flower": "花朵",
-        "system sugar": "糖",
-        "system rust": "锈迹",
-        "system smile": "微笑"
-      }
     }
   },
   "messages": {

@@ -412,18 +412,21 @@
   <div class="instruction"><a href="https://discord.gg/fRG3AxUeKN" data-i18n="[html]instruction.discord">Join our Discord!</a></div>
   <br>
   <div id="langContainer">
-    <label for="lang" class="unselectable" data-i18n="[html]lang.label">Language:</label>
-    <select id="lang">
-      <option value="en">English</option>
-      <option value="ja">日本語</option>
-      <option value="zh">中文</option>
-      <option value="ko">한국어</option>
-      <option value="es">Español</option>
-      <option value="pt">Português</option>
-      <option value="fr">Français</option>
-      <option value="de">Deutsch</option>
-      <option value="ru">Русский</option>
-    </select>
+    <label id="translationInstruction" class="hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
+    <div>
+      <label for="lang" class="unselectable" data-i18n="[html]lang.label">Language:</label>
+      <select id="lang">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+        <option value="ko">한국어</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="ru">Русский</option>
+      </select>
+    </div>
   </div>
   <div id="backgroundTransition"></div>
 </div>
@@ -1743,13 +1746,6 @@ if (hasTouchscreen) {
 
         massageLabels(jsonResponse.ui);
 
-        const uiThemeLabels = jsonResponse.labels.uiTheme;
-        const uiThemes = document.querySelectorAll('.uiTheme');
-        for (let uiTheme of uiThemes)
-          uiTheme.title = uiThemeLabels.hasOwnProperty(gameId) && uiThemeLabels[gameId].hasOwnProperty(uiTheme.dataset.uiTheme)
-            ? uiThemeLabels[gameId][uiTheme.dataset.uiTheme]
-            : '';
-
         localizedMessages = jsonResponse.messages;
         
         if (isInitial) {
@@ -1761,6 +1757,12 @@ if (hasTouchscreen) {
           if (playerCount !== undefined)
             updatePlayerCount(playerCount);
         }
+
+        const translationComplete = jsonResponse.translationComplete === '1';
+        const translationInstruction = document.getElementById('translationInstruction');
+        translationInstruction.classList.toggle('hidden', translationComplete);
+        if (!translationComplete)
+          document.getElementById('translationLink').href = `https://github.com/ynoproject/forest-orb/edit/master/lang/${config.lang}.json`;
 
         const resourcesJson = {};
         resourcesJson[config.lang] = { translation: jsonResponse.ui };

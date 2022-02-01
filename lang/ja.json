@@ -1,4 +1,5 @@
 {
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "ゆめ２っきver{VERSION}",
@@ -37,7 +38,8 @@
       }
     },
     "instruction": {
-      "discord": "Discordに 参加 する"
+      "discord": "Discordに 参加 する",
+      "translation": "翻訳の仕事募集"
     },
     "lang": {
       "label": "言語"
@@ -61,75 +63,6 @@
       "toggleChat": "チャットのオン／オフ",
       "toggleNametags": "プレーヤー名表示のオン／オフ",
       "togglePlayerSounds": "プレーヤー効果音のオン／オフ"
-    }
-  },
-  "labels": {
-    "uiTheme": {
-      "yume": {
-        "マイシステムa": "デフォルト",
-        "マイシステムb": "Alternate 1",
-        "マイシステムc": "Alternate 2"
-      },
-      "2kki": {
-        "system1": "デフォルト",
-        "system2": "デフォルト２",
-        "system3": "デフォルト３",
-        "system4": "デフォルト４",
-        "system5": "デフォルト５",
-        "system0": "製作者の部屋",
-        "systemyaguruma": "似非エンディング",
-        "systemrenge": "似非エンディング２",
-        "system-b": "黒ビル",
-        "system-g": "歯車",
-        "system-i": "四角四角",
-        "system-iiii2": "森林公園",
-        "system-k": "うろつき邸",
-        "system-n": "ソファ",
-        "system-o": "みなぞこ",
-        "system-r": "すいそう",
-        "system-hw": "コンクリートマンション",
-        "system_Ca0": "楓神社",
-        "Yeris_System_Rainbow": "白い樹",
-        "system_Suzume_choco": "チョコレートの通路",
-        "menu 20": "青仙人掌島",
-        "menu 21": "地底通路",
-        "2i9_sys1": "星営鉄道",
-        "2i9_sys2": "荒野",
-        "2i9_sys3": "立椅子館",
-        "Noil-menu25": "ビリジアン湿地",
-        "Noil-menu26": "機密",
-        "Noil-menu27": "冬の村",
-        "RioSystem1-28": "集合住宅",
-        "RioSystem2-29": "森林公園２",
-        "Nuaahs_menu": "黒インク世界",
-        "RioSystem3": "忘れられた街",
-        "RioSystem4": "Butterfly",
-        "system_nantai_33": "未確認飛行物体",
-        "system_Nulsdodage_Digital": "データストリーム",
-        "system-lav": "紫湖",
-        "Kon_sys_1": "始祖庭",
-        "Kon_sys_2": "繁華道",
-        "2i9_sys4": "嘘つきの街",
-        "system_K4_April2021": "雑多なメンユータイプ",
-        "Nulsdodage_Mono": "グレーボーイ",
-        "Kon_sys_3": "黒白世界",
-        "Kon_sys_4": "恋",
-        "Kon_sys_5": "恋楔",
-        "Kon_sys_6": "スタッチュ桟橋",
-        "system_E_eye": "彩愛蝶",
-        "Kong_SystemFC": "NESトンネル",
-        "natl_sys_PinkRibbon": "廃墟商店"
-      },
-      "flow": {
-        "system": "デフォルト",
-        "FCシムテム": "ＦＣ",
-        "systemdot": "Dot",
-        "systemorange": "Orange",
-        "system flower": "Flower",
-        "system sugar": "Sugar",
-        "system rust": "Rust",
-        "system smile": "Smile"
-      }
     }
   },
   "messages": {

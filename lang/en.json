@@ -1,4 +1,5 @@
 {
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -37,7 +38,8 @@
       }
     },
     "instruction": {
-      "discord": "Join our Discord!"
+      "discord": "Join our Discord!",
+      "translation": "Translation Work Needed"
     },
     "lang": {
       "label": "Language:"
@@ -61,75 +63,6 @@
       "toggleChat": "Toggle Chat",
       "toggleNametags": "Toggle Nametags",
       "togglePlayerSounds": "Toggle Player Sounds"
-    }
-  },
-  "labels": {
-    "uiTheme": {
-      "yume": {
-        "マイシステムa": "Default",
-        "マイシステムb": "Alternate 1",
-        "マイシステムc": "Alternate 2"
-      },
-      "2kki": {
-        "system1": "Default",
-        "system2": "Default 2",
-        "system3": "Default 3",
-        "system4": "Default 4",
-        "system5": "Default 5",
-        "system0": "Developer Room",
-        "systemyaguruma": "Bleak Future",
-        "systemrenge": "Bleak Future 2",
-        "system-b": "Black Building",
-        "system-g": "Cog Maze",
-        "system-i": "Square-Square World",
-        "system-iiii2": "Verdant Promenade",
-        "system-k": "Urotsuki's Dream Apartments",
-        "system-n": "Sofa Room",
-        "system-o": "Depths",
-        "system-r": "Depths 2",
-        "system-hw": "Guts World",
-        "system_Ca0": "Maple Shrine",
-        "Yeris_System_Rainbow": "Pencil World",
-        "system_Suzume_choco": "Chocolate World",
-        "menu 20": "Blue Cactus Islands",
-        "menu 21": "Stone Towers",
-        "2i9_sys1": "Star Building",
-        "2i9_sys2": "Blob Desert",
-        "2i9_sys3": "Cipher Keyboard",
-        "Noil-menu25": "Viridian Wetlands",
-        "Noil-menu26": "Polluted Swamp",
-        "Noil-menu27": "Snowy Village",
-        "RioSystem1-28": "Decrepit Dwellings",
-        "RioSystem2-29": "Verdant Promenade 2",
-        "Nuaahs_menu": "Black Ink World",
-        "RioSystem3": "Forgotten Megalopolis",
-        "RioSystem4": "Tomb of Velleities",
-        "system_nantai_33": "Visine Spacecraft",
-        "system_Nulsdodage_Digital": "Data Stream",
-        "system-lav": "Lavender Waters",
-        "Kon_sys_1": "Originator Garden",
-        "Kon_sys_2": "Fluorescent Halls",
-        "2i9_sys4": "City of Liars",
-        "system_K4_April2021": "Misc. Theme",
-        "Nulsdodage_Mono": "Monochrome GB World",
-        "Kon_sys_3": "Smiley Signs World",
-        "Kon_sys_4": "Lovesick World",
-        "Kon_sys_5": "Corrupted Love World",
-        "Kon_sys_6": "Pastel Chalk World",
-        "system_E_eye": "Saturated Eyeball Zone",
-        "Kong_SystemFC": "NES Glitch Tunnel",
-        "natl_sys_PinkRibbon": "Shop Ruins"
-      },
-      "flow": {
-        "system": "Default",
-        "FCシムテム": "Famicom",
-        "systemdot": "Dot",
-        "systemorange": "Orange",
-        "system flower": "Flower",
-        "system sugar": "Sugar",
-        "system rust": "Rust",
-        "system smile": "Smile"
-      }
     }
   },
   "messages": {
