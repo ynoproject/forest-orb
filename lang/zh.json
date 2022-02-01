@@ -26,8 +26,8 @@
       "connStatus": "连接状态：&nbsp;",
       "location": "当前位置：&nbsp;",
       "tab": {
-        "chat": "Chat",
-        "players": "Players"
+        "chat": "聊天记录",
+        "players": "玩家列表"
       },
       "nickname": {
         "header": "设置一个名字即可开始和大家聊天！",
@@ -39,7 +39,7 @@
     },
     "instruction": {
       "discord": "点此加入我们的Discord频道！",
-      "translation": "Translation Work Needed"
+      "translation": "欢迎加入我们的界面语言翻译工作！"
     },
     "lang": {
       "label": "语言："
@@ -91,11 +91,11 @@
       "plural": "当前有 {COUNT} 位玩家同时在线"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "当前地图有 {COUNT} 位玩家正在游览",
+      "plural": "当前地图有 {COUNT} 位玩家正在游览"
     },
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "未命名玩家"
     },
     "2kki": {
       "location": {
