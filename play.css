@@ -198,6 +198,11 @@ body {
   width: 100%;
 }
 
+#chatboxInfo {
+  display: flex;
+  flex-direction: column;
+}
+
 #chatboxContent {
   display: contents;
 }
@@ -539,6 +544,26 @@ input[type='text'], select {
     max-height: 340px;
   }
 
+  .info {
+    padding-bottom: 4px;
+  }
+
+  #chatboxInfo {
+    margin-bottom: -32px;
+  }
+
+  #onlineInfo {
+    justify-content: right;
+  }
+
+  #connStatus {
+    margin-right: 4px;
+  }
+
+  #connStatusText, #locationLabel {
+    display: none;
+  }
+
   .chatboxTabSection {
     width: calc(100% - 16px);
   }
@@ -579,6 +604,26 @@ input[type='text'], select {
   height: calc(100vh - 634px);
   min-height: 200px;
   max-height: 340px;
+}
+
+#layout.overflow #chatboxInfo {
+  margin-bottom: -32px;
+}
+
+#layout.overflow .info {
+  padding-bottom: 4px;
+}
+
+#layout.overflow #onlineInfo, #layout.overflow #location {
+  justify-content: right;
+}
+
+#layout.overflow .infoContainer {
+  margin-right: 4px;
+}
+
+#layout.overflow #connStatusText, #layout.overflow #locationLabel {
+  display: none;
 }
 
 #layout:not(:fullscreen).overflow .chatboxTabSection {

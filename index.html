@@ -332,11 +332,13 @@
     </div>
     <div id="chatboxContainer" class="container" style="display: none">
       <div id="chatbox">
-        <div id="onlineInfo" class="info hidden">
-          <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel multiplayerOnly"></span>
-        </div>
-        <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
-          <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
+        <div id="chatboxInfo">
+          <div id="onlineInfo" class="info hidden">
+            <span id="connStatus" class="infoContainer"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="infoLabel multiplayerOnly"></span>
+          </div>
+          <div id="location" style="display: none" class="info hidden" data-game-ids="2kki">
+            <span id="locationLabel" class="infoLabel" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText"></span>
+          </div>
         </div>
         <div id="chatboxContent">
           <div id="chatboxTabs">
@@ -428,7 +430,7 @@
 <script>
   const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream'];
   const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[7];
+  const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
   Module = {
     EASYRPG_GAME: gameId,
     EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
@@ -1259,6 +1261,7 @@ if (hasTouchscreen) {
     document.getElementById('mainContainer').classList.toggle('noSideBorders', window.innerWidth < 384);
 
     const chatboxContainer = document.getElementById('chatboxContainer');
+    const chatboxInfo = document.getElementById('chatboxInfo');
     const chatboxTabs = document.getElementsByClassName('chatboxTab');
 
     const backgroundSize = chatboxContainer.classList.contains('fullBg') ? window.getComputedStyle(chatboxContainer).backgroundSize : null;
@@ -1268,6 +1271,14 @@ if (hasTouchscreen) {
       tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
       tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
     }
+
+    if (window.getComputedStyle(layout).flexWrap === 'wrap') {
+      const lastTab = chatboxTabs[chatboxTabs.length - 1];
+      const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
+      chatboxInfo.style.left = offsetLeft;
+      chatboxInfo.style.marginLeft = offsetLeft;
+    } else
+      chatboxInfo.setAttribute('style', '');
 
     if (window.innerWidth < window.innerHeight) {
       layout.classList.toggle('downscale', downscale);
