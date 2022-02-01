@@ -105,7 +105,7 @@ body {
   }
 }
 
-#controls button {
+#controls button, #nexusButton {
   padding-right: 1px;
   background: transparent;
   border: none;
@@ -321,13 +321,30 @@ body {
   justify-content: space-between;
 }
 
+#footer {
+  display: flex;
+  width: 100%;
+  max-width: 1036px;
+  margin: 0 auto;
+}
+
+#nexusButton {
+  z-index: 1;
+}
+
+#nexusButton:not(:hover) path:last-child {
+  display: none;
+}
+
+#nexusButton:hover path:first-child {
+  display: none;
+}
+
 #langContainer {
   display: flex;
   flex-direction: column;
   align-items: end;
-  margin: 0 auto;
   width: 100%;
-  max-width: 1036px;
 }
 
 #translationInstruction {

@@ -62,7 +62,8 @@
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
       "toggleNametags": "Переключить Ники",
-      "togglePlayerSounds": "Переключить Звуки Игроков"
+      "togglePlayerSounds": "Переключить Звуки Игроков",
+      "nexus": "Return to Nexus"
     }
   },
   "messages": {

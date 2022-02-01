@@ -62,7 +62,8 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleNametags": "이름표 표시",
-      "togglePlayerSounds": "다른 플레이어의 소리 듣기"
+      "togglePlayerSounds": "다른 플레이어의 소리 듣기",
+      "nexus": "Return to Nexus"
     }
   },
   "messages": {

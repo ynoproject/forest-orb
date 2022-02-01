@@ -62,7 +62,8 @@
       "uiTheme": "UI Theme",
       "toggleChat": "Toggle Chat",
       "toggleNametags": "Toggle Nametags",
-      "togglePlayerSounds": "Toggle Player Sounds"
+      "togglePlayerSounds": "Toggle Player Sounds",
+      "nexus": "Return to Nexus"
     }
   },
   "messages": {
