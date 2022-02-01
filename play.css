@@ -548,10 +548,6 @@ input[type='text'], select {
     padding-bottom: 4px;
   }
 
-  #chatboxInfo {
-    margin-bottom: -32px;
-  }
-
   #onlineInfo {
     justify-content: right;
   }
@@ -604,10 +600,6 @@ input[type='text'], select {
   height: calc(100vh - 634px);
   min-height: 200px;
   max-height: 340px;
-}
-
-#layout.overflow #chatboxInfo {
-  margin-bottom: -32px;
 }
 
 #layout.overflow .info {

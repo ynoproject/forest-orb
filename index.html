@@ -1275,8 +1275,10 @@ if (hasTouchscreen) {
     if (window.getComputedStyle(layout).flexWrap === 'wrap') {
       const lastTab = chatboxTabs[chatboxTabs.length - 1];
       const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
-      chatboxInfo.style.left = offsetLeft;
       chatboxInfo.style.marginLeft = offsetLeft;
+      chatboxInfo.style.marginBottom = '-32px';
+      if (chatboxInfo.offsetHeight >= 72)
+        chatboxInfo.setAttribute('style', '');
     } else
       chatboxInfo.setAttribute('style', '');
 
