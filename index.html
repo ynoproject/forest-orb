@@ -127,11 +127,12 @@
     }
 
     #controls button path, #nexusButton path {
-      stroke: rgba(216, 216, 216, 1) !important; /*base*/
+      stroke: url(#baseGradient);
+      filter: url(#dropShadow);
     }
 
     #controls button.toggled path, #controls button.preToggled path {
-      stroke: rgba(255, 255, 157, 1) !important; /*alt*/
+      stroke: url(#altGradient);
     }
     
     #nexusButton path {
@@ -147,7 +148,7 @@
     }
   
     #enterNameInstruction, .nameText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .message, h1, a, label {
-      background-image: url('images/ui/2kki/system1/font1.png') !important; /*base*/
+      background-image: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%) !important; /*base*/
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -155,7 +156,7 @@
     }
 
     .altText, .nameText, a:not(.modalClose) {
-      background-image: url('images/ui/2kki/system1/font4.png') !important; /*alt*/
+      background-image: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%) !important; /*alt*/
     }
 
     #connStatusIcon {
@@ -264,16 +265,6 @@
         border-right: 0;
         border-bottom-color: unset !important;
       }
-
-      /* Don't use text background on Safari since it doesn't repeat properly */
-      #enterNameInstruction, .nameText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .message, .altText, h1, a, label {
-        -webkit-text-fill-color: unset;
-        background-image: none !important;
-      }
-
-      .altText, a:not(.modalClose) {
-        color: rgba(255, 255, 157, 1); /*alt*/
-      }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
@@ -286,6 +277,19 @@
       <div id="mainContainer" class="container">
         <div id="gameContainer">
           <div id="controls">
+            <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+              <defs>
+                <linearGradient id="baseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(216, 216, 216, 1)" />
+                </linearGradient>
+                <linearGradient id="altGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="rgba(255, 255, 157, 1)" />
+                </linearGradient>
+                <filter id="dropShadow">
+                  <feDropShadow dx="1" dy="1" stdDeviation="0.2" flood-color="black" />
+                </filter>
+              </defs>
+            </svg>
             <div id="leftControls">
               <button id="singlePlayerButton" class="unselectable" data-i18n="[title]tooltips.toggleSinglePlayer">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="25"><path d="m9 15.5a1 1 0 0 0 0-3 1 1 0 0 0 0 3m-4-4q4-4 8 0m-10.5-3q6.5-5 13 0m-15.5-3q9-7 18 0" /></svg>
@@ -1486,12 +1490,13 @@ if (hasTouchscreen) {
     const themeStyles = document.getElementById('themeStyles');
     getBaseBgColor(uiTheme, function (color) {
       const bgColorPixel = uiThemeBgColors[uiTheme];
-      const altColor = 'rgba(' + Math.min(bgColorPixel[0] + 48, 255) + ', ' + Math.min(bgColorPixel[1] + 48, 255) + ', ' + Math.min(bgColorPixel[2] + 48, 255) + ', 1)';
+      const altColor = getColorRgba([Math.min(bgColorPixel[0] + 48, 255), Math.min(bgColorPixel[1] + 48, 255), Math.min(bgColorPixel[2] + 48, 255)]);
       getFontShadow(uiTheme, function (shadow) {
         themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/$1.png\')')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
           .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
           .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
+        document.getElementById('dropShadow').children[0].setAttribute('flood-color', shadow);
         const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
         const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
         if (lastSelectedThemeContainer)
@@ -1523,23 +1528,26 @@ if (hasTouchscreen) {
     config.fontStyle = fontStyle;
     const themeStyles = document.getElementById('themeStyles');
     const defaultAltFontStyleIndex = 1;
-    getFontColor(uiTheme, fontStyle, function (baseColor) {
-      const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : 0;
-      const altColorCallback = function (altColor) {
+    const defaultFallbackAltFontStyleIndex = 3;
+    getFontColors(uiTheme, fontStyle, function (baseColors) {
+      const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
+      const altColorCallback = function (altColors) {
         themeStyles.textContent = themeStyles.textContent
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*base\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png\')$1;$2/*base*/')
-          .replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?font\\d\\.png\'\\)( *!important)?;( *)\\/\\*alt\\*\\/', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (altFontStyle + 1) + '.png\')$1;$2/*alt*/')
-          .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + baseColor + '$4;$5/*base*/')
-          .replace(/([^\-])((?:(?:background|border)\-)?color|stroke):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + altColor + '$4;$5/*alt*/');
+          .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*base\*\//g, 'linear-gradient($1, ' + getGradientText(baseColors) + ')$2;$3/*base*/')
+          .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*alt\*\//g, 'linear-gradient($1, ' + getGradientText(altColors) + ')$2;$3/*alt*/')
+          .replace(/([^\-])((?:(?:background|border)\-)?color):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + getColorRgba(baseColors[8]) + '$4;$5/*base*/')
+          .replace(/([^\-])((?:(?:background|border)\-)?color):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + getColorRgba(altColors[8]) + '$4;$5/*alt*/');
+        updateSvgGradient(document.getElementById('baseGradient'), baseColors);
+        updateSvgGradient(document.getElementById('altGradient'), altColors);
         if (!isInit)
           updateConfig(config);
       };
-      getFontColor(uiTheme, altFontStyle, function (altColor) {
-        if (altColor !== baseColor)
-          altColorCallback(altColor);
+      getFontColors(uiTheme, altFontStyle, function (altColors) {
+        if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
+          altColorCallback(altColors);
         else {
-          const fallbackAltFontStyle = parseInt(document.querySelector('.fontStyle option:last-child').value);
-          getFontColor(uiTheme, fallbackAltFontStyle, altColorCallback);
+          const fallbackAltFontStyle = fontStyle !== defaultFallbackAltFontStyleIndex ? defaultFallbackAltFontStyleIndex : defaultFallbackAltFontStyleIndex - 1;
+          getFontColors(uiTheme, fallbackAltFontStyle, altColorCallback);
         }
       });
     });
@@ -1606,20 +1614,24 @@ if (hasTouchscreen) {
   let spriteData = {};
   let playerSpriteCache = {};
   
-  function getFontColor(uiTheme, fontStyle, callback) {
+  function getFontColors(uiTheme, fontStyle, callback) {
     if (!uiThemeFontColors[uiTheme])
       uiThemeFontColors[uiTheme] = {};
-    let pixel = uiThemeFontColors[uiTheme][fontStyle];
-    if (pixel)
-      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+    let colors = uiThemeFontColors[uiTheme][fontStyle];
+    if (colors)
+      return callback(colors);
     const img = new Image();
     img.onload = function () {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
       context.drawImage(img, 0, 0);
-      pixel = context.getImageData(0, 8, 1, 1).data;
-      uiThemeFontColors[uiTheme][fontStyle] = [ pixel[0], pixel[1], pixel[2] ];
-      callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      const data = context.getImageData(0, 0, 1, 16).data;
+      const colors = [];
+      for (let i = 0; i < data.length; i += 4) {
+        colors.push([ data[i], data[i + 1], data[i + 2] ]);
+      }
+      uiThemeFontColors[uiTheme][fontStyle] = colors;
+      callback(colors);
       canvas.remove();
     };
     img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png';
@@ -1628,7 +1640,7 @@ if (hasTouchscreen) {
   function getFontShadow(uiTheme, callback) {
     let pixel = uiThemeFontShadows[uiTheme];
     if (pixel)
-      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      return callback(getColorRgba(pixel));
     const img = new Image();
     img.onload = function () {
       const canvas = document.createElement('canvas');
@@ -1636,7 +1648,7 @@ if (hasTouchscreen) {
       context.drawImage(img, 0, 0);
       pixel = context.getImageData(0, 8, 1, 1).data;
       uiThemeFontShadows[uiTheme] = [ pixel[0], pixel[1], pixel[2] ];
-      callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      callback(getColorRgba(pixel));
       canvas.remove();
     };
     img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/fontshadow.png';
@@ -1646,7 +1658,7 @@ if (hasTouchscreen) {
     const img = new Image();
     let pixel = uiThemeBgColors[uiTheme];
     if (pixel)
-      return callback('rgba(' + pixel[0] + ', ' + pixel[1] + ', ' + pixel[2] + ', 1)');
+      return callback(getColorRgba(pixel));
     img.onload = function () {
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d');
@@ -1662,6 +1674,45 @@ if (hasTouchscreen) {
       canvas.remove();
     };
     img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/containerbg.png';
+  }
+
+  function getGradientText(colors) {
+    let lastColor = colors[0];
+    let ret = `${getColorRgba(lastColor)} 0 `;
+    colors.forEach(function (color, c) {
+      if (color[0] !== lastColor[0] || color[1] !== lastColor[1] || color[2] !== lastColor[2]) {
+        const percent = Math.floor(((c + 1) / colors.length) * 10000) / 100;
+        ret += `${percent}%, ${getColorRgba(color)} ${percent}% `;
+        lastColor = color;
+      }
+    });
+    ret += '100%';
+    return ret;
+  }
+
+  function updateSvgGradient(gradient, colors) {
+    gradient.innerHTML = '';
+    let lastColor = colors[0];
+    gradient.appendChild(getSvgGradientStop(lastColor, 0));
+    let ret = `${getColorRgba(lastColor)} 0 `;
+    colors.forEach(function (color, c) {
+      if (color[0] !== lastColor[0] || color[1] !== lastColor[1] || color[2] !== lastColor[2]) {
+        const offset = Math.floor(((c + 1) / colors.length) * 10000) / 100;
+        gradient.appendChild(getSvgGradientStop(color, offset));
+        lastColor = color;
+      }
+    });
+  }
+
+  function getSvgGradientStop(color, offset) {
+    const ret = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+    ret.setAttribute('stop-color', getColorRgba(color));
+    ret.setAttribute('offset', `${offset}%`);
+    return ret;
+  }
+
+  function getColorRgba(color) {
+    return `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
   }
 
   function handleSaveFileUpload(evt) {

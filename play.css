@@ -486,6 +486,10 @@ body {
   pointer-events: none;
 }
 
+svg {
+  overflow: visible;
+}
+
 label {
   font-weight: bold;
 }
