@@ -1260,6 +1260,7 @@ if (hasTouchscreen) {
       const playerCountLabels = document.querySelectorAll('.playerCountLabel');
       for (let pcl of playerCountLabels)
         pcl.classList.toggle('hidden');
+      onResize();
     };
   });
 
