@@ -743,6 +743,7 @@ if (hasTouchscreen) {
         ? locations.map(l => getLocationLink(l)).join('<br>')
         : locations
       : getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
+    onUpdateChatboxInfo();
     if (cacheLocation) {
       const locationKey = `${(prevMapId || '0000')}_${mapId}`;
       const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
@@ -1264,7 +1265,7 @@ if (hasTouchscreen) {
       const playerCountLabels = document.querySelectorAll('.playerCountLabel');
       for (let pcl of playerCountLabels)
         pcl.classList.toggle('hidden');
-      onResize();
+      onUpdateChatboxInfo();
     };
   });
 
@@ -1296,27 +1297,7 @@ if (hasTouchscreen) {
 
     document.getElementById('mainContainer').classList.toggle('noSideBorders', window.innerWidth < 384);
 
-    const chatboxContainer = document.getElementById('chatboxContainer');
-    const chatboxInfo = document.getElementById('chatboxInfo');
-    const chatboxTabs = document.getElementsByClassName('chatboxTab');
-
-    const backgroundSize = chatboxContainer.classList.contains('fullBg') ? window.getComputedStyle(chatboxContainer).backgroundSize : null;
-
-    for (let tab of chatboxTabs) {
-      tab.style.backgroundSize = backgroundSize;
-      tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
-      tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
-    }
-
-    if (window.getComputedStyle(layout).flexWrap === 'wrap') {
-      const lastTab = chatboxTabs[chatboxTabs.length - 1];
-      const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
-      chatboxInfo.style.marginLeft = offsetLeft;
-      chatboxInfo.style.marginBottom = '-32px';
-      if (chatboxInfo.offsetHeight >= 72)
-        chatboxInfo.setAttribute('style', '');
-    } else
-      chatboxInfo.setAttribute('style', '');
+    onUpdateChatboxInfo();
 
     if (window.innerWidth < window.innerHeight) {
       layout.classList.toggle('downscale', downscale);
@@ -1340,6 +1321,32 @@ if (hasTouchscreen) {
     }
 
     updateCanvasFullscreenSize();
+  }
+
+  function onUpdateChatboxInfo() {
+    const layout = document.getElementById('layout');
+
+    const chatboxContainer = document.getElementById('chatboxContainer');
+    const chatboxInfo = document.getElementById('chatboxInfo');
+    const chatboxTabs = document.getElementsByClassName('chatboxTab');
+
+    const backgroundSize = chatboxContainer.classList.contains('fullBg') ? window.getComputedStyle(chatboxContainer).backgroundSize : null;
+
+    for (let tab of chatboxTabs) {
+      tab.style.backgroundSize = backgroundSize;
+      tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
+      tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
+    }
+
+    if (window.getComputedStyle(layout).flexWrap === 'wrap') {
+      const lastTab = chatboxTabs[chatboxTabs.length - 1];
+      const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
+      chatboxInfo.style.marginLeft = offsetLeft;
+      chatboxInfo.style.marginBottom = '-32px';
+      if (chatboxInfo.offsetHeight >= 72)
+        chatboxInfo.setAttribute('style', '');
+    } else
+      chatboxInfo.setAttribute('style', '');
   }
 
   function isOverflow(scale) {
