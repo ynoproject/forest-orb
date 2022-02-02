@@ -1095,7 +1095,7 @@ if (hasTouchscreen) {
       return;
     const playerCountLabel = document.getElementById('playerCountLabel');
     if (localizedMessages)
-      playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline[count === 1 ? 'singular' : 'plural'].replace('{COUNT}', count), true);
+      playerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersOnline[count == 1 ? 'singular' : 'plural'].replace('{COUNT}', count), true);
     if (playerCount === undefined)
       document.getElementById('onlineInfo').classList.remove('hidden');
     playerCount = count;
@@ -1106,7 +1106,7 @@ if (hasTouchscreen) {
       return;
     const mapPlayerCountLabel = document.getElementById('mapPlayerCountLabel');
     if (localizedMessages)
-      mapPlayerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersInMap[count === 1 ? 'singular' : 'plural'].replace('{COUNT}', count), true);
+      mapPlayerCountLabel.innerHTML = getMassagedLabel(localizedMessages.playersInMap[count == 1 ? 'singular' : 'plural'].replace('{COUNT}', count), true);
   }
 
   let playerName;
