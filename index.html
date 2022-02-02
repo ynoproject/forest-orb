@@ -1795,6 +1795,8 @@ if (hasTouchscreen) {
   function massageLabels(data) {
     if (langLabelMassageFunctions.hasOwnProperty(config.lang) && data) {
       Object.keys(data).forEach(function (key) {
+        if (key === 'tooltips')
+          return;
         const value = data[key];
         if (value) {
           switch (typeof value) {
