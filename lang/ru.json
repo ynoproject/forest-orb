@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -39,7 +39,7 @@
     },
     "instruction": {
       "discord": "Присоединяйтесь к нашему Discord!",
-      "translation": "Translation Work Needed"
+      "translation": "Помочь с переводом"
     },
     "lang": {
       "label": "Язык:"
@@ -63,7 +63,7 @@
       "toggleChat": "Переключить Чат",
       "toggleNametags": "Переключить Ники",
       "togglePlayerSounds": "Переключить Звуки Игроков",
-      "nexus": "Return to Nexus"
+      "nexus": "Вернуться на Главную страницу"
     }
   },
   "messages": {
@@ -88,12 +88,12 @@
       "3": "Одиночная игра"
     },
     "playersOnline": {
-      "singular": "{COUNT} игроков онлайн",
-      "plural": "{COUNT} игроков онлайн"
+      "singular": "{COUNT} Игрок онлайн",
+      "plural": "{COUNT} Игроков онлайн"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "{COUNT} Игрок на карте",
+      "plural": "{COUNT} Игроков на карте"
     },
     "playerList": {
       "unnamed": "Безымянный игрок"
