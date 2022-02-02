@@ -1090,7 +1090,7 @@ if (hasTouchscreen) {
   let playerCount;
 
   function updatePlayerCount(count) {
-    if (isNaN(count))
+    if (isNaN(count) && count !== '?')
       return;
     const playerCountLabel = document.getElementById('playerCountLabel');
     if (localizedMessages)
