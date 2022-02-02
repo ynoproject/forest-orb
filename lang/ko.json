@@ -39,7 +39,7 @@
     },
     "instruction": {
       "discord": "저희 디스코드 서버에 들어오세요!",
-      "translation": "Translation Work Needed"
+      "translation": "번역 작업이 필요합니다"
     },
     "lang": {
       "label": "언어"
@@ -63,7 +63,7 @@
       "toggleChat": "채팅 표시",
       "toggleNametags": "이름표 표시",
       "togglePlayerSounds": "다른 플레이어의 소리 듣기",
-      "nexus": "Return to Nexus"
+      "nexus": "넥서스로 돌아가기"
     }
   },
   "messages": {
@@ -92,8 +92,8 @@
       "plural": "{COUNT}명이 온라인입니다"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "현재 위치한 맵에 {COUNT}명의 플레이어가 있습니다",
+      "plural": "현재 위치한 맵에 {COUNT}명의 플레이어들이 있습니다"
     },
     "playerList": {
       "unnamed": "익명의 플레이어"
