@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
@@ -26,8 +26,8 @@
       "connStatus": "Status:&nbsp;",
       "location": "Localização:&nbsp;",
       "tab": {
-        "chat": "Chat",
-        "players": "Players"
+        "chat": "Bate-Papo",
+        "players": "Jogadores"
       },
       "nickname": {
         "header": "Defina seu nickname antes de acessar o bate papo.",
@@ -54,7 +54,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Toggle Single Player",
+      "toggleSinglePlayer": "Alternar jogador único",
       "io": {
         "upload": "Enviar arquivo salvo",
         "download": "Baixar arquivo salvo"
@@ -62,8 +62,8 @@
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar bate papo",
       "toggleNametags": "Alternar nome dos jogadores",
-      "togglePlayerSounds": "Toggle Player Sounds",
-      "nexus": "Return to Nexus"
+      "togglePlayerSounds": "Alternar áudio dos jogadores",
+      "nexus": "Voltar para o Nexo"
     }
   },
   "messages": {
@@ -85,18 +85,18 @@
       "0": "Desconectado",
       "1": "Conectado",
       "2": "Connecting...",
-      "3": "Single Player"
+      "3": "Jogador Único"
     },
     "playersOnline": {
       "singular": "{COUNT} Jogador Online",
       "plural": "{COUNT} Jogadores Online"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "{COUNT} Jogador no Mapa",
+      "plural": "{COUNT} Jogadores no Mapa"
     },
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "Jogador sem nome"
     },
     "2kki": {
       "location": {
