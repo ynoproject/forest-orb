@@ -22,10 +22,8 @@ function chatboxAddMessage(systemName, msg) {
     nameContainer.classList.add("nameText");
     name.classList.add("nameText");
     if (messages.dataset.useSystemForName) {
-      name.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/font1.png') !important`);
-      getFontShadow(systemName, function (shadow) {
-        name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
-      });
+      getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
+      getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
     }
     name.innerText = nameText;
     nameContainer.appendChild(document.createTextNode('<'));
@@ -103,10 +101,8 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
-    nameText.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/font1.png') !important`);
-    getFontShadow(systemName, function (shadow) {
-      nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
-    });
+    getFontColors(systemName, 0, colors => nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
+    getFontShadow(systemName, shadow => nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
   }
 
   if (playerList.childElementCount > 1) {
