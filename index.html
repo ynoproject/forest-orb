@@ -7,89 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="2kkiVersion" content="" data-game-ids="2kki"> <!-- eg. 0.117g Patch 4 -->
   <link rel="stylesheet" href="play.css">
-  <style>
-    :root {
-      --color-gray: hsl(0, 0%, 55%);
-      --controls-size: 10vh;
-    }
-
-    @media (orientation: landscape) {
-      :root {
-        --controls-size: 20vh;
-      }
-    }
-
-    html {
-      touch-action: none;
-    }
-
-    .unselectable {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-
-    #status {
-      font-size: 1.5rem;
-      color: var(--color-gray);
-      text-align: center;
-    }
-
-    #gameContainer {
-      width: 100%;
-      height: 100%;
-    }
-
-    #dpad, #apad {
-      position: fixed;
-      bottom: 1rem;
-      z-index: 3;
-    }
-
-    #dpad {
-      left: 1rem;
-    }
-
-    #apad {
-      right: 1rem;
-    }
-
-    #dpad svg {
-      width: calc(2 * var(--controls-size));
-      height: calc(2 * var(--controls-size));
-      fill: var(--color-gray);
-    }
-
-    #dpad svg rect {
-      opacity: 0.4;
-    }
-
-    #apad > * {
-      width: var(--controls-size);
-      height: var(--controls-size);
-      background-color: var(--color-gray);
-      border-radius: 50%;
-    }
-
-    #apad > :last-child {
-      position: relative;
-      right: var(--controls-size);
-    }
-
-    #dpad path:not(.active), #apad > *:not(.active) {
-      opacity: 0.4;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      #apad, #dpad {
-        display: none;
-      }
-    }
-
-    #layout:fullscreen #dpad, #layout:fullscreen #apad {
-      bottom: 6rem;
-    }
-  </style>
+  <link rel="stylesheet" href="gamecanvas.css">
   <style id="themeStyles">
     html, input[type='text'], select {
       color: rgba(216, 216, 216, 1) !important; /*base*/
@@ -231,6 +149,14 @@
       background-color: rgba(45, 17, 23, 1); /*basebg*/
     }
 
+    .baseColorBg {
+      background-color: rgba(216, 216, 216, 1) !important; /*base*/
+    }
+
+    .baseColorFill {
+      fill: rgba(216, 216, 216, 1) !important; /*base*/
+    }
+
     .playerListEntry {
       background-image: url('images/ui/2kki/system1/containerbg.png') !important;
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
@@ -316,14 +242,14 @@
             </div>
           </div>
 
-          <div id="status"></div>
+          <div id="status" class="baseColor"></div>
 
           <div id="canvasContainer">
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
           <div id="dpad" class="unselectable">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" class="baseColorFill">
               <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
               <path id="dpad-right" data-key="ArrowRight" data-key-code="39" d="M66.2,24H48v24h18.2c3.3,0,5.8-2.7,5.8-6V29.9C72,26.5,69.5,24,66.2,24z" />
               <path id="dpad-down" data-key="ArrowDown" data-key-code="40" d="M24,66.3c0,3.3,2.6,5.7,5.9,5.7H42c3.3,0,6-2.4,6-5.7V48H24V66.3z" />
@@ -333,8 +259,8 @@
           </div>
 
           <div id="apad" class="unselectable">
-            <div id="apad-escape" data-key="Escape" data-key-code="27"></div>
-            <div id="apad-enter" data-key="Enter" data-key-code="13"></div>
+            <div id="apad-escape" class="baseColorBg" data-key="Escape" data-key-code="27"></div>
+            <div id="apad-enter" class="baseColorBg" data-key="Enter" data-key-code="13"></div>
           </div>
         </div>
       </div>

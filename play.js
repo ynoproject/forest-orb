@@ -629,8 +629,8 @@ function setFontStyle(fontStyle, isInit) {
       themeStyles.textContent = themeStyles.textContent
         .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*base\*\//g, 'linear-gradient($1, ' + getGradientText(baseColors) + ')$2;$3/*base*/')
         .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*alt\*\//g, 'linear-gradient($1, ' + getGradientText(altColors) + ')$2;$3/*alt*/')
-        .replace(/([^\-])((?:(?:background|border)\-)?color):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + getColorRgba(baseColors[8]) + '$4;$5/*base*/')
-        .replace(/([^\-])((?:(?:background|border)\-)?color):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + getColorRgba(altColors[8]) + '$4;$5/*alt*/');
+        .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + getColorRgba(baseColors[8]) + '$4;$5/*base*/')
+        .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + getColorRgba(altColors[8]) + '$4;$5/*alt*/');
       updateSvgGradient(document.getElementById('baseGradient'), baseColors);
       updateSvgGradient(document.getElementById('altGradient'), altColors);
       if (!isInit)
