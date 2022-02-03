@@ -297,7 +297,7 @@ document.getElementById('lang').onchange = function () {
 }
 
 document.getElementById('enterNameForm').onsubmit = function () {
-  setName(this.value);
+  setName(document.getElementById('nameInput').value);
 };
 
 document.getElementById('chatButton').onclick = function () {
@@ -788,7 +788,6 @@ function updateSvgGradient(gradient, colors) {
   gradient.innerHTML = '';
   let lastColor = colors[0];
   gradient.appendChild(getSvgGradientStop(lastColor, 0));
-  let ret = `${getColorRgba(lastColor)} 0 `;
   colors.forEach(function (color, c) {
     if (color[0] !== lastColor[0] || color[1] !== lastColor[1] || color[2] !== lastColor[2]) {
       const offset = Math.floor(((c + 1) / colors.length) * 10000) / 100;
