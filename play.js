@@ -388,12 +388,11 @@ let ignoreSizeChanged = false;
 
 function onResize() {
   const layout = document.getElementById('layout');
-  const canvas = document.getElementById('canvas');
 
   const downscale = window.innerWidth < 704 || window.innerHeight < 577;
   const downscale2 = window.innerWidth < 544 || window.innerHeight < 457;
 
-  document.getElementById('mainContainer').classList.toggle('noSideBorders', window.innerWidth < 384);
+  layout.classList.toggle('noSideBorders', window.innerWidth < 384);
 
   onUpdateChatboxInfo();
 

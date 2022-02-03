@@ -48,7 +48,7 @@ body {
   z-index: 2;
 }
 
-#mainContainer.noSideBorders {
+#layout.noSideBorders #mainContainer, #layout.noSideBorders #chatboxContainer {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
@@ -172,7 +172,7 @@ body {
   }
 }
 
-#mainContainer.noSideBorders #canvas {
+#layout.noSideBorders #canvas {
   max-width: calc(100vw - 16px);
   max-height: calc((100vw - 16px) * 0.75);
 }
@@ -678,7 +678,7 @@ input[type='text'], select {
     max-height: calc(100vh - 96px);
   }
 
-  #mainContainer.noSideBorders #canvas {
+  #layout.noSideBorders #mainContainer #canvas {
     max-width: calc((100vh - 48px) * 1.3333);
     max-height: calc(100vh - 48px);
   }
