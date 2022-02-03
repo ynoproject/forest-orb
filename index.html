@@ -110,7 +110,6 @@
     }
 
     #unreadMessageCount {
-      background-size: 20px;
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
@@ -165,10 +164,6 @@
       background-image: url('images/ui/2kki/system1/font1.png') !important;
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
-    
-    h1 {
-      background-size: 36px;
-    }
   
     input[type='text'], select {
       border: 12px solid transparent;
@@ -180,7 +175,7 @@
 
      /* Safari only */
      @media not all and (min-resolution:.001dpcm) {
-      #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .chatboxTabSection::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .chatboxTabSection::-webkit-scrollbar-thumb, #enterNameContainer, .container, .modal, .chatboxTabSection, input[type='text'], select {
+      #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .chatboxTabSection::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .chatboxTabSection::-webkit-scrollbar-thumb, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, input[type='text'], select {
         border-color: unset !important;
       }
 
@@ -189,6 +184,16 @@
         border-left: 0;
         border-right: 0;
         border-bottom-color: unset !important;
+      }
+
+       /* Don't use text background on Safari since it doesn't repeat properly */
+       #enterNameInstruction, .nameText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .message, .altText, h1, a, label {
+        -webkit-text-fill-color: unset;
+        background-image: none !important;
+      }
+
+      .altText, a:not(.modalClose) {
+        color: rgba(255, 255, 157, 1); /*alt*/
       }
     }
   </style>
