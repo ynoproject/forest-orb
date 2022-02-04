@@ -380,6 +380,10 @@ body {
   word-wrap: break-word;
 }
 
+.message {
+  word-break: break-all;
+}
+
 .info {
   display: flex;
   padding-bottom: 8px;
