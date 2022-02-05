@@ -61,9 +61,19 @@ html {
   border-radius: 50%;
 }
 
-#apad > :last-child {
+#apad > :nth-child(2) {
   position: relative;
   right: var(--controls-size);
+}
+
+#apad > :last-child {
+  position: relative;
+  border-radius: 10%;
+  margin-top: calc(var(--controls-size) * -0.4);
+  bottom: calc(var(--controls-size) * 0.05);
+  left: calc(var(--controls-size) * 0.2);
+  width: calc(var(--controls-size) * 0.6);
+  height: calc(var(--controls-size) * 0.4);
 }
 
 #dpad path:not(.active), #apad > *:not(.active) {
