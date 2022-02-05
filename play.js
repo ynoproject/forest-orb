@@ -73,8 +73,8 @@ const gameUiThemes = {
     'systemsmile'
   ],
   'prayers': [
-    'chartreuse',
     'grey-and-chartreuse',
+    'chartreuse',
     'customsystem'
   ],
   'deepdreams': [
@@ -117,7 +117,7 @@ const gameFullBgUiThemes = {
   'yume': [ 'マイシステムb' ],
   '2kki': [],
   'flow': [],
-  'prayers': [ 'chartreuse', 'grey-and-chartreuse', 'customsystem' ],
+  'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'deepdreams': [],
   'someday': [],
   'amillusion': [ 'fleur' ],
@@ -600,6 +600,7 @@ function setUiTheme(value, isInit) {
       document.querySelector('body').classList.toggle('fullBg', useFullBg);
       if (!isInit) {
         document.querySelector('.fontStyle').onchange();
+        onUpdateChatboxInfo();
         if (hasUiThemes)
           updateConfig(config);
       }
