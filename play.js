@@ -73,37 +73,37 @@ const gameUiThemes = {
     'systemsmile'
   ],
   'prayers': [
-    'Default',
-    'Alternate_1',
-    'Alternate_2'
+    'chartreuse',
+    'grey-and-chartreuse',
+    'customsystem'
   ],
   'deepdreams': [
-    'Default',
-    'Arabian',
-    'Crystalline',
-    'Kaleidoscope',
-    'Rainbow',
-    'Spider_Lily'
+    'system_sterling',
+    'system_arabian',
+    'system_crystalline',
+    'system_kaleidoscope',
+    'system_rainbow',
+    'system_spiderlily'
   ],
   'someday': [
-    'Default',
-    '8_Bit',
-    'Blue',
-    'Clock',
-    'Edible',
-    'Rainbow',
-    '311',
-    'Turquoise'
+    'green',
+    '8bit',
+    'blue',
+    'clock',
+    'edible',
+    'rainbow',
+    'threeoneone',
+    'turquoise'
   ],
   'amillusion': [
-    'Default',
-    'Azur',
-    'Bubbles',
-    'Crazy_Maze',
-    'Engraving',
-    'EPACSE',
-    'Golden_Luck',
-    'Sunflower'
+    'fleur-2',
+    'fleur',
+    'bullemenu',
+    'menulabyrinthe',
+    'rosas menu',
+    'system EPACSE',
+    'MenuChance',
+    'tournesol'
   ],
   'unevendream': [
     '1247-0',
@@ -117,18 +117,14 @@ const gameFullBgUiThemes = {
   'yume': [ 'マイシステムb' ],
   '2kki': [],
   'flow': [],
-  'prayers': [ 'Default', 'Alternate_1', 'Alternate_2' ],
+  'prayers': [ 'chartreuse', 'grey-and-chartreuse', 'customsystem' ],
   'deepdreams': [],
   'someday': [],
-  'amillusion': [ 'Azur' ],
+  'amillusion': [ 'fleur' ],
   'unevendream': []
 }[gameId];
 
 const hasUiThemes = gameUiThemes.length > 0;
-const hasAutoUiTheme = hasUiThemes && gameUiThemes[0] !== 'Default';
-
-if (hasAutoUiTheme)
-  document.getElementById('messages').dataset.useSystemForName = true;
 
 let localizedMessages;
 
@@ -220,18 +216,16 @@ function onUpdateSystemGraphic(name) {
     name = name.replace(/'/g, '');
   if (gameUiThemes.indexOf(name) > -1) {
     setSystemName(name);
-    if (hasAutoUiTheme) {
-      const lastAutoButton = document.querySelector('.uiThemeItem.auto');
-      if (lastAutoButton)
-        lastAutoButton.remove();
-      const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
-      const autoUiThemeOption = getUiThemeOption('auto');
-      autoUiThemeOption.onclick = onSelectUiTheme;
-      uiThemeModalContent.prepend(autoUiThemeOption);
-      locI18next.init(i18next)('.uiThemeItem.auto label');
-      if (config.uiTheme === 'auto')
-        setUiTheme('auto');
-    }
+    const lastAutoButton = document.querySelector('.uiThemeItem.auto');
+    if (lastAutoButton)
+      lastAutoButton.remove();
+    const uiThemeModalContent = document.querySelector('#uiThemesModal .modalContent');
+    const autoUiThemeOption = getUiThemeOption('auto');
+    autoUiThemeOption.onclick = onSelectUiTheme;
+    uiThemeModalContent.prepend(autoUiThemeOption);
+    locI18next.init(i18next)('.uiThemeItem.auto label');
+    if (config.uiTheme === 'auto')
+      setUiTheme('auto');
   }
 }
 
@@ -570,7 +564,7 @@ function setName(name, isInit) {
 }
 
 function getDefaultUiTheme() {
-  return !hasAutoUiTheme ? 'Default' : gameUiThemes[0];
+  return gameUiThemes[0];
 }
 
 function setUiTheme(value, isInit) {
@@ -649,7 +643,7 @@ function setFontStyle(fontStyle, isInit) {
 function populateUiThemes() {
   const modalContent = document.querySelector('#uiThemesModal .modalContent');
   modalContent.innerHTML = '';
-  if (hasUiThemes && hasAutoUiTheme)
+  if (hasUiThemes)
     modalContent.appendChild(getUiThemeOption('auto'));
   for (let uiTheme of gameUiThemes)
     modalContent.appendChild(getUiThemeOption(uiTheme));
@@ -1058,6 +1052,6 @@ loadOrInitConfig();
 if (!loadedFontStyle)
   setFontStyle(0, true);
 if (!loadedUiTheme)
-  setUiTheme(hasAutoUiTheme ? 'auto' : getDefaultUiTheme(), true);
+  setUiTheme('auto', true);
 if (!localizedMessages)
   initLocalization(true);
