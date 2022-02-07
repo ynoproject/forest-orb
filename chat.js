@@ -20,8 +20,11 @@ function chatboxAddMessage(systemName, msg) {
     const name = document.createElement("span");
     nameContainer.classList.add("nameText");
     name.classList.add("nameText");
-    getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
-    getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
+    if (systemName) {
+      systemName = systemName.replace(/'/g, '');
+      getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
+      getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
+    }
     name.innerText = nameText;
     nameContainer.appendChild(document.createTextNode('<'));
     nameContainer.appendChild(name);
