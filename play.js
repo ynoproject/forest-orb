@@ -202,7 +202,7 @@ let playerName;
 let systemName;
 
 function setSystemName(name) {
-  systemName = name.replace(/'/g, '');
+  systemName = name;
   document.getElementById('chatInput').dataset.sys = name;
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
@@ -212,7 +212,9 @@ setSystemName(getDefaultUiTheme());
 
 // EXTERNAL
 function onUpdateSystemGraphic(name) {
-  if (gameUiThemes.indexOf(name.replace(/'/g, '')) > -1) {
+  if (name)
+    name = name.replace(/'/g, '');
+  if (gameUiThemes.indexOf(name) > -1) {
     setSystemName(name);
     const lastAutoButton = document.querySelector('.uiThemeItem.auto');
     if (lastAutoButton)
