@@ -75,15 +75,13 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
 function updatePlayerListEntrySprite(sprite, idx, id) {
   const playerListEntrySprite = document.querySelector(`.playerListEntry[data-id="${id}"] > img.playerListEntrySprite`);
 
-  if (!playerListEntrySprite)
-    return;
-
   const callback = function (spriteImg) {
-    playerListEntrySprite.src = spriteImg;
+    if (playerListEntrySprite && playerSpriteCache[id].sprite === sprite && playerSpriteCache[id].idx === idx)
+      playerListEntrySprite.src = spriteImg;
   };
 
-  getSpriteImg(sprite, idx, callback);
   playerSpriteCache[id] = { sprite: sprite, idx: idx };
+  getSpriteImg(sprite, idx, callback);
 }
 
 function removePlayerListEntry(id) {
@@ -104,7 +102,7 @@ function getSpriteImg(sprite, idx, callback, dir) {
     spriteData[sprite] = {};
   if (!spriteData[sprite][idx])
     spriteData[sprite][idx] = null;
-  let spriteUrl = spriteData[sprite][idx]
+  let spriteUrl = spriteData[sprite][idx];
   if (spriteUrl)
     return callback(spriteUrl);
   const img = new Image();
