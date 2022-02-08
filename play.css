@@ -459,7 +459,7 @@ body {
 }
 
 .iconButton.fadeToggle:not(.toggled) path {
-  opacity: 0.5;
+  opacity: 0.325;
 }
 
 .iconButton.offToggle path:last-child {
