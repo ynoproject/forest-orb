@@ -169,18 +169,25 @@ function onUpdateConnectionStatus(status) {
     }, 500);
   else
     updateStatusText();
-  if (status === 1)
+  if (status === 1) {
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
-  else
+    fetchAndUpdatePlayerCount();
+  } else
     clearPlayerList();
   connStatus = status;
 }
 
 let playerCount;
 
-// EXTERNAL
+function fetchAndUpdatePlayerCount() {
+  fetch(`../connect/${gameId}/players`)
+    .then(response => response.text())
+    .then(count => updatePlayerCount(count))
+    .catch(err => console.error(err));
+}
+
 function updatePlayerCount(count) {
-  if (isNaN(count) && count !== '?')
+  if (isNaN(count))
     return;
   const playerCountLabel = document.getElementById('playerCountLabel');
   if (localizedMessages)
@@ -910,10 +917,9 @@ function initLocalization(isInitial) {
 
       localizedMessages = jsonResponse.messages;
       
-      if (isInitial) {
+      if (isInitial)
         onUpdateConnectionStatus(0);
-        updatePlayerCount('?');
-      } else {
+      else {
         if (connStatus !== undefined)
           onUpdateConnectionStatus(connStatus);
         if (playerCount !== undefined)
@@ -1047,6 +1053,9 @@ function updateConfig(config) {
 onResize();
 
 loadOrInitConfig();
+
+fetchAndUpdatePlayerCount();
+window.setInterval(fetchAndUpdatePlayerCount, 15000);
 
 if (!loadedFontStyle)
   setFontStyle(0, true);
