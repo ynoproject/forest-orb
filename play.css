@@ -377,16 +377,14 @@ body {
 }
 
 .messageContainer {
-  display: flex;
-  align-items: center;
   word-wrap: break-word;
 }
 
 .globalMessageIcon {
+  float: left;
   width: 14px;
   height: 14px;
-  padding-right: 4px;
-  padding-bottom: 2px;
+  padding: 2px 4px 2px 0;
 }
 
 .message {

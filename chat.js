@@ -16,7 +16,7 @@ function chatboxAddMessage(systemName, msg, global) {
   const msgText = msgTextResult ? msgTextResult[2] : msg;
 
   if (global) {
-    message.classList.add("global");
+    msgContainer.classList.add("global");
     msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
   }
 
