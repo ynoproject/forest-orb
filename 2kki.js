@@ -264,6 +264,7 @@ function getMapButton(url, label) {
   const ret = document.createElement('button');
   ret.classList.add('mapButton');
   ret.classList.add('unselectable');
+  ret.classList.add('iconButton');
   ret.title = label;
   ret.onclick = () => {
     const handle = window.open(url, '_blank', 'noreferrer');
@@ -290,6 +291,7 @@ function getExplorerButton(locationName, isMulti) {
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
   ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
   ret.classList.add('unselectable');
+  ret.classList.add('iconButton');
 
   const url = `https://2kki.app/?location=${locationName}&lang=${config.lang}`;
 
