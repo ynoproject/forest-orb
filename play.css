@@ -77,6 +77,23 @@ body {
   opacity: 0;
 }
 
+#controls button path, #nexusButton path, .globalMessageIcon path {
+  stroke: url(#baseGradient);
+  filter: url(#dropShadow);
+}
+
+#controls button:not(.offToggle).toggled path, #controls button:not(.offToggle).preToggled path, #controls button.offToggle.toggled path:last-child, #controls button.offToggle.preToggled path:last-child, .globalMessageIcon path {
+  stroke: url(#altGradient);
+}
+
+#controls button.offToggle:not(.toggled):not(.preToggled) path:last-child {
+  display: none;
+}
+
+#nexusButton path {
+  stroke-width: 0.5;
+}
+
 #layout.singlePlayer .multiplayerOnly {
   display: none !important;
 }
