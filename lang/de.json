@@ -61,8 +61,10 @@
       },
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
+      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Namen an/aus",
       "togglePlayerSounds": "Toggle Player Sounds",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "nexus": "Return to Nexus"
     }
   },

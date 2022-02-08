@@ -52,27 +52,38 @@ function chatboxAddMessage(systemName, msg, global) {
       unreadMessageCountContainer.classList.remove("hidden");
     }
     let unreadMessageCount = parseInt(unreadMessageCountLabel.textContent);
-    if (!unreadMessageCount || unreadMessageCount < 9) {
+    if (!unreadMessageCount || unreadMessageCount < 9)
       unreadMessageCountLabel.textContent = ++unreadMessageCount < 9 ? unreadMessageCount : `${unreadMessageCount}+`;
-    }
   }
 
-  if (shouldScroll) {
+  if (shouldScroll)
     messages.scrollTop = messages.scrollHeight;
-  }
 }
 
 function chatInputActionFired() {
   const chatInput = document.getElementById("chatInput");
-  if (chatInput.value === "") {
-    return
-  }
-  const chatTab = document.querySelector('.chatboxTab[data-tab-section="messages"]');
-  if (!chatTab.classList.contains('active'))
+  if (chatInput.value === "")
+    return;
+  const chatTab = document.querySelector(".chatboxTab[data-tab-section='messages']");
+  if (!chatTab.classList.contains("active"))
     chatTab.click();
   const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);
   const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
-  Module._SendChatMessageToServer(sysPtr, msgPtr);
+  if (!chatInput.dataset.global || document.getElementById("chatboxContainer").classList.contains("hideGlobal"))
+    Module._SendChatMessageToServer(sysPtr, msgPtr);
+  else {
+    const chatInputContainer = document.getElementById("chatInputContainer");
+    if (chatInputContainer.classList.contains("globalCooldown"))
+      return;
+    Module._SendGChatMessageToServer(sysPtr, msgPtr);
+    chatInput.disabled = true;
+    chatInput.blur();
+    chatInputContainer.classList.add("globalCooldown");
+    window.setTimeout(function () {
+      chatInputContainer.classList.remove("globalCooldown");
+      chatInput.disabled = false;
+    }, 60000);
+  }
   Module._free(sysPtr);
   Module._free(msgPtr);
   chatInput.value = "";
@@ -85,7 +96,7 @@ function chatNameCheck() {
     return;
   document.getElementById("enterNameContainer").style.display = "none";
   document.getElementById("chatInput").disabled = false;
-  document.getElementById("chatInputContainer").style.display = "block";
+  document.getElementById("chatInputContainer").setAttribute("style", "");
   playerName = nameInput.value;
   addOrUpdatePlayerListEntry(systemName, playerName, -1);
   ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);

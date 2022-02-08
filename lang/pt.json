@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
@@ -61,8 +61,10 @@
       },
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar bate papo",
+      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Alternar nome dos jogadores",
       "togglePlayerSounds": "Alternar áudio dos jogadores",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "nexus": "Voltar para o Nexo"
     }
   },

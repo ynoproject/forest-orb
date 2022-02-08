@@ -77,27 +77,6 @@ body {
   opacity: 0;
 }
 
-#controls button path, #nexusButton path, .globalMessageIcon path {
-  stroke: url(#baseGradient);
-  filter: url(#dropShadow);
-}
-
-#controls button:not(.offToggle).toggled path, #controls button:not(.offToggle).preToggled path, #controls button.offToggle.toggled path:last-child, #controls button.offToggle.preToggled path:last-child, .globalMessageIcon path {
-  stroke: url(#altGradient);
-}
-
-#controls button.offToggle path:last-child {
-  stroke-width: 1.5;
-}
-
-#controls button.offToggle:not(.toggled):not(.preToggled) path:last-child {
-  display: none;
-}
-
-#nexusButton path {
-  stroke-width: 0.5;
-}
-
 #layout.singlePlayer .multiplayerOnly {
   display: none !important;
 }
@@ -126,12 +105,8 @@ body {
   }
 }
 
-#controls button, #nexusButton {
+#controls button {
   padding-right: 1px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: button;
 }
 
 #controls svg {
@@ -209,7 +184,7 @@ body {
   z-index: 1;
 }
 
-#layout.hideChat #chatboxContainer {
+#layout.hideChat #chatboxContainer, #layout.hideChat #globalChatButton {
   display: none !important;
 }
 
@@ -302,9 +277,20 @@ body {
 }
 
 #chatInputContainer {
+  display: flex;
   width: auto;
   height: 48px;
   margin-top: 1px;
+  border-right: none;
+}
+
+#chatInputContainer form {
+  width: 100%;
+  margin-right: -32px;
+}
+
+#chatInputContainer.globalCooldown form {
+  margin-right: -50px;
 }
 
 #chatInput, #nameInput {
@@ -312,8 +298,71 @@ body {
 }
 
 #chatInput {
-  width: calc(100% - 11px);
+  width: calc(100% - 39px);
   right: 8px;
+  padding-right: 28px;
+}
+
+#chatInput:disabled {
+  opacity: 0.675;
+}
+
+#chatInputContainer.globalCooldown #chatInput {
+  width: calc(100% - 63px);
+  padding-right: 52px;
+}
+
+#chatboxContainer.hideGlobal #chatInput {
+  width: calc(100% - 11px);
+  padding-right: 0;
+}
+
+#globalCooldownIcon {
+  position: relative;
+  top: 14px;
+  width: 18px;
+  height: 18px;
+}
+
+#globalCooldownIcon svg {
+  stroke-width: 1.5;
+}
+
+#globalCooldownIcon .bgCircle {
+  opacity: 0.325;
+}
+
+#globalCooldownIcon .timerCircle {
+  stroke: url(#altGradient) !important;
+  stroke-dashoffset: 60;
+  stroke-dasharray: 0;
+  transform: translateY(100%) rotateZ(-90deg);
+}
+
+@keyframes timer {
+  from {
+    stroke-dashoffset: 60;
+    stroke-dasharray: 60;
+  }
+  
+  to {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 60;
+  }
+}
+
+#chatInputContainer.globalCooldown #globalCooldownIcon .timerCircle {
+  animation: 60s timer linear;
+}
+
+#chatInputContainer:not(.globalCooldown) #globalCooldownIcon {
+  display: none;
+}
+
+#globalMessageButton {
+  position: relative;
+  left: 4px;
+  top: 2px;
 }
 
 #enterNameContainer {
@@ -361,10 +410,14 @@ body {
   display: none;
 }
 
+#nexusButton path {
+  stroke-width: 0.5;
+}
+
 #langContainer {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  text-align: right;
   width: 100%;
 }
 
@@ -389,6 +442,38 @@ body {
   text-align: center;
 }
 
+.iconButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+.iconButton path, .icon path, .icon circle {
+  stroke: url(#baseGradient);
+  filter: url(#dropShadow);
+}
+
+.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .globalMessageIcon path {
+  stroke: url(#altGradient) !important;
+}
+
+.iconButton.fadeToggle:not(.toggled) path {
+  opacity: 0.5;
+}
+
+.iconButton.offToggle path:last-child {
+  stroke-width: 1.5;
+}
+
+.iconButton.offToggle:not(.toggled):not(.preToggled) path:last-child {
+  display: none;
+}
+
+.icon path {
+  fill: none;
+}
+
 .notice, .instruction {
   text-align: center;
 }
@@ -399,6 +484,10 @@ body {
 
 .messageContainer {
   word-wrap: break-word;
+}
+
+#chatboxContainer.hideGlobal .global {
+  display: none;
 }
 
 .globalMessageIcon {

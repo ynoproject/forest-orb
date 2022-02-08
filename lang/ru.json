@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -61,8 +61,10 @@
       },
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
+      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Переключить Ники",
       "togglePlayerSounds": "Переключить Звуки Игроков",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "nexus": "Вернуться на Главную страницу"
     }
   },

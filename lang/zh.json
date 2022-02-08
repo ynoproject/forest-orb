@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -61,8 +61,10 @@
       },
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
+      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "nexus": "返回到门的世界"
     }
   },

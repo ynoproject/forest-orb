@@ -61,8 +61,10 @@
       },
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Tchat",
+      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Afficher les Noms",
       "togglePlayerSounds": "Toggle Player Sounds",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "nexus": "Return to Nexus"
     }
   },

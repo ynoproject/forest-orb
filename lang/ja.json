@@ -61,8 +61,10 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
+      "toggleGlobalChat": "グローバルチャットのオン／オフ",
       "toggleNametags": "プレーヤー名表示のオン／オフ",
       "togglePlayerSounds": "プレーヤー効果音のオン／オフ",
+      "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "nexus": "扉部屋へ戻る"
     }
   },

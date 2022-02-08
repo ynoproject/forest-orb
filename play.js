@@ -144,8 +144,10 @@ let config = {
   name: '',
   singlePlayer: false,
   disableChat: false,
+  disableGlobalChat: false,
   disableNametags: false,
-  disablePlayerSounds: false
+  disablePlayerSounds: false,
+  globalMessage: false
 };
 
 let connStatus;
@@ -304,6 +306,26 @@ document.getElementById('chatButton').onclick = function () {
   document.getElementById('layout').classList.toggle('hideChat');
   onResize();
   config.disableChat = this.classList.contains('toggled');
+  updateConfig(config);
+};
+
+document.getElementById('globalChatButton').onclick = function () {
+  this.classList.toggle('toggled');
+  document.getElementById('chatboxContainer').classList.toggle('hideGlobal');
+  config.disableGlobalChat = this.classList.contains('toggled');
+  updateConfig(config);
+};
+
+document.getElementById('globalMessageButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const chatInput = document.getElementById('chatInput');
+  const toggled = this.classList.contains('toggled');
+  if (toggled)
+    chatInput.dataset.global = true;
+  else
+    delete chatInput.dataset.global;
+  chatInput.disabled = toggled && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
+  config.globalMessage = toggled;
   updateConfig(config);
 };
 
@@ -1004,6 +1026,10 @@ function loadOrInitConfig() {
               if (value)
                 document.getElementById('chatButton').click();
               break;
+            case 'disableGlobalChat':
+              if (value)
+                document.getElementById('globalChatButton').click();
+              break;
             case 'disableNametags':
               if (value)
                 preToggle(document.getElementById('nametagButton'));
@@ -1011,6 +1037,10 @@ function loadOrInitConfig() {
             case 'disablePlayerSounds':
               if (value)
                 preToggle(document.getElementById('playerSoundsButton'));
+              break;
+            case 'globalMessage':
+              if (value)
+                document.getElementById('globalMessageButton').click();
               break;
             case 'uiTheme':
               if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
