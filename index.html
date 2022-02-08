@@ -44,12 +44,12 @@
       image-rendering: pixelated;
     }
 
-    #controls button path, #nexusButton path {
+    #controls button path, #nexusButton path, .globalMessageIcon path {
       stroke: url(#baseGradient);
       filter: url(#dropShadow);
     }
 
-    #controls button.toggled path, #controls button.preToggled path {
+    #controls button.toggled path, #controls button.preToggled path, .globalMessageIcon path {
       stroke: url(#altGradient);
     }
     
@@ -73,7 +73,7 @@
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
-    .altText, .nameText, a:not(.modalClose), #unreadMessageCount {
+    .altText, .message.global .nameText, a:not(.modalClose), #unreadMessageCount {
       background-image: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%) !important; /*alt*/
     }
 
@@ -295,6 +295,13 @@
             </div>
             <div id="messages" class="chatboxTabSection"></div>
             <div id="playerList" class="chatboxTabSection hidden"></div>
+            <template>
+              <div class="globalMessageIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+                  <path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18v18q-10-9 0-18 10 9 0 18m-7.5-4q7.5-3 15 0m-15-10q7.5 2 15 0m-16.5 5h18" />
+                </svg>
+              </div>
+            </template>
           </div>
           <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
             <form action="javascript:chatInputActionFired()">

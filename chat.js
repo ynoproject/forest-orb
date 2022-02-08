@@ -1,6 +1,6 @@
 Module['onRuntimeInitialized'] = initChat;
 
-function chatboxAddMessage(systemName, msg) {
+function chatboxAddMessage(systemName, msg, global) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -14,6 +14,11 @@ function chatboxAddMessage(systemName, msg) {
   const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
   const nameText = msgTextResult ? msgTextResult[1] : null;
   const msgText = msgTextResult ? msgTextResult[2] : msg;
+
+  if (global) {
+    message.classList.add("global");
+    msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
+  }
 
   if (nameText) {
     const nameContainer = document.createElement("span");
@@ -153,4 +158,9 @@ function wrapMessageEmojis(node, force) {
 // EXTERNAL
 function onChatMessageReceived(systemName, msg) {
   chatboxAddMessage(systemName, msg);
+}
+
+// EXTERNAL
+function onGChatMessageReceived(systemName, msg) {
+  chatboxAddMessage(systemName, msg, true);
 }
