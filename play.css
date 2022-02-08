@@ -86,6 +86,10 @@ body {
   stroke: url(#altGradient);
 }
 
+#controls button.offToggle path:last-child {
+  stroke-width: 1.5;
+}
+
 #controls button.offToggle:not(.toggled):not(.preToggled) path:last-child {
   display: none;
 }
