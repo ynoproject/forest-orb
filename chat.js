@@ -11,6 +11,9 @@ function chatboxAddMessage(systemName, msg, global) {
   const message = document.createElement("span");
   message.classList.add("message");
 
+  const messageContents = document.createElement("span");
+  messageContents.classList.add("messageContents");
+
   const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
   const nameText = msgTextResult ? msgTextResult[1] : null;
   const msgText = msgTextResult ? msgTextResult[2] : msg;
@@ -21,9 +24,7 @@ function chatboxAddMessage(systemName, msg, global) {
   }
 
   if (nameText) {
-    const nameContainer = document.createElement("span");
     const name = document.createElement("span");
-    nameContainer.classList.add("nameText");
     name.classList.add("nameText");
     if (systemName) {
       systemName = systemName.replace(/'/g, '');
@@ -31,16 +32,22 @@ function chatboxAddMessage(systemName, msg, global) {
       getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
     }
     name.innerText = nameText;
-    nameContainer.appendChild(document.createTextNode('<'));
-    nameContainer.appendChild(name);
-    nameContainer.appendChild(document.createTextNode('>'));
-    message.appendChild(nameContainer);
-    message.appendChild(document.createTextNode(' '));
+    const nameBeginMarker = document.createElement("span");
+    nameBeginMarker.classList.add("nameMarker");
+    nameBeginMarker.textContent = "<";
+    const nameEndMarker = document.createElement("span");
+    nameEndMarker.classList.add("nameMarker");
+    nameEndMarker.textContent = ">";
+    message.appendChild(nameBeginMarker);
+    message.appendChild(name);
+    message.appendChild(nameEndMarker);
+    message.appendChild(document.createTextNode(" "));
   }
   
-  populateMessageNodes(parseMessageTextForMarkdown(msgText), message);
-  wrapMessageEmojis(message);
-
+  populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents);
+  wrapMessageEmojis(messageContents);
+  
+  message.appendChild(messageContents);
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 

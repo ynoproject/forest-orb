@@ -499,7 +499,11 @@ body {
   float: left;
   width: 14px;
   height: 14px;
-  padding: 2px 4px 2px 0;
+  padding-right: 4px;
+}
+
+.globalMessageIcon svg {
+  vertical-align: middle;
 }
 
 .message {
