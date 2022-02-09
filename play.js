@@ -333,8 +333,13 @@ document.getElementById('chatButton').onclick = function () {
 
 document.getElementById('globalChatButton').onclick = function () {
   this.classList.toggle('toggled');
-  document.getElementById('chatboxContainer').classList.toggle('hideGlobal');
-  config.disableGlobalChat = this.classList.contains('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('chatboxContainer').classList.toggle('hideGlobal', toggled);
+  if (!toggled) {
+    const messages = document.getElementById("messages");
+    messages.scrollTop = messages.scrollHeight;
+  }
+  config.disableGlobalChat = toggled;
   updateConfig(config);
 };
 

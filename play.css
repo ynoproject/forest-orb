@@ -447,6 +447,10 @@ body {
   filter: none !important;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .uiControl {
   text-align: center;
 }

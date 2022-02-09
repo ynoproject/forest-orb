@@ -38,7 +38,7 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
         setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId]);
       else {
         const locationKey = `${(prevMapId || "0000")}_${mapId}`;
-        if (locationCache.hasOwnProperty(locationKey))
+        if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
           setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
         else
           queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, null, setMessageLocationFunc)
@@ -46,6 +46,8 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
       }
 
       msgContainer.appendChild(globalMessageLocation);
+
+      globalMessageIcon.classList.add("pointer");
 
       globalMessageIcon.onclick = function () {
         const locationLabel = this.nextElementSibling;
