@@ -138,7 +138,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
 }
 
 function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
-  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks();
+  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks(locations);
   onUpdateChatboxInfo();
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
