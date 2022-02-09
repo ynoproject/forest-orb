@@ -443,6 +443,10 @@ body {
   -webkit-text-fill-color: white;
 }
 
+.nofilter {
+  filter: none !important;
+}
+
 .uiControl {
   text-align: center;
 }
