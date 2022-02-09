@@ -1,6 +1,6 @@
 Module['onRuntimeInitialized'] = initChat;
 
-function chatboxAddMessage(systemName, msg, global) {
+function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -18,7 +18,7 @@ function chatboxAddMessage(systemName, msg, global) {
   const nameText = msgTextResult ? msgTextResult[1] : null;
   const msgText = msgTextResult ? msgTextResult[2] : msg;
 
-  if (global) {
+  if (mapId) {
     msgContainer.classList.add("global");
     msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
   }
@@ -80,16 +80,21 @@ function chatInputActionFired() {
     Module._SendChatMessageToServer(sysPtr, msgPtr);
   else {
     const chatInputContainer = document.getElementById("chatInputContainer");
-    if (chatInputContainer.classList.contains("globalCooldown"))
-      return;
-    Module._SendGChatMessageToServer(sysPtr, msgPtr);
-    chatInput.disabled = true;
-    chatInput.blur();
-    chatInputContainer.classList.add("globalCooldown");
-    window.setTimeout(function () {
-      chatInputContainer.classList.remove("globalCooldown");
-      chatInput.disabled = false;
-    }, 60000);
+    if (!chatInputContainer.classList.contains("globalCooldown")) {
+      const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || '0000'), Module.ALLOC_NORMAL);
+      const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
+      Module._SendGChatMessageToServer(sysPtr, msgPtr);
+      chatInput.disabled = true;
+      chatInput.blur();
+      chatInputContainer.classList.add("globalCooldown");
+      window.setTimeout(function () {
+        chatInputContainer.classList.remove("globalCooldown");
+        chatInput.disabled = false;
+      }, 60000);
+
+      Module._free(mapIdPtr);
+      Module._free(prevMapIdPtr);
+    }
   }
   Module._free(sysPtr);
   Module._free(msgPtr);
@@ -179,6 +184,6 @@ function onChatMessageReceived(systemName, msg) {
 }
 
 // EXTERNAL
-function onGChatMessageReceived(systemName, msg) {
-  chatboxAddMessage(systemName, msg, true);
+function onGChatMessageReceived(mapId, prevMapId, systemName, msg) {
+  chatboxAddMessage(systemName, msg, mapId, prevMapId);
 }

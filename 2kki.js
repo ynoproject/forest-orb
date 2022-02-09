@@ -1,69 +1,58 @@
 const is2kki = gameId === '2kki';
-let cachedMapId = null;
 let cachedLocations = null;
 const unknownLocations = [];
 const ignoredMapIds = ['0899', '0900', '1581'];
 let defaultLocations;
 
-// called from EasyRPG player
-function onLoadMap(mapName) {
-  if (gameId !== '2kki')
-    return;
-  let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
-  if (mapIdMatch) {
-    const mapId = mapIdMatch[1];
+function onLoad2kkiMap(mapId) {
+  const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
 
-    if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
-      return;
+  let locations = locationCache[locationKey] || null;
 
-    const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
+  if (locations && typeof locations === 'string')
+    locations = null;
 
-    let locations = locationCache[locationKey] || null;
+  const useDefaultLocation = defaultLocations.hasOwnProperty(mapId);
 
-    if (locations && typeof locations === 'string')
-      locations = null;
+  if (useDefaultLocation)
+    locations = defaultLocations[mapId];
+  else if (unknownLocations.indexOf(locationKey) > -1)
+    locations = getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
 
-    const useDefaultLocation = defaultLocations.hasOwnProperty(mapId);
-
-    if (useDefaultLocation)
-      locations = defaultLocations[mapId];
-    else if (unknownLocations.indexOf(locationKey) > -1)
-      locations = getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
-
-    if (!cachedMapId)
-      document.getElementById('location').classList.remove('hidden');
-    
-    if (locations && locations.length) {
-      const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
-      const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
-      setLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
-      cachedMapId = mapId;
-      cachedLocations = locationNames ? locations : null;
-      if (!locationNames) {
-        setExplorerLinks(null);
-        setMaps([]);
-      } else {
-        setExplorerLinks(!useDefaultLocation ? locationNames : null);
-        if (useDefaultLocation) {
-          const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationNames.join(','));
-          setMaps([], locationNames, cacheMap, cacheMap);
-        } else if (mapCache.hasOwnProperty(locationNames.join(',')))
-          setMaps(mapCache[locationNames.join(',')], locationNames);
-        else
-          queryAndSetMaps(locationNames).catch(err => console.error(err));
-      }
+  if (!cachedMapId)
+    document.getElementById('location').classList.remove('hidden');
+  
+  if (locations && locations.length) {
+    const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
+    const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
+    setLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
+    cachedPrevMapId = cachedMapId;
+    cachedMapId = mapId;
+    cachedLocations = locationNames ? locations : null;
+    if (!locationNames) {
+      setExplorerLinks(null);
+      setMaps([]);
     } else {
-      queryAndSetLocation(mapId, cachedMapId, cachedLocations)
-        .then(locationNames => {
-          setExplorerLinks(locationNames);
-          if (locationNames)
-            queryAndSetMaps(locationNames).catch(err => console.error(err));
-          else {
-            setMaps([], null, true, true);
-            setExplorerLinks(null);
-          }
-        }).catch(err => console.error(err));
+      setExplorerLinks(!useDefaultLocation ? locationNames : null);
+      if (useDefaultLocation) {
+        const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationNames.join(','));
+        setMaps([], locationNames, cacheMap, cacheMap);
+      } else if (mapCache.hasOwnProperty(locationNames.join(',')))
+        setMaps(mapCache[locationNames.join(',')], locationNames);
+      else
+        queryAndSetMaps(locationNames).catch(err => console.error(err));
     }
+  } else {
+    queryAndSetLocation(mapId, cachedMapId, cachedLocations)
+      .then(locationNames => {
+        setExplorerLinks(locationNames);
+        if (locationNames)
+          queryAndSetMaps(locationNames).catch(err => console.error(err));
+        else {
+          setMaps([], null, true, true);
+          setExplorerLinks(null);
+        }
+      }).catch(err => console.error(err));
   }
 }
 
@@ -89,6 +78,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations) {
         const cacheAndResolve = function () {
           const locationNames = locations.map(l => l.title);
 
+          cachedPrevMapId = cachedMapId;
           cachedMapId = mapId;
           cachedLocations = locations;
           resolve(locationNames);

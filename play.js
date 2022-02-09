@@ -236,6 +236,27 @@ function onUpdateSystemGraphic(name) {
   }
 }
 
+let cachedMapId = null;
+let cachedPrevMapId = null;
+
+// EXTERNAL
+function onLoadMap(mapName) {
+  let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
+  if (mapIdMatch) {
+    const mapId = mapIdMatch[1];
+
+    if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
+      return;
+    
+    if (gameId === '2kki')
+      onLoad2kkiMap(mapId);
+    else {
+      cachedPrevMapId = cachedMapId;
+      cachedMapId = mapId;
+    }
+  }
+}
+
 // EXTERNAL
 function onReceiveInputFeedback(inputId) {
   if (inputId) {
