@@ -371,7 +371,7 @@ document.getElementById('nexusButton').onclick = function () {
 if (gameId === '2kki') {
   document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
   // Yume 2kki Explorer doesn't support mobile
-  if (window.matchMedia('(hover: none), (pointer: coarse)').matches)
+  if (hasTouchscreen)
     document.getElementById('explorerControls').remove();
   locationCache = {};
   mapCache = {};
@@ -483,6 +483,7 @@ function updateCanvasFullscreenSize() {
   let chatboxContainerMarginTop = null;
   let chatboxHeight = null;
   let chatboxOverlap = false;
+  let leftControlsMaxHeight = null;
   
   if (document.fullscreenElement) {
     const showChat = !layoutElement.classList.contains('hideChat');
@@ -498,8 +499,10 @@ function updateCanvasFullscreenSize() {
       const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
       chatboxContainerMarginTop = '24px';
       if (chatboxContainerWidth + 48 <= window.innerWidth - (canvasElement.offsetWidth * scale)) {
-        if (showChat)
+        if (showChat) {
           canvasContainerPaddingRight = `${chatboxContainerWidth}px`;
+          leftControlsMaxHeight = `${canvasElement.offsetHeight * scale}px`;
+        }
       } else
         chatboxOverlap = true;
     } else {
@@ -509,6 +512,7 @@ function updateCanvasFullscreenSize() {
         canvasContainerMarginTop = `-${(window.innerHeight - canvasScaledHeight) / 2}px`
         chatboxContainerMarginTop = `${(window.innerHeight - unusedHeight) - 40}px`;
         chatboxHeight = `${unusedHeight}px`;
+        leftControlsMaxHeight = `${canvasScaledHeight}px`;
       } else {
         chatboxContainerMarginTop = '24px';
         if (showChat)
@@ -526,6 +530,7 @@ function updateCanvasFullscreenSize() {
   chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
   layoutElement.classList.toggle('chatboxOverlap', chatboxOverlap);
   document.getElementById('chatbox').style.height = chatboxHeight;
+  document.getElementById('leftControls').style.maxHeight = leftControlsMaxHeight;
 
   document.getElementById("messages").scrollTop = messages.scrollHeight;
 }

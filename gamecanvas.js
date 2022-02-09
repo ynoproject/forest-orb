@@ -1,4 +1,5 @@
-ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
+if (typeof ENV !== 'undefined')
+  ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
 
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const preventNativeKeys = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft', ' ', 'F12'];

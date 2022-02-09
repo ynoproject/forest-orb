@@ -48,10 +48,15 @@ body {
   z-index: 2;
 }
 
-#layout.noSideBorders #mainContainer, #layout.noSideBorders #chatboxContainer {
+#layout.noSideBorders #mainContainer, #layout:not(:fullscreen).noSideBorders #chatboxContainer {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
+}
+
+#layout.noSideBorders:fullscreen #chatboxContainer {
+  border-left-width: 24px;
+  border-right-width: 24px;
 }
 
 #controls, #leftControls {
@@ -459,7 +464,7 @@ body {
 }
 
 .iconButton.fadeToggle:not(.toggled) path {
-  opacity: 0.325;
+  opacity: 0.5;
 }
 
 .iconButton.offToggle path:last-child {
@@ -714,6 +719,13 @@ input[type='text'], select {
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  #layout:not(.chatboxOverlap):fullscreen #leftControls {
+    position: absolute;
+    left: 0;
+    width: auto;
   }
   
   #layout:not(.chatboxOverlap):fullscreen #rightControls {
