@@ -45,7 +45,7 @@ function onLoad2kkiMap(mapId) {
   } else {
     queryAndSetLocation(mapId, cachedMapId, cachedLocations, setClientLocation, true)
       .then(locations => {
-        const locationNames = locations.map(l => l.title);
+        const locationNames = locations ? locations.map(l => l.title) : null;
         setExplorerLinks(locationNames);
         if (locationNames)
           queryAndSetMaps(locationNames).catch(err => console.error(err));
