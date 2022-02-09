@@ -159,8 +159,11 @@ function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLoca
   }
 }
 
-function getLocalizedLocation(title, titleJP) {
-  return getMassagedLabel(localizedMessages['2kki'].location.template).replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>').replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
+function getLocalizedLocation(title, titleJP, asHtml) {
+  let template = localizedMessages['2kki'].location.template;
+  if (asHtml)
+    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
+  return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
 function getLocalizedLocations(locations) {
@@ -176,7 +179,7 @@ function getLocationLink(location) {
   const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
   const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-  return getLocalizedLocation(locationLink, locationLinkJP);
+  return getLocalizedLocation(locationLink, locationLinkJP, true);
 }
 
 function getLocalizedLocationLinks(locations) {
