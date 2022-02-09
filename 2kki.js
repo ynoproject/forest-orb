@@ -171,8 +171,8 @@ function setLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, 
 function getLocationLink(location) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
-  const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
-  const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
+  const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank" class="altText">${location.title}</a>`
+  const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank" class="altText">${location.titleJP}</a>`;
   return getMassagedLabel(localizedMessages['2kki'].location.template).replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP);
 }
 
