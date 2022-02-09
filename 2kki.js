@@ -160,7 +160,7 @@ function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLoca
 }
 
 function getLocalizedLocation(title, titleJP) {
-  return getMassagedLabel(localizedMessages['2kki'].location.template).replace(/(?:})([^{]+)/g, '}<span class="infoText">$1</span>').replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
+  return getMassagedLabel(localizedMessages['2kki'].location.template).replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>').replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
 function getLocalizedLocations(locations) {
