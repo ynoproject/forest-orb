@@ -147,7 +147,8 @@ let config = {
   disableGlobalChat: false,
   disableNametags: false,
   disablePlayerSounds: false,
-  globalMessage: false
+  globalMessage: false,
+  showGlobalMessageLocation: false
 };
 
 let connStatus;
@@ -1018,6 +1019,10 @@ function getMassagedLabel(label, isUI) {
   if (langLabelMassageFunctions.hasOwnProperty(config.lang) && label)
     return langLabelMassageFunctions[config.lang](label, isUI);
   return label;
+}
+
+function getInfoLabel(label) {
+  return `<span class="infoLabel">${label}</span>`;
 }
 
 let loadedUiTheme = false;

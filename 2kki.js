@@ -75,7 +75,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
 
       setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages['2kki'].location.queryingLocation), prevLocations, true);
 
-      req.onload = (e) => {
+      req.onload = (_e) => {
         const locationsArray = req.response;
         const locations = [];
 
@@ -138,11 +138,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
 }
 
 function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
-  document.getElementById('locationText').innerHTML = locations && locations.length
-    ? Array.isArray(locations)
-      ? locations.map(l => getLocationLink(l)).join('<br>')
-      : locations
-    : getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
+  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks();
   onUpdateChatboxInfo();
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
@@ -164,7 +160,7 @@ function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLoca
 }
 
 function getLocalizedLocation(title, titleJP) {
-  return getMassagedLabel(localizedMessages['2kki'].location.template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
+  return getMassagedLabel(localizedMessages['2kki'].location.template).replace(/(?:})([^{]+)/g, '}<span class="infoText">$1</span>').replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
 function getLocalizedLocations(locations) {
@@ -181,6 +177,14 @@ function getLocationLink(location) {
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
   const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
   return getLocalizedLocation(locationLink, locationLinkJP);
+}
+
+function getLocalizedLocationLinks(locations) {
+  return locations && locations.length
+    ? Array.isArray(locations)
+    ? locations.map(l => getLocationLink(l)).join('<br>')
+      : getInfoLabel(locations)
+    : getInfoLabel(getMassagedLabel(localizedMessages['2kki'].location.unknownLocation));
 }
 
 function getDefaultLocations() {

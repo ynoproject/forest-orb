@@ -380,7 +380,7 @@ body {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, #translationInstruction.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .globalMessageLocation.hidden, #translationInstruction.hidden {
   display: none;
 }
 
@@ -509,6 +509,10 @@ body {
 
 .globalMessageIcon svg {
   vertical-align: middle;
+}
+
+.globalMessageLocation {
+  display: flex;
 }
 
 .message {

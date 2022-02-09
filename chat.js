@@ -24,18 +24,35 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
 
     if (gameId === "2kki" && mapId !== "0000") {
       const globalMessageIcon = msgContainer.children[0];
-      const setMessageLocationFunc = (_mapId, _prevMapId, locations) => globalMessageIcon.title = getLocalizedLocations(locations);
+      const globalMessageLocation = document.createElement("small");
+      const setMessageLocationFunc = (_mapId, _prevMapId, locations) => {
+        globalMessageIcon.title = getLocalizedLocations(locations);
+        globalMessageLocation.innerHTML = getLocalizedLocationLinks(locations);
+      };
+
+      globalMessageLocation.classList.add("globalMessageLocation");
+      if (!config.showGlobalMessageLocation)
+        globalMessageLocation.classList.add("hidden");
 
       if (defaultLocations.hasOwnProperty(mapId))
         setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId]);
       else {
-        const locationKey = `${(prevMapId || '0000')}_${mapId}`;
+        const locationKey = `${(prevMapId || "0000")}_${mapId}`;
         if (locationCache.hasOwnProperty(locationKey))
           setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
         else
-          queryAndSetLocation(mapId, prevMapId !== '0000' ? prevMapId : null, null, setMessageLocationFunc)
+          queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, null, setMessageLocationFunc)
             .catch(err => console.error(err));
       }
+
+      msgContainer.appendChild(globalMessageLocation);
+
+      globalMessageIcon.onclick = function () {
+        const locationLabel = this.nextElementSibling;
+        locationLabel.classList.toggle("hidden");
+        config.showGlobalMessageLocation = !locationLabel.classList.contains("hidden");
+        updateConfig(config);
+      };
     }
   }
 
