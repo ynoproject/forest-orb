@@ -61,10 +61,10 @@
       },
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
-      "toggleGlobalChat": "Toggle Global Chat",
+      "toggleGlobalChat": "글로벌 채팅 표시",
       "toggleNametags": "이름표 표시",
       "togglePlayerSounds": "다른 플레이어의 소리 듣기",
-      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "toggleGlobalMessage": "글로벌 채팅 활성화",
       "nexus": "넥서스로 돌아가기"
     }
   },
