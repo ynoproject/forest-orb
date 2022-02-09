@@ -83,7 +83,7 @@ function chatInputActionFired() {
     if (!chatInputContainer.classList.contains("globalCooldown")) {
       const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || '0000'), Module.ALLOC_NORMAL);
       const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
-      Module._SendGChatMessageToServer(sysPtr, msgPtr);
+      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, sysPtr, msgPtr);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
