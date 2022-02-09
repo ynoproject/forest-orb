@@ -21,6 +21,12 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
   if (mapId) {
     msgContainer.classList.add("global");
     msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
+
+    if (gameId === "2kki" && mapId !== "0000") {
+      const globalMessageIcon = msgContainer.children[0];
+      const setMessageLocationFunc = (_mapId, _prevMapId, locations) => globalMessageIcon.title = getLocalizedLocations(locations);
+      queryAndSetLocation(mapId, prevMapId !== '0000' ? prevMapId : null, null, setMessageLocationFunc);
+    }
   }
 
   if (nameText) {

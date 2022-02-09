@@ -25,7 +25,7 @@ function onLoad2kkiMap(mapId) {
   if (locations && locations.length) {
     const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
     const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
-    setLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
+    setClientLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
     cachedLocations = locationNames ? locations : null;
@@ -43,8 +43,9 @@ function onLoad2kkiMap(mapId) {
         queryAndSetMaps(locationNames).catch(err => console.error(err));
     }
   } else {
-    queryAndSetLocation(mapId, cachedMapId, cachedLocations)
-      .then(locationNames => {
+    queryAndSetLocation(mapId, cachedMapId, cachedLocations, setClientLocation, true)
+      .then(locations => {
+        const locationNames = locations.map(l => l.title);
         setExplorerLinks(locationNames);
         if (locationNames)
           queryAndSetMaps(locationNames).catch(err => console.error(err));
@@ -56,7 +57,7 @@ function onLoad2kkiMap(mapId) {
   }
 }
 
-function queryAndSetLocation(mapId, prevMapId, prevLocations) {
+function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
@@ -69,19 +70,23 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations) {
       req.open("GET", url);
       req.send();
 
-      setLocation(mapId, prevMapId, getMassagedLabel(localizedMessages['2kki'].location.queryingLocation), prevLocations, true);
+      if (!setLocationFunc)
+        setLocationFunc = () => {};
+
+      setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages['2kki'].location.queryingLocation), prevLocations, true);
 
       req.onload = (e) => {
         const locationsArray = req.response;
         const locations = [];
 
-        const cacheAndResolve = function () {
-          const locationNames = locations.map(l => l.title);
+        const cacheAndResolve = () => {
+          if (forClient) {
+            cachedPrevMapId = cachedMapId;
+            cachedMapId = mapId;
+            cachedLocations = locations;
+          }
 
-          cachedPrevMapId = cachedMapId;
-          cachedMapId = mapId;
-          cachedLocations = locations;
-          resolve(locationNames);
+          resolve(locations);
         };
 
         if (Array.isArray(locationsArray) && locationsArray.length) {
@@ -107,14 +112,14 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations) {
                 for (let cl of connectedLocations)
                   locations.push(cl);
 
-                setLocation(mapId, prevMapId, locations, prevLocations, true, true);
+                setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
 
                 cacheAndResolve();
               }).catch(err => reject(err));
               
             return;
           } else
-            setLocation(mapId, prevMapId, locations, prevLocations, true, true);
+            setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
         } else {
           const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
           
@@ -122,17 +127,17 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations) {
             console.error({ error: req.response.error, errCode: errCode });
 
           if (prevMapId) {
-            queryAndSetLocation(mapId, null, null).then(() => resolve(null)).catch(err => reject(err));
+            queryAndSetLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
             return;
           }
-          setLocation(mapId, prevMapId, null, prevLocations, true, true);
+          setLocationFunc(mapId, prevMapId, null, prevLocations, true, true);
         }
         cacheAndResolve();
       };
   });
 }
 
-function setLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
+function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
   document.getElementById('locationText').innerHTML = locations && locations.length
     ? Array.isArray(locations)
       ? locations.map(l => getLocationLink(l)).join('<br>')
@@ -158,12 +163,24 @@ function setLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, 
   }
 }
 
+function getLocalizedLocation(title, titleJP) {
+  return getMassagedLabel(localizedMessages['2kki'].location.template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
+}
+
+function getLocalizedLocations(locations) {
+  return locations && locations.length
+    ? Array.isArray(locations)
+      ? locations.map(l => getLocalizedLocation(l.title, l.titleJP)).join('\n')
+      : locations
+    : getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
+}
+
 function getLocationLink(location) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
   const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-  return getMassagedLabel(localizedMessages['2kki'].location.template).replace('{LOCATION}', locationLink).replace('{LOCATION_JP}', locationLinkJP);
+  return getLocalizedLocation(locationLink, locationLinkJP);
 }
 
 function getDefaultLocations() {
