@@ -500,6 +500,7 @@ body {
   width: 14px;
   height: 14px;
   padding-right: 4px;
+  margin-top: -1.5px;
 }
 
 .globalMessageIcon svg {
