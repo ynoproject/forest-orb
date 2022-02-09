@@ -324,7 +324,7 @@ body {
 
 #globalCooldownIcon {
   position: relative;
-  top: 14px;
+  top: calc(50% - 9px);
   width: 18px;
   height: 18px;
 }
@@ -366,8 +366,8 @@ body {
 
 #globalMessageButton {
   position: relative;
+  top: 1px;
   left: 4px;
-  top: 2px;
 }
 
 #enterNameContainer {
