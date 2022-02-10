@@ -27,7 +27,7 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
       const globalMessageLocation = document.createElement("small");
       const setMessageLocationFunc = (_mapId, _prevMapId, locations) => {
         globalMessageIcon.title = getLocalizedLocations(locations);
-        globalMessageLocation.innerHTML = getLocalizedLocationLinks(locations, '');
+        globalMessageLocation.innerHTML = getLocalizedLocationLinks(locations, getInfoLabel('&nbsp;|&nbsp;'));
       };
 
       globalMessageLocation.classList.add("globalMessageLocation");

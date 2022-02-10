@@ -517,7 +517,7 @@ body {
 
 .globalMessageLocation {
   display: flex;
-  flex-direction: column;
+  flex-flow: wrap;
 }
 
 .message {
