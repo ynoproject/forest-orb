@@ -6,7 +6,9 @@ const ignoredMapIds = ['0899', '0900', '1581'];
 let defaultLocations;
 
 function onLoad2kkiMap(mapId) {
-  const locationKey = `${(cachedMapId || '0000')}_${mapId}`;
+  const prevMapId = commonMapIds.indexOf(mapId) === -1 ? cachedMapId : null;
+  const prevLocations = prevMapId ? cachedLocations : null;
+  const locationKey = `${(prevMapId || '0000')}_${mapId}`;
 
   let locations = locationCache[locationKey] || null;
 
@@ -26,7 +28,7 @@ function onLoad2kkiMap(mapId) {
   if (locations && locations.length) {
     const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
     const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
-    setClientLocation(mapId, cachedMapId, locations, cachedLocations, cacheLocation);
+    setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
     cachedLocations = locationNames ? locations : null;
@@ -44,8 +46,6 @@ function onLoad2kkiMap(mapId) {
         queryAndSetMaps(locationNames).catch(err => console.error(err));
     }
   } else {
-    const prevMapId = commonMapIds.indexOf(mapId) === -1 ? cachedMapId : null;
-    const prevLocations = prevMapId ? cachedLocations : null;
     queryAndSetLocation(mapId, prevMapId, prevLocations, setClientLocation, true)
       .then(locations => {
         const locationNames = locations ? locations.map(l => l.title) : null;
