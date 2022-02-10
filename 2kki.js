@@ -193,10 +193,27 @@ function getLocalized2kkiLocationLinksHtml(locations, separator) {
     : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
 
-function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocationsStr) {
-  const setMessageLocationFunc = (_mapId, _prevMapId, locations) => {
+function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
+  const setMessageLocationFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
     globalMessageIcon.title = getLocalized2kkiLocations(locations);
     globalMessageLocation.innerHTML = getLocalized2kkiLocationLinksHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+    if (cacheLocation) {
+      const locationKey = `${prevMapId}_${mapId}`;
+      const prevLocationKey = `${mapId}_${prevMapId}`;
+      if (locations)
+        locationCache[locationKey] = locations;
+      else
+        unknownLocations.push(locationKey)
+      if (prevLocations)
+        locationCache[prevLocationKey] = prevLocations;
+      if (saveLocation && (locations || prevLocations)) {
+        if (locations)
+          config.locationCache[locationKey] = locations;
+        if (prevLocations)
+          config.locationCache[prevLocationKey] = prevLocations;
+        updateConfig(config);
+      }
+    }
   };
 
   globalMessageLocation.classList.add("globalMessageLocation");
@@ -204,18 +221,16 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     globalMessageLocation.classList.add("hidden");
 
   if (defaultLocations.hasOwnProperty(mapId))
-    setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId]);
+    setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId], prevLocations);
   else {
     if (!prevMapId || commonMapIds.indexOf(mapId) > -1)
       prevMapId = "0000";
     const locationKey = `${prevMapId}_${mapId}`;
     if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
-      setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
-    else {
-      const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
+      setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
+    else
       queryAndSet2kkiLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
         .catch(err => console.error(err));
-    }
   }
 }
 
