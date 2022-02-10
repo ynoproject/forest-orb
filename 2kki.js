@@ -45,7 +45,8 @@ function onLoad2kkiMap(mapId) {
     }
   } else {
     const prevMapId = commonMapIds.indexOf(mapId) === -1 ? cachedMapId : null;
-    queryAndSetLocation(mapId, prevMapId, cachedLocations, setClientLocation, true)
+    const prevLocations = prevMapId ? cachedLocations : null;
+    queryAndSetLocation(mapId, prevMapId, prevLocations, setClientLocation, true)
       .then(locations => {
         const locationNames = locations ? locations.map(l => l.title) : null;
         setExplorerLinks(locationNames);
@@ -140,7 +141,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
 }
 
 function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
-  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks(locations);
+  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks(locations, '<br>');
   onUpdateChatboxInfo();
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
@@ -184,10 +185,10 @@ function getLocationLink(location) {
   return getLocalizedLocation(locationLink, locationLinkJP, true);
 }
 
-function getLocalizedLocationLinks(locations) {
+function getLocalizedLocationLinks(locations, separator) {
   return locations && locations.length
     ? Array.isArray(locations)
-    ? locations.map(l => getLocationLink(l)).join('<br>')
+    ? locations.map(l => getLocationLink(l)).join(separator)
       : getInfoLabel(locations)
     : getInfoLabel(getMassagedLabel(localizedMessages['2kki'].location.unknownLocation));
 }
