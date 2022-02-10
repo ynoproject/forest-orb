@@ -30,6 +30,7 @@ function onLoad2kkiMap(mapId) {
     setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
+    cachedPrevLocations = cachedLocations;
     cachedLocations = locationNames ? locations : null;
     if (!locationNames) {
       setExplorerLinks(null);
@@ -85,6 +86,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
           if (forClient) {
             cachedPrevMapId = cachedMapId;
             cachedMapId = mapId;
+            cachedPrevLocations = cachedLocations;
             cachedLocations = locations;
           }
 

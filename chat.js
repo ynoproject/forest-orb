@@ -120,7 +120,7 @@ function chatInputActionFired() {
   else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      const prevLocationsStr = cachedLocations && cachedLocations.length ? window.btoa(encodeURIComponent(cachedLocations.map(l => l.title).join("|"))) : "";
+      const prevLocationsStr = cachedPrevLocations && cachedPrevLocations.length ? window.btoa(encodeURIComponent(cachedPrevLocations.map(l => l.title).join("|"))) : "";
 
       const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || "0000"), Module.ALLOC_NORMAL);
       const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || "0000"), Module.ALLOC_NORMAL);

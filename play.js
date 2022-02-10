@@ -240,6 +240,7 @@ function onUpdateSystemGraphic(name) {
 let cachedMapId = null;
 let cachedPrevMapId = null;
 let cachedLocations = null;
+let cachedPrevLocations = null;
 
 // EXTERNAL
 function onLoadMap(mapName) {
