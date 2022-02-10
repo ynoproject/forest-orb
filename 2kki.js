@@ -178,6 +178,8 @@ function getLocalized2kkiLocations(locations) {
 }
 
 function get2kkiLocationLinkHtml(location) {
+  if (!location)
+    return getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`

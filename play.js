@@ -259,7 +259,7 @@ function onLoadMap(mapName) {
       if (localizedMapLocations) {
         if (!cachedMapId)
           document.getElementById('location').classList.remove('hidden');
-          
+
         document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, '<br>');
         onUpdateChatboxInfo();
       }
@@ -1080,7 +1080,7 @@ function getLocalizedMapLocationsHtml(mapId, separator) {
       ? getInfoLabel(localizedLocations)
       : Array.isArray(localizedLocations)
         ? localizedLocations.map(l => getInfoLabel(l)).join(separator)
-        : getInfoLabel(localizedMessages.location.unknownLocation);
+        : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
     return locationsHtml;
   }
   
