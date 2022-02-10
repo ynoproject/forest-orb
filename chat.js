@@ -136,6 +136,7 @@ function chatInputActionFired() {
 
       Module._free(mapIdPtr);
       Module._free(prevMapIdPtr);
+      Module._free(prevLocationsPtr);
     }
   }
   Module._free(sysPtr);
