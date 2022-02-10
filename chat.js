@@ -1,6 +1,6 @@
 Module['onRuntimeInitialized'] = initChat;
 
-function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
+function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -42,9 +42,11 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId) {
         const locationKey = `${prevMapId}_${mapId}`;
         if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
           setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
-        else
-          queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, null, setMessageLocationFunc)
+        else {
+          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { title: l }) : null;
+          queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
             .catch(err => console.error(err));
+        }
       }
 
       msgContainer.appendChild(globalMessageLocation);
@@ -118,9 +120,12 @@ function chatInputActionFired() {
   else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || '0000'), Module.ALLOC_NORMAL);
-      const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
-      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, sysPtr, msgPtr);
+      const prevLocationsStr = cachedLocations && cachedLocations.length ? window.btoa(encodeURIComponent(cachedLocations.map(l => l.title).join("|"))) : "";
+
+      const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || "0000"), Module.ALLOC_NORMAL);
+      const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || "0000"), Module.ALLOC_NORMAL);
+      const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
+      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, prevLocationsPtr, sysPtr, msgPtr);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
@@ -221,6 +226,6 @@ function onChatMessageReceived(systemName, msg) {
 }
 
 // EXTERNAL
-function onGChatMessageReceived(mapId, prevMapId, systemName, msg) {
-  chatboxAddMessage(systemName, msg, mapId, prevMapId);
+function onGChatMessageReceived(mapId, prevMapId, prevLocationsStr, systemName, msg) {
+  chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr);
 }

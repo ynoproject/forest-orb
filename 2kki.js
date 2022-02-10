@@ -1,5 +1,4 @@
 const is2kki = gameId === '2kki';
-let cachedLocations = null;
 const unknownLocations = [];
 const commonMapIds = ['0002', '0010'];
 const ignoredMapIds = ['0899', '0900', '1581'];
