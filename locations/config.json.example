@@ -1,0 +1,7 @@
+{
+	"ignoredMapIds": [ "0001", "9999" ],
+	"mapLocations": {
+		"0002": "Example Location",
+		"0010": [ "Shared Location A", "Shared Location B" ]
+	}
+}

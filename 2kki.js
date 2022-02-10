@@ -1,7 +1,6 @@
 const is2kki = gameId === '2kki';
 const unknownLocations = [];
 const commonMapIds = ['0002', '0010'];
-const ignoredMapIds = ['0899', '0900', '1581'];
 let defaultLocations;
 
 function onLoad2kkiMap(mapId) {
@@ -19,7 +18,7 @@ function onLoad2kkiMap(mapId) {
   if (useDefaultLocation)
     locations = defaultLocations[mapId];
   else if (unknownLocations.indexOf(locationKey) > -1)
-    locations = getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
+    locations = getMassagedLabel(localizedMessages.location.unknownLocation);
 
   if (!cachedMapId)
     document.getElementById('location').classList.remove('hidden');
@@ -27,40 +26,40 @@ function onLoad2kkiMap(mapId) {
   if (locations && locations.length) {
     const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
     const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
-    setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation);
+    set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
     cachedPrevLocations = cachedLocations;
     cachedLocations = locationNames ? locations : null;
     if (!locationNames) {
-      setExplorerLinks(null);
-      setMaps([]);
+      set2kkiExplorerLinks(null);
+      set2kkiMaps([]);
     } else {
-      setExplorerLinks(!useDefaultLocation ? locationNames : null);
+      set2kkiExplorerLinks(!useDefaultLocation ? locationNames : null);
       if (useDefaultLocation) {
         const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationNames.join(','));
-        setMaps([], locationNames, cacheMap, cacheMap);
+        set2kkiMaps([], locationNames, cacheMap, cacheMap);
       } else if (mapCache.hasOwnProperty(locationNames.join(',')))
-        setMaps(mapCache[locationNames.join(',')], locationNames);
+        set2kkiMaps(mapCache[locationNames.join(',')], locationNames);
       else
-        queryAndSetMaps(locationNames).catch(err => console.error(err));
+        queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
   } else {
-    queryAndSetLocation(mapId, prevMapId, prevLocations, setClientLocation, true)
+    queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, set2kkiClientLocation, true)
       .then(locations => {
         const locationNames = locations ? locations.map(l => l.title) : null;
-        setExplorerLinks(locationNames);
+        set2kkiExplorerLinks(locationNames);
         if (locationNames)
-          queryAndSetMaps(locationNames).catch(err => console.error(err));
+          queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
         else {
-          setMaps([], null, true, true);
-          setExplorerLinks(null);
+          set2kkiMaps([], null, true, true);
+          set2kkiExplorerLinks(null);
         }
       }).catch(err => console.error(err));
   }
 }
 
-function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
+function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
     const req = new XMLHttpRequest();
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
@@ -76,7 +75,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
       if (!setLocationFunc)
         setLocationFunc = () => {};
 
-      setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages['2kki'].location.queryingLocation), prevLocations, true);
+      setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location['2kki'].queryingLocation), prevLocations, true);
 
       req.onload = (_e) => {
         const locationsArray = req.response;
@@ -110,7 +109,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
           locations.push(location);
 
           if (usePrevLocations) {
-            queryConnectedLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
+            queryConnected2kkiLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
               .then(connectedLocationNames => {
                 const connectedLocations = locationsArray.filter(l => connectedLocationNames.indexOf(l.title) > -1);
                 for (let cl of connectedLocations)
@@ -131,7 +130,7 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
             console.error({ error: req.response.error, errCode: errCode });
 
           if (prevMapId) {
-            queryAndSetLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
+            queryAndSet2kkiLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
             return;
           }
           setLocationFunc(mapId, prevMapId, null, prevLocations, true, true);
@@ -141,8 +140,8 @@ function queryAndSetLocation(mapId, prevMapId, prevLocations, setLocationFunc, f
   });
 }
 
-function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
-  document.getElementById('locationText').innerHTML = getLocalizedLocationLinks(locations, '<br>');
+function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
+  document.getElementById('locationText').innerHTML = getLocalized2kkiLocationLinksHtml(locations, '<br>');
   onUpdateChatboxInfo();
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
@@ -163,38 +162,64 @@ function setClientLocation(mapId, prevMapId, locations, prevLocations, cacheLoca
   }
 }
 
-function getLocalizedLocation(title, titleJP, asHtml) {
-  let template = localizedMessages['2kki'].location.template;
+function getLocalized2kkiLocation(title, titleJP, asHtml) {
+  let template = localizedMessages.location['2kki'].template;
   if (asHtml)
     template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
   return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
-function getLocalizedLocations(locations) {
+function getLocalized2kkiLocations(locations) {
   return locations && locations.length
     ? Array.isArray(locations)
-      ? locations.map(l => getLocalizedLocation(l.title, l.titleJP)).join('\n')
+      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP)).join('\n')
       : locations
-    : getMassagedLabel(localizedMessages['2kki'].location.unknownLocation);
+    : getMassagedLabel(localizedMessages.location.unknownLocation);
 }
 
-function getLocationLink(location) {
+function get2kkiLocationLinkHtml(location) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
   const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-  return getLocalizedLocation(locationLink, locationLinkJP, true);
+  return getLocalized2kkiLocation(locationLink, locationLinkJP, true);
 }
 
-function getLocalizedLocationLinks(locations, separator) {
+function getLocalized2kkiLocationLinksHtml(locations, separator) {
   return locations && locations.length
     ? Array.isArray(locations)
-    ? locations.map(l => getLocationLink(l)).join(separator)
+    ? locations.map(l => get2kkiLocationLinkHtml(l)).join(separator)
       : getInfoLabel(locations)
-    : getInfoLabel(getMassagedLabel(localizedMessages['2kki'].location.unknownLocation));
+    : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
 
-function getDefaultLocations() {
+function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocationsStr) {
+  const setMessageLocationFunc = (_mapId, _prevMapId, locations) => {
+    globalMessageIcon.title = getLocalized2kkiLocations(locations);
+    globalMessageLocation.innerHTML = getLocalized2kkiLocationLinksHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+  };
+
+  globalMessageLocation.classList.add("globalMessageLocation");
+  if (!config.showGlobalMessageLocation)
+    globalMessageLocation.classList.add("hidden");
+
+  if (defaultLocations.hasOwnProperty(mapId))
+    setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId]);
+  else {
+    if (!prevMapId || commonMapIds.indexOf(mapId) > -1)
+      prevMapId = "0000";
+    const locationKey = `${prevMapId}_${mapId}`;
+    if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+      setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
+    else {
+      const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
+      queryAndSet2kkiLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
+        .catch(err => console.error(err));
+    }
+  }
+}
+
+function getDefault2kkiLocations() {
   const ret = {
     '0150': [{ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム', urlTitle: 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', urlTitleJP: 'ミニゲーム/パズルゲーム', default: true }],
     '0620': [{ title: 'Sound Room', titleJP: 'SR分室の曲', urlTitle: 'Soundtrack', urlTitleJP: '収集要素/SR分室の曲・演出の解放条件', default: true }]
@@ -211,15 +236,15 @@ function getDefaultLocations() {
   return ret;
 }
 
-function queryConnectedLocationNames(locationName, connLocationNames) {
-  return new Promise((resolve, reject) => {
+function queryConnected2kkiLocationNames(locationName, connLocationNames) {
+  return new Promise((resolve, _reject) => {
     const req = new XMLHttpRequest();
       const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
       req.responseType = 'json';
       req.open("GET", url);
       req.send();
 
-      req.onload = (e) => {
+      req.onload = (_e) => {
         let ret = [];
         let errCode = null;
 
@@ -236,21 +261,21 @@ function queryConnectedLocationNames(locationName, connLocationNames) {
   });
 }
 
-function queryAndSetMaps(locationNames) {
-  return new Promise((resolve, reject) => {
+function queryAndSet2kkiMaps(locationNames) {
+  return new Promise((resolve, _reject) => {
     const req = new XMLHttpRequest();
       const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
       req.responseType = 'json';
       req.open("GET", url);
       req.send();
 
-      setMaps([], null, true);
+      set2kkiMaps([], null, true);
 
-      req.onload = (e) => {
+      req.onload = (_e) => {
         let errCode = null;
 
         if (Array.isArray(req.response))
-          setMaps(req.response, locationNames, true, true);
+          set2kkiMaps(req.response, locationNames, true, true);
         else
           errCode = req.response.err_code;
           
@@ -262,12 +287,12 @@ function queryAndSetMaps(locationNames) {
   });
 }
 
-function setMaps(maps, locationNames, cacheMaps, saveMaps) {
+function set2kkiMaps(maps, locationNames, cacheMaps, saveMaps) {
   const mapControls = document.getElementById('mapControls');
   mapControls.innerHTML = '';
   if (maps && maps.length) {
     for (let map of maps)
-      mapControls.appendChild(getMapButton(map.url, map.label));
+      mapControls.appendChild(get2kkiMapButton(map.url, map.label));
   }
   if (cacheMaps && locationNames) {
     mapCache[locationNames.join(',')] = maps;
@@ -278,7 +303,7 @@ function setMaps(maps, locationNames, cacheMaps, saveMaps) {
   }
 }
 
-function getMapButton(url, label) {
+function get2kkiMapButton(url, label) {
   const ret = document.createElement('button');
   ret.classList.add('mapButton');
   ret.classList.add('unselectable');
@@ -293,7 +318,7 @@ function getMapButton(url, label) {
   return ret;
 }
 
-function setExplorerLinks(locationNames) {
+function set2kkiExplorerLinks(locationNames) {
   const explorerControls = document.getElementById('explorerControls');
   if (!explorerControls)
     return;
@@ -301,10 +326,10 @@ function setExplorerLinks(locationNames) {
   if (!locationNames)
     return;
   for (let locationName of locationNames)
-    explorerControls.appendChild(getExplorerButton(locationName, locationNames.length > 1))
+    explorerControls.appendChild(get2kkiExplorerButton(locationName, locationNames.length > 1))
 }
 
-function getExplorerButton(locationName, isMulti) {
+function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
   ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
@@ -325,4 +350,4 @@ function getExplorerButton(locationName, isMulti) {
 }
 
 if (is2kki)
-  defaultLocations = getDefaultLocations();
+  defaultLocations = getDefault2kkiLocations();

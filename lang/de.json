@@ -89,6 +89,13 @@
       "2": "Connecting...",
       "3": "Single Player"
     },
+    "location": {
+      "unknownLocation": "Unbekannter Ort",
+      "2kki": {
+        "template": "{LOCATION}",
+        "queryingLocation": "Fragt standort ab..."
+      }
+    },
     "playersOnline": {
       "singular": "{COUNT} Player Online",
       "plural": "{COUNT} Players Online"
@@ -101,11 +108,6 @@
       "unnamed": "Unnamed Player"
     },
     "2kki": {
-      "location": {
-        "template": "{LOCATION}",
-        "queryingLocation": "Fragt standort ab...",
-        "unknownLocation": "Unbekannter Ort"
-      },
       "explorerLink": {
         "generic": "Im Yume 2kki Explorer ansehen",
         "multi": "{LOCATION} im Yume 2kki Explorer ansehen"

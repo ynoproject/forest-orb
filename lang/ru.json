@@ -89,6 +89,13 @@
       "2": "Соединение...",
       "3": "Одиночная игра"
     },
+    "location": {
+      "unknownLocation": "Неизвестно",
+      "2kki": {
+        "template": "{LOCATION}",
+        "queryingLocation": "Вычисляем место..."
+      }
+    },
     "playersOnline": {
       "singular": "{COUNT} Игрок онлайн",
       "plural": "{COUNT} Игроков онлайн"
@@ -101,11 +108,6 @@
       "unnamed": "Безымянный игрок"
     },
     "2kki": {
-      "location": {
-        "template": "{LOCATION}",
-        "queryingLocation": "Вычисляем место...",
-        "unknownLocation": "Неизвестно"
-      },
       "explorerLink": {
         "generic": "Просмотреть в Yume 2kki Explorer",
         "multi": "Просмотреть {LOCATION} в Yume 2kki Explorer"

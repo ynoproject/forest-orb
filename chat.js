@@ -22,31 +22,15 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
     msgContainer.classList.add("global");
     msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
 
-    if (gameId === "2kki" && mapId !== "0000") {
+    if (mapId !== "0000" && (localizedMapLocations || gameId === "2kki")) {
       const globalMessageIcon = msgContainer.children[0];
       const globalMessageLocation = document.createElement("small");
-      const setMessageLocationFunc = (_mapId, _prevMapId, locations) => {
-        globalMessageIcon.title = getLocalizedLocations(locations);
-        globalMessageLocation.innerHTML = getLocalizedLocationLinks(locations, getInfoLabel('&nbsp;|&nbsp;'));
-      };
 
-      globalMessageLocation.classList.add("globalMessageLocation");
-      if (!config.showGlobalMessageLocation)
-        globalMessageLocation.classList.add("hidden");
-
-      if (defaultLocations.hasOwnProperty(mapId))
-        setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId]);
+      if (gameId === "2kki")
+        set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocationsStr);
       else {
-        if (!prevMapId || commonMapIds.indexOf(mapId) > -1)
-          prevMapId = "0000";
-        const locationKey = `${prevMapId}_${mapId}`;
-        if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
-          setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
-        else {
-          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
-          queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
-            .catch(err => console.error(err));
-        }
+        globalMessageIcon.title = getLocalizedMapLocations(mapId);
+        globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, getInfoLabel('&nbsp;|&nbsp;'));
       }
 
       msgContainer.appendChild(globalMessageLocation);

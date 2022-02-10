@@ -89,6 +89,13 @@
       "2": "接続中…",
       "3": "シングルプレイヤー"
     },
+    "location": {
+      "unknownLocation": "場所不明",
+      "2kki": {
+        "template": "{LOCATION_JP} 「{LOCATION}」",
+        "queryingLocation": "Querying Location..."
+      }
+    },
     "playersOnline": {
       "singular": "{COUNT}人が 接続中",
       "plural": "{COUNT}人が 接続中"
@@ -101,11 +108,6 @@
       "unnamed": "無名プレーヤー"
     },
     "2kki": {
-      "location": {
-        "template": "{LOCATION_JP} 「{LOCATION}」",
-        "queryingLocation": "Querying Location...",
-        "unknownLocation": "場所不明"
-      },
       "explorerLink": {
         "generic": "ゆめ２っきエクスプローラーで見る",
         "multi": "「{LOCATION}」をゆめ２っきエクスプローラーで見る"

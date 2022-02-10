@@ -127,6 +127,7 @@ const gameFullBgUiThemes = {
 const hasUiThemes = gameUiThemes.length > 0;
 
 let localizedMessages;
+let localizedMapLocations;
 
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
@@ -239,8 +240,9 @@ function onUpdateSystemGraphic(name) {
 
 let cachedMapId = null;
 let cachedPrevMapId = null;
-let cachedLocations = null;
-let cachedPrevLocations = null;
+let cachedLocations = null; // Used only by Yume 2kki
+let cachedPrevLocations = null; // Used only by Yume 2kki
+let ignoredMapIds = [];
 
 // EXTERNAL
 function onLoadMap(mapName) {
@@ -254,6 +256,14 @@ function onLoadMap(mapName) {
     if (gameId === '2kki')
       onLoad2kkiMap(mapId);
     else {
+      if (localizedMapLocations) {
+        if (!cachedMapId)
+          document.getElementById('location').classList.remove('hidden');
+          
+        document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, '<br>');
+        onUpdateChatboxInfo();
+      }
+
       cachedPrevMapId = cachedMapId;
       cachedMapId = mapId;
     }
@@ -982,6 +992,11 @@ function initLocalization(isInitial) {
           updatePlayerCount(playerCount);
       }
 
+      if (isInitial)
+        initLocations(config.lang);
+      else if (localizedMapLocations)
+        initLocalizedMapLocations(config.lang);
+
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');
       translationInstruction.classList.toggle('hidden', translationComplete);
@@ -994,12 +1009,82 @@ function initLocalization(isInitial) {
         lng: config.lang,
         resources: resourcesJson,
         preventValueFromContent: false
-      }, function (err, t) {
+      }, function (err) {
         if (err)
           console.error(err);
         locI18next.init(i18next)('[data-i18n]');
       });
     });
+}
+
+function initLocations(lang) {
+  fetch(`locations/${gameId}/config.json`)
+    .then(response => {
+        if (!response.ok)
+          throw new Error('Location config file not found');
+        return response.json();
+    })
+    .then(jsonResponse => {
+        ignoredMapIds = jsonResponse.ignoredMapIds || [];
+        localizedMapLocations = jsonResponse.mapLocations || null;
+        if (localizedMapLocations && !Object.keys(localizedMapLocations).length)
+          localizedMapLocations = null;
+        if (localizedMapLocations && lang !== 'en')
+          initLocalizedMapLocations(lang);
+    })
+    .catch(err => {
+      ignoredMapIds = [];
+      localizedMapLocations = null;
+      console.error(err);
+    });
+}
+
+function initLocalizedMapLocations(lang) {
+  const fileName = lang === 'en' ? 'config' : lang;
+  fetch(`locations/${gameId}/${fileName}.json`)
+    .then(response => {
+      if (!response.ok)
+        return null; // Assume map location localizations for this language don't exist
+      return response.json();
+  })
+  .then(jsonResponse => {
+      if (!jsonResponse)
+        return;
+      const mapLocations = fileName === 'config' ? jsonResponse.mapLocations : jsonResponse;
+      Object.keys(localizedMapLocations).forEach(function (mapId) {
+        if (mapLocations.hasOwnProperty(mapId))
+          localizedMapLocations[mapId] = mapLocations[mapId];
+      });
+  })
+  .catch(_err => { }); // Assume map location localizations for this language don't exist
+}
+
+function getLocalizedMapLocations(mapId) {
+  if (localizedMapLocations.hasOwnProperty(mapId)) {
+    const localizedLocations = localizedMapLocations[mapId];
+    const locationsText = typeof localizedLocations === 'string'
+      ? getInfoLabel(localizedLocations)
+      : Array.isArray(localizedLocations)
+        ? localizedLocations.join('\n')
+        : localizedMessages.location.unknownLocation;
+    return locationsText;
+  }
+  
+  return localizedMessages.location.unknownLocation;
+}
+
+function getLocalizedMapLocationsHtml(mapId, separator) {
+  if (localizedMapLocations.hasOwnProperty(mapId)) {
+    const localizedLocations = localizedMapLocations[mapId];
+    const locationsHtml = typeof localizedLocations === 'string'
+      ? getInfoLabel(localizedLocations)
+      : Array.isArray(localizedLocations)
+        ? localizedLocations.map(l => getInfoLabel(l)).join(separator)
+        : getInfoLabel(localizedMessages.location.unknownLocation);
+    return locationsHtml;
+  }
+  
+  return getInfoLabel(localizedMessages.location.unknownLocation);
 }
 
 function massageLabels(data) {
@@ -1032,6 +1117,7 @@ function getInfoLabel(label) {
   return `<span class="infoLabel">${label}</span>`;
 }
 
+let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
 
@@ -1051,6 +1137,7 @@ function loadOrInitConfig() {
             case 'lang':
               document.getElementById('lang').value = value;
               setLang(value, true);
+              loadedLang = true;
               break;
             case 'name':
               document.getElementById('nameInput').value = value;
@@ -1129,5 +1216,5 @@ if (!loadedFontStyle)
   setFontStyle(0, true);
 if (!loadedUiTheme)
   setUiTheme('auto', true);
-if (!localizedMessages)
+if (!loadedLang)
   initLocalization(true);
