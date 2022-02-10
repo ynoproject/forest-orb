@@ -8,9 +8,9 @@ for (let el of gameIdsElements) {
 
 const gameUiThemes = {
   'yume': [
-    'マイシステムa',
-    'マイシステムb',
-    'マイシステムc'
+    '0000000000009',
+    '0000000000010',
+    '0000000000011'
   ],
   '2kki': [
     'system1',
@@ -114,7 +114,7 @@ const gameUiThemes = {
 }[gameId];
 
 const gameFullBgUiThemes = {
-  'yume': [ 'マイシステムb' ],
+  'yume': [ '0000000000010' ],
   '2kki': [],
   'flow': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
