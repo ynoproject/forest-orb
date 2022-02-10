@@ -1,6 +1,7 @@
 const is2kki = gameId === '2kki';
 let cachedLocations = null;
 const unknownLocations = [];
+const commonMapIds = ['0002', '0010'];
 const ignoredMapIds = ['0899', '0900', '1581'];
 let defaultLocations;
 
@@ -43,7 +44,8 @@ function onLoad2kkiMap(mapId) {
         queryAndSetMaps(locationNames).catch(err => console.error(err));
     }
   } else {
-    queryAndSetLocation(mapId, cachedMapId, cachedLocations, setClientLocation, true)
+    const prevMapId = commonMapIds.indexOf(mapId) === -1 ? cachedMapId : null;
+    queryAndSetLocation(mapId, prevMapId, cachedLocations, setClientLocation, true)
       .then(locations => {
         const locationNames = locations ? locations.map(l => l.title) : null;
         setExplorerLinks(locationNames);
