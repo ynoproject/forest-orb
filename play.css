@@ -505,10 +505,10 @@ body {
 
 .globalMessageIcon {
   float: left;
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   padding-right: 4px;
-  margin-top: -1.5px;
+  margin-top: -2px;
 }
 
 .globalMessageIcon svg {
