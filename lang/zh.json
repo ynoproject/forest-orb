@@ -89,6 +89,13 @@
       "2": "连接中",
       "3": "单人模式"
     },
+    "location": {
+      "unknownLocation": "未知地点",
+      "2kki": {
+        "template": "{LOCATION_JP}（{LOCATION}）",
+        "queryingLocation": "正在查询地点..."
+      }
+    },
     "playersOnline": {
       "singular": "当前有 {COUNT} 位玩家同时在线",
       "plural": "当前有 {COUNT} 位玩家同时在线"
@@ -101,11 +108,6 @@
       "unnamed": "未命名玩家"
     },
     "2kki": {
-      "location": {
-        "template": "{LOCATION_JP}（{LOCATION}）",
-        "queryingLocation": "正在查询地点...",
-        "unknownLocation": "未知地点"
-      },
       "explorerLink": {
         "generic": "在梦2记探索辅助工具中查看当前地点",
         "multi": "在梦2记探索辅助工具中查看当前地点：{LOCATION}"
