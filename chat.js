@@ -43,7 +43,7 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
         if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
           setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey]);
         else {
-          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { title: l }) : null;
+          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
           queryAndSetLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
             .catch(err => console.error(err));
         }
