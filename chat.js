@@ -34,6 +34,10 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
         globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
       }
 
+      globalMessageLocation.classList.add("globalMessageLocation");
+      if (!config.showGlobalMessageLocation)
+        globalMessageLocation.classList.add("hidden");
+
       msgContainer.appendChild(globalMessageLocation);
 
       globalMessageIcon.classList.add("pointer");

@@ -216,10 +216,6 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     }
   };
 
-  globalMessageLocation.classList.add("globalMessageLocation");
-  if (!config.showGlobalMessageLocation)
-    globalMessageLocation.classList.add("hidden");
-
   if (defaultLocations.hasOwnProperty(mapId))
     setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId], prevLocations);
   else {
