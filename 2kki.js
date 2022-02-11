@@ -178,13 +178,11 @@ function getLocalized2kkiLocations(locations) {
 }
 
 function get2kkiLocationLinkHtml(location) {
-  if (!location)
-    return getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
   const urlTitle = location.urlTitle || location.title;
-  const urlTitleJP = location.urlTitleJP || (location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
+  const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
   const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
-  const locationLinkJP = `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>`;
-  return getLocalized2kkiLocation(locationLink, locationLinkJP, true);
+  const locationLinkJP = urlTitleJP ? `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
+  return locationLinkJP ? getLocalized2kkiLocation(locationLink, locationLinkJP, true) : locationLink;
 }
 
 function getLocalized2kkiLocationLinksHtml(locations, separator) {
