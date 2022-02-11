@@ -71,6 +71,9 @@
       "toggleNametags": "Переключить Ники",
       "togglePlayerSounds": "Переключить Звуки Игроков",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
+      "chat": {
+        "clearChat": "Clear Chat"
+      },
       "nexus": "Вернуться на Главную страницу"
     }
   },

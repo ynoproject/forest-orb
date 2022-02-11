@@ -71,6 +71,9 @@
       "toggleNametags": "Alternar nome dos jogadores",
       "togglePlayerSounds": "Alternar áudio dos jogadores",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "chat": {
+        "clearChat": "Clear Chat"
+      },
       "nexus": "Voltar para o Nexo"
     }
   },

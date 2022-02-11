@@ -71,6 +71,9 @@
       "toggleNametags": "Namen an/aus",
       "togglePlayerSounds": "Toggle Player Sounds",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "chat": {
+        "clearChat": "Clear Chat"
+      },
       "nexus": "Return to Nexus"
     }
   },

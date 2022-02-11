@@ -71,6 +71,9 @@
       "toggleNametags": "プレーヤー名表示のオン／オフ",
       "togglePlayerSounds": "プレーヤー効果音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
+      "chat": {
+        "clearChat": "チャットを消去"
+      },
       "nexus": "扉部屋へ戻る"
     }
   },

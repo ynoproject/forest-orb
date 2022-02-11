@@ -71,6 +71,9 @@
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效",
       "toggleGlobalMessage": "发送全局聊天记录",
+      "chat": {
+        "clearChat": "Clear Chat"
+      },
       "nexus": "返回到门的世界"
     }
   },

@@ -249,11 +249,17 @@ body {
   overflow: hidden;
 }
 
+#chatHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+ 
 #chatTabs {
   display: flex;
 }
 
-.chatTab {
+.chatTab, #chatButtons button {
   pointer-events: all;
   cursor: pointer;
 }

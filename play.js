@@ -390,6 +390,13 @@ document.getElementById('uploadButton').onclick = function () {
 
 document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 
+document.getElementById('clearChatButton').onclick = function () {
+  document.getElementById('messages').innerHTML = '';
+  const unreadChatTab = document.querySelector('.chatTab.unread');
+  if (unreadChatTab)
+    unreadChatTab.classList.remove('unread');
+};
+
 document.getElementById('nexusButton').onclick = function () {
   window.location = '../';
 };
