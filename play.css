@@ -279,6 +279,7 @@ body {
   height: 100%;
   top: -100%;
   opacity: 0;
+  z-index: -1;
 }
 
 .chatTab:hover .chatTabBg {
