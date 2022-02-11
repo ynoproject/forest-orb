@@ -222,7 +222,9 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     if (!prevMapId || commonMapIds.indexOf(mapId) > -1)
       prevMapId = "0000";
     const locationKey = `${prevMapId}_${mapId}`;
-    if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+    if (unknownLocations.indexOf(locationKey) > -1)
+      setMessageLocationFunc(mapId, prevMapId, null, prevLocations);
+    else if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
       setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
       queryAndSet2kkiLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
