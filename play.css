@@ -438,7 +438,7 @@ body {
 }
 
 #chatInputContainer.globalCooldown #globalCooldownIcon .timerCircle {
-  animation: 60s timer linear;
+  animation: 15s timer linear;
 }
 
 #chatInputContainer:not(.globalCooldown) #globalCooldownIcon {

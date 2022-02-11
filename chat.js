@@ -127,7 +127,7 @@ function chatInputActionFired() {
       window.setTimeout(function () {
         chatInputContainer.classList.remove("globalCooldown");
         chatInput.disabled = false;
-      }, 60000);
+      }, 15000);
 
       Module._free(mapIdPtr);
       Module._free(prevMapIdPtr);
