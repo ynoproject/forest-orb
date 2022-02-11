@@ -952,6 +952,10 @@ input[type='text'], select {
   pointer-events: none;
 }
 
+#layout.chatboxOverlap:fullscreen #messages {
+  overflow-y: hidden;
+}
+
 #layout:fullscreen #uiControls {
   display: none;
 }
