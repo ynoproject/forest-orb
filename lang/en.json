@@ -29,11 +29,18 @@
         "chat": "Chat",
         "players": "Players"
       },
-      "nickname": {
-        "header": "You must set a nickname before you can chat.",
-        "rule": {
-          "maxLength": "* Maximum 12 characters",
-          "alphanumeric": "* Alphanumeric characters only"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "You must set a nickname before you can chat.",
+          "rule": {
+            "maxLength": "* Maximum 12 characters",
+            "alphanumeric": "* Alphanumeric characters only"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "UI Theme",
       "toggleChat": "Toggle Chat",
-      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Toggle Nametags",
       "togglePlayerSounds": "Toggle Player Sounds",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",

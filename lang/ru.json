@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -29,11 +29,18 @@
         "chat": "Чат",
         "players": "Игроки"
       },
-      "nickname": {
-        "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
-        "rule": {
-          "maxLength": "* Не более 12 символов.",
-          "alphanumeric": "* Только латиница и цифры."
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
+          "rule": {
+            "maxLength": "* Не более 12 символов.",
+            "alphanumeric": "* Только латиница и цифры."
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
-      "toggleGlobalChat": "Переключить Глобальный Чат",
       "toggleNametags": "Переключить Ники",
       "togglePlayerSounds": "Переключить Звуки Игроков",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",

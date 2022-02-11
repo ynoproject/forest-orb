@@ -29,11 +29,18 @@
         "chat": "Chat",
         "players": "Players"
       },
-      "nickname": {
-        "header": "Choisissez un pseudonyme pour pouvoir discuter.",
-        "rule": {
-          "maxLength": "* Maximum 12 caractères",
-          "alphanumeric": "* Caractères alphanumériques uniquement"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "Choisissez un pseudonyme pour pouvoir discuter.",
+          "rule": {
+            "maxLength": "* Maximum 12 caractères",
+            "alphanumeric": "* Caractères alphanumériques uniquement"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Tchat",
-      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Afficher les Noms",
       "togglePlayerSounds": "Toggle Player Sounds",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",

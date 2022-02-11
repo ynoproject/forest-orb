@@ -29,11 +29,18 @@
         "chat": "チャット",
         "players": "プレーヤー"
       },
-      "nickname": {
-        "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
-        "rule": {
-          "maxLength": "※最大 12 文字 まで",
-          "alphanumeric": "※半角 英数字 のみ"
+      "chat": {
+        "tab": {
+          "all": "全メッセージ",
+          "map": "マップ",
+          "global": "グローバル"
+        },
+        "nickname": {
+          "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
+          "rule": {
+            "maxLength": "※最大 12 文字 まで",
+            "alphanumeric": "※半角 英数字 のみ"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleGlobalChat": "グローバルチャットのオン／オフ",
       "toggleNametags": "プレーヤー名表示のオン／オフ",
       "togglePlayerSounds": "プレーヤー効果音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",

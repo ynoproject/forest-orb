@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -29,11 +29,18 @@
         "chat": "채팅",
         "players": "플레이어"
       },
-      "nickname": {
-        "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
-        "rule": {
-          "maxLength": "* 최대 12자까지 가능합니다",
-          "alphanumeric": "* 알파벳 문자만 가능합니다"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
+          "rule": {
+            "maxLength": "* 최대 12자까지 가능합니다",
+            "alphanumeric": "* 알파벳 문자만 가능합니다"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
-      "toggleGlobalChat": "글로벌 채팅 표시",
       "toggleNametags": "이름표 표시",
       "togglePlayerSounds": "다른 플레이어의 소리 듣기",
       "toggleGlobalMessage": "글로벌 채팅 활성화",

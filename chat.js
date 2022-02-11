@@ -18,7 +18,9 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
   const nameText = msgTextResult ? msgTextResult[1] : null;
   const msgText = msgTextResult ? msgTextResult[2] : msg;
 
-  if (mapId) {
+  const global = !!mapId;
+
+  if (global) {
     msgContainer.classList.add("global");
     msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
 
@@ -79,7 +81,11 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
-  if (!document.querySelector(".chatboxTab.active[data-tab-section='messages']")) {
+  if (messages.classList.contains("map") && global)
+    document.getElementById("chatTabGlobal").classList.add("unread");
+  else if (messages.classList.contains("global") && !global)
+    document.getElementById("chatTabMap").classList.add("unread");
+  else if (!document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
     const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
     const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
     if (unreadMessageCountContainer.classList.contains("hidden")) {
@@ -99,7 +105,7 @@ function chatInputActionFired() {
   const chatInput = document.getElementById("chatInput");
   if (chatInput.value === "")
     return;
-  const chatTab = document.querySelector(".chatboxTab[data-tab-section='messages']");
+  const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
   const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);

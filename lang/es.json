@@ -29,11 +29,18 @@
         "chat": "Chat",
         "players": "Players"
       },
-      "nickname": {
-        "header": "Debes seleccionar un apodo antes de poder usar el chat.",
-        "rule": {
-          "maxLength": "* Máximo de 12 caracteres",
-          "alphanumeric": "* Solo caracteres alfanuméricos"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "Debes seleccionar un apodo antes de poder usar el chat.",
+          "rule": {
+            "maxLength": "* Máximo de 12 caracteres",
+            "alphanumeric": "* Solo caracteres alfanuméricos"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Toggle Chat",
-      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Toggle Nametags",
       "togglePlayerSounds": "Toggle Player Sounds",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",

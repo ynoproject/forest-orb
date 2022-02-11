@@ -29,11 +29,18 @@
         "chat": "Bate-Papo",
         "players": "Jogadores"
       },
-      "nickname": {
-        "header": "Defina seu nickname antes de acessar o bate papo.",
-        "rule": {
-          "maxLength": "* 12 caracteres no máximo",
-          "alphanumeric": "* Apenas caracteres alfanuméricos"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "Defina seu nickname antes de acessar o bate papo.",
+          "rule": {
+            "maxLength": "* 12 caracteres no máximo",
+            "alphanumeric": "* Apenas caracteres alfanuméricos"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar bate papo",
-      "toggleGlobalChat": "Toggle Global Chat",
       "toggleNametags": "Alternar nome dos jogadores",
       "togglePlayerSounds": "Alternar áudio dos jogadores",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",

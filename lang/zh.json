@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -29,11 +29,18 @@
         "chat": "聊天记录",
         "players": "玩家列表"
       },
-      "nickname": {
-        "header": "设置一个名字即可开始和大家聊天！",
-        "rule": {
-          "maxLength": "※长度限12个字符",
-          "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
+      "chat": {
+        "tab": {
+          "all": "All",
+          "map": "Map",
+          "global": "Global"
+        },
+        "nickname": {
+          "header": "设置一个名字即可开始和大家聊天！",
+          "rule": {
+            "maxLength": "※长度限12个字符",
+            "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
+          }
         }
       }
     },
@@ -61,7 +68,6 @@
       },
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
-      "toggleGlobalChat": "显示全局聊天记录",
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效",
       "toggleGlobalMessage": "发送全局聊天记录",

@@ -145,11 +145,10 @@ let config = {
   name: '',
   singlePlayer: false,
   disableChat: false,
-  disableGlobalChat: false,
   disableNametags: false,
   disablePlayerSounds: false,
-  globalMessage: false,
-  showGlobalMessageLocation: false
+  chatTabIndex: 0,
+  globalMessage: false
 };
 
 let connStatus;
@@ -343,18 +342,6 @@ document.getElementById('chatButton').onclick = function () {
   updateConfig(config);
 };
 
-document.getElementById('globalChatButton').onclick = function () {
-  this.classList.toggle('toggled');
-  const toggled = this.classList.contains('toggled');
-  document.getElementById('chatboxContainer').classList.toggle('hideGlobal', toggled);
-  if (!toggled) {
-    const messages = document.getElementById("messages");
-    messages.scrollTop = messages.scrollHeight;
-  }
-  config.disableGlobalChat = toggled;
-  updateConfig(config);
-};
-
 document.getElementById('globalMessageButton').onclick = function () {
   this.classList.toggle('toggled');
   const chatInput = document.getElementById('chatInput');
@@ -427,12 +414,12 @@ Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
   };
 });
 
-let activeChatboxTabSection = 'messages';
+let activeChatboxTabSection = 'chat';
 
 function onClickChatboxTab() {
   if (this.dataset.tabSection !== activeChatboxTabSection) {
     activeChatboxTabSection = this.dataset.tabSection;
-    if (activeChatboxTabSection === 'messages')
+    if (activeChatboxTabSection === 'chat')
       document.getElementById("unreadMessageCountContainer").classList.add('hidden');
     for (let tab of document.getElementsByClassName('chatboxTab'))
       tab.classList.toggle('active', tab === this);
@@ -443,6 +430,27 @@ function onClickChatboxTab() {
 
 for (let tab of document.getElementsByClassName('chatboxTab'))
   tab.onclick = onClickChatboxTab;
+
+function onClickChatTab() {
+  const tabIndex = Array.prototype.indexOf.call(this.parentNode.children, this);
+  if (tabIndex !== config.chatTabIndex) {
+    const messages = document.getElementById('messages');
+    for (let chatTab of document.getElementsByClassName('chatTab')) {
+      const active = chatTab === this;
+      chatTab.classList.toggle('active', active);
+      if (active || !tabIndex)
+        chatTab.classList.remove('unread');
+    }
+    messages.classList.toggle('map', tabIndex === 1);
+    messages.classList.toggle('global', tabIndex === 2);
+    messages.scrollTop = messages.scrollHeight;
+    config.chatTabIndex = tabIndex;
+    updateConfig(config);
+  }
+}
+
+for (let chatTab of document.getElementsByClassName('chatTab'))
+  chatTab.onclick = onClickChatTab;
 
 let ignoreSizeChanged = false;
 
@@ -515,6 +523,7 @@ function updateCanvasFullscreenSize() {
   const canvasElement = document.getElementById('canvas');
   const canvasContainerElement = document.getElementById('canvasContainer');
   const chatboxContainerElement = document.getElementById('chatboxContainer');
+  const messages = document.getElementById('messages');
 
   let canvasContainerHeight = null;
   let canvasContainerPaddingRight = null;
@@ -571,7 +580,7 @@ function updateCanvasFullscreenSize() {
   document.getElementById('chatbox').style.height = chatboxHeight;
   document.getElementById('leftControls').style.maxHeight = leftControlsMaxHeight;
 
-  document.getElementById("messages").scrollTop = messages.scrollHeight;
+  messages.scrollTop = messages.scrollHeight;
 }
 
 if (Module.postRun) {
@@ -1166,10 +1175,6 @@ function loadOrInitConfig() {
               if (value)
                 document.getElementById('chatButton').click();
               break;
-            case 'disableGlobalChat':
-              if (value)
-                document.getElementById('globalChatButton').click();
-              break;
             case 'disableNametags':
               if (value)
                 preToggle(document.getElementById('nametagButton'));
@@ -1177,6 +1182,13 @@ function loadOrInitConfig() {
             case 'disablePlayerSounds':
               if (value)
                 preToggle(document.getElementById('playerSoundsButton'));
+              break;
+            case 'chatTabIndex':
+              if (value) {
+                const chatTab = document.querySelector(`.chatTab:nth-child(${value + 1})`);
+                if (chatTab)
+                  chatTab.click();
+              }
               break;
             case 'globalMessage':
               if (value)
