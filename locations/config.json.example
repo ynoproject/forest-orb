@@ -1,7 +1,19 @@
 {
+	"__comment__": "Map IDs for maps that are inaccessible or otherwise don't represent actual locations that should affect the location text",
 	"ignoredMapIds": [ "0001", "9999" ],
 	"mapLocations": {
-		"0002": "Example Location",
-		"0010": [ "Shared Location A", "Shared Location B" ]
+		"__comment2__": "Basic text locations",
+		"0002": "Location A",
+		"0003": "Location B",
+		"__comment3__": "Multiple locations that will be displayed simultaneously (only use when the location is ambiguous for a map, even given the previous map ID)",
+		"0005": [ "Location C", "Location D" ],
+		"__comment4__": "Location that will vary depending on previous map ID",
+		"0010": {
+			"__comment5__": "If previous map ID matches the key, it will use that value for the location",
+			"0002": "Location E",
+			"0003": "Location F",
+			"__comment6__": "If 'else' is present, its value will be used if the previous map ID does not match any of the keys for this entry (if 'else' is not present, 'Unknown Location' will be displayed)",
+			"else": [ "Location E", "Location F" ]
+		}
 	}
 }

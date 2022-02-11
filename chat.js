@@ -30,8 +30,8 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
         const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
         set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
       } else {
-        globalMessageIcon.title = getLocalizedMapLocations(mapId);
-        globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, getInfoLabel('&nbsp;|&nbsp;'));
+        globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId);
+        globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
       }
 
       msgContainer.appendChild(globalMessageLocation);

@@ -260,7 +260,7 @@ function onLoadMap(mapName) {
         if (!cachedMapId)
           document.getElementById('location').classList.remove('hidden');
 
-        document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, '<br>');
+        document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, '<br>');
         onUpdateChatboxInfo();
       }
 
@@ -1059,32 +1059,47 @@ function initLocalizedMapLocations(lang) {
   .catch(_err => { }); // Assume map location localizations for this language don't exist
 }
 
-function getLocalizedMapLocations(mapId) {
+function getLocalizedMapLocations(mapId, prevMapId) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
-    const locationsText = typeof localizedLocations === 'string'
-      ? getInfoLabel(localizedLocations)
-      : Array.isArray(localizedLocations)
-        ? localizedLocations.join('\n')
-        : localizedMessages.location.unknownLocation;
-    return locationsText;
+    if (typeof localizedLocations === 'string') // Text location
+      return localizedLocations;
+    if (Array.isArray(localizedLocations)) // Multiple locations
+      return localizedLocations.join('\n');
+    if (localizedLocations.hasOwnProperty(prevMapId)) // Previous map ID matches a key
+      return localizedLocations[prevMapId];
+    if (localizedLocations.hasOwnProperty('else')) { // Else case
+      if (typeof localizedLocations.else === 'string')
+        return localizedLocations.else;
+      if (Array.isArray(localizedLocations.else))
+        return localizedLocations.else.join('\n');
+    }
   }
   
   return localizedMessages.location.unknownLocation;
 }
 
-function getLocalizedMapLocationsHtml(mapId, separator) {
+function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
-    const locationsHtml = typeof localizedLocations === 'string'
-      ? getInfoLabel(localizedLocations)
-      : Array.isArray(localizedLocations)
-        ? localizedLocations.map(l => getInfoLabel(l)).join(separator)
-        : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
-    return locationsHtml;
+    let locationsHtml;
+    if (typeof localizedLocations === 'string')
+      locationsHtml = localizedLocations;
+    else if (Array.isArray(localizedLocations))
+      locationsHtml = localizedLocations.join(separator);
+    else if (localizedLocations.hasOwnProperty(prevMapId))
+      locationsHtml = localizedLocations[prevMapId];
+    else if (localizedLocations.hasOwnProperty('else')) {
+      if (typeof localizedLocations.else === 'string')
+        locationsHtml = localizedLocations.else;
+      else if (Array.isArray(localizedLocations.else))
+        locationsHtml = localizedLocations.else.join(separator);
+    }
+    if (locationsHtml)
+      return getInfoLabel(locationsHtml);
   }
   
-  return getInfoLabel(localizedMessages.location.unknownLocation);
+  return getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
 
 function massageLabels(data) {
