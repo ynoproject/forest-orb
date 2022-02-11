@@ -31,9 +31,9 @@
       },
       "chat": {
         "tab": {
-          "all": "All",
-          "map": "Map",
-          "global": "Global"
+          "all": "전체",
+          "map": "로컬",
+          "global": "글로벌"
         },
         "nickname": {
           "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
