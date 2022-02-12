@@ -149,7 +149,7 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
     if (locations)
       locationCache[locationKey] = locations;
     else
-      unknownLocations.push(locationKey)
+      unknownLocations.push(locationKey);
     if (prevLocations)
       locationCache[prevLocationKey] = prevLocations;
     if (saveLocation && (locations || prevLocations)) {
@@ -203,7 +203,7 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
       if (locations)
         locationCache[locationKey] = locations;
       else
-        unknownLocations.push(locationKey)
+        unknownLocations.push(locationKey);
       if (prevLocations)
         locationCache[prevLocationKey] = prevLocations;
       if (saveLocation && (locations || prevLocations)) {

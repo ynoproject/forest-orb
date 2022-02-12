@@ -148,7 +148,8 @@ let config = {
   disableNametags: false,
   disablePlayerSounds: false,
   chatTabIndex: 0,
-  globalMessage: false
+  globalMessage: false,
+  showGlobalMessageLocation: false
 };
 
 let connStatus;
