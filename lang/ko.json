@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -72,7 +72,7 @@
       "togglePlayerSounds": "다른 플레이어의 소리 듣기",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
-        "clearChat": "Clear Chat"
+        "clearChat": "채팅 기록 삭제하기"
       },
       "nexus": "넥서스로 돌아가기"
     }
