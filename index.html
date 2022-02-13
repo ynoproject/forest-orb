@@ -64,6 +64,10 @@
       background-image: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%) !important; /*alt*/
     }
 
+    #globalChatInputOverlay {
+      background-image: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%) !important; /*altb*/
+    }
+
     #connStatusIcon {
       background: linear-gradient(#b30000, #800000);
       -webkit-background-clip: text;
@@ -161,13 +165,20 @@
       background-image: url('images/ui/2kki/system1/font1.png') !important;
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
-  
-    input[type='text'], select {
+
+    #chatBorder, input[type='text'], select {
       border: 12px solid transparent;
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
+    }
+  
+    input[type='text'], select {
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
+    }
+
+    #chatInput {
+      border-image: none !important;
     }
 
      /* Safari only */
@@ -337,6 +348,8 @@
           <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
             <form action="javascript:chatInputActionFired()">
               <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" data-sys="" />
+              <div id="globalChatInputOverlay"></div>
+              <div id="chatBorder"></div>
             </form>
             <div id="globalCooldownIcon" class="icon">
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">

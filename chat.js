@@ -1,4 +1,6 @@
 Module['onRuntimeInitialized'] = initChat;
+if (typeof ENV === 'undefined')
+  initChat();
 
 function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) {
   const messages = document.getElementById("messages");

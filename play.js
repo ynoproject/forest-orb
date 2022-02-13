@@ -711,6 +711,7 @@ function setFontStyle(fontStyle, isInit) {
       themeStyles.textContent = themeStyles.textContent
         .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*base\*\//g, 'linear-gradient($1, ' + getGradientText(baseColors) + ')$2;$3/*base*/')
         .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*alt\*\//g, 'linear-gradient($1, ' + getGradientText(altColors) + ')$2;$3/*alt*/')
+        .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*altb\*\//g, 'linear-gradient($1, ' + getGradientText(altColors, true) + ')$2;$3/*altb*/')
         .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + getColorRgba(baseColors[8]) + '$4;$5/*base*/')
         .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + getColorRgba(altColors[8]) + '$4;$5/*alt*/');
       updateSvgGradient(document.getElementById('baseGradient'), baseColors);
@@ -852,13 +853,15 @@ function getBaseBgColor(uiTheme, callback) {
   img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/containerbg.png';
 }
 
-function getGradientText(colors) {
+function getGradientText(colors, smooth) {
   let lastColor = colors[0];
   let ret = `${getColorRgba(lastColor)} 0 `;
   colors.forEach(function (color, c) {
     if (color[0] !== lastColor[0] || color[1] !== lastColor[1] || color[2] !== lastColor[2]) {
       const percent = Math.floor(((c + 1) / colors.length) * 10000) / 100;
-      ret += `${percent}%, ${getColorRgba(color)} ${percent}% `;
+      ret += `${percent}%, ${getColorRgba(color)} `;
+      if (!smooth)
+        ret += `${percent}% `;
       lastColor = color;
     }
   });
