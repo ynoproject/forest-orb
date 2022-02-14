@@ -387,7 +387,7 @@ body {
   margin-right: -32px;
 }
 
-#chatInputContainer.globalCooldown form {
+#chatbox:not(.map):not(.global) #chatInputContainer.globalCooldown form {
   margin-right: -50px;
 }
 
@@ -402,7 +402,7 @@ body {
   padding-right: 28px;
 }
 
-#chatbox.map #chatInput, #chatbox.global #chatInput {
+#chatbox.map #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.global #chatInputContainer:not(.globalCooldown) #chatInput {
   width: calc(100% - 13px);
   padding-right: 2px;
 }
@@ -411,7 +411,7 @@ body {
   opacity: 0.675;
 }
 
-#chatInputContainer.globalCooldown #chatInput {
+#chatbox:not(.map):not(.global) #chatInputContainer.globalCooldown #chatInput {
   width: calc(100% - 62px);
   padding-right: 52px;
 }
@@ -460,6 +460,10 @@ body {
 
 #chatInputContainer:not(.globalCooldown) #globalCooldownIcon {
   display: none;
+}
+
+#chatbox.map #globalCooldownIcon, #chatbox.global #globalCooldownIcon {
+  left: 8px;
 }
 
 #globalMessageButton {
