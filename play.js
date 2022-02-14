@@ -148,7 +148,7 @@ let config = {
   disableNametags: false,
   disablePlayerSounds: false,
   chatTabIndex: 0,
-  chatTipIndex: 0,
+  chatTipIndex: -1,
   globalMessage: false,
   showGlobalMessageLocation: false
 };
