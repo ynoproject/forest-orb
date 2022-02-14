@@ -161,16 +161,29 @@ function initChat() {
   document.getElementById("chatboxContainer").style.display = "table-cell";
 }
 
+function addChatTip() {
+  const tips = localizedMessages.chatTips.tips;
+  if (++config.chatTipIndex >= Object.keys(tips).length)
+    config.chatTipIndex = 0;
+  const tipIndex = config.chatTipIndex;
+  console.log(tips[Object.keys(tips)[tipIndex]], tipIndex)
+  chatboxAddMessage(null, getMassagedLabel(localizedMessages.chatTips.template.replace('{CONTENT}', tips[Object.keys(tips)[tipIndex]])));
+  updateConfig(config);
+}
+
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
     { p: /<\/?[bisu] *>/ig, r: '' },
-    { p: /(\*{3,})([^\*\_\~]+)\1/g, r: '<b><i>$2</i></b>' },
-    { p: /(\*{2})([^\*\_\~]+)\1/g, r: '<b>$2</b>' },
-    { p: /\*([^\*\_\~]+)\*/g, r: '<i>$1</i>' },
-    { p: /(\_{3,})([^\*\_\~]+)\1(?= |$)/g, r: '<u><i>$2</i></u>' },
-    { p: /(\_{2})([^\*\_\~]+)\1(?= |$)/g, r: '<u>$2</u>' },
-    { p: /\_([^\*\_\~]+)\_(?= |$)/g, r: '<i>$1</i>' },
-    { p: /(\~{2,})([^\*\_\~]+)\1/g, r: '<s>$2</s>' },
+    { p: /(?<!\\)(\*{3,})([^\*\_\~]+)(?<!\\)\1/g, r: '<b><i>$2</i></b>' },
+    { p: /(?<!\\)(\*{2})([^\*\_\~]+)(?<!\\)\1/g, r: '<b>$2</b>' },
+    { p: /(?<!\\)\*([^\*\_\~]+)(?<!\\)\*/g, r: '<i>$1</i>' },
+    { p: /(?<!\\)(\_{3,})([^\*\_\~]+)(?<!\\)\1(?= |$)/g, r: '<u><i>$2</i></u>' },
+    { p: /(?<!\\)(\_{2})([^\*\_\~]+)(?<!\\)\1(?= |$)/g, r: '<u>$2</u>' },
+    { p: /(?<!\\)\_([^\*\_\~]+)(?<!\\)\_(?= |$)/g, r: '<i>$1</i>' },
+    { p: /(?<!\\)(\~{2,})([^\*\_\~]+)(?<!\\)\1/g, r: '<s>$2</s>' },
+    { p: /\\\*/g, r: '*' },
+    { p: /\\\_/g, r: '_' },
+    { p: /\\\~/g, r: '~' },
   ];
   for (let e of replacements)
     msg = msg.replace(e.p, e.r);

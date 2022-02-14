@@ -148,11 +148,13 @@ let config = {
   disableNametags: false,
   disablePlayerSounds: false,
   chatTabIndex: 0,
+  chatTipIndex: 0,
   globalMessage: false,
   showGlobalMessageLocation: false
 };
 
 let connStatus;
+let hasConnected = false;
 
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
@@ -176,6 +178,10 @@ function onUpdateConnectionStatus(status) {
   if (status === 1) {
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
     fetchAndUpdatePlayerCount();
+    if (!hasConnected) {
+      addChatTip();
+      hasConnected = true;
+    }
   } else
     clearPlayerList();
   connStatus = status;
@@ -400,7 +406,7 @@ document.getElementById('clearChatButton').onclick = function () {
       message.remove();
   } else {
     messagesElement.innerHTML = '';
-    
+
     const unreadChatTab = document.querySelector('.chatTab.unread');
     if (unreadChatTab)
       unreadChatTab.classList.remove('unread');
