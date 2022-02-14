@@ -119,7 +119,7 @@
     "chatTips": {
       "template": "TIP: {CONTENT}",
       "tips": {
-        "menuTheme": "Your name color and your player list entry style are based on your in-game menu theme.",
+        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
         "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
         "globalChatLocation": "You can view the location a global chat message was sent in by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
         "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), and ~~strikethrough~~ (\\~\\~text\\~\\~).",
