@@ -140,16 +140,19 @@ const langLabelMassageFunctions = {
   }
 };
 
-let config = {
+let globalConfig = {
   lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
   name: '',
+  chatTipIndex: -1
+};
+
+let config = {
   singlePlayer: false,
   disableChat: false,
   disableNametags: false,
   disablePlayerSounds: false,
-  chatTabIndex: 0,
-  chatTipIndex: -1,
   globalMessage: false,
+  chatTabIndex: 0,
   showGlobalMessageLocation: false
 };
 
@@ -654,16 +657,16 @@ window.onbeforeunload = function () {
 };
 
 function setLang(lang, isInit) {
-  config.lang = lang;
+  globalConfig.lang = lang;
   initLocalization(isInit);
   if (!isInit)
-    updateConfig(config);
+    updateConfig(globalConfig, true);
 }
 
 function setName(name, isInit) {
-  config.name = name;
+  globalConfig.name = name;
   if (!isInit)
-    updateConfig(config);
+    updateConfig(globalConfig, true);
 }
 
 function getDefaultUiTheme() {
@@ -995,8 +998,8 @@ function initLocalization(isInitial) {
     for (let option of uiThemeOptions)
       option.setAttribute('data-i18n', `[html]uiTheme.values.2kki.${option.value}`);
   }
-  document.getElementsByTagName('html')[0].lang = config.lang;
-  fetch(`lang/${config.lang}.json`)
+  document.getElementsByTagName('html')[0].lang = globalConfig.lang;
+  fetch(`lang/${globalConfig.lang}.json`)
     .then(function (response) {
       return response.json();
     })
@@ -1028,9 +1031,9 @@ function initLocalization(isInitial) {
       }
 
       if (isInitial)
-        initLocations(config.lang);
+        initLocations(globalConfig.lang);
       else if (localizedMapLocations)
-        initLocalizedMapLocations(config.lang);
+        initLocalizedMapLocations(globalConfig.lang);
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');
@@ -1039,9 +1042,9 @@ function initLocalization(isInitial) {
         document.getElementById('translationLink').href = `https://github.com/ynoproject/forest-orb/edit/master/lang/${config.lang}.json`;
 
       const resourcesJson = {};
-      resourcesJson[config.lang] = { translation: jsonResponse.ui };
+      resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
       i18next.init({
-        lng: config.lang,
+        lng: globalConfig.lang,
         resources: resourcesJson,
         preventValueFromContent: false
       }, function (err) {
@@ -1138,7 +1141,7 @@ function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
 }
 
 function massageLabels(data) {
-  if (langLabelMassageFunctions.hasOwnProperty(config.lang) && data) {
+  if (langLabelMassageFunctions.hasOwnProperty(globalConfig.lang) && data) {
     Object.keys(data).forEach(function (key) {
       if (key === 'tooltips')
         return;
@@ -1158,8 +1161,8 @@ function massageLabels(data) {
 }
 
 function getMassagedLabel(label, isUI) {
-  if (langLabelMassageFunctions.hasOwnProperty(config.lang) && label)
-    return langLabelMassageFunctions[config.lang](label, isUI);
+  if (langLabelMassageFunctions.hasOwnProperty(globalConfig.lang) && label)
+    return langLabelMassageFunctions[globalConfig.lang](label, isUI);
   return label;
 }
 
@@ -1171,78 +1174,83 @@ let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
 
-function loadOrInitConfig() {
+function loadOrInitConfig(configObj, global) {
   try {
-    const configKey = `config_${gameId}`;
+    const configKey = global ? 'config' : `config_${gameId}`;
     if (!window.localStorage.hasOwnProperty(configKey))
-      window.localStorage.setItem(configKey, JSON.stringify(config));
+      window.localStorage.setItem(configKey, JSON.stringify(configObj));
     else {
       const savedConfig = JSON.parse(window.localStorage.getItem(configKey));
       const savedConfigKeys = Object.keys(savedConfig);
       for (let k in savedConfigKeys) {
         const key = savedConfigKeys[k];
-        if (config.hasOwnProperty(key)) {
+        if (configObj.hasOwnProperty(key)) {
           let value = savedConfig[key];
-          switch (key) {
-            case 'lang':
-              document.getElementById('lang').value = value;
-              setLang(value, true);
-              loadedLang = true;
-              break;
-            case 'name':
-              document.getElementById('nameInput').value = value;
-              setName(value, true);
-              break;
-            case 'singlePlayer':
-              if (value)
-                preToggle(document.getElementById('singlePlayerButton'));
-              break;
-            case 'disableChat':
-              if (value)
-                document.getElementById('chatButton').click();
-              break;
-            case 'disableNametags':
-              if (value)
-                preToggle(document.getElementById('nametagButton'));
-              break;
-            case 'disablePlayerSounds':
-              if (value)
-                preToggle(document.getElementById('playerSoundsButton'));
-              break;
-            case 'chatTabIndex':
-              if (value) {
-                const chatTab = document.querySelector(`.chatTab:nth-child(${value + 1})`);
-                if (chatTab)
-                  chatTab.click();
-              }
-              break;
-            case 'globalMessage':
-              if (value)
-                document.getElementById('globalMessageButton').click();
-              break;
-            case 'uiTheme':
-              if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
-                if (hasUiThemes)
-                  document.querySelector('.uiTheme').value = value;
-                setUiTheme(value, true);
-                loadedUiTheme = true;
-              }
-              break;
-            case 'fontStyle':
-              if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
-                document.querySelector('.fontStyle').value = value;
-                setFontStyle(value, true);
-                loadedFontStyle = true;
-              }
-              break;
-            case 'locationCache':
-              locationCache = Object.assign({}, value);
-              break;
-            case 'mapCache':
-              mapCache = Object.assign({}, value);
-              break;
+          if (global) {
+            switch (key) {
+              case 'lang':
+                document.getElementById('lang').value = value;
+                setLang(value, true);
+                loadedLang = true;
+                break;
+              case 'name':
+                document.getElementById('nameInput').value = value;
+                setName(value, true);
+                break;
+            }
+          } else {
+            switch (key) {
+              case 'singlePlayer':
+                if (value)
+                  preToggle(document.getElementById('singlePlayerButton'));
+                break;
+              case 'disableChat':
+                if (value)
+                  document.getElementById('chatButton').click();
+                break;
+              case 'disableNametags':
+                if (value)
+                  preToggle(document.getElementById('nametagButton'));
+                break;
+              case 'disablePlayerSounds':
+                if (value)
+                  preToggle(document.getElementById('playerSoundsButton'));
+                break;
+              case 'chatTabIndex':
+                if (value) {
+                  const chatTab = document.querySelector(`.chatTab:nth-child(${value + 1})`);
+                  if (chatTab)
+                    chatTab.click();
+                }
+                break;
+              case 'globalMessage':
+                if (value)
+                  document.getElementById('globalMessageButton').click();
+                break;
+              case 'uiTheme':
+                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
+                  if (hasUiThemes)
+                    document.querySelector('.uiTheme').value = value;
+                  setUiTheme(value, true);
+                  loadedUiTheme = true;
+                }
+                break;
+              case 'fontStyle':
+                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
+                  document.querySelector('.fontStyle').value = value;
+                  setFontStyle(value, true);
+                  loadedFontStyle = true;
+                }
+                break;
+              case 'locationCache':
+                locationCache = Object.assign({}, value);
+                break;
+              case 'mapCache':
+                mapCache = Object.assign({}, value);
+                break;
+            }
           }
-          config[key] = value;
+          configObj[key] = value;
         }
       }
     }
@@ -1251,16 +1259,17 @@ function loadOrInitConfig() {
   }
 }
 
-function updateConfig(config) {
+function updateConfig(configObj, global) {
   try {
-    window.localStorage[`config_${gameId}`] = JSON.stringify(config);
+    window.localStorage[global ? 'config' : `config_${gameId}`] = JSON.stringify(configObj);
   } catch (error) {
   }
 }
 
 onResize();
 
-loadOrInitConfig();
+loadOrInitConfig(globalConfig, true);
+loadOrInitConfig(config);
 
 fetchAndUpdatePlayerCount();
 window.setInterval(fetchAndUpdatePlayerCount, 15000);

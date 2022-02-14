@@ -163,12 +163,11 @@ function initChat() {
 
 function addChatTip() {
   const tips = localizedMessages.chatTips.tips;
-  if (++config.chatTipIndex >= Object.keys(tips).length)
-    config.chatTipIndex = 0;
-  const tipIndex = config.chatTipIndex;
-  console.log(tips[Object.keys(tips)[tipIndex]], tipIndex)
+  if (++globalConfig.chatTipIndex >= Object.keys(tips).length)
+    globalConfig.chatTipIndex = 0;
+  const tipIndex = globalConfig.chatTipIndex;
   chatboxAddMessage(null, getMassagedLabel(localizedMessages.chatTips.template.replace('{CONTENT}', tips[Object.keys(tips)[tipIndex]])));
-  updateConfig(config);
+  updateConfig(globalConfig, true);
 }
 
 function parseMessageTextForMarkdown(msg) {

@@ -349,7 +349,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 
-  const url = `https://2kki.app/?location=${locationName}&lang=${config.lang}`;
+  const url = `https://2kki.app/?location=${locationName}&lang=${globalConfig.lang}`;
 
   ret.onclick = () => {
     const handle = window.open(url, '_blank');
