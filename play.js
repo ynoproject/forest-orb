@@ -392,10 +392,19 @@ document.getElementById('uploadButton').onclick = function () {
 document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 
 document.getElementById('clearChatButton').onclick = function () {
-  document.getElementById('messages').innerHTML = '';
-  const unreadChatTab = document.querySelector('.chatTab.unread');
-  if (unreadChatTab)
-    unreadChatTab.classList.remove('unread');
+  const messagesElement = document.getElementById('messages');
+  const globalFiltered = messagesElement.classList.contains('global');
+  if (globalFiltered || messagesElement.classList.contains('map')) {
+    const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.global' : ':not(.global)'}`);
+    for (let message of messages)
+      message.remove();
+  } else {
+    messagesElement.innerHTML = '';
+    
+    const unreadChatTab = document.querySelector('.chatTab.unread');
+    if (unreadChatTab)
+      unreadChatTab.classList.remove('unread');
+  }
 };
 
 document.getElementById('nexusButton').onclick = function () {
