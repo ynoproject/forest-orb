@@ -401,9 +401,10 @@ document.getElementById('uploadButton').onclick = function () {
 document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 
 document.getElementById('clearChatButton').onclick = function () {
+  const chatbox = document.getElementById('chatbox');
   const messagesElement = document.getElementById('messages');
-  const globalFiltered = messagesElement.classList.contains('global');
-  if (globalFiltered || messagesElement.classList.contains('map')) {
+  const globalFiltered = chatbox.classList.contains('global');
+  if (globalFiltered || chatbox.classList.contains('map')) {
     const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.global' : ':not(.global)'}`);
     for (let message of messages)
       message.remove();
@@ -460,15 +461,21 @@ for (let tab of document.getElementsByClassName('chatboxTab'))
 function onClickChatTab() {
   const tabIndex = Array.prototype.indexOf.call(this.parentNode.children, this);
   if (tabIndex !== config.chatTabIndex) {
+    const chatbox = document.getElementById('chatbox');
     const messages = document.getElementById('messages');
+    const chatInput = document.getElementById('chatInput');
     for (let chatTab of document.getElementsByClassName('chatTab')) {
       const active = chatTab === this;
       chatTab.classList.toggle('active', active);
       if (active || !tabIndex)
         chatTab.classList.remove('unread');
     }
-    messages.classList.toggle('map', tabIndex === 1);
-    messages.classList.toggle('global', tabIndex === 2);
+    if ((!tabIndex && config.globalMessage) || tabIndex === 2)
+      chatInput.dataset.global = true;
+    else
+      delete chatInput.dataset.global;
+    chatbox.classList.toggle('map', tabIndex === 1);
+    chatbox.classList.toggle('global', tabIndex === 2);
     messages.scrollTop = messages.scrollHeight;
     config.chatTabIndex = tabIndex;
     updateConfig(config);

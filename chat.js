@@ -83,9 +83,11 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
-  if (messages.classList.contains("map") && global)
+  const chatbox = document.getElementById("chatbox");
+
+  if (chatbox.classList.contains("map") && global)
     document.getElementById("chatTabGlobal").classList.add("unread");
-  else if (messages.classList.contains("global") && !global)
+  else if (chatbox.classList.contains("global") && !global)
     document.getElementById("chatTabMap").classList.add("unread");
   else if (!document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
     const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");

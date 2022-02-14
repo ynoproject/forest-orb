@@ -300,11 +300,11 @@ body {
   pointer-events: none;
 }
 
-#messages.map .messageContainer.global {
+#chatbox.map .messageContainer.global {
   display: none;
 }
 
-#messages.global .messageContainer:not(.global) {
+#chatbox.global .messageContainer:not(.global) {
   display: none;
 }
 
@@ -402,6 +402,11 @@ body {
   padding-right: 28px;
 }
 
+#chatbox.map #chatInput, #chatbox.global #chatInput {
+  width: calc(100% - 13px);
+  padding-right: 2px;
+}
+
 #chatInput:disabled {
   opacity: 0.675;
 }
@@ -462,6 +467,10 @@ body {
   top: 1px;
   left: 4px;
   pointer-events: all;
+}
+
+#chatbox.map #globalMessageButton, #chatbox.global #globalMessageButton {
+  display: none;
 }
 
 #globalChatInputOverlay, #chatBorder {
