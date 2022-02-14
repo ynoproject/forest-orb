@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -117,15 +117,15 @@
       "unnamed": "Безымянный игрок"
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "СОВЕТ: {CONTENT}",
       "tips": {
-        "menuTheme": "Your name color and your player list entry style are based on your in-game menu theme.",
-        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "globalChatLocation": "You can view the location a global chat message was sent in by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
-        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), and ~~strikethrough~~ (\\~\\~text\\~\\~).",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "menuTheme": "Цвет вашего ника и оформление вашего ярлыка в списке игроков зависит от выбранной вами в игре темы меню.",
+        "playersInMap": "Вы можете переключиться между режимами отображения количества игроков в игре и на карте, нажав на счётчик.",
+        "globalChatLocation": "Вы можете узнать, Из какой локации было отправлено сообщение в глобальный чат, если наведёте или нажмёте на иконку глобуса слева у сообщения. В зависимости от того, показало или скрыло-ли последнее нажатие локацию, определяется, будут-ли у дальнейших глобальных сообщений отображаться локации, откуда они отправлены, в развёрнутом виде.",
+        "markdownSupport": "В Чате поддерживаеется форматирование - Нужно лишь окружить форматируемый текст специальными символами. На настоящий момент поддерживаются: **Жирный** (\\*\\*текст\\*\\*), *Курсив* (\\*текст\\*, \\_текст\\_), __Подчёркнутый__ (\\_\\_текст\\_\\_) и ~~Зачёркнутый~~ (\\~\\~текст\\~\\~).",
+        "chatTabNotifications": "Если вы во вкладке чата, отличной от 'Все', и в другой вкладке появилось новое сообщение, её ярлык станет чуть жирнее.",
+        "clearChat": "Если вы нажмёте на кнопку 'Очистить чат' (Сверху-справа в окне чата), не будучи во вкладке 'Все', то удалятся только сообщения из ныне открытой вкладки.",
+        "openSource": "YNOproject - Проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
     "2kki": {
