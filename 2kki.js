@@ -1,10 +1,8 @@
 const is2kki = gameId === '2kki';
 const unknownLocations = [];
-const commonMapIds = ['0002', '0010'];
-let defaultLocations;
 
 function onLoad2kkiMap(mapId) {
-  const prevMapId = commonMapIds.indexOf(mapId) === -1 ? cachedMapId : null;
+  const prevMapId = cachedMapId;
   const prevLocations = prevMapId ? cachedLocations : null;
   const locationKey = `${(prevMapId || '0000')}_${mapId}`;
 
@@ -13,20 +11,15 @@ function onLoad2kkiMap(mapId) {
   if (locations && typeof locations === 'string')
     locations = null;
 
-  const useDefaultLocation = defaultLocations.hasOwnProperty(mapId);
-
-  if (useDefaultLocation)
-    locations = defaultLocations[mapId];
-  else if (unknownLocations.indexOf(locationKey) > -1)
+  if (unknownLocations.indexOf(locationKey) > -1)
     locations = getMassagedLabel(localizedMessages.location.unknownLocation);
 
   if (!cachedMapId)
     document.getElementById('location').classList.remove('hidden');
   
   if (locations && locations.length) {
-    const cacheLocation = useDefaultLocation && !locationCache.hasOwnProperty(locationKey);
     const locationNames = Array.isArray(locations) ? locations.map(l => l.title) : null;
-    set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation);
+    set2kkiClientLocation(mapId, prevMapId, locations, prevLocations);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
     cachedPrevLocations = cachedLocations;
@@ -35,11 +28,8 @@ function onLoad2kkiMap(mapId) {
       set2kkiExplorerLinks(null);
       set2kkiMaps([]);
     } else {
-      set2kkiExplorerLinks(!useDefaultLocation ? locationNames : null);
-      if (useDefaultLocation) {
-        const cacheMap = useDefaultLocation && !mapCache.hasOwnProperty(locationNames.join(','));
-        set2kkiMaps([], locationNames, cacheMap, cacheMap);
-      } else if (mapCache.hasOwnProperty(locationNames.join(',')))
+      set2kkiExplorerLinks(locationNames);
+      if (mapCache.hasOwnProperty(locationNames.join(',')))
         set2kkiMaps(mapCache[locationNames.join(',')], locationNames);
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
@@ -65,7 +55,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
       let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
       if (prevMapId) {
           url += `&prevMapId=${prevMapId}`;
-          if (prevLocations && prevLocations.length && !prevLocations[0].default)
+          if (prevLocations && prevLocations.length)
             url += `&prevLocationNames=${prevLocations.map(l => l.title).join('&prevLocationNames=')}`;
       }
       req.responseType = 'json';
@@ -180,8 +170,8 @@ function getLocalized2kkiLocations(locations) {
 function get2kkiLocationLinkHtml(location) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
-  const locationLink = `<a href="https://yume2kki.fandom.com/wiki/${urlTitle}" target="_blank">${location.title}</a>`
-  const locationLinkJP = urlTitleJP ? `<a href="https://wikiwiki.jp/yume2kki-t/${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
+  const locationLink = `<a href="${locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  const locationLinkJP = urlTitleJP ? `<a href="${localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
   return locationLinkJP ? getLocalized2kkiLocation(locationLink, locationLinkJP, true) : locationLink;
 }
 
@@ -216,10 +206,10 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     }
   };
 
-  if (defaultLocations.hasOwnProperty(mapId))
-    setMessageLocationFunc(mapId, prevMapId, defaultLocations[mapId], prevLocations);
+  if (localizedMapLocations.hasOwnProperty(mapId))
+    setMessageLocationFunc(mapId, prevMapId, localizedMapLocations[mapId], prevLocations);
   else {
-    if (!prevMapId || commonMapIds.indexOf(mapId) > -1)
+    if (!prevMapId)
       prevMapId = "0000";
     const locationKey = `${prevMapId}_${mapId}`;
     if (unknownLocations.indexOf(locationKey) > -1)
@@ -230,23 +220,6 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
       queryAndSet2kkiLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
         .catch(err => console.error(err));
   }
-}
-
-function getDefault2kkiLocations() {
-  const ret = {
-    '0150': [{ title: 'Puzzle Game (Kura Puzzle)', titleJP: 'パズルゲーム', urlTitle: 'Console#PUZZLE_GAME_.28Kura_Puzzle.29', urlTitleJP: 'ミニゲーム/パズルゲーム', default: true }],
-    '0620': [{ title: 'Sound Room', titleJP: 'SR分室の曲', urlTitle: 'Soundtrack', urlTitleJP: '収集要素/SR分室の曲・演出の解放条件', default: true }]
-  };
-
-  const wavyUpLocation = [{ title: '↑v↑ (Wavy Up)', titleJP: '↑v↑', urlTitle: 'Console#.E2.86.91V.E2.86.91_.28Wavy_Up.29', urlTitleJP: 'ミニゲーム/↑v↑', default: true }];
-  for (let i = 121; i <= 130; i++)
-    ret[`0${i}`] = wavyUpLocation;
-
-  const platedSnowCountry = [{ title: 'Plated Snow Country', titleJP: 'ゆきぐにっき', urlTitle: 'Console#Plated_Snow_Country', urlTitleJP: 'ミニゲーム/ゆきぐにっき', default: true }];
-  for (let i = 249; i <= 250; i++)
-    ret[`0${i}`] = platedSnowCountry;
-
-  return ret;
 }
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
@@ -361,6 +334,3 @@ function get2kkiExplorerButton(locationName, isMulti) {
 
   return ret;
 }
-
-if (is2kki)
-  defaultLocations = getDefault2kkiLocations();

@@ -96,6 +96,7 @@
       "3": "Single Player"
     },
     "location": {
+      "template": "{LOCATION}",
       "unknownLocation": "Ubicación Desconocida",
       "2kki": {
         "template": "{LOCATION}",

@@ -99,6 +99,7 @@
       "3": "Single Player"
     },
     "location": {
+      "template": "{LOCATION}",
       "unknownLocation": "Unknown Location",
       "2kki": {
         "template": "{LOCATION}",

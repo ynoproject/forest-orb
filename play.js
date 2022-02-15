@@ -128,6 +128,9 @@ const hasUiThemes = gameUiThemes.length > 0;
 
 let localizedMessages;
 let localizedMapLocations;
+let mapLocations;
+let localizedLocationUrlRoot;
+let locationUrlRoot;
 
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
@@ -262,7 +265,9 @@ function onLoadMap(mapName) {
     if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
       return;
     
-    if (gameId === '2kki')
+    const is2kki = gameId === '2kki';
+
+    if (is2kki && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
       onLoad2kkiMap(mapId);
     else {
       if (localizedMapLocations) {
@@ -271,6 +276,11 @@ function onLoadMap(mapName) {
 
         document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, '<br>');
         onUpdateChatboxInfo();
+
+        if (is2kki) {
+          cachedPrevLocations = cachedLocations;
+          cachedLocations = getMapLocationsArray(mapLocations, mapId, cachedMapId);
+        }
       }
 
       cachedPrevMapId = cachedMapId;
@@ -934,7 +944,7 @@ function handleSaveFileUpload(evt) {
 
   const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
-  request.onsuccess = function (e) {
+  request.onsuccess = function (_e) {
 
     const reader = new FileReader();
     let readerResult;
@@ -957,7 +967,7 @@ function handleSaveFileUpload(evt) {
 function handleSaveFileDownload() {
   const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
-  request.onsuccess = function (e) {
+  request.onsuccess = function (_e) {
     const saveSlot = getSaveSlot(true);
 
     if (saveSlot == null)
@@ -968,7 +978,7 @@ function handleSaveFileDownload() {
     const objectStore = transaction.objectStore('FILE_DATA');
     const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
-    objectStoreRequest.onsuccess = function (event) {
+    objectStoreRequest.onsuccess = function (_e) {
       const record = objectStoreRequest.result;
 
       if (!record) {
@@ -1071,11 +1081,18 @@ function initLocations(lang) {
     })
     .then(jsonResponse => {
         ignoredMapIds = jsonResponse.ignoredMapIds || [];
-        localizedMapLocations = jsonResponse.mapLocations || null;
-        if (localizedMapLocations && !Object.keys(localizedMapLocations).length)
-          localizedMapLocations = null;
-        if (localizedMapLocations && lang !== 'en')
-          initLocalizedMapLocations(lang);
+        locationUrlRoot = jsonResponse.urlRoot;
+        localizedLocationUrlRoot = locationUrlRoot;
+        mapLocations = jsonResponse.mapLocations || null;
+        if (mapLocations && !Object.keys(mapLocations).length)
+          mapLocations = null;
+        if (mapLocations) {
+          massageMapLocations(mapLocations, jsonResponse.locationUrlTitles || null);
+          if (lang === 'en')
+            localizedMapLocations = mapLocations;
+          else
+            initLocalizedMapLocations(lang);
+        }
     })
     .catch(err => {
       ignoredMapIds = [];
@@ -1095,29 +1112,60 @@ function initLocalizedMapLocations(lang) {
   .then(jsonResponse => {
       if (!jsonResponse)
         return;
-      const mapLocations = fileName === 'config' ? jsonResponse.mapLocations : jsonResponse;
-      Object.keys(localizedMapLocations).forEach(function (mapId) {
-        if (mapLocations.hasOwnProperty(mapId))
+      localizedLocationUrlRoot = jsonResponse.urlRoot;
+      localizedMapLocations = {};
+      const langMapLocations = jsonResponse.mapLocations;
+      massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
+      Object.keys(mapLocations).forEach(function (mapId) {
+        const mapLocation = langMapLocations[mapId];
+        if (mapLocation)
+          localizedMapLocations[mapId] = mapLocation;
+        else
           localizedMapLocations[mapId] = mapLocations[mapId];
       });
   })
   .catch(_err => { }); // Assume map location localizations for this language don't exist
 }
 
+function getMapLocationsArray(mapLocations, mapId, prevMapId) {
+  if (mapLocations.hasOwnProperty(mapId)) {
+    const locations = mapLocations[mapId];
+    if (locations.hasOwnProperty('title')) // Text location
+      return [ locations ];
+    if (Array.isArray(locations)) // Multiple locations
+      return locations;
+    if (locations.hasOwnProperty(prevMapId)) {// Previous map ID matches a key
+      if (Array.isArray(locations[prevMapId]))
+        return locations[prevMapId];
+      return [ locations[prevMapId] ];
+    }
+    if (locations.hasOwnProperty('else')) { // Else case
+      if (locations.else.hasOwnProperty('title'))
+        return [ locations.else ];
+      if (Array.isArray(locations.else))
+        return locations.else;
+    }
+  }
+}
+
 function getLocalizedMapLocations(mapId, prevMapId) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
-    if (typeof localizedLocations === 'string') // Text location
-      return localizedLocations;
+    const locations = mapLocations[mapId];
+    if (localizedLocations.hasOwnProperty('title')) // Text location
+      return getLocalizedLocation(localizedLocations, locations);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return localizedLocations.join('\n');
-    if (localizedLocations.hasOwnProperty(prevMapId)) // Previous map ID matches a key
-      return localizedLocations[prevMapId];
+      return localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i])).join('\n');
+    if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
+      if (Array.isArray(localizedLocations[prevMapId]))
+        return localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i])).join('\n');
+      return getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId]);
+    }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
-      if (typeof localizedLocations.else === 'string')
-        return localizedLocations.else;
+      if (localizedLocations.else.hasOwnProperty('title'))
+        return getLocalizedLocation(localizedLocations.else, locations.else);
       if (Array.isArray(localizedLocations.else))
-        return localizedLocations.else.join('\n');
+        return localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i])).join('\n');
     }
   }
   
@@ -1127,24 +1175,92 @@ function getLocalizedMapLocations(mapId, prevMapId) {
 function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
+    const locations = mapLocations[mapId];
     let locationsHtml;
-    if (typeof localizedLocations === 'string')
-      locationsHtml = localizedLocations;
-    else if (Array.isArray(localizedLocations))
-      locationsHtml = localizedLocations.join(separator);
-    else if (localizedLocations.hasOwnProperty(prevMapId))
-      locationsHtml = localizedLocations[prevMapId];
-    else if (localizedLocations.hasOwnProperty('else')) {
-      if (typeof localizedLocations.else === 'string')
-        locationsHtml = localizedLocations.else;
+    if (localizedLocations.hasOwnProperty('title')) // Text location
+      locationsHtml = getLocalizedLocation(localizedLocations, locations, true);
+    else if (Array.isArray(localizedLocations)) // Multiple locations
+      locationsHtml = localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i], true)).join(separator);
+    else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
+      if (Array.isArray(localizedLocations[prevMapId]))
+        locationsHtml = localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i], true)).join(separator);
+      else
+        locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true);
+    } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
+      if (localizedLocations.else.hasOwnProperty('title'))
+        locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true);
       else if (Array.isArray(localizedLocations.else))
-        locationsHtml = localizedLocations.else.join(separator);
+        locationsHtml = localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i], true)).join(separator);
     }
     if (locationsHtml)
       return getInfoLabel(locationsHtml);
   }
   
   return getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
+}
+
+function massageMapLocations(mapLocations, locationUrlTitles) {
+  if (Array.isArray(mapLocations)) {
+    for (let l = 0; l < mapLocations.length; l++) {
+      const mapLocation = mapLocations[l];
+      if (typeof mapLocation === 'string') {
+        mapLocations[l] = { title: mapLocation };
+        if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocation))
+          mapLocations[l].urlTitle = locationUrlTitles[mapLocation];
+      }
+    }
+  } else {
+    if (mapLocations.hasOwnProperty('title')) {
+      if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocations.title))
+        mapLocations.urlTitle = locationUrlTitles[mapLocations.title];
+      return;
+    }
+    for (let mapId of Object.keys(mapLocations)) {
+      const mapLocation = mapLocations[mapId];
+      if (typeof mapLocation === 'string') {
+        mapLocations[mapId] = { title: mapLocation };
+        if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocation))
+          mapLocations[mapId].urlTitle = locationUrlTitles[mapLocation];
+      } else
+        massageMapLocations(mapLocation);
+    }
+  }
+}
+
+function getLocalizedLocation(location, locationEn, asHtml) {
+  let template = getMassagedLabel(localizedMessages.location.template);
+  let ret;
+  let locationValue;
+
+  if (asHtml)
+    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
+
+  if (asHtml) {
+    if (localizedLocationUrlRoot && location.urlTitle !== null)
+      locationValue = `<a href="${localizedLocationUrlRoot}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
+    else if (locationUrlRoot && localizedLocationUrlRoot !== null && locationEn.urlTitle !== null)
+      locationValue = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${location.title}</a>`;
+    else
+      locationValue = getInfoLabel(location.title);
+  } else
+    locationValue = location.title;
+    
+  ret = template.replace('{LOCATION}', locationValue);
+  
+  if (template.indexOf('{LOCATION_EN}') > -1) {
+    let locationValueEn;
+    if (asHtml) {
+      if (locationUrlRoot && locationEn.urlTitle !== null)
+        locationValueEn = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${locationEn.title}</a>`;
+      else
+        locationValueEn = getInfoLabel(locationEn.title);
+    } else
+      locationValueEn = locationEn.title;
+      
+    ret = ret.replace('{LOCATION_EN}', locationValueEn);
+  }
+
+  return ret;
 }
 
 function massageLabels(data) {

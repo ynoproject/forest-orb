@@ -99,6 +99,7 @@
       "3": "싱글 플레이"
     },
     "location": {
+      "template": "{LOCATION} ({LOCATION_EN})",
       "unknownLocation": "알 수 없는 장소",
       "2kki": {
         "template": "{LOCATION_JP} ({LOCATION})",

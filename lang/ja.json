@@ -99,6 +99,7 @@
       "3": "シングルプレイヤー"
     },
     "location": {
+      "template": "{LOCATION} 「{LOCATION_EN}」",
       "unknownLocation": "場所不明",
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」",

@@ -99,6 +99,7 @@
       "3": "单人模式"
     },
     "location": {
+      "template": "{LOCATION}（{LOCATION_EN}）",
       "unknownLocation": "未知地点",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）",

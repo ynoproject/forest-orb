@@ -99,6 +99,7 @@
       "3": "Jogador Único"
     },
     "location": {
+      "template": "{LOCATION}",
       "unknownLocation": "Localização Desconhecida",
       "2kki": {
         "template": "{LOCATION}",

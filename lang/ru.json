@@ -99,6 +99,7 @@
       "3": "Одиночная игра"
     },
     "location": {
+      "template": "{LOCATION}",
       "unknownLocation": "Неизвестно",
       "2kki": {
         "template": "{LOCATION}",
