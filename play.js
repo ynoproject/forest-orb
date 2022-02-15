@@ -188,6 +188,7 @@ function onUpdateConnectionStatus(status) {
       addChatTip();
       hasConnected = true;
     }
+    syncPrevLocation();
   } else
     clearPlayerList();
   connStatus = status;
@@ -226,7 +227,6 @@ let systemName;
 
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
-  document.getElementById('chatInput').dataset.sys = name;
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
 }
@@ -287,6 +287,15 @@ function onLoadMap(mapName) {
       cachedMapId = mapId;
     }
   }
+}
+
+function syncPrevLocation() {
+  const prevLocationsStr = cachedPrevLocations && cachedPrevLocations.length ? window.btoa(encodeURIComponent(cachedPrevLocations.map(l => l.title).join('|'))) : '';
+  const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
+  const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
+  Module._SendPrevLocation(prevMapIdPtr, prevLocationsPtr);
+  Module._free(prevMapIdPtr);
+  Module._free(prevLocationsPtr);
 }
 
 // EXTERNAL
