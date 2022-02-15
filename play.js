@@ -1232,10 +1232,8 @@ function getLocalizedLocation(location, locationEn, asHtml) {
   let ret;
   let locationValue;
 
-  if (asHtml)
-    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
-
   if (asHtml) {
+    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
     if (localizedLocationUrlRoot && location.urlTitle !== null)
       locationValue = `<a href="${localizedLocationUrlRoot}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
     else if (locationUrlRoot && localizedLocationUrlRoot !== null && locationEn.urlTitle !== null)
@@ -1256,8 +1254,11 @@ function getLocalizedLocation(location, locationEn, asHtml) {
         locationValueEn = getInfoLabel(locationEn.title);
     } else
       locationValueEn = locationEn.title;
-      
-    ret = ret.replace('{LOCATION_EN}', locationValueEn);
+    
+    if (locationValue !== locationValueEn)
+      ret = ret.replace('{LOCATION_EN}', locationValueEn);
+    else // Just use location value alone if values match
+      ret = locationValue;
   }
 
   return ret;
