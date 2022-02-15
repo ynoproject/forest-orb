@@ -30,7 +30,7 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
       const globalMessageIcon = msgContainer.children[0];
       const globalMessageLocation = document.createElement("small");
 
-      if (gameId === "2kki") {
+      if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
         const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
         set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
       } else {
