@@ -1105,8 +1105,10 @@ function initLocalizedMapLocations(lang) {
   const fileName = lang === 'en' ? 'config' : lang;
   fetch(`locations/${gameId}/${fileName}.json`)
     .then(response => {
-      if (!response.ok)
+      if (!response.ok) {
+        localizedMapLocations = mapLocations;
         return null; // Assume map location localizations for this language don't exist
+      }
       return response.json();
   })
   .then(jsonResponse => {
@@ -1242,8 +1244,6 @@ function getLocalizedLocation(location, locationEn, asHtml) {
       locationValue = getInfoLabel(location.title);
   } else
     locationValue = location.title;
-    
-  ret = template.replace('{LOCATION}', locationValue);
   
   if (template.indexOf('{LOCATION_EN}') > -1) {
     let locationValueEn;
@@ -1258,8 +1258,10 @@ function getLocalizedLocation(location, locationEn, asHtml) {
     if (locationValue !== locationValueEn)
       ret = ret.replace('{LOCATION_EN}', locationValueEn);
     else // Just use location value alone if values match
-      ret = locationValue;
+      return locationValue;
   }
+
+  ret = template.replace('{LOCATION}', locationValue);
 
   return ret;
 }
