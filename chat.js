@@ -110,10 +110,9 @@ function chatInputActionFired() {
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
-  const sysPtr = Module.allocate(Module.intArrayFromString(chatInput.dataset.sys || ''), Module.ALLOC_NORMAL);
   const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
   if (!chatInput.dataset.global || document.getElementById("chatboxContainer").classList.contains("hideGlobal"))
-    Module._SendChatMessageToServer(sysPtr, msgPtr);
+    Module._SendChatMessageToServer(msgPtr);
   else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
@@ -122,7 +121,7 @@ function chatInputActionFired() {
       const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || "0000"), Module.ALLOC_NORMAL);
       const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || "0000"), Module.ALLOC_NORMAL);
       const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
-      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, prevLocationsPtr, sysPtr, msgPtr);
+      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, prevLocationsPtr, msgPtr);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
@@ -136,7 +135,6 @@ function chatInputActionFired() {
       Module._free(prevLocationsPtr);
     }
   }
-  Module._free(sysPtr);
   Module._free(msgPtr);
   chatInput.value = "";
 }
