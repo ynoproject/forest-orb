@@ -279,7 +279,7 @@ function onLoadMap(mapName) {
 
         if (is2kki) {
           cachedPrevLocations = cachedLocations;
-          cachedLocations = getMapLocationsArray(mapLocations, mapId, cachedMapId);
+          cachedLocations = null;
         }
       }
 
@@ -1127,27 +1127,6 @@ function initLocalizedMapLocations(lang) {
       });
   })
   .catch(_err => { }); // Assume map location localizations for this language don't exist
-}
-
-function getMapLocationsArray(mapLocations, mapId, prevMapId) {
-  if (mapLocations.hasOwnProperty(mapId)) {
-    const locations = mapLocations[mapId];
-    if (locations.hasOwnProperty('title')) // Text location
-      return [ locations ];
-    if (Array.isArray(locations)) // Multiple locations
-      return locations;
-    if (locations.hasOwnProperty(prevMapId)) {// Previous map ID matches a key
-      if (Array.isArray(locations[prevMapId]))
-        return locations[prevMapId];
-      return [ locations[prevMapId] ];
-    }
-    if (locations.hasOwnProperty('else')) { // Else case
-      if (locations.else.hasOwnProperty('title'))
-        return [ locations.else ];
-      if (Array.isArray(locations.else))
-        return locations.else;
-    }
-  }
 }
 
 function getLocalizedMapLocations(mapId, prevMapId) {
