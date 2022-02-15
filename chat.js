@@ -118,12 +118,7 @@ function chatInputActionFired() {
   else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      const prevLocationsStr = cachedPrevLocations && cachedPrevLocations.length ? window.btoa(encodeURIComponent(cachedPrevLocations.map(l => l.title).join("|"))) : "";
-
-      const mapIdPtr = Module.allocate(Module.intArrayFromString(cachedMapId || "0000"), Module.ALLOC_NORMAL);
-      const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || "0000"), Module.ALLOC_NORMAL);
-      const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
-      Module._SendGChatMessageToServer(mapIdPtr, prevMapIdPtr, prevLocationsPtr, msgPtr);
+      Module._SendGChatMessageToServer(msgPtr);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
@@ -131,10 +126,6 @@ function chatInputActionFired() {
         chatInputContainer.classList.remove("globalCooldown");
         chatInput.disabled = false;
       }, 15000);
-
-      Module._free(mapIdPtr);
-      Module._free(prevMapIdPtr);
-      Module._free(prevLocationsPtr);
     }
   }
   Module._free(msgPtr);
