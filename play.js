@@ -280,6 +280,8 @@ function onLoadMap(mapName) {
         if (is2kki) {
           cachedPrevLocations = cachedLocations;
           cachedLocations = null;
+          set2kkiExplorerLinks(null);
+          set2kkiMaps([]);
         }
       }
 
