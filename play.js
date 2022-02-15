@@ -1244,6 +1244,8 @@ function getLocalizedLocation(location, locationEn, asHtml) {
       locationValue = getInfoLabel(location.title);
   } else
     locationValue = location.title;
+
+  ret = template.replace('{LOCATION}', locationValue);
   
   if (template.indexOf('{LOCATION_EN}') > -1) {
     let locationValueEn;
@@ -1255,13 +1257,10 @@ function getLocalizedLocation(location, locationEn, asHtml) {
     } else
       locationValueEn = locationEn.title;
     
-    if (locationValue !== locationValueEn)
-      ret = ret.replace('{LOCATION_EN}', locationValueEn);
-    else // Just use location value alone if values match
-      return locationValue;
+    ret = locationValue !== locationValueEn
+      ? ret.replace('{LOCATION_EN}', locationValueEn)
+      : locationValue; // Just use location value alone if values match
   }
-
-  ret = template.replace('{LOCATION}', locationValue);
 
   return ret;
 }
