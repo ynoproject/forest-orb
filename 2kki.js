@@ -22,7 +22,7 @@ function onLoad2kkiMap(mapId) {
     set2kkiClientLocation(mapId, prevMapId, locations, prevLocations);
     cachedPrevMapId = cachedMapId;
     cachedMapId = mapId;
-    cached2kkiPrevLocations = cached2kkiLocations;
+    cachedPrev2kkiLocations = cached2kkiLocations;
     cached2kkiLocations = locationNames ? locations : null;
     if (localizedMapLocations && (!cached2kkiLocations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)))
       addChatMapLocation();
