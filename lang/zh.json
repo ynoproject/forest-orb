@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -115,7 +115,8 @@
       "plural": "当前地图有 {COUNT} 位玩家正在游览"
     },
     "playerList": {
-      "unnamed": "未命名玩家"
+      "unnamed": "未命名玩家",
+      "staff": "Staff"
     },
     "chatTips": {
       "template": "小贴士：{CONTENT}",

@@ -115,7 +115,8 @@
       "plural": "{COUNT} Players in Map"
     },
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "Unnamed Player",
+      "staff": "Staff"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

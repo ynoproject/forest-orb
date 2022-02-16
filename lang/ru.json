@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -115,7 +115,8 @@
       "plural": "{COUNT} Игроков на карте"
     },
     "playerList": {
-      "unnamed": "Безымянный игрок"
+      "unnamed": "Безымянный игрок",
+      "staff": "Staff"
     },
     "chatTips": {
       "template": "СОВЕТ: {CONTENT}",

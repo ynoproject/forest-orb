@@ -343,6 +343,7 @@ body {
 
 .playerListEntry {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background-size: 38px;
   background-position: -2px -2px;
@@ -353,8 +354,16 @@ body {
 
 .playerListEntrySprite {
   margin-right: 8px;
-  width: 40px;
-  height: 32px;
+  min-width: 40px;
+  min-height: 32px;
+}
+
+.playerListEntry .nameText {
+  width: 100%;
+}
+
+.playerListEntryIconContainer .icon {
+  padding-right: 4px;
 }
 
 #unreadMessageCountContainer {
@@ -635,6 +644,11 @@ body {
 
 .icon path {
   fill: none;
+}
+
+.fillIcon path {
+  stroke: none;
+  fill: url(#baseGradient);
 }
 
 .notice, .instruction {

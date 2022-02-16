@@ -115,7 +115,8 @@
       "plural": "{COUNT} Jogadores no Mapa"
     },
     "playerList": {
-      "unnamed": "Jogador sem nome"
+      "unnamed": "Jogador sem nome",
+      "staff": "Staff"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

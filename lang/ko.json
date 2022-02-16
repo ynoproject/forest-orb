@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -115,7 +115,8 @@
       "plural": "현위치에 {COUNT}명이 있습니다"
     },
     "playerList": {
-      "unnamed": "익명의 플레이어"
+      "unnamed": "익명의 플레이어",
+      "staff": "Staff"
     },
     "chatTips": {
       "template": "팁: {CONTENT}",

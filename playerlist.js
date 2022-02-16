@@ -3,7 +3,9 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
 
   let playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
 
-  const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement("span");
+  const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
+
+  let staffIcon = playerListEntry ? playerListEntry.querySelector(".staffIcon") : null;
 
   if (!playerListEntry) {
     playerListEntry = document.createElement("div");
@@ -27,6 +29,17 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     nameText.classList.add("nameText");
     playerListEntry.appendChild(nameText);
 
+    const playerListEntryIconContainer = document.createElement("div");
+    playerListEntryIconContainer.classList.add("playerListEntryIconContainer");
+
+    if (true) {
+      playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[1].content.cloneNode(true));
+      staffIcon = playerListEntryIconContainer.children[0];
+      staffIcon.title = localizedMessages.playerList.staff;
+    }
+
+    playerListEntry.appendChild(playerListEntryIconContainer);
+
     playerList.appendChild(playerListEntry);
   }
 
@@ -43,8 +56,20 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
-    getFontColors(systemName, 0, colors => nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
-    getFontShadow(systemName, shadow => nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
+    getFontColors(systemName, 0, colors => {
+      nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
+      if (staffIcon) {
+        addOrUpdateSystemSvgGradient(systemName, colors);
+        staffIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
+      }
+    });
+    getFontShadow(systemName, shadow => {
+      nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
+      if (staffIcon) {
+        addOrUpdateSystemSvgDropShadow(systemName, shadow);
+        staffIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
+      }
+    });
   }
 
   if (playerList.childElementCount > 1) {

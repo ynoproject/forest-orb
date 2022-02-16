@@ -115,7 +115,8 @@
       "plural": "{COUNT}人が 接続中（同マップ）"
     },
     "playerList": {
-      "unnamed": "無名プレーヤー"
+      "unnamed": "無名プレーヤー",
+      "staff": "スタッフ"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",
