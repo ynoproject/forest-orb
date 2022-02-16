@@ -32,7 +32,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     const playerListEntryIconContainer = document.createElement("div");
     playerListEntryIconContainer.classList.add("playerListEntryIconContainer");
 
-    if (true) {
+    if (false) {
       playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[1].content.cloneNode(true));
       staffIcon = playerListEntryIconContainer.children[0];
       staffIcon.title = localizedMessages.playerList.staff;
