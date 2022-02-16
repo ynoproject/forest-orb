@@ -308,7 +308,7 @@ body {
   word-wrap: break-word;
 }
 
-#chatbox:not(.map):not(.global) .lastAllTabMessageInLoc:not(:last-child), #chatbox.map .lastMapTabMessageInLoc:not(:last-child), .messageContainer.locMessage:not(:last-child) {
+#chatbox:not(.map):not(.global) .lastAllTabMessageInLoc, #chatbox.map .lastMapTabMessageInLoc, .messageContainer.locMessage {
   border-bottom-width: 8px !important;
 }
 
