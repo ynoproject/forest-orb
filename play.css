@@ -300,16 +300,20 @@ body {
   pointer-events: none;
 }
 
-#chatbox.map .messageContainer.global {
-  display: none;
-}
-
-#chatbox.global .messageContainer:not(.global) {
+#chatbox.map .messageContainer.global, #chatbox.global .messageContainer:not(.global), #chatbox:not(.map) .messageContainer.map {
   display: none;
 }
 
 .messageContainer {
   word-wrap: break-word;
+}
+
+#chatbox:not(.map):not(.global) .lastAllTabMessageInLoc:not(:last-child), #chatbox.map .lastMapTabMessageInLoc:not(:last-child), .messageContainer.locMessage:not(:last-child) {
+  border-bottom-width: 8px !important;
+}
+
+.messageContainer.locMessage {
+  text-align: center;
 }
 
 .globalMessageIcon {

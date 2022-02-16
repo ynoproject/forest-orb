@@ -2,7 +2,7 @@ Module['onRuntimeInitialized'] = initChat;
 if (typeof ENV === 'undefined')
   initChat();
 
-function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) {
+function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocationsStr) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -16,67 +16,73 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
 
-  const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
-  const nameText = msgTextResult ? msgTextResult[1] : null;
-  const msgText = msgTextResult ? msgTextResult[2] : msg;
+  const global = !system && mapId;
 
-  const global = !!mapId;
+  let msgText;
 
-  if (global) {
-    msgContainer.classList.add("global");
-    msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
+  if (system)
+    msgText = msg;
+  else {
+    const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
+    const nameText = msgTextResult ? msgTextResult[1] : null;
+    msgText = msgTextResult ? msgTextResult[2] : msg;
 
-    if (mapId !== "0000" && (localizedMapLocations || gameId === "2kki")) {
-      const globalMessageIcon = msgContainer.children[0];
-      const globalMessageLocation = document.createElement("small");
+    if (global) {
+      msgContainer.classList.add("global");
+      msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
 
-      if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
-        const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
-        set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
-      } else {
-        globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId);
-        globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
+      if (mapId !== "0000" && (localizedMapLocations || gameId === "2kki")) {
+        const globalMessageIcon = msgContainer.children[0];
+        const globalMessageLocation = document.createElement("small");
+
+        if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
+          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
+          set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
+        } else {
+          globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId);
+          globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
+        }
+
+        globalMessageLocation.classList.add("globalMessageLocation");
+        if (!config.showGlobalMessageLocation)
+          globalMessageLocation.classList.add("hidden");
+
+        msgContainer.appendChild(globalMessageLocation);
+
+        globalMessageIcon.classList.add("pointer");
+
+        globalMessageIcon.onclick = function () {
+          const locationLabel = this.nextElementSibling;
+          locationLabel.classList.toggle("hidden");
+          config.showGlobalMessageLocation = !locationLabel.classList.contains("hidden");
+          updateConfig(config);
+        };
       }
-
-      globalMessageLocation.classList.add("globalMessageLocation");
-      if (!config.showGlobalMessageLocation)
-        globalMessageLocation.classList.add("hidden");
-
-      msgContainer.appendChild(globalMessageLocation);
-
-      globalMessageIcon.classList.add("pointer");
-
-      globalMessageIcon.onclick = function () {
-        const locationLabel = this.nextElementSibling;
-        locationLabel.classList.toggle("hidden");
-        config.showGlobalMessageLocation = !locationLabel.classList.contains("hidden");
-        updateConfig(config);
-      };
     }
-  }
 
-  if (nameText) {
-    const name = document.createElement("span");
-    name.classList.add("nameText");
-    if (systemName) {
-      systemName = systemName.replace(/'/g, '');
-      getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
-      getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
+    if (nameText) {
+      const name = document.createElement("span");
+      name.classList.add("nameText");
+      if (systemName) {
+        systemName = systemName.replace(/'/g, '');
+        getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
+        getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
+      }
+      name.innerText = nameText;
+      const nameBeginMarker = document.createElement("span");
+      nameBeginMarker.classList.add("nameMarker");
+      nameBeginMarker.textContent = "<";
+      const nameEndMarker = document.createElement("span");
+      nameEndMarker.classList.add("nameMarker");
+      nameEndMarker.textContent = ">";
+      message.appendChild(nameBeginMarker);
+      message.appendChild(name);
+      message.appendChild(nameEndMarker);
+      message.appendChild(document.createTextNode(" "));
     }
-    name.innerText = nameText;
-    const nameBeginMarker = document.createElement("span");
-    nameBeginMarker.classList.add("nameMarker");
-    nameBeginMarker.textContent = "<";
-    const nameEndMarker = document.createElement("span");
-    nameEndMarker.classList.add("nameMarker");
-    nameEndMarker.textContent = ">";
-    message.appendChild(nameBeginMarker);
-    message.appendChild(name);
-    message.appendChild(nameEndMarker);
-    message.appendChild(document.createTextNode(" "));
   }
   
-  populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents);
+  populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents, system);
   wrapMessageEmojis(messageContents);
   
   message.appendChild(messageContents);
@@ -103,6 +109,8 @@ function chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr) 
 
   if (shouldScroll)
     messages.scrollTop = messages.scrollHeight;
+
+  return msgContainer;
 }
 
 function chatInputActionFired() {
@@ -157,8 +165,37 @@ function addChatTip() {
   if (++globalConfig.chatTipIndex >= Object.keys(tips).length)
     globalConfig.chatTipIndex = 0;
   const tipIndex = globalConfig.chatTipIndex;
-  chatboxAddMessage(null, getMassagedLabel(localizedMessages.chatTips.template.replace('{CONTENT}', tips[Object.keys(tips)[tipIndex]])));
+  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])), true);
   updateConfig(globalConfig, true);
+}
+
+function addChatMapLocation() {
+  const locationText = cached2kkiLocations
+    ? getLocalized2kkiLocationsHtml(cached2kkiLocations, getInfoLabel('&nbsp;|&nbsp;'), true)
+    : getLocalizedMapLocationsHtml(cachedMapId, cachedPrevMapId, '&nbsp;|&nbsp;', true);
+
+  const locationMessage = chatboxAddMessage(locationText, true);
+  if (locationMessage) {
+    locationMessage.classList.add("locMessage");
+    locationMessage.classList.add("map");
+  }
+}
+
+function markMapUpdateInChat() {
+  const messages = document.getElementById("messages");
+  const allTabMessageContainers = messages.querySelectorAll(".messageContainer:not(.map)");
+  const mapTabMessageContainers = messages.querySelectorAll(".messageContainer:not(.global)");
+  
+  if (allTabMessageContainers.length) {
+    const allTabLocMessages = messages.querySelectorAll("lastAllTabMessageInLoc");
+    if (!allTabLocMessages.length)
+      allTabMessageContainers[allTabMessageContainers.length - 1].classList.add("lastAllTabMessageInLoc");
+  }
+  if (mapTabMessageContainers.length) {
+    const mapTabLocMessages = messages.querySelectorAll("lastMapTabMessageInLoc");
+    if (!mapTabLocMessages.length)
+      mapTabMessageContainers[mapTabMessageContainers.length - 1].classList.add("lastMapTabMessageInLoc");
+  }
 }
 
 function parseMessageTextForMarkdown(msg) {
@@ -181,14 +218,20 @@ function parseMessageTextForMarkdown(msg) {
   return msg;
 }
 
-function populateMessageNodes(msg, node) {
+function populateMessageNodes(msg, node, asHtml) {
   const tagPattern = /<([bisu])>(.*?)<\/\1>/;
   let cursor = 0;
   let result;
 
   while ((result = tagPattern.exec(msg.slice(cursor)))) {
     if (result.index) {
-      const textNode = document.createTextNode(msg.slice(cursor, cursor + result.index));
+      const content = msg.slice(cursor, cursor + result.index);
+      let textNode;
+      if (asHtml) {
+        textNode = document.createElement("span");
+        textNode.innerHTML = content;
+      } else
+        textNode = document.createTextNode(content);
       node.appendChild(textNode);
     }
     const childNode = document.createElement(result[1]);
@@ -199,7 +242,13 @@ function populateMessageNodes(msg, node) {
   }
 
   if (cursor < msg.length) {
-    const textNode = document.createTextNode(msg.slice(cursor));
+    const content = msg.slice(cursor);
+    let textNode;
+    if (asHtml) {
+      textNode = document.createElement("span");
+      textNode.innerHTML = content;
+    } else
+      textNode = document.createTextNode(content);
     node.appendChild(textNode);
   }
 }
@@ -223,10 +272,10 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(systemName, msg) {
-  chatboxAddMessage(systemName, msg);
+  chatboxAddMessage(msg, false, systemName);
 }
 
 // EXTERNAL
 function onGChatMessageReceived(mapId, prevMapId, prevLocationsStr, systemName, msg) {
-  chatboxAddMessage(systemName, msg, mapId, prevMapId, prevLocationsStr);
+  chatboxAddMessage(msg, false, systemName, mapId, prevMapId, prevLocationsStr);
 }
