@@ -86,15 +86,11 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
   wrapMessageEmojis(messageContents);
 
   if (!global) {
-    const nonGlobalMessages = messages.querySelectorAll('.messageContainer:not(.global)');
+    const nonGlobalMessages = messages.querySelectorAll(".messageContainer:not(.global)");
     if (nonGlobalMessages.length) {
       const lastNonGlobalMessage = nonGlobalMessages[nonGlobalMessages.length - 1];
-      if (lastNonGlobalMessage.classList.contains('locMessage')) {
-        if (system)
-          lastNonGlobalMessage.remove();
-        else
-          lastNonGlobalMessage.classList.remove('hidden');
-      }
+      if (lastNonGlobalMessage.classList.contains("locMessage"))
+          lastNonGlobalMessage.classList.remove("hidden");
     }
   }
   
@@ -183,15 +179,25 @@ function addChatTip() {
 }
 
 function addChatMapLocation() {
-  const locationText = cached2kkiLocations
+  const locationHtml = cached2kkiLocations
     ? getLocalized2kkiLocationsHtml(cached2kkiLocations, getInfoLabel('&nbsp;|&nbsp;'), true)
     : getLocalizedMapLocationsHtml(cachedMapId, cachedPrevMapId, '&nbsp;|&nbsp;', true);
 
-  const locationMessage = chatboxAddMessage(locationText, true);
-  if (locationMessage) {
-    locationMessage.classList.add("locMessage");
-    locationMessage.classList.add("map");
-    locationMessage.classList.add("hidden");
+  const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
+  let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
+  if (lastLocMessage && lastLocMessage.classList.contains("hidden")) {
+    lastLocMessage.remove();
+    lastLocMessage = locMessages.length > 1 ? locMessages[locMessages.length - 2] : null;
+  }
+  
+  if (lastLocMessage && new DOMParser().parseFromString(locationHtml, "text/html").documentElement.textContent === lastLocMessage.innerText)
+    return;
+
+  const locMessage = chatboxAddMessage(locationHtml, true);
+  if (locMessage) {
+    locMessage.classList.add("locMessage");
+    locMessage.classList.add("map");
+    locMessage.classList.add("hidden");
   }
 }
 
