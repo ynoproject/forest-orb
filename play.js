@@ -926,23 +926,6 @@ function getGradientText(colors, smooth) {
   return ret;
 }
 
-function addOrUpdateSystemSvgGradient(systemName, colors) {
-  const gradientId = `baseGradient_${systemName}`;
-  let svgGradient = document.getElementById(gradientId);
-  if (!svgGradient) {
-    const svgDefs = document.getElementById('svgDefs');
-    svgGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-    svgGradient.id = gradientId;
-    svgGradient.setAttribute('x1', '0%');
-    svgGradient.setAttribute('y1', '0%');
-    svgGradient.setAttribute('x2', '0%');
-    svgGradient.setAttribute('y2', '100%');
-    svgDefs.appendChild(svgGradient);
-  }
-
-  updateSvgGradient(svgGradient, colors);
-}
-
 function updateSvgGradient(gradient, colors) {
   gradient.innerHTML = '';
   let lastColor = colors[0];
@@ -963,24 +946,37 @@ function getSvgGradientStop(color, offset) {
   return ret;
 }
 
-function addOrUpdateSystemSvgDropShadow(systemName, color) {
-  const dropShadowFilterId = `dropShadow_${systemName}`;
-  let svgDropShadowFilter = document.getElementById(dropShadowFilterId);
-  let svgDropShadow;
-  if (!svgDropShadowFilter) {
+function addSystemSvgGradient(systemName, colors) {
+  const gradientId = `baseGradient_${systemName}`;
+  if (!document.getElementById(gradientId)) {
     const svgDefs = document.getElementById('svgDefs');
-    svgDropShadowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    const svgGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+    svgGradient.id = gradientId;
+    svgGradient.setAttribute('x1', '0%');
+    svgGradient.setAttribute('y1', '0%');
+    svgGradient.setAttribute('x2', '0%');
+    svgGradient.setAttribute('y2', '100%');
+    updateSvgGradient(svgGradient, colors);
+    svgDefs.appendChild(svgGradient);
+  }
+}
+
+function addSystemSvgDropShadow(systemName, color) {
+  const dropShadowFilterId = `dropShadow_${systemName}`;
+  if (!document.getElementById(dropShadowFilterId)) {
+    const svgDefs = document.getElementById('svgDefs');
+    const svgDropShadowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
     svgDropShadowFilter.id = dropShadowFilterId;
-    svgDropShadow = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');
+
+    const svgDropShadow = document.createElementNS('http://www.w3.org/2000/svg', 'feDropShadow');
     svgDropShadow.setAttribute('dx', '1');
     svgDropShadow.setAttribute('dy', '1');
     svgDropShadow.setAttribute('stdDeviation', '0.2');
+    svgDropShadow.setAttribute('flood-color', color);
+
     svgDropShadowFilter.appendChild(svgDropShadow);
     svgDefs.appendChild(svgDropShadowFilter);
-  } else
-    svgDropShadow = svgDropShadowFilter.children[0];
-  
-  svgDropShadow.setAttribute('flood-color', color);
+  }
 }
 
 function getColorRgba(color) {
