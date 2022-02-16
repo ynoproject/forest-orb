@@ -301,7 +301,7 @@ function onLoadMap(mapName) {
 }
 
 function syncPrevLocation() {
-  const prevLocationsStr = cachedPrevLocations && cachedPrevLocations.length ? window.btoa(encodeURIComponent(cachedPrevLocations.map(l => l.title).join('|'))) : '';
+  const prevLocationsStr = cachedPrev2kkiLocations && cachedPrev2kkiLocations.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
   const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
   const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
   Module._SendPrevLocation(prevMapIdPtr, prevLocationsPtr);
