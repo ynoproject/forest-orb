@@ -84,6 +84,19 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
   
   populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents, system);
   wrapMessageEmojis(messageContents);
+
+  if (!global) {
+    const nonGlobalMessages = messages.querySelectorAll('.messageContainer:not(.global)');
+    if (nonGlobalMessages.length) {
+      const lastNonGlobalMessage = nonGlobalMessages[nonGlobalMessages.length - 1];
+      if (lastNonGlobalMessage.classList.contains('locMessage')) {
+        if (system)
+          lastNonGlobalMessage.remove();
+        else
+          lastNonGlobalMessage.classList.remove('hidden');
+      }
+    }
+  }
   
   message.appendChild(messageContents);
   msgContainer.appendChild(message);
@@ -178,6 +191,7 @@ function addChatMapLocation() {
   if (locationMessage) {
     locationMessage.classList.add("locMessage");
     locationMessage.classList.add("map");
+    locationMessage.classList.add("hidden");
   }
 }
 
