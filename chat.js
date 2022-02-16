@@ -1,5 +1,5 @@
-Module['onRuntimeInitialized'] = initChat;
-if (typeof ENV === 'undefined')
+Module["onRuntimeInitialized"] = initChat;
+if (typeof ENV === "undefined")
   initChat();
 
 function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocationsStr) {
@@ -36,11 +36,11 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
         const globalMessageLocation = document.createElement("small");
 
         if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
-          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
+          const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
         } else {
-          globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId, '\n');
-          globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
+          globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId, "\n");
+          globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
         }
 
         globalMessageLocation.classList.add("globalMessageLocation");
@@ -64,7 +64,7 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
       const name = document.createElement("span");
       name.classList.add("nameText");
       if (systemName) {
-        systemName = systemName.replace(/'/g, '');
+        systemName = systemName.replace(/'/g, "");
         getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
         getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
       }
@@ -85,7 +85,7 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
   populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents, system);
   wrapMessageEmojis(messageContents);
 
-  if (!global) {
+  if (localizedMapLocations && !global) {
     const nonGlobalMessages = messages.querySelectorAll(".messageContainer:not(.global)");
     if (nonGlobalMessages.length) {
       const lastNonGlobalMessage = nonGlobalMessages[nonGlobalMessages.length - 1];
@@ -180,8 +180,8 @@ function addChatTip() {
 
 function addChatMapLocation() {
   const locationHtml = cached2kkiLocations
-    ? getLocalized2kkiLocations(cached2kkiLocations, '&nbsp;|&nbsp;')
-    : getLocalizedMapLocations(cachedMapId, cachedPrevMapId, '&nbsp;|&nbsp;');
+    ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;|&nbsp;")
+    : getLocalizedMapLocations(cachedMapId, cachedPrevMapId, "&nbsp;|&nbsp;");
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
@@ -278,7 +278,7 @@ function wrapMessageEmojis(node, force) {
     for (let childNode of node.childNodes) {
       if (/\p{Extended_Pictographic}/u.test(childNode.textContent)) {
         if (childNode.nodeType === Node.TEXT_NODE) {
-          const newChildNode = document.createElement('span');
+          const newChildNode = document.createElement("span");
           newChildNode.innerText = childNode.textContent;
           node.replaceChild(newChildNode, childNode);
           wrapMessageEmojis(newChildNode, true)

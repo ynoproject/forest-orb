@@ -291,11 +291,13 @@ function onLoadMap(mapName) {
       cachedPrevMapId = cachedMapId;
       cachedMapId = mapId;
 
-      const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
-      if (localizedMapLocations && (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)))
-        addChatMapLocation();
+      if (localizedMapLocations) {
+        const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
+        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
+          addChatMapLocation();
 
-      cachedLocations = locations;
+        cachedLocations = locations;
+      }
     }
   }
 }

@@ -24,9 +24,11 @@ function onLoad2kkiMap(mapId) {
     cachedMapId = mapId;
     cachedPrev2kkiLocations = cached2kkiLocations;
     cached2kkiLocations = locationNames ? locations : null;
-    if (localizedMapLocations && (!cached2kkiLocations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)))
-      addChatMapLocation();
-    cachedLocations = cached2kkiLocations;
+    if (localizedMapLocations) {
+      if (!cached2kkiLocations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
+        addChatMapLocation();
+      cachedLocations = cached2kkiLocations;
+    }
     if (!locationNames) {
       set2kkiExplorerLinks(null);
       set2kkiMaps([]);
@@ -80,9 +82,11 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
             cachedMapId = mapId;
             cachedPrev2kkiLocations = cached2kkiLocations;
             cached2kkiLocations = locations;
-            if (localizedMapLocations && (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)))
-              addChatMapLocation();
-            cachedLocations = cached2kkiLocations;
+            if (localizedMapLocations) {
+              if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
+                addChatMapLocation();
+              cachedLocations = cached2kkiLocations;
+            }
           }
 
           resolve(locations);
