@@ -165,42 +165,33 @@ function getLocalized2kkiLocation(title, titleJP, asHtml) {
   return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
-function getLocalized2kkiLocations(locations) {
+function getLocalized2kkiLocations(locations, separator) {
   return locations && locations.length
     ? Array.isArray(locations)
-      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP)).join('\n')
+      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP)).join(separator)
       : locations
     : getMassagedLabel(localizedMessages.location.unknownLocation);
 }
 
-function get2kkiLocationHtml(location, ignoreLinks) {
-  let locationHtml;
-  let locationHtmlJP;
-
-  if (ignoreLinks) {
-    locationHtml = location.title;
-    locationHtmlJP = location.titleJP;
-  } else {
-    const urlTitle = location.urlTitle || location.title;
-    const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
-    locationHtml = `<a href="${locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
-    locationHtmlJP = urlTitleJP ? `<a href="${localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
-  }
-
+function get2kkiLocationHtml(location) {
+  const urlTitle = location.urlTitle || location.title;
+  const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
+  const locationHtml = `<a href="${locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  const locationHtmlJP = urlTitleJP ? `<a href="${localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
   return locationHtmlJP ? getLocalized2kkiLocation(locationHtml, locationHtmlJP, true) : locationHtml;
 }
 
-function getLocalized2kkiLocationsHtml(locations, separator, ignoreLinks) {
+function getLocalized2kkiLocationsHtml(locations, separator) {
   return locations && locations.length
     ? Array.isArray(locations)
-    ? locations.map(l => get2kkiLocationHtml(l, ignoreLinks)).join(separator)
+    ? locations.map(l => get2kkiLocationHtml(l)).join(separator)
       : getInfoLabel(locations)
     : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
 
 function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
   const setMessageLocationFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
-    globalMessageIcon.title = getLocalized2kkiLocations(locations);
+    globalMessageIcon.title = getLocalized2kkiLocations(locations, '\n');
     globalMessageLocation.innerHTML = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
     if (cacheLocation) {
       const locationKey = `${prevMapId}_${mapId}`;

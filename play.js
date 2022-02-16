@@ -1170,49 +1170,49 @@ function getMapLocationsArray(mapLocations, mapId, prevMapId) {
   }
 }
 
-function getLocalizedMapLocations(mapId, prevMapId) {
+function getLocalizedMapLocations(mapId, prevMapId, separator) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
     if (localizedLocations.hasOwnProperty('title')) // Text location
       return getLocalizedLocation(localizedLocations, locations);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i])).join('\n');
+      return localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i])).join(separator);
     if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        return localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i])).join('\n');
+        return localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i])).join(separator);
       return getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId]);
     }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
         return getLocalizedLocation(localizedLocations.else, locations.else);
       if (Array.isArray(localizedLocations.else))
-        return localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i])).join('\n');
+        return localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i])).join(separator);
     }
   }
   
   return localizedMessages.location.unknownLocation;
 }
 
-function getLocalizedMapLocationsHtml(mapId, prevMapId, separator, ignoreLinks) {
+function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
   if (localizedMapLocations.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
     let locationsHtml;
     if (localizedLocations.hasOwnProperty('title')) // Text location
-      locationsHtml = getLocalizedLocation(localizedLocations, locations, true, ignoreLinks);
+      locationsHtml = getLocalizedLocation(localizedLocations, locations, true);
     else if (Array.isArray(localizedLocations)) // Multiple locations
-      locationsHtml = localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i], true, ignoreLinks)).join(separator);
+      locationsHtml = localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i], true)).join(separator);
     else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        locationsHtml = localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i], true, ignoreLinks)).join(separator);
+        locationsHtml = localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i], true)).join(separator);
       else
-        locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true, ignoreLinks);
+        locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true);
     } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
-        locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true, ignoreLinks);
+        locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true);
       else if (Array.isArray(localizedLocations.else))
-        locationsHtml = localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i], true, ignoreLinks)).join(separator);
+        locationsHtml = localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i], true)).join(separator);
     }
 
     if (locationsHtml)
@@ -1250,16 +1250,16 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
   }
 }
 
-function getLocalizedLocation(location, locationEn, asHtml, ignoreLinks) {
+function getLocalizedLocation(location, locationEn, asHtml) {
   let template = getMassagedLabel(localizedMessages.location.template);
   let ret;
   let locationValue;
 
   if (asHtml) {
     template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
-    if (!ignoreLinks && localizedLocationUrlRoot && location.urlTitle !== null)
+    if (localizedLocationUrlRoot && location.urlTitle !== null)
       locationValue = `<a href="${localizedLocationUrlRoot}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
-    else if (!ignoreLinks && locationUrlRoot && localizedLocationUrlRoot !== null && locationEn.urlTitle !== null)
+    else if (locationUrlRoot && localizedLocationUrlRoot !== null && locationEn.urlTitle !== null)
       locationValue = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${location.title}</a>`;
     else
       locationValue = getInfoLabel(location.title);
@@ -1271,7 +1271,7 @@ function getLocalizedLocation(location, locationEn, asHtml, ignoreLinks) {
   if (template.indexOf('{LOCATION_EN}') > -1) {
     let locationValueEn;
     if (asHtml) {
-      if (!ignoreLinks && locationUrlRoot && locationEn.urlTitle !== null)
+      if (locationUrlRoot && locationEn.urlTitle !== null)
         locationValueEn = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${locationEn.title}</a>`;
       else
         locationValueEn = getInfoLabel(locationEn.title);

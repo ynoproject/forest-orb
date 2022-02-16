@@ -39,7 +39,7 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split('|').map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations);
         } else {
-          globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId);
+          globalMessageIcon.title = getLocalizedMapLocations(mapId, prevMapId, '\n');
           globalMessageLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
         }
 
@@ -180,8 +180,8 @@ function addChatTip() {
 
 function addChatMapLocation() {
   const locationHtml = cached2kkiLocations
-    ? getLocalized2kkiLocationsHtml(cached2kkiLocations, getInfoLabel('&nbsp;|&nbsp;'), true)
-    : getLocalizedMapLocationsHtml(cachedMapId, cachedPrevMapId, '&nbsp;|&nbsp;', true);
+    ? getLocalized2kkiLocations(cached2kkiLocations, '&nbsp;|&nbsp;')
+    : getLocalizedMapLocations(cachedMapId, cachedPrevMapId, '&nbsp;|&nbsp;');
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
