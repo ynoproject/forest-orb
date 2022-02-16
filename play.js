@@ -502,10 +502,12 @@ function onClickChatTab() {
       if (active || !tabIndex)
         chatTab.classList.remove('unread');
     }
-    if ((!tabIndex && config.globalMessage) || tabIndex === 2)
+    const global = (!tabIndex && config.globalMessage) || tabIndex === 2;
+    if (global)
       chatInput.dataset.global = true;
     else
       delete chatInput.dataset.global;
+    chatInput.disabled = global && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
     chatbox.classList.toggle('map', tabIndex === 1);
     chatbox.classList.toggle('global', tabIndex === 2);
     messages.scrollTop = messages.scrollHeight;
