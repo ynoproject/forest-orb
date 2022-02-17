@@ -116,7 +116,7 @@
     },
     "playerList": {
       "unnamed": "익명의 플레이어",
-      "staff": "Staff"
+      "staff": "스태프"
     },
     "chatTips": {
       "template": "팁: {CONTENT}",
