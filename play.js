@@ -393,6 +393,7 @@ document.getElementById('immersionModeButton').onclick = function () {
     document.getElementById('chatTabMap').click();
   }
   document.getElementById('layout').classList.toggle('immersionMode', toggled);
+  onResize();
   config.immersionMode = toggled;
   updateConfig(config);
 };
@@ -583,7 +584,7 @@ function onUpdateChatboxInfo() {
     tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
   }
 
-  if (window.getComputedStyle(layout).flexWrap === 'wrap') {
+  if (!layout.classList.contains('immersionMode') && window.getComputedStyle(layout).flexWrap === 'wrap') {
     const lastTab = chatboxTabs[chatboxTabs.length - 1];
     const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
     chatboxInfo.style.marginLeft = offsetLeft;
