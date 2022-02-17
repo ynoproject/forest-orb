@@ -304,7 +304,7 @@ function onLoadMap(mapName) {
 }
 
 function syncPrevLocation() {
-  const prevLocationsStr = cachedPrev2kkiLocations && cachedPrev2kkiLocations.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
+  const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
   const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
   const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
   Module._SendPrevLocation(prevMapIdPtr, prevLocationsPtr);
@@ -861,8 +861,6 @@ function getUiThemeOption(uiTheme) {
 let uiThemeBgColors = {};
 let uiThemeFontShadows = {};
 let uiThemeFontColors = {};
-let spriteData = {};
-let playerSpriteCache = {};
 
 function getFontColors(uiTheme, fontStyle, callback) {
   if (!uiThemeFontColors[uiTheme])
@@ -1279,13 +1277,13 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
       const mapLocation = mapLocations[l];
       if (typeof mapLocation === 'string') {
         mapLocations[l] = { title: mapLocation };
-        if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocation))
+        if (locationUrlTitles?.hasOwnProperty(mapLocation))
           mapLocations[l].urlTitle = locationUrlTitles[mapLocation];
       }
     }
   } else {
     if (mapLocations.hasOwnProperty('title')) {
-      if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocations.title))
+      if (locationUrlTitles?.hasOwnProperty(mapLocations.title))
         mapLocations.urlTitle = locationUrlTitles[mapLocations.title];
       return;
     }
@@ -1293,7 +1291,7 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
       const mapLocation = mapLocations[mapId];
       if (typeof mapLocation === 'string') {
         mapLocations[mapId] = { title: mapLocation };
-        if (locationUrlTitles && locationUrlTitles.hasOwnProperty(mapLocation))
+        if (locationUrlTitles?.hasOwnProperty(mapLocation))
           mapLocations[mapId].urlTitle = locationUrlTitles[mapLocation];
       } else
         massageMapLocations(mapLocation);

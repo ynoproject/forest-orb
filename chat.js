@@ -185,7 +185,7 @@ function addChatMapLocation() {
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
-  if (lastLocMessage && lastLocMessage.classList.contains("hidden")) {
+  if (lastLocMessage?.classList.contains("hidden")) {
     lastLocMessage.remove();
     lastLocMessage = locMessages.length > 1 ? locMessages[locMessages.length - 2] : null;
   }

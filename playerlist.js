@@ -1,3 +1,7 @@
+let playerData = {};
+let spriteData = {};
+let playerSpriteCache = {};
+
 function addOrUpdatePlayerListEntry(systemName, name, id) {
   const playerList = document.getElementById("playerList");
 
@@ -32,7 +36,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     const playerListEntryIconContainer = document.createElement("div");
     playerListEntryIconContainer.classList.add("playerListEntryIconContainer");
 
-    if (false) {
+    if (playerData[id]?.rank) {
       playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[1].content.cloneNode(true));
       staffIcon = playerListEntryIconContainer.children[0];
       staffIcon.title = localizedMessages.playerList.staff;
@@ -59,14 +63,14 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     getFontColors(systemName, 0, colors => {
       nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
       if (staffIcon) {
-        addOrUpdateSystemSvgGradient(systemName, colors);
+        addSystemSvgGradient(systemName, colors);
         staffIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
       }
     });
     getFontShadow(systemName, shadow => {
       nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
       if (staffIcon) {
-        addOrUpdateSystemSvgDropShadow(systemName, shadow);
+        addSystemSvgDropShadow(systemName, shadow);
         staffIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
       }
     });
@@ -183,6 +187,16 @@ function getSpriteImg(sprite, idx, callback, dir) {
 }
 
 // EXTERNAL
+function syncPlayerData(uuid, rank, id) {
+  if (id === undefined)
+    id = -1;
+  playerData[id] = {
+    uuid: uuid,
+    rank: rank
+  };
+}
+
+// EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
   addOrUpdatePlayerListEntry(systemName, name, id);
 }
@@ -194,5 +208,6 @@ function onPlayerSpriteUpdated(sprite, idx, id) {
 
 // EXTERNAL
 function onPlayerDisconnected(id) {
+  delete playerData[id];
   removePlayerListEntry(id);
 }
