@@ -154,6 +154,7 @@ let config = {
   disableChat: false,
   disableNametags: false,
   disablePlayerSounds: false,
+  immersionMode: false,
   globalMessage: false,
   chatTabIndex: 0,
   showGlobalMessageLocation: false
@@ -381,6 +382,18 @@ document.getElementById('chatButton').onclick = function () {
   document.getElementById('layout').classList.toggle('hideChat');
   onResize();
   config.disableChat = this.classList.contains('toggled');
+  updateConfig(config);
+};
+
+document.getElementById('immersionModeButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  if (toggled) {
+    document.querySelector('.chatboxTab[data-tab-section="chat"]').click();
+    document.getElementById('chatTabMap').click();
+  }
+  document.getElementById('layout').classList.toggle('immersionMode', toggled);
+  config.immersionMode = toggled;
   updateConfig(config);
 };
 
@@ -1398,6 +1411,10 @@ function loadOrInitConfig(configObj, global) {
               case 'disablePlayerSounds':
                 if (value)
                   preToggle(document.getElementById('playerSoundsButton'));
+                break;
+              case 'immersionMode':
+                if (value)
+                  document.getElementById('immersionModeButton').click();
                 break;
               case 'chatTabIndex':
                 if (value) {

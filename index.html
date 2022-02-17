@@ -254,6 +254,8 @@
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 4.5h18v9h-18v-9m1.5 7.5v-6l3 6v-6m1 6l1.5-6 1.5 6m-2.5-2h2m1.5 2l1-6 1 6 1-6 1 6m1-6v6m0-6h2m-2 3h2m-2 3h2" /><path d="m-2 16l22-14" /></svg>
               </button><button id="playerSoundsButton" class="iconButton offToggle unselectable multiplayerOnly" data-i18n="[title]tooltips.togglePlayerSounds">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2.5 0a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 18v-12q2.5-1 5 0v12h-5m10-15q5 5 0 10m-2-8.5q3.5 3.5 0 7m-2-5.5q2 2 0 4m9.5-10a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 6q2.5-1 5 0v12h-5v-12" /><path d="m-2 16l22-14" /></svg>
+              </button><button id="immersionModeButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.immersionMode">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9c2-3 6-5 9-5s7 1 9 5m-18 0c2 3 6 5 9 5s7-1 9-5m-9-3a1 1 0 0 0 0 6 1 1 0 0 0 0 -6" /><path d="m-2 16l22-14" /></svg>
               </button><!--<button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 5.5a1 1 90 0 0 0 7 1 1 90 0 0 0 -7m-7 5.5l-2-0.25v-3.5l2-0.25 0.75-1.5-1.25-1.75 2.25-2.25 1.75 1.25 1.5-0.75 0.25-2h3.5l0.25 2 1.5 0.75 1.75-1.25 2.25 2.25-1.25 1.75 0.75 1.5 2 0.25v3.5l-2 0.25-0.75 1.5 1.25 1.75-2.25 2.25-1.75-1.25-1.5 0.75-0.25 2h-3.5l-0.25-2-1.5-0.75-1.75 1.25-2.25-2.25 1.25-1.75-0.75-1.5" /></svg>
               </button>-->
@@ -294,7 +296,8 @@
         <div id="chatbox">
           <div id="chatboxInfo">
             <div id="onlineInfo" class="info hidden">
-              <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span> <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel unselectable multiplayerOnly"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span>
+              <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
+              <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel unselectable multiplayerOnly"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
             </div>
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>
@@ -302,7 +305,7 @@
           </div>
           <div id="chatboxContent">
             <div id="chatboxTabs">
-              <div class="chatboxTab active" data-tab-section="chat">
+              <div id="chatboxTabChat" class="chatboxTab active" data-tab-section="chat">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.chat">Chat</label>
                 <div id="unreadMessageCountContainer" class="hidden">
                   <div id="unreadMessageCount">
@@ -310,7 +313,7 @@
                   </div>
                 </div>
               </div>
-              <div class="chatboxTab" data-tab-section="playerList">
+              <div id="chatboxTabPlayers" class="chatboxTab" data-tab-section="playerList">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label>
               </div>
             </div>

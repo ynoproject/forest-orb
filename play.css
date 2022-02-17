@@ -767,6 +767,14 @@ input[type='text'], select {
   position: relative;
 }
 
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab {
+  display: none;
+}
+
+#layout.immersionMode .chatboxTabSection {
+  margin-top: 0;
+}
+
 @media only screen and (min-width: 1051px) and (min-height: 595px) {
   #layout {
     max-height: 667px;

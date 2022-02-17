@@ -25,6 +25,7 @@
     "chatbox": {
       "connStatus": "连接状态：&nbsp;",
       "location": "当前位置：&nbsp;",
+      "immersionMode": "Immersion Mode",
       "tab": {
         "chat": "聊天记录",
         "players": "玩家列表"
@@ -70,6 +71,7 @@
       "toggleChat": "显示/隐藏聊天屏幕",
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效",
+      "toggleImmersionMode": "Toggle Immersion Mode",
       "toggleGlobalMessage": "发送全局聊天记录",
       "chat": {
         "clearChat": "清空记录"
@@ -127,6 +129,7 @@
         "markdownSupport": "通过在输入框中使用某些符号可以使文本以特殊格式显示出来，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）。",
         "chatTabNotifications": "当您处于除“所有聊天记录”以外的其他发言模式时，若此时其他模式下有新的聊天信息接收进来，系统将会以加粗标题字体的方式提醒您查看。",
         "clearChat": "当您处于除“所有聊天记录”以外的其他发言模式时，点击聊天框右上角的清除聊天记录按钮将只会清空您当前所在模式下的聊天信息。",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅详细源代码数据。"
       }
     },

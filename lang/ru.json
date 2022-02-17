@@ -25,6 +25,7 @@
     "chatbox": {
       "connStatus": "Статус:&nbsp;",
       "location": "Локация:&nbsp;",
+      "immersionMode": "Immersion Mode",
       "tab": {
         "chat": "Чат",
         "players": "Игроки"
@@ -70,6 +71,7 @@
       "toggleChat": "Переключить Чат",
       "toggleNametags": "Переключить Ники",
       "togglePlayerSounds": "Переключить Звуки Игроков",
+      "toggleImmersionMode": "Toggle Immersion Mode",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
         "clearChat": "Очистить Чат"
@@ -127,6 +129,7 @@
         "markdownSupport": "В Чате поддерживаеется форматирование - Нужно лишь окружить форматируемый текст специальными символами. На настоящий момент поддерживаются: **Жирный** (\\*\\*текст\\*\\*), *Курсив* (\\*текст\\*, \\_текст\\_), __Подчёркнутый__ (\\_\\_текст\\_\\_) и ~~Зачёркнутый~~ (\\~\\~текст\\~\\~).",
         "chatTabNotifications": "Если вы во вкладке чата, отличной от 'Все', и в другой вкладке появилось новое сообщение, её ярлык станет чуть жирнее.",
         "clearChat": "Если вы нажмёте на кнопку 'Очистить чат' (Сверху-справа в окне чата), не будучи во вкладке 'Все', то удалятся только сообщения из ныне открытой вкладки.",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "openSource": "YNOproject - Проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },

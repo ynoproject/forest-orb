@@ -25,6 +25,7 @@
     "chatbox": {
       "connStatus": "接続状態:&nbsp;",
       "location": "場所：",
+      "immersionMode": "イマージョンモード",
       "tab": {
         "chat": "チャット",
         "players": "プレーヤー"
@@ -70,6 +71,7 @@
       "toggleChat": "チャットのオン／オフ",
       "toggleNametags": "プレーヤー名表示のオン／オフ",
       "togglePlayerSounds": "プレーヤー効果音のオン／オフ",
+      "toggleImmersionMode": "イマージョンモードのオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
         "clearChat": "チャットを消去"
@@ -127,6 +129,7 @@
         "markdownSupport": "このチャットはテキスト装飾に対応しています。 現在対応しているのは：**太字**（\\*\\*テキスト\\*\\*）、*イタリック体*（\\*テキスト\\*、\\_テキスト\\_）、__下線__（\\_\\_テキスト\\_\\_）、~~打ち消し線~~（\\~\\~テキスト\\~\\~）。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
     },
