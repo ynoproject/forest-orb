@@ -199,6 +199,11 @@ function syncPlayerData(uuid, rank, id) {
     rank: rank
   };
 
+  if (id === -1) {
+    playerData[id].name = playerName;
+    playerData[id].systemName = systemName;
+  }
+
   if (globalPlayerData.hasOwnProperty(uuid))
     globalPlayerData[uuid].rank = rank;
   else

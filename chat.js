@@ -2,7 +2,7 @@ Module["onRuntimeInitialized"] = initChat;
 if (typeof ENV === "undefined")
   initChat();
 
-function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
+function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -18,7 +18,7 @@ function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
 
   let staffIcon;
 
-  const system = uuid === undefined;
+  const system = player === undefined;
   const global = !system && mapId;
 
   if (!system) {
@@ -58,7 +58,7 @@ function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
     const name = document.createElement("span");
     name.classList.add("nameText");
 
-    name.innerText = globalPlayerData[uuid]?.name || localizedMessages.playerList.unnamed; // Shouldn't be null but add a fallback anyway
+    name.innerText = player?.name || localizedMessages.playerList.unnamed; // Shouldn't be null but add a fallback anyway
     const nameBeginMarker = document.createElement("span");
     nameBeginMarker.classList.add("nameMarker");
     nameBeginMarker.textContent = "<";
@@ -67,14 +67,14 @@ function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
     nameEndMarker.textContent = ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
-    if (globalPlayerData[uuid]?.rank) {
-      const rank = Math.min(globalPlayerData[uuid].rank, 3);
+    if (player?.rank) {
+      const rank = Math.min(player.rank, 3);
       message.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
       staffIcon = message.children[message.childElementCount - 1];
       staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
     }
 
-    let systemName = globalPlayerData[uuid]?.systemName;
+    let systemName = player?.systemName;
 
     if (systemName) {
       systemName = systemName.replace(/'/g, "");
@@ -308,11 +308,14 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  const uuid = playerData[id]?.uuid;
-  chatboxAddMessage(msg, uuid);
+  if (id === undefined)
+    id = -1;
+  const player = playerData[id];
+  chatboxAddMessage(msg, player);
 }
 
 // EXTERNAL
 function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
-  chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr);
+  const player = globalPlayerData.hasOwnProperty(uuid) ? globalPlayerData[uuid] : null;
+  chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr);
 }
