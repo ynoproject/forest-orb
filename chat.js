@@ -104,7 +104,7 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
     document.getElementById("chatTabGlobal").classList.add("unread");
   else if (chatbox.classList.contains("global") && !global)
     document.getElementById("chatTabMap").classList.add("unread");
-  else if (!document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
+  else if (!system && !document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
     const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
     const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
     if (unreadMessageCountContainer.classList.contains("hidden")) {
