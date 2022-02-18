@@ -67,8 +67,8 @@ function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
     nameEndMarker.textContent = ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
-    if (/*globalPlayerData[uuid]?.rank*/true) {
-      const rank = 2;//Math.min(globalPlayerData[uuid].rank, 3);
+    if (globalPlayerData[uuid]?.rank) {
+      const rank = Math.min(globalPlayerData[uuid].rank, 3);
       message.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
       staffIcon = message.children[message.childElementCount - 1];
       staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
