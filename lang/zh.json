@@ -56,6 +56,33 @@
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
     },
     "modal": {
+      "login": {
+        "title": "Login",
+        "fields": {
+          "username": "Username:&nbsp;",
+          "password": "Password&nbsp;"
+        },
+        "registerPrompt": "Don't have an account?&nbsp;",
+        "register": "Register",
+        "errors": {
+          "invalidLogin": "Username or password is incorrect."
+        }
+      },
+      "register": {
+        "title": "Register",
+        "fields": {
+          "email": "Email:&nbsp;",
+          "username": "Username:&nbsp;",
+          "password": "Password:&nbsp;",
+          "confirmPassword": "Confirm Password:&nbsp;"
+        },
+        "loginPrompt": "Already have an account?&nbsp;",
+        "login": "Login",
+        "errors": {
+          "emailTaken": "The specified email address is already in use.",
+          "usernameTaken": "The specified username is already in use."
+        }
+      },
       "uiTheme": {
         "title": "界面风格",
         "auto": "自动"

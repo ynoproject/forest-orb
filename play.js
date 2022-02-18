@@ -351,6 +351,14 @@ function preToggle(buttonElement) {
   }, 500);
 }
 
+function openModal(modalId) {
+  document.getElementById('modalContainer').classList.remove('hidden');
+  const activeModal = document.querySelector('.modal:not(.hidden)');
+  if (activeModal && activeModal.id !== modalId)
+    activeModal.classList.add('hidden');
+  document.getElementById(modalId).classList.remove('hidden');
+}
+
 if (hasUiThemes)
   populateUiThemes();
 
@@ -414,10 +422,7 @@ document.getElementById('globalMessageButton').onclick = function () {
 if (hasUiThemes) {
   config.uiTheme = 'Default';
 
-  document.getElementById('uiThemeButton').onclick = function () {
-    document.getElementById('modalContainer').classList.remove('hidden');
-    document.getElementById('uiThemesModal').classList.remove('hidden');
-  };
+  document.getElementById('uiThemeButton').onclick = () => openModal('uiThemesModal');
 
   const uiThemes = document.querySelectorAll('.uiTheme');
 

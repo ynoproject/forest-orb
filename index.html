@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <style id="themeStyles">
-    html, input[type='text'], select {
+    html, input, select {
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: black;
     }
 
-    body, .container, div, input[type='text'] {
+    body, .container, div, input {
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
@@ -166,12 +166,12 @@
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
-    #chatBorder, input[type='text'], select {
+    #chatBorder, input, select {
       border: 12px solid transparent;
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
     }
   
-    input[type='text'], select {
+    input, select {
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -183,7 +183,7 @@
 
      /* Safari only */
      @media not all and (min-resolution:.001dpcm) {
-      #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input[type='text'], select {
+      #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select {
         border-color: unset !important;
       }
 
@@ -394,7 +394,55 @@
         </div>
       </div>
       <div id="modalContainer" class="hidden">
-        <div id="uiThemesModal" class="modal hidden">
+        <div id="loginModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 data-i18n="[html]modal.login.title">Login</h1>
+          </div>
+          <div class="modalContent">
+            <form id="loginForm">
+              <ul class="formControls">
+                <li class="formControlRow">
+                  <label for="loginUsername" class="unselectable" data-i18n="[html]modal.login.fields.username">Username:&nbsp;</label><input id="loginUsername" type="text" autocomplete="off" maxlength="12"></input>
+                </li>
+                <li class="formControlRow">
+                  <label for="loginPassword" class="unselectable" data-i18n="[html]modal.login.fields.password">Password:&nbsp;</label><input id="loginPassword" type="password" autocomplete="off"></input>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <div class="modalFooter">
+            <span class="infoLabel" data-i18n="[html]modal.login.registerPrompt">Don't have an account?&nbsp;</span><a href="javascript:void(0);" onclick="openModal('registerModal')" data-i18n="[html]modal.login.register">Register</a>
+          </div>
+        </div>
+        <div id="registerModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 data-i18n="[html]modal.register.title">Register</h1>
+          </div>
+          <div class="modalContent">
+            <form id="registerForm">
+              <ul class="formControls">
+                <li class="formControlRow">
+                  <label for="registerEmail" class="unselectable" data-i18n="[html]modal.register.fields.email">Email:&nbsp;</label><input id="registerEmail" type="text" autocomplete="off"></input>
+                </li>
+                <li class="formControlRow">
+                  <label for="registerUsername" class="unselectable" data-i18n="[html]modal.register.fields.username">Username:&nbsp;</label><input id="registerUsername" type="text" autocomplete="off" maxlength="12"></input>
+                </li>
+                <li class="formControlRow">
+                  <label for="registerPassword" class="unselectable" data-i18n="[html]modal.register.fields.password">Password:&nbsp;</label><input id="registerPassword" type="password" autocomplete="off"></input>
+                </li>
+                <li class="formControlRow">
+                  <label for="registerConfirmPassword" class="unselectable" data-i18n="[html]modal.register.fields.confirmPassword">Confirm Password:&nbsp;</label><input id="registerConfirmPassword" type="password" autocomplete="off"></input>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <div class="modalFooter">
+            <span class="infoLabel" data-i18n="[html]modal.register.loginPrompt">Already have an account?&nbsp;</span><a href="javascript:void(0);" onclick="openModal('loginModal')" data-i18n="[html]modal.register.login">Login</a>
+          </div>
+        </div>
+        <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 data-i18n="[html]modal.uiTheme.title">UI Theme</h1>

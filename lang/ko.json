@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -56,6 +56,33 @@
       "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
     },
     "modal": {
+      "login": {
+        "title": "Login",
+        "fields": {
+          "username": "Username:&nbsp;",
+          "password": "Password&nbsp;"
+        },
+        "registerPrompt": "Don't have an account?&nbsp;",
+        "register": "Register",
+        "errors": {
+          "invalidLogin": "Username or password is incorrect."
+        }
+      },
+      "register": {
+        "title": "Register",
+        "fields": {
+          "email": "Email:&nbsp;",
+          "username": "Username:&nbsp;",
+          "password": "Password:&nbsp;",
+          "confirmPassword": "Confirm Password:&nbsp;"
+        },
+        "loginPrompt": "Already have an account?&nbsp;",
+        "login": "Login",
+        "errors": {
+          "emailTaken": "The specified email address is already in use.",
+          "usernameTaken": "The specified username is already in use."
+        }
+      },
       "uiTheme": {
         "title": "UI 테마",
         "auto": "자동"

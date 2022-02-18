@@ -4,7 +4,7 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input[type='text'], select {
+html, input, select {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
@@ -670,16 +670,41 @@ body {
   width: unset;
 }
 
+#modalContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .modal {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: calc(100% - 112px);
-  height: calc(100% - 112px);
-  top: 32px;
-  left: 32px;
+  top: auto;
+  left: auto;
+  width: 100%;
+  height: auto;
+  max-width: 480px;
+  margin: 8px;
+  padding-bottom: 16px;
   background: white;
   z-index: 20;
+}
+
+.fullscreenModal {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+  width: calc(100% - 112px);
+  height: calc(100% - 112px);
+  max-width: unset;
+  margin: 0;
+  padding: 0;
 }
 
 .modalClose {
@@ -694,11 +719,14 @@ body {
 .modalContent {
   display: flex;
   flex-wrap: wrap;
-  align-content: baseline;
   justify-content: space-evenly;
   width: 100%;
   height: 100%;
   overflow-y: auto;
+}
+
+.fullscreenModal .modalContent {
+  align-content: baseline;
 }
 
 .modalContent > div {
@@ -718,7 +746,7 @@ body {
   border-color: white;
 }
 
-.modalHeader {
+.modalHeader, .modalFooter {
   text-align: center;
 }
 
@@ -734,6 +762,22 @@ body {
   left: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
+}
+
+.formControls {
+  list-style-type: none;
+  padding: 0;
+}
+
+.formControlRow {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.formControlRow label {
+  padding-right: 8px;
 }
 
 .uiTheme {
@@ -765,7 +809,7 @@ label {
   font-weight: bold;
 }
 
-input[type='text'], select {
+input, select {
   position: relative;
 }
 
