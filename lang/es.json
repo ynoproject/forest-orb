@@ -141,8 +141,12 @@
       "plural": "{COUNT} Players in Map"
     },
     "playerList": {
-      "unnamed": "Unnamed Player",
-      "staff": "Staff"
+      "unnamed": "Unnamed Player"
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer",
+      "owner": "Owner"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

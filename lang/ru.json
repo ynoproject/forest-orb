@@ -144,8 +144,12 @@
       "plural": "{COUNT} Игроков на карте"
     },
     "playerList": {
-      "unnamed": "Безымянный игрок",
-      "staff": "Персонал"
+      "unnamed": "Безымянный игрок"
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer",
+      "owner": "Owner"
     },
     "chatTips": {
       "template": "СОВЕТ: {CONTENT}",

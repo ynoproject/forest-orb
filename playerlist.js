@@ -37,9 +37,10 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     playerListEntryIconContainer.classList.add("playerListEntryIconContainer");
 
     if (playerData[id]?.rank) {
-      playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[1].content.cloneNode(true));
+      const rank = Math.min(playerData[id].rank, 3);
+      playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
       staffIcon = playerListEntryIconContainer.children[0];
-      staffIcon.title = localizedMessages.playerList.staff;
+      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
     }
 
     playerListEntry.appendChild(playerListEntryIconContainer);

@@ -144,8 +144,12 @@
       "plural": "{COUNT} Jogadores no Mapa"
     },
     "playerList": {
-      "unnamed": "Jogador sem nome",
-      "staff": "Staff"
+      "unnamed": "Jogador sem nome"
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer",
+      "owner": "Owner"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

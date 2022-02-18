@@ -144,8 +144,12 @@
       "plural": "当前地图有 {COUNT} 位玩家正在游览"
     },
     "playerList": {
-      "unnamed": "未命名玩家",
-      "staff": "Staff"
+      "unnamed": "未命名玩家"
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer",
+      "owner": "Owner"
     },
     "chatTips": {
       "template": "小贴士：{CONTENT}",

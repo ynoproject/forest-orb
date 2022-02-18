@@ -144,8 +144,12 @@
       "plural": "{COUNT}人が 接続中（同マップ）"
     },
     "playerList": {
-      "unnamed": "無名プレーヤー",
-      "staff": "スタッフ"
+      "unnamed": "無名プレーヤー"
+    },
+    "roles": {
+      "mod": "モデレーター",
+      "dev": "開発者",
+      "owner": "所有者"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

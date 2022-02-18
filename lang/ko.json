@@ -144,8 +144,12 @@
       "plural": "현위치에 {COUNT}명이 있습니다"
     },
     "playerList": {
-      "unnamed": "익명의 플레이어",
-      "staff": "스태프"
+      "unnamed": "익명의 플레이어"
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer",
+      "owner": "Owner"
     },
     "chatTips": {
       "template": "팁: {CONTENT}",
