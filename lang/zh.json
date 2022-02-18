@@ -23,8 +23,8 @@
       }
     },
     "chatbox": {
-      "connStatus": "连接状态：&nbsp;",
-      "location": "当前位置：&nbsp;",
+      "connStatus": "连接状态：",
+      "location": "当前位置：",
       "immersionMode": "沉浸模式已开启",
       "tab": {
         "chat": "聊天记录",
@@ -59,8 +59,8 @@
       "login": {
         "title": "登录",
         "fields": {
-          "username": "用户名:&nbsp;",
-          "password": "密码:&nbsp;"
+          "username": "用户名：",
+          "password": "密码："
         },
         "registerPrompt": "还没有账号？请点此&nbsp;",
         "register": "注册",
@@ -71,10 +71,10 @@
       "register": {
         "title": "注册",
         "fields": {
-          "email": "邮箱:&nbsp;",
-          "username": "用户名:&nbsp;",
-          "password": "密码:&nbsp;",
-          "confirmPassword": "重复密码:&nbsp;"
+          "email": "邮箱：",
+          "username": "用户名：",
+          "password": "密码：",
+          "confirmPassword": "重复密码："
         },
         "loginPrompt": "已有账号？请点此&nbsp;",
         "login": "登录",
