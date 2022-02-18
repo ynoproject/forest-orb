@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -25,7 +25,7 @@
     "chatbox": {
       "connStatus": "连接状态：&nbsp;",
       "location": "当前位置：&nbsp;",
-      "immersionMode": "Immersion Mode",
+      "immersionMode": "沉浸模式已开启",
       "tab": {
         "chat": "聊天记录",
         "players": "玩家列表"
@@ -57,30 +57,30 @@
     },
     "modal": {
       "login": {
-        "title": "Login",
+        "title": "登录",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "用户名:&nbsp;",
+          "password": "密码:&nbsp;"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "还没有账号？请点此&nbsp;",
+        "register": "注册",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "用户名或密码不正确！"
         }
       },
       "register": {
-        "title": "Register",
+        "title": "注册",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "邮箱:&nbsp;",
+          "username": "用户名:&nbsp;",
+          "password": "密码:&nbsp;",
+          "confirmPassword": "重复密码:&nbsp;"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
+        "loginPrompt": "已有账号？请点此&nbsp;",
+        "login": "登录",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "您输入的邮箱地址已被占用！",
+          "usernameTaken": "您输入的用户名已被占用！"
         }
       },
       "uiTheme": {
@@ -98,7 +98,7 @@
       "toggleChat": "显示/隐藏聊天屏幕",
       "toggleNametags": "显示/隐藏玩家名称标签",
       "togglePlayerSounds": "开启/关闭其他玩家音效",
-      "toggleImmersionMode": "Toggle Immersion Mode",
+      "toggleImmersionMode": "开启/关闭沉浸模式",
       "toggleGlobalMessage": "发送全局聊天记录",
       "chat": {
         "clearChat": "清空记录"
@@ -147,9 +147,9 @@
       "unnamed": "未命名玩家"
     },
     "roles": {
-      "mod": "Moderator",
-      "dev": "Developer",
-      "owner": "Owner"
+      "mod": "管理者",
+      "dev": "开发者",
+      "owner": "所有者"
     },
     "chatTips": {
       "template": "小贴士：{CONTENT}",
@@ -160,7 +160,7 @@
         "markdownSupport": "通过在输入框中使用某些符号可以使文本以特殊格式显示出来，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）。",
         "chatTabNotifications": "当您处于除“所有聊天记录”以外的其他发言模式时，若此时其他模式下有新的聊天信息接收进来，系统将会以加粗标题字体的方式提醒您查看。",
         "clearChat": "当您处于除“所有聊天记录”以外的其他发言模式时，点击聊天框右上角的清除聊天记录按钮将只会清空您当前所在模式下的聊天信息。",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
+        "immersionMode": "如果您不喜欢聊天室的嘈杂想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天室、在线列表和人数统计模块。在此模式下，当你在探索途中随机偶遇到其他玩家时将会更加有趣。",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅详细源代码数据。"
       }
     },
