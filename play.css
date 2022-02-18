@@ -337,6 +337,14 @@ body {
   word-break: break-word;
 }
 
+.message .icon, .playerListEntry .nameText .icon {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px;
+}
+
 .playerCountLabel {
   cursor: pointer;
 }
@@ -362,7 +370,12 @@ body {
   width: 100%;
 }
 
-.playerListEntryIconContainer .icon {
+.playerListEntry .nameText .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.playerListEntryActionContainer .icon {
   width: 24px;
   height: 24px;
   padding-right: 4px;

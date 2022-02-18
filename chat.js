@@ -2,7 +2,7 @@ Module["onRuntimeInitialized"] = initChat;
 if (typeof ENV === "undefined")
   initChat();
 
-function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocationsStr) {
+function chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -16,17 +16,12 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
 
+  let staffIcon;
+
+  const system = uuid === undefined;
   const global = !system && mapId;
 
-  let msgText;
-
-  if (system)
-    msgText = msg;
-  else {
-    const msgTextResult = /^<(.*?)> (.*)/.exec(msg);
-    const nameText = msgTextResult ? msgTextResult[1] : null;
-    msgText = msgTextResult ? msgTextResult[2] : msg;
-
+  if (!system) {
     if (global) {
       msgContainer.classList.add("global");
       msgContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
@@ -60,29 +55,50 @@ function chatboxAddMessage(msg, system, systemName, mapId, prevMapId, prevLocati
       }
     }
 
-    if (nameText) {
-      const name = document.createElement("span");
-      name.classList.add("nameText");
-      if (systemName) {
-        systemName = systemName.replace(/'/g, "");
-        getFontColors(systemName, 0, colors => name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`));
-        getFontShadow(systemName, shadow => name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`);
-      }
-      name.innerText = nameText;
-      const nameBeginMarker = document.createElement("span");
-      nameBeginMarker.classList.add("nameMarker");
-      nameBeginMarker.textContent = "<";
-      const nameEndMarker = document.createElement("span");
-      nameEndMarker.classList.add("nameMarker");
-      nameEndMarker.textContent = ">";
-      message.appendChild(nameBeginMarker);
-      message.appendChild(name);
-      message.appendChild(nameEndMarker);
-      message.appendChild(document.createTextNode(" "));
+    const name = document.createElement("span");
+    name.classList.add("nameText");
+
+    name.innerText = globalPlayerData[uuid]?.name || localizedMessages.playerList.unnamed; // Shouldn't be null but add a fallback anyway
+    const nameBeginMarker = document.createElement("span");
+    nameBeginMarker.classList.add("nameMarker");
+    nameBeginMarker.textContent = "<";
+    const nameEndMarker = document.createElement("span");
+    nameEndMarker.classList.add("nameMarker");
+    nameEndMarker.textContent = ">";
+    message.appendChild(nameBeginMarker);
+    message.appendChild(name);
+    if (/*globalPlayerData[uuid]?.rank*/true) {
+      const rank = 2;//Math.min(globalPlayerData[uuid].rank, 3);
+      message.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
+      staffIcon = message.children[message.childElementCount - 1];
+      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
     }
+
+    let systemName = globalPlayerData[uuid]?.systemName;
+
+    if (systemName) {
+      systemName = systemName.replace(/'/g, "");
+      getFontColors(systemName, 0, colors => {
+        name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
+        if (staffIcon) {
+          addSystemSvgGradient(systemName, colors);
+          staffIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
+        }
+      });
+      getFontShadow(systemName, shadow => {
+        name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
+        if (staffIcon) {
+          addSystemSvgDropShadow(systemName, shadow);
+          staffIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
+        }
+      });
+    }
+    
+    message.appendChild(nameEndMarker);
+    message.appendChild(document.createTextNode(" "));
   }
   
-  populateMessageNodes(parseMessageTextForMarkdown(msgText), messageContents, system);
+  populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);
 
   if (localizedMapLocations && !global) {
@@ -174,7 +190,7 @@ function addChatTip() {
   if (++globalConfig.chatTipIndex >= Object.keys(tips).length)
     globalConfig.chatTipIndex = 0;
   const tipIndex = globalConfig.chatTipIndex;
-  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])), true);
+  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])));
   updateConfig(globalConfig, true);
 }
 
@@ -193,7 +209,7 @@ function addChatMapLocation() {
   if (lastLocMessage && new DOMParser().parseFromString(locationHtml, "text/html").documentElement.textContent === lastLocMessage.innerText)
     return;
 
-  const locMessage = chatboxAddMessage(locationHtml, true);
+  const locMessage = chatboxAddMessage(locationHtml);
   if (locMessage) {
     locMessage.classList.add("locMessage");
     locMessage.classList.add("map");
@@ -291,11 +307,12 @@ function wrapMessageEmojis(node, force) {
 }
 
 // EXTERNAL
-function onChatMessageReceived(systemName, msg) {
-  chatboxAddMessage(msg, false, systemName);
+function onChatMessageReceived(msg, id) {
+  const uuid = playerData[id]?.uuid;
+  chatboxAddMessage(msg, uuid);
 }
 
 // EXTERNAL
-function onGChatMessageReceived(mapId, prevMapId, prevLocationsStr, systemName, msg) {
-  chatboxAddMessage(msg, false, systemName, mapId, prevMapId, prevLocationsStr);
+function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
+  chatboxAddMessage(msg, uuid, mapId, prevMapId, prevLocationsStr);
 }

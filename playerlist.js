@@ -1,4 +1,5 @@
 let playerData = {};
+let globalPlayerData = {};
 let spriteData = {};
 let playerSpriteCache = {};
 
@@ -33,17 +34,12 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     nameText.classList.add("nameText");
     playerListEntry.appendChild(nameText);
 
-    const playerListEntryIconContainer = document.createElement("div");
-    playerListEntryIconContainer.classList.add("playerListEntryIconContainer");
+    const playerListEntryActionContainer = document.createElement("div");
+    playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
 
-    if (playerData[id]?.rank) {
-      const rank = Math.min(playerData[id].rank, 3);
-      playerListEntryIconContainer.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
-      staffIcon = playerListEntryIconContainer.children[0];
-      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
-    }
+    // Add actions
 
-    playerListEntry.appendChild(playerListEntryIconContainer);
+    playerListEntry.appendChild(playerListEntryActionContainer);
 
     playerList.appendChild(playerListEntry);
   }
@@ -53,7 +49,14 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     if (name)
       delete playerListEntry.dataset.unnamed;
     else
-      playerListEntry.dataset.unnamed = 'unnamed';
+      playerListEntry.dataset.unnamed = "unnamed";
+
+    if (playerData[id]?.rank) {
+      const rank = Math.min(playerData[id].rank, 3);
+      nameText.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
+      staffIcon = nameText.children[0];
+      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+    }
   }
 
   if (systemName) {
@@ -189,16 +192,39 @@ function getSpriteImg(sprite, idx, callback, dir) {
 
 // EXTERNAL
 function syncPlayerData(uuid, rank, id) {
-  if (id === undefined)
-    id = -1;
   playerData[id] = {
     uuid: uuid,
+    name: null,
+    systemName: null,
+    rank: rank
+  };
+
+  if (globalPlayerData.hasOwnProperty(uuid))
+    globalPlayerData[uuid].rank = rank;
+  else
+    globalPlayerData[uuid] = {
+      name: null,
+      systemName: null,
+      rank: rank
+    };
+}
+
+// EXTERNAL
+function syncGlobalPlayerData(uuid, name, systemName, rank) {
+  globalPlayerData[uuid] = {
+    name: name,
+    systemName: systemName,
     rank: rank
   };
 }
 
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
+  const uuid = playerData[id].uuid;
+  if (name)
+    playerData[id].name = globalPlayerData[uuid].name = name;
+  if (systemName)
+    playerData[id].systemName = globalPlayerData[uuid].systemName = systemName;
   addOrUpdatePlayerListEntry(systemName, name, id);
 }
 
