@@ -228,6 +228,7 @@ let systemName;
 
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
+  playerData[-1].systemName = name;
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
 }
@@ -966,7 +967,7 @@ function getSvgGradientStop(color, offset) {
 }
 
 function addSystemSvgGradient(systemName, colors) {
-  const gradientId = `baseGradient_${systemName}`;
+  const gradientId = `baseGradient_${systemName.replace(' ', '_')}`;
   if (!document.getElementById(gradientId)) {
     const svgDefs = document.getElementById('svgDefs');
     const svgGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
@@ -981,7 +982,7 @@ function addSystemSvgGradient(systemName, colors) {
 }
 
 function addSystemSvgDropShadow(systemName, color) {
-  const dropShadowFilterId = `dropShadow_${systemName}`;
+  const dropShadowFilterId = `dropShadow_${systemName.replace(' ', '_')}`;
   if (!document.getElementById(dropShadowFilterId)) {
     const svgDefs = document.getElementById('svgDefs');
     const svgDropShadowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');

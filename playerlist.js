@@ -68,14 +68,14 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
       nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
       if (roleIcon) {
         addSystemSvgGradient(systemName, colors);
-        roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
+        roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName.replace(' ', '_')})`;
       }
     });
     getFontShadow(systemName, shadow => {
       nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
       if (roleIcon) {
         addSystemSvgDropShadow(systemName, shadow);
-        roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
+        roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName.replace(' ', '_')})`;
       }
     });
   }
