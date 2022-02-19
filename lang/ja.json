@@ -160,7 +160,7 @@
         "markdownSupport": "このチャットはテキスト装飾に対応しています。 現在対応しているのは：**太字**（\\*\\*テキスト\\*\\*）、*イタリック体*（\\*テキスト\\*、\\_テキスト\\_）、__下線__（\\_\\_テキスト\\_\\_）、~~打ち消し線~~（\\~\\~テキスト\\~\\~）。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
+        "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
     },
