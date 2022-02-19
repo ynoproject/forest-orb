@@ -228,7 +228,8 @@ let systemName;
 
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
-  playerData[-1].systemName = name;
+  if (playerData[-1])
+    playerData[-1].systemName = name;
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
 }
