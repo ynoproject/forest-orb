@@ -57,30 +57,30 @@
     },
     "modal": {
       "login": {
-        "title": "Login",
+        "title": "로그인",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "아이디:",
+          "password": "비밀번호:"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "계정이 존재하지 않습니다.",
+        "register": "회원가입",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "아이디 혹은 비밀번호가 올바르지 않습니다."
         }
       },
       "register": {
-        "title": "Register",
+        "title": "회원가입",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "이메일 주소:",
+          "username": "아이디:",
+          "password": "비밀번호:",
+          "confirmPassword": "비밀번호 확인:"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
+        "loginPrompt": "이미 있는 계정입니다.",
+        "login": "로그인",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "해당 이메일은 이미 사용하고 있습니다.",
+          "usernameTaken": "해당 아이디는 이미 사용하고 있습니다."
         }
       },
       "uiTheme": {
