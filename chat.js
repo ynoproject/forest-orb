@@ -16,7 +16,7 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
 
-  let staffIcon;
+  let roleIcon;
 
   const system = player === undefined;
   const global = !system && mapId;
@@ -70,8 +70,8 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
     if (player?.rank) {
       const rank = Math.min(player.rank, 3);
       message.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
-      staffIcon = message.children[message.childElementCount - 1];
-      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      roleIcon = message.children[message.childElementCount - 1];
+      roleIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
     }
 
     let systemName = player?.systemName;
@@ -80,16 +80,16 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
       systemName = systemName.replace(/'/g, "");
       getFontColors(systemName, 0, colors => {
         name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
-        if (staffIcon) {
+        if (roleIcon) {
           addSystemSvgGradient(systemName, colors);
-          staffIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
+          roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
         }
       });
       getFontShadow(systemName, shadow => {
         name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
-        if (staffIcon) {
+        if (roleIcon) {
           addSystemSvgDropShadow(systemName, shadow);
-          staffIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
+          roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
         }
       });
     }

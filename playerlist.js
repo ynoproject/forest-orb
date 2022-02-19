@@ -10,7 +10,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
 
   const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
 
-  let staffIcon = playerListEntry ? playerListEntry.querySelector(".staffIcon") : null;
+  let roleIcon = playerListEntry ? playerListEntry.querySelector(".roleIcon") : null;
 
   if (!playerListEntry) {
     playerListEntry = document.createElement("div");
@@ -54,8 +54,8 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     if (playerData[id]?.rank) {
       const rank = Math.min(playerData[id].rank, 3);
       nameText.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
-      staffIcon = nameText.children[0];
-      staffIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      roleIcon = nameText.children[0];
+      roleIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
     }
   }
 
@@ -66,16 +66,16 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
     getFontColors(systemName, 0, colors => {
       nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
-      if (staffIcon) {
+      if (roleIcon) {
         addSystemSvgGradient(systemName, colors);
-        staffIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
+        roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName})`;
       }
     });
     getFontShadow(systemName, shadow => {
       nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
-      if (staffIcon) {
+      if (roleIcon) {
         addSystemSvgDropShadow(systemName, shadow);
-        staffIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
+        roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName})`;
       }
     });
   }
