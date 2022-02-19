@@ -310,14 +310,12 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  if (id === undefined)
-    id = -1;
-  const player = playerData[id];
+  const player = playerData[id] || null;
   chatboxAddMessage(msg, player);
 }
 
 // EXTERNAL
 function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
-  const player = globalPlayerData.hasOwnProperty(uuid) ? globalPlayerData[uuid] : null;
+  const player = globalPlayerData[uuid] || null;
   chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr);
 }

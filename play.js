@@ -1132,7 +1132,7 @@ function initLocalization(isInitial) {
       const translationInstruction = document.getElementById('translationInstruction');
       translationInstruction.classList.toggle('hidden', translationComplete);
       if (!translationComplete)
-        document.getElementById('translationLink').href = `https://github.com/ynoproject/forest-orb/edit/master/lang/${config.lang}.json`;
+        document.getElementById('translationLink').href = `https://github.com/ynoproject/forest-orb/edit/master/lang/${globalConfig.lang}.json`;
 
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };

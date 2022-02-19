@@ -194,8 +194,8 @@ function getSpriteImg(sprite, idx, callback, dir) {
 function syncPlayerData(uuid, rank, id) {
   playerData[id] = {
     uuid: uuid,
-    name: null,
-    systemName: null,
+    name: globalPlayerData[uuid]?.name || null,
+    systemName: globalPlayerData[uuid]?.systemName || null,
     rank: rank
   };
 
@@ -204,7 +204,7 @@ function syncPlayerData(uuid, rank, id) {
     playerData[id].systemName = systemName;
   }
 
-  if (globalPlayerData.hasOwnProperty(uuid))
+  if (globalPlayerData[uuid])
     globalPlayerData[uuid].rank = rank;
   else
     globalPlayerData[uuid] = {
@@ -225,11 +225,17 @@ function syncGlobalPlayerData(uuid, name, systemName, rank) {
 
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
-  const uuid = playerData[id].uuid;
-  if (name)
-    playerData[id].name = globalPlayerData[uuid].name = name;
-  if (systemName)
-    playerData[id].systemName = globalPlayerData[uuid].systemName = systemName;
+  const uuid = playerData[id]?.uuid;
+  if (name) {
+    playerData[id].name = name;
+    if (uuid)
+      globalPlayerData[uuid].name = name;
+  }
+  if (systemName) {
+    playerData[id].systemName = systemName;
+    if (uuid)
+      globalPlayerData[uuid].systemName = systemName;
+  }
   addOrUpdatePlayerListEntry(systemName, name, id);
 }
 
