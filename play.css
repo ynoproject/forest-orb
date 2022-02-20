@@ -826,7 +826,7 @@ input, select {
   position: relative;
 }
 
-#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab {
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
 
