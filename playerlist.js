@@ -227,12 +227,14 @@ function syncGlobalPlayerData(uuid, name, systemName, rank) {
 function onPlayerConnectedOrUpdated(systemName, name, id) {
   const uuid = playerData[id]?.uuid;
   if (name) {
-    playerData[id].name = name;
+    if (playerData[id])
+      playerData[id].name = name;
     if (uuid)
       globalPlayerData[uuid].name = name;
   }
   if (systemName) {
-    playerData[id].systemName = systemName;
+    if (playerData[id])
+      playerData[id].systemName = systemName;
     if (uuid)
       globalPlayerData[uuid].systemName = systemName;
   }
