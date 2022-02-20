@@ -23,8 +23,8 @@
       }
     },
     "chatbox": {
-      "connStatus": "Статус: ",
-      "location": "Локация: ",
+      "connStatus": "Статус:&nbsp;",
+      "location": "Локация:&nbsp;",
       "immersionMode": "Режим Погружения",
       "tab": {
         "chat": "Чат",
@@ -59,10 +59,10 @@
       "login": {
         "title": "Войти",
         "fields": {
-          "username": "Логин: ",
-          "password": "Пароль: "
+          "username": "Логин:&nbsp;",
+          "password": "Пароль:&nbsp;"
         },
-        "registerPrompt": "Ещё нет аккаунта? ",
+        "registerPrompt": "Ещё нет аккаунта?&nbsp;",
         "register": "Зарегистрироваться",
         "errors": {
           "invalidLogin": "Логин или пароль не верны."
@@ -71,12 +71,12 @@
       "register": {
         "title": "Регистрация",
         "fields": {
-          "email": "E-mail: ",
-          "username": "Логин: ",
-          "password": "Пароль: ",
-          "confirmPassword": "Подтвердите пароль: "
+          "email": "E-mail:&nbsp;",
+          "username": "Логин:&nbsp;",
+          "password": "Пароль:&nbsp;",
+          "confirmPassword": "Подтвердите пароль:&nbsp;"
         },
-        "loginPrompt": "Уже есть аккаунт?",
+        "loginPrompt": "Уже есть аккаунт?&nbsp;",
         "login": "Войти",
         "errors": {
           "emailTaken": "Данный e-mail уже используется.",
