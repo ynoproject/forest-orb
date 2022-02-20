@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -57,30 +57,30 @@
     },
     "modal": {
       "login": {
-        "title": "Login",
+        "title": "Войти",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "Логин:&nbsp;",
+          "password": "Пароль:&nbsp;"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "Ещё нет аккаунта?&nbsp;",
+        "register": "Зарегистрироваться",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "Логин или пароль не верны."
         }
       },
       "register": {
-        "title": "Register",
+        "title": "Регистрация",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "E-mail:&nbsp;",
+          "username": "Логин:&nbsp;",
+          "password": "Пароль:&nbsp;",
+          "confirmPassword": "Подтвердите пароль:&nbsp;"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
+        "loginPrompt": "Уже есть аккаунт?&nbsp;",
+        "login": "Войти",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "Данный e-mail уже используется.",
+          "usernameTaken": "Данный логин уже используется."
         }
       },
       "uiTheme": {
@@ -147,9 +147,9 @@
       "unnamed": "Безымянный игрок"
     },
     "roles": {
-      "mod": "Moderator",
-      "dev": "Developer",
-      "owner": "Owner"
+      "mod": "Модератор",
+      "dev": "Разработчик",
+      "owner": "Владелец"
     },
     "chatTips": {
       "template": "СОВЕТ: {CONTENT}",
