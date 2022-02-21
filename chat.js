@@ -78,18 +78,19 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
 
     if (systemName) {
       systemName = systemName.replace(/'/g, "");
+      const parsedSystemName = systemName.replace(" ", "_");
       getFontColors(systemName, 0, colors => {
         name.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
         if (roleIcon) {
           addSystemSvgGradient(systemName, colors);
-          roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName.replace(' ', '_')})`;
+          roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
         }
       });
       getFontShadow(systemName, shadow => {
         name.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
         if (roleIcon) {
           addSystemSvgDropShadow(systemName, shadow);
-          roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName.replace(' ', '_')})`;
+          roleIcon.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
         }
       });
     }

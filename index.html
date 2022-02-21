@@ -286,9 +286,15 @@
           </div>
 
           <div id="apad" class="unselectable">
-            <div id="apad-escape" class="baseColorBg" data-key="Escape" data-key-code="27"></div>
-            <div id="apad-enter" class="baseColorBg" data-key="Enter" data-key-code="13"></div>
-            <div id="apad-shift" class="baseColorBg" data-key="Shift" data-key-code="16"></div>
+            <div id="apad-escape" class="baseColorBg apadCircBtn apadBtn" data-key="Escape" data-key-code="27"></div>
+            <div id="apad-enter" class="baseColorBg apadCircBtn apadBtn" data-key="Enter" data-key-code="13"></div>
+            <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16" data-game-ids="2kki,flow,prayers,deepdreams,someday,amillusion,unevendream" style="display: none"></div>
+            <div id="apad-numbers" class="apadBtnContainer" data-game-ids="yume" style="display: none">
+              <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49"></div>
+              <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
+              <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53"></div>
+              <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -363,8 +369,13 @@
               <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
                 <path d="m2 6a1 1 90 0 0 0 3 1 1 90 0 0 0 -3m14 3a1 1 90 0 0 0 -3 1 1 90 0 0 0 3m-7-2a1 1 90 0 0 0 -3 1 1 90 0 0 0 3m-5.75 1.25c0.75 0.75 3.75 0.75 5-1.5q0.75 0.5 1.5 0c1.25 2.25 4.25 2.25 5 1.5q0.25 0.5 1 0.75-1 3-1 6h-11.75q0-4-0.75-6 0.75-0.25 1-0.75" />
               </svg>
-            </div>
-          </template></div>
+            </div></template>
+            <template><div class="banIcon icon fillIcon">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m9 0a9 9 90 1 0 9 9 9 9 90 0 0 -9 -9zm0 2.1a6.9 6.9 90 0 1 4.1 1.3l-9.7 9.7a6.9 6.9 90 0 1 5.6 -11zm0 13.8a6.9 6.9 90 0 1 -4.1 -1.3l9.6-9.6a6.9 6.9 90 0 1 -5.5 10.9z" />
+              </svg>
+            </div></template>
+          </div>
           <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
             <form action="javascript:chatInputActionFired()">
               <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" data-sys="" />

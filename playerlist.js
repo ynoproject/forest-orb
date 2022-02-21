@@ -9,6 +9,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
   let playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
 
   const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
+  const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector(".playerListEntryActionContainer") : document.createElement("div");
 
   let roleIcon = playerListEntry ? playerListEntry.querySelector(".roleIcon") : null;
 
@@ -34,10 +35,20 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     nameText.classList.add("nameText");
     playerListEntry.appendChild(nameText);
 
-    const playerListEntryActionContainer = document.createElement("div");
     playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
 
-    // Add actions
+    // Not yet supported
+    /*if (playerData[id] && playerData[-1].rank > playerData[id].rank) {
+      const banAction = document.createElement("a");
+      banAction.href = "javascript:void(0);";
+      banAction.onclick = function () {
+        const uuidPtr = Module.allocate(Module.intArrayFromString(playerData[id].uuid), Module.ALLOC_NORMAL);
+        Module._SendBanUserRequest(msgPtr);
+        Module._free(uuidPtr);
+      };
+      banAction.appendChild(document.getElementsByTagName("template")[4].content.cloneNode(true));
+      playerListEntryActionContainer.appendChild(banAction);
+    }*/
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
@@ -60,22 +71,29 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
   }
 
   if (systemName) {
-    systemName = systemName.replace(/'/g, '');
+    systemName = systemName.replace(/'/g, "");
+    const parsedSystemName = systemName.replace(" ", "_");
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
     getFontColors(systemName, 0, colors => {
       nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
-      if (roleIcon) {
+      if (roleIcon || playerListEntryActionContainer.childElementCount) {
         addSystemSvgGradient(systemName, colors);
-        roleIcon.querySelector("path").style.fill = `url(#baseGradient_${systemName.replace(' ', '_')})`;
+        if (roleIcon)
+          roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
+        for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
+          iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
       }
     });
     getFontShadow(systemName, shadow => {
       nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
-      if (roleIcon) {
+      if (roleIcon || playerListEntryActionContainer.childElementCount) {
         addSystemSvgDropShadow(systemName, shadow);
-        roleIcon.querySelector("path").style.filter = `url(#dropShadow_${systemName.replace(' ', '_')})`;
+        if (roleIcon)
+          roleIcon.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
+        for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
+          iconPath.style.filter = `url(#dropShadow_${parsedSystemName})`;
       }
     });
   }
