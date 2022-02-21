@@ -336,7 +336,7 @@ function onReceiveInputFeedback(inputId) {
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
-      config[configKey] = buttonElement.classList.contains('toggled');
+      config[configKey] = buttonElement.classList.contains('toggled') !== buttonElement.classList.contains('inverseToggle');
       updateConfig(config);
     }
   }
@@ -365,10 +365,6 @@ if (hasUiThemes)
   populateUiThemes();
 
 let locationCache;
-
-document.getElementById('lang').onchange = function () {
-  setLang(this.value);
-};
 
 {
   const closeModal = function () {
@@ -468,6 +464,12 @@ document.getElementById('clearChatButton').onclick = function () {
     if (unreadChatTab)
       unreadChatTab.classList.remove('unread');
   }
+};
+
+document.getElementById('settingsButton').onclick = () => openModal('settingsModal');
+
+document.getElementById('lang').onchange = function () {
+  setLang(this.value);
 };
 
 document.getElementById('nexusButton').onclick = function () {

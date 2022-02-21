@@ -4,7 +4,7 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input, select {
+html, input, select, button {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
@@ -583,13 +583,6 @@ body {
   stroke-width: 0.5;
 }
 
-#langContainer {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  width: 100%;
-}
-
 #translationInstruction {
   font-size: small;
 }
@@ -784,7 +777,7 @@ body {
 
 .formControlRow {
   display: flex;
-  justify-content: right;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
@@ -824,6 +817,26 @@ label {
 
 input, select {
   position: relative;
+}
+
+button.checkboxButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+button.checkboxButton > span:after {
+  content: "";
+}
+
+button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxButton.inverseToggle:not(.toggled) > span:after {
+  content: "✔";
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {

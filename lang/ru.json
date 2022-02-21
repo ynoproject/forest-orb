@@ -49,9 +49,6 @@
       "discord": "Присоединяйтесь к нашему Discord!",
       "translation": "Помочь с переводом"
     },
-    "lang": {
-      "label": "Язык:"
-    },
     "2kki": {
       "hostedWithPermission": "Размещено с разрешения разработчиков Yume 2kki"
     },
@@ -59,8 +56,8 @@
       "login": {
         "title": "Войти",
         "fields": {
-          "username": "Логин:&nbsp;",
-          "password": "Пароль:&nbsp;"
+          "username": "Логин:",
+          "password": "Пароль:"
         },
         "registerPrompt": "Ещё нет аккаунта?&nbsp;",
         "register": "Зарегистрироваться",
@@ -71,16 +68,24 @@
       "register": {
         "title": "Регистрация",
         "fields": {
-          "email": "E-mail:&nbsp;",
-          "username": "Логин:&nbsp;",
-          "password": "Пароль:&nbsp;",
-          "confirmPassword": "Подтвердите пароль:&nbsp;"
+          "email": "E-mail:",
+          "username": "Логин:",
+          "password": "Пароль:",
+          "confirmPassword": "Подтвердите пароль:"
         },
         "loginPrompt": "Уже есть аккаунт?&nbsp;",
         "login": "Войти",
         "errors": {
           "emailTaken": "Данный e-mail уже используется.",
           "usernameTaken": "Данный логин уже используется."
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "Язык:",
+          "toggleNametags": "Переключить Ники:",
+          "togglePlayerSounds": "Переключить Звуки Игроков:"
         }
       },
       "uiTheme": {
@@ -96,9 +101,8 @@
       },
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
-      "toggleNametags": "Переключить Ники",
-      "togglePlayerSounds": "Переключить Звуки Игроков",
       "toggleImmersionMode": "Переключить Режим Погружения",
+      "settings": "Settings",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
         "clearChat": "Очистить Чат"

@@ -49,9 +49,6 @@
       "discord": "点此加入我们的Discord频道！",
       "translation": "欢迎加入我们的界面语言翻译工作！"
     },
-    "lang": {
-      "label": "语言："
-    },
     "2kki": {
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
     },
@@ -83,6 +80,14 @@
           "usernameTaken": "您输入的用户名已被占用！"
         }
       },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "语言：",
+          "toggleNametags": "显示/隐藏玩家名称标签：",
+          "togglePlayerSounds": "开启/关闭其他玩家音效："
+        }
+      },
       "uiTheme": {
         "title": "界面风格",
         "auto": "自动"
@@ -96,9 +101,8 @@
       },
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
-      "toggleNametags": "显示/隐藏玩家名称标签",
-      "togglePlayerSounds": "开启/关闭其他玩家音效",
       "toggleImmersionMode": "开启/关闭沉浸模式",
+      "settings": "Settings",
       "toggleGlobalMessage": "发送全局聊天记录",
       "chat": {
         "clearChat": "清空记录"

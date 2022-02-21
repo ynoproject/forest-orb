@@ -49,9 +49,6 @@
       "discord": "Junte-se ao nosso Discord!",
       "translation": "Trabalho de tradução necessário"
     },
-    "lang": {
-      "label": "Idioma:"
-    },
     "2kki": {
       "hostedWithPermission": "Hospedados com a permissão dos desenvolvedores de Yume 2kki"
     },
@@ -59,8 +56,8 @@
       "login": {
         "title": "Login",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "Username:",
+          "password": "Password:"
         },
         "registerPrompt": "Don't have an account?&nbsp;",
         "register": "Register",
@@ -71,16 +68,24 @@
       "register": {
         "title": "Register",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "Email:",
+          "username": "Username:",
+          "password": "Password:",
+          "confirmPassword": "Confirm Password:"
         },
         "loginPrompt": "Already have an account?&nbsp;",
         "login": "Login",
         "errors": {
           "emailTaken": "The specified email address is already in use.",
           "usernameTaken": "The specified username is already in use."
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "Idioma:",
+          "toggleNametags": "Alternar nome dos jogadores:",
+          "togglePlayerSounds": "Alternar áudio dos jogadores:"
         }
       },
       "uiTheme": {
@@ -96,9 +101,8 @@
       },
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar bate papo",
-      "toggleNametags": "Alternar nome dos jogadores",
-      "togglePlayerSounds": "Alternar áudio dos jogadores",
       "toggleImmersionMode": "Toggle Immersion Mode",
+      "settings": "Settings",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "chat": {
         "clearChat": "Clear Chat"

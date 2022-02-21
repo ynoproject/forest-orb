@@ -49,9 +49,6 @@
       "discord": "Discordに 参加 する",
       "translation": "翻訳の仕事募集"
     },
-    "lang": {
-      "label": "言語"
-    },
     "2kki": {
       "hostedWithPermission": "ゆめ２っきの 開発者の 許可を 得て 掲載しています"
     },
@@ -59,8 +56,8 @@
       "login": {
         "title": "ログイン",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "Username:",
+          "password": "Password:"
         },
         "registerPrompt": "Don't have an account?&nbsp;",
         "register": "Register",
@@ -71,16 +68,24 @@
       "register": {
         "title": "登録",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "Email:",
+          "username": "Username:",
+          "password": "Password:",
+          "confirmPassword": "Confirm Password:"
         },
         "loginPrompt": "Already have an account?&nbsp;",
         "login": "Login",
         "errors": {
           "emailTaken": "The specified email address is already in use.",
           "usernameTaken": "The specified username is already in use."
+        }
+      },
+      "settings": {
+        "title": "設定",
+        "fields": {
+          "lang": "言語：",
+          "toggleNametags": "プレーヤー名表示：",
+          "togglePlayerSounds": "プレーヤー効果音："
         }
       },
       "uiTheme": {
@@ -96,9 +101,8 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleNametags": "プレーヤー名表示のオン／オフ",
-      "togglePlayerSounds": "プレーヤー効果音のオン／オフ",
       "toggleImmersionMode": "イマージョンモードのオン／オフ",
+      "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
         "clearChat": "チャットを消去"

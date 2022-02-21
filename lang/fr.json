@@ -49,9 +49,6 @@
       "discord": "Rejoignez notre Discord !",
       "translation": "Besoin d'aide à la traduction"
     },
-    "lang": {
-      "label": "Langue&nbsp;:"
-    },
     "2kki": {
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
     },
@@ -59,8 +56,8 @@
       "login": {
         "title": "Se Connecter",
         "fields": {
-          "username": "Identifiant&nbsp;:&nbsp;",
-          "password": "Mot de passe&nbsp;:&nbsp;"
+          "username": "Identifiant&nbsp;:",
+          "password": "Mot de passe&nbsp;:"
         },
         "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
         "register": "S'inscrire",
@@ -71,10 +68,10 @@
       "register": {
         "title": "S'inscrire",
         "fields": {
-          "email": "E-mail&nbsp;:&nbsp;",
-          "username": "Identifiant&nbsp;:&nbsp;",
-          "password": "Mot de passe&nbsp;:&nbsp;",
-          "confirmPassword": "Confirmer le mot de passe&nbsp;:&nbsp;"
+          "email": "E-mail&nbsp;:",
+          "username": "Identifiant&nbsp;:",
+          "password": "Mot de passe&nbsp;:",
+          "confirmPassword": "Confirmer le mot de passe&nbsp;:"
         },
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
         "login": "Se Connecter",
@@ -82,6 +79,14 @@
           "emailTaken": "Cette adresse e-mail est déjà utilisée.",
           "usernameTaken": "Cet identifiant existe déjà."
         }
+      },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "Langue&nbsp;:",
+          "toggleNametags": "Afficher les Noms&nbsp;:",
+          "togglePlayerSounds": "Activer les Sons des Joueurs&nbsp;:"
+        },
       },
       "uiTheme": {
         "title": "Thème UI",
@@ -96,9 +101,8 @@
       },
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Chat",
-      "toggleNametags": "Afficher les Noms",
-      "togglePlayerSounds": "Activer les Sons des Joueurs",
       "toggleImmersionMode": "Activer le Mode Immersion",
+      "settings": "Settings",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
         "clearChat": "Effacer le Chat"

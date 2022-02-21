@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <style id="themeStyles">
-    html, input, select {
+    html, input, select, button {
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: black;
     }
 
-    body, .container, div, input {
+    
+    body, .container, div, input, button {
       image-rendering: crisp-edges;
       image-rendering: pixelated;
     }
@@ -48,7 +49,7 @@
       border: 8px solid transparent;
     }
   
-    #enterNameContainer, .chatboxTab, .chatboxTabSection {
+    #enterNameContainer, .chatboxTab, .chatboxTabSection, button {
       border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
     }
   
@@ -166,12 +167,12 @@
       filter: drop-shadow(1.5px 1.5px black /*shadow*/);
     }
 
-    #chatBorder, input, select {
+    #chatBorder, input, select, button {
       border: 12px solid transparent;
       border-image: url('images/ui/2kki/system1/border.png') 8 repeat !important;
     }
   
-    input, select {
+    input, select, button {
       color: rgba(216, 216, 216, 1) !important; /*base*/
       background-color: rgba(45, 17, 23, 1) !important; /*basebg*/
       text-shadow: 1.5px 1.5px black; /*shadow*/
@@ -250,15 +251,11 @@
                 <svg viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m4.5 3c4.5-4.5 13.5-3 13.5-0.375m-4.125 6.375c-1.875 0-3.375 1.5-1.875 1.875m3 2.625c3 1.5-4.5 6-10.5 4.5-7.5-3-4.5-12 0-15m9-0.75a1.5 1.5 90 0 0 0 3.75 1.5 1.5 90 0 0 0-3.75m-6 0.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m-3.75 4.5a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m1.5 5.25a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m6-0.75a1.5 1.5 90 0 0-0.75 4.5q2.25 0 3-1.875m7.5-14.625q-6 4.5-7.5 10.5l1.5 0.75q4.5-3.75 6-11.25m-7.5 10.5c-3 0-1.5 3-3 4.5 6 0 4.5-3 4.5-3.75m-3.75 2.25c0.75 1.5 1.5 0 1.5 1.275" /></svg>
               </button><button id="chatButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleChat">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m11.25-12.75a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3"/><path d="m-2 16l22-14" /></svg>
-              </button><button id="nametagButton" class="iconButton offToggle unselectable multiplayerOnly" data-i18n="[title]tooltips.toggleNametags">
-                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 4.5h18v9h-18v-9m1.5 7.5v-6l3 6v-6m1 6l1.5-6 1.5 6m-2.5-2h2m1.5 2l1-6 1 6 1-6 1 6m1-6v6m0-6h2m-2 3h2m-2 3h2" /><path d="m-2 16l22-14" /></svg>
-              </button><button id="playerSoundsButton" class="iconButton offToggle unselectable multiplayerOnly" data-i18n="[title]tooltips.togglePlayerSounds">
-                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2.5 0a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 18v-12q2.5-1 5 0v12h-5m10-15q5 5 0 10m-2-8.5q3.5 3.5 0 7m-2-5.5q2 2 0 4m9.5-10a1 1 0 0 0 0 4 1 1 0 0 0 0 -4m-2.5 6q2.5-1 5 0v12h-5v-12" /><path d="m-2 16l22-14" /></svg>
               </button><button id="immersionModeButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleImmersionMode">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9c2-3 6-5 9-5s7 1 9 5m-18 0c2 3 6 5 9 5s7-1 9-5m-9-3a1 1 0 0 0 0 6 1 1 0 0 0 0 -6" /><path d="m-2 16l22-14" /></svg>
-              </button><!--<button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
+              </button><button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 5.5a1 1 90 0 0 0 7 1 1 90 0 0 0 -7m-7 5.5l-2-0.25v-3.5l2-0.25 0.75-1.5-1.25-1.75 2.25-2.25 1.75 1.25 1.5-0.75 0.25-2h3.5l0.25 2 1.5 0.75 1.75-1.25 2.25 2.25-1.25 1.75 0.75 1.5 2 0.25v3.5l-2 0.25-0.75 1.5 1.25 1.75-2.25 2.25-1.75-1.25-1.5 0.75-0.25 2h-3.5l-0.25-2-1.5-0.75-1.75 1.25-2.25-2.25 1.25-1.75-0.75-1.5" /></svg>
-              </button>-->
+              </button>
             </div>
             <div id="rightControls">
               <div id="mapControls" data-game-ids="2kki"></div>
@@ -459,6 +456,47 @@
             <span class="infoLabel" data-i18n="[html]modal.register.loginPrompt">Already have an account?&nbsp;</span><a href="javascript:void(0);" onclick="openModal('loginModal')" data-i18n="[html]modal.register.login">Login</a>
           </div>
         </div>
+        <div id="settingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 data-i18n="[html]modal.settings.title">Settings</h1>
+          </div>
+          <div class="modalContent">
+            <ul class="formControls">
+              <li class="formControlRow">
+                <label for="lang" class="unselectable" data-i18n="[html]modal.settings.fields.lang">Language:&nbsp;</label>
+                <div>
+                  <div>
+                    <select id="lang">
+                      <option value="en">English</option>
+                      <option value="ja">日本語</option>
+                      <option value="zh">中文</option>
+                      <option value="ko">한국어</option>
+                      <option value="es">Español</option>
+                      <option value="pt">Português</option>
+                      <option value="fr">Français</option>
+                      <option value="de">Deutsch</option>
+                      <option value="ru">Русский</option>
+                    </select>
+                  </div>
+                  <label id="translationInstruction" class="nofilter hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="nametagToggle" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNametags">Nametags:&nbsp;</label>
+                <div>
+                  <button id="nametagButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="playerSoundsToggle" class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds:&nbsp;</label>
+                <div>
+                  <button id="playerSoundsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
@@ -498,23 +536,6 @@
           <path d="m4 0h10v18h-10v-18m1 1h8v16h-8v-16m0.5 16l6.5-4.25v-11.75m-6 1l2-1h3.25v11.25l-5.25 3.25v-13.5m1 1.25l3-1.5v3.25l-3 1.5v-3.25m0.75 0.75l1.5-0.75v1l-1.5 0.75v-1m0 3.75l1.5-0.75v1l-1.5 0.75v-1m-0.75 2.75l3-1.75v3l-3 2v-3.25m0.75 0.75l1.5-1v1l-1.5 1v-1m-3.75-7.25h1m0 2h-1m0 6h1m0 2h-1m6.75-8.25l0.5-0.25v1l-0.5 0.25v-1" />
         </svg>
       </button>
-      <div id="langContainer">
-        <label id="translationInstruction" class="nofilter hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
-        <div>
-          <label for="lang" class="unselectable" data-i18n="[html]lang.label">Language:</label>
-          <select id="lang">
-            <option value="en">English</option>
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-            <option value="ko">한국어</option>
-            <option value="es">Español</option>
-            <option value="pt">Português</option>
-            <option value="fr">Français</option>
-            <option value="de">Deutsch</option>
-            <option value="ru">Русский</option>
-          </select>
-        </div>
-      </div>
     </div>
     <div id="backgroundTransition"></div>
   </div>

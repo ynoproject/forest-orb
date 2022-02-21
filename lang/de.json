@@ -49,9 +49,6 @@
       "discord": "Trete unserem Discord bei!",
       "translation": "Erforderliche Übersetzungsarbeit"
     },
-    "lang": {
-      "label": "Sprache:"
-    },
     "2kki": {
       "hostedWithPermission": "Mit der Erlaubnis der Yume 2kki Entwickler gehostet"
     },
@@ -59,8 +56,8 @@
       "login": {
         "title": "Login",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "Username:",
+          "password": "Password:"
         },
         "registerPrompt": "Don't have an account?&nbsp;",
         "register": "Register",
@@ -71,16 +68,24 @@
       "register": {
         "title": "Register",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "Email:",
+          "username": "Username:",
+          "password": "Password:",
+          "confirmPassword": "Confirm Password:"
         },
         "loginPrompt": "Already have an account?&nbsp;",
         "login": "Login",
         "errors": {
           "emailTaken": "The specified email address is already in use.",
           "usernameTaken": "The specified username is already in use."
+        }
+      },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "Sprache:",
+          "toggleNametags": "Namen an/aus:",
+          "togglePlayerSounds": "Player Sounds:"
         }
       },
       "uiTheme": {
@@ -96,9 +101,8 @@
       },
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
-      "toggleNametags": "Namen an/aus",
-      "togglePlayerSounds": "Toggle Player Sounds",
       "toggleImmersionMode": "Toggle Immersion Mode",
+      "settings": "Settings",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "chat": {
         "clearChat": "Clear Chat"

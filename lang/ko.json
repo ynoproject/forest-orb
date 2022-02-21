@@ -49,9 +49,6 @@
       "discord": "저희 디스코드 서버에 들어오세요!",
       "translation": "번역 작업이 필요합니다"
     },
-    "lang": {
-      "label": "언어"
-    },
     "2kki": {
       "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
     },
@@ -83,6 +80,14 @@
           "usernameTaken": "해당 아이디는 이미 사용하고 있습니다."
         }
       },
+      "settings": {
+        "title": "Settings",
+        "fields": {
+          "lang": "언어:",
+          "toggleNametags": "이름표 표시:",
+          "togglePlayerSounds": "다른 플레이어의 소리 듣기:"
+        }
+      },
       "uiTheme": {
         "title": "UI 테마",
         "auto": "자동"
@@ -96,9 +101,8 @@
       },
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
-      "toggleNametags": "이름표 표시",
-      "togglePlayerSounds": "다른 플레이어의 소리 듣기",
       "toggleImmersionMode": "몰입 모드 활성화",
+      "settings": "Settings",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
         "clearChat": "채팅 기록 삭제하기"
