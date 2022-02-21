@@ -25,14 +25,14 @@
     "chatbox": {
       "connStatus": "Statut&nbsp;:&nbsp;",
       "location": "Lieu&nbsp;:&nbsp;",
-      "immersionMode": "Immersion Mode",
+      "immersionMode": "Mode Immersion",
       "tab": {
         "chat": "Chat",
-        "players": "Players"
+        "players": "Joueurs"
       },
       "chat": {
         "tab": {
-          "all": "All",
+          "all": "Tout",
           "map": "Map",
           "global": "Global"
         },
@@ -47,7 +47,7 @@
     },
     "instruction": {
       "discord": "Rejoignez notre Discord !",
-      "translation": "Besoin d'un travail de traduction"
+      "translation": "Besoin d'aide à la traduction"
     },
     "lang": {
       "label": "Langue&nbsp;:"
@@ -57,30 +57,30 @@
     },
     "modal": {
       "login": {
-        "title": "Login",
+        "title": "Se Connecter",
         "fields": {
-          "username": "Username:&nbsp;",
-          "password": "Password&nbsp;"
+          "username": "Identifiant&nbsp;:&nbsp;",
+          "password": "Mot de passe&nbsp;:&nbsp;"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
+        "register": "S'inscrire",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "Identifiant ou mot de passe incorrect."
         }
       },
       "register": {
-        "title": "Register",
+        "title": "S'inscrire",
         "fields": {
-          "email": "Email:&nbsp;",
-          "username": "Username:&nbsp;",
-          "password": "Password:&nbsp;",
-          "confirmPassword": "Confirm Password:&nbsp;"
+          "email": "E-mail&nbsp;:&nbsp;",
+          "username": "Identifiant&nbsp;:&nbsp;",
+          "password": "Mot de passe&nbsp;:&nbsp;",
+          "confirmPassword": "Confirmer le mot de passe&nbsp;:&nbsp;"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
+        "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
+        "login": "Se Connecter",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "Cette adresse e-mail est déjà utilisée.",
+          "usernameTaken": "Cet identifiant existe déjà."
         }
       },
       "uiTheme": {
@@ -89,21 +89,21 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Toggle Single Player",
+      "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
       "io": {
         "upload": "Ouvrir un Fichier de Sauvegarde",
         "download": "Télécharger un Fichier de Sauvegarde"
       },
       "uiTheme": "Thème UI",
-      "toggleChat": "Afficher le Tchat",
+      "toggleChat": "Afficher le Chat",
       "toggleNametags": "Afficher les Noms",
-      "togglePlayerSounds": "Toggle Player Sounds",
-      "toggleImmersionMode": "Toggle Immersion Mode",
-      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "togglePlayerSounds": "Activer les Sons des Joueurs",
+      "toggleImmersionMode": "Activer le Mode Immersion",
+      "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "clearChat": "Clear Chat"
+        "clearChat": "Effacer le Chat"
       },
-      "nexus": "Return to Nexus"
+      "nexus": "Retourner au Nexus"
     }
   },
   "messages": {
@@ -124,8 +124,8 @@
     "connStatus": {
       "0": "Déconnecté",
       "1": "Connecté",
-      "2": "Connecting...",
-      "3": "Single Player"
+      "2": "Connexion...",
+      "3": "Jeu Solo"
     },
     "location": {
       "template": "{LOCATION}",
@@ -140,28 +140,28 @@
       "plural": "{COUNT} Joueurs en Ligne"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "{COUNT} Joueur sur la Map",
+      "plural": "{COUNT} Joueurs sur la Map"
     },
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "Joueur Sans Nom"
     },
     "roles": {
-      "mod": "Moderator",
-      "dev": "Developer",
-      "owner": "Owner"
+      "mod": "Modérateur",
+      "dev": "Développeur",
+      "owner": "Propriétaire"
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "ASTUCE&nbsp;: {CONTENT}",
       "tips": {
-        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
-        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "globalChatLocation": "You can view the location a global chat message was sent in by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
-        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), and ~~strikethrough~~ (\\~\\~text\\~\\~).",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
+        "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la map en cliquant sur le label.",
+        "globalChatLocation": "Vous pouvez voir la localisation d'un message global en survolant ou cliquant sur l'icône de globe à gauche de ce dernier. Afficher ou cacher la localisation d'un message global affichera ou cachera la localisation des messages globaux qui suivront.",
+        "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), et ~~barré~~ (\\~\\~texte\\~\\~).",
+        "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
+        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la chat box, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
+        "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
+        "openSource": "YNOProject est un projet open source, et le code source est disponible sur https://github.com/ynoproject/"
       }
     },
     "2kki": {
