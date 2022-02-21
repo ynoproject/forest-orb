@@ -336,7 +336,7 @@ function onReceiveInputFeedback(inputId) {
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
-      config[configKey] = buttonElement.classList.contains('toggled') !== buttonElement.classList.contains('inverseToggle');
+      config[configKey] = buttonElement.classList.contains('toggled');
       updateConfig(config);
     }
   }
