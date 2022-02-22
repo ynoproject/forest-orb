@@ -275,7 +275,7 @@ function populateMessageNodes(msg, node, asHtml) {
     }
     const childNode = document.createElement(result[1]);
     const innerMsg = msg.substr(cursor + result.index + 3, result[2].length);
-    populateMessageNodes(innerMsg, childNode);
+    populateMessageNodes(innerMsg, childNode, asHtml);
     node.appendChild(childNode);
     cursor += result.index + result[2].length + 7;
   }
