@@ -1009,6 +1009,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   #content:not(.chatboxOverlap) #controls {
     align-items: flex-start;
     justify-content: right;
+    width: 100%;
   }
 
   #content:not(.chatboxOverlap) #leftControls, #content:not(.chatboxOverlap) #mapControls {
@@ -1042,6 +1043,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 #layout.overflow #controls {
   align-items: flex-start;
   justify-content: right;
+  width: 100%;
 }
 
 #layout.overflow #leftControls, #layout.overflow #mapControls {
