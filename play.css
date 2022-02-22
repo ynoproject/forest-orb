@@ -113,7 +113,6 @@ body {
 
 #headerIconContainer {
   display: flex;
-  justify-content: right;
   align-items: center;
 }
 
@@ -1009,6 +1008,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 
   #content:not(.chatboxOverlap) #controls {
     align-items: flex-start;
+    justify-content: right;
   }
 
   #content:not(.chatboxOverlap) #leftControls, #content:not(.chatboxOverlap) #mapControls {
@@ -1041,6 +1041,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 
 #layout.overflow #controls {
   align-items: flex-start;
+  justify-content: right;
 }
 
 #layout.overflow #leftControls, #layout.overflow #mapControls {
