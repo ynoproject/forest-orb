@@ -32,7 +32,6 @@ body {
 #header, #layout {
   display: flex;
   margin: 0 auto;
-  width: 100%;
   max-width: 1036px;
   overflow: hidden;
 }
@@ -52,6 +51,10 @@ body {
 
 #headerIconContainer .icon {
   margin-left: 8px;
+}
+
+#layout {
+  width: 100%;
 }
 
 #layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
