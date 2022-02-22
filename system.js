@@ -117,6 +117,7 @@ const gameFullBgUiThemes = {
 }[gameId];
 
 const gameLogoBlendModeOverrides = {
+  'deepdreams': 'soft-light',
   'someday': 'hard-light',
   'amillusion': 'screen',
   'unevendream': 'color'
