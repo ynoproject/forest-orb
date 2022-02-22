@@ -80,7 +80,7 @@
         }
       },
       "settings": {
-        "title": "Settings",
+        "title": "옵션",
         "fields": {
           "lang": "언어:",
           "toggleNametags": "이름표 표시:",
