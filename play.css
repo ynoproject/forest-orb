@@ -991,24 +991,24 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
     width: calc(100% - 16px);
   }
 
-  #layout:not(.chatboxOverlap):fullscreen #controls {
+  #layout:not(.chatboxOverlap) #controls {
     align-items: flex-start;
   }
 
-  #layout:not(.chatboxOverlap):fullscreen #leftControls, #layout:not(.chatboxOverlap):fullscreen #mapControls {
+  #layout:not(.chatboxOverlap) #leftControls, #layout:not(.chatboxOverlap) #mapControls {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     flex-wrap: wrap;
   }
 
-  #layout:not(.chatboxOverlap):fullscreen #leftControls {
+  #layout:not(.chatboxOverlap) #leftControls {
     position: absolute;
     left: 0;
     width: auto;
   }
   
-  #layout:not(.chatboxOverlap):fullscreen #rightControls {
+  #layout:not(.chatboxOverlap) #rightControls {
     display: flex;
     flex-direction: column-reverse;
     align-items: baseline;
@@ -1021,6 +1021,29 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 
 #layout.overflow {
   flex-wrap: wrap;
+}
+
+#layout.overflow #controls {
+  align-items: flex-start;
+}
+
+#layout.overflow #leftControls, #layout.overflow #mapControls {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+#layout.overflow #leftControls {
+  position: absolute;
+  left: 0;
+  width: auto;
+}
+
+#layout.overflow #rightControls {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: baseline;
 }
 
 #layout:not(:fullscreen).overflow #chatboxContainer {

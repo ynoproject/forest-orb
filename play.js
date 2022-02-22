@@ -520,6 +520,7 @@ function updateCanvasFullscreenSize() {
   } else {
     canvasElement.style.transform = null;
     canvasContainer.style.paddingRight = null;
+    leftControlsMaxHeight = `${canvasElement.offsetHeight}px`;
   }
 
   canvasContainerElement.style.height = canvasContainerHeight;
