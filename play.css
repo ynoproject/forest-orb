@@ -29,12 +29,29 @@ body {
   margin: -128px -8px -16px -8px;
 }
 
-#layout {
+#header, #layout {
   display: flex;
   margin: 0 auto;
   width: 100%;
   max-width: 1036px;
   overflow: hidden;
+}
+
+#header {
+  position: relative;
+  justify-content: space-between;
+  max-width: 1010px;
+  padding: 0 4px;
+  z-index: 2;
+}
+
+#headerIconContainer {
+  display: flex;
+  align-items: center;
+}
+
+#headerIconContainer .icon {
+  margin-left: 8px;
 }
 
 #layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
@@ -568,14 +585,21 @@ body {
 }
 
 #nexusButton {
+  padding: 8px 4px 0 4px;
   z-index: 1;
 }
 
-#nexusButton:not(:hover) path:last-child {
+#nexusButton svg:last-child {
+  position: relative;
+  left: -140px;
+  top: -9px;
+}
+
+#nexusButton:not(:hover) svg:last-child path:last-child {
   display: none;
 }
 
-#nexusButton:hover path:first-child {
+#nexusButton:hover svg:last-child path:first-child {
   display: none;
 }
 
