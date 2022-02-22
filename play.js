@@ -244,7 +244,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
 document.getElementById('chatButton').onclick = function () {
   this.classList.toggle('toggled');
-  document.getElementById('layout').classList.toggle('hideChat');
+  document.getElementById('content').classList.toggle('hideChat');
   onResize();
   config.disableChat = this.classList.contains('toggled');
   updateConfig(config);

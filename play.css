@@ -1026,9 +1026,11 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   }
   
   #content:not(.chatboxOverlap) #rightControls {
+    position: absolute;
     display: flex;
     flex-direction: column-reverse;
     align-items: baseline;
+    right: 0;
   }
 
   #layout:fullscreen #chatboxContainer {
@@ -1060,9 +1062,11 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 }
 
 #layout.overflow #rightControls {
+  position: absolute;
   display: flex;
   flex-direction: column-reverse;
   align-items: baseline;
+  right: 0;
 }
 
 #layout:not(:fullscreen).overflow #chatboxContainer {
