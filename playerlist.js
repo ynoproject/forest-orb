@@ -159,10 +159,10 @@ function getSpriteImg(sprite, idx, callback, dir) {
     return callback(spriteUrl);
   const img = new Image();
   img.onload = function () {
-    const canvas = document.createElement('canvas');
+    const canvas = document.createElement("canvas");
     canvas.width = 24;
     canvas.height = 32;
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext("2d");
     const startX = (idx % 4) * 72 + 24;
     const startY = (idx >> 2) * 128 + 64;
     context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
@@ -182,7 +182,7 @@ function getSpriteImg(sprite, idx, callback, dir) {
     canvas.height = 16;
     context.putImageData(imageData, -2, yOffset * -1, 2, 0, 20, 32);
     canvas.toBlob(function (blob) {
-      const blobImg = document.createElement('img');
+      const blobImg = document.createElement("img");
       const url = URL.createObjectURL(blob);
     
       blobImg.onload = function () {

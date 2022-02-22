@@ -33,20 +33,72 @@ body {
   display: flex;
   margin: 0 auto;
   max-width: 1036px;
-  overflow: hidden;
 }
 
 #header {
   position: relative;
+  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 1010px;
+  max-width: 980px;
   padding: 0 4px;
   z-index: 2;
 }
 
+#headerLogoContainer {
+  display: flex;
+}
+
+#nexusButton {
+  display: inline-flex;
+  margin-right: -30px;
+  padding: 8px 4px 0 4px;
+  z-index: 1;
+}
+
+#nexusButton svg:last-child {
+  position: relative;
+  left: -135px;
+}
+
+#nexusButton:not(:hover) svg:last-child path:last-child {
+  display: none;
+}
+
+#nexusButton:hover svg:last-child path:first-child {
+  display: none;
+}
+
+#nexusButton path {
+  stroke-width: 0.5;
+}
+
+#gameLogoContainer {
+  display: inline-flex;
+  flex-direction: column;
+  height: 96px;
+  padding-left: 8px;
+  margin-bottom: -50%;
+}
+
+#gameLogo {
+  height: 48px;
+}
+
+#gameLogoOverlay {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  top: -50%;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 #headerIconContainer {
   display: flex;
+  flex: fit-content;
+  justify-content: right;
   align-items: center;
+  max-width: 182px;
 }
 
 #headerIconContainer .icon {
@@ -55,6 +107,7 @@ body {
 
 #layout {
   width: 100%;
+  overflow: hidden;
 }
 
 #layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
@@ -68,13 +121,13 @@ body {
   z-index: 2;
 }
 
-#layout.noSideBorders #mainContainer, #layout:not(:fullscreen).noSideBorders #chatboxContainer {
+#content.noSideBorders #header, #content.noSideBorders #mainContainer, #content.noSideBorders #layout:not(:fullscreen) #chatboxContainer {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
 }
 
-#layout.noSideBorders:fullscreen #chatboxContainer {
+#content.noSideBorders #layout:fullscreen #chatboxContainer {
   border-left-width: 24px;
   border-right-width: 24px;
 }
@@ -193,7 +246,7 @@ body {
   }
 }
 
-#layout.noSideBorders #canvas {
+#content.noSideBorders #canvas {
   max-width: calc(100vw - 16px);
   max-height: calc((100vw - 16px) * 0.75);
 }
@@ -585,29 +638,6 @@ body {
   width: 100%;
   max-width: 1036px;
   margin: 0 auto;
-}
-
-#nexusButton {
-  padding: 8px 4px 0 4px;
-  z-index: 1;
-}
-
-#nexusButton svg:last-child {
-  position: relative;
-  left: -140px;
-  top: -9px;
-}
-
-#nexusButton:not(:hover) svg:last-child path:last-child {
-  display: none;
-}
-
-#nexusButton:hover svg:last-child path:first-child {
-  display: none;
-}
-
-#nexusButton path {
-  stroke-width: 0.5;
 }
 
 #translationInstruction {
@@ -1061,7 +1091,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
     max-height: calc(100vh - 96px);
   }
 
-  #layout.noSideBorders #mainContainer #canvas {
+  #content.noSideBorders #mainContainer #canvas {
     max-width: calc((100vh - 48px) * 1.3333);
     max-height: calc(100vh - 48px);
   }
