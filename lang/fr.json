@@ -86,7 +86,7 @@
           "lang": "Langue&nbsp;:",
           "toggleNametags": "Afficher les Noms&nbsp;:",
           "togglePlayerSounds": "Activer les Sons des Joueurs&nbsp;:"
-        },
+        }
       },
       "uiTheme": {
         "title": "Thème UI",
