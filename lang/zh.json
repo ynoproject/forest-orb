@@ -81,7 +81,7 @@
         }
       },
       "settings": {
-        "title": "Settings",
+        "title": "设置",
         "fields": {
           "lang": "语言：",
           "toggleNametags": "显示/隐藏玩家名称标签：",
@@ -102,7 +102,7 @@
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天屏幕",
       "toggleImmersionMode": "开启/关闭沉浸模式",
-      "settings": "Settings",
+      "settings": "设置",
       "toggleGlobalMessage": "发送全局聊天记录",
       "chat": {
         "clearChat": "清空记录"
