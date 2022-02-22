@@ -49,7 +49,7 @@
       border: 8px solid transparent;
     }
   
-    #header, #enterNameContainer, .chatboxTab, .chatboxTabSection, button.checkboxButton {
+    #enterNameContainer, .chatboxTab, .chatboxTabSection, button.checkboxButton {
       border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
     }
   
@@ -121,6 +121,10 @@
       background-image: url('images/ui/2kki/system1/containerbg.png') !important;
       border-image: url('images/ui/2kki/system1/border.png') 10 repeat !important;
       border: 24px solid transparent;
+    }
+
+    #header.fullBg {
+      background-size: 95px;
     }
 
     .container.fullBg {
@@ -564,7 +568,7 @@
   <script>
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
+    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[3];
     Module = {
       EASYRPG_GAME: gameId,
       EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'

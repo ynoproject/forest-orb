@@ -184,6 +184,7 @@ function setUiTheme(value, isInit) {
         container.classList.toggle('fullBg', useFullBg);
       for (let modal of modals)
         modal.classList.toggle('fullBg', useFullBg);
+      document.getElementById('header').classList.toggle('fullBg', useFullBg);
       document.querySelector('body').classList.toggle('fullBg', useFullBg);
       if (!isInit) {
         document.querySelector('.fontStyle').onchange();
