@@ -80,11 +80,11 @@
         }
       },
       "settings": {
-        "title": "Settings",
+        "title": "Настройки",
         "fields": {
           "lang": "Язык:",
-          "toggleNametags": "Переключить Ники:",
-          "togglePlayerSounds": "Переключить Звуки Игроков:"
+          "toggleNametags": "Ники:",
+          "togglePlayerSounds": "Звуки Игроков:"
         }
       },
       "uiTheme": {
@@ -101,7 +101,7 @@
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
       "toggleImmersionMode": "Переключить Режим Погружения",
-      "settings": "Settings",
+      "settings": "Настройки",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
         "clearChat": "Очистить Чат"
