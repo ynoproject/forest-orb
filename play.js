@@ -415,22 +415,22 @@ function onResize() {
   onUpdateChatboxInfo();
 
   if (window.innerWidth < window.innerHeight) {
-    layout.classList.toggle('downscale', downscale);
-    layout.classList.toggle('downscale2', downscale2);
+    content.classList.toggle('downscale', downscale);
+    content.classList.toggle('downscale2', downscale2);
     layout.classList.toggle('overflow', isOverflow(downscale2 ? 0.5 : downscale ? 0.75 : 1));
   } else {
     const overflow = isOverflow();
     if (overflow !== isOverflow(0.75)) {
-      layout.classList.toggle('downscale', downscale || overflow);
-      layout.classList.remove('downscale2');
+      content.classList.toggle('downscale', downscale || overflow);
+      content.classList.remove('downscale2');
       layout.classList.toggle('overflow', !overflow);
     } else if (overflow !== isOverflow(0.5)) {
-      layout.classList.toggle('downscale', downscale || overflow);
-      layout.classList.toggle('downscale2', downscale2 || overflow);
+      content.classList.toggle('downscale', downscale || overflow);
+      content.classList.toggle('downscale2', downscale2 || overflow);
       layout.classList.toggle('overflow', !overflow);
     } else {
-      layout.classList.toggle('downscale', downscale);
-      layout.classList.toggle('downscale2', downscale2);
+      content.classList.toggle('downscale', downscale);
+      content.classList.toggle('downscale2', downscale2);
       layout.classList.toggle('overflow', overflow);
     }
   }
@@ -469,7 +469,7 @@ function isOverflow(scale) {
 }
 
 function updateCanvasFullscreenSize() {
-  const layoutElement = document.getElementById('layout');
+  const contentElement = document.getElementById('content');
   const canvasElement = document.getElementById('canvas');
   const canvasContainerElement = document.getElementById('canvasContainer');
   const chatboxContainerElement = document.getElementById('chatboxContainer');
@@ -484,10 +484,10 @@ function updateCanvasFullscreenSize() {
   let leftControlsMaxHeight = null;
   
   if (document.fullscreenElement) {
-    const showChat = !layoutElement.classList.contains('hideChat');
+    const showChat = !contentElement.classList.contains('hideChat');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
-    const scaleFraction = layoutElement.classList.contains('downscale') ? 0.25 : 0.5;
+    const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
     scaleX -= scaleX % scaleFraction;
     scaleY -= scaleY % scaleFraction;
     const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
@@ -527,7 +527,7 @@ function updateCanvasFullscreenSize() {
   canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
   canvasContainerElement.style.marginTop = canvasContainerMarginTop;
   chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
-  layoutElement.classList.toggle('chatboxOverlap', chatboxOverlap);
+  contentElement.classList.toggle('chatboxOverlap', chatboxOverlap);
   document.getElementById('chatbox').style.height = chatboxHeight;
   document.getElementById('leftControls').style.maxHeight = leftControlsMaxHeight;
 

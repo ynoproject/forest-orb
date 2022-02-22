@@ -124,7 +124,7 @@
     }
 
     #header.fullBg {
-      background-size: 95px;
+      background-size: 96px;
     }
 
     .container.fullBg {
@@ -568,7 +568,7 @@
   <script>
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[3];
+    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
     Module = {
       EASYRPG_GAME: gameId,
       EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'

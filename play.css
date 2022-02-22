@@ -39,6 +39,7 @@ body {
   position: relative;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 48px;
   max-width: 980px;
   padding: 0 4px;
   z-index: 2;
@@ -50,14 +51,31 @@ body {
 
 #nexusButton {
   display: inline-flex;
-  margin-right: -30px;
-  padding: 8px 4px 0 4px;
+  padding: 0 4px;
   z-index: 1;
 }
 
-#nexusButton svg:last-child {
+#content:not(.downscale2) #nexusButton {
+  padding-top: 8px;
+  margin-right: -30px;
+}
+
+#content.downscale2 #nexusButton {
+  margin-left: -6px;
+}
+
+#content.downscale2 #nexusButton svg:first-child {
+  display: none;
+}
+
+#content:not(.downscale2) #nexusButton svg:last-child {
   position: relative;
   left: -135px;
+}
+
+#content.downscale2 #nexusButton svg:last-child {
+  width: 48px;
+  height: 48px;
 }
 
 #nexusButton:not(:hover) svg:last-child path:last-child {
@@ -95,10 +113,8 @@ body {
 
 #headerIconContainer {
   display: flex;
-  flex: fit-content;
   justify-content: right;
   align-items: center;
-  max-width: 182px;
 }
 
 #headerIconContainer .icon {
@@ -221,26 +237,26 @@ body {
   margin: 0 auto;
 }
 
-#layout:not(:fullscreen).downscale canvas {
+#content.downscale #layout:not(:fullscreen) canvas {
   width: 480px;
   height: 360px;
   image-rendering: auto;
 }
 
-#layout:not(:fullscreen).downscale2 canvas {
+#content.downscale #layout:not(:fullscreen) canvas {
   width: 320px;
   height: 240px;
 }
 
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
-  #layout.downscale canvas {
+  #content.downscale canvas {
     width: 480px;
     height: 360px;
     image-rendering: auto;
   }
   
-  #layout.downscale2 canvas {
+  #content.downscale2 canvas {
     width: 320px;
     height: 240px;
   }
@@ -945,27 +961,27 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
     max-height: 340px;
   }
 
-  #layout.downscale #chatboxContainer {
+  #content.downscale #chatboxContainer {
     width: 100%;
     height: calc(100vh - 474px);
     min-height: 188px;
     max-height: 328px;
   }
 
-  #layout.downscale #chatbox {
+  #content.downscale #chatbox {
     height: calc(100vh - 470px);
     min-height: 200px;
     max-height: 340px;
   }
 
-  #layout.downscale2 #chatboxContainer {
+  #content.downscale2 #chatboxContainer {
     width: 100%;
     height: calc(100vh - 354px);
     min-height: 188px;
     max-height: 328px;
   }
 
-  #layout.downscale2 #chatbox {
+  #content.downscale2 #chatbox {
     height: calc(100vh - 350px);
     min-height: 200px;
     max-height: 340px;
@@ -991,24 +1007,24 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
     width: calc(100% - 16px);
   }
 
-  #layout:not(.chatboxOverlap) #controls {
+  #content:not(.chatboxOverlap) #controls {
     align-items: flex-start;
   }
 
-  #layout:not(.chatboxOverlap) #leftControls, #layout:not(.chatboxOverlap) #mapControls {
+  #content:not(.chatboxOverlap) #leftControls, #content:not(.chatboxOverlap) #mapControls {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     flex-wrap: wrap;
   }
 
-  #layout:not(.chatboxOverlap) #leftControls {
+  #content:not(.chatboxOverlap) #leftControls {
     position: absolute;
     left: 0;
     width: auto;
   }
   
-  #layout:not(.chatboxOverlap) #rightControls {
+  #content:not(.chatboxOverlap) #rightControls {
     display: flex;
     flex-direction: column-reverse;
     align-items: baseline;
@@ -1150,7 +1166,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   z-index: auto;
 }
 
-#layout:fullscreen.downscale canvas {
+#content.downscale #layout:fullscreen canvas {
   image-rendering: auto;
   min-width: 640px;
   min-height: 480px;
@@ -1178,12 +1194,12 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   z-index: 2;
 }
 
-#layout.chatboxOverlap:fullscreen #chatboxContainer {
+#content.chatboxOverlap #layout:fullscreen #chatboxContainer {
   opacity: 50%;
   pointer-events: none;
 }
 
-#layout.chatboxOverlap:fullscreen #messages {
+#content.chatboxOverlap #layout:fullscreen #messages {
   overflow-y: hidden;
 }
 
