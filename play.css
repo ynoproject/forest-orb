@@ -1006,26 +1006,24 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
     width: calc(100% - 16px);
   }
 
-  #content:not(.chatboxOverlap) #controls {
+  #layout:not(.chatboxOverlap) #controls {
     align-items: flex-start;
-    justify-content: right;
-    width: 100%;
   }
 
-  #content:not(.chatboxOverlap) #leftControls, #content:not(.chatboxOverlap) #mapControls {
+  #layout:not(.chatboxOverlap) #leftControls, #layout:not(.chatboxOverlap) #mapControls {
     display: flex;
     flex-direction: column;
     align-items: baseline;
     flex-wrap: wrap;
   }
 
-  #content:not(.chatboxOverlap) #leftControls {
+  #layout:not(.chatboxOverlap) #leftControls {
     position: absolute;
     left: 0;
     width: auto;
   }
   
-  #content:not(.chatboxOverlap) #rightControls {
+  #layout:not(.chatboxOverlap) #rightControls {
     position: absolute;
     display: flex;
     flex-direction: column-reverse;
@@ -1044,8 +1042,6 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 
 #layout.overflow #controls {
   align-items: flex-start;
-  justify-content: right;
-  width: 100%;
 }
 
 #layout.overflow #leftControls, #layout.overflow #mapControls {
@@ -1201,12 +1197,12 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   z-index: 2;
 }
 
-#content.chatboxOverlap #layout:fullscreen #chatboxContainer {
+#layout.chatboxOverlap:fullscreen #chatboxContainer {
   opacity: 50%;
   pointer-events: none;
 }
 
-#content.chatboxOverlap #layout:fullscreen #messages {
+#layout.chatboxOverlap:fullscreen #messages {
   overflow-y: hidden;
 }
 

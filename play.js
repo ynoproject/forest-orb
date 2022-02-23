@@ -244,7 +244,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
 document.getElementById('chatButton').onclick = function () {
   this.classList.toggle('toggled');
-  document.getElementById('content').classList.toggle('hideChat');
+  document.getElementById('layout').classList.toggle('hideChat');
   onResize();
   config.disableChat = this.classList.contains('toggled');
   updateConfig(config);
@@ -470,6 +470,7 @@ function isOverflow(scale) {
 
 function updateCanvasFullscreenSize() {
   const contentElement = document.getElementById('content');
+  const layoutElement = document.getElementById('content');
   const canvasElement = document.getElementById('canvas');
   const canvasContainerElement = document.getElementById('canvasContainer');
   const chatboxContainerElement = document.getElementById('chatboxContainer');
@@ -484,7 +485,7 @@ function updateCanvasFullscreenSize() {
   let leftControlsMaxHeight = null;
   
   if (document.fullscreenElement) {
-    const showChat = !contentElement.classList.contains('hideChat');
+    const showChat = !layoutElement.classList.contains('hideChat');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
     const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
@@ -527,7 +528,7 @@ function updateCanvasFullscreenSize() {
   canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
   canvasContainerElement.style.marginTop = canvasContainerMarginTop;
   chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
-  contentElement.classList.toggle('chatboxOverlap', chatboxOverlap);
+  layoutElement.classList.toggle('chatboxOverlap', chatboxOverlap);
   document.getElementById('chatbox').style.height = chatboxHeight;
   document.getElementById('leftControls').style.maxHeight = leftControlsMaxHeight;
 
