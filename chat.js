@@ -140,6 +140,8 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
 }
 
 function chatInputActionFired() {
+  if (connStatus !== 1)
+    return;
   const chatInput = document.getElementById("chatInput");
   if (chatInput.value === "")
     return;
