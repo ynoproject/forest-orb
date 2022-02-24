@@ -64,25 +64,16 @@ body {
   margin-left: -6px;
 }
 
-#content.downscale2 #nexusButton svg:first-child {
+#content.downscale2 #nexusButton svg:first-child, #content.downscale2 #nexusButton svg:nth-child(2), #content:not(.downscale2) #nexusButton svg:last-child {
   display: none;
 }
 
-#content:not(.downscale2) #nexusButton svg:last-child {
+#content #nexusButton svg:nth-child(2) {
   position: relative;
   left: -135px;
 }
 
-#content.downscale2 #nexusButton svg:last-child {
-  width: 48px;
-  height: 48px;
-}
-
-#nexusButton:not(:hover) svg:last-child path:last-child {
-  display: none;
-}
-
-#nexusButton:hover svg:last-child path:first-child {
+#nexusButton:not(:hover) svg:not(:first-child) path:last-child, #nexusButton:hover svg:not(:first-child) path:first-child {
   display: none;
 }
 
