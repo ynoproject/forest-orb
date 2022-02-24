@@ -1,5 +1,5 @@
 {
-	"ignoredMapIds": [ "0004", "0009", "0059", "0173", "0250", "0277", "0283", "0288", "0289", "0291", "0307" ],
+	"ignoredMapIds": [ "0004", "0059", "0173", "0250", "0277", "0283", "0288", "0289", "0291", "0307" ],
 	"mapLocations": {
 		"0001": "Old Bedroom",
 		"0002": "Old Dream Bedroom",
@@ -110,7 +110,9 @@
 		"0109": "Rapetisite Cure Center",
 		"0110": "Rapetisite Cure Center",
 		"0111": "Rapetisite Cure Center",
+		"0112": "Blurred World",
 		"0113": "Midnight Mall",
+		"0114": "Bubble Forest",
 		"0115": [ "Rapetisite Cure Center", "Strange Corridor" ],
 		"0116": "Clock Ladder World",
 		"0117": "Rainbow Screw Floor",
