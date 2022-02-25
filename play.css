@@ -84,9 +84,8 @@ body {
 #gameLogoContainer {
   display: inline-flex;
   flex-direction: column;
-  height: 48px;
+  margin: auto 0;
   padding-left: 8px;
-  margin-bottom: -50%;
 }
 
 #gameLogo {
