@@ -116,14 +116,15 @@ const gameLogoImg = new Image();
 gameLogoImg.onload = function () {
   let width = gameLogoImg.width;
   let height = gameLogoImg.height;
-  if (height > 48) {
-    width *= 48 / height;
-    height = 48;
-    if (width > 180) {
-      height *= 180 / width;
-      width = 180;
-    }
+
+  width *= 48 / height;
+  height = 48;
+
+  if (width > 180) {
+    height *= 180 / width;
+    width = 180;
   }
+  
   const gameLogo = document.getElementById('gameLogo');
   gameLogo.setAttribute('style', `background-image: url('${gameLogoUrl}'); width: ${width}px; height: ${height}px;`);
   document.getElementById('gameLogoOverlay').setAttribute('style', `-webkit-mask-image: url('${gameLogoUrl}'); mask-image: url('${gameLogoUrl}'); mix-blend-mode: ${gameLogoBlendModeOverrides[gameId] || 'multiply'};`);
