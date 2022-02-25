@@ -104,8 +104,8 @@ body {
 #gameLogoOverlay {
   width: 100%;
   height: 100%;
-  -webkit-mask-size: contain;
-  mask-size: contain;
+  -webkit-mask-size: cover;
+  mask-size: cover;
 }
 
 #headerIconContainer {
