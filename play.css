@@ -94,7 +94,7 @@ body {
   -moz-transition: opacity 0.15s ease-in-out;
   -o-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
-  background-size: contain;
+  background-size: cover;
 }
 
 #gameLogo.hidden {
