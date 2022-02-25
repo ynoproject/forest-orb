@@ -100,6 +100,11 @@ html {
   height: calc(var(--controls-size) * 0.8);
 }
 
+#apad .apadRectBtn + .apadBtnContainer {
+  top: calc(var(--controls-size) * -1.9);
+  left: calc(var(--controls-size) * -0.9);
+}
+
 #dpad path:not(.active), #apad > *:not(.active) {
   opacity: 0.4;
 }
