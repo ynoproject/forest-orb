@@ -84,20 +84,27 @@ body {
 #gameLogoContainer {
   display: inline-flex;
   flex-direction: column;
-  height: 96px;
+  height: 48px;
   padding-left: 8px;
   margin-bottom: -50%;
 }
 
 #gameLogo {
-  height: 48px;
+  position: relative;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  background-size: contain;
+}
+
+#gameLogo.hidden {
+  opacity: 0;
 }
 
 #gameLogoOverlay {
-  position: relative;
   width: 100%;
-  height: 50%;
-  top: -50%;
+  height: 100%;
   -webkit-mask-size: contain;
   mask-size: contain;
 }
@@ -155,7 +162,6 @@ body {
 #layout:fullscreen #controls.fshidden {
   -webkit-transition: opacity 0.5s ease-in-out;
   -moz-transition: opacity 0.5s ease-in-out;
-  -ms-transition: opacity 0.5s ease-in-out;
   -o-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
   opacity: 0;
