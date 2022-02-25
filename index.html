@@ -328,10 +328,11 @@
             <div id="apad-enter" class="baseColorBg apadCircBtn apadBtn" data-key="Enter" data-key-code="13"></div>
             <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16" data-game-ids="2kki,flow,prayers,deepdreams,someday,amillusion,unevendream" style="display: none"></div>
             <div id="apad-numbers" class="apadBtnContainer" data-game-ids="yume" style="display: none">
-              <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49"></div>
-              <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
-              <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53"></div>
-              <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57"></div>
+              <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49" data-game-ids="yume,braingirl" style="display: none"></div>
+              <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50" data-game-ids="braingirl" style="display: none"></div>
+              <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51" data-game-ids="yume,braingirl" style="display: none"></div>
+              <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53" data-game-ids="yume" style="display: none"></div>
+              <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57" data-game-ids="yume,braingirl" style="display: none"></div>
             </div>
           </div>
         </div>
@@ -550,8 +551,8 @@
               <select id="fontStyle" class="fontStyle">
                 <option value="0" data-i18n="[html]fontStyle.values.style1">Style 1</option>
                 <option value="1" data-i18n="[html]fontStyle.values.style2">Style 2</option>
-                <option value="2" data-i18n="[html]fontStyle.values.style3" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion">Style 3</option>
-                <option value="3" data-i18n="[html]fontStyle.values.style4" data-game-ids="yume,2kki,flow,prayers,someday,amillusion,unevendream">Style 4</option>
+                <option value="2" data-i18n="[html]fontStyle.values.style3" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion,braingirl">Style 3</option>
+                <option value="3" data-i18n="[html]fontStyle.values.style4" data-game-ids="yume,2kki,flow,prayers,someday,amillusion,unevendream,braingirl">Style 4</option>
                 <option value="4" data-i18n="[html]fontStyle.values.style5" data-game-ids="yume,2kki,flow">Style 5</option>
                 <option value="5" data-i18n="[html]fontStyle.values.style6" data-game-ids="yume,2kki,flow">Style 6</option>
                 <option value="6" data-i18n="[html]fontStyle.values.style7" data-game-ids="yume,2kki,flow">Style 7</option>
@@ -570,7 +571,7 @@
     <div id="backgroundTransition"></div>
   </div>
   <script>
-    const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream'];
+    const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
     const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
     Module = {

@@ -102,6 +102,21 @@ const gameUiThemes = {
     '1247-0t',
     '1247-0k',
     '1247-pc98'
+  ],
+  'braingirl': [
+    'analog',
+    'Vanilla',
+    'Licorice',
+    'Tobacco',
+    'Chalkboard',
+    'Acryllic',
+    'Copper',
+    'Psychedelic',
+    'Spacecraft',
+    'Floorgum',
+    'moss',
+    'Carpet',
+    'Raspberry'
   ]
 }[gameId];
 
@@ -113,14 +128,16 @@ const gameFullBgUiThemes = {
   'deepdreams': [],
   'someday': [],
   'amillusion': [ 'fleur' ],
-  'unevendream': []
+  'unevendream': [],
+  'braingirl': []
 }[gameId];
 
 const gameLogoBlendModeOverrides = {
   'deepdreams': 'soft-light',
   'someday': 'hard-light',
   'amillusion': 'screen',
-  'unevendream': 'color'
+  'unevendream': 'color',
+  'braingirl': 'color'
 };
 
 const hasUiThemes = gameUiThemes.length > 0;
