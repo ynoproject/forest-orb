@@ -101,7 +101,7 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleImmersionMode": "몰입 모드 활성화",
-      "settings": "Settings",
+      "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
         "clearChat": "채팅 기록 삭제하기"
