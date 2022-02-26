@@ -50,6 +50,7 @@ const gameUiThemes = {
     'Kon_sys_4',
     'Kon_sys_5',
     'Kon_sys_6',
+    'RioSystem5',
     'system_E_eye',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon'
