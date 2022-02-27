@@ -7598,7 +7598,7 @@ msgstr ""
 #. ID 1
 msgctxt "items.name"
 msgid "★デバッグ★"
-msgstr "★Debug★"
+msgstr "★ Debug ★"
 
 #. ID 1
 msgctxt "items.description"
@@ -8295,11 +8295,11 @@ msgstr ""
 
 msgctxt "terms.save_game_message"
 msgid "◆どのファイルに書きますか？"
-msgstr "◆Which file will you save to?"
+msgstr "◆ Which file will you save to?"
 
 msgctxt "terms.load_game_message"
 msgid "◆どのファイルを読みますか？"
-msgstr "◆Which file will you load?"
+msgstr "◆ Which file will you load?"
 
 msgctxt "terms.file"
 msgid "◆ファイル"

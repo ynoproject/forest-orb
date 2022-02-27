@@ -580,7 +580,7 @@
       'flow': 'ja'
     };
     let lang = new URLSearchParams(window.location.search).get('--language') || (navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-')));
-    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === lang)
+    if (gameId === '2kki' || (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === lang))
       lang = 'default';
     Module = {
       EASYRPG_GAME: gameId,
