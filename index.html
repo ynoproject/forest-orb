@@ -575,8 +575,10 @@
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
     const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
+    const lang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
     Module = {
       EASYRPG_GAME: gameId,
+      EASYRPG_LANGUAGE: lang,
       EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
     };
   </script>
