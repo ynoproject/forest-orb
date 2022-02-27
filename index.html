@@ -575,7 +575,13 @@
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
     const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
-    const lang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
+    const gameDefaultLangs = {
+      '2kki': 'ja',
+      'flow': 'ja'
+    };
+    let lang = new URLSearchParams(window.location.search).get('--language') || (navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-')));
+    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === lang)
+      lang = 'default';
     Module = {
       EASYRPG_GAME: gameId,
       EASYRPG_LANGUAGE: lang,
