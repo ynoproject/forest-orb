@@ -568,6 +568,16 @@ if (Module.postRun) {
     };
   });
   Module.postRun.push(onResize);
+  Module.postRun.push(function () {
+    if (gameId === '2kki') {
+      if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === globalConfig.lang)
+        lang = '';
+      
+      const gameLangPtr = Module.allocate(Module.intArrayFromString(globalConfig.lang), Module.ALLOC_NORMAL);
+      Module._SetGameLanguage(gameLangPtr);
+      Module._free(gameLangPtr);
+    }
+  });
 }
 window.onresize = function () { window.setTimeout(onResize, 0); };
 
@@ -754,15 +764,6 @@ function initLocalization(isInitial) {
         locI18next.init(i18next)('[data-i18n]');
       });
     });
-    
-  if (gameId === '2kki') {
-    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === globalConfig.lang)
-      lang = '';
-    
-    const gameLangPtr = Module.allocate(Module.intArrayFromString(globalConfig.lang), Module.ALLOC_NORMAL);
-    Module._SetGameLanguage(gameLangPtr);
-    Module._free(gameLangPtr);
-  }
 }
 
 function initLocations(lang) {
