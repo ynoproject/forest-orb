@@ -7301,19 +7301,19 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【壁紙を数え上げる】"
-msgstr "[배경화면을 열거하기]"
+msgstr ""
 
 #. ID 270, Line 28
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【外部マップから壁紙を表示する】"
-msgstr "[외부 맵에서 배경화면 표시하기]"
+msgstr ""
 
 #. ID 271, Line 9
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【SR分室の変動をチェックする】"
-msgstr "[SR 분실의 변동을 체크]"
+msgstr ""
 
 #. ID 289, Line 88
 msgid ""
