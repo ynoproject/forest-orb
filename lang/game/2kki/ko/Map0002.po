@@ -1106,6 +1106,8 @@ msgid ""
 "\\>\\N[5]\n"
 "\\>せつめい / おぷしょん"
 msgstr ""
+"\\>\\N[5]\n"
+"\\>설명 / 옵션"
 
 #. ID 12, Page 3, Line 102, Pos (13,5)
 msgid "\\>※\"使う\"に変更しました。"
@@ -1115,30 +1117,30 @@ msgstr "\\>※\"사용함\"으로 변경했습니다"
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "\\C[2]エフェクト解除する"
-msgstr ""
+msgstr "\\C[2]이펙트 해제하기"
 
 #. ID 12, Page 3, Line 119, Pos (13,5)
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "\\C[1]なにもしない"
-msgstr ""
+msgstr "\\C[1]아무 것도 하지 않기"
 
 #. ID 12, Page 3, Line 123, Pos (13,5)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "\\C[2]お気に入りエフェクト"
-msgstr ""
+msgstr "\\C[2]즐겨찾기 이펙트"
 
 #. ID 12, Page 3, Line 126, Pos (13,5)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "\\C[1]エフェクト解除"
-msgstr ""
+msgstr "\\C[1]이펙트 해제"
 
 #. ID 12, Page 3, Line 129, Pos (13,5)
 #. Contains choice at line 2 (3 options)
 msgid "\\> ★ エフェクトシフトチェンジ ★ おぷしょん"
-msgstr ""
+msgstr "\\> ★이펙트 Shift 체인지★ 옵션"
 
 #. ID 12, Page 3, Line 130, Pos (13,5)
 #. Choice (3 options, embedded in a message)
@@ -1147,6 +1149,9 @@ msgid ""
 "\\>上キーを押した時　：\\N[6]\\C[0]\n"
 "\\>せつめい"
 msgstr ""
+"\\>동일한 칸을 선택할 시：\\N[5]\\C[0]\n"
+"\\>위 키를 누를 시　：\\N[6]\\C[0]\n"
+"\\>설명"
 
 #. ID 12, Page 3, Line 135, Pos (13,5)
 msgid ""
@@ -1155,10 +1160,14 @@ msgid ""
 "\\>現在のエフェクトと同じ項目を選んでも、\n"
 "\\>エフェクト解除しないようにします。"
 msgstr ""
+"\\>※\"아무 것도 하지 않음\"으로 변경했습니다\n"
+"\n"
+"\\>장착한 이펙트와 똑같은 칸을 선택할 시,\n"
+"\\>이펙트를 해제하지 않습니다"
 
 #. ID 12, Page 3, Line 142, Pos (13,5)
 msgid "\\>※\"エフェクト解除する\"に変更しました。"
-msgstr ""
+msgstr "\\>※\"이펙트 해제하기\"로 변경했습니다"
 
 #. ID 12, Page 3, Line 150, Pos (13,5)
 msgid ""
@@ -1167,6 +1176,10 @@ msgid ""
 "\\>上キーでエフェクト解除、\n"
 "\\>下キーでお気に入りエフェクトを選択します。"
 msgstr ""
+"\\>※\"이펙트 해제\"로 변경했습니다\n"
+"\n"
+"\\>위 키를 눌러 해제,\n"
+"\\>아래 키를 눌러 즐겨찾기 이펙트를 장착합니다"
 
 #. ID 12, Page 3, Line 157, Pos (13,5)
 msgid ""
@@ -1175,6 +1188,10 @@ msgid ""
 "\\>上キーと下キーのどちらでも\n"
 "\\>お気に入りエフェクトを選択します。"
 msgstr ""
+"\\>※\"즐겨찾기 이펙트\"로 변경했습니다\n"
+"\n"
+"\\>위 키, 아래 키 모두\n"
+"\\>즐겨찾기 이펙트를 선택합니다"
 
 #. ID 12, Page 3, Line 165, Pos (13,5)
 msgid ""
