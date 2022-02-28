@@ -24,7 +24,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "うろつき"
-msgstr "우로츠키"
+msgstr ""
 
 #. ID 6, Page 4, Line 719, Pos (12,5)
 #. Contains choice at line 3 (2 options)
@@ -82,7 +82,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【PC画面BGMを演奏する】"
-msgstr "[PC 배경음악으로 설정]"
+msgstr ""
 
 #. ID 6, Page 5, Line 361, Pos (12,5)
 #. Contains choice at line 2 (2 options)
@@ -142,7 +142,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【外部マップから壁紙を表示する】"
-msgstr "외부 맵에서 배경화면을 표시하기"
+msgstr ""
 
 #. ID 6, Page 6, Line 349, Pos (12,5)
 msgid ""
@@ -182,13 +182,13 @@ msgstr "\\>♪시크릿 코드: \\V[15]"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "Code入力中"
-msgstr "코드 입력중"
+msgstr ""
 
 #. ID 6, Page 6, Line 461, Pos (12,5)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【SR分室へ入室する】"
-msgstr "SR분실로 입실하기"
+msgstr ""
 
 #. ID 6, Page 6, Line 537, Pos (12,5)
 #. Contains choice at line 2 (3 options)
@@ -220,7 +220,7 @@ msgstr "\\>배경화면 메뉴 옵션에서 설정을 바꿀 수 있습니다"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "OFF"
-msgstr "Off"
+msgstr ""
 
 #. ID 6, Page 6, Line 564, Pos (12,5)
 #. ChangeHeroName (Actor 2)
@@ -232,7 +232,7 @@ msgstr "Off"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ON"
-msgstr "On"
+msgstr ""
 
 #. ID 6, Page 6, Line 575, Pos (12,5)
 #. Contains choice at line 2 (3 options)
@@ -254,7 +254,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【壁紙ｷﾞｬﾗﾘｰへ入室する】"
-msgstr "[배경화면 갤러리로 입장하기]"
+msgstr ""
 
 #. ID 6, Page 6, Line 592, Pos (12,5)
 #. Contains choice at line 3 (2 options)
@@ -347,13 +347,13 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "入手済みの全ての壁紙からNew表示を外し"
-msgstr "입수된 모든 배경화면에 New 표시를 제거"
+msgstr ""
 
 #. ID 6, Page 6, Line 680, Pos (12,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "入手済みの全ての壁紙にNew表示をつけ"
-msgstr "입수된 모든 배경화면에 New를 표시"
+msgstr ""
 
 #. ID 6, Page 6, Line 690, Pos (12,5)
 msgid ""
@@ -407,7 +407,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【New表示状態を操作する】"
-msgstr "[New 표시 상태를 조정하기]"
+msgstr ""
 
 #. ID 6, Page 6, Line 729, Pos (12,5)
 msgid "\\>\\C[3]\\N[2]ました。"
@@ -417,19 +417,19 @@ msgstr "\\>\\C[3]\\N[2]했습니다"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "マップ到達"
-msgstr "맵 도달"
+msgstr ""
 
 #. ID 6, Page 6, Line 762, Pos (12,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ナシ"
-msgstr "없음"
+msgstr ""
 
 #. ID 6, Page 6, Line 765, Pos (12,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "アリ"
-msgstr "있음"
+msgstr ""
 
 #. ID 6, Page 6, Line 770, Pos (12,5)
 #. Contains choice at line 2 (3 options)
@@ -643,7 +643,7 @@ msgstr ""
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "女の子"
-msgstr "여자아이"
+msgstr ""
 
 #. ID 9, Page 2, Line 9, Pos (9,10)
 #. Choice (2 options, embedded in a message)
@@ -696,7 +696,7 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おおかみ"
-msgstr "늑대"
+msgstr ""
 
 #. ID 12, Page 2, Line 11, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -704,13 +704,13 @@ msgstr "늑대"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "バイク"
-msgstr "바이크"
+msgstr ""
 
 #. ID 12, Page 2, Line 18, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ツインテ"
-msgstr "트윈테일"
+msgstr ""
 
 #. ID 12, Page 2, Line 19, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -718,7 +718,7 @@ msgstr "트윈테일"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "めがね"
-msgstr "안경"
+msgstr ""
 
 #. ID 12, Page 2, Line 26, Pos (13,5)
 #. ChangeHeroName (Actor 2)
@@ -726,7 +726,7 @@ msgstr "안경"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "はにわ"
-msgstr "하니와"
+msgstr ""
 
 #. ID 12, Page 2, Line 27, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -734,217 +734,217 @@ msgstr "하니와"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ケーキ"
-msgstr "케이크"
+msgstr ""
 
 #. ID 12, Page 2, Line 34, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "レインコート"
-msgstr "우비"
+msgstr ""
 
 #. ID 12, Page 2, Line 44, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "くろでんわ"
-msgstr "검은 전화기"
+msgstr ""
 
 #. ID 12, Page 2, Line 48, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おとこのこ"
-msgstr "낭자아이"
+msgstr ""
 
 #. ID 12, Page 2, Line 52, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "チェーンソー"
-msgstr "전기톱"
+msgstr ""
 
 #. ID 12, Page 2, Line 56, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "カンテラ"
-msgstr "등불"
+msgstr ""
 
 #. ID 12, Page 2, Line 60, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ようせい"
-msgstr "요정"
+msgstr ""
 
 #. ID 12, Page 2, Line 64, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "うちゅうふく"
-msgstr "우주복"
+msgstr ""
 
 #. ID 12, Page 2, Line 72, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "にじ"
-msgstr "무지개"
+msgstr ""
 
 #. ID 12, Page 2, Line 80, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "めだま"
-msgstr "눈알"
+msgstr ""
 
 #. ID 12, Page 2, Line 81, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "ばくだん"
-msgstr "폭탄"
+msgstr ""
 
 #. ID 12, Page 2, Line 89, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "まいこ"
-msgstr "마이코"
+msgstr ""
 
 #. ID 12, Page 2, Line 93, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ツインテール"
-msgstr "트윈테일"
+msgstr ""
 
 #. ID 12, Page 2, Line 97, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ぺんぎん"
-msgstr "펭귄"
+msgstr ""
 
 #. ID 12, Page 2, Line 101, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "むし"
-msgstr "벌레"
+msgstr ""
 
 #. ID 12, Page 2, Line 105, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "バネ"
-msgstr "용수철"
+msgstr ""
 
 #. ID 12, Page 2, Line 109, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "とうめい"
-msgstr "투명"
+msgstr ""
 
 #. ID 12, Page 2, Line 113, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "がくラン"
-msgstr "가쿠란"
+msgstr ""
 
 #. ID 12, Page 2, Line 117, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ギプス"
-msgstr "깁스"
+msgstr ""
 
 #. ID 12, Page 2, Line 121, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "せのび"
-msgstr "까치발"
+msgstr ""
 
 #. ID 12, Page 2, Line 129, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "トロンボーン"
-msgstr "트럼본"
+msgstr ""
 
 #. ID 12, Page 2, Line 137, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "こども"
-msgstr "어린이"
+msgstr ""
 
 #. ID 12, Page 2, Line 141, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "あかずきん"
-msgstr "빨간 망토"
+msgstr ""
 
 #. ID 12, Page 2, Line 145, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ティッシュ"
-msgstr "화장지"
+msgstr ""
 
 #. ID 12, Page 2, Line 149, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "コウモリ"
-msgstr "박쥐"
+msgstr ""
 
 #. ID 12, Page 2, Line 153, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ポリゴン"
-msgstr "폴리곤"
+msgstr ""
 
 #. ID 12, Page 2, Line 157, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "てるてる"
-msgstr "테루테루"
+msgstr ""
 
 #. ID 12, Page 2, Line 158, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "ぼうず"
-msgstr "보즈"
+msgstr ""
 
 #. ID 12, Page 2, Line 162, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "マージナル"
-msgstr "마지널"
+msgstr ""
 
 #. ID 12, Page 2, Line 166, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ドラムかん"
-msgstr "드럼캔"
+msgstr ""
 
 #. ID 12, Page 2, Line 170, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おはか"
-msgstr "무덤"
+msgstr ""
 
 #. ID 12, Page 2, Line 174, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ふみきり"
-msgstr "건널목"
+msgstr ""
 
 #. ID 12, Page 2, Line 178, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "うさみみ"
-msgstr "토끼귀"
+msgstr ""
 
 #. ID 12, Page 2, Line 182, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "サイコロ"
-msgstr "주사위"
+msgstr ""
 
 #. ID 12, Page 2, Line 186, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "なし（エフェ"
-msgstr "없음 (이펙트"
+msgstr ""
 
 #. ID 12, Page 2, Line 187, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "クト解除）"
-msgstr "해제)"
+msgstr ""
 
 #. ID 12, Page 3, Line 20, Pos (13,5)
 #. ChangeHeroName (Actor 4)
@@ -956,7 +956,7 @@ msgstr "해제)"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "\\C[1]使用中"
-msgstr "\\C[1]사용중"
+msgstr ""
 
 #. ID 12, Page 3, Line 23, Pos (13,5)
 #. ChangeHeroName (Actor 4)
@@ -968,13 +968,13 @@ msgstr "\\C[1]사용중"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "\\C[2]未使用"
-msgstr "\\C[2]미사용"
+msgstr ""
 
 #. ID 12, Page 3, Line 33, Pos (13,5)
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "\\C[0]エフェ"
-msgstr "\\C[0]이펙트"
+msgstr ""
 
 #. ID 12, Page 3, Line 35, Pos (13,5)
 #. Contains choice at line 2 (3 options)
@@ -998,7 +998,7 @@ msgstr ""
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "使わない"
-msgstr "사용하지 않음"
+msgstr ""
 
 #. ID 12, Page 3, Line 45, Pos (13,5)
 #. ChangeHeroName (Actor 5)
@@ -1006,7 +1006,7 @@ msgstr "사용하지 않음"
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "使う"
-msgstr "사용함"
+msgstr ""
 
 #. ID 12, Page 3, Line 48, Pos (13,5)
 #. Contains choice at line 3 (2 options)
@@ -1089,7 +1089,7 @@ msgid ""
 "もちろん、いつものメニューもそのまま使えます。"
 msgstr ""
 "\\> ★이펙트 Shift 체인지★ \n"
-"Shift 키로 이펙트를 선택하는 화면이 나오는 기능입니다\n"
+"Shift로 이펙트를 선택하는 기능입니다\n"
 "물론 기존의 메뉴 또한 그대로 사용할 수 있습니다"
 
 #. ID 12, Page 3, Line 114, Pos (13,5)
