@@ -699,11 +699,6 @@ function getSaveSlot(download) {
 }
 
 function initLocalization(isInitial) {
-  if (isInitial && gameId === '2kki') {
-    const uiThemeOptions = document.querySelectorAll('.uiTheme option');
-    for (let option of uiThemeOptions)
-      option.setAttribute('data-i18n', `[html]uiTheme.values.2kki.${option.value}`);
-  }
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
   fetch(`lang/${globalConfig.lang}.json`)
     .then(function (response) {
@@ -759,6 +754,15 @@ function initLocalization(isInitial) {
         locI18next.init(i18next)('[data-i18n]');
       });
     });
+    
+  if (gameId === '2kki') {
+    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === globalConfig.lang)
+      lang = '';
+    
+    const gameLangPtr = Module.allocate(Module.intArrayFromString(globalConfig.lang), Module.ALLOC_NORMAL);
+    Module._SetGameLanguage(gameLangPtr);
+    Module._free(gameLangPtr);
+  }
 }
 
 function initLocations(lang) {
