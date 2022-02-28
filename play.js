@@ -602,7 +602,8 @@ window.onbeforeunload = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  Module.EASYRPG_LANGUAGE = lang;
+  if (isInit && gameId === '2kki')
+    Module.EASYRPG_LANGUAGE = !gameDefaultLangs.hasOwnProperty(gameId) || gameDefaultLangs[gameId] !== lang ? lang : 'default';
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
