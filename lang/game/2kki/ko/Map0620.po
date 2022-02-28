@@ -151,7 +151,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "サウンドサーチ"
-msgstr "사운드 검색"
+msgstr ""
 
 #. ID 1, Page 1, Line 1862, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -159,7 +159,7 @@ msgstr "사운드 검색"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "未解放箇所を探す"
-msgstr "미해방 장소 찾기"
+msgstr ""
 
 #. ID 1, Page 1, Line 1865, Pos (19,14)
 msgid ""
@@ -288,7 +288,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "起動"
-msgstr "재생"
+msgstr ""
 
 #. ID 1, Page 1, Line 2033, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -296,7 +296,7 @@ msgstr "재생"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "停止"
-msgstr "정지"
+msgstr ""
 
 #. ID 1, Page 1, Line 2036, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -330,31 +330,31 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ノーマル"
-msgstr "기본"
+msgstr ""
 
 #. ID 1, Page 1, Line 2109, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リバース"
-msgstr "역순"
+msgstr ""
 
 #. ID 1, Page 1, Line 2113, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ランダム"
-msgstr "랜덤"
+msgstr ""
 
 #. ID 1, Page 1, Line 2117, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "時間経過"
-msgstr "시간 경과"
+msgstr ""
 
 #. ID 1, Page 1, Line 2120, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "ループ回数"
-msgstr "루프 횟수"
+msgstr ""
 
 #. ID 1, Page 1, Line 2136, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -534,7 +534,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "なし"
-msgstr "없음"
+msgstr ""
 
 #. ID 1, Page 1, Line 2446, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -542,7 +542,7 @@ msgstr "없음"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "あり"
-msgstr "있음"
+msgstr ""
 
 #. ID 1, Page 1, Line 2449, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -616,13 +616,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "てきぱき"
-msgstr "시원시원하게"
+msgstr ""
 
 #. ID 1, Page 1, Line 2542, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ゆっくり"
-msgstr "느긋느긋하게"
+msgstr ""
 
 #. ID 1, Page 1, Line 2553, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -709,7 +709,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【メモリー演奏順をシャッフルする】"
-msgstr "[메모리 재생 순서 셔플]"
+msgstr ""
 
 #. ID 1, Page 2, Line 123, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -723,7 +723,7 @@ msgstr "[메모리 재생 순서 셔플]"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【曲目番号と演出番号を復号する】"
-msgstr "[곡 번호와 연출 번호를 복호화]"
+msgstr ""
 
 #. ID 1, Page 2, Line 233, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -753,7 +753,7 @@ msgstr "[곡 번호와 연출 번호를 복호화]"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【演出を初期化する】"
-msgstr "[연출을 초기화]"
+msgstr ""
 
 #. ID 1, Page 2, Line 559, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -775,7 +775,7 @@ msgstr "[연출을 초기화]"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【曲目番号を表示する】"
-msgstr "[곡 목록 번호를 표시]"
+msgstr ""
 
 #. ID 1, Page 2, Line 562, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -783,7 +783,7 @@ msgstr "[곡 목록 번호를 표시]"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【演出番号を表示する】"
-msgstr "[연출 번호를 표시]"
+msgstr ""
 
 #. ID 1, Page 2, Line 590, Pos (19,14)
 msgid ""
@@ -893,7 +893,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【★リストを表示する】"
-msgstr "[★리스트 표시하기]"
+msgstr ""
 
 #. ID 1, Page 2, Line 679, Pos (19,14)
 msgid ""
@@ -936,7 +936,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【カーソルを表示する】"
-msgstr "[커서를 표시하기]"
+msgstr ""
 
 #. ID 1, Page 2, Line 879, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -950,7 +950,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "メモリー"
-msgstr "메모리"
+msgstr ""
 
 #. ID 1, Page 2, Line 888, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -958,7 +958,7 @@ msgstr "메모리"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リスト"
-msgstr "리스트"
+msgstr ""
 
 #. ID 1, Page 2, Line 892, Pos (19,14)
 msgid ""
@@ -990,7 +990,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【ガイドを表示する】"
-msgstr "[가이드 표시]"
+msgstr ""
 
 #. ID 1, Page 2, Line 991, Pos (19,14)
 #. Contains choice at line 4 (1 options)
@@ -1018,7 +1018,7 @@ msgstr "\\>커서 위치 = Z / 1번부터 = X"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【演出番号を文字列に変換する】"
-msgstr "[연출 번호를 문자열로 변환하기]"
+msgstr ""
 
 #. ID 1, Page 2, Line 1030, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1148,7 +1148,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【曲目番号と演出番号を符号化する】"
-msgstr "[곡 번호와 연출 번호를 부호화]"
+msgstr ""
 
 #. ID 1, Page 2, Line 1291, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -1468,7 +1468,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【SRa変動チェック】"
-msgstr "[SRa변동 체크]"
+msgstr ""
 
 #. ID 1, Page 3, Line 69, Pos (19,14)
 msgid ""
@@ -1511,7 +1511,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【外部マップから壁紙を表示する】"
-msgstr "[외부 맵에서 배경화면 표시하기]"
+msgstr ""
 
 #. ID 1, Page 4, Line 68, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1760,7 +1760,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "記憶_更新"
-msgstr "메모리 갱신"
+msgstr ""
 
 #. ID 1, Page 4, Line 553, Pos (19,14)
 #. ID 1, Page 4, Line 1291, Pos (19,14)
@@ -1816,7 +1816,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "うろつき"
-msgstr "우로츠키"
+msgstr ""
 
 #. ID 1, Page 4, Line 673, Pos (19,14)
 #. ChangeHeroName (Actor 2)
@@ -1824,7 +1824,7 @@ msgstr "우로츠키"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "デフォルト"
-msgstr "기본"
+msgstr ""
 
 #. ID 1, Page 4, Line 674, Pos (19,14)
 #. ChangeHeroName (Actor 3)
@@ -1832,7 +1832,7 @@ msgstr "기본"
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "デフォルト1"
-msgstr "기본 1"
+msgstr ""
 
 #. ID 1, Page 4, Line 675, Pos (19,14)
 #. ChangeHeroName (Actor 4)
@@ -1840,7 +1840,7 @@ msgstr "기본 1"
 #. ChangeHeroName (Actor 4)
 msgctxt "actors.name"
 msgid "デフォルト2"
-msgstr "기본 2"
+msgstr ""
 
 #. ID 1, Page 4, Line 676, Pos (19,14)
 #. ChangeHeroName (Actor 5)
@@ -1848,7 +1848,7 @@ msgstr "기본 2"
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "女の子"
-msgstr "여자아이"
+msgstr ""
 
 #. ID 1, Page 4, Line 677, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -1856,7 +1856,7 @@ msgstr "여자아이"
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "デフォルト3"
-msgstr "기본 3"
+msgstr ""
 
 #. ID 1, Page 4, Line 825, Pos (19,14)
 msgid ""
@@ -1968,7 +1968,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "自動"
-msgstr "자동"
+msgstr ""
 
 #. ID 1, Page 5, Line 51, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1976,7 +1976,7 @@ msgstr "자동"
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【演奏を開始する】"
-msgstr "[재생 시작하기]"
+msgstr ""
 
 #. ID 1, Page 5, Line 368, Pos (19,14)
 msgid ""
@@ -2023,13 +2023,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演出"
-msgstr "연출"
+msgstr ""
 
 #. ID 1, Page 5, Line 437, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "曲"
-msgstr "곡"
+msgstr ""
 
 #. ID 1, Page 5, Line 440, Pos (19,14)
 msgid ""
@@ -2088,13 +2088,13 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【サウンドサーチを開始する】"
-msgstr "[사운드 검색을 시작하기]"
+msgstr ""
 
 #. ID 1, Page 5, Line 608, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【サウンドサーチメニューを表示する】"
-msgstr "[사운드 검색 메뉴를 표시하기]"
+msgstr ""
 
 #. ID 1, Page 5, Line 619, Pos (19,14)
 #. Choice (4 options)
@@ -2113,19 +2113,19 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "PC画面"
-msgstr "PC 화면"
+msgstr ""
 
 #. ID 1, Page 5, Line 627, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ﾃﾞﾊﾞｯｸﾞﾙｰﾑ"
-msgstr "디버그 룸"
+msgstr ""
 
 #. ID 1, Page 5, Line 631, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "製作者部屋"
-msgstr "제작자 부실"
+msgstr ""
 
 #. ID 1, Page 5, Line 637, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -2165,7 +2165,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【SR分室から退室する】"
-msgstr "[SR분실에서 나가기]"
+msgstr ""
 
 #. ID 1, Page 5, Line 688, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -2187,37 +2187,37 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【モード変更】リスト/メモリーモードに切り替え"
-msgstr "[모드 변경] 리스트/메모리 모드로 전환"
+msgstr ""
 
 #. ID 1, Page 5, Line 700, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【モード変更】自動曲送りの設定"
-msgstr "[모드 변경] 자동 곡 재생 설정"
+msgstr ""
 
 #. ID 1, Page 5, Line 707, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【モード変更】演奏を止める"
-msgstr "[모드 변경] 재생을 중지함"
+msgstr ""
 
 #. ID 1, Page 5, Line 734, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "カーソルジャンプ"
-msgstr "커서 이동"
+msgstr ""
 
 #. ID 1, Page 5, Line 744, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演奏可能曲を登録"
-msgstr "재생 가능곡 등록"
+msgstr ""
 
 #. ID 1, Page 5, Line 745, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "メモリーの交換 / 全消去"
-msgstr "메모리 교환 / 전체 삭제"
+msgstr ""
 
 #. ID 1, Page 5, Line 748, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -2239,19 +2239,19 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】未解放箇所を探す"
-msgstr "[고급 기능] 미해방 장소 찾기"
+msgstr ""
 
 #. ID 1, Page 5, Line 772, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】演奏可能曲を登録"
-msgstr "[고급 기능] 재생 가능곡 등록"
+msgstr ""
 
 #. ID 1, Page 5, Line 782, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】カーソルジャンプ"
-msgstr "[고급 기능] 커서 이동"
+msgstr ""
 
 #. ID 1, Page 5, Line 788, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -2275,25 +2275,25 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】メモリーの交換"
-msgstr "[고급 기능] 메모리 교환"
+msgstr ""
 
 #. ID 1, Page 5, Line 801, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】メモリーの全消去"
-msgstr "[고급 기능] 메모리 전체 제거"
+msgstr ""
 
 #. ID 1, Page 5, Line 812, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【高度な機能】オプション"
-msgstr "[고급 기능] 옵션"
+msgstr ""
 
 #. ID 1, Page 5, Line 863, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "【演奏曲の情報を表示する】"
-msgstr "[재생곡 정보 표시하기]"
+msgstr ""
 
 #. ID 2, Page 1, Line 15, Pos (18,14)
 #. ChangeHeroName (Actor 2)
@@ -6877,7 +6877,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ファイル名"
-msgstr "파일 명"
+msgstr ""
 
 #. ID 2, Page 23, Line 251, Pos (18,14)
 #. ChangeHeroName (Actor 2)
@@ -6885,4 +6885,4 @@ msgstr "파일 명"
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "曲名(ﾌｧｲﾙ名)"
-msgstr "곡 명(파일 명)"
+msgstr ""
