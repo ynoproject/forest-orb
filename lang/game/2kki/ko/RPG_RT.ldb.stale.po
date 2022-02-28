@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GAME_NAME 1.0\n"
+"Language-Team: YOUR NAME <mail@your.address>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-CreatedBy: LcfTrans"
+
+#. ID 2
+msgctxt "skills.using_message1"
+msgid "ダミーのほほをつねるです。"
+msgstr "더미의 볼을 꼬집습니다"
+
+#. ID 1
+msgctxt "states.message_actor"
+msgid "は倒れた！"
+msgstr "는 쓰러졌다!"
+
+#. ID 1
+msgctxt "states.message_enemy"
+msgid "を倒した！"
+msgstr "가 쓰러졌다!"
+
+#. ID 1
+msgctxt "states.message_recovery"
+msgid "は立ち上がった！"
+msgstr "는 일어섰다!"
+
