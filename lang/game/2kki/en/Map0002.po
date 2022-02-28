@@ -692,7 +692,7 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おおかみ"
-msgstr ""
+msgstr "Wolf"
 
 #. ID 12, Page 2, Line 11, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -700,13 +700,13 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "バイク"
-msgstr ""
+msgstr "Bike"
 
 #. ID 12, Page 2, Line 18, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ツインテ"
-msgstr ""
+msgstr "Twintails"
 
 #. ID 12, Page 2, Line 19, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -714,7 +714,7 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "めがね"
-msgstr ""
+msgstr "Glasses"
 
 #. ID 12, Page 2, Line 26, Pos (13,5)
 #. ChangeHeroName (Actor 2)
@@ -722,7 +722,7 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "はにわ"
-msgstr ""
+msgstr "Haniwa"
 
 #. ID 12, Page 2, Line 27, Pos (13,5)
 #. ChangeHeroName (Actor 3)
@@ -730,217 +730,217 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ケーキ"
-msgstr ""
+msgstr "Cake"
 
 #. ID 12, Page 2, Line 34, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "レインコート"
-msgstr ""
+msgstr "Raincoat"
 
 #. ID 12, Page 2, Line 44, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "くろでんわ"
-msgstr ""
+msgstr "Telephone"
 
 #. ID 12, Page 2, Line 48, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おとこのこ"
-msgstr ""
+msgstr "Boy"
 
 #. ID 12, Page 2, Line 52, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "チェーンソー"
-msgstr ""
+msgstr "Chainsaw"
 
 #. ID 12, Page 2, Line 56, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "カンテラ"
-msgstr ""
+msgstr "Lantern"
 
 #. ID 12, Page 2, Line 60, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ようせい"
-msgstr ""
+msgstr "Fairy"
 
 #. ID 12, Page 2, Line 64, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "うちゅうふく"
-msgstr ""
+msgstr "Spacesuit"
 
 #. ID 12, Page 2, Line 72, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "にじ"
-msgstr ""
+msgstr "Rainbow"
 
 #. ID 12, Page 2, Line 80, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "めだま"
-msgstr ""
+msgstr "Eyeball"
 
 #. ID 12, Page 2, Line 81, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "ばくだん"
-msgstr ""
+msgstr "Bomb"
 
 #. ID 12, Page 2, Line 89, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "まいこ"
-msgstr ""
+msgstr "Maiko"
 
 #. ID 12, Page 2, Line 93, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ツインテール"
-msgstr ""
+msgstr "Twintails"
 
 #. ID 12, Page 2, Line 97, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ぺんぎん"
-msgstr ""
+msgstr "Penguin"
 
 #. ID 12, Page 2, Line 101, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "むし"
-msgstr ""
+msgstr "Insect"
 
 #. ID 12, Page 2, Line 105, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "バネ"
-msgstr ""
+msgstr "Spring"
 
 #. ID 12, Page 2, Line 109, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "とうめい"
-msgstr ""
+msgstr "Invisible"
 
 #. ID 12, Page 2, Line 113, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "がくラン"
-msgstr ""
+msgstr "Gakuran"
 
 #. ID 12, Page 2, Line 117, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ギプス"
-msgstr ""
+msgstr "Plaster Cast"
 
 #. ID 12, Page 2, Line 121, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "せのび"
-msgstr ""
+msgstr "Stretch"
 
 #. ID 12, Page 2, Line 129, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "トロンボーン"
-msgstr ""
+msgstr "Trombone"
 
 #. ID 12, Page 2, Line 137, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "こども"
-msgstr ""
+msgstr "Child"
 
 #. ID 12, Page 2, Line 141, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "あかずきん"
-msgstr ""
+msgstr "Red Hood"
 
 #. ID 12, Page 2, Line 145, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ティッシュ"
-msgstr ""
+msgstr "Tissue"
 
 #. ID 12, Page 2, Line 149, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "コウモリ"
-msgstr ""
+msgstr "Bat"
 
 #. ID 12, Page 2, Line 153, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ポリゴン"
-msgstr ""
+msgstr "Polygon"
 
 #. ID 12, Page 2, Line 157, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "てるてる"
-msgstr ""
+msgstr "Paper"
 
 #. ID 12, Page 2, Line 158, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "ぼうず"
-msgstr ""
+msgstr "Doll"
 
 #. ID 12, Page 2, Line 162, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "マージナル"
-msgstr ""
+msgstr "Marginal"
 
 #. ID 12, Page 2, Line 166, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ドラムかん"
-msgstr ""
+msgstr "Drum"
 
 #. ID 12, Page 2, Line 170, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "おはか"
-msgstr ""
+msgstr "Grave"
 
 #. ID 12, Page 2, Line 174, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "ふみきり"
-msgstr ""
+msgstr "Crossing"
 
 #. ID 12, Page 2, Line 178, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "うさみみ"
-msgstr ""
+msgstr "Bunny Ears"
 
 #. ID 12, Page 2, Line 182, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "サイコロ"
-msgstr ""
+msgstr "Dice"
 
 #. ID 12, Page 2, Line 186, Pos (13,5)
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "なし（エフェ"
-msgstr ""
+msgstr "None "
 
 #. ID 12, Page 2, Line 187, Pos (13,5)
 #. ChangeHeroName (Actor 3)
 msgctxt "actors.name"
 msgid "クト解除）"
-msgstr ""
+msgstr "(Removed)"
 
 #. ID 12, Page 3, Line 20, Pos (13,5)
 #. ChangeHeroName (Actor 4)
@@ -1069,7 +1069,7 @@ msgid ""
 "\\> ★ エフェクトシフトチェンジ ★ \n"
 "\\>※現在の設定:\\N[6]\\C[0]"
 msgstr ""
-"\\> ★ Effect Shift Change★ \n"
+"\\> ★ Effect Shift Change ★ \n"
 "\\>* Current Setting: \\N[6]\\C[0]"
 
 #. ID 12, Page 3, Line 102, Pos (13,5)
@@ -1098,7 +1098,7 @@ msgstr ""
 
 #. ID 14, Page 1, Line 2, Pos (9,14)
 msgid "\\>旧処理が呼び出されました"
-msgstr ""
+msgstr "\\>Old process was called"
 
 #. ID 18, Page 1, Line 17, Pos (12,6)
 msgid "\\>　　　　　　　　　　　　　　　　　　　　　　　　　\\^\\"

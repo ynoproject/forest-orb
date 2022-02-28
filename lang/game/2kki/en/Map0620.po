@@ -80,6 +80,10 @@ msgid ""
 "\\>X       ：メニュー\n"
 "\\>Shift   ：曲情報の閲覧・曲の登録\\_/\\_消去"
 msgstr ""
+"\\>$s$t$u$v: Track Selection\n"
+"\\>Z       : Play Track・Set Registration Track No.\n"
+"\\>X       : Go to Menu\n"
+"\\>Shift   : View Track Info・Register\\_/\\_Unregister Track"
 
 #. ID 1, Page 1, Line 1810, Pos (19,14)
 msgid ""
@@ -88,6 +92,10 @@ msgid ""
 "\\>X       ：メニュー\n"
 "\\>Shift   ：曲情報の閲覧・曲の登録\\_/\\_消去"
 msgstr ""
+"\\>$s$t$u$v: Track Selection\n"
+"\\>Z       : Play Track・Switch Track Variant\n"
+"\\>X       : Go to Menu\n"
+"\\>Shift   : View Track Info・Register\\_/\\_Unregister Track"
 
 #. ID 1, Page 1, Line 1823, Pos (19,14)
 msgid ""
@@ -96,6 +104,10 @@ msgid ""
 "\\>・旧SRへ切替\n"
 "\\>・操作ガイド表示"
 msgstr ""
+"\\>\\C[10]■ \\C[0]Available Menu Options [1/3]\n"
+"\\>・Return to PC Screen\n"
+"\\>・Switch to Old Sound Room\n"
+"\\>・Display Instructions"
 
 #. ID 1, Page 1, Line 1829, Pos (19,14)
 msgid ""
@@ -104,6 +116,10 @@ msgid ""
 "\\>・旧SRへ切替\\_/\\_SREDの閲覧\n"
 "\\>・操作ガイド表示"
 msgstr ""
+"\\>\\C[10]■ \\C[0]Available Menu Options [1/3]\n"
+"\\>・Return to PC Screen\n"
+"\\>・Switch to Old Sound Room\\_/\\_Sound Room ED\n"
+"\\>・Display Instructions"
 
 #. ID 1, Page 1, Line 1841, Pos (19,14)
 msgid ""
@@ -112,6 +128,10 @@ msgid ""
 "\\>・自動曲送りの設定\n"
 "\\>・演奏を止める"
 msgstr ""
+"\\>\\C[10]■ \\C[0]Available Menu Options [2/3]\n"
+"\\>・Change Play Mode\n"
+"\\>・Autoplay Settings\n"
+"\\>・Stop Current Track"
 
 #. ID 1, Page 1, Line 1852, Pos (19,14)
 msgid ""
@@ -120,6 +140,10 @@ msgid ""
 "\\>・メモリーの交換\\_/\\_全消去\n"
 "\\>・詳細設定の変更"
 msgstr ""
+"\\>\\C[10]■ \\C[0]Available Menu Options [3/3]\n"
+"\\>・Register Playable Tracks While Listening\n"
+"\\>・Manage Playlist\\_/\\_Remove All\n"
+"\\>・Advanced Settings"
 
 #. ID 1, Page 1, Line 1859, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -127,7 +151,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "サウンドサーチ"
-msgstr ""
+msgstr "Track Search"
 
 #. ID 1, Page 1, Line 1862, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -135,7 +159,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "未解放箇所を探す"
-msgstr ""
+msgstr "Locked Track Search"
 
 #. ID 1, Page 1, Line 1865, Pos (19,14)
 msgid ""
@@ -144,6 +168,10 @@ msgid ""
 "\\>・カーソルジャンプ\n"
 "\\>・詳細設定の変更"
 msgstr ""
+"\\>\\C[10]■ \\C[0]Available Menu Options [3/3]\n"
+"\\>・\\N[1]\n"
+"\\>・Set Cursor Position\n"
+"\\>・Advanced Settings"
 
 #. ID 1, Page 1, Line 1878, Pos (19,14)
 msgid ""
@@ -152,6 +180,10 @@ msgid ""
 "\\>曲未登録欄でZ\\_>\\_曲＆演出No.を入力 or\n"
 "\\>メニュー\\_>\\_高度な機能\\_>\\_演奏可能曲を登録"
 msgstr ""
+"\\>\\C[10]■ \\C[0]How to Add Tracks to Playlist\n"
+"\\>\n"
+"\\>曲未登録欄でZ\\_>\\_曲＆演出No.を入力 or\n"
+"\\>メニュー\\_>\\_高度な機能\\_>\\_演奏可能曲を登録"
 
 #. ID 1, Page 1, Line 1884, Pos (19,14)
 msgid ""
@@ -159,6 +191,9 @@ msgid ""
 "\\>\n"
 "\\>Shiftダイアログから選択"
 msgstr ""
+"\\>\\C[10]■ \\C[0]How to Add Tracks to Playlist\n"
+"\\>\n"
+"\\>Select from shift dialog"
 
 #. ID 1, Page 1, Line 1910, Pos (19,14)
 #. Choice (2 options)
@@ -166,6 +201,8 @@ msgid ""
 "\\>ヒントを見る\n"
 "\\>ギブアップ"
 msgstr ""
+"\\>Show Hint\n"
+"\\>Give Up"
 
 #. ID 1, Page 1, Line 1925, Pos (19,14)
 msgid ""
@@ -226,7 +263,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "起動"
-msgstr ""
+msgstr "Start"
 
 #. ID 1, Page 1, Line 2033, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -234,7 +271,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "停止"
-msgstr ""
+msgstr "Stop"
 
 #. ID 1, Page 1, Line 2036, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -242,6 +279,8 @@ msgid ""
 "\\>\\C[10]■\\C[6]自動曲送り\\C[0]\n"
 "\\>"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Autoplay\\C[0]\n"
+"\\>"
 
 #. ID 1, Page 1, Line 2038, Pos (19,14)
 #. Choice (2 options, embedded in a message)
@@ -249,6 +288,8 @@ msgid ""
 "\\>自動曲送りを\\N[6]する\n"
 "\\>詳細設定"
 msgstr ""
+"\\>\\N[6] Autoplay\n"
+"\\>Advanced Settings"
 
 #. ID 1, Page 1, Line 2055, Pos (19,14)
 msgid ""
@@ -256,36 +297,39 @@ msgid ""
 "\\>\n"
 "\\>＞自動曲送りを\\N[6]しました\\<\\.\\.\\^"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Autoplay\\C[0]\n"
+"\\>\n"
+"\\>> Autoplay \\N[6]\\<\\.\\.\\^"
 
 #. ID 1, Page 1, Line 2105, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ノーマル"
-msgstr ""
+msgstr "Normal"
 
 #. ID 1, Page 1, Line 2109, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リバース"
-msgstr ""
+msgstr "Reverse"
 
 #. ID 1, Page 1, Line 2113, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ランダム"
-msgstr ""
+msgstr "Random"
 
 #. ID 1, Page 1, Line 2117, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "時間経過"
-msgstr ""
+msgstr "Time Elapsed"
 
 #. ID 1, Page 1, Line 2120, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "ループ回数"
-msgstr ""
+msgstr "Loop Count"
 
 #. ID 1, Page 1, Line 2136, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -294,7 +338,7 @@ msgstr ""
 #. ID 1, Page 1, Line 2176, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 msgid "\\>\\C[10]■\\C[6]自動曲送りの設定\\C[0]"
-msgstr ""
+msgstr "\\>\\C[10]■ \\C[6]Autoplay Settings\\C[0]"
 
 #. ID 1, Page 1, Line 2137, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -419,7 +463,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "なし"
-msgstr ""
+msgstr "Off"
 
 #. ID 1, Page 1, Line 2446, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -427,14 +471,14 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "あり"
-msgstr ""
+msgstr "On"
 
 #. ID 1, Page 1, Line 2449, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 #. ID 1, Page 1, Line 2552, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 msgid "\\>\\C[10]■\\C[6]オプション\\C[0]"
-msgstr ""
+msgstr "\\>\\C[10]■ \\C[6]Options\\C[0]"
 
 #. ID 1, Page 1, Line 2450, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -443,6 +487,9 @@ msgid ""
 "\\>操作ラグの時間：\\C[4]\\V[109]\\C[0]　　　 （標準：5）\n"
 "\\>次の項目へ"
 msgstr ""
+"\\>Sound Effects: \\C[4]\\N[6]\\C[0]　　(Level: On)\n"
+"\\>Delay Time   : \\C[4]\\V[109]\\C[0]　　　 (Level: 5)\n"
+"\\>Next Page"
 
 #. ID 1, Page 1, Line 2466, Pos (19,14)
 msgid ""
@@ -484,13 +531,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "てきぱき"
-msgstr ""
+msgstr "Fast"
 
 #. ID 1, Page 1, Line 2542, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ゆっくり"
-msgstr ""
+msgstr "Slow"
 
 #. ID 1, Page 1, Line 2553, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -638,6 +685,9 @@ msgid ""
 "\\>\n"
 "\\>＞未解放の演出です"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Track Switch\\C[0]\n"
+"\\>\n"
+"\\>> This variant is locked"
 
 #. ID 1, Page 2, Line 597, Pos (19,14)
 msgid ""
@@ -680,7 +730,7 @@ msgstr ""
 #. ID 1, Page 5, Line 540, Pos (19,14)
 #. Choice (1 options, embedded in a message)
 msgid "\\>はい = Z / いいえ = X"
-msgstr ""
+msgstr "\\>Yes = Z / No = X"
 
 #. ID 1, Page 2, Line 628, Pos (19,14)
 msgid ""
@@ -773,7 +823,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "メモリー"
-msgstr ""
+msgstr "Playlist"
 
 #. ID 1, Page 2, Line 888, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -781,7 +831,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リスト"
-msgstr ""
+msgstr "List"
 
 #. ID 1, Page 2, Line 892, Pos (19,14)
 msgid ""
@@ -789,6 +839,9 @@ msgid ""
 "\\>\n"
 "\\>＞\\N[6]モードに切り替えました\\N[1]"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Play Mode Switch\\C[0]\n"
+"\\>\n"
+"\\>> Switched to \\N[6] Mode\\N[1]"
 
 #. ID 1, Page 2, Line 898, Pos (19,14)
 msgid ""
@@ -796,6 +849,9 @@ msgid ""
 "\\>\n"
 "\\>曲＆演出を10個まで登録して聞くことができます"
 msgstr ""
+"\\>\\C[10]■ \\C[6]About Playlist Mode\\C[0]\n"
+"\\>\n"
+"\\>You can register up to 10 tracks/locations to listen to"
 
 #. ID 1, Page 2, Line 905, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -816,11 +872,14 @@ msgid ""
 "\\>\n"
 "\\>＞どこからチェックを開始しますか？\\<\\!"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Locked Track Check\\C[0]\n"
+"\\>\n"
+"\\>> Where do you want to start the check?\\<\\!"
 
 #. ID 1, Page 2, Line 994, Pos (19,14)
 #. Choice (1 options, embedded in a message)
 msgid "\\>カーソル位置 = Z / No.1 = X"
-msgstr ""
+msgstr "\\>Cursor Position = Z / No.1 = X"
 
 #. ID 1, Page 2, Line 1022, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -865,11 +924,14 @@ msgid ""
 "\\>\n"
 "\\>＞未解放No.：\\C[4]\\N[1]\\V[103]\\N[6]\\C[0]"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Locked Track Check\\C[0]\n"
+"\\>\n"
+"\\>> Locked Track No.: \\C[4]\\N[1]\\V[103]\\N[6]\\C[0]"
 
 #. ID 1, Page 2, Line 1041, Pos (19,14)
 #. Choice (1 options, embedded in a message)
 msgid "\\>次へ = Z / 終了 = X"
-msgstr ""
+msgstr "\\>Next = Z / End = X"
 
 #. ID 1, Page 2, Line 1061, Pos (19,14)
 msgid ""
@@ -877,6 +939,9 @@ msgid ""
 "\\>\n"
 "\\>＞未解放箇所は見つかりませんでした"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Locked Track Check\\C[0]\n"
+"\\>\n"
+"\\>> Couldn't find any locked tracks"
 
 #. ID 1, Page 2, Line 1110, Pos (19,14)
 msgid ""
@@ -884,6 +949,9 @@ msgid ""
 "\\>\n"
 "\\>＞曲を聞きながら登録できます"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register Playable Tracks\\C[0]\n"
+"\\>\n"
+"\\>> You can register tracks as you listen to them"
 
 #. ID 1, Page 2, Line 1113, Pos (19,14)
 msgid ""
@@ -892,6 +960,10 @@ msgid ""
 "\\>＞曲名が暗くなっているのが未登録です\n"
 "\\>　指定No.が未解放の場合は飛ばします"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register Playable Tracks\\C[0]\n"
+"\\>\n"
+"\\>> Unregistered tracks will show as dark\n"
+"\\>  Locked tracks will be skipped"
 
 #. ID 1, Page 2, Line 1121, Pos (19,14)
 msgid ""
@@ -900,6 +972,10 @@ msgid ""
 "\\>＞未解放曲が長く続く箇所があると\n"
 "\\>　切り替えに\\C[1]時間がかかります"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register Playable Tracks\\C[0]\n"
+"\\>\n"
+"\\>> If there are a lot of locked tracks in a row,\n"
+"\\>  it may \\C[1]take a long time"
 
 #. ID 1, Page 2, Line 1125, Pos (19,14)
 msgid ""
@@ -908,6 +984,10 @@ msgid ""
 "\\>＞リストモードで星が\\C[1]1つもつかない区間がある\\C[0]時は\n"
 "\\>　注意してください"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register Playable Tracks\\C[0]\n"
+"\\>\n"
+"\\>＞リストモードで星が\\C[1]1つもつかない区間がある\\C[0]時は\n"
+"\\>　注意してください"
 
 #. ID 1, Page 2, Line 1129, Pos (19,14)
 msgid ""
@@ -916,6 +996,10 @@ msgid ""
 "\\>＞演出解放数4/609の場合、SRNo.3D→45で\\C[1]5秒\\C[0]程度\n"
 "\\>　SRNo.45→1Aで\\C[1]30秒\\C[0]程度止まります"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register Playable TracksC[0]\n"
+"\\>\n"
+"\\>＞演出解放数4/609の場合、SRNo.3D→45で\\C[1]5秒\\C[0]程度\n"
+"\\>　SRNo.45→1Aで\\C[1]30秒\\C[0]程度止まります"
 
 #. ID 1, Page 2, Line 1252, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -944,7 +1028,7 @@ msgstr ""
 #. ID 1, Page 2, Line 1323, Pos (19,14)
 #. Contains choice at line 2 (2 options)
 msgid "\\>SRNo.：\\C[\\V[593]]\\N[1]\\V[103]\\N[6]  \\N[2]\\N[3]\\N[4]\\N[5]\\C[0]"
-msgstr ""
+msgstr "\\>Track No.: \\C[\\V[593]]\\N[1]\\V[103]\\N[6]  \\N[2]\\N[3]\\N[4]\\N[5]\\C[0]"
 
 #. ID 1, Page 2, Line 1292, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -953,6 +1037,9 @@ msgid ""
 "\\>指定No.へ移動\n"
 "\\>メモリー登録 / 終了"
 msgstr ""
+"\\>Next = Z / Previous = X\n"
+"\\>Set Track No.\n"
+"\\>Register to Playlist / Exit"
 
 #. ID 1, Page 2, Line 1305, Pos (19,14)
 msgid ""
@@ -960,6 +1047,9 @@ msgid ""
 "\\>\n"
 "\\>＞SRNo.を指定してください（\\C[1]1～\\V[111]\\C[0]  0でｷｬﾝｾﾙ）"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Set Track No.\\C[0]\n"
+"\\>\n"
+"\\>> Please specify the track no. (\\C[1]1~\\V[111]\\C[0]  0 to cancel）"
 
 #. ID 1, Page 2, Line 1324, Pos (19,14)
 #. Choice (2 options, embedded in a message)
@@ -967,7 +1057,7 @@ msgid ""
 "\\>メモリー登録\n"
 "\\>終了"
 msgstr ""
-"\\>Save to Playlist\n"
+"\\>Register to Playlist\n"
 "\\>Exit"
 
 #. ID 1, Page 2, Line 1329, Pos (19,14)
@@ -977,10 +1067,10 @@ msgid ""
 "\\>＞登録するNo.を指定してください\n"
 "\\>　 (No.10なら0を選択)"
 msgstr ""
-"\\>\\C[10]■\\C[6]Add to Playlist\\C[0]\n"
+"\\>\\C[10]■ \\C[6]Register to Playlist\\C[0]\n"
 "\\>\n"
-"\\>＞Select the track number to register\n"
-"\\>　 (Select 0 for No. 10)"
+"\\>> Select the playlist slot no. to register to\n"
+"\\>  (Select 0 for No. 10)"
 
 #. ID 1, Page 2, Line 1333, Pos (19,14)
 #. ID 1, Page 2, Line 1949, Pos (19,14)
@@ -989,7 +1079,7 @@ msgid ""
 "\\>\n"
 "\\>＞ (No.10なら0を選択)"
 msgstr ""
-"\\>\\C[10]■\\C[6]Add to Playlist\\C[0]\n"
+"\\>\\C[10]■ \\C[6]Register to Playlist\\C[0]\n"
 "\\>\n"
 "\\>　 (Select 0 for No. 10)"
 
@@ -999,9 +1089,9 @@ msgid ""
 "\\>\n"
 "\\>＞No.\\V[101]に登録しました"
 msgstr ""
-"\\>\\C[10]■\\C[6]Add to Playlist\\C[0]\n"
+"\\>\\C[10]■ \\C[6]Register to Playlist\\C[0]\n"
 "\\>\n"
-"\\>＞Added No.\\V[101] to playlist"
+"\\>> Registered track to playist slot No.\\V[101]"
 
 #. ID 1, Page 2, Line 1414, Pos (19,14)
 msgid ""
@@ -1010,6 +1100,10 @@ msgid ""
 "\\>＞ジャンプ先No.を指定してください\n"
 "\\>　（\\C[1]1～\\V[111]\\C[0]  0でｷｬﾝｾﾙ  \\V[591]以上でﾗﾝﾀﾞﾑ）"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Set Cursor Position\\C[0] (Current: \\C[4]No.\\V[110]\\C[0])\n"
+"\\>\n"
+"\\>> Please specify the track no. to jump to\n"
+"\\>  (\\C[1]1~\\V[111]\\C[0]  0 to cancel  \\V[591] and above are random)"
 
 #. ID 1, Page 2, Line 1418, Pos (19,14)
 msgid ""
@@ -1017,6 +1111,9 @@ msgid ""
 "\\>\n"
 "\\>＞（\\C[1]1～\\V[111]\\C[0]  0でｷｬﾝｾﾙ  \\V[591]以上でﾗﾝﾀﾞﾑ）"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Set Cursor Position\\C[0] (Current: \\C[4]No.\\V[110]\\C[0])\n"
+"\\>\n"
+"\\>  (\\C[1]1~\\V[111]\\C[0]  0 to cancel  \\V[591] and above are random)"
 
 #. ID 1, Page 2, Line 1579, Pos (19,14)
 msgid ""
@@ -1024,6 +1121,9 @@ msgid ""
 "\\>\n"
 "\\>＞No.\\V[110]にジャンプします\\<\\.\\.\\^"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Set Cursor Position\\C[0]\n"
+"\\>\n"
+"\\>> Jump to track no. \\V[110]\\<\\.\\.\\^"
 
 #. ID 1, Page 2, Line 1616, Pos (19,14)
 msgid ""
@@ -1383,6 +1483,10 @@ msgid ""
 "\\>\\C[1]♪\\C[0]Pattern：\\C[4]\\V[114]\\C[0]/\\C[4]\\V[112]\\C[0] (\\N[5]\\V[4]\\C[0]/\\N[3]\\V[2]\\C[0])\n"
 "\\>\\C[1]♪\\C[0]Rate   ：\\C[4]\\V[591]％\\C[0] (\\N[6]\\V[5]％\\C[0])"
 msgstr ""
+"\\>　　　　　 \\C[4]☆ \\C[0]Unlocked Info \\C[4]★\\C[0]\n"
+"\\>\\C[1]♪\\C[0]Track  : \\C[4]\\V[113]\\C[0]/\\C[4]\\V[111]\\C[0] (\\N[4]\\V[3]\\C[0]/\\N[2]\\V[1]\\C[0])\n"
+"\\>\\C[1]♪\\C[0]Variant: \\C[4]\\V[114]\\C[0]/\\C[4]\\V[112]\\C[0] (\\N[5]\\V[4]\\C[0]/\\N[3]\\V[2]\\C[0])\n"
+"\\>\\C[1]♪\\C[0]Rate   : \\C[4]\\V[591]%\\C[0] (\\N[6]\\V[5]%\\C[0])"
 
 #. ID 1, Page 4, Line 440, Pos (19,14)
 msgid ""
@@ -1390,6 +1494,9 @@ msgid ""
 "\\>\n"
 "\\>＞曲が全解放されています"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Notice\\C[0]\n"
+"\\>\n"
+"\\>> All tracks have been unlocked"
 
 #. ID 1, Page 4, Line 443, Pos (19,14)
 msgid ""
@@ -1398,6 +1505,10 @@ msgid ""
 "\\>＞メニューの「未解放箇所を探す」を\n"
 "\\>　「サウンドサーチ」に変更しました"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Notice\\C[0]\n"
+"\\>\n"
+"\\>> The menu option 'Locked Track Search'\n"
+"\\>  has been changed to 'Track Search'"
 
 #. ID 1, Page 4, Line 457, Pos (19,14)
 msgid ""
@@ -1456,7 +1567,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "うろつき"
-msgstr ""
+msgstr "Urotsuki"
 
 #. ID 1, Page 4, Line 673, Pos (19,14)
 #. ChangeHeroName (Actor 2)
@@ -1589,6 +1700,9 @@ msgid ""
 "\\>\n"
 "\\>＞曲が登録されていません"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register to Playlist\\C[0]\n"
+"\\>\n"
+"\\>> The track could not be registered"
 
 #. ID 1, Page 5, Line 371, Pos (19,14)
 #. Contains choice at line 4 (1 options)
@@ -1616,13 +1730,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演出"
-msgstr ""
+msgstr "Variant"
 
 #. ID 1, Page 5, Line 437, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "曲"
-msgstr ""
+msgstr "Track"
 
 #. ID 1, Page 5, Line 440, Pos (19,14)
 msgid ""
@@ -1630,6 +1744,9 @@ msgid ""
 "\\>\n"
 "\\>＞未解放の\\N[6]です"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Register to Playlist\\C[0]\n"
+"\\>\n"
+"\\>> This \\N[6] is locked"
 
 #. ID 1, Page 5, Line 468, Pos (19,14)
 msgid ""
@@ -1651,6 +1768,9 @@ msgid ""
 "\\>\n"
 "\\>＞かかった時間：\\V[34]分\\V[35]秒"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Track Search\\C[0]\n"
+"\\>\n"
+"\\>> かかった時間：\\V[34]分\\V[35]秒"
 
 #. ID 1, Page 5, Line 537, Pos (19,14)
 #. Contains choice at line 4 (1 options)
@@ -1659,6 +1779,9 @@ msgid ""
 "\\>\n"
 "\\>＞もう一度やりますか？\\<\\!"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Track Search\\C[0]\n"
+"\\>\n"
+"\\>> Play again?\\<\\!"
 
 #. ID 1, Page 5, Line 544, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1682,24 +1805,28 @@ msgid ""
 "\\>高度な機能\n"
 "\\>操作ガイド"
 msgstr ""
+"\\>Leave Sound Room\n"
+"\\>Change Mode\n"
+"\\>Advanced Options\n"
+"\\>Display Instructions"
 
 #. ID 1, Page 5, Line 625, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "PC画面"
-msgstr ""
+msgstr "PC Screen"
 
 #. ID 1, Page 5, Line 627, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ﾃﾞﾊﾞｯｸﾞﾙｰﾑ"
-msgstr ""
+msgstr "Debug Room"
 
 #. ID 1, Page 5, Line 631, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "製作者部屋"
-msgstr ""
+msgstr "Developer Room"
 
 #. ID 1, Page 5, Line 637, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -1707,6 +1834,8 @@ msgid ""
 "\\>\\C[10]■\\C[6]退室先の選択\\C[0]\n"
 "\\>"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Select Exit Destination\\C[0]\n"
+"\\>"
 
 #. ID 1, Page 5, Line 639, Pos (19,14)
 #. Choice (2 options, embedded in a message)
@@ -1714,11 +1843,13 @@ msgid ""
 "\\>\\C[4]退室して\\N[6]へ戻る\\C[0]\n"
 "\\>旧SRへ移動"
 msgstr ""
+"\\>\\C[4]Leave Room and Return to \\N[6]\\C[0]\n"
+"\\>Switch to Old Sound Room"
 
 #. ID 1, Page 5, Line 650, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 msgid "\\>\\C[10]■\\C[6]退室先の選択\\C[0]"
-msgstr ""
+msgstr "\\>\\C[10]■ \\C[6]Select Exit Destination\\C[0]"
 
 #. ID 1, Page 5, Line 651, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -1727,6 +1858,9 @@ msgid ""
 "\\>旧SRへ移動\n"
 "\\>SREDを見る"
 msgstr ""
+"\\>\\C[4]Leave Room and Return to \\N[6]\\C[0]\n"
+"\\>Switch to Old Sound Room\n"
+"\\>View Sound Room ED"
 
 #. ID 1, Page 5, Line 668, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1737,7 +1871,7 @@ msgstr ""
 #. ID 1, Page 5, Line 688, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 msgid "\\>\\C[10]■\\C[6]モード変更\\C[0]"
-msgstr ""
+msgstr "\\>\\C[10]■ \\C[6]Change Mode\\C[0]"
 
 #. ID 1, Page 5, Line 689, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -1746,6 +1880,9 @@ msgid ""
 "\\>自動曲送りの設定\n"
 "\\>演奏を止める"
 msgstr ""
+"\\>Switch to \\N[6] Mode\n"
+"\\>Autoplay Settings\n"
+"\\>Stop Current Track"
 
 #. ID 1, Page 5, Line 693, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1769,24 +1906,24 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "カーソルジャンプ"
-msgstr ""
+msgstr "Cursor Jump"
 
 #. ID 1, Page 5, Line 744, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演奏可能曲を登録"
-msgstr ""
+msgstr "Register Playable Sounds"
 
 #. ID 1, Page 5, Line 745, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "メモリーの交換 / 全消去"
-msgstr ""
+msgstr "Manage Playlist / Remove All"
 
 #. ID 1, Page 5, Line 748, Pos (19,14)
 #. Contains choice at line 2 (3 options)
 msgid "\\>\\C[10]■\\C[6]高度な機能\\C[0]"
-msgstr ""
+msgstr "\\>\\C[10]■ \\C[6]Advanced Options\\C[0]"
 
 #. ID 1, Page 5, Line 749, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -1795,6 +1932,9 @@ msgid ""
 "\\>\\N[1]\n"
 "\\>オプション"
 msgstr ""
+"\\>\\N[6]\n"
+"\\>\\N[1]\n"
+"\\>Options"
 
 #. ID 1, Page 5, Line 763, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -1820,6 +1960,8 @@ msgid ""
 "\\>\\C[10]■\\C[6]メモリーの操作\\C[0]\n"
 "\\>"
 msgstr ""
+"\\>\\C[10]■ \\C[6]Playlist Options\\C[0]\n"
+"\\>"
 
 #. ID 1, Page 5, Line 790, Pos (19,14)
 #. Choice (2 options, embedded in a message)
@@ -1827,6 +1969,8 @@ msgid ""
 "\\> 交換\n"
 "\\> 全消去"
 msgstr ""
+"\\> Manage\n"
+"\\> Remove All"
 
 #. ID 1, Page 5, Line 794, Pos (19,14)
 #. ChangeHeroName (Actor 1)
