@@ -579,14 +579,16 @@
       '2kki': 'ja',
       'flow': 'ja'
     };
-    let lang = new URLSearchParams(window.location.search).get('--language') || (navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-')));
-    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === lang)
-      lang = 'default';
     Module = {
       EASYRPG_GAME: gameId,
-      EASYRPG_LANGUAGE: lang,
       EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
     };
+    if (gameId === '2kki') {
+      let lang = new URLSearchParams(window.location.search).get('--language') || (navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-')));
+      if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === lang)
+        lang = 'default';
+      Module.EASYRPG_LANGUAGE = lang;
+    }
   </script>
   <script type="text/javascript" src="index.js"></script>
   <script type="text/javascript" src="gamecanvas.js"></script>
