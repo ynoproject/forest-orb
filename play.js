@@ -23,8 +23,9 @@ const langLabelMassageFunctions = {
   }
 };
 
+const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
 let globalConfig = {
-  lang: document.referrer && /\.jp/.test(document.referrer) ? 'ja' : 'en',
+  lang: Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en',
   name: '',
   chatTipIndex: -1
 };
