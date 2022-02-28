@@ -103,6 +103,9 @@
       "toggleImmersionMode": "Alternar Modo Inmersivo",
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
+      "chat": {
+        "clearChat": "Limpiar Chat"
+      },
       "nexus": "Regresar al Nexo"
     }
   },
@@ -136,8 +139,8 @@
       }
     },
     "playersOnline": {
-      "singular": "{COUNT} Jugador Conectado",
-      "plural": "{COUNT} Jugadores Conectados"
+      "singular": "{COUNT} Jugador Online",
+      "plural": "{COUNT} Jugadores Online"
     },
     "playersInMap": {
       "singular": "{COUNT} Jugador en Mapa",
