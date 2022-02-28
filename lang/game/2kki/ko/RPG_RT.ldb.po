@@ -8271,15 +8271,15 @@ msgstr "종료"
 
 msgctxt "terms.new_game"
 msgid " はじめて "
-msgstr "   처음부터   "
+msgstr "처음부터"
 
 msgctxt "terms.load_game"
 msgid "　つづき　"
-msgstr "    이어서   "
+msgstr "이어서"
 
 msgctxt "terms.exit_game"
 msgid "　おわり　"
-msgstr "    끝내기   "
+msgstr "끝내기"
 
 msgctxt "terms.lvl_short"
 msgid "Ｅ"
