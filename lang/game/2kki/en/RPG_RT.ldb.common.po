@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Yume 2kki\n"
+"Project-Id-Version: Yume 2kki 0.118c Patch 6\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
@@ -429,7 +429,7 @@ msgstr ""
 "\\>　　　　　　    Game \\c[4]ver \\V[7]\\N[4]\\V[9]\\N[2]  \\c[0]\n"
 "\\!\\>Save data will be migrated to the current version."
 
-#. ID 62, Line 180
+#. ID 62, Line 195
 msgid ""
 "\n"
 "\n"
@@ -441,7 +441,7 @@ msgstr ""
 "\n"
 "\\>Your save data was migrated to the current version."
 
-#. ID 62, Line 202
+#. ID 62, Line 217
 #. ChangeHeroName (Actor 1)
 #. ID 269, Line 6
 #. ChangeHeroName (Actor 1)
@@ -453,7 +453,7 @@ msgctxt "actors.name"
 msgid "うろつき"
 msgstr "Urotsuki"
 
-#. ID 62, Line 210
+#. ID 62, Line 225
 msgid "\\>　　　　　　　　　　　　　　　　　　　　　　　　　\\^\\"
 msgstr ""
 
@@ -1811,565 +1811,565 @@ msgid ""
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1881
+#. ID 80, Line 1873
 msgid ""
-"\\>\\C[\\V[1]] 0142 (kuraud)\n"
+"\\>\\C[\\V[1]] 0142 (kuraud) FC迷宮\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1894
+#. ID 80, Line 1886
 msgid ""
-"\\>\\C[\\V[1]] 0143 (kuraud)\n"
+"\\>\\C[\\V[1]] 0143 (kuraud) ブロック塀\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1911
+#. ID 80, Line 1899
 msgid ""
-"\\>\\C[\\V[1]] 0144 (kuraud)\n"
+"\\>\\C[\\V[1]] 0144 (kuraud) 風雪集落\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1928
+#. ID 80, Line 1912
 msgid ""
-"\\>\\C[\\V[1]] 0145 (kuraud)\n"
+"\\>\\C[\\V[1]] 0145 (kuraud) チタババ\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1945
+#. ID 80, Line 1925
 msgid ""
-"\\>\\C[\\V[1]] 0146 (kuraud)\n"
+"\\>\\C[\\V[1]] 0146 (kuraud) シンボロン\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1962
+#. ID 80, Line 1938
 msgid ""
-"\\>\\C[\\V[1]] 0147 (kuraud)\n"
+"\\>\\C[\\V[1]] 0147 (kuraud) 自販倉庫\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1979
+#. ID 80, Line 1951
 msgid ""
-"\\>\\C[\\V[1]] 0148 (kuraud)\n"
+"\\>\\C[\\V[1]] 0148 (kuraud) 銭湯前の石通路\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 1996
+#. ID 80, Line 1964
 msgid ""
-"\\>\\C[\\V[1]] 0149 (kuraud)\n"
+"\\>\\C[\\V[1]] 0149 (kuraud) 煉瓦ダンジョン\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2025
+#. ID 80, Line 2002
 msgid ""
 "\\>\\C[\\V[1]] 0152 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2042
+#. ID 80, Line 2019
 msgid ""
 "\\>\\C[\\V[1]] 0153 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2059
+#. ID 80, Line 2036
 msgid ""
 "\\>\\C[\\V[1]] 0154 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2076
+#. ID 80, Line 2053
 msgid ""
 "\\>\\C[\\V[1]] 0155 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2093
+#. ID 80, Line 2070
 msgid ""
 "\\>\\C[\\V[1]] 0156 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2110
+#. ID 80, Line 2087
 msgid ""
 "\\>\\C[\\V[1]] 0157 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2127
+#. ID 80, Line 2104
 msgid ""
 "\\>\\C[\\V[1]] 0158 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2144
+#. ID 80, Line 2121
 msgid ""
 "\\>\\C[\\V[1]] 0159 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2161
+#. ID 80, Line 2138
 msgid ""
 "\\>\\C[\\V[1]] 0160 (sabamiso)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2183
+#. ID 80, Line 2160
 msgid ""
 "\\>\\C[\\V[1]] 0161 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2200
+#. ID 80, Line 2177
 msgid ""
 "\\>\\C[\\V[1]] 0162 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2217
+#. ID 80, Line 2194
 msgid ""
 "\\>\\C[\\V[1]] 0163 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2242
+#. ID 80, Line 2219
 msgid ""
 "\\>\\C[\\V[1]] 0164 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2259
+#. ID 80, Line 2236
 msgid ""
 "\\>\\C[\\V[1]] 0165 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2276
+#. ID 80, Line 2253
 msgid ""
 "\\>\\C[\\V[1]] 0166 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2293
+#. ID 80, Line 2270
 msgid ""
 "\\>\\C[\\V[1]] 0167 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2313
+#. ID 80, Line 2290
 msgid ""
 "\\>\\C[\\V[1]] 0168 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2330
+#. ID 80, Line 2307
 msgid ""
 "\\>\\C[\\V[1]] 0169 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2347
+#. ID 80, Line 2324
 msgid ""
 "\\>\\C[\\V[1]] 0170 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2372
+#. ID 80, Line 2349
 msgid ""
 "\\>\\C[\\V[1]] 0171 うろつき邸\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2392
+#. ID 80, Line 2369
 msgid ""
 "\\>\\C[\\V[1]] 0172\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2409
+#. ID 80, Line 2386
 msgid ""
 "\\>\\C[\\V[1]] 0173\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2426
+#. ID 80, Line 2403
 msgid ""
 "\\>\\C[\\V[1]] 0174\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2443
+#. ID 80, Line 2420
 msgid ""
 "\\>\\C[\\V[1]] 0175\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2464
+#. ID 80, Line 2441
 msgid ""
 "\\>\\C[\\V[1]] 0176\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2481
+#. ID 80, Line 2458
 msgid ""
 "\\>\\C[\\V[1]] 0177\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2498
+#. ID 80, Line 2475
 msgid ""
 "\\>\\C[\\V[1]] 0178\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2515
+#. ID 80, Line 2492
 msgid ""
 "\\>\\C[\\V[1]] 0179\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2560
+#. ID 80, Line 2537
 msgid ""
 "\\>\\C[\\V[1]] 0181 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2577
+#. ID 80, Line 2554
 msgid ""
 "\\>\\C[\\V[1]] 0182 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2594
+#. ID 80, Line 2571
 msgid ""
 "\\>\\C[\\V[1]] 0183 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2611
+#. ID 80, Line 2588
 msgid ""
 "\\>\\C[\\V[1]] 0184 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2628
+#. ID 80, Line 2605
 msgid ""
 "\\>\\C[\\V[1]] 0185 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2645
+#. ID 80, Line 2622
 msgid ""
 "\\>\\C[\\V[1]] 0186 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2662
+#. ID 80, Line 2639
 msgid ""
 "\\>\\C[\\V[1]] 0187 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2679
+#. ID 80, Line 2656
 msgid ""
 "\\>\\C[\\V[1]] 0188 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2696
+#. ID 80, Line 2673
 msgid ""
 "\\>\\C[\\V[1]] 0189 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2713
+#. ID 80, Line 2690
 msgid ""
 "\\>\\C[\\V[1]] 0190 (20)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2753
+#. ID 80, Line 2722
 msgid ""
-"\\>\\C[\\V[1]] 0192 (kuraud)\n"
+"\\>\\C[\\V[1]] 0192 (kuraud) ぺんぎんゲーム\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 80, Line 2749
+msgid ""
+"\\>\\C[\\V[1]] 0194 (kuraud) 銭湯\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 80, Line 2762
+msgid ""
+"\\>\\C[\\V[1]] 0195 (kuraud) ケンキュウジョ\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 80, Line 2775
+msgid ""
+"\\>\\C[\\V[1]] 0196 (kuraud) 八畳和室\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 80, Line 2788
 msgid ""
-"\\>\\C[\\V[1]] 0194 (kuraud)\n"
+"\\>\\C[\\V[1]] 0197 (kuraud) 代価移住\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2805
+#. ID 80, Line 2801
 msgid ""
-"\\>\\C[\\V[1]] 0195 (kuraud)\n"
+"\\>\\C[\\V[1]] 0198 (kuraud) ミラー\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2822
-msgid ""
-"\\>\\C[\\V[1]] 0196 (kuraud)\n"
-"\\>\\N[1]"
-msgstr ""
-
-#. ID 80, Line 2839
-msgid ""
-"\\>\\C[\\V[1]] 0197 (kuraud)\n"
-"\\>\\N[1]"
-msgstr ""
-
-#. ID 80, Line 2856
-msgid ""
-"\\>\\C[\\V[1]] 0198 (kuraud)\n"
-"\\>\\N[1]"
-msgstr ""
-
-#. ID 80, Line 2894
+#. ID 80, Line 2828
 msgid ""
 "\\>\\C[\\V[1]] 0200 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2920
+#. ID 80, Line 2854
 msgid ""
 "\\>\\C[\\V[1]] 0201 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2937
+#. ID 80, Line 2871
 msgid ""
 "\\>\\C[\\V[1]] 0202 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2957
+#. ID 80, Line 2891
 msgid ""
 "\\>\\C[\\V[1]] 0203 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2974
+#. ID 80, Line 2908
 msgid ""
 "\\>\\C[\\V[1]] 0204 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 2994
+#. ID 80, Line 2928
 msgid ""
 "\\>\\C[\\V[1]] 0205 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3011
+#. ID 80, Line 2945
 msgid ""
 "\\>\\C[\\V[1]] 0206 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3028
+#. ID 80, Line 2962
 msgid ""
 "\\>\\C[\\V[1]] 0207 (185号)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3050
+#. ID 80, Line 2984
 msgid ""
 "\\>\\C[\\V[1]] 0211 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3067
+#. ID 80, Line 3001
 msgid ""
 "\\>\\C[\\V[1]] 0212 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3084
+#. ID 80, Line 3018
 msgid ""
 "\\>\\C[\\V[1]] 0213 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3101
+#. ID 80, Line 3035
 msgid ""
 "\\>\\C[\\V[1]] 0214 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3118
+#. ID 80, Line 3052
 msgid ""
 "\\>\\C[\\V[1]] 0215 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3135
+#. ID 80, Line 3069
 msgid ""
 "\\>\\C[\\V[1]] 0216 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3152
+#. ID 80, Line 3086
 msgid ""
 "\\>\\C[\\V[1]] 0217 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3169
+#. ID 80, Line 3103
 msgid ""
 "\\>\\C[\\V[1]] 0218 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3186
+#. ID 80, Line 3120
 msgid ""
 "\\>\\C[\\V[1]] 0219 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3203
+#. ID 80, Line 3137
 msgid ""
 "\\>\\C[\\V[1]] 0220 (oudn)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3245
+#. ID 80, Line 3179
 msgid ""
 "\\>\\C[\\V[1]] 0223\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3262
+#. ID 80, Line 3196
 msgid ""
 "\\>\\C[\\V[1]] 0224 Ending (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3279
+#. ID 80, Line 3213
 msgid ""
 "\\>\\C[\\V[1]] 0225\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3296
+#. ID 80, Line 3230
 msgid ""
 "\\>\\C[\\V[1]] 0226\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3313
+#. ID 80, Line 3247
 msgid ""
 "\\>\\C[\\V[1]] 0227\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3352
+#. ID 80, Line 3286
 msgid ""
 "\\>\\C[\\V[1]] 0231 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3369
+#. ID 80, Line 3303
 msgid ""
 "\\>\\C[\\V[1]] 0232 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3386
+#. ID 80, Line 3320
 msgid ""
 "\\>\\C[\\V[1]] 0233 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3403
+#. ID 80, Line 3337
 msgid ""
 "\\>\\C[\\V[1]] 0234 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3420
+#. ID 80, Line 3354
 msgid ""
 "\\>\\C[\\V[1]] 0235 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3437
+#. ID 80, Line 3371
 msgid ""
 "\\>\\C[\\V[1]] 0236 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3454
+#. ID 80, Line 3388
 msgid ""
 "\\>\\C[\\V[1]] 0237 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3471
+#. ID 80, Line 3405
 msgid ""
 "\\>\\C[\\V[1]] 0238 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3488
+#. ID 80, Line 3422
 msgid ""
 "\\>\\C[\\V[1]] 0239 (Bokun)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3531
+#. ID 80, Line 3465
 msgid ""
 "\\>\\C[\\V[1]] 0241 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3548
+#. ID 80, Line 3482
 msgid ""
 "\\>\\C[\\V[1]] 0242 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3569
+#. ID 80, Line 3503
 msgid ""
 "\\>\\C[\\V[1]] 0243 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3586
+#. ID 80, Line 3520
 msgid ""
 "\\>\\C[\\V[1]] 0244 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3603
+#. ID 80, Line 3537
 msgid ""
 "\\>\\C[\\V[1]] 0245 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3620
+#. ID 80, Line 3554
 msgid ""
 "\\>\\C[\\V[1]] 0246 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3637
+#. ID 80, Line 3571
 msgid ""
 "\\>\\C[\\V[1]] 0247 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3654
+#. ID 80, Line 3588
 msgid ""
 "\\>\\C[\\V[1]] 0248 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3671
+#. ID 80, Line 3605
 msgid ""
 "\\>\\C[\\V[1]] 0249 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 80, Line 3688
+#. ID 80, Line 3622
 msgid ""
 "\\>\\C[\\V[1]] 0250 (ぜんまい)\n"
 "\\>\\N[1]"
@@ -2945,553 +2945,559 @@ msgid ""
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 1842
+#. ID 81, Line 1838
 msgid ""
 "\\>\\C[\\V[1]] 0371 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 1859
+#. ID 81, Line 1851
 msgid ""
-"\\>\\C[\\V[1]] 0372 (kuraud)\n"
+"\\>\\C[\\V[1]] 0372 (kuraud) 昼夜の塔\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 1880
+#. ID 81, Line 1868
 msgid ""
-"\\>\\C[\\V[1]] 0373 (kuraud)\n"
+"\\>\\C[\\V[1]] 0373 (kuraud) 文字\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 1943
+#. ID 81, Line 1904
 msgid ""
-"\\>\\C[\\V[1]] 0377 (kuraud)\n"
+"\\>\\C[\\V[1]] 0376 (kuraud) 膝\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 1960
+#. ID 81, Line 1917
+msgid ""
+"\\>\\C[\\V[1]] 0377 (kuraud) モノクロチップ\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 81, Line 1930
 msgid ""
 "\\>\\C[\\V[1]] 0378 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2000
+#. ID 81, Line 1965
 msgid ""
 "\\>\\C[\\V[1]] 0381 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2017
+#. ID 81, Line 1982
 msgid ""
 "\\>\\C[\\V[1]] 0382 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2034
+#. ID 81, Line 1999
 msgid ""
 "\\>\\C[\\V[1]] 0383 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2051
+#. ID 81, Line 2016
 msgid ""
 "\\>\\C[\\V[1]] 0384 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2068
+#. ID 81, Line 2033
 msgid ""
 "\\>\\C[\\V[1]] 0385 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2085
+#. ID 81, Line 2050
 msgid ""
 "\\>\\C[\\V[1]] 0386 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2102
+#. ID 81, Line 2067
 msgid ""
 "\\>\\C[\\V[1]] 0387 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2119
+#. ID 81, Line 2084
 msgid ""
 "\\>\\C[\\V[1]] 0388 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2136
+#. ID 81, Line 2101
 msgid ""
 "\\>\\C[\\V[1]] 0389 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2153
+#. ID 81, Line 2118
 msgid ""
 "\\>\\C[\\V[1]] 0390 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2195
+#. ID 81, Line 2160
 msgid ""
 "\\>\\C[\\V[1]] 0392 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2212
+#. ID 81, Line 2177
 msgid ""
 "\\>\\C[\\V[1]] 0393 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2229
+#. ID 81, Line 2194
 msgid ""
 "\\>\\C[\\V[1]] 0394 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2246
+#. ID 81, Line 2211
 msgid ""
 "\\>\\C[\\V[1]] 0395 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2263
+#. ID 81, Line 2228
 msgid ""
 "\\>\\C[\\V[1]] 0396 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2280
+#. ID 81, Line 2245
 msgid ""
 "\\>\\C[\\V[1]] 0397 (Zoo)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2322
+#. ID 81, Line 2287
 msgid ""
 "\\>\\C[\\V[1]] 0402 (yXu.N9nxhI)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2339
+#. ID 81, Line 2304
 msgid ""
 "\\>\\C[\\V[1]] 0403 (yXu.N9nxhI)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2361
+#. ID 81, Line 2326
 msgid ""
 "\\>\\C[\\V[1]] 0411 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2378
+#. ID 81, Line 2343
 msgid ""
 "\\>\\C[\\V[1]] 0412 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2395
+#. ID 81, Line 2360
 msgid ""
 "\\>\\C[\\V[1]] 0413 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2412
+#. ID 81, Line 2377
 msgid ""
 "\\>\\C[\\V[1]] 0414 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2429
+#. ID 81, Line 2394
 msgid ""
 "\\>\\C[\\V[1]] 0415 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2446
+#. ID 81, Line 2411
 msgid ""
 "\\>\\C[\\V[1]] 0416 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2463
+#. ID 81, Line 2428
 msgid ""
 "\\>\\C[\\V[1]] 0417 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2480
+#. ID 81, Line 2445
 msgid ""
 "\\>\\C[\\V[1]] 0418 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2497
+#. ID 81, Line 2462
 msgid ""
 "\\>\\C[\\V[1]] 0419 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2514
+#. ID 81, Line 2479
 msgid ""
 "\\>\\C[\\V[1]] 0420 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2536
+#. ID 81, Line 2501
 msgid ""
 "\\>\\C[\\V[1]] 0421 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2556
+#. ID 81, Line 2521
 msgid ""
 "\\>\\C[\\V[1]] 0422 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2573
+#. ID 81, Line 2538
 msgid ""
 "\\>\\C[\\V[1]] 0423 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2594
+#. ID 81, Line 2559
 msgid ""
 "\\>\\C[\\V[1]] 0424 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2611
+#. ID 81, Line 2576
 msgid ""
 "\\>\\C[\\V[1]] 0425 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2628
+#. ID 81, Line 2593
 msgid ""
 "\\>\\C[\\V[1]] 0426 (うをのぞき)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2650
+#. ID 81, Line 2615
 msgid ""
 "\\>\\C[\\V[1]] 0431 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2667
+#. ID 81, Line 2632
 msgid ""
 "\\>\\C[\\V[1]] 0432 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2684
+#. ID 81, Line 2649
 msgid ""
 "\\>\\C[\\V[1]] 0433 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2701
+#. ID 81, Line 2666
 msgid ""
 "\\>\\C[\\V[1]] 0434 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2718
+#. ID 81, Line 2683
 msgid ""
 "\\>\\C[\\V[1]] 0435 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2735
+#. ID 81, Line 2700
 msgid ""
 "\\>\\C[\\V[1]] 0436 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2752
+#. ID 81, Line 2717
 msgid ""
 "\\>\\C[\\V[1]] 0437 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2769
+#. ID 81, Line 2734
 msgid ""
 "\\>\\C[\\V[1]] 0438 (wXeoWvpbbM)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2787
+#. ID 81, Line 2752
 msgid ""
 "\\>\\C[\\V[1]] 0441 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2800
+#. ID 81, Line 2765
 msgid ""
 "\\>\\C[\\V[1]] 0442 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2813
+#. ID 81, Line 2778
 msgid ""
 "\\>\\C[\\V[1]] 0443 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2830
+#. ID 81, Line 2795
 msgid ""
 "\\>\\C[\\V[1]] 0445 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2843
+#. ID 81, Line 2808
 msgid ""
 "\\>\\C[\\V[1]] 0446 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2856
+#. ID 81, Line 2821
 msgid ""
 "\\>\\C[\\V[1]] 0448 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2869
+#. ID 81, Line 2834
 msgid ""
 "\\>\\C[\\V[1]] 0449 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2886
+#. ID 81, Line 2851
 msgid ""
 "\\>\\C[\\V[1]] 0450 (dedp)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2908
+#. ID 81, Line 2873
 msgid ""
 "\\>\\C[\\V[1]] 0451 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2925
+#. ID 81, Line 2890
 msgid ""
 "\\>\\C[\\V[1]] 0452 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2947
+#. ID 81, Line 2912
 msgid ""
 "\\>\\C[\\V[1]] 0454 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2964
+#. ID 81, Line 2929
 msgid ""
 "\\>\\C[\\V[1]] 0455 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2981
+#. ID 81, Line 2946
 msgid ""
 "\\>\\C[\\V[1]] 0456 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 2998
+#. ID 81, Line 2963
 msgid ""
 "\\>\\C[\\V[1]] 0457 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3035
+#. ID 81, Line 3000
 msgid ""
 "\\>\\C[\\V[1]] 0459 (ゆきひつじ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3057
+#. ID 81, Line 3022
 msgid ""
 "\\>\\C[\\V[1]] 0461 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3074
+#. ID 81, Line 3039
 msgid ""
 "\\>\\C[\\V[1]] 0463 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3091
+#. ID 81, Line 3056
 msgid ""
 "\\>\\C[\\V[1]] 0464 (tKp9vEGEfhCD)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3113
+#. ID 81, Line 3078
 msgid ""
 "\\>\\C[\\V[1]] 0471 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3130
+#. ID 81, Line 3095
 msgid ""
 "\\>\\C[\\V[1]] 0472 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3147
+#. ID 81, Line 3112
 msgid ""
 "\\>\\C[\\V[1]] 0473 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3164
+#. ID 81, Line 3129
 msgid ""
 "\\>\\C[\\V[1]] 0474 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3181
+#. ID 81, Line 3146
 msgid ""
 "\\>\\C[\\V[1]] 0475 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3198
+#. ID 81, Line 3163
 msgid ""
 "\\>\\C[\\V[1]] 0476 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3215
+#. ID 81, Line 3180
 msgid ""
 "\\>\\C[\\V[1]] 0477 (ぜんまい)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3237
+#. ID 81, Line 3202
 msgid ""
 "\\>\\C[\\V[1]] 0481 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3254
+#. ID 81, Line 3219
 msgid ""
 "\\>\\C[\\V[1]] 0482 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3271
+#. ID 81, Line 3236
 msgid ""
 "\\>\\C[\\V[1]] 0483 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3288
+#. ID 81, Line 3253
 msgid ""
 "\\>\\C[\\V[1]] 0484 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3305
+#. ID 81, Line 3270
 msgid ""
 "\\>\\C[\\V[1]] 0485 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3322
+#. ID 81, Line 3287
 msgid ""
 "\\>\\C[\\V[1]] 0486 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3339
+#. ID 81, Line 3304
 msgid ""
 "\\>\\C[\\V[1]] 0487 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3356
+#. ID 81, Line 3321
 msgid ""
 "\\>\\C[\\V[1]] 0488 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3373
+#. ID 81, Line 3338
 msgid ""
 "\\>\\C[\\V[1]] 0489 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3393
+#. ID 81, Line 3358
 msgid ""
 "\\>\\C[\\V[1]] 0490 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3415
+#. ID 81, Line 3380
 msgid ""
 "\\>\\C[\\V[1]] 0491 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3432
+#. ID 81, Line 3397
 msgid ""
 "\\>\\C[\\V[1]] 0492 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3449
+#. ID 81, Line 3414
 msgid ""
 "\\>\\C[\\V[1]] 0493 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3466
+#. ID 81, Line 3431
 msgid ""
 "\\>\\C[\\V[1]] 0494 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3483
+#. ID 81, Line 3448
 msgid ""
 "\\>\\C[\\V[1]] 0495 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3504
+#. ID 81, Line 3469
 msgid ""
 "\\>\\C[\\V[1]] 0496 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3521
+#. ID 81, Line 3486
 msgid ""
 "\\>\\C[\\V[1]] 0497 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3538
+#. ID 81, Line 3503
 msgid ""
 "\\>\\C[\\V[1]] 0498 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3555
+#. ID 81, Line 3520
 msgid ""
 "\\>\\C[\\V[1]] 0499 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 81, Line 3572
+#. ID 81, Line 3537
 msgid ""
 "\\>\\C[\\V[1]] 0500 (710)\n"
 "\\>\\N[1]"
@@ -3575,493 +3581,493 @@ msgid ""
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 397
+#. ID 82, Line 393
 msgid ""
 "\\>\\C[\\V[1]] 0611 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 414
+#. ID 82, Line 406
 msgid ""
 "\\>\\C[\\V[1]] 0612 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 427
+#. ID 82, Line 419
 msgid ""
 "\\>\\C[\\V[1]] 0613 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 467
+#. ID 82, Line 459
 msgid ""
 "\\>\\C[\\V[1]] 0614/0615 (kuraud)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 503
+#. ID 82, Line 495
 msgid ""
 "\\>\\C[\\V[1]] 0622 (Ca)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 520
+#. ID 82, Line 512
 msgid ""
 "\\>\\C[\\V[1]] 0625 (Ca)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 542
+#. ID 82, Line 534
 msgid ""
 "\\>\\C[\\V[1]] 0631 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 559
+#. ID 82, Line 551
 msgid ""
 "\\>\\C[\\V[1]] 0632 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 576
+#. ID 82, Line 568
 msgid ""
 "\\>\\C[\\V[1]] 0633 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 593
+#. ID 82, Line 585
 msgid ""
 "\\>\\C[\\V[1]] 0634 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 610
+#. ID 82, Line 602
 msgid ""
 "\\>\\C[\\V[1]] 0636 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 627
+#. ID 82, Line 619
 msgid ""
 "\\>\\C[\\V[1]] 0637 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 642
+#. ID 82, Line 634
 msgid ""
 "\\>\\C[\\V[1]] 0638 (710)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 664
+#. ID 82, Line 656
 msgid ""
 "\\>\\C[\\V[1]] 0642 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 681
+#. ID 82, Line 673
 msgid ""
 "\\>\\C[\\V[1]] 0643 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 698
+#. ID 82, Line 690
 msgid ""
 "\\>\\C[\\V[1]] 0644 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 715
+#. ID 82, Line 707
 msgid ""
 "\\>\\C[\\V[1]] 0645 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 732
+#. ID 82, Line 724
 msgid ""
 "\\>\\C[\\V[1]] 0646 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 749
+#. ID 82, Line 741
 msgid ""
 "\\>\\C[\\V[1]] 0647 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 766
+#. ID 82, Line 758
 msgid ""
 "\\>\\C[\\V[1]] 0648 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 783
+#. ID 82, Line 775
 msgid ""
 "\\>\\C[\\V[1]] 0649 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 803
+#. ID 82, Line 795
 msgid ""
 "\\>\\C[\\V[1]] 0650 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 825
+#. ID 82, Line 817
 msgid ""
 "\\>\\C[\\V[1]] 0652 (GALAXY)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 842
+#. ID 82, Line 834
 msgid ""
 "\\>\\C[\\V[1]] 0653 (GALAXY)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 859
+#. ID 82, Line 851
 msgid ""
 "\\>\\C[\\V[1]] 0654 (GALAXY)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 879
+#. ID 82, Line 871
 msgid ""
 "\\>\\C[\\V[1]] 0655 (GALAXY)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 986
+#. ID 82, Line 978
 msgid ""
 "\\>\\C[\\V[1]] 0661 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 999
+#. ID 82, Line 991
 msgid ""
 "\\>\\C[\\V[1]] 0662 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1012
+#. ID 82, Line 1004
 msgid ""
 "\\>\\C[\\V[1]] 0663 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1025
+#. ID 82, Line 1017
 msgid ""
 "\\>\\C[\\V[1]] 0664 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1038
+#. ID 82, Line 1030
 msgid ""
 "\\>\\C[\\V[1]] 0665 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1051
+#. ID 82, Line 1043
 msgid ""
 "\\>\\C[\\V[1]] 0667 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1068
+#. ID 82, Line 1060
 msgid ""
 "\\>\\C[\\V[1]] 0668 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1084
+#. ID 82, Line 1076
 msgid ""
 "\\>\\C[\\V[1]] 0669 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1097
+#. ID 82, Line 1089
 msgid ""
 "\\>\\C[\\V[1]] 0670 (モセニテ)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1122
+#. ID 82, Line 1114
 msgid ""
 "\\>\\C[\\V[1]] 0671 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1169
+#. ID 82, Line 1161
 msgid ""
 "\\>\\C[\\V[1]] 0672 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1186
+#. ID 82, Line 1178
 msgid ""
 "\\>\\C[\\V[1]] 0673 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1203
+#. ID 82, Line 1195
 msgid ""
 "\\>\\C[\\V[1]] 0674 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1220
+#. ID 82, Line 1212
 msgid ""
 "\\>\\C[\\V[1]] 0675 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1237
+#. ID 82, Line 1229
 msgid ""
 "\\>\\C[\\V[1]] 0676 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1254
+#. ID 82, Line 1246
 msgid ""
 "\\>\\C[\\V[1]] 0677 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1271
+#. ID 82, Line 1263
 msgid ""
 "\\>\\C[\\V[1]] 0678 (イェリス)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1293
+#. ID 82, Line 1285
 msgid ""
 "\\>\\C[\\V[1]] 0681 (Gシーカー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1330
+#. ID 82, Line 1322
 msgid ""
 "\\>\\C[\\V[1]] 0683 (Gシーカー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1355
+#. ID 82, Line 1347
 msgid ""
 "\\>\\C[\\V[1]] 0691 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1375
+#. ID 82, Line 1367
 msgid ""
 "\\>\\C[\\V[1]] 0692 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1424
+#. ID 82, Line 1416
 msgid ""
 "\\>\\C[\\V[1]] 0697 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1444
+#. ID 82, Line 1436
 msgid ""
 "\\>\\C[\\V[1]] 0698 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1464
+#. ID 82, Line 1456
 msgid ""
 "\\>\\C[\\V[1]] 0699 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1506
+#. ID 82, Line 1498
 msgid ""
 "\\>\\C[\\V[1]] 0701 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1523
+#. ID 82, Line 1515
 msgid ""
 "\\>\\C[\\V[1]] 0702 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1540
+#. ID 82, Line 1532
 msgid ""
 "\\>\\C[\\V[1]] 0703 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1557
+#. ID 82, Line 1549
 msgid ""
 "\\>\\C[\\V[1]] 0704 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1574
+#. ID 82, Line 1566
 msgid ""
 "\\>\\C[\\V[1]] 0705 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1591
+#. ID 82, Line 1583
 msgid ""
 "\\>\\C[\\V[1]] 0706 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1608
+#. ID 82, Line 1600
 msgid ""
 "\\>\\C[\\V[1]] 0707 (natl)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1623
+#. ID 82, Line 1615
 msgid ""
 "\\>\\C[\\V[1]] 0709 (廃墟商店２・店内)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1648
+#. ID 82, Line 1640
 msgid ""
 "\\>\\C[\\V[1]] 0711 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1668
+#. ID 82, Line 1660
 msgid ""
 "\\>\\C[\\V[1]] 0712 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1695
+#. ID 82, Line 1687
 msgid ""
 "\\>\\C[\\V[1]] 0714 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1722
+#. ID 82, Line 1714
 msgid ""
 "\\>\\C[\\V[1]] 0716 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1742
+#. ID 82, Line 1734
 msgid ""
 "\\>\\C[\\V[1]] 0717 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1788
+#. ID 82, Line 1780
 msgid ""
 "\\>\\C[\\V[1]] 0721 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1808
+#. ID 82, Line 1800
 msgid ""
 "\\>\\C[\\V[1]] 0722 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1828
+#. ID 82, Line 1820
 msgid ""
 "\\>\\C[\\V[1]] 0723 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1862
+#. ID 82, Line 1854
 msgid ""
 "\\>\\C[\\V[1]] 0726 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1882
+#. ID 82, Line 1874
 msgid ""
 "\\>\\C[\\V[1]] 0727 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1902
+#. ID 82, Line 1894
 msgid ""
 "\\>\\C[\\V[1]] 0728 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1922
+#. ID 82, Line 1914
 msgid ""
 "\\>\\C[\\V[1]] 0729 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1942
+#. ID 82, Line 1934
 msgid ""
 "\\>\\C[\\V[1]] 0730 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1964
+#. ID 82, Line 1956
 msgid ""
 "\\>\\C[\\V[1]] 0731 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1981
+#. ID 82, Line 1973
 msgid ""
 "\\>\\C[\\V[1]] 0732 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 1998
+#. ID 82, Line 1990
 msgid ""
 "\\>\\C[\\V[1]] 0733 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2015
+#. ID 82, Line 2007
 msgid ""
 "\\>\\C[\\V[1]] 0734 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2032
+#. ID 82, Line 2024
 msgid ""
 "\\>\\C[\\V[1]] 0735 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2049
+#. ID 82, Line 2041
 msgid ""
 "\\>\\C[\\V[1]] 0738 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2066
+#. ID 82, Line 2058
 msgid ""
 "\\>\\C[\\V[1]] 0739 (アノン)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2088
+#. ID 82, Line 2080
 msgid ""
 "\\>\\C[\\V[1]] 0741 (985)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2105
+#. ID 82, Line 2097
 msgid ""
 "\\>\\C[\\V[1]] 0742 (985)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2142
+#. ID 82, Line 2134
 msgid ""
 "\\>\\C[\\V[1]] 0745 (985)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 82, Line 2159
+#. ID 82, Line 2151
 msgid ""
 "\\>\\C[\\V[1]] 0744 (985)\n"
 "\\>\\N[1]"
@@ -4687,479 +4693,485 @@ msgstr ""
 
 #. ID 83, Line 1758
 msgid ""
-"\\>\\C[\\V[1]] 0883 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 0882 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 83, Line 1773
 msgid ""
-"\\>\\C[\\V[1]] 0884 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 0883 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 83, Line 1788
 msgid ""
-"\\>\\C[\\V[1]] 0885 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 0884 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 83, Line 1803
 msgid ""
+"\\>\\C[\\V[1]] 0885 (Kontentsu)\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 83, Line 1818
+msgid ""
 "\\>\\C[\\V[1]] 0887 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1825
+#. ID 83, Line 1840
 msgid ""
 "\\>\\C[\\V[1]] 0891 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1842
+#. ID 83, Line 1857
 msgid ""
 "\\>\\C[\\V[1]] 0892 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1859
+#. ID 83, Line 1874
 msgid ""
 "\\>\\C[\\V[1]] 0893 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1876
+#. ID 83, Line 1891
 msgid ""
 "\\>\\C[\\V[1]] 0894 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1893
+#. ID 83, Line 1908
 msgid ""
 "\\>\\C[\\V[1]] 0895 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1910
+#. ID 83, Line 1925
 msgid ""
 "\\>\\C[\\V[1]] 0896 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1931
+#. ID 83, Line 1946
 msgid ""
 "\\>\\C[\\V[1]] 0897(x>=72) (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1952
+#. ID 83, Line 1967
 msgid ""
 "\\>\\C[\\V[1]] 0897(x<72) (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1974
+#. ID 83, Line 1989
 msgid ""
 "\\>\\C[\\V[1]] 0901 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 1991
+#. ID 83, Line 2006
 msgid ""
 "\\>\\C[\\V[1]] 0902 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2008
+#. ID 83, Line 2023
 msgid ""
 "\\>\\C[\\V[1]] 0903 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2025
+#. ID 83, Line 2040
 msgid ""
 "\\>\\C[\\V[1]] 0904 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2042
+#. ID 83, Line 2057
 msgid ""
 "\\>\\C[\\V[1]] 0905 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2059
+#. ID 83, Line 2074
 msgid ""
 "\\>\\C[\\V[1]] 0906 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2078
+#. ID 83, Line 2093
 msgid ""
 "\\>\\C[\\V[1]] 0907 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2095
+#. ID 83, Line 2110
 msgid ""
 "\\>\\C[\\V[1]] 0909 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2116
+#. ID 83, Line 2131
 msgid ""
 "\\>\\C[\\V[1]] 0911 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2132
+#. ID 83, Line 2147
 msgid ""
 "\\>\\C[\\V[1]] 0912 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2148
+#. ID 83, Line 2163
 msgid ""
 "\\>\\C[\\V[1]] 0913 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2164
+#. ID 83, Line 2179
 msgid ""
 "\\>\\C[\\V[1]] 0914 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2180
+#. ID 83, Line 2195
 msgid ""
 "\\>\\C[\\V[1]] 0915 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2197
+#. ID 83, Line 2212
 msgid ""
 "\\>\\C[\\V[1]] 0916 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2214
+#. ID 83, Line 2229
 msgid ""
 "\\>\\C[\\V[1]] 0917 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2230
+#. ID 83, Line 2245
 msgid ""
 "\\>\\C[\\V[1]] 0918 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2247
+#. ID 83, Line 2262
 msgid ""
 "\\>\\C[\\V[1]] 0919 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2285
+#. ID 83, Line 2300
 msgid ""
 "\\>\\C[\\V[1]] 0921 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2302
+#. ID 83, Line 2317
 msgid ""
 "\\>\\C[\\V[1]] 0922 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2319
+#. ID 83, Line 2334
 msgid ""
 "\\>\\C[\\V[1]] 0923 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2336
+#. ID 83, Line 2351
 msgid ""
 "\\>\\C[\\V[1]] 0924 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2353
+#. ID 83, Line 2368
 msgid ""
 "\\>\\C[\\V[1]] 0925 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2370
+#. ID 83, Line 2385
 msgid ""
 "\\>\\C[\\V[1]] 0928 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2391
+#. ID 83, Line 2406
 msgid ""
 "\\>\\C[\\V[1]] 0931 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2407
+#. ID 83, Line 2422
 msgid ""
 "\\>\\C[\\V[1]] 0932 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2422
+#. ID 83, Line 2437
 msgid ""
 "\\>\\C[\\V[1]] 0933 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2438
+#. ID 83, Line 2453
 msgid ""
 "\\>\\C[\\V[1]] 0934 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2454
+#. ID 83, Line 2469
 msgid ""
 "\\>\\C[\\V[1]] 0935 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2470
+#. ID 83, Line 2485
 msgid ""
 "\\>\\C[\\V[1]] 0936 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2486
+#. ID 83, Line 2501
 msgid ""
 "\\>\\C[\\V[1]] 0937 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2502
+#. ID 83, Line 2517
 msgid ""
 "\\>\\C[\\V[1]] 0938 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2518
+#. ID 83, Line 2533
 msgid ""
 "\\>\\C[\\V[1]] 0939 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2534
+#. ID 83, Line 2549
 msgid ""
 "\\>\\C[\\V[1]] 0940 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2570
+#. ID 83, Line 2585
 msgid ""
 "\\>\\C[\\V[1]] 0943 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2586
+#. ID 83, Line 2601
 msgid ""
 "\\>\\C[\\V[1]] 0944 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2602
+#. ID 83, Line 2617
 msgid ""
 "\\>\\C[\\V[1]] 0945 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2618
+#. ID 83, Line 2633
 msgid ""
 "\\>\\C[\\V[1]] 0946 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2634
+#. ID 83, Line 2649
 msgid ""
 "\\>\\C[\\V[1]] 0947 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2650
+#. ID 83, Line 2665
 msgid ""
 "\\>\\C[\\V[1]] 0948 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2666
+#. ID 83, Line 2681
 msgid ""
 "\\>\\C[\\V[1]] 0949 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2682
+#. ID 83, Line 2697
 msgid ""
 "\\>\\C[\\V[1]] 0950 (qxy)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2703
+#. ID 83, Line 2718
 msgid ""
 "\\>\\C[\\V[1]] 0951 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2718
+#. ID 83, Line 2733
 msgid ""
 "\\>\\C[\\V[1]] 0952 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2733
+#. ID 83, Line 2748
 msgid ""
 "\\>\\C[\\V[1]] 0953 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2748
+#. ID 83, Line 2763
 msgid ""
 "\\>\\C[\\V[1]] 0954 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2763
+#. ID 83, Line 2778
 msgid ""
 "\\>\\C[\\V[1]] 0955 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2778
+#. ID 83, Line 2793
 msgid ""
 "\\>\\C[\\V[1]] 0956 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2793
+#. ID 83, Line 2808
 msgid ""
 "\\>\\C[\\V[1]] 0957 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2808
+#. ID 83, Line 2823
 msgid ""
 "\\>\\C[\\V[1]] 0958 (rio)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2823
+#. ID 83, Line 2838
 msgid ""
 "\\>\\C[\\V[1]] 959 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2838
+#. ID 83, Line 2853
 msgid ""
 "\\>\\C[\\V[1]] 960 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2859
+#. ID 83, Line 2874
 msgid ""
 "\\>\\C[\\V[1]] 0964 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2874
+#. ID 83, Line 2889
 msgid ""
 "\\>\\C[\\V[1]] 0966 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2889
+#. ID 83, Line 2904
 msgid ""
 "\\>\\C[\\V[1]] 0967 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2903
+#. ID 83, Line 2918
 msgid ""
 "\\>\\C[\\V[1]] 0968 (kappa)(到達不可)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2918
+#. ID 83, Line 2933
 msgid ""
 "\\>\\C[\\V[1]] 0970 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2939
+#. ID 83, Line 2954
 msgid ""
 "\\>\\C[\\V[1]] 971 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2954
+#. ID 83, Line 2969
 msgid ""
 "\\>\\C[\\V[1]] 972 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2969
+#. ID 83, Line 2984
 msgid ""
 "\\>\\C[\\V[1]] 973 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2984
+#. ID 83, Line 2999
 msgid ""
 "\\>\\C[\\V[1]] 974 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 2999
+#. ID 83, Line 3014
 msgid ""
 "\\>\\C[\\V[1]] 975 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3014
+#. ID 83, Line 3029
 msgid ""
 "\\>\\C[\\V[1]] 976 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3029
+#. ID 83, Line 3044
 msgid ""
 "\\>\\C[\\V[1]] 977 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3044
+#. ID 83, Line 3059
 msgid ""
 "\\>\\C[\\V[1]] 978 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3059
+#. ID 83, Line 3074
 msgid ""
 "\\>\\C[\\V[1]] 979 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3074
+#. ID 83, Line 3089
 msgid ""
 "\\>\\C[\\V[1]] 980 (shigurin)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3109
+#. ID 83, Line 3124
 msgid ""
 "\\>\\C[\\V[1]] 0991 (kake)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 83, Line 3124
+#. ID 83, Line 3139
 msgid ""
 "\\>\\C[\\V[1]] 0992 (kake)\n"
 "\\>\\N[1]"
@@ -6104,546 +6116,570 @@ msgstr ""
 
 #. ID 85, Line 840
 msgid ""
-"\\>\\C[\\V[1]] 1303 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 1302 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 85, Line 857
 msgid ""
-"\\>\\C[\\V[1]] 1304 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 1303 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 85, Line 874
 msgid ""
-"\\>\\C[\\V[1]] 1305 (Kontentsu)\n"
+"\\>\\C[\\V[1]] 1304 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
 #. ID 85, Line 891
 msgid ""
+"\\>\\C[\\V[1]] 1305 (Kontentsu)\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 85, Line 908
+msgid ""
 "\\>\\C[\\V[1]] 1306 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 909
+#. ID 85, Line 926
 msgid ""
 "\\>\\C[\\V[1]] 1307 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 943
+#. ID 85, Line 960
 msgid ""
 "\\>\\C[\\V[1]] 1310 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 968
+#. ID 85, Line 985
 msgid ""
 "\\>\\C[\\V[1]] 1311 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 988
+#. ID 85, Line 1005
 msgid ""
 "\\>\\C[\\V[1]] 1312 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1008
+#. ID 85, Line 1025
 msgid ""
 "\\>\\C[\\V[1]] 1313 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1028
+#. ID 85, Line 1045
 msgid ""
 "\\>\\C[\\V[1]] 1314 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1048
+#. ID 85, Line 1065
 msgid ""
 "\\>\\C[\\V[1]] 1315 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1068
+#. ID 85, Line 1085
 msgid ""
 "\\>\\C[\\V[1]] 1316 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1088
+#. ID 85, Line 1105
 msgid ""
 "\\>\\C[\\V[1]] 1317 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1108
+#. ID 85, Line 1125
 msgid ""
 "\\>\\C[\\V[1]] 1318 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1128
+#. ID 85, Line 1145
 msgid ""
 "\\>\\C[\\V[1]] 1319 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1148
+#. ID 85, Line 1165
 msgid ""
 "\\>\\C[\\V[1]] 1320 (ぬあー)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1171
+#. ID 85, Line 1188
 msgid ""
 "\\>\\C[\\V[1]] 1321 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1188
+#. ID 85, Line 1205
 msgid ""
 "\\>\\C[\\V[1]] 1322 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1205
+#. ID 85, Line 1222
 msgid ""
 "\\>\\C[\\V[1]] 1323 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1222
+#. ID 85, Line 1239
 msgid ""
 "\\>\\C[\\V[1]] 1324 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1239
+#. ID 85, Line 1256
 msgid ""
 "\\>\\C[\\V[1]] 1325 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1256
+#. ID 85, Line 1273
 msgid ""
 "\\>\\C[\\V[1]] 1328 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1273
+#. ID 85, Line 1290
 msgid ""
 "\\>\\C[\\V[1]] 1329 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1310
+#. ID 85, Line 1327
 msgid ""
 "\\>\\C[\\V[1]] 1341 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1328
+#. ID 85, Line 1345
 msgid ""
 "\\>\\C[\\V[1]] 1342 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1346
+#. ID 85, Line 1363
 msgid ""
 "\\>\\C[\\V[1]] 1343 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1364
+#. ID 85, Line 1381
 msgid ""
 "\\>\\C[\\V[1]] 1344 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1382
+#. ID 85, Line 1399
 msgid ""
 "\\>\\C[\\V[1]] 1346 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1400
+#. ID 85, Line 1417
 msgid ""
 "\\>\\C[\\V[1]] 1347 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1418
+#. ID 85, Line 1435
 msgid ""
 "\\>\\C[\\V[1]] 1348 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1436
+#. ID 85, Line 1453
 msgid ""
 "\\>\\C[\\V[1]] 1349 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1454
+#. ID 85, Line 1471
 msgid ""
 "\\>\\C[\\V[1]] 1350 (Kontentsu)\n"
 "\\>\\N[1]\n"
 "　"
 msgstr ""
 
-#. ID 85, Line 1478
+#. ID 85, Line 1495
 msgid ""
 "\\>\\C[\\V[1]] 1352 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1495
+#. ID 85, Line 1512
 msgid ""
 "\\>\\C[\\V[1]] 1353 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1512
+#. ID 85, Line 1529
 msgid ""
 "\\>\\C[\\V[1]] 1354 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1529
+#. ID 85, Line 1546
 msgid ""
 "\\>\\C[\\V[1]] 1355 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1546
+#. ID 85, Line 1563
 msgid ""
 "\\>\\C[\\V[1]] 1356 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1567
+#. ID 85, Line 1584
 msgid ""
 "\\>\\C[\\V[1]] 1357 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1584
+#. ID 85, Line 1601
 msgid ""
 "\\>\\C[\\V[1]] 1358 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1601
+#. ID 85, Line 1618
 msgid ""
 "\\>\\C[\\V[1]] 1359 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1618
+#. ID 85, Line 1635
 msgid ""
 "\\>\\C[\\V[1]] 1360 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1640
+#. ID 85, Line 1657
 msgid ""
 "\\>\\C[\\V[1]] 1361 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1657
+#. ID 85, Line 1674
 msgid ""
 "\\>\\C[\\V[1]] 1362 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1674
+#. ID 85, Line 1691
 msgid ""
 "\\>\\C[\\V[1]] 1365 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1691
+#. ID 85, Line 1708
 msgid ""
 "\\>\\C[\\V[1]] 1366 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1708
+#. ID 85, Line 1725
 msgid ""
 "\\>\\C[\\V[1]] 1370 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1726
+#. ID 85, Line 1743
 msgid ""
 "\\>\\C[\\V[1]] 1371 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1741
+#. ID 85, Line 1758
 msgid ""
 "\\>\\C[\\V[1]] 1373 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1756
+#. ID 85, Line 1773
 msgid ""
 "\\>\\C[\\V[1]] 1374 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1771
+#. ID 85, Line 1788
 msgid ""
 "\\>\\C[\\V[1]] 1375 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1786
+#. ID 85, Line 1803
 msgid ""
 "\\>\\C[\\V[1]] 1376 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1801
+#. ID 85, Line 1818
 msgid ""
 "\\>\\C[\\V[1]] 1377 (Sniperbob)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1824
+#. ID 85, Line 1841
 msgid ""
 "\\>\\C[\\V[1]] 1381 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1841
+#. ID 85, Line 1858
 msgid ""
 "\\>\\C[\\V[1]] 1382 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1858
+#. ID 85, Line 1875
 msgid ""
 "\\>\\C[\\V[1]] 1383 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1875
+#. ID 85, Line 1892
 msgid ""
 "\\>\\C[\\V[1]] 1384 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1892
+#. ID 85, Line 1909
 msgid ""
 "\\>\\C[\\V[1]] 1385 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1909
+#. ID 85, Line 1926
 msgid ""
 "\\>\\C[\\V[1]] 1386 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1926
+#. ID 85, Line 1943
 msgid ""
 "\\>\\C[\\V[1]] 1287 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1943
+#. ID 85, Line 1960
 msgid ""
 "\\>\\C[\\V[1]] 1388 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1960
+#. ID 85, Line 1977
 msgid ""
 "\\>\\C[\\V[1]] 1389 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 1977
+#. ID 85, Line 1994
 msgid ""
 "\\>\\C[\\V[1]] 1390 (aediorugap)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2022
+#. ID 85, Line 2039
 msgid ""
 "\\>\\C[\\V[1]] 1392 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2042
+#. ID 85, Line 2059
 msgid ""
 "\\>\\C[\\V[1]] 1393 (spelude)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2058
+#. ID 85, Line 2075
 msgid ""
 "\\>\\C[\\V[1]] 1394 チーズハウス\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2074
+#. ID 85, Line 2091
 msgid ""
 "\\>\\C[\\V[1]] 1396\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2090
+#. ID 85, Line 2107
 msgid ""
 "\\>\\C[\\V[1]] 1397\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2111
+#. ID 85, Line 2128
 msgid ""
 "\\>\\C[\\V[1]] 1401 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2127
+#. ID 85, Line 2144
 msgid ""
 "\\>\\C[\\V[1]] 1402 (kappa)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2149
+#. ID 85, Line 2166
 msgid ""
 "\\>\\C[\\V[1]] 1411 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2166
+#. ID 85, Line 2183
 msgid ""
 "\\>\\C[\\V[1]] 1412 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2183
+#. ID 85, Line 2200
 msgid ""
 "\\>\\C[\\V[1]] 1415 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2200
+#. ID 85, Line 2217
 msgid ""
 "\\>\\C[\\V[1]] 1416 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2217
+#. ID 85, Line 2234
 msgid ""
 "\\>\\C[\\V[1]] 1417 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2234
+#. ID 85, Line 2251
 msgid ""
 "\\>\\C[\\V[1]] 1420 (軟体)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2256
+#. ID 85, Line 2273
 msgid ""
 "\\>\\C[\\V[1]] 1422 吐き気\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2272
+#. ID 85, Line 2289
 msgid ""
 "\\>\\C[\\V[1]] 1423 五線譜\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2288
+#. ID 85, Line 2305
 msgid ""
 "\\>\\C[\\V[1]] 1425 ｸﾞﾘｰﾝﾎﾞｰｲ\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2304
+#. ID 85, Line 2321
 msgid ""
 "\\>\\C[\\V[1]] 1426 亀池\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2320
+#. ID 85, Line 2337
 msgid ""
 "\\>\\C[\\V[1]] 1427 暁座\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2336
+#. ID 85, Line 2353
 msgid ""
 "\\>\\C[\\V[1]] 1428 マミールーム\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2352
+#. ID 85, Line 2369
 msgid ""
 "\\>\\C[\\V[1]] 1429 キリキリ\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2383
+#. ID 85, Line 2400
 msgid ""
 "\\>\\C[\\V[1]] 1434 映し雲\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2424
+#. ID 85, Line 2441
 msgid ""
 "\\>\\C[\\V[1]] 1452 (maptsuki)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2475
+#. ID 85, Line 2492
 msgid ""
 "\\>\\C[\\V[1]] 1482 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2492
+#. ID 85, Line 2509
 msgid ""
 "\\>\\C[\\V[1]] 1486 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2509
+#. ID 85, Line 2526
 msgid ""
 "\\>\\C[\\V[1]] 1488 (srd)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2530
+#. ID 85, Line 2547
+msgid ""
+"\\>\\C[\\V[1]] 1493 (Kontentsu)\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 85, Line 2562
+msgid ""
+"\\>\\C[\\V[1]] 1494 (Kontentsu)\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 85, Line 2577
+msgid ""
+"\\>\\C[\\V[1]] 1495 (Kontentsu)\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 85, Line 2592
 msgid ""
 "\\>\\C[\\V[1]] 1496 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2545
+#. ID 85, Line 2607
 msgid ""
 "\\>\\C[\\V[1]] 1497 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2560
+#. ID 85, Line 2622
 msgid ""
 "\\>\\C[\\V[1]] 1498 (Kontentsu)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 85, Line 2575
+#. ID 85, Line 2637
 msgid ""
 "\\>\\C[\\V[1]] 1500 (Kontentsu)\n"
 "\\>\\N[1]"
@@ -6752,212 +6788,312 @@ msgid ""
 msgstr ""
 
 #. ID 86, Line 399
+msgid "\\>\\C[\\V[1]] 1656 タワーズ"
+msgstr ""
+
+#. ID 86, Line 419
 msgid ""
 "\\>\\C[\\V[1]] 1655 槍民族の世界\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 420
+#. ID 86, Line 440
 msgid ""
 "\\>\\C[\\V[1]] 1657 胞子の森\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 449
+#. ID 86, Line 469
 msgid ""
 "\\>\\C[\\V[1]] 1551 (廃墟商店３・香水店)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 464
+#. ID 86, Line 484
 msgid ""
 "\\>\\C[\\V[1]] 1552 (ランプ・煉瓦街エリア)\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 545
+#. ID 86, Line 565
 msgid ""
 "\\>\\C[\\V[1]] 1621 蒸気シルエット\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 560
+#. ID 86, Line 580
 msgid ""
 "\\>\\C[\\V[1]] 1622 駄菓子屋\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 575
+#. ID 86, Line 595
 msgid ""
 "\\>\\C[\\V[1]] 1623 サバ砂漠\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 590
+#. ID 86, Line 610
 msgid ""
 "\\>\\C[\\V[1]] 1624 木材世界\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 605
+#. ID 86, Line 625
 msgid ""
 "\\>\\C[\\V[1]] 1625 ブルーブルースペース\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 620
+#. ID 86, Line 640
 msgid ""
 "\\>\\C[\\V[1]] 1626 タツノコ館\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 635
+#. ID 86, Line 655
 msgid ""
 "\\>\\C[\\V[1]] 1627 ホットケーキ深淵\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 650
+#. ID 86, Line 670
 msgid ""
 "\\>\\C[\\V[1]] 1628 停止風車\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 665
+#. ID 86, Line 685
 msgid ""
 "\\>\\C[\\V[1]] 1629 牛柄パネル\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 680
+#. ID 86, Line 700
 msgid ""
 "\\>\\C[\\V[1]] 1630 身崩\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 702
+#. ID 86, Line 722
 msgid ""
 "\\>\\C[\\V[1]] 1632 ゐ 蓮華公園\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 717
+#. ID 86, Line 737
 msgid ""
 "\\>\\C[\\V[1]] 1691 空鈴々\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 729
+#. ID 86, Line 749
 msgid ""
 "\\>\\C[\\V[1]] 1692 妄毒\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 741
+#. ID 86, Line 761
 msgid ""
 "\\>\\C[\\V[1]] 1693 甲羅\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 753
+#. ID 86, Line 773
 msgid ""
 "\\>\\C[\\V[1]] 1694 月風鳥花\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 765
+#. ID 86, Line 785
 msgid ""
 "\\>\\C[\\V[1]] 1695 音々ピラミッド\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 777
+#. ID 86, Line 797
 msgid ""
 "\\>\\C[\\V[1]] 1696 瞋恚\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 789
+#. ID 86, Line 809
 msgid ""
 "\\>\\C[\\V[1]] 1697 機械塔&死生廻\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 801
+#. ID 86, Line 821
 msgid ""
 "\\>\\C[\\V[1]] 1698 未定義の海&蕃茄\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 812
+#. ID 86, Line 832
 msgid ""
 "\\>\\C[\\V[1]] 1699 副葬牢&海B\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 824
+#. ID 86, Line 844
 msgid ""
 "\\>\\C[\\V[1]] 1700 幽晶鶏モ愛酒\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 836
+#. ID 86, Line 856
 msgid ""
 "\\>\\C[\\V[1]] 1721 ピーポー\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 848
+#. ID 86, Line 868
 msgid ""
 "\\>\\C[\\V[1]] 1722 ヒートアイス山　ヒートサイド\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 860
+#. ID 86, Line 880
 msgid ""
 "\\>\\C[\\V[1]] 1723 ヒートアイス山　アイスサイド\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 872
+#. ID 86, Line 892
 msgid ""
 "\\>\\C[\\V[1]] 1724 サケ\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 884
+#. ID 86, Line 904
 msgid ""
 "\\>\\C[\\V[1]] 1725 祈祷or青空パネル\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 896
+#. ID 86, Line 916
 msgid ""
 "\\>\\C[\\V[1]] 1726 祈祷or電柱\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 908
+#. ID 86, Line 928
 msgid ""
 "\\>\\C[\\V[1]] 1727 冷蔵庫orハトレス\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 920
+#. ID 86, Line 940
 msgid ""
 "\\>\\C[\\V[1]] 1728 缶再空港\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 932
+#. ID 86, Line 952
 msgid ""
 "\\>\\C[\\V[1]] 1729 ふらんねるの巣\n"
 "\\>\\N[1]"
 msgstr ""
 
-#. ID 86, Line 944
+#. ID 86, Line 964
 msgid ""
 "\\>\\C[\\V[1]] 1730 ヌミョンドロ\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 979
+msgid ""
+"\\>\\C[\\V[1]] 1702 図形\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 991
+msgid ""
+"\\>\\C[\\V[1]] 1703 図形家\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1003
+msgid ""
+"\\>\\C[\\V[1]] 1704 ストレース\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1015
+msgid ""
+"\\>\\C[\\V[1]] 1705 レースワン\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1027
+msgid ""
+"\\>\\C[\\V[1]] 1706 レース警告\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1039
+msgid ""
+"\\>\\C[\\V[1]] 1707 レースイン\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1051
+msgid ""
+"\\>\\C[\\V[1]] 1708 最終レース\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1063
+msgid ""
+"\\>\\C[\\V[1]] 1709 黄管板\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1075
+msgid ""
+"\\>\\C[\\V[1]] 1710 ペン禁雪白\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1087
+msgid ""
+"\\>\\C[\\V[1]] 1711 岩旋鉱\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1099
+msgid ""
+"\\>\\C[\\V[1]] 1712 絵楽\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1111
+msgid ""
+"\\>\\C[\\V[1]] 1713 桃青花\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1123
+msgid ""
+"\\>\\C[\\V[1]] 1714 個人部屋\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1138
+msgid ""
+"\\>\\C[\\V[1]] 1731 Autumn\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1148
+msgid ""
+"\\>\\C[\\V[1]] 1736 Autumn\n"
+"\\>\\N[1]"
+msgstr ""
+
+#. ID 86, Line 1161
+msgid ""
+"\\>\\C[\\V[1]] 1739 Autumn\n"
 "\\>\\N[1]"
 msgstr ""
 
@@ -7187,23 +7323,23 @@ msgstr ""
 msgid "\\>mapID:\\v[28] OK\\^"
 msgstr ""
 
-#. ID 256, Line 73
+#. ID 256, Line 72
 msgid "\\>完了しました"
 msgstr ""
 
-#. ID 256, Line 82
+#. ID 256, Line 81
 #. Contains choice at line 2 (2 options)
 msgid "\\>以降、デバッグ用到達済み処理を呼び出しますか？"
 msgstr ""
 
-#. ID 256, Line 83
+#. ID 256, Line 82
 #. Choice (2 options, embedded in a message)
 msgid ""
 "\\>はい\n"
 "\\>いいえ"
 msgstr ""
 
-#. ID 256, Line 88
+#. ID 256, Line 87
 msgid ""
 "\\>設定を変更しました\n"
 "\\>　以降、デバッグアイテムを捨てるまで\n"
