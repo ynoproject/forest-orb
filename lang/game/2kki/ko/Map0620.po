@@ -151,7 +151,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "サウンドサーチ"
-msgstr ""
+msgstr "사운드 검색"
 
 #. ID 1, Page 1, Line 1862, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -159,7 +159,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "未解放箇所を探す"
-msgstr ""
+msgstr "미해방 장소 찾기"
 
 #. ID 1, Page 1, Line 1865, Pos (19,14)
 msgid ""
@@ -288,7 +288,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "起動"
-msgstr ""
+msgstr "가동"
 
 #. ID 1, Page 1, Line 2033, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -296,7 +296,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "停止"
-msgstr ""
+msgstr "정지"
 
 #. ID 1, Page 1, Line 2036, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -330,31 +330,31 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ノーマル"
-msgstr ""
+msgstr "통상"
 
 #. ID 1, Page 1, Line 2109, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リバース"
-msgstr ""
+msgstr "역행"
 
 #. ID 1, Page 1, Line 2113, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ランダム"
-msgstr ""
+msgstr "랜덤"
 
 #. ID 1, Page 1, Line 2117, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "時間経過"
-msgstr ""
+msgstr "시간경과"
 
 #. ID 1, Page 1, Line 2120, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "ループ回数"
-msgstr ""
+msgstr "루프횟수"
 
 #. ID 1, Page 1, Line 2136, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -534,7 +534,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "なし"
-msgstr ""
+msgstr "없음"
 
 #. ID 1, Page 1, Line 2446, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -542,7 +542,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "あり"
-msgstr ""
+msgstr "있음"
 
 #. ID 1, Page 1, Line 2449, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -616,13 +616,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "てきぱき"
-msgstr ""
+msgstr "시원시원하게"
 
 #. ID 1, Page 1, Line 2542, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ゆっくり"
-msgstr ""
+msgstr "느긋느긋하게"
 
 #. ID 1, Page 1, Line 2553, Pos (19,14)
 #. Choice (3 options, embedded in a message)
@@ -950,7 +950,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "メモリー"
-msgstr ""
+msgstr "메모리"
 
 #. ID 1, Page 2, Line 888, Pos (19,14)
 #. ChangeHeroName (Actor 6)
@@ -958,7 +958,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "リスト"
-msgstr ""
+msgstr "목록"
 
 #. ID 1, Page 2, Line 892, Pos (19,14)
 msgid ""
@@ -1760,7 +1760,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "記憶_更新"
-msgstr ""
+msgstr "메모리 업데이트"
 
 #. ID 1, Page 4, Line 553, Pos (19,14)
 #. ID 1, Page 4, Line 1291, Pos (19,14)
@@ -1816,7 +1816,7 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "うろつき"
-msgstr ""
+msgstr "우로츠키"
 
 #. ID 1, Page 4, Line 673, Pos (19,14)
 #. ChangeHeroName (Actor 2)
@@ -1968,7 +1968,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "自動"
-msgstr ""
+msgstr "자동"
 
 #. ID 1, Page 5, Line 51, Pos (19,14)
 #. ChangeHeroName (Actor 1)
@@ -2023,13 +2023,13 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演出"
-msgstr ""
+msgstr "연출"
 
 #. ID 1, Page 5, Line 437, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "曲"
-msgstr ""
+msgstr "곡"
 
 #. ID 1, Page 5, Line 440, Pos (19,14)
 msgid ""
@@ -2113,19 +2113,19 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "PC画面"
-msgstr ""
+msgstr "PC 화면"
 
 #. ID 1, Page 5, Line 627, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ﾃﾞﾊﾞｯｸﾞﾙｰﾑ"
-msgstr ""
+msgstr "디버그룸"
 
 #. ID 1, Page 5, Line 631, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "製作者部屋"
-msgstr ""
+msgstr "제작자 부실"
 
 #. ID 1, Page 5, Line 637, Pos (19,14)
 #. Contains choice at line 3 (2 options)
@@ -2205,19 +2205,19 @@ msgstr ""
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "カーソルジャンプ"
-msgstr ""
+msgstr "커서 점프"
 
 #. ID 1, Page 5, Line 744, Pos (19,14)
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "演奏可能曲を登録"
-msgstr ""
+msgstr "재생 가능곡 등록"
 
 #. ID 1, Page 5, Line 745, Pos (19,14)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "メモリーの交換 / 全消去"
-msgstr ""
+msgstr "메모리 교환 / 전체 삭제"
 
 #. ID 1, Page 5, Line 748, Pos (19,14)
 #. Contains choice at line 2 (3 options)
@@ -6877,7 +6877,7 @@ msgstr ""
 #. ChangeHeroName (Actor 6)
 msgctxt "actors.name"
 msgid "ファイル名"
-msgstr ""
+msgstr "파일 명"
 
 #. ID 2, Page 23, Line 251, Pos (18,14)
 #. ChangeHeroName (Actor 2)
@@ -6885,4 +6885,4 @@ msgstr ""
 #. ChangeHeroName (Actor 2)
 msgctxt "actors.name"
 msgid "曲名(ﾌｧｲﾙ名)"
-msgstr ""
+msgstr "곡 명(파일명)"
