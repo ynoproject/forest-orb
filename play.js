@@ -356,7 +356,7 @@ document.getElementById('nexusButton').onclick = function () {
 if (gameId === '2kki') {
   document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
   // Yume 2kki Explorer doesn't support mobile
-  if (hasTouchscreen)
+  if (window.matchMedia('(hover: none), (pointer: coarse)').matches)
     document.getElementById('explorerControls').remove();
   locationCache = {};
   mapCache = {};
