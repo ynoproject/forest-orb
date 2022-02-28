@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "\n"
 "\\>　× No.   ×\n"
-"\\>♪Now Playing: Console Sounds \\<\\.\\.\\^"
+"\\>♪ Now Playing: Console Sounds \\<\\.\\.\\^"
 
 #. ID 6, Page 4, Line 924, Pos (12,5)
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "\n"
 "\\>　× No.   ×\n"
-"\\>♪Now Playing: Menu Sounds\\<\\.\\.\\^"
+"\\>♪ Now Playing: Menu Sounds\\<\\.\\.\\^"
 
 #. ID 6, Page 4, Line 929, Pos (12,5)
 msgid ""
@@ -72,7 +72,7 @@ msgid ""
 msgstr ""
 "\n"
 "\\>　× No.   ×\n"
-"\\>♪Now Playing: Cancel Sound\\<\\.\\.\\^"
+"\\>♪ Now Playing: Cancel Sound\\<\\.\\.\\^"
 
 #. ID 6, Page 5, Line 330, Pos (12,5)
 #. ChangeHeroName (Actor 1)
@@ -975,7 +975,7 @@ msgstr "\\C[0]"
 #. ID 12, Page 3, Line 35, Pos (13,5)
 #. Contains choice at line 2 (3 options)
 msgid "\\> ★ シフトキー拡張機能 ★ "
-msgstr "\\> ★Shift Key Functionality ★ "
+msgstr "\\> ★ Shift Key Functionality ★ "
 
 #. ID 12, Page 3, Line 36, Pos (13,5)
 #. Choice (3 options, embedded in a message)
@@ -1069,7 +1069,7 @@ msgid ""
 "\\> ★ エフェクトシフトチェンジ ★ \n"
 "\\>※現在の設定:\\N[6]\\C[0]"
 msgstr ""
-"\\> ★Effect Shift Change★ \n"
+"\\> ★ Effect Shift Change★ \n"
 "\\>* Current Setting: \\N[6]\\C[0]"
 
 #. ID 12, Page 3, Line 102, Pos (13,5)
