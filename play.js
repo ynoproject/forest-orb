@@ -602,6 +602,7 @@ window.onbeforeunload = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
+  Module.EASYRPG_LANGUAGE = lang;
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -754,16 +755,6 @@ function initLocalization(isInitial) {
         locI18next.init(i18next)('[data-i18n]');
       });
     });
-    
-  if (gameId === '2kki' && !isInitial) {
-    let lang = globalConfig.lang;
-    if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === globalConfig.lang)
-      lang = '';
-    
-    const gameLangPtr = Module.allocate(Module.intArrayFromString(lang), Module.ALLOC_NORMAL);
-    Module._SetGameLanguage(gameLangPtr);
-    Module._free(gameLangPtr);
-  }
 }
 
 function initLocations(lang) {
