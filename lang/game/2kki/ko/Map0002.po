@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: 유메2키 0.118 패치 6\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Project-Id-Version: 유메2키\n"
+"POT-Creation-Date: 2022/02/27\n"
+"PO-Revision-Date: 2022/02/27\n"
+"Last-Translator: KRBlacky011\n"
 "Language-Team: KRBlacky011\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -12,21 +12,21 @@ msgstr ""
 "X-CreatedBy: LcfTrans\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#. ID 6, Page 2, Line 92, Pos (12,5)
+#. ID 6, Page 2, Line 254, Pos (12,5)
 #. ChangeHeroName (Actor 7)
-#. ID 6, Page 2, Line 96, Pos (12,5)
+#. ID 6, Page 2, Line 258, Pos (12,5)
 #. ChangeHeroName (Actor 7)
 #. ID 6, Page 6, Line 412, Pos (12,5)
 #. ChangeHeroName (Actor 1)
 #. ID 6, Page 6, Line 455, Pos (12,5)
 #. ChangeHeroName (Actor 1)
-#. ID 18, Page 1, Line 17, Pos (12,6)
+#. ID 18, Page 1, Line 9, Pos (12,6)
 #. ChangeHeroName (Actor 1)
 msgctxt "actors.name"
 msgid "うろつき"
 msgstr "우로츠키"
 
-#. ID 6, Page 4, Line 741, Pos (12,5)
+#. ID 6, Page 4, Line 719, Pos (12,5)
 #. Contains choice at line 3 (2 options)
 msgid ""
 "\\>No. \\V[46] に変更しました\n"
@@ -35,7 +35,7 @@ msgstr ""
 "\\>No. \\V[46] 로 변경하기\n"
 "\\>폰트 색상 예시: \\C[0]$j통상 \\C[1]$k강조 \\C[3]$m선택불가"
 
-#. ID 6, Page 4, Line 743, Pos (12,5)
+#. ID 6, Page 4, Line 721, Pos (12,5)
 #. Choice (2 options, embedded in a message)
 msgid ""
 "\\>\\C[0]これでOK\n"
@@ -44,7 +44,7 @@ msgstr ""
 "\\>\\C[0]로 결정\n"
 "\\>다시 선택하기"
 
-#. ID 6, Page 4, Line 941, Pos (12,5)
+#. ID 6, Page 4, Line 919, Pos (12,5)
 msgid ""
 "\n"
 "\\>　× No.   ×\n"
@@ -54,7 +54,7 @@ msgstr ""
 "\\>　× No.   ×\n"
 "\\>♪재생중: 커서 이동소리 \\<\\.\\.\\^"
 
-#. ID 6, Page 4, Line 946, Pos (12,5)
+#. ID 6, Page 4, Line 924, Pos (12,5)
 msgid ""
 "\n"
 "\\>　× No.   ×\n"
@@ -64,7 +64,7 @@ msgstr ""
 "\\>　× No.   ×\n"
 "\\>♪재생중: 결정키 소리\\<\\.\\.\\^"
 
-#. ID 6, Page 4, Line 951, Pos (12,5)
+#. ID 6, Page 4, Line 929, Pos (12,5)
 msgid ""
 "\n"
 "\\>　× No.   ×\n"
@@ -524,14 +524,14 @@ msgctxt "actors.name"
 msgid "0"
 msgstr ""
 
-#. ID 6, Page 6, Line 942, Pos (12,5)
+#. ID 6, Page 6, Line 920, Pos (12,5)
 #. Contains choice at line 2 (3 options)
-#. ID 6, Page 6, Line 997, Pos (12,5)
+#. ID 6, Page 6, Line 975, Pos (12,5)
 #. Contains choice at line 2 (2 options)
 msgid "\\>\\C[4]【DATA】\\C[0]　ゆめ２っき　ver\\V[7]\\N[4]\\V[9]\\N[2]"
 msgstr "\\>\\C[4]【DATA】\\C[0]　유메2키　ver\\V[7]\\N[4]\\V[9]\\N[2]"
 
-#. ID 6, Page 6, Line 943, Pos (12,5)
+#. ID 6, Page 6, Line 921, Pos (12,5)
 #. Choice (3 options, embedded in a message)
 msgid ""
 "\\>プレイ記録を見る\n"
@@ -542,7 +542,7 @@ msgstr ""
 "\\>엔딩 다시 보기\n"
 "\\>이 창을 닫기"
 
-#. ID 6, Page 6, Line 945, Pos (12,5)
+#. ID 6, Page 6, Line 923, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [1/5]\n"
 "\\>　　バージョン： \\C[4]\\V[7]\\N[4]\\V[9]\\N[2]\\C[0]\n"
@@ -554,7 +554,7 @@ msgstr ""
 "\\>　　이펙트: \\C[4]\\V[2]％\\C[0]\n"
 "\\> (최초로 입수한 이펙트는 \\C[4]\\N[8]\\C[0])"
 
-#. ID 6, Page 6, Line 949, Pos (12,5)
+#. ID 6, Page 6, Line 927, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [2/5]\n"
 "\\>サウンドルーム： \\C[4]\\V[5]％ (\\V[114]/\\V[112])\\C[0]\n"
@@ -566,7 +566,7 @@ msgstr ""
 "\\>　PC 배경화면: \\C[4]\\V[3]% (\\V[20]/\\V[558])\\C[0]\n"
 "\\>　　퍼즐 그림: \\C[4]\\V[4]% (\\V[60]/\\V[1465])\\C[0]"
 
-#. ID 6, Page 6, Line 953, Pos (12,5)
+#. ID 6, Page 6, Line 931, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [3/5]\n"
 "\\>プレイ時間： \\C[4]\\v[87]時間 \\v[86]分 \\v[85]秒\\C[0]\n"
@@ -578,7 +578,7 @@ msgstr ""
 "\\>　　　　(메뉴화면이 열려있는 시간을 포함하지 않음)\n"
 "\\>　　첫 클리어: \\C[4]\\v[3520]시간 \\v[3519]분 \\v[3518]초\\C[0]"
 
-#. ID 6, Page 6, Line 958, Pos (12,5)
+#. ID 6, Page 6, Line 936, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [4/5]\n"
 "\\>　睡眠日数： \\C[4]\\v[43]日\\C[0]\n"
@@ -587,13 +587,6 @@ msgstr ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [4/5]\n"
 "\\>　수면일 수: \\C[4]\\v[43] 일\\C[0]\n"
 "\\>　　걸음 수: \\C[4]\\v[90] 보\\C[0]"
-
-#. ID 6, Page 6, Line 963, Pos (12,5)
-msgid ""
-"\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [4/5]\n"
-"\\>　睡眠日数： \\C[4]\\v[43]日\\C[0]\n"
-"\\>　　　歩数： \\C[4]\\v[91]\\N[3]\\v[90]歩\\C[0]"
-msgstr ""
 
 #. ID 6, Page 6, Line 941, Pos (12,5)
 msgid ""
@@ -615,18 +608,7 @@ msgstr ""
 "\\>방문한 세계: \\C[4]\\V[71] 곳\\C[0] (대략의 값)\n"
 "\\>　킬 카운트: \\C[4]\\v[3936] 회\\C[0] (무생물도 포함)"
 
-#. ID 14, Page 1, Line 2, Pos (9,14)
-msgid "\\>旧処理が呼び出されました"
-msgstr "이전 처리가 호출되었습니다"
-
-#. ID 6, Page 6, Line 968, Pos (12,5)
-msgid ""
-"\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [5/5]\n"
-"\\>訪れた世界： \\C[4]\\V[71]ヵ所ぐらい\\C[0]\n"
-"\\>　　殺傷数： \\C[4]\\v[3936]回\\C[0](無機物も含む)"
-msgstr ""
-
-#. ID 6, Page 6, Line 998, Pos (12,5)
+#. ID 6, Page 6, Line 976, Pos (12,5)
 #. Choice (2 options, embedded in a message)
 msgid ""
 "\\>プレイ記録を見る\n"
@@ -635,7 +617,7 @@ msgstr ""
 "\\>플레이 기록 보기\n"
 "\\>이 창을 닫기"
 
-#. ID 6, Page 6, Line 1000, Pos (12,5)
+#. ID 6, Page 6, Line 978, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [1/4]\n"
 "\\>　　バージョン： \\C[4]\\V[7]\\N[4]\\V[9]\\N[2]\\C[0]\n"
@@ -645,7 +627,7 @@ msgstr ""
 "\\>　　　버전: \\C[4]\\V[7]\\N[4]\\V[9]\\N[2]\\C[0]\n"
 "\\>　　이펙트: \\C[4]\\V[2]%\\C[0]"
 
-#. ID 6, Page 6, Line 1003, Pos (12,5)
+#. ID 6, Page 6, Line 981, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [2/4]\n"
 "\\>サウンドルーム： \\C[4]\\V[5]％ (\\V[114]/\\V[112])\\C[0]\n"
@@ -657,7 +639,7 @@ msgstr ""
 "\\> PC 배경화면: \\C[4]\\V[3]% (\\V[20]/\\V[558])\\C[0]\n"
 "\\>　 퍼즐 그림: \\C[4]\\V[4]% (\\V[60]/\\V[1465])\\C[0]"
 
-#. ID 6, Page 6, Line 1007, Pos (12,5)
+#. ID 6, Page 6, Line 985, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [3/4]\n"
 "\\>プレイ時間： \\C[4]\\v[87]時間 \\v[86]分 \\v[85]秒\\C[0]\n"
@@ -667,7 +649,7 @@ msgstr ""
 "\\>플레이 시간: \\C[4]\\v[87]시간 \\v[86]분 \\v[85]초\\C[0]\n"
 "\\>　　　　(메뉴화면이 열려있는 시간을 포함하지 않음)"
 
-#. ID 6, Page 6, Line 1011, Pos (12,5)
+#. ID 6, Page 6, Line 989, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [4/4]\n"
 "\\>　睡眠日数： \\C[4]\\v[43]日\\C[0]\n"
@@ -677,7 +659,7 @@ msgstr ""
 "\\>　수면일 수: \\C[4]\\v[43] 일\\C[0]\n"
 "\\>　　걸음 수: \\C[4]\\v[90] 보\\C[0]"
 
-#. ID 6, Page 6, Line 1016, Pos (12,5)
+#. ID 6, Page 6, Line 994, Pos (12,5)
 msgid ""
 "\\>\\C[4]【DATA】\\C[0]　　　　　　　　　　　　　　　　　　 [4/4]\n"
 "\\>　睡眠日数： \\C[4]\\v[43]日\\C[0]\n"
@@ -687,13 +669,13 @@ msgstr ""
 "\\>　수면일 수: \\C[4]\\v[43] 일\\C[0]\n"
 "\\>　　걸음 수: \\C[4]\\v[91]\\v[90] 보\\C[0]"
 
-#. ID 6, Page 6, Line 1030, Pos (12,5)
+#. ID 6, Page 6, Line 1008, Pos (12,5)
 #. ChangeHeroName (Actor 5)
 msgctxt "actors.name"
 msgid "女の子"
 msgstr "여자아이"
 
-#. ID 9, Page 2, Line 12, Pos (9,10)
+#. ID 9, Page 2, Line 9, Pos (9,10)
 #. Choice (2 options, embedded in a message)
 msgid ""
 "\\>                 Original ver\n"
@@ -702,7 +684,7 @@ msgstr ""
 "\\>                 오리지널 버전\n"
 "\\>                    EX 버전"
 
-#. ID 9, Page 3, Line 72, Pos (9,10)
+#. ID 9, Page 3, Line 67, Pos (9,10)
 #. Contains choice at line 3 (2 options)
 msgid ""
 "\\>前回セーブまでの死亡回数：\\v[1262]\n"
@@ -711,7 +693,7 @@ msgstr ""
 "\\>이전 세이브까지의 사망 횟수：\\v[1262]\n"
 "\\>로드 하시겠습니까?"
 
-#. ID 9, Page 3, Line 74, Pos (9,10)
+#. ID 9, Page 3, Line 69, Pos (9,10)
 #. Choice (2 options, embedded in a message)
 msgid ""
 "はい\n"
@@ -720,16 +702,16 @@ msgstr ""
 "네\n"
 "아니오"
 
-#. ID 9, Page 3, Line 118, Pos (9,10)
+#. ID 9, Page 3, Line 109, Pos (9,10)
 #. Contains choice at line 2 (2 options)
-#. ID 9, Page 3, Line 150, Pos (9,10)
+#. ID 9, Page 3, Line 130, Pos (9,10)
 #. Contains choice at line 2 (2 options)
 msgid "\\>ゲームを終了しますか？"
 msgstr "\\>게임을 종료하시겠습니까?"
 
-#. ID 9, Page 3, Line 119, Pos (9,10)
+#. ID 9, Page 3, Line 110, Pos (9,10)
 #. Choice (2 options, embedded in a message)
-#. ID 9, Page 3, Line 151, Pos (9,10)
+#. ID 9, Page 3, Line 131, Pos (9,10)
 #. Choice (2 options, embedded in a message)
 msgid ""
 "\\>はい\n"
@@ -1067,6 +1049,8 @@ msgstr ""
 
 #. ID 12, Page 3, Line 50, Pos (13,5)
 #. Choice (2 options, embedded in a message)
+#. ID 12, Page 3, Line 97, Pos (13,5)
+#. Choice (2 options, embedded in a message)
 msgid ""
 "\\>\\N[5]\n"
 "\\>せつめい"
@@ -1217,7 +1201,7 @@ msgstr ""
 "\\>위 키, 아래 키 모두\n"
 "\\>즐겨찾기 이펙트를 선택합니다"
 
-#. ID 12, Page 3, Line 165, Pos (13,5)
+#. ID 12, Page 3, Line 111, Pos (13,5)
 msgid ""
 "\\> ★ エフェクトシフトチェンジ ★ \n"
 "シフトキーでエフェクトを選ぶ画面が出る機能です。\n"
@@ -1227,7 +1211,7 @@ msgstr ""
 "Shift로 이펙트를 선택하는 기능입니다\n"
 "물론 기존의 메뉴 또한 그대로 사용할 수 있습니다"
 
-#. ID 12, Page 3, Line 168, Pos (13,5)
+#. ID 12, Page 3, Line 114, Pos (13,5)
 msgid ""
 "\\> ★ エフェクトシフトチェンジ ★ \n"
 "また、シフトキーを押してから下キーを押すと\n"
@@ -1237,7 +1221,11 @@ msgstr ""
 "또 Shift 키를 누른 다음 아래 방향키를 누르면\n"
 "즐겨찾기 이펙트에 등록한 것을 선택할 수 있습니다"
 
-#. ID 18, Page 1, Line 36, Pos (12,6)
+#. ID 14, Page 1, Line 2, Pos (9,14)
+msgid "\\>旧処理が呼び出されました"
+msgstr "이전 처리가 호출되었습니다"
+
+#. ID 18, Page 1, Line 17, Pos (12,6)
 msgid "\\>　　　　　　　　　　　　　　　　　　　　　　　　　\\^\\"
 msgstr ""
 
