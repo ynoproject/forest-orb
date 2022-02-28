@@ -760,7 +760,7 @@ function initLocalization(isInitial) {
     if (gameDefaultLangs.hasOwnProperty(gameId) && gameDefaultLangs[gameId] === globalConfig.lang)
       lang = '';
     
-    const gameLangPtr = Module.allocate(Module.intArrayFromString(globalConfig.lang), Module.ALLOC_NORMAL);
+    const gameLangPtr = Module.allocate(Module.intArrayFromString(lang), Module.ALLOC_NORMAL);
     Module._SetGameLanguage(gameLangPtr);
     Module._free(gameLangPtr);
   }
