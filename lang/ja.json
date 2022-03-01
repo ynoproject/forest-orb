@@ -157,6 +157,7 @@
     "chatTips": {
       "template": "TIP: {CONTENT}",
       "tips": {
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "名前の色やプレイヤータブで表示されるスタイルはゲーム内で設定しているメニュータイプに依存してます。",
         "playersInMap": "接続数が表示されているラベルをクリックすると、ゆめ２っきオンライン全体の接続数と同じマップ内の接続数を切り替えることが出来ます。",
         "globalChatLocation": "グローバルチャットに表示されている地球儀のアイコンを押すと、そのグローバルチャットが送信された世界名が表示されます。世界名が表示されている状態で地球儀のアイコンを押すと世界名が非表示になります。",

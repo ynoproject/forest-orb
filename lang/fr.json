@@ -157,6 +157,7 @@
     "chatTips": {
       "template": "ASTUCE&nbsp;: {CONTENT}",
       "tips": {
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
         "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la map en cliquant sur le label.",
         "globalChatLocation": "Vous pouvez voir la localisation d'un message global en survolant ou cliquant sur l'icône de globe à gauche de ce dernier. Afficher ou cacher la localisation d'un message global affichera ou cachera la localisation des messages globaux qui suivront.",

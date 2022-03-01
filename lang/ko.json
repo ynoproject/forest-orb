@@ -157,6 +157,7 @@
     "chatTips": {
       "template": "팁: {CONTENT}",
       "tips": {
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "플레이어들의 닉네임 색깔은 적용하고 있는 메뉴타입에 따라서 결정됩니다.",
         "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇명의 플레이어가 있는지 알 수 있습니다.",
         "globalChatLocation": "글로벌 채팅 메세지 내역 위의 지구본 아이콘을 클릭하면 메세지를 보낸 위치를 알 수 있습니다. 마지막으로 작성된 글로벌 챗의 위치를 열어놓은 상태라면 이후에 갱신되는 챗에도 위치가 자동으로 표시됩니다.",
