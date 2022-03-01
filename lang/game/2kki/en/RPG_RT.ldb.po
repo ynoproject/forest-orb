@@ -10530,7 +10530,7 @@ msgstr "◆ Which file will you load?"
 
 msgctxt "terms.file"
 msgid "◆ファイル"
-msgstr "◆Ｆｉｌｅ"
+msgstr "◆ File"
 
 msgctxt "terms.exit_game_message"
 msgid "おわっても よろしいですか？"
