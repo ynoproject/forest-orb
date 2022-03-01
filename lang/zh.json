@@ -157,7 +157,7 @@
     "chatTips": {
       "template": "小贴士：{CONTENT}",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "backupReminder": "我们强烈建议您定期下载存档文件进行备份，这样即便您清理了浏览器缓存和数据也不会丢失您当前的游玩进度。",
         "menuTheme": "您的昵称颜色和页面外观风格会随游戏中的系统菜单风格改变而相应变化。",
         "playersInMap": "点击右上方的人数按钮可以切换显示全局总在线人数或当前与您同在一个地图区域的玩家人数。",
         "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该条玩家消息的发送地点，同时系统还将自动维持您最近一次分类消息的显示或隐藏状态为下一次启动时默认的状态。",
