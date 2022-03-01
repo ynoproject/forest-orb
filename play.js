@@ -553,22 +553,6 @@ function updateCanvasFullscreenSize() {
   messages.scrollTop = messages.scrollHeight;
 }
 
-if (Module.postRun) {
-  Module.postRun.push(function () {
-    document.getElementById('singlePlayerButton').onclick = function () {
-      Module._ToggleSinglePlayer();
-    };
-
-    document.getElementById('nametagButton').onclick = function () {
-      Module._ToggleNametags();
-    };
-
-    document.getElementById('playerSoundsButton').onclick = function () {
-      Module._TogglePlayerSounds();
-    };
-  });
-  Module.postRun.push(onResize);
-}
 window.onresize = function () { window.setTimeout(onResize, 0); };
 
 document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);

@@ -1,5 +1,22 @@
 if (typeof ENV !== 'undefined')
-  ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = "#canvas";
+  ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
+
+if (Module.postRun) {
+  Module.postRun.push(function () {
+    document.getElementById('singlePlayerButton').onclick = function () {
+      Module._ToggleSinglePlayer();
+    };
+
+    document.getElementById('nametagButton').onclick = function () {
+      Module._ToggleNametags();
+    };
+
+    document.getElementById('playerSoundsButton').onclick = function () {
+      Module._TogglePlayerSounds();
+    };
+  });
+  Module.postRun.push(onResize);
+}
 
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const preventNativeKeys = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft', ' ', 'F12'];
