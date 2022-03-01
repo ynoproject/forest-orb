@@ -119,8 +119,8 @@ msgid ""
 msgstr ""
 "\\>No. \\V[17]:\n"
 "\\>Set BGM randomly from sound room playlist.\n"
-"\\>\n"
-"\\>(If there are no tracks registered in the playlist, nothing will play.)"
+"\\>(If there are no tracks registered in the playlist,\n"
+"\\>nothing will play.)"
 
 #. ID 6, Page 5, Line 379, Pos (12,5)
 msgid ""
