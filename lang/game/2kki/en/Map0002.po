@@ -52,7 +52,7 @@ msgid ""
 msgstr ""
 "\n"
 "\\>　× No.   ×\n"
-"\\>♪ Now Playing: Console Sounds \\<\\.\\.\\^"
+"\\>♪ Now Playing: Cursor Sound \\<\\.\\.\\^"
 
 #. ID 6, Page 4, Line 946, Pos (12,5)
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 msgstr ""
 "\n"
 "\\>　× No.   ×\n"
-"\\>♪ Now Playing: Menu Sounds\\<\\.\\.\\^"
+"\\>♪ Now Playing: Select Sound\\<\\.\\.\\^"
 
 #. ID 6, Page 4, Line 951, Pos (12,5)
 msgid ""
@@ -170,7 +170,7 @@ msgstr ""
 
 #. ID 6, Page 6, Line 411, Pos (12,5)
 msgid "\\>♪Secret Code：\\V[15]"
-msgstr "\\>♪Secret Code: \\V[15]"
+msgstr "\\>♪ Secret Code: \\V[15]"
 
 #. ID 6, Page 6, Line 417, Pos (12,5)
 #. ChangeHeroName (Actor 1)
