@@ -55,8 +55,8 @@
       "login": {
         "title": "登录",
         "fields": {
-          "username": "用户名：",
-          "password": "密码："
+          "username": "用户名",
+          "password": "密码"
         },
         "registerPrompt": "还没有账号？请点此&nbsp;",
         "register": "注册",
@@ -67,10 +67,10 @@
       "register": {
         "title": "注册",
         "fields": {
-          "email": "邮箱：",
-          "username": "用户名：",
-          "password": "密码：",
-          "confirmPassword": "重复密码："
+          "email": "邮箱",
+          "username": "用户名",
+          "password": "密码",
+          "confirmPassword": "重复密码"
         },
         "loginPrompt": "已有账号？请点此&nbsp;",
         "login": "登录",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "设置",
         "fields": {
-          "lang": "语言：",
-          "toggleNametags": "显示/隐藏玩家名称标签：",
-          "togglePlayerSounds": "开启/关闭其他玩家音效："
+          "lang": "语言",
+          "toggleNametags": "显示/隐藏玩家名称标签",
+          "togglePlayerSounds": "开启/关闭其他玩家音效"
         }
       },
       "uiTheme": {

@@ -55,8 +55,8 @@
       "login": {
         "title": "Se Connecter",
         "fields": {
-          "username": "Identifiant&nbsp;:",
-          "password": "Mot de passe&nbsp;:"
+          "username": "Identifiant",
+          "password": "Mot de passe"
         },
         "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
         "register": "S'inscrire",
@@ -67,10 +67,10 @@
       "register": {
         "title": "S'inscrire",
         "fields": {
-          "email": "E-mail&nbsp;:",
-          "username": "Identifiant&nbsp;:",
-          "password": "Mot de passe&nbsp;:",
-          "confirmPassword": "Confirmer le mot de passe&nbsp;:"
+          "email": "E-mail",
+          "username": "Identifiant",
+          "password": "Mot de passe",
+          "confirmPassword": "Confirmer le mot de passe"
         },
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
         "login": "Se Connecter",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "Settings",
         "fields": {
-          "lang": "Langue&nbsp;:",
-          "toggleNametags": "Afficher les Noms&nbsp;:",
-          "togglePlayerSounds": "Activer les Sons des Joueurs&nbsp;:"
+          "lang": "Langue",
+          "toggleNametags": "Afficher les Noms",
+          "togglePlayerSounds": "Activer les Sons des Joueurs"
         }
       },
       "uiTheme": {

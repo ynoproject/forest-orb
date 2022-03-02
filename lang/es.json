@@ -55,8 +55,8 @@
       "login": {
         "title": "Iniciar Sesión",
         "fields": {
-          "username": "Nombre de Usuario:",
-          "password": "Contraseña:"
+          "username": "Nombre de Usuario",
+          "password": "Contraseña"
         },
         "registerPrompt": "¿No estás registrado?&nbsp;",
         "register": "Registrarse",
@@ -67,10 +67,10 @@
       "register": {
         "title": "Registrarse",
         "fields": {
-          "email": "Correo:",
-          "username": "Nombre de Usuario:",
-          "password": "Contraseña:",
-          "confirmPassword": "Confirmar Contraseña:"
+          "email": "Correo",
+          "username": "Nombre de Usuario",
+          "password": "Contraseña",
+          "confirmPassword": "Confirmar Contraseña"
         },
         "loginPrompt": "¿Ya estás registrado?&nbsp;",
         "login": "Iniciar Sesión",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "Opciones",
         "fields": {
-          "lang": "Lenguaje:",
-          "toggleNametags": "Nombres de Jugadores:",
-          "togglePlayerSounds": "Sonidos de Jugadores:"
+          "lang": "Lenguaje",
+          "toggleNametags": "Nombres de Jugadores",
+          "togglePlayerSounds": "Sonidos de Jugadores"
         }
       },
       "uiTheme": {

@@ -55,8 +55,8 @@
       "login": {
         "title": "Войти",
         "fields": {
-          "username": "Логин:",
-          "password": "Пароль:"
+          "username": "Логин",
+          "password": "Пароль"
         },
         "registerPrompt": "Ещё нет аккаунта?&nbsp;",
         "register": "Зарегистрироваться",
@@ -67,10 +67,10 @@
       "register": {
         "title": "Регистрация",
         "fields": {
-          "email": "E-mail:",
-          "username": "Логин:",
-          "password": "Пароль:",
-          "confirmPassword": "Подтвердите пароль:"
+          "email": "E-mail",
+          "username": "Логин",
+          "password": "Пароль",
+          "confirmPassword": "Подтвердите пароль"
         },
         "loginPrompt": "Уже есть аккаунт?&nbsp;",
         "login": "Войти",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "Настройки",
         "fields": {
-          "lang": "Язык:",
-          "toggleNametags": "Ники:",
-          "togglePlayerSounds": "Звуки Игроков:"
+          "lang": "Язык",
+          "toggleNametags": "Ники",
+          "togglePlayerSounds": "Звуки Игроков"
         }
       },
       "uiTheme": {

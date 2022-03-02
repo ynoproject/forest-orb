@@ -55,8 +55,8 @@
       "login": {
         "title": "ログイン",
         "fields": {
-          "username": "Username:",
-          "password": "Password:"
+          "username": "Username",
+          "password": "Password"
         },
         "registerPrompt": "Don't have an account?&nbsp;",
         "register": "Register",
@@ -67,10 +67,10 @@
       "register": {
         "title": "登録",
         "fields": {
-          "email": "Email:",
-          "username": "Username:",
-          "password": "Password:",
-          "confirmPassword": "Confirm Password:"
+          "email": "Email",
+          "username": "Username",
+          "password": "Password",
+          "confirmPassword": "Confirm Password"
         },
         "loginPrompt": "Already have an account?&nbsp;",
         "login": "Login",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "設定",
         "fields": {
-          "lang": "言語：",
-          "toggleNametags": "プレーヤー名表示：",
-          "togglePlayerSounds": "プレーヤー効果音："
+          "lang": "言語",
+          "toggleNametags": "プレーヤー名表示",
+          "togglePlayerSounds": "プレーヤー効果音"
         }
       },
       "uiTheme": {

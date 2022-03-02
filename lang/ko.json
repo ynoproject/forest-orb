@@ -55,8 +55,8 @@
       "login": {
         "title": "로그인",
         "fields": {
-          "username": "아이디:",
-          "password": "비밀번호:"
+          "username": "아이디",
+          "password": "비밀번호"
         },
         "registerPrompt": "계정이 존재하지 않습니다.",
         "register": "계정 만들기",
@@ -67,10 +67,10 @@
       "register": {
         "title": "계정 만들기",
         "fields": {
-          "email": "이메일 주소:",
-          "username": "아이디:",
-          "password": "비밀번호:",
-          "confirmPassword": "비밀번호 확인:"
+          "email": "이메일 주소",
+          "username": "아이디",
+          "password": "비밀번호",
+          "confirmPassword": "비밀번호 확인"
         },
         "loginPrompt": "이미 있는 계정입니다.",
         "login": "로그인",
@@ -82,9 +82,9 @@
       "settings": {
         "title": "옵션",
         "fields": {
-          "lang": "언어:",
-          "toggleNametags": "이름표 표시:",
-          "togglePlayerSounds": "다른 플레이어의 소리 듣기:"
+          "lang": "언어",
+          "toggleNametags": "이름표 표시",
+          "togglePlayerSounds": "다른 플레이어의 소리 듣기"
         }
       },
       "uiTheme": {
