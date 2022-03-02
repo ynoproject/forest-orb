@@ -2,19 +2,7 @@ if (typeof ENV !== 'undefined')
   ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
 
 if (Module.postRun) {
-  Module.postRun.push(function () {
-    document.getElementById('singlePlayerButton').onclick = function () {
-      Module._ToggleSinglePlayer();
-    };
-
-    document.getElementById('nametagButton').onclick = function () {
-      Module._ToggleNametags();
-    };
-
-    document.getElementById('playerSoundsButton').onclick = function () {
-      Module._TogglePlayerSounds();
-    };
-  });
+  Module.postRun.push(() => Module.INITIALIZED = true);
   Module.postRun.push(onResize);
 }
 

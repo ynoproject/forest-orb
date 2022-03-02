@@ -259,6 +259,11 @@ document.getElementById('enterNameForm').onsubmit = function () {
   setName(document.getElementById('nameInput').value);
 };
 
+document.getElementById('singlePlayerButton').onclick = function () {
+  if (Module.INITIALIZED)
+    Module._ToggleSinglePlayer();
+};
+
 document.getElementById('chatButton').onclick = function () {
   this.classList.toggle('toggled');
   document.getElementById('layout').classList.toggle('hideChat');
@@ -346,6 +351,16 @@ document.getElementById('settingsButton').onclick = () => openModal('settingsMod
 
 document.getElementById('lang').onchange = function () {
   setLang(this.value);
+};
+
+document.getElementById('nametagButton').onclick = function () {
+  if (Module.INITIALIZED)
+    Module._ToggleNametags();
+};
+
+document.getElementById('playerSoundsButton').onclick = function () {
+  if (Module.INITIALIZED)
+    Module._TogglePlayerSounds();
 };
 
 document.getElementById('nexusButton').onclick = function () {
