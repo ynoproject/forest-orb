@@ -1107,17 +1107,16 @@ function loadOrInitCache() {
       const valueReq = transaction.objectStore('CACHE').get(k.toUpperCase());
       valueReq.onsuccess = valueReqRes => {
         const value = valueReqRes.target.result;
-        if (value) {
-          switch (k) {
-            case 'location':
-              locationCache = Object.assign({}, value);
-              break;
-            case 'map':
-              mapCache = Object.assign({}, value);
-              break;
-          }
-          cache[k.toLowerCase()] = value;
+        switch (k) {
+          case 'location':
+            locationCache = Object.assign({}, value);
+            break;
+          case 'map':
+            mapCache = Object.assign({}, value);
+            break;
         }
+        if (value)
+          cache[k] = value;
       };
     }
   };
