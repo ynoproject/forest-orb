@@ -128,10 +128,33 @@ if (hasTouchscreen) {
 } else {
   // Prevent scrolling when pressing specific keys
   canvas.addEventListener('keydown', event => {
-    if (preventNativeKeys.includes(event.key)) {
+    if (preventNativeKeys.includes(event.key))
       event.preventDefault();
+    else if (globalConfig.tabToChat && event.key === 'Tab') {
+      event.preventDefault();
+      const chatInput = document.getElementById('chatInput');
+      let input;
+      if (chatInput.offsetWidth)
+        input = chatInput;
+      else {
+        const nameInput = document.getElementById('nameInput');
+        if (nameInput.offsetWidth)
+          input = nameInput;
+      }
+      if (input)
+        window.setTimeout(() => input.focus(), 0);
     }
   });
+
+  const onTabInput = event => {
+    if (globalConfig.tabToChat && event.key === 'Tab') {
+      event.preventDefault();
+      canvas.focus();
+    }
+  };
+
+  document.getElementById('chatInput').addEventListener('keydown', onTabInput);
+  document.getElementById('nameInput').addEventListener('keydown', onTabInput);
 
   canvas.addEventListener('contextmenu', event => {
     event.preventDefault();

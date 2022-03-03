@@ -26,7 +26,8 @@ const langLabelMassageFunctions = {
 let globalConfig = {
   lang: 'en',
   name: '',
-  chatTipIndex: -1
+  chatTipIndex: -1,
+  tabToChat: true
 };
 
 let config = {
@@ -361,6 +362,12 @@ document.getElementById('nametagButton').onclick = function () {
 document.getElementById('playerSoundsButton').onclick = function () {
   if (Module.INITIALIZED)
     Module._TogglePlayerSounds();
+};
+
+document.getElementById('tabToChatButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.tabToChat = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
 };
 
 document.getElementById('nexusButton').onclick = function () {
@@ -1006,6 +1013,10 @@ function loadOrInitConfig(configObj, global) {
               case 'name':
                 document.getElementById('nameInput').value = value;
                 setName(value, true);
+                break;
+              case 'tabToChat':
+                if (!value)
+                  preToggle(document.getElementById('tabToChatButton'));
                 break;
             }
           } else {

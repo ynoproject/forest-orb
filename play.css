@@ -470,6 +470,7 @@ body {
   height: 0;
   margin-top: -16px;
   margin-left: -8px;
+  z-index: 3;
 }
 
 #unreadMessageCount {
@@ -912,6 +913,12 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
 
 #layout.immersionMode .chatboxTabSection {
   margin-top: 0;
+}
+
+@media (hover: none) { 
+  .desktopOnly {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 1051px) and (min-height: 595px) {
