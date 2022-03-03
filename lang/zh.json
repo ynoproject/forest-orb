@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -83,7 +83,8 @@
         "fields": {
           "lang": "语言",
           "toggleNametags": "显示/隐藏玩家名称标签",
-          "togglePlayerSounds": "开启/关闭其他玩家音效"
+          "togglePlayerSounds": "开启/关闭其他玩家音效",
+          "tabToChat": "Press Tab to Chat"
         }
       },
       "uiTheme": {

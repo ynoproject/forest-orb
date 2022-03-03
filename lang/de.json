@@ -83,7 +83,8 @@
         "fields": {
           "lang": "Sprache",
           "toggleNametags": "Namen an/aus",
-          "togglePlayerSounds": "Player Sounds"
+          "togglePlayerSounds": "Player Sounds",
+          "tabToChat": "Press Tab to Chat"
         }
       },
       "uiTheme": {

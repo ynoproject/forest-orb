@@ -83,7 +83,8 @@
         "fields": {
           "lang": "Idioma",
           "toggleNametags": "Alternar nome dos jogadores",
-          "togglePlayerSounds": "Alternar áudio dos jogadores"
+          "togglePlayerSounds": "Alternar áudio dos jogadores",
+          "tabToChat": "Press Tab to Chat"
         }
       },
       "uiTheme": {

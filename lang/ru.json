@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -83,7 +83,8 @@
         "fields": {
           "lang": "Язык",
           "toggleNametags": "Ники",
-          "togglePlayerSounds": "Звуки Игроков"
+          "togglePlayerSounds": "Звуки Игроков",
+          "tabToChat": "Press Tab to Chat"
         }
       },
       "uiTheme": {

@@ -83,7 +83,8 @@
         "fields": {
           "lang": "言語",
           "toggleNametags": "プレーヤー名表示",
-          "togglePlayerSounds": "プレーヤー効果音"
+          "togglePlayerSounds": "プレーヤー効果音",
+          "tabToChat": "タブキーを押してチャット"
         }
       },
       "uiTheme": {
