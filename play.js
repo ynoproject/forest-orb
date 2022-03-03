@@ -41,6 +41,14 @@ let config = {
   showGlobalMessageLocation: false
 };
 
+let cache = {
+  location: {},
+  map: {}
+};
+
+let locationCache;
+let mapCache;
+
 let connStatus;
 let hasConnected = false;
 
@@ -241,8 +249,6 @@ function openModal(modalId) {
   document.getElementById(modalId).classList.remove('hidden');
 }
 
-let locationCache;
-
 {
   const closeModal = function () {
     document.getElementById('modalContainer').classList.add('hidden');
@@ -379,10 +385,6 @@ if (gameId === '2kki') {
   // Yume 2kki Explorer doesn't support mobile
   if (window.matchMedia('(hover: none), (pointer: coarse)').matches)
     document.getElementById('explorerControls').remove();
-  locationCache = {};
-  mapCache = {};
-  config.locationCache = {};
-  config.mapCache = {};
 }
 
 Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
@@ -1067,12 +1069,6 @@ function loadOrInitConfig(configObj, global) {
                   loadedFontStyle = true;
                 }
                 break;
-              case 'locationCache':
-                locationCache = Object.assign({}, value);
-                break;
-              case 'mapCache':
-                mapCache = Object.assign({}, value);
-                break;
             }
           }
           configObj[key] = value;
@@ -1088,6 +1084,54 @@ function updateConfig(configObj, global) {
   try {
     window.localStorage[global ? 'config' : `config_${gameId}`] = JSON.stringify(configObj);
   } catch (error) {
+    console.error(error);
+  }
+}
+
+function loadOrInitCache() {
+  const request = indexedDB.open(gameId);
+
+  request.onupgradeneeded = event => {
+    const db = event.target.result;
+    db.createObjectStore('CACHE', {});
+
+    locationCache = {};
+    mapCache = {};
+  };
+
+  request.onsuccess = function (_e) {
+    const db = request.result;
+    const transaction = db.transaction(['CACHE'], 'readwrite');
+    const cacheKeys = Object.keys(cache);
+    for (let k of cacheKeys) {
+      const valueReq = transaction.objectStore('CACHE').get(k.toUpperCase());
+      valueReq.onsuccess = valueReqRes => {
+        const value = valueReqRes.target.result;
+        if (value) {
+          switch (k) {
+            case 'location':
+              locationCache = Object.assign({}, value);
+              break;
+            case 'map':
+              mapCache = Object.assign({}, value);
+              break;
+          }
+          cache[k.toLowerCase()] = value;
+        }
+      };
+    }
+  };
+}
+
+function updateCache(cacheType) {
+  if (cache.hasOwnProperty(cacheType)) {
+    const request = indexedDB.open(gameId);
+
+    request.onsuccess = function (_e) {
+      const db = request.result;
+      const transaction = db.transaction(['CACHE'], 'readwrite');
+      transaction.objectStore('CACHE').put(cache[cacheType], cacheType.toUpperCase());
+    };
   }
 }
 
@@ -1095,6 +1139,7 @@ onResize();
 
 loadOrInitConfig(globalConfig, true);
 loadOrInitConfig(config);
+loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
 window.setInterval(fetchAndUpdatePlayerCount, 15000);

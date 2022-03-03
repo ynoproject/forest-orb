@@ -154,10 +154,10 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
       locationCache[prevLocationKey] = prevLocations;
     if (saveLocation && (locations || prevLocations)) {
       if (locations)
-        config.locationCache[locationKey] = locations;
+        cache.location[locationKey] = locations;
       if (prevLocations)
-        config.locationCache[prevLocationKey] = prevLocations;
-      updateConfig(config);
+        cache.location[prevLocationKey] = prevLocations;
+      updateCache('location');
     }
   }
 }
@@ -208,10 +208,10 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
         locationCache[prevLocationKey] = prevLocations;
       if (saveLocation && (locations || prevLocations)) {
         if (locations)
-          config.locationCache[locationKey] = locations;
+          cache.location[locationKey] = locations;
         if (prevLocations)
-          config.locationCache[prevLocationKey] = prevLocations;
-        updateConfig(config);
+          cache.location[prevLocationKey] = prevLocations;
+        updateCache('location');
       }
     }
   };
@@ -293,8 +293,8 @@ function set2kkiMaps(maps, locationNames, cacheMaps, saveMaps) {
   if (cacheMaps && locationNames) {
     mapCache[locationNames.join(',')] = maps;
     if (saveMaps) {
-      config.mapCache[locationNames.join(',')] = maps;
-      updateConfig(config);
+      cache.map[locationNames.join(',')] = maps;
+      updateCache('map')
     }
   }
 }
