@@ -58,7 +58,7 @@
           "username": "ユーザー名",
           "password": "パスワード"
         },
-        "registerPrompt": "アカウントをお持ちでない方",
+        "registerPrompt": "アカウントをお持ちでない方は",
         "register": "登録する",
         "errors": {
           "invalidLogin": "ユーザー名またはパスワードが間違っています。"
@@ -72,7 +72,7 @@
           "password": "パスワード",
           "confirmPassword": "パスワード（確認）"
         },
-        "loginPrompt": "すでにアカウントをお持ちの方",
+        "loginPrompt": "すでにアカウントをお持ちの方は",
         "login": "ログインする",
         "errors": {
           "emailTaken": "このメールアドレスは既に使用されています。",
