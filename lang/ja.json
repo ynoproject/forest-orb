@@ -55,28 +55,28 @@
       "login": {
         "title": "ログイン",
         "fields": {
-          "username": "Username",
-          "password": "Password"
+          "username": "ユーザー名",
+          "password": "パスワード"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "アカウントをお持ちでない方",
+        "register": "登録する",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "ユーザー名またはパスワードが間違っています。"
         }
       },
       "register": {
         "title": "登録",
         "fields": {
-          "email": "Email",
-          "username": "Username",
-          "password": "Password",
-          "confirmPassword": "Confirm Password"
+          "email": "メールアドレス",
+          "username": "ユーザー名",
+          "password": "パスワード",
+          "confirmPassword": "パスワード（確認）"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
+        "loginPrompt": "すでにアカウントをお持ちの方",
+        "login": "ログインする",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "このメールアドレスは既に使用されています。",
+          "usernameTaken": "このユーザー名は既に使用されています。"
         }
       },
       "settings": {
@@ -157,7 +157,7 @@
     "chatTips": {
       "template": "TIP: {CONTENT}",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "backupReminder": "定期的にセーブデータをダウンロードし、バックアップをとっておくことをお勧めします。そうすれば、ブラウザ版でセーブデータが消えてしまった場合でも、バックアップしていたセーブデータをアップロードすれば進行状況をバックアップした時点に戻すことが出来ます。",
         "menuTheme": "名前の色やプレイヤータブで表示されるスタイルはゲーム内で設定しているメニュータイプに依存してます。",
         "playersInMap": "接続数が表示されているラベルをクリックすると、ゆめ２っきオンライン全体の接続数と同じマップ内の接続数を切り替えることが出来ます。",
         "globalChatLocation": "グローバルチャットに表示されている地球儀のアイコンを押すと、そのグローバルチャットが送信された世界名が表示されます。世界名が表示されている状態で地球儀のアイコンを押すと世界名が非表示になります。",
