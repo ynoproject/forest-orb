@@ -23,7 +23,6 @@
       }
     },
     "chatbox": {
-      "connStatus": "Statut&nbsp;:&nbsp;",
       "location": "Lieu&nbsp;:&nbsp;",
       "immersionMode": "Mode Immersion",
       "tab": {

@@ -23,7 +23,6 @@
       }
     },
     "chatbox": {
-      "connStatus": "연결 상태",
       "location": "현위치",
       "immersionMode": "몰입 모드",
       "tab": {

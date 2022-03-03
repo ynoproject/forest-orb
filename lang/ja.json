@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "ゆめ２っきver{VERSION}",
@@ -23,7 +23,6 @@
       }
     },
     "chatbox": {
-      "connStatus": "接続状態:&nbsp;",
       "location": "場所：",
       "immersionMode": "イマージョンモード",
       "tab": {

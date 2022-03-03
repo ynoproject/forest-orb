@@ -23,7 +23,6 @@
       }
     },
     "chatbox": {
-      "connStatus": "连接状态：",
       "location": "当前位置：",
       "immersionMode": "沉浸模式已开启",
       "tab": {
