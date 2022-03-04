@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -46,7 +46,7 @@
     },
     "instruction": {
       "translation": "欢迎加入我们的界面语言翻译工作！",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "※不支持游戏语言本地化！"
     },
     "2kki": {
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
@@ -85,7 +85,7 @@
           "lang": "语言",
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
-          "tabToChat": "Press Tab to Chat"
+          "tabToChat": "开启/关闭Tab键聊天切换"
         }
       },
       "uiTheme": {
@@ -163,7 +163,7 @@
         "playersInMap": "点击右上方的人数按钮可以切换显示全局总在线人数或当前与您同在一个地图区域的玩家人数。",
         "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该条玩家消息的发送地点，同时系统还将自动维持您最近一次分类消息的显示或隐藏状态为下一次启动时默认的状态。",
         "markdownSupport": "通过在输入框中使用某些符号可以使文本以特殊格式显示出来，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）。",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
+        "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时您可在设置中关闭。",
         "chatTabNotifications": "当您处于除“所有聊天记录”以外的其他发言模式时，若此时其他模式下有新的聊天信息接收进来，系统将会以加粗标题字体的方式提醒您查看。",
         "clearChat": "当您处于除“所有聊天记录”以外的其他发言模式时，点击聊天框右上角的清除聊天记录按钮将只会清空您当前所在模式下的聊天信息。",
         "immersionMode": "如果您不喜欢聊天室的嘈杂想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天室、在线列表和人数统计模块。在此模式下，当你在探索途中随机偶遇到其他玩家时将会更加有趣。",
