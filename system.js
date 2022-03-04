@@ -179,15 +179,13 @@ function setUiTheme(value, isInit) {
     return;
   if (hasUiThemes)
     config.uiTheme = value;
-  const themeStyles = document.getElementById('themeStyles');
   getBaseBgColor(uiTheme, function (color) {
-    const bgColorPixel = uiThemeBgColors[uiTheme];
-    const altColor = getColorRgba([Math.min(bgColorPixel[0] + 48, 255), Math.min(bgColorPixel[1] + 48, 255), Math.min(bgColorPixel[2] + 48, 255)]);
     getFontShadow(uiTheme, function (shadow) {
-      themeStyles.textContent = themeStyles.textContent.replace(new RegExp('url\\(\'images\\/ui\\/[a-zA-Z0-9]+\\/(?:[^\\/]+\\/)?(containerbg|border(?:2)?|font\\d)\\.png\'\\)', 'g'), 'url(\'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/$1.png\')')
-        .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*basebg\*\//g, 'background-color:$1' + color + '$2;$3/*basebg*/')
-        .replace(/background-color:( *)[^;!]*(!important)?;( *)\/\*altbg\*\//g, 'background-color:$1' + altColor + '$2;$3/*altbg*/')
-        .replace(/(?:[#a-zA-Z0-9]+|rgba\([0-9]+, [0-9]+, [0-9]+, [0-9]+\))(;? *)\/\*shadow\*\//g, shadow + '$1/*shadow*/');
+      const rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--base-bg-color', color)
+      rootStyle.setProperty('--shadow-color', shadow);
+      rootStyle.setProperty('--container-bg-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/containerbg.png')`);
+      rootStyle.setProperty('--border-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/border.png')`);
       document.getElementById('dropShadow').children[0].setAttribute('flood-color', shadow);
       const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
       const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
@@ -220,19 +218,19 @@ function setFontStyle(fontStyle, isInit) {
   if (gameUiThemes.indexOf(uiTheme) === -1)
     return;
   config.fontStyle = fontStyle;
-  const themeStyles = document.getElementById('themeStyles');
   const defaultAltFontStyleIndex = 1;
   const defaultFallbackAltFontStyleIndex = 3;
   getFontColors(uiTheme, fontStyle, function (baseColors) {
     const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
     const altColorCallback = function (altColors) {
-      themeStyles.textContent = themeStyles.textContent
-        .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*base\*\//g, 'linear-gradient($1, ' + getGradientText(baseColors) + ')$2;$3/*base*/')
-        .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*baseb\*\//g, 'linear-gradient($1, ' + getGradientText(baseColors, true) + ')$2;$3/*baseb*/')
-        .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*alt\*\//g, 'linear-gradient($1, ' + getGradientText(altColors) + ')$2;$3/*alt*/')
-        .replace(/linear\-gradient\((.*?),.*?\)( *!important)?;( *)\/\*altb\*\//g, 'linear-gradient($1, ' + getGradientText(altColors, true) + ')$2;$3/*altb*/')
-        .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*base\*\//g, '$1$2:$3' + getColorRgba(baseColors[8]) + '$4;$5/*base*/')
-        .replace(/([^\-])((?:(?:background|border)\-)?color|fill):( *)[^;!]*(!important)?;( *)\/\*alt\*\//g, '$1$2:$3' + getColorRgba(altColors[8]) + '$4;$5/*alt*/');
+      const rootStyle = document.documentElement.style;
+      rootStyle.setProperty('--base-color', getColorRgba(baseColors[8]));
+      rootStyle.setProperty('--alt-color', getColorRgba(altColors[8]));
+      rootStyle.setProperty('--base-gradient', `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
+      rootStyle.setProperty('--base-gradient-b', `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
+      rootStyle.setProperty('--alt-gradient', `linear-gradient(to bottom, ${getGradientText(altColors)})`);
+      rootStyle.setProperty('--alt-gradient-b', `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
+      rootStyle.setProperty('--base-color-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/font${fontStyle + 1}.png')`);
       updateSvgGradient(document.getElementById('baseGradient'), baseColors);
       updateSvgGradient(document.getElementById('altGradient'), altColors);
       if (!isInit)

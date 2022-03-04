@@ -1,3 +1,17 @@
+:root {
+  --base-color: rgba(216, 216, 216, 1);
+  --alt-color: rgba(255, 255, 157, 1);
+  --base-bg-color: rgba(45, 17, 23, 1);
+  --shadow-color: black;
+  --base-gradient: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%);
+  --alt-gradient: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
+  --base-gradient-b: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%);
+  --alt-gradient-b: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
+  --base-color-image-url: url('images/ui/2kki/system1/font1.png');
+  --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
+  --border-image-url: url('images/ui/2kki/system1/border.png');
+}
+
 @font-face {
   font-family: 'PGothic';
   src: url('fonts/ms-pgothic.woff2') format('woff2'),
@@ -9,9 +23,174 @@ html, input, select, button {
   font-size: 16px;
 }
 
+html, input, select, button.checkboxButton {
+  color: var(--base-color) !important;
+  background-color: black;
+}
+
+#chatBorder, input, select, button.checkboxButton {
+  border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+svg {
+  overflow: visible;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select, button.checkboxButton {
+  color: var(--base-color) !important;
+  background-color: var(--base-bg-color) !important;
+  text-shadow: 1.5px 1.5px var(--shadow-color);
+}
+
+input, select {
+  position: relative;
+}
+
+button.checkboxButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  width: 38px;
+  height: 38px;
+  font-size: 18px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+button.checkboxButton > span:after {
+  content: "";
+}
+
+button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxButton.inverseToggle:not(.toggled) > span:after {
+  content: "✔";
+}
+
+body, .container, div, input, button.checkboxButton {
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 body {
   margin: 0 0 16px 0;
   padding: 8px;
+  background-size: 210px;
+  background-position-y: -16px;
+  background-image: var(--container-bg-image-url) !important;
+}
+
+body.fullBg {
+  background-size: 100%;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.ru-spacing-fix {
+  letter-spacing: -6px !important;
+  padding-right: 2px;
+}
+
+.emoji {
+  -webkit-text-fill-color: white;
+}
+
+.nofilter {
+  filter: none !important;
+}
+
+.altText, .chatTab.active .chatTabLabel, .messageContainer.global .message .nameMarker, #unreadMessageCount, a:not(.modalClose) {
+  background-image: var(--alt-gradient) !important;
+}
+
+.baseColorBg {
+  background-color: var(--base-color) !important;
+}
+
+.baseColorFill {
+  fill: var(--base-color) !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.container.fullBg {
+  background-size: 650px;
+}
+
+.scrollableContainer {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.uiControl {
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  padding-bottom: 8px;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+.iconButton path, .icon path, .icon circle {
+  stroke: url(#baseGradient);
+  filter: url(#dropShadow);
+}
+
+.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .globalMessageIcon path {
+  stroke: url(#altGradient) !important;
+}
+
+.iconButton.fadeToggle:not(.toggled) path {
+  opacity: 0.5;
+}
+
+.iconButton.offToggle path:last-child {
+  stroke-width: 1.5;
+}
+
+.iconButton.offToggle:not(.toggled):not(.preToggled) path:last-child {
+  display: none;
+}
+
+.icon path {
+  fill: none;
+}
+
+.fillIcon path {
+  stroke: none;
+  fill: url(#baseGradient);
+}
+
+.notice, .instruction {
+  text-align: center;
+}
+
+.notice {
+  font-weight: bold;
+}
+
+.infoText {
+  width: 100%;
+  word-break: keep-all;
+}
+
+.infoContainer .infoText {
+  width: unset;
 }
 
 #background {
@@ -35,6 +214,14 @@ body {
   max-width: 1036px;
 }
 
+#header, .container, .modal {
+  background-size: 70px;
+  background-position-y: -16px;
+  background-image: var(--container-bg-image-url) !important;
+  border-image: var(--border-image-url) 10 repeat !important;
+  border: 24px solid transparent;
+}
+
 #header {
   position: relative;
   flex-wrap: wrap;
@@ -43,6 +230,10 @@ body {
   max-width: 980px;
   padding: 0 4px;
   z-index: 2;
+}
+
+#header.fullBg {
+  background-size: 96px;
 }
 
 #headerLogoContainer {
@@ -104,6 +295,7 @@ body {
 #gameLogoOverlay {
   width: 100%;
   height: 100%;
+  background-image: var(--base-gradient-b) !important;
   -webkit-mask-size: cover;
   mask-size: cover;
 }
@@ -124,6 +316,29 @@ body {
 
 #layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
   width: 18px;
+}
+
+#layout::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
+  border: 8px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+  background-color: var(--base-bg-color);
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+#layout::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb {
+  border: 8px solid transparent;
+  border-image: var(--border-image-url) 6 round !important;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+#layout.downscale .container.fullBg {
+  background-size: 530px;
+}
+
+#layout.downscale2 .container.fullBg {
+  background-size: 410px;
 }
 
 #mainContainer {
@@ -288,6 +503,34 @@ body {
   flex-direction: column;
 }
 
+#connStatusIcon {
+  background: linear-gradient(#b30000, #800000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#connStatusIcon.connecting {
+  background-image: linear-gradient(#b35900, #804000);
+}
+
+#connStatusIcon.connected {
+  background-image: linear-gradient(#00b33c, #00802b);
+}
+
+#connStatusIcon.singlePlayer {
+  background-image: linear-gradient(#595959, #404040);
+}
+
+#locationLabel {
+  height: fit-content;
+  padding-left: 22px;
+}
+
+#locationText {
+  text-align: right;
+}
+
 #chatboxContent {
   display: contents;
 }
@@ -312,6 +555,8 @@ body {
 .chatboxTab.active {
   padding-bottom: 10px;
   border-bottom-width: 0;
+  background-size: 70px;
+  background-image: var(--container-bg-image-url) !important;
   z-index: 2;
   pointer-events: none;
   cursor: default;
@@ -364,10 +609,11 @@ body {
 
 .chatTabBg {
   position: relative;
-  border-radius: 4px 4px 0 0;
   width: 100%;
   height: 100%;
   top: -100%;
+  border-radius: 4px 4px 0 0;
+  background-image: var(--base-gradient) !important;
   opacity: 0;
   z-index: -1;
 }
@@ -384,12 +630,23 @@ body {
   pointer-events: none;
 }
 
+#unreadMessageCount {
+  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+}
+
+#messages {
+  border-top: 8px solid transparent;
+  border-image: var(--border-image-url) 10 repeat !important;
+}
+
 #chatbox.map .messageContainer.global, #chatbox.global .messageContainer:not(.global), #chatbox:not(.map) .messageContainer.map {
   display: none;
 }
 
 .messageContainer {
   word-wrap: break-word;
+  border-bottom: 4px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
 }
 
 #chatbox:not(.map):not(.global) .lastAllTabMessageInLoc, #chatbox.map .lastMapTabMessageInLoc, .messageContainer.locMessage {
@@ -440,6 +697,8 @@ body {
   background-size: 38px;
   background-position: -2px -2px;
   border: 4px solid transparent;
+  background-image: var(--container-bg-image-url) !important;
+  border-image: var(--border-image-url) 8 repeat !important;
   padding: 1px;
   margin-bottom: 4px;
 }
@@ -452,6 +711,8 @@ body {
 
 .playerListEntry .nameText {
   width: 100%;
+  background-image: var(--base-color-image-url) !important;
+  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
 .playerListEntry .nameText .icon {
@@ -487,6 +748,10 @@ body {
   font-weight: normal;
 }
 
+#chatInputContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection {
+  border: 8px solid transparent;
+}
+
 #chatInputContainer {
   display: flex;
   width: auto;
@@ -513,6 +778,7 @@ body {
   height: 22px;
   right: 8px;
   padding-right: 28px;
+  border-image: none !important;
 }
 
 #chatbox.map #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.global #chatInputContainer:not(.globalCooldown) #chatInput {
@@ -527,10 +793,6 @@ body {
 #chatbox:not(.map):not(.global) #chatInputContainer.globalCooldown #chatInput {
   width: calc(100% - 62px);
   padding-right: 52px;
-}
-
-#chatInput[data-global] {
-  border-image: none !important;
 }
 
 #globalCooldownIcon {
@@ -601,6 +863,7 @@ body {
   top: calc(-100% + 4px);
   right: 4px;
   padding: 0 8px;
+  background-image: var(--alt-gradient-b) !important;
   mix-blend-mode: color;
 }
 
@@ -619,6 +882,10 @@ body {
   top: calc(-200% + 8px);
 }
 
+#enterNameContainer, .chatboxTab, .chatboxTabSection, button.checkboxButton {
+  border-image: var(--border-image-url) 10 repeat !important;
+}
+
 #enterNameContainer {
   margin-top: 12px;
   width: auto;
@@ -631,6 +898,14 @@ body {
 
 #modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .globalMessageLocation.hidden, #translationInstruction.hidden {
   display: none;
+}
+
+#enterNameInstruction, .nameText, .nameMarker, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a, label {
+  background-image: var(--base-gradient) !important;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
 #enterNameInstruction span {
@@ -654,95 +929,6 @@ body {
 
 #translationInstruction {
   font-size: small;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-.ru-spacing-fix {
-  letter-spacing: -6px !important;
-  padding-right: 2px;
-}
-
-.emoji {
-  -webkit-text-fill-color: white;
-}
-
-.nofilter {
-  filter: none !important;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
-.scrollableContainer {
-  height: 100%;
-  overflow-y: auto;
-}
-
-.uiControl {
-  text-align: center;
-}
-
-.info {
-  display: flex;
-  padding-bottom: 8px;
-}
-
-.iconButton {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  -webkit-appearance: button;
-}
-
-.iconButton path, .icon path, .icon circle {
-  stroke: url(#baseGradient);
-  filter: url(#dropShadow);
-}
-
-.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .globalMessageIcon path {
-  stroke: url(#altGradient) !important;
-}
-
-.iconButton.fadeToggle:not(.toggled) path {
-  opacity: 0.5;
-}
-
-.iconButton.offToggle path:last-child {
-  stroke-width: 1.5;
-}
-
-.iconButton.offToggle:not(.toggled):not(.preToggled) path:last-child {
-  display: none;
-}
-
-.icon path {
-  fill: none;
-}
-
-.fillIcon path {
-  stroke: none;
-  fill: url(#baseGradient);
-}
-
-.notice, .instruction {
-  text-align: center;
-}
-
-.notice {
-  font-weight: bold;
-}
-
-.infoText {
-  width: 100%;
-  word-break: keep-all;
-}
-
-.infoContainer .infoText {
-  width: unset;
 }
 
 #modalContainer {
@@ -770,6 +956,10 @@ body {
   padding-bottom: 16px;
   background: white;
   z-index: 20;
+}
+
+.modal.fullBg {
+  background-size: calc(100vh - 80px);
 }
 
 .fullscreenModal {
@@ -873,38 +1063,6 @@ body {
 .uiTheme > img {
   width: 100%;
   pointer-events: none;
-}
-
-svg {
-  overflow: visible;
-}
-
-label {
-  font-weight: bold;
-}
-
-input, select {
-  position: relative;
-}
-
-button.checkboxButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  width: 38px;
-  height: 38px;
-  font-size: 18px;
-  padding: 4px;
-  cursor: pointer;
-}
-
-button.checkboxButton > span:after {
-  content: "";
-}
-
-button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxButton.inverseToggle:not(.toggled) > span:after {
-  content: "✔";
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
@@ -1205,10 +1363,50 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   pointer-events: none;
 }
 
+#layout:fullscreen .chatboxTab.active {
+  background-image: none !important;
+  background-color: var(--base-bg-color);
+}
+
 #layout.chatboxOverlap:fullscreen #messages {
   overflow-y: hidden;
 }
 
 #layout:fullscreen #uiControls {
   display: none;
+}
+
+/* Safari only */
+@media not all and (min-resolution:.001dpcm) {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select {
+    border-color: unset !important;
+  }
+
+  #chatInput {
+    border-color: transparent !important;
+  }
+
+  #messages {
+    border-top-color: unset !important;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .messageContainer {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom-color: unset !important;
+  }
+
+   /* Don't use text background on Safari since it doesn't repeat properly */
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .chatTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, h1, a, label {
+    -webkit-text-fill-color: unset;
+    background-image: none !important;
+  }
+
+  .altText, a:not(.modalClose) {
+    color: var(--alt-color);
+  }
 }
