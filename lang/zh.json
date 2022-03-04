@@ -45,7 +45,8 @@
       }
     },
     "instruction": {
-      "translation": "欢迎加入我们的界面语言翻译工作！"
+      "translation": "欢迎加入我们的界面语言翻译工作！",
+      "noGameLoc": "* Game Localization Unsupported"
     },
     "2kki": {
       "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"

@@ -609,8 +609,8 @@ window.onbeforeunload = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  if (isInit && (gameId === '2kki' || gameId === 'braingirl'))
-    Module.EASYRPG_LANGUAGE = !gameDefaultLangs.hasOwnProperty(gameId) || gameDefaultLangs[gameId] !== lang ? lang : 'default';
+  if (isInit && localizedGameIds.indexOf(gameId) > -1)
+    Module.EASYRPG_LANGUAGE = gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en' ? lang : 'default';
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -750,6 +750,25 @@ function initLocalization(isInitial) {
       translationInstruction.classList.toggle('hidden', translationComplete);
       if (!translationComplete)
         document.getElementById('translationLink').href = `https://github.com/ynoproject/forest-orb/edit/master/lang/${globalConfig.lang}.json`;
+
+      if (isInitial) {
+        const languages = document.getElementById('lang').children;
+        for (let langOpt of languages) {
+          const lang = langOpt.value;
+          if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
+            fetch(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
+              if (!response.ok && response.status === 404) {
+                langOpt.innerText += '*';
+                langOpt.dataset.noGameLoc = true;
+                if (lang === globalConfig.lang)
+                  document.getElementById('noGameLocInstruction').classList.remove('hidden');
+              }
+            });
+        }
+      } else {
+        const noGameLocInstruction = document.getElementById('noGameLocInstruction');
+        noGameLocInstruction.classList.toggle('hidden', !document.querySelector(`#lang option[value='${globalConfig.lang}']`).dataset.noGameLoc);
+      }
 
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };

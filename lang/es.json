@@ -45,7 +45,8 @@
       }
     },
     "instruction": {
-      "translation": "¡Ayúdanos a traducir!"
+      "translation": "¡Ayúdanos a traducir!",
+      "noGameLoc": "* Game Localization Unsupported"
     },
     "2kki": {
       "hostedWithPermission": "Alojado con la autorización de los desarrolladores de Yume 2kki"

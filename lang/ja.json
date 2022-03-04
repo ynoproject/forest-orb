@@ -45,7 +45,8 @@
       }
     },
     "instruction": {
-      "translation": "翻訳の仕事募集"
+      "translation": "翻訳の仕事募集",
+      "noGameLoc": "*&nbsp; ゲーム 翻訳 未対応"
     },
     "2kki": {
       "hostedWithPermission": "ゆめ２っきの 開発者の 許可を 得て 掲載しています"
@@ -57,10 +58,10 @@
           "username": "ユーザー名",
           "password": "パスワード"
         },
-        "registerPrompt": "アカウントをお持ちでない方は",
+        "registerPrompt": "アカウントを お持ちでない方は",
         "register": "登録する",
         "errors": {
-          "invalidLogin": "ユーザー名またはパスワードが間違っています。"
+          "invalidLogin": "ユーザー名 または パスワードが 間違っています。"
         }
       },
       "register": {
@@ -71,20 +72,20 @@
           "password": "パスワード",
           "confirmPassword": "パスワード（確認）"
         },
-        "loginPrompt": "すでにアカウントをお持ちの方は",
+        "loginPrompt": "すでに アカウントを お持ちの方は",
         "login": "ログインする",
         "errors": {
-          "emailTaken": "このメールアドレスは既に使用されています。",
-          "usernameTaken": "このユーザー名は既に使用されています。"
+          "emailTaken": "このメールアドレスは 既に 使用されています。",
+          "usernameTaken": "このユーザー名は 既に 使用されています。"
         }
       },
       "settings": {
         "title": "設定",
         "fields": {
           "lang": "言語",
-          "toggleNametags": "プレーヤー名表示",
-          "togglePlayerSounds": "プレーヤー効果音",
-          "tabToChat": "タブキーを押してチャット"
+          "toggleNametags": "プレーヤー 名表示",
+          "togglePlayerSounds": "プレーヤー 効果音",
+          "tabToChat": "タブキーを 押して チャット"
         }
       },
       "uiTheme": {

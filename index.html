@@ -292,6 +292,7 @@
               <li class="formControlRow">
                 <label for="lang" class="unselectable" data-i18n="[html]modal.settings.fields.lang">Language</label>
                 <div>
+                  <label id="translationInstruction" class="nofilter hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
                   <div>
                     <select id="lang">
                       <option value="en">English</option>
@@ -305,7 +306,7 @@
                       <option value="ru">Русский</option>
                     </select>
                   </div>
-                  <label id="translationInstruction" class="nofilter hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
+                  <small><label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label></small>
                 </div>
               </li>
               <li class="formControlRow">
@@ -363,7 +364,8 @@
   <script>
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
+    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
+    const localizedGameIds = [ '2kki', 'braingirl' ];
     const gameDefaultLangs = {
       '2kki': 'ja',
       'flow': 'ja'

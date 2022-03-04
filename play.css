@@ -896,7 +896,7 @@ body.fullBg {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .globalMessageLocation.hidden, #translationInstruction.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .globalMessageLocation.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden {
   display: none;
 }
 
