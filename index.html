@@ -364,7 +364,7 @@
   <script>
     const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
     const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
+    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
     const localizedGameIds = [ '2kki', 'braingirl' ];
     const gameDefaultLangs = {
       '2kki': 'ja',
