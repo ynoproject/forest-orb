@@ -109,12 +109,6 @@ html {
   opacity: 0.4;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  #apad, #dpad {
-    display: none;
-  }
-}
-
 #layout:fullscreen #dpad, #layout:fullscreen #apad {
   bottom: 6rem;
 }

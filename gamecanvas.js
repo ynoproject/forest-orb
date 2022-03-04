@@ -2,7 +2,10 @@ if (typeof ENV !== 'undefined')
   ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
 
 if (Module.postRun) {
-  Module.postRun.push(() => Module.INITIALIZED = true);
+  Module.postRun.push(() => {
+    Module.INITIALIZED = true;
+    document.getElementById('loadingOverlay').classList.add('loaded');
+  });
   Module.postRun.push(onResize);
 }
 
@@ -119,12 +122,62 @@ function bindKey(node, key, keyCode) {
   })
 }
 
+/** @type {{[key: number]: Gamepad}} */
+const gamepads = {};
+const haveEvents = 'ongamepadonnected' in window;
+
+function addGamepad(gamepad) {
+  gamepads[gamepad.index] = gamepad;
+  updateTouchControlsVisibility();
+}
+
+function removeGamepad(gamepad) {
+  delete gamepads[gamepad.index];
+  updateTouchControlsVisibility();
+}
+
+/** @returns {Gamepad[]} */
+function getGamepads() {
+  var pads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
+  return pads;
+}
+
+function scanGamePads() {
+  var pads = getGamepads();
+  for (var i = 0; i < pads.length; i++) {
+    if (pads[i]) {
+      if (pads[i].index in gamepads)
+        gamepads[pads[i].index] = pads[i];
+      else
+        addGamepad(pads[i]);
+    }
+  }
+}
+
+if (!haveEvents) {
+  setInterval(scanGamePads, 500);
+}
+
+window.addEventListener('gamepadconnected', e => addGamepad(e.gamepad));
+
+window.addEventListener('gamepaddisconnected', e => removeGamepad(e.gamepad));
+
+function updateTouchControlsVisibility() {
+  if (hasTouchscreen && !Object.keys(gamepads).length) {
+    for (const elem of document.querySelectorAll('#dpad, #apad'))
+      elem.style.display = '';
+  } else {
+    // If we don't have a touch screen, OR any gamepads are connected...
+    for (const elem of document.querySelectorAll('#dpad, #apad'))
+      elem.style.display = 'none'; // Hide the touch controls
+  }
+}
+
 // Bind all elements providing a `data-key` attribute with the
 // given key on touch-based devices
 if (hasTouchscreen) {
-  for (const button of document.querySelectorAll('[data-key]')) {
+  for (const button of document.querySelectorAll('[data-key]'))
     bindKey(button, button.dataset.key, button.dataset.keyCode);
-  }
 } else {
   // Prevent scrolling when pressing specific keys
   canvas.addEventListener('keydown', event => {
@@ -160,3 +213,8 @@ if (hasTouchscreen) {
     event.preventDefault();
   });
 }
+
+updateTouchControlsVisibility();
+
+if (typeof ENV === 'undefined')
+  document.getElementById('loadingOverlay').classList.add('loaded');
