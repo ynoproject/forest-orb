@@ -139,6 +139,18 @@ body.fullBg {
   padding-bottom: 8px;
 }
 
+.iconButton, .fillIcon, .chatboxTabLabel, .uiThemeItem, button.checkboxButton {
+  transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+.iconButton:hover, .fillIcon:hover {
+  transform: scale(1.25);
+}
+
+#nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, #chatButtons button:hover, .uiThemeItem:hover, button.checkboxButton:hover {
+  transform: scale(1.1);
+}
+
 .iconButton {
   background: transparent;
   border: none;
@@ -945,8 +957,9 @@ body.fullBg {
   margin: 0 auto;
 }
 
-#translationInstruction {
+#translationInstruction, #noGameLocInstruction {
   font-size: small;
+  padding: 0;
 }
 
 #modalContainer {
@@ -1060,6 +1073,10 @@ body.fullBg {
 
 .formControlRow label {
   padding-right: 8px;
+}
+
+.formControlRow div {
+  text-align: right;
 }
 
 .uiTheme {
