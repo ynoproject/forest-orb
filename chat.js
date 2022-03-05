@@ -102,7 +102,7 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
   populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);
 
-  if (!messageContents.innerText)
+  if (!messageContents.innerText.trim())
     messageContents.classList.add('notext');
 
   if (localizedMapLocations && !global) {
