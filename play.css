@@ -949,6 +949,7 @@ body.fullBg {
 .ynomoji {
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
   image-rendering: auto;
 }
 
