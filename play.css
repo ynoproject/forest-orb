@@ -694,9 +694,10 @@ body.fullBg {
 .messageContents .ynomojiWrapper {
   display: inline-flex;
   justify-content: center;
-  align-items: center;
+  vertical-align: middle;
   width: 16px;
   height: 16px;
+  padding: 0.33px 0;
 }
 
 .messageContents.notext .ynomojiWrapper {
