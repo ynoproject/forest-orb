@@ -102,6 +102,9 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
   populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);
 
+  if (!messageContents.innerText)
+    messageContents.classList.add('notext');
+
   if (localizedMapLocations && !global) {
     const nonGlobalMessages = messages.querySelectorAll(".messageContainer:not(.global)");
     if (nonGlobalMessages.length) {
@@ -176,6 +179,7 @@ function chatNameCheck() {
   document.getElementById("enterNameContainer").style.display = "none";
   document.getElementById("chatInput").disabled = false;
   document.getElementById("chatInputContainer").setAttribute("style", "");
+  updateYnomojiContainerPos();
   playerName = nameInput.value;
   if (playerData[-1])
     playerData[-1].name = playerName;
@@ -297,18 +301,26 @@ function populateMessageNodes(msg, node, asHtml) {
 function wrapMessageEmojis(node, force) {
   if (node.childNodes.length && !force) {
     for (let childNode of node.childNodes) {
-      if (/\p{Extended_Pictographic}/u.test(childNode.textContent)) {
+      if (/\p{Extended_Pictographic}/u.test(childNode.textContent) || /:([a-z0-9\_\-]+):/i.test(childNode.textContent)) {
         if (childNode.nodeType === Node.TEXT_NODE) {
           const newChildNode = document.createElement("span");
           newChildNode.innerText = childNode.textContent;
           node.replaceChild(newChildNode, childNode);
-          wrapMessageEmojis(newChildNode, true)
+          wrapMessageEmojis(newChildNode, true);
         } else
           wrapMessageEmojis(childNode);
       }
     }
-  } else
+  } else {
     node.innerHTML = node.innerHTML.replace(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>');
+    const ynomojiPattern = /:([a-z0-9\_\-]+):/gi;
+    let ynomojiMatch;
+    while (ynomojiMatch = ynomojiPattern.exec(node.innerHTML)) {
+      const ynomojiId = Object.keys(ynomojiConfig).find(id => id === ynomojiMatch[1]);
+      if (ynomojiId)
+        node.innerHTML = `${node.innerHTML.slice(0, ynomojiMatch.index)}<span class="ynomojiWrapper"><img src="${ynomojiConfig[ynomojiId]}" class="ynomoji" title="${ynomojiId}" /></span>${node.innerHTML.slice(ynomojiMatch.index + ynomojiId.length + 2)}`;
+    }
+  }
 }
 
 // EXTERNAL

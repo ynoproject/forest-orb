@@ -49,6 +49,8 @@ let cache = {
 let locationCache;
 let mapCache;
 
+let ynomojiConfig = {};
+
 let connStatus;
 let hasConnected = false;
 
@@ -266,6 +268,34 @@ document.getElementById('enterNameForm').onsubmit = function () {
   setName(document.getElementById('nameInput').value);
 };
 
+{
+  const chatInput = document.getElementById('chatInput');
+
+  chatInput.oninput = function () {
+    const ynomojiPattern = /:([a-z0-9\_\-]+(?:\:|$))/gi;
+    const ynomojiContainer = document.getElementById('ynomojiContainer');
+    let currentMatch;
+    let match;
+    while (currentMatch = ynomojiPattern.exec(this.value.slice(0, this.selectionEnd)))
+      match = currentMatch;
+    if (match && !match[1].endsWith(':')) {
+      const input = match[1].slice(0, -1);
+      const ynomojis = document.getElementsByClassName('ynomojiButton');
+      let hasMatch = false;
+      for (let ynomoji of ynomojis) {
+        const visible = ynomoji.dataset.ynomojiId.startsWith(input);
+        ynomoji.classList.toggle('hidden', !visible);
+        hasMatch |= visible;
+      }
+      ynomojiContainer.classList.toggle('hidden', !hasMatch);
+    } else
+      ynomojiContainer.classList.add('hidden');
+  };
+
+  chatInput.onfocus = function () { this.oninput(); };
+  chatInput.onblur = () => document.getElementById('ynomojiContainer').classList.add('hidden');
+}
+
 document.getElementById('singlePlayerButton').onclick = function () {
   if (Module.INITIALIZED)
     Module._ToggleSinglePlayer();
@@ -453,6 +483,8 @@ function onResize() {
 
   content.classList.toggle('noSideBorders', window.innerWidth < 384);
 
+  updateYnomojiContainerPos();
+
   onUpdateChatboxInfo();
 
   if (window.innerWidth < window.innerHeight) {
@@ -477,6 +509,14 @@ function onResize() {
   }
 
   updateCanvasFullscreenSize();
+}
+
+function updateYnomojiContainerPos() {
+  const chatInput = document.getElementById('chatInput');
+  const ynomojiContainer = document.getElementById('ynomojiContainer');
+  ynomojiContainer.style.bottom = `calc(100% - ${chatInput.offsetTop}px)`;
+  ynomojiContainer.style.width = `${chatInput.offsetWidth - 24}px`;
+  ynomojiContainer.style.maxHeight = `${document.getElementById('messages').offsetHeight - 14}px`;
 }
 
 function onUpdateChatboxInfo() {
@@ -710,9 +750,7 @@ function getSaveSlot(download) {
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
   fetch(`lang/${globalConfig.lang}.json`)
-    .then(function (response) {
-      return response.json();
-    })
+    .then(response => response.json())
     .then(function (jsonResponse) {
       const version = jsonResponse.version[gameId];
       if (version) {
@@ -1008,6 +1046,40 @@ function getInfoLabel(label) {
   return `<span class="infoLabel">${label}</span>`;
 }
 
+function fetchAndPopulateYnomojiConfig() {
+  fetch('ynomoji.json')
+    .then(response => response.json())
+    .then(jsonResponse => {
+      ynomojiConfig = jsonResponse;
+      const ynomojiContainer = document.getElementById('ynomojiContainer');
+      Object.keys(ynomojiConfig).forEach(ynomojiId => {
+        const ynomojiButton = document.createElement('a');
+        ynomojiButton.href = 'javascript:void(0)';
+        ynomojiButton.dataset.ynomojiId = ynomojiId;
+        ynomojiButton.classList.add('ynomojiButton');
+        
+        const ynomoji = document.createElement('img');
+        ynomoji.src = ynomojiConfig[ynomojiId];
+        ynomoji.title = `:${ynomojiId}:`;
+        ynomoji.classList.add('ynomoji');
+        ynomoji.onclick = () => insertYnomoji(ynomojiId);
+
+        ynomojiButton.appendChild(ynomoji);
+        ynomojiContainer.appendChild(ynomojiButton);
+      });
+    });
+}
+
+function insertYnomoji(ynomojiId) {
+  const chatInput = document.getElementById('chatInput');
+  const ynomojiMatch = /:([a-z0-9\_\-]+)$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
+  if (ynomojiMatch)
+    chatInput.value = `${chatInput.value.slice(0, ynomojiMatch.index)}:${ynomojiId}:${chatInput.value.slice(chatInput.selectionEnd)}`;
+  else
+    chatInput.value += `:${ynomojiId}:`;
+  chatInput.oninput();
+}
+
 let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
@@ -1161,6 +1233,8 @@ loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
 window.setInterval(fetchAndUpdatePlayerCount, 15000);
+
+fetchAndPopulateYnomojiConfig();
 
 if (!loadedFontStyle)
   setFontStyle(0, true);
