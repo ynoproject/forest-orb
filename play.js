@@ -6,6 +6,8 @@ for (let el of gameIdsElements) {
     el.remove();
 }
 
+const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
 let localizedMessages;
 let localizedMapLocations;
 let mapLocations;
@@ -411,7 +413,7 @@ document.getElementById('nexusButton').onclick = function () {
 if (gameId === '2kki') {
   document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
   // Yume 2kki Explorer doesn't support mobile
-  if (window.matchMedia('(hover: none), (pointer: coarse)').matches)
+  if (hasTouchscreen)
     document.getElementById('explorerControls').remove();
 }
 
@@ -481,8 +483,6 @@ function onResize() {
 
   content.classList.toggle('noSideBorders', window.innerWidth < 384);
 
-  updateYnomojiContainerPos();
-
   onUpdateChatboxInfo();
 
   if (window.innerWidth < window.innerHeight) {
@@ -509,12 +509,28 @@ function onResize() {
   updateCanvasFullscreenSize();
 }
 
-function updateYnomojiContainerPos() {
+function updateYnomojiContainerPos(isScrollUpdate) {
   const chatInput = document.getElementById('chatInput');
+  const chatboxContainer = document.getElementById('chatboxContainer');
   const ynomojiContainer = document.getElementById('ynomojiContainer');
-  ynomojiContainer.style.bottom = `calc(100% - ${chatInput.offsetTop}px)`;
-  ynomojiContainer.style.width = `${chatInput.offsetWidth - 24}px`;
-  ynomojiContainer.style.maxHeight = `${document.getElementById('messages').offsetHeight - 14}px`;
+  const isFullscreen = !!document.fullscreenElement;
+  const isWrapped =  window.getComputedStyle(document.getElementById('layout')).flexWrap === 'wrap';
+  const isDownscale2 = document.getElementById('content').classList.contains('downscale2');
+  const isFullscreenSide = isFullscreen && (window.innerWidth > 1050 || window.innerHeight < 595);
+  ynomojiContainer.style.bottom = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
+    ? `calc((100% - ${chatInput.offsetTop}px) + max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - ${document.querySelector('html').scrollTop}px, 0px))`
+    : `calc(100% - ${chatInput.offsetTop}px)`;
+  ynomojiContainer.style.maxHeight = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
+    ? `calc(${document.getElementById('messages').offsetHeight - 16}px - max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - ${document.querySelector('html').scrollTop}px, 0px))`
+    : `${document.getElementById('messages').offsetHeight - 16}px`;
+  if (!isScrollUpdate) {
+    ynomojiContainer.style.width = hasTouchscreen && isWrapped && !isDownscale2
+      ? `calc(${chatInput.offsetWidth - 24} - 4 * var(--controls-size))`
+      : `${chatInput.offsetWidth - 24}px`;
+    ynomojiContainer.style.margin = hasTouchscreen && isWrapped && !isDownscale2
+      ? `0 calc(2 * var(--controls-size) + ${document.getElementById('layout').offsetLeft * 2 + 4}px) 9px calc(2 * var(--controls-size) - ${document.getElementById('layout').offsetLeft * 2 - 4}px)`
+      : '';
+  }
 }
 
 function onUpdateChatboxInfo() {
@@ -549,7 +565,7 @@ function isOverflow(scale) {
 
 function updateCanvasFullscreenSize() {
   const contentElement = document.getElementById('content');
-  const layoutElement = document.getElementById('content');
+  const layoutElement = document.getElementById('layout');
   const canvasElement = document.getElementById('canvas');
   const canvasContainerElement = document.getElementById('canvasContainer');
   const chatboxContainerElement = document.getElementById('chatboxContainer');
@@ -612,11 +628,16 @@ function updateCanvasFullscreenSize() {
   document.getElementById('leftControls').style.maxHeight = leftControlsMaxHeight;
 
   messages.scrollTop = messages.scrollHeight;
+
+  updateYnomojiContainerPos();
 }
 
 window.onresize = function () { window.setTimeout(onResize, 0); };
 
 document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
+
+if (hasTouchscreen)
+  document.addEventListener('scroll', () => updateYnomojiContainerPos(true));
 
 function toggleControls(show) {
   document.getElementById('controls').classList.toggle('fshidden', !show);

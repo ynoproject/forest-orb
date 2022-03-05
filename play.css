@@ -941,7 +941,7 @@ body.fullBg {
   height: unset;
   min-height: 32px;
   padding: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
   background-color: var(--base-bg-color);
   z-index: 3;
 }
@@ -960,6 +960,7 @@ body.fullBg {
   width: 32px;
   height: 32px;
   margin: 2px;
+  pointer-events: all;
 }
 
 #enterNameContainer {
