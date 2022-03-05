@@ -139,7 +139,7 @@ body.fullBg {
   padding-bottom: 8px;
 }
 
-@media (hover: none) {
+@media (hover: hover) {
   .iconButton, .fillIcon, .chatboxTabLabel, .uiThemeItem, button.checkboxButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
