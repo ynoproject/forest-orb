@@ -278,11 +278,10 @@ document.getElementById('enterNameForm').onsubmit = function () {
     while (currentMatch = ynomojiPattern.exec(this.value.slice(0, this.selectionEnd)))
       match = currentMatch;
     if (match && !match[1].endsWith(':')) {
-      const input = match[1].slice(0, -1);
       const ynomojis = document.getElementsByClassName('ynomojiButton');
       let hasMatch = false;
       for (let ynomoji of ynomojis) {
-        const visible = ynomoji.dataset.ynomojiId.startsWith(input);
+        const visible = ynomoji.dataset.ynomojiId.startsWith(match[1]);
         ynomoji.classList.toggle('hidden', !visible);
         hasMatch |= visible;
       }
@@ -1072,7 +1071,6 @@ function fetchAndPopulateYnomojiConfig() {
 function insertYnomoji(ynomojiId) {
   const chatInput = document.getElementById('chatInput');
   const ynomojiMatch = /:([a-z0-9\_\-]+)$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
-  console.log(ynomojiId, ynomojiMatch)
   if (ynomojiMatch)
     chatInput.value = `${chatInput.value.slice(0, ynomojiMatch.index)}:${ynomojiId}:${chatInput.value.slice(chatInput.selectionEnd)}`;
   else
