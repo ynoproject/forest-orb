@@ -141,11 +141,11 @@ body.fullBg {
 }
 
 @media (hover: hover) {
-  .iconButton, .fillIcon, .chatboxTabLabel, .uiThemeItem, button.checkboxButton, .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, button.checkboxButton, .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, .fillIcon:hover, .ynomojiButton:hover {
+  .iconButton:hover, a.fillIcon:hover, .ynomojiButton:hover {
     transform: scale(1.25);
   }
 
