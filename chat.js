@@ -169,11 +169,13 @@ function chatInputActionFired() {
   }
   Module._free(msgPtr);
   chatInput.value = "";
+  document.getElementById('ynomojiContainer').classList.add('hidden');
 }
 
 function chatNameCheck() {
   const nameInput = document.getElementById("nameInput");
-  if (nameInput.value == "") return;
+  if (nameInput.value == "")
+    return;
   if (!(/^[A-Za-z0-9]+$/.test(nameInput.value)))
     return;
   document.getElementById("enterNameContainer").style.display = "none";
