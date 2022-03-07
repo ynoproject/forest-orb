@@ -91,7 +91,7 @@ function onUpdateConnectionStatus(status) {
 let playerCount;
 
 function fetchAndUpdatePlayerCount() {
-  fetch(`../connect/${gameId}/players`)
+  fetch(`../connect/${gameId}/api/players`)
     .then(response => response.text())
     .then(count => updatePlayerCount(count))
     .catch(err => console.error(err));
