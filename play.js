@@ -720,9 +720,11 @@ function handleSaveFileUpload(evt) {
   
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
+      const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
-      window.location = window.location;
+      objectStorePutRequest.onsuccess = function (_e) {
+        window.location = window.location;
+      };
     };
 
     reader.readAsArrayBuffer(save);
