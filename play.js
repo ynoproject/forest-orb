@@ -273,7 +273,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 {
   const chatInput = document.getElementById('chatInput');
   chatInput.oninput = function () {
-    const ynomojiPattern = /:([a-z0-9\_\-]+(?:\:|$))/gi;
+    const ynomojiPattern = /:([a-z0-9\_\-]+(?:\:|$)|$)/gi;
     const ynomojiContainer = document.getElementById('ynomojiContainer');
     let currentMatch;
     let match;
@@ -287,7 +287,15 @@ document.getElementById('enterNameForm').onsubmit = function () {
         ynomoji.classList.toggle('hidden', !visible);
         hasMatch |= visible;
       }
-      ynomojiContainer.classList.toggle('hidden', !hasMatch);
+      if (match[1])
+        ynomojiContainer.classList.toggle('hidden', !hasMatch);
+      else {
+        const currentInputValue = this.value;
+        window.setTimeout(() => {
+          if (chatInput.value === currentInputValue)
+            ynomojiContainer.classList.remove('hidden');
+        }, 1000);
+      }
     } else
       ynomojiContainer.classList.add('hidden');
   };
@@ -1091,7 +1099,7 @@ function fetchAndPopulateYnomojiConfig() {
 
 function insertYnomoji(ynomojiId) {
   const chatInput = document.getElementById('chatInput');
-  const ynomojiMatch = /:([a-z0-9\_\-]+)$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
+  const ynomojiMatch = /:([a-z0-9\_\-]+)?$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
   if (ynomojiMatch)
     chatInput.value = `${chatInput.value.slice(0, ynomojiMatch.index)}:${ynomojiId}:${chatInput.value.slice(chatInput.selectionEnd)}`;
   else
