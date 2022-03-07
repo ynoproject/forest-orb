@@ -89,6 +89,12 @@ body.fullBg {
   background-size: 100%;
 }
 
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 .nowrap {
   white-space: nowrap;
 }
@@ -689,6 +695,18 @@ body.fullBg {
 
 .messageContainer.locMessage {
   text-align: center;
+}
+
+.messageContents .spoiler {
+  border: 1px solid var(--base-color);
+}
+
+.messageContents .spoiler:not(.show) {
+  background-color: var(--shadow-color);
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .messageContents .ynomojiWrapper {

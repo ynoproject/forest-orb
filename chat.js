@@ -247,17 +247,19 @@ function markMapUpdateInChat() {
 
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
-    { p: /<\/?[bisu] *>/ig, r: '' },
-    { p: /(?:^|([^\\]))(\*{3,})([^\*\_\~\\]+)\2/g, r: '$1<b><i>$3</i></b>' },
-    { p: /(?:^|([^\\]))(\*{2})([^\*\_\~\\]+)\2/g, r: '$1<b>$3</b>' },
-    { p: /(?:^|([^\\]))\*([^\*\_\~\\]+)\*/g, r: '$1<i>$2</i>' },
-    { p: /(?:^|([^\\]))(\_{3,})([^\*\_\~\\]+)\2(?= |$)/g, r: '$1<u><i>$3</i></u>' },
-    { p: /(?:^|([^\\]))(\_{2})([^\*\_\~\\]+)\2(?= |$)/g, r: '$1<u>$3</u>' },
-    { p: /(?:^|([^\\]))\_([^\*\_\~\\]+)\_(?= |$)/g, r: '$1<i>$2</i>' },
-    { p: /(?:^|([^\\]))(\~{2,})([^\*\_\~\\]+)\2/g, r: '$1<s>$3</s>' },
+    { p: /<\/?[bisux] *>/ig, r: '' },
+    { p: /(?:^|([^\\]))(\*{3,})([^\*\_\~\|\\]+)\2/g, r: '$1<b><i>$3</i></b>' },
+    { p: /(?:^|([^\\]))(\*{2})([^\*\_\~\|\\]+)\2/g, r: '$1<b>$3</b>' },
+    { p: /(?:^|([^\\]))\*([^\*\_\~\|\\]+)\*/g, r: '$1<i>$2</i>' },
+    { p: /(?:^|([^\\]))(\_{3,})([^\*\_\~\|\\]+)\2(?= |$)/g, r: '$1<u><i>$3</i></u>' },
+    { p: /(?:^|([^\\]))(\_{2})([^\*\_\~\|\\]+)\2(?= |$)/g, r: '$1<u>$3</u>' },
+    { p: /(?:^|([^\\]))\_([^\*\_\~\|\\]+)\_(?= |$)/g, r: '$1<i>$2</i>' },
+    { p: /(?:^|([^\\]))(\~{2,})([^\*\_\~\|\\]+)\2/g, r: '$1<s>$3</s>' },
+    { p: /(?:^|([^\\]))(\|{2,})([^\*\_\~\|\\]+)\2/g, r: '$1<x>$3</x>' },
     { p: /\\\*/g, r: '*' },
     { p: /\\\_/g, r: '_' },
     { p: /\\\~/g, r: '~' },
+    { p: /\\\|/g, r: '|' },
   ];
   for (let e of replacements)
     msg = msg.replace(e.p, e.r);
@@ -266,7 +268,7 @@ function parseMessageTextForMarkdown(msg) {
 }
 
 function populateMessageNodes(msg, node, asHtml) {
-  const tagPattern = /<([bisu])>(.*?)<\/\1>/;
+  const tagPattern = /<([bisux])>(.*?)<\/\1>/;
   let cursor = 0;
   let result;
 
@@ -281,8 +283,13 @@ function populateMessageNodes(msg, node, asHtml) {
         textNode = document.createTextNode(content);
       node.appendChild(textNode);
     }
-    const childNode = document.createElement(result[1]);
+    const isSpoiler = result[1] === 'x';
+    const childNode = document.createElement(isSpoiler ? 'span' : result[1]);
     const innerMsg = msg.substr(cursor + result.index + 3, result[2].length);
+    if (isSpoiler) {
+      childNode.classList.add('spoiler');
+      childNode.onclick = function () { this.classList.add('show'); };
+    }
     populateMessageNodes(innerMsg, childNode, asHtml);
     node.appendChild(childNode);
     cursor += result.index + result[2].length + 7;
