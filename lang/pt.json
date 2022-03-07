@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
@@ -24,15 +24,15 @@
     },
     "chatbox": {
       "location": "Localização:&nbsp;",
-      "immersionMode": "Immersion Mode",
+      "immersionMode": "Modo Imersão",
       "tab": {
         "chat": "Bate-Papo",
         "players": "Jogadores"
       },
       "chat": {
         "tab": {
-          "all": "All",
-          "map": "Map",
+          "all": "Todas",
+          "map": "Mapa",
           "global": "Global"
         },
         "nickname": {
@@ -46,7 +46,7 @@
     },
     "instruction": {
       "translation": "Trabalho de tradução necessário",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "* Sem suporte para a localização do jogo"
     },
     "2kki": {
       "hostedWithPermission": "Hospedados com a permissão dos desenvolvedores de Yume 2kki"
@@ -55,37 +55,37 @@
       "login": {
         "title": "Login",
         "fields": {
-          "username": "Username",
-          "password": "Password"
+          "username": "Nome de Usuário",
+          "password": "Senha"
         },
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
+        "registerPrompt": "Não tem uma conta?&nbsp;",
+        "register": "Registrar",
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "Nome de Usuário ou Senha estão incorretos."
         }
       },
       "register": {
-        "title": "Register",
+        "title": "Registrar",
         "fields": {
           "email": "Email",
-          "username": "Username",
-          "password": "Password",
-          "confirmPassword": "Confirm Password"
+          "username": "Nome d Usuário",
+          "password": "Senha",
+          "confirmPassword": "Confirmar Senha"
         },
-        "loginPrompt": "Already have an account?&nbsp;",
+        "loginPrompt": "Já tem uma conta?&nbsp;",
         "login": "Login",
         "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "emailTaken": "O endereço de email especificado já está em uso.",
+          "usernameTaken": "O nome de usuário especificado já está em uso."
         }
       },
       "settings": {
-        "title": "Settings",
+        "title": "Configurações",
         "fields": {
           "lang": "Idioma",
           "toggleNametags": "Alternar nome dos jogadores",
           "togglePlayerSounds": "Alternar áudio dos jogadores",
-          "tabToChat": "Press Tab to Chat"
+          "tabToChat": "Pressione Tab Para o Chat"
         }
       },
       "uiTheme": {
@@ -100,12 +100,12 @@
         "download": "Baixar arquivo salvo"
       },
       "uiTheme": "Tema da Interace",
-      "toggleChat": "Alternar bate papo",
-      "toggleImmersionMode": "Toggle Immersion Mode",
-      "settings": "Settings",
-      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "toggleChat": "Alternar Bate Papo",
+      "toggleImmersionMode": "Alternar Modo Imersão",
+      "settings": "Configurações",
+      "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
-        "clearChat": "Clear Chat"
+        "clearChat": "Limpar o Chat"
       },
       "nexus": "Voltar para o Nexo"
     }
@@ -151,23 +151,23 @@
       "unnamed": "Jogador sem nome"
     },
     "roles": {
-      "mod": "Moderator",
-      "dev": "Developer",
-      "owner": "Owner"
+      "mod": "Moderador",
+      "dev": "Desenvolvedor",
+      "owner": "Dono"
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "DICA: {CONTENT}",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
-        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
-        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "globalChatLocation": "You can view the location a global chat message was sent in by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
-        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), and ~~strikethrough~~ (\\~\\~text\\~\\~).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "backupReminder": "É recomendado que você mantenha um backup local do seu progresso por regularmente fazer o download do seu save. Dessa maneira, se a data do seu navegador for limpa, você são perderá progresso.",
+        "menuTheme": "A cor do seu nome e estilo de entrada na lista de jogador são baseados no seu tema de menu atual no jogo.",
+        "playersInMap": "Você pode alterar entre o número de jogadores online e o número de jogadores no seu mapa por clicar na etiqueta.",
+        "globalChatLocation": "Você pode vizualizar a localização de uma mensagem no chat global por pairar sobre ou clicar no ícone do globo no lado esquerdo da mensagem. Isso irá também amostrar ou esconder futuras mensagens globais do chat baseadas no seu último amostrar ou esconder.",
+        "markdownSupport": "O chat suporta formatação de texto por envolver o texto em certos caracteres. Os atualmente suportados são: **negrito** (\\*\\*texto\\*\\*), *itálico* (\\*texto\\*, \\_texto\\_), __sublinhado__ (\\_\\_texto\\_\\_), e ~~tachado~~ (\\~\\~texto\\~\\~).",
+        "tabToChat": "Se você estiver jogando em um PC, você pode pressionar a tecla tab para alternar entre a entrada do jogo e do chat. Essa funcionalidade pode ser desativada nas configurações sob 'Pressione Tab Para o Chat'.",
+        "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
+        "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todas', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
+        "immersionMode": "Se você preferir uma experiência mais imersiva do que uma mais social, tente o Modo Imersão. Ele desliga o chat global, a lista de jogadores, e contagem de jogadores para que seja mais interesante quando você encontrar outro jogador enquanto explora.",
+        "openSource": "YNOproject é código aberto e os repositórios de código estão disponíveis em https://github.com/ynoproject/"
       }
     },
     "2kki": {
