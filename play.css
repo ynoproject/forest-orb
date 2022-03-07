@@ -1225,27 +1225,19 @@ body.fullBg {
   #content.downscale #chatboxContainer {
     width: 100%;
     height: calc(100vh - 474px);
-    min-height: 188px;
-    max-height: 328px;
   }
 
   #content.downscale #chatbox {
     height: calc(100vh - 470px);
-    min-height: 200px;
-    max-height: 340px;
   }
 
   #content.downscale2 #chatboxContainer {
     width: 100%;
     height: calc(100vh - 354px);
-    min-height: 188px;
-    max-height: 328px;
   }
 
   #content.downscale2 #chatbox {
     height: calc(100vh - 350px);
-    min-height: 200px;
-    max-height: 340px;
   }
 
   .info {

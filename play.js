@@ -498,6 +498,7 @@ function onResize() {
     content.classList.toggle('downscale2', downscale2);
     layout.classList.toggle('overflow', isOverflow(downscale2 ? 0.5 : downscale ? 0.75 : 1));
   } else {
+    layout.classList.add('overflow');
     const overflow = isOverflow();
     if (overflow !== isOverflow(0.75)) {
       content.classList.toggle('downscale', downscale || overflow);
