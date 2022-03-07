@@ -493,7 +493,7 @@ body.fullBg {
   image-rendering: auto;
 }
 
-#content.downscale #layout:not(:fullscreen) canvas {
+#content.downscale2 #layout:not(:fullscreen) canvas {
   width: 320px;
   height: 240px;
 }
