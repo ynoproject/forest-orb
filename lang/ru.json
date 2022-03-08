@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -83,6 +83,14 @@
         "title": "Настройки",
         "fields": {
           "lang": "Язык",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "tabToChat": "Переключение в Чат Tab-у"
@@ -105,6 +113,7 @@
       "settings": "Настройки",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "Очистить Чат"
       },
       "nexus": "Вернуться на Главную страницу"

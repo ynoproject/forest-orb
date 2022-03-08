@@ -83,6 +83,14 @@
         "title": "Opciones",
         "fields": {
           "lang": "Lenguaje",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "tabToChat": "Press Tab to Chat"
@@ -105,6 +113,7 @@
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "Limpiar Chat"
       },
       "nexus": "Regresar al Nexo"

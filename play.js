@@ -38,8 +38,9 @@ let config = {
   disableNametags: false,
   disablePlayerSounds: false,
   immersionMode: false,
-  globalMessage: false,
   chatTabIndex: 0,
+  globalMessage: false,
+  hideOwnGlobalMessageLocation: false,
   showGlobalMessageLocation: false
 };
 
@@ -340,6 +341,12 @@ document.getElementById('globalMessageButton').onclick = function () {
     delete chatInput.dataset.global;
   chatInput.disabled = toggled && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
   config.globalMessage = toggled;
+  updateConfig(config);
+};
+
+document.getElementById('ownGlobalMessageLocationButton').onclick = function () {
+  this.classList.toggle('toggled');
+  config.hideOwnGlobalMessageLocation = this.classList.contains('toggled');
   updateConfig(config);
 };
 
@@ -1139,7 +1146,7 @@ function loadOrInitConfig(configObj, global) {
                 break;
               case 'tabToChat':
                 if (!value)
-                  preToggle(document.getElementById('tabToChatButton'));
+                  document.getElementById('tabToChatButton').click();
                 break;
             }
           } else {
@@ -1174,6 +1181,10 @@ function loadOrInitConfig(configObj, global) {
               case 'globalMessage':
                 if (value)
                   document.getElementById('globalMessageButton').click();
+                break;
+              case 'hideOwnGlobalMessageLocation':
+                if (value)
+                  document.getElementById('ownGlobalMessageLocationButton').click();
                 break;
               case 'uiTheme':
                 if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {

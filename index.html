@@ -163,6 +163,11 @@
                   </div>
                 </div>
                 <div id="chatButtons">
+                  <button id="ownGlobalMessageLocationButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.chat.toggleOwnGlobalMessageLocation" style="display:none">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                      <path d="m3 5q1-5 6-5t6 5-6 11q-7-6-6-11m6-2a1 1 0 0 0 0 5 1 1 0 0 0 0 -5m-2 11c-1 0-3 1-3 2s2 2 5 2 5-1 5-2-2-2-3-2" /><path d="m-2 16l22-14" />
+                    </svg>
+                  </button>
                   <button id="clearChatButton" class="iconButton unselectable" data-i18n="[title]tooltips.chat.clearChat">
                     <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
                       <path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m9.5-14.75l-7 7m0-7l7 7" />
@@ -310,6 +315,16 @@
                   <label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label>
                 </div>
               </li>
+              <!--<li class="formControlRow">
+                <label for="locationVisibility" class="unselectable" data-i18n="[html]modal.settings.fields.locationVisibility.label">In-Game Location Visibility</label>
+                <div>
+                  <select id="locationVisibility">
+                    <option value="0" data-i18n="modal.settings.fields.locationVisibility.values.private">Private</option>
+                    <option value="1" data-i18n="modal.settings.fields.locationVisibility.values.friends">Friends</option>
+                    <option value="2" data-i18n="modal.settings.fields.locationVisibility.values.public">Public</option>
+                  </select>
+                </div>
+              </li>-->
               <li class="formControlRow">
                 <label for="nametagToggle" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNametags">Nametags</label>
                 <div>

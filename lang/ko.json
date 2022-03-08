@@ -83,6 +83,14 @@
         "title": "옵션",
         "fields": {
           "lang": "언어",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "tabToChat": "Press Tab to Chat"
@@ -105,6 +113,7 @@
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "채팅 기록 삭제하기"
       },
       "nexus": "넥서스로 돌아가기"

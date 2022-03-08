@@ -83,6 +83,14 @@
         "title": "Settings",
         "fields": {
           "lang": "Langue",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "tabToChat": "Press Tab to Chat"
@@ -105,6 +113,7 @@
       "settings": "Settings",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "Effacer le Chat"
       },
       "nexus": "Retourner au Nexus"

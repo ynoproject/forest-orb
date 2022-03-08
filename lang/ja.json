@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "ゆめ２っきver{VERSION}",
@@ -83,6 +83,14 @@
         "title": "設定",
         "fields": {
           "lang": "言語",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "私立",
+              "friends": "友達",
+              "public": "公立"
+            }
+          },
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "tabToChat": "タブキーを 押して チャット"
@@ -105,6 +113,7 @@
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "グローバルメッセージ世界名のオン／オフ",
         "clearChat": "チャットを消去"
       },
       "nexus": "扉部屋へ戻る"

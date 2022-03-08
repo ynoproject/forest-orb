@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -83,6 +83,14 @@
         "title": "设置",
         "fields": {
           "lang": "语言",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
           "tabToChat": "开启/关闭Tab键聊天切换"
@@ -105,6 +113,7 @@
       "settings": "设置",
       "toggleGlobalMessage": "发送全局聊天记录",
       "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "清空记录"
       },
       "nexus": "返回到门的世界"
