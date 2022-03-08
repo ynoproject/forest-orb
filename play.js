@@ -529,7 +529,7 @@ function updateYnomojiContainerPos(isScrollUpdate) {
   const chatInput = document.getElementById('chatInput');
   const chatboxContainer = document.getElementById('chatboxContainer');
   const ynomojiContainer = document.getElementById('ynomojiContainer');
-  const isFullscreen = !!document.fullscreenElement;
+  const isFullscreen = (layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement);
   const isWrapped =  window.getComputedStyle(document.getElementById('layout')).flexWrap === 'wrap';
   const isDownscale2 = document.getElementById('content').classList.contains('downscale2');
   const isFullscreenSide = isFullscreen && (window.innerWidth > 1050 || window.innerHeight < 595);
@@ -595,7 +595,7 @@ function updateCanvasFullscreenSize() {
   let chatboxOverlap = false;
   let leftControlsMaxHeight = null;
   
-  if (document.fullscreenElement) {
+  if ((layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement)) {
     const showChat = !layoutElement.classList.contains('hideChat');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
@@ -672,7 +672,7 @@ function setFullscreenControlsHideTimer() {
 }
 
 document.onmousemove = function () {
-  if (document.fullscreenElement) {
+  if ((layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement)) {
     toggleControls(true);
     setFullscreenControlsHideTimer();
   }

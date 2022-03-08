@@ -43,7 +43,13 @@ html {
     left: 48px;
   }
 
+  /* Standard */
   #layout:fullscreen.overflow #dpad {
+    left: 48px;
+  }
+
+  /* Safari Mac */
+  #layout:-webkit-fullscreen.overflow #dpad {
     left: 48px;
   }
 }
@@ -117,6 +123,12 @@ html {
   opacity: 0.4;
 }
 
+/* Standard */
 #layout:fullscreen #dpad, #layout:fullscreen #apad {
+  bottom: 6rem;
+}
+
+/* Safari Mac */
+#layout:-webkit-fullscreen #dpad, #layout:-webkit-fullscreen #apad {
   bottom: 6rem;
 }
