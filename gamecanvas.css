@@ -34,6 +34,20 @@ html {
   left: 1rem;
 }
 
+@media (orientation: landscape) {
+  #layout.overflow #dpad {
+    left: 72px;
+  }
+
+  #content.noSideBorders #layout.overflow #dpad {
+    left: 48px;
+  }
+
+  #layout:fullscreen.overflow #dpad {
+    left: 48px;
+  }
+}
+
 #apad {
   right: 1rem;
 }
