@@ -29,6 +29,12 @@ document.querySelector('#controls-fullscreen').addEventListener('click', () => {
       setFullscreenControlsHideTimer();
     } else
       document.exitFullscreen();
+  } else if (layout.webkitRequestFullscreen) {
+    if (!document.webkitFullscreenElement) {
+      layout.webkitRequestFullscreen();
+      setFullscreenControlsHideTimer();
+    } else
+      document.webkitExitFullscreen();
   }
 });
 
