@@ -199,12 +199,10 @@ function onLoadMap(mapName) {
 }
 
 function syncPrevLocation() {
+  const prevMapId = cachedPrevMapId || '0000';
   const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
-  const prevMapIdPtr = Module.allocate(Module.intArrayFromString(cachedPrevMapId || '0000'), Module.ALLOC_NORMAL);
-  const prevLocationsPtr = Module.allocate(Module.intArrayFromString(prevLocationsStr), Module.ALLOC_NORMAL);
-  Module._SendPrevLocation(prevMapIdPtr, prevLocationsPtr);
-  Module._free(prevMapIdPtr);
-  Module._free(prevLocationsPtr);
+  fetch(`../connect/${gameId}/api/ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
+    .catch(err => console.error(err));
 }
 
 // EXTERNAL
