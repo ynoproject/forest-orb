@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -46,7 +46,7 @@
     },
     "instruction": {
       "translation": "Помочь с переводом",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "* Перевод игры отсутствует"
     },
     "2kki": {
       "hostedWithPermission": "Размещено с разрешения разработчиков Yume 2kki"
@@ -84,11 +84,11 @@
         "fields": {
           "lang": "Язык",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "Местоположение в игре",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "Приватное",
+              "friends": "Для друзей",
+              "public": "Для всех"
             }
           },
           "toggleNametags": "Ники",
@@ -98,7 +98,7 @@
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",
-        "auto": "Обычный"
+        "auto": "Как в игре"
       }
     },
     "tooltips": {
@@ -113,7 +113,7 @@
       "settings": "Настройки",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "toggleOwnGlobalMessageLocation": "Показать/Скрыть локацию в Глобальных сообщениях",
         "clearChat": "Очистить Чат"
       },
       "nexus": "Вернуться на Главную страницу"
