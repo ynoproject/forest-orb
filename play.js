@@ -224,6 +224,10 @@ function onReceiveInputFeedback(inputId) {
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
         break;
+      case 4:
+        buttonElement = document.getElementById('ownGlobalMessageLocationButton');
+        configKey = 'hideOwnGlobalMessageLocation';
+        break;
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
@@ -343,9 +347,8 @@ document.getElementById('globalMessageButton').onclick = function () {
 };
 
 document.getElementById('ownGlobalMessageLocationButton').onclick = function () {
-  this.classList.toggle('toggled');
-  config.hideOwnGlobalMessageLocation = this.classList.contains('toggled');
-  updateConfig(config);
+  if (Module.INITIALIZED)
+    Module._ToggleGlobalMessageLocation();
 };
 
 if (hasUiThemes) {
@@ -1185,7 +1188,7 @@ function loadOrInitConfig(configObj, global) {
                 break;
               case 'hideOwnGlobalMessageLocation':
                 if (value)
-                  document.getElementById('ownGlobalMessageLocationButton').click();
+                  preToggle(document.getElementById('ownGlobalMessageLocationButton'));
                 break;
               case 'uiTheme':
                 if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {

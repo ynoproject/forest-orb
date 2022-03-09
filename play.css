@@ -175,7 +175,7 @@ body.fullBg {
   filter: url(#dropShadow);
 }
 
-.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .globalMessageIcon path {
+.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .globalMessageIcon[title] path {
   stroke: url(#altGradient) !important;
 }
 
