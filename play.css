@@ -1296,16 +1296,27 @@ body.fullBg {
     padding-bottom: 4px;
   }
 
-  #onlineInfo {
+  #layout:not(:fullscreen) #onlineInfo {
     justify-content: right;
+  }
+
+  #layout:not(:fullscreen) #connStatusText, #layout:not(:fullscreen) #locationLabel {
+    display: none;
+  }
+
+  /* Ignore :fullscreen on iOS since it's not supported */
+  @supports (-webkit-touch-callout: none) {
+    #onlineInfo {
+      justify-content: right;
+    }
+
+    #connStatusText, #locationLabel {
+      display: none;
+    }
   }
 
   #connStatus {
     margin-right: 4px;
-  }
-
-  #connStatusText, #locationLabel {
-    display: none;
   }
 
   .chatboxTabSection {
@@ -1375,16 +1386,16 @@ body.fullBg {
   padding-bottom: 4px;
 }
 
-#layout.overflow #onlineInfo, #layout.overflow #location {
-  justify-content: right;
-}
-
 #layout.overflow .infoContainer {
   margin-right: 4px;
 }
 
 #layout.overflow #connStatusText, #layout.overflow #locationLabel {
   display: none;
+}
+
+#layout.overflow:not(:fullscreen) #onlineInfo, #layout.overflow:not(:fullscreen) #location {
+  justify-content: right;
 }
 
 #layout:not(:fullscreen).overflow #chatboxContainer {
@@ -1406,6 +1417,10 @@ body.fullBg {
 
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
+  #layout.overflow #onlineInfo, #layout.overflow #location {
+    justify-content: right;
+  }
+  
   #layout.overflow #chatboxContainer {
     width: 100%;
     height: calc(100vh - 638px);
