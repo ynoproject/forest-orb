@@ -68,7 +68,7 @@
         "title": "Registrar",
         "fields": {
           "email": "Email",
-          "username": "Nome d Usuário",
+          "username": "Nome de Usuário",
           "password": "Senha",
           "confirmPassword": "Confirmar Senha"
         },
@@ -84,11 +84,11 @@
         "fields": {
           "lang": "Idioma",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "Visibilidade da Localização no Jogo",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "Privado",
+              "friends": "Amigos",
+              "public": "Público"
             }
           },
           "toggleNametags": "Alternar nome dos jogadores",
@@ -113,7 +113,7 @@
       "settings": "Configurações",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "toggleOwnGlobalMessageLocation": "Amostrar/Esconder Localização da Mensagem do Chat Global",
         "clearChat": "Limpar o Chat"
       },
       "nexus": "Voltar para o Nexo"
