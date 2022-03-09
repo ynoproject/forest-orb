@@ -500,6 +500,8 @@ function onResize() {
 
   onUpdateChatboxInfo();
 
+  document.documentElement.style.setProperty('--content-height', `${document.getElementById('bottom').offsetTop}px`);
+
   if (window.innerWidth < window.innerHeight) {
     content.classList.toggle('downscale', downscale);
     content.classList.toggle('downscale2', downscale2);
@@ -534,10 +536,10 @@ function updateYnomojiContainerPos(isScrollUpdate) {
   const isDownscale2 = document.getElementById('content').classList.contains('downscale2');
   const isFullscreenSide = isFullscreen && (window.innerWidth > 1050 || window.innerHeight < 595);
   ynomojiContainer.style.bottom = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
-    ? `calc((100% - ${chatInput.offsetTop}px) + max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - ${document.querySelector('html').scrollTop}px, 0px))`
+    ? `calc((100% - ${chatInput.offsetTop}px) + max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - var(--content-scroll), 0px))`
     : `calc(100% - ${chatInput.offsetTop}px)`;
   ynomojiContainer.style.maxHeight = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
-    ? `calc(${document.getElementById('messages').offsetHeight - 16}px - max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - ${document.querySelector('html').scrollTop}px, 0px))`
+    ? `calc(${document.getElementById('messages').offsetHeight - 16}px - max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - var(--content-scroll), 0px))`
     : `${document.getElementById('messages').offsetHeight - 16}px`;
   if (!isScrollUpdate) {
     ynomojiContainer.style.width = hasTouchscreen && isWrapped && !isDownscale2
@@ -587,7 +589,6 @@ function updateCanvasFullscreenSize() {
   const chatboxContainerElement = document.getElementById('chatboxContainer');
   const messages = document.getElementById('messages');
 
-  let canvasContainerHeight = null;
   let canvasContainerPaddingRight = null;
   let canvasContainerMarginTop = null;
   let chatboxContainerMarginTop = null;
@@ -635,7 +636,6 @@ function updateCanvasFullscreenSize() {
     leftControlsMaxHeight = `${canvasElement.offsetHeight}px`;
   }
 
-  canvasContainerElement.style.height = canvasContainerHeight;
   canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
   canvasContainerElement.style.marginTop = canvasContainerMarginTop;
   chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
@@ -652,8 +652,11 @@ window.onresize = function () { window.setTimeout(onResize, 0); };
 
 document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
 
-if (hasTouchscreen)
-  document.addEventListener('scroll', () => updateYnomojiContainerPos(true));
+document.getElementById('content').addEventListener('scroll', function () {
+  document.documentElement.style.setProperty('--content-scroll', `${this.scrollTop}px`);
+  if (hasTouchscreen)
+    updateYnomojiContainerPos(true);
+});
 
 function toggleControls(show) {
   document.getElementById('controls').classList.toggle('fshidden', !show);

@@ -10,6 +10,9 @@
   --base-color-image-url: url('images/ui/2kki/system1/font1.png');
   --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
   --border-image-url: url('images/ui/2kki/system1/border.png');
+
+  --content-height: 0px;
+  --content-scroll: 0px;
 }
 
 @font-face {
@@ -26,6 +29,10 @@ html, input, select, button {
 html, input, select, button.checkboxButton {
   color: var(--base-color) !important;
   background-color: black;
+}
+
+html {
+  overflow-y: hidden;
 }
 
 #chatBorder, input, select, button.checkboxButton {
@@ -78,11 +85,7 @@ body, .container, div, input, button.checkboxButton {
 }
 
 body {
-  margin: 0 0 16px 0;
-  padding: 8px;
-  background-size: 210px;
-  background-position-y: -16px;
-  background-image: var(--container-bg-image-url) !important;
+  margin: 0;
 }
 
 body.fullBg {
@@ -216,17 +219,34 @@ body.fullBg {
 
 #background {
   position: fixed;
+  width: 100%;
+  height: 100%;
+  background-size: 210px;
+  background-position-y: calc(-16px - var(--content-scroll) * 0.25);
+  background-image: var(--container-bg-image-url) !important;
+  z-index: -1;
+}
+
+#backgroundOverlay {
+  position: fixed;
   background-color: black;
-  margin: -8px;
   width: 100%;
   height: 100%;
   opacity: 0.325;
+  z-index: -1;
 }
 
 #backgroundTransition {
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
   height: 150px;
   margin: -128px -8px -16px -8px;
+  scroll-snap-align: end;
+}
+
+#layoutEnd {
+  width: 100%;
+  height: 8px;
+  scroll-snap-align: end;
 }
 
 #loadingOverlay {
@@ -246,6 +266,26 @@ body.fullBg {
 #loadingOverlay.loaded {
   opacity: 0;
   pointer-events: none;
+}
+
+#content {
+  height: 100vh;
+  padding: 0 8px 8px 8px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+#top {
+  height: 8px;
+  scroll-snap-align: start;
+}
+
+#bottom {
+  position: relative;
+  top: 16px;
+  height: calc(100vh - var(--content-height));
+  background-color: black;
+  margin: 0 -8px;
 }
 
 #header, #layout {
@@ -352,6 +392,7 @@ body.fullBg {
 #layout {
   width: 100%;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 #layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
