@@ -531,7 +531,7 @@ function updateYnomojiContainerPos(isScrollUpdate) {
   const chatInput = document.getElementById('chatInput');
   const chatboxContainer = document.getElementById('chatboxContainer');
   const ynomojiContainer = document.getElementById('ynomojiContainer');
-  const isFullscreen = (layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement);
+  const isFullscreen = document.fullscreenElement;
   const isWrapped =  window.getComputedStyle(document.getElementById('layout')).flexWrap === 'wrap';
   const isDownscale2 = document.getElementById('content').classList.contains('downscale2');
   const isFullscreenSide = isFullscreen && (window.innerWidth > 1050 || window.innerHeight < 595);
@@ -566,7 +566,7 @@ function onUpdateChatboxInfo() {
     tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
   }
 
-  if (!layout.classList.contains('immersionMode') && window.getComputedStyle(layout).flexWrap === 'wrap') {
+  if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && window.getComputedStyle(layout).flexWrap === 'wrap') {
     const lastTab = chatboxTabs[chatboxTabs.length - 1];
     const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
     chatboxInfo.style.marginLeft = offsetLeft;
@@ -596,7 +596,7 @@ function updateCanvasFullscreenSize() {
   let chatboxOverlap = false;
   let leftControlsMaxHeight = null;
   
-  if ((layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement)) {
+  if (document.fullscreenElement) {
     const showChat = !layoutElement.classList.contains('hideChat');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
@@ -675,7 +675,7 @@ function setFullscreenControlsHideTimer() {
 }
 
 document.onmousemove = function () {
-  if ((layout.requestFullscreen && document.fullscreenElement) || (layout.webkitRequestFullscreen && document.webkitFullscreenElement)) {
+  if (document.fullscreenElement) {
     toggleControls(true);
     setFullscreenControlsHideTimer();
   }

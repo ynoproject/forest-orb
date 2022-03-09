@@ -429,22 +429,25 @@ body.fullBg {
   z-index: 2;
 }
 
-#content.noSideBorders #header, #content.noSideBorders #mainContainer, #content.noSideBorders #chatboxContainer {
+#content.noSideBorders #header, #content.noSideBorders #mainContainer {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
 }
 
-/* Standard */
-#content.noSideBorders #layout:fullscreen #chatboxContainer {
-  border-left-width: 24px;
-  border-right-width: 24px;
+#content.noSideBorders #layout:not(:fullscreen) #chatboxContainer {
+  border-left-width: 0;
+  border-right-width: 0;
+  width: 100%;
 }
 
-/* Mac */
-#content.noSideBorders #layout:-webkit-fullscreen #chatboxContainer {
-  border-left-width: 24px;
-  border-right-width: 24px;
+/* Ignore :fullscreen on iOS since it's not supported */
+@supports (-webkit-touch-callout: none) {
+  #content.noSideBorders #chatboxContainer {
+    border-left-width: 0;
+    border-right-width: 0;
+    width: 100%;
+  }
 }
 
 #controls, #leftControls {
@@ -461,17 +464,7 @@ body.fullBg {
   opacity: 1;
 }
 
-/* Standard */
 #layout:fullscreen #controls.fshidden {
-  -webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-  opacity: 0;
-}
-
-/* Mac */
-#layout:-webkit-full-screen #controls.fshidden {
   -webkit-transition: opacity 0.5s ease-in-out;
   -moz-transition: opacity 0.5s ease-in-out;
   -o-transition: opacity 0.5s ease-in-out;
@@ -492,15 +485,7 @@ body.fullBg {
   margin-bottom: 8px;
 }
 
-/* Standard */
 #layout:not(:fullscreen) #controls {
-  height: 24px;
-  margin-bottom: -24px;
-  position: relative;
-}
-
-/* Safari Mac */
-#layout:not(:-webkit-fullscreen) #controls {
   height: 24px;
   margin-bottom: -24px;
   position: relative;
@@ -553,8 +538,6 @@ body.fullBg {
   margin: 0 auto;
 }
 
-/* Standard */
-
 #content.downscale #layout:not(:fullscreen) canvas {
   width: 480px;
   height: 360px;
@@ -562,19 +545,6 @@ body.fullBg {
 }
 
 #content.downscale2 #layout:not(:fullscreen) canvas {
-  width: 320px;
-  height: 240px;
-}
-
-/* Safari Mac */
-
-#content.downscale #layout:not(:-webkit-fullscreen) canvas {
-  width: 480px;
-  height: 360px;
-  image-rendering: auto;
-}
-
-#content.downscale2 #layout:not(:-webkit-fullscreen) canvas {
   width: 320px;
   height: 240px;
 }
@@ -606,6 +576,7 @@ body.fullBg {
 }
 
 #chatboxContainer {
+  min-height: 240px;
   z-index: 1;
 }
 
@@ -1366,13 +1337,7 @@ body.fullBg {
     right: 0;
   }
 
-  /* Standard */
   #layout:fullscreen #chatboxContainer {
-    width: calc(100% - 48px);
-  }
-
-  /* Safari Mac */
-  #layout:-webkit-fullscreen #chatboxContainer {
     width: calc(100% - 48px);
   }
 }
@@ -1422,8 +1387,6 @@ body.fullBg {
   display: none;
 }
 
-/* Standard */
-
 #layout:not(:fullscreen).overflow #chatboxContainer {
   width: 100%;
   height: calc(100vh - 638px);
@@ -1438,25 +1401,6 @@ body.fullBg {
 }
 
 #layout:not(:fullscreen).overflow .chatboxTabSection {
-  width: calc(100% - 16px);
-}
-
-/* Safari Mac */
-
-#layout:not(:-webkit-fullscreen).overflow #chatboxContainer {
-  width: 100%;
-  height: calc(100vh - 638px);
-  min-height: 188px;
-  max-height: 328px;
-}
-
-#layout:not(:-webkit-fullscreen).overflow #chatbox {
-  height: calc(100vh - 634px);
-  min-height: 200px;
-  max-height: 340px;
-}
-
-#layout:not(:-webkit-fullscreen).overflow .chatboxTabSection {
   width: calc(100% - 16px);
 }
 
@@ -1515,8 +1459,6 @@ body.fullBg {
   }
 }
 
-/* Standard */
-
 #layout:fullscreen #mainContainer, #layout:fullscreen #chatboxContainer, #layout:fullscreen #chatbox {
   height: 100%;
   max-height: 100%;
@@ -1524,6 +1466,11 @@ body.fullBg {
 
 #layout:fullscreen #chatboxContainer, #layout:fullscreen #chatbox {
   height: calc(100% - 24px);
+}
+
+#layout.overflow.chatboxOverlap:fullscreen #chatboxContainer {
+  width: calc(100% - 72px);
+  left: 24px;
 }
 
 #layout:fullscreen #mainContainer {
@@ -1576,70 +1523,6 @@ body.fullBg {
 }
 
 #layout:fullscreen #uiControls {
-  display: none;
-}
-
-/* Safari Mac */
-
-#layout:-webkit-fullscreen #mainContainer, #layout:-webkit-fullscreen #chatboxContainer, #layout:-webkit-fullscreen #chatbox {
-  height: 100%;
-  max-height: 100%;
-}
-
-#layout:-webkit-fullscreen #chatboxContainer, #layout:-webkit-fullscreen #chatbox {
-  height: calc(100% - 24px);
-}
-
-#layout:-webkit-fullscreen #mainContainer {
-  border: none;
-  background-image: none !important;
-  width: 100%;
-  z-index: auto;
-}
-
-#content.downscale #layout:-webkit-fullscreen canvas {
-  image-rendering: auto;
-  min-width: 640px;
-  min-height: 480px;
-}
-
-#layout:-webkit-fullscreen #controls {
-  position: fixed;
-  right: 0;
-}
-
-#layout:-webkit-fullscreen #controls button {
-  margin: 8px 8px 0 0;
-}
-
-#layout:-webkit-fullscreen #leftControls {
-  margin-left: 8px;
-}
-
-#layout:-webkit-fullscreen #chatboxContainer {
-  position: absolute;
-  right: 0;
-  height: calc(100% - 48px);
-  border-image: none !important;
-  background-image: none !important;
-  z-index: 2;
-}
-
-#layout.chatboxOverlap:-webkit-fullscreen #chatboxContainer {
-  opacity: 50%;
-  pointer-events: none;
-}
-
-#layout:-webkit-fullscreen .chatboxTab.active {
-  background-image: none !important;
-  background-color: var(--base-bg-color);
-}
-
-#layout.chatboxOverlap:-webkit-fullscreen #messages {
-  overflow-y: hidden;
-}
-
-#layout:-webkit-fullscreen #uiControls {
   display: none;
 }
 
