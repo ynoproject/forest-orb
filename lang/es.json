@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -46,7 +46,7 @@
     },
     "instruction": {
       "translation": "¡Ayúdanos a traducir!",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "* Localización no soportada"
     },
     "2kki": {
       "hostedWithPermission": "Alojado con la autorización de los desarrolladores de Yume 2kki"
@@ -84,16 +84,16 @@
         "fields": {
           "lang": "Lenguaje",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "Visibilidad de Ubicación",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "Privado",
+              "friends": "Amigos",
+              "public": "Público"
             }
           },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
-          "tabToChat": "Press Tab to Chat"
+          "tabToChat": "Presiona Tab para chatear"
         }
       },
       "uiTheme": {
@@ -113,7 +113,7 @@
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "toggleOwnGlobalMessageLocation": "Alternar Ubicación de Mensajes de Chat",
         "clearChat": "Limpiar Chat"
       },
       "nexus": "Regresar al Nexo"
@@ -167,12 +167,12 @@
     "chatTips": {
       "template": "CONSEJO: {CONTENT}",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "backupReminder": "Se recomienda descargar frecuentemente los archivos de guardado para evitar perder el progreso en el juego en el caso de que la caché del navegador sea borrada.",
         "menuTheme": "Tu color de nombre y estilo en la lista de jugadores cambia dependiendo del menú que selecciones dentro del juego.",
         "playersInMap": "Puedes alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
         "globalChatLocation": "Puedes ver la ubicación desde donde se envío un mensaje global presionando el ícono de globo a la izquierda del mensaje. Puedes volver a presionar el ícono para ocultar esta información.",
-        "markdownSupport": "El chat soporta formateo de texto al usar ciertos carácteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
+        "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
+        "tabToChat": "Si juegas en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
         "chatTabNotifications": "Cuando te encuentras en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
         "clearChat": "Cuando presionas el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
         "immersionMode": "Si prefieres una experiencia inmersiva sobre una social, intenta el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
