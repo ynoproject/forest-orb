@@ -146,7 +146,7 @@ function setSystemName(name) {
   if (playerData)
     playerData.systemName = name;
   if (connStatus === 1)
-    addOrUpdatePlayerListEntry(systemName, playerName, -1);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, -1);
 }
 
 // EXTERNAL
