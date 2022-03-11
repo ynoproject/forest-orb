@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -28,14 +28,14 @@
       "tab": {
         "chat": "Чат",
         "players": "Игроки",
-        "parties": "Parties"
+        "parties": "Группы"
       },
       "chat": {
         "tab": {
           "all": "Все",
           "map": "Карта",
           "global": "Глобальный",
-          "party": "Party"
+          "party": "Группа"
         },
         "nickname": {
           "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
@@ -47,8 +47,8 @@
       },
       "players": {
         "tab": {
-          "map": "Map",
-          "party": "Party"
+          "map": "Карта",
+          "party": "Группа"
         }
       }
     },
@@ -109,13 +109,13 @@
         "auto": "Как в игре"
       },
       "createParty": {
-        "title": "Create Party",
+        "title": "Создать Группу",
         "fields": {
-          "partyName": "Party Name",
-          "public": "Public",
-          "theme": "Theme"
+          "partyName": "Имя группы",
+          "public": "Открытая",
+          "theme": "Стиль оформления"
         },
-        "submit": "Submit"
+        "submit": "Отправить"
       }
     },
     "tooltips": {
@@ -134,7 +134,7 @@
         "clearChat": "Очистить Чат"
       },
       "parties": {
-        "createParty": "Create Party"
+        "createParty": "Создать Группу"
       },
       "nexus": "Вернуться на Главную страницу"
     }
@@ -185,12 +185,12 @@
       "owner": "Владелец"
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
-      "defaultPartyName": "{OWNER}'s Party",
-      "offlineMemberSuffix": " (Offline)",
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}"
+      "emptyMessage": "Пока ещё никто не создал ни одной группы.",
+      "yourParty": "Ваша Группа",
+      "defaultPartyName": "Группа {OWNER}",
+      "offlineMemberSuffix": " (Вне сети)",
+      "onlineCount": "В сети - {COUNT}",
+      "offlineCount": "Вне сети - {COUNT}"
     },
     "chatTips": {
       "template": "СОВЕТ: {CONTENT}",
