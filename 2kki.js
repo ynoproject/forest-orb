@@ -13,9 +13,9 @@ function send2kkiApiRequest(url, callback) {
     req.open('GET', url);
     req.send();
 
-    req.onload = e => {
+    req.onload = _e => {
       for (let cb of pendingRequests[url])
-        cb(e);
+        cb(req.response);
       delete pendingRequests[url];
     };
   }
@@ -86,8 +86,8 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
     if (!setLocationFunc)
       setLocationFunc = () => {};
       
-    const callback = (_e) => {
-      const locationsArray = req.response;
+    const callback = response => {
+      const locationsArray = response;
       const locations = [];
 
       const cacheAndResolve = () => {
@@ -138,10 +138,10 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
         } else
           setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
       } else {
-        const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
+        const errCode = !Array.isArray(response) ? response.err_code : null;
         
         if (errCode)
-          console.error({ error: req.response.error, errCode: errCode });
+          console.error({ error: response.error, errCode: errCode });
 
         if (prevMapId) {
           queryAndSet2kkiLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
@@ -252,17 +252,17 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
     const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
-    const callback = (_e) => {
+    const callback = response => {
       let ret = [];
       let errCode = null;
 
-      if (Array.isArray(req.response))
-        ret = req.response;
+      if (Array.isArray(response))
+        ret = response;
       else
-        errCode = req.response.err_code;
+        errCode = response.err_code;
         
       if (errCode)
-        console.error({ error: req.response.error, errCode: errCode });
+        console.error({ error: response.error, errCode: errCode });
 
       resolve(ret);
     };
@@ -273,16 +273,16 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
     const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
-    const callback = (_e) => {
+    const callback = response => {
       let errCode = null;
 
-      if (Array.isArray(req.response))
-        set2kkiMaps(req.response, locationNames, true, true);
+      if (Array.isArray(response))
+        set2kkiMaps(response, locationNames, true, true);
       else
-        errCode = req.response.err_code;
+        errCode = response.err_code;
         
       if (errCode)
-        console.error({ error: req.response.error, errCode: errCode });
+        console.error({ error: response.error, errCode: errCode });
 
       resolve();
     };
