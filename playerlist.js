@@ -21,6 +21,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
 
   let roleIcon = playerListEntry ? playerListEntry.querySelector(".roleIcon") : null;
 
+  const player = uuid === defaultUuid ? playerData : globalPlayerData[uuid];
+
   if (!playerListEntry) {
     playerListEntry = document.createElement("div");
     playerListEntry.classList.add("playerListEntry");
@@ -49,7 +51,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
     playerListEntryActionContainer.classList.add("listEntryActionContainer");
 
     // Not yet supported
-    /*if (globalPlayerData[uuid] && playerData?.rank > globalPlayerData[uuid].rank) {
+    /*if (player && playerData?.rank > player.rank) {
       const banAction = document.createElement("a");
       banAction.href = "javascript:void(0);";
       banAction.onclick = function () {
@@ -73,8 +75,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
     else
       playerListEntry.dataset.unnamed = "unnamed";
 
-    if (globalPlayerData[uuid]?.rank) {
-      const rank = Math.min(globalPlayerData[uuid].rank, 3);
+    if (player?.rank) {
+      const rank = Math.min(player.rank, 3);
       nameText.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
       roleIcon = nameText.children[0];
       roleIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
