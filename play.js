@@ -78,6 +78,7 @@ function onUpdateConnectionStatus(status) {
   else
     updateStatusText();
   if (status === 1) {
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
     if (!hasConnected) {
       addChatTip();

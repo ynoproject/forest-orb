@@ -3,6 +3,7 @@ const rankEmojis = {
   2: '🔧',
   3: '👑'
 };
+const defaultUuid = '0000000000000000';
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
@@ -31,8 +32,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
     playerListEntrySprite.classList.add("listEntrySprite");
 
     let playerSpriteCacheEntry = playerSpriteCache[uuid];
-    if (!playerSpriteCacheEntry && uuid !== playerData?.uuid)
-      playerSpriteCacheEntry = playerSpriteCache[playerData?.uuid];
+    if (!playerSpriteCacheEntry && uuid !== defaultUuid)
+      playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
     if (playerSpriteCacheEntry) {
       getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
         playerListEntrySprite.src = spriteImg;
@@ -116,9 +117,9 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
     const playerListEntries = playerList.querySelectorAll(".playerListEntry");
 
     const entries = [].slice.call(playerListEntries).sort(function (a, b) {
-      if (a.dataset.uuid == playerData?.uuid)
+      if (a.dataset.uuid == defaultUuid)
         return -1;
-      if (b.dataset.uuid == playerData?.uuid)
+      if (b.dataset.uuid == defaultUuid)
         return 1;
       if (a.dataset.unnamed) {
         if (b.dataset.unnamed)
@@ -256,7 +257,6 @@ function syncPlayerData(uuid, rank, id) {
     };
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
-    addOrUpdatePlayerListEntry(null, systemName, playerName, uuid);
   }
 }
 
@@ -283,7 +283,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
 
 // EXTERNAL
 function onPlayerSpriteUpdated(sprite, idx, id) {
-  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id] : -1);
+  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id] : defaultUuid);
 }
 
 // EXTERNAL
