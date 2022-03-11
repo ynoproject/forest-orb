@@ -483,13 +483,17 @@ function onClickChatboxTab() {
       document.getElementById("unreadMessageCountContainer").classList.add('hidden');
     else if (activeChatboxTabSection === 'parties') {
       updatePartyList();
-      const updatePartyListTimer = setInterval(() => {
+      if (updatePartyListTimer)
+        clearInterval(updatePartyListTimer);
+      updatePartyListTimer = setInterval(() => {
         if (skipPartyListUpdate)
           skipPartyListUpdate = false;
-        else if (document.getElementById("chatboxTabParties").classList.contains("active"))
+        else if (document.getElementById('chatboxTabParties').classList.contains('active'))
           updatePartyList();
-        else
+        else {
           clearInterval(updatePartyListTimer);
+          updatePartyListTimer = null;
+        }
       }, 10000);
     }
     for (let tab of document.getElementsByClassName('chatboxTab'))
@@ -730,7 +734,7 @@ let fullscreenControlsTimer;
 
 function setFullscreenControlsHideTimer() {
   if (fullscreenControlsTimer)
-    window.clearInterval(fullscreenControlsTimer);
+    clearTimeout(fullscreenControlsTimer);
   fullscreenControlsTimer = setTimeout(function () {
     if (!document.querySelector("#controls button:hover"))
       toggleControls(false);

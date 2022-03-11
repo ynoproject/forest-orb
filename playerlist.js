@@ -3,7 +3,7 @@ const rankEmojis = {
   2: '🔧',
   3: '👑'
 };
-const defaultUuid = '0000000000000000';
+const defaultUuid = "0000000000000000";
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
@@ -118,18 +118,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
   if (playerList.childElementCount > 1) {
     const playerListEntries = playerList.querySelectorAll(".playerListEntry");
 
+    const sortFunc = getPlayerListIdEntrySortFunc(playerList.id);
+
     const entries = [].slice.call(playerListEntries).sort(function (a, b) {
-      if (a.dataset.uuid == defaultUuid)
-        return -1;
-      if (b.dataset.uuid == defaultUuid)
-        return 1;
-      if (a.dataset.unnamed) {
-        if (b.dataset.unnamed)
-          return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
-        return 1;
+      if (sortFunc) {
+        const sortValue = sortFunc(a, b);
+        if (sortValue !== 0)
+          return sortValue;
       }
-      if (b.dataset.unnamed)
-        return -1;
       return a.innerText.localeCompare(b.innerText);
     });
 
@@ -176,6 +172,74 @@ function clearPlayerList(playerList) {
 
   if (playerList.id === 'playerList')
     updateMapPlayerCount(0);
+}
+
+function getPlayerListIdEntrySortFunc(playerListId) {
+  if (playerListId) {
+    switch (playerListId) {
+      case "playerList":
+      case "partyPlayerList":
+        const baseFunc = (a, b) => {
+          const rankA = globalPlayerData[a.dataset.uuid]?.rank;
+          const rankB = globalPlayerData[b.dataset.uuid]?.rank;
+          if (rankA !== rankB)
+            return rankA < rankB ? 1 : -1;
+          if (a.dataset.unnamed) {
+            if (b.dataset.unnamed)
+              return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
+            return 1;
+          }
+          if (b.dataset.unnamed)
+            return -1;
+          return 0;
+        };
+        return playerListId === "playerList"
+          ? (a, b) => {
+            if (a.dataset.uuid === defaultUuid)
+              return -1;
+            if (b.dataset.uuid === defaultUuid)
+              return 1;
+            return baseFunc(a, b);
+          }
+          : (a, b) => {
+            if (a.dataset.uuid === partyCache[joinedPartyId]?.ownerUuid)
+              return -1;
+            if (b.dataset.uuid === partyCache[joinedPartyId]?.ownerUuid)
+              return 1;
+            if (a.dataset.uuid === playerData?.uuid)
+              return -1;
+            if (b.dataset.uuid === playerData?.uuid)
+              return 1;
+            return baseFunc(a, b);
+          };
+      case "partyModalOnlinePlayerList":
+      case "partyModalOfflinePlayerList":
+        return (a, b) => {
+          const partyModalPartyId = document.getElementById("partyModal").dataset.partyId;
+          if (a.dataset.uuid === partyCache[partyModalPartyId]?.ownerUuid)
+            return -1;
+          if (b.dataset.uuid === partyCache[partyModalPartyId]?.ownerUuid)
+            return 1;
+          if (a.dataset.uuid === playerData?.uuid)
+            return -1;
+          if (b.dataset.uuid === playerData?.uuid)
+            return 1;
+          const rankA = globalPlayerData[a.dataset.uuid]?.rank;
+          const rankB = globalPlayerData[b.dataset.uuid]?.rank;
+          if (rankA !== rankB)
+            return rankA < rankB ? 1 : -1;
+          if (a.dataset.unnamed) {
+            if (b.dataset.unnamed)
+              return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
+            return 1;
+          }
+          if (b.dataset.unnamed)
+            return -1;
+          return 0;
+        };
+    }
+  }
+  return null;
 }
 
 function getSpriteImg(sprite, idx, callback, dir) {

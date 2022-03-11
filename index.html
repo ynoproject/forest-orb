@@ -147,9 +147,9 @@
               <div id="chatboxTabPlayers" class="chatboxTab" data-tab-section="players">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label>
               </div>
-              <!--<div id="chatboxTabParties" class="chatboxTab" data-tab-section="parties">
+              <div id="chatboxTabParties" class="chatboxTab" data-tab-section="parties" style="display: none">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.parties">Parties</label>
-              </div>-->
+              </div>
             </div>
             <div id="chat" class="chatboxTabSection">
               <div id="chatHeader" class="tabHeader">
@@ -200,8 +200,8 @@
                 </div>
                 <div id="playersButtons" class="tabButtons"></div>
               </div>
-              <div id="playerList" class="chatboxTabContent playerList scrollableContainer"></div>
-              <div id="partyPlayerList" class="chatboxTabContent playerList scrollableContainer"></div>
+              <div id="playerList" class="playerList chatboxTabContent scrollableContainer"></div>
+              <div id="partyPlayerList" class="playerList chatboxTabContent scrollableContainer"></div>
             </div>
             <div id="parties" class="chatboxTabSection hidden">
               <div id="partiesHeader" class="tabHeader">
@@ -214,7 +214,7 @@
                   </button>
                 </div>
               </div>
-              <div id="partyList" class="chatboxTabContent scrollableContainer"></div>
+              <div id="partyList" class="partyList chatboxTabContent scrollableContainer"></div>
             </div>
             <template><div class="globalMessageIcon icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
@@ -462,9 +462,9 @@
           </div>
           <div class="modalContent">
             <div id="partyModalPlayerListContainer" class="scrollableContainer">
-              <h4 id="partyModalOnlineCount" class="infoText">Online - 0</h4>
+              <h4 id="partyModalOnlineCount" class="partyModalPlayerCount infoText">Online - 0</h4>
               <div id="partyModalOnlinePlayerList" class="playerList"></div>
-              <h4 id="partyModalOfflineCount" class="infoText">Offline - 0</h4>
+              <h4 id="partyModalOfflineCount" class="partyModalPlayerCount infoText">Offline - 0</h4>
               <div id="partyModalOfflinePlayerList" class="playerList"></div>
             </div>
           </div>

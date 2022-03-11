@@ -755,12 +755,18 @@ body.fullBg {
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
-.chatboxTabContent {
+.chatboxTabContent, .chatboxTabContent > .divider {
   border-top: 8px solid transparent;
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
-#content:not(.inParty) .playerList {
+.chatboxTabContent > .infoText {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+#content:not(.inParty) .playerList, #content.inParty .partyList {
   border-top: none;
 }
 
@@ -1116,7 +1122,7 @@ body.fullBg {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .globalMessageLocation.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .globalMessageLocation.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 
@@ -1172,7 +1178,8 @@ body.fullBg {
   left: auto;
   width: 100%;
   height: auto;
-  max-width: 480px;
+  max-width: min(480px, calc(100% - 112px));
+  max-height: calc(100% - 112px);
   margin: 8px;
   padding-bottom: 16px;
   background-image: var(--modal-container-bg-image-url) !important;

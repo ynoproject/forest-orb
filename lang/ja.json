@@ -185,8 +185,8 @@
       "owner": "所有者"
     },
     "parties": {
-      "emptyMessage": "現在、活動中のパーティーはありません。",
-      "yourParty": "自分のパーティー",
+      "emptyMessage": "現在、 活動中の パーティーは ありません。",
+      "yourParty": "自分の パーティー",
       "defaultPartyName": "{OWNER}のパーティー",
       "offlineMemberSuffix": "（オフライン）",
       "onlineCount": "オンライン - {COUNT}",
