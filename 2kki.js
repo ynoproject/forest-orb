@@ -1,6 +1,26 @@
 const is2kki = gameId === '2kki';
 const unknownLocations = [];
 
+const pendingRequests = {};
+
+function send2kkiApiRequest(url, callback) {
+  if (pendingRequests.hasOwnProperty(url))
+    pendingRequests[url].push(callback);
+  else {
+    pendingRequests[url] = [ callback ];
+    const req = new XMLHttpRequest();
+    req.responseType = 'json';
+    req.open('GET', url);
+    req.send();
+
+    req.onload = e => {
+      for (let cb of pendingRequests[url])
+        cb(e);
+      delete pendingRequests[url];
+    };
+  }
+}
+
 function onLoad2kkiMap(mapId) {
   const prevMapId = cachedMapId;
   const prevLocations = prevMapId ? cached2kkiLocations : null;
@@ -56,87 +76,84 @@ function onLoad2kkiMap(mapId) {
 
 function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest();
-      let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
-      if (prevMapId) {
-          url += `&prevMapId=${prevMapId}`;
-          if (prevLocations && prevLocations.length)
-            url += `&prevLocationNames=${prevLocations.map(l => l.title).join('&prevLocationNames=')}`;
-      }
-      req.responseType = 'json';
-      req.open("GET", url);
-      req.send();
+    let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+    if (prevMapId) {
+        url += `&prevMapId=${prevMapId}`;
+        if (prevLocations && prevLocations.length)
+          url += `&prevLocationNames=${prevLocations.map(l => l.title).join('&prevLocationNames=')}`;
+    }
 
-      if (!setLocationFunc)
-        setLocationFunc = () => {};
+    if (!setLocationFunc)
+      setLocationFunc = () => {};
+      
+    const callback = (_e) => {
+      const locationsArray = req.response;
+      const locations = [];
 
-      setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location['2kki'].queryingLocation), prevLocations, true);
-
-      req.onload = (_e) => {
-        const locationsArray = req.response;
-        const locations = [];
-
-        const cacheAndResolve = () => {
-          if (forClient) {
-            cachedPrevMapId = cachedMapId;
-            cachedMapId = mapId;
-            cachedPrev2kkiLocations = cached2kkiLocations;
-            cached2kkiLocations = locations;
-            if (localizedMapLocations) {
-              if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
-                addChatMapLocation();
-              cachedLocations = cached2kkiLocations;
-            }
+      const cacheAndResolve = () => {
+        if (forClient) {
+          cachedPrevMapId = cachedMapId;
+          cachedMapId = mapId;
+          cachedPrev2kkiLocations = cached2kkiLocations;
+          cached2kkiLocations = locations;
+          if (localizedMapLocations) {
+            if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
+              addChatMapLocation();
+            cachedLocations = cached2kkiLocations;
           }
-
-          resolve(locations);
-        };
-
-        if (Array.isArray(locationsArray) && locationsArray.length) {
-          let location = locationsArray[0];
-          let usePrevLocations = false;
-
-          if (locationsArray.length > 1 && prevLocations && prevLocations.length) {
-            for (let l of locationsArray) {
-              if (l.title === prevLocations[0].title) {
-                location = l;
-                usePrevLocations = true;
-                break;
-              }
-            }
-          }
-
-          locations.push(location);
-
-          if (usePrevLocations) {
-            queryConnected2kkiLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
-              .then(connectedLocationNames => {
-                const connectedLocations = locationsArray.filter(l => connectedLocationNames.indexOf(l.title) > -1);
-                for (let cl of connectedLocations)
-                  locations.push(cl);
-
-                setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
-
-                cacheAndResolve();
-              }).catch(err => reject(err));
-              
-            return;
-          } else
-            setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
-        } else {
-          const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
-          
-          if (errCode)
-            console.error({ error: req.response.error, errCode: errCode });
-
-          if (prevMapId) {
-            queryAndSet2kkiLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
-            return;
-          }
-          setLocationFunc(mapId, prevMapId, null, prevLocations, true, true);
         }
-        cacheAndResolve();
+
+        resolve(locations);
       };
+
+      if (Array.isArray(locationsArray) && locationsArray.length) {
+        let location = locationsArray[0];
+        let usePrevLocations = false;
+
+        if (locationsArray.length > 1 && prevLocations && prevLocations.length) {
+          for (let l of locationsArray) {
+            if (l.title === prevLocations[0].title) {
+              location = l;
+              usePrevLocations = true;
+              break;
+            }
+          }
+        }
+
+        locations.push(location);
+
+        if (usePrevLocations) {
+          queryConnected2kkiLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))
+            .then(connectedLocationNames => {
+              const connectedLocations = locationsArray.filter(l => connectedLocationNames.indexOf(l.title) > -1);
+              for (let cl of connectedLocations)
+                locations.push(cl);
+
+              setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
+
+              cacheAndResolve();
+            }).catch(err => reject(err));
+            
+          return;
+        } else
+          setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
+      } else {
+        const errCode = !Array.isArray(req.response) ? req.response.err_code : null;
+        
+        if (errCode)
+          console.error({ error: req.response.error, errCode: errCode });
+
+        if (prevMapId) {
+          queryAndSet2kkiLocation(mapId, null, null, setLocationFunc, forClient).then(() => resolve(null)).catch(err => reject(err));
+          return;
+        }
+        setLocationFunc(mapId, prevMapId, null, prevLocations, true, true);
+      }
+      cacheAndResolve();
+    };
+    send2kkiApiRequest(url, callback);
+
+    setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location['2kki'].queryingLocation), prevLocations, true);
   });
 }
 
@@ -179,7 +196,7 @@ function getLocalized2kkiLocations(locations, separator) {
 
 function get2kkiLocationHtml(location) {
   const urlTitle = location.urlTitle || location.title;
-  const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf("：") > -1 ? location.titleJP.slice(0, location.titleJP.indexOf("：")) : location.titleJP);
+  const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf('：') > -1 ? location.titleJP.slice(0, location.titleJP.indexOf('：')) : location.titleJP);
   const locationHtml = `<a href="${locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
   const locationHtmlJP = urlTitleJP ? `<a href="${localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
   return locationHtmlJP ? getLocalized2kkiLocation(locationHtml, locationHtmlJP, true) : locationHtml;
@@ -220,66 +237,58 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     setMessageLocationFunc(mapId, prevMapId, localizedMapLocations[mapId], prevLocations);
   else {
     if (!prevMapId)
-      prevMapId = "0000";
+      prevMapId = '0000';
     const locationKey = `${prevMapId}_${mapId}`;
     if (unknownLocations.indexOf(locationKey) > -1)
       setMessageLocationFunc(mapId, prevMapId, null, prevLocations);
     else if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
       setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
-      queryAndSet2kkiLocation(mapId, prevMapId !== "0000" ? prevMapId : null, prevLocations, setMessageLocationFunc)
+      queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, setMessageLocationFunc)
         .catch(err => console.error(err));
   }
 }
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
-    const req = new XMLHttpRequest();
-      const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
-      req.responseType = 'json';
-      req.open("GET", url);
-      req.send();
+    const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
+    const callback = (_e) => {
+      let ret = [];
+      let errCode = null;
 
-      req.onload = (_e) => {
-        let ret = [];
-        let errCode = null;
+      if (Array.isArray(req.response))
+        ret = req.response;
+      else
+        errCode = req.response.err_code;
+        
+      if (errCode)
+        console.error({ error: req.response.error, errCode: errCode });
 
-        if (Array.isArray(req.response))
-          ret = req.response;
-        else
-          errCode = req.response.err_code;
-          
-        if (errCode)
-          console.error({ error: req.response.error, errCode: errCode });
-
-        resolve(ret);
-      };
+      resolve(ret);
+    };
+    send2kkiApiRequest(url, callback);
   });
 }
 
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
-    const req = new XMLHttpRequest();
-      const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
-      req.responseType = 'json';
-      req.open("GET", url);
-      req.send();
+    const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
+    const callback = (_e) => {
+      let errCode = null;
 
-      set2kkiMaps([], null, true);
+      if (Array.isArray(req.response))
+        set2kkiMaps(req.response, locationNames, true, true);
+      else
+        errCode = req.response.err_code;
+        
+      if (errCode)
+        console.error({ error: req.response.error, errCode: errCode });
 
-      req.onload = (_e) => {
-        let errCode = null;
+      resolve();
+    };
+    send2kkiApiRequest(url, callback);
 
-        if (Array.isArray(req.response))
-          set2kkiMaps(req.response, locationNames, true, true);
-        else
-          errCode = req.response.err_code;
-          
-        if (errCode)
-          console.error({ error: req.response.error, errCode: errCode });
-
-        resolve();
-      };
+    set2kkiMaps([], null, true);
   });
 }
 
