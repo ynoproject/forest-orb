@@ -283,7 +283,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
 
 // EXTERNAL
 function onPlayerSpriteUpdated(sprite, idx, id) {
-  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id] : defaultUuid);
+  updatePlayerListEntrySprite(null, sprite, idx, id !== -1 ? playerUuids[id] : defaultUuid);
 }
 
 // EXTERNAL
