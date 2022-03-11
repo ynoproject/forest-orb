@@ -27,13 +27,15 @@
       "immersionMode": "Modo Imersão",
       "tab": {
         "chat": "Bate-Papo",
-        "players": "Jogadores"
+        "players": "Jogadores",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "Todas",
           "map": "Mapa",
-          "global": "Global"
+          "global": "Global",
+          "party": "Party"
         },
         "nickname": {
           "header": "Defina seu nickname antes de acessar o bate papo.",
@@ -41,6 +43,12 @@
             "maxLength": "* 12 caracteres no máximo",
             "alphanumeric": "* Apenas caracteres alfanuméricos"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Mapa",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "Tema da Interace",
         "auto": "AUTO"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "Amostrar/Esconder Localização da Mensagem do Chat Global",
         "clearChat": "Limpar o Chat"
+      },
+      "parties": {
+        "createParty": "Create Party"
       },
       "nexus": "Voltar para o Nexo"
     }
@@ -163,6 +183,14 @@
       "mod": "Moderador",
       "dev": "Desenvolvedor",
       "owner": "Dono"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "DICA: {CONTENT}",

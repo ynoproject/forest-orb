@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -27,13 +27,15 @@
       "immersionMode": "Режим Погружения",
       "tab": {
         "chat": "Чат",
-        "players": "Игроки"
+        "players": "Игроки",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "Все",
           "map": "Карта",
-          "global": "Глобальный"
+          "global": "Глобальный",
+          "party": "Party"
         },
         "nickname": {
           "header": "Пожалуйста, задайте псевдоним, чтобы получить доступ к чату.",
@@ -41,6 +43,12 @@
             "maxLength": "* Не более 12 символов.",
             "alphanumeric": "* Только латиница и цифры."
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Map",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "Стиль Интерфейса",
         "auto": "Как в игре"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "Показать/Скрыть локацию в Глобальных сообщениях",
         "clearChat": "Очистить Чат"
+      },
+      "parties": {
+        "createParty": "Create Party"
       },
       "nexus": "Вернуться на Главную страницу"
     }
@@ -163,6 +183,14 @@
       "mod": "Модератор",
       "dev": "Разработчик",
       "owner": "Владелец"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "СОВЕТ: {CONTENT}",

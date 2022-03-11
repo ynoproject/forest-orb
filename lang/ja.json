@@ -27,13 +27,15 @@
       "immersionMode": "イマージョンモード",
       "tab": {
         "chat": "チャット",
-        "players": "プレーヤー"
+        "players": "プレーヤー",
+        "parties": "パーティー"
       },
       "chat": {
         "tab": {
-          "all": "全メッセージ",
+          "all": "全",
           "map": "マップ",
-          "global": "グローバル"
+          "global": "グローバル",
+          "party": "パーティー"
         },
         "nickname": {
           "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
@@ -41,6 +43,12 @@
             "maxLength": "※最大 12 文字 まで",
             "alphanumeric": "※半角 英数字 のみ"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "マップ",
+          "party": "パーティー"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "メニュー タイプ",
         "auto": "AUTO"
+      },
+      "createParty": {
+        "title": "パーティーの結成",
+        "fields": {
+          "partyName": "パーティー名",
+          "public": "公立",
+          "theme": "システム"
+        },
+        "submit": "送信"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "グローバルメッセージ世界名のオン／オフ",
         "clearChat": "チャットを消去"
+      },
+      "parties": {
+        "createParty": "パーティーを組む"
       },
       "nexus": "扉部屋へ戻る"
     }
@@ -163,6 +183,14 @@
       "mod": "モデレーター",
       "dev": "開発者",
       "owner": "所有者"
+    },
+    "parties": {
+      "emptyMessage": "現在、活動中のパーティーはありません。",
+      "yourParty": "自分のパーティー",
+      "defaultPartyName": "{OWNER}のパーティー",
+      "offlineMemberSuffix": "（オフライン）",
+      "onlineCount": "オンライン - {COUNT}",
+      "offlineCount": "オフライン - {COUNT}"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

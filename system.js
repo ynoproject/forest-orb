@@ -141,12 +141,10 @@ const gameLogoBlendModeOverrides = {
   'braingirl': 'color'
 };
 
-const hasUiThemes = gameUiThemes.length > 0;
-
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
-  if (playerData[-1])
-    playerData[-1].systemName = name;
+  if (playerData)
+    playerData.systemName = name;
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(systemName, playerName, -1);
 }
@@ -177,39 +175,46 @@ function setUiTheme(value, isInit) {
   const uiTheme = isAuto ? systemName || getDefaultUiTheme() : value;
   if (gameUiThemes.indexOf(uiTheme) === -1)
     return;
-  if (hasUiThemes)
-    config.uiTheme = value;
-  getBaseBgColor(uiTheme, function (color) {
-    getFontShadow(uiTheme, function (shadow) {
-      const rootStyle = document.documentElement.style;
-      rootStyle.setProperty('--base-bg-color', color)
-      rootStyle.setProperty('--shadow-color', shadow);
-      rootStyle.setProperty('--container-bg-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/containerbg.png')`);
-      rootStyle.setProperty('--border-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/border.png')`);
-      document.getElementById('dropShadow').children[0].setAttribute('flood-color', shadow);
-      const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
-      const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
-      if (lastSelectedThemeContainer)
-        lastSelectedThemeContainer.classList.remove('selected');
-      if (newSelectedTheme)
-        newSelectedTheme.parentElement.classList.add('selected');
-      const useFullBg = hasUiThemes && gameFullBgUiThemes.indexOf(uiTheme) > -1;
-      const containers = document.querySelectorAll('.container');
-      const modals = document.querySelectorAll('.modal');
-      for (let container of containers)
-        container.classList.toggle('fullBg', useFullBg);
-      for (let modal of modals)
-        modal.classList.toggle('fullBg', useFullBg);
-      document.getElementById('header').classList.toggle('fullBg', useFullBg);
-      document.querySelector('body').classList.toggle('fullBg', useFullBg);
-      if (!isInit) {
-        document.querySelector('.fontStyle').onchange();
-        onUpdateChatboxInfo();
-        if (hasUiThemes)
-          updateConfig(config);
-      }
-    });
-  });
+  config.uiTheme = value;
+  initUiThemeContainerStyles(uiTheme, true);
+  const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.selected');
+  const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
+  if (lastSelectedThemeContainer)
+    lastSelectedThemeContainer.classList.remove('selected');
+  if (newSelectedTheme)
+    newSelectedTheme.parentElement.classList.add('selected');
+  const useFullBg = gameFullBgUiThemes.indexOf(uiTheme) > -1;
+  const containers = document.querySelectorAll('.container');
+  const modals = document.querySelectorAll('.modal');
+  for (let container of containers)
+    container.classList.toggle('fullBg', useFullBg);
+  for (let modal of modals)
+    modal.classList.toggle('fullBg', useFullBg);
+  document.getElementById('header').classList.toggle('fullBg', useFullBg);
+  document.querySelector('body').classList.toggle('fullBg', useFullBg);
+  if (isInit)
+    setPartyTheme(uiTheme);
+  else {
+    document.querySelector('.fontStyle').onchange();
+    onUpdateChatboxInfo();
+    updateConfig(config);
+  }
+}
+
+function setPartyTheme(value) {
+  const partyThemeButton = document.getElementById('partyThemeButton');
+  partyThemeButton.innerHTML = getUiThemeOption(value).innerHTML;
+  partyThemeButton.nextElementSibling.value = value;
+
+  initUiThemeContainerStyles(value);
+  initUiThemeFontStyles(value, 0);
+
+  const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.partySelected');
+  const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
+  if (lastSelectedThemeContainer)
+    lastSelectedThemeContainer.classList.remove('partySelected');
+  if (newSelectedTheme)
+    newSelectedTheme.parentElement.classList.add('partySelected');
 }
 
 function setFontStyle(fontStyle, isInit) {
@@ -218,23 +223,92 @@ function setFontStyle(fontStyle, isInit) {
   if (gameUiThemes.indexOf(uiTheme) === -1)
     return;
   config.fontStyle = fontStyle;
+  initUiThemeFontStyles(uiTheme, fontStyle, true);
+  if (!isInit)
+    updateConfig(config);
+}
+
+function initUiThemeContainerStyles(uiTheme, setTheme) {
+  const parsedUiTheme = uiTheme.replace(' ', '_');
+  
+  const baseBgColorProp = `--base-bg-color-${parsedUiTheme}`;
+  const shadowColorProp = `--shadow-color-${parsedUiTheme}`;
+  const containerBgImageUrlProp = `--container-bg-image-url-${parsedUiTheme}`;
+  const borderImageUrlProp = `--border-image-url-${parsedUiTheme}`;
+
+  getBaseBgColor(uiTheme, function (color) {
+    getFontShadow(uiTheme, function (shadow) {
+      const rootStyle = document.documentElement.style;
+
+      if (!rootStyle.getPropertyValue(baseBgColorProp)) {
+        rootStyle.setProperty(baseBgColorProp, color);
+        rootStyle.setProperty(shadowColorProp, shadow);
+        rootStyle.setProperty(containerBgImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/containerbg.png')`);
+        rootStyle.setProperty(borderImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/border.png')`);
+      }
+
+      if (setTheme) {
+        rootStyle.setProperty('--base-bg-color', `var(${baseBgColorProp})`);
+        rootStyle.setProperty('--shadow-color', `var(${shadowColorProp})`);
+        rootStyle.setProperty('--container-bg-image-url', `var(${containerBgImageUrlProp})`);
+        rootStyle.setProperty('--border-image-url', `var(${borderImageUrlProp})`);
+        document.getElementById('dropShadow').children[0].setAttribute('flood-color', `var(${shadowColorProp})`);
+      }
+    });
+  });
+}
+
+function initUiThemeFontStyles(uiTheme, fontStyle, setTheme) {
+  const parsedUiTheme = uiTheme.replace(' ', '-');
+
+  let baseColorProp = `--base-color-${parsedUiTheme}`;
+  let altColorProp = `--alt-color-${parsedUiTheme}`;
+  let baseGradientProp = `--base-gradient-${parsedUiTheme}`;
+  let baseGradientBProp = `--base-gradient-b-${parsedUiTheme}`;
+  let altGradientProp = `--alt-gradient-${parsedUiTheme}`;
+  let altGradientBProp = `--alt-gradient-b-${parsedUiTheme}`;
+  let baseColorImageUrlProp = `--base-color-image-url-${parsedUiTheme}`;
+
+  if (fontStyle) {
+    const fontStylePropSuffix = `-${fontStyle}`;
+    baseColorProp += fontStylePropSuffix;
+    altColorProp += fontStylePropSuffix;
+    baseGradientProp += fontStylePropSuffix;
+    baseGradientBProp += fontStylePropSuffix;
+    altGradientProp += fontStylePropSuffix;
+    altGradientBProp += fontStylePropSuffix;
+    baseColorImageUrlProp += fontStylePropSuffix;
+  }
+
   const defaultAltFontStyleIndex = 1;
   const defaultFallbackAltFontStyleIndex = 3;
+  
   getFontColors(uiTheme, fontStyle, function (baseColors) {
     const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
     const altColorCallback = function (altColors) {
       const rootStyle = document.documentElement.style;
-      rootStyle.setProperty('--base-color', getColorRgba(baseColors[8]));
-      rootStyle.setProperty('--alt-color', getColorRgba(altColors[8]));
-      rootStyle.setProperty('--base-gradient', `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
-      rootStyle.setProperty('--base-gradient-b', `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
-      rootStyle.setProperty('--alt-gradient', `linear-gradient(to bottom, ${getGradientText(altColors)})`);
-      rootStyle.setProperty('--alt-gradient-b', `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
-      rootStyle.setProperty('--base-color-image-url', `url('images/ui/${gameId}${hasUiThemes ? '/' + uiTheme : ''}/font${fontStyle + 1}.png')`);
-      updateSvgGradient(document.getElementById('baseGradient'), baseColors);
-      updateSvgGradient(document.getElementById('altGradient'), altColors);
-      if (!isInit)
-        updateConfig(config);
+
+      if (!rootStyle.getPropertyValue(baseColorProp)) {
+        rootStyle.setProperty(baseColorProp, getColorRgba(baseColors[8]));
+        rootStyle.setProperty(altColorProp, getColorRgba(altColors[8]));
+        rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
+        rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
+        rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
+        rootStyle.setProperty(altGradientBProp, `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
+        rootStyle.setProperty(baseColorImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/font${fontStyle + 1}.png')`);
+      }
+
+      if (setTheme) {
+        rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
+        rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
+        rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
+        rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
+        rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
+        rootStyle.setProperty('--alt-gradient-b', `var(${altGradientBProp})`);
+        rootStyle.setProperty('--base-color-image-url', `var(${baseColorImageUrlProp})`);
+        updateSvgGradient(document.getElementById('baseGradient'), baseColors);
+        updateSvgGradient(document.getElementById('altGradient'), altColors);
+      }
     };
     getFontColors(uiTheme, altFontStyle, function (altColors) {
       if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
@@ -247,13 +321,25 @@ function setFontStyle(fontStyle, isInit) {
   });
 }
 
+function setModalUiTheme(uiTheme) {
+  const rootStyle = document.documentElement.style;
+  const styleProps = [ 'base-color', 'alt-color', 'base-bg-color', 'shadow-color', 'base-gradient', 'alt-gradient', 'base-gradient-b', 'alt-gradient-b', 'base-color-image-url', 'container-bg-image-url', 'border-image-url' ];
+  const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
+  for (let prop of styleProps)
+    rootStyle.setProperty(`--modal-${prop}`, `var(--${prop}${propThemeSuffix})`);
+
+  const modalContainer = document.getElementById('modalContainer');
+  if (modalContainer.dataset.lastModalId)
+    modalContainer.dataset.lastModalTheme = uiTheme;
+}
+
 function populateUiThemes() {
   const modalContent = document.querySelector('#uiThemesModal .modalContent');
   modalContent.innerHTML = '';
-  if (hasUiThemes)
-    modalContent.appendChild(getUiThemeOption('auto'));
+  modalContent.appendChild(getUiThemeOption('auto'));
   for (let uiTheme of gameUiThemes)
     modalContent.appendChild(getUiThemeOption(uiTheme));
+  setPartyTheme(gameUiThemes[0]);
 }
 
 function getUiThemeOption(uiTheme) {
@@ -263,8 +349,10 @@ function getUiThemeOption(uiTheme) {
 
   const item = document.createElement('div');
   item.classList.add('uiThemeItem');
+  item.classList.add('item');
   if (isAuto)
     item.classList.add('auto');
+  item.classList.add('unselectable');
   
   const container = document.createElement('div');
   container.classList.add('uiThemeContainer');
@@ -322,7 +410,7 @@ function getFontColors(uiTheme, fontStyle, callback) {
     callback(colors);
     canvas.remove();
   };
-  img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/font' + (fontStyle + 1) + '.png';
+  img.src = 'images/ui/' + gameId + '/' + uiTheme + '/font' + (fontStyle + 1) + '.png';
 }
 
 function getFontShadow(uiTheme, callback) {
@@ -339,7 +427,7 @@ function getFontShadow(uiTheme, callback) {
     callback(getColorRgba(pixel));
     canvas.remove();
   };
-  img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/fontshadow.png';
+  img.src = 'images/ui/' + gameId +'/' + uiTheme + '/fontshadow.png';
 }
 
 function getBaseBgColor(uiTheme, callback) {
@@ -361,7 +449,7 @@ function getBaseBgColor(uiTheme, callback) {
     callback('rgba(' + r + ', ' + g + ', ' + b + ', 1)');
     canvas.remove();
   };
-  img.src = 'images/ui/' + gameId + (hasUiThemes ? '/' + uiTheme : '') + '/containerbg.png';
+  img.src = 'images/ui/' + gameId + '/' + uiTheme + '/containerbg.png';
 }
 
 function getGradientText(colors, smooth) {

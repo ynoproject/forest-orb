@@ -27,13 +27,15 @@
       "immersionMode": "몰입 모드",
       "tab": {
         "chat": "채팅",
-        "players": "플레이어"
+        "players": "플레이어",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "전체",
           "map": "로컬",
-          "global": "글로벌"
+          "global": "글로벌",
+          "party": "Party"
         },
         "nickname": {
           "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
@@ -41,6 +43,12 @@
             "maxLength": "* 최대 12자까지 가능합니다",
             "alphanumeric": "* 알파벳 문자만 가능합니다"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "로컬",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "UI 테마",
         "auto": "자동"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "채팅 기록 삭제하기"
+      },
+      "parties": {
+        "createParty": "Create Party"
       },
       "nexus": "넥서스로 돌아가기"
     }
@@ -163,6 +183,14 @@
       "mod": "서버 매니저",
       "dev": "서버 개발자",
       "owner": "서버 운영자"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "팁: {CONTENT}",

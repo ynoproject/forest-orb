@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -27,13 +27,15 @@
       "immersionMode": "沉浸模式已开启",
       "tab": {
         "chat": "聊天记录",
-        "players": "玩家列表"
+        "players": "玩家列表",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "所有聊天记录",
           "map": "地图发言",
-          "global": "全局发言"
+          "global": "全局发言",
+          "party": "Party"
         },
         "nickname": {
           "header": "设置一个名字即可开始和大家聊天！",
@@ -41,6 +43,12 @@
             "maxLength": "※长度限12个字符",
             "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Map",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "界面风格",
         "auto": "自动"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "开启/关闭全局聊天中的发言所在位置显示",
         "clearChat": "清空记录"
+      },
+      "parties": {
+        "createParty": "パーティーを結成"
       },
       "nexus": "返回到门的世界"
     }
@@ -163,6 +183,14 @@
       "mod": "管理者",
       "dev": "开发者",
       "owner": "所有者"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": "（Online）",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "小贴士：{CONTENT}",

@@ -27,13 +27,15 @@
       "immersionMode": "Immersion Mode",
       "tab": {
         "chat": "Chat",
-        "players": "Players"
+        "players": "Players",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "All",
           "map": "Map",
-          "global": "Global"
+          "global": "Global",
+          "party": "Party"
         },
         "nickname": {
           "header": "You must set a nickname before you can chat.",
@@ -41,6 +43,12 @@
             "maxLength": "* Maximum 12 characters",
             "alphanumeric": "* Alphanumeric characters only"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Map",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "UI Theme",
         "auto": "AUTO"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "Clear Chat"
+      },
+      "parties": {
+        "createParty": "Create Party"
       },
       "nexus": "Return to Nexus"
     }
@@ -163,6 +183,14 @@
       "mod": "Moderator",
       "dev": "Developer",
       "owner": "Owner"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

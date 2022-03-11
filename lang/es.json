@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -27,13 +27,15 @@
       "immersionMode": "Modo Inmersivo",
       "tab": {
         "chat": "Chat",
-        "players": "Jugadores"
+        "players": "Jugadores",
+        "parties": "Parties"
       },
       "chat": {
         "tab": {
           "all": "Todos",
           "map": "Mapa",
-          "global": "Global"
+          "global": "Global",
+          "party": "Party"
         },
         "nickname": {
           "header": "Debes seleccionar un apodo antes de usar el chat.",
@@ -41,6 +43,12 @@
             "maxLength": "* Máximo de 12 caracteres",
             "alphanumeric": "* Solo caracteres alfanuméricos"
           }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Mapa",
+          "party": "Party"
         }
       }
     },
@@ -99,6 +107,15 @@
       "uiTheme": {
         "title": "Tema de Inferfaz",
         "auto": "AUTO"
+      },
+      "createParty": {
+        "title": "Create Party",
+        "fields": {
+          "partyName": "Party Name",
+          "public": "Public",
+          "theme": "Theme"
+        },
+        "submit": "Submit"
       }
     },
     "tooltips": {
@@ -115,6 +132,9 @@
       "chat": {
         "toggleOwnGlobalMessageLocation": "Alternar Ubicación de Mensajes de Chat",
         "clearChat": "Limpiar Chat"
+      },
+      "parties": {
+        "createParty": "Create Party"
       },
       "nexus": "Regresar al Nexo"
     }
@@ -163,6 +183,14 @@
       "mod": "Moderador",
       "dev": "Desarrollador",
       "owner": "Dueño"
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}"
     },
     "chatTips": {
       "template": "CONSEJO: {CONTENT}",

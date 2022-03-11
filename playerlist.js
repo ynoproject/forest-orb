@@ -1,12 +1,19 @@
-let playerData = {};
+const rankEmojis = {
+  1: '🛡️',
+  2: '🔧',
+  3: '👑'
+};
+let playerData = null;
+let playerUuids = {};
 let globalPlayerData = {};
 let spriteData = {};
 let playerSpriteCache = {};
 
-function addOrUpdatePlayerListEntry(systemName, name, id) {
-  const playerList = document.getElementById("playerList");
+function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
+  if (!playerList)
+    playerList = document.getElementById("playerList");
 
-  let playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
+  let playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
 
   const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector(".playerListEntryActionContainer") : document.createElement("div");
@@ -16,14 +23,16 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
   if (!playerListEntry) {
     playerListEntry = document.createElement("div");
     playerListEntry.classList.add("playerListEntry");
-    playerListEntry.dataset.id = id;
+    playerListEntry.classList.add("listEntry");
+    playerListEntry.dataset.uuid = uuid;
 
     const playerListEntrySprite = document.createElement("img");
     playerListEntrySprite.classList.add("playerListEntrySprite");
+    playerListEntrySprite.classList.add("listEntrySprite");
 
-    let playerSpriteCacheEntry = playerSpriteCache[id];
-    if (!playerSpriteCacheEntry && id > -1)
-      playerSpriteCacheEntry = playerSpriteCache[-1];
+    let playerSpriteCacheEntry = playerSpriteCache[uuid];
+    if (!playerSpriteCacheEntry && uuid !== playerData?.uuid)
+      playerSpriteCacheEntry = playerSpriteCache[playerData?.uuid];
     if (playerSpriteCacheEntry) {
       getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
         playerListEntrySprite.src = spriteImg;
@@ -36,13 +45,14 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     playerListEntry.appendChild(nameText);
 
     playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
+    playerListEntryActionContainer.classList.add("listEntryActionContainer");
 
     // Not yet supported
-    /*if (playerData[id] && playerData[-1].rank > playerData[id].rank) {
+    /*if (globalPlayerData[uuid] && playerData?.rank > globalPlayerData[uuid].rank) {
       const banAction = document.createElement("a");
       banAction.href = "javascript:void(0);";
       banAction.onclick = function () {
-        const uuidPtr = Module.allocate(Module.intArrayFromString(playerData[id].uuid), Module.ALLOC_NORMAL);
+        const uuidPtr = Module.allocate(Module.intArrayFromString(uuid), Module.ALLOC_NORMAL);
         Module._SendBanUserRequest(msgPtr);
         Module._free(uuidPtr);
       };
@@ -62,8 +72,8 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     else
       playerListEntry.dataset.unnamed = "unnamed";
 
-    if (playerData[id]?.rank) {
-      const rank = Math.min(playerData[id].rank, 3);
+    if (globalPlayerData[uuid]?.rank) {
+      const rank = Math.min(globalPlayerData[uuid].rank, 3);
       nameText.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
       roleIcon = nameText.children[0];
       roleIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
@@ -72,12 +82,15 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
 
   if (systemName) {
     systemName = systemName.replace(/'/g, "");
-    const parsedSystemName = systemName.replace(" ", "_");
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    playerListEntry.setAttribute("style", `background-image: url('images/ui/${gameId}/${systemName}/containerbg.png') !important; border-image: url('images/ui/${gameId}/${systemName}/border.png') 8 repeat !important;`);
+    const parsedSystemName = systemName.replace(" ", "_");
+    initUiThemeContainerStyles(systemName);
+    initUiThemeFontStyles(systemName, 0);
+    playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+    
     getFontColors(systemName, 0, colors => {
-      nameText.setAttribute("style", `background-image: linear-gradient(to bottom, ${getGradientText(colors)}) !important`);
+      nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
       if (roleIcon || playerListEntryActionContainer.childElementCount) {
         addSystemSvgGradient(systemName, colors);
         if (roleIcon)
@@ -87,7 +100,7 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
       }
     });
     getFontShadow(systemName, shadow => {
-      nameText.style.filter = `drop-shadow(1.5px 1.5px ${shadow})`;
+      nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
       if (roleIcon || playerListEntryActionContainer.childElementCount) {
         addSystemSvgDropShadow(systemName, shadow);
         if (roleIcon)
@@ -99,16 +112,16 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
   }
 
   if (playerList.childElementCount > 1) {
-    const playerListEntries = document.getElementsByClassName("playerListEntry");
+    const playerListEntries = playerList.querySelectorAll(".playerListEntry");
 
     const entries = [].slice.call(playerListEntries).sort(function (a, b) {
-      if (a.dataset.id == -1)
+      if (a.dataset.uuid == playerData?.uuid)
         return -1;
-      if (b.dataset.id == -1)
+      if (b.dataset.uuid == playerData?.uuid)
         return 1;
       if (a.dataset.unnamed) {
         if (b.dataset.unnamed)
-          return a.dataset.id >= b.dataset.id ? 1 : -1;
+          return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
         return 1;
       }
       if (b.dataset.unnamed)
@@ -121,32 +134,44 @@ function addOrUpdatePlayerListEntry(systemName, name, id) {
     });
   }
 
-  updateMapPlayerCount(playerList.childElementCount);
+  if (playerList.id === 'playerList')
+    updateMapPlayerCount(playerList.childElementCount);
 }
 
-function updatePlayerListEntrySprite(sprite, idx, id) {
-  const playerListEntrySprite = document.querySelector(`.playerListEntry[data-id="${id}"] > img.playerListEntrySprite`);
+function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
+  if (!playerList)
+    playerList = document.getElementById("playerList");
+  
+  const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
   const callback = function (spriteImg) {
-    if (playerListEntrySprite && playerSpriteCache[id].sprite === sprite && playerSpriteCache[id].idx === idx)
+    if (playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
   };
 
-  playerSpriteCache[id] = { sprite: sprite, idx: idx };
+  playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
   getSpriteImg(sprite, idx, callback);
 }
 
-function removePlayerListEntry(id) {
-  const playerListEntry = document.querySelector(`.playerListEntry[data-id="${id}"]`);
+function removePlayerListEntry(playerList, uuid) {
+  if (!playerList)
+    playerList = document.getElementById("playerList");
+
+  const playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
   if (playerListEntry)
     playerListEntry.remove();
-  updateMapPlayerCount(document.getElementById("playerList").childElementCount);
+  if (playerList.id === 'playerList')
+    updateMapPlayerCount(document.getElementById("playerList").childElementCount);
 }
 
-function clearPlayerList() {
-  const playerList = document.getElementById("playerList");
+function clearPlayerList(playerList) {
+  if (!playerList)
+    playerList = document.getElementById("playerList");
+
   playerList.innerHTML = "";
-  updateMapPlayerCount(0);
+
+  if (playerList.id === 'playerList')
+    updateMapPlayerCount(0);
 }
 
 function getSpriteImg(sprite, idx, callback, dir) {
@@ -210,17 +235,7 @@ function getSpriteImg(sprite, idx, callback, dir) {
 
 // EXTERNAL
 function syncPlayerData(uuid, rank, id) {
-  playerData[id] = {
-    uuid: uuid,
-    name: globalPlayerData[uuid]?.name || null,
-    systemName: globalPlayerData[uuid]?.systemName || null,
-    rank: rank
-  };
-
-  if (id === -1) {
-    playerData[id].name = playerName;
-    playerData[id].systemName = systemName;
-  }
+  playerUuids[id] = uuid;
 
   if (globalPlayerData[uuid])
     globalPlayerData[uuid].rank = rank;
@@ -230,6 +245,17 @@ function syncPlayerData(uuid, rank, id) {
       systemName: null,
       rank: rank
     };
+
+  if (id === -1) {
+    playerData = {
+      uuid: uuid,
+      name: globalPlayerData[uuid]?.name || null,
+      systemName: globalPlayerData[uuid]?.systemName || null,
+      rank: rank
+    };
+    globalPlayerData[uuid].name = playerName;
+    globalPlayerData[uuid].systemName = systemName;
+  }
 }
 
 // EXTERNAL
@@ -243,29 +269,26 @@ function syncGlobalPlayerData(uuid, name, systemName, rank) {
 
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
-  const uuid = playerData[id]?.uuid;
-  if (name) {
-    if (playerData[id])
-      playerData[id].name = name;
-    if (uuid)
+  const uuid = playerUuids[id]?.uuid;
+  if (uuid) {
+    if (name)
       globalPlayerData[uuid].name = name;
-  }
-  if (systemName) {
-    if (playerData[id])
-      playerData[id].systemName = systemName;
-    if (uuid)
+    if (systemName)
       globalPlayerData[uuid].systemName = systemName;
   }
-  addOrUpdatePlayerListEntry(systemName, name, id);
+  addOrUpdatePlayerListEntry(null, systemName, name, uuid);
 }
 
 // EXTERNAL
 function onPlayerSpriteUpdated(sprite, idx, id) {
-  updatePlayerListEntrySprite(sprite, idx, id !== undefined ? id : -1);
+  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id]?.uuid : -1);
 }
 
 // EXTERNAL
 function onPlayerDisconnected(id) {
-  delete playerData[id];
-  removePlayerListEntry(id);
+  const uuid = playerUuids[id]?.uuid;
+  if (uuid) {
+    delete playerUuids[id];
+    removePlayerListEntry(null, uuid);
+  }
 }

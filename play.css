@@ -11,6 +11,18 @@
   --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
   --border-image-url: url('images/ui/2kki/system1/border.png');
 
+  --modal-base-color: var(--base-color);
+  --modal-alt-color: var(--alt-color);
+  --modal-base-bg-color: var(--base-bg-color);
+  --modal-shadow-color: var(--shadow-color);
+  --modal-base-gradient: var(--base-gradient);
+  --modal-alt-gradient: var(--alt-gradient);
+  --modal-base-gradient-b: var(--base-gradient-b);
+  --modal-alt-gradient-b: var(--alt-gradient-b);
+  --modal-base-color-image-url: var(--base-color-image-url);
+  --modal-container-bg-image-url: var(--container-bg-image-url);
+  --modal-border-image-url: var(--border-image-url);
+
   --content-height: 0px;
   --content-scroll: 0px;
 }
@@ -26,7 +38,7 @@ html, input, select, button {
   font-size: 16px;
 }
 
-html, input, select, button.checkboxButton {
+html, input, select, button {
   color: var(--base-color) !important;
   background-color: black;
 }
@@ -35,7 +47,7 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, input, select, button.checkboxButton {
+#chatBorder, input, select, button {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -48,8 +60,7 @@ label {
   font-weight: bold;
 }
 
-input, select, button.checkboxButton {
-  color: var(--base-color) !important;
+input, select, button {
   background-color: var(--base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--shadow-color);
 }
@@ -79,7 +90,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   content: "✔";
 }
 
-body, .container, div, input, button.checkboxButton {
+body, .container, div, input, button {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
@@ -90,6 +101,11 @@ body {
 
 body.fullBg {
   background-size: 100%;
+}
+
+form {
+  text-align: center;
+  padding-bottom: 8px;
 }
 
 .unselectable {
@@ -115,7 +131,7 @@ body.fullBg {
   filter: none !important;
 }
 
-.altText, .chatTab.active .chatTabLabel, .messageContainer.global .message .nameMarker, #unreadMessageCount, a:not(.modalClose) {
+.altText, .subTab.active .subTabLabel, .messageContainer.global .message .nameMarker, #unreadMessageCount, a:not(.modalClose) {
   background-image: var(--alt-gradient) !important;
 }
 
@@ -149,16 +165,20 @@ body.fullBg {
   padding-bottom: 8px;
 }
 
+.infoMessage {
+  background-color: var(--base-bg-color);
+}
+
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, button.checkboxButton, .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button, .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, a.fillIcon:hover, .ynomojiButton:hover {
+  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, .ynomojiButton:hover {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, #chatButtons button:hover, .uiThemeItem:hover, button.checkboxButton:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button:hover {
     transform: scale(1.1);
   }
 }
@@ -666,40 +686,49 @@ body.fullBg {
   margin-top: 40px;
 }
 
-#chat {
+.chatboxTabSection {
   overflow: hidden;
 }
 
-#chatHeader {
+.tabHeader {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
+
+#content:not(.inParty) #playersHeader {
+  display: none;
+}
  
-#chatTabs {
+.subTabs {
   display: flex;
 }
 
-.chatTab, #chatButtons button {
+.subTab, .tabButtons button {
+  padding: 2px 2px 0 0;
   pointer-events: all;
   cursor: pointer;
 }
 
-.chatTab.active {
+.subTab.active {
   pointer-events: none;
   cursor: default;
 }
 
-.chatTab .chatTabLabel {
+.subTab .subTabLabel {
   padding: 0 8px;
 }
 
-.chatTab.unread .chatTabLabel {
+.subTab.unread .subTabLabel {
   font-weight: bold;
   padding: 0 7px;
 }
 
-.chatTabBg {
+#content:not(.inParty) .partySubTab, #content.inParty #createPartyButton {
+  display: none;
+}
+
+.subTabBg {
   position: relative;
   width: 100%;
   height: 100%;
@@ -710,15 +739,15 @@ body.fullBg {
   z-index: -1;
 }
 
-.chatTab:hover .chatTabBg {
+.subTab:hover .subTabBg {
   opacity: 0.1;
 }
 
-.chatTab.active .chatTabBg {
+.subTab.active .subTabBg {
   opacity: 0.25;
 }
 
-.chatTabLabel {
+.subTabLabel {
   pointer-events: none;
 }
 
@@ -726,12 +755,16 @@ body.fullBg {
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
-#messages {
+.chatboxTabContent {
   border-top: 8px solid transparent;
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
-#chatbox.map .messageContainer.global, #chatbox.global .messageContainer:not(.global), #chatbox:not(.map) .messageContainer.map {
+#content:not(.inParty) .playerList {
+  border-top: none;
+}
+
+#chatbox.mapChat .messageContainer.global, #chatbox.globalChat .messageContainer:not(.global), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
   display: none;
 }
 
@@ -741,7 +774,7 @@ body.fullBg {
   border-image: var(--border-image-url) 8 repeat !important;
 }
 
-#chatbox:not(.map):not(.global) .lastAllTabMessageInLoc, #chatbox.map .lastMapTabMessageInLoc, .messageContainer.locMessage {
+#chatbox:not(.mapChat):not(.globalChat) .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {
   border-bottom-width: 8px !important;
 }
 
@@ -796,7 +829,7 @@ body.fullBg {
   word-break: break-word;
 }
 
-.message .icon, .playerListEntry .nameText .icon {
+.message .icon, .listEntry .nameText .icon {
   display: inline-block;
   vertical-align: text-top;
   width: 12px;
@@ -808,7 +841,7 @@ body.fullBg {
   cursor: pointer;
 }
 
-.playerListEntry {
+.listEntry {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -821,27 +854,67 @@ body.fullBg {
   margin-bottom: 4px;
 }
 
-.playerListEntrySprite {
+.listEntrySprite {
   margin-right: 8px;
   min-width: 40px;
   min-height: 32px;
 }
 
-.playerListEntry .nameText {
+.listEntrySprite.offline {
+  filter: grayscale(1);
+}
+
+.listEntry .detailsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.listEntry .nameText {
   width: 100%;
   background-image: var(--base-color-image-url) !important;
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
-.playerListEntry .nameText .icon {
+.listEntry .nameText .icon {
   width: 16px;
   height: 16px;
 }
 
-.playerListEntryActionContainer .icon {
+.listEntry .partyNameContainer {
+  display: flex;
+  width: 100%;
+}
+
+.listEntry .partyListEntryMemberCount {
+  display: flex;
+  padding-right: 8px;
+}
+
+.listEntry .partyListEntryMemberCount .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.listEntry .partyMemberSpritesContainer {
+  height: 16px;
+  overflow-y: hidden;
+}
+
+.listEntry .partyMemberSpritesContainer img {
+  min-width: 20px;
+  min-height: 16px;
+  margin-right: 4px;
+}
+
+.listEntryActionContainer {
+  display: flex;
+}
+
+.listEntryActionContainer .icon {
   width: 24px;
   height: 24px;
-  padding-right: 4px;
+  padding: 0 4px;
 }
 
 #unreadMessageCountContainer {
@@ -866,7 +939,7 @@ body.fullBg {
   font-weight: normal;
 }
 
-#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection {
+#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage {
   border: 8px solid transparent;
 }
 
@@ -882,7 +955,7 @@ body.fullBg {
   margin-right: -32px;
 }
 
-#chatbox:not(.map):not(.global) #chatInputContainer.globalCooldown form {
+#chatbox:not(.mapChat):not(.globalChat) #chatInputContainer.globalCooldown form {
   margin-right: -50px;
 }
 
@@ -898,7 +971,7 @@ body.fullBg {
   border-image: none !important;
 }
 
-#chatbox.map #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.global #chatInputContainer:not(.globalCooldown) #chatInput {
+#chatbox.mapChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.globalChat #chatInputContainer:not(.globalCooldown) #chatInput {
   width: calc(100% - 13px);
   padding-right: 2px;
 }
@@ -907,7 +980,7 @@ body.fullBg {
   opacity: 0.675;
 }
 
-#chatbox:not(.map):not(.global) #chatInputContainer.globalCooldown #chatInput {
+#chatbox:not(.mapChat):not(.globalChat) #chatInputContainer.globalCooldown #chatInput {
   width: calc(100% - 62px);
   padding-right: 52px;
 }
@@ -954,7 +1027,7 @@ body.fullBg {
   display: none;
 }
 
-#chatbox.map #globalCooldownIcon, #chatbox.global #globalCooldownIcon {
+#chatbox.mapChat #globalCooldownIcon, #chatbox.globalChat #globalCooldownIcon {
   left: 8px;
 }
 
@@ -965,7 +1038,7 @@ body.fullBg {
   pointer-events: all;
 }
 
-#chatbox.map #globalMessageButton, #chatbox.global #globalMessageButton {
+#chatbox.mapChat #globalMessageButton, #chatbox.globalChat #globalMessageButton {
   display: none;
 }
 
@@ -999,7 +1072,7 @@ body.fullBg {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, button.checkboxButton {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1047,7 +1120,7 @@ body.fullBg {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a, label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a, label {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1102,7 +1175,8 @@ body.fullBg {
   max-width: 480px;
   margin: 8px;
   padding-bottom: 16px;
-  background: white;
+  background-image: var(--modal-container-bg-image-url) !important;
+  border-image: var(--modal-border-image-url) 10 repeat !important;
   z-index: 20;
 }
 
@@ -1130,6 +1204,30 @@ body.fullBg {
   text-decoration: none;
 }
 
+.modal input, .modal select, .modal button {
+  color: var(--modal-base-color) !important;
+  border-image: var(--modal-border-image-url) 8 repeat !important;
+  background-color: var(--modal-base-bg-color) !important;
+  text-shadow: 1.5px 1.5px var(--modal-shadow-color);
+}
+
+.modal .altText {
+  background-image: var(--modal-alt-gradient) !important;
+}
+
+.modal .baseColorBg {
+  background-color: var(--modal-base-color) !important;
+}
+
+.modal .baseColorFill {
+  fill: var(--modal-base-color) !important;
+}
+
+.modal .infoLabel, .modal .infoText, .modal h1, .modal a, .modal label {
+  background-image: var(--modal-base-gradient) !important;
+  filter: drop-shadow(1.5px 1.5px var(--modal-shadow-color));
+}
+
 .modalContent {
   display: flex;
   flex-wrap: wrap;
@@ -1139,11 +1237,20 @@ body.fullBg {
   overflow-y: auto;
 }
 
+.modalContent::-webkit-scrollbar-track {
+  border-image: var(--modal-border-image-url) 8 repeat !important;
+  background-color: var(--modal-base-bg-color);
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  border-image: var(--modal-border-image-url) 6 round !important;
+}
+
 .fullscreenModal .modalContent {
   align-content: baseline;
 }
 
-.modalContent > div {
+.modalContent > .item {
   margin: 22px;
   text-align: center;
 }
@@ -1152,12 +1259,16 @@ body.fullBg {
   margin-top: 2px;
 }
 
-.modalContent > div > div {
+.modalContent > .item > div, #modalContainer[data-last-modal-id="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.modalContent > div > div.selected {
+.modalContent > .item > div.selected, #modalContainer[data-last-modal-id="createPartyModal"] .modalContent > .item > div.partySelected {
   border-color: white;
+}
+
+#modalContainer[data-last-modal-id="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id="createPartyModal"] .modalFooter {
+  display: none;
 }
 
 .modalHeader, .modalFooter {
@@ -1209,6 +1320,14 @@ body.fullBg {
   cursor: pointer;
 }
 
+form .uiTheme {
+  width: 32px;
+  height: 32px;
+  background-size: 32px;
+  background-position-y: -8px;
+  border-width: 12px;
+}
+
 .uiTheme.fullBg {
   background-size: 112px;
 }
@@ -1218,7 +1337,15 @@ body.fullBg {
   pointer-events: none;
 }
 
-#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .chatTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
+#partyModalPlayerListContainer {
+  width: 284px;
+}
+
+#partyModalOfflinePlayerList .playerListEntry {
+  opacity: 0.5;
+}
+
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
 
@@ -1543,7 +1670,7 @@ body.fullBg {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select, button.checkboxButton {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select, button {
     border-color: unset !important;
   }
 
@@ -1551,7 +1678,7 @@ body.fullBg {
     border-color: transparent !important;
   }
 
-  #messages {
+  .chatboxTabContent {
     border-top-color: unset !important;
     border-left: 0;
     border-right: 0;
@@ -1566,12 +1693,16 @@ body.fullBg {
   }
 
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .chatTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, h1, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, h1, a, label {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }
 
   .altText, a:not(.modalClose) {
     color: var(--alt-color);
+  }
+
+  .modal .altText, .modal a:not(.modalClose) {
+    color: var(--modal-alt-color);
   }
 }

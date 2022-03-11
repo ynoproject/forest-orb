@@ -39,6 +39,7 @@ let config = {
   disablePlayerSounds: false,
   immersionMode: false,
   chatTabIndex: 0,
+  playersTabIndex: 0,
   globalMessage: false,
   hideOwnGlobalMessageLocation: false,
   showGlobalMessageLocation: false
@@ -70,22 +71,24 @@ function onUpdateConnectionStatus(status) {
     connStatusText.classList.toggle('altText', !status);
   }; 
   if (connStatus !== undefined && (!status || status === 2))
-    window.setTimeout(function () {
+    setTimeout(function () {
       if (connStatus === status)
         updateStatusText();
     }, 500);
   else
     updateStatusText();
   if (status === 1) {
-    addOrUpdatePlayerListEntry(systemName, playerName, -1);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, -1);
     fetchAndUpdatePlayerCount();
     if (!hasConnected) {
       addChatTip();
       hasConnected = true;
     }
     syncPrevLocation();
-  } else
+  } else {
     clearPlayerList();
+    clearPartyList();
+  }
   connStatus = status;
 }
 
@@ -121,9 +124,7 @@ let playerName;
 let systemName;
 
 setSystemName(getDefaultUiTheme());
-
-if (hasUiThemes)
-  populateUiThemes();
+populateUiThemes();
 
 const gameLogoUrl = `../images/logo_${gameId}.png`;
 const gameLogoImg = new Image();
@@ -239,7 +240,7 @@ function onReceiveInputFeedback(inputId) {
 
 function preToggle(buttonElement) {
   buttonElement.classList.add('preToggled');
-  const tryToggleTimer = window.setInterval(function () {
+  const tryToggleTimer = setInterval(function () {
     if (buttonElement.classList.contains('toggled')) {
       buttonElement.classList.remove('preToggled');
       clearInterval(tryToggleTimer);
@@ -248,21 +249,38 @@ function preToggle(buttonElement) {
   }, 500);
 }
 
-function openModal(modalId) {
-  document.getElementById('modalContainer').classList.remove('hidden');
+function openModal(modalId, theme, lastModalId) {
+  const modalContainer = document.getElementById('modalContainer');
+  modalContainer.classList.remove('hidden');
+
+  if (lastModalId) {
+    modalContainer.dataset.lastModalId = lastModalId;
+    modalContainer.dataset.lastModalTheme = theme;
+  } else {
+    delete modalContainer.dataset.lastModalId;
+    delete modalContainer.dataset.lastModalTheme;
+  }
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId)
     activeModal.classList.add('hidden');
+  
+  setModalUiTheme(theme);
+
   document.getElementById(modalId).classList.remove('hidden');
 }
 
+function closeModal() {
+  const modalContainer = document.getElementById('modalContainer');
+  if (!modalContainer.dataset.lastModalId)
+    modalContainer.classList.add('hidden');
+  const activeModal = document.querySelector('.modal:not(.hidden)');
+  if (activeModal)
+    activeModal.classList.add('hidden');
+  if (modalContainer.dataset.lastModalId) {
+    openModal(modalContainer.dataset.lastModalId, modalContainer.dataset.lastModalTheme);
+  }
+};
 {
-  const closeModal = function () {
-    document.getElementById('modalContainer').classList.add('hidden');
-    const activeModal = document.querySelector('.modal:not(.hidden)');
-    if (activeModal)
-      activeModal.classList.add('hidden');
-  };
   const modalCloseButtons = document.querySelectorAll('.modalClose');
   for (let button of modalCloseButtons)
     button.onclick = closeModal;
@@ -294,7 +312,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
         ynomojiContainer.classList.toggle('hidden', !hasMatch);
       else {
         const currentInputValue = this.value;
-        window.setTimeout(() => {
+        setTimeout(() => {
           if (chatInput.value === currentInputValue)
             ynomojiContainer.classList.remove('hidden');
         }, 1000);
@@ -351,12 +369,12 @@ document.getElementById('ownGlobalMessageLocationButton').onclick = function () 
     Module._ToggleGlobalMessageLocation();
 };
 
-if (hasUiThemes) {
+{
   config.uiTheme = 'Default';
 
   document.getElementById('uiThemeButton').onclick = () => openModal('uiThemesModal');
 
-  const uiThemes = document.querySelectorAll('.uiTheme');
+  const uiThemes = document.querySelectorAll('#uiThemesModal .uiTheme');
 
   for (uiTheme of uiThemes)
     uiTheme.onclick = onSelectUiTheme;
@@ -386,9 +404,9 @@ document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 document.getElementById('clearChatButton').onclick = function () {
   const chatbox = document.getElementById('chatbox');
   const messagesElement = document.getElementById('messages');
-  const globalFiltered = chatbox.classList.contains('global');
-  if (globalFiltered || chatbox.classList.contains('map')) {
-    const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.global' : ':not(.global)'}`);
+  const globalFiltered = chatbox.classList.contains('globalChat');
+  if (globalFiltered || chatbox.classList.contains('mapChat')) {
+    const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.globalChat' : ':not(.globalChat)'}`);
     for (let message of messages)
       message.remove();
   } else {
@@ -406,12 +424,12 @@ document.getElementById('lang').onchange = function () {
   setLang(this.value);
 };
 
-document.getElementById('nametagButton').onclick = function () {
+document.getElementById('nametagButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._ToggleNametags();
 };
 
-document.getElementById('playerSoundsButton').onclick = function () {
+document.getElementById('playerSoundsButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._TogglePlayerSounds();
 };
@@ -422,9 +440,23 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('nexusButton').onclick = function () {
-  window.location = '../';
+document.getElementById('createPartyButton').onclick = () => openModal('createPartyModal', document.getElementById('partyTheme').value);
+
+document.getElementById('publicPartyButton').onclick = function () {
+  this.classList.toggle('toggled');
+  this.nextElementSibling.checked = !this.classList.contains('toggled');
 };
+
+document.getElementById('partyThemeButton').onclick = function () {
+  openModal('uiThemesModal', this.nextElementSibling.value, 'createPartyModal');
+};
+
+document.getElementById('createPartyForm').onsubmit = () => {
+  const formData = new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString();
+  return false;
+};
+
+document.getElementById('nexusButton').onclick = () => window.location = '../';
 
 if (gameId === '2kki') {
   document.getElementById('2kkiVersion').innerText = document.querySelector('meta[name="2kkiVersion"]').content || '?';
@@ -449,6 +481,17 @@ function onClickChatboxTab() {
     activeChatboxTabSection = this.dataset.tabSection;
     if (activeChatboxTabSection === 'chat')
       document.getElementById("unreadMessageCountContainer").classList.add('hidden');
+    else if (activeChatboxTabSection === 'parties') {
+      updatePartyList();
+      const updatePartyListTimer = setInterval(() => {
+        if (skipPartyListUpdate)
+          skipPartyListUpdate = false;
+        else if (document.getElementById("chatboxTabParties").classList.contains("active"))
+          updatePartyList();
+        else
+          clearInterval(updatePartyListTimer);
+      }, 10000);
+    }
     for (let tab of document.getElementsByClassName('chatboxTab'))
       tab.classList.toggle('active', tab === this);
     for (let tabSection of document.getElementsByClassName('chatboxTabSection'))
@@ -477,8 +520,9 @@ function onClickChatTab() {
     else
       delete chatInput.dataset.global;
     chatInput.disabled = global && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
-    chatbox.classList.toggle('map', tabIndex === 1);
-    chatbox.classList.toggle('global', tabIndex === 2);
+    chatbox.classList.toggle('mapChat', tabIndex === 1);
+    chatbox.classList.toggle('globalChat', tabIndex === 2);
+    chatbox.classList.toggle('partyChat', tabIndex === 3);
     messages.scrollTop = messages.scrollHeight;
     config.chatTabIndex = tabIndex;
     updateConfig(config);
@@ -487,6 +531,25 @@ function onClickChatTab() {
 
 for (let chatTab of document.getElementsByClassName('chatTab'))
   chatTab.onclick = onClickChatTab;
+
+function onClickPlayersTab() {
+  const tabIndex = Array.prototype.indexOf.call(this.parentNode.children, this);
+  if (tabIndex !== config.playersTabIndex) {
+    const chatbox = document.getElementById('chatbox');
+    for (let playersTab of document.getElementsByClassName('playersTab')) {
+      const active = playersTab === this;
+      playersTab.classList.toggle('active', active);
+      if (active || !tabIndex)
+        playersTab.classList.remove('unread');
+    }
+    chatbox.classList.toggle('partyPlayers', tabIndex === 1);
+    config.playersTabIndex = tabIndex;
+    updateConfig(config);
+  }
+}
+
+for (let tab of document.getElementsByClassName('playersTab'))
+  tab.onclick = onClickPlayersTab;
 
 let ignoreSizeChanged = false;
 
@@ -649,7 +712,7 @@ function updateCanvasFullscreenSize() {
   updateYnomojiContainerPos();
 }
 
-window.onresize = function () { window.setTimeout(onResize, 0); };
+window.onresize = function () { setTimeout(onResize, 0); };
 
 document.addEventListener('fullscreenchange', updateCanvasFullscreenSize);
 
@@ -667,7 +730,7 @@ let fullscreenControlsTimer;
 
 function setFullscreenControlsHideTimer() {
   if (fullscreenControlsTimer)
-    clearInterval(fullscreenControlsTimer);
+    window.clearInterval(fullscreenControlsTimer);
   fullscreenControlsTimer = setTimeout(function () {
     if (!document.querySelector("#controls button:hover"))
       toggleControls(false);
@@ -702,7 +765,13 @@ function setName(name, isInit) {
 }
 
 function onSelectUiTheme(e) {
-  setUiTheme(e.target.dataset.uiTheme);
+  const modalContainer = document.getElementById('modalContainer');
+  if (modalContainer.dataset.lastModalId !== 'createPartyModal')
+    setUiTheme(e.target.dataset.uiTheme);
+  else {
+    setPartyTheme(e.target.dataset.uiTheme);
+    setModalUiTheme(e.target.dataset.uiTheme);
+  }
 }
 
 function handleSaveFileUpload(evt) {
@@ -1182,6 +1251,13 @@ function loadOrInitConfig(configObj, global) {
                     chatTab.click();
                 }
                 break;
+              case 'playersTabIndex':
+                if (value) {
+                  const playersTab = document.querySelector(`.playersTab:nth-child(${value + 1})`);
+                  if (playersTab)
+                    playersTab.click();
+                }
+                break;
               case 'globalMessage':
                 if (value)
                   document.getElementById('globalMessageButton').click();
@@ -1191,15 +1267,14 @@ function loadOrInitConfig(configObj, global) {
                   preToggle(document.getElementById('ownGlobalMessageLocationButton'));
                 break;
               case 'uiTheme':
-                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
-                  if (hasUiThemes)
-                    document.querySelector('.uiTheme').value = value;
+                if (gameUiThemes.indexOf(value) > -1) {
+                  document.querySelector('.uiTheme').value = value;
                   setUiTheme(value, true);
                   loadedUiTheme = true;
                 }
                 break;
               case 'fontStyle':
-                if (hasUiThemes && gameUiThemes.indexOf(value) > -1) {
+                if (gameUiThemes.indexOf(value) > -1) {
                   document.querySelector('.fontStyle').value = value;
                   setFontStyle(value, true);
                   loadedFontStyle = true;
@@ -1277,7 +1352,7 @@ loadOrInitConfig(config);
 loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
-window.setInterval(fetchAndUpdatePlayerCount, 15000);
+setInterval(fetchAndUpdatePlayerCount, 15000);
 
 fetchAndPopulateYnomojiConfig();
 

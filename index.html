@@ -144,42 +144,78 @@
                   </div>
                 </div>
               </div>
-              <div id="chatboxTabPlayers" class="chatboxTab" data-tab-section="playerList">
+              <div id="chatboxTabPlayers" class="chatboxTab" data-tab-section="players">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label>
               </div>
+              <!--<div id="chatboxTabParties" class="chatboxTab" data-tab-section="parties">
+                <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.parties">Parties</label>
+              </div>-->
             </div>
             <div id="chat" class="chatboxTabSection">
-              <div id="chatHeader">
-                <div id="chatTabs">
-                  <div id="chatTabAll" class="chatTab active">
-                    <small class="chatTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.all">All</small>
-                    <div class="chatTabBg"></div>
+              <div id="chatHeader" class="tabHeader">
+                <div id="chatTabs" class="subTabs">
+                  <div id="chatTabAll" class="chatTab subTab active">
+                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.all">All</small>
+                    <div class="subTabBg"></div>
                   </div>
-                  <div id="chatTabMap" class="chatTab">
-                    <small class="chatTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.map">Map</small>
-                    <div class="chatTabBg"></div>
+                  <div id="chatTabMap" class="chatTab subTab">
+                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.map">Map</small>
+                    <div class="subTabBg"></div>
                   </div>
-                  <div id="chatTabGlobal" class="chatTab">
-                    <small class="chatTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.global">Global</small>
-                    <div class="chatTabBg"></div>
+                  <div id="chatTabGlobal" class="chatTab subTab">
+                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.global">Global</small>
+                    <div class="subTabBg"></div>
+                  </div>
+                  <div id="chatTabParty" class="chatTab partySubTab subTab">
+                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.party">Party</small>
+                    <div class="subTabBg"></div>
                   </div>
                 </div>
-                <div id="chatButtons">
+                <div id="chatButtons" class="tabButtons">
                   <button id="ownGlobalMessageLocationButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.chat.toggleOwnGlobalMessageLocation">
-                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
                       <path d="m3 5q1-5 6-5t6 5-6 11q-7-6-6-11m6-2a1 1 0 0 0 0 5 1 1 0 0 0 0 -5m-2 11c-1 0-3 1-3 2s2 2 5 2 5-1 5-2-2-2-3-2" /><path d="m-2 16l22-14" />
                     </svg>
                   </button>
                   <button id="clearChatButton" class="iconButton unselectable" data-i18n="[title]tooltips.chat.clearChat">
-                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
                       <path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m9.5-14.75l-7 7m0-7l7 7" />
                     </svg>
                   </button>
                 </div>
               </div>
-              <div id="messages" class="scrollableContainer"></div>
+              <div id="messages" class="chatboxTabContent scrollableContainer"></div>
             </div>
-            <div id="playerList" class="chatboxTabSection scrollableContainer hidden"></div>
+            <div id="players" class="chatboxTabSection hidden">
+              <div id="playersHeader" class="tabHeader">
+                <div id="playersTabs" class="subTabs">
+                  <div id="playersTabMap" class="playersTab subTab active">
+                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.map">Map</small>
+                    <div class="subTabBg"></div>
+                  </div>
+                  <div id="playersTabParty" class="playersTab partySubTab subTab">
+                    <small class="playersTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.party">Party</small>
+                    <div class="subTabBg"></div>
+                  </div>
+                </div>
+                <div id="playersButtons" class="tabButtons"></div>
+              </div>
+              <div id="playerList" class="chatboxTabContent playerList scrollableContainer"></div>
+              <div id="partyPlayerList" class="chatboxTabContent playerList scrollableContainer"></div>
+            </div>
+            <div id="parties" class="chatboxTabSection hidden">
+              <div id="partiesHeader" class="tabHeader">
+                <div id="partiesTabs" class="subTabs"></div>
+                <div id="partiesButtons" class="tabButtons">
+                  <button id="createPartyButton" class="iconButton unselectable" data-i18n="[title]tooltips.parties.createParty">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                      <path d="m9 4a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7 1.625 0 2.5313 0.6875 2.75 1.125v0.625h-3v3.5h3v2.25q-3.2344 1.2344-6.75-0.5m0-17a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7 0.375 0 0.5 0 1.25 0.125-0.25 1.625 1.25 3.125 2.5 3.125q0.125 0.25 0.125 0.5c-1.75 0-3.625 1-3.875 4.125q-2.375 0-4-0.875m12-13a1 1 90 0 1 0 5 1 1 90 0 1 0-5m4 11.75c-0.125-3.625-1-5.75-4-5.75-0.375 0-0.5 0-1.25 0.125 0.25 1.625-1.25 3.125-2.5 3.125q-0.125 0.25-0.125 0.5c1.75 0 2.5 0.875 2.625 1v-2h3.5v3h1.75m-2 6.25v-3h3v-3h-3v-3h-3v3h-3v3h3v3h3" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div id="partyList" class="chatboxTabContent scrollableContainer"></div>
+            </div>
             <template><div class="globalMessageIcon icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
                 <path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18v18q-10-9 0-18 10 9 0 18m-7.5-4q7.5-3 15 0m-15-10q7.5 2 15 0m-16.5 5h18" />
@@ -203,6 +239,26 @@
             <template><div class="banIcon icon fillIcon">
               <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
                 <path d="m9 0a9 9 90 1 0 9 9 9 9 90 0 0 -9 -9zm0 2.1a6.9 6.9 90 0 1 4.1 1.3l-9.7 9.7a6.9 6.9 90 0 1 5.6 -11zm0 13.8a6.9 6.9 90 0 1 -4.1 -1.3l9.6-9.6a6.9 6.9 90 0 1 -5.5 10.9z" />
+              </svg>
+            </div></template>
+            <template><div class="infoIcon icon fillIcon">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m9 0a1 1 90 0 0 0 18 1 1 90 0 0 0 -18m-2 15.5v-1q1 0 1-1v-4q0-1-1-1v-1h4v6q0 1 1 1v1m-3-9c-1.625 0-2-1.5-2-2s0.375-2 2-2 2 1.5 2 2-0.375 2-2 2" />
+              </svg>
+            </div></template>
+            <template><div class="partyMemberIcon icon fillIcon">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m9 0a1.275 1.25 90 0 0 0 6.25 1.25 1.25 90 0 0 0 -6.25m-5 16.75c0-6.5 1.25-9 5-9s5 2.5 5 9.25q-5 2.25-10-0.25" />
+              </svg>
+            </div></template>
+            <template><div class="joinIcon icon fillIcon">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m2 5v-3q0-2 2-2h10q2 0 2 2v14q0 2-2 2h-10q-2 0-2-2v-3h2v1c0 2 0 2 2 2h6c2 0 2 0 2-2v-10c0-2 0-2-2-2h-6c-2 0-2 0-2 2v1h-2m-2 2h6v-3l5 5-5 5v-3h-6v-4" />
+              </svg>
+            </div></template>
+            <template><div class="leaveIcon icon fillIcon">
+              <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="m16 5v-3q0-2-2-2h-10q-2 0-2 2v14q0 2 2 2h10q2 0 2-2v-3l-2 2c0 1-0.25 1-2 1h-6c-2 0-2 0-2-2v-10c0-2 0-2 2-2h6c2 0 2 0.25 2 1l2 2m-9 2h6v-3l5 5-5 5v-3h-6v-4" />
               </svg>
             </div></template>
           </div>
@@ -245,7 +301,7 @@
         <div id="loginModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 data-i18n="[html]modal.login.title">Login</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.login.title">Login</h1>
           </div>
           <div class="modalContent">
             <form id="loginForm">
@@ -266,7 +322,7 @@
         <div id="registerModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 data-i18n="[html]modal.register.title">Register</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.register.title">Register</h1>
           </div>
           <div class="modalContent">
             <form id="registerForm">
@@ -293,7 +349,7 @@
         <div id="settingsModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 data-i18n="[html]modal.settings.title">Settings</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.settings.title">Settings</h1>
           </div>
           <div class="modalContent">
             <ul class="formControls">
@@ -328,19 +384,19 @@
                 </div>
               </li>-->
               <li class="formControlRow">
-                <label for="nametagToggle" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNametags">Nametags</label>
+                <label for="nametagButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNametags">Nametags</label>
                 <div>
                   <button id="nametagButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="playerSoundsToggle" class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds</label>
+                <label for="playerSoundsButton" class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds</label>
                 <div>
                   <button id="playerSoundsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow desktopOnly">
-                <label for="tabToChatToggle" class="unselectable" data-i18n="[html]modal.settings.fields.tabToChat">Press Tab to Chat</label>
+                <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.settings.fields.tabToChat">Press Tab to Chat</label>
                 <div>
                   <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
@@ -351,7 +407,7 @@
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 data-i18n="[html]modal.uiTheme.title">UI Theme</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.uiTheme.title">UI Theme</h1>
           </div>
           <div class="modalContent"></div>
           <div class="modalFooter">
@@ -366,6 +422,50 @@
                 <option value="5" data-i18n="[html]fontStyle.values.style6" data-game-ids="yume,2kki,flow">Style 6</option>
                 <option value="6" data-i18n="[html]fontStyle.values.style7" data-game-ids="yume,2kki,flow">Style 7</option>
               </select>
+            </div>
+          </div>
+        </div>
+        <div id="createPartyModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.createParty.title">Create Party</h1>
+          </div>
+          <div class="modalContent">
+            <form id="createPartyForm">
+              <ul class="formControls">
+                <li class="formControlRow">
+                  <label for="partyName" class="unselectable" data-i18n="[html]modal.createParty.fields.partyName">Party Name</label><input id="partyName" name="name" type="text" autocomplete="off"></input>
+                </li>
+                <li class="formControlRow">
+                  <label for="publicPartyButton" class="unselectable" data-i18n="[html]modal.createParty.fields.public">Public</label>
+                  <div>
+                    <button id="publicPartyButton" class="checkboxButton inverseToggle unselectable" type="button"><span></span></button>
+                    <input type="checkbox" name="public" style="display: none" checked />
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label for="partyThemeButton" class="unselectable" data-i18n="[html]modal.createParty.fields.theme">Theme</label>
+                  <div>
+                    <div id="partyThemeButton" class="uiThemeItem unselectable"></div>
+                    <input id="partyTheme" type="text" name="theme" style="display: none" />
+                  </div>
+                </li>
+              </ul>
+              <button data-i18n="[html]modal.createParty.submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div id="partyModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle"></h1>
+          </div>
+          <div class="modalContent">
+            <div id="partyModalPlayerListContainer" class="scrollableContainer">
+              <h4 id="partyModalOnlineCount" class="infoText">Online - 0</h4>
+              <div id="partyModalOnlinePlayerList" class="playerList"></div>
+              <h4 id="partyModalOfflineCount" class="infoText">Offline - 0</h4>
+              <div id="partyModalOfflinePlayerList" class="playerList"></div>
             </div>
           </div>
         </div>
@@ -399,6 +499,7 @@
   </script>
   <script type="text/javascript" src="chat.js"></script>
   <script type="text/javascript" src="playerlist.js"></script>
+  <script type="text/javascript" src="parties.js"></script>
   <script type="text/javascript" src="system.js"></script>
   <script type="text/javascript" src="2kki.js" data-game-ids="2kki"></script>
   <script type="text/javascript" src="play.js"></script>

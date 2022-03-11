@@ -120,9 +120,9 @@ function chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr) {
 
   const chatbox = document.getElementById("chatbox");
 
-  if (chatbox.classList.contains("map") && global)
+  if (chatbox.classList.contains("mapChat") && global)
     document.getElementById("chatTabGlobal").classList.add("unread");
-  else if (chatbox.classList.contains("global") && !global)
+  else if (chatbox.classList.contains("globalChat") && !global)
     document.getElementById("chatTabMap").classList.add("unread");
   else if (!system && !document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
     const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
@@ -183,9 +183,9 @@ function chatNameCheck() {
   document.getElementById("chatInputContainer").setAttribute("style", "");
   updateYnomojiContainerPos();
   playerName = nameInput.value;
-  if (playerData[-1])
-    playerData[-1].name = playerName;
-  addOrUpdatePlayerListEntry(systemName, playerName, -1);
+  if (playerData)
+    playerData.name = playerName;
+  addOrUpdatePlayerListEntry(null, systemName, playerName, -1);
   ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
   Module._ChangeName(ptr);
   Module._free(ptr);
@@ -334,7 +334,8 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  const player = playerData[id] || null;
+  const uuid = playerUuids[id]?.uuid;
+  const player = uuid ? globalPlayerData[uuid] : null;
   chatboxAddMessage(msg, player);
 }
 
