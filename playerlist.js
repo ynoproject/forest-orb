@@ -85,29 +85,30 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(" ", "_");
-    initUiThemeContainerStyles(systemName);
-    initUiThemeFontStyles(systemName, 0);
-    playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-    
-    getFontColors(systemName, 0, colors => {
-      nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-      if (roleIcon || playerListEntryActionContainer.childElementCount) {
-        addSystemSvgGradient(systemName, colors);
-        if (roleIcon)
-          roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
-        for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
-          iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
-      }
+    initUiThemeContainerStyles(systemName, false, () => {
+      playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+      getFontShadow(systemName, shadow => {
+        nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
+        if (roleIcon || playerListEntryActionContainer.childElementCount) {
+          addSystemSvgDropShadow(systemName, shadow);
+          if (roleIcon)
+            roleIcon.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
+          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
+            iconPath.style.filter = `url(#dropShadow_${parsedSystemName})`;
+        }
+      });
     });
-    getFontShadow(systemName, shadow => {
-      nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-      if (roleIcon || playerListEntryActionContainer.childElementCount) {
-        addSystemSvgDropShadow(systemName, shadow);
-        if (roleIcon)
-          roleIcon.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
-        for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
-          iconPath.style.filter = `url(#dropShadow_${parsedSystemName})`;
-      }
+    initUiThemeFontStyles(systemName, 0, false, () => {
+      getFontColors(systemName, 0, colors => {
+        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
+        if (roleIcon || playerListEntryActionContainer.childElementCount) {
+          addSystemSvgGradient(systemName, colors);
+          if (roleIcon)
+            roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
+          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
+            iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
+        }
+      });
     });
   }
 

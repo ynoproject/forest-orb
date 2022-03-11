@@ -228,7 +228,7 @@ function setFontStyle(fontStyle, isInit) {
     updateConfig(config);
 }
 
-function initUiThemeContainerStyles(uiTheme, setTheme) {
+function initUiThemeContainerStyles(uiTheme, setTheme, callback) {
   const parsedUiTheme = uiTheme.replace(' ', '_');
   
   const baseBgColorProp = `--base-bg-color-${parsedUiTheme}`;
@@ -254,12 +254,15 @@ function initUiThemeContainerStyles(uiTheme, setTheme) {
         rootStyle.setProperty('--border-image-url', `var(${borderImageUrlProp})`);
         document.getElementById('dropShadow').children[0].setAttribute('flood-color', `var(${shadowColorProp})`);
       }
+
+      if (callback)
+        callback();
     });
   });
 }
 
-function initUiThemeFontStyles(uiTheme, fontStyle, setTheme) {
-  const parsedUiTheme = uiTheme.replace(' ', '-');
+function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
+  const parsedUiTheme = uiTheme.replace(' ', '_');
 
   let baseColorProp = `--base-color-${parsedUiTheme}`;
   let altColorProp = `--alt-color-${parsedUiTheme}`;
@@ -309,6 +312,9 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme) {
         updateSvgGradient(document.getElementById('baseGradient'), baseColors);
         updateSvgGradient(document.getElementById('altGradient'), altColors);
       }
+
+      if (callback)
+        callback();
     };
     getFontColors(uiTheme, altFontStyle, function (altColors) {
       if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
