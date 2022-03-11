@@ -269,7 +269,7 @@ function syncGlobalPlayerData(uuid, name, systemName, rank) {
 
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
-  const uuid = playerUuids[id]?.uuid;
+  const uuid = playerUuids[id];
   if (uuid) {
     if (name)
       globalPlayerData[uuid].name = name;
@@ -281,12 +281,12 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
 
 // EXTERNAL
 function onPlayerSpriteUpdated(sprite, idx, id) {
-  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id]?.uuid : -1);
+  updatePlayerListEntrySprite(null, sprite, idx, id !== undefined ? playerUuids[id] : -1);
 }
 
 // EXTERNAL
 function onPlayerDisconnected(id) {
-  const uuid = playerUuids[id]?.uuid;
+  const uuid = playerUuids[id];
   if (uuid) {
     delete playerUuids[id];
     removePlayerListEntry(null, uuid);

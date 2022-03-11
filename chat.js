@@ -334,7 +334,7 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  const uuid = playerUuids[id]?.uuid;
+  const uuid = playerUuids[id];
   const player = uuid ? globalPlayerData[uuid] : null;
   chatboxAddMessage(msg, player);
 }
