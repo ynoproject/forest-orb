@@ -256,6 +256,7 @@ function syncPlayerData(uuid, rank, id) {
     };
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
+    addOrUpdatePlayerListEntry(null, systemName, playerName, uuid);
   }
 }
 

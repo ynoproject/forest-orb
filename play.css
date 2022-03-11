@@ -33,12 +33,12 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input, select, button {
+html, input, select, button.checkboxButton, button[type="submit"] {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
 
-html, input, select, button {
+html, input, select, button.checkboxButton, button[type="submit"] {
   color: var(--base-color) !important;
   background-color: black;
 }
@@ -47,7 +47,7 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, input, select, button {
+#chatBorder, input, select, button.checkboxButton, button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -60,7 +60,7 @@ label {
   font-weight: bold;
 }
 
-input, select, button {
+input, select, button.checkboxButton, button[type="submit"] {
   background-color: var(--base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--shadow-color);
 }
@@ -90,7 +90,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   content: "✔";
 }
 
-body, .container, div, input, button {
+body, .container, div, input, button.checkboxButton, button[type="submit"] {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
@@ -103,7 +103,7 @@ body.fullBg {
   background-size: 100%;
 }
 
-form {
+.modal form {
   text-align: center;
   padding-bottom: 8px;
 }
@@ -170,7 +170,7 @@ form {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button, .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button.checkboxButton, button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
@@ -178,7 +178,7 @@ form {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -1072,7 +1072,7 @@ form {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button.checkboxButton, button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1204,7 +1204,7 @@ form {
   text-decoration: none;
 }
 
-.modal input, .modal select, .modal button {
+.modal input, .modal select, .modal button.checkboxButton, .modal button[type="submit"] {
   color: var(--modal-base-color) !important;
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
@@ -1670,7 +1670,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select, button {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select, button.checkboxButton, button[type="submit"] {
     border-color: unset !important;
   }
 
