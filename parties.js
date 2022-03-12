@@ -1,96 +1,140 @@
 let joinedPartyId = null;
 let updatePartyListTimer = null;
+let updateJoinedPartyTimer = null;
 let skipPartyListUpdate = false;
 let partyCache = {};
+let joinedPartyCache = {};
 
 function setJoinedPartyId(partyId) {
   document.getElementById("content").classList.toggle("inParty", !!partyId);
-  if (!partyId) {
-    if (config.chatTabIndex === 3)
-      document.getElementById('chatTabAll').click();
-    if (config.playersTabIndex === 1)
-      document.getElementById('playersTabMap').click();
-  }
-  joinedPartyId = partyId;
+  if (config.chatTabIndex === 3)
+    setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
+  if (config.playersTabIndex === 1)
+    setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
+  joinedPartyId = partyId || null;
+}
+
+function fetchAndUpdateJoinedPartyId() {
+  fetch(`../connect/${gameId}/api/party?command=id`)
+    .then(response => response.text())
+    .then(partyId => setJoinedPartyId(parseInt(partyId)));
 }
 
 function updatePartyList() {
-  const data = [];
-  const partyIds = data.map(p => p.id);
-  const removedPartyIds = Object.keys(partyCache).filter(p => partyIds.indexOf(p) === -1);
+  fetch(`../connect/${gameId}/api/party?command=list`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (!Array.isArray(data))
+        return;
 
-  for (let rp of removedPartyIds) {
-    removePartyListEntry(rp);
-    delete partyCache[rp];
-  }
+      const partyIds = data.map(p => p.id);
+      const removedPartyIds = Object.keys(partyCache).filter(p => partyIds.indexOf(p) === -1);
 
-  const partyList = document.getElementById("partyList");
-  
-  if (data.length) {
-    setJoinedPartyId(playerData ? data.find(p => p.members.map(m => m.uuid).indexOf(playerData.uuid) > -1)?.id : null);
+      for (let rp of removedPartyIds) {
+        removePartyListEntry(rp);
+        delete partyCache[rp];
+      }
 
-    for (let party of data) {
-      partyCache[party.id] = party;
-      addOrUpdatePartyListEntry(party);
-    }
+      const partyList = document.getElementById("partyList");
+      
+      if (data.length) {
+        setJoinedPartyId(playerData ? data.find(p => p.members.map(m => m.uuid).indexOf(playerData.uuid) > -1)?.id : null);
 
-    const partyListEntries = document.getElementsByClassName("partyListEntry");
+        for (let party of data) {
+          partyCache[party.id] = party;
+          addOrUpdatePartyListEntry(party);
+        }
 
-    const entries = [].slice.call(partyListEntries).sort(function (a, b) {
-      const partyA = partyCache[a.dataset.id];
-      const partyB = partyCache[b.dataset.id];
-      if (partyA.id === joinedPartyId)
-        return -1;
-      if (partyB.id === joinedPartyId)
-        return 1;
-      if (partyA.members.length === partyB.members.length)
-        return partyA.id >= partyB.id ? 1 : -1;
-      return partyA.members.length < partyB.members.length ? 1 : -1;
-    });
+        const partyListEntries = document.getElementsByClassName("partyListEntry");
 
-    entries.forEach(ple => partyList.appendChild(ple));
-  } else {
-    setJoinedPartyId(null);
+        const entries = [].slice.call(partyListEntries).sort(function (a, b) {
+          const partyA = partyCache[a.dataset.id];
+          const partyB = partyCache[b.dataset.id];
+          if (partyA.id === joinedPartyId)
+            return -1;
+          if (partyB.id === joinedPartyId)
+            return 1;
+          if (partyA.members.length === partyB.members.length)
+            return partyA.id >= partyB.id ? 1 : -1;
+          return partyA.members.length < partyB.members.length ? 1 : -1;
+        });
 
-    partyList.innerHTML = "";
+        entries.forEach(ple => partyList.appendChild(ple));
 
-    const emptyMessage = document.createElement("div");
-    emptyMessage.classList.add("infoMessage");
+        if (joinedPartyId)
+          updateJoinedParty();
+      } else {
+        setJoinedPartyId(null);
 
-    const emptyMessageText = document.createElement("span");
-    emptyMessageText.classList.add("infoLabel");
-    emptyMessageText.innerText = localizedMessages.parties.emptyMessage;
+        partyList.innerHTML = "";
 
-    emptyMessage.appendChild(emptyMessageText);
-    partyList.appendChild(emptyMessage);
-  }
+        const emptyMessage = document.createElement("div");
+        emptyMessage.classList.add("infoMessage");
 
-  let joinedPartyLabel = document.getElementById("joinedPartyLabel");
-  let joinedPartyDivider = partyList.querySelector(".divider");
+        const emptyMessageText = document.createElement("span");
+        emptyMessageText.classList.add("infoLabel");
+        emptyMessageText.innerText = localizedMessages.parties.emptyMessage;
 
-  if (joinedPartyId) {
-    const joinedPartyLabelHtml = getMassagedLabel(localizedMessages.parties.yourParty, true);
-    if (!joinedPartyLabel) {
-      joinedPartyLabel = document.createElement("span");
-      joinedPartyLabel.id = "joinedPartyLabel";
-      joinedPartyLabel.classList.add("infoText");
-      joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
-      partyList.prepend(joinedPartyLabel);
-    } else
-      joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
-    if (!joinedPartyDivider) {
-      joinedPartyDivider = document.createElement("div");
-      joinedPartyDivider.classList.add("divider");
-    }
-    partyList.querySelector(`.listEntry[data-id="${joinedPartyId}"]`).after(joinedPartyDivider);
-  } else {
-    joinedPartyLabel?.remove();
-    joinedPartyDivider?.remove();
-  }
+        emptyMessage.appendChild(emptyMessageText);
+        partyList.appendChild(emptyMessage);
+      }
 
-  const activePartyModal = document.querySelector("#partyModal:not(.hidden)");
-  if (activePartyModal)
-    initOrUpdatePartyModal(activePartyModal.dataset.partyId);
+      let joinedPartyLabel = document.getElementById("joinedPartyLabel");
+      let joinedPartyDivider = partyList.querySelector(".divider");
+
+      if (joinedPartyId) {
+        const joinedPartyLabelHtml = getMassagedLabel(localizedMessages.parties.yourParty, true);
+        if (!joinedPartyLabel) {
+          joinedPartyLabel = document.createElement("span");
+          joinedPartyLabel.id = "joinedPartyLabel";
+          joinedPartyLabel.classList.add("infoText");
+          joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
+          partyList.prepend(joinedPartyLabel);
+        } else
+          joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
+        if (!joinedPartyDivider) {
+          joinedPartyDivider = document.createElement("div");
+          joinedPartyDivider.classList.add("divider");
+        }
+        partyList.querySelector(`.listEntry[data-id="${joinedPartyId}"]`).after(joinedPartyDivider);
+      } else {
+        joinedPartyLabel?.remove();
+        joinedPartyDivider?.remove();
+      }
+
+      const activePartyModal = document.querySelector("#partyModal:not(.hidden)");
+      if (activePartyModal)
+        initOrUpdatePartyModal(activePartyModal.dataset.partyId);
+    }).catch(err => console.error(err));
+}
+
+function updateJoinedParty() {
+  fetch(`../connect/${gameId}/api/party?command=get&partyId=${joinedPartyId}`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(party => {
+      joinedPartyCache = party;
+      const partyPlayerList = document.getElementById("partyPlayerList");
+
+      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
+      const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
+
+      for (let playerUuid of removedPlayerUuids)
+        removePlayerListEntry(partyPlayerList, playerUuid);
+
+      for (let member of joinedPartyCache.members) {
+        const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
+        addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
+      }
+    }).catch(err => console.error(err));
 }
 
 function addOrUpdatePartyListEntry(party) {
@@ -192,7 +236,7 @@ function addOrUpdatePartyListEntry(party) {
 
   partyListEntry.classList.toggle("joinedParty", joinedPartyId);
 
-  const systemName = party.systemName.replace(/'/g, "");
+  let systemName = party.systemName.replace(/'/g, "");
   if (gameUiThemes.indexOf(systemName) === -1)
     systemName = getDefaultUiTheme();
   const parsedSystemName = systemName.replace(" ", "_");
@@ -232,7 +276,7 @@ function addOrUpdatePartyListEntry(party) {
   const partyPlayerList = document.getElementById("partyPlayerList");
 
   if (isInParty) {
-    const oldMemberUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
+    const oldMemberUuids = Array.from(partyPlayerList.querySelectorAll(".listEntry")).map(e => e.dataset.uuid);
     const removedMemberUuids = oldMemberUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
 
     for (let uuid of removedMemberUuids)
@@ -251,7 +295,7 @@ function addOrUpdatePartyListEntry(party) {
     };
 
     if (isInParty)
-      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid);
+      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
 
     if (memberIndex === ownerMemberIndex)
       continue;
@@ -265,7 +309,7 @@ function addOrUpdatePartyListEntry(party) {
         const spriteImg = document.createElement("img");
         spriteImg.classList.add("partyListEntrySprite");
         spriteImg.classList.add("listEntrySprite");
-        spriteImg.title = member.name;
+        spriteImg.title = member.name || localizedMessages.playerList.unnamed;
         if (member.rank)
           spriteImg.title += rankEmojis[member.rank];
         if (!member.online) {
@@ -277,7 +321,7 @@ function addOrUpdatePartyListEntry(party) {
     });
   }
 
-  nameText.innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", ownerMember.name);
+  nameText.innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", ownerMember.name || localizedMessages.playerList.unnamed);
 
   memberCountText.innerText = party.members.length;
 }
@@ -302,7 +346,7 @@ function initOrUpdatePartyModal(partyId) {
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
 
   const lastPartyId = partyModal.dataset.partyId;
-  partyModal.querySelector(".modalTitle").innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", party.members[ownerMemberIndex].name);
+  partyModal.querySelector(".modalTitle").innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
 
   let onlineCount = 0;
   let offlineCount = 0;
@@ -333,7 +377,9 @@ function initOrUpdatePartyModal(partyId) {
       onlineCount++;
     else
       offlineCount++;
-    addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid);
+    
+    const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
+    addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
   }
 
   const onlineCountLabel = document.getElementById("partyModalOnlineCount");
@@ -344,4 +390,33 @@ function initOrUpdatePartyModal(partyId) {
 
   onlineCountLabel.classList.toggle("hidden", !onlineCount);
   offlineCountLabel.classList.toggle("hidden", !offlineCount);
+}
+
+function addOrUpdatePartyMemberPlayerEntryLocation(member, entry) {
+  const playerLocationIcon = entry.querySelector(".playerLocationIcon");
+  let playerLocation = entry.querySelector(".playerLocation");
+  
+  if (!playerLocation) {
+    playerLocation = document.createElement("small");
+    playerLocation.classList.add("playerLocation");
+    if (!config.showPartyMemberLocation)
+      playerLocation.classList.add("hidden");
+    playerLocationIcon.after(playerLocation);
+  }
+
+  if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
+    const prevLocations = member.prevLocations && member.prevMapId !== "0000" ? decodeURIComponent(window.atob(member.prevLocations)).split("|").map(l => { return { title: l }; }) : null;
+    set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
+  } else {
+    playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, "\n");
+    playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
+  }
+  playerLocationIcon.classList.add("pointer");
+
+  playerLocationIcon.onclick = function () {
+    const locationLabel = this.nextElementSibling;
+    locationLabel.classList.toggle("hidden");
+    config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
+    updateConfig(config);
+  };
 }

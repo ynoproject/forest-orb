@@ -42,7 +42,8 @@ let config = {
   playersTabIndex: 0,
   globalMessage: false,
   hideOwnGlobalMessageLocation: false,
-  showGlobalMessageLocation: false
+  showGlobalMessageLocation: false,
+  showPartyMemberLocation: false
 };
 
 let cache = {
@@ -80,12 +81,14 @@ function onUpdateConnectionStatus(status) {
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
+    fetchAndUpdateJoinedPartyId();
     if (!hasConnected) {
       addChatTip();
       hasConnected = true;
     }
     syncPrevLocation();
   } else {
+    setJoinedPartyId(null);
     clearPlayerList();
     clearPartyList();
   }
@@ -452,7 +455,10 @@ document.getElementById('partyThemeButton').onclick = function () {
 };
 
 document.getElementById('createPartyForm').onsubmit = () => {
-  const formData = new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString();
+  closeModal();
+  fetch(`../connect/${gameId}/api/party?command=create&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
+    .then(response => response.text())
+    .then(partyId => setJoinedPartyId(parseInt(partyId)));
   return false;
 };
 
@@ -506,14 +512,16 @@ function onClickChatboxTab() {
 for (let tab of document.getElementsByClassName('chatboxTab'))
   tab.onclick = onClickChatboxTab;
 
-function onClickChatTab() {
-  const tabIndex = Array.prototype.indexOf.call(this.parentNode.children, this);
-  if (tabIndex !== config.chatTabIndex) {
+function setChatTab(tab, saveConfig) {
+  const chatTabs = document.getElementById('chatTabs');
+  const tabIndex = Array.prototype.indexOf.call(chatTabs.children, tab);
+  const activeTabIndex = Array.prototype.indexOf.call(chatTabs.children, chatTabs.querySelector('.active'));
+  if (tabIndex !== activeTabIndex) {
     const chatbox = document.getElementById('chatbox');
     const messages = document.getElementById('messages');
     const chatInput = document.getElementById('chatInput');
     for (let chatTab of document.getElementsByClassName('chatTab')) {
-      const active = chatTab === this;
+      const active = chatTab === tab;
       chatTab.classList.toggle('active', active);
       if (active || !tabIndex)
         chatTab.classList.remove('unread');
@@ -528,32 +536,53 @@ function onClickChatTab() {
     chatbox.classList.toggle('globalChat', tabIndex === 2);
     chatbox.classList.toggle('partyChat', tabIndex === 3);
     messages.scrollTop = messages.scrollHeight;
-    config.chatTabIndex = tabIndex;
-    updateConfig(config);
+
+    if (saveConfig) {
+      config.chatTabIndex = tabIndex;
+      updateConfig(config);
+    }
   }
 }
 
 for (let chatTab of document.getElementsByClassName('chatTab'))
-  chatTab.onclick = onClickChatTab;
+  chatTab.onclick = function () { setChatTab(this, true); };
 
-function onClickPlayersTab() {
-  const tabIndex = Array.prototype.indexOf.call(this.parentNode.children, this);
-  if (tabIndex !== config.playersTabIndex) {
-    const chatbox = document.getElementById('chatbox');
+function setPlayersTab(tab, saveConfig) {
+  const playersTabs = document.getElementById('playersTabs');
+  const tabIndex = Array.prototype.indexOf.call(playersTabs.children, tab);
+  const activeTabIndex = Array.prototype.indexOf.call(playersTabs.children, playersTabs.querySelector('.active'));
+  if (tabIndex !== activeTabIndex) {
     for (let playersTab of document.getElementsByClassName('playersTab')) {
-      const active = playersTab === this;
+      const active = playersTab === tab;
       playersTab.classList.toggle('active', active);
       if (active || !tabIndex)
         playersTab.classList.remove('unread');
     }
-    chatbox.classList.toggle('partyPlayers', tabIndex === 1);
-    config.playersTabIndex = tabIndex;
-    updateConfig(config);
+
+    if (saveConfig) {
+      document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 1);
+      config.playersTabIndex = tabIndex;
+      updateConfig(config);
+    }
+
+    if (tabIndex === 1) {
+      updateJoinedParty();
+      if (updateJoinedPartyTimer)
+        clearInterval(updateJoinedPartyTimer);
+      updateJoinedPartyTimer = setInterval(() => {
+        if (document.getElementById('chatboxTabPlayers').classList.contains('active') && config.playersTabIndex === 1)
+          updateJoinedParty();
+        else {
+          clearInterval(updateJoinedPartyTimer);
+          updateJoinedPartyTimer = null;
+        }
+      }, 10000);
+    }
   }
 }
 
 for (let tab of document.getElementsByClassName('playersTab'))
-  tab.onclick = onClickPlayersTab;
+  tab.onclick = function () { setPlayersTab(this, true); };
 
 let ignoreSizeChanged = false;
 
@@ -940,7 +969,7 @@ function initLocations(lang) {
   fetch(`locations/${gameId}/config.json`)
     .then(response => {
         if (!response.ok)
-          throw new Error('Location config file not found');
+          throw new Error(response.statusText);
         return response.json();
     })
     .then(jsonResponse => {
@@ -1015,7 +1044,7 @@ function getMapLocationsArray(mapLocations, mapId, prevMapId) {
 }
 
 function getLocalizedMapLocations(mapId, prevMapId, separator) {
-  if (localizedMapLocations.hasOwnProperty(mapId)) {
+  if (localizedMapLocations?.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
     if (localizedLocations.hasOwnProperty('title')) // Text location
@@ -1039,7 +1068,7 @@ function getLocalizedMapLocations(mapId, prevMapId, separator) {
 }
 
 function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
-  if (localizedMapLocations.hasOwnProperty(mapId)) {
+  if (localizedMapLocations?.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
     let locationsHtml;
@@ -1251,15 +1280,15 @@ function loadOrInitConfig(configObj, global) {
               case 'chatTabIndex':
                 if (value) {
                   const chatTab = document.querySelector(`.chatTab:nth-child(${value + 1})`);
-                  if (chatTab)
-                    chatTab.click();
+                  if (chatTab && value !== 2)
+                    setChatTab(chatTab);
                 }
                 break;
               case 'playersTabIndex':
                 if (value) {
                   const playersTab = document.querySelector(`.playersTab:nth-child(${value + 1})`);
-                  if (playersTab)
-                    playersTab.click();
+                  if (playersTab && value !== 1)
+                    setPlayersTab(playersTab);
                 }
                 break;
               case 'globalMessage':

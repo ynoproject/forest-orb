@@ -10,7 +10,7 @@ let globalPlayerData = {};
 let spriteData = {};
 let playerSpriteCache = {};
 
-function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
+function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation) {
   if (!playerList)
     playerList = document.getElementById("playerList");
 
@@ -41,11 +41,22 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
         playerListEntrySprite.src = spriteImg;
       });
     }
-
+    
     playerListEntry.appendChild(playerListEntrySprite);
 
     nameText.classList.add("nameText");
-    playerListEntry.appendChild(nameText);
+    
+    if (showLocation) {
+      const detailsContainer = document.createElement("div");
+      detailsContainer.classList.add("detailsContainer");
+
+      detailsContainer.appendChild(nameText);
+      detailsContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
+
+      playerListEntry.appendChild(detailsContainer);
+    } else {
+      playerListEntry.appendChild(nameText);
+    }
 
     playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
     playerListEntryActionContainer.classList.add("listEntryActionContainer");
@@ -136,6 +147,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid) {
 
   if (playerList.id === 'playerList')
     updateMapPlayerCount(playerList.childElementCount);
+
+  return playerListEntry;
 }
 
 function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {

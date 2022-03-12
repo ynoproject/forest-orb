@@ -233,7 +233,7 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     }
   };
 
-  if (localizedMapLocations.hasOwnProperty(mapId))
+  if (localizedMapLocations?.hasOwnProperty(mapId))
     setMessageLocationFunc(mapId, prevMapId, localizedMapLocations[mapId], prevLocations);
   else {
     if (!prevMapId)
@@ -241,7 +241,7 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     const locationKey = `${prevMapId}_${mapId}`;
     if (unknownLocations.indexOf(locationKey) > -1)
       setMessageLocationFunc(mapId, prevMapId, null, prevLocations);
-    else if (locationCache.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+    else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
       setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
       queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, setMessageLocationFunc)
