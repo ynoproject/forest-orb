@@ -143,8 +143,10 @@ const gameLogoBlendModeOverrides = {
 
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
-  if (playerData)
+  if (playerData) {
     playerData.systemName = name;
+    globalPlayerData[playerData.uuid].systemName = name;
+  }
   if (connStatus === 1)
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
 }
