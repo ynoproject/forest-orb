@@ -183,8 +183,10 @@ function chatNameCheck() {
   document.getElementById("chatInputContainer").setAttribute("style", "");
   updateYnomojiContainerPos();
   playerName = nameInput.value;
-  if (playerData)
+  if (playerData) {
     playerData.name = playerName;
+    globalPlayerData[playerData.uuid].name = playerName;
+  }
   addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
   ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
   Module._ChangeName(ptr);
