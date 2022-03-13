@@ -302,9 +302,7 @@ function addOrUpdatePartyListEntry(party) {
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
-      if (!memberIndex) {
-        partyListEntrySprite.src = spriteImg;
-      } else {
+      if (memberIndex === ownerMemberIndex) {
         const spriteImg = document.createElement("img");
         spriteImg.classList.add("partyListEntrySprite");
         spriteImg.classList.add("listEntrySprite");
