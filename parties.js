@@ -296,13 +296,12 @@ function addOrUpdatePartyListEntry(party) {
     if (isInParty)
       addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
 
-    if (memberIndex === ownerMemberIndex)
-      continue;
-
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
       if (memberIndex === ownerMemberIndex) {
+        partyListEntrySprite.src = spriteImg;
+      } else {
         const spriteImg = document.createElement("img");
         spriteImg.classList.add("partyListEntrySprite");
         spriteImg.classList.add("listEntrySprite");
