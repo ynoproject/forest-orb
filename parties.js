@@ -140,7 +140,7 @@ function updateJoinedParty() {
 
       for (let member of joinedPartyCache.members) {
         const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
-        addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
+        addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
     }).catch(err => console.error(err));
 }
@@ -300,7 +300,7 @@ function addOrUpdatePartyListEntry(party) {
     };
 
     if (isInParty)
-      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
+      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, member.online);
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
@@ -308,17 +308,18 @@ function addOrUpdatePartyListEntry(party) {
       if (memberIndex === ownerMemberIndex) {
         partyListEntrySprite.src = spriteImg;
       } else {
-        const spriteImg = document.createElement("img");
-        spriteImg.classList.add("partyListEntrySprite");
-        spriteImg.classList.add("listEntrySprite");
-        spriteImg.title = member.name || localizedMessages.playerList.unnamed;
+        const spriteImgIcon = document.createElement("img");
+        spriteImgIcon.classList.add("partyListEntrySprite");
+        spriteImgIcon.classList.add("listEntrySprite");
+        spriteImgIcon.title = member.name || localizedMessages.playerList.unnamed;
         if (member.rank)
-          spriteImg.title += rankEmojis[member.rank];
+          spriteImgIcon.title += rankEmojis[member.rank];
         if (!member.online) {
-          spriteImg.classList.add("offline");
-          spriteImg.title += localizedMessages.parties.offlineMemberSuffix;
+          spriteImgIcon.classList.add("offline");
+          spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
         }
-        partyMemberSpritesContainer.appendChild(spriteImg);
+        spriteImgIcon.src = spriteImg;
+        partyMemberSpritesContainer.appendChild(spriteImgIcon);
       }
     });
   }
@@ -382,8 +383,7 @@ function initOrUpdatePartyModal(partyId) {
       offlineCount++;
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
-    if (isInParty)
-      addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
+    addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
 
   const onlineCountLabel = document.getElementById("partyModalOnlineCount");
@@ -396,11 +396,13 @@ function initOrUpdatePartyModal(partyId) {
   offlineCountLabel.classList.toggle("hidden", !offlineCount);
 }
 
-function addOrUpdatePartyMemberPlayerEntryLocation(member, entry) {
+function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
+  const isInParty = partyId === joinedPartyId;
   const playerLocationIcon = entry.querySelector(".playerLocationIcon");
   let playerLocation = entry.querySelector(".playerLocation");
+  const initLocation = !playerLocation;
   
-  if (!playerLocation) {
+  if (initLocation) {
     playerLocation = document.createElement("small");
     playerLocation.classList.add("playerLocation");
     if (!config.showPartyMemberLocation)
@@ -408,19 +410,26 @@ function addOrUpdatePartyMemberPlayerEntryLocation(member, entry) {
     playerLocationIcon.after(playerLocation);
   }
 
-  if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
-    const prevLocations = member.prevLocations && member.prevMapId !== "0000" ? decodeURIComponent(window.atob(member.prevLocations)).split("|").map(l => { return { title: l }; }) : null;
-    set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
-  } else {
-    playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, "\n");
-    playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
-  }
-  playerLocationIcon.classList.add("pointer");
+  playerLocationIcon.classList.toggle("hidden", !isInParty || !member.online);
 
-  playerLocationIcon.onclick = function () {
-    const locationLabel = this.nextElementSibling;
-    locationLabel.classList.toggle("hidden");
-    config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
-    updateConfig(config);
-  };
+  if (isInParty && member.online) {
+    if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
+      const prevLocations = member.prevLocations && member.prevMapId !== "0000" ? decodeURIComponent(window.atob(member.prevLocations)).split("|").map(l => { return { title: l }; }) : null;
+      set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
+    } else {
+      playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, "\n");
+      playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
+    }
+
+    if (initLocation) {
+      playerLocationIcon.classList.add("pointer");
+
+      playerLocationIcon.onclick = function () {
+        const locationLabel = this.nextElementSibling;
+        locationLabel.classList.toggle("hidden");
+        config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
+        updateConfig(config);
+      };
+    }
+  }
 }

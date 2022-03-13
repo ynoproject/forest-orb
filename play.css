@@ -1123,7 +1123,7 @@ body.fullBg {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocation.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden, .partyModalPlayerCount.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 
