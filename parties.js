@@ -27,7 +27,6 @@ function updatePartyList() {
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(response => response.json())
     .then(data => {
       if (!Array.isArray(data))
         return;
