@@ -21,6 +21,9 @@ function fetchAndUpdateJoinedPartyId() {
 }
 
 function updatePartyList(skipNextUpdate) {
+  if (connStatus !== 1)
+    return;
+  
   fetch(`../connect/${gameId}/api/party?command=list`)
     .then(response => {
       if (!response.ok)
@@ -116,6 +119,9 @@ function updatePartyList(skipNextUpdate) {
 }
 
 function updateJoinedParty() {
+  if (connStatus !== 1)
+    return;
+  
   fetch(`../connect/${gameId}/api/party?command=get&partyId=${joinedPartyId}`)
     .then(response => {
       if (!response.ok)
@@ -190,33 +196,32 @@ function addOrUpdatePartyListEntry(party) {
     partyListEntryActionContainer.classList.add("partyListEntryActionContainer");
     partyListEntryActionContainer.classList.add("listEntryActionContainer");
 
-    if (isInParty) {
-      const leaveAction = document.createElement("a");
-      leaveAction.classList.add("listEntryAction")
-      leaveAction.href = "javascript:void(0);";
-      leaveAction.onclick = function () {
-        if (true) {
-          setJoinedPartyId(null);
-          document.getElementById("content").classList.remove("inParty");
-          updatePartyList(true);
-        }
-      };
-      leaveAction.appendChild(document.getElementsByTagName("template")[8].content.cloneNode(true));
-      partyListEntryActionContainer.appendChild(leaveAction);
-    } else if (!joinedPartyId) {
-      const joinAction = document.createElement("a");
-      joinAction.classList.add("listEntryAction")
-      joinAction.href = "javascript:void(0);";
-      joinAction.onclick = function () {
-        if (true) {
-          setJoinedPartyId(joinedPartyId);
+    const joinLeaveAction = document.createElement("a");
+    joinLeaveAction.classList.add("listEntryAction")
+    joinLeaveAction.href = "javascript:void(0);";
+    joinLeaveAction.onclick = isInParty
+      ? function () {
+        fetch(`../connect/${gameId}/api/party?command=leave`)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            setJoinedPartyId(null);
+            document.getElementById("content").classList.remove("inParty");
+            updatePartyList(true);
+          }).catch(err => console.error(err));
+      }
+    : function () {
+      fetch(`../connect/${gameId}/api/party?command=join&partyId=${party.id}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          setJoinedPartyId(party.id);
           document.getElementById("content").classList.add("inParty");
           updatePartyList(true);
-        }
+        }).catch(err => console.error(err));
       };
-      joinAction.appendChild(document.getElementsByTagName("template")[7].content.cloneNode(true));
-      partyListEntryActionContainer.appendChild(joinAction);
-    }
+    joinLeaveAction.appendChild(document.getElementsByTagName("template")[isInParty ? 8 : 7].content.cloneNode(true));
+    partyListEntryActionContainer.appendChild(joinLeaveAction);
 
     const infoAction = document.createElement("a");
     infoAction.classList.add("listEntryAction")
