@@ -187,6 +187,11 @@ function clearPlayerList(playerList) {
     updateMapPlayerCount(0);
 }
 
+function clearPlayerLists() {
+  clearPlayerList(document.getElementById("playerList"));
+  clearPlayerList(document.getElementById("partyPlayerList"))
+}
+
 function getPlayerListIdEntrySortFunc(playerListId) {
   if (playerListId) {
     switch (playerListId) {

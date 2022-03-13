@@ -20,7 +20,7 @@ function fetchAndUpdateJoinedPartyId() {
     .then(partyId => setJoinedPartyId(parseInt(partyId)));
 }
 
-function updatePartyList() {
+function updatePartyList(skipNextUpdate) {
   fetch(`../connect/${gameId}/api/party?command=list`)
     .then(response => {
       if (!response.ok)
@@ -110,6 +110,9 @@ function updatePartyList() {
       if (activePartyModal)
         initOrUpdatePartyModal(activePartyModal.dataset.partyId);
     }).catch(err => console.error(err));
+
+  if (skipNextUpdate)
+    skipPartyListUpdate = true;
 }
 
 function updateJoinedParty() {
@@ -195,7 +198,6 @@ function addOrUpdatePartyListEntry(party) {
         if (true) {
           setJoinedPartyId(null);
           document.getElementById("content").classList.remove("inParty");
-          skipPartyListUpdate = true;
           updatePartyList(true);
         }
       };
@@ -209,7 +211,6 @@ function addOrUpdatePartyListEntry(party) {
         if (true) {
           setJoinedPartyId(joinedPartyId);
           document.getElementById("content").classList.add("inParty");
-          skipPartyListUpdate = true;
           updatePartyList(true);
         }
       };
@@ -335,7 +336,8 @@ function clearPartyList() {
 }
 
 function initOrUpdatePartyModal(partyId) {
-  const party = partyCache[partyId];
+  const isInParty = partyId === joinedPartyId;
+  const party = isInParty ? joinedPartyCache : partyCache[partyId];
   const partyModal = document.getElementById("partyModal");
   const partyModalOnlinePlayerList = document.getElementById("partyModalOnlinePlayerList");
   const partyModalOfflinePlayerList = document.getElementById("partyModalOfflinePlayerList");
@@ -375,7 +377,8 @@ function initOrUpdatePartyModal(partyId) {
       offlineCount++;
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
-    addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
+    if (isInParty)
+      addOrUpdatePartyMemberPlayerEntryLocation(member, entry);
   }
 
   const onlineCountLabel = document.getElementById("partyModalOnlineCount");

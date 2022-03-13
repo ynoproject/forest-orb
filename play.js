@@ -81,7 +81,10 @@ function onUpdateConnectionStatus(status) {
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
-    fetchAndUpdateJoinedPartyId();
+    if (document.querySelector('#chatboxTabParties.active'))
+      updatePartyList(true);
+    else
+      fetchAndUpdateJoinedPartyId();
     if (!hasConnected) {
       addChatTip();
       hasConnected = true;
@@ -89,7 +92,7 @@ function onUpdateConnectionStatus(status) {
     syncPrevLocation();
   } else {
     setJoinedPartyId(null);
-    clearPlayerList();
+    clearPlayerLists();
     clearPartyList();
   }
   connStatus = status;
@@ -559,13 +562,14 @@ function setPlayersTab(tab, saveConfig) {
         playersTab.classList.remove('unread');
     }
 
+    document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 1);
+
     if (saveConfig) {
-      document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 1);
       config.playersTabIndex = tabIndex;
       updateConfig(config);
     }
 
-    if (tabIndex === 1) {
+    if (tabIndex === 1 && joinedPartyId) {
       updateJoinedParty();
       if (updateJoinedPartyTimer)
         clearInterval(updateJoinedPartyTimer);
