@@ -16,7 +16,11 @@ function setJoinedPartyId(partyId) {
 
 function fetchAndUpdateJoinedPartyId() {
   fetch(`../connect/${gameId}/api/party?command=id`)
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.text();
+    })
     .then(partyId => setJoinedPartyId(parseInt(partyId)));
 }
 
