@@ -143,7 +143,7 @@ function updatePartyList(skipNextUpdate) {
     skipPartyListUpdate = true;
 }
 
-function updateJoinedParty(skipNextUpdate) {
+function updateJoinedParty(skipNextUpdate, callback) {
   if (connStatus !== 1)
     return;
   
@@ -180,6 +180,9 @@ function updateJoinedParty(skipNextUpdate) {
           entry.querySelector(".nameText").appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
+      
+      if (callback)
+        callback();
     }).catch(err => console.error(err));
   
   if (skipNextUpdate)
@@ -423,8 +426,6 @@ function initOrUpdatePartyModal(partyId) {
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
     entry.classList.toggle("offline", !member.online);
-    if (!member.online)
-      entry.querySelector(".nameText").appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
     addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
 

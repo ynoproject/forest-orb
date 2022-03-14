@@ -393,6 +393,12 @@ function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
 
 // EXTERNAL
 function onPChatMessageReceived(uuid, msg) {
-  const player = globalPlayerData[uuid] || null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, player, mapId, prevMapId, prevLocationsStr);
+  let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
+  if (partyMember)
+    chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations);
+  else
+    updateJoinedParty(true, () => {
+      partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
+      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations);
+    });
 }

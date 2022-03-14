@@ -99,7 +99,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
 
-  if (player && joinedPartyCache && playerList.id === "partyPlayerList" && (uuid === joinedPartyCache?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === joinedPartyCache?.ownerUuid))) {
+  if (player && joinedPartyCache && playerList.id !== "playerList" && (uuid === joinedPartyCache?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === joinedPartyCache?.ownerUuid))) {
     partyOwnerIcon = getSvgIcon("partyOwner", true);
     partyOwnerIcon.title = localizedMessages.parties.partyOwner;
     if (joinedPartyCache.systemName) {
