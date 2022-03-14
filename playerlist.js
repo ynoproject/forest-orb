@@ -1,7 +1,7 @@
-const rankEmojis = {
-  1: '🛡️',
-  2: '🔧',
-  3: '👑'
+const roleEmojis = {
+  mod: '🛡️',
+  dev: '🔧',
+  partyOwner: '👑'
 };
 const defaultUuid = "0000000000000000";
 let playerData = null;
@@ -19,7 +19,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector(".playerListEntryActionContainer") : document.createElement("div");
 
-  let roleIcon = playerListEntry ? playerListEntry.querySelector(".roleIcon") : null;
+  let rankIcon = playerListEntry ? playerListEntry.querySelector(".rankIcon") : null;
+  let partyOwnerIcon = playerListEntry ? playerListEntry.querySelector(".partyOwnerIcon") : null;
 
   const player = uuid === defaultUuid ? playerData : globalPlayerData[uuid];
 
@@ -36,11 +37,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     let playerSpriteCacheEntry = playerSpriteCache[uuid];
     if (!playerSpriteCacheEntry && uuid !== defaultUuid)
       playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
-    if (playerSpriteCacheEntry) {
-      getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
-        playerListEntrySprite.src = spriteImg;
-      });
-    }
+    if (playerSpriteCacheEntry)
+      getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
     
     playerListEntry.appendChild(playerListEntrySprite);
 
@@ -51,7 +49,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       detailsContainer.classList.add("detailsContainer");
 
       detailsContainer.appendChild(nameText);
-      detailsContainer.appendChild(document.getElementsByTagName("template")[0].content.cloneNode(true));
+      detailsContainer.appendChild(getSvgIcon("playerLocation"));
 
       playerListEntry.appendChild(detailsContainer);
     } else {
@@ -70,7 +68,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         Module._SendBanUserRequest(msgPtr);
         Module._free(uuidPtr);
       };
-      banAction.appendChild(document.getElementsByTagName("template")[4].content.cloneNode(true));
+      banAction.appendChild(getSvgIcon("ban", true));
       playerListEntryActionContainer.appendChild(banAction);
     }*/
 
@@ -86,12 +84,29 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     else
       playerListEntry.dataset.unnamed = "unnamed";
 
+    if (rankIcon)
+      rankIcon.remove();
+
     if (player?.rank) {
-      const rank = Math.min(player.rank, 3);
-      nameText.appendChild(document.getElementsByTagName("template")[rank].content.cloneNode(true));
-      roleIcon = nameText.children[0];
-      roleIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      const rank = Math.min(player.rank, 2);
+      rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
+      rankIcon.classList.add("rankIcon");
+      rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      nameText.appendChild(rankIcon);
     }
+  }
+
+  if (partyOwnerIcon)
+    partyOwnerIcon.remove();
+
+  if (player && joinedPartyCache && playerList.id === "partyPlayerList" && (uuid === joinedPartyCache?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === joinedPartyCache?.ownerUuid))) {
+    partyOwnerIcon = getSvgIcon("partyOwner", true);
+    partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+    if (joinedPartyCache.systemName) {
+      const parsedPartySystemName = joinedPartyCache.systemName.replace(" ", "_");
+      partyOwnerIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+    }
+    nameText.appendChild(partyOwnerIcon);
   }
 
   if (systemName) {
@@ -100,39 +115,18 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(" ", "_");
     initUiThemeContainerStyles(systemName, false, () => {
-      playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-      getFontShadow(systemName, shadow => {
-        nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-        if (roleIcon || playerListEntryActionContainer.childElementCount) {
-          addSystemSvgDropShadow(systemName, shadow);
-          if (roleIcon)
-            roleIcon.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
-          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
-            iconPath.style.filter = `url(#dropShadow_${parsedSystemName})`;
-        }
-      });
-    });
-    initUiThemeFontStyles(systemName, 0, false, () => {
-      getFontColors(systemName, 0, baseColors => {
-        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-        if (roleIcon || playerListEntryActionContainer.childElementCount || showLocation) {
-          addSystemSvgGradient(systemName, baseColors);
-          if (roleIcon)
-            roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
-          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
-            iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
-          if (showLocation) {
-            const altColorCallback = altColors => {
-              addSystemSvgGradient(systemName, altColors, true);
-              playerListEntry.querySelector(".playerLocationIcon path").setAttribute("style", `stroke: url(#altGradient_${parsedSystemName}) !important;`);
-            };
-            getFontColors(systemName, 1, function (altColors) {
-              if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
-                altColorCallback(altColors);
-              else
-                getFontColors(systemName, 3, altColorCallback);
-            });
+      initUiThemeFontStyles(systemName, 0, false, () => {
+        playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+        nameText.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        if (rankIcon || playerListEntryActionContainer.childElementCount || showLocation) {
+          if (rankIcon) {
+            rankIcon.querySelector("path").style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
+            rankIcon.querySelector("path").style.filter = `var(--svg-shadow-${parsedSystemName})`;
           }
+          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
+            iconPath.setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+          if (showLocation)
+            playerListEntry.querySelector(".playerLocationIcon path").setAttribute("style", `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
       });
     });
@@ -157,7 +151,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     });
   }
 
-  if (playerList.id === 'playerList')
+  if (playerList.id === "playerList")
     updateMapPlayerCount(playerList.childElementCount);
 
   return playerListEntry;

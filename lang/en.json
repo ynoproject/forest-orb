@@ -181,13 +181,13 @@
     },
     "roles": {
       "mod": "Moderator",
-      "dev": "Developer",
-      "owner": "Owner"
+      "dev": "Developer"
     },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
       "defaultPartyName": "{OWNER}'s Party",
+      "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Offline)",
       "onlineCount": "Online - {COUNT}",
       "offlineCount": "Offline - {COUNT}"

@@ -78,6 +78,9 @@ function onUpdateConnectionStatus(status) {
     }, 500);
   else
     updateStatusText();
+
+  connStatus = status;
+
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
@@ -95,7 +98,6 @@ function onUpdateConnectionStatus(status) {
     clearPlayerLists();
     clearPartyList();
   }
-  connStatus = status;
 }
 
 let playerCount;
@@ -410,9 +412,11 @@ document.getElementById('downloadButton').onclick = handleSaveFileDownload;
 document.getElementById('clearChatButton').onclick = function () {
   const chatbox = document.getElementById('chatbox');
   const messagesElement = document.getElementById('messages');
+  const mapFiltered = chatbox.classList.contains('mapChat');
   const globalFiltered = chatbox.classList.contains('globalChat');
-  if (globalFiltered || chatbox.classList.contains('mapChat')) {
-    const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.globalChat' : ':not(.globalChat)'}`);
+  const partyFiltered = chatbox.classList.contains('partyChat');
+  if (mapFiltered || globalFiltered || partyFiltered) {
+    const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.global' : partyFiltered ? '.party' : ':not(.global):not(.party)'}`);
     for (let message of messages)
       message.remove();
   } else {
@@ -535,6 +539,7 @@ function setChatTab(tab, saveConfig) {
     else
       delete chatInput.dataset.global;
     chatInput.disabled = global && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
+    chatbox.classList.toggle('allChat', !tabIndex);
     chatbox.classList.toggle('mapChat', tabIndex === 1);
     chatbox.classList.toggle('globalChat', tabIndex === 2);
     chatbox.classList.toggle('partyChat', tabIndex === 3);
@@ -655,6 +660,10 @@ function onUpdateChatboxInfo() {
     tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
     tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
   }
+
+  const messages = document.getElementById('messages');
+  const partyPlayerList = document.getElementById('partyPlayerList');
+  messages.style.backgroundPositionY = partyPlayerList.style.backgroundPositionY = `${chatboxContainer.offsetTop - partyPlayerList.offsetTop}px`;
 
   if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && window.getComputedStyle(layout).flexWrap === 'wrap') {
     const lastTab = chatboxTabs[chatboxTabs.length - 1];

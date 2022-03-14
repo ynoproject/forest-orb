@@ -7,6 +7,9 @@
   --alt-gradient: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
   --base-gradient-b: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%);
   --alt-gradient-b: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
+  --svg-base-gradient: url(#baseGradient);
+  --svg-alt-gradient: url(#altGradient);
+  --svg-shadow: url(#dropShadow);
   --base-color-image-url: url('images/ui/2kki/system1/font1.png');
   --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
   --border-image-url: url('images/ui/2kki/system1/border.png');
@@ -23,7 +26,15 @@
   --modal-container-bg-image-url: var(--container-bg-image-url);
   --modal-border-image-url: var(--border-image-url);
 
+  --party-base-color: var(--base-color);
+  --party-alt-color: var(--alt-color);
+  --party-base-bg-color: var(--base-bg-color);
+  --party-shadow-color: var(--shadow-color);
   --party-base-gradient: var(--base-gradient);
+  --party-alt-gradient: var(--alt-gradient);
+  --party-svg-base-gradient: var(--base-svg-gradient);
+  --party-svg-alt-gradient: var(--alt-svg-gradient);
+  --party-svg-shadow: var(--svg-shadow);
   --party-container-bg-image-url: var(--container-bg-image-url);
   --party-border-image-url: var(--border-image-url);
 
@@ -139,6 +150,12 @@ body.fullBg {
   background-image: var(--alt-gradient) !important;
 }
 
+.messageContainer.party .message .nameMarker {
+  color: var(--party-alt-color) !important;
+  filter: drop-shadow(1.5px 1.5px var(--party-shadow-color));
+  background-image: var(--party-alt-gradient) !important;
+}
+
 .baseColorBg {
   background-color: var(--base-color) !important;
 }
@@ -195,12 +212,36 @@ body.fullBg {
 }
 
 .iconButton path, .icon path, .icon circle {
-  stroke: url(#baseGradient);
-  filter: url(#dropShadow);
+  stroke: var(--svg-base-gradient);
+  filter: var(--svg-shadow);
 }
 
 .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .playerLocationIcon[title] path {
-  stroke: url(#altGradient) !important;
+  stroke: var(--svg-alt-gradient);
+}
+
+#chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #messages .playerLocationIcon path, #chatbox.partyChat #chatInput .icon circle {
+  stroke: var(--party-svg-base-gradient);
+  filter: var(--party-svg-shadow);
+}
+
+#chatbox.partyChat #messages .infoLabel, #chatbox.partyChat #messages .messageContents {
+  background-image: var(--party-base-gradient) !important;
+  filter: drop-shadow(1.5px 1.5px var(--party-shadow-color));
+}
+
+#chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
+  border-image: var(--party-border-image-url) 8 repeat !important;
+}
+
+#chatbox.partyChat #messages .playerLocationIcon[title] path {
+  stroke: var(--party-svg-alt-gradient);
+}
+
+#chatbox.partyChat #chatInput {
+  color: var(--party-base-color) !important;
+  background-color: var(--party-base-bg-color) !important;
+  text-shadow: 1.5px 1.5px var(--party-shadow-color);
 }
 
 .iconButton.fadeToggle:not(.toggled) path {
@@ -221,7 +262,7 @@ body.fullBg {
 
 .fillIcon path {
   stroke: none;
-  fill: url(#baseGradient);
+  fill: var(--svg-base-gradient);
 }
 
 .notice, .instruction {
@@ -774,12 +815,13 @@ body.fullBg {
   border-top: none;
 }
 
-#chatbox.mapChat .messageContainer.global, #chatbox.globalChat .messageContainer:not(.global), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
+#chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
   display: none;
 }
 
-#chatbox.partyPlayers #partyPlayerList {
+#chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
   background-size: 70px;
+  background-position-x: -8px;
   background-position-y: -16px;
   background-image: var(--party-container-bg-image-url) !important;
   border-image: var(--party-border-image-url) 10 repeat !important;
@@ -791,7 +833,7 @@ body.fullBg {
   border-image: var(--border-image-url) 8 repeat !important;
 }
 
-#chatbox:not(.mapChat):not(.globalChat) .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {
+#chatbox.allChat .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {
   border-bottom-width: 8px !important;
 }
 
@@ -872,6 +914,10 @@ body.fullBg {
   margin-bottom: 4px;
 }
 
+.playerListEntry.offline {
+  opacity: 0.5;
+}
+
 .listEntrySprite {
   margin-right: 8px;
   min-width: 40px;
@@ -879,7 +925,7 @@ body.fullBg {
 }
 
 .listEntrySprite.offline {
-  filter: grayscale(1);
+  opacity: 0.5;
 }
 
 .listEntry .detailsContainer {
@@ -973,7 +1019,7 @@ body.fullBg {
   margin-right: -32px;
 }
 
-#chatbox:not(.mapChat):not(.globalChat) #chatInputContainer.globalCooldown form {
+#chatbox.allChat #chatInputContainer.globalCooldown form {
   margin-right: -50px;
 }
 
@@ -989,7 +1035,7 @@ body.fullBg {
   border-image: none !important;
 }
 
-#chatbox.mapChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.globalChat #chatInputContainer:not(.globalCooldown) #chatInput {
+#chatbox.mapChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.globalChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.partyChat #chatInputContainer:not(.globalCooldown) #chatInput {
   width: calc(100% - 13px);
   padding-right: 2px;
 }
@@ -998,7 +1044,7 @@ body.fullBg {
   opacity: 0.675;
 }
 
-#chatbox:not(.mapChat):not(.globalChat) #chatInputContainer.globalCooldown #chatInput {
+#chatbox.allChat #chatInputContainer.globalCooldown #chatInput {
   width: calc(100% - 62px);
   padding-right: 52px;
 }
@@ -1045,7 +1091,7 @@ body.fullBg {
   display: none;
 }
 
-#chatbox.mapChat #globalCooldownIcon, #chatbox.globalChat #globalCooldownIcon {
+#chatbox:not(.allChat) #globalCooldownIcon {
   left: 8px;
 }
 
@@ -1056,7 +1102,7 @@ body.fullBg {
   pointer-events: all;
 }
 
-#chatbox.mapChat #globalMessageButton, #chatbox.globalChat #globalMessageButton {
+#chatbox:not(.allChat) #globalMessageButton {
   display: none;
 }
 

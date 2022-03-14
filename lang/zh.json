@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -181,13 +181,13 @@
     },
     "roles": {
       "mod": "管理者",
-      "dev": "开发者",
-      "owner": "所有者"
+      "dev": "开发者"
     },
     "parties": {
       "emptyMessage": "当前暂无活动中的组队。",
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
+      "partyOwner": "Party Leader",
       "offlineMemberSuffix": "（已离线）",
       "onlineCount": "当前在线 - {COUNT} 人",
       "offlineCount": "当前离线 - {COUNT} 人"

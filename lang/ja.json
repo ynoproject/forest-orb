@@ -181,13 +181,13 @@
     },
     "roles": {
       "mod": "モデレーター",
-      "dev": "開発者",
-      "owner": "所有者"
+      "dev": "開発者"
     },
     "parties": {
       "emptyMessage": "現在、 活動中の パーティーは ありません。",
       "yourParty": "自分の パーティー",
       "defaultPartyName": "{OWNER}のパーティー",
+      "partyOwner": "パーティーリーダー",
       "offlineMemberSuffix": "（オフライン）",
       "onlineCount": "オンライン - {COUNT}",
       "offlineCount": "オフライン - {COUNT}"

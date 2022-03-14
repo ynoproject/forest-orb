@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -181,13 +181,13 @@
     },
     "roles": {
       "mod": "Модератор",
-      "dev": "Разработчик",
-      "owner": "Владелец"
+      "dev": "Разработчик"
     },
     "parties": {
       "emptyMessage": "Пока ещё никто не создал ни одной группы.",
       "yourParty": "Ваша Группа",
       "defaultPartyName": "Группа {OWNER}",
+      "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Вне сети)",
       "onlineCount": "В сети - {COUNT}",
       "offlineCount": "Вне сети - {COUNT}"

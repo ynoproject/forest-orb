@@ -235,16 +235,20 @@ function initUiThemeContainerStyles(uiTheme, setTheme, callback) {
   
   const baseBgColorProp = `--base-bg-color-${parsedUiTheme}`;
   const shadowColorProp = `--shadow-color-${parsedUiTheme}`;
+  const svgShadowProp = `--svg-shadow-${parsedUiTheme}`;
   const containerBgImageUrlProp = `--container-bg-image-url-${parsedUiTheme}`;
   const borderImageUrlProp = `--border-image-url-${parsedUiTheme}`;
 
   getBaseBgColor(uiTheme, function (color) {
     getFontShadow(uiTheme, function (shadow) {
+      addSystemSvgDropShadow(uiTheme, shadow);
+
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseBgColorProp)) {
         rootStyle.setProperty(baseBgColorProp, color);
         rootStyle.setProperty(shadowColorProp, shadow);
+        rootStyle.setProperty(svgShadowProp, `url(#dropShadow_${parsedUiTheme})`);
         rootStyle.setProperty(containerBgImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/containerbg.png')`);
         rootStyle.setProperty(borderImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/border.png')`);
       }
@@ -252,13 +256,13 @@ function initUiThemeContainerStyles(uiTheme, setTheme, callback) {
       if (setTheme) {
         rootStyle.setProperty('--base-bg-color', `var(${baseBgColorProp})`);
         rootStyle.setProperty('--shadow-color', `var(${shadowColorProp})`);
+        rootStyle.setProperty('--svg-shadow', `var(${svgShadowProp})`);
         rootStyle.setProperty('--container-bg-image-url', `var(${containerBgImageUrlProp})`);
         rootStyle.setProperty('--border-image-url', `var(${borderImageUrlProp})`);
-        document.getElementById('dropShadow').children[0].setAttribute('flood-color', `var(${shadowColorProp})`);
       }
 
       if (callback)
-        callback();
+        callback(color, shadow);
     });
   });
 }
@@ -272,6 +276,8 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
   let baseGradientBProp = `--base-gradient-b-${parsedUiTheme}`;
   let altGradientProp = `--alt-gradient-${parsedUiTheme}`;
   let altGradientBProp = `--alt-gradient-b-${parsedUiTheme}`;
+  let svgBaseGradientProp = `--svg-base-gradient-${parsedUiTheme}`;
+  let svgAltGradientProp = `--svg-alt-gradient-${parsedUiTheme}`;
   let baseColorImageUrlProp = `--base-color-image-url-${parsedUiTheme}`;
 
   if (fontStyle) {
@@ -282,6 +288,8 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
     baseGradientBProp += fontStylePropSuffix;
     altGradientProp += fontStylePropSuffix;
     altGradientBProp += fontStylePropSuffix;
+    svgBaseGradientProp += fontStylePropSuffix;
+    svgAltGradientProp += fontStylePropSuffix;
     baseColorImageUrlProp += fontStylePropSuffix;
   }
 
@@ -291,6 +299,9 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
   getFontColors(uiTheme, fontStyle, function (baseColors) {
     const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
     const altColorCallback = function (altColors) {
+      addSystemSvgGradient(uiTheme, baseColors);
+      addSystemSvgGradient(uiTheme, altColors, true);
+
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseColorProp)) {
@@ -300,6 +311,8 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
         rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
         rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
         rootStyle.setProperty(altGradientBProp, `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
+        rootStyle.setProperty(svgBaseGradientProp, `url(#baseGradient_${parsedUiTheme})`);
+        rootStyle.setProperty(svgAltGradientProp, `url(#altGradient_${parsedUiTheme})`);
         rootStyle.setProperty(baseColorImageUrlProp, `url('images/ui/${gameId}/${uiTheme}/font${fontStyle + 1}.png')`);
       }
 
@@ -310,13 +323,13 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
         rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
         rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
         rootStyle.setProperty('--alt-gradient-b', `var(${altGradientBProp})`);
+        rootStyle.setProperty('--svg-base-gradient', `var(${svgBaseGradientProp})`);
+        rootStyle.setProperty('--svg-alt-gradient', `var(${svgAltGradientProp})`);
         rootStyle.setProperty('--base-color-image-url', `var(${baseColorImageUrlProp})`);
-        updateSvgGradient(document.getElementById('baseGradient'), baseColors);
-        updateSvgGradient(document.getElementById('altGradient'), altColors);
       }
 
       if (callback)
-        callback();
+        callback(baseColors, altColors);
     };
     getFontColors(uiTheme, altFontStyle, function (altColors) {
       if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
@@ -342,17 +355,28 @@ function setModalUiTheme(uiTheme) {
 }
 
 function setPartyUiTheme(uiTheme) {
-  const callback = () => {
-    const rootStyle = document.documentElement.style;
-    const styleProps = [ 'base-gradient', 'container-bg-image-url', 'border-image-url' ];
+  const rootStyle = document.documentElement.style;
+  const containerCallback = () => {
+    const styleProps = [ 'base-bg-color', 'shadow-color', 'svg-shadow', 'container-bg-image-url', 'border-image-url' ];
+    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
+    for (let prop of styleProps)
+      rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+    
+  };
+  const fontCallback = () => {
+    const styleProps = [ 'base-color', 'alt-color', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
     const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
     for (let prop of styleProps)
       rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
   };
-  if (uiTheme)
-    initUiThemeContainerStyles(uiTheme, false, callback);
-  else
-    callback();
+  if (uiTheme) {
+    initUiThemeContainerStyles(uiTheme, false, containerCallback);
+    initUiThemeFontStyles(uiTheme, 0, false, fontCallback);
+  } else {
+    containerCallback();
+    fontCallback();
+  }
+  joinedPartyUiTheme = uiTheme;
 }
 
 function populateUiThemes() {

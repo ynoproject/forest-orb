@@ -216,9 +216,9 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
     globalMessageLocation.innerHTML = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
     if (globalMessageLocation.dataset.systemOverride) {
       for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))
-        infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important;`);
+        infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
       for (let link of globalMessageLocation.querySelectorAll('a'))
-        link.setAttribute('style', `background-image: var(--alt-gradient-${globalMessageLocation.dataset.systemOverride}) !important;`);
+        link.setAttribute('style', `background-image: var(--alt-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
     }
     if (cacheLocation) {
       const locationKey = `${prevMapId}_${mapId}`;

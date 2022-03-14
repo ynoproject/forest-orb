@@ -181,13 +181,13 @@
     },
     "roles": {
       "mod": "서버 매니저",
-      "dev": "서버 개발자",
-      "owner": "서버 운영자"
+      "dev": "서버 개발자"
     },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
       "defaultPartyName": "{OWNER}'s Party",
+      "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Offline)",
       "onlineCount": "Online - {COUNT}",
       "offlineCount": "Offline - {COUNT}"

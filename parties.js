@@ -1,10 +1,11 @@
 let joinedPartyId = null;
+let joinedPartyUiTheme = null;
 let updatePartyListTimer = null;
 let updateJoinedPartyTimer = null;
 let skipPartyListUpdate = false;
 let skipJoinedPartyUpdate = false;
 let partyCache = {};
-let joinedPartyCache = {};
+let joinedPartyCache = null;
 
 function setJoinedPartyId(partyId) {
   document.getElementById("content").classList.toggle("inParty", !!partyId);
@@ -27,9 +28,11 @@ function setJoinedPartyId(partyId) {
     setPlayersTab(partyId ? document.getElementById("playersTabParty") : document.getElementById("playersTabMap"));
   joinedPartyId = partyId || null;
   if (partyId)
-    updateJoinedParty(true, true);
-  else
+    updateJoinedParty(true);
+  else {
+    joinedPartyCache = null;
     setPartyUiTheme(null);
+  }
 }
 
 function fetchAndUpdateJoinedPartyId() {
@@ -140,7 +143,7 @@ function updatePartyList(skipNextUpdate) {
     skipPartyListUpdate = true;
 }
 
-function updateJoinedParty(skipNextUpdate, updatePartyUiTheme) {
+function updateJoinedParty(skipNextUpdate) {
   if (connStatus !== 1)
     return;
   
@@ -152,8 +155,8 @@ function updateJoinedParty(skipNextUpdate, updatePartyUiTheme) {
     })
     .then(party => {
       joinedPartyCache = party;
-
-      if (updatePartyUiTheme)
+      
+      if (party.systemName !== joinedPartyUiTheme)
         setPartyUiTheme(party.systemName);
 
       const partyPlayerList = document.getElementById("partyPlayerList");
@@ -165,7 +168,16 @@ function updateJoinedParty(skipNextUpdate, updatePartyUiTheme) {
         removePlayerListEntry(partyPlayerList, playerUuid);
 
       for (let member of joinedPartyCache.members) {
+        globalPlayerData[member.uuid] = {
+          name: member.name,
+          systemName: member.systemName,
+          rank: member.rank
+        };
+
         const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
+        entry.classList.toggle("offline", !member.online);
+        if (!member.online)
+          entry.querySelector(".nameText").appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
     }).catch(err => console.error(err));
@@ -211,7 +223,7 @@ function addOrUpdatePartyListEntry(party) {
 
     memberCountText.classList.add("partyListEntryMemberCountText");
     
-    memberCount.appendChild(document.getElementsByTagName("template")[6].content.cloneNode(true));
+    memberCount.appendChild(getSvgIcon("partyMember", true));
     memberCount.appendChild(memberCountText);
 
     partyMemberSpritesContainer.classList.add("partyMemberSpritesContainer");
@@ -250,7 +262,7 @@ function addOrUpdatePartyListEntry(party) {
             updatePartyList(true);
           }).catch(err => console.error(err));
         };
-      joinLeaveAction.appendChild(document.getElementsByTagName("template")[isInParty ? 8 : 7].content.cloneNode(true));
+      joinLeaveAction.appendChild(getSvgIcon(isInParty ? "leave" : "join", true));
       partyListEntryActionContainer.appendChild(joinLeaveAction);
     }
 
@@ -261,7 +273,7 @@ function addOrUpdatePartyListEntry(party) {
       initOrUpdatePartyModal(party.id);
       openModal("partyModal", partyCache[party.id].systemName);
     };
-    infoAction.appendChild(document.getElementsByTagName("template")[5].content.cloneNode(true));
+    infoAction.appendChild(getSvgIcon("info", true));
     partyListEntryActionContainer.appendChild(infoAction);
 
     partyListEntry.appendChild(partyListEntryActionContainer);
@@ -272,29 +284,27 @@ function addOrUpdatePartyListEntry(party) {
 
   partyListEntry.classList.toggle("joinedParty", joinedPartyId);
 
-  let systemName = party.systemName.replace(/'/g, "");
-  if (gameUiThemes.indexOf(systemName) === -1)
-    systemName = getDefaultUiTheme();
-  const parsedSystemName = systemName.replace(" ", "_");
-  initUiThemeContainerStyles(systemName);
-  initUiThemeFontStyles(systemName, 0);
-  partyListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-  getFontColors(systemName, 0, colors => {
-    nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-    memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-    addSystemSvgGradient(systemName, colors);
-    memberCount.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
-    for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
-      iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
-  });
-  getFontShadow(systemName, shadow => {
-    nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-    memberCountText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-    addSystemSvgDropShadow(systemName, shadow);
-    memberCount.querySelector("path").style.filter = `url(#dropShadow_${parsedSystemName})`;
-    for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
-      iconPath.style.filter = `url(#dropShadow_${parsedSystemName})`;
-  });
+  if (party.systemName) {
+    let systemName = party.systemName.replace(/'/g, "");
+    if (gameUiThemes.indexOf(systemName) === -1)
+      systemName = getDefaultUiTheme();
+    const parsedSystemName = systemName.replace(" ", "_");
+    initUiThemeContainerStyles(systemName, false, () => {
+      partyListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+      nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
+      memberCountText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
+      memberCount.querySelector("path").style.filter = `var(--svg-shadow-${parsedSystemName})`;
+      for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
+        iconPath.style.filter = `var(--svg-shadow-${parsedSystemName})`;
+    });
+    initUiThemeFontStyles(systemName, 0, false, () => {
+      nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
+      memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
+      memberCount.querySelector("path").style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
+      for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
+        iconPath.style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
+    });
+  }
 
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];
@@ -302,7 +312,8 @@ function addOrUpdatePartyListEntry(party) {
   partyListEntrySprite.title = ownerMember.name;
 
   if (ownerMember.rank)
-    partyListEntrySprite.title += rankEmojis[ownerMember.rank];
+    partyListEntrySprite.title += roleEmojis[ownerMember.rank === 1 ? "mod" : "dev"];
+  partyListEntrySprite.title += roleEmojis.partyOwner;
 
   if (!ownerMember.online) {
     partyListEntrySprite.classList.add("offline");
@@ -330,9 +341,6 @@ function addOrUpdatePartyListEntry(party) {
       rank: member.rank
     };
 
-    if (isInParty)
-      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
-
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, function (spriteImg) {
@@ -344,7 +352,7 @@ function addOrUpdatePartyListEntry(party) {
         spriteImgIcon.classList.add("listEntrySprite");
         spriteImgIcon.title = member.name || localizedMessages.playerList.unnamed;
         if (member.rank)
-          spriteImgIcon.title += rankEmojis[member.rank];
+          spriteImgIcon.title += roleEmojis[member.rank === 1 ? "mod" : "dev"];
         if (!member.online) {
           spriteImgIcon.classList.add("offline");
           spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
@@ -414,6 +422,9 @@ function initOrUpdatePartyModal(partyId) {
       offlineCount++;
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
+    entry.classList.toggle("offline", !member.online);
+    if (!member.online)
+      entry.querySelector(".nameText").appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
     addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
 
