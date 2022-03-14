@@ -346,3 +346,8 @@ function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
   const player = globalPlayerData[uuid] || null;
   chatboxAddMessage(msg, player, mapId, prevMapId, prevLocationsStr);
 }
+
+// EXTERNAL
+function onPChatMessageReceived(uuid, msg) {
+  // Not yet implemented
+}

@@ -428,7 +428,7 @@ function initOrUpdatePartyModal(partyId) {
 }
 
 function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
-  const isInParty = partyId === joinedPartyId;
+  const isInParty = partyId == joinedPartyId;
   const playerLocationIcon = entry.querySelector(".playerLocationIcon");
   let playerLocation = entry.querySelector(".playerLocation");
   const initLocation = !playerLocation;
