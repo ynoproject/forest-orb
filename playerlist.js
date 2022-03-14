@@ -113,14 +113,26 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       });
     });
     initUiThemeFontStyles(systemName, 0, false, () => {
-      getFontColors(systemName, 0, colors => {
+      getFontColors(systemName, 0, baseColors => {
         nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-        if (roleIcon || playerListEntryActionContainer.childElementCount) {
-          addSystemSvgGradient(systemName, colors);
+        if (roleIcon || playerListEntryActionContainer.childElementCount || showLocation) {
+          addSystemSvgGradient(systemName, baseColors);
           if (roleIcon)
             roleIcon.querySelector("path").style.fill = `url(#baseGradient_${parsedSystemName})`;
           for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
             iconPath.style.fill = `url(#baseGradient_${parsedSystemName})`;
+          if (showLocation) {
+            const altColorCallback = altColors => {
+              addSystemSvgGradient(systemName, altColors, true);
+              playerListEntry.querySelector(".playerLocationIcon path").setAttribute("style", `stroke: url(#altGradient_${parsedSystemName}) !important;`);
+            };
+            getFontColors(systemName, 1, function (altColors) {
+              if (altColors[8][0] !== baseColors[8][0] || altColors[8][1] !== baseColors[8][1] || altColors[8][2] !== baseColors[8][2])
+                altColorCallback(altColors);
+              else
+                getFontColors(systemName, 3, altColorCallback);
+            });
+          }
         }
       });
     });

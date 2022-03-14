@@ -2,16 +2,34 @@ let joinedPartyId = null;
 let updatePartyListTimer = null;
 let updateJoinedPartyTimer = null;
 let skipPartyListUpdate = false;
+let skipJoinedPartyUpdate = false;
 let partyCache = {};
 let joinedPartyCache = {};
 
 function setJoinedPartyId(partyId) {
   document.getElementById("content").classList.toggle("inParty", !!partyId);
+  if (partyId) {
+    if (!updateJoinedPartyTimer) {
+      updateJoinedPartyTimer = setInterval(() => {
+        if (skipJoinedPartyUpdate)
+          skipJoinedPartyUpdate = false;
+        else
+          updateJoinedParty();
+      }, 5000);
+    }
+  } else if (updateJoinedPartyTimer) {
+    clearInterval(updateJoinedPartyTimer);
+    updateJoinedPartyTimer = null;
+  }
   if (config.chatTabIndex === 3)
-    setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
+    setChatTab(partyId ? document.getElementById("chatTabParty") : document.getElementById("chatTabAll"));
   if (config.playersTabIndex === 1)
-    setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
+    setPlayersTab(partyId ? document.getElementById("playersTabParty") : document.getElementById("playersTabMap"));
   joinedPartyId = partyId || null;
+  if (partyId)
+    updateJoinedParty(true, true);
+  else
+    setPartyUiTheme(null);
 }
 
 function fetchAndUpdateJoinedPartyId() {
@@ -122,7 +140,7 @@ function updatePartyList(skipNextUpdate) {
     skipPartyListUpdate = true;
 }
 
-function updateJoinedParty() {
+function updateJoinedParty(skipNextUpdate, updatePartyUiTheme) {
   if (connStatus !== 1)
     return;
   
@@ -134,9 +152,13 @@ function updateJoinedParty() {
     })
     .then(party => {
       joinedPartyCache = party;
+
+      if (updatePartyUiTheme)
+        setPartyUiTheme(party.systemName);
+
       const partyPlayerList = document.getElementById("partyPlayerList");
 
-      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
+      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll(".listEntry")).map(e => e.dataset.uuid);
       const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
 
       for (let playerUuid of removedPlayerUuids)
@@ -147,6 +169,9 @@ function updateJoinedParty() {
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
     }).catch(err => console.error(err));
+  
+  if (skipNextUpdate)
+    skipJoinedPartyUpdate = true;
 }
 
 function addOrUpdatePartyListEntry(party) {
@@ -200,32 +225,34 @@ function addOrUpdatePartyListEntry(party) {
     partyListEntryActionContainer.classList.add("partyListEntryActionContainer");
     partyListEntryActionContainer.classList.add("listEntryActionContainer");
 
-    const joinLeaveAction = document.createElement("a");
-    joinLeaveAction.classList.add("listEntryAction")
-    joinLeaveAction.href = "javascript:void(0);";
-    joinLeaveAction.onclick = isInParty
-      ? function () {
-        fetch(`../connect/${gameId}/api/party?command=leave`)
+    if (!joinedPartyId || party.id === joinedPartyId) {
+      const joinLeaveAction = document.createElement("a");
+      joinLeaveAction.classList.add("listEntryAction")
+      joinLeaveAction.href = "javascript:void(0);";
+      joinLeaveAction.onclick = isInParty
+        ? function () {
+          fetch(`../connect/${gameId}/api/party?command=leave`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              setJoinedPartyId(null);
+              document.getElementById("content").classList.remove("inParty");
+              updatePartyList(true);
+            }).catch(err => console.error(err));
+        }
+      : function () {
+        fetch(`../connect/${gameId}/api/party?command=join&partyId=${party.id}`)
           .then(response => {
             if (!response.ok)
               throw new Error(response.statusText);
-            setJoinedPartyId(null);
-            document.getElementById("content").classList.remove("inParty");
+            setJoinedPartyId(party.id);
+            document.getElementById("content").classList.add("inParty");
             updatePartyList(true);
           }).catch(err => console.error(err));
-      }
-    : function () {
-      fetch(`../connect/${gameId}/api/party?command=join&partyId=${party.id}`)
-        .then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          setJoinedPartyId(party.id);
-          document.getElementById("content").classList.add("inParty");
-          updatePartyList(true);
-        }).catch(err => console.error(err));
-      };
-    joinLeaveAction.appendChild(document.getElementsByTagName("template")[isInParty ? 8 : 7].content.cloneNode(true));
-    partyListEntryActionContainer.appendChild(joinLeaveAction);
+        };
+      joinLeaveAction.appendChild(document.getElementsByTagName("template")[isInParty ? 8 : 7].content.cloneNode(true));
+      partyListEntryActionContainer.appendChild(joinLeaveAction);
+    }
 
     const infoAction = document.createElement("a");
     infoAction.classList.add("listEntryAction")
@@ -304,7 +331,7 @@ function addOrUpdatePartyListEntry(party) {
     };
 
     if (isInParty)
-      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, member.online);
+      addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
@@ -346,7 +373,7 @@ function clearPartyList() {
 }
 
 function initOrUpdatePartyModal(partyId) {
-  const isInParty = partyId === joinedPartyId;
+  const isInParty = partyId == joinedPartyId;
   const party = isInParty ? joinedPartyCache : partyCache[partyId];
   const partyModal = document.getElementById("partyModal");
   const partyModalOnlinePlayerList = document.getElementById("partyModalOnlinePlayerList");
@@ -360,7 +387,7 @@ function initOrUpdatePartyModal(partyId) {
   let offlineCount = 0;
 
   if (lastPartyId) {
-    if (partyId === lastPartyId) {
+    if (partyId == lastPartyId) {
       const oldOnlinePlayerUuids = Array.from(partyModalOnlinePlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
       const oldOfflinePlayerUuids = Array.from(partyModalOfflinePlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
 
@@ -417,23 +444,30 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
   playerLocationIcon.classList.toggle("hidden", !isInParty || !member.online);
 
   if (isInParty && member.online) {
+    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, "").replace(" ", "_") : null;
     if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
       const prevLocations = member.prevLocations && member.prevMapId !== "0000" ? decodeURIComponent(window.atob(member.prevLocations)).split("|").map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
     } else {
       playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, "\n");
       playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
+      if (playerLocation.dataset.systemOverride) {
+        for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
+          infoLabel.setAttribute('style', `background-image: var(--base-gradient-${playerLocation.dataset.systemOverride}) !important;`);
+        for (let anchor of playerLocation.querySelectorAll('a'))
+          anchor.setAttribute('style', `background-image: var(--alt-gradient-${playerLocation.dataset.systemOverride}) !important;`);
+      }
     }
+  }
 
-    if (initLocation) {
-      playerLocationIcon.classList.add("pointer");
+  if (initLocation) {
+    playerLocationIcon.classList.add("pointer");
 
-      playerLocationIcon.onclick = function () {
-        const locationLabel = this.nextElementSibling;
-        locationLabel.classList.toggle("hidden");
-        config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
-        updateConfig(config);
-      };
-    }
+    playerLocationIcon.onclick = function () {
+      const locationLabel = this.nextElementSibling;
+      locationLabel.classList.toggle("hidden");
+      config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
+      updateConfig(config);
+    };
   }
 }

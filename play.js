@@ -569,19 +569,8 @@ function setPlayersTab(tab, saveConfig) {
       updateConfig(config);
     }
 
-    if (tabIndex === 1 && joinedPartyId) {
-      updateJoinedParty();
-      if (updateJoinedPartyTimer)
-        clearInterval(updateJoinedPartyTimer);
-      updateJoinedPartyTimer = setInterval(() => {
-        if (document.getElementById('chatboxTabPlayers').classList.contains('active') && config.playersTabIndex === 1)
-          updateJoinedParty();
-        else {
-          clearInterval(updateJoinedPartyTimer);
-          updateJoinedPartyTimer = null;
-        }
-      }, 10000);
-    }
+    if (tabIndex === 1 && joinedPartyId)
+      updateJoinedParty(true);
   }
 }
 

@@ -341,6 +341,20 @@ function setModalUiTheme(uiTheme) {
     modalContainer.dataset.lastModalTheme = uiTheme;
 }
 
+function setPartyUiTheme(uiTheme) {
+  const callback = () => {
+    const rootStyle = document.documentElement.style;
+    const styleProps = [ 'base-gradient', 'container-bg-image-url', 'border-image-url' ];
+    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
+    for (let prop of styleProps)
+      rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+  };
+  if (uiTheme)
+    initUiThemeContainerStyles(uiTheme, false, callback);
+  else
+    callback();
+}
+
 function populateUiThemes() {
   const modalContent = document.querySelector('#uiThemesModal .modalContent');
   modalContent.innerHTML = '';
@@ -496,8 +510,8 @@ function getSvgGradientStop(color, offset) {
   return ret;
 }
 
-function addSystemSvgGradient(systemName, colors) {
-  const gradientId = `baseGradient_${systemName.replace(' ', '_')}`;
+function addSystemSvgGradient(systemName, colors, alt) {
+  const gradientId = `${alt ? 'alt' : 'base'}Gradient_${systemName.replace(' ', '_')}`;
   if (!document.getElementById(gradientId)) {
     const svgDefs = document.getElementById('svgDefs');
     const svgGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');

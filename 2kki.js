@@ -214,6 +214,12 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
   const setMessageLocationFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
     globalMessageIcon.title = getLocalized2kkiLocations(locations, '\n');
     globalMessageLocation.innerHTML = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+    if (globalMessageLocation.dataset.systemOverride) {
+      for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))
+        infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important;`);
+      for (let link of globalMessageLocation.querySelectorAll('a'))
+        link.setAttribute('style', `background-image: var(--alt-gradient-${globalMessageLocation.dataset.systemOverride}) !important;`);
+    }
     if (cacheLocation) {
       const locationKey = `${prevMapId}_${mapId}`;
       const prevLocationKey = `${mapId}_${prevMapId}`;
