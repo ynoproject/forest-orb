@@ -657,13 +657,13 @@ function onUpdateChatboxInfo() {
 
   for (let tab of chatboxTabs) {
     tab.style.backgroundSize = backgroundSize;
-    tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.offsetLeft}px`;
-    tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.offsetTop}px`;
+    tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.getBoundingClientRect().left}px`;
+    tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.getBoundingClientRect().top}px`;
   }
 
   const messages = document.getElementById('messages');
   const partyPlayerList = document.getElementById('partyPlayerList');
-  messages.style.backgroundPositionY = partyPlayerList.style.backgroundPositionY = `${chatboxContainer.offsetTop - partyPlayerList.offsetTop}px`;
+  messages.style.backgroundPositionY = partyPlayerList.style.backgroundPositionY = `${chatboxContainer.offsetTop - partyPlayerList.getBoundingClientRect().top}px`;
 
   if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && window.getComputedStyle(layout).flexWrap === 'wrap') {
     const lastTab = chatboxTabs[chatboxTabs.length - 1];
