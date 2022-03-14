@@ -99,11 +99,19 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
 
-  if (player && joinedPartyCache && playerList.id !== "playerList" && (uuid === joinedPartyCache?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === joinedPartyCache?.ownerUuid))) {
+  let party;
+  if (playerList.id === "partyPlayerList")
+    party = joinedPartyCache;
+  else if (playerList.id.startsWith("partyModal")) {
+    const partyModalPartyId = document.getElementById("partyModal").dataset.partyId;
+    party = Object.values(partyCache).find(p => p.id == partyModalPartyId);
+  }
+
+  if (party && (uuid === party?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party?.ownerUuid))) {
     partyOwnerIcon = getSvgIcon("partyOwner", true);
     partyOwnerIcon.title = localizedMessages.parties.partyOwner;
-    if (joinedPartyCache.systemName) {
-      const parsedPartySystemName = joinedPartyCache.systemName.replace(" ", "_");
+    if (party.systemName) {
+      const parsedPartySystemName = party.systemName.replace(" ", "_");
       partyOwnerIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
     }
     nameText.appendChild(partyOwnerIcon);

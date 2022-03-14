@@ -86,9 +86,13 @@ function updatePartyList(skipNextUpdate) {
             return -1;
           if (partyB.id === joinedPartyId)
             return 1;
-          if (partyA.members.length === partyB.members.length)
-            return partyA.id >= partyB.id ? 1 : -1;
-          return partyA.members.length < partyB.members.length ? 1 : -1;
+          const onlineMemberCountA = partyA.members.filter(m => m.online).length;
+          const onlineMemberCountB = partyB.members.filter(m => m.online).length;
+          if (onlineMemberCountA !== onlineMemberCountB)
+            return onlineMemberCountA < onlineMemberCountB ? 1 : -1;
+          if (partyA.members.length !== partyB.members.length)
+            return partyA.members.length < partyB.members.length ? 1 : -1;
+          return partyA.id >= partyB.id ? 1 : -1;
         });
 
         entries.forEach(ple => partyList.appendChild(ple));
