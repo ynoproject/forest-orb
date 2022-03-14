@@ -298,25 +298,20 @@ function addOrUpdatePartyListEntry(party) {
     const parsedSystemName = systemName.replace(" ", "_");
     initUiThemeContainerStyles(systemName, false, () => {
       partyListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-      nameText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-      memberCountText.style.filter = `drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}))`;
-      memberCount.querySelector("path").style.filter = `var(--svg-shadow-${parsedSystemName})`;
-      for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
-        iconPath.style.filter = `var(--svg-shadow-${parsedSystemName})`;
-    });
-    initUiThemeFontStyles(systemName, 0, false, () => {
-      nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-      memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important`);
-      memberCount.querySelector("path").style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
-      for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
-        iconPath.style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
+      initUiThemeFontStyles(systemName, 0, false, () => {
+        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        memberCount.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+        for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
+          iconPath.setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+      });
     });
   }
 
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];
 
-  partyListEntrySprite.title = ownerMember.name;
+  partyListEntrySprite.title = ownerMember.name || localizedMessages.playerList.unnamed;
 
   if (ownerMember.rank)
     partyListEntrySprite.title += roleEmojis[ownerMember.rank === 1 ? "mod" : "dev"];
