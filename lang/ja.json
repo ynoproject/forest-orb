@@ -115,6 +115,7 @@
         },
         "fields": {
           "partyName": "パーティー名",
+          "description": "説明",
           "public": "公開",
           "password": "パスワード",
           "theme": "メニュー タイプ"

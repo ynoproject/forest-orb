@@ -115,6 +115,7 @@
         },
         "fields": {
           "partyName": "Party Name",
+          "description": "Description",
           "public": "Public",
           "password": "Password",
           "theme": "Theme"

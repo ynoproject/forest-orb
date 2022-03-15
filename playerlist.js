@@ -86,23 +86,21 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (playerSpriteCacheEntry)
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
 
-  if (name || !nameText.innerText) {
-    nameText.innerText = name || localizedMessages.playerList.unnamed;
-    if (name)
-      delete playerListEntry.dataset.unnamed;
-    else
-      playerListEntry.dataset.unnamed = 'unnamed';
+  nameText.innerText = name || localizedMessages.playerList.unnamed;
+  if (name)
+    delete playerListEntry.dataset.unnamed;
+  else
+    playerListEntry.dataset.unnamed = 'unnamed';
 
-    if (rankIcon)
-      rankIcon.remove();
+  if (rankIcon)
+    rankIcon.remove();
 
-    if (player?.rank) {
-      const rank = Math.min(player.rank, 2);
-      rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
-      rankIcon.classList.add('rankIcon');
-      rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
-      nameText.parentElement.appendChild(rankIcon);
-    }
+  if (player?.rank) {
+    const rank = Math.min(player.rank, 2);
+    rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
+    rankIcon.classList.add('rankIcon');
+    rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+    nameText.parentElement.appendChild(rankIcon);
   }
 
   if (partyOwnerIcon)
@@ -267,13 +265,24 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             return baseFunc(a, b);
           }
           : (a, b) => {
-            if (a.dataset.uuid === partyCache[joinedPartyId]?.ownerUuid)
+            const uuidA = a.dataset.uuid === defaultUuid ? playerData?.uuid : a.dataset.uuid;
+            const uuidB = b.dataset.uuid === defaultUuid ? playerData?.uuid : b.dataset.uuid;
+            const memberA = partyCache[joinedPartyId]?.members.find(m => m.uuid === uuidA);
+            const memberB = partyCache[joinedPartyId]?.members.find(m => m.uuid === uuidB);
+            if (memberA && memberB) {
+              if (memberA.online !== memberB.online)
+                return memberB.online ? 1 : -1;
+            } else if (memberA)
               return -1;
-            if (b.dataset.uuid === partyCache[joinedPartyId]?.ownerUuid)
+            else if (memberB)
               return 1;
-            if (a.dataset.uuid === playerData?.uuid)
+            if (uuidA === playerData?.uuid)
               return -1;
-            if (b.dataset.uuid === playerData?.uuid)
+            if (uuidB === playerData?.uuid)
+              return 1;
+            if (uuidA === partyCache[joinedPartyId]?.ownerUuid)
+              return -1;
+            if (uuidB === partyCache[joinedPartyId]?.ownerUuid)
               return 1;
             return baseFunc(a, b);
           };
@@ -315,6 +324,8 @@ function getSpriteImg(sprite, idx, callback, dir) {
   let spriteUrl = spriteData[sprite][idx];
   if (spriteUrl)
     return callback(spriteUrl);
+  if (!sprite || idx === -1)
+    return null;
   const img = new Image();
   img.onload = function () {
     const canvas = document.createElement('canvas');

@@ -115,6 +115,7 @@
         },
         "fields": {
           "partyName": "队伍名称",
+          "description": "Description",
           "public": "是否公开队伍？",
           "password": "设置密码",
           "theme": "界面风格"

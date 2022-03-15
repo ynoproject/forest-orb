@@ -258,6 +258,18 @@ function preToggle(buttonElement) {
   }, 500);
 }
 
+/*{
+  function calcTextareaHeight(value) {
+    const numberOfLineBreaks = (value.match(/\n/g) || []).length;
+    const newHeight = numberOfLineBreaks * 20 + 38;
+    return newHeight;
+  }
+
+  const autoExpandTextareas = document.querySelectorAll('textarea.autoExpand');
+  for (let textarea of autoExpandTextareas)
+    textarea.addEventListener('keyup', function () { this.style.height = `${calcTextareaHeight(textarea.value)}px`; });
+}*/
+
 function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
   modalContainer.classList.remove('hidden');

@@ -51,12 +51,12 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input, select, button.checkboxButton, button[type="submit"] {
+html, input, textarea, select, button.checkboxButton, button[type="submit"] {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
 
-html, input, select, button.checkboxButton, button[type="submit"] {
+html, input, textarea, select, button.checkboxButton, button[type="submit"] {
   color: var(--base-color) !important;
   background-color: black;
 }
@@ -65,9 +65,13 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, input, select, button.checkboxButton, button[type="submit"] {
+#chatBorder, input, textarea, select, button.checkboxButton, button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
+}
+
+textarea {
+  resize: none;
 }
 
 svg {
@@ -78,7 +82,7 @@ label {
   font-weight: bold;
 }
 
-input, select, button.checkboxButton, button[type="submit"] {
+input, textarea, select, button.checkboxButton, button[type="submit"] {
   background-color: var(--base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--shadow-color);
 }
@@ -1244,8 +1248,6 @@ body.fullBg {
 
 .modal {
   position: relative;
-  display: flex;
-  flex-direction: column;
   top: auto;
   left: auto;
   width: 100%;
@@ -1424,6 +1426,16 @@ body.fullBg {
   align-items: center;
 }
 
+.formControlRow > .textareaContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.formControlRow > .textareaContainer > label {
+  padding-bottom: 4px;
+}
+
 .formControlRow label {
   padding-right: 8px;
 }
@@ -1443,6 +1455,10 @@ body.fullBg {
   border: 24px solid transparent;
   -webkit-appearance: button;
   cursor: pointer;
+}
+
+form.fullWidth {
+  width: calc(100% - 8px);
 }
 
 form .uiTheme {

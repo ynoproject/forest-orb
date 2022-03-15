@@ -115,6 +115,7 @@
         },
         "fields": {
           "partyName": "Имя группы",
+          "description": "Description",
           "public": "Открытая",
           "password": "Пароль",
           "theme": "Стиль оформления"
