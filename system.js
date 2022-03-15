@@ -241,11 +241,10 @@ function initUiThemeContainerStyles(uiTheme, setTheme, callback) {
 
   getBaseBgColor(uiTheme, function (color) {
     getFontShadow(uiTheme, function (shadow) {
-      addSystemSvgDropShadow(uiTheme, shadow);
-
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseBgColorProp)) {
+        addSystemSvgDropShadow(uiTheme, shadow);
         rootStyle.setProperty(baseBgColorProp, color);
         rootStyle.setProperty(shadowColorProp, shadow);
         rootStyle.setProperty(svgShadowProp, `url(#dropShadow_${parsedUiTheme})`);
@@ -299,12 +298,11 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
   getFontColors(uiTheme, fontStyle, function (baseColors) {
     const altFontStyle = fontStyle !== defaultAltFontStyleIndex ? defaultAltFontStyleIndex : defaultAltFontStyleIndex - 1;
     const altColorCallback = function (altColors) {
-      addSystemSvgGradient(uiTheme, baseColors);
-      addSystemSvgGradient(uiTheme, altColors, true);
-
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseColorProp)) {
+        addSystemSvgGradient(uiTheme, baseColors);
+        addSystemSvgGradient(uiTheme, altColors, true);
         rootStyle.setProperty(baseColorProp, getColorRgba(baseColors[8]));
         rootStyle.setProperty(altColorProp, getColorRgba(altColors[8]));
         rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
@@ -342,16 +340,23 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
   });
 }
 
-function setModalUiTheme(uiTheme) {
+function setModalUiTheme(uiTheme, setData) {
   const rootStyle = document.documentElement.style;
-  const styleProps = [ 'base-color', 'alt-color', 'base-bg-color', 'shadow-color', 'base-gradient', 'alt-gradient', 'base-gradient-b', 'alt-gradient-b', 'base-color-image-url', 'container-bg-image-url', 'border-image-url' ];
+  const styleProps = [ 'base-color', 'alt-color', 'base-bg-color', 'shadow-color', 'base-gradient', 'alt-gradient', 'base-gradient-b', 'alt-gradient-b', 'svg-base-gradient', 'svg-alt-gradient', 'svg-shadow', 'base-color-image-url', 'container-bg-image-url', 'border-image-url' ];
   const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
   for (let prop of styleProps)
     rootStyle.setProperty(`--modal-${prop}`, `var(--${prop}${propThemeSuffix})`);
 
-  const modalContainer = document.getElementById('modalContainer');
-  if (modalContainer.dataset.lastModalId)
-    modalContainer.dataset.lastModalTheme = uiTheme;
+  if (setData) {
+    const modalContainer = document.getElementById('modalContainer');
+    if (modalContainer.dataset.lastModalId) {
+      const lastModalThemeSeparatorIndex = modalContainer.dataset.lastModalTheme.lastIndexOf(',');
+      if (lastModalThemeSeparatorIndex === -1)
+        modalContainer.dataset.lastModalTheme = uiTheme || '';
+      else
+        modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme.slice(0, lastModalThemeSeparatorIndex + 1)}${uiTheme || ''}`;
+    }
+  }
 }
 
 function setPartyUiTheme(uiTheme) {

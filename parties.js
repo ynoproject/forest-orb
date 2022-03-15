@@ -194,8 +194,8 @@ function updateJoinedParty(skipNextUpdate, callback) {
 }
 
 function addOrUpdatePartyListEntry(party) {
-  const isOwnParty = party.ownerUuid === playerData?.uuid;
   const isInParty = party.id === joinedPartyId;
+  const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
   const partyList = document.getElementById("partyList");
   
   let partyListEntry = document.querySelector(`.partyListEntry[data-id="${party.id}"]`);
@@ -299,8 +299,8 @@ function addOrUpdatePartyListEntry(party) {
     initUiThemeContainerStyles(systemName, false, () => {
       partyListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
       initUiThemeFontStyles(systemName, 0, false, () => {
-        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
-        memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
         memberCount.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
         for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
           iconPath.setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
@@ -385,13 +385,36 @@ function clearPartyList() {
 function initOrUpdatePartyModal(partyId) {
   const isInParty = partyId == joinedPartyId;
   const party = isInParty ? joinedPartyCache : partyCache[partyId];
+  const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
   const partyModal = document.getElementById("partyModal");
   const partyModalOnlinePlayerList = document.getElementById("partyModalOnlinePlayerList");
   const partyModalOfflinePlayerList = document.getElementById("partyModalOfflinePlayerList");
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
 
   const lastPartyId = partyModal.dataset.partyId;
-  partyModal.querySelector(".modalTitle").innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
+  const modalTitle = partyModal.querySelector(".modalTitle");
+  
+  modalTitle.innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
+
+  if (isOwnParty) {
+    const editButton = getSvgIcon("edit", true);
+    editButton.classList.add("editButton");
+    editButton.classList.add("iconButton");
+    editButton.onclick = function () {
+      if (party) {
+        const createPartyModal = document.getElementById("createPartyModal");
+        const partyName = createPartyModal.querySelector("#partyName");
+        const publicPartyButton = createPartyModal.querySelector("#publicPartyButton");
+        partyName.value = party.name;
+        if (publicPartyButton.classList.contains("toggled") === party.public)
+          publicPartyButton.click();
+        setPartyTheme(party.systemName);
+        createPartyModal.dataset.update = true;
+        openModal("createPartyModal", party.systemName, "partyModal");
+      }
+    };
+    modalTitle.append(editButton);
+  }
 
   let onlineCount = 0;
   let offlineCount = 0;

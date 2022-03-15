@@ -42,18 +42,24 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     
     playerListEntry.appendChild(playerListEntrySprite);
 
+    const nameTextContainer = document.createElement("div");
+    nameTextContainer.classList.add("nameTextContainer");
+
     nameText.classList.add("nameText");
     
     if (showLocation) {
       const detailsContainer = document.createElement("div");
       detailsContainer.classList.add("detailsContainer");
+      
+      nameTextContainer.appendChild(nameText);
 
-      detailsContainer.appendChild(nameText);
+      detailsContainer.appendChild(nameTextContainer);
       detailsContainer.appendChild(getSvgIcon("playerLocation"));
 
       playerListEntry.appendChild(detailsContainer);
     } else {
-      playerListEntry.appendChild(nameText);
+      nameTextContainer.appendChild(nameText);
+      playerListEntry.appendChild(nameTextContainer);
     }
 
     playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
@@ -92,7 +98,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
       rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
-      nameText.appendChild(rankIcon);
+      nameText.parentElement.appendChild(rankIcon);
     }
   }
 
@@ -114,7 +120,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       const parsedPartySystemName = party.systemName.replace(" ", "_");
       partyOwnerIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
     }
-    nameText.appendChild(partyOwnerIcon);
+    nameText.parentElement.appendChild(partyOwnerIcon);
   }
 
   if (systemName) {

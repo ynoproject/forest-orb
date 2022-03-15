@@ -262,11 +262,22 @@ function openModal(modalId, theme, lastModalId) {
   modalContainer.classList.remove('hidden');
 
   if (lastModalId) {
-    modalContainer.dataset.lastModalId = lastModalId;
-    modalContainer.dataset.lastModalTheme = theme;
-  } else {
-    delete modalContainer.dataset.lastModalId;
-    delete modalContainer.dataset.lastModalTheme;
+    if (modalContainer.dataset.lastModalId) {
+      modalContainer.dataset.lastModalId = `${modalContainer.dataset.lastModalId},${lastModalId}`;
+      modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme},${theme}`;
+    } else {
+      modalContainer.dataset.lastModalId = lastModalId;
+      modalContainer.dataset.lastModalTheme = theme;
+    }
+  } else if (modalContainer.dataset.lastModalId) {
+    const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
+    if (lastModalIdSeparatorIndex === -1) {
+      delete modalContainer.dataset.lastModalId;
+      delete modalContainer.dataset.lastModalTheme;
+    } else {
+      modalContainer.dataset.lastModalId = modalContainer.dataset.lastModalId.slice(0, lastModalIdSeparatorIndex);
+      modalContainer.dataset.lastModalTheme = modalContainer.dataset.lastModalTheme.slice(0, modalContainer.dataset.lastModalTheme.lastIndexOf(','));
+    }
   }
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId)
@@ -285,7 +296,13 @@ function closeModal() {
   if (activeModal)
     activeModal.classList.add('hidden');
   if (modalContainer.dataset.lastModalId) {
-    openModal(modalContainer.dataset.lastModalId, modalContainer.dataset.lastModalTheme);
+    const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
+    if (lastModalIdSeparatorIndex === -1)
+      openModal(modalContainer.dataset.lastModalId, modalContainer.dataset.lastModalTheme);
+    else {
+      const lastModalThemeSeparatorIndex = modalContainer.dataset.lastModalTheme.lastIndexOf(',');
+      openModal(modalContainer.dataset.lastModalId.slice(lastModalIdSeparatorIndex + 1), modalContainer.dataset.lastModalTheme.slice(lastModalThemeSeparatorIndex + 1));
+    }
   }
 };
 {
@@ -450,7 +467,10 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('createPartyButton').onclick = () => openModal('createPartyModal', document.getElementById('partyTheme').value);
+document.getElementById('createPartyButton').onclick = () => {
+  delete document.getElementById('createPartyModal').dataset.update;
+  openModal('createPartyModal', document.getElementById('partyTheme').value);
+};
 
 document.getElementById('publicPartyButton').onclick = function () {
   this.classList.toggle('toggled');
@@ -462,10 +482,20 @@ document.getElementById('partyThemeButton').onclick = function () {
 };
 
 document.getElementById('createPartyForm').onsubmit = () => {
+  const isUpdate = document.getElementById('createPartyModal').dataset.update;
   closeModal();
-  fetch(`../connect/${gameId}/api/party?command=create&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
-    .then(response => response.text())
-    .then(partyId => setJoinedPartyId(parseInt(partyId)));
+  fetch(`../connect/${gameId}/api/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.text();
+    })
+    .then(partyId => {
+      if (isUpdate)
+        updatePartyList(true);
+      else
+        setJoinedPartyId(parseInt(partyId));
+    });
   return false;
 };
 
@@ -801,11 +831,11 @@ function setName(name, isInit) {
 
 function onSelectUiTheme(e) {
   const modalContainer = document.getElementById('modalContainer');
-  if (modalContainer.dataset.lastModalId !== 'createPartyModal')
+  if (!modalContainer.dataset.lastModalId?.endsWith('createPartyModal'))
     setUiTheme(e.target.dataset.uiTheme);
   else {
     setPartyTheme(e.target.dataset.uiTheme);
-    setModalUiTheme(e.target.dataset.uiTheme);
+    setModalUiTheme(e.target.dataset.uiTheme, true);
   }
 }
 

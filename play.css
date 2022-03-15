@@ -22,6 +22,9 @@
   --modal-alt-gradient: var(--alt-gradient);
   --modal-base-gradient-b: var(--base-gradient-b);
   --modal-alt-gradient-b: var(--alt-gradient-b);
+  --modal-svg-base-gradient: var(--base-svg-gradient);
+  --modal-svg-alt-gradient: var(--alt-svg-gradient);
+  --modal-svg-shadow: var(--svg-shadow);
   --modal-base-color-image-url: var(--base-color-image-url);
   --modal-container-bg-image-url: var(--container-bg-image-url);
   --modal-border-image-url: var(--border-image-url);
@@ -146,7 +149,7 @@ body.fullBg {
   filter: none !important;
 }
 
-.altText, .subTab.active .subTabLabel, .messageContainer.global .message .nameMarker, #unreadMessageCount, a:not(.modalClose) {
+.altText, .subTab.active .subTabLabel, .messageContainer.global .message .nameMarker, #unreadMessageCount, a:not(.modalClose):not(.listEntryAction) {
   background-image: var(--alt-gradient) !important;
 }
 
@@ -934,15 +937,22 @@ body.fullBg {
   width: 100%;
 }
 
+.listEntry .nameTextContainer {
+  width: 100%;
+}
+
+.listEntry .nameTextContainer .icon {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px;
+}
+
 .listEntry .nameText {
   width: 100%;
   background-image: var(--base-color-image-url) !important;
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
-}
-
-.listEntry .nameText .icon {
-  width: 16px;
-  height: 16px;
 }
 
 .listEntry .partyNameContainer {
@@ -1184,7 +1194,7 @@ body.fullBg {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a, label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a:not(.listEntryAction), label {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1276,6 +1286,16 @@ body.fullBg {
   text-shadow: 1.5px 1.5px var(--modal-shadow-color);
 }
 
+.modal .iconButton path, .modal .icon path {
+  stroke: var(--modal-svg-base-gradient);
+  filter: var(--modal-svg-shadow);
+}
+
+.modal .fillIcon path {
+  stroke: none;
+  fill: var(--party-svg-base-gradient);
+}
+
 .modal .altText {
   background-image: var(--modal-alt-gradient) !important;
 }
@@ -1324,16 +1344,30 @@ body.fullBg {
   margin-top: 2px;
 }
 
-.modalContent > .item > div, #modalContainer[data-last-modal-id="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
+.modalContent > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.modalContent > .item > div.selected, #modalContainer[data-last-modal-id="createPartyModal"] .modalContent > .item > div.partySelected {
+.modalContent > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
   border-color: white;
 }
 
-#modalContainer[data-last-modal-id="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id="createPartyModal"] .modalFooter {
+#modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter {
   display: none;
+}
+
+#partyModal .modalTitle .editButton {
+  display: inline-block;
+  padding: 0 8px;
+}
+
+#partyModal .modalTitle .editButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+#partyModal .modalTitle .editButton path {
+  fill: var(--modal-svg-alt-gradient);
 }
 
 .modalHeader, .modalFooter {
@@ -1763,11 +1797,11 @@ form .uiTheme {
     background-image: none !important;
   }
 
-  .altText, a:not(.modalClose) {
+  .altText, a:not(.modalClose):not(.listEntryAction) {
     color: var(--alt-color);
   }
 
-  .modal .altText, .modal a:not(.modalClose) {
+  .modal .altText, .modal a:not(.modalClose):not(.listEntryAction) {
     color: var(--modal-alt-color);
   }
 }
