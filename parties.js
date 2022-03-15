@@ -8,7 +8,8 @@ let partyCache = {};
 let joinedPartyCache = null;
 
 function setJoinedPartyId(partyId) {
-  document.getElementById("content").classList.toggle("inParty", !!partyId);
+  const content = document.getElementById("content");
+  content.classList.toggle("inParty", !!partyId);
   if (partyId) {
     if (!updateJoinedPartyTimer) {
       updateJoinedPartyTimer = setInterval(() => {
@@ -28,9 +29,10 @@ function setJoinedPartyId(partyId) {
     setPlayersTab(partyId ? document.getElementById("playersTabParty") : document.getElementById("playersTabMap"));
   joinedPartyId = partyId || null;
   if (partyId)
-    updateJoinedParty(true);
+    updateJoinedParty(true, () => content.classList.toggle("partyOwner", playerData?.uuid === joinedPartyCache.ownerUuid));
   else {
     joinedPartyCache = null;
+    content.classList.remove("partyOwner");
     setPartyUiTheme(null);
   }
 }

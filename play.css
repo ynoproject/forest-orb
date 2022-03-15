@@ -772,7 +772,7 @@ body.fullBg {
   padding: 0 7px;
 }
 
-#content:not(.inParty) .partySubTab, #content.inParty #createPartyButton, #content:not(.inParty) #disbandPartyButton {
+#content:not(.inParty) .partySubTab, #content.inParty #createPartyButton, #content:not(.inParty) #disbandPartyButton, #content:not(.partyOwner) #disbandPartyButton {
   display: none;
 }
 
@@ -803,7 +803,7 @@ body.fullBg {
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
-.chatboxTabContent, .chatboxTabContent > .divider {
+.chatboxTabContent, .chatboxTabContent > .divider, #content.inParty:not(.partyOwner) .partyList {
   border-top: 8px solid transparent;
   border-image: var(--border-image-url) 10 repeat !important;
 }
