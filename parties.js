@@ -501,7 +501,7 @@ function initOrUpdatePartyModal(partyId) {
   modalTitle.innerText = party.name || localizedMessages.parties.defaultPartyName.replace('{OWNER}', party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
 
   if (isInParty) {
-    if (party.public)
+    if (!party.public)
       modalTitle.append(getSvgIcon('locked', true));
 
     if (isOwnParty) {
