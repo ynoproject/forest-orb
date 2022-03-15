@@ -267,8 +267,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           : (a, b) => {
             const uuidA = a.dataset.uuid === defaultUuid ? playerData?.uuid : a.dataset.uuid;
             const uuidB = b.dataset.uuid === defaultUuid ? playerData?.uuid : b.dataset.uuid;
-            const memberA = partyCache[joinedPartyId]?.members.find(m => m.uuid === uuidA);
-            const memberB = partyCache[joinedPartyId]?.members.find(m => m.uuid === uuidB);
+            const memberA = joinedPartyCache?.members.find(m => m.uuid === uuidA);
+            const memberB = joinedPartyCache?.members.find(m => m.uuid === uuidB);
             if (memberA && memberB) {
               if (memberA.online !== memberB.online)
                 return memberB.online ? 1 : -1;
@@ -280,9 +280,9 @@ function getPlayerListIdEntrySortFunc(playerListId) {
               return -1;
             if (uuidB === playerData?.uuid)
               return 1;
-            if (uuidA === partyCache[joinedPartyId]?.ownerUuid)
+            if (uuidA === joinedPartyCache?.ownerUuid)
               return -1;
-            if (uuidB === partyCache[joinedPartyId]?.ownerUuid)
+            if (uuidB === joinedPartyCache?.ownerUuid)
               return 1;
             return baseFunc(a, b);
           };
