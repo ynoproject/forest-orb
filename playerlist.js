@@ -86,21 +86,23 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (playerSpriteCacheEntry)
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
 
-  nameText.innerText = name || localizedMessages.playerList.unnamed;
-  if (name)
-    delete playerListEntry.dataset.unnamed;
-  else
-    playerListEntry.dataset.unnamed = 'unnamed';
+  if (name || !nameText.innerText || playerList.id !== 'playerList') {
+    nameText.innerText = name || localizedMessages.playerList.unnamed;
+    if (name)
+      delete playerListEntry.dataset.unnamed;
+    else
+      playerListEntry.dataset.unnamed = 'unnamed';
 
-  if (rankIcon)
-    rankIcon.remove();
+    if (rankIcon)
+      rankIcon.remove();
 
-  if (player?.rank) {
-    const rank = Math.min(player.rank, 2);
-    rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
-    rankIcon.classList.add('rankIcon');
-    rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
-    nameText.parentElement.appendChild(rankIcon);
+    if (player?.rank) {
+      const rank = Math.min(player.rank, 2);
+      rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
+      rankIcon.classList.add('rankIcon');
+      rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      nameText.parentElement.appendChild(rankIcon);
+    }
   }
 
   if (partyOwnerIcon)
