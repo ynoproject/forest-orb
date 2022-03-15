@@ -265,10 +265,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             return baseFunc(a, b);
           }
           : (a, b) => {
-            const uuidA = a.dataset.uuid === defaultUuid ? playerData?.uuid : a.dataset.uuid;
-            const uuidB = b.dataset.uuid === defaultUuid ? playerData?.uuid : b.dataset.uuid;
-            const memberA = joinedPartyCache?.members.find(m => m.uuid === uuidA);
-            const memberB = joinedPartyCache?.members.find(m => m.uuid === uuidB);
+            const memberA = joinedPartyCache?.members.find(m => m.uuid === a.dataset.uuid);
+            const memberB = joinedPartyCache?.members.find(m => m.uuid === b.dataset.uuid);
             if (memberA && memberB) {
               if (memberA.online !== memberB.online)
                 return memberB.online ? 1 : -1;
@@ -276,13 +274,13 @@ function getPlayerListIdEntrySortFunc(playerListId) {
               return -1;
             else if (memberB)
               return 1;
-            if (uuidA === playerData?.uuid)
+            if (a.dataset.uuid === playerData?.uuid)
               return -1;
-            if (uuidB === playerData?.uuid)
+            if (b.dataset.uuid === playerData?.uuid)
               return 1;
-            if (uuidA === joinedPartyCache?.ownerUuid)
+            if (a.dataset.uuid === joinedPartyCache?.ownerUuid)
               return -1;
-            if (uuidB === joinedPartyCache?.ownerUuid)
+            if (b.dataset.uuid === joinedPartyCache?.ownerUuid)
               return 1;
             return baseFunc(a, b);
           };

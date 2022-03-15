@@ -1248,6 +1248,8 @@ body.fullBg {
 
 .modal {
   position: relative;
+  display: flex;
+  flex-direction: column;
   top: auto;
   left: auto;
   width: 100%;
