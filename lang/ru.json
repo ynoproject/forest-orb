@@ -109,7 +109,10 @@
         "auto": "Как в игре"
       },
       "createParty": {
-        "title": "Создать Группу",
+        "title": {
+          "create": "Создать Группу",
+          "update": "Edit Party"
+        },
         "fields": {
           "partyName": "Имя группы",
           "public": "Открытая",

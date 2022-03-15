@@ -111,7 +111,7 @@
       "createParty": {
         "title": {
           "create": "Create Party",
-          "update": "Update Party"
+          "update": "Edit Party"
         },
         "fields": {
           "partyName": "Party Name",

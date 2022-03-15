@@ -111,7 +111,7 @@
       "createParty": {
         "title": {
           "create": "创建组队",
-          "update": "Update Party"
+          "update": "Edit Party"
         },
         "fields": {
           "partyName": "队伍名称",
