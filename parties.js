@@ -145,85 +145,13 @@ function updatePartyList(skipNextUpdate) {
   if (connStatus !== 1)
     return;
   
-  /*fetch(`${apiUrl}/party?command=list`)
+  fetch(`${apiUrl}/party?command=list`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(data => {*/
-    const data = [
-      {
-        id: 1,
-        name: "",
-        public: true,
-        systemName: "RioSystem5",
-        description: "Test",
-        ownerUuid: "myuuid",
-        members: [
-          {
-            uuid: "myuuid2",
-            name: "Sam2",
-            rank: 2,
-            systemName: "RioSystem3",
-            spriteName: "syujinkou_act1",
-            spriteIndex: 0,
-            mapId: "0028",
-            online: false
-          },
-          {
-            uuid: "myuuid",
-            name: "Sam",
-            rank: 3,
-            systemName: "RioSystem4",
-            spriteName: "syujinkou_act1",
-            spriteIndex: 0,
-            mapId: "0030",
-            online: true
-          },
-          {
-            uuid: "myuuid3",
-            name: "Sam3",
-            rank: 0,
-            systemName: "RioSystem2-29",
-            spriteName: "syujinkou_act1",
-            spriteIndex: 0,
-            mapId: "0050",
-            online: false
-          },
-          {
-            uuid: "myuuid4",
-            name: "Sam4",
-            rank: 1,
-            systemName: "RioSystem1-28",
-            spriteName: "syujinkou_act1",
-            spriteIndex: 0,
-            mapId: "0080",
-            online: true
-          }
-        ]
-      },
-      {
-        id: 2,
-        name: "AAA",
-        public: false,
-        systemName: "menu 21",
-        description: "Test",
-        ownerUuid: "myuuid5",
-        members: [
-          {
-            uuid: "myuuid5",
-            name: "Test",
-            rank: 1,
-            systemName: "system-2",
-            spriteName: "syujinkou_act1",
-            spriteIndex: 0,
-            mapId: "0010",
-            online: true
-          }
-        ]
-      }
-    ];
+    .then(data => {
       if (!Array.isArray(data))
         return;
 
@@ -309,7 +237,7 @@ function updatePartyList(skipNextUpdate) {
       const activePartyModal = document.querySelector('#partyModal:not(.hidden)');
       if (activePartyModal)
         initOrUpdatePartyModal(activePartyModal.dataset.partyId);
-    //}).catch(err => console.error(err));
+    }).catch(err => console.error(err));
 
   if (skipNextUpdate)
     skipPartyListUpdate = true;
@@ -319,63 +247,13 @@ function updateJoinedParty(skipNextUpdate, callback) {
   if (connStatus !== 1)
     return;
   
-  /*fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
+  fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(party => {*/
-    party = {
-      id: 1,
-      name: "",
-      public: true,
-      systemName: "RioSystem5",
-      description: "Test",
-      ownerUuid: "myuuid",
-      members: [
-        {
-          uuid: "myuuid2",
-          name: "Sam2",
-          rank: 2,
-          systemName: "RioSystem3",
-          spriteName: "syujinkou_act1",
-          spriteIndex: 0,
-          mapId: "0028",
-          online: false
-        },
-        {
-          uuid: "myuuid",
-          name: "Sam",
-          rank: 3,
-          systemName: "RioSystem4",
-          spriteName: "syujinkou_act1",
-          spriteIndex: 0,
-          mapId: "0030",
-          online: true
-        },
-        {
-          uuid: "myuuid3",
-          name: "Sam3",
-          rank: 0,
-          systemName: "RioSystem2-29",
-          spriteName: "syujinkou_act1",
-          spriteIndex: 0,
-          mapId: "0050",
-          online: false
-        },
-        {
-          uuid: "myuuid4",
-          name: "Sam4",
-          rank: 1,
-          systemName: "RioSystem1-28",
-          spriteName: "syujinkou_act1",
-          spriteIndex: 0,
-          mapId: "0080",
-          online: true
-        }
-      ]
-    };
+    .then(party => {
       joinedPartyCache = party;
       
       if (party.systemName !== joinedPartyUiTheme)
@@ -405,7 +283,7 @@ function updateJoinedParty(skipNextUpdate, callback) {
       
       if (callback)
         callback();
-    //}).catch(err => console.error(err));
+    }).catch(err => console.error(err));
   
   if (skipNextUpdate)
     skipJoinedPartyUpdate = true;
