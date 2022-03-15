@@ -17,6 +17,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   let playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
 
   const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
+  const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector(".playerListEntrySprite") : document.createElement("img");
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector(".playerListEntryActionContainer") : document.createElement("div");
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector(".rankIcon") : null;
@@ -30,15 +31,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntry.classList.add("listEntry");
     playerListEntry.dataset.uuid = uuid;
 
-    const playerListEntrySprite = document.createElement("img");
     playerListEntrySprite.classList.add("playerListEntrySprite");
     playerListEntrySprite.classList.add("listEntrySprite");
-
-    let playerSpriteCacheEntry = playerSpriteCache[uuid];
-    if (!playerSpriteCacheEntry && uuid !== defaultUuid)
-      playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
-    if (playerSpriteCacheEntry)
-      getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
     
     playerListEntry.appendChild(playerListEntrySprite);
 
@@ -82,6 +76,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     playerList.appendChild(playerListEntry);
   }
+
+  let playerSpriteCacheEntry = playerSpriteCache[uuid];
+  if (!playerSpriteCacheEntry && uuid !== defaultUuid)
+    playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
+  if (playerSpriteCacheEntry)
+    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
 
   if (name || !nameText.innerText) {
     nameText.innerText = name || localizedMessages.playerList.unnamed;

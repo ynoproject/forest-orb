@@ -258,7 +258,7 @@ function preToggle(buttonElement) {
   }, 500);
 }
 
-function openModal(modalId, theme, lastModalId) {
+function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
   modalContainer.classList.remove('hidden');
 
@@ -286,7 +286,12 @@ function openModal(modalId, theme, lastModalId) {
   
   setModalUiTheme(theme);
 
-  document.getElementById(modalId).classList.remove('hidden');
+  const modal = document.getElementById(modalId);
+  if (modalData) {
+    for (let k of Object.keys(modalData))
+      modal.dataset[k] = modalData[k];
+  }
+  modal.classList.remove('hidden');
 }
 
 function closeModal() {
@@ -468,48 +473,7 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('createPartyButton').onclick = () => {
-  delete document.getElementById('createPartyModal').dataset.update;
-  openModal('createPartyModal', document.getElementById('partyTheme').value);
-};
-
-document.getElementById('publicPartyButton').onclick = function () {
-  this.classList.toggle('toggled');
-  this.nextElementSibling.checked = !this.classList.contains('toggled');
-};
-
-document.getElementById('partyThemeButton').onclick = function () {
-  openModal('uiThemesModal', this.nextElementSibling.value, 'createPartyModal');
-};
-
-document.getElementById('createPartyForm').onsubmit = () => {
-  const isUpdate = document.getElementById('createPartyModal').dataset.update;
-  closeModal();
-  fetch(`${apiUrl}/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.text();
-    })
-    .then(partyId => {
-      if (isUpdate)
-        updateJoinedParty(true, () => initOrUpdatePartyModal(joinedPartyId));
-      else
-        setJoinedPartyId(parseInt(partyId));
-      updatePartyList(true);
-    });
-  return false;
-};
-
-document.getElementById('disbandPartyButton').onclick = () => {
-  fetch(`${apiUrl}/party?command=disband`)
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      setJoinedPartyId(null);
-      updatePartyList(true);
-    });
-};
+initPartyControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 

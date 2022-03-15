@@ -7,9 +7,103 @@ let skipJoinedPartyUpdate = false;
 let partyCache = {};
 let joinedPartyCache = null;
 
+function initPartyControls() {
+  document.getElementById('createPartyButton').onclick = () => {
+    const partyName = document.getElementById('partyName');
+    const publicPartyButton = document.getElementById('publicPartyButton');
+    const partyPassword = document.getElementById('partyPassword');
+
+    partyName.value = '';
+
+    if (publicPartyButton.classList.contains('toggled'))
+      publicPartyButton.click();
+
+    partyPassword.value = '';
+
+    setPartyTheme(config.uiTheme === 'auto' ? systemName : config.uiTheme);
+
+    const showHidePartyPasswordLink = document.getElementById('showHidePartyPasswordLink');
+    if (showHidePartyPasswordLink.classList.contains('showPassword'))
+      showHidePartyPasswordLink.click();
+
+    openModal('createPartyModal', document.getElementById('partyTheme').value, null);
+  };
+  
+  document.getElementById('publicPartyButton').onclick = function () {
+    this.classList.toggle('toggled');
+    this.closest('.formControlRow').nextElementSibling.classList.toggle('hidden', !this.classList.contains('toggled'));
+    this.nextElementSibling.checked = !this.classList.contains('toggled');
+  };
+  
+  document.getElementById('showHidePartyPasswordLink').onclick = function () {
+    this.classList.toggle('showPassword');
+    document.getElementById('partyPassword').type = this.classList.contains('showPassword') ? 'text' : 'password';
+  };
+  
+  document.getElementById('partyThemeButton').onclick = function () {
+    openModal('uiThemesModal', this.nextElementSibling.value, 'createPartyModal');
+  };
+  
+  document.getElementById('createPartyForm').onsubmit = function () {
+    const form = this;
+    const isUpdate = document.getElementById('createPartyModal').dataset.update;
+    closeModal();
+    fetch(`${apiUrl}/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(new FormData(form)).toString()}`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.text();
+      })
+      .then(partyId => {
+        if (isUpdate)
+          updateJoinedParty(true, () => initOrUpdatePartyModal(joinedPartyId));
+        else
+          setJoinedPartyId(parseInt(partyId));
+        updatePartyList(true);
+      }).catch(err => console.error(err));;
+    return false;
+  };
+  
+  document.getElementById('disbandPartyButton').onclick = () => {
+    fetch(`${apiUrl}/party?command=disband`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        setJoinedPartyId(null);
+        updatePartyList(true);
+      });
+  };
+  
+  document.getElementById('showHidePrivatePartyPasswordLink').onclick = function () {
+    this.classList.toggle('showPassword');
+    document.getElementById('privatePartyPassword').type = this.classList.contains('showPassword') ? 'text' : 'password';
+  };
+
+  document.getElementById('joinPrivatePartyForm').onsubmit = function () {
+    const form = this;
+    const partyId = document.getElementById('joinPrivatePartyModal').dataset.partyId;
+    closeModal();
+    fetch(`${apiUrl}/party?command=join&partyId=${partyId}&${new URLSearchParams(new FormData(form)).toString()}`)
+      .then(response => {
+        if (!response.ok) {
+          if (response.status === 401) {
+            document.getElementById('joinPrivatePartyFailed').classList.remove('hidden');
+            openModal('joinPrivatePartyModal', partyCache[partyId].systemName);
+            return;
+          } else
+            throw new Error(response.statusText);
+        }
+        setJoinedPartyId(partyId);
+        document.getElementById('content').classList.add('inParty');
+        updatePartyList(true);
+      }).catch(err => console.error(err));
+    return false;
+  };
+}
+
 function setJoinedPartyId(partyId) {
-  const content = document.getElementById("content");
-  content.classList.toggle("inParty", !!partyId);
+  const content = document.getElementById('content');
+  content.classList.toggle('inParty', !!partyId);
   if (partyId) {
     if (!updateJoinedPartyTimer) {
       updateJoinedPartyTimer = setInterval(() => {
@@ -24,15 +118,15 @@ function setJoinedPartyId(partyId) {
     updateJoinedPartyTimer = null;
   }
   if (config.chatTabIndex === 3)
-    setChatTab(partyId ? document.getElementById("chatTabParty") : document.getElementById("chatTabAll"));
+    setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
   if (config.playersTabIndex === 1)
-    setPlayersTab(partyId ? document.getElementById("playersTabParty") : document.getElementById("playersTabMap"));
+    setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
   joinedPartyId = partyId || null;
   if (partyId)
-    updateJoinedParty(true, () => content.classList.toggle("partyOwner", playerData?.uuid === joinedPartyCache.ownerUuid));
+    updateJoinedParty(true, () => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));
   else {
     joinedPartyCache = null;
-    content.classList.remove("partyOwner");
+    content.classList.remove('partyOwner');
     setPartyUiTheme(null);
   }
 }
@@ -51,13 +145,85 @@ function updatePartyList(skipNextUpdate) {
   if (connStatus !== 1)
     return;
   
-  fetch(`${apiUrl}/party?command=list`)
+  /*fetch(`${apiUrl}/party?command=list`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(data => {
+    .then(data => {*/
+    const data = [
+      {
+        id: 1,
+        name: "",
+        public: true,
+        systemName: "RioSystem5",
+        description: "Test",
+        ownerUuid: "myuuid",
+        members: [
+          {
+            uuid: "myuuid2",
+            name: "Sam2",
+            rank: 2,
+            systemName: "RioSystem3",
+            spriteName: "syujinkou_act1",
+            spriteIndex: 0,
+            mapId: "0028",
+            online: false
+          },
+          {
+            uuid: "myuuid",
+            name: "Sam",
+            rank: 3,
+            systemName: "RioSystem4",
+            spriteName: "syujinkou_act1",
+            spriteIndex: 0,
+            mapId: "0030",
+            online: true
+          },
+          {
+            uuid: "myuuid3",
+            name: "Sam3",
+            rank: 0,
+            systemName: "RioSystem2-29",
+            spriteName: "syujinkou_act1",
+            spriteIndex: 0,
+            mapId: "0050",
+            online: false
+          },
+          {
+            uuid: "myuuid4",
+            name: "Sam4",
+            rank: 1,
+            systemName: "RioSystem1-28",
+            spriteName: "syujinkou_act1",
+            spriteIndex: 0,
+            mapId: "0080",
+            online: true
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: "AAA",
+        public: false,
+        systemName: "menu 21",
+        description: "Test",
+        ownerUuid: "myuuid5",
+        members: [
+          {
+            uuid: "myuuid5",
+            name: "Test",
+            rank: 1,
+            systemName: "system-2",
+            spriteName: "syujinkou_act1",
+            spriteIndex: 0,
+            mapId: "0010",
+            online: true
+          }
+        ]
+      }
+    ];
       if (!Array.isArray(data))
         return;
 
@@ -69,7 +235,7 @@ function updatePartyList(skipNextUpdate) {
         delete partyCache[rp];
       }
 
-      const partyList = document.getElementById("partyList");
+      const partyList = document.getElementById('partyList');
       
       if (data.length) {
         setJoinedPartyId(playerData ? data.find(p => p.members.map(m => m.uuid).indexOf(playerData.uuid) > -1)?.id : null);
@@ -79,7 +245,7 @@ function updatePartyList(skipNextUpdate) {
           addOrUpdatePartyListEntry(party);
         }
 
-        const partyListEntries = document.getElementsByClassName("partyListEntry");
+        const partyListEntries = document.getElementsByClassName('partyListEntry');
 
         const entries = [].slice.call(partyListEntries).sort(function (a, b) {
           const partyA = partyCache[a.dataset.id];
@@ -104,35 +270,35 @@ function updatePartyList(skipNextUpdate) {
       } else {
         setJoinedPartyId(null);
 
-        partyList.innerHTML = "";
+        partyList.innerHTML = '';
 
-        const emptyMessage = document.createElement("div");
-        emptyMessage.classList.add("infoMessage");
+        const emptyMessage = document.createElement('div');
+        emptyMessage.classList.add('infoMessage');
 
-        const emptyMessageText = document.createElement("span");
-        emptyMessageText.classList.add("infoLabel");
+        const emptyMessageText = document.createElement('span');
+        emptyMessageText.classList.add('infoLabel');
         emptyMessageText.innerText = localizedMessages.parties.emptyMessage;
 
         emptyMessage.appendChild(emptyMessageText);
         partyList.appendChild(emptyMessage);
       }
 
-      let joinedPartyLabel = document.getElementById("joinedPartyLabel");
-      let joinedPartyDivider = partyList.querySelector(".divider");
+      let joinedPartyLabel = document.getElementById('joinedPartyLabel');
+      let joinedPartyDivider = partyList.querySelector('.divider');
 
       if (joinedPartyId) {
         const joinedPartyLabelHtml = getMassagedLabel(localizedMessages.parties.yourParty, true);
         if (!joinedPartyLabel) {
-          joinedPartyLabel = document.createElement("span");
-          joinedPartyLabel.id = "joinedPartyLabel";
-          joinedPartyLabel.classList.add("infoText");
+          joinedPartyLabel = document.createElement('span');
+          joinedPartyLabel.id = 'joinedPartyLabel';
+          joinedPartyLabel.classList.add('infoText');
           joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
           partyList.prepend(joinedPartyLabel);
         } else
           joinedPartyLabel.innerHTML = joinedPartyLabelHtml;
         if (!joinedPartyDivider) {
-          joinedPartyDivider = document.createElement("div");
-          joinedPartyDivider.classList.add("divider");
+          joinedPartyDivider = document.createElement('div');
+          joinedPartyDivider.classList.add('divider');
         }
         partyList.querySelector(`.listEntry[data-id="${joinedPartyId}"]`).after(joinedPartyDivider);
       } else {
@@ -140,10 +306,10 @@ function updatePartyList(skipNextUpdate) {
         joinedPartyDivider?.remove();
       }
 
-      const activePartyModal = document.querySelector("#partyModal:not(.hidden)");
+      const activePartyModal = document.querySelector('#partyModal:not(.hidden)');
       if (activePartyModal)
         initOrUpdatePartyModal(activePartyModal.dataset.partyId);
-    }).catch(err => console.error(err));
+    //}).catch(err => console.error(err));
 
   if (skipNextUpdate)
     skipPartyListUpdate = true;
@@ -153,21 +319,71 @@ function updateJoinedParty(skipNextUpdate, callback) {
   if (connStatus !== 1)
     return;
   
-  fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
+  /*fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(party => {
+    .then(party => {*/
+    party = {
+      id: 1,
+      name: "",
+      public: true,
+      systemName: "RioSystem5",
+      description: "Test",
+      ownerUuid: "myuuid",
+      members: [
+        {
+          uuid: "myuuid2",
+          name: "Sam2",
+          rank: 2,
+          systemName: "RioSystem3",
+          spriteName: "syujinkou_act1",
+          spriteIndex: 0,
+          mapId: "0028",
+          online: false
+        },
+        {
+          uuid: "myuuid",
+          name: "Sam",
+          rank: 3,
+          systemName: "RioSystem4",
+          spriteName: "syujinkou_act1",
+          spriteIndex: 0,
+          mapId: "0030",
+          online: true
+        },
+        {
+          uuid: "myuuid3",
+          name: "Sam3",
+          rank: 0,
+          systemName: "RioSystem2-29",
+          spriteName: "syujinkou_act1",
+          spriteIndex: 0,
+          mapId: "0050",
+          online: false
+        },
+        {
+          uuid: "myuuid4",
+          name: "Sam4",
+          rank: 1,
+          systemName: "RioSystem1-28",
+          spriteName: "syujinkou_act1",
+          spriteIndex: 0,
+          mapId: "0080",
+          online: true
+        }
+      ]
+    };
       joinedPartyCache = party;
       
       if (party.systemName !== joinedPartyUiTheme)
         setPartyUiTheme(party.systemName);
 
-      const partyPlayerList = document.getElementById("partyPlayerList");
+      const partyPlayerList = document.getElementById('partyPlayerList');
 
-      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll(".listEntry")).map(e => e.dataset.uuid);
+      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
       const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
 
       for (let playerUuid of removedPlayerUuids)
@@ -181,15 +397,15 @@ function updateJoinedParty(skipNextUpdate, callback) {
         };
 
         const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
-        entry.classList.toggle("offline", !member.online);
+        entry.classList.toggle('offline', !member.online);
         if (!member.online)
-          entry.querySelector(".nameText").appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
+          entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
       
       if (callback)
         callback();
-    }).catch(err => console.error(err));
+    //}).catch(err => console.error(err));
   
   if (skipNextUpdate)
     skipJoinedPartyUpdate = true;
@@ -198,44 +414,44 @@ function updateJoinedParty(skipNextUpdate, callback) {
 function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;
   const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
-  const partyList = document.getElementById("partyList");
+  const partyList = document.getElementById('partyList');
   
   let partyListEntry = document.querySelector(`.partyListEntry[data-id="${party.id}"]`);
 
-  const partyListEntrySprite = partyListEntry ? partyListEntry.querySelector(".partyListEntrySprite") : document.createElement("img");
-  const nameText = partyListEntry ? partyListEntry.querySelector(".nameText") : document.createElement("span");
-  const memberCount = partyListEntry ? partyListEntry.querySelector(".partyListEntryMemberCount") : document.createElement("div");
-  const memberCountText = partyListEntry ? memberCount.querySelector(".partyListEntryMemberCountText") : document.createElement("span");
-  const partyMemberSpritesContainer = partyListEntry ? partyListEntry.querySelector(".partyMemberSpritesContainer") : document.createElement("div");
-  const partyListEntryActionContainer = partyListEntry ? partyListEntry.querySelector(".partyListEntryActionContainer") : document.createElement("div");
+  const partyListEntrySprite = partyListEntry ? partyListEntry.querySelector('.partyListEntrySprite') : document.createElement('img');
+  const nameText = partyListEntry ? partyListEntry.querySelector('.nameText') : document.createElement('span');
+  const memberCount = partyListEntry ? partyListEntry.querySelector('.partyListEntryMemberCount') : document.createElement('div');
+  const memberCountText = partyListEntry ? memberCount.querySelector('.partyListEntryMemberCountText') : document.createElement('span');
+  const partyMemberSpritesContainer = partyListEntry ? partyListEntry.querySelector('.partyMemberSpritesContainer') : document.createElement('div');
+  const partyListEntryActionContainer = partyListEntry ? partyListEntry.querySelector('.partyListEntryActionContainer') : document.createElement('div');
 
   if (!partyListEntry) {
-    partyListEntry = document.createElement("div");
-    partyListEntry.classList.add("partyListEntry");
-    partyListEntry.classList.add("listEntry");
+    partyListEntry = document.createElement('div');
+    partyListEntry.classList.add('partyListEntry');
+    partyListEntry.classList.add('listEntry');
     partyListEntry.dataset.id = party.id;
 
-    partyListEntrySprite.classList.add("partyListEntrySprite");
-    partyListEntrySprite.classList.add("listEntrySprite");
+    partyListEntrySprite.classList.add('partyListEntrySprite');
+    partyListEntrySprite.classList.add('listEntrySprite');
 
     partyListEntry.appendChild(partyListEntrySprite);
 
-    const detailsContainer = document.createElement("div");
-    detailsContainer.classList.add("detailsContainer");
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('detailsContainer');
 
-    const partyNameContainer = document.createElement("div");
-    partyNameContainer.classList.add("partyNameContainer");
+    const partyNameContainer = document.createElement('div');
+    partyNameContainer.classList.add('partyNameContainer');
 
-    nameText.classList.add("nameText");
+    nameText.classList.add('nameText');
 
-    memberCount.classList.add("partyListEntryMemberCount");
+    memberCount.classList.add('partyListEntryMemberCount');
 
-    memberCountText.classList.add("partyListEntryMemberCountText");
+    memberCountText.classList.add('partyListEntryMemberCountText');
     
-    memberCount.appendChild(getSvgIcon("partyMember", true));
+    memberCount.appendChild(getSvgIcon('partyMember', true));
     memberCount.appendChild(memberCountText);
 
-    partyMemberSpritesContainer.classList.add("partyMemberSpritesContainer");
+    partyMemberSpritesContainer.classList.add('partyMemberSpritesContainer');
 
     partyNameContainer.appendChild(nameText);
     partyNameContainer.appendChild(memberCount);
@@ -243,13 +459,13 @@ function addOrUpdatePartyListEntry(party) {
     detailsContainer.appendChild(partyMemberSpritesContainer);
     partyListEntry.appendChild(detailsContainer);
 
-    partyListEntryActionContainer.classList.add("partyListEntryActionContainer");
-    partyListEntryActionContainer.classList.add("listEntryActionContainer");
+    partyListEntryActionContainer.classList.add('partyListEntryActionContainer');
+    partyListEntryActionContainer.classList.add('listEntryActionContainer');
 
     if (!joinedPartyId || party.id === joinedPartyId) {
-      const joinLeaveAction = document.createElement("a");
-      joinLeaveAction.classList.add("listEntryAction")
-      joinLeaveAction.href = "javascript:void(0);";
+      const joinLeaveAction = document.createElement('a');
+      joinLeaveAction.classList.add('listEntryAction')
+      joinLeaveAction.href = 'javascript:void(0);';
       joinLeaveAction.onclick = isInParty
         ? function () {
           fetch(`${apiUrl}/party?command=leave`)
@@ -257,55 +473,63 @@ function addOrUpdatePartyListEntry(party) {
               if (!response.ok)
                 throw new Error(response.statusText);
               setJoinedPartyId(null);
-              document.getElementById("content").classList.remove("inParty");
+              document.getElementById('content').classList.remove('inParty');
               updatePartyList(true);
             }).catch(err => console.error(err));
         }
-      : function () {
-        fetch(`${apiUrl}/party?command=join&partyId=${party.id}`)
-          .then(response => {
-            if (!response.ok)
-              throw new Error(response.statusText);
-            setJoinedPartyId(party.id);
-            document.getElementById("content").classList.add("inParty");
-            updatePartyList(true);
-          }).catch(err => console.error(err));
+      : party.public || playerData?.rank
+        ? function () {
+          fetch(`${apiUrl}/party?command=join&partyId=${party.id}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              setJoinedPartyId(party.id);
+              document.getElementById('content').classList.add('inParty');
+              updatePartyList(true);
+            }).catch(err => console.error(err));
+          }
+        : function () {
+          const showHidePrivatePartyPasswordLink = document.getElementById('showHidePrivatePartyPasswordLink');
+          if (showHidePrivatePartyPasswordLink.classList.contains('showPassword'))
+            showHidePrivatePartyPasswordLink.click();
+          document.getElementById('joinPrivatePartyFailed').classList.add('hidden');
+          openModal('joinPrivatePartyModal', party.systemName, null, { partyId: party.id });
         };
-      joinLeaveAction.appendChild(getSvgIcon(isInParty ? "leave" : "join", true));
+      joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : party.public ? 'join' : 'locked', true));
       partyListEntryActionContainer.appendChild(joinLeaveAction);
     }
 
-    const infoAction = document.createElement("a");
-    infoAction.classList.add("listEntryAction")
-    infoAction.href = "javascript:void(0);";
+    const infoAction = document.createElement('a');
+    infoAction.classList.add('listEntryAction')
+    infoAction.href = 'javascript:void(0);';
     infoAction.onclick = function () {
       initOrUpdatePartyModal(party.id);
-      openModal("partyModal", partyCache[party.id].systemName);
+      openModal('partyModal', partyCache[party.id].systemName);
     };
-    infoAction.appendChild(getSvgIcon("info", true));
+    infoAction.appendChild(getSvgIcon('info', true));
     partyListEntryActionContainer.appendChild(infoAction);
 
     partyListEntry.appendChild(partyListEntryActionContainer);
 
     partyList.appendChild(partyListEntry);
   } else
-    partyMemberSpritesContainer.innerHTML = "";
+    partyMemberSpritesContainer.innerHTML = '';
 
-  partyListEntry.classList.toggle("joinedParty", joinedPartyId);
+  partyListEntry.classList.toggle('joinedParty', joinedPartyId);
 
   if (party.systemName) {
-    let systemName = party.systemName.replace(/'/g, "");
+    let systemName = party.systemName.replace(/'/g, '');
     if (gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    const parsedSystemName = systemName.replace(" ", "_");
+    const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, false, () => {
-      partyListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+      partyListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
       initUiThemeFontStyles(systemName, 0, false, () => {
-        nameText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
-        memberCountText.setAttribute("style", `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
-        memberCount.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-        for (let iconPath of partyListEntryActionContainer.querySelectorAll("path"))
-          iconPath.setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+        nameText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        memberCountText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        memberCount.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+        for (let iconPath of partyListEntryActionContainer.querySelectorAll('path'))
+          iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
       });
     });
   }
@@ -316,18 +540,18 @@ function addOrUpdatePartyListEntry(party) {
   partyListEntrySprite.title = ownerMember.name || localizedMessages.playerList.unnamed;
 
   if (ownerMember.rank)
-    partyListEntrySprite.title += roleEmojis[ownerMember.rank === 1 ? "mod" : "dev"];
+    partyListEntrySprite.title += roleEmojis[ownerMember.rank === 1 ? 'mod' : 'dev'];
   partyListEntrySprite.title += roleEmojis.partyOwner;
 
   if (!ownerMember.online) {
-    partyListEntrySprite.classList.add("offline");
+    partyListEntrySprite.classList.add('offline');
     partyListEntrySprite.title += localizedMessages.parties.offlineMemberSuffix;
   }
 
-  const partyPlayerList = document.getElementById("partyPlayerList");
+  const partyPlayerList = document.getElementById('partyPlayerList');
 
   if (isInParty) {
-    const oldMemberUuids = Array.from(partyPlayerList.querySelectorAll(".listEntry")).map(e => e.dataset.uuid);
+    const oldMemberUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
     const removedMemberUuids = oldMemberUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
 
     for (let uuid of removedMemberUuids)
@@ -351,14 +575,14 @@ function addOrUpdatePartyListEntry(party) {
       if (memberIndex === ownerMemberIndex) {
         partyListEntrySprite.src = spriteImg;
       } else {
-        const spriteImgIcon = document.createElement("img");
-        spriteImgIcon.classList.add("partyListEntrySprite");
-        spriteImgIcon.classList.add("listEntrySprite");
+        const spriteImgIcon = document.createElement('img');
+        spriteImgIcon.classList.add('partyListEntrySprite');
+        spriteImgIcon.classList.add('listEntrySprite');
         spriteImgIcon.title = member.name || localizedMessages.playerList.unnamed;
         if (member.rank)
-          spriteImgIcon.title += roleEmojis[member.rank === 1 ? "mod" : "dev"];
+          spriteImgIcon.title += roleEmojis[member.rank === 1 ? 'mod' : 'dev'];
         if (!member.online) {
-          spriteImgIcon.classList.add("offline");
+          spriteImgIcon.classList.add('offline');
           spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
         }
         spriteImgIcon.src = spriteImg;
@@ -367,7 +591,7 @@ function addOrUpdatePartyListEntry(party) {
     });
   }
 
-  nameText.innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", ownerMember.name || localizedMessages.playerList.unnamed);
+  nameText.innerText = party.name || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerMember.name || localizedMessages.playerList.unnamed);
 
   memberCountText.innerText = party.members.length;
 }
@@ -379,8 +603,8 @@ function removePartyListEntry(id) {
 }
 
 function clearPartyList() {
-  const partyList = document.getElementById("partyList");
-  partyList.innerHTML = "";
+  const partyList = document.getElementById('partyList');
+  partyList.innerHTML = '';
   updateMapPlayerCount(0);
 }
 
@@ -388,34 +612,48 @@ function initOrUpdatePartyModal(partyId) {
   const isInParty = partyId == joinedPartyId;
   const party = isInParty ? joinedPartyCache : partyCache[partyId];
   const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
-  const partyModal = document.getElementById("partyModal");
-  const partyModalOnlinePlayerList = document.getElementById("partyModalOnlinePlayerList");
-  const partyModalOfflinePlayerList = document.getElementById("partyModalOfflinePlayerList");
+  const partyModal = document.getElementById('partyModal');
+  const partyModalOnlinePlayerList = document.getElementById('partyModalOnlinePlayerList');
+  const partyModalOfflinePlayerList = document.getElementById('partyModalOfflinePlayerList');
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
 
   const lastPartyId = partyModal.dataset.partyId;
-  const modalTitle = partyModal.querySelector(".modalTitle");
+  const modalTitle = partyModal.querySelector('.modalTitle');
   
-  modalTitle.innerText = party.name || localizedMessages.parties.defaultPartyName.replace("{OWNER}", party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
+  modalTitle.innerText = party.name || localizedMessages.parties.defaultPartyName.replace('{OWNER}', party.members[ownerMemberIndex].name || localizedMessages.playerList.unnamed);
 
-  if (isOwnParty) {
-    const editButton = getSvgIcon("edit", true);
-    editButton.classList.add("editButton");
-    editButton.classList.add("iconButton");
-    editButton.onclick = function () {
-      if (party) {
-        const createPartyModal = document.getElementById("createPartyModal");
-        const partyName = createPartyModal.querySelector("#partyName");
-        const publicPartyButton = createPartyModal.querySelector("#publicPartyButton");
-        partyName.value = party.name;
-        if (publicPartyButton.classList.contains("toggled") === party.public)
-          publicPartyButton.click();
-        setPartyTheme(party.systemName);
-        createPartyModal.dataset.update = true;
-        openModal("createPartyModal", party.systemName, "partyModal");
-      }
-    };
-    modalTitle.append(editButton);
+  if (isInParty) {
+    if (party.public)
+      modalTitle.append(getSvgIcon('locked', true));
+
+    if (isOwnParty) {
+      const editButton = getSvgIcon('edit', true);
+      editButton.classList.add('editButton');
+      editButton.classList.add('iconButton');
+      editButton.onclick = function () {
+        if (party) {
+          const partyName = document.getElementById('partyName');
+          const publicPartyButton = document.getElementById('publicPartyButton');
+          const partyPassword = document.getElementById('partyPassword');
+
+          partyName.value = party.name;
+
+          if (publicPartyButton.classList.contains('toggled') === party.public)
+            publicPartyButton.click();
+
+          partyPassword.value = party.pass;
+
+          setPartyTheme(party.systemName);
+
+          const showHidePartyPasswordLink = document.getElementById('showHidePartyPasswordLink');
+          if (showHidePartyPasswordLink.classList.contains('showPassword'))
+            showHidePartyPasswordLink.click();
+
+          openModal('createPartyModal', party.systemName, 'partyModal', { update: true });
+        }
+      };
+      modalTitle.append(editButton);
+    }
   }
 
   let onlineCount = 0;
@@ -439,8 +677,6 @@ function initOrUpdatePartyModal(partyId) {
     }
   }
 
-  partyModal.dataset.partyId = partyId;
-
   for (let member of party.members) {
     const playerList = member.online ? partyModalOnlinePlayerList : partyModalOfflinePlayerList;
     if (member.online)
@@ -449,44 +685,44 @@ function initOrUpdatePartyModal(partyId) {
       offlineCount++;
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
-    entry.classList.toggle("offline", !member.online);
+    entry.classList.toggle('offline', !member.online);
     addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
 
-  const onlineCountLabel = document.getElementById("partyModalOnlineCount");
-  const offlineCountLabel = document.getElementById("partyModalOfflineCount");
+  const onlineCountLabel = document.getElementById('partyModalOnlineCount');
+  const offlineCountLabel = document.getElementById('partyModalOfflineCount');
   
-  onlineCountLabel.innerText = localizedMessages.parties.onlineCount.replace("{COUNT}", onlineCount);
-  offlineCountLabel.innerText = localizedMessages.parties.offlineCount.replace("{COUNT}", offlineCount);
+  onlineCountLabel.innerText = localizedMessages.parties.onlineCount.replace('{COUNT}', onlineCount);
+  offlineCountLabel.innerText = localizedMessages.parties.offlineCount.replace('{COUNT}', offlineCount);
 
-  onlineCountLabel.classList.toggle("hidden", !onlineCount);
-  offlineCountLabel.classList.toggle("hidden", !offlineCount);
+  onlineCountLabel.classList.toggle('hidden', !onlineCount);
+  offlineCountLabel.classList.toggle('hidden', !offlineCount);
 }
 
 function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
   const isInParty = partyId == joinedPartyId;
-  const playerLocationIcon = entry.querySelector(".playerLocationIcon");
-  let playerLocation = entry.querySelector(".playerLocation");
+  const playerLocationIcon = entry.querySelector('.playerLocationIcon');
+  let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   
   if (initLocation) {
-    playerLocation = document.createElement("small");
-    playerLocation.classList.add("playerLocation");
+    playerLocation = document.createElement('small');
+    playerLocation.classList.add('playerLocation');
     if (!config.showPartyMemberLocation)
-      playerLocation.classList.add("hidden");
+      playerLocation.classList.add('hidden');
     playerLocationIcon.after(playerLocation);
   }
 
-  playerLocationIcon.classList.toggle("hidden", !isInParty || !member.online);
+  playerLocationIcon.classList.toggle('hidden', !isInParty || !member.online);
 
   if (isInParty && member.online) {
-    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, "").replace(" ", "_") : null;
-    if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
-      const prevLocations = member.prevLocations && member.prevMapId !== "0000" ? decodeURIComponent(window.atob(member.prevLocations)).split("|").map(l => { return { title: l }; }) : null;
+    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(' ', '_') : null;
+    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
+      const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
     } else {
-      playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, "\n");
-      playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
+      playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, '\n');
+      playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, getInfoLabel('&nbsp;|&nbsp;'));
       if (playerLocation.dataset.systemOverride) {
         for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
           infoLabel.setAttribute('style', `background-image: var(--base-gradient-${playerLocation.dataset.systemOverride}) !important;`);
@@ -497,12 +733,12 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
   }
 
   if (initLocation) {
-    playerLocationIcon.classList.add("pointer");
+    playerLocationIcon.classList.add('pointer');
 
     playerLocationIcon.onclick = function () {
       const locationLabel = this.nextElementSibling;
-      locationLabel.classList.toggle("hidden");
-      config.showPartyMemberLocation = !locationLabel.classList.contains("hidden");
+      locationLabel.classList.toggle('hidden');
+      config.showPartyMemberLocation = !locationLabel.classList.contains('hidden');
       updateConfig(config);
     };
   }

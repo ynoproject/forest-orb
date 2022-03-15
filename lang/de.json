@@ -116,8 +116,21 @@
         "fields": {
           "partyName": "Party Name",
           "public": "Public",
+          "password": "Password",
           "theme": "Theme"
         },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "submit": "Submit"
+      },
+      "joinPrivateParty": {
+        "title": "Join Private Party",
+        "fields": {
+          "password": "Password"
+        },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "incorrectPassword": "Incorrect Password: Please try again.",
         "submit": "Submit"
       }
     },

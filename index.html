@@ -387,13 +387,24 @@
             <form id="createPartyForm">
               <ul class="formControls">
                 <li class="formControlRow">
-                  <label for="partyName" class="unselectable" data-i18n="[html]modal.createParty.fields.partyName">Party Name</label><input id="partyName" name="name" type="text" autocomplete="off"></input>
+                  <label for="partyName" class="unselectable" data-i18n="[html]modal.createParty.fields.partyName">Party Name</label><input id="partyName" name="name" type="text" autocomplete="off" />
                 </li>
                 <li class="formControlRow">
                   <label for="publicPartyButton" class="unselectable" data-i18n="[html]modal.createParty.fields.public">Public</label>
                   <div>
                     <button id="publicPartyButton" class="checkboxButton inverseToggle unselectable" type="button"><span></span></button>
                     <input type="checkbox" name="public" style="display: none" checked />
+                  </div>
+                </li>
+                <li class="formControlRow hidden">
+                  <div>
+                    <a id="showHidePartyPasswordLink" href="javascript:void(0);" class="showHidePasswordLink">
+                        <span data-i18n="[html]modal.createParty.showPassword">Show Password</span>
+                        <span data-i18n="[html]modal.createParty.hidePassword">Hide Password</span>
+                    </a>
+                    <div>
+                      <label for="partyPassword" class="unselectable" data-i18n="[html]modal.createParty.fields.password">Password</label><input id="partyPassword" name="pass" type="password" autocomplete="off" />
+                    </div>
                   </div>
                 </li>
                 <li class="formControlRow">
@@ -405,6 +416,33 @@
                 </li>
               </ul>
               <button type="submit" data-i18n="[html]modal.createParty.submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div id="joinPrivatePartyModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.joinPrivateParty.title">Join Private Party</h1>
+          </div>
+          <div class="modalContent">
+            <form id="joinPrivatePartyForm">
+              <ul class="formControls">
+                <li class="formControlRow">
+                  <div>
+                    <a id="showHidePrivatePartyPasswordLink" href="javascript:void(0);" class="showHidePasswordLink">
+                        <span data-i18n="[html]modal.joinPrivateParty.showPassword">Show Password</span>
+                        <span data-i18n="[html]modal.joinPrivateParty.hidePassword">Hide Password</span>
+                    </a>
+                    <div>
+                      <label for="partyPassword" class="unselectable" data-i18n="[html]modal.joinPrivateParty.fields.password">Password</label><input id="privatePartyPassword" name="pass" type="password" autocomplete="off" />
+                    </div>
+                  </div>
+                </li>
+                <li id="joinPrivatePartyFailed" class="formControlRow hidden">
+                  <label data-i18n="[html]modal.joinPrivateParty.incorrectPassword">Incorrect Password: Please try again.</label>
+                </li>
+              </ul>
+              <button type="submit" data-i18n="[html]modal.joinPrivateParty.submit">Submit</button>
             </form>
           </div>
         </div>

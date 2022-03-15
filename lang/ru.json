@@ -116,9 +116,22 @@
         "fields": {
           "partyName": "Имя группы",
           "public": "Открытая",
+          "password": "Пароль",
           "theme": "Стиль оформления"
         },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
         "submit": "Отправить"
+      },
+      "joinPrivateParty": {
+        "title": "Join Private Party",
+        "fields": {
+          "password": "Password"
+        },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "incorrectPassword": "Incorrect Password: Please try again.",
+        "submit": "Submit"
       }
     },
     "tooltips": {

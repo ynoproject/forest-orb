@@ -1190,7 +1190,7 @@ body.fullBg {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, #ynomojiContainer.hidden, .ynomojiButton.hidden, #translationInstruction.hidden, #noGameLocInstruction.hidden, .partyModalPlayerCount.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, #ynomojiContainer.hidden, .ynomojiButton.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 
@@ -1224,6 +1224,10 @@ body.fullBg {
 #translationInstruction, #noGameLocInstruction {
   font-size: small;
   padding: 0;
+}
+
+#translationInstruction.hidden, #noGameLocInstruction.hidden {
+  display: none;
 }
 
 #modalContainer {
@@ -1284,6 +1288,10 @@ body.fullBg {
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--modal-shadow-color);
+}
+
+.modal a:not(.modalClose):not(.listEntryAction) {
+  background-image: var(--modal-alt-gradient) !important;
 }
 
 .modal .iconButton path, .modal .icon path {
@@ -1352,16 +1360,20 @@ body.fullBg {
   border-color: white;
 }
 
+.modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
+  display: none;
+}
+
 #modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter, #createPartyModal:not([data-update]) .modalTitle .updateTitle, #createPartyModal[data-update] .modalTitle .createTitle {
   display: none;
 }
 
-#partyModal .modalTitle .editButton {
+#partyModal .modalTitle .icon {
   display: inline-block;
-  padding: 0 8px;
+  padding: 0 4px;
 }
 
-#partyModal .modalTitle .editButton svg {
+#partyModal .modalTitle .icon svg {
   width: 24px;
   height: 24px;
 }
@@ -1396,6 +1408,20 @@ body.fullBg {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.formControlRow.hidden {
+  display: none;
+}
+
+.formControlRow > div:first-child {
+  width: 100%;
+}
+
+.formControlRow > div:first-child > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .formControlRow label {

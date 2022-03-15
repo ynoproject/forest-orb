@@ -116,8 +116,21 @@
         "fields": {
           "partyName": "パーティー名",
           "public": "公開",
+          "password": "パスワード",
           "theme": "メニュータイプ"
         },
+        "showPassword": "パスワードを表示",
+        "hidePassword": "パスワードを隠す",
+        "submit": "送信"
+      },
+      "joinPrivateParty": {
+        "title": "非公開のパーティーの参加",
+        "fields": {
+          "password": "パスワード"
+        },
+        "showPassword": "パスワードを表示",
+        "hidePassword": "パスワードを隠す",
+        "incorrectPassword": "Incorrect Password: Please try again.",
         "submit": "送信"
       }
     },

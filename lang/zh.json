@@ -116,9 +116,22 @@
         "fields": {
           "partyName": "队伍名称",
           "public": "私密选项",
+          "password": "密码",
           "theme": "主题"
         },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
         "submit": "提交"
+      },
+      "joinPrivateParty": {
+        "title": "Join Private Party",
+        "fields": {
+          "password": "Password"
+        },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "incorrectPassword": "Incorrect Password: Please try again.",
+        "submit": "Submit"
       }
     },
     "tooltips": {
