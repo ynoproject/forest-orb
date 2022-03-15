@@ -382,7 +382,7 @@ function addOrUpdatePartyListEntry(party) {
     infoAction.href = 'javascript:void(0);';
     infoAction.onclick = function () {
       initOrUpdatePartyModal(party.id);
-      openModal('partyModal', partyCache[party.id].systemName);
+      openModal('partyModal', partyCache[party.id].systemName, { partyId: party.id });
     };
     infoAction.appendChild(getSvgIcon('info', true));
     partyListEntryActionContainer.appendChild(infoAction);
