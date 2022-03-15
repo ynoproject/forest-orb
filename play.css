@@ -1316,7 +1316,7 @@ body.fullBg {
   fill: var(--modal-base-color) !important;
 }
 
-.modal .infoLabel, .modal .infoText, .modal h1, .modal a, .modal label {
+.modal .infoLabel, .modal .infoText, .modal h1, .modal a:not(.listEntryAction), .modal label {
   background-image: var(--modal-base-gradient) !important;
   filter: drop-shadow(1.5px 1.5px var(--modal-shadow-color));
 }

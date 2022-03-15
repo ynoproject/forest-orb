@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -194,7 +194,11 @@
       "plural": "当前地图有 {COUNT} 位玩家正在游览"
     },
     "playerList": {
-      "unnamed": "未命名玩家"
+      "unnamed": "未命名玩家",
+      "actions": {
+        "partyKick": "Kick From Party",
+        "transferPartyOwner": "Promote to Party Leader"
+      }
     },
     "roles": {
       "mod": "管理者",
@@ -207,7 +211,13 @@
       "partyOwner": "领队",
       "offlineMemberSuffix": "（已离线）",
       "onlineCount": "当前在线 - {COUNT} 人",
-      "offlineCount": "当前离线 - {COUNT} 人"
+      "offlineCount": "当前离线 - {COUNT} 人",
+      "actions": {
+        "viewPartyDetails": "View Party Details",
+        "joinParty": "Join Party",
+        "joinPrivateParty": "Join Private Party",
+        "leaveParty": "Leave Party"
+      }
     },
     "chatTips": {
       "template": "小贴士：{CONTENT}",

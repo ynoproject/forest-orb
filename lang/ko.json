@@ -194,7 +194,11 @@
       "plural": "현위치에 {COUNT}명이 있습니다"
     },
     "playerList": {
-      "unnamed": "익명의 플레이어"
+      "unnamed": "익명의 플레이어",
+      "actions": {
+        "partyKick": "Kick From Party",
+        "transferPartyOwner": "Promote to Party Leader"
+      }
     },
     "roles": {
       "mod": "서버 매니저",
@@ -207,7 +211,13 @@
       "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Offline)",
       "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}"
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "View Party Details",
+        "joinParty": "Join Party",
+        "joinPrivateParty": "Join Private Party",
+        "leaveParty": "Leave Party"
+      }
     },
     "chatTips": {
       "template": "팁: {CONTENT}",

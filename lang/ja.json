@@ -117,19 +117,19 @@
           "partyName": "パーティー名",
           "public": "公開",
           "password": "パスワード",
-          "theme": "メニュータイプ"
+          "theme": "メニュー タイプ"
         },
-        "showPassword": "パスワードを表示",
-        "hidePassword": "パスワードを隠す",
+        "showPassword": "パスワードを 表示",
+        "hidePassword": "パスワードを 隠す",
         "submit": "送信"
       },
       "joinPrivateParty": {
-        "title": "非公開のパーティーの参加",
+        "title": "非公開の パーティーの 参加",
         "fields": {
           "password": "パスワード"
         },
-        "showPassword": "パスワードを表示",
-        "hidePassword": "パスワードを隠す",
+        "showPassword": "パスワードを 表示",
+        "hidePassword": "パスワードを 隠す",
         "incorrectPassword": "Incorrect Password: Please try again.",
         "submit": "送信"
       }
@@ -194,7 +194,11 @@
       "plural": "{COUNT}人が 接続中（同マップ）"
     },
     "playerList": {
-      "unnamed": "無名プレーヤー"
+      "unnamed": "無名プレーヤー",
+      "actions": {
+        "partyKick": "パーティーから追い出す",
+        "transferPartyOwner": "パーティーリーダーに昇格する"
+      }
     },
     "roles": {
       "mod": "モデレーター",
@@ -207,7 +211,13 @@
       "partyOwner": "パーティーリーダー",
       "offlineMemberSuffix": "（オフライン）",
       "onlineCount": "オンライン - {COUNT}",
-      "offlineCount": "オフライン - {COUNT}"
+      "offlineCount": "オフライン - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "パーティーの詳細を見る",
+        "joinParty": "パーティーを参加する",
+        "joinPrivateParty": "非公開のパーティーを参加する",
+        "leaveParty": "パーティーから退出する"
+      }
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

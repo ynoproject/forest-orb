@@ -131,6 +131,30 @@ function setJoinedPartyId(partyId) {
   }
 }
 
+function kickPlayerFromJoinedParty(playerUuid) {
+  if (joinedPartyCache && joinedPartyCache.ownerUuid === playerData?.uuid) {
+    fetch(`${apiUrl}/party?command=kick&player=${playerUuid}`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        updateJoinedParty(true);
+        updatePartyList(true);
+      });
+  }
+}
+
+function transferJoinedPartyOwner(playerUuid) {
+  if (joinedPartyCache && joinedPartyCache.ownerUuid === playerData?.uuid) {
+    fetch(`${apiUrl}/party?command=transfer&player=${playerUuid}`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        updateJoinedParty(true);
+        updatePartyList(true);
+      });
+  }
+}
+
 function fetchAndUpdateJoinedPartyId() {
   fetch(`${apiUrl}/party?command=id`)
     .then(response => {
@@ -291,7 +315,6 @@ function updateJoinedParty(skipNextUpdate, callback) {
 
 function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;
-  const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
   const partyList = document.getElementById('partyList');
   
   let partyListEntry = document.querySelector(`.partyListEntry[data-id="${party.id}"]`);
@@ -373,19 +396,21 @@ function addOrUpdatePartyListEntry(party) {
           document.getElementById('joinPrivatePartyFailed').classList.add('hidden');
           openModal('joinPrivatePartyModal', party.systemName, null, { partyId: party.id });
         };
+      joinLeaveAction.title = localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`];
       joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : party.public ? 'join' : 'locked', true));
       partyListEntryActionContainer.appendChild(joinLeaveAction);
     }
 
-    const infoAction = document.createElement('a');
-    infoAction.classList.add('listEntryAction')
-    infoAction.href = 'javascript:void(0);';
-    infoAction.onclick = function () {
+    const viewDetailsAction = document.createElement('a');
+    viewDetailsAction.classList.add('listEntryAction');
+    viewDetailsAction.href = 'javascript:void(0);';
+    viewDetailsAction.onclick = function () {
       initOrUpdatePartyModal(party.id);
       openModal('partyModal', partyCache[party.id].systemName, null, { partyId: party.id });
     };
-    infoAction.appendChild(getSvgIcon('info', true));
-    partyListEntryActionContainer.appendChild(infoAction);
+    viewDetailsAction.appendChild(getSvgIcon('party', true));
+    viewDetailsAction.title = localizedMessages.parties.actions.viewPartyDetails;
+    partyListEntryActionContainer.appendChild(viewDetailsAction);
 
     partyListEntry.appendChild(partyListEntryActionContainer);
 

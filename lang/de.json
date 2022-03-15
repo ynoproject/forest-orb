@@ -194,7 +194,11 @@
       "plural": "{COUNT} Players in Map"
     },
     "playerList": {
-      "unnamed": "Unnamed Player"
+      "unnamed": "Unnamed Player",
+      "actions": {
+        "partyKick": "Kick From Party",
+        "transferPartyOwner": "Promote to Party Leader"
+      }
     },
     "roles": {
       "mod": "Moderator",
@@ -207,7 +211,13 @@
       "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Offline)",
       "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}"
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "View Party Details",
+        "joinParty": "Join Party",
+        "joinPrivateParty": "Join Private Party",
+        "leaveParty": "Leave Party"
+      }
     },
     "chatTips": {
       "template": "TIP: {CONTENT}",

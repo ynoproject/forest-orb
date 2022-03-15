@@ -3,7 +3,7 @@ const roleEmojis = {
   dev: '🔧',
   partyOwner: '👑'
 };
-const defaultUuid = "0000000000000000";
+const defaultUuid = '0000000000000000';
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
@@ -12,43 +12,45 @@ let playerSpriteCache = {};
 
 function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation) {
   if (!playerList)
-    playerList = document.getElementById("playerList");
+    playerList = document.getElementById('playerList');
 
   let playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
 
-  const nameText = playerListEntry ? playerListEntry.querySelector(".nameText") : document.createElement("span");
-  const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector(".playerListEntrySprite") : document.createElement("img");
-  const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector(".playerListEntryActionContainer") : document.createElement("div");
+  const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement('span');
+  const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
+  const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
-  let rankIcon = playerListEntry ? playerListEntry.querySelector(".rankIcon") : null;
-  let partyOwnerIcon = playerListEntry ? playerListEntry.querySelector(".partyOwnerIcon") : null;
+  let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
+  let partyOwnerIcon = playerListEntry ? playerListEntry.querySelector('.partyOwnerIcon') : null;
+  let partyKickAction = playerListEntry ? playerListEntry.querySelector('.partyKickAction') : null;
+  let transferPartyOwnerAction = playerListEntry ? playerListEntry.querySelector('.transferPartyOwnerAction') : null;
 
   const player = uuid === defaultUuid ? playerData : globalPlayerData[uuid];
 
   if (!playerListEntry) {
-    playerListEntry = document.createElement("div");
-    playerListEntry.classList.add("playerListEntry");
-    playerListEntry.classList.add("listEntry");
+    playerListEntry = document.createElement('div');
+    playerListEntry.classList.add('playerListEntry');
+    playerListEntry.classList.add('listEntry');
     playerListEntry.dataset.uuid = uuid;
 
-    playerListEntrySprite.classList.add("playerListEntrySprite");
-    playerListEntrySprite.classList.add("listEntrySprite");
+    playerListEntrySprite.classList.add('playerListEntrySprite');
+    playerListEntrySprite.classList.add('listEntrySprite');
     
     playerListEntry.appendChild(playerListEntrySprite);
 
-    const nameTextContainer = document.createElement("div");
-    nameTextContainer.classList.add("nameTextContainer");
+    const nameTextContainer = document.createElement('div');
+    nameTextContainer.classList.add('nameTextContainer');
 
-    nameText.classList.add("nameText");
+    nameText.classList.add('nameText');
     
     if (showLocation) {
-      const detailsContainer = document.createElement("div");
-      detailsContainer.classList.add("detailsContainer");
+      const detailsContainer = document.createElement('div');
+      detailsContainer.classList.add('detailsContainer');
       
       nameTextContainer.appendChild(nameText);
 
       detailsContainer.appendChild(nameTextContainer);
-      detailsContainer.appendChild(getSvgIcon("playerLocation"));
+      detailsContainer.appendChild(getSvgIcon('playerLocation'));
 
       playerListEntry.appendChild(detailsContainer);
     } else {
@@ -56,19 +58,20 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       playerListEntry.appendChild(nameTextContainer);
     }
 
-    playerListEntryActionContainer.classList.add("playerListEntryActionContainer");
-    playerListEntryActionContainer.classList.add("listEntryActionContainer");
+    playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
+    playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
     // Not yet supported
     /*if (player && playerData?.rank > player.rank) {
-      const banAction = document.createElement("a");
-      banAction.href = "javascript:void(0);";
+      const banAction = document.createElement('a');
+      banAction.classList.add('listEntryAction');
+      banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
         const uuidPtr = Module.allocate(Module.intArrayFromString(uuid), Module.ALLOC_NORMAL);
         Module._SendBanUserRequest(msgPtr);
         Module._free(uuidPtr);
       };
-      banAction.appendChild(getSvgIcon("ban", true));
+      banAction.appendChild(getSvgIcon('ban', true));
       playerListEntryActionContainer.appendChild(banAction);
     }*/
 
@@ -88,15 +91,15 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     if (name)
       delete playerListEntry.dataset.unnamed;
     else
-      playerListEntry.dataset.unnamed = "unnamed";
+      playerListEntry.dataset.unnamed = 'unnamed';
 
     if (rankIcon)
       rankIcon.remove();
 
     if (player?.rank) {
       const rank = Math.min(player.rank, 2);
-      rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
-      rankIcon.classList.add("rankIcon");
+      rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
+      rankIcon.classList.add('rankIcon');
       rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
       nameText.parentElement.appendChild(rankIcon);
     }
@@ -104,50 +107,74 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
+  if (partyKickAction)
+    partyKickAction.remove();
+  if (transferPartyOwnerAction)
+    transferPartyOwnerAction.remove();
 
   let party;
-  if (playerList.id === "partyPlayerList")
+  if (playerList.id === 'partyPlayerList')
     party = joinedPartyCache;
-  else if (playerList.id.startsWith("partyModal")) {
-    const partyModalPartyId = document.getElementById("partyModal").dataset.partyId;
+  else if (playerList.id.startsWith('partyModal')) {
+    const partyModalPartyId = document.getElementById('partyModal').dataset.partyId;
     party = Object.values(partyCache).find(p => p.id == partyModalPartyId);
   }
 
-  if (party && (uuid === party?.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party?.ownerUuid))) {
-    partyOwnerIcon = getSvgIcon("partyOwner", true);
-    partyOwnerIcon.title = localizedMessages.parties.partyOwner;
-    if (party.systemName) {
-      const parsedPartySystemName = party.systemName.replace(" ", "_");
-      partyOwnerIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+  if (party) {
+    if (uuid === party.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party.ownerUuid)) {
+      partyOwnerIcon = getSvgIcon('partyOwner', true);
+      partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+      if (party.systemName) {
+        const parsedPartySystemName = party.systemName.replace(' ', '_');
+        partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+      }
+      nameText.parentElement.appendChild(partyOwnerIcon);
+    } else if (playerData?.uuid === party.ownerUuid) {
+      partyKickAction = document.createElement('a');
+      partyKickAction.classList.add('partyKickAction');
+      partyKickAction.classList.add('listEntryAction');
+      partyKickAction.href = 'javascript:void(0);';
+      partyKickAction.onclick = () => kickPlayerFromJoinedParty(uuid);
+      partyKickAction.appendChild(getSvgIcon('leave', true));
+      partyKickAction.title = localizedMessages.playerList.actions.partyKick;
+      playerListEntryActionContainer.appendChild(partyKickAction);
+
+      const transferPartyOwnerAction = document.createElement('a');
+      transferPartyOwnerAction.classList.add('transferPartyOwnerAction');
+      transferPartyOwnerAction.classList.add('listEntryAction');
+      transferPartyOwnerAction.href = 'javascript:void(0);';
+      transferPartyOwnerAction.onclick = () => transferJoinedPartyOwner(uuid);
+      transferPartyOwnerAction.appendChild(getSvgIcon('transferPartyOwner', true));
+      transferPartyOwnerAction.title = localizedMessages.playerList.actions.transferPartyOwner;
+      playerListEntryActionContainer.appendChild(transferPartyOwnerAction);
     }
-    nameText.parentElement.appendChild(partyOwnerIcon);
   }
 
   if (systemName) {
-    systemName = systemName.replace(/'/g, "");
+    systemName = systemName.replace(/'/g, '');
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    const parsedSystemName = systemName.replace(" ", "_");
+    const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, false, () => {
       initUiThemeFontStyles(systemName, 0, false, () => {
-        playerListEntry.setAttribute("style", `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-        nameText.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+        nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
         if (rankIcon || playerListEntryActionContainer.childElementCount || showLocation) {
           if (rankIcon) {
-            rankIcon.querySelector("path").style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
-            rankIcon.querySelector("path").style.filter = `var(--svg-shadow-${parsedSystemName})`;
+            rankIcon.querySelector('path').style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
+            rankIcon.querySelector('path').style.filter = `var(--svg-shadow-${parsedSystemName})`;
           }
-          for (let iconPath of playerListEntryActionContainer.querySelectorAll("path"))
-            iconPath.setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+          for (let iconPath of playerListEntryActionContainer.querySelectorAll('path'))
+            iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           if (showLocation)
-            playerListEntry.querySelector(".playerLocationIcon path").setAttribute("style", `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
+            playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
       });
     });
   }
 
   if (playerList.childElementCount > 1) {
-    const playerListEntries = playerList.querySelectorAll(".playerListEntry");
+    const playerListEntries = playerList.querySelectorAll('.playerListEntry');
 
     const sortFunc = getPlayerListIdEntrySortFunc(playerList.id);
 
@@ -165,7 +192,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     });
   }
 
-  if (playerList.id === "playerList")
+  if (playerList.id === 'playerList')
     updateMapPlayerCount(playerList.childElementCount);
 
   return playerListEntry;
@@ -173,7 +200,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
 function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   if (!playerList)
-    playerList = document.getElementById("playerList");
+    playerList = document.getElementById('playerList');
   
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
@@ -188,35 +215,35 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
 
 function removePlayerListEntry(playerList, uuid) {
   if (!playerList)
-    playerList = document.getElementById("playerList");
+    playerList = document.getElementById('playerList');
 
   const playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
   if (playerListEntry)
     playerListEntry.remove();
   if (playerList.id === 'playerList')
-    updateMapPlayerCount(document.getElementById("playerList").childElementCount);
+    updateMapPlayerCount(document.getElementById('playerList').childElementCount);
 }
 
 function clearPlayerList(playerList) {
   if (!playerList)
-    playerList = document.getElementById("playerList");
+    playerList = document.getElementById('playerList');
 
-  playerList.innerHTML = "";
+  playerList.innerHTML = '';
 
   if (playerList.id === 'playerList')
     updateMapPlayerCount(0);
 }
 
 function clearPlayerLists() {
-  clearPlayerList(document.getElementById("playerList"));
-  clearPlayerList(document.getElementById("partyPlayerList"))
+  clearPlayerList(document.getElementById('playerList'));
+  clearPlayerList(document.getElementById('partyPlayerList'))
 }
 
 function getPlayerListIdEntrySortFunc(playerListId) {
   if (playerListId) {
     switch (playerListId) {
-      case "playerList":
-      case "partyPlayerList":
+      case 'playerList':
+      case 'partyPlayerList':
         const baseFunc = (a, b) => {
           const rankA = globalPlayerData[a.dataset.uuid]?.rank;
           const rankB = globalPlayerData[b.dataset.uuid]?.rank;
@@ -231,7 +258,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             return -1;
           return 0;
         };
-        return playerListId === "playerList"
+        return playerListId === 'playerList'
           ? (a, b) => {
             if (a.dataset.uuid === defaultUuid)
               return -1;
@@ -250,10 +277,10 @@ function getPlayerListIdEntrySortFunc(playerListId) {
               return 1;
             return baseFunc(a, b);
           };
-      case "partyModalOnlinePlayerList":
-      case "partyModalOfflinePlayerList":
+      case 'partyModalOnlinePlayerList':
+      case 'partyModalOfflinePlayerList':
         return (a, b) => {
-          const partyModalPartyId = document.getElementById("partyModal").dataset.partyId;
+          const partyModalPartyId = document.getElementById('partyModal').dataset.partyId;
           if (a.dataset.uuid === partyCache[partyModalPartyId]?.ownerUuid)
             return -1;
           if (b.dataset.uuid === partyCache[partyModalPartyId]?.ownerUuid)
@@ -290,10 +317,10 @@ function getSpriteImg(sprite, idx, callback, dir) {
     return callback(spriteUrl);
   const img = new Image();
   img.onload = function () {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = 24;
     canvas.height = 32;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     const startX = (idx % 4) * 72 + 24;
     const startY = (idx >> 2) * 128 + 64;
     context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
@@ -313,7 +340,7 @@ function getSpriteImg(sprite, idx, callback, dir) {
     canvas.height = 16;
     context.putImageData(imageData, -2, yOffset * -1, 2, 0, 20, 32);
     canvas.toBlob(function (blob) {
-      const blobImg = document.createElement("img");
+      const blobImg = document.createElement('img');
       const url = URL.createObjectURL(blob);
     
       blobImg.onload = function () {
