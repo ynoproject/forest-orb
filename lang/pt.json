@@ -134,7 +134,8 @@
         "clearChat": "Limpar o Chat"
       },
       "parties": {
-        "createParty": "Create Party"
+        "createParty": "Create Party",
+        "disbandParty": "Disband Party"
       },
       "nexus": "Voltar para o Nexo"
     }

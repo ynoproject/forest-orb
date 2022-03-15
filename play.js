@@ -6,6 +6,7 @@ for (let el of gameIdsElements) {
     el.remove();
 }
 
+const apiUrl = `../connect/${gameId}/api`;
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
 let localizedMessages;
@@ -43,7 +44,7 @@ let config = {
   globalMessage: false,
   hideOwnGlobalMessageLocation: false,
   showGlobalMessageLocation: false,
-  showPartyMemberLocation: false
+  showPartyMemberLocation: true
 };
 
 let cache = {
@@ -103,7 +104,7 @@ function onUpdateConnectionStatus(status) {
 let playerCount;
 
 function fetchAndUpdatePlayerCount() {
-  fetch(`../connect/${gameId}/api/players`)
+  fetch(`${apiUrl}/players`)
     .then(response => response.text())
     .then(count => updatePlayerCount(count))
     .catch(err => console.error(err));
@@ -210,7 +211,7 @@ function onLoadMap(mapName) {
 function syncPrevLocation() {
   const prevMapId = cachedPrevMapId || '0000';
   const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
-  fetch(`../connect/${gameId}/api/ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
+  fetch(`${apiUrl}/ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
     .catch(err => console.error(err));
 }
 
@@ -484,7 +485,7 @@ document.getElementById('partyThemeButton').onclick = function () {
 document.getElementById('createPartyForm').onsubmit = () => {
   const isUpdate = document.getElementById('createPartyModal').dataset.update;
   closeModal();
-  fetch(`../connect/${gameId}/api/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
+  fetch(`${apiUrl}/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(new FormData(document.getElementById('createPartyForm'))).toString()}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -492,11 +493,22 @@ document.getElementById('createPartyForm').onsubmit = () => {
     })
     .then(partyId => {
       if (isUpdate)
-        updatePartyList(true);
+        updateJoinedParty(true, () => initOrUpdatePartyModal(joinedPartyId));
       else
         setJoinedPartyId(parseInt(partyId));
+      updatePartyList(true);
     });
   return false;
+};
+
+document.getElementById('disbandPartyButton').onclick = () => {
+  fetch(`${apiUrl}/party?command=disband`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      setJoinedPartyId(null);
+      updatePartyList(true);
+    });
 };
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';

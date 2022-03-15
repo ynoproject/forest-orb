@@ -36,7 +36,7 @@ function setJoinedPartyId(partyId) {
 }
 
 function fetchAndUpdateJoinedPartyId() {
-  fetch(`../connect/${gameId}/api/party?command=id`)
+  fetch(`${apiUrl}/party?command=id`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -49,7 +49,7 @@ function updatePartyList(skipNextUpdate) {
   if (connStatus !== 1)
     return;
   
-  fetch(`../connect/${gameId}/api/party?command=list`)
+  fetch(`${apiUrl}/party?command=list`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -151,7 +151,7 @@ function updateJoinedParty(skipNextUpdate, callback) {
   if (connStatus !== 1)
     return;
   
-  fetch(`../connect/${gameId}/api/party?command=get&partyId=${joinedPartyId}`)
+  fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -250,7 +250,7 @@ function addOrUpdatePartyListEntry(party) {
       joinLeaveAction.href = "javascript:void(0);";
       joinLeaveAction.onclick = isInParty
         ? function () {
-          fetch(`../connect/${gameId}/api/party?command=leave`)
+          fetch(`${apiUrl}/party?command=leave`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
@@ -260,7 +260,7 @@ function addOrUpdatePartyListEntry(party) {
             }).catch(err => console.error(err));
         }
       : function () {
-        fetch(`../connect/${gameId}/api/party?command=join&partyId=${party.id}`)
+        fetch(`${apiUrl}/party?command=join&partyId=${party.id}`)
           .then(response => {
             if (!response.ok)
               throw new Error(response.statusText);

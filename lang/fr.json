@@ -134,7 +134,8 @@
         "clearChat": "Effacer le Chat"
       },
       "parties": {
-        "createParty": "Create Party"
+        "createParty": "Create Party",
+        "disbandParty": "Disband Party"
       },
       "nexus": "Retourner au Nexus"
     }

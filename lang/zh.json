@@ -134,7 +134,8 @@
         "clearChat": "清空记录"
       },
       "parties": {
-        "createParty": "创建一个队伍"
+        "createParty": "创建一个队伍",
+        "disbandParty": "Disband Party"
       },
       "nexus": "返回到门的世界"
     }

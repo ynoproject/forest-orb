@@ -134,7 +134,8 @@
         "clearChat": "Очистить Чат"
       },
       "parties": {
-        "createParty": "Создать Группу"
+        "createParty": "Создать Группу",
+        "disbandParty": "Disband Party"
       },
       "nexus": "Вернуться на Главную страницу"
     }

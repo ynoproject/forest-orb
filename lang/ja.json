@@ -134,7 +134,8 @@
         "clearChat": "チャットを消去"
       },
       "parties": {
-        "createParty": "パーティーを組む"
+        "createParty": "パーティーを組む",
+        "disbandParty": "パーティーを解散する"
       },
       "nexus": "扉部屋へ戻る"
     }

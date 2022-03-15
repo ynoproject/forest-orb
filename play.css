@@ -772,7 +772,7 @@ body.fullBg {
   padding: 0 7px;
 }
 
-#content:not(.inParty) .partySubTab, #content.inParty #createPartyButton {
+#content:not(.inParty) .partySubTab, #content.inParty #createPartyButton, #content:not(.inParty) #disbandPartyButton {
   display: none;
 }
 
@@ -814,7 +814,7 @@ body.fullBg {
   padding-bottom: 4px;
 }
 
-#content:not(.inParty) .playerList, #content.inParty .partyList {
+#content:not(.inParty) .playerList {
   border-top: none;
 }
 
