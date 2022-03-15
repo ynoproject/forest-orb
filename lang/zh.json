@@ -109,7 +109,10 @@
         "auto": "自动"
       },
       "createParty": {
-        "title": "创建组队",
+        "title": {
+          "create": "创建组队",
+          "update": "Update Party"
+        },
         "fields": {
           "partyName": "队伍名称",
           "public": "私密选项",

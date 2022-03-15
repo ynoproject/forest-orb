@@ -109,7 +109,10 @@
         "auto": "AUTO"
       },
       "createParty": {
-        "title": "パーティーの作成",
+        "title": {
+          "create": "パーティーの作成",
+          "update": "パーティーの編集"
+        },
         "fields": {
           "partyName": "パーティー名",
           "public": "公開",

@@ -109,7 +109,10 @@
         "auto": "자동"
       },
       "createParty": {
-        "title": "Create Party",
+        "title": {
+          "create": "Create Party",
+          "update": "Update Party"
+        },
         "fields": {
           "partyName": "Party Name",
           "public": "Public",

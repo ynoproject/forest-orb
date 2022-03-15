@@ -1352,7 +1352,7 @@ body.fullBg {
   border-color: white;
 }
 
-#modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter {
+#modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter, #createPartyModal:not([data-update]) .modalTitle .updateTitle, #createPartyModal[data-update] .modalTitle .createTitle {
   display: none;
 }
 
