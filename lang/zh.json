@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -110,28 +110,28 @@
       },
       "createParty": {
         "title": {
-          "create": "创建组队",
-          "update": "Edit Party"
+          "create": "创建队伍",
+          "update": "编辑队伍"
         },
         "fields": {
           "partyName": "队伍名称",
-          "public": "私密选项",
-          "password": "密码",
-          "theme": "主题"
+          "public": "是否公开队伍？",
+          "password": "设置密码",
+          "theme": "界面风格"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
+        "showPassword": "点击显示密码",
+        "hidePassword": "点击隐藏密码",
         "submit": "提交"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "加入私密队伍",
         "fields": {
-          "password": "Password"
+          "password": "请输入密码"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "点击显示密码",
+        "hidePassword": "点击隐藏密码",
+        "incorrectPassword": "密码错误，请重新输入！",
+        "submit": "提交"
       }
     },
     "tooltips": {
@@ -150,8 +150,8 @@
         "clearChat": "清空记录"
       },
       "parties": {
-        "createParty": "创建一个队伍",
-        "disbandParty": "Disband Party"
+        "createParty": "创建队伍",
+        "disbandParty": "解散队伍"
       },
       "nexus": "返回到门的世界"
     }
@@ -204,7 +204,7 @@
       "emptyMessage": "当前暂无活动中的组队。",
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
-      "partyOwner": "Party Leader",
+      "partyOwner": "领队",
       "offlineMemberSuffix": "（已离线）",
       "onlineCount": "当前在线 - {COUNT} 人",
       "offlineCount": "当前离线 - {COUNT} 人"
