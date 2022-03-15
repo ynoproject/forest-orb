@@ -26,7 +26,7 @@ function initPartyControls() {
     if (showHidePartyPasswordLink.classList.contains('showPassword'))
       showHidePartyPasswordLink.click();
 
-    openModal('createPartyModal', document.getElementById('partyTheme').value, null);
+    openModal('createPartyModal', document.getElementById('partyTheme').value);
   };
   
   document.getElementById('publicPartyButton').onclick = function () {
@@ -202,9 +202,9 @@ function updatePartyList(skipNextUpdate) {
         const entries = [].slice.call(partyListEntries).sort(function (a, b) {
           const partyA = partyCache[a.dataset.id];
           const partyB = partyCache[b.dataset.id];
-          if (partyA.id === joinedPartyId)
+          if (partyA.id == joinedPartyId)
             return -1;
-          if (partyB.id === joinedPartyId)
+          if (partyB.id == joinedPartyId)
             return 1;
           const onlineMemberCountA = partyA.members.filter(m => m.online).length;
           const onlineMemberCountB = partyB.members.filter(m => m.online).length;
@@ -363,7 +363,7 @@ function addOrUpdatePartyListEntry(party) {
     partyListEntryActionContainer.classList.add('partyListEntryActionContainer');
     partyListEntryActionContainer.classList.add('listEntryActionContainer');
 
-    if (!joinedPartyId || party.id === joinedPartyId) {
+    if (!joinedPartyId || isInParty) {
       const joinLeaveAction = document.createElement('a');
       joinLeaveAction.classList.add('listEntryAction')
       joinLeaveAction.href = 'javascript:void(0);';
@@ -406,7 +406,7 @@ function addOrUpdatePartyListEntry(party) {
     viewDetailsAction.href = 'javascript:void(0);';
     viewDetailsAction.onclick = function () {
       initOrUpdatePartyModal(party.id);
-      openModal('partyModal', partyCache[party.id].systemName, null, { partyId: party.id });
+      openModal('partyModal', partyCache[party.id].systemName);
     };
     viewDetailsAction.appendChild(getSvgIcon('party', true));
     viewDetailsAction.title = localizedMessages.parties.actions.viewPartyDetails;
@@ -579,6 +579,8 @@ function initOrUpdatePartyModal(partyId) {
       clearPlayerList(partyModalOfflinePlayerList);
     }
   }
+
+  partyModal.dataset.partyId = partyId;
 
   for (let member of party.members) {
     const playerList = member.online ? partyModalOnlinePlayerList : partyModalOfflinePlayerList;
