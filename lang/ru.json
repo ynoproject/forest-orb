@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -111,28 +111,28 @@
       "createParty": {
         "title": {
           "create": "Создать Группу",
-          "update": "Edit Party"
+          "update": "Изменить Группу"
         },
         "fields": {
           "partyName": "Имя группы",
-          "description": "Description",
+          "description": "Описание",
           "public": "Открытая",
           "password": "Пароль",
           "theme": "Стиль оформления"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
+        "showPassword": "Показать Пароль",
+        "hidePassword": "Скрыть Пароль",
         "submit": "Отправить"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "Войти в Закрытую Группу",
         "fields": {
-          "password": "Password"
+          "password": "Пароль"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "Показать Пароль",
+        "hidePassword": "Скрыть Пароль",
+        "incorrectPassword": "Неверный пароль. Пожалуйста, попробуйте снова.",
+        "submit": "Войти"
       }
     },
     "tooltips": {
@@ -152,7 +152,7 @@
       },
       "parties": {
         "createParty": "Создать Группу",
-        "disbandParty": "Disband Party"
+        "disbandParty": "Распустить Группу"
       },
       "nexus": "Вернуться на Главную страницу"
     }
@@ -197,8 +197,8 @@
     "playerList": {
       "unnamed": "Безымянный игрок",
       "actions": {
-        "partyKick": "Kick From Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "partyKick": "Выгнать из Группы,",
+        "transferPartyOwner": "Передать лидерство в Группе."
       }
     },
     "roles": {
@@ -209,15 +209,15 @@
       "emptyMessage": "Пока ещё никто не создал ни одной группы.",
       "yourParty": "Ваша Группа",
       "defaultPartyName": "Группа {OWNER}",
-      "partyOwner": "Party Leader",
+      "partyOwner": "Глава Группы",
       "offlineMemberSuffix": " (Вне сети)",
       "onlineCount": "В сети - {COUNT}",
       "offlineCount": "Вне сети - {COUNT}",
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "Просмотреть данные о Группе",
+        "joinParty": "Присоединиться к Группе",
+        "joinPrivateParty": "Присоединиться к Закрытой Группе",
+        "leaveParty": "Выйти из Группы"
       }
     },
     "chatTips": {
