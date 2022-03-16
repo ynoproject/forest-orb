@@ -830,7 +830,7 @@ function onSelectUiTheme(e) {
 function handleSaveFileUpload(evt) {
   const save = evt.target.files[0];
 
-  if (!/^Save\d{2}\.lsd$/.test(save.name)) {
+  if (!/\.lsd$/i.test(save.name)) {
     alert(localizedMessages.io.upload.invalidSaveFile);
     document.getElementById('uploadButton').click();
     return;
