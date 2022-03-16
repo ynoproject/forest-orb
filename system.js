@@ -141,6 +141,8 @@ const gameLogoBlendModeOverrides = {
   'braingirl': 'color'
 };
 
+const contrastRatioThreshold = 2.02;
+
 function setSystemName(name) {
   systemName = name.replace(/'/g, '');
   if (playerData) {
@@ -454,8 +456,32 @@ function getFontColors(uiTheme, fontStyle, callback) {
     context.drawImage(img, 0, 0);
     const data = context.getImageData(0, 0, 1, 16).data;
     const colors = [];
-    for (let i = 0; i < data.length; i += 4) {
+    for (let i = 0; i < data.length; i += 4)
       colors.push([ data[i], data[i + 1], data[i + 2] ]);
+      
+    if (typeof tinycolor !== 'undefined') {
+      const shadowRgb = uiThemeFontShadows[uiTheme] || [0, 0, 0];
+      const shadowTc = getTinyColor(shadowRgb);
+      const shadowLum = shadowTc.getLuminance();
+      for (let rgbArray of colors) {
+        let tc = getTinyColor(rgbArray);
+        let lum = tc.getLuminance();
+        const lighten = lum >= shadowLum;
+        let lastContrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
+        if (lastContrastRatio < contrastRatioThreshold) {
+          let contrastRatio;
+          do {
+            lastContrastRatio = contrastRatio;
+            tc = lighten ? tc.lighten(5) : tc.darken(5);
+            lum = tc.getLuminance();
+            contrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
+          } while (contrastRatio < contrastRatioThreshold || contrastRatio === lastContrastRatio);
+          const rgb = tc.toRgb();
+          rgbArray[0] = rgb.r;
+          rgbArray[1] = rgb.g;
+          rgbArray[2] = rgb.b;
+        }
+      }
     }
     uiThemeFontColors[uiTheme][fontStyle] = colors;
     callback(colors);
@@ -574,4 +600,12 @@ function addSystemSvgDropShadow(systemName, color) {
 
 function getColorRgba(color) {
   return `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
+}
+
+function getTinyColor(color) {
+  return tinycolor({ r: color[0], g: color[1], b: color[2] });
+}
+
+function getContrastRatio(fgLum, bgLum) {
+  return (fgLum + 0.05) / (bgLum + 0.05);
 }
