@@ -235,6 +235,20 @@
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅详细源代码数据。"
       }
     },
+    "toast": {
+      "parties": {
+        "create": "{PARTY} has been created.",
+        "update": "{PARTY} has been updated.",
+        "join": "You have joined {PARTY}.",
+        "leave": "You have left {PARTY}.",
+        "remove": "You have been removed from {PARTY}.",
+        "disband": "{PARTY} has been disbanded.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
+        "playerJoin": "{PLAYER} has joined the party.",
+        "playerLeave": "{PLAYER} has left the party."
+      }
+    },
     "2kki": {
       "explorerLink": {
         "generic": "在梦2记探索辅助工具中查看当前地点",

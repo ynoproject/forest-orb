@@ -235,6 +235,20 @@
         "openSource": "YNOproject - Проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
+    "toast": {
+      "parties": {
+        "create": "{PARTY} has been created.",
+        "update": "{PARTY} has been updated.",
+        "join": "You have joined {PARTY}.",
+        "leave": "You have left {PARTY}.",
+        "remove": "You have been removed from {PARTY}.",
+        "disband": "{PARTY} has been disbanded.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
+        "playerJoin": "{PLAYER} has joined the party.",
+        "playerLeave": "{PLAYER} has left the party."
+      }
+    },
     "2kki": {
       "explorerLink": {
         "generic": "Просмотреть в Yume 2kki Explorer",

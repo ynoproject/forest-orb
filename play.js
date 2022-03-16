@@ -1409,10 +1409,10 @@ setInterval(fetchAndUpdatePlayerCount, 15000);
 
 fetchAndPopulateYnomojiConfig();
 
-if (!loadedFontStyle)
-  setFontStyle(0, true);
 if (!loadedUiTheme)
   setUiTheme('auto', true);
+if (!loadedFontStyle)
+  setFontStyle(0, true);
 if (!loadedLang) {
   const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
   setLang(Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en', true);

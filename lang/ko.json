@@ -235,6 +235,20 @@
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
       }
     },
+    "toast": {
+      "parties": {
+        "create": "{PARTY} has been created.",
+        "update": "{PARTY} has been updated.",
+        "join": "You have joined {PARTY}.",
+        "leave": "You have left {PARTY}.",
+        "remove": "You have been removed from {PARTY}.",
+        "disband": "{PARTY} has been disbanded.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
+        "playerJoin": "{PLAYER} has joined the party.",
+        "playerLeave": "{PLAYER} has left the party."
+      }
+    },
     "2kki": {
       "explorerLink": {
         "generic": "Yume 2kki Explorer 열기",

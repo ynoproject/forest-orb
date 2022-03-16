@@ -65,7 +65,7 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, input, textarea, select, button.checkboxButton, button[type="submit"] {
+#chatBorder, .toast, input, textarea, select, button.checkboxButton, button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -326,6 +326,7 @@ body.fullBg #background {
   width: 100%;
   height: 100%;
   top: 0;
+  left: 0;
   background: black;
   opacity: 1;
   z-index: 20;
@@ -881,6 +882,7 @@ body.fullBg #background {
   padding-right: 4px;
   padding-bottom: 6px;
   margin-top: -2px;
+  margin-left: 2px;
 }
 
 .playerLocationIcon svg {
@@ -898,6 +900,7 @@ body.fullBg #background {
 
 .message {
   word-break: break-word;
+  image-rendering: auto;
 }
 
 .message .icon, .listEntry .nameText .icon {
@@ -1202,7 +1205,7 @@ body.fullBg #background {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, h1, a:not(.listEntryAction), label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, a:not(.listEntryAction), label {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1498,6 +1501,59 @@ form .uiTheme {
 
 #layout.immersionMode .chatboxTabSection {
   margin-top: 0;
+}
+
+#toastContainer {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: min(320px, calc(100vw - 60px));
+  bottom: 0;
+  left: 0;
+  margin: 0 0 8px 8px;
+  z-index: 20;
+}
+
+#toastContainer.anim {
+  transition: bottom 0.5s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 24px);
+  margin: 0 0 8px 8px;
+  background-image: var(--container-bg-image-url) !important;
+  background-size: 35px;
+  background-position-y: -8px;
+}
+
+.toast.fade {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.toast > .icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 4px 8px 4px 0;
+}
+
+.toast .toastMessageContainer {
+  width: 100%;
+}
+
+.toast .toastMessage {
+  display: inline;
+  image-rendering: auto;
+}
+
+.toast .closeToast {
+  right: 0;
+  text-decoration: none;
+  image-rendering: auto;
 }
 
 @media (hover: none) { 
@@ -1817,7 +1873,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, input, select, button.checkboxButton, button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, button.checkboxButton, button[type="submit"] {
     border-color: unset !important;
   }
 
@@ -1840,7 +1896,7 @@ form .uiTheme {
   }
 
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, h1, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, a, label {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }
