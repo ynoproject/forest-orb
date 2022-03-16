@@ -115,18 +115,20 @@ function getPartyName(party) {
 function setJoinedPartyId(partyId) {
   const content = document.getElementById('content');
   content.classList.toggle('inParty', !!partyId);
-  if (partyId) {
-    if (!updateJoinedPartyTimer) {
-      updateJoinedPartyTimer = setInterval(() => {
-        if (skipJoinedPartyUpdate)
-          skipJoinedPartyUpdate = false;
-        else
-          updateJoinedParty();
-      }, 5000);
+  if (partyId !== joinedPartyId) {
+    if (partyId) {
+      if (!updateJoinedPartyTimer) {
+        updateJoinedPartyTimer = setInterval(() => {
+          if (skipJoinedPartyUpdate)
+            skipJoinedPartyUpdate = false;
+          else
+            updateJoinedParty();
+        }, 5000);
+      }
+    } else if (updateJoinedPartyTimer) {
+      clearInterval(updateJoinedPartyTimer);
+      updateJoinedPartyTimer = null;
     }
-  } else if (updateJoinedPartyTimer) {
-    clearInterval(updateJoinedPartyTimer);
-    updateJoinedPartyTimer = null;
   }
   if (config.chatTabIndex === 3)
     setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
@@ -203,6 +205,8 @@ function updatePartyList(skipNextUpdate) {
       const partyList = document.getElementById('partyList');
       
       if (data.length) {
+        setJoinedPartyId(playerData ? data.find(p => p.members.map(m => m.uuid).indexOf(playerData.uuid) > -1)?.id : null);
+        
         for (let party of data) {
           const isInParty = joinedPartyId && party.id === joinedPartyId;
           if (isInParty) {
@@ -240,6 +244,8 @@ function updatePartyList(skipNextUpdate) {
 
         entries.forEach(ple => partyList.appendChild(ple));
       } else {
+        setJoinedPartyId(null);
+
         partyList.innerHTML = '';
 
         const emptyMessage = document.createElement('div');
