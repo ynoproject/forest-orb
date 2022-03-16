@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -115,7 +115,7 @@
         },
         "fields": {
           "partyName": "队伍名称",
-          "description": "Description",
+          "description": "队伍简介",
           "public": "是否公开队伍？",
           "password": "设置密码",
           "theme": "界面风格"
@@ -197,8 +197,8 @@
     "playerList": {
       "unnamed": "未命名玩家",
       "actions": {
-        "partyKick": "Kick From Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "partyKick": "踢出队伍",
+        "transferPartyOwner": "提升为领队"
       }
     },
     "roles": {
@@ -214,10 +214,10 @@
       "onlineCount": "当前在线 - {COUNT} 人",
       "offlineCount": "当前离线 - {COUNT} 人",
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "查看队伍详情",
+        "joinParty": "加入队伍",
+        "joinPrivateParty": "加入私密队伍",
+        "leaveParty": "退出队伍"
       }
     },
     "chatTips": {
