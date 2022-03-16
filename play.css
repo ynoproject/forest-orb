@@ -121,10 +121,6 @@ body {
   margin: 0;
 }
 
-body.fullBg {
-  background-size: 100%;
-}
-
 .modal form {
   text-align: center;
   padding-bottom: 8px;
@@ -297,6 +293,10 @@ body.fullBg {
   background-position-y: calc(-16px - var(--content-scroll) * 0.25);
   background-image: var(--container-bg-image-url) !important;
   z-index: -1;
+}
+
+body.fullBg #background {
+  background-size: 100%;
 }
 
 #backgroundOverlay {
