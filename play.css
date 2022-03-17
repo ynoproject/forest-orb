@@ -890,6 +890,10 @@ body.fullBg #background {
   margin-left: 2px;
 }
 
+.detailsContainer .playerLocationIcon {
+  height: 12px;
+}
+
 .playerLocationIcon svg {
   vertical-align: middle;
 }

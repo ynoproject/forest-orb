@@ -580,11 +580,14 @@ function clearPartyList() {
 function initOrUpdatePartyModal(partyId) {
   const isInParty = partyId == joinedPartyId;
   const party = isInParty ? joinedPartyCache : partyCache[partyId];
+
+  if (!party)
+    return;
+
   const isOwnParty = isInParty && party.ownerUuid === playerData?.uuid;
   const partyModal = document.getElementById('partyModal');
   const partyModalOnlinePlayerList = document.getElementById('partyModalOnlinePlayerList');
   const partyModalOfflinePlayerList = document.getElementById('partyModalOfflinePlayerList');
-  const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
 
   const lastPartyId = partyModal.dataset.partyId;
   const modalTitle = partyModal.querySelector('.modalTitle');
