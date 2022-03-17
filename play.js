@@ -30,8 +30,11 @@ let globalConfig = {
   lang: 'en',
   name: '',
   chatTipIndex: -1,
-  showNotifications: true,
-  tabToChat: true
+  tabToChat: true,
+  notifications: {
+    all: true,
+    screenPosition: 'bottomLeft'
+  }
 };
 
 let config = {
@@ -278,10 +281,10 @@ function openModal(modalId, theme, lastModalId, modalData) {
   if (lastModalId) {
     if (modalContainer.dataset.lastModalId) {
       modalContainer.dataset.lastModalId = `${modalContainer.dataset.lastModalId},${lastModalId}`;
-      modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme},${theme}`;
+      modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme},${theme || ''}`;
     } else {
       modalContainer.dataset.lastModalId = lastModalId;
-      modalContainer.dataset.lastModalTheme = theme;
+      modalContainer.dataset.lastModalTheme = theme || '';
     }
   } else if (modalContainer.dataset.lastModalId) {
     const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
@@ -296,8 +299,8 @@ function openModal(modalId, theme, lastModalId, modalData) {
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId)
     activeModal.classList.add('hidden');
-  
-  setModalUiTheme(theme);
+    
+  setModalUiTheme(theme || (config.uiTheme === 'auto' ? systemName : config.uiTheme));
 
   const modal = document.getElementById(modalId);
   if (modalData) {
@@ -480,17 +483,13 @@ document.getElementById('playerSoundsButton').onclick = () => {
     Module._TogglePlayerSounds();
 };
 
-document.getElementById('notificationsButton').onclick = function () {
-  this.classList.toggle('toggled');
-  globalConfig.showNotifications = !this.classList.contains('toggled');
-  updateConfig(globalConfig, true);
-};
-
 document.getElementById('tabToChatButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.tabToChat = !this.classList.contains('toggled');
   updateConfig(globalConfig, true);
 };
+
+initNotificationsConfigAndControls();
 
 initPartyControls();
 
@@ -1277,13 +1276,44 @@ function loadOrInitConfig(configObj, global) {
                 document.getElementById('nameInput').value = value;
                 setName(value, true);
                 break;
-              case 'showNotifications':
-                if (!value)
-                  document.getElementById('notificationsButton').click();
-                break;
               case 'tabToChat':
                 if (!value)
                   document.getElementById('tabToChatButton').click();
+                break;
+              case 'notifications':
+                if (typeof value === 'object') {
+                  for (let nkey of Object.keys(value)) {
+                    const nvalue = value[nkey];
+                    switch (nkey) {
+                      case 'all':
+                        if (!nvalue)
+                          document.getElementById('notificationsButton').click();
+                        break;
+                      case 'screenPosition':
+                        if (nvalue && nvalue !== 'bottomLeft')
+                          setNotificationScreenPosition(nvalue);
+                        break;
+                      default:
+                        if (notificationTypes.hasOwnProperty(nkey) && typeof nvalue === 'object') {
+                          for (let ntkey of Object.keys(nvalue)) {
+                            const ntvalue = nvalue[ntkey];
+                            if (ntkey === 'all') {
+                              if (!ntvalue)
+                                document.getElementById(`notificationsButton_${nkey}`).click();
+                            } else if (notificationTypes[nkey].indexOf(ntkey) > -1) {
+                              if (!ntvalue)
+                                document.getElementById(`notificationsButton_${nkey}_${ntkey}`).click();
+                            } else
+                              continue;
+                            configObj[key][nkey][ntkey] = ntvalue;
+                          }
+                        } else
+                          continue;
+                        break;
+                    }
+                    configObj[key][nkey] = nvalue;
+                  }
+                }
                 break;
             }
           } else {

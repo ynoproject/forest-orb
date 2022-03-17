@@ -330,13 +330,16 @@ function updateJoinedParty(skipNextUpdate, callback) {
         const uuid = member.uuid;
         const oldMember = oldMembers.find(m => m.uuid === uuid);
         if (oldMember) {
+          const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
           if (member.online !== oldMember.online) {
-            if (member.online)
-              showPartyToastMessage('playerOnline', 'join', party, uuid);
-            else
+            if (member.online) {
+              if (pendingOfflineMemberIndex > -1)
+                joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
+              else
+                showPartyToastMessage('playerOnline', 'join', party, uuid);
+            } else
               joinedPartyPendingOfflineMemberUuids.push(uuid);
           } else if (!member.online) {
-            const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
             if (pendingOfflineMemberIndex > -1) {
               showPartyToastMessage('playerOffline', 'leave', party, uuid);
               joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
@@ -711,6 +714,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 }
 
 function showPartyToastMessage(key, icon, party, playerUuid) {
+  if (!globalConfig.notifications.parties.all || !globalConfig.notifications.parties[key])
+    return;
   let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party).replace(/ /g, '&nbsp;'));
   if (playerUuid)
     message = message.replace('{PLAYER}', (party.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed).replace(/ /g, '&nbsp;'));

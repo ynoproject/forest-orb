@@ -101,7 +101,6 @@
           },
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
-          "toggleNotifications": "开启/关闭弹框提醒信息",
           "tabToChat": "开启/关闭Tab键聊天切换"
         },
         "notificationSettings": "弹框通知信息设置"
@@ -109,7 +108,7 @@
       "notificationSettings": {
         "title": "弹框通知信息设置",
         "fields": {
-          "notifications": "允许显示通知？",
+          "toggleNotifications": "开启/关闭弹框提醒信息",
           "screenPosition": {
             "label": "显示位置",
             "values": {
@@ -120,18 +119,21 @@
             }
           },
           "parties": {
-            "create": "创建队伍",
-            "update": "编辑队伍",
-            "join": "加入队伍",
-            "leave": "退出队伍",
-            "remove": "从队伍中移除",
-            "disband": "解散队伍",
-            "playerJoin": "玩家加入队伍",
-            "playerLeave": "玩家退出队伍",
-            "playerOnline": "在线队员",
-            "playerOffline": "离线队员",
-            "kickPlayer": "从队伍中移除玩家",
-            "transferPartyOwner": "向队员转授领队权限"
+            "label": "组队列表",
+            "fields": {
+              "create": "创建队伍",
+              "update": "编辑队伍",
+              "join": "加入队伍",
+              "leave": "退出队伍",
+              "remove": "从队伍中移除",
+              "disband": "解散队伍",
+              "playerJoin": "玩家加入队伍",
+              "playerLeave": "玩家退出队伍",
+              "playerOnline": "在线队员",
+              "playerOffline": "离线队员",
+              "kickPlayer": "从队伍中移除玩家",
+              "transferPartyOwner": "向队员转授领队权限"
+            }
           }
         }
       },

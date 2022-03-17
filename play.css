@@ -41,8 +41,10 @@
   --party-container-bg-image-url: var(--container-bg-image-url);
   --party-border-image-url: var(--border-image-url);
 
-  --content-height: 0px;
-  --content-scroll: 0px;
+  --content-height: 0;
+  --content-scroll: 0;
+
+  --toast-offset: 0;
 }
 
 @font-face {
@@ -51,12 +53,12 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input, textarea, select, button.checkboxButton, button[type="submit"] {
+html, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
 
-html, input, textarea, select, button.checkboxButton, button[type="submit"] {
+html, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
   color: var(--base-color) !important;
   background-color: black;
 }
@@ -65,7 +67,7 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, .toast, input, textarea, select, button.checkboxButton, button[type="submit"] {
+#chatBorder, .toast, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -82,13 +84,18 @@ label {
   font-weight: bold;
 }
 
-input, textarea, select, button.checkboxButton, button[type="submit"] {
+input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
   background-color: var(--base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--shadow-color);
 }
 
 input, select {
   position: relative;
+}
+
+button.checkboxButton, button[type="button"], button[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
 }
 
 button.checkboxButton {
@@ -100,8 +107,6 @@ button.checkboxButton {
   height: 38px;
   font-size: 18px;
   padding: 4px;
-  -webkit-appearance: button;
-  cursor: pointer;
 }
 
 button.checkboxButton > span:after {
@@ -112,7 +117,7 @@ button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxB
   content: "✔";
 }
 
-body, .container, div, input, button.checkboxButton, button[type="submit"] {
+body, .container, div, input, button.checkboxButton, button[type="button"], button[type="submit"] {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
@@ -194,7 +199,7 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button.checkboxButton, button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button.checkboxButton, button[type="button"], button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
@@ -202,7 +207,7 @@ body {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="button"], button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -1157,7 +1162,7 @@ body.fullBg #background {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button.checkboxButton, button[type="submit"] {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button.checkboxButton, button[type="button"], button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1294,7 +1299,7 @@ body.fullBg #background {
   text-decoration: none;
 }
 
-.modal input, .modal select, .modal button.checkboxButton, .modal button[type="submit"] {
+.modal input, .modal select, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
   color: var(--modal-base-color) !important;
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
@@ -1379,6 +1384,10 @@ body.fullBg #background {
   display: none;
 }
 
+#notificationSettingsModal.notificationsOff .formControlRow:not(:first-child) {
+  display: none;
+}
+
 #partyModal .modalTitle .icon {
   display: inline-block;
   padding: 0 4px;
@@ -1421,6 +1430,10 @@ body.fullBg #background {
   margin-bottom: 16px;
 }
 
+.formControlRow.indent {
+  padding-left: 40px;
+}
+
 .formControlRow.hidden {
   display: none;
 }
@@ -1451,6 +1464,10 @@ body.fullBg #background {
 
 .formControlRow div {
   text-align: right;
+}
+
+.formControlRow > button[type="button"] {
+  margin-right: 8px;
 }
 
 .uiTheme {
@@ -1508,14 +1525,33 @@ form .uiTheme {
   display: flex;
   flex-direction: column;
   width: min(320px, calc(100vw - 40px));
-  bottom: 0;
+  bottom: var(--toast-offset);
   left: 0;
   margin: 0 0 8px 8px;
   z-index: 20;
 }
 
+#toastContainer.top {
+  flex-direction: column-reverse;
+  bottom: unset;
+  top: var(--toast-offset);
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+#toastContainer.right {
+  left: unset;
+  right: 0;
+  margin-left: 0;
+  margin-right: 8px;
+}
+
 #toastContainer.anim {
   transition: bottom 0.5s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+#toastContainer.top.anim {
+  transition: top 0.5s cubic-bezier(0.7, 0, 0.7, 1.5);
 }
 
 .toast {
@@ -1526,6 +1562,15 @@ form .uiTheme {
   background-image: var(--container-bg-image-url) !important;
   background-size: 35px;
   background-position-y: -8px;
+}
+
+#toastContainer.top .toast {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+#toastContainer.right .toast {
+  margin-left: -8px;
 }
 
 .toast.fade {
@@ -1873,7 +1918,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, button.checkboxButton, button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, button.checkboxButton, button[type="button"], button[type="submit"] {
     border-color: unset !important;
   }
 

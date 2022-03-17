@@ -101,7 +101,6 @@
           },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
-          "toggleNotifications": "Notifications",
           "tabToChat": "Presiona Tab para chatear"
         },
         "notificationSettings": "Notification Settings"
@@ -109,7 +108,7 @@
       "notificationSettings": {
         "title": "Notification Settings",
         "fields": {
-          "notifications": "Notifications",
+          "toggleNotifications": "Notifications",
           "screenPosition": {
             "label": "Screen Position",
             "values": {
@@ -120,18 +119,21 @@
             }
           },
           "parties": {
-            "create": "Created Party",
-            "update": "Updated Party",
-            "join": "Joined Party",
-            "leave": "Left Party",
-            "remove": "Removed From Party",
-            "disband": "Disbanded Party",
-            "playerJoin": "Player Joined Party",
-            "playerLeave": "Player Left Party",
-            "playerOnline": "Party Member Online",
-            "playerOffline": "Party Member Offline",
-            "kickPlayer": "Kicked Player From Party",
-            "transferPartyOwner": "Promoted Player to Party Leader"
+            "label": "Parties",
+            "fields": {
+              "create": "Created Party",
+              "update": "Updated Party",
+              "join": "Joined Party",
+              "leave": "Left Party",
+              "remove": "Removed From Party",
+              "disband": "Disbanded Party",
+              "playerJoin": "Player Joined Party",
+              "playerLeave": "Player Left Party",
+              "playerOnline": "Party Member Online",
+              "playerOffline": "Party Member Offline",
+              "kickPlayer": "Kicked Player From Party",
+              "transferPartyOwner": "Promoted Player to Party Leader"
+            }
           }
         }
       },
