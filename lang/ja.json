@@ -237,16 +237,16 @@
     },
     "toast": {
       "parties": {
-        "create": "{PARTY}が作成されました。",
-        "update": "{PARTY} が更新されました。",
-        "join": "あなたは{PARTY}に参加しました。",
-        "leave": "あなたは{PARTY}から脱退しました。",
-        "remove": "あなたは{PARTY}から追い出されました。",
-        "disband": "{PARTY}は解散されました。",
-        "kickPlayer": "{PLAYER} はパーティから追い出されました。",
-        "transferPartyOwner": "パーティのオーナーが {PLAYER}になりました。",
-        "playerJoin": "{PLAYER} がパーティに参加しました。",
-        "playerLeave": "{PLAYER} がパーティから抜けました。"
+        "create": "{PARTY}が 作成されました。",
+        "update": "{PARTY}が 更新されました。",
+        "join": "あなたは {PARTY}に 参加しました。",
+        "leave": "あなたは {PARTY}から 脱退しました。",
+        "remove": "あなたは {PARTY}から 追い出されました。",
+        "disband": "{PARTY}は解散 されました。",
+        "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
+        "transferPartyOwner": "パーティーリーダーが {PLAYER}になりました。",
+        "playerJoin": "{PLAYER}が パーティーに 参加しました。",
+        "playerLeave": "{PLAYER}が パーティーから 抜けました。"
       }
     },
     "2kki": {
