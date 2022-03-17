@@ -568,38 +568,36 @@ function initOrUpdatePartyModal(partyId) {
   
   modalTitle.innerText = getPartyName(party);
 
-  if (isInParty) {
-    if (!party.public)
-      modalTitle.append(getSvgIcon('locked', true));
+  if (!party.public)
+    modalTitle.append(getSvgIcon('locked', true));
 
-    if (isOwnParty) {
-      const editButton = getSvgIcon('edit', true);
-      editButton.classList.add('editButton');
-      editButton.classList.add('iconButton');
-      editButton.onclick = function () {
-        if (party) {
-          const partyName = document.getElementById('partyName');
-          const publicPartyButton = document.getElementById('publicPartyButton');
-          const partyPassword = document.getElementById('partyPassword');
+  if (isOwnParty) {
+    const editButton = getSvgIcon('edit', true);
+    editButton.classList.add('editButton');
+    editButton.classList.add('iconButton');
+    editButton.onclick = function () {
+      if (party) {
+        const partyName = document.getElementById('partyName');
+        const publicPartyButton = document.getElementById('publicPartyButton');
+        const partyPassword = document.getElementById('partyPassword');
 
-          partyName.value = party.name;
+        partyName.value = party.name;
 
-          if (publicPartyButton.classList.contains('toggled') === party.public)
-            publicPartyButton.click();
+        if (publicPartyButton.classList.contains('toggled') === party.public)
+          publicPartyButton.click();
 
-          partyPassword.value = party.pass;
+        partyPassword.value = party.pass;
 
-          setPartyTheme(party.systemName);
+        setPartyTheme(party.systemName);
 
-          const showHidePartyPasswordLink = document.getElementById('showHidePartyPasswordLink');
-          if (showHidePartyPasswordLink.classList.contains('showPassword'))
-            showHidePartyPasswordLink.click();
+        const showHidePartyPasswordLink = document.getElementById('showHidePartyPasswordLink');
+        if (showHidePartyPasswordLink.classList.contains('showPassword'))
+          showHidePartyPasswordLink.click();
 
-          openModal('createPartyModal', party.systemName, 'partyModal', { update: true });
-        }
-      };
-      modalTitle.append(editButton);
-    }
+        openModal('createPartyModal', party.systemName, 'partyModal', { update: true });
+      }
+    };
+    modalTitle.append(editButton);
   }
 
   let onlineCount = 0;
