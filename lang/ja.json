@@ -103,6 +103,36 @@
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleNotifications": "通知 表示",
           "tabToChat": "タブキーを 押して チャット"
+        },
+        "notificationSettings": "Notification Settings"
+      },
+      "notificationSettings": {
+        "title": "Notification Settings",
+        "fields": {
+          "notifications": "Notifications",
+          "screenPosition": {
+            "label": "Screen Position",
+            "values": {
+              "bottomLeft": "Bottom Left",
+              "bottomRight": "Bottom Right",
+              "topLeft": "Top Left",
+              "topRight": "Top Right"
+            }
+          },
+          "parties": {
+            "create": "Created Party",
+            "update": "Updated Party",
+            "join": "Joined Party",
+            "leave": "Left Party",
+            "remove": "Removed From Party",
+            "disband": "Disbanded Party",
+            "playerJoin": "Player Joined Party",
+            "playerLeave": "Player Left Party",
+            "playerOnline": "Party Member Online",
+            "playerOffline": "Party Member Offline",
+            "kickPlayer": "Kicked Player From Party",
+            "transferPartyOwner": "Promoted Player to Party Leader"
+          }
         }
       },
       "uiTheme": {
@@ -244,12 +274,12 @@
         "leave": "あなたは {PARTY}から 抜けました。",
         "remove": "あなたは {PARTY}から 追い出されました。",
         "disband": "{PARTY}は解散 されました。",
-        "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
-        "transferPartyOwner": "パーティーリーダーが {PLAYER}に なりました。",
         "playerJoin": "{PLAYER}が パーティーに 参加しました。",
         "playerLeave": "{PLAYER}が パーティーから 抜けました。",
         "playerOnline": "{PLAYER}が オフラインに なりました。",
-        "playerOffline": "{PLAYER}が オフラインに なりました。"
+        "playerOffline": "{PLAYER}が オフラインに なりました。",
+        "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
+        "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
       }
     },
     "2kki": {

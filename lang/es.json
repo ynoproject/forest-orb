@@ -103,6 +103,36 @@
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleNotifications": "Notifications",
           "tabToChat": "Presiona Tab para chatear"
+        },
+        "notificationSettings": "Notification Settings"
+      },
+      "notificationSettings": {
+        "title": "Notification Settings",
+        "fields": {
+          "notifications": "Notifications",
+          "screenPosition": {
+            "label": "Screen Position",
+            "values": {
+              "bottomLeft": "Bottom Left",
+              "bottomRight": "Bottom Right",
+              "topLeft": "Top Left",
+              "topRight": "Top Right"
+            }
+          },
+          "parties": {
+            "create": "Created Party",
+            "update": "Updated Party",
+            "join": "Joined Party",
+            "leave": "Left Party",
+            "remove": "Removed From Party",
+            "disband": "Disbanded Party",
+            "playerJoin": "Player Joined Party",
+            "playerLeave": "Player Left Party",
+            "playerOnline": "Party Member Online",
+            "playerOffline": "Party Member Offline",
+            "kickPlayer": "Kicked Player From Party",
+            "transferPartyOwner": "Promoted Player to Party Leader"
+          }
         }
       },
       "uiTheme": {
@@ -244,12 +274,12 @@
         "leave": "You have left {PARTY}.",
         "remove": "You have been removed from {PARTY}.",
         "disband": "{PARTY} has been disbanded.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
         "playerJoin": "{PLAYER} has joined the party.",
         "playerLeave": "{PLAYER} has left the party.",
         "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline."
+        "playerOffline": "{PLAYER} is now offline.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
       }
     },
     "2kki": {
