@@ -693,8 +693,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 }
 
 function showPartyToastMessage(key, icon, party, playerUuid) {
-  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party));
+  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party).replace(/ /g, '&nbsp;'));
   if (playerUuid)
-    message = message.replace('{PLAYER}', party.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed);
+    message = message.replace('{PLAYER}', (party.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed).replace(/ /g, '&nbsp;'));
   showToastMessage(message, icon);
 }
