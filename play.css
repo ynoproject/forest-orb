@@ -1086,7 +1086,7 @@ body.fullBg #background {
 }
 
 #globalCooldownIcon .timerCircle {
-  stroke: url(#altGradient) !important;
+  stroke: var(--svg-alt-gradient) !important;
   stroke-dashoffset: 60;
   stroke-dasharray: 0;
   transform: translateY(100%) rotateZ(-90deg);
@@ -1507,7 +1507,7 @@ form .uiTheme {
   position: fixed;
   display: flex;
   flex-direction: column;
-  width: min(320px, calc(100vw - 60px));
+  width: min(320px, calc(100vw - 40px));
   bottom: 0;
   left: 0;
   margin: 0 0 8px 8px;
