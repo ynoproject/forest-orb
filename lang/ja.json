@@ -131,7 +131,7 @@
         },
         "showPassword": "パスワードを 表示",
         "hidePassword": "パスワードを 隠す",
-        "incorrectPassword": "Incorrect Password: Please try again.",
+        "incorrectPassword": "パスワードが正しくありません：もう一度やり直してください。",
         "submit": "送信"
       }
     },
@@ -237,16 +237,16 @@
     },
     "toast": {
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party."
+        "create": "{PARTY}が作成されました。",
+        "update": "{PARTY} が更新されました。",
+        "join": "あなたは{PARTY}に参加しました。",
+        "leave": "あなたは{PARTY}から脱退しました。",
+        "remove": "あなたは{PARTY}から追い出されました。",
+        "disband": "{PARTY}は解散されました。",
+        "kickPlayer": "{PLAYER} はパーティから追い出されました。",
+        "transferPartyOwner": "パーティのオーナーが {PLAYER}になりました。",
+        "playerJoin": "{PLAYER} がパーティに参加しました。",
+        "playerLeave": "{PLAYER} がパーティから抜けました。"
       }
     },
     "2kki": {
