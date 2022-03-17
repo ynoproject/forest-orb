@@ -5,16 +5,20 @@ let updateJoinedPartyTimer = null;
 let skipPartyListUpdate = false;
 let skipJoinedPartyUpdate = false;
 let partyCache = {};
+let partyDescriptionCache = {};
 let joinedPartyCache = null;
 let joinedPartyPendingOfflineMemberUuids = [];
 
 function initPartyControls() {
   document.getElementById('createPartyButton').onclick = () => {
     const partyName = document.getElementById('partyName');
+    const partyDescription = document.getElementById('partyDescription');
     const publicPartyButton = document.getElementById('publicPartyButton');
     const partyPassword = document.getElementById('partyPassword');
 
     partyName.value = '';
+
+    partyDescription.value = '';
 
     if (publicPartyButton.classList.contains('toggled'))
       publicPartyButton.click();
@@ -65,7 +69,7 @@ function initPartyControls() {
           setJoinedPartyId(parseInt(partyId));
         }
         updatePartyList(true);
-      }).catch(err => console.error(err));;
+      }).catch(err => console.error(err));
     return false;
   };
   
@@ -77,7 +81,7 @@ function initPartyControls() {
         showPartyToastMessage('disband', 'partyDisband', joinedPartyCache?.name);
         setJoinedPartyId(null);
         updatePartyList(true);
-      });
+      }).catch(err => console.error(err));
   };
   
   document.getElementById('showHidePrivatePartyPasswordLink').onclick = function () {
@@ -158,7 +162,7 @@ function kickPlayerFromJoinedParty(playerUuid) {
         showPartyToastMessage('kick', 'leave', joinedPartyCache, playerUuid);
         updateJoinedParty(true);
         updatePartyList(true);
-      });
+      }).catch(err => console.error(err));
   }
 }
 
@@ -171,7 +175,7 @@ function transferJoinedPartyOwner(playerUuid) {
         showPartyToastMessage('transferPartyOwner', 'transferPartyOwner', joinedPartyCache, playerUuid);
         updateJoinedParty(true);
         updatePartyList(true);
-      });
+      }).catch(err => console.error(err));
   }
 }
 
@@ -182,7 +186,8 @@ function fetchAndUpdateJoinedPartyId() {
         throw new Error(response.statusText);
       return response.text();
     })
-    .then(partyId => setJoinedPartyId(parseInt(partyId)));
+    .then(partyId => setJoinedPartyId(parseInt(partyId)))
+    .catch(err => console.error(err));
 }
 
 function updatePartyList(skipNextUpdate) {
@@ -604,10 +609,13 @@ function initOrUpdatePartyModal(partyId) {
     editButton.onclick = function () {
       if (party) {
         const partyName = document.getElementById('partyName');
+        const partyDescription = document.getElementById('partyDescription');
         const publicPartyButton = document.getElementById('publicPartyButton');
         const partyPassword = document.getElementById('partyPassword');
 
         partyName.value = party.name;
+
+        partyDescription.value = party.description;
 
         if (publicPartyButton.classList.contains('toggled') === party.public)
           publicPartyButton.click();
@@ -669,6 +677,26 @@ function initOrUpdatePartyModal(partyId) {
 
   onlineCountLabel.classList.toggle('hidden', !onlineCount);
   offlineCountLabel.classList.toggle('hidden', !offlineCount);
+
+  const partyDescriptionText = document.getElementById('partyModalDescription');
+
+  if (!partyDescriptionCache.hasOwnProperty(partyId)) {
+    fetch(`${apiUrl}/party?command=description&partyId=${partyId}`)
+      .then(response => {
+        if (!response.ok) {
+          partyDescriptionCache[partyId] = null;
+          throw new Error(response.statusText);
+        }
+        return response.text();
+      })
+      .then(description => {
+        partyDescriptionCache[partyId] = partyId;
+        if (partyModal.dataset.partyId == partyId)
+          partyDescriptionText.innerText = description;
+        setTimeout(() => delete partyDescriptionCache[partyId], 300000);
+      }).catch(err => console.error(err));
+  } else
+    partyDescriptionText.innerText = partyDescriptionCache[partyId];
 }
 
 function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
@@ -719,8 +747,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 function showPartyToastMessage(key, icon, party, playerUuid) {
   if (!globalConfig.notifications.parties.all || !globalConfig.notifications.parties[key])
     return;
-  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party).replace(/ /g, '&nbsp;'));
+  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party)?.replace(/ /g, '&nbsp;'));
   if (playerUuid)
-    message = message.replace('{PLAYER}', (party.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed).replace(/ /g, '&nbsp;'));
+    message = message.replace('{PLAYER}', (party?.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed).replace(/ /g, '&nbsp;'));
   showToastMessage(message, icon);
 }

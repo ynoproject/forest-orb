@@ -73,6 +73,7 @@ html {
 }
 
 textarea {
+  height: 38px;
   resize: none;
 }
 
@@ -207,7 +208,7 @@ body {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="button"], button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="button"]:hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -813,19 +814,19 @@ body.fullBg #background {
   filter: drop-shadow(1.5px 1.5px var(--shadow-color));
 }
 
-.chatboxTabContent, .chatboxTabContent > .divider, #content.inParty:not(.partyOwner) .partyList {
+.chatboxTabContent, .chatboxTabContent > .divider {
   border-top: 8px solid transparent;
   border-image: var(--border-image-url) 10 repeat !important;
+}
+
+#content:not(.inParty) .playerList, #content.inParty:not(.partyOwner) .partyList {
+  border-top: none;
 }
 
 .chatboxTabContent > .infoText {
   display: flex;
   justify-content: center;
   padding-bottom: 4px;
-}
-
-#content:not(.inParty) .playerList {
-  border-top: none;
 }
 
 #chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
@@ -1506,6 +1507,22 @@ form .uiTheme {
 .uiTheme > img {
   width: 100%;
   pointer-events: none;
+}
+
+#partyModalDescriptionContainer {
+  min-width: 200px;
+  max-width: 100%;
+}
+
+#partyModalDescriptionContainer > .icon {
+  float: left;
+  width: 18px;
+  height: 100%;
+  margin-right: 4px;
+}
+
+#partyModalDescription {
+  display: inline;
 }
 
 #partyModalPlayerListContainer {
