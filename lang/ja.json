@@ -103,14 +103,14 @@
           "togglePlayerSounds": "プレーヤー 効果音",
           "tabToChat": "タブキーを 押して チャット"
         },
-        "notificationSettings": "通知設定"
+        "notificationSettings": "通知 設定"
       },
       "notificationSettings": {
-        "title": "通知設定",
+        "title": "通知 設定",
         "fields": {
           "toggleNotifications": "通知 表示",
           "screenPosition": {
-            "label": "表示場所",
+            "label": "表示 場所",
             "values": {
               "bottomLeft": "左下",
               "bottomRight": "右下",
@@ -119,20 +119,20 @@
             }
           },
           "parties": {
-            "label": "パーティー通知",
+            "label": "パーティー 通知",
             "fields": {
-              "create": "パーティ作成通知",
-              "update": "パーティ更新通知",
-              "join": "パーティ参加通知",
-              "leave": "パーティ離脱通知",
-              "remove": "パーティ追放通知",
-              "disband": "パーティ解散通知",
-              "playerJoin": "パーティメンバー参加通知",
-              "playerLeave": "パーティメンバー離脱通知",
-              "playerOnline": "パーティメンバーオンライン通知",
-              "playerOffline": "パーティメンバーオフライン通知",
-              "kickPlayer": "パーティメンバー追放通知",
-              "transferPartyOwner": "パーティリーダー昇格通知"
+              "create": "パーティー 作成 通知",
+              "update": "パーティー 更新 通知",
+              "join": "パーティー 参加 通知",
+              "leave": "パーティー 離脱 通知",
+              "remove": "パーティー 追放 通知",
+              "disband": "パーティー 解散 通知",
+              "playerJoin": "パーティー メンバー 参加 通知",
+              "playerLeave": "パーティー メンバー 離脱 通知",
+              "playerOnline": "パーティー メンバー オンライン 通知",
+              "playerOffline": "パーティー メンバー オフライン 通知",
+              "kickPlayer": "パーティー メンバー 追放 通知",
+              "transferPartyOwner": "パーティー リーダー 昇格 通知"
             }
           }
         }
