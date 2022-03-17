@@ -678,9 +678,11 @@ function initOrUpdatePartyModal(partyId) {
   onlineCountLabel.classList.toggle('hidden', !onlineCount);
   offlineCountLabel.classList.toggle('hidden', !offlineCount);
 
+  const partyDescriptionContainer = document.getElementById('partyModalDescriptionContainer');
   const partyDescriptionText = document.getElementById('partyModalDescription');
 
   if (!partyDescriptionCache.hasOwnProperty(partyId)) {
+    partyDescriptionContainer.classList.add('hidden');
     fetch(`${apiUrl}/party?command=description&partyId=${partyId}`)
       .then(response => {
         if (!response.ok) {
@@ -691,12 +693,18 @@ function initOrUpdatePartyModal(partyId) {
       })
       .then(description => {
         partyDescriptionCache[partyId] = description;
-        if (partyModal.dataset.partyId == partyId)
+        if (partyModal.dataset.partyId == partyId) {
           partyDescriptionText.innerText = description;
+          if (description)
+            partyDescriptionContainer.classList.remove('hidden');
+        }
         setTimeout(() => delete partyDescriptionCache[partyId], 300000);
       }).catch(err => console.error(err));
-  } else
-    partyDescriptionText.innerText = partyDescriptionCache[partyId];
+  } else {
+    const description = partyDescriptionCache[partyId];
+    partyDescriptionText.innerText = description;
+    partyDescriptionContainer.classList.toggle('hidden', !description);
+  }
 }
 
 function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
