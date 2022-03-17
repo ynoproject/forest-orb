@@ -247,7 +247,9 @@
         "kickPlayer": "{PLAYER} has been kicked from the party.",
         "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
         "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party."
+        "playerLeave": "{PLAYER} has left the party.",
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline."
       }
     },
     "2kki": {

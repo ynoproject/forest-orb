@@ -245,9 +245,11 @@
         "remove": "あなたは {PARTY}から 追い出されました。",
         "disband": "{PARTY}は解散 されました。",
         "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
-        "transferPartyOwner": "パーティーリーダーが {PLAYER}になりました。",
+        "transferPartyOwner": "パーティーリーダーが {PLAYER}に なりました。",
         "playerJoin": "{PLAYER}が パーティーに 参加しました。",
-        "playerLeave": "{PLAYER}が パーティーから 抜けました。"
+        "playerLeave": "{PLAYER}が パーティーから 抜けました。",
+        "playerOnline": "{PLAYER}が オフラインに なりました。",
+        "playerOffline": "{PLAYER}が オフラインに なりました。"
       }
     },
     "2kki": {

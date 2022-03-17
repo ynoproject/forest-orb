@@ -999,7 +999,7 @@ body.fullBg #background {
 .listEntryActionContainer .icon {
   width: 24px;
   height: 24px;
-  padding: 0 4px;
+  padding: 0 2px;
 }
 
 #unreadMessageCountContainer {
@@ -1312,7 +1312,7 @@ body.fullBg #background {
 
 .modal .fillIcon path {
   stroke: none;
-  fill: var(--party-svg-base-gradient);
+  fill: var(--modal-svg-base-gradient);
 }
 
 .modal .altText {

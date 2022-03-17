@@ -247,7 +247,9 @@
         "kickPlayer": "{PLAYER} Исключается из группы.",
         "transferPartyOwner": "{PLAYER} Теперь Лидер группы.",
         "playerJoin": "{PLAYER} Присоединяется к группе.",
-        "playerLeave": "{PLAYER} Покидает группу."
+        "playerLeave": "{PLAYER} Покидает группу.",
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline."
       }
     },
     "2kki": {

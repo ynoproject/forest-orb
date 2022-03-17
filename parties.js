@@ -6,6 +6,7 @@ let skipPartyListUpdate = false;
 let skipJoinedPartyUpdate = false;
 let partyCache = {};
 let joinedPartyCache = null;
+let joinedPartyPendingOfflineMemberUuids = [];
 
 function initPartyControls() {
   document.getElementById('createPartyButton').onclick = () => {
@@ -142,6 +143,7 @@ function setJoinedPartyId(partyId) {
     updateJoinedParty(true, () => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));
   else {
     joinedPartyCache = null;
+    joinedPartyPendingOfflineMemberUuids = [];
     content.classList.remove('partyOwner');
     setPartyUiTheme(null);
   }
@@ -310,6 +312,7 @@ function updateJoinedParty(skipNextUpdate, callback) {
       return response.json();
     })
     .then(party => {
+      const oldMembers = joinedPartyCache ? joinedPartyCache.members : [];
       joinedPartyCache = party;
       
       if (party.systemName !== joinedPartyUiTheme)
@@ -323,7 +326,24 @@ function updateJoinedParty(skipNextUpdate, callback) {
       for (let playerUuid of removedPlayerUuids)
         removePlayerListEntry(partyPlayerList, playerUuid);
 
-      for (let member of joinedPartyCache.members) {
+      for (let member of party.members) {
+        const uuid = member.uuid;
+        const oldMember = oldMembers.find(m => m.uuid === uuid);
+        if (oldMember) {
+          if (member.online !== oldMember.online) {
+            if (member.online)
+              showPartyToastMessage('playerOnline', 'join', party, uuid);
+            else
+              joinedPartyPendingOfflineMemberUuids.push(uuid);
+          } else if (!member.online) {
+            const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
+            if (pendingOfflineMemberIndex > -1) {
+              showPartyToastMessage('playerOffline', 'leave', party, uuid);
+              joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
+            }
+          }
+        }
+
         globalPlayerData[member.uuid] = {
           name: member.name,
           systemName: member.systemName,
