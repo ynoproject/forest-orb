@@ -690,7 +690,7 @@ function initOrUpdatePartyModal(partyId) {
         return response.text();
       })
       .then(description => {
-        partyDescriptionCache[partyId] = partyId;
+        partyDescriptionCache[partyId] = description;
         if (partyModal.dataset.partyId == partyId)
           partyDescriptionText.innerText = description;
         setTimeout(() => delete partyDescriptionCache[partyId], 300000);
