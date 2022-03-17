@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -101,7 +101,7 @@
           },
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "Уведомления",
           "tabToChat": "Переключение в Чат Tab-у"
         }
       },
@@ -238,16 +238,16 @@
     },
     "toast": {
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "Party ownership has been transferred to {PLAYER}.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party."
+        "create": "Была создана {PARTY}.",
+        "update": "Изменена {PARTY}.",
+        "join": "Вы присоединились к {PARTY}.",
+        "leave": "Вы вышли из {PARTY}.",
+        "remove": "Вас выгнали из {PARTY}.",
+        "disband": "Была распущена {PARTY}.",
+        "kickPlayer": "{PLAYER} Исключается из группы.",
+        "transferPartyOwner": "{PLAYER} Теперь Лидер группы.",
+        "playerJoin": "{PLAYER} Присоединяется к группе.",
+        "playerLeave": "{PLAYER} Покидает группу."
       }
     },
     "2kki": {
