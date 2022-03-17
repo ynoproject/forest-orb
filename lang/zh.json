@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -47,8 +47,8 @@
       },
       "players": {
         "tab": {
-          "map": "地图",
-          "party": "组队"
+          "map": "所在地图",
+          "party": "所在队伍"
         }
       }
     },
@@ -101,37 +101,37 @@
           },
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "开启/关闭弹框提醒信息",
           "tabToChat": "开启/关闭Tab键聊天切换"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "弹框通知信息设置"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "弹框通知信息设置",
         "fields": {
-          "notifications": "Notifications",
+          "notifications": "允许显示通知？",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "显示位置",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "左下角",
+              "bottomRight": "右下角",
+              "topLeft": "左上角",
+              "topRight": "右上角"
             }
           },
           "parties": {
-            "create": "Created Party",
-            "update": "Updated Party",
-            "join": "Joined Party",
-            "leave": "Left Party",
-            "remove": "Removed From Party",
-            "disband": "Disbanded Party",
-            "playerJoin": "Player Joined Party",
-            "playerLeave": "Player Left Party",
-            "playerOnline": "Party Member Online",
-            "playerOffline": "Party Member Offline",
-            "kickPlayer": "Kicked Player From Party",
-            "transferPartyOwner": "Promoted Player to Party Leader"
+            "create": "创建队伍",
+            "update": "编辑队伍",
+            "join": "加入队伍",
+            "leave": "退出队伍",
+            "remove": "从队伍中移除",
+            "disband": "解散队伍",
+            "playerJoin": "玩家加入队伍",
+            "playerLeave": "玩家退出队伍",
+            "playerOnline": "在线队员",
+            "playerOffline": "离线队员",
+            "kickPlayer": "从队伍中移除玩家",
+            "transferPartyOwner": "向队员转授领队权限"
           }
         }
       },
@@ -237,7 +237,7 @@
       "dev": "开发者"
     },
     "parties": {
-      "emptyMessage": "当前暂无活动中的组队。",
+      "emptyMessage": "当前暂无活动中的队伍。",
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
@@ -268,18 +268,18 @@
     },
     "toast": {
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "create": "{PARTY} 队伍创建成功。",
+        "update": "{PARTY} 队伍编辑成功。",
+        "join": "您已成功加入 {PARTY} 。",
+        "leave": "您已成功退出 {PARTY} 。",
+        "remove": "您已从 {PARTY} 中被移除。",
+        "disband": "{PARTY} 已被解散。",
+        "playerJoin": "{PLAYER} 已加入队伍。",
+        "playerLeave": "{PLAYER} 已退出队伍。",
+        "playerOnline": "{PLAYER} 已上线。",
+        "playerOffline": "{PLAYER} 已下线。",
+        "kickPlayer": "{PLAYER} 已被移出队伍。",
+        "transferPartyOwner": "{PLAYER} 已被转授为领队。"
       }
     },
     "2kki": {
