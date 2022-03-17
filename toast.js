@@ -15,7 +15,7 @@ function showToastMessage(message, icon) {
   const toastMessage = document.createElement('div');
   toastMessage.classList.add('toastMessage');
 
-  toastMessage.innerText = message;
+  toastMessage.innerHTML = getMassagedLabel(message, true);
 
   toastMessageContainer.appendChild(toastMessage);
   toast.appendChild(toastMessageContainer);
