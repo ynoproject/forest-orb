@@ -240,7 +240,7 @@
         "create": "{PARTY}が 作成されました。",
         "update": "{PARTY}が 更新されました。",
         "join": "あなたは {PARTY}に 参加しました。",
-        "leave": "あなたは {PARTY}から 脱退しました。",
+        "leave": "あなたは {PARTY}から 抜けました。",
         "remove": "あなたは {PARTY}から 追い出されました。",
         "disband": "{PARTY}は解散 されました。",
         "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
