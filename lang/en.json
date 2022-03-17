@@ -101,6 +101,7 @@
           },
           "toggleNametags": "Nametags",
           "togglePlayerSounds": "Player Sounds",
+          "toggleNotifications": "Notifications",
           "tabToChat": "Press Tab to Chat"
         }
       },

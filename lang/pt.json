@@ -101,6 +101,7 @@
           },
           "toggleNametags": "Alternar nome dos jogadores",
           "togglePlayerSounds": "Alternar áudio dos jogadores",
+          "toggleNotifications": "Notifications",
           "tabToChat": "Pressione Tab Para o Chat"
         }
       },

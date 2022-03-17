@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -101,6 +101,7 @@
           },
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
+          "toggleNotifications": "Notifications",
           "tabToChat": "Переключение в Чат Tab-у"
         }
       },

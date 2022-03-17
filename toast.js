@@ -1,6 +1,11 @@
 let toastAnimEndTimer;
 
+let fadeToastQueue = [];
+
 function showToastMessage(message, icon) {
+  if (!globalConfig.showNotifications)
+    return null;
+    
   const toast = document.createElement('div');
   toast.classList.add('toast');
 
@@ -43,12 +48,19 @@ function showToastMessage(message, icon) {
     toastAnimEndTimer = setTimeout(() => {
       toastContainer.classList.remove('anim');
       toastAnimEndTimer = null;
-      setTimeout(() => {
+      const fadeToastFunc = () => {
         toast.classList.add('fade');
         setTimeout(() => toast.remove(), 1000);
-      }, 10000);
+      };
+      if (document.hidden)
+        fadeToastQueue.push(fadeToastFunc);
+      else
+        setTimeout(fadeToastFunc, 10000);
     }, 500);
   }, 10);
-
-  return toast;
 }
+
+document.addEventListener('visibilitychange', () => {
+  while (fadeToastQueue.length)
+    setTimeout(fadeToastQueue.shift(), 10000);
+});

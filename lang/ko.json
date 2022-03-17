@@ -101,6 +101,7 @@
           },
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
+          "toggleNotifications": "Notifications",
           "tabToChat": "Press Tab to Chat"
         }
       },

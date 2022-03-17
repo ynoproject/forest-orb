@@ -101,6 +101,7 @@
           },
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
+          "toggleNotifications": "通知 表示",
           "tabToChat": "タブキーを 押して チャット"
         }
       },

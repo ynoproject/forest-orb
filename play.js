@@ -30,6 +30,7 @@ let globalConfig = {
   lang: 'en',
   name: '',
   chatTipIndex: -1,
+  showNotifications: true,
   tabToChat: true
 };
 
@@ -477,6 +478,12 @@ document.getElementById('nametagButton').onclick = () => {
 document.getElementById('playerSoundsButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._TogglePlayerSounds();
+};
+
+document.getElementById('notificationsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.showNotifications = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
 };
 
 document.getElementById('tabToChatButton').onclick = function () {
@@ -1269,6 +1276,10 @@ function loadOrInitConfig(configObj, global) {
               case 'name':
                 document.getElementById('nameInput').value = value;
                 setName(value, true);
+                break;
+              case 'showNotifications':
+                if (!value)
+                  document.getElementById('notificationsButton').click();
                 break;
               case 'tabToChat':
                 if (!value)
