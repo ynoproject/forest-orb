@@ -103,36 +103,36 @@
           "togglePlayerSounds": "プレーヤー 効果音",
           "tabToChat": "タブキーを 押して チャット"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "通知 設定"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "通知 設定",
         "fields": {
           "toggleNotifications": "通知 表示",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "表示 場所",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "左下",
+              "bottomRight": "右下",
+              "topLeft": "左上",
+              "topRight": "右上"
             }
           },
           "parties": {
-            "label": "パーティー",
+            "label": "パーティー 通知",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed From Party",
-              "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "create": "パーティー 作成 通知",
+              "update": "パーティー 更新 通知",
+              "join": "パーティー 参加 通知",
+              "leave": "パーティー 離脱 通知",
+              "remove": "パーティー 追放 通知",
+              "disband": "パーティー 解散 通知",
+              "playerJoin": "パーティー メンバー 参加 通知",
+              "playerLeave": "パーティー メンバー 離脱 通知",
+              "playerOnline": "パーティー メンバー オンライン 通知",
+              "playerOffline": "パーティー メンバー オフライン 通知",
+              "kickPlayer": "パーティー メンバー 追放 通知",
+              "transferPartyOwner": "パーティー リーダー 昇格 通知"
             }
           }
         }
