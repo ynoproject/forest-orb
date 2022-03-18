@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -28,14 +28,14 @@
       "tab": {
         "chat": "Chat",
         "players": "Jugadores",
-        "parties": "Parties"
+        "parties": "Equipos"
       },
       "chat": {
         "tab": {
           "all": "Todos",
           "map": "Mapa",
           "global": "Global",
-          "party": "Party"
+          "party": "Equipo"
         },
         "nickname": {
           "header": "Debes seleccionar un apodo antes de usar el chat.",
@@ -48,7 +48,7 @@
       "players": {
         "tab": {
           "map": "Mapa",
-          "party": "Party"
+          "party": "Equipo"
         }
       }
     },
@@ -103,42 +103,42 @@
           "togglePlayerSounds": "Sonidos de Jugadores",
           "tabToChat": "Presiona Tab para chatear"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "Configuración de Notificaciones"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "Configuración de Notificaciones",
         "fields": {
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "Notificaciones",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "Posición en Pantalla",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "Inferior Izquierda",
+              "bottomRight": "Inferior Derecha",
+              "topLeft": "Superior Izquierda",
+              "topRight": "Superior Derecha"
             }
           },
           "client": {
-            "label": "System",
+            "label": "Sistema",
             "fields": {
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "Posible Flood Attack detectado"
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "Equipos",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed From Party",
-              "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "create": "Equipo Creado",
+              "update": "Equipo Actualizado",
+              "join": "Equipo Accedido",
+              "leave": "Equipo Abandonado",
+              "remove": "Expulsado de Equipo",
+              "disband": "Equipo Eliminado",
+              "playerJoin": "Jugador se une al Equipo",
+              "playerLeave": "Miembro deja el Equipo",
+              "playerOnline": "Miembro se Conecta",
+              "playerOffline": "Miembro se Desconecta",
+              "kickPlayer": "Miembro es Expulsado",
+              "transferPartyOwner": "Miembro Promovido a Líder"
             }
           }
         }
@@ -149,29 +149,29 @@
       },
       "createParty": {
         "title": {
-          "create": "Create Party",
-          "update": "Edit Party"
+          "create": "Crear Equipo",
+          "update": "Editar Equipo"
         },
         "fields": {
-          "partyName": "Party Name",
-          "description": "Description",
-          "public": "Public",
-          "password": "Password",
-          "theme": "Theme"
+          "partyName": "Nombre del Equipo",
+          "description": "Descripción",
+          "public": "Equipo Público",
+          "password": "Contraseña",
+          "theme": "Tema"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "submit": "Submit"
+        "showPassword": "Mostrar Contraseña",
+        "hidePassword": "Esconder Contraseña",
+        "submit": "Crear Equipo"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "Unirse a Equipo Privado",
         "fields": {
-          "password": "Password"
+          "password": "Contraseña"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "Mostrar Contraseña",
+        "hidePassword": "Esconder Contraseña",
+        "incorrectPassword": "Contraseña Incorrecta: Intente Nuevamente.",
+        "submit": "Unirse"
       }
     },
     "tooltips": {
@@ -190,8 +190,8 @@
         "clearChat": "Limpiar Chat"
       },
       "parties": {
-        "createParty": "Create Party",
-        "disbandParty": "Disband Party"
+        "createParty": "Crear Equipo",
+        "disbandParty": "Eliminar Equipo"
       },
       "nexus": "Regresar al Nexo"
     }
@@ -236,8 +236,8 @@
     "playerList": {
       "unnamed": "Anónimo",
       "actions": {
-        "partyKick": "Kick From Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "partyKick": "Expulsar del Equipo",
+        "transferPartyOwner": "Promover a Líder"
       }
     },
     "roles": {
@@ -245,18 +245,18 @@
       "dev": "Desarrollador"
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
-      "defaultPartyName": "{OWNER}'s Party",
-      "partyOwner": "Party Leader",
-      "offlineMemberSuffix": " (Offline)",
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
+      "emptyMessage": "No se encontraron equipos activos.",
+      "yourParty": "Tu Equipo",
+      "defaultPartyName": "Equipo de {OWNER}",
+      "partyOwner": "Líder de Equipo",
+      "offlineMemberSuffix": " (Desconectado)",
+      "onlineCount": "Conectados - {COUNT}",
+      "offlineCount": "Desconectados - {COUNT}",
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "Ver Detalles de Equipo",
+        "joinParty": "Unirse al Equipo",
+        "joinPrivateParty": "Unirse a Equipo Privado",
+        "leaveParty": "Abandonar Equipo"
       }
     },
     "chatTips": {
@@ -276,21 +276,21 @@
     },
     "toast": {
       "client": {
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "floodDetected": "Posible flood attack detectado: Activando modo solitario."
       },
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "create": "{PARTY} ha sido creado.",
+        "update": "{PARTY} ha sido actualizado.",
+        "join": "Te has unido a {PARTY}.",
+        "leave": "Has abandonado {PARTY}.",
+        "remove": "Has sido expulsado de {PARTY}.",
+        "disband": "{PARTY} ha sido eliminado.",
+        "playerJoin": "{PLAYER} se ha unido al equipo.",
+        "playerLeave": "{PLAYER} ha dejado el equipo.",
+        "playerOnline": "{PLAYER} se ha conectado.",
+        "playerOffline": "{PLAYER} se ha desconectado.",
+        "kickPlayer": "{PLAYER} ha sido expulsado del equipo.",
+        "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
       }
     },
     "2kki": {
