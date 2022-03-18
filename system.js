@@ -475,7 +475,7 @@ function getFontColors(uiTheme, fontStyle, callback) {
             tc = lighten ? tc.lighten(5) : tc.darken(5);
             lum = tc.getLuminance();
             contrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
-          } while (contrastRatio < contrastRatioThreshold || contrastRatio === lastContrastRatio);
+          } while (contrastRatio < contrastRatioThreshold && contrastRatio !== lastContrastRatio);
           const rgb = tc.toRgb();
           rgbArray[0] = rgb.r;
           rgbArray[1] = rgb.g;

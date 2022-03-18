@@ -117,6 +117,7 @@ function setNotificationScreenPosition(value) {
     const toastContainer = document.getElementById('toastContainer');
     toastContainer.classList.toggle('top', value === 'topLeft' || value === 'topRight');
     toastContainer.classList.toggle('right', value === 'bottomRight' || value === 'topRight');
+    document.getElementById('notificationScreenPosition').value = value;
     globalConfig.notifications.screenPosition = value;
     updateConfig(globalConfig, true);
   }

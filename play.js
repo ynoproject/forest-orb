@@ -827,10 +827,9 @@ function onSelectUiTheme(e) {
   const modalContainer = document.getElementById('modalContainer');
   if (!modalContainer.dataset.lastModalId?.endsWith('createPartyModal'))
     setUiTheme(e.target.dataset.uiTheme);
-  else {
+  else
     setPartyTheme(e.target.dataset.uiTheme);
-    setModalUiTheme(e.target.dataset.uiTheme, true);
-  }
+  setModalUiTheme(e.target.dataset.uiTheme, true);
 }
 
 function handleSaveFileUpload(evt) {
