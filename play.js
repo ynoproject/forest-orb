@@ -829,7 +829,7 @@ function onSelectUiTheme(e) {
     setUiTheme(e.target.dataset.uiTheme);
   else
     setPartyTheme(e.target.dataset.uiTheme);
-  setModalUiTheme(e.target.dataset.uiTheme, true);
+  setModalUiTheme(e.target.dataset.uiTheme === 'auto' ? systemName : e.target.dataset.uiTheme, true);
 }
 
 function handleSaveFileUpload(evt) {

@@ -3,6 +3,9 @@ let toastAnimEndTimer;
 let fadeToastQueue = [];
 
 const notificationTypes = {
+  client: [
+    'floodDetected'
+  ],
   parties: [
     'create',
     'update',
@@ -181,6 +184,13 @@ function showToastMessage(message, icon) {
         setTimeout(fadeToastFunc, 10000);
     }, 500);
   }, 10);
+}
+
+// EXTERNAL
+function showClientToastMessage(key, icon) {
+  if (!globalConfig.notifications.client.all || !globalConfig.notifications.client[key])
+    return;
+  showToastMessage(localizedMessages.toast.client[key], icon);
 }
 
 document.addEventListener('visibilitychange', () => {

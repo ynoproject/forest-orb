@@ -118,6 +118,12 @@
               "topRight": "Top Right"
             }
           },
+          "client": {
+            "label": "System",
+            "fields": {
+              "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
           "parties": {
             "label": "Parties",
             "fields": {
@@ -269,6 +275,9 @@
       }
     },
     "toast": {
+      "client": {
+        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
       "parties": {
         "create": "{PARTY} has been created.",
         "update": "{PARTY} has been updated.",

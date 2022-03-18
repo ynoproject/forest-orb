@@ -118,6 +118,12 @@
               "topRight": "右上角"
             }
           },
+          "client": {
+            "label": "System",
+            "fields": {
+              "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
           "parties": {
             "label": "组队列表",
             "fields": {
@@ -269,6 +275,9 @@
       }
     },
     "toast": {
+      "client": {
+        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
         "update": "{PARTY} 队伍编辑成功。",

@@ -118,6 +118,12 @@
               "topRight": "右上"
             }
           },
+          "client": {
+            "label": "システム",
+            "fields": {
+              "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
           "parties": {
             "label": "パーティー 通知",
             "fields": {
@@ -269,6 +275,9 @@
       }
     },
     "toast": {
+      "client": {
+        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
       "parties": {
         "create": "{PARTY}が 作成されました。",
         "update": "{PARTY}が 更新されました。",
