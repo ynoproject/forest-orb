@@ -23,7 +23,7 @@ function getPlayerName(player, includeRank, asHtml) {
 
     const nameText = document.createElement('span');
     nameText.classList.add('nameText');
-    nameText.innerHTML = playerName.replace(/ /g, '&nbsp;');
+    nameText.innerText = playerName;
 
     nameTextContainer.appendChild(nameText);
 

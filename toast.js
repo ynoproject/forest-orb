@@ -156,7 +156,7 @@ function showToastMessage(message, icon, systemName, persist) {
   if (systemName)
     toastMessage.setAttribute('style', `background-image: var(--base-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${systemName}));`);
 
-  toastMessage.innerHTML = getMassagedLabel(message, true);
+  toastMessage.innerHTML = message;
 
   toastMessageContainer.appendChild(toastMessage);
   toast.appendChild(toastMessageContainer);
@@ -207,7 +207,7 @@ function showToastMessage(message, icon, systemName, persist) {
 function showClientToastMessage(key, icon) {
   if (!globalConfig.notifications.client.all || !globalConfig.notifications.client[key])
     return;
-  showToastMessage(localizedMessages.toast.client[key], icon, null, true);
+  showToastMessage(getMassagedLabel(localizedMessages.toast.client[key], true), icon, null, true);
 }
 
 document.addEventListener('visibilitychange', () => {
