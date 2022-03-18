@@ -10,6 +10,52 @@ let globalPlayerData = {};
 let spriteData = {};
 let playerSpriteCache = {};
 
+function getPlayerName(player, includeRank, asHtml) {
+  const isPlayerObj = typeof player === 'object';
+  let playerName = isPlayerObj ? player?.name : player;
+  const unnamed = !playerName;
+  if (unnamed)
+    playerName = localizedMessages.playerList.unnamed;
+
+  if (asHtml && isPlayerObj) {
+    const nameTextContainer = document.createElement('div');
+    nameTextContainer.classList.add('nameTextContainer');
+
+    const nameText = document.createElement('span');
+    nameText.classList.add('nameText');
+    nameText.innerText = playerName.replace(/ /g, '&nbsp;');
+
+    nameTextContainer.appendChild(nameText);
+
+    let rankIcon = null;
+
+    if (player.rank) {
+      const rank = Math.min(player.rank, 2);
+      rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
+      rankIcon.classList.add('rankIcon');
+      rankIcon.title = localizedMessages.roles[rank === 1 ? 'mod' : 'dev'];
+      nameTextContainer.appendChild(rankIcon);
+    }
+    
+    if (player.systemName) {
+      let systemName = player.systemName.replace(/'/g, '');
+      if (unnamed || gameUiThemes.indexOf(systemName) === -1)
+        systemName = getDefaultUiTheme();
+      const parsedSystemName = systemName.replace(' ', '_');
+      nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+      if (rankIcon)
+        rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+    }
+
+    return nameTextContainer.outerHTML;
+  }
+  
+  if (includeRank && isPlayerObj && player.rank)
+    playerName += roleEmojis[player.rank === 1 ? 'mod' : 'dev'];
+  
+  return playerName;
+}
+
 function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation) {
   if (!playerList)
     playerList = document.getElementById('playerList');
@@ -87,7 +133,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
-    nameText.innerText = name || localizedMessages.playerList.unnamed;
+    nameText.innerText = getPlayerName(name);
     if (name)
       delete playerListEntry.dataset.unnamed;
     else
@@ -100,7 +146,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
       rankIcon.classList.add('rankIcon');
-      rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      rankIcon.title = localizedMessages.roles[rank === 1 ? 'mod' : 'dev'];
       nameText.parentElement.appendChild(rankIcon);
     }
   }
@@ -160,10 +206,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
         nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
         if (rankIcon || playerListEntryActionContainer.childElementCount || showLocation) {
-          if (rankIcon) {
-            rankIcon.querySelector('path').style.fill = `var(--svg-base-gradient-${parsedSystemName})`;
-            rankIcon.querySelector('path').style.filter = `var(--svg-shadow-${parsedSystemName})`;
-          }
+          if (rankIcon)
+            rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           for (let iconPath of playerListEntryActionContainer.querySelectorAll('path'))
             iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           if (showLocation)

@@ -962,12 +962,16 @@ body.fullBg #background {
   width: 100%;
 }
 
-.listEntry .nameTextContainer .icon {
+.nameTextContainer .icon {
   display: inline-block;
   vertical-align: text-top;
   width: 12px;
   height: 12px;
   margin: 0 2px;
+}
+
+.nameText {
+  image-rendering: auto;
 }
 
 .listEntry .nameText {
@@ -1614,6 +1618,10 @@ form .uiTheme {
 .toast .toastMessage {
   display: inline;
   image-rendering: auto;
+}
+
+.toastMessage .nameTextContainer {
+  display: inline;
 }
 
 .toast .closeToast {

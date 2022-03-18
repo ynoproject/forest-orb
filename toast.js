@@ -126,15 +126,25 @@ function setNotificationScreenPosition(value) {
   }
 }
 
-function showToastMessage(message, icon) {
+function showToastMessage(message, icon, systemName, persist) {
   if (!globalConfig.notifications.all)
     return;
+
+  if (systemName) {
+    if (gameUiThemes.indexOf(systemName) === -1)
+      systemName = getDefaultUiTheme();
+    systemName = systemName.replace(' ', '_')
+  }
     
   const toast = document.createElement('div');
   toast.classList.add('toast');
+  if (systemName)
+    toast.setAttribute('style', `background-image: var(--container-bg-image-url-${systemName}) !important; border-image: var(--border-image-url-${systemName}) 8 repeat !important;`)
 
   if (icon) {
     const toastIcon = getSvgIcon(icon, true);
+    if (systemName)
+      toastIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${systemName}); filter: var(--svg-shadow-${systemName});`);
     toast.appendChild(toastIcon);
   }
 
@@ -143,6 +153,8 @@ function showToastMessage(message, icon) {
 
   const toastMessage = document.createElement('div');
   toastMessage.classList.add('toastMessage');
+  if (systemName)
+    toastMessage.setAttribute('style', `background-image: var(--base-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${systemName}));`);
 
   toastMessage.innerHTML = getMassagedLabel(message, true);
 
@@ -151,9 +163,12 @@ function showToastMessage(message, icon) {
 
   const closeButton = document.createElement('a');
   closeButton.classList.add('closeToast');
+  if (systemName)
+    closeButton.setAttribute('style', `background-image: var(--alt-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${systemName}));`);
   closeButton.innerText = '✖';
   closeButton.href = 'javascript:void(0);';
   closeButton.onclick = () => toast.remove();
+
   toast.appendChild(closeButton);
 
   const toastContainer = document.getElementById('toastContainer');
@@ -174,14 +189,16 @@ function showToastMessage(message, icon) {
     toastAnimEndTimer = setTimeout(() => {
       toastContainer.classList.remove('anim');
       toastAnimEndTimer = null;
-      const fadeToastFunc = () => {
-        toast.classList.add('fade');
-        setTimeout(() => toast.remove(), 1000);
-      };
-      if (document.hidden)
-        fadeToastQueue.push(fadeToastFunc);
-      else
-        setTimeout(fadeToastFunc, 10000);
+      if (!persist) {
+        const fadeToastFunc = () => {
+          toast.classList.add('fade');
+          setTimeout(() => toast.remove(), 1000);
+        };
+        if (document.hidden)
+          fadeToastQueue.push(fadeToastFunc);
+        else
+          setTimeout(fadeToastFunc, 10000);
+      }
     }, 500);
   }, 10);
 }
@@ -190,7 +207,7 @@ function showToastMessage(message, icon) {
 function showClientToastMessage(key, icon) {
   if (!globalConfig.notifications.client.all || !globalConfig.notifications.client[key])
     return;
-  showToastMessage(localizedMessages.toast.client[key], icon);
+  showToastMessage(localizedMessages.toast.client[key], icon, null, true);
 }
 
 document.addEventListener('visibilitychange', () => {

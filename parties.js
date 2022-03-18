@@ -112,12 +112,48 @@ function initPartyControls() {
   };
 }
 
-function getPartyName(party) {
+function getPartyName(party, asHtml) {
   if (!party)
     return null;
+    
   const isPartyObj = typeof party === 'object';
-  const ownerName = isPartyObj ? party.members.find(m => m.uuid === party.ownerUuid)?.name || localizedMessages.playerList.unnamed : null;
-  return (isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName);
+  const ownerName = isPartyObj ? getPartyMemberName(party, party.ownerUuid) : null;
+  const partyName = ((isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName));
+  
+  if (asHtml)
+    return partyName.replace(/ /g, '&nbsp;');
+
+  return partyName;
+}
+
+function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
+  if (typeof partyMember === 'string')
+    partyMember = party ? party.members.find(m => m.uuid === partyMember) : null;
+
+  let partyMemberName = getPlayerName(partyMember, includeRoles, asHtml);
+
+  if (asHtml) {
+    const html = document.createElement('div');
+    html.innerHTML = partyMemberName;
+
+    const partyOwnerIcon = getSvgIcon('partyOwner', true);
+    partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+    
+    if (party.systemName) {
+      let partySystemName = party.systemName;
+      if (gameUiThemes.indexOf(partySystemName) === -1)
+        partySystemName = getDefaultUiTheme();
+      const parsedPartySystemName = partySystemName.replace(' ', '_');
+      partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+    }
+    
+    html.children[0].appendChild(partyOwnerIcon);
+    return html.innerHTML;
+  }
+
+  if (includeRoles && party && party.ownerUuid === partyMember?.uuid)
+    partyMemberName += roleEmojis.partyOwner;
+  return partyMemberName;
 }
 
 function setJoinedPartyId(partyId) {
@@ -511,11 +547,7 @@ function addOrUpdatePartyListEntry(party) {
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];
 
-  partyListEntrySprite.title = ownerMember.name || localizedMessages.playerList.unnamed;
-
-  if (ownerMember.rank)
-    partyListEntrySprite.title += roleEmojis[ownerMember.rank === 1 ? 'mod' : 'dev'];
-  partyListEntrySprite.title += roleEmojis.partyOwner;
+  partyListEntrySprite.title = getPartyMemberName(party, ownerMember, true);
 
   if (!ownerMember.online) {
     partyListEntrySprite.classList.add('offline');
@@ -552,9 +584,7 @@ function addOrUpdatePartyListEntry(party) {
         const spriteImgIcon = document.createElement('img');
         spriteImgIcon.classList.add('partyListEntrySprite');
         spriteImgIcon.classList.add('listEntrySprite');
-        spriteImgIcon.title = member.name || localizedMessages.playerList.unnamed;
-        if (member.rank)
-          spriteImgIcon.title += roleEmojis[member.rank === 1 ? 'mod' : 'dev'];
+        spriteImgIcon.title = getPartyMemberName(party, member, true);
         if (!member.online) {
           spriteImgIcon.classList.add('offline');
           spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
@@ -755,8 +785,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 function showPartyToastMessage(key, icon, party, playerUuid) {
   if (!globalConfig.notifications.parties.all || !globalConfig.notifications.parties[key])
     return;
-  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party)?.replace(/ /g, '&nbsp;'));
+  let message = localizedMessages.toast.parties[key].replace('{PARTY}', getPartyName(party, true));
   if (playerUuid)
-    message = message.replace('{PLAYER}', (party?.members.find(m => m.uuid === playerUuid)?.name || localizedMessages.playerList.unnamed).replace(/ /g, '&nbsp;'));
-  showToastMessage(message, icon);
+    message = message.replace('{PLAYER}', getPartyMemberName(party, playerUuid, true, true));
+  showToastMessage(message, icon, party?.systemName);
 }

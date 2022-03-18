@@ -70,21 +70,15 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     if (party) {
       partyIcon = getSvgIcon("party", true);
-      if (joinedPartyCache) {
-        if (joinedPartyCache.name)
-          partyIcon.title = joinedPartyCache.name;
-        else {
-          const ownerMember = joinedPartyCache.members.find(m => m.uuid === joinedPartyCache.ownerUuid);
-          partyIcon.title = localizedMessages.parties.defaultPartyName.replace("{OWNER}", ownerMember?.name || localizedMessages.playerList.unnamed);
-        }
-      }
+      if (joinedPartyCache)
+        partyIcon.title = getPartyName(joinedPartyCache);
       message.appendChild(partyIcon);
     }
 
     const name = document.createElement("span");
     name.classList.add("nameText");
 
-    name.innerText = player?.name || localizedMessages.playerList.unnamed; // Shouldn't be null but add a fallback anyway
+    name.innerText = getPlayerName(player);
     const nameBeginMarker = document.createElement("span");
     nameBeginMarker.classList.add("nameMarker");
     nameBeginMarker.textContent = "<";
