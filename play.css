@@ -908,7 +908,7 @@ body.fullBg #background {
   vertical-align: top;
 }
 
-.message {
+.message, .toastMessage {
   word-break: break-word;
   image-rendering: auto;
 }
@@ -1611,13 +1611,12 @@ form .uiTheme {
   margin: 4px 8px 4px 0;
 }
 
-.toast .toastMessageContainer {
+.toastMessageContainer {
   width: 100%;
 }
 
-.toast .toastMessage {
+.toastMessage {
   display: inline;
-  image-rendering: auto;
 }
 
 .toastMessage .nameTextContainer {
