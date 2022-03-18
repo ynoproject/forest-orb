@@ -133,22 +133,26 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
   let partyMemberName = getPlayerName(partyMember, includeRoles, asHtml);
 
   if (asHtml) {
-    const html = document.createElement('div');
-    html.innerHTML = partyMemberName;
+    if (partyMember.uuid === party.ownerUuid) {
+      const html = document.createElement('div');
+      html.innerHTML = partyMemberName;
 
-    const partyOwnerIcon = getSvgIcon('partyOwner', true);
-    partyOwnerIcon.title = localizedMessages.parties.partyOwner;
-    
-    if (party.systemName) {
-      let partySystemName = party.systemName;
-      if (gameUiThemes.indexOf(partySystemName) === -1)
-        partySystemName = getDefaultUiTheme();
-      const parsedPartySystemName = partySystemName.replace(' ', '_');
-      partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+      const partyOwnerIcon = getSvgIcon('partyOwner', true);
+      partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+      
+      if (party.systemName) {
+        let partySystemName = party.systemName;
+        if (gameUiThemes.indexOf(partySystemName) === -1)
+          partySystemName = getDefaultUiTheme();
+        const parsedPartySystemName = partySystemName.replace(' ', '_');
+        partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+      }
+      
+      html.children[0].appendChild(partyOwnerIcon);
+      return html.innerHTML;
     }
     
-    html.children[0].appendChild(partyOwnerIcon);
-    return html.innerHTML;
+    return partyMemberName;
   }
 
   if (includeRoles && party && party.ownerUuid === partyMember?.uuid)
