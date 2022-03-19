@@ -367,7 +367,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
 
 async function getSpriteImg(sprite, idx, favicon, dir) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     const spriteData = favicon ? faviconCache : spriteCache;
     if (!spriteData[sprite])
       spriteData[sprite] = {};
@@ -377,7 +377,7 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     if (spriteUrl)
       resolve(spriteUrl);
     if (!sprite || idx === -1)
-      reject(null);
+      resolve(null);
     const img = new Image();
     img.onload = function () {
       const canvas = document.createElement('canvas');
@@ -418,11 +418,11 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url)).catch(_err => resolve(null));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
-        reject(null);
+        resolve(null);
       };
     }
 
