@@ -131,7 +131,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (!playerSpriteCacheEntry && uuid !== defaultUuid)
     playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
   if (playerSpriteCacheEntry) {
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
+    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => playerListEntrySprite.src = spriteImg);
     if (uuid === defaultUuid)
       addOrUpdateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
   }
@@ -252,13 +252,11 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
-  const callback = spriteImg => {
+  playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
+  getSpriteImg(sprite, idx).then(spriteImg => {
     if (playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
-  };
-
-  playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
-  getSpriteImg(sprite, idx, callback);
+  });
 
   if (uuid === defaultUuid)
     addOrUpdateFaviconSprite(sprite, idx);
@@ -367,70 +365,73 @@ function getPlayerListIdEntrySortFunc(playerListId) {
   return null;
 }
 
-function getSpriteImg(sprite, idx, callback, favicon, dir) {
-  const spriteData = favicon ? faviconCache : spriteCache;
-  if (!spriteData[sprite])
-    spriteData[sprite] = {};
-  if (!spriteData[sprite][idx])
-    spriteData[sprite][idx] = null;
-  let spriteUrl = spriteData[sprite][idx];
-  if (spriteUrl)
-    return callback(spriteUrl);
-  if (!sprite || idx === -1)
-    return null;
-  const img = new Image();
-  img.onload = function () {
-    const canvas = document.createElement('canvas');
-    canvas.width = 24;
-    canvas.height = 32;
-    const context = canvas.getContext('2d');
-    const startX = (idx % 4) * 72 + 24;
-    const startY = (idx >> 2) * 128 + 64;
-    context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
-    const transPixel = context.getImageData(0, 0, 1, 1).data;
-    const imageData = context.getImageData(0, 0, 24, 32);
-    const data = imageData.data;
-    let yOffset = -1;
-    for (let i = 0; i < data.length; i += 4) {
-      if (data[i] === transPixel[0] && data[i + 1] === transPixel[1] && data[i + 2] === transPixel[2])
-        data[i + 3] = 0;
-      else if (yOffset === -1)
-        yOffset = Math.max(Math.min(i >> 7, 15), 3);
-    }
-    if (yOffset === -1)
-      yOffset = 0;
-    canvas.width = favicon ? 16 : 20;
-    canvas.height = 16;
-    context.putImageData(imageData, favicon ? -4 : -2, yOffset * -1, favicon ? 4 : 2, 0, 20, 32);
-    canvas.toBlob(function (blob) {
-      const blobImg = document.createElement('img');
-      const url = URL.createObjectURL(blob);
-    
-      blobImg.onload = function () {
-        URL.revokeObjectURL(url);
+async function getSpriteImg(sprite, idx, favicon, dir) {
+  const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
+  return new Promise((resolve, reject) => {
+    const spriteData = favicon ? faviconCache : spriteCache;
+    if (!spriteData[sprite])
+      spriteData[sprite] = {};
+    if (!spriteData[sprite][idx])
+      spriteData[sprite][idx] = null;
+    let spriteUrl = spriteData[sprite][idx];
+    if (spriteUrl)
+      resolve(spriteUrl);
+    if (!sprite || idx === -1)
+      reject(null);
+    const img = new Image();
+    img.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = 24;
+      canvas.height = 32;
+      const context = canvas.getContext('2d');
+      const startX = (idx % 4) * 72 + 24;
+      const startY = (idx >> 2) * 128 + 64;
+      context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
+      const imageData = context.getImageData(0, 0, 24, 32);
+      const data = imageData.data;
+      const transPixel = data.slice(0, 3);
+      let yOffset = -1;
+      const checkPixelTransparent = isBrave
+        ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
+        : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
+      for (let i = 0; i < data.length; i += 4) {
+        if (checkPixelTransparent(i))
+          data[i + 3] = 0;
+        else if (yOffset === -1)
+          yOffset = Math.max(Math.min(i >> 7, 15), 3);
+      }
+      if (yOffset === -1)
+        yOffset = 0;
+      canvas.width = favicon ? 16 : 20;
+      canvas.height = 16;
+      context.putImageData(imageData, favicon ? -4 : -2, yOffset * -1, favicon ? 4 : 2, 0, 20, 32);
+      canvas.toBlob(blob => {
+        const blobImg = document.createElement('img');
+        const url = URL.createObjectURL(blob);
+      
+        blobImg.onload = () => URL.revokeObjectURL(url);
+      
+        spriteData[sprite][idx] = url;
+        canvas.remove();
+        resolve(url);
+      });
+    };
+    if (!dir) {
+      dir = `../data/${gameId}/CharSet/`;
+      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+    } else {
+      img.onerror = () => {
+        console.error(`Charset '${sprite}' not found`);
+        reject(null);
       };
-    
-      spriteData[sprite][idx] = url;
-      canvas.remove();
-      callback(url);
-    });
-  };
-  if (!dir) {
-    dir = `../data/${gameId}/CharSet/`;
-    img.onerror = function () {
-      getSpriteImg(sprite, idx, callback, favicon, `images/charsets/${gameId}/`);
-    };
-  } else {
-    img.onerror = function () {
-      console.error(`Charset '${sprite}' not found`);
-    };
-  }
+    }
 
-  img.src = `${dir}${sprite}.png`;
+    img.src = `${dir}${sprite}.png`;
+  });
 }
 
 function addOrUpdateFaviconSprite(sprite, idx) {
-  getSpriteImg(sprite, idx, faviconImg => {
+  getSpriteImg(sprite, idx, true).then(faviconImg => {
     let faviconLink = document.getElementById('favicon');
     if (!faviconLink) {
       faviconLink = document.createElement('link');
@@ -440,7 +441,7 @@ function addOrUpdateFaviconSprite(sprite, idx) {
       document.head.appendChild(faviconLink);
     }
     faviconLink.href = faviconImg;
-  }, true);
+  });
 }
 
 // EXTERNAL
