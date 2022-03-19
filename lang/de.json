@@ -101,7 +101,8 @@
           },
           "toggleNametags": "Namen an/aus",
           "togglePlayerSounds": "Player Sounds",
-          "tabToChat": "Press Tab to Chat"
+          "toggleTabToChat": "Press Tab to Chat",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Notification Settings"
       },

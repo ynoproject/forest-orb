@@ -1537,7 +1537,7 @@ form .uiTheme {
   opacity: 0.5;
 }
 
-#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
 

@@ -112,16 +112,13 @@ function initPartyControls() {
   };
 }
 
-function getPartyName(party, asHtml) {
+function getPartyName(party) {
   if (!party)
     return null;
     
   const isPartyObj = typeof party === 'object';
   const ownerName = isPartyObj ? getPartyMemberName(party, party.ownerUuid) : null;
   const partyName = ((isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName));
-  
-  if (asHtml)
-    return partyName.replace(/ /g, '&nbsp;');
 
   return partyName;
 }
@@ -789,7 +786,7 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 function showPartyToastMessage(key, icon, party, playerUuid) {
   if (!globalConfig.notifications.parties.all || !globalConfig.notifications.parties[key])
     return;
-  let message = getMassagedLabel(localizedMessages.toast.parties[key], true).replace('{PARTY}', getPartyName(party, true));
+  let message = getMassagedLabel(localizedMessages.toast.parties[key], true).replace('{PARTY}', getPartyName(party));
   if (playerUuid)
     message = message.replace('{PLAYER}', getPartyMemberName(party, playerUuid, true, true));
   showToastMessage(message, icon, party?.systemName);

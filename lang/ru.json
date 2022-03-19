@@ -101,7 +101,8 @@
           },
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
-          "tabToChat": "Переключение в Чат Tab-у"
+          "toggleTabToChat": "Переключение в Чат Tab-у",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Notification Settings"
       },

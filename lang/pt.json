@@ -101,7 +101,8 @@
           },
           "toggleNametags": "Alternar nome dos jogadores",
           "togglePlayerSounds": "Alternar áudio dos jogadores",
-          "tabToChat": "Pressione Tab Para o Chat"
+          "toggleTabToChat": "Pressione Tab Para o Chat",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Notification Settings"
       },

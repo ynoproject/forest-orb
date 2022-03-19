@@ -101,7 +101,8 @@
           },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
-          "tabToChat": "Presiona Tab para chatear"
+          "toggleTabToChat": "Presiona Tab para chatear",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Configuración de Notificaciones"
       },

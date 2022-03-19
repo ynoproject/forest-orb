@@ -31,6 +31,7 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
+  disableFloodProtection: false,
   notifications: {
     all: true,
     screenPosition: 'bottomLeft'
@@ -224,6 +225,7 @@ function onReceiveInputFeedback(inputId) {
   if (inputId) {
     let buttonElement;
     let configKey;
+    let isGlobal;
     switch (inputId) {
       case 1:
         buttonElement = document.getElementById('singlePlayerButton');
@@ -242,11 +244,19 @@ function onReceiveInputFeedback(inputId) {
         buttonElement = document.getElementById('ownGlobalMessageLocationButton');
         configKey = 'hideOwnGlobalMessageLocation';
         break;
+      case 5:
+        buttonElement = document.getElementById('floodProtectionButton');
+        configKey = 'disableFloodProtection';
+        isGlobal = true;
+        break;
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
-      config[configKey] = buttonElement.classList.contains('toggled');
-      updateConfig(config);
+      if (isGlobal)
+        globalConfig[configKey] = buttonElement.classList.contains('toggled');
+      else
+        config[configKey] = buttonElement.classList.contains('toggled');
+      updateConfig(isGlobal ? globalConfig : config, isGlobal);
     }
   }
 }
@@ -487,6 +497,11 @@ document.getElementById('tabToChatButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.tabToChat = !this.classList.contains('toggled');
   updateConfig(globalConfig, true);
+};
+
+document.getElementById('floodProtectionButton').onclick = () => {
+  if (Module.INITIALIZED)
+    Module._ToggleFloodDefender();
 };
 
 initNotificationsConfigAndControls();
@@ -1278,6 +1293,10 @@ function loadOrInitConfig(configObj, global) {
               case 'tabToChat':
                 if (!value)
                   document.getElementById('tabToChatButton').click();
+                break;
+              case 'disableFloodProtection':
+                if (value)
+                  preToggle(document.getElementById('floodProtectionButton'));
                 break;
               case 'notifications':
                 if (typeof value === 'object') {

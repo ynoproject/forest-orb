@@ -101,7 +101,8 @@
           },
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
-          "tabToChat": "开启/关闭Tab键聊天切换"
+          "toggleTabToChat": "开启/关闭Tab键聊天切换",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "弹框通知信息设置"
       },

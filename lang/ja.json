@@ -101,7 +101,8 @@
           },
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
-          "tabToChat": "タブキーを 押して チャット"
+          "toggleTabToChat": "タブキーを 押して チャット",
+          "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "通知 設定"
       },
