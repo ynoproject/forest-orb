@@ -7,7 +7,8 @@ const defaultUuid = '0000000000000000';
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
-let spriteData = {};
+let spriteCache = {};
+let faviconCache = {};
 let playerSpriteCache = {};
 
 function getPlayerName(player, includeRank, asHtml) {
@@ -129,8 +130,11 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   let playerSpriteCacheEntry = playerSpriteCache[uuid];
   if (!playerSpriteCacheEntry && uuid !== defaultUuid)
     playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
-  if (playerSpriteCacheEntry)
+  if (playerSpriteCacheEntry) {
     getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, spriteImg => playerListEntrySprite.src = spriteImg);
+    if (uuid === defaultUuid)
+      addOrUpdateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
+  }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
     nameText.innerText = getPlayerName(name);
@@ -248,13 +252,16 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
-  const callback = function (spriteImg) {
+  const callback = spriteImg => {
     if (playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
   };
 
   playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
   getSpriteImg(sprite, idx, callback);
+
+  if (uuid === defaultUuid)
+    addOrUpdateFaviconSprite(sprite, idx);
 }
 
 function removePlayerListEntry(playerList, uuid) {
@@ -360,7 +367,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
   return null;
 }
 
-function getSpriteImg(sprite, idx, callback, dir) {
+function getSpriteImg(sprite, idx, callback, favicon, dir) {
+  const spriteData = favicon ? faviconCache : spriteCache;
   if (!spriteData[sprite])
     spriteData[sprite] = {};
   if (!spriteData[sprite][idx])
@@ -391,9 +399,9 @@ function getSpriteImg(sprite, idx, callback, dir) {
     }
     if (yOffset === -1)
       yOffset = 0;
-    canvas.width = 20;
+    canvas.width = favicon ? 16 : 20;
     canvas.height = 16;
-    context.putImageData(imageData, -2, yOffset * -1, 2, 0, 20, 32);
+    context.putImageData(imageData, favicon ? -4 : -2, yOffset * -1, favicon ? 4 : 2, 0, 20, 32);
     canvas.toBlob(function (blob) {
       const blobImg = document.createElement('img');
       const url = URL.createObjectURL(blob);
@@ -410,7 +418,7 @@ function getSpriteImg(sprite, idx, callback, dir) {
   if (!dir) {
     dir = `../data/${gameId}/CharSet/`;
     img.onerror = function () {
-      getSpriteImg(sprite, idx, callback, `images/charsets/${gameId}/`);
+      getSpriteImg(sprite, idx, callback, favicon, `images/charsets/${gameId}/`);
     };
   } else {
     img.onerror = function () {
@@ -419,6 +427,20 @@ function getSpriteImg(sprite, idx, callback, dir) {
   }
 
   img.src = `${dir}${sprite}.png`;
+}
+
+function addOrUpdateFaviconSprite(sprite, idx) {
+  getSpriteImg(sprite, idx, faviconImg => {
+    let faviconLink = document.getElementById('favicon');
+    if (!faviconLink) {
+      faviconLink = document.createElement('link');
+      faviconLink.id = 'favicon';
+      faviconLink.rel = 'shortcut icon';
+      faviconLink.type = 'image/x-icon';
+      document.head.appendChild(faviconLink);
+    }
+    faviconLink.href = faviconImg;
+  }, true);
 }
 
 // EXTERNAL

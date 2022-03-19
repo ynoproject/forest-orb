@@ -309,10 +309,11 @@ function openModal(modalId, theme, lastModalId, modalData) {
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId)
     activeModal.classList.add('hidden');
-    
-  setModalUiTheme(theme || (config.uiTheme === 'auto' ? systemName : config.uiTheme));
+
+  setModalUiTheme(modalId, theme || (config.uiTheme === 'auto' ? systemName : config.uiTheme));
 
   const modal = document.getElementById(modalId);
+
   if (modalData) {
     for (let k of Object.keys(modalData))
       modal.dataset[k] = modalData[k];
@@ -844,7 +845,7 @@ function onSelectUiTheme(e) {
     setUiTheme(e.target.dataset.uiTheme);
   else
     setPartyTheme(e.target.dataset.uiTheme);
-  setModalUiTheme(e.target.dataset.uiTheme === 'auto' ? systemName : e.target.dataset.uiTheme, true);
+  setModalUiTheme(null, e.target.dataset.uiTheme === 'auto' ? systemName : e.target.dataset.uiTheme, true);
 }
 
 function handleSaveFileUpload(evt) {

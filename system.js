@@ -189,11 +189,8 @@ function setUiTheme(value, isInit) {
     newSelectedTheme.parentElement.classList.add('selected');
   const useFullBg = gameFullBgUiThemes.indexOf(uiTheme) > -1;
   const containers = document.querySelectorAll('.container');
-  const modals = document.querySelectorAll('.modal');
   for (let container of containers)
     container.classList.toggle('fullBg', useFullBg);
-  for (let modal of modals)
-    modal.classList.toggle('fullBg', useFullBg);
   document.getElementById('header').classList.toggle('fullBg', useFullBg);
   document.querySelector('body').classList.toggle('fullBg', useFullBg);
   if (isInit)
@@ -342,12 +339,16 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
   });
 }
 
-function setModalUiTheme(uiTheme, setData) {
+function setModalUiTheme(modalId, uiTheme, setData) {
   const rootStyle = document.documentElement.style;
   const styleProps = [ 'base-color', 'alt-color', 'base-bg-color', 'shadow-color', 'base-gradient', 'alt-gradient', 'base-gradient-b', 'alt-gradient-b', 'svg-base-gradient', 'svg-alt-gradient', 'svg-shadow', 'base-color-image-url', 'container-bg-image-url', 'border-image-url' ];
   const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
   for (let prop of styleProps)
     rootStyle.setProperty(`--modal-${prop}`, `var(--${prop}${propThemeSuffix})`);
+
+  const modal = modalId ? document.getElementById(modalId) : document.querySelector('.modal:not(.hidden)');
+  if (modal)
+    modal.classList.toggle('fullBg', gameFullBgUiThemes.indexOf(uiTheme) > -1);
 
   if (setData) {
     const modalContainer = document.getElementById('modalContainer');
