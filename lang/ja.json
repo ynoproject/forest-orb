@@ -102,7 +102,7 @@
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleTabToChat": "タブキーを 押して チャット",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleFloodProtection": "スパム対策"
         },
         "notificationSettings": "通知 設定"
       },
@@ -122,7 +122,7 @@
           "client": {
             "label": "システム",
             "fields": {
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "スパム検知"
             }
           },
           "parties": {
@@ -277,7 +277,7 @@
     },
     "toast": {
       "client": {
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
