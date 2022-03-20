@@ -1467,6 +1467,7 @@ loadOrInitCache();
 fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
 
+initDefaultSprites();
 fetchAndPopulateYnomojiConfig();
 
 if (!loadedUiTheme)

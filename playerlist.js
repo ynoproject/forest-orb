@@ -1,3 +1,15 @@
+
+const gameDefaultSprite = {
+  'yume': '0000000078',
+  '2kki': 'syujinkou1',
+  'flow': 'sabituki',
+  'prayers': 'Flourette',
+  'deepdreams': 'main',
+  'someday': 'itsuki1',
+  'amillusion': { sprite: 'parapluie ', idx: 1 },
+  'unevendream': 'kubo',
+  'braingirl': 'mikan2'
+}[gameId];
 const roleEmojis = {
   mod: '🛡️',
   dev: '🔧',
@@ -136,7 +148,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         playerListEntrySprite.src = spriteImg
     });
     if (uuid === defaultUuid)
-      addOrUpdateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
+      updateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
@@ -262,7 +274,7 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   });
 
   if (uuid === defaultUuid)
-    addOrUpdateFaviconSprite(sprite, idx);
+    updateFaviconSprite(sprite, idx);
 }
 
 function removePlayerListEntry(playerList, uuid) {
@@ -379,8 +391,17 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     const spriteUrl = spriteData[sprite][idx];
     if (spriteUrl)
       return resolve(spriteUrl);
+    const defaultSpriteObj = getDefaultSprite();
+    const defaultSprite = defaultSpriteObj.sprite;
+    const defaultIdx = defaultSpriteObj.idx;
+    const getDefaultSpriteImg = new Promise(resolve => {
+      if (sprite !== defaultSprite || idx !== defaultIdx)
+        getSpriteImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
+      else
+        resolve(null);
+    });
     if (!sprite || idx === -1)
-      return resolve(null);
+      return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
     img.onload = function () {
       const canvas = document.createElement('canvas');
@@ -421,11 +442,11 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url)).catch(_err => resolve(null));
+      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
-        resolve(null);
+        getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
       };
     }
 
@@ -433,19 +454,28 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
   });
 }
 
-function addOrUpdateFaviconSprite(sprite, idx) {
+function updateFaviconSprite(sprite, idx) {
+  getSpriteImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+}
+
+function getDefaultSprite() {
+  if (typeof gameDefaultSprite === 'object')
+    return gameDefaultSprite;
+  return { sprite: gameDefaultSprite, idx: 0 };
+}
+
+function initDefaultSprites() {
+  const defaultSprite = getDefaultSprite();
+  const sprite = defaultSprite.sprite;
+  const idx = defaultSprite.idx;
+  getSpriteImg(sprite, idx);
   getSpriteImg(sprite, idx, true).then(faviconImg => {
-    if (!faviconImg)
-      return;
-    let faviconLink = document.getElementById('favicon');
-    if (!faviconLink) {
-      faviconLink = document.createElement('link');
-      faviconLink.id = 'favicon';
-      faviconLink.rel = 'shortcut icon';
-      faviconLink.type = 'image/x-icon';
-      document.head.appendChild(faviconLink);
-    }
+    const faviconLink = document.createElement('link');
+    faviconLink.id = 'favicon';
+    faviconLink.rel = 'shortcut icon';
+    faviconLink.type = 'image/x-icon';
     faviconLink.href = faviconImg;
+    document.head.appendChild(faviconLink);
   });
 }
 
