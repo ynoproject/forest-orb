@@ -131,7 +131,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (!playerSpriteCacheEntry && uuid !== defaultUuid)
     playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
   if (playerSpriteCacheEntry) {
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => playerListEntrySprite.src = spriteImg);
+    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+      if (spriteImg)
+        playerListEntrySprite.src = spriteImg
+    });
     if (uuid === defaultUuid)
       addOrUpdateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
   }
@@ -254,7 +257,7 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
 
   playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
   getSpriteImg(sprite, idx).then(spriteImg => {
-    if (playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
+    if (spriteImg !== null && playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
   });
 
@@ -373,11 +376,11 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
       spriteData[sprite] = {};
     if (!spriteData[sprite][idx])
       spriteData[sprite][idx] = null;
-    let spriteUrl = spriteData[sprite][idx];
+    const spriteUrl = spriteData[sprite][idx];
     if (spriteUrl)
-      resolve(spriteUrl);
+      return resolve(spriteUrl);
     if (!sprite || idx === -1)
-      resolve(null);
+      return resolve(null);
     const img = new Image();
     img.onload = function () {
       const canvas = document.createElement('canvas');
@@ -432,6 +435,8 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
 
 function addOrUpdateFaviconSprite(sprite, idx) {
   getSpriteImg(sprite, idx, true).then(faviconImg => {
+    if (!faviconImg)
+      return;
     let faviconLink = document.getElementById('favicon');
     if (!faviconLink) {
       faviconLink = document.createElement('link');
