@@ -102,7 +102,7 @@
           "toggleNametags": "显示/隐藏玩家名称标签",
           "togglePlayerSounds": "开启/关闭其他玩家音效",
           "toggleTabToChat": "开启/关闭Tab键聊天切换",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleFloodProtection": "开启/关闭网络攻击保护"
         },
         "notificationSettings": "弹框通知信息设置"
       },
@@ -120,13 +120,13 @@
             }
           },
           "client": {
-            "label": "System",
+            "label": "系统类信息",
             "fields": {
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "网络攻击行为检测"
             }
           },
           "parties": {
-            "label": "组队列表",
+            "label": "组队类信息",
             "fields": {
               "create": "创建队伍",
               "update": "编辑队伍",
@@ -136,8 +136,8 @@
               "disband": "解散队伍",
               "playerJoin": "玩家加入队伍",
               "playerLeave": "玩家退出队伍",
-              "playerOnline": "在线队员",
-              "playerOffline": "离线队员",
+              "playerOnline": "队员上线",
+              "playerOffline": "队员下线",
               "kickPlayer": "从队伍中移除玩家",
               "transferPartyOwner": "向队员转授领队权限"
             }
@@ -277,7 +277,7 @@
     },
     "toast": {
       "client": {
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "floodDetected": "检测到网络攻击行为，您已被暂时切换至单人模式！"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
