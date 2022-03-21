@@ -981,13 +981,17 @@ body.fullBg #background {
 }
 
 .listEntry .partyNameContainer {
-  display: flex;
   width: 100%;
+}
+
+.listEntry .partyNameContainer .nameText {
+  word-break: break-word;
 }
 
 .listEntry .partyListEntryMemberCount {
   display: flex;
   padding-right: 8px;
+  float: right;
 }
 
 .listEntry .partyListEntryMemberCount .icon {
