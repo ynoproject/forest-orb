@@ -817,6 +817,7 @@ body.fullBg #background {
 .chatboxTabContent, .chatboxTabContent > .divider {
   border-top: 8px solid transparent;
   border-image: var(--border-image-url) 10 repeat !important;
+  overflow-x: hidden;
 }
 
 #content:not(.inParty) .playerList, #content.inParty:not(.partyOwner) .partyList {
@@ -859,6 +860,10 @@ body.fullBg #background {
   border: 1px solid var(--base-color);
 }
 
+.messageContents.notext .spoiler {
+  padding: 5px 0 9px 0;
+}
+
 .messageContents .spoiler:not(.show) {
   background-color: var(--shadow-color);
   cursor: pointer;
@@ -879,6 +884,10 @@ body.fullBg #background {
 .messageContents.notext .ynomojiWrapper {
   width: 32px;
   height: 32px;
+}
+
+.messageContents .spoiler:not(.show) .ynomojiWrapper {
+  opacity: 0;
 }
 
 .playerLocationIcon {
