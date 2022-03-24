@@ -888,6 +888,7 @@ body.fullBg #background {
 
 .messageContents .spoiler:not(.show) .ynomojiWrapper {
   opacity: 0;
+  pointer-events: none;
 }
 
 .playerLocationIcon {
