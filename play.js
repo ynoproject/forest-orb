@@ -878,7 +878,7 @@ function handleSaveFileUpload(evt) {
       const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
       objectStorePutRequest.onsuccess = function (_e) {
-        window.location = window.location;
+        setTimeout(() => window.location = window.location, 100);
       };
     };
 
