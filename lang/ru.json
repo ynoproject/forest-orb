@@ -102,44 +102,44 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleFloodProtection": "Защита от Спама"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "Уведомления"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "Настройка Уведомлений",
         "fields": {
           "toggleNotifications": "Уведомления",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "Положение на Экране",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "Внизу Слева",
+              "bottomRight": "Внизу Справа",
+              "topLeft": "Наверху Слева",
+              "topRight": "Наверху Справа"
             }
           },
           "client": {
-            "label": "System",
+            "label": "Система",
             "fields": {
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "Вероятность спам-атаки"
             }
           },
           "parties": {
             "label": "Группы",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed From Party",
-              "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "create": "Группа Создана",
+              "update": "Группа Изменена",
+              "join": "Присоединение к Группе",
+              "leave": "Уход из Группы",
+              "remove": "Удаление из Группы",
+              "disband": "Роспуск Группы",
+              "playerJoin": "Присоединение Игрока к Группе",
+              "playerLeave": "Уход Игрока из Группы",
+              "playerOnline": "Участник Группы в сети",
+              "playerOffline": "Участник Группы вне сети",
+              "kickPlayer": "Игрок Исключён из Группы",
+              "transferPartyOwner": "Повышение до Лидера Группы"
             }
           }
         }
@@ -277,7 +277,7 @@
     },
     "toast": {
       "client": {
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "floodDetected": "Замечена возможность спам-атаки: Происходит переключение в одиночный режим."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
@@ -288,8 +288,8 @@
         "disband": "Была распущена {PARTY}.",
         "playerJoin": "{PLAYER} Присоединяется к группе.",
         "playerLeave": "{PLAYER} Покидает группу.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
+        "playerOnline": "{PLAYER} в Сети.",
+        "playerOffline": "{PLAYER} вне Сети.",
         "kickPlayer": "{PLAYER} Исключается из группы.",
         "transferPartyOwner": "{PLAYER} Теперь Лидер группы."
       }
