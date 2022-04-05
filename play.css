@@ -838,8 +838,18 @@ body.fullBg #background {
   background-size: 70px;
   background-position-x: -8px;
   background-position-y: -16px;
-  background-image: var(--party-container-bg-image-url) !important;
   border-image: var(--party-border-image-url) 10 repeat !important;
+}
+
+#layout:not(:fullscreen) #chatbox.partyChat #messages, #layout:not(:fullscreen) #chatbox.partyPlayers #partyPlayerList {
+  background-image: var(--party-container-bg-image-url) !important;
+}
+
+/* Ignore :fullscreen on iOS since it's not supported */
+@supports (-webkit-touch-callout: none) {
+  #chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
+    background-image: var(--party-container-bg-image-url) !important;
+  }
 }
 
 .messageContainer {
@@ -1322,7 +1332,7 @@ body.fullBg #background {
   text-decoration: none;
 }
 
-.modal input, .modal select, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
+.modal input, .modal textarea, .modal select, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
   color: var(--modal-base-color) !important;
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
