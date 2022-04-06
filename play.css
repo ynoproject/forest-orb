@@ -1001,11 +1001,12 @@ body.fullBg #background {
 }
 
 .listEntry .partyNameContainer {
+  display: flex;
   width: 100%;
 }
 
 .listEntry .partyNameContainer .nameText {
-  word-break: break-word;
+  height: 18px;
 }
 
 .listEntry .partyListEntryMemberCount {

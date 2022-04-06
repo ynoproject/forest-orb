@@ -132,7 +132,7 @@ function getPartyName(party, includeLock, asHtml) {
         if (gameUiThemes.indexOf(partySystemName) === -1)
           partySystemName = getDefaultUiTheme();
         const parsedPartySystemName = partySystemName.replace(' ', '_');
-        partyLockIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+        partyLockIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName});`);
       }
 
       html.prepend(partyLockIcon);
@@ -541,7 +541,7 @@ function addOrUpdatePartyListEntry(party) {
           openModal('joinPrivatePartyModal', party.systemName, null, { partyId: party.id });
         };
       joinLeaveAction.title = localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`];
-      joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : party.public ? 'join' : 'locked', true));
+      joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : 'join', true));
       partyListEntryActionContainer.prepend(joinLeaveAction);
     }
   } else if (joinLeaveAction)
