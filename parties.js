@@ -112,13 +112,35 @@ function initPartyControls() {
   };
 }
 
-function getPartyName(party) {
+function getPartyName(party, includeLock, asHtml) {
   if (!party)
     return null;
     
   const isPartyObj = typeof party === 'object';
   const ownerName = isPartyObj ? getPartyMemberName(party, party.ownerUuid) : null;
-  const partyName = ((isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName));
+  let partyName = ((isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName));
+
+  if (asHtml) {
+    const html = document.createElement('div');
+    html.innerText = partyName;
+
+    if (includeLock && !party.public) {
+      const partyLockIcon = getSvgIcon('locked', true);
+
+      if (party.systemName) {
+        let partySystemName = party.systemName;
+        if (gameUiThemes.indexOf(partySystemName) === -1)
+          partySystemName = getDefaultUiTheme();
+        const parsedPartySystemName = partySystemName.replace(' ', '_');
+        partyLockIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+      }
+
+      html.prepend(partyLockIcon);
+    }
+
+    return html.innerHTML;
+  } else if (includeLock)
+    partyName = `🔒${partyName}`;
 
   return partyName;
 }
@@ -276,6 +298,8 @@ function updatePartyList(skipNextUpdate) {
             return -1;
           if (partyB.id == joinedPartyId)
             return 1;
+          if (partyA.public !== partyB.public)
+            return partyA.public ? -1 : 1;
           const onlineMemberCountA = partyA.members.filter(m => m.online).length;
           const onlineMemberCountB = partyB.members.filter(m => m.online).length;
           if (onlineMemberCountA !== onlineMemberCountB)
@@ -595,7 +619,7 @@ function addOrUpdatePartyListEntry(party) {
     });
   }
 
-  nameText.innerText = getPartyName(party);
+  nameText.innerHTML = getPartyName(party, true, true);
 
   memberCountText.innerText = party.members.length;
 }
@@ -630,7 +654,7 @@ function initOrUpdatePartyModal(partyId) {
   modalTitle.innerText = getPartyName(party);
 
   if (!party.public)
-    modalTitle.append(getSvgIcon('locked', true));
+    modalTitle.prepend(getSvgIcon('locked', true));
 
   if (isOwnParty) {
     const editButton = getSvgIcon('edit', true);
