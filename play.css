@@ -1551,6 +1551,7 @@ form .uiTheme {
 
 #partyModalDescription {
   display: inline;
+  word-break: break-word;
 }
 
 #partyModalPlayerListContainer {
