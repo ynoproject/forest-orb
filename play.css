@@ -1007,6 +1007,7 @@ body.fullBg #background {
 
 .listEntry .partyNameContainer .nameText {
   height: 18px;
+  word-break: break-all;
 }
 
 .listEntry .partyListEntryMemberCount {

@@ -620,6 +620,7 @@ function addOrUpdatePartyListEntry(party) {
   }
 
   nameText.innerHTML = getPartyName(party, true, true);
+  nameText.title = getPartyName(party, true);
 
   memberCountText.innerText = party.members.length;
 }
