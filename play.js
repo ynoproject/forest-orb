@@ -90,17 +90,12 @@ function onUpdateConnectionStatus(status) {
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
-    if (document.querySelector('#chatboxTabParties.active'))
-      updatePartyList(true);
-    else
-      fetchAndUpdateJoinedPartyId();
     if (!hasConnected) {
       addChatTip();
       hasConnected = true;
     }
     syncPrevLocation();
   } else {
-    setJoinedPartyId(null);
     clearPlayerLists();
     clearPartyList();
   }
@@ -1466,6 +1461,7 @@ loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
+fetchAndUpdateJoinedPartyId();
 
 initDefaultSprites();
 fetchAndPopulateYnomojiConfig();

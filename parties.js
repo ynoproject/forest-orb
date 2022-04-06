@@ -228,9 +228,6 @@ function fetchAndUpdateJoinedPartyId() {
 }
 
 function updatePartyList(skipNextUpdate) {
-  if (connStatus !== 1)
-    return;
-  
   fetch(`${apiUrl}/party?command=list`)
     .then(response => {
       if (!response.ok)
@@ -252,7 +249,7 @@ function updatePartyList(skipNextUpdate) {
       const partyList = document.getElementById('partyList');
       
       if (data.length) {
-        setJoinedPartyId(data.find(p => p.members.map(m => m.uuid).indexOf(playerData.uuid) > -1)?.id);
+        setJoinedPartyId(data.find(p => p.members.map(m => m.uuid).indexOf(playerData?.uuid) > -1)?.id);
         
         for (let party of data) {
           const isInParty = joinedPartyId && party.id === joinedPartyId;
@@ -338,7 +335,7 @@ function updatePartyList(skipNextUpdate) {
 }
 
 function updateJoinedParty(skipNextUpdate, callback) {
-  if (connStatus !== 1 || !joinedPartyId)
+  if (!joinedPartyId)
     return;
   
   fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
