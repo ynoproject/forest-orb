@@ -95,10 +95,8 @@ function onUpdateConnectionStatus(status) {
       hasConnected = true;
     }
     syncPrevLocation();
-  } else {
+  } else
     clearPlayerLists();
-    clearPartyList();
-  }
 }
 
 let playerCount;
