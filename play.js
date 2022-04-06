@@ -99,6 +99,21 @@ function onUpdateConnectionStatus(status) {
     clearPlayerLists();
 }
 
+function fetchAndUpdatePlayerInfo() {
+  fetch(`${apiUrl}/info`)
+    .then(response => response.json())
+    .then(jsonResponse => {
+      if (!playerName && jsonResponse.name)
+        playerName = jsonResponse.name;
+      syncPlayerData(jsonResponse.uuid, jsonResponse.rank, -1);
+      if (document.querySelector('#chatboxTabParties.active'))
+        updatePartyList(true);
+      else
+        fetchAndUpdateJoinedPartyId();
+    })
+    .catch(err => console.error(err));
+}
+
 let playerCount;
 
 function fetchAndUpdatePlayerCount() {
@@ -1459,7 +1474,7 @@ loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
-fetchAndUpdateJoinedPartyId();
+fetchAndUpdatePlayerInfo();
 
 initDefaultSprites();
 fetchAndPopulateYnomojiConfig();
