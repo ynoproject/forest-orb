@@ -139,8 +139,8 @@ function getPartyName(party, includeLock, asHtml) {
     }
 
     return html.innerHTML;
-  } else if (includeLock)
-    partyName = `🔒${partyName}`;
+  } else if (includeLock && !party.public)
+    partyName = `🔒 ${partyName}`;
 
   return partyName;
 }
