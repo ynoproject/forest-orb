@@ -1,12 +1,13 @@
 :root {
-  --base-color: rgba(216, 216, 216, 1);
-  --alt-color: rgba(255, 255, 157, 1);
-  --base-bg-color: rgba(45, 17, 23, 1);
+  --base-color: rgb(216, 216, 216);
+  --alt-color: rgb(255, 255, 157);
+  --alt-color-t: rgba(255, 255, 157, 0.5);
+  --base-bg-color: rgb(45, 17, 23);
   --shadow-color: black;
-  --base-gradient: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%);
-  --alt-gradient: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
-  --base-gradient-b: linear-gradient(to bottom, rgba(216, 216, 216, 1) 0% 100%);
-  --alt-gradient-b: linear-gradient(to bottom, rgba(216, 173, 173, 1) 0% 100%);
+  --base-gradient: linear-gradient(to bottom, rgb(216, 216, 216) 0% 100%);
+  --alt-gradient: linear-gradient(to bottom, rgb(216, 173, 173) 0% 100%);
+  --base-gradient-b: linear-gradient(to bottom, rgb(216, 216, 216) 0% 100%);
+  --alt-gradient-b: linear-gradient(to bottom, rgb(216, 173, 173) 0% 100%);
   --svg-base-gradient: url(#baseGradient);
   --svg-alt-gradient: url(#altGradient);
   --svg-shadow: url(#dropShadow);
@@ -31,6 +32,7 @@
 
   --party-base-color: var(--base-color);
   --party-alt-color: var(--alt-color);
+  --party-alt-color-t: var(--alt-color-t);
   --party-base-bg-color: var(--base-bg-color);
   --party-shadow-color: var(--shadow-color);
   --party-base-gradient: var(--base-gradient);
@@ -241,6 +243,10 @@ body {
 
 #chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
   border-image: var(--party-border-image-url) 8 repeat !important;
+}
+
+#chatbox.partyChat #messages .messageContainer.highlight {
+  background: var(--party-alt-color-t);
 }
 
 #chatbox.partyChat #messages .playerLocationIcon[title] path {
@@ -856,6 +862,10 @@ body.fullBg #background {
   word-wrap: break-word;
   border-bottom: 4px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
+}
+
+.messageContainer.highlight {
+  background: var(--alt-color-t);
 }
 
 #chatbox.allChat .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {

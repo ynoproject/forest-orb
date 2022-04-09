@@ -270,6 +270,7 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
 
   let baseColorProp = `--base-color-${parsedUiTheme}`;
   let altColorProp = `--alt-color-${parsedUiTheme}`;
+  let altColorTProp = `--alt-color-t-${parsedUiTheme}`;
   let baseGradientProp = `--base-gradient-${parsedUiTheme}`;
   let baseGradientBProp = `--base-gradient-b-${parsedUiTheme}`;
   let altGradientProp = `--alt-gradient-${parsedUiTheme}`;
@@ -282,6 +283,7 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
     const fontStylePropSuffix = `-${fontStyle}`;
     baseColorProp += fontStylePropSuffix;
     altColorProp += fontStylePropSuffix;
+    altColorTProp += fontStylePropSuffix;
     baseGradientProp += fontStylePropSuffix;
     baseGradientBProp += fontStylePropSuffix;
     altGradientProp += fontStylePropSuffix;
@@ -304,6 +306,7 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
         addSystemSvgGradient(uiTheme, altColors, true);
         rootStyle.setProperty(baseColorProp, getColorRgba(baseColors[8]));
         rootStyle.setProperty(altColorProp, getColorRgba(altColors[8]));
+        rootStyle.setProperty(altColorTProp, getColorRgba(altColors[8], 0.5));
         rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
         rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
         rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
@@ -316,6 +319,7 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
       if (setTheme) {
         rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
         rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
+        rootStyle.setProperty('--alt-color-t', `var(${altColorTProp})`);
         rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
         rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
         rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
@@ -372,7 +376,7 @@ function setPartyUiTheme(uiTheme) {
     
   };
   const fontCallback = () => {
-    const styleProps = [ 'base-color', 'alt-color', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
+    const styleProps = [ 'base-color', 'alt-color', 'alt-color-t', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
     const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
     for (let prop of styleProps)
       rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
@@ -599,8 +603,10 @@ function addSystemSvgDropShadow(systemName, color) {
   }
 }
 
-function getColorRgba(color) {
-  return `rgba(${color[0]}, ${color[1]}, ${color[2]}, 1)`;
+function getColorRgba(color, alpha) {
+  return alpha === undefined
+    ? `rgb(${color[0]}, ${color[1]}, ${color[2]})`
+    : `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
 }
 
 function getTinyColor(color) {

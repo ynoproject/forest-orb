@@ -127,6 +127,9 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     message.appendChild(nameEndMarker);
     message.appendChild(document.createTextNode(" "));
   }
+
+  if (playerName && new RegExp(`(^|[^a-z\d])@${playerName}($|[^a-z\d])`, 'i').test(msg))
+    msgContainer.classList.add("highlight");
   
   populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);
