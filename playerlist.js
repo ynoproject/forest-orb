@@ -120,19 +120,25 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
-    // Not yet supported
-    /*if (player && playerData?.rank > player.rank) {
+    if (player && playerData?.rank > player.rank) {
       const banAction = document.createElement('a');
       banAction.classList.add('listEntryAction');
       banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
-        const uuidPtr = Module.allocate(Module.intArrayFromString(uuid), Module.ALLOC_NORMAL);
-        Module._SendBanUserRequest(msgPtr);
-        Module._free(uuidPtr);
+        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player)}?`)) {
+          fetch(`${apiUrl}/admin?command=ban&player=${uuid}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => showToastMessage(`${getPlayerName(player)} has been banned.`, 'ban', systemName))
+            .catch(err => console.error(err));
+        }
       };
       banAction.appendChild(getSvgIcon('ban', true));
       playerListEntryActionContainer.appendChild(banAction);
-    }*/
+    }
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
