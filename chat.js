@@ -240,8 +240,8 @@ function trySetChatName(name) {
 function initChat() {
   document.getElementById("chatboxContainer").style.display = "table-cell";
   chatInitialized = true;
-  if (playerName)
-    trySetChatName(playerName);
+  if (playerData?.name)
+    trySetChatName(playerData?.name);
 }
 
 function addChatTip() {
