@@ -13,7 +13,7 @@ function initAccountControls() {
   document.getElementById('loginForm').onsubmit = function () {
     const form = this;
     closeModal();
-    fetch(`${apiUrl}/login?${new URLSearchParams(new FormData(form)).toString()}`)
+    apiFetch(`login?${new URLSearchParams(new FormData(form)).toString()}`)
       .then(response => {
         if (!response.ok) {
           response.text().then(_ => {
@@ -41,7 +41,7 @@ function initAccountControls() {
       return false;
     }
     closeModal();
-    fetch(`${apiUrl}/register?${new URLSearchParams(new FormData(form)).toString()}`)
+    apiFetch(`register?${new URLSearchParams(new FormData(form)).toString()}`)
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {

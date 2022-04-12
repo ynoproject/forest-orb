@@ -54,7 +54,7 @@ function initPartyControls() {
     const formData = new FormData(form);
     const isUpdate = document.getElementById('createPartyModal').dataset.update;
     closeModal();
-    fetch(`${apiUrl}/party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(formData).toString()}`)
+    apiFetch(`party?command=${isUpdate ? 'update' : 'create'}&${new URLSearchParams(formData).toString()}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -74,7 +74,7 @@ function initPartyControls() {
   };
   
   document.getElementById('disbandPartyButton').onclick = () => {
-    fetch(`${apiUrl}/party?command=disband`)
+    apiFetch(`party?command=disband`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -93,7 +93,7 @@ function initPartyControls() {
     const form = this;
     const partyId = document.getElementById('joinPrivatePartyModal').dataset.partyId;
     closeModal();
-    fetch(`${apiUrl}/party?command=join&partyId=${partyId}&${new URLSearchParams(new FormData(form)).toString()}`)
+    apiFetch(`party?command=join&partyId=${partyId}&${new URLSearchParams(new FormData(form)).toString()}`)
       .then(response => {
         if (!response.ok) {
           if (response.status === 401) {
@@ -214,7 +214,7 @@ function setJoinedPartyId(partyId) {
 
 function kickPlayerFromJoinedParty(playerUuid) {
   if (joinedPartyCache && joinedPartyCache.ownerUuid === playerData?.uuid) {
-    fetch(`${apiUrl}/party?command=kick&player=${playerUuid}`)
+    apiFetch(`party?command=kick&player=${playerUuid}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -227,7 +227,7 @@ function kickPlayerFromJoinedParty(playerUuid) {
 
 function transferJoinedPartyOwner(playerUuid) {
   if (joinedPartyCache && joinedPartyCache.ownerUuid === playerData?.uuid) {
-    fetch(`${apiUrl}/party?command=transfer&player=${playerUuid}`)
+    apiFetch(`party?command=transfer&player=${playerUuid}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -239,7 +239,7 @@ function transferJoinedPartyOwner(playerUuid) {
 }
 
 function fetchAndUpdateJoinedPartyId() {
-  fetch(`${apiUrl}/party?command=id`)
+  apiFetch(`party?command=id`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -250,7 +250,7 @@ function fetchAndUpdateJoinedPartyId() {
 }
 
 function updatePartyList(skipNextUpdate) {
-  fetch(`${apiUrl}/party?command=list`)
+  apiFetch(`party?command=list`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -362,7 +362,7 @@ function updateJoinedParty(skipNextUpdate, callback) {
   if (!joinedPartyId)
     return;
   
-  fetch(`${apiUrl}/party?command=get&partyId=${joinedPartyId}`)
+  apiFetch(`party?command=get&partyId=${joinedPartyId}`)
     .then(response => {
       if (!response.ok) {
         if (response.status === 401) {
@@ -511,7 +511,7 @@ function addOrUpdatePartyListEntry(party) {
       joinLeaveAction.href = 'javascript:void(0);';
       joinLeaveAction.onclick = isInParty
         ? function () {
-          fetch(`${apiUrl}/party?command=leave`)
+          apiFetch(`party?command=leave`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
@@ -523,7 +523,7 @@ function addOrUpdatePartyListEntry(party) {
         }
       : party.public || playerData?.rank
         ? function () {
-          fetch(`${apiUrl}/party?command=join&partyId=${party.id}`)
+          apiFetch(`party?command=join&partyId=${party.id}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
@@ -738,7 +738,7 @@ function initOrUpdatePartyModal(partyId) {
 
   if (!partyDescriptionCache.hasOwnProperty(partyId)) {
     partyDescriptionContainer.classList.add('hidden');
-    fetch(`${apiUrl}/party?command=description&partyId=${partyId}`)
+    apiFetch(`party?command=description&partyId=${partyId}`)
       .then(response => {
         if (!response.ok) {
           partyDescriptionCache[partyId] = null;

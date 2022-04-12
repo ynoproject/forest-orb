@@ -107,7 +107,7 @@ function fetchAndUpdatePlayerInfo() {
     sessionId = cookieSessionId;
   else if (isLogout)
     sessionId = null;
-  fetch(`${apiUrl}/info${sessionId ? `?session=${sessionId}` : ''}`)
+  apiFetch('info')
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.name)
@@ -133,7 +133,7 @@ function fetchAndUpdatePlayerInfo() {
 let playerCount;
 
 function fetchAndUpdatePlayerCount() {
-  fetch(`${apiUrl}/players`)
+  apiFetch('players')
     .then(response => response.text())
     .then(count => updatePlayerCount(count))
     .catch(err => console.error(err));
@@ -240,7 +240,7 @@ function onLoadMap(mapName) {
 function syncPrevLocation() {
   const prevMapId = cachedPrevMapId || '0000';
   const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
-  fetch(`${apiUrl}/ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
+  apiFetch(`ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
     .catch(err => console.error(err));
 }
 

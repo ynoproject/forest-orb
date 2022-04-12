@@ -126,7 +126,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
         if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player)}?`)) {
-          fetch(`${apiUrl}/admin?command=ban&player=${uuid}`)
+          apiFetch(`admin?command=ban&player=${uuid}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
