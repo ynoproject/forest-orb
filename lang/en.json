@@ -66,11 +66,9 @@
           "username": "Username",
           "password": "Password"
         },
+        "submit": "Submit",
         "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register",
-        "errors": {
-          "invalidLogin": "Username or password is incorrect."
-        }
+        "register": "Register"
       },
       "register": {
         "title": "Register",
@@ -80,12 +78,9 @@
           "password": "Password",
           "confirmPassword": "Confirm Password"
         },
+        "submit": "Submit",
         "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Login",
-        "errors": {
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
-        }
+        "login": "Login"
       },
       "settings": {
         "title": "Settings",
@@ -123,6 +118,13 @@
             "label": "System",
             "fields": {
               "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "Login",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "Toggle Single Player",
       "io": {
         "upload": "Upload Save File",
@@ -245,6 +251,21 @@
       "mod": "Moderator",
       "dev": "Developer"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Username or password is incorrect."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "The specified email address is already in use.",
+          "usernameTaken": "The specified username is already in use."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} has been created.",

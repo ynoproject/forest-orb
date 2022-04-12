@@ -66,11 +66,9 @@
           "username": "Identifiant",
           "password": "Mot de passe"
         },
+        "submit": "Submit",
         "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
-        "register": "S'inscrire",
-        "errors": {
-          "invalidLogin": "Identifiant ou mot de passe incorrect."
-        }
+        "register": "S'inscrire"
       },
       "register": {
         "title": "S'inscrire",
@@ -80,12 +78,9 @@
           "password": "Mot de passe",
           "confirmPassword": "Confirmer le mot de passe"
         },
+        "submit": "Submit",
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
-        "login": "Se Connecter",
-        "errors": {
-          "emailTaken": "Cette adresse e-mail est déjà utilisée.",
-          "usernameTaken": "Cet identifiant existe déjà."
-        }
+        "login": "Se Connecter"
       },
       "settings": {
         "title": "Settings",
@@ -123,6 +118,13 @@
             "label": "System",
             "fields": {
               "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "Se Connecter",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
       "io": {
         "upload": "Ouvrir un Fichier de Sauvegarde",
@@ -245,6 +251,21 @@
       "mod": "Modérateur",
       "dev": "Développeur"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Identifiant ou mot de passe incorrect."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "Cette adresse e-mail est déjà utilisée.",
+          "usernameTaken": "Cet identifiant existe déjà."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} has been created.",

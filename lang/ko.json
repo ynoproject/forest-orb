@@ -66,11 +66,9 @@
           "username": "아이디",
           "password": "비밀번호"
         },
+        "submit": "Submit",
         "registerPrompt": "계정이 존재하지 않습니다.",
-        "register": "계정 만들기",
-        "errors": {
-          "invalidLogin": "아이디 혹은 비밀번호가 올바르지 않습니다."
-        }
+        "register": "계정 만들기"
       },
       "register": {
         "title": "계정 만들기",
@@ -80,12 +78,9 @@
           "password": "비밀번호",
           "confirmPassword": "비밀번호 확인"
         },
+        "submit": "Submit",
         "loginPrompt": "이미 있는 계정입니다.",
-        "login": "로그인",
-        "errors": {
-          "emailTaken": "해당 이메일은 이미 사용하고 있습니다.",
-          "usernameTaken": "해당 아이디는 이미 사용하고 있습니다."
-        }
+        "login": "로그인"
       },
       "settings": {
         "title": "옵션",
@@ -123,6 +118,13 @@
             "label": "System",
             "fields": {
               "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "로그인",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
       "io": {
         "upload": "세이브 파일 불러오기",
@@ -245,6 +251,21 @@
       "mod": "서버 매니저",
       "dev": "서버 개발자"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "아이디 혹은 비밀번호가 올바르지 않습니다."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "해당 이메일은 이미 사용하고 있습니다.",
+          "usernameTaken": "해당 아이디는 이미 사용하고 있습니다."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} has been created.",

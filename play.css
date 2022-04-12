@@ -222,6 +222,10 @@ body {
   -webkit-appearance: button;
 }
 
+.iconButton.hidden {
+  display: none;
+}
+
 .iconButton path, .icon path, .icon circle {
   stroke: var(--svg-base-gradient);
   filter: var(--svg-shadow);
@@ -367,7 +371,6 @@ body.fullBg #background {
 
 #bottom {
   position: relative;
-  top: 16px;
   height: calc(100vh - var(--content-height));
   background-color: black;
   margin: 0 -8px;
@@ -465,13 +468,18 @@ body.fullBg #background {
   mask-size: cover;
 }
 
-#headerIconContainer {
+#headerIconContainer, #footerIconContainer {
   display: flex;
   align-items: center;
 }
 
-#headerIconContainer .icon {
+#headerIconContainer .icon, #footerIconContainer .icon {
   margin-left: 8px;
+}
+
+#footerIconContainer {
+  justify-content: center;
+  margin-top: 16px;
 }
 
 #layout {
@@ -1580,6 +1588,10 @@ form .uiTheme {
 
 #layout.immersionMode .chatboxTabSection {
   margin-top: 0;
+}
+
+#content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton {
+  display: none;
 }
 
 #toastContainer {

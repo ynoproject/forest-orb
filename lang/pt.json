@@ -66,11 +66,9 @@
           "username": "Nome de Usuário",
           "password": "Senha"
         },
+        "submit": "Submit",
         "registerPrompt": "Não tem uma conta?&nbsp;",
-        "register": "Registrar",
-        "errors": {
-          "invalidLogin": "Nome de Usuário ou Senha estão incorretos."
-        }
+        "register": "Registrar"
       },
       "register": {
         "title": "Registrar",
@@ -80,12 +78,9 @@
           "password": "Senha",
           "confirmPassword": "Confirmar Senha"
         },
+        "submit": "Submit",
         "loginPrompt": "Já tem uma conta?&nbsp;",
-        "login": "Login",
-        "errors": {
-          "emailTaken": "O endereço de email especificado já está em uso.",
-          "usernameTaken": "O nome de usuário especificado já está em uso."
-        }
+        "login": "Login"
       },
       "settings": {
         "title": "Configurações",
@@ -123,6 +118,13 @@
             "label": "System",
             "fields": {
               "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "Login",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "Alternar jogador único",
       "io": {
         "upload": "Enviar arquivo salvo",
@@ -245,6 +251,21 @@
       "mod": "Moderador",
       "dev": "Desenvolvedor"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Nome de Usuário ou Senha estão incorretos."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "O endereço de email especificado já está em uso.",
+          "usernameTaken": "O nome de usuário especificado já está em uso."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} has been created.",

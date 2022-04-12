@@ -6,6 +6,10 @@ const notificationTypes = {
   client: [
     'floodDetected'
   ],
+  account: [
+    'loggedIn',
+    'loggedOut'
+  ],
   parties: [
     'create',
     'update',

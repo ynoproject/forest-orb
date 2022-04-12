@@ -100,18 +100,25 @@ function onUpdateConnectionStatus(status) {
 }
 
 function fetchAndUpdatePlayerInfo() {
-  fetch(`${apiUrl}/info`)
-    .then(response => response.json())
-    .then(jsonResponse => {
-      if (!playerName && jsonResponse.name)
-        playerName = jsonResponse.name;
-      syncPlayerData(jsonResponse.uuid, jsonResponse.rank, -1);
-      if (document.querySelector('#chatboxTabParties.active'))
-        updatePartyList(true);
-      else
-        fetchAndUpdateJoinedPartyId();
-    })
-    .catch(err => console.error(err));
+  return new Promise(resolve => {
+    const cookieSessionId = getCookie('sessionId');
+    if (cookieSessionId) {
+      sessionId = cookieSessionId;
+    }
+    fetch(`${apiUrl}/info${sessionId ? `?session=${sessionId}` : ''}`)
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (!playerName && jsonResponse.name)
+          playerName = jsonResponse.name;
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, -1);
+        if (document.querySelector('#chatboxTabParties.active'))
+          updatePartyList(true);
+        else
+          fetchAndUpdateJoinedPartyId();
+        resolve(playerData);
+      })
+      .catch(err => console.error(err));
+  });
 }
 
 let playerCount;
@@ -515,6 +522,7 @@ document.getElementById('floodProtectionButton').onclick = () => {
 
 initNotificationsConfigAndControls();
 
+initAccountControls();
 initPartyControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';

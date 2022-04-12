@@ -66,11 +66,9 @@
           "username": "Nombre de Usuario",
           "password": "Contraseña"
         },
+        "submit": "Submit",
         "registerPrompt": "¿No estás registrado?&nbsp;",
-        "register": "Registrarse",
-        "errors": {
-          "invalidLogin": "El nombre de usuario y/o contraseña son incorrectos."
-        }
+        "register": "Registrarse"
       },
       "register": {
         "title": "Registrarse",
@@ -80,12 +78,9 @@
           "password": "Contraseña",
           "confirmPassword": "Confirmar Contraseña"
         },
+        "submit": "Submit",
         "loginPrompt": "¿Ya estás registrado?&nbsp;",
-        "login": "Iniciar Sesión",
-        "errors": {
-          "emailTaken": "La dirección de correo ingresada ya está en uso.",
-          "usernameTaken": "El nombre de usuario ingresado ya está en uso."
-        }
+        "login": "Iniciar Sesión"
       },
       "settings": {
         "title": "Opciones",
@@ -123,6 +118,13 @@
             "label": "Sistema",
             "fields": {
               "floodDetected": "Posible Flood Attack detectado"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "Iniciar Sesión",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "Alternar Modo Solitario",
       "io": {
         "upload": "Cargar archivo de guardado",
@@ -245,6 +251,21 @@
       "mod": "Moderador",
       "dev": "Desarrollador"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "El nombre de usuario y/o contraseña son incorrectos."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "La dirección de correo ingresada ya está en uso.",
+          "usernameTaken": "El nombre de usuario ingresado ya está en uso."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "No se encontraron equipos activos.",
       "yourParty": "Tu Equipo",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Posible flood attack detectado: Activando modo solitario."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} ha sido creado.",

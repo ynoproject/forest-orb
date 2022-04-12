@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -66,11 +66,9 @@
           "username": "用户名",
           "password": "密码"
         },
+        "submit": "提交",
         "registerPrompt": "还没有账号？请点此&nbsp;",
-        "register": "注册",
-        "errors": {
-          "invalidLogin": "用户名或密码不正确！"
-        }
+        "register": "注册"
       },
       "register": {
         "title": "注册",
@@ -80,12 +78,9 @@
           "password": "密码",
           "confirmPassword": "重复密码"
         },
+        "submit": "提交",
         "loginPrompt": "已有账号？请点此&nbsp;",
-        "login": "登录",
-        "errors": {
-          "emailTaken": "您输入的邮箱地址已被占用！",
-          "usernameTaken": "您输入的用户名已被占用！"
-        }
+        "login": "登录"
       },
       "settings": {
         "title": "设置",
@@ -123,6 +118,13 @@
             "label": "系统类信息",
             "fields": {
               "floodDetected": "网络攻击行为检测"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "登录",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "单人/多人模式切换",
       "io": {
         "upload": "上传存档文件",
@@ -245,6 +251,21 @@
       "mod": "管理者",
       "dev": "开发者"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "用户名或密码不正确！"
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "您输入的邮箱地址已被占用！",
+          "usernameTaken": "您输入的用户名已被占用！"
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "当前暂无活动中的队伍。",
       "yourParty": "您的队伍",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "检测到网络攻击行为，您已被暂时切换至单人模式！"
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",

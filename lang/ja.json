@@ -54,7 +54,7 @@
     },
     "instruction": {
       "translation": "翻訳の仕事募集",
-      "noGameLoc": "*&nbsp; ゲーム 翻訳 未対応"
+      "noGameLoc": "* ゲーム 翻訳 未対応"
     },
     "2kki": {
       "hostedWithPermission": "ゆめ２っきの 開発者の 許可を 得て 掲載しています"
@@ -66,11 +66,9 @@
           "username": "ユーザー名",
           "password": "パスワード"
         },
+        "submit": "送信",
         "registerPrompt": "アカウントを お持ちでない方は",
-        "register": "登録する",
-        "errors": {
-          "invalidLogin": "ユーザー名 または パスワードが 間違っています。"
-        }
+        "register": "登録する"
       },
       "register": {
         "title": "登録",
@@ -80,12 +78,9 @@
           "password": "パスワード",
           "confirmPassword": "パスワード（確認）"
         },
+        "submit": "送信",
         "loginPrompt": "すでに アカウントを お持ちの方は",
-        "login": "ログインする",
-        "errors": {
-          "emailTaken": "このメールアドレスは 既に 使用されています。",
-          "usernameTaken": "このユーザー名は 既に 使用されています。"
-        }
+        "login": "ログインする"
       },
       "settings": {
         "title": "設定",
@@ -123,6 +118,13 @@
             "label": "システム",
             "fields": {
               "floodDetected": "スパム検知"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "ログインする",
+        "logout": "ログアウトする"
+      },
       "toggleSinglePlayer": "シングルプレイヤーのオン／オフ",
       "io": {
         "upload": "セーブデータをアップロード",
@@ -245,6 +251,21 @@
       "mod": "モデレーター",
       "dev": "開発者"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "ユーザー名 または パスワードが 間違っています。"
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "このメールアドレスは 既に 使用されています。",
+          "usernameTaken": "このユーザー名は 既に 使用されています。"
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "現在、 活動中の パーティーは ありません。",
       "yourParty": "自分の パーティー",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",

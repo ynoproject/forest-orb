@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -66,11 +66,9 @@
           "username": "Логин",
           "password": "Пароль"
         },
+        "submit": "Submit",
         "registerPrompt": "Ещё нет аккаунта?&nbsp;",
-        "register": "Зарегистрироваться",
-        "errors": {
-          "invalidLogin": "Логин или пароль не верны."
-        }
+        "register": "Зарегистрироваться"
       },
       "register": {
         "title": "Регистрация",
@@ -80,12 +78,9 @@
           "password": "Пароль",
           "confirmPassword": "Подтвердите пароль"
         },
+        "submit": "Submit",
         "loginPrompt": "Уже есть аккаунт?&nbsp;",
-        "login": "Войти",
-        "errors": {
-          "emailTaken": "Данный e-mail уже используется.",
-          "usernameTaken": "Данный логин уже используется."
-        }
+        "login": "Войти"
       },
       "settings": {
         "title": "Настройки",
@@ -123,6 +118,13 @@
             "label": "Система",
             "fields": {
               "floodDetected": "Вероятность спам-атаки"
+            }
+          },
+          "account": {
+            "label": "Account",
+            "fields": {
+              "loggedIn": "Logged In",
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -176,6 +178,10 @@
       }
     },
     "tooltips": {
+      "account": {
+        "login": "Войти",
+        "logout": "Logout"
+      },
       "toggleSinglePlayer": "Переключить режим Одиночной Игры",
       "io": {
         "upload": "Загрузить сохранение",
@@ -245,6 +251,21 @@
       "mod": "Модератор",
       "dev": "Разработчик"
     },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Логин или пароль не верны."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "Данный e-mail уже используется.",
+          "usernameTaken": "Данный логин уже используется."
+        }
+      }
+    },
     "parties": {
       "emptyMessage": "Пока ещё никто не создал ни одной группы.",
       "yourParty": "Ваша Группа",
@@ -278,6 +299,10 @@
     "toast": {
       "client": {
         "floodDetected": "Замечена возможность спам-атаки: Происходит переключение в одиночный режим."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
