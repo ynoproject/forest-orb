@@ -103,10 +103,12 @@ function fetchAndUpdatePlayerInfo() {
   const cookieSessionId = getCookie('sessionId');
   const isLogin = cookieSessionId && cookieSessionId !== sessionId;
   const isLogout = !cookieSessionId && sessionId && cookieSessionId !== sessionId;
-  if (isLogin)
-    sessionId = cookieSessionId;
-  else if (isLogout)
-    sessionId = null;
+  if (isLogin || isLogout) {
+    sessionId = isLogin ? cookieSessionId : null;
+    const ptr = Module.allocate(Module.intArrayFromString(isLogin ? sessionId : ''), Module.ALLOC_NORMAL);
+    Module._SetSessionToken(ptr);
+    Module._free(ptr);
+  }
   apiFetch('info')
     .then(response => response.json())
     .then(jsonResponse => {
