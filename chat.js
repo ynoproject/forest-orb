@@ -1,5 +1,3 @@
-let chatInitialized = false;
-
 Module["onRuntimeInitialized"] = initChat;
 if (typeof ENV === "undefined")
   initChat();
@@ -220,7 +218,7 @@ function chatNameCheck() {
 }
 
 function trySetChatName(name) {
-  if (!chatInitialized || !name || !(/^[A-Za-z0-9]+$/.test(name)))
+  if (!name || !(/^[A-Za-z0-9]+$/.test(name)))
     return;
   playerName = name;
   document.getElementById("enterNameContainer").style.display = playerName ? "none" : null;
@@ -239,9 +237,6 @@ function trySetChatName(name) {
 
 function initChat() {
   document.getElementById("chatboxContainer").style.display = "table-cell";
-  chatInitialized = true;
-  if (typeof playerData !== 'undefined' && playerData?.name)
-    trySetChatName(playerData?.name);
 }
 
 function addChatTip() {

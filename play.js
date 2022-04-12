@@ -1490,7 +1490,10 @@ loadOrInitCache();
 
 fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
-fetchAndUpdatePlayerInfo();
+if (Module.postRun)
+  Module.postRun.push(fetchAndUpdatePlayerInfo());
+else
+  fetchAndUpdatePlayerInfo();
 
 initDefaultSprites();
 fetchAndPopulateYnomojiConfig();
