@@ -1491,7 +1491,7 @@ loadOrInitCache();
 fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
 if (Module.postRun)
-  Module.postRun.push(fetchAndUpdatePlayerInfo());
+  Module.postRun.push(fetchAndUpdatePlayerInfo);
 else
   fetchAndUpdatePlayerInfo();
 
