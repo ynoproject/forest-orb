@@ -5,6 +5,7 @@ if (Module.postRun) {
   Module.postRun.push(() => {
     Module.INITIALIZED = true;
     document.getElementById('loadingOverlay').classList.add('loaded');
+    fetchAndUpdatePlayerInfo();
   });
   Module.postRun.push(onResize);
 }
