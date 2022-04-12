@@ -372,7 +372,7 @@ function wrapMessageEmojis(node, force) {
     while (ynomojiMatch = ynomojiPattern.exec(node.innerHTML)) {
       const ynomojiId = Object.keys(ynomojiConfig).find(id => id === ynomojiMatch[1]);
       if (ynomojiId)
-        node.innerHTML = `${node.innerHTML.slice(0, ynomojiMatch.index)}<span class="ynomojiWrapper"><img src="${ynomojiConfig[ynomojiId]}" class="ynomoji" title="${ynomojiId}" /></span>${node.innerHTML.slice(ynomojiMatch.index + ynomojiId.length + 2)}`;
+        node.innerHTML = `${node.innerHTML.slice(0, ynomojiMatch.index)}<span class="ynomojiWrapper"><img src="${ynomojiUrlPrefix}${ynomojiConfig[ynomojiId]}" class="ynomoji" title="${ynomojiId}" /></span>${node.innerHTML.slice(ynomojiMatch.index + ynomojiId.length + 2)}`;
     }
   }
 }

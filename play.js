@@ -7,6 +7,7 @@ for (let el of gameIdsElements) {
 }
 
 const apiUrl = `../connect/${gameId}/api`;
+const ynomojiUrlPrefix = 'images/ynomoji/';
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
 let localizedMessages;
@@ -1270,7 +1271,7 @@ function fetchAndPopulateYnomojiConfig() {
         ynomojiButton.classList.add('ynomojiButton');
         
         const ynomoji = document.createElement('img');
-        ynomoji.src = ynomojiConfig[ynomojiId];
+        ynomoji.src = `${ynomojiUrlPrefix}${ynomojiConfig[ynomojiId]}`;
         ynomoji.title = `:${ynomojiId}:`;
         ynomoji.classList.add('ynomoji');
         ynomoji.onclick = () => insertYnomoji(ynomojiId);
