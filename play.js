@@ -102,10 +102,10 @@ function onUpdateConnectionStatus(status) {
 function fetchAndUpdatePlayerInfo() {
   const cookieSessionId = getCookie('sessionId');
   const isLogin = cookieSessionId && cookieSessionId !== sessionId;
-  const isLogout = !cookieSessionId && cookieSessionId !== sessionId;
+  const isLogout = !cookieSessionId && sessionId && cookieSessionId !== sessionId;
   if (isLogin)
     sessionId = cookieSessionId;
-  if (isLogout)
+  else if (isLogout)
     sessionId = null;
   fetch(`${apiUrl}/info${sessionId ? `?session=${sessionId}` : ''}`)
     .then(response => response.json())
