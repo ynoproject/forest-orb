@@ -499,14 +499,14 @@ function syncPlayerData(uuid, rank, id) {
     };
 
   if (id === -1) {
+    globalPlayerData[uuid].name = playerName;
+    globalPlayerData[uuid].systemName = systemName;
     playerData = {
       uuid: uuid,
       name: globalPlayerData[uuid]?.name || null,
       systemName: globalPlayerData[uuid]?.systemName || null,
       rank: rank
     };
-    globalPlayerData[uuid].name = playerName;
-    globalPlayerData[uuid].systemName = systemName;
   }
 }
 

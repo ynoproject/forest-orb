@@ -100,25 +100,34 @@ function onUpdateConnectionStatus(status) {
 }
 
 function fetchAndUpdatePlayerInfo() {
-  return new Promise(resolve => {
-    const cookieSessionId = getCookie('sessionId');
-    if (cookieSessionId) {
-      sessionId = cookieSessionId;
-    }
-    fetch(`${apiUrl}/info${sessionId ? `?session=${sessionId}` : ''}`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        if (!playerName && jsonResponse.name)
-          playerName = jsonResponse.name;
-        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, -1);
-        if (document.querySelector('#chatboxTabParties.active'))
-          updatePartyList(true);
-        else
-          fetchAndUpdateJoinedPartyId();
-        resolve(playerData);
-      })
-      .catch(err => console.error(err));
-  });
+  const cookieSessionId = getCookie('sessionId');
+  const isLogin = cookieSessionId && cookieSessionId !== sessionId;
+  const isLogout = !cookieSessionId && cookieSessionId !== sessionId;
+  if (isLogin)
+    sessionId = cookieSessionId;
+  if (isLogout)
+    sessionId = null;
+  fetch(`${apiUrl}/info${sessionId ? `?session=${sessionId}` : ''}`)
+    .then(response => response.json())
+    .then(jsonResponse => {
+      if (jsonResponse.name)
+        playerName = jsonResponse.name;
+      syncPlayerData(jsonResponse.uuid, jsonResponse.rank, -1);
+      if (isLogin) {
+        trySetChatName(playerName);
+        showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
+        document.getElementById('content').classList.add('loggedIn');
+      } else if (isLogout) {
+        trySetChatName('');
+        showAccountToastMessage('loggedOut', 'leave');
+        document.getElementById('content').classList.remove('loggedIn');
+      }
+      if (document.querySelector('#chatboxTabParties.active'))
+        updatePartyList(true);
+      else
+        fetchAndUpdateJoinedPartyId();
+    })
+    .catch(err => console.error(err));
 }
 
 let playerCount;

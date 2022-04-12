@@ -6,10 +6,8 @@ function initAccountControls() {
     openModal('loginModal');
   };
   document.getElementById('logoutButton').onclick = () => {
-    sessionId = null;
-    setCookie('sessionId', null);
-    document.getElementById('content').classList.remove('loggedIn');
-    fetchAndUpdatePlayerInfo().then(_ =>  showAccountToastMessage('loggedOut', 'leave'));
+    setCookie('sessionId', '');
+    fetchAndUpdatePlayerInfo();
   };
 
   document.getElementById('loginForm').onsubmit = function () {
@@ -18,7 +16,7 @@ function initAccountControls() {
     fetch(`${apiUrl}/login?${new URLSearchParams(new FormData(form)).toString()}`)
       .then(response => {
         if (!response.ok) {
-          response.text().then(error => {
+          response.text().then(_ => {
             document.getElementById('loginError').innerHTML = getMassagedLabel(localizedMessages.account.login.errors.invalidLogin, true);
             document.getElementById('loginErrorRow').classList.remove('hidden');
             openModal('loginModal');
@@ -27,14 +25,10 @@ function initAccountControls() {
         }
         return response.text();
       }).then(sId => {
-        fetchAndUpdatePlayerInfo()
-          .then(playerData => {
-            sessionId = sId;
-            setCookie('sessionId', sessionId);
-            showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
-            document.getElementById('content').classList.add('loggedIn');
-          })
-          .catch(err => console.error(err));
+        if (sId) {
+          setCookie('sessionId', sId);
+          fetchAndUpdatePlayerInfo();
+        }
       }).catch(err => console.error(err));
     return false;
   };

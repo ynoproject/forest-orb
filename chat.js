@@ -214,16 +214,17 @@ function chatInputActionFired() {
 }
 
 function chatNameCheck() {
-  const nameInput = document.getElementById("nameInput");
-  if (nameInput.value == "")
+  trySetChatName(document.getElementById("nameInput").value);
+}
+
+function trySetChatName(name) {
+  if (!name || !(/^[A-Za-z0-9]+$/.test(name)))
     return;
-  if (!(/^[A-Za-z0-9]+$/.test(nameInput.value)))
-    return;
-  document.getElementById("enterNameContainer").style.display = "none";
-  document.getElementById("chatInput").disabled = false;
-  document.getElementById("chatInputContainer").setAttribute("style", "");
+  playerName = name;
+  document.getElementById("enterNameContainer").style.display = playerName ? "none" : null;
+  document.getElementById("chatInput").disabled = !playerName;
+  document.getElementById("chatInputContainer").setAttribute("style", playerName ? "" : "display: none");
   updateYnomojiContainerPos();
-  playerName = nameInput.value;
   if (playerData) {
     playerData.name = playerName;
     globalPlayerData[playerData.uuid].name = playerName;
@@ -232,7 +233,6 @@ function chatNameCheck() {
   ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
   Module._ChangeName(ptr);
   Module._free(ptr);
-  nameInput.value = "";
 }
 
 function initChat() {
