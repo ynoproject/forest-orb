@@ -1317,6 +1317,7 @@ function loadOrInitConfig(configObj, global) {
                 break;
               case 'notifications':
                 if (typeof value === 'object') {
+                  value = Object.assign(globalConfig.notifications, value);
                   for (let nkey of Object.keys(value)) {
                     const nvalue = value[nkey];
                     switch (nkey) {
@@ -1340,13 +1341,11 @@ function loadOrInitConfig(configObj, global) {
                                 document.getElementById(`notificationsButton_${nkey}_${ntkey}`).click();
                             } else
                               continue;
-                            configObj[key][nkey][ntkey] = ntvalue;
                           }
                         } else
                           continue;
                         break;
                     }
-                    configObj[key][nkey] = nvalue;
                   }
                 }
                 break;
