@@ -99,7 +99,8 @@
           "toggleTabToChat": "Press Tab to Chat",
           "toggleFloodProtection": "Flood Protection"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "Notification Settings",
+        "accountSettings": "Account Settings"
       },
       "notificationSettings": {
         "title": "Notification Settings",
@@ -142,6 +143,18 @@
               "playerOffline": "Party Member Offline",
               "kickPlayer": "Kicked Player From Party",
               "transferPartyOwner": "Promoted Player to Party Leader"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Account Settings",
+        "fields": {
+          "toggleSaveSync": "Save Sync (Experimental)",
+          "saveSyncSlotId": {
+            "label": "Save Sync Slot ID",
+            "values": {
+              "0": "None"
             }
           }
         }
@@ -295,6 +308,10 @@
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "openSource": "YNOProject est un projet open source, et le code source est disponible sur https://github.com/ynoproject/"
       }
+    },
+    "saveSync": {
+      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
+      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
       "client": {

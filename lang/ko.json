@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -99,7 +99,8 @@
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
-        "notificationSettings": "알람 설정"
+        "notificationSettings": "알람 설정",
+        "accountSettings": "Account Settings"
       },
       "notificationSettings": {
         "title": "알람 설정",
@@ -142,6 +143,18 @@
               "playerOffline": "파티 멤버 오프라인",
               "kickPlayer": "파티에서 플레이어를 강퇴함",
               "transferPartyOwner": "플레이어를 파티 리더로 임명함"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Account Settings",
+        "fields": {
+          "toggleSaveSync": "Save Sync (Experimental)",
+          "saveSyncSlotId": {
+            "label": "Save Sync Slot ID",
+            "values": {
+              "0": "None"
             }
           }
         }
@@ -295,6 +308,10 @@
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
       }
+    },
+    "saveSync": {
+      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
+      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
       "client": {

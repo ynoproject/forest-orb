@@ -6,9 +6,6 @@ for (let el of gameIdsElements) {
     el.remove();
 }
 
-const apiUrl = `../connect/${gameId}/api`;
-const ynomojiUrlPrefix = 'images/ynomoji/';
-
 let localizedMessages;
 let localizedMapLocations;
 let mapLocations;
@@ -470,21 +467,6 @@ document.querySelector('.fontStyle').onchange = function () {
   setFontStyle(parseInt(this.value));
 };
 
-document.getElementById('uploadButton').onclick = function () {
-  let saveFile = document.getElementById('saveFile');
-  if (saveFile)
-    saveFile.remove();
-
-  saveFile = document.createElement('input');
-  saveFile.type = 'file';
-  saveFile.id = 'saveFile';
-  saveFile.style.display = 'none';
-  saveFile.addEventListener('change', handleSaveFileUpload);
-  saveFile.click();
-};
-
-document.getElementById('downloadButton').onclick = handleSaveFileDownload;
-
 document.getElementById('clearChatButton').onclick = function () {
   const chatbox = document.getElementById('chatbox');
   const messagesElement = document.getElementById('messages');
@@ -534,6 +516,7 @@ document.getElementById('floodProtectionButton').onclick = () => {
 initNotificationsConfigAndControls();
 
 initAccountControls();
+initSaveDataControls();
 initPartyControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
@@ -875,94 +858,6 @@ function onSelectUiTheme(e) {
   setModalUiTheme(null, e.target.dataset.uiTheme === 'auto' ? systemName : e.target.dataset.uiTheme, true);
 }
 
-function handleSaveFileUpload(evt) {
-  const save = evt.target.files[0];
-
-  if (!/\.lsd$/i.test(save.name)) {
-    alert(localizedMessages.io.upload.invalidSaveFile);
-    document.getElementById('uploadButton').click();
-    return;
-  }
-
-  const saveSlot = getSaveSlot();
-
-  if (saveSlot == null)
-    return;
-
-  const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
-
-  request.onsuccess = function (_e) {
-
-    const reader = new FileReader();
-    let readerResult;
-
-    reader.onload = function (file) {
-      readerResult = file.currentTarget.result;
-      const saveFile = { timestamp: new Date(), mode: 33206, contents: new Uint8Array(readerResult) };
-  
-      const db = request.result; 
-      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
-
-      objectStorePutRequest.onsuccess = function (_e) {
-        setTimeout(() => window.location = window.location, 100);
-      };
-    };
-
-    reader.readAsArrayBuffer(save);
-  };
-}
-
-function handleSaveFileDownload() {
-  const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
-
-  request.onsuccess = function (_e) {
-    const saveSlot = getSaveSlot(true);
-
-    if (saveSlot == null)
-      return;
-
-    const db = request.result; 
-    const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-    const objectStore = transaction.objectStore('FILE_DATA');
-    const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
-
-    objectStoreRequest.onsuccess = function (_e) {
-      const record = objectStoreRequest.result;
-
-      if (!record) {
-        alert(localizedMessages.io.download.emptySlot);
-        return;
-      }
-
-      const blob = new Blob([record.contents], {type: 'text/json'});
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = `Save${saveSlot}.lsd`;
-      link.click();
-      link.remove();
-    };
-  };
-}
-
-function getSaveSlot(download) {
-  let fileIndex = prompt(localizedMessages.io[download ? 'download' : 'upload'].slotInput, 1);
-  let fileIndexInt;
-
-  while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
-    fileIndex = prompt(localizedMessages.io.common.failedSlotInput);
-
-  if (fileIndex == null)
-    return null;
-
-  return fileIndexInt < 10 ? `0${fileIndexInt}` : fileIndexInt.toString();
-}
-
-// EXTERNAL
-function onSaveSlotUpdated(slotId) {
-  // Will be used in the future
-}
-
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
   fetch(`lang/${globalConfig.lang}.json`)
@@ -1294,153 +1189,6 @@ function insertYnomoji(ynomojiId) {
   else
     chatInput.value += `:${ynomojiId}:`;
   chatInput.oninput();
-}
-
-let loadedLang = false;
-let loadedUiTheme = false;
-let loadedFontStyle = false;
-
-function loadOrInitConfig(configObj, global) {
-  try {
-    const configKey = global ? 'config' : `config_${gameId}`;
-    if (!window.localStorage.hasOwnProperty(configKey))
-      window.localStorage.setItem(configKey, JSON.stringify(configObj));
-    else {
-      const savedConfig = JSON.parse(window.localStorage.getItem(configKey));
-      const savedConfigKeys = Object.keys(savedConfig);
-      for (let k in savedConfigKeys) {
-        const key = savedConfigKeys[k];
-        if (configObj.hasOwnProperty(key)) {
-          let value = savedConfig[key];
-          if (global) {
-            switch (key) {
-              case 'lang':
-                document.getElementById('lang').value = value;
-                setLang(value, true);
-                loadedLang = true;
-                break;
-              case 'name':
-                document.getElementById('nameInput').value = value;
-                setName(value, true);
-                break;
-              case 'tabToChat':
-                if (!value)
-                  document.getElementById('tabToChatButton').click();
-                break;
-              case 'disableFloodProtection':
-                if (value)
-                  preToggle(document.getElementById('floodProtectionButton'));
-                break;
-              case 'notifications':
-                if (typeof value === 'object') {
-                  value = Object.assign(globalConfig.notifications, value);
-                  for (let nkey of Object.keys(value)) {
-                    const nvalue = value[nkey];
-                    switch (nkey) {
-                      case 'all':
-                        if (!nvalue)
-                          document.getElementById('notificationsButton').click();
-                        break;
-                      case 'screenPosition':
-                        if (nvalue && nvalue !== 'bottomLeft')
-                          setNotificationScreenPosition(nvalue);
-                        break;
-                      default:
-                        if (notificationTypes.hasOwnProperty(nkey) && typeof nvalue === 'object') {
-                          for (let ntkey of Object.keys(nvalue)) {
-                            const ntvalue = nvalue[ntkey];
-                            if (ntkey === 'all') {
-                              if (!ntvalue)
-                                document.getElementById(`notificationsButton_${nkey}`).click();
-                            } else if (notificationTypes[nkey].indexOf(ntkey) > -1) {
-                              if (!ntvalue)
-                                document.getElementById(`notificationsButton_${nkey}_${ntkey}`).click();
-                            } else
-                              continue;
-                          }
-                        } else
-                          continue;
-                        break;
-                    }
-                  }
-                }
-                break;
-            }
-          } else {
-            switch (key) {
-              case 'singlePlayer':
-                if (value)
-                  preToggle(document.getElementById('singlePlayerButton'));
-                break;
-              case 'disableChat':
-                if (value)
-                  document.getElementById('chatButton').click();
-                break;
-              case 'disableNametags':
-                if (value)
-                  preToggle(document.getElementById('nametagButton'));
-                break;
-              case 'disablePlayerSounds':
-                if (value)
-                  preToggle(document.getElementById('playerSoundsButton'));
-                break;
-              case 'immersionMode':
-                if (value)
-                  document.getElementById('immersionModeButton').click();
-                break;
-              case 'chatTabIndex':
-                if (value) {
-                  const chatTab = document.querySelector(`.chatTab:nth-child(${value + 1})`);
-                  if (chatTab && value !== 2)
-                    setChatTab(chatTab);
-                }
-                break;
-              case 'playersTabIndex':
-                if (value) {
-                  const playersTab = document.querySelector(`.playersTab:nth-child(${value + 1})`);
-                  if (playersTab && value !== 1)
-                    setPlayersTab(playersTab);
-                }
-                break;
-              case 'globalMessage':
-                if (value)
-                  document.getElementById('globalMessageButton').click();
-                break;
-              case 'hideOwnGlobalMessageLocation':
-                if (value)
-                  preToggle(document.getElementById('ownGlobalMessageLocationButton'));
-                break;
-              case 'uiTheme':
-                if (gameUiThemes.indexOf(value) > -1) {
-                  document.querySelector('.uiTheme').value = value;
-                  setUiTheme(value, true);
-                  loadedUiTheme = true;
-                }
-                break;
-              case 'fontStyle':
-                if (gameUiThemes.indexOf(value) > -1) {
-                  document.querySelector('.fontStyle').value = value;
-                  setFontStyle(value, true);
-                  loadedFontStyle = true;
-                }
-                break;
-            }
-          }
-          configObj[key] = value;
-        }
-      }
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function updateConfig(configObj, global) {
-  try {
-    window.localStorage[global ? 'config' : `config_${gameId}`] = JSON.stringify(configObj);
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 function loadOrInitCache() {

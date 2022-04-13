@@ -1590,7 +1590,7 @@ form .uiTheme {
   margin-top: 0;
 }
 
-#content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton {
+#content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton, #content:not(.loggedIn) .accountRequired {
   display: none;
 }
 

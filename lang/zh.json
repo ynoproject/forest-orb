@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -99,7 +99,8 @@
           "toggleTabToChat": "开启/关闭Tab键聊天切换",
           "toggleFloodProtection": "开启/关闭网络攻击保护"
         },
-        "notificationSettings": "弹框通知信息设置"
+        "notificationSettings": "弹框通知信息设置",
+        "accountSettings": "Account Settings"
       },
       "notificationSettings": {
         "title": "弹框通知信息设置",
@@ -142,6 +143,18 @@
               "playerOffline": "队员下线",
               "kickPlayer": "从队伍中移除玩家",
               "transferPartyOwner": "向队员转授领队权限"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Account Settings",
+        "fields": {
+          "toggleSaveSync": "Save Sync (Experimental)",
+          "saveSyncSlotId": {
+            "label": "Save Sync Slot ID",
+            "values": {
+              "0": "None"
             }
           }
         }
@@ -295,6 +308,10 @@
         "immersionMode": "如果您不喜欢聊天室的嘈杂想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天室、在线列表和人数统计模块。在此模式下，当你在探索途中随机偶遇到其他玩家时将会更加有趣。",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅详细源代码数据。"
       }
+    },
+    "saveSync": {
+      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
+      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
       "client": {

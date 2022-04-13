@@ -363,7 +363,11 @@
               </li>
               <li class="formControlRow">
                 <span></span>
-                <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')"></button>
+                <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notification Settings</button>
+              </li>
+              <li class="formControlRow accountRequired" style="display: none;">
+                <span></span>
+                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings" onclick="openModal('accountSettingsModal', null, 'accountSettingsModal')">Account Settings</button>
               </li>
             </ul>
           </div>
@@ -371,7 +375,7 @@
         <div id="notificationSettingsModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 class="modalTitle" data-i18n="[html]modal.notificationSettings.title">Settings</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.notificationSettings.title">Notification Settings</h1>
           </div>
           <div class="modalContent">
             <ul class="formControls">
@@ -389,6 +393,30 @@
                     <option value="bottomRight" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.bottomRight">Bottom Right</option>
                     <option value="topLeft" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.topLeft">Top Left</option>
                     <option value="topRight" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.topRight">Top Right</option>
+                  </select>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="accountSettingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.accountSettings.title">Account Settings</h1>
+          </div>
+          <div class="modalContent">
+            <ul class="formControls">
+              <li class="formControlRow">
+                <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
+                <div>
+                  <button id="saveSyncButton" class="checkboxButton unselectable"><span></span></button>
+                </div>
+              </li>
+              <li id="saveSyncSlotIdRow" class="formControlRow hidden">
+                <label for="saveSyncSlotId" class="unselectable" data-i18n="[html]modal.accountSettings.fields.saveSyncSlotId.label">Save Sync Slot ID</label>
+                <div>
+                  <select id="saveSyncSlotId">
+                    <option value="0" data-i18n="[html]modal.accountSettings.fields.saveSyncSlotId.values.0">None</option>
                   </select>
                 </div>
               </li>
@@ -541,53 +569,10 @@
     <div id="bottom"></div>
     <div id="loadingOverlay"></div>
   </div>
-  <script>
-    const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
-    const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
-    const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
-    const localizedGameIds = [ '2kki', 'prayers', 'braingirl' ];
-    const gameDefaultLangs = {
-      '2kki': 'ja',
-      'flow': 'ja'
-    };
-    const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-    
-    Module = {
-      INITIALIZED: false,
-      EASYRPG_GAME: gameId,
-      EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
-    };
-
-    function apiFetch(path) {
-      const headers = sessionId ? { 'X-Session': sessionId } : {};
-      return fetch(`${apiUrl}/${path}`, { headers: headers });
-    }
-
-    let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', 'account.js', 'toast.js' ];
-    if (gameId === '2kki')
-      scripts.push('2kki.js');
-    scripts = scripts.concat([ 'play.js', 'gamecanvas.js', 'index.js' ]);
-
-    for (let script of scripts) {
-      const scriptTag = document.createElement('script');
-      scriptTag.type = 'text/javascript';
-      scriptTag.src = script;
-      if (script === 'index.js') {
-        scriptTag.onload = () => {
-          if (typeof ENV !== 'undefined')
-            ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
-
-            Module.postRun.push(() => {
-              Module.INITIALIZED = true;
-              document.getElementById('loadingOverlay').classList.add('loaded');
-              fetchAndUpdatePlayerInfo();
-            });
-            Module.postRun.push(onResize);
-        };
-      }
-      document.body.appendChild(scriptTag);
-    }
-  </script>
   <script type="text/javascript" src="icons.js"></script>
+  <script type="text/javascript" src="toast.js"></script>
+  <script type="text/javascript" src="account.js"></script>
+  <script type="text/javascript" src="savedata.js"></script>
+  <script type="text/javascript" src="init.js"></script>
 </body>
 </html>
