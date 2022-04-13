@@ -8,7 +8,6 @@ for (let el of gameIdsElements) {
 
 const apiUrl = `../connect/${gameId}/api`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
-const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
 let localizedMessages;
 let localizedMapLocations;
