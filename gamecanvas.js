@@ -1,15 +1,3 @@
-if (typeof ENV !== 'undefined')
-  ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
-
-if (Module.postRun) {
-  Module.postRun.push(() => {
-    Module.INITIALIZED = true;
-    document.getElementById('loadingOverlay').classList.add('loaded');
-    fetchAndUpdatePlayerInfo();
-  });
-  Module.postRun.push(onResize);
-}
-
 const preventNativeKeys = ['ArrowUp', 'ArrowDown', 'ArrowRight', 'ArrowLeft', ' ', 'F12'];
 const keys = new Map();
 const keysDown = new Map();
