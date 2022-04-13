@@ -9,7 +9,7 @@ function initSaveSyncControls() {
   };
 
   const saveSyncSlotSelect = document.getElementById('saveSyncSlotId');
-  for (let s = 1; s <= 20; s++) {
+  for (let s = 1; s <= 15; s++) {
     const slotOption = document.createElement('option');
     slotOption.innerText = s;
     saveSyncSlotSelect.appendChild(slotOption);
@@ -204,7 +204,7 @@ function getSaveDataForSync() {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSyncConfig.slotId}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
 
       objectStoreRequest.onsuccess = () => resolve(objectStoreRequest.result);
       objectStoreRequest.onerror = () => resolve(null);
@@ -252,9 +252,11 @@ function trySyncSave() {
                 const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
                 request.onsuccess = function (_e) {
+                  const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
+
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${gameId}/Save/Save${saveSyncConfig.slotId}.lsd`);
+                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => resolve(true);
                   objectStorePutRequest.onerror = _err => resolve(false);
