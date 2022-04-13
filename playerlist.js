@@ -486,36 +486,42 @@ function initDefaultSprites() {
 }
 
 // EXTERNAL
-function syncPlayerData(uuid, rank, id) {
+function syncPlayerData(uuid, rank, account, id) {
   playerUuids[id] = uuid;
 
-  if (globalPlayerData[uuid])
+  if (globalPlayerData[uuid]) {
     globalPlayerData[uuid].rank = rank;
-  else
+    globalPlayerData[uuid].account = account;
+  } else {
     globalPlayerData[uuid] = {
       name: null,
       systemName: null,
-      rank: rank
+      rank: rank,
+      account: account
     };
+  }
 
   if (id === -1) {
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
+    globalPlayerData[uuid].account = !!sessionId;
     playerData = {
       uuid: uuid,
-      name: globalPlayerData[uuid]?.name || null,
-      systemName: globalPlayerData[uuid]?.systemName || null,
-      rank: rank
+      name: playerName,
+      systemName: systemName,
+      rank: rank,
+      account: account
     };
   }
 }
 
 // EXTERNAL
-function syncGlobalPlayerData(uuid, name, systemName, rank) {
+function syncGlobalPlayerData(uuid, name, systemName, rank, account) {
   globalPlayerData[uuid] = {
     name: name,
     systemName: systemName,
-    rank: rank
+    rank: rank,
+    account: account
   };
 }
 

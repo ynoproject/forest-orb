@@ -413,7 +413,8 @@ function updateJoinedParty(skipNextUpdate, callback) {
         globalPlayerData[member.uuid] = {
           name: member.name,
           systemName: member.systemName,
-          rank: member.rank
+          rank: member.rank,
+          account: member.account
         };
 
         const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
@@ -594,7 +595,8 @@ function addOrUpdatePartyListEntry(party) {
     globalPlayerData[member.uuid] = {
       name: member.name,
       systemName: member.systemName,
-      rank: member.rank
+      rank: member.rank,
+      account: member.account
     };
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
