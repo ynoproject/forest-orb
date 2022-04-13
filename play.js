@@ -109,22 +109,27 @@ function fetchAndUpdatePlayerInfo() {
   apiFetch('info')
     .then(response => response.json())
     .then(jsonResponse => {
-      if (jsonResponse.name)
-        playerName = jsonResponse.name;
-      syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, -1);
-      if (isLogin) {
-        trySetChatName(playerName);
-        showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
-        document.getElementById('content').classList.add('loggedIn');
-      } else if (isLogout) {
-        trySetChatName('');
-        showAccountToastMessage('loggedOut', 'leave');
-        document.getElementById('content').classList.remove('loggedIn');
+      if (jsonResponse.uuid) {
+        if (jsonResponse.name)
+          playerName = jsonResponse.name;
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, -1);
+        if (isLogin) {
+          trySetChatName(playerName);
+          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
+          document.getElementById('content').classList.add('loggedIn');
+        } else if (isLogout) {
+          trySetChatName('');
+          showAccountToastMessage('loggedOut', 'leave');
+          document.getElementById('content').classList.remove('loggedIn');
+        }
+        if (document.querySelector('#chatboxTabParties.active'))
+          updatePartyList(true);
+        else
+          fetchAndUpdateJoinedPartyId();
+      } else if (isLogin) {
+        setCookie('sessionId', '');
+        fetchAndUpdatePlayerInfo();
       }
-      if (document.querySelector('#chatboxTabParties.active'))
-        updatePartyList(true);
-      else
-        fetchAndUpdateJoinedPartyId();
     })
     .catch(err => console.error(err));
 }
