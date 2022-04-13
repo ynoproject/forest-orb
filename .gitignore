@@ -1,2 +1,5 @@
+index.js
+index.wasm
+
 /images/ynomoji/*.png
 /images/ynomoji/*.webp
