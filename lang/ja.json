@@ -121,10 +121,10 @@
             }
           },
           "account": {
-            "label": "Account",
+            "label": "アカウント",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "ログイン通知",
+              "loggedOut": "ログアウト通知"
             }
           },
           "parties": {
@@ -259,8 +259,8 @@
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "confirmPasswordMismatch": "パスワードが一致しません。",
+          "invalidCredentials": "指定されたユーザー名またはパスワードが空、もしくは無効な文字が含まれています。",
           "emailTaken": "このメールアドレスは 既に 使用されています。",
           "usernameTaken": "このユーザー名は 既に 使用されています。"
         }
@@ -301,8 +301,8 @@
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedIn": "{USER}でログインしました。",
+        "loggedOut": "ログアウトしました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
