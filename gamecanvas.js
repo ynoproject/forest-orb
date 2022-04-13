@@ -69,14 +69,16 @@ function bindKey(node, key, keyCode) {
   keys.set(node.id, { key, keyCode });
 
   node.addEventListener('touchstart', event => {
-    event.preventDefault();
+    if (event.cancelable)
+      event.preventDefault();
     simulateKeyboardEvent('keydown', key, keyCode);
     keysDown.set(event.target.id, node.id);
     node.classList.add('active');
   });
 
   node.addEventListener('touchend', event => {
-    event.preventDefault();
+    if (event.cancelable)
+      event.preventDefault();
 
     const pressedKey = keysDown.get(event.target.id);
     if (pressedKey && keys.has(pressedKey)) {
