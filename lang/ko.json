@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -28,14 +28,14 @@
       "tab": {
         "chat": "채팅",
         "players": "플레이어",
-        "parties": "Parties"
+        "parties": "파티 멤버"
       },
       "chat": {
         "tab": {
           "all": "전체",
           "map": "로컬",
           "global": "글로벌",
-          "party": "Party"
+          "party": "파티"
         },
         "nickname": {
           "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
@@ -48,13 +48,13 @@
       "players": {
         "tab": {
           "map": "로컬",
-          "party": "Party"
+          "party": "파티"
         }
       }
     },
     "instruction": {
       "translation": "번역 작업이 필요합니다",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "*게임 번역을 지원하지 않습니다"
     },
     "2kki": {
       "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
@@ -66,8 +66,8 @@
           "username": "아이디",
           "password": "비밀번호"
         },
-        "submit": "Submit",
-        "registerPrompt": "계정이 존재하지 않습니다.",
+        "submit": "확인",
+        "registerPrompt": "계정이 존재하지 않음",
         "register": "계정 만들기"
       },
       "register": {
@@ -78,8 +78,8 @@
           "password": "비밀번호",
           "confirmPassword": "비밀번호 확인"
         },
-        "submit": "Submit",
-        "loginPrompt": "이미 있는 계정입니다.",
+        "submit": "확인",
+        "loginPrompt": "이미 존재하는 계정입니다",
         "login": "로그인"
       },
       "settings": {
@@ -87,61 +87,61 @@
         "fields": {
           "lang": "언어",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "인게임 장소 표시하기",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "비공개",
+              "friends": "친구만",
+              "public": "전체 공개"
             }
           },
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
-          "toggleTabToChat": "Press Tab to Chat",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleTabToChat": "탭을 눌러 채팅하기",
+          "toggleFloodProtection": "디도스 공격 보호하기"
         },
-        "notificationSettings": "Notification Settings"
+        "notificationSettings": "알람 설정"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "알람 설정",
         "fields": {
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "알람",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "표시 장소",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "좌측 하단",
+              "bottomRight": "우측 하단",
+              "topLeft": "좌측 상단",
+              "topRight": "우측 상단"
             }
           },
           "client": {
-            "label": "System",
+            "label": "시스템",
             "fields": {
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "디도스 공격이 감지되었습니다"
             }
           },
           "account": {
-            "label": "Account",
+            "label": "계정",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "로그인",
+              "loggedOut": "로그아웃"
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "파티",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed From Party",
-              "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "create": "파티 생성함",
+              "update": "파티 업데이트함",
+              "join": "파티 참가함",
+              "leave": "파티 퇴장함",
+              "remove": "파티에서 지워짐",
+              "disband": "파티 해산함",
+              "playerJoin": "파티에 플레이어가 참가함",
+              "playerLeave": "파티에 플레이어가 퇴장함",
+              "playerOnline": "파티 멤버 온라인",
+              "playerOffline": "파티 멤버 오프라인",
+              "kickPlayer": "파티에서 플레이어를 강퇴함",
+              "transferPartyOwner": "플레이어를 파티 리더로 임명함"
             }
           }
         }
@@ -152,35 +152,35 @@
       },
       "createParty": {
         "title": {
-          "create": "Create Party",
-          "update": "Edit Party"
+          "create": "파티 생성",
+          "update": "파티 편집"
         },
         "fields": {
-          "partyName": "Party Name",
-          "description": "Description",
-          "public": "Public",
-          "password": "Password",
-          "theme": "Theme"
+          "partyName": "파티 이름",
+          "description": "설명",
+          "public": "공개",
+          "password": "비밀번호",
+          "theme": "메뉴 타입"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "submit": "Submit"
+        "showPassword": "비밀번호 보이기",
+        "hidePassword": "비밀번호 숨기기",
+        "submit": "확인"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "비공개 파티 참가",
         "fields": {
-          "password": "Password"
+          "password": "비밀번호"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "비밀번호 보이기",
+        "hidePassword": "비밀번호 숨기기",
+        "incorrectPassword": "비밀번호가 올바르지 않습니다. 다시 시도해주세요",
+        "submit": "확인"
       }
     },
     "tooltips": {
       "account": {
         "login": "로그인",
-        "logout": "Logout"
+        "logout": "로그아웃"
       },
       "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
       "io": {
@@ -193,12 +193,12 @@
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "toggleOwnGlobalMessageLocation": "글로벌 채팅 장소 표시",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {
-        "createParty": "Create Party",
-        "disbandParty": "Disband Party"
+        "createParty": "파티 생성",
+        "disbandParty": "파티 해산"
       },
       "nexus": "넥서스로 돌아가기"
     }
@@ -243,8 +243,8 @@
     "playerList": {
       "unnamed": "익명의 플레이어",
       "actions": {
-        "partyKick": "Kick From Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "partyKick": "파티에서 강퇴하기",
+        "transferPartyOwner": "파티 리더로 임명하기"
       }
     },
     "roles": {
@@ -254,31 +254,31 @@
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": "아이디 혹은 비밀번호가 올바르지 않습니다."
+          "invalidLogin": "아이디 혹은 비밀번호가 올바르지 않습니다"
         }
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
-          "emailTaken": "해당 이메일은 이미 사용하고 있습니다.",
-          "usernameTaken": "해당 아이디는 이미 사용하고 있습니다."
+          "confirmPasswordMismatch": "확인용 비밀번호가 일치하지 않습니다",
+          "invalidCredentials": "닉네임이나 비밀번호에 공백 또는 사용할 수 없는 문자가 있습니다",
+          "emailTaken": "해당 이메일은 이미 사용하고 있습니다",
+          "usernameTaken": "해당 아이디는 이미 사용하고 있습니다"
         }
       }
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
-      "defaultPartyName": "{OWNER}'s Party",
-      "partyOwner": "Party Leader",
-      "offlineMemberSuffix": " (Offline)",
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
+      "emptyMessage": "활성화된 파티가 없습니다",
+      "yourParty": "현재 가입된 파티",
+      "defaultPartyName": "{OWNER}님의 파티",
+      "partyOwner": "파티 리더",
+      "offlineMemberSuffix": " (오프라인)",
+      "onlineCount": "온라인 - {COUNT}",
+      "offlineCount": "오프라인 - {COUNT}",
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "파티 자세히 보기",
+        "joinParty": "파티 참가",
+        "joinPrivateParty": "비공개 파티 참가",
+        "leaveParty": "파티 퇴장"
       }
     },
     "chatTips": {
@@ -289,7 +289,7 @@
         "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇명의 플레이어가 있는지 알 수 있습니다.",
         "globalChatLocation": "글로벌 채팅 메세지 내역 위의 지구본 아이콘을 클릭하면 메세지를 보낸 위치를 알 수 있습니다. 마지막으로 작성된 글로벌 챗의 위치를 열어놓은 상태라면 이후에 갱신되는 챗에도 위치가 자동으로 표시됩니다.",
         "markdownSupport": "특수 문자를 이용해서 채팅 글씨의 모양을 바꿀 수 있습니다. 현재 가능한 목록 : **굵게** (\\*\\*예시\\*\\*), *기울임* (\\*예시\\*, \\_예시\\_), __밑줄__ (\\_\\_예시\\_\\_), ~~취소선~~ (\\~\\~예시\\~\\~), ||스포일러|| (\\|\\|예시\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
+        "tabToChat": "PC로 플레이 중이시라면, 탭(Tab) 키를 눌러 채팅 입력과 인게임 조작을 마우스 없이 전환할 수 있습니다. 이 기능은 설정의 **탭을 눌러 채팅하기**를 활성화하면 사용 가능합니다.",
         "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메세지가 작성되면 탭이 굵게 표시됩니다.",
         "clearChat": "'채팅 기록 삭제하기' 버튼을 누르면 채팅 내역을 지울 수 있습니다. '전체' 탭이 아닌 다른 탭에서 삭제하였을 경우 해당 탭에 속해있는 채팅만 삭제됩니다.",
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
@@ -298,25 +298,25 @@
     },
     "toast": {
       "client": {
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedIn": "{USER}로 로그인 했습니다",
+        "loggedOut": "로그아웃 하였습니다"
       },
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "create": "{PARTY}가 생성되었습니다",
+        "update": "{PARTY}를 업데이트 했습니다",
+        "join": "{PARTY}에 참가하였습니다",
+        "leave": "{PARTY}에서 퇴장했습니다",
+        "remove": "{PARTY}에서 지워졌습니다",
+        "disband": "{PARTY}가 해산되었습니다",
+        "playerJoin": "{PLAYER}님이 파티에 참가했습니다",
+        "playerLeave": "{PLAYER}님이 파티에서 퇴장했습니다",
+        "playerOnline": "{PLAYER}님이 온라인입니다",
+        "playerOffline": "{PLAYER}님이 오프라인입니다",
+        "kickPlayer": "{PLAYER}님이 파티에서 강퇴당했습니다",
+        "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       }
     },
     "2kki": {
