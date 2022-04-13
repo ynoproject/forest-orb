@@ -81,10 +81,10 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     name.innerText = getPlayerName(player);
     const nameBeginMarker = document.createElement("span");
     nameBeginMarker.classList.add("nameMarker");
-    nameBeginMarker.textContent = "<";
+    nameBeginMarker.textContent = player.account ? "[" : "<";
     const nameEndMarker = document.createElement("span");
     nameEndMarker.classList.add("nameMarker");
-    nameEndMarker.textContent = ">";
+    nameEndMarker.textContent = player.account ? "]" : ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
     if (player?.rank) {
