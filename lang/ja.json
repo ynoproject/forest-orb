@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "ログインする",
+      "logout": "ログアウトする"
+    },
     "fontStyle": {
       "label": "フォント スタイル",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "ログインする",
-        "logout": "ログアウトする"
-      },
       "toggleSinglePlayer": "シングルプレイヤーのオン／オフ",
       "io": {
         "upload": "セーブデータをアップロード",

@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "Login",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "Estilo da Fonte:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "Login",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "Alternar jogador único",
       "io": {
         "upload": "Enviar arquivo salvo",

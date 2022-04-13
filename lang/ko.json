@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "로그인",
+      "logout": "로그아웃"
+    },
     "fontStyle": {
       "label": "폰트 스타일:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "로그인",
-        "logout": "로그아웃"
-      },
       "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
       "io": {
         "upload": "세이브 파일 불러오기",

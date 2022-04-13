@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "登录",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "字体样式：",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "登录",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "单人/多人模式切换",
       "io": {
         "upload": "上传存档文件",

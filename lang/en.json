@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "Login",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "Font Style:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "Login",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "Toggle Single Player",
       "io": {
         "upload": "Upload Save File",

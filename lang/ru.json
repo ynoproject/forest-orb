@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "Войти",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "Стиль Шрифта:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "Войти",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "Переключить режим Одиночной Игры",
       "io": {
         "upload": "Загрузить сохранение",

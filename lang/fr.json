@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "Se Connecter",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "Style de police&nbsp;:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "Se Connecter",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
       "io": {
         "upload": "Ouvrir un Fichier de Sauvegarde",

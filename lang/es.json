@@ -10,6 +10,10 @@
     }
   },
   "ui": {
+    "account": {
+      "login": "Iniciar Sesión",
+      "logout": "Logout"
+    },
     "fontStyle": {
       "label": "Estilo de Fuente:",
       "values": {
@@ -191,10 +195,6 @@
       }
     },
     "tooltips": {
-      "account": {
-        "login": "Iniciar Sesión",
-        "logout": "Logout"
-      },
       "toggleSinglePlayer": "Alternar Modo Solitario",
       "io": {
         "upload": "Cargar archivo de guardado",
