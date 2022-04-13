@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "Войти",
-      "logout": "Logout"
+      "logout": "Log Out"
     },
     "fontStyle": {
       "label": "Стиль Шрифта:",

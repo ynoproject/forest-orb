@@ -11,8 +11,8 @@
   },
   "ui": {
     "account": {
-      "login": "Login",
-      "logout": "Logout"
+      "login": "Log In",
+      "logout": "Log Out"
     },
     "fontStyle": {
       "label": "Estilo da Fonte:",
@@ -65,7 +65,7 @@
     },
     "modal": {
       "login": {
-        "title": "Login",
+        "title": "Log In",
         "fields": {
           "username": "Nome de Usuário",
           "password": "Senha"
@@ -84,7 +84,7 @@
         },
         "submit": "Submit",
         "loginPrompt": "Já tem uma conta?&nbsp;",
-        "login": "Login"
+        "login": "Log In"
       },
       "settings": {
         "title": "Configurações",

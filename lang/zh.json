@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "登录",
-      "logout": "Logout"
+      "logout": "Log Out"
     },
     "fontStyle": {
       "label": "字体样式：",

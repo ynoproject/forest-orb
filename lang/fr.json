@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "Se Connecter",
-      "logout": "Logout"
+      "logout": "Log Out"
     },
     "fontStyle": {
       "label": "Style de police&nbsp;:",

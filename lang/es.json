@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "Iniciar Sesión",
-      "logout": "Logout"
+      "logout": "Log Out"
     },
     "fontStyle": {
       "label": "Estilo de Fuente:",
