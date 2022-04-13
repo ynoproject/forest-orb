@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -121,10 +121,10 @@
             }
           },
           "account": {
-            "label": "Account",
+            "label": "账号",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "登录",
+              "loggedOut": "登出"
             }
           },
           "parties": {
@@ -259,8 +259,8 @@
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "confirmPasswordMismatch": "两次输入的密码不一致！",
+          "invalidCredentials": "用户名和密码为空或包含不支持的字符！",
           "emailTaken": "您输入的邮箱地址已被占用！",
           "usernameTaken": "您输入的用户名已被占用！"
         }
@@ -301,8 +301,8 @@
         "floodDetected": "检测到网络攻击行为，您已被暂时切换至单人模式！"
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedIn": "您已成功登录账号 {USER} 。",
+        "loggedOut": "您已成功退出账号。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
