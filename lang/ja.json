@@ -121,10 +121,10 @@
             }
           },
           "account": {
-            "label": "Account",
+            "label": "アカウント",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "ログイン通知",
+              "loggedOut": "ログアウト通知"
             }
           },
           "parties": {
