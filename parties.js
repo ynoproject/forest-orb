@@ -368,13 +368,15 @@ function updateJoinedParty(skipNextUpdate, callback) {
         if (response.status === 401) {
           showPartyToastMessage('remove', 'leave', partyCache[joinedPartyId]);
           setJoinedPartyId(null);
-          return;
+          return null;
         }
         throw new Error(response.statusText);
       }
       return response.json();
     })
     .then(party => {
+      if (!party)
+        return;
       const oldMembers = joinedPartyCache ? joinedPartyCache.members : [];
       joinedPartyCache = party;
       
