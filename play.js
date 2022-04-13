@@ -958,6 +958,11 @@ function getSaveSlot(download) {
   return fileIndexInt < 10 ? `0${fileIndexInt}` : fileIndexInt.toString();
 }
 
+// EXTERNAL
+function onSaveSlotUpdated(slotId) {
+  // Will be used in the future
+}
+
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
   fetch(`lang/${globalConfig.lang}.json`)
