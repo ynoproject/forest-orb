@@ -67,7 +67,7 @@
           "password": "비밀번호"
         },
         "submit": "확인",
-        "registerPrompt": "계정이 존재하지 않음",
+        "registerPrompt": "계정이 없습니다",
         "register": "계정 만들기"
       },
       "register": {
@@ -79,7 +79,7 @@
           "confirmPassword": "비밀번호 확인"
         },
         "submit": "확인",
-        "loginPrompt": "이미 존재하는 계정입니다",
+        "loginPrompt": "이미 계정이 있습니다",
         "login": "로그인"
       },
       "settings": {
