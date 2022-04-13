@@ -1,3 +1,4 @@
+const is2kki = gameId === '2kki';
 const unknownLocations = [];
 
 const pendingRequests = {};

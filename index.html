@@ -550,8 +550,6 @@
       '2kki': 'ja',
       'flow': 'ja'
     };
-    const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-    
     Module = {
       INITIALIZED: false,
       EASYRPG_GAME: gameId,
@@ -562,19 +560,17 @@
       const headers = sessionId ? { 'X-Session': sessionId } : {};
       return fetch(`${apiUrl}/${path}`, { headers: headers });
     }
-
-    let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', 'account.js', 'toast.js' ];
-    if (gameId === '2kki')
-      scripts.push('2kki.js');
-    scripts = scripts.concat([ 'play.js', 'index.js', 'gamecanvas.js' ]);
-
-    for (let script of scripts) {
-      const scriptTag = document.createElement('script');
-      scriptTag.type = 'text/javascript';
-      scriptTag.src = script;
-      document.body.appendChild(scriptTag);
-    }
   </script>
   <script type="text/javascript" src="icons.js"></script>
+  <script type="text/javascript" src="chat.js"></script>
+  <script type="text/javascript" src="playerlist.js"></script>
+  <script type="text/javascript" src="parties.js"></script>
+  <script type="text/javascript" src="system.js"></script>
+  <script type="text/javascript" src="account.js"></script>
+  <script type="text/javascript" src="toast.js"></script>
+  <script type="text/javascript" src="2kki.js" data-game-ids="2kki"></script>
+  <script type="text/javascript" src="play.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  <script type="text/javascript" src="gamecanvas.js"></script>
 </body>
 </html>
