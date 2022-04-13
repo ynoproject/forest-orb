@@ -252,6 +252,9 @@ function trySyncSave() {
                 const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
                 request.onsuccess = function (_e) {
+                  saveSyncData.timestamp = new Date(saveSyncData.timestamp);
+                  saveSyncData.contents = Uint8Array.from(Object.values(saveSyncData.contents));
+
                   const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
 
                   const db = request.result; 
