@@ -158,7 +158,7 @@
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
             "values": {
-              "0": "None"
+              "0": "なし"
             }
           }
         }
