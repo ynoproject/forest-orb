@@ -34,11 +34,25 @@ function getPlayerName(player, includeRank, asHtml) {
     const nameTextContainer = document.createElement('div');
     nameTextContainer.classList.add('nameTextContainer');
 
+    if (!player?.account) {
+      const nameBeginMarker = document.createElement('span');
+      nameBeginMarker.classList.add('nameMarker');
+      nameBeginMarker.textContent = '<';
+      nameTextContainer.appendChild(nameBeginMarker);
+    }
+
     const nameText = document.createElement('span');
     nameText.classList.add('nameText');
     nameText.innerText = playerName;
 
     nameTextContainer.appendChild(nameText);
+
+    if (!player?.account) {
+      const nameEndMarker = document.createElement('span');
+      nameEndMarker.classList.add('nameMarker');
+      nameEndMarker.textContent = '>';
+      nameTextContainer.appendChild(nameEndMarker);
+    }
 
     let rankIcon = null;
 
@@ -65,6 +79,9 @@ function getPlayerName(player, includeRank, asHtml) {
   
   if (includeRank && isPlayerObj && player.rank)
     playerName += roleEmojis[player.rank === 1 ? 'mod' : 'dev'];
+
+  if (!asHtml && isPlayerObj && !player?.account)
+    playerName = `<${playerName}>`;
   
   return playerName;
 }
@@ -101,6 +118,13 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     nameTextContainer.classList.add('nameTextContainer');
 
     nameText.classList.add('nameText');
+
+    if (!player?.account) {
+      const nameBeginMarker = document.createElement('span');
+      nameBeginMarker.classList.add('nameMarker');
+      nameBeginMarker.textContent = '<';
+      nameTextContainer.appendChild(nameBeginMarker);
+    }
     
     if (showLocation) {
       const detailsContainer = document.createElement('div');
@@ -117,6 +141,13 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       playerListEntry.appendChild(nameTextContainer);
     }
 
+    if (!player?.account) {
+      const nameEndMarker = document.createElement('span');
+      nameEndMarker.classList.add('nameMarker');
+      nameEndMarker.textContent = '>';
+      nameTextContainer.appendChild(nameEndMarker);
+    }
+
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
@@ -125,14 +156,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       banAction.classList.add('listEntryAction');
       banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
-        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player)}?`)) {
+        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true, true)}?`)) {
           apiFetch(`admin?command=ban&player=${uuid}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${getPlayerName(player)} has been banned.`, 'ban', systemName))
+            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', systemName))
             .catch(err => console.error(err));
         }
       };
@@ -159,6 +190,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
     nameText.innerText = getPlayerName(name);
+    if (player?.account) {
+      const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
+      for (let nameMarker of nameMarkers)
+        nameMarker.remove();
+    }
+
     if (name)
       delete playerListEntry.dataset.unnamed;
     else
@@ -172,7 +209,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
       rankIcon.classList.add('rankIcon');
       rankIcon.title = localizedMessages.roles[rank === 1 ? 'mod' : 'dev'];
-      nameText.parentElement.appendChild(rankIcon);
+      nameText.after(rankIcon);
     }
   }
 
