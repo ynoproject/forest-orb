@@ -104,7 +104,7 @@
           "toggleFloodProtection": "スパム対策"
         },
         "notificationSettings": "通知 設定",
-        "accountSettings": "Account Settings"
+        "accountSettings": "アカウント設定"
       },
       "notificationSettings": {
         "title": "通知 設定",
@@ -152,13 +152,13 @@
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "アカウント設定",
         "fields": {
-          "toggleSaveSync": "Save Sync (Experimental)",
+          "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "同期させるセーブデータスロット",
             "values": {
-              "0": "None"
+              "0": "なし"
             }
           }
         }
@@ -310,8 +310,8 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "セーブデータ同期を有効にしますか？同期させるとセーブデータがサーバー側でセーブデータが保存されるようになり、この機能を有効にしているデバイスやブラウザで、アカウントデータとしてサーバー側に保存されているセーブデータにアクセスできるようになります。有効になっている間は、指定したセーブデータスロットのセーブデータは、ページの読み込み時に自動的に更新されます。",
+      "confirmEnableWithData": "このアカウントには既に別のセーブデータが保存されています。サーバー側に保存されているセーブデータは、同じスロットに既にセーブデータが保存されている場合、セーブデータは上書きされます。この機能を有効にした状態でページを再読み込みした場合にのみ反映されますのでご注意ください。本当にセーブデータ同期を有効にしますか？"
     },
     "toast": {
       "client": {
