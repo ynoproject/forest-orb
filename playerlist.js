@@ -23,9 +23,9 @@ let spriteCache = {};
 let faviconCache = {};
 let playerSpriteCache = {};
 
-function getPlayerName(player, includeRank, asHtml) {
+function getPlayerName(player, includeMarkers, asHtml) {
   const isPlayerObj = typeof player === 'object';
-  let playerName = isPlayerObj ? player?.name : player;
+  let playerName = isPlayerObj ? player.name : player;
   const unnamed = !playerName;
   if (unnamed)
     playerName = localizedMessages.playerList.unnamed;
@@ -34,7 +34,7 @@ function getPlayerName(player, includeRank, asHtml) {
     const nameTextContainer = document.createElement('div');
     nameTextContainer.classList.add('nameTextContainer');
 
-    if (!player?.account) {
+    if (!player.account) {
       const nameBeginMarker = document.createElement('span');
       nameBeginMarker.classList.add('nameMarker');
       nameBeginMarker.textContent = '<';
@@ -47,7 +47,7 @@ function getPlayerName(player, includeRank, asHtml) {
 
     nameTextContainer.appendChild(nameText);
 
-    if (!player?.account) {
+    if (!player.account) {
       const nameEndMarker = document.createElement('span');
       nameEndMarker.classList.add('nameMarker');
       nameEndMarker.textContent = '>';
@@ -70,6 +70,12 @@ function getPlayerName(player, includeRank, asHtml) {
         systemName = getDefaultUiTheme();
       const parsedSystemName = systemName.replace(' ', '_');
       nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+      const nameMarkers = nameTextContainer.querySelectorAll('.nameMarker');
+      if (nameMarkers.length) {
+        const nameMarkerStyle = `color: var(--alt-color-${parsedSystemName}); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+        for (let nameMarker of nameMarkers)
+          nameMarker.setAttribute('style', nameMarkerStyle);
+      }
       if (rankIcon)
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
     }
@@ -77,11 +83,12 @@ function getPlayerName(player, includeRank, asHtml) {
     return nameTextContainer.outerHTML;
   }
   
-  if (includeRank && isPlayerObj && player.rank)
-    playerName += roleEmojis[player.rank === 1 ? 'mod' : 'dev'];
-
-  if (!asHtml && isPlayerObj && !player?.account)
-    playerName = `<${playerName}>`;
+  if (includeMarkers && isPlayerObj) {
+    if (player.rank)
+      playerName += roleEmojis[player.rank === 1 ? 'mod' : 'dev'];
+    if (!asHtml && !player.account)
+      playerName = `<${playerName}>`;
+  }
   
   return playerName;
 }
@@ -267,6 +274,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       initUiThemeFontStyles(systemName, 0, false, () => {
         playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
         nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
+        if (nameMarkers.length) {
+          const nameMarkerStyle = `color: var(--alt-color-${parsedSystemName}); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+          for (let nameMarker of nameMarkers)
+            nameMarker.setAttribute('style', nameMarkerStyle);
+        }
         if (rankIcon || playerListEntryActionContainer.childElementCount || showLocation) {
           if (rankIcon)
             rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
