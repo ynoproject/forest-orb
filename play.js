@@ -83,11 +83,15 @@ function onUpdateConnectionStatus(status) {
   else
     updateStatusText();
 
+  if (sessionId && connStatus === 3 && status !== 3)
+    updateEventLocationList();
+
   connStatus = status;
 
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
     fetchAndUpdatePlayerCount();
+    checkEventLocations();
     if (!hasConnected) {
       addChatTip();
       hasConnected = true;
@@ -250,15 +254,8 @@ function onLoadMap(mapName) {
 
       if (localizedMapLocations) {
         const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
-        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
+        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
           addChatMapLocation();
-          if (locations && sessionId && eventLocationCache.length) {
-            const eventLocationNames = eventLocationCache.map(el => el.title);
-            const eventLocationMatch = locations.map(l => l.title).find(l => eventLocationNames.indexOf(l) > -1);
-            if (eventLocationMatch)
-              claimEventLocationPoints(eventLocationMatch);
-          }
-        }
 
         cachedLocations = locations;
       }

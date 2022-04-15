@@ -70,8 +70,8 @@
             <div id="rightControls">
               <div id="mapControls" data-game-ids="2kki"></div>
               <div id="explorerControls" data-game-ids="2kki" style="display: none"></div>
-              <div id="eventControls" class="accountRequired" style="display: none">
-                <button id="eventLocationsButton" class="iconButton unselectable" style="display: none" data-i18n="[title]tooltips.eventLocations">
+              <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">
+                <button id="eventLocationsButton" class="iconButton unselectable" data-i18n="[title]tooltips.eventLocations">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
                 </button>
               </div>
@@ -116,7 +116,7 @@
           <div id="chatboxInfo">
             <div id="onlineInfo" class="info hidden">
               <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
-              <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel unselectable multiplayerOnly"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
+              <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
             </div>
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>

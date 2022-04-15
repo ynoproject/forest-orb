@@ -73,7 +73,6 @@ function apiJsonPost(path, data) {
 let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
-let loadedLastEventLocations = false;
 
 function loadOrInitConfig(configObj, global, configName) {
   if (!configName)
@@ -202,9 +201,6 @@ function loadOrInitConfig(configObj, global, configName) {
                       setFontStyle(value, true);
                       loadedFontStyle = true;
                     }
-                    break;
-                  case 'lastEventLocations':
-                    loadedLastEventLocations = true;
                     break;
                 }
               }

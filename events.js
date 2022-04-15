@@ -32,17 +32,11 @@ function updateEventLocationList() {
       });
       
       const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
-      const checkEventLocationsUpdated = () => {
-        if (config.lastEventLocations !== eventLocationsStr) {
-          showEventLocationToastMessage('listUpdated', 'expedition');
-          config.lastEventLocations = eventLocationsStr;
-          updateConfig(config);
-        }
-      };
-      if (loadedLastEventLocations)
-        checkEventLocationsUpdated();
-      else
-        setTimeout(checkEventLocationsUpdated, 500);
+      if (config.lastEventLocations !== eventLocationsStr) {
+        showEventLocationToastMessage('listUpdated', 'expedition');
+        config.lastEventLocations = eventLocationsStr;
+        updateConfig(config);
+      }
 
       const eventLocationList = document.getElementById('eventLocationList');
       eventLocationList.innerHTML = '';
@@ -100,6 +94,9 @@ function updateEventLocationList() {
         eventLocationListEntry.appendChild(checkbox);
         eventLocationList.appendChild(eventLocationListEntry);
       }
+
+      if (connStatus === 1)
+        checkEventLocations();
     });
 }
 
@@ -114,6 +111,15 @@ function claimEventLocationPoints(location) {
       showEventLocationToastMessage('complete', 'expedition', location, exp);
       updateEventLocationList();
     });
+}
+
+function checkEventLocations() {
+  if (sessionId && cachedLocations && eventLocationCache.length) {
+    const eventLocationNames = eventLocationCache.filter(el => !el.complete).map(el => el.title);
+    const eventLocationMatch = cachedLocations.map(l => l.title).find(l => eventLocationNames.indexOf(l) > -1);
+    if (eventLocationMatch)
+      claimEventLocationPoints(eventLocationMatch);
+  }
 }
 
 function showEventLocationToastMessage(key, icon, location, exp) {
