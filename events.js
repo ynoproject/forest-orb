@@ -106,6 +106,18 @@ function updateEventLocationList(ignoreLocationCheck) {
         eventLocationList.appendChild(eventLocationListEntry);
       }
 
+      apiFetch('eventLocations?command=exp')
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.json();
+        })
+        .then(exp => {
+          document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
+          document.documentElement.style.setProperty('--week-exp', exp.weekExp);
+        });
+
+
       if (!ignoreLocationCheck && connStatus === 1)
         checkEventLocations();
     });

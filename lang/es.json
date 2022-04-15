@@ -201,7 +201,8 @@
         "submit": "Unirse"
       },
       "eventLocations": {
-        "title": "Expeditions"
+        "title": "Expeditions",
+        "weekExp": "ExP This Week"
       }
     },
     "tooltips": {

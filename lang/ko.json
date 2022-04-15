@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -201,7 +201,8 @@
         "submit": "확인"
       },
       "eventLocations": {
-        "title": "탐험"
+        "title": "탐험",
+        "weekExp": "ExP This Week"
       }
     },
     "tooltips": {

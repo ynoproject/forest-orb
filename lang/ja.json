@@ -201,7 +201,8 @@
         "submit": "送信"
       },
       "eventLocations": {
-        "title": "ドリームラリー"
+        "title": "ドリームラリー",
+        "weekExp": "ExP This Week"
       }
     },
     "tooltips": {

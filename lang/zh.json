@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -201,7 +201,8 @@
         "submit": "提交"
       },
       "eventLocations": {
-        "title": "探索目的地"
+        "title": "探索目的地",
+        "weekExp": "ExP This Week"
       }
     },
     "tooltips": {
