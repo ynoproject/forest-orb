@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -104,7 +104,7 @@
           "toggleFloodProtection": "开启/关闭网络攻击保护"
         },
         "notificationSettings": "弹框通知信息设置",
-        "accountSettings": "Account Settings"
+        "accountSettings": "账号设置"
       },
       "notificationSettings": {
         "title": "弹框通知信息设置",
@@ -150,22 +150,22 @@
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "长征探索任务",
             "fields": {
-              "complete": "Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "已完成探索",
+              "listUpdated": "探索目的地已更新"
             }
           }
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "账号设置",
         "fields": {
-          "toggleSaveSync": "Save Sync (Experimental)",
+          "toggleSaveSync": "云端同步存档 (实验性功能)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "存档文件编号",
             "values": {
-              "0": "None"
+              "0": "无"
             }
           }
         }
@@ -201,7 +201,7 @@
         "submit": "提交"
       },
       "eventLocations": {
-        "title": "Expeditions"
+        "title": "探索目的地"
       }
     },
     "tooltips": {
@@ -223,7 +223,7 @@
         "createParty": "创建队伍",
         "disbandParty": "解散队伍"
       },
-      "eventLocations": "Expeditions",
+      "eventLocations": "探索目的地",
       "nexus": "返回到门的世界"
     }
   },
@@ -321,8 +321,8 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "您想启用云端同步存档功能吗？启用后您的联机存档数据将存储到云端，您可以从任意登录相同账号的终端设备或浏览器上访问您的存档，您在游戏中选定的存档数据将在载入后实时自动更新。",
+      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档数据，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档，这种情况只在启用同步功能并刷新页面之后才会产生影响。您确定真的要在本设备上启用云端同步吗？"
     },
     "toast": {
       "client": {
@@ -347,16 +347,16 @@
         "transferPartyOwner": "{PLAYER} 已被转授为领队。"
       },
       "eventLocations": {
-        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "成功完成 {LOCATION} 长征探索任务，您已获得 {EXP} ！",
+        "listUpdated": "长征探索目的地已更新！"
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
+      "exp": "{POINTS} 经验值",
       "type": {
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend"
+        "0": "日循环任务",
+        "1": "周循环任务",
+        "2": "周末限定任务"
       }
     },
     "2kki": {
