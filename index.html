@@ -69,7 +69,12 @@
             </div>
             <div id="rightControls">
               <div id="mapControls" data-game-ids="2kki"></div>
-              <div id="explorerControls" data-game-ids="2kki" style="display: none;"></div>
+              <div id="explorerControls" data-game-ids="2kki" style="display: none"></div>
+              <div id="eventControls" class="accountRequired" style="display: none">
+                <button id="eventLocationsButton" class="iconButton unselectable" style="display: none" data-i18n="[title]tooltips.eventLocations">
+                  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
+                </button>
+              </div>
               <button id="controls-fullscreen" class="iconButton unselectable">
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
               </button>
@@ -364,7 +369,7 @@
               </li>
               <li class="formControlRow accountRequired">
                 <span></span>
-                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings" onclick="openModal('accountSettingsModal', null, 'accountSettingsModal')">Account Settings</button>
+                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings" onclick="openModal('accountSettingsModal', null, 'settingsModal')">Account Settings</button>
               </li>
             </ul>
           </div>
@@ -540,6 +545,15 @@
             </div>
           </div>
         </div>
+        <div id="eventLocationsModal" class="modal accountRequired hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.eventLocations.title">Expeditions</h1>
+          </div>
+          <div class="modalContent">
+            <div id="eventLocationList" class="scrollableContainer"></div>
+          </div>
+        </div>
         <div class="modalOverlay"></div>
       </div>
       <div id="toastContainer"></div>
@@ -569,6 +583,7 @@
   <script type="text/javascript" src="icons.js"></script>
   <script type="text/javascript" src="toast.js"></script>
   <script type="text/javascript" src="account.js"></script>
+  <script type="text/javascript" src="events.js"></script>
   <script type="text/javascript" src="savedata.js"></script>
   <script type="text/javascript" src="init.js"></script>
 </body>

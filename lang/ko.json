@@ -148,6 +148,13 @@
               "kickPlayer": "파티에서 플레이어를 강퇴함",
               "transferPartyOwner": "플레이어를 파티 리더로 임명함"
             }
+          },
+          "eventLocations": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "listUpdated": "Expedition List Updated"
+            }
           }
         }
       },
@@ -192,6 +199,9 @@
         "hidePassword": "비밀번호 숨기기",
         "incorrectPassword": "비밀번호가 올바르지 않습니다. 다시 시도해주세요",
         "submit": "확인"
+      },
+      "eventLocations": {
+        "title": "Expeditions"
       }
     },
     "tooltips": {
@@ -213,6 +223,7 @@
         "createParty": "파티 생성",
         "disbandParty": "파티 해산"
       },
+      "eventLocations": "Expeditions",
       "nexus": "넥서스로 돌아가기"
     }
   },
@@ -334,6 +345,18 @@
         "playerOffline": "{PLAYER}님이 오프라인입니다",
         "kickPlayer": "{PLAYER}님이 파티에서 강퇴당했습니다",
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
+      },
+      "eventLocations": {
+        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "type": {
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend"
       }
     },
     "2kki": {

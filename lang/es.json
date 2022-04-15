@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -148,6 +148,13 @@
               "kickPlayer": "Miembro es Expulsado",
               "transferPartyOwner": "Miembro Promovido a Líder"
             }
+          },
+          "eventLocations": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "listUpdated": "Expedition List Updated"
+            }
           }
         }
       },
@@ -192,6 +199,9 @@
         "hidePassword": "Esconder Contraseña",
         "incorrectPassword": "Contraseña Incorrecta: Intente Nuevamente.",
         "submit": "Unirse"
+      },
+      "eventLocations": {
+        "title": "Expeditions"
       }
     },
     "tooltips": {
@@ -213,6 +223,7 @@
         "createParty": "Crear Equipo",
         "disbandParty": "Eliminar Equipo"
       },
+      "eventLocations": "Expeditions",
       "nexus": "Regresar al Nexo"
     }
   },
@@ -334,6 +345,18 @@
         "playerOffline": "{PLAYER} se ha desconectado.",
         "kickPlayer": "{PLAYER} ha sido expulsado del equipo.",
         "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
+      },
+      "eventLocations": {
+        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "type": {
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend"
       }
     },
     "2kki": {

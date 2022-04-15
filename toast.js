@@ -23,8 +23,14 @@ const notificationTypes = {
     'playerOffline',
     'kickPlayer',
     'transferPartyOwner'
+  ],
+  eventLocations: [
+    'complete',
+    'listUpdated'
   ]
 };
+
+const accountNotificationCategories = [ 'account', 'eventLocations' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');
@@ -33,8 +39,12 @@ function initNotificationsConfigAndControls() {
     const categoryConfig = { all: true };
     globalConfig.notifications[category] = categoryConfig;
 
+    const accountRequired = accountNotificationCategories.indexOf(category) > -1;
+
     const categoryRow = document.createElement('li');
     categoryRow.classList.add('formControlRow');
+    if (accountRequired)
+      categoryRow.classList.add('accountRequired');
 
     const categoryButtonId = `notificationsButton_${category}`;
 
@@ -75,6 +85,8 @@ function initNotificationsConfigAndControls() {
       const typeRow = document.createElement('li');
       typeRow.classList.add('formControlRow');
       typeRow.classList.add('indent');
+      if (accountRequired)
+        typeRow.classList.add('accountRequired');
       typeRow.dataset.category = category;
 
       const typeButtonId = `${categoryButtonId}_${type}`;

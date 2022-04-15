@@ -55,12 +55,12 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
-html, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
+html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   font-family: 'MS PGothic', 'PGothic';
   font-size: 16px;
 }
 
-html, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
+html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   color: var(--base-color) !important;
   background-color: black;
 }
@@ -69,7 +69,7 @@ html {
   overflow-y: hidden;
 }
 
-#chatBorder, .toast, input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
+#chatBorder, .toast, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -87,7 +87,7 @@ label {
   font-weight: bold;
 }
 
-input, textarea, select, button.checkboxButton, button[type="button"], button[type="submit"] {
+input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   background-color: var(--base-bg-color) !important;
   text-shadow: 1.5px 1.5px var(--shadow-color);
 }
@@ -101,7 +101,7 @@ button.checkboxButton, button[type="button"], button[type="submit"] {
   -webkit-appearance: button;
 }
 
-button.checkboxButton {
+.checkbox, button.checkboxButton {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,15 +112,20 @@ button.checkboxButton {
   padding: 4px;
 }
 
-button.checkboxButton > span:after {
+.checkbox {
+  width: 6px;
+  height: 6px;
+}
+
+.checkbox > span:after, button.checkboxButton > span:after {
   content: "";
 }
 
-button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxButton.inverseToggle:not(.toggled) > span:after {
+.checkbox.toggled > span:after, button.checkboxButton:not(.inverseToggle).toggled > span:after, button.checkboxButton.inverseToggle:not(.toggled) > span:after {
   content: "✔";
 }
 
-body, .container, div, input, button.checkboxButton, button[type="button"], button[type="submit"] {
+body, .container, div, input, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
@@ -573,7 +578,7 @@ body.fullBg #background {
   display: flex;
 }
 
-#leftControls button, #explorerControls button, #mapControls button {
+#leftControls button, #rightControls > div > button {
   margin-right: 8px;
   margin-bottom: 8px;
 }
@@ -1215,7 +1220,7 @@ body.fullBg #background {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, button.checkboxButton, button[type="button"], button[type="submit"] {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1263,7 +1268,7 @@ body.fullBg #background {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, a:not(.listEntryAction), label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, a:not(.listEntryAction), label {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1352,7 +1357,7 @@ body.fullBg #background {
   text-decoration: none;
 }
 
-.modal input, .modal textarea, .modal select, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
+.modal input, .modal textarea, .modal select, .modal .checkbox, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
   color: var(--modal-base-color) !important;
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
@@ -1385,7 +1390,7 @@ body.fullBg #background {
   fill: var(--modal-base-color) !important;
 }
 
-.modal .infoLabel, .modal .infoText, .modal h1, .modal a:not(.listEntryAction), .modal label {
+.modal .infoLabel, .modal .infoText, .modal h1, .modal h2, .modal h3, .modal a:not(.listEntryAction), .modal label {
   background-image: var(--modal-base-gradient) !important;
   filter: drop-shadow(1.5px 1.5px var(--modal-shadow-color));
 }
@@ -1519,10 +1524,6 @@ body.fullBg #background {
   text-align: right;
 }
 
-.formControlRow > button[type="button"] {
-  margin-right: 8px;
-}
-
 .uiTheme {
   display: flex;
   flex-direction: column;
@@ -1580,6 +1581,22 @@ form .uiTheme {
 
 #partyModalOfflinePlayerList .playerListEntry {
   opacity: 0.5;
+}
+
+#eventLocationList {
+  width: 100%;
+}
+
+#eventLocationList .eventLocationListEntry.complete {
+  opacity: 0.625;
+}
+
+#eventLocationList .eventLocationListEntry .detailsContainer {
+  flex-direction: column;
+}
+
+#eventLocationList .eventLocationListEntry .eventLocationPoints {
+  width: 64px;
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
@@ -1995,7 +2012,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, button.checkboxButton, button[type="button"], button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
     border-color: unset !important;
   }
 
@@ -2018,7 +2035,7 @@ form .uiTheme {
   }
 
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, a, label {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }

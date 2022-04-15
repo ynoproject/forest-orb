@@ -148,6 +148,13 @@
               "kickPlayer": "Kicked Player From Party",
               "transferPartyOwner": "Promoted Player to Party Leader"
             }
+          },
+          "eventLocations": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "listUpdated": "Expedition List Updated"
+            }
           }
         }
       },
@@ -192,6 +199,9 @@
         "hidePassword": "Hide Password",
         "incorrectPassword": "Incorrect Password: Please try again.",
         "submit": "Submit"
+      },
+      "eventLocations": {
+        "title": "Expeditions"
       }
     },
     "tooltips": {
@@ -213,6 +223,7 @@
         "createParty": "Create Party",
         "disbandParty": "Disband Party"
       },
+      "eventLocations": "Expeditions",
       "nexus": "Retourner au Nexus"
     }
   },
@@ -334,6 +345,18 @@
         "playerOffline": "{PLAYER} is now offline.",
         "kickPlayer": "{PLAYER} has been kicked from the party.",
         "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+      },
+      "eventLocations": {
+        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "type": {
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend"
       }
     },
     "2kki": {

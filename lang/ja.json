@@ -148,6 +148,13 @@
               "kickPlayer": "パーティー メンバー 追放 通知",
               "transferPartyOwner": "パーティー リーダー 昇格 通知"
             }
+          },
+          "eventLocations": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "listUpdated": "Expedition List Updated"
+            }
           }
         }
       },
@@ -192,6 +199,9 @@
         "hidePassword": "パスワードを 隠す",
         "incorrectPassword": "パスワードが正しくありません：もう一度やり直してください。",
         "submit": "送信"
+      },
+      "eventLocations": {
+        "title": "Expeditions"
       }
     },
     "tooltips": {
@@ -213,6 +223,7 @@
         "createParty": "パーティーを組む",
         "disbandParty": "パーティーを解散する"
       },
+      "eventLocations": "Expeditions",
       "nexus": "扉部屋へ戻る"
     }
   },
@@ -334,6 +345,18 @@
         "playerOffline": "{PLAYER}が オフラインに なりました。",
         "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
         "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
+      },
+      "eventLocations": {
+        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "type": {
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend"
       }
     },
     "2kki": {

@@ -116,6 +116,23 @@ function fetchAndUpdatePlayerInfo() {
         if (isLogin) {
           trySetChatName(playerName);
           showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
+          if (eventPeriodCache)
+            updateEventLocationList();
+          else {
+            apiFetch('eventLocations?command=period')
+              .then(response => {
+                if (!response.ok)
+                  throw new Error(response.statusText);
+                return response.json();
+              })
+              .then(eventPeriod => {
+                if (eventPeriod.periodOrdinal < 0)
+                  return;
+                document.getElementById('eventControls').style.display = 'unset';
+                eventPeriodCache = eventPeriod;
+                updateEventLocationList();
+              });
+          }
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {
           trySetChatName('');
@@ -232,8 +249,15 @@ function onLoadMap(mapName) {
 
       if (localizedMapLocations) {
         const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
-        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
+        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
           addChatMapLocation();
+          if (locations && sessionId && eventLocationCache.length) {
+            const eventLocationNames = eventLocationCache.map(el => el.title);
+            const eventLocationMatch = locations.map(l => l.title).find(l => eventLocationNames.find(l));
+            if (eventLocationMatch)
+              claimEventLocationPoints(eventLocationMatch);
+          }
+        }
 
         cachedLocations = locations;
       }
@@ -523,6 +547,7 @@ initNotificationsConfigAndControls();
 initAccountControls();
 initSaveDataControls();
 initPartyControls();
+initEventControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
@@ -898,6 +923,9 @@ function initLocalization(isInitial) {
         initLocations(globalConfig.lang);
       else if (localizedMapLocations)
         initLocalizedMapLocations(globalConfig.lang);
+
+      if (eventPeriodCache)
+        updateEventLocationList();
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');
