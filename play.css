@@ -306,6 +306,18 @@ body {
   width: unset;
 }
 
+.halfStar {
+  display: inline-block;
+  overflow-x: hidden;
+  width: 8px;
+  vertical-align: bottom;
+  margin-right: -8px;
+}
+
+.halfStar::after {
+  content: "★"
+}
+
 #background {
   position: fixed;
   width: 100%;
@@ -1596,7 +1608,9 @@ form .uiTheme {
 }
 
 #eventLocationList .eventLocationListEntry .eventLocationPoints {
-  width: 64px;
+  text-align: right;
+  width: 80px;
+  padding-right: 8px;
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {

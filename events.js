@@ -73,8 +73,19 @@ function updateEventLocationList() {
         const eventLocationDepth = document.createElement('div');
         eventLocationDepth.classList.add('infoLabel');
         
-        for (let d = 0; d < 5; d++)
-          eventLocationDepth.innerText += d < eventLocation.depth ? '★' : '☆';
+        for (let d = 0; d < 10; d += 2) {
+          if (d < eventLocation.depth) {
+            if (d + 1 < eventLocation.depth) {
+              eventLocationDepth.innerHTML += '★';
+              continue;
+            } else {
+              const halfStar = document.createElement('div');
+              halfStar.classList.add('halfStar');
+              eventLocationDepth.appendChild(halfStar);
+            }
+          }
+          eventLocationDepth.innerHTML += '☆';
+        }
 
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
