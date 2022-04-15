@@ -152,8 +152,8 @@
           "eventLocations": {
             "label": "ドリームラリー",
             "fields": {
-              "complete": "＜ドリームラリー＞全てのドリームリストに到達しました！",
-              "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました。"
+              "complete": "ドリームラリー到達通知",
+              "listUpdated": "ドリームラリー更新通知"
             }
           }
         }
