@@ -26,13 +26,17 @@ function updateEventLocationList() {
       return response.json();
     })
     .then(eventLocations => {
-      if (eventLocationCache && JSON.stringify(eventLocationCache.map(el => el.title)) !== JSON.stringify(eventLocations.map(el => el.title)))
-        showEventLocationToastMessage('listUpdated', 'expedition');
-
       eventLocationCache = eventLocations.map(l => {
         l.endDate = new Date(l.endDate);
         return l;
       });
+      
+      const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
+      if (config.lastEventLocations !== eventLocationsStr) {
+        showEventLocationToastMessage('listUpdated', 'expedition');
+        config.lastEventLocations = eventLocationsStr;
+        updateConfig(config);
+      }
 
       const eventLocationList = document.getElementById('eventLocationList');
       eventLocationList.innerHTML = '';

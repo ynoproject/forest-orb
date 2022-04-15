@@ -46,7 +46,8 @@ let config = {
   globalMessage: false,
   hideOwnGlobalMessageLocation: false,
   showGlobalMessageLocation: false,
-  showPartyMemberLocation: true
+  showPartyMemberLocation: true,
+  lastEventLocations: null
 };
 
 let cache = {
