@@ -150,10 +150,10 @@
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "ドリームラリー",
             "fields": {
-              "complete": "Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "＜ドリームラリー＞全てのドリームリストに到達しました！",
+              "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました。"
             }
           }
         }
@@ -201,7 +201,7 @@
         "submit": "送信"
       },
       "eventLocations": {
-        "title": "Expeditions"
+        "title": "ドリームラリー"
       }
     },
     "tooltips": {
@@ -223,7 +223,7 @@
         "createParty": "パーティーを組む",
         "disbandParty": "パーティーを解散する"
       },
-      "eventLocations": "Expeditions",
+      "eventLocations": "ドリームラリー",
       "nexus": "扉部屋へ戻る"
     }
   },
@@ -347,16 +347,16 @@
         "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
       },
       "eventLocations": {
-        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "＜ドリームラリー＞ {LOCATION}に到達したので、{EXP}を獲得しました！",
+        "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました！"
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
+      "exp": "{POINTS}ExP",
       "type": {
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend"
+        "0": "デイリー",
+        "1": "ウィークリー",
+        "2": "ウィークエンド"
       }
     },
     "2kki": {
