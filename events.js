@@ -16,7 +16,7 @@ function updateEventLocationListScheduled() {
   setTimeout(updateEventLocationList, Math.random() * 10000);
 }
 
-function updateEventLocationList() {
+function updateEventLocationList(ignoreLocationCheck) {
   if (!sessionId || !eventPeriodCache)
     return;
   apiFetch('eventLocations?command=list')
@@ -106,7 +106,7 @@ function updateEventLocationList() {
         eventLocationList.appendChild(eventLocationListEntry);
       }
 
-      if (connStatus === 1)
+      if (!ignoreLocationCheck && connStatus === 1)
         checkEventLocations();
     });
 }
@@ -121,7 +121,7 @@ function claimEventLocationPoints(location) {
     .then(exp => {
       if (exp > 0)
         showEventLocationToastMessage('complete', 'expedition', location, exp);
-      updateEventLocationList();
+      updateEventLocationList(true);
     });
 }
 
