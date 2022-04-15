@@ -90,7 +90,7 @@ function updateEventLocationList() {
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
         pointsContainer.classList.add('infoLabel');
-        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', !eventLocation.type ? 1 : eventLocation.type === 1 ? 5 : 3);
+        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', eventLocation.exp);
 
         const checkbox = document.createElement('div');
         checkbox.classList.add('checkbox');
@@ -119,7 +119,8 @@ function claimEventLocationPoints(location) {
       return response.text();
     })
     .then(exp => {
-      showEventLocationToastMessage('complete', 'expedition', location, exp);
+      if (exp > 0)
+        showEventLocationToastMessage('complete', 'expedition', location, exp);
       updateEventLocationList();
     });
 }
