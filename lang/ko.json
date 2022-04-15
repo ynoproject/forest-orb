@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -150,10 +150,10 @@
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "탐험",
             "fields": {
-              "complete": "Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "탐험 완료",
+              "listUpdated": "탐험 리스트 업데이트"
             }
           }
         }
@@ -201,7 +201,7 @@
         "submit": "확인"
       },
       "eventLocations": {
-        "title": "Expeditions"
+        "title": "탐험"
       }
     },
     "tooltips": {
@@ -223,7 +223,7 @@
         "createParty": "파티 생성",
         "disbandParty": "파티 해산"
       },
-      "eventLocations": "Expeditions",
+      "eventLocations": "탐험",
       "nexus": "넥서스로 돌아가기"
     }
   },
@@ -347,16 +347,16 @@
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       },
       "eventLocations": {
-        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "탐험 완료! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
+        "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
+      "exp": "{POINTS} 경험치",
       "type": {
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend"
+        "0": "일일",
+        "1": "주간",
+        "2": "주말"
       }
     },
     "2kki": {
