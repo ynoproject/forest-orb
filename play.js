@@ -253,7 +253,7 @@ function onLoadMap(mapName) {
           addChatMapLocation();
           if (locations && sessionId && eventLocationCache.length) {
             const eventLocationNames = eventLocationCache.map(el => el.title);
-            const eventLocationMatch = locations.map(l => l.title).find(l => eventLocationNames.find(l));
+            const eventLocationMatch = locations.map(l => l.title).find(l => eventLocationNames.indexOf(l) > -1);
             if (eventLocationMatch)
               claimEventLocationPoints(eventLocationMatch);
           }
