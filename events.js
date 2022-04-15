@@ -32,11 +32,17 @@ function updateEventLocationList() {
       });
       
       const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
-      if (config.lastEventLocations !== eventLocationsStr) {
-        showEventLocationToastMessage('listUpdated', 'expedition');
-        config.lastEventLocations = eventLocationsStr;
-        updateConfig(config);
-      }
+      const checkEventLocationsUpdated = () => {
+        if (config.lastEventLocations !== eventLocationsStr) {
+          showEventLocationToastMessage('listUpdated', 'expedition');
+          config.lastEventLocations = eventLocationsStr;
+          updateConfig(config);
+        }
+      };
+      if (loadedLastEventLocations)
+        checkEventLocationsUpdated();
+      else
+        setTimeout(checkEventLocationsUpdated, 500);
 
       const eventLocationList = document.getElementById('eventLocationList');
       eventLocationList.innerHTML = '';
