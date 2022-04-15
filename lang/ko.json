@@ -202,7 +202,7 @@
       },
       "eventLocations": {
         "title": "탐험",
-        "weekExp": "이번 주의 경험치"
+        "weekExp": "이번주의 경험치"
       }
     },
     "tooltips": {
