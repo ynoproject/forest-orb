@@ -354,7 +354,7 @@
     },
     "events": {
       "exp": "{POINTS}경험치",
-      "availableUntilDate": "Available Until\n${DATE}",
+      "availableUntilDate": "Available Until\n{DATE}",
       "type": {
         "0": "일일",
         "1": "주간",
