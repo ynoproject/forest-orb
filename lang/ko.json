@@ -354,7 +354,7 @@
     },
     "events": {
       "exp": "{POINTS}경험치",
-      "availableUntilDate": "\n{DATE}까지 유효함",
+      "availableUntilDate": "마감: \n{DATE}",
       "type": {
         "-1": "자유 탐험",
         "0": "일일",
