@@ -123,7 +123,7 @@ function updateEventLocationList(ignoreLocationCheck) {
     });
 }
 
-function claimEventLocationPoints(location) {
+function claimEventLocationPoints(location, retryCount) {
   apiFetch(`eventLocations?command=claim&location=${location}`)
     .then(response => {
       if (!response.ok)
@@ -134,6 +134,14 @@ function claimEventLocationPoints(location) {
       if (exp > 0)
         showEventLocationToastMessage('complete', 'expedition', location, exp);
       updateEventLocationList(true);
+    })
+    .catch(err => {
+      if (!retryCount)
+        retryCount = 0;
+      if (retryCount < 5)
+        setTimeout(() => claimEventLocationPoints(location, ++retryCount), 100);
+      else
+        console.error(err);
     });
 }
 
