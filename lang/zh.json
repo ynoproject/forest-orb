@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -153,7 +153,7 @@
             "label": "长征探索任务",
             "fields": {
               "complete": "已完成探索",
-              "freeComplete": "Free Expedition Complete",
+              "freeComplete": "自由探索已完成",
               "listUpdated": "探索目的地已更新"
             }
           }
@@ -202,8 +202,8 @@
         "submit": "提交"
       },
       "eventLocations": {
-        "title": "探索目的地",
-        "weekExp": "ExP This Week"
+        "title": "探索任务目标",
+        "weekExp": "本周已获经验值"
       }
     },
     "tooltips": {
@@ -225,7 +225,7 @@
         "createParty": "创建队伍",
         "disbandParty": "解散队伍"
       },
-      "eventLocations": "探索目的地",
+      "eventLocations": "探索目标",
       "nexus": "返回到门的世界"
     }
   },
@@ -350,19 +350,19 @@
       },
       "eventLocations": {
         "complete": "成功完成 {LOCATION} 长征探索任务，您已获得 {EXP} ！",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "freeComplete": "您已成功到达 {LOCATION} ，任务已完成！",
         "listUpdated": "长征探索目的地已更新！"
       }
     },
     "events": {
       "exp": "{POINTS} 经验值",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "availableUntilDate": "任务有效期至\n{DATE}",
       "type": {
-        "-1": "Free Expedition",
+        "-1": "自由探索任务",
         "0": "日循环任务",
         "1": "周循环任务",
         "2": "周末限定任务",
-        "3": "Special"
+        "3": "特别任务"
       }
     },
     "2kki": {
