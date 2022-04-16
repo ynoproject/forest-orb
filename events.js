@@ -93,7 +93,7 @@ function updateEventLocationList(ignoreLocationCheck) {
         const endDateLabelContainer = document.createElement('div');
 
         const endDateLabel = document.createElement('label');
-        endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString('ja-JP', { "dateStyle": "short", "timeStyle": "short" }));
+        endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
 
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
