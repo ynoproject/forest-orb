@@ -153,6 +153,7 @@
             "label": "长征探索任务",
             "fields": {
               "complete": "已完成探索",
+              "freeComplete": "Free Expedition Complete",
               "listUpdated": "探索目的地已更新"
             }
           }
@@ -349,6 +350,7 @@
       },
       "eventLocations": {
         "complete": "成功完成 {LOCATION} 长征探索任务，您已获得 {EXP} ！",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "长征探索目的地已更新！"
       }
     },

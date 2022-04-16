@@ -153,6 +153,7 @@
             "label": "ドリームラリー",
             "fields": {
               "complete": "ドリームラリー到達通知",
+              "freeComplete": "Free Expedition Complete",
               "listUpdated": "ドリームラリー更新通知"
             }
           }
@@ -349,6 +350,7 @@
       },
       "eventLocations": {
         "complete": "＜ドリームラリー＞ {LOCATION}に到達したので、{EXP}を獲得しました！",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました！"
       }
     },

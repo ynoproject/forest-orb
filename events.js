@@ -134,23 +134,28 @@ function updateEventLocationList(ignoreLocationCheck) {
     });
 }
 
-function claimEventLocationPoints(location, retryCount) {
-  apiFetch(`eventLocations?command=claim&location=${location}`)
+function claimEventLocationPoints(location, free, retryCount) {
+  let url = `eventLocations?command=claim&location=${location}`;
+  if (free)
+    url += '&free=1';
+  apiFetch(url)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.text();
     })
-    .then(exp => {
-      if (exp > 0)
-        showEventLocationToastMessage('complete', 'expedition', location, exp);
+    .then(result => {
+      if (result > 0)
+        showEventLocationToastMessage('complete', 'expedition', location, result);
+      else if (free && result > -1)
+        showEventLocationToastMessage('freeComplete', 'expedition', location);
       updateEventLocationList(true);
     })
     .catch(err => {
       if (!retryCount)
         retryCount = 0;
       if (retryCount < 5)
-        setTimeout(() => claimEventLocationPoints(location, ++retryCount), 100);
+        setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 100);
       else
         console.error(err);
     });
@@ -161,7 +166,7 @@ function checkEventLocations() {
     const eventLocationNames = eventLocationCache.filter(el => !el.complete).map(el => el.title);
     const eventLocationMatch = cachedLocations.map(l => l.title).find(l => eventLocationNames.indexOf(l) > -1);
     if (eventLocationMatch)
-      claimEventLocationPoints(eventLocationMatch);
+      claimEventLocationPoints(eventLocationMatch, eventLocationCache.find(el => el.title === eventLocationMatch).type === -1);
   }
 }
 

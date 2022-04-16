@@ -153,6 +153,7 @@
             "label": "Expeditions",
             "fields": {
               "complete": "Expedition Complete",
+              "freeComplete": "Free Expedition Complete",
               "listUpdated": "Expedition List Updated"
             }
           }
@@ -349,6 +350,7 @@
       },
       "eventLocations": {
         "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
       }
     },

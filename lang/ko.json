@@ -153,6 +153,7 @@
             "label": "탐험",
             "fields": {
               "complete": "탐험 완료",
+              "freeComplete": "Free Expedition Complete",
               "listUpdated": "탐험 리스트 업데이트"
             }
           }
@@ -349,6 +350,7 @@
       },
       "eventLocations": {
         "complete": "탐험 완료! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       }
     },
