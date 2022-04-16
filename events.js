@@ -98,7 +98,7 @@ function updateEventLocationList(ignoreLocationCheck) {
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
         pointsContainer.classList.add('infoLabel');
-        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', eventLocation.exp);
+        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', eventLocation.exp || 0);
 
         const checkbox = document.createElement('div');
         checkbox.classList.add('checkbox');

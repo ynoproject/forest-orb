@@ -356,9 +356,11 @@
       "exp": "{POINTS} 经验值",
       "availableUntilDate": "Available Until\n{DATE}",
       "type": {
+        "-1": "Free Expedition",
         "0": "日循环任务",
         "1": "周循环任务",
-        "2": "周末限定任务"
+        "2": "周末限定任务",
+        "3": "Special"
       }
     },
     "2kki": {

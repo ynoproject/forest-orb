@@ -356,9 +356,11 @@
       "exp": "{POINTS}경험치",
       "availableUntilDate": "Available Until\n{DATE}",
       "type": {
+        "-1": "Free Expedition",
         "0": "일일",
         "1": "주간",
-        "2": "주말"
+        "2": "주말",
+        "3": "Special"
       }
     },
     "2kki": {

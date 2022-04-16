@@ -356,9 +356,11 @@
       "exp": "{POINTS} ExP",
       "availableUntilDate": "Available Until\n{DATE}",
       "type": {
+        "-1": "Free Expedition",
         "0": "Daily",
         "1": "Weekly",
-        "2": "Weekend"
+        "2": "Weekend",
+        "3": "Special"
       }
     },
     "2kki": {
