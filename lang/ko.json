@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -354,13 +354,13 @@
     },
     "events": {
       "exp": "{POINTS}경험치",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "availableUntilDate": "\n{DATE}까지 유효함",
       "type": {
-        "-1": "Free Expedition",
+        "-1": "자유 탐험",
         "0": "일일",
         "1": "주간",
         "2": "주말",
-        "3": "Special"
+        "3": "스페셜"
       }
     },
     "2kki": {
