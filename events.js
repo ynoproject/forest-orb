@@ -163,10 +163,11 @@ function claimEventLocationPoints(location, free, retryCount) {
 
 function checkEventLocations() {
   if (sessionId && cachedLocations && eventLocationCache.length) {
-    const eventLocationNames = eventLocationCache.filter(el => !el.complete).map(el => el.title);
-    const eventLocationMatch = cachedLocations.map(l => l.title).find(l => eventLocationNames.indexOf(l) > -1);
+    const incompleteEventLocations = eventLocationCache.filter(el => !el.complete);
+    const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
+    const eventLocationMatch = cachedLocations.map(l => l.title).find(l => incompleteEventLocationNames.indexOf(l) > -1);
     if (eventLocationMatch)
-      claimEventLocationPoints(eventLocationMatch, eventLocationCache.find(el => el.title === eventLocationMatch).type === -1);
+      claimEventLocationPoints(eventLocationMatch, incompleteEventLocations.find(el => el.title === eventLocationMatch).type === -1);
   }
 }
 
