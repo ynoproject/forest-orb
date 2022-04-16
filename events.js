@@ -87,6 +87,14 @@ function updateEventLocationList(ignoreLocationCheck) {
           eventLocationDepth.innerHTML += '☆';
         }
 
+        const endDateContainer = document.createElement('div');
+        endDateContainer.classList.add('eventLocationEndDateContainer');
+
+        const endDateLabelContainer = document.createElement('div');
+
+        const endDateLabel = document.createElement('label');
+        endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString('ja-JP', { "dateStyle": "short", "timeStyle": "short" }));
+
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
         pointsContainer.classList.add('infoLabel');
@@ -100,6 +108,9 @@ function updateEventLocationList(ignoreLocationCheck) {
         detailsContainer.appendChild(eventLocationName);
         detailsContainer.appendChild(eventLocationDepth);
         eventLocationListEntry.appendChild(detailsContainer);
+        endDateLabelContainer.appendChild(endDateLabel);
+        endDateContainer.appendChild(endDateLabelContainer);
+        eventLocationListEntry.appendChild(endDateContainer);
         eventLocationListEntry.appendChild(pointsContainer);
         checkbox.appendChild(document.createElement('span'));
         eventLocationListEntry.appendChild(checkbox);

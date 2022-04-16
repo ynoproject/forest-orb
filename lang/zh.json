@@ -354,6 +354,7 @@
     },
     "events": {
       "exp": "{POINTS} 经验值",
+      "availableUntilDate": "Available Until\n${DATE}",
       "type": {
         "0": "日循环任务",
         "1": "周循环任务",

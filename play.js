@@ -1179,6 +1179,8 @@ function massageLabels(data) {
 }
 
 function getMassagedLabel(label, isUI) {
+  if (label)
+    label = label.replace(/\n/g, '<br>');
   if (langLabelMassageFunctions.hasOwnProperty(globalConfig.lang) && label)
     return langLabelMassageFunctions[globalConfig.lang](label, isUI);
   return label;

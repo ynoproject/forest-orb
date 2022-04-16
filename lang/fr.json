@@ -354,6 +354,7 @@
     },
     "events": {
       "exp": "{POINTS} ExP",
+      "availableUntilDate": "Available Until\n${DATE}",
       "type": {
         "0": "Daily",
         "1": "Weekly",

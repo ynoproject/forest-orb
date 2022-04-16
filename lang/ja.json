@@ -354,6 +354,7 @@
     },
     "events": {
       "exp": "{POINTS}ExP",
+      "availableUntilDate": "${DATE} \n まで 利用可能",
       "type": {
         "0": "デイリー",
         "1": "ウィークリー",

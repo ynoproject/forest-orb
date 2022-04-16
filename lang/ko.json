@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -354,6 +354,7 @@
     },
     "events": {
       "exp": "{POINTS}경험치",
+      "availableUntilDate": "Available Until\n${DATE}",
       "type": {
         "0": "일일",
         "1": "주간",
