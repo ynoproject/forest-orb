@@ -70,6 +70,7 @@ function onLoad2kkiMap(mapId) {
           set2kkiMaps([], null, true, true);
           set2kkiExplorerLinks(null);
         }
+        checkEventLocations();
       }).catch(err => console.error(err));
   }
 }
