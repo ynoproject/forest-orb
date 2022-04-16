@@ -153,7 +153,7 @@
             "label": "ドリームラリー",
             "fields": {
               "complete": "ドリームラリー到達通知",
-              "freeComplete": "Free Expedition Complete",
+              "freeComplete": "エンドレスラリー到達通知",
               "listUpdated": "ドリームラリー更新通知"
             }
           }
@@ -203,7 +203,7 @@
       },
       "eventLocations": {
         "title": "ドリームラリー",
-        "weekExp": "ExP This Week"
+        "weekExp": "今週のExp"
       }
     },
     "tooltips": {
@@ -350,7 +350,7 @@
       },
       "eventLocations": {
         "complete": "＜ドリームラリー＞ {LOCATION}に到達したので、{EXP}を獲得しました！",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "freeComplete": "＜ドリームラリー＞ {LOCATION}に到達しました！",
         "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました！"
       }
     },
@@ -358,7 +358,7 @@
       "exp": "{POINTS}ExP",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "type": {
-        "-1": "フリーラリー",
+        "-1": "エンドレスラリー",
         "0": "デイリー",
         "1": "ウィークリー",
         "2": "ウィークエンド",
