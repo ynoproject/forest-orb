@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -202,7 +202,7 @@
       },
       "eventLocations": {
         "title": "탐험",
-        "weekExp": "ExP This Week"
+        "weekExp": "이번주의 경험치"
       }
     },
     "tooltips": {
@@ -353,7 +353,7 @@
       }
     },
     "events": {
-      "exp": "{POINTS} 경험치",
+      "exp": "{POINTS}경험치",
       "type": {
         "0": "일일",
         "1": "주간",
