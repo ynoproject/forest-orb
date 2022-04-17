@@ -121,7 +121,12 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
           }
         }
 
-        locations.push(location);
+        if (usePrevLocations)
+          locations.push(location);
+        else {
+          for (let l of locationsArray)
+            locations.push(l);
+        }
 
         if (usePrevLocations) {
           queryConnected2kkiLocationNames(location.title, locationsArray.filter(l => l.title !== location.title).map(l => l.title))

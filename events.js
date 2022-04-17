@@ -72,6 +72,7 @@ function updateEventLocationList(ignoreLocationCheck) {
 
         const eventLocationDepth = document.createElement('div');
         eventLocationDepth.classList.add('infoLabel');
+        eventLocationDepth.classList.add('nowrap');
         
         for (let d = 0; d < 10; d += 2) {
           if (d < eventLocation.depth) {
@@ -93,6 +94,7 @@ function updateEventLocationList(ignoreLocationCheck) {
         const endDateLabelContainer = document.createElement('div');
 
         const endDateLabel = document.createElement('label');
+        endDateLabel.classList.add('nowrap');
         endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
 
         const pointsContainer = document.createElement('label');
