@@ -356,6 +356,8 @@
     },
     "events": {
       "exp": "{POINTS} ExP",
+      "period": "Season {ORDINAL}",
+      "periodEnds": "Ends {DATE}",
       "availableUntilDate": "Available Until\n{DATE}",
       "type": {
         "-1": "Free Expedition",

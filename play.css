@@ -1597,6 +1597,21 @@ form .uiTheme {
   opacity: 0.5;
 }
 
+#eventPeriodInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+#eventPeriod, #eventPeriodEndDateLabel {
+  text-align: center;
+}
+
+#eventPeriod {
+  margin: 0;
+}
+
 #totalExp {
   width: 100%;
   margin-top: 0;

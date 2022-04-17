@@ -123,21 +123,8 @@ function fetchAndUpdatePlayerInfo() {
           showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
           if (eventPeriodCache)
             updateEventLocationList();
-          else {
-            apiFetch('eventLocations?command=period')
-              .then(response => {
-                if (!response.ok)
-                  throw new Error(response.statusText);
-                return response.json();
-              })
-              .then(eventPeriod => {
-                if (eventPeriod.periodOrdinal < 0)
-                  return;
-                document.getElementById('eventControls').style.display = 'unset';
-                eventPeriodCache = eventPeriod;
-                updateEventLocationList();
-              });
-          }
+          else
+            updateEventPeriod();
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {
           trySetChatName('');

@@ -11,6 +11,25 @@ function initEventControls() {
   document.getElementById('eventLocationsButton').onclick = () => openModal('eventLocationsModal');
 }
 
+function updateEventPeriod() {
+  apiFetch('eventLocations?command=period')
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(eventPeriod => {
+      if (eventPeriod.periodOrdinal < 0)
+        return;
+      eventPeriod.endDate = new Date(eventPeriod.endDate);
+      document.getElementById('eventPeriod').innerHTML = getMassagedLabel(localizedMessages.events.period.replace('{ORDINAL}', eventPeriod.periodOrdinal), true);
+      document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.event.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
+      document.getElementById('eventControls').style.display = 'unset';
+      eventPeriodCache = eventPeriod;
+      updateEventLocationList();
+    });
+}
+
 function updateEventLocationListScheduled() {
   // Delay update randomly to give the server some breathing room since otherwise everyone would be calling this at once
   setTimeout(updateEventLocationList, Math.random() * 10000);
