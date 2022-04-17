@@ -357,7 +357,7 @@
     "events": {
       "exp": "{POINTS}ExP",
       "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
+      "periodEnds": "{DATE}まで",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "type": {
         "-1": "エンドレスラリー",
