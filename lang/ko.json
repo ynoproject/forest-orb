@@ -349,8 +349,8 @@
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       },
       "eventLocations": {
-        "complete": "탐험 완료! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
-        "freeComplete": "탐험 완료! {LOCATION}를 방문하였습니다.",
+        "complete": "탐험 성공! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
+        "freeComplete": "탐험 성공! {LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       }
     },
