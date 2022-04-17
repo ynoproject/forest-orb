@@ -1604,17 +1604,17 @@ form .uiTheme {
   width: 100%;
 }
 
-#eventPeriod, #eventPeriodEndDateLabel {
+#totalExp, #eventPeriod, #eventPeriodEndDateLabel {
   text-align: center;
-}
-
-#eventPeriod {
-  margin: 0;
 }
 
 #totalExp {
   width: 100%;
   margin-top: 0;
+}
+
+#eventPeriod {
+  margin: 0;
 }
 
 #weekExpLabel {
