@@ -23,7 +23,7 @@ function updateEventPeriod() {
         return;
       eventPeriod.endDate = new Date(eventPeriod.endDate);
       document.getElementById('eventPeriod').innerHTML = getMassagedLabel(localizedMessages.events.period.replace('{ORDINAL}', eventPeriod.periodOrdinal), true);
-      document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.event.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
+      document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.events.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
       document.getElementById('eventControls').style.display = 'unset';
       eventPeriodCache = eventPeriod;
       updateEventLocationList();
