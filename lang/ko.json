@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -152,8 +152,8 @@
           "eventLocations": {
             "label": "탐험",
             "fields": {
-              "complete": "탐험 완료",
-              "freeComplete": "Free Expedition Complete",
+              "complete": "탐험 성공",
+              "freeComplete": "자유 탐험 성공",
               "listUpdated": "탐험 리스트 업데이트"
             }
           }
@@ -349,15 +349,15 @@
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       },
       "eventLocations": {
-        "complete": "탐험 완료! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "complete": "탐험 성공! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
+        "freeComplete": "탐험 성공! {LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       }
     },
     "events": {
       "exp": "{POINTS}경험치",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
+      "period": "시즌 {ORDINAL}",
+      "periodEnds": "종료일: {DATE}",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
       "type": {
         "-1": "자유 탐험",
