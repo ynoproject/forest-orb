@@ -201,7 +201,7 @@ function updateEventLocationList(ignoreLocationCheck) {
           rootStyle.setProperty('--rank-total-exp', rankExp);
           rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
           document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
-          rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 20));
+          rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 40));
         });
 
       if (!ignoreLocationCheck && connStatus === 1)

@@ -1673,7 +1673,7 @@ form .uiTheme {
 
 #weekExpBarLabel::after {
   counter-reset: week-exp var(--week-exp);
-  content: counter(week-exp) '/20';
+  content: counter(week-exp) '/40';
 }
 
 .expBar {
