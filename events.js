@@ -149,7 +149,6 @@ function updateEventLocationList(ignoreLocationCheck) {
           document.documentElement.style.setProperty('--week-exp', exp.weekExp);
         });
 
-
       if (!ignoreLocationCheck && connStatus === 1)
         checkEventLocations();
     });

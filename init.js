@@ -23,15 +23,14 @@ function injectScripts() {
     scripts.push('2kki.js');
   scripts = scripts.concat([ 'play.js', 'gamecanvas.js', 'index.js' ]);
 
-  for (let script of scripts) {
-    const scriptTag = document.createElement('script');
-    scriptTag.type = 'text/javascript';
-    scriptTag.src = script;
-    if (script === 'index.js') {
-      scriptTag.onload = () => {
+  const injectScript = function (index) {
+    const script = scripts[index];
+    const loadFunc = index < scripts.length - 1
+      ? () => injectScript(index + 1)
+      : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
-
+  
           Module.postRun.push(() => {
             Module.INITIALIZED = true;
             document.getElementById('loadingOverlay').classList.add('loaded');
@@ -40,9 +39,16 @@ function injectScripts() {
           if (typeof onResize !== 'undefined')
             Module.postRun.push(onResize);
       };
-    }
+
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'text/javascript';
+    scriptTag.src = script;
+    scriptTag.onload = loadFunc;
+
     document.body.appendChild(scriptTag);
-  }
+  };
+
+  injectScript(0);
 }
 
 function apiFetch(path) {
