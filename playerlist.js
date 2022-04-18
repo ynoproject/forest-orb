@@ -303,7 +303,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         if (sortValue !== 0)
           return sortValue;
       }
-      return a.innerText.localeCompare(b.innerText);
+      return a.innerText.localeCompare(b.innerText, { sensitivity:'base' });
     });
 
     entries.forEach(function (ple) {
