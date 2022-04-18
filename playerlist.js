@@ -101,6 +101,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement('span');
   const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
+  const playerListEntryBadge = playerListEntry ? playerListEntry.querySelector('.playerListEntryBadge') : document.createElement('img');
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
@@ -154,6 +155,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameEndMarker.textContent = '>';
       nameTextContainer.appendChild(nameEndMarker);
     }
+    
+    const playerListEntryBadgeContainer = document.createElement('div');
+
+    playerListEntryBadge.classList.add('playerListEntryBadge');
+    playerListEntryBadge.classList.add('badge');
+
+    playerListEntryBadgeContainer.appendChild(playerListEntryBadge);
+    playerListEntry.appendChild(playerListEntryBadgeContainer);
 
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
@@ -219,6 +228,9 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameText.after(rankIcon);
     }
   }
+
+  playerListEntryBadge.classList.toggle('hidden', !player?.account || !player.badge);
+  playerListEntryBadge.src = player?.badge ? `images/badge/${player.badge}.png` : '';
 
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
@@ -537,6 +549,9 @@ function initDefaultSprites() {
 
 // EXTERNAL
 function syncPlayerData(uuid, rank, account, badge, id) {
+  if (badge === 'null')
+    badge = null;
+
   playerUuids[id] = uuid;
 
   if (globalPlayerData[uuid]) {
@@ -571,6 +586,8 @@ function syncPlayerData(uuid, rank, account, badge, id) {
 
 // EXTERNAL
 function syncGlobalPlayerData(uuid, name, systemName, rank, account, badge) {
+  if (badge === 'null')
+    badge = null;
   globalPlayerData[uuid] = {
     name: name,
     systemName: systemName,
