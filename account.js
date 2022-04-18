@@ -1,4 +1,5 @@
 let sessionId = null;
+let playerBadge = '';
 
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
