@@ -1,3 +1,29 @@
+const eventExpRanks = [
+  {
+    exp: 100,
+    badge: null
+  },
+  {
+    exp: 250,
+    badge: "bronze"
+  },
+  {
+    exp: 500,
+    badge: "silver"
+  },
+  {
+    exp: 1000,
+    badge: "gold"
+  },
+  {
+    exp: 2000,
+    badge: "platinum"
+  },
+  {
+    exp: 0,
+    badge: "diamond"
+  }
+];
 let eventPeriodCache;
 let eventLocationCache = [];
 (function() {
@@ -67,7 +93,7 @@ function updateEventLocationList(ignoreLocationCheck) {
           const eventLocationTypeContainer = document.createElement('div');
           
           const eventLocationTypeLabel = document.createElement('h3');
-          eventLocationTypeLabel.innerText = getMassagedLabel(localizedMessages.events.type[eventLocation.type], true);
+          eventLocationTypeLabel.innerText = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
 
           eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
           eventLocationList.appendChild(eventLocationTypeContainer);
@@ -145,8 +171,37 @@ function updateEventLocationList(ignoreLocationCheck) {
           return response.json();
         })
         .then(exp => {
+          let rankIndex = -1;
+          let rankExp = 0;
+          let prevRankExp = 0;
+          
+          for (let er = 0; er < eventExpRanks.length; er++) {
+            const expRank = eventExpRanks[er];
+            rankExp = Math.max(expRank.exp - prevRankExp, 0);
+            if (exp.totalExp < expRank.exp) {
+              rankIndex = er;
+              break;
+            }
+            prevRankExp = expRank.exp;
+          }
+
+          if (rankIndex === -1)
+            rankIndex = eventExpRanks.length - 1;
+
+          const rank = eventExpRanks[rankIndex];
+
+          const rankBadge = document.getElementById('expRankBadge');
+
+          document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
+          rankBadge.src = rank.badge ? `images/badge/${rank.badge}.png` : '';
+          rankBadge.style.display = rank.badge ? 'unset' : 'none';
+
+          const rootStyle = document.documentElement.style;
+
+          rootStyle.setProperty('--rank-total-exp', rankExp);
+          rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
           document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
-          document.documentElement.style.setProperty('--week-exp', exp.weekExp);
+          rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 20));
         });
 
       if (!ignoreLocationCheck && connStatus === 1)

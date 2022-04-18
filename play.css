@@ -43,6 +43,8 @@
   --party-container-bg-image-url: var(--container-bg-image-url);
   --party-border-image-url: var(--border-image-url);
 
+  --rank-exp: 0;
+  --rank-total-exp: 100;
   --week-exp: 0;
 
   --content-height: 0;
@@ -1604,36 +1606,69 @@ form .uiTheme {
   width: 100%;
 }
 
-#totalExp, #eventPeriod, #eventPeriodEndDateLabel {
-  text-align: center;
+#expRankInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 38px;
+  margin: 0 20%;
 }
 
-#totalExp {
+#expRankInfoContainer label {
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+#expRankContainer {
+  display: flex;
+  align-items: center;
+}
+
+#expRankBadge {
+  margin-left: 8px;
+}
+
+#rankExpContainer {
   width: 100%;
-  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.expBadge {
+  image-rendering: auto;
+  width: 38px;
+}
+
+#eventPeriod, #eventPeriodEndDateLabel {
+  text-align: center;
 }
 
 #eventPeriod {
   margin: 0;
 }
 
-#weekExpLabel {
+.expBarHeading {
   margin-right: auto;
 }
 
-#weekExpBarContainer {
+.expBarContainer {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 8px);
   height: 24px;
   border: 4px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
   background-color: var(--base-bg-color);
 }
 
-#weekExpBarLabel {
+.expBarLabel {
   image-rendering: auto;
   margin: 2px auto -21px auto;
+}
+
+#rankExpBarLabel::after {
+  counter-reset: rank-exp var(--rank-exp) rank-total-exp var(--rank-total-exp);
+  content: counter(rank-exp) '/' counter(rank-total-exp);
 }
 
 #weekExpBarLabel::after {
@@ -1641,11 +1676,18 @@ form .uiTheme {
   content: counter(week-exp) '/20';
 }
 
-#weekExpBar {
+.expBar {
   height: 100%;
-  width: calc(var(--week-exp) * 5%);
   background: var(--base-gradient);
   transition: width 0.5s ease-in-out;
+}
+
+#rankExpBar {
+  width: calc((var(--rank-exp) / var(--rank-total-exp)) * 100%);
+}
+
+#weekExpBar {
+  width: calc(var(--week-exp) * 5%);
 }
 
 #eventLocationList {

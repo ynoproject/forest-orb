@@ -203,6 +203,7 @@
       },
       "eventLocations": {
         "title": "探索任务目标",
+        "rankExp": "Next Rank",
         "weekExp": "本周已获经验值"
       }
     },
@@ -356,15 +357,24 @@
     },
     "events": {
       "exp": "{POINTS} 经验值",
+      "expRank": "Rank: {RANK}",
       "period": "第 {ORDINAL} 季",
       "periodEnds": "本季将于 {DATE} 结束",
       "availableUntilDate": "任务有效期至\n{DATE}",
-      "type": {
+      "types": {
         "-1": "自由探索任务",
         "0": "日循环任务",
         "1": "周循环任务",
         "2": "周末限定任务",
         "3": "特别任务"
+      },
+      "expRanks": {
+        "0": "Novice",
+        "1": "Bronze",
+        "2": "Silver",
+        "3": "Gold",
+        "4": "Platinum",
+        "5": "Diamond"
       }
     },
     "2kki": {

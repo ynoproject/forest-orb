@@ -551,15 +551,28 @@
             <h1 class="modalTitle" data-i18n="[html]modal.eventLocations.title">Expeditions</h1>
           </div>
           <div class="modalContent">
-            <h2 id="totalExp">0 ExP</h2>
+            <div id="expRankInfoContainer">
+              <label id="totalExp">0 ExP</label>
+              <div id="expRankContainer">
+                <label id="expRank">Rank: Novice</label>
+                <img id="expRankBadge" class="expBadge" style="display: none" />
+              </div>
+            </div>
+            <div id="rankExpContainer">
+              <label id="rankExpLabel" class="expBarHeading" data-i18n="[html]modal.eventLocations.rankExp">Next Rank</label>
+              <div id="rankExpBarContainer" class="expBarContainer">
+                <label id="rankExpBarLabel" class="expBarLabel altText unselectable"></label>
+                <div id="rankExpBar" class="expBar"></div>
+              </div>
+            </div>
             <div id="eventPeriodInfoContainer">
               <h3 id="eventPeriod">Season 1</h3>
               <label id="eventPeriodEndDateLabel">Ends</label>
             </div>
-            <label id="weekExpLabel" data-i18n="[html]modal.eventLocations.weekExp">ExP This Week</label>
-            <div id="weekExpBarContainer">
-              <label id="weekExpBarLabel" class="altText unselectable"></label>
-              <div id="weekExpBar"></div>
+            <label id="weekExpLabel" class="expBarHeading" data-i18n="[html]modal.eventLocations.weekExp">ExP This Week</label>
+            <div id="weekExpBarContainer" class="expBarContainer">
+              <label id="weekExpBarLabel" class="expBarLabel altText unselectable"></label>
+              <div id="weekExpBar" class="expBar"></div>
             </div>
             <div id="eventLocationList" class="scrollableContainer"></div>
           </div>
