@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -356,8 +356,8 @@
     },
     "events": {
       "exp": "{POINTS} 经验值",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
+      "period": "第 {ORDINAL} 季",
+      "periodEnds": "本季将于 {DATE} 结束",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "type": {
         "-1": "自由探索任务",
