@@ -412,6 +412,9 @@ function updateJoinedParty(skipNextUpdate, callback) {
           }
         }
 
+        if (member.badge === 'null')
+          member.badge = null;
+
         globalPlayerData[member.uuid] = {
           name: member.name,
           systemName: member.systemName,
@@ -594,6 +597,9 @@ function addOrUpdatePartyListEntry(party) {
     const memberIndex = m;
 
     const member = party.members[memberIndex];
+
+    if (member.badge === 'null')
+      member.badge = null;
 
     globalPlayerData[member.uuid] = {
       name: member.name,
