@@ -1611,7 +1611,7 @@ form .uiTheme {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 38px;
+  height: 37px;
   margin: 0 20%;
 }
 
@@ -1632,11 +1632,6 @@ form .uiTheme {
 #rankExpContainer {
   width: 100%;
   margin-bottom: 16px;
-}
-
-.expBadge {
-  image-rendering: auto;
-  width: 38px;
 }
 
 #eventPeriod, #eventPeriodEndDateLabel {

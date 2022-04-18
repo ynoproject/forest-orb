@@ -1,27 +1,31 @@
 const eventExpRanks = [
   {
-    exp: 100,
+    exp: 40,
     badge: null
   },
   {
+    exp: 100,
+    badge: 'mono'
+  },
+  {
     exp: 250,
-    badge: "bronze"
+    badge: 'bronze'
   },
   {
     exp: 500,
-    badge: "silver"
+    badge: 'silver'
   },
   {
     exp: 1000,
-    badge: "gold"
+    badge: 'gold'
   },
   {
     exp: 2000,
-    badge: "platinum"
+    badge: 'platinum'
   },
   {
     exp: 0,
-    badge: "diamond"
+    badge: 'diamond'
   }
 ];
 let eventPeriodCache;

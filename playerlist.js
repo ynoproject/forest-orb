@@ -536,18 +536,20 @@ function initDefaultSprites() {
 }
 
 // EXTERNAL
-function syncPlayerData(uuid, rank, account, id) {
+function syncPlayerData(uuid, rank, account, badge, id) {
   playerUuids[id] = uuid;
 
   if (globalPlayerData[uuid]) {
     globalPlayerData[uuid].rank = rank;
     globalPlayerData[uuid].account = account;
+    globalPlayerData[uuid].badge = badge;
   } else {
     globalPlayerData[uuid] = {
       name: null,
       systemName: null,
       rank: rank,
-      account: account
+      account: account,
+      badge: badge
     };
   }
 
@@ -555,23 +557,26 @@ function syncPlayerData(uuid, rank, account, id) {
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
     globalPlayerData[uuid].account = !!sessionId;
+    globalPlayerData[uuid].badge = playerBadge;
     playerData = {
       uuid: uuid,
       name: playerName,
       systemName: systemName,
       rank: rank,
-      account: account
+      account: account,
+      badge: playerBadge
     };
   }
 }
 
 // EXTERNAL
-function syncGlobalPlayerData(uuid, name, systemName, rank, account) {
+function syncGlobalPlayerData(uuid, name, systemName, rank, account, badge) {
   globalPlayerData[uuid] = {
     name: name,
     systemName: systemName,
     rank: rank,
-    account: account
+    account: account,
+    badge: badge
   };
 }
 
