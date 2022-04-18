@@ -117,7 +117,7 @@ function fetchAndUpdatePlayerInfo() {
       if (jsonResponse.uuid) {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
-        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, -1);
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
         if (isLogin) {
           trySetChatName(playerName);
           showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
