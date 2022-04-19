@@ -101,6 +101,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement('span');
   const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
+  const playerListEntryBadge = playerListEntry ? playerListEntry.querySelector('.playerListEntryBadge') : document.createElement('div');
+  const playerListEntryBadgeOverlay = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay') : document.createElement('div');
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
@@ -154,6 +156,15 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameEndMarker.textContent = '>';
       nameTextContainer.appendChild(nameEndMarker);
     }
+
+    playerListEntryBadge.classList.add('playerListEntryBadge');
+    playerListEntryBadge.classList.add('badge');
+
+    playerListEntryBadgeOverlay.classList.add('playerListEntryBadgeOverlay');
+    playerListEntryBadgeOverlay.classList.add('badge');
+
+    playerListEntryBadge.appendChild(playerListEntryBadgeOverlay);
+    playerListEntry.appendChild(playerListEntryBadge);
 
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
@@ -219,6 +230,16 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameText.after(rankIcon);
     }
   }
+
+  const showBadge = player?.account && player.badge;
+  const showBadgeOverlay = showBadge && player.badge === 'mono';
+  const badgeUrl = showBadge ? `images/badge/${player.badge}.png` : '';
+
+  playerListEntryBadge.classList.toggle('hidden', !showBadge);
+  playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
+
+  playerListEntryBadgeOverlay.classList.toggle('hidden', !showBadgeOverlay);
+  playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
 
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
@@ -287,6 +308,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
             iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           if (showLocation)
             playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
+        }
+        if (showBadgeOverlay) {
+          playerListEntryBadgeOverlay.style.color = `var(--base-color-${parsedSystemName})`;
+          playerListEntryBadgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
         }
       });
     });
@@ -537,6 +562,9 @@ function initDefaultSprites() {
 
 // EXTERNAL
 function syncPlayerData(uuid, rank, account, badge, id) {
+  if (badge === 'null')
+    badge = null;
+
   playerUuids[id] = uuid;
 
   if (globalPlayerData[uuid]) {
@@ -571,6 +599,8 @@ function syncPlayerData(uuid, rank, account, badge, id) {
 
 // EXTERNAL
 function syncGlobalPlayerData(uuid, name, systemName, rank, account, badge) {
+  if (badge === 'null')
+    badge = null;
   globalPlayerData[uuid] = {
     name: name,
     systemName: systemName,

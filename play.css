@@ -1001,6 +1001,17 @@ body.fullBg #background {
   opacity: 0.5;
 }
 
+.playerListEntryBadge {
+  min-width: 37px;
+  height: 37px;
+  margin: -5px -4px -5px 0;
+}
+
+.playerListEntryBadgeOverlay {
+  height: 100%;
+  mix-blend-mode: multiply;
+}
+
 .listEntrySprite {
   margin-right: 8px;
   min-width: 40px;
@@ -1623,6 +1634,10 @@ form .uiTheme {
 #expRankContainer {
   display: flex;
   align-items: center;
+}
+
+.badge.hidden {
+  display: none;
 }
 
 #expRankBadge {

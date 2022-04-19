@@ -350,9 +350,9 @@
         "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
       },
       "eventLocations": {
-        "complete": "＜ドリームラリー＞ {LOCATION}に到達したので、{EXP}を獲得しました！",
-        "freeComplete": "＜ドリームラリー＞ {LOCATION}に到達しました！",
-        "listUpdated": "＜ドリームラリー＞ドリームリストが更新されました！"
+        "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
+        "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
+        "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
       }
     },
     "events": {

@@ -350,7 +350,7 @@
         "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
       },
       "eventLocations": {
-        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
+        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
         "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
       }

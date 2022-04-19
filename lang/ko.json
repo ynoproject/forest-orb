@@ -203,7 +203,7 @@
       },
       "eventLocations": {
         "title": "탐험",
-        "rankExp": "Next Rank",
+        "rankExp": "다음 랭크",
         "weekExp": "이번주의 경험치"
       }
     },
@@ -350,14 +350,14 @@
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       },
       "eventLocations": {
-        "complete": "탐험 성공! {LOCATION}를 방문하여, {EXP}를 획득했습니다",
-        "freeComplete": "탐험 성공! {LOCATION}를 방문하였습니다.",
+        "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
+        "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       }
     },
     "events": {
       "exp": "{POINTS}경험치",
-      "expRank": "Rank: {RANK}",
+      "expRank": "랭크: {RANK}",
       "period": "시즌 {ORDINAL}",
       "periodEnds": "종료일: {DATE}",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
@@ -369,13 +369,13 @@
         "3": "스페셜"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "초보",
+        "1": "중급",
+        "2": "브론즈",
+        "3": "실버",
+        "4": "골드",
+        "5": "플래티넘",
+        "6": "다이아몬드"
       }
     },
     "2kki": {

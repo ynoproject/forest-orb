@@ -117,6 +117,8 @@ function fetchAndUpdatePlayerInfo() {
       if (jsonResponse.uuid) {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
+        if (jsonResponse.badge)
+          playerBadge = jsonResponse.badge === 'null' ? null : jsonResponse.badge;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
         if (isLogin) {
           trySetChatName(playerName);
