@@ -2217,3 +2217,9 @@ form .uiTheme {
     color: var(--modal-alt-color);
   }
 }
+
+@media not (-webkit-device-pixel-ratio: 1), not (-webkit-device-pixel-ratio: 2) {
+  .badge {
+    image-rendering: auto;
+  }
+}

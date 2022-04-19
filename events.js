@@ -221,7 +221,7 @@ function updatePlayerExp(callback) {
 }
 
 function claimEventLocationPoints(location, free, retryCount) {
-  let url = `eventLocations?command=claim&location=${location}`;
+  let url = `eventLocations?command=claim&location=${location.replace(/&/g, '%26')}`;
   if (free)
     url += '&free=1';
   apiFetch(url)
