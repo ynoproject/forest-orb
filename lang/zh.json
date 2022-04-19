@@ -36,10 +36,10 @@
       },
       "chat": {
         "tab": {
-          "all": "全部发言",
-          "map": "地图发言",
-          "global": "公屏发言",
-          "party": "组队发言"
+          "all": "全部",
+          "map": "地图",
+          "global": "公屏",
+          "party": "队伍"
         },
         "nickname": {
           "header": "设置一个昵称即可开始和大家聊天！",
@@ -51,8 +51,8 @@
       },
       "players": {
         "tab": {
-          "map": "所在地图",
-          "party": "所在队伍"
+          "map": "当前地图",
+          "party": "我的队伍"
         }
       }
     },
@@ -204,7 +204,7 @@
       "eventLocations": {
         "title": "梦远征",
         "rankExp": "下一等级",
-        "weekExp": "本周经验"
+        "weekExp": "本周点数"
       }
     },
     "tooltips": {
@@ -298,7 +298,7 @@
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
-      "offlineMemberSuffix": "（已离线）",
+      "offlineMemberSuffix": "（离线）",
       "onlineCount": "在线 - {COUNT} 人",
       "offlineCount": "离线 - {COUNT} 人",
       "actions": {
@@ -317,8 +317,8 @@
         "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该公屏消息的发送地点。系统会记住其显示状态并自动显示/隐藏下一条公屏消息的地点。",
         "markdownSupport": "在输入框中使用某些符号可以为文本添加格式，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||黑幕||（\\|\\|文字\\|\\|）。",
         "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时可在设置中关闭。",
-        "chatTabNotifications": "当您位于“全部发言”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
-        "clearChat": "当您处于“全部发言”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
+        "chatTabNotifications": "当您位于“全部”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
+        "clearChat": "当您位于“全部”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
@@ -356,10 +356,10 @@
       }
     },
     "events": {
-      "exp": "{POINTS} 经验值",
+      "exp": "{POINTS} 远征点",
       "expRank": "等级: {RANK}",
-      "period": "第 {ORDINAL} 赛季",
-      "periodEnds": "本赛季将于 {DATE} 结束",
+      "period": "第 {ORDINAL} 季",
+      "periodEnds": "本季度将于 {DATE} 结束",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",
