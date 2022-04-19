@@ -239,7 +239,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
 
   playerListEntryBadgeOverlay.classList.toggle('hidden', !showBadgeOverlay);
-  playerListEntryBadgeOverlay.setAttribute('style', `--webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+  playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
 
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
