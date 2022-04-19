@@ -36,9 +36,9 @@
       },
       "chat": {
         "tab": {
-          "all": "全部发言",//shortened for consistency and to avoid line wrapping (hopefully).
+          "all": "全部发言",
           "map": "地图发言",
-          "global": "公屏发言",//used an MMORPG term for "global chat"
+          "global": "公屏发言",
           "party": "组队发言"
         },
         "nickname": {
@@ -61,7 +61,7 @@
       "noGameLoc": "※暂不支持游戏语言翻译"
     },
     "2kki": {
-      "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"//shortened and specified "2kki" developers.
+      "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"
     },
     "modal": {
       "login": {
@@ -101,7 +101,7 @@
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
           "toggleTabToChat": "开启Tab键聊天",
-          "toggleFloodProtection": "开启网络攻击保护"//Made Poniko happy by removing all the redundant "off"
+          "toggleFloodProtection": "开启网络攻击保护"
         },
         "notificationSettings": "弹框通知设置",
         "accountSettings": "账号设置"
@@ -122,7 +122,7 @@
           "client": {
             "label": "系统消息",
             "fields": {
-              "floodDetected": "检测到网络攻击"// detection -> detected
+              "floodDetected": "检测到网络攻击"
             }
           },
           "account": {
@@ -146,7 +146,7 @@
               "playerOnline": "队员上线",
               "playerOffline": "队员下线",
               "kickPlayer": "请出玩家",
-              "transferPartyOwner": "领队转让"// 4-chara supermacy 四字霸权☆
+              "transferPartyOwner": "领队转让"
             }
           },
           "eventLocations": {
@@ -202,7 +202,7 @@
         "submit": "提交"
       },
       "eventLocations": {
-        "title": "梦远征",//"Dream Expedition"
+        "title": "梦远征",
         "rankExp": "下一等级",
         "weekExp": "本周经验"
       }
@@ -253,7 +253,7 @@
     },
     "location": {
       "template": "{LOCATION}（{LOCATION_EN}）",
-      "unknownLocation": "未知领域",// "terra incognita"
+      "unknownLocation": "未知领域",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）",
         "queryingLocation": "正在查询地点..."
@@ -268,9 +268,9 @@
       "plural": "当前地图有 {COUNT} 位玩家游览"
     },
     "playerList": {
-      "unnamed": "无名子",//"Unnamed Child"
+      "unnamed": "无名子",
       "actions": {
-        "partyKick": "请出队伍",//Be polite! 君子动口不动腿！
+        "partyKick": "请出队伍",
         "transferPartyOwner": "转授领队"
       }
     },
@@ -315,12 +315,12 @@
         "menuTheme": "您的昵称颜色和头像框样式会随游戏中的系统菜单样式同步改变。",
         "playersInMap": "点击右上方的玩家数量可以切换显示总在线人数与当前地图中的人数。",
         "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该公屏消息的发送地点。系统会记住其显示状态并自动显示/隐藏下一条公屏消息的地点。",
-        "markdownSupport": "在输入框中使用某些符号可以为文本添加格式，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||黑幕||（\\|\\|文字\\|\\|）。",//sorry, I don't speak ||cars||.
+        "markdownSupport": "在输入框中使用某些符号可以为文本添加格式，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||黑幕||（\\|\\|文字\\|\\|）。",
         "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时可在设置中关闭。",
         "chatTabNotifications": "当您位于“全部发言”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
         "clearChat": "当您处于“全部发言”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
-        "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"//this section has been rephrased and shortened, easier on the eyes
+        "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
     },
     "saveSync": {
@@ -351,7 +351,7 @@
       },
       "eventLocations": {
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
-        "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",//"The journey won't end so long as the dream remains."
+        "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
         "listUpdated": "远征目的地已更新！"
       }
     },
@@ -362,7 +362,7 @@
       "periodEnds": "本赛季将于 {DATE} 结束",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
-        "-1": "无尽流浪",//"Endless Wandering"
+        "-1": "无尽流浪",
         "0": "每日任务",
         "1": "每周任务",
         "2": "周末限定",
