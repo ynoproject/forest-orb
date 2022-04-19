@@ -161,7 +161,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryBadge.classList.add('badge');
 
     playerListEntryBadgeOverlay.classList.add('playerListEntryBadgeOverlay');
-    playerListEntryBadgeOverlay.classList.add('badge');
+    playerListEntryBadgeOverlay.classList.add('badgeOverlay');
 
     playerListEntryBadge.appendChild(playerListEntryBadgeOverlay);
     playerListEntry.appendChild(playerListEntryBadge);
@@ -309,10 +309,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
           if (showLocation)
             playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
-        if (showBadgeOverlay) {
-          playerListEntryBadgeOverlay.style.color = `var(--base-color-${parsedSystemName})`;
+        if (showBadgeOverlay)
           playerListEntryBadgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
-        }
       });
     });
   }
@@ -585,14 +583,13 @@ function syncPlayerData(uuid, rank, account, badge, id) {
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
     globalPlayerData[uuid].account = !!sessionId;
-    globalPlayerData[uuid].badge = playerBadge;
     playerData = {
       uuid: uuid,
       name: playerName,
       systemName: systemName,
       rank: rank,
       account: account,
-      badge: playerBadge
+      badge: badge
     };
   }
 }

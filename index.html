@@ -369,7 +369,7 @@
               </li>
               <li class="formControlRow accountRequired">
                 <span></span>
-                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings" onclick="openModal('accountSettingsModal', null, 'settingsModal')">Account Settings</button>
+                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings">Account Settings</button>
               </li>
             </ul>
           </div>
@@ -409,6 +409,12 @@
           <div class="modalContent">
             <ul class="formControls">
               <li class="formControlRow">
+                <label for="badgeButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.badge">Badge</label>
+                <div>
+                  <div id="badgeButton" class="badgeItem item unselectable"></div>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
                 <div>
                   <button id="saveSyncButton" class="checkboxButton unselectable"><span></span></button>
@@ -424,6 +430,13 @@
               </li>
             </ul>
           </div>
+        </div>
+        <div id="badgesModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
+          </div>
+          <div class="modalContent"></div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -487,8 +500,8 @@
                 <li class="formControlRow">
                   <label for="partyThemeButton" class="unselectable" data-i18n="[html]modal.createParty.fields.theme">Theme</label>
                   <div>
-                    <div id="partyThemeButton" class="uiThemeItem unselectable"></div>
-                    <input id="partyTheme" type="text" name="theme" style="display: none" />
+                    <div id="partyThemeButton" class="uiThemeItem item unselectable"></div>
+                    <input id="partyTheme" type="hidden" name="theme" />
                   </div>
                 </li>
               </ul>
@@ -607,7 +620,7 @@
   <script type="text/javascript" src="toast.js"></script>
   <script type="text/javascript" src="savedata.js"></script>
   <script type="text/javascript" src="init.js"></script>
-  <script type="text/javascript" src="account.js"></script>
   <script type="text/javascript" src="events.js"></script>
+  <script type="text/javascript" src="account.js"></script>
 </body>
 </html>

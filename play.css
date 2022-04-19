@@ -211,7 +211,7 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .uiThemeItem, a.listEntryAction .icon, button.checkboxButton, button[type="button"], button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, button.checkboxButton, button[type="button"], button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
@@ -219,7 +219,7 @@ body {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .uiThemeItem:hover, button.checkboxButton:hover, button[type="button"]:hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, button.checkboxButton:hover, button[type="button"]:hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -1007,11 +1007,6 @@ body.fullBg #background {
   margin: -5px -4px -5px 0;
 }
 
-.playerListEntryBadgeOverlay {
-  height: 100%;
-  mix-blend-mode: multiply;
-}
-
 .listEntrySprite {
   margin-right: 8px;
   min-width: 40px;
@@ -1449,6 +1444,15 @@ body.fullBg #background {
   text-align: center;
 }
 
+.modalContent > .item > div {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+.modalContent > .badgeItem.disabled > div {
+  cursor: not-allowed;
+}
+
 .modalContent > .uiThemeItem.auto {
   margin-top: 2px;
 }
@@ -1459,6 +1463,31 @@ body.fullBg #background {
 
 .modalContent > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
   border-color: white;
+}
+
+.modalContent .badgeItem > div {
+  width: 74px;
+  height: 74px;
+  border: 12px solid transparent;
+  border-image: var(--modal-border-image-url) 8 repeat !important;
+  background-color: var(--modal-base-bg-color) !important;
+}
+
+.modalContent .badgeItem > .badgeContainer > .badge {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.modalContent .badgeItem > .badgeContainer > .badge > .badgeOverlay {
+  background-image: var(--modal-base-gradient);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.modalContent .badgeItem > .badgeContainer > .icon {
+  padding: 8px;
+  opacity: 0.5;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
@@ -1638,6 +1667,11 @@ form .uiTheme {
 
 .badge.hidden {
   display: none;
+}
+
+.badgeOverlay {
+  height: 100%;
+  mix-blend-mode: multiply;
 }
 
 #expRankBadge {

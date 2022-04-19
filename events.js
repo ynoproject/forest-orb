@@ -168,48 +168,55 @@ function updateEventLocationList(ignoreLocationCheck) {
         eventLocationList.appendChild(eventLocationListEntry);
       }
 
-      apiFetch('eventLocations?command=exp')
-        .then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          return response.json();
-        })
-        .then(exp => {
-          let rankIndex = -1;
-          let rankExp = 0;
-          let prevRankExp = 0;
-          
-          for (let er = 0; er < eventExpRanks.length; er++) {
-            const expRank = eventExpRanks[er];
-            rankExp = Math.max(expRank.exp - prevRankExp, 0);
-            if (exp.totalExp < expRank.exp) {
-              rankIndex = er;
-              break;
-            }
-            prevRankExp = expRank.exp;
-          }
-
-          if (rankIndex === -1)
-            rankIndex = eventExpRanks.length - 1;
-
-          const rank = eventExpRanks[rankIndex];
-
-          const rankBadge = document.getElementById('expRankBadge');
-
-          document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
-          rankBadge.src = rank.badge ? `images/badge/${rank.badge}.png` : '';
-          rankBadge.style.display = rank.badge ? 'unset' : 'none';
-
-          const rootStyle = document.documentElement.style;
-
-          rootStyle.setProperty('--rank-total-exp', rankExp);
-          rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
-          document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
-          rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 40));
-        });
+      updatePlayerExp();
 
       if (!ignoreLocationCheck && connStatus === 1)
         checkEventLocations();
+    });
+}
+
+function updatePlayerExp(callback) {
+  apiFetch('eventLocations?command=exp')
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(exp => {
+      let rankIndex = -1;
+      let rankExp = 0;
+      let prevRankExp = 0;
+      
+      for (let er = 0; er < eventExpRanks.length; er++) {
+        const expRank = eventExpRanks[er];
+        rankExp = Math.max(expRank.exp - prevRankExp, 0);
+        if (exp.totalExp < expRank.exp) {
+          rankIndex = er;
+          break;
+        }
+        prevRankExp = expRank.exp;
+      }
+
+      if (rankIndex === -1)
+        rankIndex = eventExpRanks.length - 1;
+
+      const rank = eventExpRanks[rankIndex];
+
+      const rankBadge = document.getElementById('expRankBadge');
+
+      document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
+      rankBadge.src = rank.badge ? `images/badge/${rank.badge}.png` : '';
+      rankBadge.style.display = rank.badge ? 'unset' : 'none';
+
+      const rootStyle = document.documentElement.style;
+
+      rootStyle.setProperty('--rank-total-exp', rankExp);
+      rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
+      document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
+      rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 40));
+
+      if (callback)
+        callback(exp);
     });
 }
 

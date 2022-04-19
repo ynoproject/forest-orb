@@ -162,6 +162,7 @@
       "accountSettings": {
         "title": "アカウント設定",
         "fields": {
+          "badge": "Badge",
           "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
@@ -170,6 +171,9 @@
             }
           }
         }
+      },
+      "badges": {
+        "title": "Badges"
       },
       "uiTheme": {
         "title": "メニュー タイプ",

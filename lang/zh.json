@@ -162,6 +162,7 @@
       "accountSettings": {
         "title": "账号设置",
         "fields": {
+          "badge": "Badge",
           "toggleSaveSync": "云端同步存档 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -170,6 +171,9 @@
             }
           }
         }
+      },
+      "badges": {
+        "title": "Badges"
       },
       "uiTheme": {
         "title": "界面风格",

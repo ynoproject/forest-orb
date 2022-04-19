@@ -162,6 +162,7 @@
       "accountSettings": {
         "title": "Account Settings",
         "fields": {
+          "badge": "Badge",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -170,6 +171,9 @@
             }
           }
         }
+      },
+      "badges": {
+        "title": "Badges"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
