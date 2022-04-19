@@ -350,8 +350,8 @@
         "transferPartyOwner": "{PLAYER} has been promoted to party leader."
       },
       "eventLocations": {
-        "complete": "Expedition Complete! For visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
+        "freeComplete": "Expedition Complete!\nYou visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
       }
     },

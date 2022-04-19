@@ -26,6 +26,7 @@ const notificationTypes = {
   ],
   eventLocations: [
     'complete',
+    'freeComplete',
     'listUpdated'
   ]
 };
