@@ -36,13 +36,13 @@
       },
       "chat": {
         "tab": {
-          "all": "所有聊天记录",
+          "all": "全部发言",//shortened for consistency and to avoid line wrapping (hopefully).
           "map": "地图发言",
-          "global": "全局发言",
+          "global": "公屏发言",//used an MMORPG term for "global chat"
           "party": "组队发言"
         },
         "nickname": {
-          "header": "设置一个名字即可开始和大家聊天！",
+          "header": "设置一个昵称即可开始和大家聊天！",
           "rule": {
             "maxLength": "※长度限12个字符",
             "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
@@ -57,11 +57,11 @@
       }
     },
     "instruction": {
-      "translation": "欢迎加入我们的界面语言翻译工作！",
-      "noGameLoc": "※不支持游戏语言本地化！"
+      "translation": "欢迎加入我们的界面语言翻译工程！",
+      "noGameLoc": "※暂不支持游戏语言翻译"
     },
     "2kki": {
-      "hostedWithPermission": "本站联机服务所引用游戏之资源数据已取得制作团队的使用授权，严禁擅自盗用"
+      "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"//shortened and specified "2kki" developers.
     },
     "modal": {
       "login": {
@@ -91,25 +91,25 @@
         "fields": {
           "lang": "语言",
           "locationVisibility": {
-            "label": "设置游戏内所处位置定位信息的公开范围",
+            "label": "所处位置可见性",
             "values": {
               "private": "不公开",
-              "friends": "对好友公开",
-              "public": "对所有人公开"
+              "friends": "仅好友可见",
+              "public": "所有人可见"
             }
           },
-          "toggleNametags": "显示/隐藏玩家名称标签",
-          "togglePlayerSounds": "开启/关闭其他玩家音效",
-          "toggleTabToChat": "开启/关闭Tab键聊天切换",
-          "toggleFloodProtection": "开启/关闭网络攻击保护"
+          "toggleNametags": "显示玩家名称",
+          "togglePlayerSounds": "同步玩家音效",
+          "toggleTabToChat": "开启Tab键聊天",
+          "toggleFloodProtection": "开启网络攻击保护"//Made Poniko happy by removing all the redundant "off"
         },
-        "notificationSettings": "弹框通知信息设置",
+        "notificationSettings": "弹框通知设置",
         "accountSettings": "账号设置"
       },
       "notificationSettings": {
-        "title": "弹框通知信息设置",
+        "title": "弹框通知设置",
         "fields": {
-          "toggleNotifications": "开启/关闭弹框提醒信息",
+          "toggleNotifications": "开启弹框通知",
           "screenPosition": {
             "label": "显示位置",
             "values": {
@@ -120,9 +120,9 @@
             }
           },
           "client": {
-            "label": "系统类信息",
+            "label": "系统消息",
             "fields": {
-              "floodDetected": "网络攻击行为检测"
+              "floodDetected": "检测到网络攻击"// detection -> detected
             }
           },
           "account": {
@@ -133,28 +133,28 @@
             }
           },
           "parties": {
-            "label": "组队类信息",
+            "label": "组队消息",
             "fields": {
               "create": "创建队伍",
               "update": "编辑队伍",
               "join": "加入队伍",
               "leave": "退出队伍",
-              "remove": "从队伍中移除",
-              "disband": "解散队伍",
-              "playerJoin": "玩家加入队伍",
-              "playerLeave": "玩家退出队伍",
+              "remove": "被请离队",
+              "disband": "队伍解散",
+              "playerJoin": "玩家入队",
+              "playerLeave": "玩家离队",
               "playerOnline": "队员上线",
               "playerOffline": "队员下线",
-              "kickPlayer": "从队伍中移除玩家",
-              "transferPartyOwner": "向队员转授领队权限"
+              "kickPlayer": "请出玩家",
+              "transferPartyOwner": "领队转让"// 4-chara supermacy 四字霸权☆
             }
           },
           "eventLocations": {
-            "label": "长征探索任务",
+            "label": "梦远征",
             "fields": {
-              "complete": "已完成探索",
-              "freeComplete": "自由探索已完成",
-              "listUpdated": "探索目的地已更新"
+              "complete": "梦远征抵达",
+              "freeComplete": "无尽流浪抵达",
+              "listUpdated": "目的地更新"
             }
           }
         }
@@ -183,28 +183,28 @@
         "fields": {
           "partyName": "队伍名称",
           "description": "队伍简介",
-          "public": "是否公开队伍？",
+          "public": "是否公开？",
           "password": "设置密码",
           "theme": "界面风格"
         },
-        "showPassword": "点击显示密码",
-        "hidePassword": "点击隐藏密码",
+        "showPassword": "显示密码",
+        "hidePassword": "隐藏密码",
         "submit": "提交"
       },
       "joinPrivateParty": {
-        "title": "加入私密队伍",
+        "title": "加入私人队伍",
         "fields": {
           "password": "请输入密码"
         },
-        "showPassword": "点击显示密码",
-        "hidePassword": "点击隐藏密码",
-        "incorrectPassword": "密码错误，请重新输入！",
+        "showPassword": "显示密码",
+        "hidePassword": "隐藏密码",
+        "incorrectPassword": "密码错误，请重新输入",
         "submit": "提交"
       },
       "eventLocations": {
-        "title": "探索任务目标",
-        "rankExp": "Next Rank",
-        "weekExp": "本周已获经验值"
+        "title": "梦远征",//"Dream Expedition"
+        "rankExp": "下一等级",
+        "weekExp": "本周经验"
       }
     },
     "tooltips": {
@@ -214,19 +214,19 @@
         "download": "下载存档文件"
       },
       "uiTheme": "界面风格",
-      "toggleChat": "显示/隐藏聊天屏幕",
+      "toggleChat": "显示/隐藏聊天栏",
       "toggleImmersionMode": "开启/关闭沉浸模式",
       "settings": "设置",
-      "toggleGlobalMessage": "发送全局聊天记录",
+      "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "开启/关闭全局聊天中的发言所在位置显示",
+        "toggleOwnGlobalMessageLocation": "在公屏消息中公开/隐藏我的位置",
         "clearChat": "清空记录"
       },
       "parties": {
         "createParty": "创建队伍",
         "disbandParty": "解散队伍"
       },
-      "eventLocations": "探索目标",
+      "eventLocations": "梦远征",
       "nexus": "返回到门的世界"
     }
   },
@@ -238,11 +238,11 @@
       },
       "upload": {
         "slotInput": "输入上传的目标存档编号（1~15）",
-        "invalidSaveFile": "请选择一个有效的存档文件（文件格式为.lsd）。"
+        "invalidSaveFile": "请选择正确的存档文件（文件格式为.lsd）。"
       },
       "download": {
         "slotInput": "输入想要下载的存档编号（1~15）",
-        "emptySlot": "哎呀！输入编号对应的存档好像是空的。"
+        "emptySlot": "哎呀！这个编号对应的存档好像是空的。"
       }
     },
     "connStatus": {
@@ -253,29 +253,29 @@
     },
     "location": {
       "template": "{LOCATION}（{LOCATION_EN}）",
-      "unknownLocation": "未知地点",
+      "unknownLocation": "未知领域",// "terra incognita"
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）",
         "queryingLocation": "正在查询地点..."
       }
     },
     "playersOnline": {
-      "singular": "当前有 {COUNT} 位玩家同时在线",
-      "plural": "当前有 {COUNT} 位玩家同时在线"
+      "singular": "当前有 {COUNT} 位玩家在线",
+      "plural": "当前有 {COUNT} 位玩家在线"
     },
     "playersInMap": {
-      "singular": "当前地图有 {COUNT} 位玩家正在游览",
-      "plural": "当前地图有 {COUNT} 位玩家正在游览"
+      "singular": "当前地图有 {COUNT} 位玩家游览",
+      "plural": "当前地图有 {COUNT} 位玩家游览"
     },
     "playerList": {
-      "unnamed": "未命名玩家",
+      "unnamed": "无名子",//"Unnamed Child"
       "actions": {
-        "partyKick": "踢出队伍",
-        "transferPartyOwner": "提升为领队"
+        "partyKick": "请出队伍",//Be polite! 君子动口不动腿！
+        "transferPartyOwner": "转授领队"
       }
     },
     "roles": {
-      "mod": "管理者",
+      "mod": "管理员",
       "dev": "开发者"
     },
     "account": {
@@ -299,12 +299,12 @@
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
       "offlineMemberSuffix": "（已离线）",
-      "onlineCount": "当前在线 - {COUNT} 人",
-      "offlineCount": "当前离线 - {COUNT} 人",
+      "onlineCount": "在线 - {COUNT} 人",
+      "offlineCount": "离线 - {COUNT} 人",
       "actions": {
         "viewPartyDetails": "查看队伍详情",
         "joinParty": "加入队伍",
-        "joinPrivateParty": "加入私密队伍",
+        "joinPrivateParty": "加入私人队伍",
         "leaveParty": "退出队伍"
       }
     },
@@ -312,76 +312,76 @@
       "template": "小贴士：{CONTENT}",
       "tips": {
         "backupReminder": "我们强烈建议您定期下载存档文件进行备份，这样即便您清理了浏览器缓存和数据也不会丢失您当前的游玩进度。",
-        "menuTheme": "您的昵称颜色和页面外观风格会随游戏中的系统菜单风格改变而相应变化。",
-        "playersInMap": "点击右上方的人数按钮可以切换显示全局总在线人数或当前与您同在一个地图区域的玩家人数。",
-        "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该条玩家消息的发送地点，同时系统还将自动维持您最近一次分类消息的显示或隐藏状态为下一次启动时默认的状态。",
-        "markdownSupport": "通过在输入框中使用某些符号可以使文本以特殊格式显示出来，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||扰流板||（\\|\\|文字\\|\\|）。",
-        "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时您可在设置中关闭。",
-        "chatTabNotifications": "当您处于除“所有聊天记录”以外的其他发言模式时，若此时其他模式下有新的聊天信息接收进来，系统将会以加粗标题字体的方式提醒您查看。",
-        "clearChat": "当您处于除“所有聊天记录”以外的其他发言模式时，点击聊天框右上角的清除聊天记录按钮将只会清空您当前所在模式下的聊天信息。",
-        "immersionMode": "如果您不喜欢聊天室的嘈杂想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天室、在线列表和人数统计模块。在此模式下，当你在探索途中随机偶遇到其他玩家时将会更加有趣。",
-        "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅详细源代码数据。"
+        "menuTheme": "您的昵称颜色和头像框样式会随游戏中的系统菜单样式同步改变。",
+        "playersInMap": "点击右上方的玩家数量可以切换显示总在线人数与当前地图中的人数。",
+        "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该公屏消息的发送地点。系统会记住其显示状态并自动显示/隐藏下一条公屏消息的地点。",
+        "markdownSupport": "在输入框中使用某些符号可以为文本添加格式，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||黑幕||（\\|\\|文字\\|\\|）。",//sorry, I don't speak ||cars||.
+        "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时可在设置中关闭。",
+        "chatTabNotifications": "当您位于“全部发言”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
+        "clearChat": "当您处于“全部发言”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
+        "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
+        "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"//this section has been rephrased and shortened, easier on the eyes
       }
     },
     "saveSync": {
-      "confirmEnable": "您想启用云端同步存档功能吗？启用后您的联机存档数据将存储到云端，您可以从任意登录相同账号的终端设备或浏览器上访问您的存档，您在游戏中选定的存档数据将在载入后实时自动更新。",
-      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档数据，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档，这种情况只在启用同步功能并刷新页面之后才会产生影响。您确定真的要在本设备上启用云端同步吗？"
+      "confirmEnable": "您想启用云端同步存档功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
+      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定真的要在本设备上启用云端同步吗？"
     },
     "toast": {
       "client": {
-        "floodDetected": "检测到网络攻击行为，您已被暂时切换至单人模式！"
+        "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
       },
       "account": {
-        "loggedIn": "您已成功登录账号 {USER} 。",
-        "loggedOut": "您已成功退出账号。"
+        "loggedIn": "成功登录账号 {USER} 。",
+        "loggedOut": "您已登出。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
         "update": "{PARTY} 队伍编辑成功。",
-        "join": "您已成功加入 {PARTY} 。",
-        "leave": "您已成功退出 {PARTY} 。",
-        "remove": "您已从 {PARTY} 中被移除。",
+        "join": "成功加入 {PARTY} 。",
+        "leave": "您已退出 {PARTY} 。",
+        "remove": "您被请出 {PARTY} 。",
         "disband": "{PARTY} 已被解散。",
-        "playerJoin": "{PLAYER} 已加入队伍。",
-        "playerLeave": "{PLAYER} 已退出队伍。",
+        "playerJoin": "{PLAYER} 已入队。",
+        "playerLeave": "{PLAYER} 离开了队伍。",
         "playerOnline": "{PLAYER} 已上线。",
         "playerOffline": "{PLAYER} 已下线。",
-        "kickPlayer": "{PLAYER} 已被移出队伍。",
+        "kickPlayer": "{PLAYER} 已被请出队伍。",
         "transferPartyOwner": "{PLAYER} 已被转授为领队。"
       },
       "eventLocations": {
-        "complete": "成功完成 {LOCATION} 长征探索任务，您已获得 {EXP} ！",
-        "freeComplete": "您已成功到达 {LOCATION} ，任务已完成！",
-        "listUpdated": "长征探索目的地已更新！"
+        "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
+        "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",//"The journey won't end so long as the dream remains."
+        "listUpdated": "远征目的地已更新！"
       }
     },
     "events": {
       "exp": "{POINTS} 经验值",
-      "expRank": "Rank: {RANK}",
-      "period": "第 {ORDINAL} 季",
-      "periodEnds": "本季将于 {DATE} 结束",
+      "expRank": "等级: {RANK}",
+      "period": "第 {ORDINAL} 赛季",
+      "periodEnds": "本赛季将于 {DATE} 结束",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
-        "-1": "自由探索任务",
-        "0": "日循环任务",
-        "1": "周循环任务",
-        "2": "周末限定任务",
+        "-1": "无尽流浪",//"Endless Wandering"
+        "0": "每日任务",
+        "1": "每周任务",
+        "2": "周末限定",
         "3": "特别任务"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "萌新",
+        "1": "进阶",
+        "2": "青铜",
+        "3": "白银",
+        "4": "黄金",
+        "5": "铂金",
+        "6": "钻石"
       }
     },
     "2kki": {
       "explorerLink": {
-        "generic": "在梦2记探索辅助工具中查看当前地点",
-        "multi": "在梦2记探索辅助工具中查看当前地点：{LOCATION}"
+        "generic": "在梦2记导航中查询该处",
+        "multi": "在梦2记导航中查询：{LOCATION}"
       }
     }
   }
