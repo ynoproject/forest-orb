@@ -1466,17 +1466,21 @@ body.fullBg #background {
 }
 
 .modalContent .badgeItem > div {
-  width: 74px;
-  height: 74px;
+  width: 94px;
+  height: 94px;
+}
+
+.modalContent .badgeItem > .badgeContainer > div {
+  width: 70px;
+  height: 70px;
   border: 12px solid transparent;
   border-image: var(--modal-border-image-url) 8 repeat !important;
   background-color: var(--modal-base-bg-color) !important;
 }
 
 .modalContent .badgeItem > .badgeContainer > .badge {
-  width: 100%;
-  height: 100%;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .modalContent .badgeItem > .badgeContainer > .badge > .badgeOverlay {
@@ -1485,7 +1489,7 @@ body.fullBg #background {
   mask-size: cover;
 }
 
-.modalContent .badgeItem > .badgeContainer > .icon {
+.modalContent .badgeItem > .badgeContainer > .icon > svg {
   padding: 8px;
   opacity: 0.5;
 }

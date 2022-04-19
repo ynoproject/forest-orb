@@ -86,6 +86,8 @@ function initAccountControls() {
       for (let b of Object.keys(badges)) {
         const badgeId = b;
         const item = getBadgeItem(badgeId, exp);
+        if (badgeId === (playerData?.badge || 'null'))
+          item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
           item.onclick = () => updatePlayerBadge(badgeId, () => {
             initAccountSettingsModal();
@@ -113,17 +115,17 @@ function getBadgeItem(badgeId, exp) {
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
   
-  const badge = exp === undefined || badges[badgeId].condition(exp) ? document.createElement('div') : null;
+  const badge = (exp === undefined || badges[badgeId].condition(exp)) && badgeId !== 'null' ? document.createElement('div') : null;
 
   if (badge) {
+    badge.classList.add('badge');
+    badge.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
+  } else {
     if (badgeId !== 'null') {
-      badge.classList.add('badge');
-      badge.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
+      item.classList.add('disabled');
+      badgeContainer.appendChild(getSvgIcon('locked', true));
     } else
       badgeContainer.appendChild(getSvgIcon('ban', true));
-  } else {
-    item.classList.add('disabled');
-    badgeContainer.appendChild(getSvgIcon('locked', true));
   }
 
   if (badge) {
@@ -143,7 +145,7 @@ function getBadgeItem(badgeId, exp) {
 }
 
 function updatePlayerBadge(badgeId, callback) {
-  apiFetch('badge')
+  apiFetch(`badge?id=${badgeId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
