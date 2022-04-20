@@ -94,6 +94,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
       message.appendChild(rankIcon);
     }
+
     if (party) {
       let partyOwnerIcon;
       if (joinedPartyCache && player?.uuid === joinedPartyCache.ownerUuid) {
@@ -112,6 +113,22 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     let systemName = player?.systemName;
 
+    const badge = player?.badge ? document.createElement('div') : null;
+    const badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
+
+    if (badge) {
+      badge.classList.add('badge');
+
+      const badgeUrl = `images/badge/${player.badge}.png`;
+      badge.style.backgroundImage = `url('${badgeUrl}')`;
+
+      if (badgeOverlay) {
+        badgeOverlay.classList.add('badgeOverlay');
+        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+        badge.appendChild(badgeOverlay);
+      }
+    }
+
     if (systemName) {
       systemName = systemName.replace(/'/g, "");
       const parsedSystemName = systemName.replace(" ", "_");
@@ -120,9 +137,14 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           name.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+          if (badgeOverlay)
+            badgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
         });
       });
     }
+
+    if (badge)
+      message.appendChild(badge);
     
     message.appendChild(nameEndMarker);
     message.appendChild(document.createTextNode(" "));
