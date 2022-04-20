@@ -980,6 +980,19 @@ body.fullBg #background {
   margin: 0 2px;
 }
 
+.message .badge {
+  display: inline-block;
+  width: 18.5px;
+  height: 18.5px;
+  margin: -4px 0 0 0;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.message .badge > .badgeOverlay {
+  mask-size: contain;
+}
+
 .playerCountLabel {
   cursor: pointer;
 }
