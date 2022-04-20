@@ -233,7 +233,7 @@ function checkUpdateLocation(mapId, mapChanged) {
     if (!cachedMapId)
       document.getElementById('location').classList.remove('hidden');
 
-    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, '<br>');
+    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, tpX, tpY, '<br>');
     onUpdateChatboxInfo();
 
     if (is2kki) {
@@ -246,7 +246,7 @@ function checkUpdateLocation(mapId, mapChanged) {
   cachedMapId = mapId;
 
   if (localizedMapLocations) {
-    const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
+    const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY);
     if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
       if (!mapChanged)
         markMapUpdateInChat();
@@ -1041,30 +1041,30 @@ function initLocalizedMapLocations(lang) {
   .catch(_err => { }); // Assume map location localizations for this language don't exist
 }
 
-function getMapLocationsArray(mapLocations, mapId, prevMapId) {
+function getMapLocationsArray(mapLocations, mapId, prevMapId, x, y) {
   if (mapLocations.hasOwnProperty(mapId)) {
     const locations = mapLocations[mapId];
     if (locations.hasOwnProperty('title')) // Text location
       return [ locations ];
     if (Array.isArray(locations)) // Multiple locations
-      return getMapLocationsFromArray(locations);
+      return getMapLocationsFromArray(locations, x, y);
     if (locations.hasOwnProperty(prevMapId)) {// Previous map ID matches a key
       if (Array.isArray(locations[prevMapId]))
-        return getMapLocationsFromArray(locations[prevMapId]);
+        return getMapLocationsFromArray(locations[prevMapId], x, y);
       return [ locations[prevMapId] ];
     }
     if (locations.hasOwnProperty('else')) { // Else case
       if (locations.else.hasOwnProperty('title'))
         return [ locations.else ];
       if (Array.isArray(locations.else))
-        return getMapLocationsFromArray(locations.else);
+        return getMapLocationsFromArray(locations.else, x, y);
     }
   }
 }
 
-function getMapLocationsFromArray(locations) {
+function getMapLocationsFromArray(locations, x, y) {
   if (locations.length && locations[0].hasOwnProperty('coords')) {
-    const coordLocation = locations.find(l => l.hasOwnProperty('coords') && ((l.coords.x1 === -1 && l.coords.x2 === -1) || (l.coords.x1 <= tpX && l.coords.x2 >= tpX)) && ((l.coords.y1 === -1 && l.coords.y2 === -1) || (l.coords.y1 <= tpY && l.coords.y2 >= tpY)));
+    const coordLocation = locations.find(l => l.hasOwnProperty('coords') && ((l.coords.x1 === -1 && l.coords.x2 === -1) || (l.coords.x1 <= x && l.coords.x2 >= x)) && ((l.coords.y1 === -1 && l.coords.y2 === -1) || (l.coords.y1 <= y && l.coords.y2 >= y)));
     if (coordLocation)
       return [ coordLocation ];
     const noCoordLocations = locations.filter(l => !l.hasOwnProperty('coords'));
@@ -1074,31 +1074,31 @@ function getMapLocationsFromArray(locations) {
   return locations;
 }
 
-function getLocalizedMapLocations(mapId, prevMapId, separator) {
+function getLocalizedMapLocations(mapId, prevMapId, x, y, separator) {
   if (localizedMapLocations?.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
     if (localizedLocations.hasOwnProperty('title')) // Text location
       return getLocalizedLocation(localizedLocations, locations);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return getMapLocationsFromArray(localizedLocations).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations)[i])).join(separator);
+      return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations, x, y)[i])).join(separator);
     if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        return getMapLocationsFromArray(localizedLocations[prevMapId]).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId])[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId], x, y)[i])).join(separator);
       return getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId]);
     }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
         return getLocalizedLocation(localizedLocations.else, locations.else);
       if (Array.isArray(localizedLocations.else))
-        return getMapLocationsFromArray(localizedLocations.else).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else)[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else, x, y)[i])).join(separator);
     }
   }
   
   return localizedMessages.location.unknownLocation;
 }
 
-function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
+function getLocalizedMapLocationsHtml(mapId, prevMapId, x, y, separator) {
   if (localizedMapLocations?.hasOwnProperty(mapId)) {
     const localizedLocations = localizedMapLocations[mapId];
     const locations = mapLocations[mapId];
@@ -1106,17 +1106,17 @@ function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
     if (localizedLocations.hasOwnProperty('title')) // Text location
       locationsHtml = getLocalizedLocation(localizedLocations, locations, true);
     else if (Array.isArray(localizedLocations)) // Multiple locations
-      locationsHtml = getMapLocationsFromArray(localizedLocations).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations)[i], true)).join(separator);
+      locationsHtml = getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations, x, y)[i], true)).join(separator);
     else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId]).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId])[i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], true)).join(separator);
       else
         locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true);
     } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
         locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true);
       else if (Array.isArray(localizedLocations.else))
-        locationsHtml = getMapLocationsFromArray(localizedLocations.else).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else)[i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else, x, y)[i], true)).join(separator);
     }
 
     if (locationsHtml)

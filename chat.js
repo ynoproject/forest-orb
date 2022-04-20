@@ -9,7 +9,7 @@ const MESSAGE_TYPE = {
   PARTY: 3
 };
 
-function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr) {
+function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr, x, y) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -47,8 +47,8 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, mapId, prevMapId, prevLocations);
         } else {
-          playerLocationIcon.title = getLocalizedMapLocations(mapId, prevMapId, "\n");
-          playerLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, getInfoLabel("&nbsp;|&nbsp;"));
+          playerLocationIcon.title = getLocalizedMapLocations(mapId, prevMapId, x, y, "\n");
+          playerLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
         }
 
         playerLocation.classList.add("playerLocation");
@@ -385,19 +385,19 @@ function onChatMessageReceived(msg, id) {
 }
 
 // EXTERNAL
-function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, msg) {
+function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, x, y, msg) {
   const player = globalPlayerData[uuid] || null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, player, mapId, prevMapId, prevLocationsStr);
+  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, player, mapId, prevMapId, prevLocationsStr, x, y);
 }
 
 // EXTERNAL
 function onPChatMessageReceived(uuid, msg) {
   let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
   if (partyMember)
-    chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations);
+    chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
   else
     updateJoinedParty(true, () => {
       partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
-      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations);
+      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
     });
 }
