@@ -259,6 +259,11 @@ function syncPrevLocation() {
 }
 
 // EXTERNAL
+function onPlayerTeleported(x, y) {
+  // TODO
+}
+
+// EXTERNAL
 function onReceiveInputFeedback(inputId) {
   if (inputId) {
     let buttonElement;
