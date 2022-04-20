@@ -162,7 +162,7 @@
       "accountSettings": {
         "title": "계정 설정",
         "fields": {
-          "badge": "Badge",
+          "badge": "뱃지",
           "toggleSaveSync": "세이브 동기화 (개발중)",
           "saveSyncSlotId": {
             "label": "세이브 동기화 번호",
@@ -173,7 +173,7 @@
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "뱃지"
       },
       "uiTheme": {
         "title": "UI 테마",
