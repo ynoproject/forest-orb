@@ -175,7 +175,7 @@ function updateEventLocationList(ignoreLocationCheck) {
     });
 }
 
-function updatePlayerExp(callback) {
+function updatePlayerExp() {
   apiFetch('eventLocations?command=exp')
     .then(response => {
       if (!response.ok)

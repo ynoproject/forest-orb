@@ -68,11 +68,11 @@ function initAccountControls() {
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
-    updateBadges(exp => {
+    updateBadges(() => {
       const badges = ['null'].concat(badgeCache.map(b => b.badgeId));
       for (let b of badges) {
         const badgeId = b;
-        const item = getBadgeItem(badgeId, exp);
+        const item = getBadgeItem(badgeId);
         if (badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
@@ -93,7 +93,7 @@ function initAccountSettingsModal() {
   document.getElementById('badgeButton').innerHTML = getBadgeItem(playerData?.badge || 'null').innerHTML;
 }
 
-function getBadgeItem(badgeId, exp) {
+function getBadgeItem(badgeId) {
   const item = document.createElement('div');
   item.classList.add('badgeItem');
   item.classList.add('item');
@@ -103,7 +103,8 @@ function getBadgeItem(badgeId, exp) {
   badgeContainer.classList.add('badgeContainer');
   
   const badgeEntry = badgeCache.find(b => b.badgeId === badgeId);
-  const badge = (exp === undefined || badgeEntry?.unlocked) ? document.createElement('div') : null;
+  const badge = badgeEntry?.unlocked && badgeId !== 'null' ? document.createElement('div') : null;
+  console.log(badgeEntry?.unlocked, badgeId)
 
   if (badge) {
     badge.classList.add('badge');
@@ -132,7 +133,7 @@ function getBadgeItem(badgeId, exp) {
   return item;
 }
 
-function updateBadges() {
+function updateBadges(callback) {
   apiFetch(`badge?command=list`)
     .then(response => {
       if (!response.ok)
@@ -140,10 +141,14 @@ function updateBadges() {
       return response.json();
     })
     .then(badges => {
-      badgeCache = badges.map(badge => { badge.badgeId, badge.overlay, badge.unlocked });
+      badgeCache = badges.map(badge => {
+        return { badgeId: badge.badgeId, overlay: badge.overlay, unlocked: badge.unlocked };
+      });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showAccountToastMessage('badgeUnlocked', 'info');
+      if (callback)
+        callback();
     })
     .catch(err => console.error(err));
 }
