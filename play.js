@@ -204,6 +204,8 @@ let cachedPrevMapId = null;
 let cachedLocations = null;
 let cached2kkiLocations = null; // Used only by Yume 2kki
 let cachedPrev2kkiLocations = null; // Used only by Yume 2kki
+let tpX = -1;
+let tpY = -1;
 let ignoredMapIds = [];
 
 // EXTERNAL
@@ -216,38 +218,53 @@ function onLoadMap(mapName) {
       return;
 
     markMapUpdateInChat();
-    
-    const is2kki = gameId === '2kki';
 
-    if (is2kki && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
+    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
       onLoad2kkiMap(mapId);
-    else {
-      if (localizedMapLocations) {
-        if (!cachedMapId)
-          document.getElementById('location').classList.remove('hidden');
+    else
+      checkUpdateLocation(mapId, true);
+  }
+}
 
-        document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, '<br>');
-        onUpdateChatboxInfo();
+function checkUpdateLocation(mapId, mapChanged) {
+  const is2kki = gameId === '2kki';
 
-        if (is2kki) {
-          cachedPrev2kkiLocations = cached2kkiLocations;
-          cached2kkiLocations = null;
+  if (localizedMapLocations) {
+    if (!cachedMapId)
+      document.getElementById('location').classList.remove('hidden');
+
+    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, '<br>');
+    onUpdateChatboxInfo();
+
+    if (is2kki) {
+      cachedPrev2kkiLocations = cached2kkiLocations;
+      cached2kkiLocations = null;
+    }
+  }
+
+  cachedPrevMapId = cachedMapId;
+  cachedMapId = mapId;
+
+  if (localizedMapLocations) {
+    const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
+    if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
+      if (!mapChanged)
+        markMapUpdateInChat();
+      addChatMapLocation();
+
+      if (is2kki) {
+        const locationNames = locations ? locations.filter(l => l.explorer).map(l => l.title) : [];
+        set2kkiExplorerLinks(locationNames);
+        if (locationNames.length)
+          queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
+        else {
+          set2kkiMaps([], null);
           set2kkiExplorerLinks(null);
-          set2kkiMaps([]);
         }
       }
-
-      cachedPrevMapId = cachedMapId;
-      cachedMapId = mapId;
-
-      if (localizedMapLocations) {
-        const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId);
-        if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
-          addChatMapLocation();
-
-        cachedLocations = locations;
-      }
     }
+
+    cachedLocations = locations;
   }
 }
 
@@ -260,7 +277,10 @@ function syncPrevLocation() {
 
 // EXTERNAL
 function onPlayerTeleported(mapId, x, y) {
-  // TODO
+  tpX = x;
+  tpY = y;
+  if (parseInt(cachedMapId) === mapId)
+    checkUpdateLocation(cachedMapId, false);
 }
 
 // EXTERNAL
@@ -1005,10 +1025,17 @@ function initLocalizedMapLocations(lang) {
       massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
       Object.keys(mapLocations).forEach(function (mapId) {
         const mapLocation = langMapLocations[mapId];
-        if (mapLocation)
+        const defaultMapLocation = mapLocations[mapId];
+        if (mapLocation) {
           localizedMapLocations[mapId] = mapLocation;
-        else
-          localizedMapLocations[mapId] = mapLocations[mapId];
+          if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
+            for (let l in defaultMapLocation) {
+              if (defaultMapLocation[l].hasOwnProperty('coords'))
+                mapLocation[l].coords = defaultMapLocation[l].coords;
+            }
+          }
+        } else
+          localizedMapLocations[mapId] = defaultMapLocation;
       });
   })
   .catch(_err => { }); // Assume map location localizations for this language don't exist
@@ -1020,19 +1047,31 @@ function getMapLocationsArray(mapLocations, mapId, prevMapId) {
     if (locations.hasOwnProperty('title')) // Text location
       return [ locations ];
     if (Array.isArray(locations)) // Multiple locations
-      return locations;
+      return getMapLocationsFromArray(locations);
     if (locations.hasOwnProperty(prevMapId)) {// Previous map ID matches a key
       if (Array.isArray(locations[prevMapId]))
-        return locations[prevMapId];
+        return getMapLocationsFromArray(locations[prevMapId]);
       return [ locations[prevMapId] ];
     }
     if (locations.hasOwnProperty('else')) { // Else case
       if (locations.else.hasOwnProperty('title'))
         return [ locations.else ];
       if (Array.isArray(locations.else))
-        return locations.else;
+        return getMapLocationsFromArray(locations.else);
     }
   }
+}
+
+function getMapLocationsFromArray(locations) {
+  if (locations.length && locations[0].hasOwnProperty('coords')) {
+    const coordLocation = locations.find(l => l.hasOwnProperty('coords') && ((l.coords.x1 === -1 && l.coords.x2 === -1) || (l.coords.x1 <= tpX && l.coords.x2 >= tpX)) && ((l.coords.y1 === -1 && l.coords.y2 === -1) || (l.coords.y1 <= tpY && l.coords.y2 >= tpY)));
+    if (coordLocation)
+      return [ coordLocation ];
+    const noCoordLocations = locations.filter(l => !l.hasOwnProperty('coords'));
+    if (noCoordLocations.length)
+      return noCoordLocations;
+  }
+  return locations;
 }
 
 function getLocalizedMapLocations(mapId, prevMapId, separator) {
@@ -1042,17 +1081,17 @@ function getLocalizedMapLocations(mapId, prevMapId, separator) {
     if (localizedLocations.hasOwnProperty('title')) // Text location
       return getLocalizedLocation(localizedLocations, locations);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i])).join(separator);
+      return getMapLocationsFromArray(localizedLocations).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations)[i])).join(separator);
     if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        return localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations[prevMapId]).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId])[i])).join(separator);
       return getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId]);
     }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
         return getLocalizedLocation(localizedLocations.else, locations.else);
       if (Array.isArray(localizedLocations.else))
-        return localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations.else).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else)[i])).join(separator);
     }
   }
   
@@ -1067,17 +1106,17 @@ function getLocalizedMapLocationsHtml(mapId, prevMapId, separator) {
     if (localizedLocations.hasOwnProperty('title')) // Text location
       locationsHtml = getLocalizedLocation(localizedLocations, locations, true);
     else if (Array.isArray(localizedLocations)) // Multiple locations
-      locationsHtml = localizedLocations.map((l, i) => getLocalizedLocation(l, locations[i], true)).join(separator);
+      locationsHtml = getMapLocationsFromArray(localizedLocations).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations)[i], true)).join(separator);
     else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        locationsHtml = localizedLocations[prevMapId].map((l, i) => getLocalizedLocation(l, locations[prevMapId][i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId]).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId])[i], true)).join(separator);
       else
         locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true);
     } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
         locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true);
       else if (Array.isArray(localizedLocations.else))
-        locationsHtml = localizedLocations.else.map((l, i) => getLocalizedLocation(l, locations.else[i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations.else).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else)[i], true)).join(separator);
     }
 
     if (locationsHtml)
