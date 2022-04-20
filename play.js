@@ -279,7 +279,7 @@ function syncPrevLocation() {
 function onPlayerTeleported(mapId, x, y) {
   tpX = x;
   tpY = y;
-  if (parseInt(cachedMapId) === mapId)
+  if (cachedMapId && parseInt(cachedMapId) === mapId && cachedMapId === cachedPrevMapId)
     checkUpdateLocation(cachedMapId, false);
 }
 
