@@ -259,7 +259,7 @@ function syncPrevLocation() {
 }
 
 // EXTERNAL
-function onPlayerTeleported(x, y) {
+function onPlayerTeleported(mapId, x, y) {
   // TODO
 }
 
