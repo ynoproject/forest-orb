@@ -129,7 +129,8 @@
             "label": "アカウント",
             "fields": {
               "loggedIn": "ログイン通知",
-              "loggedOut": "ログアウト通知"
+              "loggedOut": "ログアウト通知",
+              "badgeUnlocked": "Badge Unlocked"
             }
           },
           "parties": {
@@ -337,7 +338,8 @@
       },
       "account": {
         "loggedIn": "{USER}でログインしました。",
-        "loggedOut": "ログアウトしました。"
+        "loggedOut": "ログアウトしました。",
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",

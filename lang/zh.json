@@ -129,7 +129,8 @@
             "label": "账号",
             "fields": {
               "loggedIn": "登录",
-              "loggedOut": "登出"
+              "loggedOut": "登出",
+              "badgeUnlocked": "Badge Unlocked"
             }
           },
           "parties": {
@@ -337,7 +338,8 @@
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
-        "loggedOut": "您已登出。"
+        "loggedOut": "您已登出。",
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",

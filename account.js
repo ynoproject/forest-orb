@@ -1,19 +1,5 @@
-const badges = Object.assign(
-  { null: { overlay: false, condition: _ => true } },
-  Object.fromEntries(
-    new Map(eventExpRanks
-      .filter(er => er.badge)
-      .map((er, i) => [
-        er.badge,
-        {
-          overlay: er.badge === 'mono',
-          condition: exp => exp.totalExp >= eventExpRanks[i].exp
-        }
-      ])
-    )
-  )
-);
 let sessionId = null;
+let badgeCache;
 
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
@@ -82,8 +68,9 @@ function initAccountControls() {
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
-    updatePlayerExp(exp => {
-      for (let b of Object.keys(badges)) {
+    updateBadges(exp => {
+      const badges = ['null'].concat(badgeCache.map(b => b.badgeId));
+      for (let b of badges) {
         const badgeId = b;
         const item = getBadgeItem(badgeId, exp);
         if (badgeId === (playerData?.badge || 'null'))
@@ -115,7 +102,8 @@ function getBadgeItem(badgeId, exp) {
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
   
-  const badge = (exp === undefined || badges[badgeId].condition(exp)) && badgeId !== 'null' ? document.createElement('div') : null;
+  const badgeEntry = badgeCache.find(b => b.badgeId === badgeId);
+  const badge = (exp === undefined || badgeEntry?.unlocked) ? document.createElement('div') : null;
 
   if (badge) {
     badge.classList.add('badge');
@@ -129,7 +117,7 @@ function getBadgeItem(badgeId, exp) {
   }
 
   if (badge) {
-    if (badges[badgeId].overlay) {
+    if (badgeEntry?.overlay) {
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
       badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badge.style.backgroundImage}; mask-image: ${badge.style.backgroundImage};`);
@@ -144,8 +132,24 @@ function getBadgeItem(badgeId, exp) {
   return item;
 }
 
+function updateBadges() {
+  apiFetch(`badge?command=list`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(badges => {
+      badgeCache = badges.map(badge => { badge.badgeId, badge.overlay, badge.unlocked });
+      const newUnlockedBadges = badges.filter(b => b.newUnlock);
+      for (let b = 0; b < newUnlockedBadges.length; b++)
+        showAccountToastMessage('badgeUnlocked', 'info');
+    })
+    .catch(err => console.error(err));
+}
+
 function updatePlayerBadge(badgeId, callback) {
-  apiFetch(`badge?id=${badgeId}`)
+  apiFetch(`badge?command=set&id=${badgeId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);

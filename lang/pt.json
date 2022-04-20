@@ -129,7 +129,8 @@
             "label": "Account",
             "fields": {
               "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedOut": "Logged Out",
+              "badgeUnlocked": "Badge Unlocked"
             }
           },
           "parties": {
@@ -337,7 +338,8 @@
       },
       "account": {
         "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedOut": "You have logged out.",
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "parties": {
         "create": "{PARTY} has been created.",

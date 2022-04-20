@@ -8,7 +8,8 @@ const notificationTypes = {
   ],
   account: [
     'loggedIn',
-    'loggedOut'
+    'loggedOut',
+    'badgeUnlocked'
   ],
   parties: [
     'create',

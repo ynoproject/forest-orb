@@ -231,10 +231,13 @@ function claimEventLocationPoints(location, free, retryCount) {
       return response.text();
     })
     .then(result => {
-      if (result > 0)
+      if (result > 0) {
         showEventLocationToastMessage('complete', 'expedition', location, result);
-      else if (free && result > -1)
+        updateBadges();
+      } else if (free && result > -1) {
         showEventLocationToastMessage('freeComplete', 'expedition', location);
+        updateBadges();
+      }
       updateEventLocationList(true);
     })
     .catch(err => {

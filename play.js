@@ -125,6 +125,7 @@ function fetchAndUpdatePlayerInfo() {
             updateEventLocationList();
           else
             updateEventPeriod();
+          updateBadges();
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {
           trySetChatName('');
