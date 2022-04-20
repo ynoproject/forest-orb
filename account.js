@@ -104,7 +104,6 @@ function getBadgeItem(badgeId) {
   
   const badgeEntry = badgeCache.find(b => b.badgeId === badgeId);
   const badge = badgeEntry?.unlocked && badgeId !== 'null' ? document.createElement('div') : null;
-  console.log(badgeEntry?.unlocked, badgeId)
 
   if (badge) {
     badge.classList.add('badge');
