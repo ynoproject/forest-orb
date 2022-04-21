@@ -130,7 +130,7 @@
             "fields": {
               "loggedIn": "ログイン通知",
               "loggedOut": "ログアウト通知",
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "バッジ獲得通知"
             }
           },
           "parties": {
@@ -324,7 +324,7 @@
         "tabToChat": "PCでプレイしている場合、タブキーを押すことでゲームの操作とチャット入力を切り替えることができます。この機能は、設定の「タブキーを押してチャット」で無効にすることができます。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
@@ -340,7 +340,7 @@
       "account": {
         "loggedIn": "{USER}でログインしました。",
         "loggedOut": "ログアウトしました。",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "バッジを獲得しました！"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
@@ -376,13 +376,13 @@
         "3": "スペシャル"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "ノービス",
+        "1": "インターミディエイト",
+        "2": "ブロンズ",
+        "3": "シルバー",
+        "4": "ゴールド",
+        "5": "プラチナ",
+        "6": "ダイアモンド"
       }
     },
     "2kki": {
