@@ -7,6 +7,10 @@
 		"0004": { "title": "Urotsuki's Dream Room", "urlTitle": "Urotsuki's_Room" },
 		"0005": { "title": "Urotsuki's Dream Balcony", "urlTitle": "Urotsuki's_Room#Urotsuki's_Balcony" },
 		"0010": { "title": "The Nexus", "explorer": true },
+		"0062": [
+			{  "title": "Highway", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 179 }, "explorer": true },
+			{  "title": "Neon Highway", "coords": { "x1": -1, "y1": 180, "x2": -1, "y2": 219 }, "explorer": true }
+		],
 		"0121": "↑v↑ (Wavy Up)",
 		"0122": "↑v↑ (Wavy Up)",
 		"0123": "↑v↑ (Wavy Up)",
@@ -22,8 +26,8 @@
 		"0250": "Plated Snow Country",
 		"0620": "Sound Room",
 		"0775": [
-			{ "title": "Aquamarine Cave", "explorer": true },
-			{ "title": "Sandy Plains", "explorer": true }
+			{ "title": "Sandy Plains", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 73 }, "explorer": true },
+			{ "title": "Aquamarine Cave", "coords": { "x1": -1, "y1": 74, "x2": -1, "y2": 184 }, "explorer": true }
 		],
 		"1271": [
 			{  "title": "Mole Mine", "coords": { "x1": 0, "y1": 25, "x2": 56, "y2": 106 }, "explorer": true },
@@ -44,6 +48,21 @@
 		"1276": [
 			{  "title": "Laundromat", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 171 }, "explorer": true },
 			{  "title": "Tarnished Ship", "coords": { "x1": -1, "y1": 172, "x2": -1, "y2": 299 }, "explorer": true }
+		],
+		"1308": [
+			{  "title": "Fluorescent Halls", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 14 }, "explorer": true },
+			{  "title": "Originator Garden", "coords": { "x1": 0, "y1": 15, "x2": 19, "y2": 29 }, "explorer": true },
+			{  "title": "The Second Nexus", "coords": { "x1": 20, "y1": 15, "x2": 39, "y2": 29 }, "explorer": true },
+			{  "title": "Lovesick World", "coords": { "x1": -1, "y1": 30, "x2": -1, "y2": 59 }, "explorer": true },
+			{  "title": "Orange Badlands", "coords": { "x1": 0, "y1": 60, "x2": 19, "y2": 74 }, "explorer": true },
+			{  "title": "Bright Forest", "coords": { "x1": 20, "y1": 60, "x2": 39, "y2": 74 }, "explorer": true },
+			{  "title": "Winter Valley", "coords": { "x1": -1, "y1": 75, "x2": -1, "y2": 89 }, "explorer": true },
+			{  "title": "Donut Hole World", "coords": { "x1": 0, "y1": 90, "x2": 19, "y2": 104 }, "explorer": true },
+			{  "title": "Ahogeko's House", "coords": { "x1": 0, "y1": 105, "x2": 19, "y2": 119 }, "explorer": true },
+			{  "title": "Shallows of Deceit", "coords": { "x1": 20, "y1": 120, "x2": 39, "y2": 149 }, "explorer": true },
+			{  "title": "Corrupted Love World", "coords": { "x1": 0, "y1": 135, "x2": 19, "y2": 149 }, "explorer": true },
+			{  "title": "Submerged Communications Area", "coords": { "x1": -1, "y1": 150, "x2": -1, "y2": 179 }, "explorer": true },
+			{  "title": "City of Liars", "explorer": true }
 		],
 		"1381": [
 			{  "title": "Mystery Library", "coords": { "x1": 83, "y1": 140, "x2": 199, "y2": 199 }, "explorer": true },
