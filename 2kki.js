@@ -144,7 +144,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
         } else
           setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
       } else {
-        const errCode = !Array.isArray(response) ? response.err_code : null;
+        const errCode = !Array.isArray(response) ? response?.err_code : null;
         
         if (errCode)
           console.error({ error: response.error, errCode: errCode });
@@ -271,7 +271,7 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
       if (Array.isArray(response))
         ret = response;
       else
-        errCode = response.err_code;
+        errCode = response?.err_code;
         
       if (errCode)
         console.error({ error: response.error, errCode: errCode });
@@ -291,7 +291,7 @@ function queryAndSet2kkiMaps(locationNames) {
       if (Array.isArray(response))
         set2kkiMaps(response, locationNames, true, true);
       else
-        errCode = response.err_code;
+        errCode = response?.err_code;
         
       if (errCode)
         console.error({ error: response.error, errCode: errCode });
