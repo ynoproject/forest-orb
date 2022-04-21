@@ -1739,7 +1739,7 @@ form .uiTheme {
 
 .expBar {
   height: 100%;
-  background: var(--base-gradient);
+  background: var(--base-gradient-b);
   transition: width 0.5s ease-in-out;
 }
 
