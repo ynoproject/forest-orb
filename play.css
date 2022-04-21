@@ -1303,7 +1303,7 @@ body.fullBg #background {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, a:not(.listEntryAction), label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1425,7 +1425,7 @@ body.fullBg #background {
   fill: var(--modal-base-color) !important;
 }
 
-.modal .infoLabel, .modal .infoText, .modal h1, .modal h2, .modal h3, .modal a:not(.listEntryAction), .modal label {
+.modal .infoLabel, .modal .infoText, .modal h1, .modal h2, .modal h3, .modal h4, .modal a:not(.listEntryAction), .modal label {
   background-image: var(--modal-base-gradient) !important;
   filter: drop-shadow(1.5px 1.5px var(--modal-shadow-color));
 }
@@ -1450,6 +1450,11 @@ body.fullBg #background {
 
 .fullscreenModal .modalContent {
   align-content: baseline;
+}
+
+.modalContent .itemCategoryHeader {
+  width: 100%;
+  text-align: center;
 }
 
 .modalContent > .item {
@@ -1491,6 +1496,12 @@ body.fullBg #background {
   background-color: var(--modal-base-bg-color) !important;
 }
 
+.modalContent .badgeItem > .badgeContainer > div:nth-child(2) {
+  margin-top: -94px;
+  border-image: none !important;
+  background-color: transparent !important;
+}
+
 .modalContent .badgeItem > .badgeContainer > .badge {
   background-size: cover;
   background-repeat: no-repeat;
@@ -1504,7 +1515,6 @@ body.fullBg #background {
 
 .modalContent .badgeItem > .badgeContainer > .icon > svg {
   padding: 8px;
-  opacity: 0.5;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
@@ -1877,6 +1887,35 @@ form .uiTheme {
   image-rendering: auto;
 }
 
+.tippy-box {
+  border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+  background-image: var(--container-bg-image-url) !important;
+}
+
+.tippy-content .tooltipContent {
+  display: inline;
+  background-image: var(--base-gradient) !important;
+  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tippy-content .tooltipTitle {
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.tippy-content .tooltipLocation {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.tippy-content label {
+  font-size: 16px;
+}
+
 @media (hover: none) { 
   .desktopOnly {
     display: none;
@@ -2217,7 +2256,7 @@ form .uiTheme {
   }
 
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }

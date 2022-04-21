@@ -159,7 +159,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
     };
     send2kkiApiRequest(url, callback);
 
-    setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location['2kki'].queryingLocation), prevLocations, true);
+    setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location.queryingLocation), prevLocations, true);
   });
 }
 
@@ -325,7 +325,7 @@ function get2kkiMapButton(url, label) {
   ret.classList.add('mapButton');
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
-  ret.title = label;
+  addTooltip(ret, label);
   ret.onclick = () => {
     const handle = window.open(url, '_blank', 'noreferrer');
     if (handle)
@@ -349,7 +349,8 @@ function set2kkiExplorerLinks(locationNames) {
 function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
-  ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
+  
+  addTooltip(ret, !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName));
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 

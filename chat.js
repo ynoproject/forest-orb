@@ -47,8 +47,8 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, mapId, prevMapId, prevLocations);
         } else {
-          playerLocationIcon.title = getLocalizedMapLocations(mapId, prevMapId, x, y, "\n");
-          playerLocation.innerHTML = getLocalizedMapLocationsHtml(mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
+          playerLocationIcon.title = getLocalizedMapLocations(gameId, mapId, prevMapId, x, y, "\n");
+          playerLocation.innerHTML = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
         }
 
         playerLocation.classList.add("playerLocation");
@@ -275,7 +275,7 @@ function addChatTip() {
 function addChatMapLocation() {
   const locationHtml = cached2kkiLocations
     ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;|&nbsp;")
-    : getLocalizedMapLocations(cachedMapId, cachedPrevMapId, "&nbsp;|&nbsp;");
+    : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;|&nbsp;");
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
