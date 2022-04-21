@@ -132,6 +132,7 @@ function getBadgeItem(badge, includeTooltip) {
     if (badgeId !== 'null') {
       item.classList.add('disabled');
       badgeContainer.appendChild(getSvgIcon('locked', true));
+      badgeContainer.appendChild(document.createElement('div'));
     } else
       badgeContainer.appendChild(getSvgIcon('ban', true));
   }

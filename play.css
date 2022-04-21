@@ -1484,22 +1484,46 @@ body.fullBg #background {
 }
 
 .modalContent .badgeItem > div {
-  width: 94px;
-  height: 94px;
+  width: 98px;
+  height: 98px;
+}
+
+.modalContent .badgeItem > .badgeContainer {
+  background-color: var(--modal-base-bg-color) !important;
 }
 
 .modalContent .badgeItem > .badgeContainer > div {
-  width: 70px;
-  height: 70px;
+  width: 74px;
+  height: 74px;
   border: 12px solid transparent;
   border-image: var(--modal-border-image-url) 8 repeat !important;
-  background-color: var(--modal-base-bg-color) !important;
+}
+
+.modalContent .badgeItem.disabled > .badgeContainer > div:first-child {
+  border: none !important;
+  margin: 12px;
+}
+
+.modalContent .badgeItem.disabled > .badgeContainer > .badge:first-child {
+  opacity: 0.325;
+  filter: grayscale(1);
 }
 
 .modalContent .badgeItem > .badgeContainer > div:nth-child(2) {
   margin-top: -94px;
-  border-image: none !important;
-  background-color: transparent !important;
+  mix-blend-mode: lighten; /* Fixes visual bug with opacity and transition */
+}
+
+.modalContent .badgeItem > .badgeContainer > .icon > svg {
+  padding: 8px;
+}
+
+.modalContent .badgeItem.disabled > .badgeContainer > .icon:nth-child(2) > svg {
+  transition: opacity 0.325s ease-in-out;
+}
+
+.modalContent .badgeItem.disabled:hover > .badgeContainer > .icon:nth-child(2) > svg {
+  opacity: 0;
 }
 
 .modalContent .badgeItem > .badgeContainer > .badge {
@@ -1511,10 +1535,6 @@ body.fullBg #background {
   background-image: var(--modal-base-gradient);
   -webkit-mask-size: cover;
   mask-size: cover;
-}
-
-.modalContent .badgeItem > .badgeContainer > .icon > svg {
-  padding: 8px;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
