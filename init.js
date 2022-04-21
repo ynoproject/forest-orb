@@ -81,10 +81,10 @@ function apiJsonPost(path, data) {
   });
 }
 
-function addTooltip(el, content, options) {
+function addTooltip(el, content, asTooltipContent, options) {
   if (!options)
     options = {};
-  options.content = content;
+  options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
   tippy(el, Object.assign(options, tippyConfig));
 }
 

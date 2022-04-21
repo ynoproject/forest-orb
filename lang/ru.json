@@ -454,7 +454,7 @@
           },
           "compass_diamond": {
             "name": "Diamond Expedition Completionist",
-            "description": "Clear expeditions in 95% of available locations"
+            "description": "Complete expeditions in 95% of available locations"
           },
           "crushed": {
             "name": "Crush",

@@ -325,7 +325,7 @@ function get2kkiMapButton(url, label) {
   ret.classList.add('mapButton');
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
-  addTooltip(ret, label);
+  addTooltip(ret, label, true);
   ret.onclick = () => {
     const handle = window.open(url, '_blank', 'noreferrer');
     if (handle)
@@ -350,7 +350,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
   
-  addTooltip(ret, !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName));
+  addTooltip(ret, !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName), true);
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 
