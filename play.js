@@ -233,6 +233,9 @@ function onLoadMap(mapName) {
 }
 
 function checkUpdateLocation(mapId, mapChanged) {
+  if (!mapChanged && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
+    return;
+
   const is2kki = gameId === '2kki';
 
   if (localizedMapLocations) {
