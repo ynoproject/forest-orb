@@ -77,7 +77,7 @@ function onLoad2kkiMap(mapId) {
 
 function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
-    let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+    let url = `${apiUrl}/2kki?action=getMapLocationNames&mapId=${mapId}`;
     if (prevMapId) {
         url += `&prevMapId=${prevMapId}`;
         if (prevLocations && prevLocations.length)
@@ -263,7 +263,7 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
     const callback = response => {
       let ret = [];
       let errCode = null;
@@ -284,7 +284,7 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
 
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${locationNames.join('&locationNames=')}`;
     const callback = response => {
       let errCode = null;
 
