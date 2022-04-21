@@ -170,7 +170,7 @@ function setSaveSyncEnabled(enabled, isInit) {
 
 // EXTERNAL
 function onSaveSlotUpdated(slotId) {
-  if (sessionId && saveSyncConfig.enabled && slotId === saveSyncConfig.slotId)
+  if (sessionId && saveSyncConfig.enabled && slotId == saveSyncConfig.slotId)
     getAndUploadSaveSyncData();
 }
 
@@ -227,7 +227,7 @@ function getAndUploadSaveSyncData() {
     if (!saveSyncConfig.slotId)
       resolve(false);
 
-    getSaveData().then(saveData => uploadSaveSyncData(saveData).then(success => resolve(success)));
+    getSaveDataForSync().then(saveData => uploadSaveSyncData(saveData).then(success => resolve(success)));
   });
 }
 
