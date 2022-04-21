@@ -324,6 +324,7 @@
         "tabToChat": "Si juegas en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
         "chatTabNotifications": "Cuando te encuentras en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
         "clearChat": "Cuando presionas el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
+        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
         "immersionMode": "Si prefieres una experiencia inmersiva sobre una social, intenta el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
       }
