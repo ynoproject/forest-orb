@@ -174,7 +174,7 @@
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "徽章"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -339,7 +339,7 @@
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
         "loggedOut": "您已登出。",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "您解锁了新的徽章！"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
