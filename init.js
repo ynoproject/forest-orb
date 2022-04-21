@@ -7,6 +7,11 @@ const gameDefaultLangs = {
   'flow': 'ja'
 };
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+const tippyConfig = {
+  arrow: false,
+  animation: 'scale',
+  allowHTML: true
+};
 
 const apiUrl = `../connect/${gameId}/api`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
@@ -74,6 +79,13 @@ function apiJsonPost(path, data) {
       .then(response => resolve(response))
       .catch(err => reject(err));
   });
+}
+
+function addTooltip(el, content, asTooltipContent, options) {
+  if (!options)
+    options = {};
+  options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
+  tippy(el, Object.assign(options, tippyConfig));
 }
 
 let loadedLang = false;

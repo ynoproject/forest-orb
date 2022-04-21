@@ -69,14 +69,31 @@ function initAccountControls() {
     badgeModalContent.innerHTML = '';
 
     updateBadges(() => {
-      const badges = ['null'].concat(badgeCache.map(b => b.badgeId));
-      for (let b of badges) {
-        const badgeId = b;
-        const item = getBadgeItem(badgeId);
-        if (badgeId === (playerData?.badge || 'null'))
+      let lastGame = null;
+      const badgeCompareFunc = (a, b) => {
+        if (a.game !== b.game) {
+          if (a.game === gameId)
+            return -1;
+          if (b.game === gameId)
+            return 1;
+          return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
+        }
+        return 0;
+      };
+      const badges = [{ badgeId: 'null', game: null}].concat(badgeCache.sort(badgeCompareFunc));
+      for (let badge of badges) {
+        if (badge.game !== lastGame) {
+          const gameHeader = document.createElement('h2');
+          gameHeader.classList.add('itemCategoryHeader');
+          gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game], true);
+          badgeModalContent.appendChild(gameHeader);
+          lastGame = badge.game;
+        }
+        const item = getBadgeItem(badge, true);
+        if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
-          item.onclick = () => updatePlayerBadge(badgeId, () => {
+          item.onclick = () => updatePlayerBadge(badge.badgeId, () => {
             initAccountSettingsModal();
             closeModal();
           });
@@ -90,10 +107,14 @@ function initAccountControls() {
 }
 
 function initAccountSettingsModal() {
-  document.getElementById('badgeButton').innerHTML = getBadgeItem(playerData?.badge || 'null').innerHTML;
+  const badgeId = playerData?.badge || 'null';
+  const badge = badgeCache.find(b => b.badgeId === badgeId);
+  document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
 }
 
-function getBadgeItem(badgeId) {
+function getBadgeItem(badge, includeTooltip) {
+  const badgeId = badge.badgeId;
+
   const item = document.createElement('div');
   item.classList.add('badgeItem');
   item.classList.add('item');
@@ -102,29 +123,76 @@ function getBadgeItem(badgeId) {
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
   
-  const badgeEntry = badgeCache.find(b => b.badgeId === badgeId);
-  const badge = badgeEntry?.unlocked && badgeId !== 'null' ? document.createElement('div') : null;
+  const badgeEl = (badge.unlocked || !badge.secret) && badgeId !== 'null' ? document.createElement('div') : null;
 
-  if (badge) {
-    badge.classList.add('badge');
-    badge.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
+  if (badgeEl) {
+    badgeEl.classList.add('badge');
+    badgeEl.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
   } else {
     if (badgeId !== 'null') {
       item.classList.add('disabled');
       badgeContainer.appendChild(getSvgIcon('locked', true));
+      badgeContainer.appendChild(document.createElement('div'));
     } else
       badgeContainer.appendChild(getSvgIcon('ban', true));
   }
 
-  if (badge) {
-    if (badgeEntry?.overlay) {
+  if (badgeEl) {
+    if (badge?.overlay) {
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
-      badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badge.style.backgroundImage}; mask-image: ${badge.style.backgroundImage};`);
-      badge.appendChild(badgeOverlay);
+      badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
+      badgeEl.appendChild(badgeOverlay);
     }
 
-    badgeContainer.appendChild(badge);
+    badgeContainer.appendChild(badgeEl);
+    if (!badge.unlocked) {
+      item.classList.add('disabled');
+      badgeContainer.appendChild(getSvgIcon('locked', true));
+    }
+  }
+
+  if (includeTooltip) {
+    let tooltipContent = '';
+    if (badgeId === 'null')
+      tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
+    else {
+      if (localizedMessages.badges.gameBadges.hasOwnProperty(badge.game) && localizedMessages.badges.gameBadges[badge.game].hasOwnProperty(badgeId)) {
+        const localizedTooltip = localizedMessages.badges.gameBadges[badge.game][badgeId];
+        if (badge.unlocked || !badge.secret) {
+          if (localizedTooltip.name)
+            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
+        } else
+          tooltipContent += `<label>${localizedMessages.badges.locked}</label>`;
+        if (badge.mapId)
+          tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
+          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
+      }
+    }
+    if (tooltipContent) {
+      const baseTooltipContent = tooltipContent;
+
+      const assignTooltip = () => addTooltip(item, tooltipContent, false, { interactive: !!badge.mapId });
+
+      if (badge.mapId) {
+        const mapId = badge.mapId.toString().padStart(4, '0');
+        const setTooltipLocation = () => {
+          if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
+            tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', null, null, getInfoLabel("&nbsp;|&nbsp;")));
+          else
+            tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
+          assignTooltip();
+        }
+        if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
+          setTooltipLocation();
+        else {
+          tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
+          initLocations(globalConfig.lang, badge.game, setTooltipLocation);
+        }
+      } else
+        assignTooltip();
+    }
   }
 
   item.appendChild(badgeContainer);
@@ -141,7 +209,7 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, overlay: badge.overlay, unlocked: badge.unlocked };
+        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, secret: badge.secret, overlay: badge.overlay, unlocked: badge.unlocked };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)

@@ -7,10 +7,16 @@ for (let el of gameIdsElements) {
 }
 
 let localizedMessages;
+
 let localizedMapLocations;
 let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
+
+let gameLocalizedMapLocations = {};
+let gameMapLocations = {};
+let gameLocalizedLocationUrlRoots = {};
+let gameLocationUrlRoots = {};
 
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
@@ -227,13 +233,16 @@ function onLoadMap(mapName) {
 }
 
 function checkUpdateLocation(mapId, mapChanged) {
+  if (!mapChanged && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
+    return;
+
   const is2kki = gameId === '2kki';
 
   if (localizedMapLocations) {
     if (!cachedMapId)
       document.getElementById('location').classList.remove('hidden');
 
-    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(mapId, cachedMapId, tpX, tpY, '<br>');
+    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(gameId, mapId, cachedMapId, tpX, tpY, '<br>');
     onUpdateChatboxInfo();
 
     if (is2kki) {
@@ -279,7 +288,7 @@ function syncPrevLocation() {
 function onPlayerTeleported(mapId, x, y) {
   tpX = x;
   tpY = y;
-  if (cachedMapId && parseInt(cachedMapId) === mapId && cachedMapId === cachedPrevMapId)
+  if (cachedMapId && parseInt(cachedMapId) === mapId)
     checkUpdateLocation(cachedMapId, false);
 }
 
@@ -931,9 +940,9 @@ function initLocalization(isInitial) {
       }
 
       if (isInitial)
-        initLocations(globalConfig.lang);
+        initLocations(globalConfig.lang, gameId);
       else if (localizedMapLocations)
-        initLocalizedMapLocations(globalConfig.lang);
+        initLocalizedMapLocations(globalConfig.lang, gameId);
 
       if (eventPeriodCache)
         updateEventLocationList();
@@ -977,8 +986,8 @@ function initLocalization(isInitial) {
     });
 }
 
-function initLocations(lang) {
-  fetch(`locations/${gameId}/config.json`)
+function initLocations(lang, game, callback) {
+  fetch(`locations/${game}/config.json`)
     .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -986,48 +995,67 @@ function initLocations(lang) {
     })
     .then(jsonResponse => {
         ignoredMapIds = jsonResponse.ignoredMapIds || [];
-        locationUrlRoot = jsonResponse.urlRoot;
-        localizedLocationUrlRoot = locationUrlRoot;
-        mapLocations = jsonResponse.mapLocations || null;
-        if (mapLocations && !Object.keys(mapLocations).length)
-          mapLocations = null;
-        if (mapLocations) {
-          massageMapLocations(mapLocations, jsonResponse.locationUrlTitles || null);
+        gameLocationUrlRoots[game] = jsonResponse.urlRoot;
+        gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
+        gameMapLocations[game] = jsonResponse.mapLocations || null;
+        if (gameMapLocations[game] && !Object.keys(gameMapLocations[game]).length)
+          gameMapLocations[game] = null;
+        if (gameMapLocations[game]) {
+          massageMapLocations(gameMapLocations[game], jsonResponse.locationUrlTitles || null);
           if (lang === 'en')
-            localizedMapLocations = mapLocations;
+            gameLocalizedMapLocations[game] = gameMapLocations[game];
           else
-            initLocalizedMapLocations(lang);
+            initLocalizedMapLocations(lang, game, callback);
         }
+        if (game === gameId) {
+          locationUrlRoot = gameLocationUrlRoots[game];
+          localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
+          mapLocations = gameMapLocations[game];
+          localizedMapLocations = gameLocalizedMapLocations[game];
+        }
+        if (callback && (!gameMapLocations[game] || lang === 'en'))
+          callback();
     })
     .catch(err => {
       ignoredMapIds = [];
-      localizedMapLocations = null;
+      gameLocalizedMapLocations[game] = null;
+      if (game === gameId)
+        localizedMapLocations = null;
+      if (callback)
+        callback();
       console.error(err);
     });
 }
 
-function initLocalizedMapLocations(lang) {
+function initLocalizedMapLocations(lang, game, callback) {
   const fileName = lang === 'en' ? 'config' : lang;
-  fetch(`locations/${gameId}/${fileName}.json`)
+  fetch(`locations/${game}/${fileName}.json`)
     .then(response => {
       if (!response.ok) {
-        localizedMapLocations = mapLocations;
+        gameLocalizedMapLocations[game] = gameMapLocations[game];
+        if (game === gameId) {
+          localizedMapLocations = mapLocations;
+          if (callback)
+            callback();
+        }
         return null; // Assume map location localizations for this language don't exist
       }
       return response.json();
   })
   .then(jsonResponse => {
-      if (!jsonResponse)
+      if (!jsonResponse) {
+        callback();
         return;
-      localizedLocationUrlRoot = jsonResponse.urlRoot;
-      localizedMapLocations = {};
+      }
+      gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
+      gameLocalizedMapLocations[game] = {};
       const langMapLocations = jsonResponse.mapLocations;
       massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
       Object.keys(mapLocations).forEach(function (mapId) {
         const mapLocation = langMapLocations[mapId];
-        const defaultMapLocation = mapLocations[mapId];
+        const defaultMapLocation = gameMapLocations[game][mapId];
         if (mapLocation) {
-          localizedMapLocations[mapId] = mapLocation;
+          gameLocalizedMapLocations[game][mapId] = mapLocation;
           if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
             for (let l in defaultMapLocation) {
               if (defaultMapLocation[l].hasOwnProperty('coords'))
@@ -1035,10 +1063,19 @@ function initLocalizedMapLocations(lang) {
             }
           }
         } else
-          localizedMapLocations[mapId] = defaultMapLocation;
+          gameLocalizedMapLocations[game][mapId] = defaultMapLocation;
       });
+      if (game === gameId) {
+        localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
+        localizedMapLocations = gameLocalizedMapLocations[game];
+      }
+      if (callback)
+        callback();
   })
-  .catch(_err => { }); // Assume map location localizations for this language don't exist
+  .catch(_err => { // Assume map location localizations for this language don't exist
+    if (callback)
+      callback();
+  });
 }
 
 function getMapLocationsArray(mapLocations, mapId, prevMapId, x, y) {
@@ -1063,7 +1100,7 @@ function getMapLocationsArray(mapLocations, mapId, prevMapId, x, y) {
 }
 
 function getMapLocationsFromArray(locations, x, y) {
-  if (locations.length && locations[0].hasOwnProperty('coords')) {
+  if (locations.length && locations[0].hasOwnProperty('coords') && x !== null && y !== null) {
     const coordLocation = locations.find(l => l.hasOwnProperty('coords') && ((l.coords.x1 === -1 && l.coords.x2 === -1) || (l.coords.x1 <= x && l.coords.x2 >= x)) && ((l.coords.y1 === -1 && l.coords.y2 === -1) || (l.coords.y1 <= y && l.coords.y2 >= y)));
     if (coordLocation)
       return [ coordLocation ];
@@ -1074,49 +1111,49 @@ function getMapLocationsFromArray(locations, x, y) {
   return locations;
 }
 
-function getLocalizedMapLocations(mapId, prevMapId, x, y, separator) {
-  if (localizedMapLocations?.hasOwnProperty(mapId)) {
-    const localizedLocations = localizedMapLocations[mapId];
-    const locations = mapLocations[mapId];
+function getLocalizedMapLocations(game, mapId, prevMapId, x, y, separator) {
+  if (gameLocalizedMapLocations[game]?.hasOwnProperty(mapId)) {
+    const localizedLocations = gameLocalizedMapLocations[game][mapId];
+    const locations = gameMapLocations[game][mapId];
     if (localizedLocations.hasOwnProperty('title')) // Text location
-      return getLocalizedLocation(localizedLocations, locations);
+      return getLocalizedLocation(game, localizedLocations, locations);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations, x, y)[i])).join(separator);
+      return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i])).join(separator);
     if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId], x, y)[i])).join(separator);
-      return getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId]);
+        return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i])).join(separator);
+      return getLocalizedLocation(game, localizedLocations[prevMapId], locations[prevMapId]);
     }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
-        return getLocalizedLocation(localizedLocations.else, locations.else);
+        return getLocalizedLocation(game, localizedLocations.else, locations.else);
       if (Array.isArray(localizedLocations.else))
-        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else, x, y)[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i])).join(separator);
     }
   }
   
   return localizedMessages.location.unknownLocation;
 }
 
-function getLocalizedMapLocationsHtml(mapId, prevMapId, x, y, separator) {
-  if (localizedMapLocations?.hasOwnProperty(mapId)) {
-    const localizedLocations = localizedMapLocations[mapId];
-    const locations = mapLocations[mapId];
+function getLocalizedMapLocationsHtml(game, mapId, prevMapId, x, y, separator) {
+  if (gameLocalizedMapLocations[game]?.hasOwnProperty(mapId)) {
+    const localizedLocations = gameLocalizedMapLocations[game][mapId];
+    const locations = gameMapLocations[game][mapId];
     let locationsHtml;
     if (localizedLocations.hasOwnProperty('title')) // Text location
-      locationsHtml = getLocalizedLocation(localizedLocations, locations, true);
+      locationsHtml = getLocalizedLocation(game, localizedLocations, locations, true);
     else if (Array.isArray(localizedLocations)) // Multiple locations
-      locationsHtml = getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations, x, y)[i], true)).join(separator);
+      locationsHtml = getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i], true)).join(separator);
     else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], true)).join(separator);
       else
-        locationsHtml = getLocalizedLocation(localizedLocations[prevMapId], locations[prevMapId], true);
+        locationsHtml = getLocalizedLocation(game, localizedLocations[prevMapId], locations[prevMapId], true);
     } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
-        locationsHtml = getLocalizedLocation(localizedLocations.else, locations.else, true);
+        locationsHtml = getLocalizedLocation(game, localizedLocations.else, locations.else, true);
       else if (Array.isArray(localizedLocations.else))
-        locationsHtml = getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(l, getMapLocationsFromArray(locations.else, x, y)[i], true)).join(separator);
+        locationsHtml = getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i], true)).join(separator);
     }
 
     if (locationsHtml)
@@ -1154,17 +1191,17 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
   }
 }
 
-function getLocalizedLocation(location, locationEn, asHtml) {
+function getLocalizedLocation(game, location, locationEn, asHtml) {
   let template = getMassagedLabel(localizedMessages.location.template);
   let ret;
   let locationValue;
 
   if (asHtml) {
     template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
-    if (localizedLocationUrlRoot && location.urlTitle !== null)
-      locationValue = `<a href="${localizedLocationUrlRoot}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
-    else if (locationUrlRoot && localizedLocationUrlRoot !== null && locationEn.urlTitle !== null)
-      locationValue = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${location.title}</a>`;
+    if (gameLocalizedLocationUrlRoots[game] && location.urlTitle !== null)
+      locationValue = `<a href="${gameLocalizedLocationUrlRoots[game]}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
+    else if (gameLocationUrlRoots[game] && gameLocalizedLocationUrlRoots[game] !== null && locationEn.urlTitle !== null)
+      locationValue = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank">${location.title}</a>`;
     else
       locationValue = getInfoLabel(location.title);
   } else
@@ -1175,8 +1212,8 @@ function getLocalizedLocation(location, locationEn, asHtml) {
   if (template.indexOf('{LOCATION_EN}') > -1) {
     let locationValueEn;
     if (asHtml) {
-      if (locationUrlRoot && locationEn.urlTitle !== null)
-        locationValueEn = `<a href="${locationUrlRoot}${locationEn.urlTitle || locationEn.title}" target="_blank">${locationEn.title}</a>`;
+      if (gameLocationUrlRoots[game] && locationEn.urlTitle !== null)
+        locationValueEn = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank">${locationEn.title}</a>`;
       else
         locationValueEn = getInfoLabel(locationEn.title);
     } else

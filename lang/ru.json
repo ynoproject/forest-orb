@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "Войти",
-      "logout": "Log Out"
+      "logout": "Выйти"
     },
     "fontStyle": {
       "label": "Стиль Шрифта:",
@@ -70,7 +70,7 @@
           "username": "Логин",
           "password": "Пароль"
         },
-        "submit": "Submit",
+        "submit": "Войти",
         "registerPrompt": "Ещё нет аккаунта?&nbsp;",
         "register": "Зарегистрироваться"
       },
@@ -82,7 +82,7 @@
           "password": "Пароль",
           "confirmPassword": "Подтвердите пароль"
         },
-        "submit": "Submit",
+        "submit": "Зарегистрироваться",
         "loginPrompt": "Уже есть аккаунт?&nbsp;",
         "login": "Войти"
       },
@@ -104,7 +104,7 @@
           "toggleFloodProtection": "Защита от Спама"
         },
         "notificationSettings": "Уведомления",
-        "accountSettings": "Account Settings"
+        "accountSettings": "Настройки Аккаунта"
       },
       "notificationSettings": {
         "title": "Настройка Уведомлений",
@@ -126,11 +126,11 @@
             }
           },
           "account": {
-            "label": "Account",
+            "label": "Аккаунт",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out",
-              "badgeUnlocked": "Badge Unlocked"
+              "loggedIn": "Вход",
+              "loggedOut": "Выход",
+              "badgeUnlocked": "Значок Открыт"
             }
           },
           "parties": {
@@ -151,30 +151,30 @@
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "Походы",
             "fields": {
-              "complete": "Expedition Complete",
-              "freeComplete": "Free Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "Поход Выполнен",
+              "freeComplete": "Свободный Поход Выполнен",
+              "listUpdated": "Список Походов Обновлён"
             }
           }
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "Настройки Аккаунта",
         "fields": {
-          "badge": "Badge",
-          "toggleSaveSync": "Save Sync (Experimental)",
+          "badge": "Значок",
+          "toggleSaveSync": "Облачное Сохранение (Экспериментальное)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "ID Слота для Синхронизации",
             "values": {
-              "0": "None"
+              "0": "Нет"
             }
           }
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "Значки"
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",
@@ -207,9 +207,9 @@
         "submit": "Войти"
       },
       "eventLocations": {
-        "title": "Expeditions",
-        "rankExp": "Next Rank",
-        "weekExp": "ExP This Week"
+        "title": "Походы",
+        "rankExp": "До след. Ранга",
+        "weekExp": "Опыта за Неделю"
       }
     },
     "tooltips": {
@@ -231,11 +231,22 @@
         "createParty": "Создать Группу",
         "disbandParty": "Распустить Группу"
       },
-      "eventLocations": "Expeditions",
+      "eventLocations": "Походы",
       "nexus": "Вернуться на Главную страницу"
     }
   },
   "messages": {
+    "games": {
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl"
+    },
     "leavePage": "Вы уверены, что хотите покинуть страницу? Весь несохранённый прогресс будет утерян.",
     "io": {
       "common": {
@@ -258,10 +269,10 @@
     },
     "location": {
       "template": "{LOCATION}",
+      "queryingLocation": "Вычисляем место...",
       "unknownLocation": "Неизвестно",
       "2kki": {
-        "template": "{LOCATION}",
-        "queryingLocation": "Вычисляем место..."
+        "template": "{LOCATION}"
       }
     },
     "playersOnline": {
@@ -291,8 +302,8 @@
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "confirmPasswordMismatch": "Пароли не совпадают.",
+          "invalidCredentials": "Указанные Логин и Пароль пустые или содержат недопустимые символы.",
           "emailTaken": "Данный e-mail уже используется.",
           "usernameTaken": "Данный логин уже используется."
         }
@@ -324,22 +335,23 @@
         "tabToChat": "Если вы играете на ПК, то можете при помощи клавиши Tab переключаться между окнами игры и чата. Эта особенность регулируется настройкой 'Переключение в Чат Tab-у'.",
         "chatTabNotifications": "Если вы во вкладке чата, отличной от 'Все', и в другой вкладке появилось новое сообщение, её ярлык станет чуть жирнее.",
         "clearChat": "Если вы нажмёте на кнопку 'Очистить чат' (Сверху-справа в окне чата), не будучи во вкладке 'Все', то удалятся только сообщения из ныне открытой вкладки.",
+        "parties": "Группы - Хороший способ путешествовать вместе с другими людьми. Вы можете видеть местонахождение других участников группы и общаться с ними в отдельном канале чата.",
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте Режим Погружения. В нём скрывается глобальный чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
         "openSource": "YNOproject - Проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "Включить Облачное Сохранение? Ваши данные из выбранного Слота Сохранения будут выгружены в облако. Таким образом, вы сможете получить доступ к выбранному слоту на любом устройстве или из любого браузера, где вы включили эту опцию. Пока функция включена, Слот, указанный как Облачный, будет автоматически обновляться при каждой загрузке страницы.",
+      "confirmEnableWithData": "Обнаружены данные другого Облачного Сохранения в Аккаунте. Если есть Сохранение из облака новее, Сохранение в слоту, что указан как Облачный, будет перезаписано. Учтите, что для применения изменений будет необходимо перезагрузить страницу, имея опцию Облачного Сохранения включённой. Вы уверены, что хотите включить Облачное Сохранение?"
     },
     "toast": {
       "client": {
         "floodDetected": "Замечена возможность спам-атаки: Происходит переключение в одиночный режим."
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out.",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "loggedIn": "Вы вошли как {USER}.",
+        "loggedOut": "Вы вышли из аккаунта.",
+        "badgeUnlocked": "Значок разблокирован!"
       },
       "parties": {
         "create": "Была создана {PARTY}.",
@@ -356,32 +368,107 @@
         "transferPartyOwner": "{PLAYER} Теперь Лидер группы."
       },
       "eventLocations": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete!\nYou visited {LOCATION}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
+        "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
+        "listUpdated": "Список Походов Обновлён."
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "exp": "{POINTS} Опыта",
+      "expRank": "Ранг: {RANK}",
+      "period": "Сезон {ORDINAL}",
+      "periodEnds": "Заканчивается {DATE}",
+      "availableUntilDate": "Доступен до\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "-1": "Свободные",
+        "0": "Ежедневные",
+        "1": "Еженедельные",
+        "2": "Выходные",
+        "3": "Особые"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "Новичок",
+        "1": "Продвинутый",
+        "2": "Бронзовый",
+        "3": "Серебрянный",
+        "4": "Золотой",
+        "5": "Платиновый",
+        "6": "Алмазный"
+      }
+    },
+    "badges": {
+      "null": "No Badge",
+      "locked": "???",
+      "location": "Location:&nbsp;",
+      "gameBadges": {
+        "yume": {
+          "uboa": {
+            "name": "Uboa",
+            "description": "Fall into Uboa's Trap"
+          }
+        },
+        "2kki": {
+          "mono": {
+            "name": "Expeditionist",
+            "description": "Reach Intermediate rank in expeditions"
+          },
+          "bronze": {
+            "name": "Bronze Expeditionist",
+            "description": "Reach Bronze rank in expeditions"
+          },
+          "silver": {
+            "name": "Silver Expeditionist",
+            "description": "Reach Silver rank in expeditions"
+          },
+          "gold": {
+            "name": "Gold Expeditionist",
+            "description": "Reach Gold rank in expeditions"
+          },
+          "platinum": {
+            "name": "Platinum Expeditionist",
+            "description": "Reach Platinum rank in expeditions"
+          },
+          "diamond": {
+            "name": "Diamond Expeditionist",
+            "description": "Reach Diamond rank in expeditions"
+          },
+          "compass": {
+            "name": "Expedition Completionist",
+            "description": "Complete expeditions in 30% of available locations"
+          },
+          "compass_bronze": {
+            "name": "Bronze Expedition Completionist",
+            "description": "Complete expeditions in 50% of available locations"
+          },
+          "compass_silver": {
+            "name": "Silver Expedition Completionist",
+            "description": "Complete expeditions in 70% of available locations"
+          },
+          "compass_gold": {
+            "name": "Gold Expedition Completionist",
+            "description": "Complete expeditions in 80% of available locations"
+          },
+          "compass_platinum": {
+            "name": "Platinum Expedition Completionist",
+            "description": "Complete expeditions in 90% of available locations"
+          },
+          "compass_diamond": {
+            "name": "Diamond Expedition Completionist",
+            "description": "Complete expeditions in 95% of available locations"
+          },
+          "crushed": {
+            "name": "Crush",
+            "description": "Watch Urotsuki get smooshed"
+          },
+          "compass_28": {
+            "name": "28",
+            "description": "２８"
+          },
+          "blue_orb": {
+            "name": "Blue Orb",
+            "description": "Visit Blue Orb World"
+          }
+        }
       }
     },
     "2kki": {

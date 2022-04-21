@@ -77,7 +77,7 @@ function onLoad2kkiMap(mapId) {
 
 function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
-    let url = `https://2kki.app/getMapLocationNames?mapId=${mapId}`;
+    let url = `${apiUrl}/2kki?action=getMapLocationNames&mapId=${mapId}`;
     if (prevMapId) {
         url += `&prevMapId=${prevMapId}`;
         if (prevLocations && prevLocations.length)
@@ -144,7 +144,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
         } else
           setLocationFunc(mapId, prevMapId, locations, prevLocations, true, true);
       } else {
-        const errCode = !Array.isArray(response) ? response.err_code : null;
+        const errCode = !Array.isArray(response) ? response?.err_code : null;
         
         if (errCode)
           console.error({ error: response.error, errCode: errCode });
@@ -159,7 +159,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
     };
     send2kkiApiRequest(url, callback);
 
-    setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location['2kki'].queryingLocation), prevLocations, true);
+    setLocationFunc(mapId, prevMapId, getMassagedLabel(localizedMessages.location.queryingLocation), prevLocations, true);
   });
 }
 
@@ -263,7 +263,7 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `https://2kki.app/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
     const callback = response => {
       let ret = [];
       let errCode = null;
@@ -271,7 +271,7 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
       if (Array.isArray(response))
         ret = response;
       else
-        errCode = response.err_code;
+        errCode = response?.err_code;
         
       if (errCode)
         console.error({ error: response.error, errCode: errCode });
@@ -284,14 +284,14 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
 
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `https://2kki.app/getLocationMaps?locationNames=${locationNames.join('&locationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${locationNames.join('&locationNames=')}`;
     const callback = response => {
       let errCode = null;
 
       if (Array.isArray(response))
         set2kkiMaps(response, locationNames, true, true);
       else
-        errCode = response.err_code;
+        errCode = response?.err_code;
         
       if (errCode)
         console.error({ error: response.error, errCode: errCode });
@@ -325,7 +325,7 @@ function get2kkiMapButton(url, label) {
   ret.classList.add('mapButton');
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
-  ret.title = label;
+  addTooltip(ret, label, true);
   ret.onclick = () => {
     const handle = window.open(url, '_blank', 'noreferrer');
     if (handle)
@@ -349,7 +349,8 @@ function set2kkiExplorerLinks(locationNames) {
 function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
-  ret.title = !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName);
+  
+  addTooltip(ret, !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName), true);
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 

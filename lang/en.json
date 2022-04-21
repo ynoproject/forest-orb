@@ -236,6 +236,17 @@
     }
   },
   "messages": {
+    "games": {
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl"
+    },
     "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
     "io": {
       "common": {
@@ -258,10 +269,10 @@
     },
     "location": {
       "template": "{LOCATION}",
+      "queryingLocation": "Querying Location...",
       "unknownLocation": "Unknown Location",
       "2kki": {
-        "template": "{LOCATION}",
-        "queryingLocation": "Querying Location..."
+        "template": "{LOCATION}"
       }
     },
     "playersOnline": {
@@ -324,6 +335,7 @@
         "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
         "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
+        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
         "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
       }
@@ -382,6 +394,81 @@
         "4": "Gold",
         "5": "Platinum",
         "6": "Diamond"
+      }
+    },
+    "badges": {
+      "null": "No Badge",
+      "locked": "???",
+      "location": "Location:&nbsp;",
+      "gameBadges": {
+        "yume": {
+          "uboa": {
+            "name": "Uboa",
+            "description": "Fall into Uboa's Trap"
+          }
+        },
+        "2kki": {
+          "mono": {
+            "name": "Expeditionist",
+            "description": "Reach Intermediate rank in expeditions"
+          },
+          "bronze": {
+            "name": "Bronze Expeditionist",
+            "description": "Reach Bronze rank in expeditions"
+          },
+          "silver": {
+            "name": "Silver Expeditionist",
+            "description": "Reach Silver rank in expeditions"
+          },
+          "gold": {
+            "name": "Gold Expeditionist",
+            "description": "Reach Gold rank in expeditions"
+          },
+          "platinum": {
+            "name": "Platinum Expeditionist",
+            "description": "Reach Platinum rank in expeditions"
+          },
+          "diamond": {
+            "name": "Diamond Expeditionist",
+            "description": "Reach Diamond rank in expeditions"
+          },
+          "compass": {
+            "name": "Expedition Completionist",
+            "description": "Complete expeditions in 30% of available locations"
+          },
+          "compass_bronze": {
+            "name": "Bronze Expedition Completionist",
+            "description": "Complete expeditions in 50% of available locations"
+          },
+          "compass_silver": {
+            "name": "Silver Expedition Completionist",
+            "description": "Complete expeditions in 70% of available locations"
+          },
+          "compass_gold": {
+            "name": "Gold Expedition Completionist",
+            "description": "Complete expeditions in 80% of available locations"
+          },
+          "compass_platinum": {
+            "name": "Platinum Expedition Completionist",
+            "description": "Complete expeditions in 90% of available locations"
+          },
+          "compass_diamond": {
+            "name": "Diamond Expedition Completionist",
+            "description": "Complete expeditions in 95% of available locations"
+          },
+          "crushed": {
+            "name": "Crush",
+            "description": "Watch Urotsuki get smooshed"
+          },
+          "compass_28": {
+            "name": "28",
+            "description": "２８"
+          },
+          "blue_orb": {
+            "name": "Blue Orb",
+            "description": "Visit Blue Orb World"
+          }
+        }
       }
     },
     "2kki": {

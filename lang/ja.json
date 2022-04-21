@@ -130,7 +130,7 @@
             "fields": {
               "loggedIn": "ログイン通知",
               "loggedOut": "ログアウト通知",
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "バッジ獲得通知"
             }
           },
           "parties": {
@@ -236,6 +236,17 @@
     }
   },
   "messages": {
+    "games": {
+      "yume": "ゆめにっき",
+      "2kki": "ゆめ２っき",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "おうとつゆめ",
+      "braingirl": "ブレインガール"
+    },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "io": {
       "common": {
@@ -258,10 +269,10 @@
     },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",
+      "queryingLocation": "Querying Location...",
       "unknownLocation": "場所不明",
       "2kki": {
-        "template": "{LOCATION_JP} 「{LOCATION}」",
-        "queryingLocation": "Querying Location..."
+        "template": "{LOCATION_JP} 「{LOCATION}」"
       }
     },
     "playersOnline": {
@@ -324,6 +335,7 @@
         "tabToChat": "PCでプレイしている場合、タブキーを押すことでゲームの操作とチャット入力を切り替えることができます。この機能は、設定の「タブキーを押してチャット」で無効にすることができます。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
+        "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
@@ -339,7 +351,7 @@
       "account": {
         "loggedIn": "{USER}でログインしました。",
         "loggedOut": "ログアウトしました。",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "バッジを獲得しました！"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
@@ -375,13 +387,88 @@
         "3": "スペシャル"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "ノービス",
+        "1": "インターミディエイト",
+        "2": "ブロンズ",
+        "3": "シルバー",
+        "4": "ゴールド",
+        "5": "プラチナ",
+        "6": "ダイアモンド"
+      }
+    },
+    "badges": {
+      "null": "No Badge",
+      "locked": "???",
+      "location": "Location:&nbsp;",
+      "gameBadges": {
+        "yume": {
+          "uboa": {
+            "name": "Uboa",
+            "description": "Fall into Uboa's Trap"
+          }
+        },
+        "2kki": {
+          "mono": {
+            "name": "Expeditionist",
+            "description": "Reach Intermediate rank in expeditions"
+          },
+          "bronze": {
+            "name": "Bronze Expeditionist",
+            "description": "Reach Bronze rank in expeditions"
+          },
+          "silver": {
+            "name": "Silver Expeditionist",
+            "description": "Reach Silver rank in expeditions"
+          },
+          "gold": {
+            "name": "Gold Expeditionist",
+            "description": "Reach Gold rank in expeditions"
+          },
+          "platinum": {
+            "name": "Platinum Expeditionist",
+            "description": "Reach Platinum rank in expeditions"
+          },
+          "diamond": {
+            "name": "Diamond Expeditionist",
+            "description": "Reach Diamond rank in expeditions"
+          },
+          "compass": {
+            "name": "Expedition Completionist",
+            "description": "Complete expeditions in 30% of available locations"
+          },
+          "compass_bronze": {
+            "name": "Bronze Expedition Completionist",
+            "description": "Complete expeditions in 50% of available locations"
+          },
+          "compass_silver": {
+            "name": "Silver Expedition Completionist",
+            "description": "Complete expeditions in 70% of available locations"
+          },
+          "compass_gold": {
+            "name": "Gold Expedition Completionist",
+            "description": "Complete expeditions in 80% of available locations"
+          },
+          "compass_platinum": {
+            "name": "Platinum Expedition Completionist",
+            "description": "Complete expeditions in 90% of available locations"
+          },
+          "compass_diamond": {
+            "name": "Diamond Expedition Completionist",
+            "description": "Complete expeditions in 95% of available locations"
+          },
+          "crushed": {
+            "name": "Crush",
+            "description": "Watch Urotsuki get smooshed"
+          },
+          "compass_28": {
+            "name": "28",
+            "description": "２８"
+          },
+          "blue_orb": {
+            "name": "Blue Orb",
+            "description": "Visit Blue Orb World"
+          }
+        }
       }
     },
     "2kki": {

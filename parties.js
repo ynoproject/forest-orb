@@ -796,8 +796,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
     } else {
-      playerLocationIcon.title = getLocalizedMapLocations(member.mapId, member.prevMapId, member.x, member.y, '\n');
-      playerLocation.innerHTML = getLocalizedMapLocationsHtml(member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
+      playerLocationIcon.title = getLocalizedMapLocations(gameId, member.mapId, member.prevMapId, member.x, member.y, '\n');
+      playerLocation.innerHTML = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
       if (playerLocation.dataset.systemOverride) {
         for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
           infoLabel.setAttribute('style', `background-image: var(--base-gradient-${playerLocation.dataset.systemOverride}) !important;`);

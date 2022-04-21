@@ -8,9 +8,12 @@
   <meta name="2kkiVersion" content="" data-game-ids="2kki"> <!-- eg. 0.117g Patch 4 -->
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/loc-i18next@0.1.4/dist/umd/loc-i18next.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
 </head>
 <body>
   <div id="background"></div>
@@ -295,7 +298,7 @@
                   <label id="registerError"></label>
                 </li>
               </ul>
-              <button type="submit" data-i18n="[html]modal.registerModal.submit">Submit</button>
+              <button type="submit" data-i18n="[html]modal.register.submit">Submit</button>
             </form>
           </div>
           <div class="modalFooter">
@@ -431,7 +434,7 @@
             </ul>
           </div>
         </div>
-        <div id="badgesModal" class="modal hidden">
+        <div id="badgesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
