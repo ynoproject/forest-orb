@@ -1,5 +1,5 @@
 {
-	"ignoredMapIds": [ "0899", "0900", "1581" ],
+	"ignoredMapIds": [ "0801", "0899", "0900", "1581" ],
 	"urlRoot": "https://yume2kki.fandom.com/wiki/",
 	"mapLocations": {
 		"0002": { "title": "Urotsuki's Room", "explorer": true },
@@ -7,6 +7,10 @@
 		"0004": { "title": "Urotsuki's Dream Room", "urlTitle": "Urotsuki's_Room" },
 		"0005": { "title": "Urotsuki's Dream Balcony", "urlTitle": "Urotsuki's_Room#Urotsuki's_Balcony" },
 		"0010": { "title": "The Nexus", "explorer": true },
+		"0054": [
+			{  "title": "Sewers", "coords": { "x1": 0, "y1": -1, "x2": 125, "y2": -1 }, "explorer": true },
+			{  "title": "Red City", "explorer": true }
+		],
 		"0057": [
 			{  "title": "Head Wasteland", "coords": { "x1": -1, "y1": 376, "x2": -1, "y2": 430 }, "explorer": true },
 			{  "title": "Japan Town", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 95 }, "explorer": true },
@@ -15,9 +19,17 @@
 			{  "title": "Sewers", "coords": { "x1": -1, "y1": 96, "x2": -1, "y2": 375 }, "explorer": true },
 			{  "title": "Underwater Amusement Park", "coords": { "x1": -1, "y1": 455, "x2": -1, "y2": 499 }, "explorer": true }
 		],
+		"0058": [
+			{  "title": "Japan Town", "coords": { "x1": 0, "y1": -1, "x2": 162, "y2": -1 }, "explorer": true },
+			{  "title": "Maiden Outlook", "explorer": true }
+		],
 		"0062": [
 			{  "title": "Highway", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 179 }, "explorer": true },
 			{  "title": "Neon Highway", "coords": { "x1": -1, "y1": 180, "x2": -1, "y2": 219 }, "explorer": true }
+		],
+		"0068": [
+			{  "title": "Highway", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 32 }, "explorer": true },
+			{  "title": "Black Building", "explorer": true }
 		],
 		"0121": "↑v↑ (Wavy Up)",
 		"0122": "↑v↑ (Wavy Up)",
@@ -34,6 +46,10 @@
 			{  "title": "Dressing Room", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 105 }, "explorer": true },
 			{  "title": "Fabric World", "explorer": true }
 		],
+		"0205": [
+			{  "title": "Star Ocean", "coords": { "x1": 0, "y1": 0, "x2": 19, "y2": 14 }, "explorer": true },
+			{  "title": "Atlantis", "explorer": true }
+		],
 		"0249": "Plated Snow Country",
 		"0250": "Plated Snow Country",
 		"0274": { "title": "Underwater Amusement Park", "explorer": true },
@@ -41,18 +57,40 @@
 			{  "title": "Closet Pinwheel Path", "coords": { "x1": -1, "y1": 75, "x2": -1, "y2": 151 }, "explorer": true },
 			{  "title": "Japan Town", "explorer": true }
 		],
+		"0333": [
+			{  "title": "Pastel Blue House", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 79 }, "explorer": true },
+			{  "title": "Broken Faces Area", "explorer": true }
+		],
+		"0354": [
+			{  "title": "Dark Alleys", "coords": { "x1": 20, "y1": 15, "x2": 39, "y2": 29 }, "explorer": true },
+			{  "title": "Grass World", "explorer": true }
+		],
+		"0489": [
+			{  "title": "Downfall Garden A", "coords": { "x1": 210, "y1": 0, "x2": 279, "y2": 76 }, "explorer": true },
+			{  "title": "River_Complex: Buddha Face Labyrinth", "urlTitle": "River_Complex#Buddha_Face_Labyrinth", "coords": { "x1": 240, "y1": 131, "x2": 256, "y2": 139 }, "explorer": true },
+			{  "title": "Sea of Clouds", "explorer": true }
+		],
 		"0620": "Sound Room",
 		"0729": { "title": "Scrambled Egg Zone", "explorer": true },
 		"0775": [
 			{ "title": "Sandy Plains", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 73 }, "explorer": true },
 			{ "title": "Aquamarine Cave", "coords": { "x1": -1, "y1": 74, "x2": -1, "y2": 184 }, "explorer": true }
 		],
+		"0911": [
+			{  "title": "Monochrome Feudal Japan", "coords": { "x1": 109, "y1": 15, "x2": 132, "y2": 25 }, "explorer": true },
+			{  "title": "Viridescent Temple", "coords": { "x1": 77, "y1": 15, "x2": 98, "y2": 27 }, "explorer": true },
+			{  "title": "Erratic Pillar Lands", "coords": { "x1": 87, "y1": 15, "x2": 176, "y2": 94 }, "explorer": true },
+			{  "title": "Surgical Scissors World", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 14 }, "explorer": true },
+			{  "title": "Fossil Lake", "coords": { "x1": 0, "y1": 80, "x2": 86, "y2": 94 }, "explorer": true },
+			{  "title": "Fossil Lake", "coords": { "x1": 130, "y1": 80, "x2": 179, "y2": 94 }, "explorer": true },
+			{  "title": "Ocean Subsurface", "explorer": true }
+		],
 		"1123": [
 			{  "title": "Sparkling Dimension B", "coords": { "x1": 0, "y1": 170, "x2": 79, "y2": 239 }, "explorer": true },
 			{  "title": "Sparkling Dimension A", "explorer": true }
 		],
 		"1148": { "title": "Lavender Waters", "explorer": true },
-		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "urlTitle": "Tomb of Velleities", "explorer": true },
+		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "urlTitle": "Tomb of Velleities#Lunar_Sanctuary", "explorer": true },
 		"1271": [
 			{  "title": "Mole Mine", "coords": { "x1": 0, "y1": 25, "x2": 56, "y2": 106 }, "explorer": true },
 			{  "title": "Stalker Alley", "coords": { "x1": 57, "y1": -1, "x2": 199, "y2": -1 }, "explorer": true },
