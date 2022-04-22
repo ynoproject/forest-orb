@@ -42,7 +42,7 @@
 			{  "title": "Japan Town", "explorer": true }
 		],
 		"0620": "Sound Room",
-		"0718": { "title": "Blue Orb World", "explorer": true },
+		"0729": { "title": "Scrambled Egg Zone", "explorer": true },
 		"0775": [
 			{ "title": "Sandy Plains", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 73 }, "explorer": true },
 			{ "title": "Aquamarine Cave", "coords": { "x1": -1, "y1": 74, "x2": -1, "y2": 184 }, "explorer": true }
