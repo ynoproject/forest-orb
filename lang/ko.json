@@ -237,9 +237,9 @@
   },
   "messages": {
     "games": {
-      "yume": "Yume Nikki",
-      "2kki": "Yume 2kki",
-      "flow": ".flow",
+      "yume": "유메닛키",
+      "2kki": "유메2키",
+      "flow": "닷플로우",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
@@ -397,76 +397,84 @@
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "뱃지 없음",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "장소 :&nbsp;",
       "gameBadges": {
         "yume": {
           "uboa": {
-            "name": "Uboa",
-            "description": "Fall into Uboa's Trap"
+            "name": "우봐 뱃지",
+            "description": "우봐와 상호작용하기"
           }
         },
         "2kki": {
           "mono": {
-            "name": "Expeditionist",
-            "description": "Reach Intermediate rank in expeditions"
+            "name": "탐험가 뱃지",
+            "description": "탐험 랭크 <중급>에 도달"
           },
           "bronze": {
-            "name": "Bronze Expeditionist",
-            "description": "Reach Bronze rank in expeditions"
+            "name": "브론즈 탐험가 뱃지",
+            "description": "탐험 랭크 <브론즈>에 도달"
           },
           "silver": {
-            "name": "Silver Expeditionist",
-            "description": "Reach Silver rank in expeditions"
+            "name": "실버 탐험가 뱃지",
+            "description": "탐험 랭크 <실버>에 도달"
           },
           "gold": {
-            "name": "Gold Expeditionist",
-            "description": "Reach Gold rank in expeditions"
+            "name": "골드 탐험가 뱃지",
+            "description": "탐험 랭크 <골드>에 도달"
           },
           "platinum": {
-            "name": "Platinum Expeditionist",
-            "description": "Reach Platinum rank in expeditions"
+            "name": "플래티넘 탐험가 뱃지",
+            "description": "탐험 랭크 <플래티넘>에 도달"
           },
           "diamond": {
-            "name": "Diamond Expeditionist",
-            "description": "Reach Diamond rank in expeditions"
+            "name": "다이아몬드 탐험가 뱃지",
+            "description": "탐험 랭크 <다이아몬드>에 도달"
           },
           "compass": {
-            "name": "Expedition Completionist",
-            "description": "Complete expeditions in 30% of available locations"
+            "name": "모험가 뱃지",
+            "description": "방문 가능한 30%의 장소들을 탐험 완료하기"
           },
           "compass_bronze": {
-            "name": "Bronze Expedition Completionist",
-            "description": "Complete expeditions in 50% of available locations"
+            "name": "브론즈 모험가 뱃지",
+            "description": "방문 가능한 50%의 장소들을 탐험 완료하기"
           },
           "compass_silver": {
-            "name": "Silver Expedition Completionist",
-            "description": "Complete expeditions in 70% of available locations"
+            "name": "실버 모험가 뱃지",
+            "description": "방문 가능한 70%의 장소들을 탐험 완료하기"
           },
           "compass_gold": {
-            "name": "Gold Expedition Completionist",
-            "description": "Complete expeditions in 80% of available locations"
+            "name": "골드 모험가 뱃지",
+            "description": "방문 가능한 80%의 장소들을 탐험 완료하기"
           },
           "compass_platinum": {
-            "name": "Platinum Expedition Completionist",
-            "description": "Complete expeditions in 90% of available locations"
+            "name": "플래티넘 모험가 뱃지",
+            "description": "방문 가능한 90%의 장소들을 탐험 완료하기"
           },
           "compass_diamond": {
-            "name": "Diamond Expedition Completionist",
-            "description": "Complete expeditions in 95% of available locations"
+            "name": "다이아몬드 모험가 뱃지",
+            "description": "방문 가능한 95%의 장소들을 탐험 완료하기"
           },
           "crushed": {
-            "name": "Crush",
-            "description": "Watch Urotsuki get smooshed"
+            "name": "쥐포 뱃지",
+            "description": "쥐포가 된 우로츠키 이벤트를 감상하기"
           },
           "compass_28": {
-            "name": "28",
-            "description": "２８"
+            "name": "28 뱃지",
+            "description": "선물상자의 내용물을 확인하기"
           },
           "blue_orb": {
-            "name": "Blue Orb",
-            "description": "Visit Blue Orb World"
+            "name": "파란 구슬 뱃지",
+            "description": "Scrambled Egg Zone 방문하기"
+          },
+          "butterfly": {
+            "name": "나비 브로치",
+            "description": "Time Trial Mode를 키고 Tomb of Velleities 맵을 28분 이내로 방문하기"
+          },
+          "lavender": {
+            "name": "라벤더 잼",
+            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 방문하기"  
           }
         }
       }

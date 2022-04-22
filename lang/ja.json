@@ -466,7 +466,15 @@
           },
           "blue_orb": {
             "name": "Blue Orb",
-            "description": "Visit Blue Orb World"
+            "description": "Visit Scrambled Egg Zone"
+          },
+          "butterfly": {
+            "name": "Butterfly Brooch",
+            "description": "Reach Tomb of Velleities in 28 minutes or less in Time Trial Mode"
+          },
+          "lavender": {
+            "name": "Lavender Gem",
+            "description": "Reach Lavender Waters in 12 and a half minutes or less in Time Trial Mode"
           }
         }
       }

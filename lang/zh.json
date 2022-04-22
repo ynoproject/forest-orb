@@ -399,12 +399,12 @@
     "badges": {
       "null": "无徽章",
       "locked": "???",
-      "location": "位置:&nbsp;",
+      "location": "取得位置:&nbsp;",
       "gameBadges": {
         "yume": {
           "uboa": {
             "name": "Uboa",
-            "description": "被浅濑的深渊吞噬"
+            "description": "被浅濑的黑暗吞噬"
           }
         },
         "2kki": {
@@ -465,8 +465,16 @@
             "description": "２８"
           },
           "blue_orb": {
-            "name": "雨珠",
-            "description": "造访雨玉广场"
+            "name": "蓝玉",
+            "description": "造访蛋广场"
+          },
+          "butterfly": {
+            "name": "蝴蝶胸针",
+            "description": "在计时模式下，于28分钟内抵达维利提斯之墓"
+          },
+          "lavender": {
+            "name": "紫色宝石",
+            "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
           }
         }
       }
