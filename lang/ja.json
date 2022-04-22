@@ -397,84 +397,84 @@
       }
     },
     "badges": {
-      "null": "No Badge",
-      "locked": "???",
-      "location": "Location:&nbsp;",
+      "null": "バッジなし",
+      "locked": "？？？",
+      "location": "場所：",
       "gameBadges": {
         "yume": {
           "uboa": {
-            "name": "Uboa",
-            "description": "Fall into Uboa's Trap"
+            "name": "ウボァ",
+            "description": "ウボァに触れる"
           }
         },
         "2kki": {
           "mono": {
-            "name": "Expeditionist",
-            "description": "Reach Intermediate rank in expeditions"
+            "name": "ドリーマー",
+            "description": "ドリームラリーでインターミディエイトランクに到達する"
           },
           "bronze": {
-            "name": "Bronze Expeditionist",
-            "description": "Reach Bronze rank in expeditions"
+            "name": "ブロンズドリーマー",
+            "description": "ドリームラリーでブロンズランクに到達する"
           },
           "silver": {
-            "name": "Silver Expeditionist",
-            "description": "Reach Silver rank in expeditions"
+            "name": "シルバードリーマー",
+            "description": "ドリームラリーでシルバーランクに到達する"
           },
           "gold": {
-            "name": "Gold Expeditionist",
-            "description": "Reach Gold rank in expeditions"
+            "name": "ゴールドドリーマー",
+            "description": "ドリームラリーでゴールドランクに到達する"
           },
           "platinum": {
-            "name": "Platinum Expeditionist",
-            "description": "Reach Platinum rank in expeditions"
+            "name": "プラチナドリーマー",
+            "description": "ドリームラリーでプラチナランクに到達する"
           },
           "diamond": {
-            "name": "Diamond Expeditionist",
-            "description": "Reach Diamond rank in expeditions"
+            "name": "ダイアモンドドリーマー",
+            "description": "ドリームラリーでダイアモンドランクに到達する"
           },
           "compass": {
-            "name": "Expedition Completionist",
-            "description": "Complete expeditions in 30% of available locations"
+            "name": "ドリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内30%の世界のラリーを完了させる"
           },
           "compass_bronze": {
-            "name": "Bronze Expedition Completionist",
-            "description": "Complete expeditions in 50% of available locations"
+            "name": "ブロンズドリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内50%の世界のラリーを完了させる"
           },
           "compass_silver": {
-            "name": "Silver Expedition Completionist",
-            "description": "Complete expeditions in 70% of available locations"
+            "name": "シルバードリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内70%の世界のラリーを完了させる"
           },
           "compass_gold": {
-            "name": "Gold Expedition Completionist",
-            "description": "Complete expeditions in 80% of available locations"
+            "name": "ゴールドドリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内80%の世界のラリーを完了させる"
           },
           "compass_platinum": {
-            "name": "Platinum Expedition Completionist",
-            "description": "Complete expeditions in 90% of available locations"
+            "name": "プラチナドリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内90%の世界のラリーを完了させる"
           },
           "compass_diamond": {
-            "name": "Diamond Expedition Completionist",
-            "description": "Complete expeditions in 95% of available locations"
+            "name": "ダイアモンドドリームランナー",
+            "description": "ドリームラリーで選ばれる世界の内95%の世界のラリーを完了させる"
           },
           "crushed": {
-            "name": "Crush",
-            "description": "Watch Urotsuki get smooshed"
+            "name": "クラッシュ",
+            "description": "うろつきが押し潰される所を見る"
           },
           "compass_28": {
             "name": "28",
             "description": "２８"
           },
           "blue_orb": {
-            "name": "Blue Orb",
-            "description": "Visit Scrambled Egg Zone"
+            "name": "ブルーオーブ",
+            "description": "たまごに訪れる"
           },
           "butterfly": {
-            "name": "Butterfly Brooch",
-            "description": "Reach Tomb of Velleities in 28 minutes or less in Time Trial Mode"
+            "name": "バタフライブローチ",
+            "description": "Time Trial Modeで28分以内にButterflyに到達する。"
           },
           "lavender": {
-            "name": "Lavender Gem",
-            "description": "Reach Lavender Waters in 12 and a half minutes or less in Time Trial Mode"
+            "name": "ラベンダージェム",
+            "description": "Time Trial Modeで12分半以内に紫湖に到達する"
           }
         }
       }
