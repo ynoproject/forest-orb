@@ -502,7 +502,7 @@
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
           "lavender_lesser": {
-            "name": "Lesser Lavender Gem",
+            "name": "Purple Gem",
             "description": "Reach Lavender Waters"
           },
           "lavender": {
@@ -510,11 +510,11 @@
             "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
           },
           "butterfly_lesser": {
-            "name": "Lesser Butterfly Brooch",
+            "name": "Orchid Butterfly Brooch",
             "description": "Reach the Lunar Sanctuary"
           },
           "butterfly": {
-            "name": "蝴蝶胸针",
+            "name": "Midnight Butterfly Brooch",
             "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
           },
           "clover": {
