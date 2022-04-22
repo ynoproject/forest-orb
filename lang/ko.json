@@ -399,7 +399,7 @@
     "badges": {
       "null": "뱃지 없음",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "장소 :&nbsp;",
       "gameBadges": {
         "yume": {
           "uboa": {
