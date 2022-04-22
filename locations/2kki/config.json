@@ -52,7 +52,7 @@
 			{  "title": "Sparkling Dimension A", "explorer": true }
 		],
 		"1148": { "title": "Lavender Waters", "explorer": true },
-		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "explorer": true },
+		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "urlTitle": "Tomb of Velleities", "explorer": true },
 		"1271": [
 			{  "title": "Mole Mine", "coords": { "x1": 0, "y1": 25, "x2": 56, "y2": 106 }, "explorer": true },
 			{  "title": "Stalker Alley", "coords": { "x1": 57, "y1": -1, "x2": 199, "y2": -1 }, "explorer": true },
