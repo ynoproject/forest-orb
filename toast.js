@@ -29,6 +29,13 @@ const notificationTypes = {
     'complete',
     'freeComplete',
     'listUpdated'
+  ],
+  saveSync: [
+    'saveUploading',
+    'saveUploaded',
+    'saveDownloading',
+    'saveDownloaded',
+    'saveCleared'
   ]
 };
 

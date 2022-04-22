@@ -32,7 +32,7 @@ function initSaveSyncControls() {
                 if (saveData && (!timestamp || saveData.timestamp > new Date(timestamp)))
                   uploadSaveSyncData(saveData).then(success => {
                     if (success)
-                      document.getElementById('clearSaveSyncButton').setAttribute('disabled', false);
+                      document.getElementById('clearSaveSyncButton').removeAttribute('disabled');
                   });
               });
             })
@@ -58,7 +58,11 @@ function initSaveSyncControls() {
         return response.text();
       })
       .then(timestamp => {
-        document.getElementById('clearSaveSyncButton').setAttribute('disabled', !timestamp);
+        const clearSaveSyncButton = document.getElementById('clearSaveSyncButton');
+        if (timestamp)
+          clearSaveSyncButton.removeAttribute('disabled');
+        else
+          clearSaveSyncButton.setAttribute('disabled', true);
       });
   }
 }
@@ -168,6 +172,8 @@ function setSaveSyncEnabled(enabled, isInit) {
   const toggle = function () {
     saveSyncButton.classList.toggle('toggled', enabled);
     document.getElementById('saveSyncSlotIdRow').classList.toggle('hidden', !enabled);
+    if (enabled)
+      document.getElementById('saveSyncSlotId').value = 0;
     if (!isInit) {
       saveSyncConfig.enabled = enabled;
       updateConfig(saveSyncConfig, false, 'saveSyncConfig');
@@ -239,8 +245,12 @@ function uploadSaveSyncData(saveData) {
   return new Promise(resolve => {
     if (!sessionId || !saveSyncConfig.enabled)
       resolve(false);
+    showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
     apiJsonPost(`saveSync?command=push&timestamp=${saveData.timestamp.toISOString()}`, saveData)
-      .then(_ => resolve(true))
+      .then(_ => {
+        showSaveSyncToastMessage('saveUploaded', 'save', saveSyncConfig.slotId);
+        resolve(true);
+      })
       .catch(_err => resolve(false));
   });
 }
@@ -265,6 +275,7 @@ function trySyncSave() {
       .then(timestamp => {
         getSaveDataForSync().then(saveData => {
           if (timestamp && (!saveData || saveData.timestamp < new Date(timestamp))) {
+            showSaveSyncToastMessage('saveDownloading', 'saveDownload', saveSyncConfig.slotId);
             apiFetch('saveSync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
@@ -284,7 +295,10 @@ function trySyncSave() {
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
                   const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
 
-                  objectStorePutRequest.onsuccess = _e => resolve(true);
+                  objectStorePutRequest.onsuccess = _e => {
+                    showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
+                    resolve(true);
+                  };
                   objectStorePutRequest.onerror = _err => resolve(false);
                 };
                 request.onerror = _err => resolve(false);
@@ -295,8 +309,10 @@ function trySyncSave() {
               console.error(err);
               resolve(false);
             })
-          } else
+          } else {
+            showSaveSyncToastMessage('saveUpToDate', 'save', saveSyncConfig.slotId);
             resolve(false);
+          }
         });
       })
       .catch(err => {
@@ -311,7 +327,19 @@ function clearSaveSyncData() {
     if (!sessionId)
       resolve(false);
     apiFetch(`saveSync?command=clear`)
-      .then(_ => resolve(true))
+      .then(_ => {
+        showSaveSyncToastMessage('saveCleared', 'save');
+        resolve(true);
+      })
       .catch(_err => resolve(false));
   });
+}
+
+function showSaveSyncToastMessage(key, icon, slotId) {
+  if (!globalConfig.notifications.saveSync.all || !globalConfig.notifications.saveSync[key])
+    return;
+  let message = getMassagedLabel(localizedMessages.toast.saveSync[key], true);
+  if (slotId !== undefined)
+    message = message.replace('{SLOT}', slotId);
+  showToastMessage(message, icon);
 }
