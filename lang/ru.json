@@ -423,9 +423,17 @@
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "gameBadges": {
         "yume": {
+          "boombox": {
+            "name": "Boombox",
+            "description": "Watch the Toriningen party from afar"
+          },
           "uboa": {
             "name": "Uboa",
             "description": "Fall into Uboa's Trap"
+          },
+          "blackcat": {
+            "name": "Black Cat",
+            "description": "Trigger the witch flight event on the mall rooftop"
           }
         },
         "2kki": {
@@ -489,13 +497,29 @@
             "name": "Blue Orb",
             "description": "Visit Scrambled Egg Zone"
           },
-          "butterfly": {
-            "name": "Butterfly Brooch",
-            "description": "Reach Tomb of Velleities in 29 minutes or less in Time Trial Mode"
+          "aooh": {
+            "name": "Aooh's Glare",
+            "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
+          },
+          "lavender_lesser": {
+            "name": "Lesser Lavender Gem",
+            "description": "Reach Lavender Waters"
           },
           "lavender": {
             "name": "Lavender Gem",
             "description": "Reach Lavender Waters in 12 and a half minutes or less in Time Trial Mode"
+          },
+          "butterfly_lesser": {
+            "name": "Lesser Butterfly Brooch",
+            "description": "Reach the Lunar Sanctuary"
+          },
+          "butterfly": {
+            "name": "Butterfly Brooch",
+            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
+          },
+          "clover": {
+            "name": "Pale-Crimson Clover",
+            "description": "Best of luck..."
           }
         }
       }

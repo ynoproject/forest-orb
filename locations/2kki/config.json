@@ -65,16 +65,64 @@
 			{  "title": "Dark Alleys", "coords": { "x1": 20, "y1": 15, "x2": 39, "y2": 29 }, "explorer": true },
 			{  "title": "Grass World", "explorer": true }
 		],
+		"0458": { "title": "Gallery Of Me", "urlTitle": "Gallery_Of_Me" },
 		"0489": [
 			{  "title": "Downfall Garden A", "coords": { "x1": 210, "y1": 0, "x2": 279, "y2": 76 }, "explorer": true },
 			{  "title": "River_Complex: Buddha Face Labyrinth", "urlTitle": "River_Complex#Buddha_Face_Labyrinth", "coords": { "x1": 240, "y1": 131, "x2": 256, "y2": 139 }, "explorer": true },
 			{  "title": "Sea of Clouds", "explorer": true }
 		],
+		"0490": [
+			{  "title": "Sugar World", "coords": { "x1": 55, "y1": 50, "x2": 99, "y2": 79 }, "explorer": true },
+			{  "title": "RGB Passage", "explorer": true }
+		],
+		"0495": [
+			{  "title": "Prismatic Tent", "coords": { "x1": 95, "y1": 0, "x2": 209, "y2": 120 }, "explorer": true },
+			{  "title": "Clawtree Forest", "explorer": true }
+		],
+		"0496": [
+			{  "title": "Downfall Garden B", "coords": { "x1": 175, "y1": -1, "x2": 239, "y2": -1 }, "explorer": true },
+			{  "title": "Downfall Garden A", "explorer": true }
+		],
 		"0620": "Sound Room",
+		"0701": [
+			{  "title": "Cyber Maze", "coords": { "x1": 0, "y1": -1, "x2": 40, "y2": -1 }, "explorer": true },
+			{  "title": "Dream Mexico", "explorer": true }
+		],
+		"0708": [
+			{  "title": "Cocktail Lounge", "coords": { "x1": 0, "y1": 0, "x2": 29, "y2": 24 }, "explorer": true },
+			{  "title": "Ancient Hydrangea City", "coords": { "x1": 0, "y1": 25, "x2": 29, "y2": 58 }, "explorer": true },
+			{  "title": "Florist", "explorer": true }
+		],
 		"0729": { "title": "Scrambled Egg Zone", "explorer": true },
+		"0762": [
+			{  "title": "Scorched Wasteland: The Ark", "urlTitle": "Scorched_Wasteland#The_Ark", "coords": { "x1": 0, "y1": 0, "x2": 24, "y2": 14 }, "explorer": true },
+			{  "title": "Paradise", "coords": { "x1": 25, "y1": 0, "x2": 49, "y2": 14 }, "explorer": true },
+			{  "title": "Scorched Wasteland: The Ash Settlement", "urlTitle": "Scorched_Wasteland#The_Ash_Settlement", "coords": { "x1": 0, "y1": 0, "x2": 79, "y2": 29 }, "explorer": true },
+			{  "title": "Ice Floe World", "explorer": true }
+		],
 		"0775": [
 			{ "title": "Sandy Plains", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 73 }, "explorer": true },
 			{ "title": "Aquamarine Cave", "coords": { "x1": -1, "y1": 74, "x2": -1, "y2": 184 }, "explorer": true }
+		],
+		"0785": [
+			{ "title": "Gray Relic World", "coords": { "x1": -1, "y1": 60, "x2": -1, "y2": 99 }, "explorer": true },
+			{ "title": "Escalator", "explorer": true }
+		],
+		"0794": [
+			{ "title": "Strange Plants World", "coords": { "x1": 0, "y1": 0, "x2": 89, "y2": 59 }, "explorer": true },
+			{ "title": "Haunted Forest Town", "coords": { "x1": 125, "y1": 110, "x2": 159, "y2": 149 }, "explorer": true },
+			{ "title": "Underground Passage", "explorer": true }
+		],
+		"0849": [
+			{ "title": "Extraterrestrial Cliffside", "coords": { "x1": 0, "y1": 92, "x2": 179, "y2": 119 }, "explorer": true },
+			{ "title": "Extraterrestrial Cliffside", "coords": { "x1": 180, "y1": 72, "x2": 309, "y2": 119 }, "explorer": true },
+			{ "title": "Riverside Waste Facility", "explorer": true }
+		],
+		"0859": [
+			{  "title": "Alien Valley", "coords": { "x1": 0, "y1": 0, "x2": 79, "y2": 14 }, "explorer": true },
+			{  "title": "Alien Valley", "coords": { "x1": -1, "y1": 30, "x2": -1, "y2": 60 }, "explorer": true },
+			{  "title": "Sculpture Park", "coords": { "x1": 0, "y1": 15, "x2": 19, "y2": 29 }, "explorer": true },
+			{  "title": "Bleeding Heads Garden", "explorer": true }
 		],
 		"0911": [
 			{  "title": "Monochrome Feudal Japan", "coords": { "x1": 109, "y1": 15, "x2": 132, "y2": 25 }, "explorer": true },
@@ -85,12 +133,41 @@
 			{  "title": "Fossil Lake", "coords": { "x1": 130, "y1": 80, "x2": 179, "y2": 94 }, "explorer": true },
 			{  "title": "Ocean Subsurface", "explorer": true }
 		],
+		"0925": [
+			{  "title": "Riverside Waste Facility", "coords": { "x1": 0, "y1": 0, "x2": 30, "y2": 14 }, "explorer": true },
+			{  "title": "Extraterrestrial Cliffside: Strange Poison Fields", "urlTitle": "Extraterrestrial_Cliffside#Strange_Poison_Fields", "coords": { "x1": 0, "y1": 155, "x2": 34, "y2": 169 }, "explorer": true },
+			{  "title": "Haunted Forest Town: Spirit Mansion", "urlTitle": "Haunted_Forest_Town", "explorer": true }
+		],
+		"0943": [
+			{ "title": "Fossil Lake", "coords": { "x1": 50, "y1": -1, "x2": 99, "y2": -1 }, "explorer": true },
+			{ "title": "Aquatic Cube City", "explorer": true }
+		],
+		"0955": [
+			{ "title": "Urotsuki's Dream Apartments", "coords": { "x1": 0, "y1": 43, "x2": 42, "y2": 90 }, "explorer": true },
+			{ "title": "Ruined Garden", "explorer": true }
+		],
+		"1061": [
+			{ "title": "Apartments", "coords": { "x1": 0, "y1": 3, "x2": 71, "y2": 21 }, "explorer": true },
+			{ "title": "Apartments", "coords": { "x1": 0, "y1": 160, "x2": 35, "y2": 174 }, "explorer": true },
+			{ "title": "Art Gallery", "coords": { "x1": 84, "y1": 0, "x2": 109, "y2": 77 }, "explorer": true },
+			{ "title": "Boogie Street", "coords": { "x1": 82, "y1": 86, "x2": 101, "y2": 109 }, "explorer": true },
+			{ "title": "Graveyard World", "coords": { "x1": 10, "y1": 40, "x2": 70, "y2": 54 }, "explorer": true },
+			{ "title": "Dream Park", "explorer": true }
+		],
+		"1070": [
+			{ "title": "Dream Park", "coords": { "x1": -1, "y1": 185, "x2": -1, "y2": 199 }, "explorer": true },
+			{ "title": "Guardians' Temple", "explorer": true }
+		],
 		"1123": [
 			{  "title": "Sparkling Dimension B", "coords": { "x1": 0, "y1": 170, "x2": 79, "y2": 239 }, "explorer": true },
 			{  "title": "Sparkling Dimension A", "explorer": true }
 		],
+		"1139": [
+			{ "title": "Aurora Lake", "coords": { "x1": -1, "y1": 134, "x2": -1, "y2": 159 }, "explorer": true },
+			{ "title": "Lost Creek", "explorer": true }
+		],
 		"1148": { "title": "Lavender Waters", "explorer": true },
-		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "urlTitle": "Tomb of Velleities#Lunar_Sanctuary", "explorer": true },
+		"1205": { "title": "Tomb of Velleities: Lunar Sanctuary", "urlTitle": "Tomb_of_Velleities#Lunar_Sanctuary", "explorer": true },
 		"1271": [
 			{  "title": "Mole Mine", "coords": { "x1": 0, "y1": 25, "x2": 56, "y2": 106 }, "explorer": true },
 			{  "title": "Stalker Alley", "coords": { "x1": 57, "y1": -1, "x2": 199, "y2": -1 }, "explorer": true },
