@@ -400,6 +400,7 @@
       "null": "No Badge",
       "locked": "???",
       "location": "Location:&nbsp;",
+      "percentUnlocked": "{PERCENT}% of players have this badge",
       "gameBadges": {
         "yume": {
           "uboa": {

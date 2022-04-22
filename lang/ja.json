@@ -400,6 +400,7 @@
       "null": "バッジなし",
       "locked": "？？？",
       "location": "場所：",
+      "percentUnlocked": "{PERCENT}% of players have this badge",
       "gameBadges": {
         "yume": {
           "uboa": {

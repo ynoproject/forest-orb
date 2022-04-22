@@ -400,6 +400,7 @@
       "null": "뱃지 없음",
       "locked": "???",
       "location": "장소 :&nbsp;",
+      "percentUnlocked": "{PERCENT}% of players have this badge",
       "gameBadges": {
         "yume": {
           "uboa": {

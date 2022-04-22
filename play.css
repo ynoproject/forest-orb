@@ -1936,6 +1936,16 @@ form .uiTheme {
   font-size: 16px;
 }
 
+.tippy-content .tooltipFooter {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.tippy-content .tooltipTitle + .tooltipFooter {
+  margin-top: 0;
+}
+
 @media (hover: none) { 
   .desktopOnly {
     display: none;
