@@ -467,6 +467,14 @@
           "blue_orb": {
             "name": "파란 구슬 뱃지",
             "description": "Blue Orb World 방문하기"
+          },
+          "butterfly": {
+            "name": "나비 브로치",
+            "description": "Time Trial Mode를  Tomb of Velleities 맵을 28분 이내로 방문하기"
+          },
+          "lavender": {
+            "name": "라벤더 잼",
+            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 방문하기"  
           }
         }
       }
