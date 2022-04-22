@@ -120,21 +120,21 @@
             }
           },
           "client": {
-            "label": "系统消息",
+            "label": "系统通知",
             "fields": {
               "floodDetected": "检测到网络攻击"
             }
           },
           "account": {
-            "label": "账号",
+            "label": "账号通知",
             "fields": {
               "loggedIn": "登录",
               "loggedOut": "登出",
-              "badgeUnlocked": "已解锁徽章"
+              "badgeUnlocked": "解锁徽章"
             }
           },
           "parties": {
-            "label": "组队消息",
+            "label": "组队通知",
             "fields": {
               "create": "创建队伍",
               "update": "编辑队伍",
@@ -151,7 +151,7 @@
             }
           },
           "eventLocations": {
-            "label": "梦远征",
+            "label": "梦远征通知",
             "fields": {
               "complete": "梦远征抵达",
               "freeComplete": "无尽流浪抵达",
@@ -159,14 +159,14 @@
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "云存档通知",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Downloaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveUploading": "上传存档",
+              "saveUploaded": "上传完毕",
+              "saveDownloading": "下载存档",
+              "saveDownloaded": "下载完毕",
+              "saveUpToDate": "已是最新",
+              "saveCleared": "清空存档"
             }
           }
         }
@@ -175,14 +175,14 @@
         "title": "账号设置",
         "fields": {
           "badge": "徽章",
-          "toggleSaveSync": "云端同步存档 (实验性功能)",
+          "toggleSaveSync": "存档云同步 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
             "values": {
               "0": "无"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "清空云端存档"
         }
       },
       "badges": {
@@ -353,8 +353,8 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "您想启用云端同步存档功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
-      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定真的要在本设备上启用云端同步吗？"
+      "confirmEnable": "您想启用存档云同步功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
+      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
     },
     "toast": {
       "client": {
@@ -385,12 +385,12 @@
         "listUpdated": "远征目的地已更新！"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",
+        "saveUploaded": "{SLOT} 号存档上传完毕。",
+        "saveDownloading": "正在下载编号为 {SLOT} 的存档数据……",
+        "saveDownloaded": "{SLOT} 号存档同步成功。",
+        "saveUpToDate": "已是最新存档。",
+        "saveCleared": "该账户的云端存档数据已被清除。保存在设备本地的存档数据不会受到影响。"
       }
     },
     "events": {
@@ -425,7 +425,7 @@
         "yume": {
           "uboa": {
             "name": "Uboa",
-            "description": "被浅濑的黑暗吞噬"
+            "description": "坠入浅濑的深渊"
           }
         },
         "2kki": {
@@ -494,7 +494,7 @@
             "description": "在计时模式下，于29分内抵达 Butterfly"
           },
           "lavender": {
-            "name": "紫色宝石",
+            "name": "浅紫色宝石",
             "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
           }
         }
