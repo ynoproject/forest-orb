@@ -157,6 +157,17 @@
               "freeComplete": "자유 탐험 성공",
               "listUpdated": "탐험 리스트 업데이트"
             }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Downloaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
           }
         }
       },

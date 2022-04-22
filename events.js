@@ -267,5 +267,5 @@ function showEventLocationToastMessage(key, icon, location, exp) {
   }
   if (exp)
     message = message.replace('{EXP}', localizedMessages.events.exp.replace('{POINTS}', exp));
-  showToastMessage(message, icon);
+  showToastMessage(message, icon, true);
 }

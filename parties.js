@@ -829,5 +829,5 @@ function showPartyToastMessage(key, icon, party, playerUuid) {
   let message = getMassagedLabel(localizedMessages.toast.parties[key], true).replace('{PARTY}', getPartyName(party));
   if (playerUuid)
     message = message.replace('{PLAYER}', getPartyMemberName(party, playerUuid, true, true));
-  showToastMessage(message, icon, party?.systemName);
+  showToastMessage(message, icon, true, party?.systemName);
 }

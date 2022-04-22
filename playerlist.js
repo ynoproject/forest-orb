@@ -181,7 +181,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', systemName))
+            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', true, systemName))
             .catch(err => console.error(err));
         }
       };

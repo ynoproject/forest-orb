@@ -35,6 +35,7 @@ const notificationTypes = {
     'saveUploaded',
     'saveDownloading',
     'saveDownloaded',
+    'saveUpToDate',
     'saveCleared'
   ]
 };
@@ -156,7 +157,7 @@ function setNotificationScreenPosition(value) {
   }
 }
 
-function showToastMessage(message, icon, systemName, persist) {
+function showToastMessage(message, icon, iconFill, systemName, persist) {
   if (!notificationConfig.all)
     return;
 
@@ -172,7 +173,7 @@ function showToastMessage(message, icon, systemName, persist) {
     toast.setAttribute('style', `background-image: var(--container-bg-image-url-${systemName}) !important; border-image: var(--border-image-url-${systemName}) 8 repeat !important;`)
 
   if (icon) {
-    const toastIcon = getSvgIcon(icon, true);
+    const toastIcon = getSvgIcon(icon, iconFill);
     if (systemName)
       toastIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${systemName}); filter: var(--svg-shadow-${systemName});`);
     toast.appendChild(toastIcon);
@@ -237,7 +238,7 @@ function showToastMessage(message, icon, systemName, persist) {
 function showClientToastMessage(key, icon) {
   if (!notificationConfig.client.all || !notificationConfig.client[key])
     return;
-  showToastMessage(getMassagedLabel(localizedMessages.toast.client[key], true), icon, null, true);
+  showToastMessage(getMassagedLabel(localizedMessages.toast.client[key], true), icon, true, null, true);
 }
 
 document.addEventListener('visibilitychange', () => {
