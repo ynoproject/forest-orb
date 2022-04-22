@@ -423,9 +423,17 @@
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "gameBadges": {
         "yume": {
+          "boombox": {
+            "name": "手提音响",
+            "description": "在荒漠远观鸟人嬉闹"
+          },
           "uboa": {
-            "name": "Uboa",
-            "description": "坠入浅濑的深渊"
+            "name": "Uboa 之笑颜",
+            "description": "被浅濑的深渊吞噬"
+          },
+          "blackcat": {
+            "name": "黑猫",
+            "description": "与黑猫一同目送魔女起航"
           }
         },
         "2kki": {
@@ -489,13 +497,29 @@
             "name": "蓝玉",
             "description": "造访蛋广场"
           },
-          "butterfly": {
-            "name": "蝴蝶胸针",
-            "description": "在计时模式下，于29分内抵达 Butterfly"
+          "aooh": {
+            "name": "Aooh 之凝视",
+            "description": "獗網瑪寤醱腹衾渭楷庌泆岈"
+          },
+          "lavender_lesser": {
+            "name": "紫色宝石",
+            "description": "抵达薰衣草之湖"
           },
           "lavender": {
             "name": "浅紫色宝石",
             "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
+          },
+          "butterfly_lesser": {
+            "name": "霞光蝴蝶胸针",
+            "description": "抵达 Butterfly"
+          },
+          "butterfly": {
+            "name": "暮色蝴蝶胸针",
+            "description": "在计时模式下，于29分内抵达 Butterfly"
+          },
+          "clover": {
+            "name": "红白四叶草纹章",
+            "description": "祝君好运……"
           }
         }
       }
