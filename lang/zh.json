@@ -237,8 +237,8 @@
   },
   "messages": {
     "games": {
-      "yume": "Yume Nikki",
-      "2kki": "Yume 2kki",
+      "yume": "梦日记",
+      "2kki": "梦２记",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -335,7 +335,7 @@
         "tabToChat": "如果您使用电脑端游玩，您可以按Tab键在游戏画面与聊天输入框之间快捷切换。该功能默认启用，不需要时可在设置中关闭。",
         "chatTabNotifications": "当您位于“全部”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
         "clearChat": "当您位于“全部”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "parties": "使用组队功能可以和伙伴们在旅途中保持联系。您可以在玩家列表的“我的队伍”标签下看到其他队员的所在位置，并可以在“队伍”聊天频道下与队员私聊。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
@@ -397,84 +397,84 @@
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "无徽章",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "取得位置:&nbsp;",
       "gameBadges": {
         "yume": {
           "uboa": {
             "name": "Uboa",
-            "description": "Fall into Uboa's Trap"
+            "description": "被浅濑的黑暗吞噬"
           }
         },
         "2kki": {
           "mono": {
-            "name": "Expeditionist",
-            "description": "Reach Intermediate rank in expeditions"
+            "name": "梦境远征队",
+            "description": "在梦远征中达到进阶等级"
           },
           "bronze": {
-            "name": "Bronze Expeditionist",
-            "description": "Reach Bronze rank in expeditions"
+            "name": "青铜远征队",
+            "description": "在梦远征中达到青铜等级"
           },
           "silver": {
-            "name": "Silver Expeditionist",
-            "description": "Reach Silver rank in expeditions"
+            "name": "白银远征队",
+            "description": "在梦远征中达到白银等级"
           },
           "gold": {
-            "name": "Gold Expeditionist",
-            "description": "Reach Gold rank in expeditions"
+            "name": "黄金远征队",
+            "description": "在梦远征中达到黄金等级"
           },
           "platinum": {
-            "name": "Platinum Expeditionist",
-            "description": "Reach Platinum rank in expeditions"
+            "name": "铂金远征队",
+            "description": "在梦远征中达到铂金等级"
           },
           "diamond": {
-            "name": "Diamond Expeditionist",
-            "description": "Reach Diamond rank in expeditions"
+            "name": "钻石远征队",
+            "description": "在梦远征中达到钻石等级"
           },
           "compass": {
-            "name": "Expedition Completionist",
-            "description": "Complete expeditions in 30% of available locations"
+            "name": "梦境探索者",
+            "description": "在梦远征及无尽流浪中踏遍 30% 的地图"
           },
           "compass_bronze": {
-            "name": "Bronze Expedition Completionist",
-            "description": "Complete expeditions in 50% of available locations"
+            "name": "青铜探梦者",
+            "description": "在梦远征及无尽流浪中踏遍 50% 的地图"
           },
           "compass_silver": {
-            "name": "Silver Expedition Completionist",
-            "description": "Complete expeditions in 70% of available locations"
+            "name": "白银探梦者",
+            "description": "在梦远征及无尽流浪中踏遍 70% 的地图"
           },
           "compass_gold": {
-            "name": "Gold Expedition Completionist",
-            "description": "Complete expeditions in 80% of available locations"
+            "name": "黄金探梦者",
+            "description": "在梦远征及无尽流浪中踏遍 80% 的地图"
           },
           "compass_platinum": {
-            "name": "Platinum Expedition Completionist",
-            "description": "Complete expeditions in 90% of available locations"
+            "name": "铂金探图者",
+            "description": "在梦远征及无尽流浪中踏遍 90% 的地图"
           },
           "compass_diamond": {
-            "name": "Diamond Expedition Completionist",
-            "description": "Complete expeditions in 95% of available locations"
+            "name": "钻石探梦者",
+            "description": "在梦远征及无尽流浪中踏遍 95% 的地图"
           },
           "crushed": {
-            "name": "Crush",
-            "description": "Watch Urotsuki get smooshed"
+            "name": "钢印",
+            "description": "把流浪子刻成钢印"
           },
           "compass_28": {
             "name": "28",
             "description": "２８"
           },
           "blue_orb": {
-            "name": "Blue Orb",
-            "description": "Visit Scrambled Egg Zone"
+            "name": "蓝玉",
+            "description": "造访蛋广场"
           },
           "butterfly": {
-            "name": "Butterfly Brooch",
-            "description": "Reach Tomb of Velleities in 28 minutes or less in Time Trial Mode"
+            "name": "蝴蝶胸针",
+            "description": "在计时模式下，于28分内抵达 Butterfly"
           },
           "lavender": {
-            "name": "Lavender Gem",
-            "description": "Reach Lavender Waters in 12 and a half minutes or less in Time Trial Mode"
+            "name": "紫色宝石",
+            "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
           }
         }
       }
