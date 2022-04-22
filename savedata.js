@@ -30,7 +30,10 @@ function initSaveSyncControls() {
             .then(timestamp => {
               getSaveDataForSync().then(saveData => {
                 if (saveData && (!timestamp || saveData.timestamp > new Date(timestamp)))
-                  uploadSaveSyncData(saveData);
+                  uploadSaveSyncData(saveData).then(success => {
+                    if (success)
+                      document.getElementById('clearSaveSyncButton').setAttribute('disabled', false);
+                  });
               });
             })
             .catch(err => console.error(err));
@@ -38,6 +41,26 @@ function initSaveSyncControls() {
       });
     }
   };
+
+  document.getElementById('clearSaveSyncButton').onclick = function () {
+    const button = this;
+    clearSaveSyncData().then(success => {
+      if (success)
+        button.setAttribute('disabled', true);
+    })
+  };
+
+  if (getCookie('sessionId')) {
+    apiFetch('saveSync?command=timestamp')
+      .then(response => {
+        if (!response.ok)
+          throw new Error('Failed to retrieve timestamp for save sync data');
+        return response.text();
+      })
+      .then(timestamp => {
+        document.getElementById('clearSaveSyncButton').setAttribute('disabled', !timestamp);
+      });
+  }
 }
 
 function initSaveDataControls() {
@@ -281,4 +304,14 @@ function trySyncSave() {
         resolve(false);
       });
     })
+}
+
+function clearSaveSyncData() {
+  return new Promise(resolve => {
+    if (!sessionId)
+      resolve(false);
+    apiFetch(`saveSync?command=clear`)
+      .then(_ => resolve(true))
+      .catch(_err => resolve(false));
+  });
 }

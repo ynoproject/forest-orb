@@ -170,7 +170,8 @@
             "values": {
               "0": "なし"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -471,7 +472,7 @@
           },
           "butterfly": {
             "name": "バタフライブローチ",
-            "description": "Time Trial Modeで28分以内にButterflyに到達する。"
+            "description": "Time Trial Modeで29分以内にButterflyに到達する。"
           },
           "lavender": {
             "name": "ラベンダージェム",

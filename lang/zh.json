@@ -170,7 +170,8 @@
             "values": {
               "0": "无"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -471,7 +472,7 @@
           },
           "butterfly": {
             "name": "蝴蝶胸针",
-            "description": "在计时模式下，于28分内抵达 Butterfly"
+            "description": "在计时模式下，于29分内抵达 Butterfly"
           },
           "lavender": {
             "name": "紫色宝石",

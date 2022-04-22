@@ -105,6 +105,11 @@ button.checkboxButton, button[type="button"], button[type="submit"] {
   -webkit-appearance: button;
 }
 
+button[type="button"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.625;
+}
+
 .checkbox, button.checkboxButton {
   display: flex;
   align-items: center;
@@ -211,7 +216,7 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, button.checkboxButton, button[type="button"], button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
@@ -219,7 +224,7 @@ body {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, button.checkboxButton:hover, button[type="button"]:hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }

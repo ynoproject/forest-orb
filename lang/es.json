@@ -170,7 +170,8 @@
             "values": {
               "0": "None"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -471,7 +472,7 @@
           },
           "butterfly": {
             "name": "Butterfly Brooch",
-            "description": "Reach Tomb of Velleities in 28 minutes or less in Time Trial Mode"
+            "description": "Reach Tomb of Velleities in 29 minutes or less in Time Trial Mode"
           },
           "lavender": {
             "name": "Lavender Gem",

@@ -170,7 +170,8 @@
             "values": {
               "0": "없음"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -471,7 +472,7 @@
           },
           "butterfly": {
             "name": "나비 브로치",
-            "description": "Time Trial Mode를 키고 Tomb of Velleities 맵을 28분 이내로 방문하기"
+            "description": "Time Trial Mode를 키고 Tomb of Velleities 맵을 29분 이내로 방문하기"
           },
           "lavender": {
             "name": "라벤더 잼",
