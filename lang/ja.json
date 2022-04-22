@@ -388,7 +388,7 @@
       },
       "expRanks": {
         "0": "ノービス",
-        "1": "インターミディエイト",
+        "1": "ミドル",
         "2": "ブロンズ",
         "3": "シルバー",
         "4": "ゴールド",
@@ -400,7 +400,7 @@
       "null": "バッジなし",
       "locked": "？？？",
       "location": "場所：",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "gameBadges": {
         "yume": {
           "uboa": {
@@ -411,7 +411,7 @@
         "2kki": {
           "mono": {
             "name": "ドリーマー",
-            "description": "ドリームラリーでインターミディエイトランクに到達する"
+            "description": "ドリームラリーでミドルランクに到達する"
           },
           "bronze": {
             "name": "ブロンズドリーマー",
