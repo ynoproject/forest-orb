@@ -178,7 +178,7 @@ function getBadgeItem(badge, includeTooltip) {
     if (tooltipContent) {
       const baseTooltipContent = tooltipContent;
 
-      const assignTooltip = () => addTooltip(item, tooltipContent, false, { interactive: !!badge.mapId });
+      const assignTooltip = () => addTooltip(item, tooltipContent, false, !!badge.mapId);
 
       if (badge.mapId) {
         const mapId = badge.mapId.toString().padStart(4, '0');

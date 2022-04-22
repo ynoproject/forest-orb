@@ -157,7 +157,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
       html.innerHTML = partyMemberName;
 
       const partyOwnerIcon = getSvgIcon('partyOwner', true);
-      partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true);
       
       if (party.systemName) {
         let partySystemName = party.systemName;
@@ -497,7 +497,7 @@ function addOrUpdatePartyListEntry(party) {
       openModal('partyModal', partyCache[party.id].systemName);
     };
     viewDetailsAction.appendChild(getSvgIcon('party', true));
-    viewDetailsAction.title = localizedMessages.parties.actions.viewPartyDetails;
+    addTooltip(viewDetailsAction, getMassagedLabel(localizedMessages.parties.actions.viewPartyDetails, true), true);
     partyListEntryActionContainer.appendChild(viewDetailsAction);
 
     partyListEntry.appendChild(partyListEntryActionContainer);
@@ -547,7 +547,7 @@ function addOrUpdatePartyListEntry(party) {
           document.getElementById('joinPrivatePartyFailed').classList.add('hidden');
           openModal('joinPrivatePartyModal', party.systemName, null, { partyId: party.id });
         };
-      joinLeaveAction.title = localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`];
+      addTooltip(joinLeaveAction, getMassagedLabel(localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`], true), true);
       joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : 'join', true));
       partyListEntryActionContainer.prepend(joinLeaveAction);
     }
@@ -576,7 +576,7 @@ function addOrUpdatePartyListEntry(party) {
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];
 
-  partyListEntrySprite.title = getPartyMemberName(party, ownerMember, true);
+  addTooltip(partyListEntrySprite, getPartyMemberName(party, ownerMember, true, true), true);
 
   if (!ownerMember.online) {
     partyListEntrySprite.classList.add('offline');
@@ -620,7 +620,7 @@ function addOrUpdatePartyListEntry(party) {
         const spriteImgIcon = document.createElement('img');
         spriteImgIcon.classList.add('partyListEntrySprite');
         spriteImgIcon.classList.add('listEntrySprite');
-        spriteImgIcon.title = getPartyMemberName(party, member, true);
+        addTooltip(spriteImgIcon, getPartyMemberName(party, member, true, true), true);
         if (!member.online) {
           spriteImgIcon.classList.add('offline');
           spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
@@ -631,8 +631,9 @@ function addOrUpdatePartyListEntry(party) {
     });
   }
 
-  nameText.innerHTML = getPartyName(party, true, true);
-  nameText.title = getPartyName(party, true);
+  const partyNameHtml = getPartyName(party, true, true);
+  nameText.innerHTML = partyNameHtml;
+  addTooltip(nameText, partyNameHtml, true);
 
   memberCountText.innerText = party.members.length;
 }
@@ -796,8 +797,9 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
     } else {
-      playerLocationIcon.title = getLocalizedMapLocations(gameId, member.mapId, member.prevMapId, member.x, member.y, '\n');
-      playerLocation.innerHTML = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
+      const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
+      addTooltip(playerLocationIcon, locationsHtml, true);
+      playerLocation.innerHTML = locationsHtml;
       if (playerLocation.dataset.systemOverride) {
         for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
           infoLabel.setAttribute('style', `background-image: var(--base-gradient-${playerLocation.dataset.systemOverride}) !important;`);

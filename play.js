@@ -982,6 +982,11 @@ function initLocalization(isInitial) {
         if (err)
           console.error(err);
         locI18next.init(i18next)('[data-i18n]');
+        const tooltipElements = document.querySelectorAll('[title]');
+        for (let el of tooltipElements) {
+          addTooltip(el, el.title, true, false, 750);
+          el.removeAttribute('title');
+        }
       });
     });
 }
@@ -1273,7 +1278,7 @@ function fetchAndPopulateYnomojiConfig() {
         
         const ynomoji = document.createElement('img');
         ynomoji.src = `${ynomojiUrlPrefix}${ynomojiConfig[ynomojiId]}`;
-        ynomoji.title = `:${ynomojiId}:`;
+        addTooltip(ynomoji, `:${ynomojiId}:`, true);
         ynomoji.classList.add('ynomoji');
         ynomoji.onclick = () => insertYnomoji(ynomojiId);
 

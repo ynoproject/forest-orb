@@ -81,11 +81,16 @@ function apiJsonPost(path, data) {
   });
 }
 
-function addTooltip(el, content, asTooltipContent, options) {
+function addTooltip(target, content, asTooltipContent, interactive, delay, options) {
   if (!options)
     options = {};
+  if (interactive)
+    options = Object.assign(options, { interactive: true, appendTo: () => document.body });
+  if (delay !== undefined)
+    options.delay = [delay, 0];
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
-  tippy(el, Object.assign(options, tippyConfig));
+  target._tippy?.destroy();
+  tippy(target, Object.assign(options, tippyConfig));
 }
 
 let loadedLang = false;

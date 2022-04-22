@@ -1100,6 +1100,10 @@ body.fullBg #background {
   padding: 0 2px;
 }
 
+.listEntryActionContainer .icon:first-child {
+  padding-left: 8px;
+}
+
 #unreadMessageCountContainer {
   width: 0;
   height: 0;
@@ -1932,7 +1936,7 @@ form .uiTheme {
   margin-bottom: 8px;
 }
 
-.tippy-content label {
+.tippy-content label, .tippy-content .tooltipContent:first-child {
   font-size: 16px;
 }
 

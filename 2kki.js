@@ -218,8 +218,9 @@ function getLocalized2kkiLocationsHtml(locations, separator) {
 
 function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
   const setMessageLocationFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
-    globalMessageIcon.title = getLocalized2kkiLocations(locations, '\n');
-    globalMessageLocation.innerHTML = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+    const locationsHtml = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+    addTooltip(globalMessageIcon, locationsHtml, true, true);
+    globalMessageLocation.innerHTML = locationsHtml;
     if (globalMessageLocation.dataset.systemOverride) {
       for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))
         infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
@@ -350,7 +351,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
   
-  addTooltip(ret, !isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi.replace('{LOCATION}', locationName), true);
+  addTooltip(ret, getMassagedLabel(!isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi, true).replace('{LOCATION}', locationName), true);
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 
