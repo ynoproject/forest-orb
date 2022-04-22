@@ -275,7 +275,6 @@ function trySyncSave() {
       .then(timestamp => {
         getSaveDataForSync().then(saveData => {
           if (timestamp && (!saveData || saveData.timestamp < new Date(timestamp))) {
-            showSaveSyncToastMessage('saveDownloading', 'saveDownload', saveSyncConfig.slotId);
             apiFetch('saveSync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
@@ -335,11 +334,28 @@ function clearSaveSyncData() {
   });
 }
 
+let saveDataToastQueue = [];
+let saveDataToastTimer = null;
+
 function showSaveSyncToastMessage(key, icon, slotId) {
   if (!notificationConfig.saveSync.all || !notificationConfig.saveSync[key])
     return;
-  let message = getMassagedLabel(localizedMessages.toast.saveSync[key], true);
-  if (slotId !== undefined)
-    message = message.replace('{SLOT}', slotId);
-  showToastMessage(message, icon);
+  if (typeof localizedMessages !== 'undefined' || !localizedMessages) {
+    let message = getMassagedLabel(localizedMessages.toast.saveSync[key], true);
+    if (slotId !== undefined)
+      message = message.replace('{SLOT}', slotId);
+    showToastMessage(message, icon);
+  } else {
+    if (!saveDataToastTimer) {
+      saveDataToastTimer = setInterval(() => {
+        if (typeof localizedMessages !== 'undefined' && localizedMessages) {
+          for (let toast of saveDataToastQueue)
+            showSaveSyncToastMessage(toast.key, toast.icon, toast.slotId);
+          clearInterval(saveDataToastTimer);
+          saveDataToastTimer = null;
+        }
+      }, 100);
+    }
+    saveDataToastQueue.push({ key: key, icon: icon, slotId: slotId });
+  }
 }
