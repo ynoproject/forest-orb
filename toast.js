@@ -39,14 +39,19 @@ const notificationTypes = {
   ]
 };
 
-const accountNotificationCategories = [ 'account', 'eventLocations' ];
+let notificationConfig = {
+  all: true,
+  screenPosition: 'bottomLeft'
+};
+
+const accountNotificationCategories = [ 'account', 'eventLocations', 'saveSync' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');
 
   for (let category of Object.keys(notificationTypes)) {
     const categoryConfig = { all: true };
-    globalConfig.notifications[category] = categoryConfig;
+    notificationConfig[category] = categoryConfig;
 
     const accountRequired = accountNotificationCategories.indexOf(category) > -1;
 
@@ -75,8 +80,8 @@ function initNotificationsConfigAndControls() {
       const typeRows = notificationSettingsControls.querySelectorAll(`.formControlRow[data-category="${category}"]`);
       for (let row of typeRows)
         row.classList.toggle('hidden', toggled);
-      globalConfig.notifications[category].all = !toggled;
-      updateConfig(globalConfig, true);
+      notificationConfig[category].all = !toggled;
+      updateConfig(notificationConfig, true, 'notificationConfig');
     };
 
     categoryButton.appendChild(document.createElement('span'));
@@ -114,8 +119,8 @@ function initNotificationsConfigAndControls() {
       typeButton.classList.add('unselectable');
       typeButton.onclick = function () {
         this.classList.toggle('toggled');
-        globalConfig.notifications[category][type] = !this.classList.contains('toggled');
-        updateConfig(globalConfig, true);
+        notificationConfig[category][type] = !this.classList.contains('toggled');
+        updateConfig(notificationConfig, true, 'notificationConfig');
       };
 
       typeButton.appendChild(document.createElement('span'));
@@ -133,8 +138,8 @@ function initNotificationsConfigAndControls() {
     const toggled = !this.classList.contains('toggled');
     this.classList.toggle('toggled', toggled);
     document.getElementById('notificationSettingsModal').classList.toggle('notificationsOff', toggled);
-    globalConfig.notifications.all = !toggled;
-    updateConfig(globalConfig, true);
+    notificationConfig.all = !toggled;
+    updateConfig(notificationConfig, true, 'notificationConfig');
   };
 
   document.getElementById('notificationScreenPosition').onclick = function () { setNotificationScreenPosition(this.value); };
@@ -146,13 +151,13 @@ function setNotificationScreenPosition(value) {
     toastContainer.classList.toggle('top', value === 'topLeft' || value === 'topRight');
     toastContainer.classList.toggle('right', value === 'bottomRight' || value === 'topRight');
     document.getElementById('notificationScreenPosition').value = value;
-    globalConfig.notifications.screenPosition = value;
-    updateConfig(globalConfig, true);
+    notificationConfig.screenPosition = value;
+    updateConfig(notificationConfig, true, 'notificationConfig');
   }
 }
 
 function showToastMessage(message, icon, systemName, persist) {
-  if (!globalConfig.notifications.all)
+  if (!notificationConfig.all)
     return;
 
   if (systemName) {
@@ -230,7 +235,7 @@ function showToastMessage(message, icon, systemName, persist) {
 
 // EXTERNAL
 function showClientToastMessage(key, icon) {
-  if (!globalConfig.notifications.client.all || !globalConfig.notifications.client[key])
+  if (!notificationConfig.client.all || !notificationConfig.client[key])
     return;
   showToastMessage(getMassagedLabel(localizedMessages.toast.client[key], true), icon, null, true);
 }

@@ -824,7 +824,7 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 }
 
 function showPartyToastMessage(key, icon, party, playerUuid) {
-  if (!globalConfig.notifications.parties.all || !globalConfig.notifications.parties[key])
+  if (!notificationConfig.parties.all || !notificationConfig.parties[key])
     return;
   let message = getMassagedLabel(localizedMessages.toast.parties[key], true).replace('{PARTY}', getPartyName(party));
   if (playerUuid)

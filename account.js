@@ -237,7 +237,7 @@ function updatePlayerBadge(badgeId, callback) {
 }
 
 function showAccountToastMessage(key, icon, username) {
-  if (!globalConfig.notifications.account.all || (globalConfig.notifications.account.hasOwnProperty(key) && !globalConfig.notifications.account[key]))
+  if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
     return;
   let message = getMassagedLabel(localizedMessages.toast.account[key], true).replace('{USER}', username);
   showToastMessage(message, icon);

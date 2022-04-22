@@ -34,11 +34,7 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
-  disableFloodProtection: false,
-  notifications: {
-    all: true,
-    screenPosition: 'bottomLeft'
-  }
+  disableFloodProtection: false
 };
 
 let config = {
@@ -561,8 +557,6 @@ document.getElementById('floodProtectionButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._ToggleFloodDefender();
 };
-
-initNotificationsConfigAndControls();
 
 initAccountControls();
 initSaveDataControls();

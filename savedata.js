@@ -336,7 +336,7 @@ function clearSaveSyncData() {
 }
 
 function showSaveSyncToastMessage(key, icon, slotId) {
-  if (!globalConfig.notifications.saveSync.all || !globalConfig.notifications.saveSync[key])
+  if (!notificationConfig.saveSync.all || !notificationConfig.saveSync[key])
     return;
   let message = getMassagedLabel(localizedMessages.toast.saveSync[key], true);
   if (slotId !== undefined)
