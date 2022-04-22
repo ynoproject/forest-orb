@@ -48,7 +48,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, mapId, prevMapId, prevLocations);
         } else {
           const locationsHtml = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
-          addTooltip(playerLocationIcon, locationsHtml, true, true);
+          addTooltip(playerLocationIcon, locationsHtml, true, false, true);
           playerLocation.innerHTML = locationsHtml;
         }
 
@@ -72,7 +72,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     if (party) {
       partyIcon = getSvgIcon("party", true);
       if (joinedPartyCache)
-        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true);
+        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true, false, true);
       message.appendChild(partyIcon);
     }
 
@@ -92,7 +92,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
-      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true);
+      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, false, true);
       message.appendChild(rankIcon);
     }
 
@@ -100,7 +100,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       let partyOwnerIcon;
       if (joinedPartyCache && player?.uuid === joinedPartyCache.ownerUuid) {
         partyOwnerIcon = getSvgIcon("partyOwner", true);
-        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true);
+        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, false, true);
         message.appendChild(partyOwnerIcon);
       }
       if (joinedPartyCache.systemName) {

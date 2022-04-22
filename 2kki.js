@@ -351,7 +351,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   const ret = document.createElement('button');
   const localizedExplorerLinks = localizedMessages['2kki'].explorerLink;
   
-  addTooltip(ret, getMassagedLabel(!isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi, true).replace('{LOCATION}', locationName), true);
+  addTooltip(ret, getMassagedLabel(!isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi, true).replace('{LOCATION}', locationName), true, true);
   ret.classList.add('unselectable');
   ret.classList.add('iconButton');
 

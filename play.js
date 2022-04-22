@@ -984,7 +984,7 @@ function initLocalization(isInitial) {
         locI18next.init(i18next)('[data-i18n]');
         const tooltipElements = document.querySelectorAll('[title]');
         for (let el of tooltipElements) {
-          addTooltip(el, el.title, true, false, 750);
+          addTooltip(el, el.title, true, true);
           el.removeAttribute('title');
         }
       });

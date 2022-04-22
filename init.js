@@ -81,13 +81,13 @@ function apiJsonPost(path, data) {
   });
 }
 
-function addTooltip(target, content, asTooltipContent, interactive, delay, options) {
+function addTooltip(target, content, asTooltipContent, delayed, interactive, options) {
   if (!options)
     options = {};
   if (interactive)
     options = Object.assign(options, { interactive: true, appendTo: () => document.body });
-  if (delay !== undefined)
-    options.delay = [delay, 0];
+  if (delayed)
+    options.delay = [750, 0];
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
   target._tippy?.destroy();
   tippy(target, Object.assign(options, tippyConfig));

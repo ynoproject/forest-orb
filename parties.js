@@ -157,7 +157,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
       html.innerHTML = partyMemberName;
 
       const partyOwnerIcon = getSvgIcon('partyOwner', true);
-      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true);
+      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
       
       if (party.systemName) {
         let partySystemName = party.systemName;
@@ -497,7 +497,7 @@ function addOrUpdatePartyListEntry(party) {
       openModal('partyModal', partyCache[party.id].systemName);
     };
     viewDetailsAction.appendChild(getSvgIcon('party', true));
-    addTooltip(viewDetailsAction, getMassagedLabel(localizedMessages.parties.actions.viewPartyDetails, true), true);
+    addTooltip(viewDetailsAction, getMassagedLabel(localizedMessages.parties.actions.viewPartyDetails, true), true, true);
     partyListEntryActionContainer.appendChild(viewDetailsAction);
 
     partyListEntry.appendChild(partyListEntryActionContainer);
@@ -547,7 +547,7 @@ function addOrUpdatePartyListEntry(party) {
           document.getElementById('joinPrivatePartyFailed').classList.add('hidden');
           openModal('joinPrivatePartyModal', party.systemName, null, { partyId: party.id });
         };
-      addTooltip(joinLeaveAction, getMassagedLabel(localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`], true), true);
+      addTooltip(joinLeaveAction, getMassagedLabel(localizedMessages.parties.actions[`${isInParty ? 'leave' : party.public || playerData?.rank ? 'join' : 'joinPrivate'}Party`], true), true, true);
       joinLeaveAction.appendChild(getSvgIcon(isInParty ? 'leave' : 'join', true));
       partyListEntryActionContainer.prepend(joinLeaveAction);
     }
@@ -576,12 +576,14 @@ function addOrUpdatePartyListEntry(party) {
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];
 
-  addTooltip(partyListEntrySprite, getPartyMemberName(party, ownerMember, true, true), true);
+  let partyMemberName = getPartyMemberName(party, ownerMember, true, true);
 
   if (!ownerMember.online) {
     partyListEntrySprite.classList.add('offline');
-    partyListEntrySprite.title += localizedMessages.parties.offlineMemberSuffix;
+    partyMemberName += getMassagedLabel(localizedMessages.parties.offlineMemberSuffix, true);
   }
+
+  addTooltip(partyListEntrySprite, partyMemberName, true, true);
 
   const partyPlayerList = document.getElementById('partyPlayerList');
 
@@ -620,20 +622,20 @@ function addOrUpdatePartyListEntry(party) {
         const spriteImgIcon = document.createElement('img');
         spriteImgIcon.classList.add('partyListEntrySprite');
         spriteImgIcon.classList.add('listEntrySprite');
-        addTooltip(spriteImgIcon, getPartyMemberName(party, member, true, true), true);
+        let partyMemberName = getPartyMemberName(party, member, true, true);
         if (!member.online) {
           spriteImgIcon.classList.add('offline');
-          spriteImgIcon.title += localizedMessages.parties.offlineMemberSuffix;
+          partyMemberName += localizedMessages.parties.offlineMemberSuffix;
         }
+        addTooltip(spriteImgIcon, partyMemberName, true, true);
         spriteImgIcon.src = spriteImg;
         partyMemberSpritesContainer.appendChild(spriteImgIcon);
       }
     });
   }
 
-  const partyNameHtml = getPartyName(party, true, true);
-  nameText.innerHTML = partyNameHtml;
-  addTooltip(nameText, partyNameHtml, true);
+  nameText.innerHTML = getPartyName(party, true, true);
+  addTooltip(nameText, getPartyName(party, false, true), true, true);
 
   memberCountText.innerText = party.members.length;
 }

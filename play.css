@@ -1063,7 +1063,7 @@ body.fullBg #background {
   width: 100%;
 }
 
-.listEntry .partyNameContainer .nameText {
+.partyNameContainer .nameText {
   height: 18px;
   word-break: break-all;
 }
