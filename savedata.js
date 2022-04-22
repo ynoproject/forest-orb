@@ -340,7 +340,7 @@ let saveDataToastTimer = null;
 function showSaveSyncToastMessage(key, icon, slotId) {
   if (!notificationConfig.saveSync.all || !notificationConfig.saveSync[key])
     return;
-  if (typeof localizedMessages !== 'undefined' || !localizedMessages) {
+  if (typeof localizedMessages !== 'undefined' && localizedMessages) {
     let message = getMassagedLabel(localizedMessages.toast.saveSync[key], true);
     if (slotId !== undefined)
       message = message.replace('{SLOT}', slotId);
