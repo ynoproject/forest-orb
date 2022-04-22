@@ -154,22 +154,23 @@ function getBadgeItem(badge, includeTooltip) {
 
   if (includeTooltip) {
     let tooltipContent = '';
+    
     if (badgeId === 'null')
       tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
-    else {
-      if (localizedMessages.badges.gameBadges.hasOwnProperty(badge.game) && localizedMessages.badges.gameBadges[badge.game].hasOwnProperty(badgeId)) {
-        const localizedTooltip = localizedMessages.badges.gameBadges[badge.game][badgeId];
-        if (badge.unlocked || !badge.secret) {
-          if (localizedTooltip.name)
-            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
-        } else
-          tooltipContent += `<label>${localizedMessages.badges.locked}</label>`;
-        if (badge.mapId)
-          tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
-        if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
-          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
-      }
-    }
+    else if (localizedMessages.badges.gameBadges.hasOwnProperty(badge.game) && localizedMessages.badges.gameBadges[badge.game].hasOwnProperty(badgeId)) {
+      const localizedTooltip = localizedMessages.badges.gameBadges[badge.game][badgeId];
+      if (badge.unlocked || !badge.secret) {
+        if (localizedTooltip.name)
+          tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
+      } else
+        tooltipContent += `<label>${localizedMessages.badges.locked}</label>`;
+      if (badge.mapId)
+        tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
+      if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
+        tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
+    } else
+      tooltipContent += `<label>${localizedMessages.badges.locked}</label>`;
+      
     if (tooltipContent) {
       const baseTooltipContent = tooltipContent;
 
