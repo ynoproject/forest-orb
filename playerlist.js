@@ -241,6 +241,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   playerListEntryBadgeOverlay.classList.toggle('hidden', !showBadgeOverlay);
   playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
 
+  if (showBadge) {
+    const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
+      return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+    });
+    if (badgeGame)
+      addTooltip(playerListEntryBadge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+  }
+
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
   if (partyKickAction)
@@ -259,7 +267,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (party) {
     if (uuid === party.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party.ownerUuid)) {
       partyOwnerIcon = getSvgIcon('partyOwner', true);
-      addTooltip(partyOwnerIcon.title, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
+      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
       if (party.systemName) {
         const parsedPartySystemName = party.systemName.replace(' ', '_');
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);

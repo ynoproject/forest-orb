@@ -72,7 +72,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     if (party) {
       partyIcon = getSvgIcon("party", true);
       if (joinedPartyCache)
-        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true, false, true);
+        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true, true);
       message.appendChild(partyIcon);
     }
 
@@ -92,7 +92,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
-      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, false, true);
+      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, true);
       message.appendChild(rankIcon);
     }
 
@@ -100,7 +100,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       let partyOwnerIcon;
       if (joinedPartyCache && player?.uuid === joinedPartyCache.ownerUuid) {
         partyOwnerIcon = getSvgIcon("partyOwner", true);
-        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, false, true);
+        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
         message.appendChild(partyOwnerIcon);
       }
       if (joinedPartyCache.systemName) {
@@ -119,6 +119,12 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     if (badge) {
       badge.classList.add('badge');
+
+      const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
+        return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+      });
+      if (badgeGame)
+        addTooltip(badge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
 
       const badgeUrl = `images/badge/${player.badge}.png`;
       badge.style.backgroundImage = `url('${badgeUrl}')`;
