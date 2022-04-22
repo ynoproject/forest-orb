@@ -157,6 +157,17 @@
               "freeComplete": "无尽流浪抵达",
               "listUpdated": "目的地更新"
             }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Downloaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
           }
         }
       },
@@ -170,7 +181,8 @@
             "values": {
               "0": "无"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -371,6 +383,14 @@
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
         "listUpdated": "远征目的地已更新！"
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
       }
     },
     "events": {
@@ -471,7 +491,7 @@
           },
           "butterfly": {
             "name": "蝴蝶胸针",
-            "description": "在计时模式下，于28分内抵达 Butterfly"
+            "description": "在计时模式下，于29分内抵达 Butterfly"
           },
           "lavender": {
             "name": "紫色宝石",

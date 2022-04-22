@@ -258,7 +258,7 @@ function checkEventLocations() {
 }
 
 function showEventLocationToastMessage(key, icon, location, exp) {
-  if (!globalConfig.notifications.eventLocations.all || !globalConfig.notifications.eventLocations[key])
+  if (!notificationConfig.eventLocations.all || !notificationConfig.eventLocations[key])
     return;
   let message = getMassagedLabel(localizedMessages.toast.eventLocations[key], true);
   if (location) {
@@ -267,5 +267,5 @@ function showEventLocationToastMessage(key, icon, location, exp) {
   }
   if (exp)
     message = message.replace('{EXP}', localizedMessages.events.exp.replace('{POINTS}', exp));
-  showToastMessage(message, icon);
+  showToastMessage(message, icon, true);
 }

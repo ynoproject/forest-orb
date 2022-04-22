@@ -34,11 +34,7 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
-  disableFloodProtection: false,
-  notifications: {
-    all: true,
-    screenPosition: 'bottomLeft'
-  }
+  disableFloodProtection: false
 };
 
 let config = {
@@ -562,8 +558,6 @@ document.getElementById('floodProtectionButton').onclick = () => {
     Module._ToggleFloodDefender();
 };
 
-initNotificationsConfigAndControls();
-
 initAccountControls();
 initSaveDataControls();
 initPartyControls();
@@ -982,6 +976,11 @@ function initLocalization(isInitial) {
         if (err)
           console.error(err);
         locI18next.init(i18next)('[data-i18n]');
+        const tooltipElements = document.querySelectorAll('[title]');
+        for (let el of tooltipElements) {
+          addTooltip(el, el.title, true, true);
+          el.removeAttribute('title');
+        }
       });
     });
 }
@@ -1273,7 +1272,7 @@ function fetchAndPopulateYnomojiConfig() {
         
         const ynomoji = document.createElement('img');
         ynomoji.src = `${ynomojiUrlPrefix}${ynomojiConfig[ynomojiId]}`;
-        ynomoji.title = `:${ynomojiId}:`;
+        addTooltip(ynomoji, `:${ynomojiId}:`, true);
         ynomoji.classList.add('ynomoji');
         ynomoji.onclick = () => insertYnomoji(ynomojiId);
 

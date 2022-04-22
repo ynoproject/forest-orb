@@ -178,7 +178,7 @@ function getBadgeItem(badge, includeTooltip) {
     if (tooltipContent) {
       const baseTooltipContent = tooltipContent;
 
-      const assignTooltip = () => addTooltip(item, tooltipContent, false, { interactive: !!badge.mapId });
+      const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId);
 
       if (badge.mapId) {
         const mapId = badge.mapId.toString().padStart(4, '0');
@@ -237,8 +237,8 @@ function updatePlayerBadge(badgeId, callback) {
 }
 
 function showAccountToastMessage(key, icon, username) {
-  if (!globalConfig.notifications.account.all || (globalConfig.notifications.account.hasOwnProperty(key) && !globalConfig.notifications.account[key]))
+  if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
     return;
   let message = getMassagedLabel(localizedMessages.toast.account[key], true).replace('{USER}', username);
-  showToastMessage(message, icon);
+  showToastMessage(message, icon, true);
 }

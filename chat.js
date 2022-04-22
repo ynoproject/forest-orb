@@ -47,8 +47,9 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, mapId, prevMapId, prevLocations);
         } else {
-          playerLocationIcon.title = getLocalizedMapLocations(gameId, mapId, prevMapId, x, y, "\n");
-          playerLocation.innerHTML = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
+          const locationsHtml = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
+          addTooltip(playerLocationIcon, locationsHtml, true, false, true);
+          playerLocation.innerHTML = locationsHtml;
         }
 
         playerLocation.classList.add("playerLocation");
@@ -71,7 +72,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     if (party) {
       partyIcon = getSvgIcon("party", true);
       if (joinedPartyCache)
-        partyIcon.title = getPartyName(joinedPartyCache);
+        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true, true);
       message.appendChild(partyIcon);
     }
 
@@ -91,7 +92,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
-      rankIcon.title = localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]];
+      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, true);
       message.appendChild(rankIcon);
     }
 
@@ -99,7 +100,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       let partyOwnerIcon;
       if (joinedPartyCache && player?.uuid === joinedPartyCache.ownerUuid) {
         partyOwnerIcon = getSvgIcon("partyOwner", true);
-        partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
         message.appendChild(partyOwnerIcon);
       }
       if (joinedPartyCache.systemName) {
@@ -118,6 +119,12 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     if (badge) {
       badge.classList.add('badge');
+
+      const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
+        return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+      });
+      if (badgeGame)
+        addTooltip(badge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
 
       const badgeUrl = `images/badge/${player.badge}.png`;
       badge.style.backgroundImage = `url('${badgeUrl}')`;

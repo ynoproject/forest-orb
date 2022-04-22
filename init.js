@@ -81,11 +81,16 @@ function apiJsonPost(path, data) {
   });
 }
 
-function addTooltip(el, content, asTooltipContent, options) {
+function addTooltip(target, content, asTooltipContent, delayed, interactive, options) {
   if (!options)
     options = {};
+  if (interactive)
+    options = Object.assign(options, { interactive: true, appendTo: () => document.body });
+  if (delayed)
+    options.delay = [750, 0];
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
-  tippy(el, Object.assign(options, tippyConfig));
+  target._tippy?.destroy();
+  tippy(target, Object.assign(options, tippyConfig));
 }
 
 let loadedLang = false;
@@ -100,7 +105,9 @@ function loadOrInitConfig(configObj, global, configName) {
     if (!window.localStorage.hasOwnProperty(configKey))
       window.localStorage.setItem(configKey, JSON.stringify(configObj));
     else {
-      const savedConfig = JSON.parse(window.localStorage.getItem(configKey));
+      let savedConfig = JSON.parse(window.localStorage.getItem(configKey));
+      if (configName === 'notificationConfig')
+        savedConfig = Object.assign(notificationConfig, savedConfig);
       const savedConfigKeys = Object.keys(savedConfig);
       for (let k in savedConfigKeys) {
         const key = savedConfigKeys[k];
@@ -126,40 +133,6 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'disableFloodProtection':
                     if (value)
                       preToggle(document.getElementById('floodProtectionButton'));
-                    break;
-                  case 'notifications':
-                    if (typeof value === 'object') {
-                      value = Object.assign(globalConfig.notifications, value);
-                      for (let nkey of Object.keys(value)) {
-                        const nvalue = value[nkey];
-                        switch (nkey) {
-                          case 'all':
-                            if (!nvalue)
-                              document.getElementById('notificationsButton').click();
-                            break;
-                          case 'screenPosition':
-                            if (nvalue && nvalue !== 'bottomLeft')
-                              setNotificationScreenPosition(nvalue);
-                            break;
-                          default:
-                            if (notificationTypes.hasOwnProperty(nkey) && typeof nvalue === 'object') {
-                              for (let ntkey of Object.keys(nvalue)) {
-                                const ntvalue = nvalue[ntkey];
-                                if (ntkey === 'all') {
-                                  if (!ntvalue)
-                                    document.getElementById(`notificationsButton_${nkey}`).click();
-                                } else if (notificationTypes[nkey].indexOf(ntkey) > -1) {
-                                  if (!ntvalue)
-                                    document.getElementById(`notificationsButton_${nkey}_${ntkey}`).click();
-                                } else
-                                  continue;
-                              }
-                            } else
-                              continue;
-                            break;
-                        }
-                      }
-                    }
                     break;
                 }
               } else {
@@ -223,6 +196,34 @@ function loadOrInitConfig(configObj, global, configName) {
                 }
               }
               break;
+            case 'notificationConfig':
+              switch (key) {
+                case 'all':
+                  if (!value)
+                    document.getElementById('notificationsButton').click();
+                  break;
+                case 'screenPosition':
+                  if (value && value !== 'bottomLeft')
+                    setNotificationScreenPosition(value);
+                  break;
+                default:
+                  if (notificationTypes.hasOwnProperty(key) && typeof value === 'object') {
+                    for (let nkey of Object.keys(value)) {
+                      const nvalue = value[nkey];
+                      if (nkey === 'all') {
+                        if (!nvalue)
+                          document.getElementById(`notificationsButton_${key}`).click();
+                      } else if (notificationTypes[key].indexOf(nkey) > -1) {
+                        if (!nvalue)
+                          document.getElementById(`notificationsButton_${key}_${nkey}`).click();
+                      } else
+                        continue;
+                    }
+                  } else
+                    continue;
+                  break;
+              }
+              break;
             case 'saveSyncConfig':
               switch (key) {
                 case 'enabled':
@@ -272,6 +273,9 @@ function getCookie(cName) {
 }
 
 (function() {
+  initNotificationsConfigAndControls();
+  loadOrInitConfig(notificationConfig, true, 'notificationConfig');
+
   initSaveSyncControls();
   loadOrInitConfig(saveSyncConfig, false, 'saveSyncConfig');
 

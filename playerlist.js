@@ -60,7 +60,7 @@ function getPlayerName(player, includeMarkers, asHtml) {
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
       rankIcon.classList.add('rankIcon');
-      rankIcon.title = localizedMessages.roles[rank === 1 ? 'mod' : 'dev'];
+      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameTextContainer.appendChild(rankIcon);
     }
     
@@ -181,7 +181,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', systemName))
+            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', true, systemName))
             .catch(err => console.error(err));
         }
       };
@@ -226,7 +226,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
       rankIcon.classList.add('rankIcon');
-      rankIcon.title = localizedMessages.roles[rank === 1 ? 'mod' : 'dev'];
+      addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameText.after(rankIcon);
     }
   }
@@ -240,6 +240,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   playerListEntryBadgeOverlay.classList.toggle('hidden', !showBadgeOverlay);
   playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+
+  if (showBadge) {
+    const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
+      return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+    });
+    if (badgeGame)
+      addTooltip(playerListEntryBadge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+  }
 
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
@@ -259,7 +267,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (party) {
     if (uuid === party.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party.ownerUuid)) {
       partyOwnerIcon = getSvgIcon('partyOwner', true);
-      partyOwnerIcon.title = localizedMessages.parties.partyOwner;
+      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
       if (party.systemName) {
         const parsedPartySystemName = party.systemName.replace(' ', '_');
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
@@ -272,7 +280,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       partyKickAction.href = 'javascript:void(0);';
       partyKickAction.onclick = () => kickPlayerFromJoinedParty(uuid);
       partyKickAction.appendChild(getSvgIcon('leave', true));
-      partyKickAction.title = localizedMessages.playerList.actions.partyKick;
+      addTooltip(partyKickAction, getMassagedLabel(localizedMessages.playerList.actions.partyKick, true), true, true);
       playerListEntryActionContainer.appendChild(partyKickAction);
 
       const transferPartyOwnerAction = document.createElement('a');
@@ -281,7 +289,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       transferPartyOwnerAction.href = 'javascript:void(0);';
       transferPartyOwnerAction.onclick = () => transferJoinedPartyOwner(uuid);
       transferPartyOwnerAction.appendChild(getSvgIcon('transferPartyOwner', true));
-      transferPartyOwnerAction.title = localizedMessages.playerList.actions.transferPartyOwner;
+      addTooltip(transferPartyOwnerAction, getMassagedLabel(localizedMessages.playerList.actions.transferPartyOwner, true), true, true);
       playerListEntryActionContainer.appendChild(transferPartyOwnerAction);
     }
   }

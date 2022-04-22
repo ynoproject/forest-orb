@@ -157,6 +157,17 @@
               "freeComplete": "자유 탐험 성공",
               "listUpdated": "탐험 리스트 업데이트"
             }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Downloaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
           }
         }
       },
@@ -170,7 +181,8 @@
             "values": {
               "0": "없음"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -371,6 +383,14 @@
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
         "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
       }
     },
     "events": {
@@ -471,7 +491,7 @@
           },
           "butterfly": {
             "name": "나비 브로치",
-            "description": "Time Trial Mode를 키고 Tomb of Velleities 맵을 28분 이내로 방문하기"
+            "description": "Time Trial Mode를 키고 Tomb of Velleities 맵을 29분 이내로 방문하기"
           },
           "lavender": {
             "name": "라벤더 잼",

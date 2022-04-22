@@ -157,6 +157,17 @@
               "freeComplete": "Free Expedition Complete",
               "listUpdated": "Expedition List Updated"
             }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Downloaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
           }
         }
       },
@@ -170,7 +181,8 @@
             "values": {
               "0": "None"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -371,6 +383,14 @@
         "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
         "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
       }
     },
     "events": {
@@ -471,7 +491,7 @@
           },
           "butterfly": {
             "name": "Butterfly Brooch",
-            "description": "Reach Tomb of Velleities in 28 minutes or less in Time Trial Mode"
+            "description": "Reach Tomb of Velleities in 29 minutes or less in Time Trial Mode"
           },
           "lavender": {
             "name": "Lavender Gem",

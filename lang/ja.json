@@ -157,6 +157,17 @@
               "freeComplete": "エンドレスラリー到達通知",
               "listUpdated": "ドリームラリー更新通知"
             }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Downloaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
           }
         }
       },
@@ -170,7 +181,8 @@
             "values": {
               "0": "なし"
             }
-          }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "badges": {
@@ -371,6 +383,14 @@
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
       }
     },
     "events": {
@@ -388,7 +408,7 @@
       },
       "expRanks": {
         "0": "ノービス",
-        "1": "インターミディエイト",
+        "1": "ミドル",
         "2": "ブロンズ",
         "3": "シルバー",
         "4": "ゴールド",
@@ -400,7 +420,7 @@
       "null": "バッジなし",
       "locked": "？？？",
       "location": "場所：",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "gameBadges": {
         "yume": {
           "uboa": {
@@ -411,7 +431,7 @@
         "2kki": {
           "mono": {
             "name": "ドリーマー",
-            "description": "ドリームラリーでインターミディエイトランクに到達する"
+            "description": "ドリームラリーでミドルランクに到達する"
           },
           "bronze": {
             "name": "ブロンズドリーマー",
@@ -471,7 +491,7 @@
           },
           "butterfly": {
             "name": "バタフライブローチ",
-            "description": "Time Trial Modeで28分以内にButterflyに到達する。"
+            "description": "Time Trial Modeで29分以内にButterflyに到達する。"
           },
           "lavender": {
             "name": "ラベンダージェム",
