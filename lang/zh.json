@@ -130,7 +130,7 @@
             "fields": {
               "loggedIn": "登录",
               "loggedOut": "登出",
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "已解锁徽章"
             }
           },
           "parties": {
@@ -163,7 +163,7 @@
       "accountSettings": {
         "title": "账号设置",
         "fields": {
-          "badge": "Badge",
+          "badge": "徽章",
           "toggleSaveSync": "云端同步存档 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -400,7 +400,7 @@
       "null": "无徽章",
       "locked": "???",
       "location": "取得位置:&nbsp;",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "gameBadges": {
         "yume": {
           "uboa": {
