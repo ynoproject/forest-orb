@@ -396,10 +396,10 @@ function getPlayerListIdEntrySortFunc(playerListId) {
       case 'playerList':
       case 'partyPlayerList':
         const baseFunc = (a, b) => {
-          const rankA = globalPlayerData[a.dataset.uuid]?.rank;
-          const rankB = globalPlayerData[b.dataset.uuid]?.rank;
-          if (rankA !== rankB)
-            return rankA < rankB ? 1 : -1;
+          const playerA = globalPlayerData[a.dataset.uuid];
+          const playerB = globalPlayerData[b.dataset.uuid];
+          if (playerA?.rank !== playerB?.rank)
+            return playerA?.rank < playerB?.rank ? 1 : -1;
           if (a.dataset.unnamed) {
             if (b.dataset.unnamed)
               return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
@@ -407,6 +407,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
+          if (playerA?.account !== playerB?.account)
+            return playerA?.account ? -1 : 1;
           return 0;
         };
         return playerListId === 'playerList'
@@ -449,10 +451,10 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             return -1;
           if (b.dataset.uuid === playerData?.uuid)
             return 1;
-          const rankA = globalPlayerData[a.dataset.uuid]?.rank;
-          const rankB = globalPlayerData[b.dataset.uuid]?.rank;
-          if (rankA !== rankB)
-            return rankA < rankB ? 1 : -1;
+          const playerA = globalPlayerData[a.dataset.uuid];
+          const playerB = globalPlayerData[b.dataset.uuid];
+          if (playerA?.rank !== playerB?.rank)
+            return playerA?.rank < playerB?.rank ? 1 : -1;
           if (a.dataset.unnamed) {
             if (b.dataset.unnamed)
               return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
@@ -460,6 +462,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
+          if (playerA?.account !== playerB?.account)
+            return playerA?.account ? -1 : 1;
           return 0;
         };
     }
