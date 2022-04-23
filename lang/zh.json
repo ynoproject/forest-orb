@@ -428,7 +428,7 @@
             "description": "在荒漠远观鸟人嬉闹"
           },
           "uboa": {
-            "name": "Uboa 的笑颜",
+            "name": "Uboa的笑颜",
             "description": "被浅濑的深渊吞噬"
           },
           "blackcat": {
@@ -489,6 +489,10 @@
             "name": "钢印",
             "description": "把流浪子刻成钢印"
           },
+          "obentou": {
+            "name": "Obentou",
+            "description": "おべんとう"
+          },
           "compass_28": {
             "name": "28",
             "description": "２８"
@@ -498,7 +502,7 @@
             "description": "造访蛋广场"
           },
           "aooh": {
-            "name": "Aooh 之凝视",
+            "name": "Aooh之凝视",
             "description": "獗網瑪寤醱腹衾渭楷庌泆岈"
           },
           "lavender_lesser": {
@@ -515,7 +519,7 @@
           },
           "butterfly": {
             "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于28分内抵达天使之夜"
+            "description": "在计时模式下，于29分内抵达天使之夜"
           },
           "clover": {
             "name": "红白四叶草纹章",
@@ -525,7 +529,11 @@
         "prayers": {
           "koraiyn": {
             "name": "Koraiyn",
-            "description": "Koraiyn 到底是个啥咧？"
+            "description": "Koraiyn 到底是个啥子？"
+          },
+          "missingno": {
+            "name": "蓝屏",
+            "description": "找到并调查 MissingNo."
           }
         }
       }
