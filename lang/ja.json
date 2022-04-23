@@ -507,7 +507,7 @@
           },
           "lavender": {
             "name": "ラベンダージェム",
-            "description": "Time Trial Modeで12分半以内に紫湖に到達する"
+            "description": "Time Trial Modeで12分以内に紫湖に到達する"
           },
           "butterfly_lesser": {
             "name": "Orchid Butterfly Brooch",
@@ -515,7 +515,7 @@
           },
           "butterfly": {
             "name": "Midnight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
+            "description": "Reach the Lunar Sanctuary in 28 minutes or less in Time Trial Mode"
           },
           "clover": {
             "name": "Pale-Crimson Clover",

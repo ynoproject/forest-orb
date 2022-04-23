@@ -507,7 +507,7 @@
           },
           "lavender": {
             "name": "浅紫色宝石",
-            "description": "在计时模式下，于12分30秒内抵达薰衣草之湖"
+            "description": "在计时模式下，于12分内抵达薰衣草之湖"
           },
           "butterfly_lesser": {
             "name": "霞光蝴蝶胸针",
@@ -515,7 +515,7 @@
           },
           "butterfly": {
             "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于29分内抵达 Butterfly"
+            "description": "在计时模式下，于28分内抵达 Butterfly"
           },
           "clover": {
             "name": "红白四叶草纹章",
