@@ -489,6 +489,10 @@
             "name": "クラッシュ",
             "description": "うろつきが押し潰される所を見る"
           },
+          "obentou": {
+            "name": "Obentou",
+            "description": "おべんとう"
+          },
           "compass_28": {
             "name": "28",
             "description": "２８"
@@ -515,7 +519,7 @@
           },
           "butterfly": {
             "name": "Midnight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 28 minutes or less in Time Trial Mode"
+            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
           },
           "clover": {
             "name": "Pale-Crimson Clover",
@@ -526,6 +530,10 @@
           "koraiyn": {
             "name": "Koraiyn",
             "description": "What even is a Koraiyn?"
+          },
+          "missingno": {
+            "name": "Glitched Out",
+            "description": "Find and interact with MissingNo."
           }
         }
       }

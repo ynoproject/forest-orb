@@ -489,6 +489,10 @@
             "name": "钢印",
             "description": "把流浪子刻成钢印"
           },
+          "obentou": {
+            "name": "Obentou",
+            "description": "おべんとう"
+          },
           "compass_28": {
             "name": "28",
             "description": "２８"
@@ -515,7 +519,7 @@
           },
           "butterfly": {
             "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于28分内抵达 Butterfly"
+            "description": "在计时模式下，于29分内抵达 Butterfly"
           },
           "clover": {
             "name": "红白四叶草纹章",
@@ -526,6 +530,10 @@
           "koraiyn": {
             "name": "Koraiyn",
             "description": "What even is a Koraiyn?"
+          },
+          "missingno": {
+            "name": "Glitched Out",
+            "description": "Find and interact with MissingNo."
           }
         }
       }
