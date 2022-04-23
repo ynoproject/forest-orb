@@ -159,14 +159,14 @@
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "세이브 동기화",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Downloaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveUploading": "세이브 데이터 업로딩",
+              "saveUploaded": "세이브 데이터 업로드 완료",
+              "saveDownloading": "세이브 데이터 다운로딩",
+              "saveDownloaded": "세이브 데이터 다운로드 완료",
+              "saveUpToDate": "세이브 데이터 업데이트",
+              "saveCleared": "세이브 데이터 삭제됨"
             }
           }
         }
@@ -182,7 +182,7 @@
               "0": "없음"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "동기화된 세이브 삭제하기"
         }
       },
       "badges": {
@@ -249,9 +249,9 @@
   },
   "messages": {
     "games": {
-      "yume": "유메닛키",
-      "2kki": "유메2키",
-      "flow": "닷플로우",
+      "yume": "ゆめにっき(유메닛키)",
+      "2kki": "ゆめ２っき(유메2키)",
+      "flow": ".flow(닷플로우)",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
@@ -385,12 +385,12 @@
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "{SLOT}번 슬롯에서의 세이브 데이터를 업로드합니다...",
+        "saveUploaded": "{SLOT}번 슬롯의 세이브 데이터가 업로드 되었습니다.",
+        "saveDownloading": "{SLOT}번 슬롯의 세이브 데이터를 다운로드합니다...",
+        "saveDownloaded": "{SLOT}번 슬롯의 세이브 데이터를 다운로드 했습니다.",
+        "saveUpToDate": "세이브 데이터가 업데이트 되었습니다.",
+        "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다."
       }
     },
     "events": {
@@ -420,20 +420,20 @@
       "null": "뱃지 없음",
       "locked": "???",
       "location": "장소 :&nbsp;",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "gameBadges": {
         "yume": {
           "boombox": {
-            "name": "Boombox",
-            "description": "Watch the Toriningen party from afar"
+            "name": "라디오 뱃지",
+            "description": "고비 사막에서 새인간 파티를 관람하기"
           },
           "uboa": {
             "name": "우봐 뱃지",
             "description": "우봐와 상호작용하기"
           },
           "blackcat": {
-            "name": "Black Cat",
-            "description": "Trigger the witch flight event on the mall rooftop"
+            "name": "검은 고양이 뱃지",
+            "description": "백화점 옥상에서 마녀 비행 이벤트를 보기"
           }
         },
         "2kki": {
@@ -490,50 +490,50 @@
             "description": "쥐포가 된 우로츠키 이벤트를 감상하기"
           },
           "obentou": {
-            "name": "Obentou",
-            "description": "おべんとう"
+            "name": "도시락 뱃지",
+            "description": "오벤토우~"
           },
           "compass_28": {
             "name": "28 뱃지",
-            "description": "선물상자의 내용물을 확인하기"
+            "description": "Unknown Child's Room 에서 선물상자의 내용물을 확인하기"
           },
           "blue_orb": {
             "name": "파란 구슬 뱃지",
             "description": "Scrambled Egg Zone 방문하기"
           },
           "aooh": {
-            "name": "Aooh's Glare",
+            "name": "Aooh의 눈빛",
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
           "lavender_lesser": {
-            "name": "Purple Gem",
-            "description": "Reach Lavender Waters"
+            "name": "보라색 잼",
+            "description": "Lavender Waters 맵 방문하기"
           },
           "lavender": {
             "name": "라벤더 잼",
-            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 방문하기"  
+            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 도달하기"  
           },
           "butterfly_lesser": {
-            "name": "Orchid Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary"
+            "name": "연보라 나비 브로치",
+            "description": "Lunar Sanctuary 서브 에리어 방문하기"
           },
           "butterfly": {
-            "name": "Midnight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
+            "name": "달빛 나비 브로치",
+            "description": "Time Trial Mode를 키고 Lunar Sanctuary 서브 에리어에 29분 이내로 도달하기"
           },
           "clover": {
-            "name": "Pale-Crimson Clover",
-            "description": "Best of luck..."
+            "name": "심홍색 클로버 뱃지",
+            "description": "운수대통!"
           }
         },
         "prayers": {
           "koraiyn": {
-            "name": "Koraiyn",
-            "description": "What even is a Koraiyn?"
+            "name": "코라인 뱃지",
+            "description": "코라인(Koraiyn)이 대체 뭐야?"
           },
           "missingno": {
-            "name": "Glitched Out",
-            "description": "Find and interact with MissingNo."
+            "name": "글리치 뱃지",
+            "description": "미싱노(Missing NO.)를 찾아서 상호작용하기"
           }
         }
       }
