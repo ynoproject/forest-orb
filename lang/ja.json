@@ -533,8 +533,8 @@
             "description": "Koraiynって何？"
           },
           "missingno": {
-            "name": "Glitched Out",
-            "description": "Find and interact with MissingNo."
+            "name": "バグ",
+            "description": "けつばんに触れる"
           }
         }
       }
