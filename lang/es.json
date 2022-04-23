@@ -521,6 +521,12 @@
             "name": "Pale-Crimson Clover",
             "description": "Best of luck..."
           }
+        },
+        "prayers": {
+          "koraiyn": {
+            "name": "Koraiyn",
+            "description": "What even is a Koraiyn?"
+          }
         }
       }
     },

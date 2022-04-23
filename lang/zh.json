@@ -521,6 +521,12 @@
             "name": "红白四叶草纹章",
             "description": "祝君好运……"
           }
+        },
+        "prayers": {
+          "koraiyn": {
+            "name": "Koraiyn",
+            "description": "What even is a Koraiyn?"
+          }
         }
       }
     },
