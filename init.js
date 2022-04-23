@@ -85,10 +85,11 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   if (!options)
     options = {};
   if (interactive)
-    options = Object.assign(options, { interactive: true, appendTo: () => document.body });
+    options.interactive = true;
   if (delayed)
     options.delay = [750, 0];
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
+  options.appendTo = document.getElementById('layout');
   target._tippy?.destroy();
   tippy(target, Object.assign(options, tippyConfig));
 }
