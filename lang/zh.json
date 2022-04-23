@@ -511,11 +511,11 @@
           },
           "butterfly_lesser": {
             "name": "霞光蝴蝶胸针",
-            "description": "抵达 Butterfly"
+            "description": "抵达天使之夜"
           },
           "butterfly": {
             "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于28分内抵达 Butterfly"
+            "description": "在计时模式下，于28分内抵达天使之夜"
           },
           "clover": {
             "name": "红白四叶草纹章",
@@ -525,7 +525,7 @@
         "prayers": {
           "koraiyn": {
             "name": "Koraiyn",
-            "description": "What even is a Koraiyn?"
+            "description": "Koraiyn 到底是个啥咧？"
           }
         }
       }
