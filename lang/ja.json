@@ -489,6 +489,10 @@
             "name": "クラッシュ",
             "description": "うろつきが押し潰される所を見る"
           },
+          "obentou": {
+            "name": "Obentou",
+            "description": "おべんとう"
+          },
           "compass_28": {
             "name": "28",
             "description": "２８"
@@ -514,8 +518,9 @@
             "description": "Butterflyの最奥に到達する"
           },
           "butterfly": {
+
             "name": "ミッドナイトバタフライブローチ",
-            "description": "Time Trial Modeで28分以内にButterflyの最奥に到達する"
+            "description": "Time Trial Modeで29分以内にButterflyの最奥に到達する"
           },
           "clover": {
             "name": "深紅色のクローバー",
@@ -526,6 +531,10 @@
           "koraiyn": {
             "name": "Koraiyn",
             "description": "Koraiynって何？"
+          },
+          "missingno": {
+            "name": "Glitched Out",
+            "description": "Find and interact with MissingNo."
           }
         }
       }

@@ -127,10 +127,10 @@
 		"0911": [
 			{  "title": "Monochrome Feudal Japan", "coords": { "x1": 109, "y1": 15, "x2": 132, "y2": 25 }, "explorer": true },
 			{  "title": "Viridescent Temple", "coords": { "x1": 77, "y1": 15, "x2": 98, "y2": 27 }, "explorer": true },
-			{  "title": "Erratic Pillar Lands", "coords": { "x1": 87, "y1": 15, "x2": 176, "y2": 94 }, "explorer": true },
 			{  "title": "Surgical Scissors World", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 14 }, "explorer": true },
 			{  "title": "Fossil Lake", "coords": { "x1": 0, "y1": 80, "x2": 86, "y2": 94 }, "explorer": true },
 			{  "title": "Fossil Lake", "coords": { "x1": 130, "y1": 80, "x2": 179, "y2": 94 }, "explorer": true },
+			{  "title": "Erratic Pillar Lands", "coords": { "x1": 87, "y1": 15, "x2": 176, "y2": 94 }, "explorer": true },
 			{  "title": "Ocean Subsurface", "explorer": true }
 		],
 		"0925": [
@@ -226,6 +226,7 @@
 			{  "title": "Totem Hotel", "coords": { "x1": -1, "y1": 50, "x2": -1, "y2": 98 }, "explorer": true },
 			{  "title": "Evil Cube Zone", "coords": { "x1": -1, "y1": 99, "x2": -1, "y2": 179 }, "explorer": true }
 		],
+		"1422": { "title": "Obentou World", "explorer": "true" },
 		"1500": { "title": "Unknown Child's Room", "explorer": true },
 		"1521": [
 			{  "title": "Deluxe Mask Shop", "coords": { "x1": -1, "y1": 30, "x2": -1, "y2": 44 }, "explorer": true },
