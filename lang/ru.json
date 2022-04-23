@@ -159,14 +159,14 @@
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "Облачное Сохранение",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Downloaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveUploading": "Выгрузка Сохранения",
+              "saveUploaded": "Выгрузка Завершена",
+              "saveDownloading": "Загрузка Сохранения",
+              "saveDownloaded": "Загрузка Завершена",
+              "saveUpToDate": "Сохранение Актуально",
+              "saveCleared": "Сохранение Очищено"
             }
           }
         }
@@ -182,7 +182,7 @@
               "0": "Нет"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "Очистить данные Облачного Сохранения"
         }
       },
       "badges": {
@@ -385,12 +385,12 @@
         "listUpdated": "Список Походов Обновлён."
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "Выгружаем в облако данные Слота {SLOT}...",
+        "saveUploaded": "Данные Слота {SLOT} успешно выгружены в облако.",
+        "saveDownloading": "Обновляем данные из Слота {SLOT}...",
+        "saveDownloaded": "Слот {SLOT} успешно обновлён.",
+        "saveUpToDate": "Данные слота актуальны.",
+        "saveCleared": "Данные Облачного Сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах."
       }
     },
     "events": {
@@ -417,77 +417,77 @@
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "Нет Значка",
       "locked": "???",
-      "location": "Location:&nbsp;",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "location": "Локация:&nbsp;",
+      "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
       "gameBadges": {
         "yume": {
           "boombox": {
-            "name": "Boombox",
-            "description": "Watch the Toriningen party from afar"
+            "name": "Бумбокс",
+            "description": "Пронаблюдайте за вечеринкой Птицелюдей (Toringens)"
           },
           "uboa": {
             "name": "Uboa",
-            "description": "Fall into Uboa's Trap"
+            "description": "Попадитесь в ловушку Uboa"
           },
           "blackcat": {
-            "name": "Black Cat",
-            "description": "Trigger the witch flight event on the mall rooftop"
+            "name": "Чёрный кот",
+            "description": "Полетайте на метле с крыши здания"
           }
         },
         "2kki": {
           "mono": {
-            "name": "Expeditionist",
-            "description": "Reach Intermediate rank in expeditions"
+            "name": "Медаль Туриста",
+            "description": "Достигните Продвинутого ранга в Походах"
           },
           "bronze": {
-            "name": "Bronze Expeditionist",
-            "description": "Reach Bronze rank in expeditions"
+            "name": "Бронзовая медаль Туриста",
+            "description": "Достигните Бронзового ранга в Походах"
           },
           "silver": {
-            "name": "Silver Expeditionist",
-            "description": "Reach Silver rank in expeditions"
+            "name": "Серебрянная медаль Туриста",
+            "description": "Достигните Серебрянного ранга в Походах"
           },
           "gold": {
-            "name": "Gold Expeditionist",
-            "description": "Reach Gold rank in expeditions"
+            "name": "Золотая медаль Туриста",
+            "description": "Достигните Золотого ранга в Походах"
           },
           "platinum": {
-            "name": "Platinum Expeditionist",
-            "description": "Reach Platinum rank in expeditions"
+            "name": "Платиновая медаль Туриста",
+            "description": "Достигните Платинового ранга в Походах"
           },
           "diamond": {
-            "name": "Diamond Expeditionist",
-            "description": "Reach Diamond rank in expeditions"
+            "name": "Алмазная медаль Туриста",
+            "description": "Достигните Алмазного ранга в Походах"
           },
           "compass": {
-            "name": "Expedition Completionist",
-            "description": "Complete expeditions in 30% of available locations"
+            "name": "Медаль Путешественника",
+            "description": "Совершите походы в 30% доступных локаций"
           },
           "compass_bronze": {
-            "name": "Bronze Expedition Completionist",
-            "description": "Complete expeditions in 50% of available locations"
+            "name": "Бронзовая медаль Путешественника",
+            "description": "Совершите походы в 50% доступных локаций"
           },
           "compass_silver": {
-            "name": "Silver Expedition Completionist",
-            "description": "Complete expeditions in 70% of available locations"
+            "name": "Серебрянная медаль Путешественника",
+            "description": "Совершите походы в 70% доступных локаций"
           },
           "compass_gold": {
-            "name": "Gold Expedition Completionist",
-            "description": "Complete expeditions in 80% of available locations"
+            "name": "Золотая медаль Путешественника",
+            "description": "Совершите походы в 80% доступных локаций"
           },
           "compass_platinum": {
-            "name": "Platinum Expedition Completionist",
-            "description": "Complete expeditions in 90% of available locations"
+            "name": "Платиновая медаль Путешественника",
+            "description": "Совершите походы в 90% доступных локаций"
           },
           "compass_diamond": {
-            "name": "Diamond Expedition Completionist",
-            "description": "Complete expeditions in 95% of available locations"
+            "name": "Алмазная медаль Путешественника",
+            "description": "Совершите походы в 95% доступных локаций"
           },
           "crushed": {
-            "name": "Crush",
-            "description": "Watch Urotsuki get smooshed"
+            "name": "Пресс",
+            "description": "Посмотрите, как расплющит Уроцуки"
           },
           "obentou": {
             "name": "Obentou",
@@ -498,42 +498,42 @@
             "description": "２８"
           },
           "blue_orb": {
-            "name": "Blue Orb",
-            "description": "Visit Scrambled Egg Zone"
+            "name": "Синий шар",
+            "description": "Побывайте в Scrambled Egg Zone"
           },
           "aooh": {
-            "name": "Aooh's Glare",
+            "name": "Взор Aooh'а",
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
           "lavender_lesser": {
-            "name": "Purple Gem",
-            "description": "Reach Lavender Waters"
+            "name": "Фиолетовый Камень",
+            "description": "Доберитесь до Lavender Waters"
           },
           "lavender": {
-            "name": "Lavender Gem",
-            "description": "Reach Lavender Waters in 12 minutes or less in Time Trial Mode"
+            "name": "Сиреневый Камень",
+            "description": "Доберитесь до Lavender Waters за 12 минут или быстрее в Time Trial Mode"
           },
           "butterfly_lesser": {
-            "name": "Orchid Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary"
+            "name": "Брошь Светло-Лиловой Бабочки",
+            "description": "Доберитесь до Lunar Sanctuary"
           },
           "butterfly": {
-            "name": "Midnight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
+            "name": "Брошь Полуночной Бабочки",
+            "description": "Доберитесь до Lunar Sanctuary за 29 минут или быстрее в Time Trial Mode"
           },
           "clover": {
-            "name": "Pale-Crimson Clover",
-            "description": "Best of luck..."
+            "name": "Розово-Красный клевер",
+            "description": "Феноменальное везение..."
           }
         },
         "prayers": {
           "koraiyn": {
-            "name": "Koraiyn",
-            "description": "What even is a Koraiyn?"
+            "name": "Кораин",
+            "description": "Что ещё за Кораин?"
           },
           "missingno": {
-            "name": "Glitched Out",
-            "description": "Find and interact with MissingNo."
+            "name": "Заглючено",
+            "description": "Найдите MissingNo."
           }
         }
       }
