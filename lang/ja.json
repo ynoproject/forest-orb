@@ -423,6 +423,14 @@
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "gameBadges": {
         "yume": {
+          "kalimba": {
+            "name": "KALIMBA",
+            "description": "Tune into the KALIMBA TV channel"
+          },
+          "a_r_m": {
+            "name": "Raving in the Wilderness",
+            "description": "Experience the Aztec Rave Monkey"
+          },
           "boombox": {
             "name": "ラジカセ",
             "description": "鳥人間ピクニックを見る"

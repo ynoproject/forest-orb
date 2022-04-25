@@ -423,6 +423,14 @@
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
       "gameBadges": {
         "yume": {
+          "kalimba": {
+            "name": "KALIMBA",
+            "description": "Tune into the KALIMBA TV channel"
+          },
+          "a_r_m": {
+            "name": "Raving in the Wilderness",
+            "description": "Experience the Aztec Rave Monkey"
+          },
           "boombox": {
             "name": "Бумбокс",
             "description": "Пронаблюдайте за вечеринкой Птицелюдей (Toringens)"

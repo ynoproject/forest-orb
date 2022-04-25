@@ -423,6 +423,14 @@
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "gameBadges": {
         "yume": {
+          "kalimba": {
+            "name": "KALIMBA",
+            "description": "Tune into the KALIMBA TV channel"
+          },
+          "a_r_m": {
+            "name": "Raving in the Wilderness",
+            "description": "Experience the Aztec Rave Monkey"
+          },
           "boombox": {
             "name": "라디오 뱃지",
             "description": "고비 사막에서 새인간 파티를 관람하기"

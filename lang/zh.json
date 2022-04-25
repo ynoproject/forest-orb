@@ -423,6 +423,14 @@
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "gameBadges": {
         "yume": {
+          "kalimba": {
+            "name": "KALIMBA",
+            "description": "Tune into the KALIMBA TV channel"
+          },
+          "a_r_m": {
+            "name": "Raving in the Wilderness",
+            "description": "Experience the Aztec Rave Monkey"
+          },
           "boombox": {
             "name": "手提音响",
             "description": "在荒漠远观鸟人嬉闹"

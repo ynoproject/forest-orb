@@ -1510,7 +1510,7 @@ body.fullBg #background {
 
 .modalContent .badgeItem.disabled > .badgeContainer > div:first-child {
   border: none !important;
-  margin: 12px;
+  margin: 16px 12px 8px 12px;
 }
 
 .modalContent .badgeItem.disabled > .badgeContainer > .badge:first-child {

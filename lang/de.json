@@ -423,6 +423,14 @@
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "gameBadges": {
         "yume": {
+          "kalimba": {
+            "name": "KALIMBA",
+            "description": "Tune into the KALIMBA TV channel"
+          },
+          "a_r_m": {
+            "name": "Raving in the Wilderness",
+            "description": "Experience the Aztec Rave Monkey"
+          },
           "boombox": {
             "name": "Boombox",
             "description": "Watch the Toriningen party from afar"
