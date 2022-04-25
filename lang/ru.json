@@ -233,6 +233,7 @@
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
       "toggleImmersionMode": "Переключить Режим Погружения",
+      "screenshot": "Take Screenshot",
       "settings": "Настройки",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {

@@ -233,6 +233,7 @@
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
       "toggleImmersionMode": "Alternar Modo Inmersivo",
+      "screenshot": "Take Screenshot",
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {

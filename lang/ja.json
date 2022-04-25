@@ -233,6 +233,7 @@
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
       "toggleImmersionMode": "イマージョンモードのオン／オフ",
+      "screenshot": "Take Screenshot",
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {

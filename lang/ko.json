@@ -233,6 +233,7 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleImmersionMode": "몰입 모드 활성화",
+      "screenshot": "Take Screenshot",
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {

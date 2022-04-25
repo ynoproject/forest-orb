@@ -233,6 +233,7 @@
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Chat",
       "toggleImmersionMode": "Activer le Mode Immersion",
+      "screenshot": "Take Screenshot",
       "settings": "Settings",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
