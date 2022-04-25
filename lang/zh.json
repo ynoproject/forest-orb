@@ -233,6 +233,7 @@
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
       "toggleImmersionMode": "开启/关闭沉浸模式",
+      "screenshot": "Take Screenshot",
       "settings": "设置",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
