@@ -515,11 +515,11 @@
           },
           "hakoko": {
             "name": "箱子",
-            "description": "在目药店与箱子互动"
+            "description": "在目药屋与箱子互动"
           },
           "hakoko_prime": {
             "name": "快递箱子",
-            "description": "在计时模式下，于1分40秒内抵达目药店并与箱子互动"
+            "description": "在计时模式下，于1分40秒内抵达目药屋并与箱子互动"
           },
           "lavender_lesser": {
             "name": "紫色宝石",
