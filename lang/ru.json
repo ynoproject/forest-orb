@@ -531,15 +531,15 @@
             "description": "Доберитесь до Lavender Waters за 12 минут или быстрее в Time Trial Mode"
           },
           "butterfly_lesser": {
-            "name": "Брошь Светло-Лиловой Бабочки",
+            "name": "Sunset Butterfly Brooch",
             "description": "Доберитесь до Lunar Sanctuary"
           },
           "butterfly": {
-            "name": "Брошь Полуночной Бабочки",
+            "name": "Twilight Butterfly Brooch",
             "description": "Доберитесь до Lunar Sanctuary за 29 минут или быстрее в Time Trial Mode"
           },
           "magical_lesser": {
-            "name": "Junior Wizard",
+            "name": "Kiki",
             "description": "Reach Magical Passage"
           },
           "magical": {
@@ -547,7 +547,7 @@
             "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
           },
           "voxels": {
-            "name": "Voxels",
+            "name": "Magical Voxels",
             "description": "Exploit the rules of the dream realm and reach Voxel Island"
           },
           "vending_machine": {
