@@ -547,7 +547,7 @@
           },
           "voxels": {
             "name": "魔法体素",
-            "description": "不惜一切手段抵达体素岛"
+            "description": "不惜一切手段抵达方块岛"
           },
           "vending_machine": {
             "name": "自动贩卖机",
