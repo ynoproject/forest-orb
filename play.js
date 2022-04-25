@@ -535,7 +535,7 @@ document.getElementById('screenshotButton').onclick = function () {
     const url = canvas.toDataURL();
     const a = document.createElement('a');
     const currentDate = new Date();
-    const [month, day, year, hour, minute, second] = [currentDate.getMonth(), currentDate.getDay(), currentDate.getFullYear(), currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()]
+    const [month, day, year, hour, minute, second] = [currentDate.getMonth(), currentDate.getDate(), currentDate.getFullYear(), currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()]
     a.href = url;
     a.download = `ynoproject_${gameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
     a.click();
