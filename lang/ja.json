@@ -425,12 +425,12 @@
       "gameBadges": {
         "yume": {
           "kalimba": {
-            "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
+            "name": "カリンバ",
+            "description": "カリンバを見る"
           },
           "a_r_m": {
-            "name": "Raving in the Wilderness",
-            "description": "Experience the Aztec Rave Monkey"
+            "name": "サタデーナイトフィーバー",
+            "description": "サタデーナイトフィーバーを見る"
           },
           "boombox": {
             "name": "ラジカセ",
@@ -515,12 +515,12 @@
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
           "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
+            "name": "箱子",
+            "description": "目薬屋さんで箱子に話しかける"
           },
           "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+            "name": "箱子プライム",
+            "description": " Time Trial Modeで1分40秒以内に目薬屋さんで箱子に話しかける"
           },
           "lavender_lesser": {
             "name": "パープルジェム",
@@ -540,19 +540,19 @@
           },
           "magical_lesser": {
             "name": "キキ",
-            "description": "Reach Magical Passage"
+            "description": "マジカルに到達する"
           },
           "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+            "name": "マーリン",
+            "description": " Time Trial Modeで8分30秒以内にマジカルに到達する"
           },
           "voxels": {
-            "name": "Magical Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
+            "name": "マジカルブロック",
+            "description": "ブロック島に到達する"
           },
           "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
+            "name": "自動販売機",
+            "description": "展示スペースを完成させて訪れる"
           },
           "clover": {
             "name": "深紅色のクローバー",
@@ -565,7 +565,7 @@
             "description": "Koraiynって何？"
           },
           "missingno": {
-            "name": "バグ",
+            "name": "けつばん",
             "description": "けつばんに触れる"
           }
         }
