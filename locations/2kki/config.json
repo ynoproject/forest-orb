@@ -50,6 +50,7 @@
 			{  "title": "Star Ocean", "coords": { "x1": 0, "y1": 0, "x2": 19, "y2": 14 }, "explorer": true },
 			{  "title": "Atlantis", "explorer": true }
 		],
+		"0243": { "title": "Visine World: Eye Shop", "urlTitle": "Visine_World", "explorer": true },
 		"0249": "Plated Snow Country",
 		"0250": "Plated Snow Country",
 		"0274": { "title": "Underwater Amusement Park", "explorer": true },
@@ -158,6 +159,7 @@
 			{ "title": "Dream Park", "coords": { "x1": -1, "y1": 185, "x2": -1, "y2": 199 }, "explorer": true },
 			{ "title": "Guardians' Temple", "explorer": true }
 		],
+		"1073": { "title": "Snack Gallery", "explorer": true },
 		"1123": [
 			{  "title": "Sparkling Dimension B", "coords": { "x1": 0, "y1": 170, "x2": 79, "y2": 239 }, "explorer": true },
 			{  "title": "Sparkling Dimension A", "explorer": true }
@@ -249,6 +251,7 @@
 			{  "title": "Grand Beach", "coords": { "x1": 0, "y1": -1, "x2": 313, "y2": -1 }, "explorer": true },
 			{  "title": "Checkered Postal Path", "coords": { "x1": 314, "y1": -1, "x2": 399, "y2": -1 }, "explorer": true }
 		],
+		"1673": { "title": "Magical Passage", "explorer": true },
 		"1697": [
 			{  "title": "Spike Alley", "coords": { "x1": 0, "y1": -1, "x2": 53, "y2": -1 }, "explorer": true },
 			{  "title": "Golden Mechanical Tower", "coords": { "x1": 54, "y1": -1, "x2": 133, "y2": -1 }, "explorer": true },

@@ -505,6 +505,14 @@
             "name": "アオォの威光",
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
+          "hakoko": {
+            "name": "Hakoko",
+            "description": "Interact with Hakoko in the Eye Shop"
+          },
+          "hakoko_prime": {
+            "name": "Hakoko Prime",
+            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+          },
           "lavender_lesser": {
             "name": "パープルジェム",
             "description": "紫湖に到達する"
@@ -521,6 +529,22 @@
 
             "name": "ミッドナイトバタフライブローチ",
             "description": "Time Trial Modeで29分以内にButterflyの最奥に到達する"
+          },
+          "magical_lesser": {
+            "name": "Junior Wizard",
+            "description": "Reach Magical Passage"
+          },
+          "magical": {
+            "name": "Merlin",
+            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+          },
+          "voxels": {
+            "name": "Voxels",
+            "description": "Exploit the rules of the dream realm and reach Voxel Island"
+          },
+          "vending_machine": {
+            "name": "Vending Machine",
+            "description": "Complete and visit the Snack Gallery"
           },
           "clover": {
             "name": "深紅色のクローバー",

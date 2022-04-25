@@ -184,7 +184,7 @@ function getBadgeItem(badge, includeTooltip) {
         const mapId = badge.mapId.toString().padStart(4, '0');
         const setTooltipLocation = () => {
           if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
-            tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', null, null, getInfoLabel("&nbsp;|&nbsp;")));
+            tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
           else
             tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
           assignTooltip();
@@ -214,7 +214,7 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, secret: badge.secret, overlay: badge.overlay, percent: badge.percent, unlocked: badge.unlocked };
+        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, secret: badge.secret, overlay: badge.overlay, percent: badge.percent, unlocked: badge.unlocked };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)

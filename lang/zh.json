@@ -505,6 +505,14 @@
             "name": "Aooh之凝视",
             "description": "獗網瑪寤醱腹衾渭楷庌泆岈"
           },
+          "hakoko": {
+            "name": "Hakoko",
+            "description": "Interact with Hakoko in the Eye Shop"
+          },
+          "hakoko_prime": {
+            "name": "Hakoko Prime",
+            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+          },
           "lavender_lesser": {
             "name": "紫色宝石",
             "description": "抵达薰衣草之湖"
@@ -520,6 +528,22 @@
           "butterfly": {
             "name": "暮色蝴蝶胸针",
             "description": "在计时模式下，于29分内抵达天使之夜"
+          },
+          "magical_lesser": {
+            "name": "Junior Wizard",
+            "description": "Reach Magical Passage"
+          },
+          "magical": {
+            "name": "Merlin",
+            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+          },
+          "voxels": {
+            "name": "Voxels",
+            "description": "Exploit the rules of the dream realm and reach Voxel Island"
+          },
+          "vending_machine": {
+            "name": "Vending Machine",
+            "description": "Complete and visit the Snack Gallery"
           },
           "clover": {
             "name": "红白四叶草纹章",
