@@ -58,7 +58,7 @@
     },
     "instruction": {
       "translation": "欢迎加入我们的界面语言翻译工程！",
-      "noGameLoc": "※暂不支持游戏语言翻译"
+      "noGameLoc": "※暂无游戏语言翻译"
     },
     "2kki": {
       "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"
@@ -233,6 +233,7 @@
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
       "toggleImmersionMode": "开启/关闭沉浸模式",
+      "screenshot": "Take Screenshot",
       "settings": "设置",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
@@ -425,11 +426,11 @@
         "yume": {
           "kalimba": {
             "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
+            "description": "收视KALIMBA电视频道"
           },
           "a_r_m": {
-            "name": "Raving in the Wilderness",
-            "description": "Experience the Aztec Rave Monkey"
+            "name": "古神的狂欢",
+            "description": "观赏阿兹特克锐舞猴"
           },
           "boombox": {
             "name": "手提音响",
@@ -498,7 +499,7 @@
             "description": "把流浪子刻成钢印"
           },
           "obentou": {
-            "name": "Obentou",
+            "name": "便当",
             "description": "おべんとう"
           },
           "compass_28": {
@@ -514,12 +515,12 @@
             "description": "獗網瑪寤醱腹衾渭楷庌泆岈"
           },
           "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
+            "name": "箱子",
+            "description": "在目药屋与箱子互动"
           },
           "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+            "name": "快递箱子",
+            "description": "在计时模式下，于1分40秒内抵达目药屋并与箱子互动"
           },
           "lavender_lesser": {
             "name": "紫色宝石",
@@ -538,20 +539,20 @@
             "description": "在计时模式下，于29分内抵达天使之夜"
           },
           "magical_lesser": {
-            "name": "Junior Wizard",
-            "description": "Reach Magical Passage"
+            "name": "琪琪",
+            "description": "抵达魔法通路"
           },
           "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+            "name": "梅林",
+            "description": "在计时模式下，于8分30秒内抵达魔法通路"
           },
           "voxels": {
-            "name": "Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
+            "name": "魔法体素",
+            "description": "不惜一切手段抵达方块岛"
           },
           "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
+            "name": "自动贩卖机",
+            "description": "达成零食全收集"
           },
           "clover": {
             "name": "红白四叶草纹章",

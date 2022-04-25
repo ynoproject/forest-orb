@@ -233,6 +233,7 @@
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
       "toggleImmersionMode": "イマージョンモードのオン／オフ",
+      "screenshot": "Take Screenshot",
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
@@ -530,16 +531,15 @@
             "description": "Time Trial Modeで12分以内に紫湖に到達する"
           },
           "butterfly_lesser": {
-            "name": "オーキッドバタフライブローチ",
+            "name": "サンセットバタフライブローチ",
             "description": "Butterflyの最奥に到達する"
           },
           "butterfly": {
-
-            "name": "ミッドナイトバタフライブローチ",
+            "name": "トワイライトバタフライブローチ",
             "description": "Time Trial Modeで29分以内にButterflyの最奥に到達する"
           },
           "magical_lesser": {
-            "name": "魔法少年",
+            "name": "キキ",
             "description": "マジカルに到達する"
           },
           "magical": {
@@ -547,7 +547,7 @@
             "description": " Time Trial Modeで8分30秒以内にマジカルに到達する"
           },
           "voxels": {
-            "name": "ブロック",
+            "name": "マジカルブロック",
             "description": "ブロック島に到達する"
           },
           "vending_machine": {

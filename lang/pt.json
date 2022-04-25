@@ -233,6 +233,7 @@
       "uiTheme": "Tema da Interace",
       "toggleChat": "Alternar Bate Papo",
       "toggleImmersionMode": "Alternar Modo Imersão",
+      "screenshot": "Take Screenshot",
       "settings": "Configurações",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
@@ -530,15 +531,15 @@
             "description": "Reach Lavender Waters in 12 minutes or less in Time Trial Mode"
           },
           "butterfly_lesser": {
-            "name": "Orchid Butterfly Brooch",
+            "name": "Sunset Butterfly Brooch",
             "description": "Reach the Lunar Sanctuary"
           },
           "butterfly": {
-            "name": "Midnight Butterfly Brooch",
+            "name": "Twilight Butterfly Brooch",
             "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
           },
           "magical_lesser": {
-            "name": "Junior Wizard",
+            "name": "Kiki",
             "description": "Reach Magical Passage"
           },
           "magical": {
@@ -546,7 +547,7 @@
             "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
           },
           "voxels": {
-            "name": "Voxels",
+            "name": "Magical Voxels",
             "description": "Exploit the rules of the dream realm and reach Voxel Island"
           },
           "vending_machine": {

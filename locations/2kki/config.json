@@ -232,7 +232,7 @@
 		"1302": [
 			{  "title": "Statue Forest", "coords": { "x1": 130, "y1": 135, "x2": 149, "y2": 149 }, "explorer": true },
 			{  "title": "Pastel Chalk World", "coords": { "x1": 110, "y1": 90, "x2": 149, "y2": 149 }, "explorer": true },
-			{  "title": "Dreadfull Docks", "explorer": true }
+			{  "title": "Dreadful Docks", "explorer": true }
 		],
 		"1308": [
 			{  "title": "Fluorescent Halls", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 14 }, "explorer": true },
