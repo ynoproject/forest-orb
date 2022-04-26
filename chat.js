@@ -120,11 +120,11 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     if (badge) {
       badge.classList.add('badge');
 
-      const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
-        return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+      const badgeGame = Object.keys(localizedBadges).find(game => {
+        return Object.keys(localizedBadges[game]).find(b => b === player.badge);
       });
       if (badgeGame)
-        addTooltip(badge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+        addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
 
       const badgeUrl = `images/badge/${player.badge}.png`;
       badge.style.backgroundImage = `url('${badgeUrl}')`;

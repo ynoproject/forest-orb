@@ -242,11 +242,11 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
 
   if (showBadge) {
-    const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
-      return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
+    const badgeGame = Object.keys(localizedBadges).find(game => {
+      return Object.keys(localizedBadges[game]).find(b => b === player.badge);
     });
     if (badgeGame)
-      addTooltip(playerListEntryBadge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+      addTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
   }
 
   if (partyOwnerIcon)

@@ -1,6 +1,8 @@
 let sessionId = null;
 let badgeCache;
 
+let localizedBadges;
+
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
     document.getElementById('loginErrorRow').classList.add('hidden');
@@ -158,8 +160,8 @@ function getBadgeItem(badge, includeTooltip) {
     if (badgeId === 'null')
       tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
     else {
-      if (localizedMessages.badges.gameBadges.hasOwnProperty(badge.game) && localizedMessages.badges.gameBadges[badge.game].hasOwnProperty(badgeId)) {
-        const localizedTooltip = localizedMessages.badges.gameBadges[badge.game][badgeId];
+      if (localizedBadges.hasOwnProperty(badge.game) && localizedBadges[badge.game].hasOwnProperty(badgeId)) {
+        const localizedTooltip = localizedBadges[badge.game][badgeId];
         if (badge.unlocked || !badge.secret) {
           if (localizedTooltip.name)
             tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
