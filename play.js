@@ -1009,7 +1009,6 @@ function initLocations(lang, game, callback) {
         return response.json();
     })
     .then(jsonResponse => {
-        ignoredMapIds = jsonResponse.ignoredMapIds || [];
         gameLocationUrlRoots[game] = jsonResponse.urlRoot;
         gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
         gameMapLocations[game] = jsonResponse.mapLocations || null;
@@ -1023,6 +1022,7 @@ function initLocations(lang, game, callback) {
             initLocalizedMapLocations(lang, game, callback);
         }
         if (game === gameId) {
+          ignoredMapIds = jsonResponse.ignoredMapIds || [];
           locationUrlRoot = gameLocationUrlRoots[game];
           localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
           mapLocations = gameMapLocations[game];
@@ -1032,10 +1032,11 @@ function initLocations(lang, game, callback) {
           callback();
     })
     .catch(err => {
-      ignoredMapIds = [];
       gameLocalizedMapLocations[game] = null;
-      if (game === gameId)
+      if (game === gameId) {
+        ignoredMapIds = [];
         localizedMapLocations = null;
+      }
       if (callback)
         callback();
       console.error(err);
