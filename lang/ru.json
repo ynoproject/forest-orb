@@ -422,6 +422,7 @@
       "locked": "???",
       "location": "Локация:&nbsp;",
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
+      "time": "{MINUTES}:{SECONDS}",
       "gameBadges": {
         "yume": {
           "kalimba": {
@@ -520,7 +521,7 @@
           },
           "hakoko_prime": {
             "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+            "description": "Reach and interact with Hakoko in {TIME} or less in Time Trial Mode"
           },
           "lavender_lesser": {
             "name": "Фиолетовый Камень",
@@ -528,7 +529,7 @@
           },
           "lavender": {
             "name": "Сиреневый Камень",
-            "description": "Доберитесь до Lavender Waters за 12 минут или быстрее в Time Trial Mode"
+            "description": "Доберитесь до Lavender Waters за {TIME} или быстрее в Time Trial Mode"
           },
           "butterfly_lesser": {
             "name": "Sunset Butterfly Brooch",
@@ -536,7 +537,7 @@
           },
           "butterfly": {
             "name": "Twilight Butterfly Brooch",
-            "description": "Доберитесь до Lunar Sanctuary за 29 минут или быстрее в Time Trial Mode"
+            "description": "Доберитесь до Lunar Sanctuary за {TIME} или быстрее в Time Trial Mode"
           },
           "magical_lesser": {
             "name": "Kiki",
@@ -544,7 +545,7 @@
           },
           "magical": {
             "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+            "description": "Reach Magical Passage in {TIME} or less in Time Trial Mode"
           },
           "voxels": {
             "name": "Magical Voxels",

@@ -422,6 +422,7 @@
       "locked": "？？？",
       "location": "場所：",
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
+      "time": "{MINUTES}:{SECONDS}",
       "gameBadges": {
         "yume": {
           "kalimba": {
@@ -520,7 +521,7 @@
           },
           "hakoko_prime": {
             "name": "箱子プライム",
-            "description": " Time Trial Modeで1分40秒以内に目薬屋さんで箱子に話しかける"
+            "description": " Time Trial Modeで{TIME}以内に目薬屋さんで箱子に話しかける"
           },
           "lavender_lesser": {
             "name": "パープルジェム",
@@ -528,7 +529,7 @@
           },
           "lavender": {
             "name": "ラベンダージェム",
-            "description": "Time Trial Modeで12分以内に紫湖に到達する"
+            "description": "Time Trial Modeで{TIME}以内に紫湖に到達する"
           },
           "butterfly_lesser": {
             "name": "サンセットバタフライブローチ",
@@ -536,7 +537,7 @@
           },
           "butterfly": {
             "name": "トワイライトバタフライブローチ",
-            "description": "Time Trial Modeで29分以内にButterflyの最奥に到達する"
+            "description": "Time Trial Modeで{TIME}以内にButterflyの最奥に到達する"
           },
           "magical_lesser": {
             "name": "キキ",
@@ -544,7 +545,7 @@
           },
           "magical": {
             "name": "マーリン",
-            "description": " Time Trial Modeで8分30秒以内にマジカルに到達する"
+            "description": " Time Trial Modeで{TIME}以内にマジカルに到達する"
           },
           "voxels": {
             "name": "マジカルブロック",

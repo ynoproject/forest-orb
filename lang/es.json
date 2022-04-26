@@ -422,6 +422,7 @@
       "locked": "???",
       "location": "Location:&nbsp;",
       "percentUnlocked": "{PERCENT}% of players have this badge",
+      "time": "{MINUTES}:{SECONDS}",
       "gameBadges": {
         "yume": {
           "kalimba": {
@@ -520,7 +521,7 @@
           },
           "hakoko_prime": {
             "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+            "description": "Reach and interact with Hakoko in {TIME} or less in Time Trial Mode"
           },
           "lavender_lesser": {
             "name": "Purple Gem",
@@ -528,7 +529,7 @@
           },
           "lavender": {
             "name": "Lavender Gem",
-            "description": "Reach Lavender Waters in 12 minutes or less in Time Trial Mode"
+            "description": "Reach Lavender Waters in {TIME} or less in Time Trial Mode"
           },
           "butterfly_lesser": {
             "name": "Sunset Butterfly Brooch",
@@ -536,7 +537,7 @@
           },
           "butterfly": {
             "name": "Twilight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
+            "description": "Reach the Lunar Sanctuary in {TIME} or less in Time Trial Mode"
           },
           "magical_lesser": {
             "name": "Kiki",
@@ -544,7 +545,7 @@
           },
           "magical": {
             "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+            "description": "Reach Magical Passage in {TIME} or less in Time Trial Mode"
           },
           "voxels": {
             "name": "Magical Voxels",

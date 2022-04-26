@@ -422,6 +422,7 @@
       "locked": "???",
       "location": "장소 :&nbsp;",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
+      "time": "{MINUTES}:{SECONDS}",
       "gameBadges": {
         "yume": {
           "kalimba": {
@@ -520,7 +521,7 @@
           },
           "hakoko_prime": {
             "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
+            "description": "Reach and interact with Hakoko in {TIME} or less in Time Trial Mode"
           },
           "lavender_lesser": {
             "name": "보라색 잼",
@@ -528,7 +529,7 @@
           },
           "lavender": {
             "name": "라벤더 잼",
-            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 도달하기"  
+            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 {TIME} 이내로 도달하기"  
           },
           "butterfly_lesser": {
             "name": "Sunset Butterfly Brooch",
@@ -536,7 +537,7 @@
           },
           "butterfly": {
             "name": "Twilight Butterfly Brooch",
-            "description": "Time Trial Mode를 키고 Lunar Sanctuary 서브 에리어에 29분 이내로 도달하기"
+            "description": "Time Trial Mode를 키고 Lunar Sanctuary 서브 에리어에 {TIME} 이내로 도달하기"
           },
           "magical_lesser": {
             "name": "Kiki",
@@ -544,7 +545,7 @@
           },
           "magical": {
             "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
+            "description": "Reach Magical Passage in {TIME} or less in Time Trial Mode"
           },
           "voxels": {
             "name": "Magical Voxels",

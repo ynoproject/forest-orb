@@ -167,8 +167,15 @@ function getBadgeItem(badge, includeTooltip) {
           tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         if (badge.mapId)
           tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
-        if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
-          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.description) {
+          let description = getMassagedLabel(localizedTooltip.description, true);
+          if (badge.seconds) {
+            const minutes = Math.floor(badge.seconds / 60);
+            const seconds = badge.seconds - minutes * 60;
+            description = description.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
+          }
+          tooltipContent += `<div class="tooltipContent">${description}</div>`;
+        }
       } else
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         

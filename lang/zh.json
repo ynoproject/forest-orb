@@ -422,6 +422,7 @@
       "locked": "???",
       "location": "取得位置:&nbsp;",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
+      "time": "{MINUTES}:{SECONDS}",
       "gameBadges": {
         "yume": {
           "kalimba": {
@@ -520,7 +521,7 @@
           },
           "hakoko_prime": {
             "name": "快递箱子",
-            "description": "在计时模式下，于1分40秒内抵达目药屋并与箱子互动"
+            "description": "在计时模式下，于{TIME}内抵达目药屋并与箱子互动"
           },
           "lavender_lesser": {
             "name": "紫色宝石",
@@ -528,7 +529,7 @@
           },
           "lavender": {
             "name": "浅紫色宝石",
-            "description": "在计时模式下，于12分内抵达薰衣草之湖"
+            "description": "在计时模式下，于{TIME}内抵达薰衣草之湖"
           },
           "butterfly_lesser": {
             "name": "霞光蝴蝶胸针",
@@ -536,7 +537,7 @@
           },
           "butterfly": {
             "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于29分内抵达天使之夜"
+            "description": "在计时模式下，于{TIME}内抵达天使之夜"
           },
           "magical_lesser": {
             "name": "琪琪",
@@ -544,7 +545,7 @@
           },
           "magical": {
             "name": "梅林",
-            "description": "在计时模式下，于8分30秒内抵达魔法通路"
+            "description": "在计时模式下，于{TIME}内抵达魔法通路"
           },
           "voxels": {
             "name": "魔法体素",
