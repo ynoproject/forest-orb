@@ -426,12 +426,12 @@
       "gameBadges": {
         "yume": {
           "kalimba": {
-            "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
+            "name": "칼림바 뱃지",
+            "description": "칼림바 TV 채널 시청하기"
           },
           "a_r_m": {
-            "name": "Raving in the Wilderness",
-            "description": "Experience the Aztec Rave Monkey"
+            "name": "아즈텍 원숭이 뱃지",
+            "description": "아즈텍 원숭이 이벤트 관람하기"
           },
           "boombox": {
             "name": "라디오 뱃지",
@@ -501,7 +501,7 @@
           },
           "obentou": {
             "name": "도시락 뱃지",
-            "description": "오벤토우~"
+            "description": "오벤토우ㅡ"
           },
           "compass_28": {
             "name": "28 뱃지",
@@ -516,12 +516,12 @@
             "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
           },
           "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
+            "name": "하코코 뱃지",
+            "description": "Visine World의 안약 가게에 있는 하코코 NPC와 상호작용 하기"
           },
           "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in {TIME} or less in Time Trial Mode"
+            "name": "하코코 프라임 뱃지",
+            "description": "Time Trial Mode를 키고 Visine World의 안약 가게에 있는 하코코 NPC와 {TIME} 이내로 상호작용 하기"
           },
           "lavender_lesser": {
             "name": "보라색 잼",
@@ -532,28 +532,28 @@
             "description": "Time Trial Mode를 키고 Lavender Waters 맵을 {TIME} 이내로 도달하기"  
           },
           "butterfly_lesser": {
-            "name": "Sunset Butterfly Brooch",
+            "name": "노을빛 나비 브로치",
             "description": "Lunar Sanctuary 서브 에리어 방문하기"
           },
           "butterfly": {
-            "name": "Twilight Butterfly Brooch",
+            "name": "밤하늘빛 나비 브로치",
             "description": "Time Trial Mode를 키고 Lunar Sanctuary 서브 에리어에 {TIME} 이내로 도달하기"
           },
           "magical_lesser": {
-            "name": "Kiki",
-            "description": "Reach Magical Passage"
+            "name": "키키 뱃지",
+            "description": "Magical Passage 방문하기"
           },
           "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in {TIME} or less in Time Trial Mode"
+            "name": "멀린 뱃지",
+            "description": "Time Trial Mode를 키고 Magical Passage 맵을 {TIME} 이내로 도달하기"
           },
           "voxels": {
-            "name": "Magical Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
+            "name": "매지컬 복셀 뱃지",
+            "description": "Voxel Island에 도달하기"
           },
           "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
+            "name": "자판기 뱃지",
+            "description": "Snack Gallery의 자판기를 해금하고 방문하기"
           },
           "clover": {
             "name": "심홍색 클로버 뱃지",
