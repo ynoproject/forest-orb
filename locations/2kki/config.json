@@ -256,6 +256,14 @@
 			{  "title": "Bright Forest", "coords": { "x1": 40, "y1": 235, "x2": 79, "y2": 259 }, "explorer": true },
 			{  "title": "Solstice Forest", "explorer": true }
 		],
+		"1344": [
+			{  "title": "3D Structures Path", "coords": { "x1": 195, "y1": 0, "x2": 299, "y2": 94 }, "explorer": true },
+			{  "title": "3D Structures Path", "coords": { "x1": 180, "y1": 45, "x2": 194, "y2": 94 }, "explorer": true },
+			{  "title": "3D Structures Path", "coords": { "x1": 110, "y1": 70, "x2": 179, "y2": 94 }, "explorer": true },
+			{  "title": "3D Structures Path", "coords": { "x1": 80, "y1": 80, "x2": 109, "y2": 99 }, "explorer": true },
+			{  "title": "3D Structures Path", "coords": { "x1": 10, "y1": 110, "x2": 39, "y2": 129 }, "explorer": true },
+			{  "title": "The Gutter", "explorer": true }
+		],
 		"1381": [
 			{  "title": "Mystery Library", "coords": { "x1": 83, "y1": 140, "x2": 199, "y2": 199 }, "explorer": true },
 			{  "title": "Totem Hotel", "explorer": true }
@@ -281,6 +289,21 @@
 			{  "title": "Deluxe Mask Shop", "coords": { "x1": -1, "y1": 30, "x2": -1, "y2": 44 }, "explorer": true },
 			{  "title": "Deluxe Mask Shop", "coords": { "x1": 40, "y1": 15, "x2": 59, "y2": 29 }, "explorer": true },
 			{  "title": "Blob Desert", "explorer": true }
+		],
+		"1547": [
+			{  "title": "Execution Grounds", "coords": { "x1": 20, "y1": -1, "x2": 39, "y2": -1 }, "explorer": true },
+			{  "title": "Cactus Desert", "explorer": true }
+		],
+		"1588": [
+			{  "title": "Eyeball Cherry Fields", "coords": { "x1": -1, "y1": 105, "x2": -1, "y2": 130 }, "explorer": true },
+			{  "title": "Rusty Urban Complex", "explorer": true }
+		],
+		"1590": [
+			{  "title": "Dark Nexus", "coords": { "x1": 92, "y1": 0, "x2": 141, "y2": 30 }, "explorer": true },
+			{  "title": "Eyeball Cherry Fields", "coords": { "x1": 63, "y1": 0, "x2": 82, "y2": 14 }, "explorer": true },
+			{  "title": "Wind Turbine Plateau", "coords": { "x1": 92, "y1": 32, "x2": 111, "y2": 46 }, "explorer": true },
+			{  "title": "Garden of Treachery: Visine Corridor", "urlTitle": "Garden_of_Treachery#Visine_Corridor", "coords": { "x1": 0, "y1": 32, "x2": 82, "y2": 46 }, "explorer": true },
+			{  "title": "Garden of Treachery: Stairs of Wrath", "urlTitle": "Garden_of_Treachery#Stairs_of_Wrath", "explorer": true }
 		],
 		"1621": [
 			{  "title": "Silhouette Complex", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 54 }, "explorer": true },
