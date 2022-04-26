@@ -97,7 +97,7 @@ function updateEventLocationList(ignoreLocationCheck) {
           const eventLocationTypeContainer = document.createElement('div');
           
           const eventLocationTypeLabel = document.createElement('h3');
-          eventLocationTypeLabel.innerText = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
+          eventLocationTypeLabel.innerHTML = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
 
           eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
           eventLocationList.appendChild(eventLocationTypeContainer);
@@ -149,7 +149,7 @@ function updateEventLocationList(ignoreLocationCheck) {
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
         pointsContainer.classList.add('infoLabel');
-        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', eventLocation.exp || 0);
+        pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', eventLocation.exp || 0);
 
         const checkbox = document.createElement('div');
         checkbox.classList.add('checkbox');

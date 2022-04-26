@@ -159,7 +159,7 @@ body {
 }
 
 .ru-spacing-fix {
-  letter-spacing: -6px !important;
+  letter-spacing: -0.3em !important;
   padding-right: 2px;
 }
 
