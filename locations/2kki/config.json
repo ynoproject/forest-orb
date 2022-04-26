@@ -53,6 +53,8 @@
 		"0243": { "title": "Visine World: Eye Shop", "urlTitle": "Visine_World", "explorer": true },
 		"0249": "Plated Snow Country",
 		"0250": "Plated Snow Country",
+		"0263": { "title": "Magnet Room: Zalgo's Room?", "urlTitle": "Magnet_Room", "explorer": true },
+		"0266": { "title": "Magnet Room: Zalgo's Room", "urlTitle": "Magnet_Room", "explorer": true },
 		"0274": { "title": "Underwater Amusement Park", "explorer": true },
 		"0317": [
 			{  "title": "Closet Pinwheel Path", "coords": { "x1": -1, "y1": 75, "x2": -1, "y2": 151 }, "explorer": true },
