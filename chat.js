@@ -119,6 +119,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     if (badge) {
       badge.classList.add('badge');
+      badge.classList.add('nameBadge');
 
       const badgeGame = Object.keys(localizedBadges).find(game => {
         return Object.keys(localizedBadges[game]).find(b => b === player.badge);

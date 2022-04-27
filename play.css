@@ -989,7 +989,7 @@ body.fullBg #background {
   margin: 0 2px;
 }
 
-.nameText + .badge {
+.nameBadge {
   display: inline-block;
   width: 18.5px;
   height: 18.5px;
@@ -998,7 +998,7 @@ body.fullBg #background {
   vertical-align: middle;
 }
 
-.nameText + .badge > .badgeOverlay {
+.nameBadge > .badgeOverlay {
   mask-size: contain;
 }
 

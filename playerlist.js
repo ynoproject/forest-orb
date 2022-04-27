@@ -70,6 +70,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     if (includeBadge && player.badge) {
       badge = document.createElement('div');
       badge.classList.add('badge');
+      badge.classList.add('nameBadge');
 
       badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
 

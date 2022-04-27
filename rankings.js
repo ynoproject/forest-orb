@@ -49,7 +49,12 @@ function fetchAndPopulateRankingCategories() {
         if (!localizedMessages.rankings.categories.hasOwnProperty(categoryId))
           continue;
 
-        const firstSubCategoryId = category.subCategories[0].subCategoryId;
+        let defaultSubCategoryId = category.subCategories[0].subCategoryId;
+        if (eventPeriodCache) {
+          const currentPeriodSubCategory = category.subCategories.find(sc => sc.subCategoryId == eventPeriodCache.periodOrdinal);
+          if (currentPeriodSubCategory)
+            defaultSubCategoryId = currentPeriodSubCategory;
+        }
 
         const tab = document.createElement('div');
         tab.classList.add('rankingCategoryTab');
@@ -66,10 +71,10 @@ function fetchAndPopulateRankingCategories() {
           for (let subTab of rankingSubCategoryTabs) {
             const isCategorySubTab = subTab.dataset.categoryId === categoryId;
             subTab.classList.toggle('hidden', !isCategorySubTab);
-            subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === firstSubCategoryId);
+            subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
           }
 
-          fetchAndLoadRankings(categoryId, firstSubCategoryId);
+          fetchAndLoadRankings(categoryId, defaultSubCategoryId);
         };
 
         const tabLabel = document.createElement('label');
@@ -258,7 +263,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           initUiThemeContainerStyles(systemName, false, () => initUiThemeFontStyles(systemName, 0, false));
 
           const playerCell = document.createElement('td');
-          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName, rank: ranking.rank, account: true, badge: ranking.badge }, false, true, true);
+          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge }, false, true, true);
 
           const valueCell = document.createElement('td');
           valueCell.innerHTML = getInfoLabel(valueFunc(ranking));
