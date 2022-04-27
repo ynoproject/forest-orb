@@ -1905,6 +1905,10 @@ form .uiTheme {
   padding-left: 4px;
 }
 
+#rankingsTable tr.highlight td {
+  background-color: var(--alt-color-t);
+}
+
 #rankingsPagination {
   margin-top: 8px;
 }

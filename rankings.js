@@ -248,6 +248,8 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
 
         for (let ranking of rankings) {
           const rankingRow = document.createElement('tr');
+          if (playerData?.account && ranking.name === playerData?.name)
+            rankingRow.classList.add('highlight');
 
           const positionCell = document.createElement('td');
           positionCell.innerHTML = getInfoLabel(ranking.position);
