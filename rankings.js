@@ -39,15 +39,16 @@ function fetchAndPopulateRankingCategories() {
       if (!rankingCategoryId)
         rankingCategoryId = rankingCategoryTabs.querySelector('.active')?.dataset.categoryId || rankingCategoryCache[0].categoryId;
       if (!rankingSubCategoryId)
-        rankingSubCategoryId = rankingSubCategoryTabs.querySelector('.active')?.dataset.subCategoryId || rankingCategoryCache.find(c => c.categoryId === activeCategoryId).subCategories[0].subCategoryId;
+        rankingSubCategoryId = rankingSubCategoryTabs.querySelector('.active')?.dataset.subCategoryId || rankingCategoryCache.find(c => c.categoryId === rankingCategoryId).subCategories[0].subCategoryId;
 
       rankingCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
+        const categoryId = category.categoryId;
+        
         if (!localizedMessages.rankings.categories.hasOwnProperty(categoryId))
           continue;
 
-        const categoryId = category.categoryId;
         const firstSubCategoryId = category.subCategories[0].subCategoryId;
 
         const tab = document.createElement('div');
@@ -176,7 +177,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           firstPageLink.classList.add('rankingPageLink');
           firstPageLink.classList.add('rankingPageSkipLink');
           firstPageLink.href = 'javascript:void(0);';
-          firstPageLink.onclick = () => fetchAndPopulateRankings(categoryId, subCategoryId, 1);
+          firstPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, 1);
           firstPageLink.innerText = '◀◀';
           rankingsPaginationContainer.appendChild(firstPageLink);
 
@@ -184,7 +185,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           prevPageLink.classList.add('rankingPageLink');
           prevPageLink.classList.add('rankingPageLink');
           prevPageLink.href = 'javascript:void(0);';
-          prevPageLink.onclick = () => fetchAndPopulateRankings(categoryId, subCategoryId, page - 1);
+          prevPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, page - 1);
           prevPageLink.innerText = '◀';
           rankingsPaginationContainer.appendChild(prevPageLink);
         }
@@ -197,7 +198,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
             const pageLinkPage = p;
             pageLink = document.createElement('a');
             pageLink.href = 'javascript:void(0);'
-            pageLink.onclick = () => fetchAndPopulateRankings(categoryId, subCategoryId, pageLinkPage);
+            pageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, pageLinkPage);
           }
           pageLink.classList.add('rankingPageLink');
           pageLink.innerText = p;
@@ -209,7 +210,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           nextPageLink.classList.add('rankingPageLink');
           nextPageLink.classList.add('rankingPageLink');
           nextPageLink.href = 'javascript:void(0);';
-          nextPageLink.onclick = () => fetchAndPopulateRankings(categoryId, subCategoryId, page + 1);
+          nextPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, page + 1);
           nextPageLink.innerText = '▶';
           rankingsPaginationContainer.appendChild(nextPageLink);
 
@@ -217,7 +218,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           lastPageLink.classList.add('rankingPageLink');
           lastPageLink.classList.add('rankingPageSkipLink');
           lastPageLink.href = 'javascript:void(0);';
-          lastPageLink.onclick = () => fetchAndPopulateRankings(categoryId, subCategoryId, pageCount);
+          lastPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, pageCount);
           lastPageLink.innerText = '▶▶';
           rankingsPaginationContainer.appendChild(lastPageLink);
         }
