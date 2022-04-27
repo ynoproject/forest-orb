@@ -68,7 +68,7 @@ function fetchAndPopulateRankingCategories() {
           tab.classList.add('active');
 
           rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
-          for (let subTab of rankingSubCategoryTabs) {
+          for (let subTab of rankingSubCategoryTabs.children) {
             const isCategorySubTab = subTab.dataset.categoryId === categoryId;
             subTab.classList.toggle('hidden', !isCategorySubTab);
             subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
