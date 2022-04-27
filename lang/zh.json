@@ -101,6 +101,7 @@
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
           "toggleTabToChat": "开启Tab键聊天",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "开启网络攻击保护"
         },
         "notificationSettings": "弹框通知设置",
@@ -222,6 +223,9 @@
         "title": "梦远征",
         "rankExp": "下一等级",
         "weekExp": "本周点数"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,6 +249,7 @@
         "disbandParty": "解散队伍"
       },
       "eventLocations": "梦远征",
+      "rankings": "Rankings",
       "nexus": "返回到门的世界"
     }
   },
@@ -423,6 +428,39 @@
       "location": "取得位置:&nbsp;",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrials": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "free": "Free Expeditions"
+      }
     },
     "2kki": {
       "explorerLink": {

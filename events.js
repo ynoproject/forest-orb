@@ -251,7 +251,13 @@ function checkEventLocations() {
   if (sessionId && cachedLocations && eventLocationCache.length) {
     const incompleteEventLocations = eventLocationCache.filter(el => !el.complete);
     const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
-    const eventLocationMatch = cachedLocations.map(l => l.title).find(l => incompleteEventLocationNames.indexOf(l) > -1);
+    const eventLocationMatch = cachedLocations.map(l => {
+      let locationName = l.title;
+      const colonIndex = locationName.indexOf(':');
+      if (colonIndex > -1)
+        locationName = locationName.slice(0, colonIndex);
+      return locationName;
+    }).find(l => incompleteEventLocationNames.indexOf(l) > -1);
     if (eventLocationMatch)
       claimEventLocationPoints(eventLocationMatch, incompleteEventLocations.find(el => el.title === eventLocationMatch).type === -1);
   }

@@ -101,6 +101,7 @@
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleTabToChat": "タブキーを 押して チャット",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "スパム対策"
         },
         "notificationSettings": "通知 設定",
@@ -222,6 +223,9 @@
         "title": "ドリームラリー",
         "rankExp": "Next Rank",
         "weekExp": "今週のExP"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,6 +249,7 @@
         "disbandParty": "パーティーを解散する"
       },
       "eventLocations": "ドリームラリー",
+      "rankings": "Rankings",
       "nexus": "扉部屋へ戻る"
     }
   },
@@ -423,6 +428,39 @@
       "location": "場所：",
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "time": "{MINUTES}:{SECONDS}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrials": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "free": "Free Expeditions"
+      }
     },
     "2kki": {
       "explorerLink": {

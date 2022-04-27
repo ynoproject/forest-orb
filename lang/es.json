@@ -101,6 +101,7 @@
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleTabToChat": "Presiona Tab para chatear",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Configuración de Notificaciones",
@@ -222,6 +223,9 @@
         "title": "Expeditions",
         "rankExp": "Next Rank",
         "weekExp": "ExP This Week"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,6 +249,7 @@
         "disbandParty": "Eliminar Equipo"
       },
       "eventLocations": "Expeditions",
+      "rankings": "Rankings",
       "nexus": "Regresar al Nexo"
     }
   },
@@ -423,6 +428,39 @@
       "location": "Location:&nbsp;",
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "time": "{MINUTES}:{SECONDS}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrials": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "free": "Free Expeditions"
+      }
     },
     "2kki": {
       "explorerLink": {

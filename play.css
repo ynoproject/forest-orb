@@ -216,15 +216,15 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .rankingCategoryTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, .ynomojiButton:hover {
+  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, .rankingCategoryTab:hover .rankingCategoryTabLabel, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -501,6 +501,10 @@ body.fullBg #background {
 
 #headerIconContainer .icon, #footerIconContainer .icon {
   margin-left: 8px;
+}
+
+#headerIconContainer .iconButton {
+  margin-right: 8px;
 }
 
 #footerIconContainer {
@@ -985,16 +989,16 @@ body.fullBg #background {
   margin: 0 2px;
 }
 
-.message .badge {
+.nameText + .badge {
   display: inline-block;
   width: 18.5px;
   height: 18.5px;
-  margin: -4px 0 0 0;
+  margin: -4px 0 0 2px;
   background-size: contain;
   vertical-align: middle;
 }
 
-.message .badge > .badgeOverlay {
+.nameText + .badge > .badgeOverlay {
   mask-size: contain;
 }
 
@@ -1131,7 +1135,7 @@ body.fullBg #background {
   font-weight: normal;
 }
 
-#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage {
+#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage {
   border: 8px solid transparent;
 }
 
@@ -1264,7 +1268,7 @@ body.fullBg #background {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1312,7 +1316,7 @@ body.fullBg #background {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1820,6 +1824,101 @@ form .uiTheme {
   white-space: nowrap;
 }
 
+#rankingCategoryTabs {
+  display: flex;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.rankingCategoryTab {
+  display: flex;
+  flex-wrap: wrap;
+  height: 22px;
+  padding: 4px;
+  margin-right: 4px;
+  pointer-events: all;
+  cursor: pointer;
+  opacity: 0.625;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.rankingCategoryTab:hover {
+  opacity: 1;
+}
+
+.rankingCategoryTab.active {
+  z-index: 2;
+  pointer-events: none;
+  cursor: default;
+  opacity: 1;
+}
+
+.rankingCategoryTabLabel {
+  pointer-events: none;
+  font-weight: normal;
+}
+
+#rankingSubCategoryTabs {
+  width: 100%;
+}
+
+#rankingsTable, #rankingsTable tr {
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#rankingsTable {
+  width: 100%;
+  border: 12px solid transparent;
+}
+
+#rankingsTable th, #rankingsTable td {
+  border: 8px solid transparent;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#rankingsTable th {
+  border-top-width: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#rankingsTable th:first-child, #rankingsTable th:last-child, #rankingsTable td:first-child, #rankingsTable td:last-child {
+   text-align: center;
+}
+
+#rankingsTable th:first-child, #rankingsTable td:first-child {
+  border-left-width: 0;
+}
+
+#rankingsTable td:first-child, #rankingsTable td:last-child {
+  padding: 0 8px;
+}
+
+#rankingsTable td:last-child {
+  text-align: right;
+}
+
+#rankingsTable th:nth-child(2), #rankingsTable td:nth-child(2) {
+  width: 100%;
+  padding-left: 4px;
+}
+
+#rankingsPagination {
+  margin-top: 8px;
+}
+
+.rankingPageLink {
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+.rankingPageSkipLink {
+  letter-spacing: -0.15em;
+  padding-right: 0.15em;
+}
+
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
@@ -2272,7 +2371,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .rankingCategoryTab, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
     border-color: unset !important;
   }
 
@@ -2294,8 +2393,23 @@ form .uiTheme {
     border-bottom-color: unset !important;
   }
 
+  #rankingsTable th, #rankingsTable td {
+    border-top-color: unset !important;
+    border-right: 0;
+    border-bottom: 0;
+    border-left-color: unset !important;
+  }
+  
+  #rankingsTable th:first-child, #rankingsTable td:first-child {
+    border-left: 0;
+  }
+  
+  #rankingsTable th {
+    border-top: 0;
+  }
+
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .rankingCategoryTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label, th {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }

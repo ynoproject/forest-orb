@@ -121,6 +121,10 @@
 			{ "title": "Extraterrestrial Cliffside", "coords": { "x1": 180, "y1": 72, "x2": 309, "y2": 119 }, "explorer": true },
 			{ "title": "Riverside Waste Facility", "explorer": true }
 		],
+		"0852": [
+			{  "title": "Blob Desert", "coords": { "x1": 7, "y1": 3, "x2": 26, "y2": 17 }, "explorer": true },
+			{  "title": "Aquatic Cafe", "explorer": true }
+		],
 		"0859": [
 			{  "title": "Alien Valley", "coords": { "x1": 0, "y1": 0, "x2": 79, "y2": 14 }, "explorer": true },
 			{  "title": "Alien Valley", "coords": { "x1": -1, "y1": 30, "x2": -1, "y2": 60 }, "explorer": true },

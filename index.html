@@ -42,6 +42,9 @@
         </div>
       </div>
       <div id="headerIconContainer">
+        <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings" style="display: none">
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
+        </button>
         <button id="loginButton" type="button" class="unselectable" data-i18n="[html]account.login">Login</button>
         <button id="logoutButton" type="button" class="unselectable" data-i18n="[html]account.logout">Logout</button>
       </div>
@@ -148,19 +151,19 @@
               <div id="chatHeader" class="tabHeader">
                 <div id="chatTabs" class="subTabs">
                   <div id="chatTabAll" class="chatTab subTab active">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.all">All</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.all">All</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabMap" class="chatTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.map">Map</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.map">Map</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabGlobal" class="chatTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.global">Global</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.global">Global</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabParty" class="chatTab partySubTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.party">Party</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.party">Party</small>
                     <div class="subTabBg"></div>
                   </div>
                 </div>
@@ -183,11 +186,11 @@
               <div id="playersHeader" class="tabHeader">
                 <div id="playersTabs" class="subTabs">
                   <div id="playersTabMap" class="playersTab subTab active">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.map">Map</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.map">Map</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="playersTabParty" class="playersTab partySubTab subTab">
-                    <small class="playersTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.party">Party</small>
+                    <small class="playersTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.party">Party</small>
                     <div class="subTabBg"></div>
                   </div>
                 </div>
@@ -360,6 +363,12 @@
                 <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleTabToChat">Press Tab to Chat</label>
                 <div>
                   <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="toggleRankingsButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleRankings">Rankings</label>
+                <div>
+                  <button id="toggleRankingsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
@@ -599,6 +608,27 @@
             <div id="eventLocationList" class="scrollableContainer"></div>
           </div>
         </div>
+        <div id="rankingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.rankings.title">Rankings</h1>
+          </div>
+          <div class="modalContent">
+            <div id="rankingCategoryTabs"></div>
+            <div id="rankingSubCategoryTabs" class="subTabs"></div>
+            <table id="rankingsTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Player</th>
+                  <th id="rankingValueHeader"></th>
+                </tr>
+              </thead>
+              <tbody id="rankings"></tbody>
+            </table>
+            <div id="rankingsPagination"></div>
+          </div>
+        </div>
         <div class="modalOverlay"></div>
       </div>
       <div id="toastContainer"></div>
@@ -630,6 +660,7 @@
   <script type="text/javascript" src="savedata.js"></script>
   <script type="text/javascript" src="init.js"></script>
   <script type="text/javascript" src="events.js"></script>
+  <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="account.js"></script>
 </body>
 </html>

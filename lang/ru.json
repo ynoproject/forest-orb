@@ -101,6 +101,7 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "Защита от Спама"
         },
         "notificationSettings": "Уведомления",
@@ -222,6 +223,9 @@
         "title": "Походы",
         "rankExp": "До след. Ранга",
         "weekExp": "Опыта за Неделю"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,6 +249,7 @@
         "disbandParty": "Распустить Группу"
       },
       "eventLocations": "Походы",
+      "rankings": "Rankings",
       "nexus": "Вернуться на Главную страницу"
     }
   },
@@ -423,6 +428,39 @@
       "location": "Локация:&nbsp;",
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
       "time": "{MINUTES}:{SECONDS}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrials": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "free": "Free Expeditions"
+      }
     },
     "2kki": {
       "explorerLink": {

@@ -34,7 +34,8 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
-  disableFloodProtection: false
+  disableFloodProtection: false,
+  hideRankings: false
 };
 
 let config = {
@@ -122,7 +123,7 @@ function fetchAndUpdatePlayerInfo() {
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
         if (isLogin) {
           trySetChatName(playerName);
-          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
+          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
           if (eventPeriodCache)
             updateEventLocationList();
           else
@@ -563,6 +564,14 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('toggleRankingsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('rankingsButton').classList.toggle('hidden', toggled);
+  globalConfig.hideRankings = toggled;
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('floodProtectionButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._ToggleFloodDefender();
@@ -572,6 +581,7 @@ initAccountControls();
 initSaveDataControls();
 initPartyControls();
 initEventControls();
+initRankingControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
@@ -943,9 +953,10 @@ function initLocalization(isInitial) {
           updatePlayerCount(playerCount);
       }
 
-      if (isInitial)
+      if (isInitial) {
         initLocations(globalConfig.lang, gameId);
-      else if (localizedMapLocations)
+        fetchAndPopulateRankingCategories();
+      } else if (localizedMapLocations)
         initLocalizedMapLocations(globalConfig.lang, gameId);
 
       if (eventPeriodCache)

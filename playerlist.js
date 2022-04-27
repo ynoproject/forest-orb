@@ -23,7 +23,7 @@ let spriteCache = {};
 let faviconCache = {};
 let playerSpriteCache = {};
 
-function getPlayerName(player, includeMarkers, asHtml) {
+function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
   const isPlayerObj = typeof player === 'object';
   let playerName = isPlayerObj ? player.name : player;
   const unnamed = !playerName;
@@ -63,6 +63,35 @@ function getPlayerName(player, includeMarkers, asHtml) {
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameTextContainer.appendChild(rankIcon);
     }
+
+    let badge = null;
+    let badgeOverlay = null;
+
+    if (includeBadge && player.badge) {
+      badge = document.createElement('div');
+      badge.classList.add('badge');
+
+      badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
+
+      if (localizedBadges) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === player.badge);
+        });
+        if (badgeGame)
+          addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+      }
+
+      const badgeUrl = `images/badge/${player.badge}.png`;
+      badge.style.backgroundImage = `url('${badgeUrl}')`;
+
+      if (badgeOverlay) {
+        badgeOverlay.classList.add('badgeOverlay');
+        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+        badge.appendChild(badgeOverlay);
+      }
+
+      nameTextContainer.appendChild(badge);
+    }
     
     if (player.systemName) {
       let systemName = player.systemName.replace(/'/g, '');
@@ -78,6 +107,8 @@ function getPlayerName(player, includeMarkers, asHtml) {
       }
       if (rankIcon)
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+      if (badgeOverlay)
+        badgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
     }
 
     return nameTextContainer.outerHTML;
@@ -174,14 +205,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       banAction.classList.add('listEntryAction');
       banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
-        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true, true)}?`)) {
+        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true, false, true)}?`)) {
           apiFetch(`admin?command=ban&player=${uuid}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', true, systemName))
+            .then(_ => showToastMessage(`${getPlayerName(player, true, false, true)} has been banned.`, 'ban', true, systemName))
             .catch(err => console.error(err));
         }
       };

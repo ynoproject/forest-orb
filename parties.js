@@ -149,7 +149,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
   if (typeof partyMember === 'string')
     partyMember = party ? party.members.find(m => m.uuid === partyMember) : null;
 
-  let partyMemberName = getPlayerName(partyMember, includeRoles, asHtml);
+  let partyMemberName = getPlayerName(partyMember, includeRoles, false, asHtml);
 
   if (asHtml) {
     if (partyMember.uuid === party.ownerUuid) {

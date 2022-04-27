@@ -101,6 +101,7 @@
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleTabToChat": "탭을 눌러 채팅하기",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
         "notificationSettings": "알람 설정",
@@ -222,6 +223,9 @@
         "title": "탐험",
         "rankExp": "다음 랭크",
         "weekExp": "이번주의 경험치"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,6 +249,7 @@
         "disbandParty": "파티 해산"
       },
       "eventLocations": "탐험",
+      "rankings": "Rankings",
       "nexus": "넥서스로 돌아가기"
     }
   },
@@ -423,6 +428,39 @@
       "location": "장소 :&nbsp;",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "time": "{MINUTES}:{SECONDS}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrials": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "free": "Free Expeditions"
+      }
     },
     "2kki": {
       "explorerLink": {
