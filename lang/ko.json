@@ -446,6 +446,11 @@
           "valueLabel": "# of Expeditions",
           "value": "{NUMBER}"
         },
+        "freeEventLocationCount": {
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
         "eventLocationCompletion": {
           "label": "Expedition Completion",
           "valueLabel": "Completion",
@@ -458,8 +463,7 @@
         }
       },
       "subCategories": {
-        "all": "All",
-        "free": "Free Expeditions"
+        "all": "All"
       }
     },
     "2kki": {
