@@ -456,7 +456,7 @@
           "valueLabel": "Completion",
           "value": "{PERCENT}%"
         },
-        "timeTrials": {
+        "timeTrial": {
           "label": "Time Trials",
           "valueLabel": "Completion Time",
           "value": "{MINUTES}:{SECONDS}"

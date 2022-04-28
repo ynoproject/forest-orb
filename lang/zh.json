@@ -456,7 +456,7 @@
           "valueLabel": "地图踏破率",
           "value": "{PERCENT}%"
         },
-        "timeTrials": {
+        "timeTrial": {
           "label": "计时模式",
           "valueLabel": "用时",
           "value": "{MINUTES}:{SECONDS}"

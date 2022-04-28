@@ -1312,7 +1312,7 @@ body.fullBg #background {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, .subTab.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 
@@ -1826,14 +1826,17 @@ form .uiTheme {
 
 #rankingCategoryTabs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
 }
 
 .rankingCategoryTab {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  height: 22px;
+  text-align: center;
   padding: 4px;
   margin-right: 4px;
   pointer-events: all;
@@ -1859,6 +1862,7 @@ form .uiTheme {
 }
 
 #rankingSubCategoryTabs {
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -1893,6 +1897,7 @@ form .uiTheme {
 }
 
 #rankingsTable td:first-child, #rankingsTable td:last-child {
+  white-space: nowrap;
   padding: 0 8px;
 }
 

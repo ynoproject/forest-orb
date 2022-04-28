@@ -42,6 +42,7 @@ function fetchAndPopulateRankingCategories() {
         rankingSubCategoryId = rankingSubCategoryTabs.querySelector('.active')?.dataset.subCategoryId || rankingCategoryCache.find(c => c.categoryId === rankingCategoryId).subCategories[0].subCategoryId;
 
       rankingCategoryTabs.innerHTML = '';
+      rankingSubCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
         const categoryId = category.categoryId;
@@ -63,18 +64,22 @@ function fetchAndPopulateRankingCategories() {
         tab.onclick = function () {
           if (tab.dataset.categoryId === rankingCategoryId)
             return;
-            
-          rankingCategoryTabs.querySelector('.active')?.classList.remove('active');
-          tab.classList.add('active');
 
-          rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
-          for (let subTab of rankingSubCategoryTabs) {
-            const isCategorySubTab = subTab.dataset.categoryId === categoryId;
-            subTab.classList.toggle('hidden', !isCategorySubTab);
-            subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
-          }
+          fetchAndLoadRankings(categoryId, defaultSubCategoryId)
+            .then(success => {
+              if (!success)
+                return;
 
-          fetchAndLoadRankings(categoryId, defaultSubCategoryId);
+              rankingCategoryTabs.querySelector('.active')?.classList.remove('active');
+              tab.classList.add('active');
+    
+              rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
+              for (let subTab of rankingSubCategoryTabs.children) {
+                const isCategorySubTab = subTab.dataset.categoryId === categoryId;
+                subTab.classList.toggle('hidden', !isCategorySubTab);
+                subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
+              }
+            });
         };
 
         const tabLabel = document.createElement('label');
@@ -100,18 +105,26 @@ function fetchAndPopulateRankingCategories() {
             if (!subCategoryName)
               continue;
             subCategoryLabel = getMassagedLabel(subCategoryName, true);
-          } else
-            subCategoryLabel = getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
+          } else {
+            subCategoryLabel = categoryId === 'timeTrial'
+              ? getLocalizedMapLocations(gameId, subCategoryId.padStart(4, '0'), '0000', 0, 0, "&nbsp;|&nbsp;")
+              : getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
+          }
           
           const subTab = document.createElement('div');
           subTab.classList.add('subTab');
           subTab.onclick = function () {
             if (subTab.dataset.subCategoryId === rankingSubCategoryId)
               return;
-            rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
-            subTab.classList.add('active');
 
-            fetchAndLoadRankings(categoryId, subCategoryId);
+            fetchAndLoadRankings(categoryId, subCategoryId)
+              .then(success => {
+                if (!success)
+                  return;
+
+                rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
+                subTab.classList.add('active');
+              });
           };
           
           const subTabLabel = document.createElement('small');
@@ -168,6 +181,9 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
         return response.json();
       })
       .then(rankings => {
+        if (!rankings)
+          resolve(false);
+
         const rankingsContainer = document.getElementById('rankings');
         const rankingsPaginationContainer = document.getElementById('rankingsPagination');
 
@@ -239,12 +255,12 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
         if (valueTemplate.indexOf('{NUMBER}') > -1)
           valueFunc = ranking => valueTemplate.replace('{NUMBER}', ranking.valueInt);
         else if (valueTemplate.indexOf('{PERCENT}') > -1)
-          valueFunc = ranking => valueTemplate.replace('{PERCENT}', ranking.valueFloat);
+          valueFunc = ranking => valueTemplate.replace('{PERCENT}', Math.round(ranking.valueFloat * 10000) / 100);
         else if (valueTemplate.indexOf('{MINUTES}') > -1 || valueTemplate.indexOf('{SECONDS}') > -1) {
           valueFunc = ranking => {
             const minutes = Math.floor(ranking.valueInt / 60);
             const seconds = ranking.valueInt - minutes * 60;
-            valueTemplate.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0'));
+            return valueTemplate.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0'));
           };
         } else
           valueFunc = ranking => ranking.valueInt;
@@ -259,11 +275,11 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           const positionCell = document.createElement('td');
           positionCell.innerHTML = getInfoLabel(ranking.position);
 
-          const systemName = ranking.systemName.replace(/'/g, "");
+          const systemName = (ranking.systemName || getDefaultUiTheme()).replace(/'/g, "");
           initUiThemeContainerStyles(systemName, false, () => initUiThemeFontStyles(systemName, 0, false));
 
           const playerCell = document.createElement('td');
-          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge }, false, true, true);
+          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge || 'null' }, false, true, true);
 
           const valueCell = document.createElement('td');
           valueCell.innerHTML = getInfoLabel(valueFunc(ranking));
