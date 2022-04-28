@@ -429,13 +429,28 @@ document.getElementById('enterNameForm').onsubmit = function () {
       match = currentMatch;
     if (match && !match[1].endsWith(':')) {
       const ynomojis = document.getElementsByClassName('ynomojiButton');
+      const lcMatch = match[1].toLowerCase();
       let hasMatch = false;
       for (let ynomoji of ynomojis) {
-        const visible = ynomoji.dataset.ynomojiId.startsWith(match[1]);
+        const ynomojiId = ynomoji.dataset.ynomojiId;
+        const matchStrings = [ ynomojiId ];
+        const matchPattern = /[A-Z0-9]+/g;
+        let matchResult;
+        while ((matchResult = matchPattern.exec(ynomojiId)) !== null) {
+          if (matchResult.index > 0)
+            matchStrings.push(ynomojiId.slice(matchResult.index));
+        }
+        let visible = false;
+        for (let matchString of matchStrings) {
+          if (matchString.toLowerCase().startsWith(lcMatch)) {
+            visible = true;
+            break;
+          }
+        }
         ynomoji.classList.toggle('hidden', !visible);
         hasMatch |= visible;
       }
-      if (match[1])
+      if (lcMatch)
         ynomojiContainer.classList.toggle('hidden', !hasMatch);
       else {
         const currentInputValue = this.value;
