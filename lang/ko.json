@@ -225,7 +225,7 @@
         "weekExp": "이번주의 경험치"
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "랭킹"
       }
     },
     "tooltips": {
@@ -237,7 +237,7 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleImmersionMode": "몰입 모드 활성화",
-      "screenshot": "Take Screenshot",
+      "screenshot": "스크린샷 찍기",
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
@@ -249,7 +249,7 @@
         "disbandParty": "파티 해산"
       },
       "eventLocations": "탐험",
-      "rankings": "Rankings",
+      "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기"
     }
   },
@@ -432,38 +432,38 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "뱃지",
+          "valueLabel": "# 개의 뱃지",
           "value": "{NUMBER}"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
-          "value": "{NUMBER} ExP"
+          "label": "경험치",
+          "valueLabel": "경험치",
+          "value": "{NUMBER} 경험치"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "탐험",
+          "valueLabel": "# 번의 탐험",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "자유 탐험",
+          "valueLabel": "# 번의 자유 탐험",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "탐험 성공",
+          "valueLabel": "성공률",
           "value": "{PERCENT}%"
         },
         "timeTrials": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Time Trial Mode",
+          "valueLabel": "성공 시간",
           "value": "{MINUTES}:{SECONDS}"
         }
       },
       "subCategories": {
-        "all": "All"
+        "all": "전체"
       }
     },
     "2kki": {
