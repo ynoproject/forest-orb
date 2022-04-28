@@ -239,7 +239,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
         if (valueTemplate.indexOf('{NUMBER}') > -1)
           valueFunc = ranking => valueTemplate.replace('{NUMBER}', ranking.valueInt);
         else if (valueTemplate.indexOf('{PERCENT}') > -1)
-          valueFunc = ranking => valueTemplate.replace('{PERCENT}', ranking.valueFloat);
+          valueFunc = ranking => valueTemplate.replace('{PERCENT}', Math.round(ranking.valueFloat * 1000) / 1000);
         else if (valueTemplate.indexOf('{MINUTES}') > -1 || valueTemplate.indexOf('{SECONDS}') > -1) {
           valueFunc = ranking => {
             const minutes = Math.floor(ranking.valueInt / 60);
@@ -259,11 +259,11 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           const positionCell = document.createElement('td');
           positionCell.innerHTML = getInfoLabel(ranking.position);
 
-          const systemName = ranking.systemName.replace(/'/g, "");
+          const systemName = (ranking.systemName || getDefaultUiTheme()).replace(/'/g, "");
           initUiThemeContainerStyles(systemName, false, () => initUiThemeFontStyles(systemName, 0, false));
 
           const playerCell = document.createElement('td');
-          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge }, false, true, true);
+          playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge || 'null' }, false, true, true);
 
           const valueCell = document.createElement('td');
           valueCell.innerHTML = getInfoLabel(valueFunc(ranking));

@@ -67,7 +67,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     let badge = null;
     let badgeOverlay = null;
 
-    if (includeBadge && player.badge) {
+    if (includeBadge && player.badge !== 'null') {
       badge = document.createElement('div');
       badge.classList.add('badge');
       badge.classList.add('nameBadge');

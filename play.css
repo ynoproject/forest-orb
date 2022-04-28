@@ -1826,14 +1826,17 @@ form .uiTheme {
 
 #rankingCategoryTabs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
 }
 
 .rankingCategoryTab {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  height: 22px;
+  text-align: center;
   padding: 4px;
   margin-right: 4px;
   pointer-events: all;
@@ -1893,6 +1896,7 @@ form .uiTheme {
 }
 
 #rankingsTable td:first-child, #rankingsTable td:last-child {
+  white-space: nowrap;
   padding: 0 8px;
 }
 
