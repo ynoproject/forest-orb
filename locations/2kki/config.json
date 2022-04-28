@@ -111,6 +111,7 @@
 			{ "title": "Gray Relic World", "coords": { "x1": -1, "y1": 60, "x2": -1, "y2": 99 }, "explorer": true },
 			{ "title": "Escalator", "explorer": true }
 		],
+		"0788": { "title": "Ocean Storehouse", "explorer": true },
 		"0794": [
 			{ "title": "Strange Plants World", "coords": { "x1": 0, "y1": 0, "x2": 89, "y2": 59 }, "explorer": true },
 			{ "title": "Haunted Forest Town", "coords": { "x1": 125, "y1": 110, "x2": 159, "y2": 149 }, "explorer": true },
