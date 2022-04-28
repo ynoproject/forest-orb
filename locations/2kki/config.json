@@ -278,7 +278,7 @@
 			{  "title": "Playing Card Dungeon", "coords": { "x1": 120, "y1": -1, "x2": 199, "y2": -1 }, "explorer": true }
 		],
 		"1387": [
-			{  "title": "Moonview Lane", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 32 }, "explorer": true },
+			{  "title": "Moonview Lane: Fabric Planet", "urlTitle": "Moonview_Lane#Fabric_Planet", "coords": { "x1": -1, "y1": 0, "x2": -1, "y2": 32 }, "explorer": true },
 			{  "title": "Mystery Library", "coords": { "x1": -1, "y1": 33, "x2": -1, "y2": 79 }, "explorer": true },
 			{  "title": "Trophy Animal Land", "coords": { "x1": -1, "y1": 80, "x2": -1, "y2": 149 }, "explorer": true },
 			{  "title": "Oil Drum World", "explorer": true }
