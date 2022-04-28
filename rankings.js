@@ -239,7 +239,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
         if (valueTemplate.indexOf('{NUMBER}') > -1)
           valueFunc = ranking => valueTemplate.replace('{NUMBER}', ranking.valueInt);
         else if (valueTemplate.indexOf('{PERCENT}') > -1)
-          valueFunc = ranking => valueTemplate.replace('{PERCENT}', Math.round(ranking.valueFloat * 1000) / 1000);
+          valueFunc = ranking => valueTemplate.replace('{PERCENT}', Math.round(ranking.valueFloat * 10000) / 100);
         else if (valueTemplate.indexOf('{MINUTES}') > -1 || valueTemplate.indexOf('{SECONDS}') > -1) {
           valueFunc = ranking => {
             const minutes = Math.floor(ranking.valueInt / 60);
