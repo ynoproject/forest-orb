@@ -42,6 +42,7 @@ function fetchAndPopulateRankingCategories() {
         rankingSubCategoryId = rankingSubCategoryTabs.querySelector('.active')?.dataset.subCategoryId || rankingCategoryCache.find(c => c.categoryId === rankingCategoryId).subCategories[0].subCategoryId;
 
       rankingCategoryTabs.innerHTML = '';
+      rankingSubCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
         const categoryId = category.categoryId;
@@ -100,8 +101,11 @@ function fetchAndPopulateRankingCategories() {
             if (!subCategoryName)
               continue;
             subCategoryLabel = getMassagedLabel(subCategoryName, true);
-          } else
-            subCategoryLabel = getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
+          } else {
+            subCategoryLabel = categoryId === 'timeTrial'
+              ? getLocalizedMapLocations(gameId, subCategoryId.padStart(4, '0'), '0000', 0, 0, "&nbsp;|&nbsp;")
+              : getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
+          }
           
           const subTab = document.createElement('div');
           subTab.classList.add('subTab');
