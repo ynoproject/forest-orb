@@ -101,7 +101,7 @@
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
           "toggleTabToChat": "开启Tab键聊天",
-          "toggleRankings": "Rankings",
+          "toggleRankings": "显示排行榜",
           "toggleFloodProtection": "开启网络攻击保护"
         },
         "notificationSettings": "弹框通知设置",
@@ -448,7 +448,7 @@
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "流浪次数",
+          "label": "无尽流浪",
           "valueLabel": "流浪次数",
           "value": "{NUMBER}"
         },
@@ -459,7 +459,7 @@
         },
         "timeTrial": {
           "label": "计时模式",
-          "valueLabel": "用时",
+          "valueLabel": "抵达用时",
           "value": "{MINUTES}:{SECONDS}"
         }
       },
