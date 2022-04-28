@@ -225,7 +225,7 @@
         "weekExp": "本周点数"
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "排行榜"
       }
     },
     "tooltips": {
@@ -249,7 +249,7 @@
         "disbandParty": "解散队伍"
       },
       "eventLocations": "梦远征",
-      "rankings": "Rankings",
+      "rankings": "瞅一眼排行榜",
       "nexus": "返回到门的世界"
     }
   },
@@ -432,38 +432,38 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "徽章收集",
+          "valueLabel": "徽章枚数",
           "value": "{NUMBER}"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
+          "label": "远征点",
+          "valueLabel": "远征点",
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "远征次数",
+          "valueLabel": "远征次数",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "流浪次数",
+          "valueLabel": "流浪次数",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "远征踏破",
+          "valueLabel": "地图踏破率",
           "value": "{PERCENT}%"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "计时模式",
+          "valueLabel": "用时",
           "value": "{MINUTES}:{SECONDS}"
         }
       },
       "subCategories": {
-        "all": "All"
+        "all": "全部"
       }
     },
     "2kki": {
