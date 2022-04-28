@@ -1766,8 +1766,11 @@ form .uiTheme {
 }
 
 .expBarLabel {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 24px;
   image-rendering: auto;
-  margin: 2px auto -21px auto;
 }
 
 #rankExpBarLabel::after {
@@ -1782,6 +1785,7 @@ form .uiTheme {
 
 .expBar {
   height: 100%;
+  margin-top: -24px;
   background: var(--base-gradient-b);
   transition: width 0.5s ease-in-out;
 }
