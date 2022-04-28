@@ -40,6 +40,7 @@ function injectScripts() {
             Module.INITIALIZED = true;
             document.getElementById('loadingOverlay').classList.add('loaded');
             fetchAndUpdatePlayerInfo();
+            setInterval(checkSession, 60000);
           });
           if (typeof onResize !== 'undefined')
             Module.postRun.push(onResize);

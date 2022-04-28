@@ -147,6 +147,20 @@ function fetchAndUpdatePlayerInfo() {
     .catch(err => console.error(err));
 }
 
+function checkSession() {
+  if (sessionId && sessionId === getCookie('sessionId')) {
+    apiFetch('info')
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (!jsonResponse.uuid) {
+          setCookie('sessionId', '');
+          fetchAndUpdatePlayerInfo();
+        }
+      })
+      .catch(err => console.error(err));
+  }
+}
+
 let playerCount;
 
 function fetchAndUpdatePlayerCount() {
