@@ -206,14 +206,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       banAction.classList.add('listEntryAction');
       banAction.href = 'javascript:void(0);';
       banAction.onclick = function () {
-        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true, false, true)}?`)) {
+        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true)}?`)) {
           apiFetch(`admin?command=ban&player=${uuid}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${getPlayerName(player, true, false, true)} has been banned.`, 'ban', true, systemName))
+            .then(_ => showToastMessage(`${getPlayerName(player, true)} has been banned.`, 'ban', true, systemName))
             .catch(err => console.error(err));
         }
       };
