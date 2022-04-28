@@ -101,7 +101,7 @@
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleTabToChat": "タブキーを 押して チャット",
-          "toggleRankings": "Rankings",
+          "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
         },
         "notificationSettings": "通知 設定",
@@ -225,7 +225,7 @@
         "weekExp": "今週のExP"
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "ランキング"
       }
     },
     "tooltips": {
@@ -433,8 +433,8 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "バッジ",
+          "valueLabel": "バッジ数",
           "value": "{NUMBER}"
         },
         "exp": {
@@ -443,23 +443,23 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "ドリームラリー",
+          "valueLabel": "ドリームラリー完了数",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "エンドレスラリー",
+          "valueLabel": "エンドレスラリー完了数",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "エンドレスラリー完了率",
+          "valueLabel": "完了率",
           "value": "{PERCENT}%"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "スピードラン",
+          "valueLabel": "記録",
           "value": "{MINUTES}:{SECONDS}"
         }
       },
