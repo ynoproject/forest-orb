@@ -226,7 +226,7 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, overlay: badge.overlay, percent: badge.percent, unlocked: badge.unlocked };
+        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, overlay: badge.overlay, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
