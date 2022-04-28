@@ -9,6 +9,11 @@ function initAccountControls() {
     openModal('loginModal');
   };
   document.getElementById('logoutButton').onclick = () => {
+    apiFetch('logout')
+      .then(response => {
+        if (!response.ok)
+          console.log(response.statusText);
+      }).catch(err => console.error(err));
     setCookie('sessionId', '');
     fetchAndUpdatePlayerInfo();
   };
