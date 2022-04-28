@@ -181,7 +181,10 @@ function getBadgeItem(badge, includeTooltip) {
       } else
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         
-      tooltipContent += `<label class="tooltipFooter">${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * 10) / 10)}</label>`;
+      tooltipContent += '<label class="tooltipFooter">';
+      if (!badge.unlocked && badge.goalsTotal > 0)
+        tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
+      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * 10) / 10)}</label>`;
     }
       
     if (tooltipContent) {

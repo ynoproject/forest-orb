@@ -426,6 +426,7 @@
       "null": "뱃지 없음",
       "locked": "???",
       "location": "장소 :&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "time": "{MINUTES}:{SECONDS}"
     },

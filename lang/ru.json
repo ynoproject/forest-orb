@@ -426,6 +426,7 @@
       "null": "Нет Значка",
       "locked": "???",
       "location": "Локация:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
       "time": "{MINUTES}:{SECONDS}"
     },

@@ -426,6 +426,7 @@
       "null": "バッジなし",
       "locked": "？？？",
       "location": "場所：",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "time": "{MINUTES}:{SECONDS}"
     },

@@ -426,6 +426,7 @@
       "null": "无徽章",
       "locked": "???",
       "location": "取得位置:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}"
     },
