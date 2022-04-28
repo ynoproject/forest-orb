@@ -64,18 +64,22 @@ function fetchAndPopulateRankingCategories() {
         tab.onclick = function () {
           if (tab.dataset.categoryId === rankingCategoryId)
             return;
-            
-          rankingCategoryTabs.querySelector('.active')?.classList.remove('active');
-          tab.classList.add('active');
 
-          rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
-          for (let subTab of rankingSubCategoryTabs.children) {
-            const isCategorySubTab = subTab.dataset.categoryId === categoryId;
-            subTab.classList.toggle('hidden', !isCategorySubTab);
-            subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
-          }
+          fetchAndLoadRankings(categoryId, defaultSubCategoryId)
+            .then(success => {
+              if (!success)
+                return;
 
-          fetchAndLoadRankings(categoryId, defaultSubCategoryId);
+              rankingCategoryTabs.querySelector('.active')?.classList.remove('active');
+              tab.classList.add('active');
+    
+              rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
+              for (let subTab of rankingSubCategoryTabs.children) {
+                const isCategorySubTab = subTab.dataset.categoryId === categoryId;
+                subTab.classList.toggle('hidden', !isCategorySubTab);
+                subTab.classList.toggle('active', isCategorySubTab && subTab.dataset.subCategoryId === defaultSubCategoryId);
+              }
+            });
         };
 
         const tabLabel = document.createElement('label');
@@ -112,10 +116,15 @@ function fetchAndPopulateRankingCategories() {
           subTab.onclick = function () {
             if (subTab.dataset.subCategoryId === rankingSubCategoryId)
               return;
-            rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
-            subTab.classList.add('active');
 
-            fetchAndLoadRankings(categoryId, subCategoryId);
+            fetchAndLoadRankings(categoryId, subCategoryId)
+              .then(success => {
+                if (!success)
+                  return;
+
+                rankingSubCategoryTabs.querySelector('.active')?.classList.remove('active');
+                subTab.classList.add('active');
+              });
           };
           
           const subTabLabel = document.createElement('small');
@@ -172,6 +181,9 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
         return response.json();
       })
       .then(rankings => {
+        if (!rankings)
+          resolve(false);
+
         const rankingsContainer = document.getElementById('rankings');
         const rankingsPaginationContainer = document.getElementById('rankingsPagination');
 
@@ -248,7 +260,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           valueFunc = ranking => {
             const minutes = Math.floor(ranking.valueInt / 60);
             const seconds = ranking.valueInt - minutes * 60;
-            valueTemplate.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0'));
+            return valueTemplate.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0'));
           };
         } else
           valueFunc = ranking => ranking.valueInt;
