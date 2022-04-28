@@ -456,7 +456,7 @@
           "valueLabel": "성공률",
           "value": "{PERCENT}%"
         },
-        "timeTrials": {
+        "timeTrial": {
           "label": "Time Trial Mode",
           "valueLabel": "성공 시간",
           "value": "{MINUTES}:{SECONDS}"
