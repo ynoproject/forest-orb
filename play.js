@@ -953,14 +953,15 @@ function initLocalization(isInitial) {
           updatePlayerCount(playerCount);
       }
 
-      if (isInitial) {
+      if (isInitial)
         initLocations(globalConfig.lang, gameId);
-        fetchAndPopulateRankingCategories();
-      } else if (localizedMapLocations)
+      else if (localizedMapLocations)
         initLocalizedMapLocations(globalConfig.lang, gameId);
 
       if (eventPeriodCache)
         updateEventLocationList();
+        
+      fetchAndPopulateRankingCategories();
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');

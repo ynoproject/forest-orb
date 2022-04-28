@@ -1827,13 +1827,13 @@ form .uiTheme {
 #rankingCategoryTabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
 }
 
 .rankingCategoryTab {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;

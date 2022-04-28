@@ -52,7 +52,7 @@ function fetchAndPopulateRankingCategories() {
 
         let defaultSubCategoryId = category.subCategories[0].subCategoryId;
         if (eventPeriodCache) {
-          const currentPeriodSubCategory = category.subCategories.find(sc => sc.subCategoryId == eventPeriodCache.periodOrdinal);
+          const currentPeriodSubCategory = category.subCategories.find(sc => sc.subCategoryId == eventPeriodCache.periodOrdinal)?.subCategoryId;
           if (currentPeriodSubCategory)
             defaultSubCategoryId = currentPeriodSubCategory;
         }
