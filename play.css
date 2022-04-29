@@ -420,14 +420,20 @@ body.fullBg #background {
   position: relative;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 48px;
+  min-height: 48px;
   max-width: 980px;
-  padding: 0 4px;
+  border: 12px solid transparent;
+  border-image-width: 2 !important;
+  padding: 12px 16px 0px 16px;
   z-index: 2;
 }
 
 #header.fullBg {
   background-size: 96px;
+}
+
+#headerLogoContainer, #headerIconContainer {
+  padding-bottom: 12px;
 }
 
 #headerLogoContainer {
@@ -553,6 +559,10 @@ body.fullBg #background {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
+}
+
+#content.noSideBorders #header {
+  width: calc(100% - 32px);
 }
 
 #content.noSideBorders #layout:not(:fullscreen) #chatboxContainer {
