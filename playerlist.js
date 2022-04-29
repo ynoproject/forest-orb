@@ -439,7 +439,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
-          if (playerA?.account !== playerB?.account)
+          if (playerA?.account != playerB?.account)
             return playerA?.account ? -1 : 1;
           return 0;
         };
@@ -494,7 +494,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
-          if (playerA?.account !== playerB?.account)
+          if (playerA?.account != playerB?.account)
             return playerA?.account ? -1 : 1;
           return 0;
         };
