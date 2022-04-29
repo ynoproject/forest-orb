@@ -2083,6 +2083,10 @@ form .uiTheme {
   text-align: center;
 }
 
+.tippy-content .tooltipSpacer {
+  margin-top: 4px;
+}
+
 .tippy-content .tooltipLocation {
   display: block;
   margin-bottom: 8px;

@@ -178,16 +178,22 @@ function getBadgeItem(badge, includeTooltip, scaled) {
             tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
         } else
           tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
+        if (localizedTooltip.description)
+          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
+        tooltipContent += '<div class="tooltipSpacer"></div>';
         if (badge.mapId)
           tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
-        if ((badge.unlocked || !badge.secret) && localizedTooltip.description) {
-          let description = getMassagedLabel(localizedTooltip.description, true);
-          if (badge.seconds) {
-            const minutes = Math.floor(badge.seconds / 60);
-            const seconds = badge.seconds - minutes * 60;
-            description = description.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
-          }
-          tooltipContent += `<div class="tooltipContent">${description}</div>`;
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.condition) {
+          if (badge.unlocked || !badge.secretCondition) {
+            let condition = getMassagedLabel(localizedTooltip.condition, true);
+            if (badge.seconds) {
+              const minutes = Math.floor(badge.seconds / 60);
+              const seconds = badge.seconds - minutes * 60;
+              condition = condition.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
+            }
+            tooltipContent += `<div class="tooltipContent">${condition}</div>`;
+          } else
+            tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         }
       } else
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
@@ -237,7 +243,7 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, overlay: badge.overlay, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
+        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, secretCondition: badge.secretCondition, overlay: badge.overlay, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
