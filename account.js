@@ -96,7 +96,7 @@ function initAccountControls() {
           badgeModalContent.appendChild(gameHeader);
           lastGame = badge.game;
         }
-        const item = getBadgeItem(badge);
+        const item = getBadgeItem(badge, true, true);
         if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
@@ -119,12 +119,11 @@ function initAccountControls() {
 function initAccountSettingsModal() {
   const badgeId = playerData?.badge || 'null';
   const badge = badgeCache.find(b => b.badgeId === badgeId);
-  const badgeHtml = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
-  document.getElementById('accountBadgeButton').innerHTML = badgeHtml;
-  document.getElementById('badgeButton').innerHTML = badgeHtml;
+  document.getElementById('accountBadgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+  document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
 }
 
-function getBadgeItem(badge) {
+function getBadgeItem(badge, includeTooltip, scaled) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
@@ -139,6 +138,8 @@ function getBadgeItem(badge) {
 
   if (badgeEl) {
     badgeEl.classList.add('badge');
+    if (scaled)
+      badgeEl.classList.add('scaledBadge');
     badgeEl.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
   } else {
     if (badgeId !== 'null') {
@@ -164,59 +165,61 @@ function getBadgeItem(badge) {
     }
   }
 
-  let tooltipContent = '';
+  if (includeTooltip) {
+    let tooltipContent = '';
 
-  if (badgeId === 'null')
-    tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
-  else {
-    if (localizedBadges.hasOwnProperty(badge.game) && localizedBadges[badge.game].hasOwnProperty(badgeId)) {
-      const localizedTooltip = localizedBadges[badge.game][badgeId];
-      if (badge.unlocked || !badge.secret) {
-        if (localizedTooltip.name)
-          tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
+    if (badgeId === 'null')
+      tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
+    else {
+      if (localizedBadges.hasOwnProperty(badge.game) && localizedBadges[badge.game].hasOwnProperty(badgeId)) {
+        const localizedTooltip = localizedBadges[badge.game][badgeId];
+        if (badge.unlocked || !badge.secret) {
+          if (localizedTooltip.name)
+            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
+        } else
+          tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
+        if (badge.mapId)
+          tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.description) {
+          let description = getMassagedLabel(localizedTooltip.description, true);
+          if (badge.seconds) {
+            const minutes = Math.floor(badge.seconds / 60);
+            const seconds = badge.seconds - minutes * 60;
+            description = description.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
+          }
+          tooltipContent += `<div class="tooltipContent">${description}</div>`;
+        }
       } else
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
-      if (badge.mapId)
-        tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
-      if ((badge.unlocked || !badge.secret) && localizedTooltip.description) {
-        let description = getMassagedLabel(localizedTooltip.description, true);
-        if (badge.seconds) {
-          const minutes = Math.floor(badge.seconds / 60);
-          const seconds = badge.seconds - minutes * 60;
-          description = description.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
-        }
-        tooltipContent += `<div class="tooltipContent">${description}</div>`;
-      }
-    } else
-      tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
-      
-    tooltipContent += '<label class="tooltipFooter">';
-    if (!badge.unlocked && badge.goalsTotal > 0)
-      tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
-    tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * 10) / 10)}</label>`;
-      
-    if (tooltipContent) {
-      const baseTooltipContent = tooltipContent;
+        
+      tooltipContent += '<label class="tooltipFooter">';
+      if (!badge.unlocked && badge.goalsTotal > 0)
+        tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
+      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * 10) / 10)}</label>`;
+        
+      if (tooltipContent) {
+        const baseTooltipContent = tooltipContent;
 
-      const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId);
+        const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId);
 
-      if (badge.mapId) {
-        const mapId = badge.mapId.toString().padStart(4, '0');
-        const setTooltipLocation = () => {
-          if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
-            tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
-          else
-            tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
+        if (badge.mapId) {
+          const mapId = badge.mapId.toString().padStart(4, '0');
+          const setTooltipLocation = () => {
+            if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
+              tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
+            else
+              tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
+            assignTooltip();
+          }
+          if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
+            setTooltipLocation();
+          else {
+            tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
+            initLocations(globalConfig.lang, badge.game, setTooltipLocation);
+          }
+        } else
           assignTooltip();
-        }
-        if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
-          setTooltipLocation();
-        else {
-          tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
-          initLocations(globalConfig.lang, badge.game, setTooltipLocation);
-        }
-      } else
-        assignTooltip();
+      }
     }
   }
 

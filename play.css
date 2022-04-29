@@ -499,10 +499,6 @@ body.fullBg #background {
   align-items: center;
 }
 
-#headerIconContainer .icon, #footerIconContainer .icon {
-  margin-left: 8px;
-}
-
 #headerIconContainer .iconButton {
   margin-right: 8px;
 }
@@ -510,6 +506,7 @@ body.fullBg #background {
 #footerIconContainer {
   justify-content: center;
   margin-top: 16px;
+  margin-left: 8px;
 }
 
 #layout {
@@ -1572,7 +1569,7 @@ body.fullBg #background {
   margin-bottom: -8px;
 }
 
-#headerIconContainer > .badgeItem > .badgeContainer > .badge {
+#headerIconContainer > .badgeItem > .badgeContainer > div {
   width: 37px;
   height: 37px;
   border: 6px solid transparent;
@@ -2469,7 +2466,7 @@ form .uiTheme {
     image-rendering: auto;
   }
 
-  .badge {
+  .badge:not(.scaledBadge) {
     image-rendering: auto;
   }
 }
