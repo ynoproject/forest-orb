@@ -1470,84 +1470,112 @@ body.fullBg #background {
   text-align: center;
 }
 
-.modalContent > .item {
+.itemContainer > .item {
   margin: 22px;
   text-align: center;
 }
 
-.modalContent > .item > div {
+.itemContainer > .item > div {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-.modalContent > .badgeItem.disabled > div {
+.itemContainer > .badgeItem.disabled > div {
   cursor: not-allowed;
 }
 
-.modalContent > .uiThemeItem.auto {
+.itemContainer > .uiThemeItem.auto {
   margin-top: 2px;
 }
 
-.modalContent > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
+.itemContainer > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.modalContent > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
+.itemContainer > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
   border-color: white;
 }
 
-.modalContent .badgeItem > div {
+.itemContainer .badgeItem > div {
   width: 98px;
   height: 98px;
 }
 
-.modalContent .badgeItem > .badgeContainer {
+.itemContainer .badgeItem > .badgeContainer {
+  background-color: var(--base-bg-color) !important;
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer {
   background-color: var(--modal-base-bg-color) !important;
 }
 
-.modalContent .badgeItem > .badgeContainer > div {
+.itemContainer .badgeItem > .badgeContainer > div {
   width: 74px;
   height: 74px;
   border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+.modalContent.itemContainer .badgeItem.disabled > .badgeContainer > div:first-child {
   border-image: var(--modal-border-image-url) 8 repeat !important;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > div:first-child {
+.itemContainer .badgeItem.disabled > .badgeContainer > div:first-child {
   border: none !important;
   margin: 16px 12px 8px 12px;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > .badge:first-child {
+.itemContainer .badgeItem.disabled > .badgeContainer > .badge:first-child {
   opacity: 0.325;
   filter: grayscale(1);
 }
 
-.modalContent .badgeItem > .badgeContainer > div:nth-child(2) {
+.itemContainer .badgeItem > .badgeContainer > div:nth-child(2) {
   margin-top: -94px;
   mix-blend-mode: lighten; /* Fixes visual bug with opacity and transition */
 }
 
-.modalContent .badgeItem > .badgeContainer > .icon > svg {
+.itemContainer .badgeItem > .badgeContainer > .icon > svg {
   padding: 8px;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.disabled > .badgeContainer > .icon:nth-child(2) > svg {
   transition: opacity 0.325s ease-in-out;
 }
 
-.modalContent .badgeItem.disabled:hover > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.disabled:hover > .badgeContainer > .icon:nth-child(2) > svg {
   opacity: 0;
 }
 
-.modalContent .badgeItem > .badgeContainer > .badge {
+.itemContainer .badgeItem > .badgeContainer > .badge {
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.modalContent .badgeItem > .badgeContainer > .badge > .badgeOverlay {
-  background-image: var(--modal-base-gradient);
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
+  background-image: var(--base-gradient);
   -webkit-mask-size: cover;
   mask-size: cover;
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
+  background-image: var(--modal-base-gradient);
+}
+
+#headerIconContainer > .badgeItem {
+  margin: -5px 8px 0 0;
+}
+
+#headerIconContainer > .badgeItem > .badgeContainer {
+  width: 49px;
+  height: 49px;
+  margin-bottom: -8px;
+}
+
+#headerIconContainer > .badgeItem > .badgeContainer > .badge {
+  width: 37px;
+  height: 37px;
+  border: 6px solid transparent;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
@@ -2436,7 +2464,11 @@ form .uiTheme {
   }
 }
 
-@media not (-webkit-device-pixel-ratio: 1), not (-webkit-device-pixel-ratio: 2) {
+@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-max-device-pixel-ratio: 1.9) {
+  #gameLogo {
+    image-rendering: auto;
+  }
+
   .badge {
     image-rendering: auto;
   }

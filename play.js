@@ -129,6 +129,9 @@ function fetchAndUpdatePlayerInfo() {
           else
             updateEventPeriod();
           updateBadges();
+          const badgeId = jsonResponse.badge || 'null';
+          const badge = badgeCache.find(b => b.badgeId === badgeId);
+          document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {
           trySetChatName('');
