@@ -2,6 +2,7 @@ let sessionId = null;
 let badgeCache;
 
 let localizedBadges;
+let localizedBadgesIgnoreUpdateTimer = null;
 
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
@@ -75,41 +76,47 @@ function initAccountControls() {
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
-    updateBadges(() => {
-      let lastGame = null;
-      const badgeCompareFunc = (a, b) => {
-        if (a.game !== b.game) {
-          if (a.game === gameId)
-            return -1;
-          if (b.game === gameId)
-            return 1;
-          return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
+    const updateBadgesAndOpenModal = () => {
+      updateBadges(() => {
+        let lastGame = null;
+        const badgeCompareFunc = (a, b) => {
+          if (a.game !== b.game) {
+            if (a.game === gameId)
+              return -1;
+            if (b.game === gameId)
+              return 1;
+            return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
+          }
+          return 0;
+        };
+        const badges = [{ badgeId: 'null', game: null}].concat(badgeCache.sort(badgeCompareFunc));
+        for (let badge of badges) {
+          if (badge.game !== lastGame) {
+            const gameHeader = document.createElement('h2');
+            gameHeader.classList.add('itemCategoryHeader');
+            gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game], true);
+            badgeModalContent.appendChild(gameHeader);
+            lastGame = badge.game;
+          }
+          const item = getBadgeItem(badge, true, true);
+          if (badge.badgeId === (playerData?.badge || 'null'))
+            item.children[0].classList.add('selected');
+          if (!item.classList.contains('disabled')) {
+            item.onclick = () => updatePlayerBadge(badge.badgeId, () => {
+              initAccountSettingsModal();
+              closeModal();
+            });
+          }
+          badgeModalContent.appendChild(item);
         }
-        return 0;
-      };
-      const badges = [{ badgeId: 'null', game: null}].concat(badgeCache.sort(badgeCompareFunc));
-      for (let badge of badges) {
-        if (badge.game !== lastGame) {
-          const gameHeader = document.createElement('h2');
-          gameHeader.classList.add('itemCategoryHeader');
-          gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game], true);
-          badgeModalContent.appendChild(gameHeader);
-          lastGame = badge.game;
-        }
-        const item = getBadgeItem(badge, true, true);
-        if (badge.badgeId === (playerData?.badge || 'null'))
-          item.children[0].classList.add('selected');
-        if (!item.classList.contains('disabled')) {
-          item.onclick = () => updatePlayerBadge(badge.badgeId, () => {
-            initAccountSettingsModal();
-            closeModal();
-          });
-        }
-        badgeModalContent.appendChild(item);
-      }
 
-      openModal('badgesModal', null, fromModal ? 'accountSettingsModal' : null);
-    });
+        openModal('badgesModal', null, fromModal ? 'accountSettingsModal' : null);
+      });
+    };
+    if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
+      updateBadgesAndOpenModal();
+    else
+      updateLocalizedBadges(updateBadgesAndOpenModal);
   };
 
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton(false);
@@ -261,6 +268,21 @@ function updatePlayerBadge(badgeId, callback) {
         throw new Error(response.statusText);
       syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeId, -1);
       callback();
+    })
+    .catch(err => console.error(err));
+}
+
+function updateLocalizedBadges(callback) {
+  if (localizedBadgesIgnoreUpdateTimer)
+    clearInterval(localizedBadgesIgnoreUpdateTimer);
+    
+  fetch(`lang/badge/${globalConfig.lang}.json`)
+    .then(response => response.json())
+    .then(function (jsonResponse) {
+      localizedBadges = jsonResponse;
+      localizedBadgesIgnoreUpdateTimer = setTimeout(() => localizedBadgesIgnoreUpdateTimer = null, 300000);
+      if (callback)
+        callback(true);
     })
     .catch(err => console.error(err));
 }

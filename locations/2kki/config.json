@@ -69,7 +69,9 @@
 			{  "title": "Dark Alleys", "coords": { "x1": 20, "y1": 15, "x2": 39, "y2": 29 }, "explorer": true },
 			{  "title": "Grass World", "explorer": true }
 		],
+		"0455": { "title": "Lorn Tower: Portrait", "urlTitle": "Lorn_Tower", "explorer": true },
 		"0458": { "title": "Gallery Of Me", "urlTitle": "Gallery_Of_Me" },
+		"0483": { "title": "Neon Highway", "explorer": true },
 		"0489": [
 			{  "title": "Downfall Garden A", "coords": { "x1": 210, "y1": 0, "x2": 279, "y2": 76 }, "explorer": true },
 			{  "title": "River_Complex: Buddha Face Labyrinth", "urlTitle": "River_Complex#Buddha_Face_Labyrinth", "coords": { "x1": 240, "y1": 131, "x2": 256, "y2": 139 }, "explorer": true },
@@ -148,6 +150,7 @@
 			{  "title": "Extraterrestrial Cliffside: Strange Poison Fields", "urlTitle": "Extraterrestrial_Cliffside#Strange_Poison_Fields", "coords": { "x1": 0, "y1": 155, "x2": 34, "y2": 169 }, "explorer": true },
 			{  "title": "Haunted Forest Town: Spirit Mansion", "urlTitle": "Haunted_Forest_Town", "explorer": true }
 		],
+		"0936": { "title": "Neon Caves", "explorer": true },
 		"0943": [
 			{ "title": "Fossil Lake", "coords": { "x1": 50, "y1": -1, "x2": 99, "y2": -1 }, "explorer": true },
 			{ "title": "Aquatic Cube City", "explorer": true }
