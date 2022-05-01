@@ -115,7 +115,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     let systemName = player?.systemName;
 
     const badge = player?.badge ? document.createElement('div') : null;
-    const badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
+    const badgeOverlay = badge && overlayBadgeIds.indexOf(player.badge) > -1 ? document.createElement('div') : null;
 
     if (badge) {
       badge.classList.add('badge');

@@ -4,6 +4,8 @@ let badgeCache;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
+const overlayBadgeIds = [ 'mono', 'ticket' ]; // Doing this until we have a better approach since we don't necessarily have the badge cache loaded
+
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
     document.getElementById('loginErrorRow').classList.add('hidden');

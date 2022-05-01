@@ -72,7 +72,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       badge.classList.add('badge');
       badge.classList.add('nameBadge');
 
-      badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
+      badgeOverlay = badge && overlayBadgeIds.indexOf(player.badge) > -1 ? document.createElement('div') : null;
 
       if (localizedBadges) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
@@ -264,7 +264,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   }
 
   const showBadge = player?.account && player.badge;
-  const showBadgeOverlay = showBadge && player.badge === 'mono';
+  const showBadgeOverlay = showBadge && overlayBadgeIds.indexOf(player.badge) > -1;
   const badgeUrl = showBadge ? `images/badge/${player.badge}.png` : '';
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
