@@ -1021,11 +1021,7 @@ function initLocalization(isInitial) {
         noGameLocInstruction.classList.toggle('hidden', !document.querySelector(`#lang option[value='${globalConfig.lang}']`).dataset.noGameLoc);
       }
 
-      fetch(`lang/badge/${globalConfig.lang}.json`)
-        .then(response => response.json())
-        .then(function (jsonResponse) {
-          localizedBadges = jsonResponse;
-        });
+      updateLocalizedBadges();
 
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
