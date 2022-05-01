@@ -289,6 +289,12 @@ function updateLocalizedBadges(callback) {
     .catch(err => console.error(err));
 }
 
+// EXTERNAL
+function onBadgeUpdateRequested() {
+  if (sessionId)
+    updateBadges();
+}
+
 function showAccountToastMessage(key, icon, username) {
   if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
     return;
