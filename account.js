@@ -187,7 +187,7 @@ function getBadgeItem(badge, includeTooltip, scaled) {
             tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
         } else
           tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
-        if (localizedTooltip.description)
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
           tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
         tooltipContent += '<div class="tooltipSpacer"></div>';
         if (badge.mapId)

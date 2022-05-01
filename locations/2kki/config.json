@@ -69,6 +69,7 @@
 			{  "title": "Dark Alleys", "coords": { "x1": 20, "y1": 15, "x2": 39, "y2": 29 }, "explorer": true },
 			{  "title": "Grass World", "explorer": true }
 		],
+		"0381": { "title": "Forest Carnival: High Priestess' Show", "urlTitle": "Forest_Carnival", "explorer": true },
 		"0455": { "title": "Lorn Tower: Portrait", "urlTitle": "Lorn_Tower", "explorer": true },
 		"0458": { "title": "Gallery Of Me", "urlTitle": "Gallery_Of_Me" },
 		"0483": { "title": "Neon Highway", "explorer": true },
@@ -90,6 +91,7 @@
 			{  "title": "Downfall Garden A", "explorer": true }
 		],
 		"0620": "Sound Room",
+		"0681": { "title": "Dream Bank", "explorer": true },
 		"0701": [
 			{  "title": "Cyber Maze", "coords": { "x1": 0, "y1": -1, "x2": 40, "y2": -1 }, "explorer": true },
 			{  "title": "Dream Mexico", "explorer": true }
