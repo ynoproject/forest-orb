@@ -277,7 +277,7 @@ function checkUpdateLocation(mapId, mapChanged) {
       addChatMapLocation();
 
       if (is2kki) {
-        const locationNames = locations ? locations.filter(l => l.explorer).map(l => l.title) : [];
+        const locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
         set2kkiExplorerLinks(locationNames);
         if (locationNames.length)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
