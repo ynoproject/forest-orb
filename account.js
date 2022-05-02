@@ -210,7 +210,9 @@ function getBadgeItem(badge, includeTooltip, scaled) {
       tooltipContent += '<label class="tooltipFooter">';
       if (!badge.unlocked && badge.goalsTotal > 0)
         tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
-      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * 10) / 10)}</label>`;
+
+      const percentMultiplier = badge.percent < 1 ? 100 : 10;
+      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * percentMultiplier) / percentMultiplier)}</label>`;
         
       if (tooltipContent) {
         const baseTooltipContent = tooltipContent;
