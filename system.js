@@ -151,7 +151,7 @@ function setSystemName(name) {
     globalPlayerData[playerData.uuid].systemName = name;
   }
   if (connStatus === 1)
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
 }
 
 // EXTERNAL

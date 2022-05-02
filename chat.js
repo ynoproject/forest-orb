@@ -260,7 +260,7 @@ function trySetChatName(name) {
       playerData.name = playerName;
       globalPlayerData[playerData.uuid].name = playerName;
     }
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
     const ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
     Module._ChangeName(ptr);
     Module._free(ptr);

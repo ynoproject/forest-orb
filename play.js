@@ -92,7 +92,7 @@ function onUpdateConnectionStatus(status) {
   connStatus = status;
 
   if (status === 1) {
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
     fetchAndUpdatePlayerCount();
     checkEventLocations();
     if (!hasConnected) {

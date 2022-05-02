@@ -429,6 +429,8 @@ function updateJoinedParty(skipNextUpdate, callback) {
           entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
+
+      sortPlayerListEntries(partyPlayerList);
       
       if (callback)
         callback();
@@ -738,6 +740,9 @@ function initOrUpdatePartyModal(partyId) {
     entry.classList.toggle('offline', !member.online);
     addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
+
+  sortPlayerListEntries(partyModalOnlinePlayerList);
+  sortPlayerListEntries(partyModalOfflinePlayerList);
 
   const onlineCountLabel = document.getElementById('partyModalOnlineCount');
   const offlineCountLabel = document.getElementById('partyModalOfflineCount');

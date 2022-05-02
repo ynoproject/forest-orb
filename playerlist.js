@@ -125,7 +125,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
   return playerName;
 }
 
-function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation) {
+function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation, sortEntries) {
   if (!playerList)
     playerList = document.getElementById('playerList');
 
@@ -355,6 +355,16 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     });
   }
 
+  if (sortEntries)
+    sortPlayerListEntries(playerList);
+
+  if (playerList.id === 'playerList')
+    updateMapPlayerCount(playerList.childElementCount);
+
+  return playerListEntry;
+}
+
+function sortPlayerListEntries(playerList) {
   if (playerList.childElementCount > 1) {
     const playerListEntries = playerList.querySelectorAll('.playerListEntry');
 
@@ -373,11 +383,6 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         playerList.appendChild(ple);
     });
   }
-
-  if (playerList.id === 'playerList')
-    updateMapPlayerCount(playerList.childElementCount);
-
-  return playerListEntry;
 }
 
 function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
@@ -660,7 +665,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
     if (systemName)
       globalPlayerData[uuid].systemName = systemName;
   }
-  addOrUpdatePlayerListEntry(null, systemName, name, uuid);
+  addOrUpdatePlayerListEntry(null, systemName, name, uuid, false, true);
 }
 
 // EXTERNAL
