@@ -428,7 +428,8 @@
       "location": "取得位置:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
-      "time": "{MINUTES}:{SECONDS}"
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
     },
     "rankings": {
       "categories": {

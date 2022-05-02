@@ -428,7 +428,8 @@
       "location": "Локация:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
-      "time": "{MINUTES}:{SECONDS}"
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
     },
     "rankings": {
       "categories": {

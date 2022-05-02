@@ -428,7 +428,8 @@
       "location": "場所：",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
-      "time": "{MINUTES}:{SECONDS}"
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
     },
     "rankings": {
       "categories": {

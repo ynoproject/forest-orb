@@ -2064,8 +2064,9 @@ form .uiTheme {
 }
 
 .tippy-box {
-  border: 12px solid transparent;
+  border: 6px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
+  border-image-width: 2 !important;
   background-image: var(--container-bg-image-url) !important;
 }
 
@@ -2104,6 +2105,13 @@ form .uiTheme {
 
 .tippy-content .tooltipTitle + .tooltipFooter {
   margin-top: 0;
+}
+
+.tippy-content .tooltipCornerText {
+  display: flex;
+  justify-content: right;
+  font-size: x-small;
+  margin-bottom: -4px;
 }
 
 @media (hover: none) { 
