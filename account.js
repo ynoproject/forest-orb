@@ -401,6 +401,9 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
             return response.json();
           })
           .then(badgeSlots => {
+            if (!badgeSlots)
+              badgeSlots = [];
+              
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent');
     
