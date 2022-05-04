@@ -43,10 +43,10 @@ function initBadgeControls() {
             lastGame = badge.game;
             lastGroup = null;
           }
-          if (badge.group != lastGroup) {
+          if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
             const groupHeader = document.createElement('h3');
             groupHeader.classList.add('itemCategoryHeader');
-            groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[badge.game][badge.group]);
+            groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
             badgeModalContent.appendChild(groupHeader);
             lastGroup = badge.group;
           }
@@ -248,7 +248,7 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, game: badge.game, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, secretCondition: badge.secretCondition, overlay: badge.overlay, art: badge.art, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
+        return { badgeId: badge.badgeId, game: badge.game, group: badge.group, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, secretCondition: badge.secretCondition, overlay: badge.overlay, art: badge.art, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
