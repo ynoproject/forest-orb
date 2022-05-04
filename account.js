@@ -333,7 +333,7 @@ function updateBadgeSlots(callback) {
       return response.json();
     })
     .then(badgeSlots => {
-      badgeSlotCache = badgeSlots;
+      badgeSlotCache = badgeSlots || [];
       if (callback)
         callback();
   })
