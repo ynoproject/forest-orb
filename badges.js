@@ -57,6 +57,7 @@ function initBadgeControls() {
             item.onclick = slotId 
               ? () => updatePlayerBadgeSlot(badge.badgeId, slotId, () => {
                 updateBadgeSlots(() => {
+                  initAccountSettingsModal();
                   initBadgeGalleryModal();
                   closeModal()
                 });
@@ -268,6 +269,7 @@ function updateBadgeSlots(callback) {
     })
     .then(badgeSlots => {
       badgeSlotCache = badgeSlots || [];
+      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeSlotCache.length ? badgeSlotCache[0] : 'null', -1);
       if (callback)
         callback();
   })
@@ -291,8 +293,6 @@ function updatePlayerBadgeSlot(badgeId, slotId, callback) {
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
-      badgeSlotCache = response;
-      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, response[0], -1);
       if (callback)
         callback();
     })
