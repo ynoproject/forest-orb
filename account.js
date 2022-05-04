@@ -380,80 +380,90 @@ function updateLocalizedBadges(callback) {
     .catch(err => console.error(err));
 }
 
-function addPlayerBadgeGalleryTooltip(badgeElement, playerName, systemName) {
-  tippy(badgeElement, Object.assign({
-    trigger: 'click',
-    interactive: true,
-    content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
-    appendTo: document.getElementById('layout'),
-    onShow(instance) {
-      apiFetch(`badge?command=playerSlotList&player=${playerName}`)
-        .then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          return response.json();
-        })
-        .then(badgeSlots => {
-          const tooltipContent = document.createElement('div');
-          tooltipContent.classList.add('tooltipContent');
+function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
+  badgeElement.dataset.playerName = name;
+  badgeElement.dataset.systemName = sysName;
 
-          const tooltipTitle = document.createElement('h4');
-          tooltipTitle.classList.add('tooltipTitle');
-          tooltipTitle.innerHTML = getMassagedLabel(localizedMessages.badgeGallery.label, true).replace('{PLAYER}', playerName);
+  if (!badgeElement._badgeGalleryTippy) {
+    badgeElement._badgeGalleryTippy = tippy(badgeElement, Object.assign({
+      trigger: 'click',
+      interactive: true,
+      content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
+      appendTo: document.getElementById('layout'),
+      onShow: instance => {
+        const playerName = instance.reference.dataset.playerName;
+        const systemName = instance.reference.dataset.systemName;
 
-          const badgeSlotsContainer = document.createElement('div');
-          badgeSlotsContainer.classList.add('badgeSlotsContainer');
-
-          for (badgeId of badgeSlots) {
-            const badgeSlot = document.createElement('div');
-            badgeSlot.classList.add('badgeSlot');
-            badgeSlot.classList.add('badge');
-
-            const badgeUrl = `images/badge/${badgeId}.png`;
-
-            badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
-
-            if (overlayBadgeIds.indexOf(badgeId) > -1) {
-              const badgeSlotOverlay = document.createElement('div');
-              badgeSlotOverlay.classList.add('badgeSlotOverlay');
-              badgeSlotOverlay.classList.add('badgeOverlay');
-              badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
-
-              badgeSlot.appendChild(badgeSlotOverlay);
+        apiFetch(`badge?command=playerSlotList&player=${playerName}`)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.json();
+          })
+          .then(badgeSlots => {
+            const tooltipContent = document.createElement('div');
+            tooltipContent.classList.add('tooltipContent');
+    
+            const tooltipTitle = document.createElement('h4');
+            tooltipTitle.classList.add('tooltipTitle');
+            tooltipTitle.innerHTML = getMassagedLabel(localizedMessages.badgeGallery.label, true).replace('{PLAYER}', playerName);
+    
+            const badgeSlotsContainer = document.createElement('div');
+            badgeSlotsContainer.classList.add('badgeSlotsContainer');
+    
+            for (badgeId of badgeSlots) {
+              const badgeSlot = document.createElement('div');
+              badgeSlot.classList.add('badgeSlot');
+              badgeSlot.classList.add('badge');
+    
+              const badgeUrl = `images/badge/${badgeId}.png`;
+    
+              badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
+    
+              if (overlayBadgeIds.indexOf(badgeId) > -1) {
+                const badgeSlotOverlay = document.createElement('div');
+                badgeSlotOverlay.classList.add('badgeSlotOverlay');
+                badgeSlotOverlay.classList.add('badgeOverlay');
+                badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+    
+                badgeSlot.appendChild(badgeSlotOverlay);
+              }
+    
+              badgeSlotsContainer.appendChild(badgeSlot);
+    
+              // Doesn't work at the moment, likely due to nested tippy instances
+              if (localizedBadges) {
+                const badgeGame = Object.keys(localizedBadges).find(game => {
+                  return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+                });
+                if (badgeGame)
+                  addTooltip(badgeSlot, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
+              }
             }
-
-            badgeSlotsContainer.appendChild(badgeSlot);
-
-            // Doesn't work at the moment, likely due to nested tippy instances
-            if (localizedBadges) {
-              const badgeGame = Object.keys(localizedBadges).find(game => {
-                return Object.keys(localizedBadges[game]).find(b => b === badgeId);
-              });
-              if (badgeGame)
-                addTooltip(badgeSlot, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
+    
+            if (systemName) {
+              if (gameUiThemes.indexOf(systemName) === -1)
+                systemName = getDefaultUiTheme();
+              const parsedSystemName = systemName.replace(' ', '_');
+              const tippyBox = instance.popper.children[0];
+              tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+              tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
             }
-          }
+    
+            tooltipContent.appendChild(tooltipTitle);
+            tooltipContent.appendChild(badgeSlotsContainer);
+    
+            instance.setContent(tooltipContent.outerHTML);
+          })
+          .catch(err => {
+            console.error(err);
+            instance.setContent('');
+          });
+      }
+    }, tippyConfig));
+  }
 
-          if (systemName) {
-            if (gameUiThemes.indexOf(systemName) === -1)
-              systemName = getDefaultUiTheme();
-            const parsedSystemName = systemName.replace(' ', '_');
-            const tippyBox = instance.popper.children[0];
-            tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-            tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
-          }
-
-          tooltipContent.appendChild(tooltipTitle);
-          tooltipContent.appendChild(badgeSlotsContainer);
-
-          instance.setContent(tooltipContent.outerHTML);
-        })
-        .catch(err => {
-          console.error(err);
-          instance.setContent('');
-        });
-    }
-  }, tippyConfig));
+  return badgeElement._badgeGalleryTippy;
 }
 
 // EXTERNAL

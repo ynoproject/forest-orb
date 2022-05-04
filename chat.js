@@ -121,13 +121,15 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       badge.classList.add('badge');
       badge.classList.add('nameBadge');
 
-      const badgeGame = Object.keys(localizedBadges).find(game => {
-        return Object.keys(localizedBadges[game]).find(b => b === player.badge);
-      });
-      if (badgeGame)
-        addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+      if (localizedBadges) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === player.badge);
+        });
+        if (badgeGame)
+          addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+      }
       if (player?.name) {
-        addPlayerBadgeGalleryTooltip(badge, player.name, systemName || getDefaultUiTheme());
+        addOrUpdatePlayerBadgeGalleryTooltip(badge, player.name, systemName || getDefaultUiTheme());
         badge.classList.toggle('badgeButton', player.name);
       }
 

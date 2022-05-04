@@ -274,13 +274,15 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
 
   if (showBadge) {
-    const badgeGame = Object.keys(localizedBadges).find(game => {
-      return Object.keys(localizedBadges[game]).find(b => b === player.badge);
-    });
-    if (badgeGame)
-      addTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+    if (localizedBadges) {
+      const badgeGame = Object.keys(localizedBadges).find(game => {
+        return Object.keys(localizedBadges[game]).find(b => b === player.badge);
+      });
+      if (badgeGame)
+        playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true, false, null, playerListEntryBadge._badgeTippy);
+    }
     if (player.name) {
-      addPlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
+      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
       playerListEntryBadge.classList.toggle('badgeButton', player.name);
     }
   }

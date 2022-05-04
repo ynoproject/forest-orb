@@ -92,7 +92,15 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
   options.appendTo = document.getElementById('layout');
   target._tippy?.destroy();
-  tippy(target, Object.assign(options, tippyConfig));
+  return tippy(target, Object.assign(options, tippyConfig));
+}
+
+function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interactive, options, instance) {
+  if (!instance)
+    return addTooltip(target, content, asTooltipContent, delayed, interactive, options);
+
+  instance.setContent(asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content);
+  return instance;
 }
 
 let loadedLang = false;
