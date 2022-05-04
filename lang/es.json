@@ -130,8 +130,7 @@
             "label": "Account",
             "fields": {
               "loggedIn": "Logged In",
-              "loggedOut": "Logged Out",
-              "badgeUnlocked": "Badge Unlocked"
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -158,6 +157,9 @@
               "freeComplete": "Free Expedition Complete",
               "listUpdated": "Expedition List Updated"
             }
+          },
+          "badges": {
+            "badgeUnlocked": "Badge Unlocked"
           },
           "saveSync": {
             "label": "Save Sync",
@@ -372,8 +374,7 @@
       },
       "account": {
         "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out.",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} ha sido creado.",
@@ -393,6 +394,9 @@
         "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
         "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
+      },
+      "badges": {
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",

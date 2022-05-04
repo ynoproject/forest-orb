@@ -130,8 +130,7 @@
             "label": "Аккаунт",
             "fields": {
               "loggedIn": "Вход",
-              "loggedOut": "Выход",
-              "badgeUnlocked": "Значок Открыт"
+              "loggedOut": "Выход"
             }
           },
           "parties": {
@@ -158,6 +157,9 @@
               "freeComplete": "Свободный Поход Выполнен",
               "listUpdated": "Список Походов Обновлён"
             }
+          },
+          "badges": {
+            "badgeUnlocked": "Значок Открыт"
           },
           "saveSync": {
             "label": "Облачное Сохранение",
@@ -372,8 +374,7 @@
       },
       "account": {
         "loggedIn": "Вы вошли как {USER}.",
-        "loggedOut": "Вы вышли из аккаунта.",
-        "badgeUnlocked": "Значок разблокирован!"
+        "loggedOut": "Вы вышли из аккаунта."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
@@ -393,6 +394,9 @@
         "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
         "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
         "listUpdated": "Список Походов Обновлён."
+      },
+      "badges": {
+        "badgeUnlocked": "Значок разблокирован!"
       },
       "saveSync": {
         "saveUploading": "Выгружаем в облако данные Слота {SLOT}...",

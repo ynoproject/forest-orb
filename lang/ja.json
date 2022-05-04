@@ -130,8 +130,7 @@
             "label": "アカウント",
             "fields": {
               "loggedIn": "ログイン通知",
-              "loggedOut": "ログアウト通知",
-              "badgeUnlocked": "バッジ獲得通知"
+              "loggedOut": "ログアウト通知"
             }
           },
           "parties": {
@@ -158,6 +157,9 @@
               "freeComplete": "エンドレスラリー到達通知",
               "listUpdated": "ドリームラリー更新通知"
             }
+          },
+          "badges": {
+            "badgeUnlocked": "バッジ獲得通知"
           },
           "saveSync": {
             "label": "セーブデータ同期",
@@ -372,8 +374,7 @@
       },
       "account": {
         "loggedIn": "{USER}でログインしました。",
-        "loggedOut": "ログアウトしました。",
-        "badgeUnlocked": "バッジを獲得しました！"
+        "loggedOut": "ログアウトしました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
@@ -393,6 +394,9 @@
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
+      },
+      "badges": {
+        "badgeUnlocked": "バッジを獲得しました！"
       },
       "saveSync": {
         "saveUploading": "スロット{SLOT}からセーブデータをアップロードしています…",

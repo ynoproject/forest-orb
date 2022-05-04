@@ -130,8 +130,7 @@
             "label": "계정",
             "fields": {
               "loggedIn": "로그인",
-              "loggedOut": "로그아웃",
-              "badgeUnlocked": "뱃지 해금"
+              "loggedOut": "로그아웃"
             }
           },
           "parties": {
@@ -158,6 +157,9 @@
               "freeComplete": "자유 탐험 성공",
               "listUpdated": "탐험 리스트 업데이트"
             }
+          },
+          "badges": {
+            "badgeUnlocked": "뱃지 해금"
           },
           "saveSync": {
             "label": "세이브 동기화",
@@ -372,8 +374,7 @@
       },
       "account": {
         "loggedIn": "{USER}로 로그인 했습니다",
-        "loggedOut": "로그아웃 하였습니다",
-        "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
+        "loggedOut": "로그아웃 하였습니다"
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",
@@ -393,6 +394,9 @@
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
         "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
+      },
+      "badges": {
+        "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
       },
       "saveSync": {
         "saveUploading": "{SLOT}번 슬롯에서의 세이브 데이터를 업로드합니다...",

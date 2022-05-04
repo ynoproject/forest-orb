@@ -8,8 +8,7 @@ const notificationTypes = {
   ],
   account: [
     'loggedIn',
-    'loggedOut',
-    'badgeUnlocked'
+    'loggedOut'
   ],
   parties: [
     'create',
@@ -29,6 +28,9 @@ const notificationTypes = {
     'complete',
     'freeComplete',
     'listUpdated'
+  ],
+  badges: [
+    'badgeUnlocked'
   ],
   saveSync: [
     'saveUploading',

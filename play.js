@@ -612,6 +612,7 @@ document.getElementById('floodProtectionButton').onclick = () => {
 };
 
 initAccountControls();
+initBadgeControls();
 initSaveDataControls();
 initPartyControls();
 initEventControls();

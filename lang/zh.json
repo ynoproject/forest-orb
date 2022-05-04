@@ -130,8 +130,7 @@
             "label": "账号通知",
             "fields": {
               "loggedIn": "登录",
-              "loggedOut": "登出",
-              "badgeUnlocked": "解锁徽章"
+              "loggedOut": "登出"
             }
           },
           "parties": {
@@ -158,6 +157,9 @@
               "freeComplete": "无尽流浪抵达",
               "listUpdated": "目的地更新"
             }
+          },
+          "badges": {
+            "badgeUnlocked": "解锁徽章"
           },
           "saveSync": {
             "label": "云存档通知",
@@ -372,8 +374,7 @@
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
-        "loggedOut": "您已登出。",
-        "badgeUnlocked": "您解锁了新的徽章！"
+        "loggedOut": "您已登出。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
@@ -393,6 +394,9 @@
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
         "listUpdated": "远征目的地已更新！"
+      },
+      "badges": {
+        "badgeUnlocked": "您解锁了新的徽章！"
       },
       "saveSync": {
         "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",
