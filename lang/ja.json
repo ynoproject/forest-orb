@@ -437,7 +437,7 @@
     },
     "badgeGallery": {
       "label": "{PLAYER}のバッジギャラリー",
-      "loading": "Loading..."
+      "loading": "ロード中…"
     },
     "rankings": {
       "categories": {
