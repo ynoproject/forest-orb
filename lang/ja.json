@@ -191,7 +191,7 @@
         "title": "バッジ"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "バッジギャラリー設定"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -436,7 +436,7 @@
       "artCredit": "Art by {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
+      "label": "{PLAYER}のバッジギャラリー",
       "loading": "Loading..."
     },
     "rankings": {
