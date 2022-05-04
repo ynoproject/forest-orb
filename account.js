@@ -385,6 +385,7 @@ function addPlayerBadgeGalleryTooltip(badgeElement, playerName, systemName) {
     trigger: 'click',
     interactive: true,
     content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
+    appendTo: document.getElementById('layout'),
     onShow(instance) {
       apiFetch(`badge?command=playerSlotList&player=${playerName}`)
         .then(response => {
