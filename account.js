@@ -115,7 +115,10 @@ function initAccountControls() {
           if (!item.classList.contains('disabled')) {
             item.onclick = slotId 
               ? () => updatePlayerBadgeSlot(badge.badgeId, slotId, () => {
-                updateBadgeSlots(() => closeModal());
+                updateBadgeSlots(() => {
+                  initBadgeGalleryModal();
+                  closeModal()
+                });
               })
               : () => updatePlayerBadge(badge.badgeId, () => {
                 initAccountSettingsModal();
@@ -330,7 +333,6 @@ function updateBadgeSlots(callback) {
       return response.json();
     })
     .then(badgeSlots => {
-      var badgeSlots = [playerData?.badge];
       badgeSlotCache = badgeSlots;
       if (callback)
         callback();
