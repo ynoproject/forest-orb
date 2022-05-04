@@ -5,6 +5,7 @@ let badgeSlotRows = 1;
 let badgeCache;
 let badgeSlotCache;
 
+let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
@@ -21,6 +22,7 @@ function initBadgeControls() {
     const updateBadgesAndOpenModal = () => {
       updateBadges(() => {
         let lastGame = null;
+        let lastGroup = null;
         const badgeCompareFunc = (a, b) => {
           if (a.game !== b.game) {
             if (a.game === gameId)
@@ -36,9 +38,17 @@ function initBadgeControls() {
           if (badge.game !== lastGame) {
             const gameHeader = document.createElement('h2');
             gameHeader.classList.add('itemCategoryHeader');
-            gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game], true);
+            gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game]);
             badgeModalContent.appendChild(gameHeader);
             lastGame = badge.game;
+            lastGroup = null;
+          }
+          if (badge.group != lastGroup) {
+            const groupHeader = document.createElement('h3');
+            groupHeader.classList.add('itemCategoryHeader');
+            groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[badge.game][badge.group]);
+            badgeModalContent.appendChild(groupHeader);
+            lastGroup = badge.group;
           }
           const item = getBadgeItem(badge, true, true, true);
           if (badge.badgeId === (playerData?.badge || 'null'))
@@ -285,6 +295,17 @@ function updatePlayerBadgeSlot(badgeId, slotId, callback) {
       syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, response[0], -1);
       if (callback)
         callback();
+    })
+    .catch(err => console.error(err));
+}
+
+function updateLocalizedBadgeGroups(callback) {
+  fetch(`lang/badge/groups/${globalConfig.lang}.json`)
+    .then(response => response.json())
+    .then(function (jsonResponse) {
+      localizedBadgeGroups = jsonResponse;
+      if (callback)
+        callback(true);
     })
     .catch(err => console.error(err));
 }

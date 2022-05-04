@@ -1023,6 +1023,7 @@ function initLocalization(isInitial) {
         noGameLocInstruction.classList.toggle('hidden', !document.querySelector(`#lang option[value='${globalConfig.lang}']`).dataset.noGameLoc);
       }
 
+      updateLocalizedBadgeGroups();
       updateLocalizedBadges();
 
       const resourcesJson = {};
