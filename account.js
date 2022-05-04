@@ -239,17 +239,17 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
         const localizedTooltip = localizedBadges[badge.game][badgeId];
         if (badge.unlocked || !badge.secret) {
           if (localizedTooltip.name)
-            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name, true)}</h3>`;
+            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name)}</h3>`;
         } else
           tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
-          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description, true)}</div>`;
+          tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description)}</div>`;
         tooltipContent += '<div class="tooltipSpacer"></div>';
         if (badge.mapId)
-          tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location, true)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
+          tooltipContent += `<span class="tooltipLocation"><label>${getMassagedLabel(localizedMessages.badges.location)}</label><span class="tooltipLocationText">{LOCATION}</span></span>`;
         if ((badge.unlocked || !badge.secret) && localizedTooltip.condition) {
           if (badge.unlocked || !badge.secretCondition) {
-            let condition = getMassagedLabel(localizedTooltip.condition, true);
+            let condition = getMassagedLabel(localizedTooltip.condition);
             if (badge.seconds) {
               const minutes = Math.floor(badge.seconds / 60);
               const seconds = badge.seconds - minutes * 60;
@@ -403,7 +403,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
           .then(badgeSlots => {
             if (!badgeSlots)
               badgeSlots = [];
-              
+
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent');
     

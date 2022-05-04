@@ -240,8 +240,8 @@ function claimEventLocationPoints(location, free, retryCount) {
     .catch(err => {
       if (!retryCount)
         retryCount = 0;
-      if (retryCount < 5)
-        setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 100);
+      if (retryCount < 10)
+        setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 500);
       else
         console.error(err);
     });
