@@ -47,7 +47,7 @@ let notificationConfig = {
   screenPosition: 'bottomLeft'
 };
 
-const accountNotificationCategories = [ 'account', 'eventLocations', 'saveSync' ];
+const accountNotificationCategories = [ 'account', 'eventLocations', 'badges', 'saveSync' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');

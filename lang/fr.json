@@ -159,7 +159,10 @@
             }
           },
           "badges": {
-            "badgeUnlocked": "Badge Unlocked"
+            "label": "Badges",
+            "fields": {
+              "badgeUnlocked": "Badge Unlocked"
+            }
           },
           "saveSync": {
             "label": "Save Sync",

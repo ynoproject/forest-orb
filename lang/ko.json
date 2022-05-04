@@ -159,7 +159,10 @@
             }
           },
           "badges": {
-            "badgeUnlocked": "뱃지 해금"
+            "label": "뱃지",
+            "fields": {
+              "badgeUnlocked": "뱃지 해금"
+            }
           },
           "saveSync": {
             "label": "세이브 동기화",

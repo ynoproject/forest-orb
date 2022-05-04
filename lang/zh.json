@@ -159,7 +159,10 @@
             }
           },
           "badges": {
-            "badgeUnlocked": "解锁徽章"
+            "label": "徽章",
+            "fields": {
+              "badgeUnlocked": "解锁徽章"
+            }
           },
           "saveSync": {
             "label": "云存档通知",

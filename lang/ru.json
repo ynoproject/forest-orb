@@ -159,7 +159,10 @@
             }
           },
           "badges": {
-            "badgeUnlocked": "Значок Открыт"
+            "label": "Значки",
+            "fields": {
+              "badgeUnlocked": "Значок Открыт"
+            }
           },
           "saveSync": {
             "label": "Облачное Сохранение",

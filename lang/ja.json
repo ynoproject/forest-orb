@@ -159,7 +159,10 @@
             }
           },
           "badges": {
-            "badgeUnlocked": "バッジ獲得通知"
+            "label": "バッジ",
+            "fields": {
+              "badgeUnlocked": "バッジ獲得通知"
+            }
           },
           "saveSync": {
             "label": "セーブデータ同期",
