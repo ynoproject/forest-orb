@@ -121,6 +121,7 @@ function fetchAndUpdatePlayerInfo() {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
+        badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         if (isLogin) {
           trySetChatName(playerName);
           showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
@@ -131,7 +132,7 @@ function fetchAndUpdatePlayerInfo() {
           updateBadges(() => {
             const badgeId = jsonResponse.badge || 'null';
             const badge = badgeCache.find(b => b.badgeId === badgeId);
-            document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
+            document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
           });
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {

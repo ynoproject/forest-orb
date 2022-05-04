@@ -176,6 +176,7 @@
         "title": "账号设置",
         "fields": {
           "badge": "徽章",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "存档云同步 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -188,6 +189,9 @@
       },
       "badges": {
         "title": "徽章"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -430,6 +434,10 @@
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
     },
     "rankings": {
       "categories": {

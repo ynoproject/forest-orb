@@ -1,5 +1,11 @@
 let sessionId = null;
+
+const badgeSlotsPerRow = 5;
+const maxBadgeSlotRows = 4;
+let badgeSlotRows = 1;
+
 let badgeCache;
+let badgeSlotCache;
 
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
@@ -74,7 +80,10 @@ function initAccountControls() {
     openModal('accountSettingsModal', null, 'settingsModal');
   };
 
-  const onClickBadgeButton = fromModal => {
+  const onClickBadgeButton = (prevModal, slotId) => {
+    if (slotId && (slotId > badgeSlotCache.length + 1 || Math.ceil(slotId / badgeSlotsPerRow) > badgeSlotRows))
+      return;
+
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
@@ -100,19 +109,24 @@ function initAccountControls() {
             badgeModalContent.appendChild(gameHeader);
             lastGame = badge.game;
           }
-          const item = getBadgeItem(badge, true, true);
+          const item = getBadgeItem(badge, true, true, true);
           if (badge.badgeId === (playerData?.badge || 'null'))
             item.children[0].classList.add('selected');
           if (!item.classList.contains('disabled')) {
-            item.onclick = () => updatePlayerBadge(badge.badgeId, () => {
-              initAccountSettingsModal();
-              closeModal();
-            });
+            item.onclick = slotId 
+              ? () => updatePlayerBadgeSlot(badge.badgeId, slotId, () => {
+                updateBadgeSlots(() => closeModal());
+              })
+              : () => updatePlayerBadge(badge.badgeId, () => {
+                initAccountSettingsModal();
+                closeModal();
+              });
+             
           }
           badgeModalContent.appendChild(item);
         }
 
-        openModal('badgesModal', null, fromModal ? 'accountSettingsModal' : null);
+        openModal('badgesModal', null, prevModal || null);
       });
     };
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
@@ -121,18 +135,54 @@ function initAccountControls() {
       updateLocalizedBadges(updateBadgesAndOpenModal);
   };
 
-  document.getElementById('badgeButton').onclick = () => onClickBadgeButton(false);
-  document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton(true);
+  document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
+  document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton('accountSettingsModal');
+
+  document.getElementById('badgeGalleryButton').onclick = () => {
+    updateBadgeSlots(() => {
+      initBadgeGalleryModal();
+      openModal('badgeGalleryModal', null, 'accountSettingsModal');
+    });
+  };
+
+  const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
+
+  for (let s = 1; s <= maxBadgeSlotRows * badgeSlotsPerRow; s++) {
+    const badgeSlotButton = document.createElement('div');
+    badgeSlotButton.classList.add('badgeSlotButton');
+    badgeSlotButton.classList.add('badgeItem');
+    badgeSlotButton.classList.add('item');
+    badgeSlotButton.classList.add('unselectable');
+    badgeSlotButton.dataset.slotId = s;
+    badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', s);
+    badgeGalleryModalContent.appendChild(badgeSlotButton);
+  }
 }
 
 function initAccountSettingsModal() {
   const badgeId = playerData?.badge || 'null';
   const badge = badgeCache.find(b => b.badgeId === badgeId);
-  document.getElementById('accountBadgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
-  document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }).innerHTML;
+  document.getElementById('accountBadgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true, true).innerHTML;
+  document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
 }
 
-function getBadgeItem(badge, includeTooltip, scaled) {
+function initBadgeGalleryModal() {
+  for (let s = 1; s <= maxBadgeSlotRows * badgeSlotsPerRow; s++) {
+    const rowIndex = Math.ceil(s / badgeSlotsPerRow);
+    const badgeId = s <= badgeSlotCache.length ? badgeSlotCache[s - 1] : null;
+    const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-slot-id='${s}']`);
+    if (badgeSlotButton) {
+      let badge = badgeId ? badgeCache.find(b => b.badgeId === badgeId) : null;
+      if (!badge)
+        badge = { badgeId: 'null' };
+      badgeSlotButton.classList.toggle('disabled', s > badgeSlotCache.length + 1);
+      badgeSlotButton.classList.toggle('hidden', rowIndex > badgeSlotRows);
+      badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
+    }
+  }
+}
+
+function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
@@ -152,11 +202,12 @@ function getBadgeItem(badge, includeTooltip, scaled) {
     badgeEl.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
   } else {
     if (badgeId !== 'null') {
+      item.classList.add('locked');
       item.classList.add('disabled');
       badgeContainer.appendChild(getSvgIcon('locked', true));
       badgeContainer.appendChild(document.createElement('div'));
     } else
-      badgeContainer.appendChild(getSvgIcon('ban', true));
+      badgeContainer.appendChild(emptyIcon ? getSvgIcon('ban', true) : document.createElement('div'));
   }
 
   if (badgeEl) {
@@ -169,6 +220,7 @@ function getBadgeItem(badge, includeTooltip, scaled) {
 
     badgeContainer.appendChild(badgeEl);
     if (!badge.unlocked) {
+      item.classList.add('locked');
       item.classList.add('disabled');
       badgeContainer.appendChild(getSvgIcon('locked', true));
     }
@@ -270,13 +322,43 @@ function updateBadges(callback) {
     .catch(err => console.error(err));
 }
 
+function updateBadgeSlots(callback) {
+  apiFetch(`badge?command=slotList`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(badgeSlots => {
+      var badgeSlots = [playerData?.badge];
+      badgeSlotCache = badgeSlots;
+      if (callback)
+        callback();
+  })
+  .catch(err => console.error(err));
+}
+
 function updatePlayerBadge(badgeId, callback) {
   apiFetch(`badge?command=set&id=${badgeId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeId, -1);
-      callback();
+      if (callback)
+        callback();
+    })
+    .catch(err => console.error(err));
+}
+
+function updatePlayerBadgeSlot(badgeId, slotId, callback) {
+  apiFetch(`badge?command=slotSet&id=${badgeId}&slot=${slotId}`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      badgeSlotCache = response;
+      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, response[0], -1);
+      if (callback)
+        callback();
     })
     .catch(err => console.error(err));
 }
@@ -294,6 +376,81 @@ function updateLocalizedBadges(callback) {
         callback(true);
     })
     .catch(err => console.error(err));
+}
+
+function addPlayerBadgeGalleryTooltip(badgeElement, playerName, systemName) {
+  tippy(badgeElement, Object.assign({
+    trigger: 'click',
+    interactive: true,
+    content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
+    onShow(instance) {
+      apiFetch(`badge?command=playerSlotList&player=${playerName}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.json();
+        })
+        .then(badgeSlots => {
+          const tooltipContent = document.createElement('div');
+          tooltipContent.classList.add('tooltipContent');
+
+          const tooltipTitle = document.createElement('h4');
+          tooltipTitle.classList.add('tooltipTitle');
+          tooltipTitle.innerHTML = getMassagedLabel(localizedMessages.badgeGallery.label, true).replace('{PLAYER}', playerName);
+
+          const badgeSlotsContainer = document.createElement('div');
+          badgeSlotsContainer.classList.add('badgeSlotsContainer');
+
+          for (badgeId of badgeSlots) {
+            const badgeSlot = document.createElement('div');
+            badgeSlot.classList.add('badgeSlot');
+            badgeSlot.classList.add('badge');
+
+            const badgeUrl = `images/badge/${badgeId}.png`;
+
+            badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
+
+            if (overlayBadgeIds.indexOf(badgeId) > -1) {
+              const badgeSlotOverlay = document.createElement('div');
+              badgeSlotOverlay.classList.add('badgeSlotOverlay');
+              badgeSlotOverlay.classList.add('badgeOverlay');
+              badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+
+              badgeSlot.appendChild(badgeSlotOverlay);
+            }
+
+            badgeSlotsContainer.appendChild(badgeSlot);
+
+            // Doesn't work at the moment, likely due to nested tippy instances
+            if (localizedBadges) {
+              const badgeGame = Object.keys(localizedBadges).find(game => {
+                return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+              });
+              if (badgeGame)
+                addTooltip(badgeSlot, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
+            }
+          }
+
+          if (systemName) {
+            if (gameUiThemes.indexOf(systemName) === -1)
+              systemName = getDefaultUiTheme();
+            const parsedSystemName = systemName.replace(' ', '_');
+            const tippyBox = instance.popper.children[0];
+            tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+            tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+          }
+
+          tooltipContent.appendChild(tooltipTitle);
+          tooltipContent.appendChild(badgeSlotsContainer);
+
+          instance.setContent(tooltipContent.outerHTML);
+        })
+        .catch(err => {
+          console.error(err);
+          instance.setContent('');
+        });
+    }
+  }, tippyConfig));
 }
 
 // EXTERNAL

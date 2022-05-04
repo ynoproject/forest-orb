@@ -176,6 +176,7 @@
         "title": "Настройки Аккаунта",
         "fields": {
           "badge": "Значок",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Облачное Сохранение (Экспериментальное)",
           "saveSyncSlotId": {
             "label": "ID Слота для Синхронизации",
@@ -188,6 +189,9 @@
       },
       "badges": {
         "title": "Значки"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",
@@ -430,6 +434,10 @@
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
     },
     "rankings": {
       "categories": {

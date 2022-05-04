@@ -176,6 +176,7 @@
         "title": "Account Settings",
         "fields": {
           "badge": "Badge",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -188,6 +189,9 @@
       },
       "badges": {
         "title": "Badges"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "UI Theme",
@@ -430,6 +434,10 @@
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
     },
     "rankings": {
       "categories": {

@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div id="headerIconContainer" class="itemContainer">
+      <div id="headerIconContainer" class="itemContainer smallItemContainer">
         <div id="badgeButton" class="badgeItem item accountRequired unselectable"></div>
         <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
@@ -429,6 +429,10 @@
                   <div id="accountBadgeButton" class="badgeItem item unselectable"></div>
                 </div>
               </li>
+              <li id="badgeGalleryRow" class="formControlRow">
+                <span></span>
+                <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.badgeGallery">Manage Badge Gallery</button>
+              </li>
               <li class="formControlRow">
                 <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
                 <div>
@@ -456,6 +460,13 @@
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
           </div>
           <div class="modalContent itemContainer"></div>
+        </div>
+        <div id="badgeGalleryModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.badgeGallery.title">Manage Badge Gallery</h1>
+          </div>
+          <div class="modalContent itemContainer smallItemContainer"></div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>

@@ -126,6 +126,10 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       });
       if (badgeGame)
         addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+      if (player?.name) {
+        addPlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, systemName || getDefaultUiTheme());
+        playerListEntryBadge.classList.toggle('badgeButton', player.name);
+      }
 
       const badgeUrl = `images/badge/${player.badge}.png`;
       badge.style.backgroundImage = `url('${badgeUrl}')`;

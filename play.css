@@ -425,7 +425,6 @@ body.fullBg #background {
   border: 12px solid transparent;
   border-image-width: 2 !important;
   padding: 12px 16px 0px 16px;
-  z-index: 2;
 }
 
 #header.fullBg {
@@ -1482,6 +1481,10 @@ body.fullBg #background {
   text-align: center;
 }
 
+.itemContainer > .item.hidden {
+  display: none;
+}
+
 .itemContainer > .item > div {
   -webkit-appearance: button;
   cursor: pointer;
@@ -1523,16 +1526,16 @@ body.fullBg #background {
   border-image: var(--border-image-url) 8 repeat !important;
 }
 
-.modalContent.itemContainer .badgeItem.disabled > .badgeContainer > div:first-child {
+.modalContent.itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
   border-image: var(--modal-border-image-url) 8 repeat !important;
 }
 
-.itemContainer .badgeItem.disabled > .badgeContainer > div:first-child {
+.itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
   border: none !important;
   margin: 16px 12px 8px 12px;
 }
 
-.itemContainer .badgeItem.disabled > .badgeContainer > .badge:first-child {
+.itemContainer .badgeItem.locked > .badgeContainer > .badge:first-child {
   opacity: 0.325;
   filter: grayscale(1);
 }
@@ -1546,11 +1549,11 @@ body.fullBg #background {
   padding: 8px;
 }
 
-.itemContainer .badgeItem.disabled > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.locked > .badgeContainer > .icon:nth-child(2) > svg {
   transition: opacity 0.325s ease-in-out;
 }
 
-.itemContainer .badgeItem.disabled:hover > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.locked:hover > .badgeContainer > .icon:nth-child(2) > svg {
   opacity: 0;
 }
 
@@ -1574,12 +1577,19 @@ body.fullBg #background {
 }
 
 #headerIconContainer > .badgeItem > .badgeContainer {
-  width: 49px;
-  height: 49px;
   margin-bottom: -8px;
 }
 
-#headerIconContainer > .badgeItem > .badgeContainer > div {
+.smallItemContainer > .item {
+  margin: 16px;
+}
+
+.smallItemContainer > .badgeItem > .badgeContainer {
+  width: 49px;
+  height: 49px;
+}
+
+.smallItemContainer > .badgeItem > .badgeContainer > div {
   width: 37px;
   height: 37px;
   border: 6px solid transparent;
@@ -1758,6 +1768,24 @@ form .uiTheme {
 #expRankContainer {
   display: flex;
   align-items: center;
+}
+
+.badgeSlotsContainer {
+  max-width: 225px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badgeSlot {
+  width: 37px;
+  height: 37px;
+  margin: 4px;
+}
+
+.badgeButton {
+  cursor: pointer;
+  -webkit-appearance: button;
 }
 
 .badge.hidden {
@@ -2111,7 +2139,6 @@ form .uiTheme {
   display: flex;
   justify-content: right;
   font-size: x-small;
-  margin-bottom: -4px;
 }
 
 @media (hover: none) { 

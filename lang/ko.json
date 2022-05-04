@@ -176,6 +176,7 @@
         "title": "계정 설정",
         "fields": {
           "badge": "뱃지",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "세이브 동기화 (개발중)",
           "saveSyncSlotId": {
             "label": "세이브 동기화 번호",
@@ -188,6 +189,9 @@
       },
       "badges": {
         "title": "뱃지"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "UI 테마",
@@ -430,6 +434,10 @@
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
     },
     "rankings": {
       "categories": {

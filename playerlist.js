@@ -279,6 +279,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     });
     if (badgeGame)
       addTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+    if (player.name) {
+      addPlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
+      playerListEntryBadge.classList.toggle('badgeButton', player.name);
+    }
   }
 
   if (partyOwnerIcon)

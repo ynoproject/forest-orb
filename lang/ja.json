@@ -176,6 +176,7 @@
         "title": "アカウント設定",
         "fields": {
           "badge": "バッジ",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
@@ -188,6 +189,9 @@
       },
       "badges": {
         "title": "バッジ"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -430,6 +434,10 @@
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
     },
     "rankings": {
       "categories": {
