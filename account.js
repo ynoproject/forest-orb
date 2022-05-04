@@ -442,9 +442,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
             }
     
             if (systemName) {
-              if (gameUiThemes.indexOf(systemName) === -1)
-                systemName = getDefaultUiTheme();
-              const parsedSystemName = systemName.replace(' ', '_');
+              const parsedSystemName = (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_');
               const tippyBox = instance.popper.children[0];
               tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
               tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
