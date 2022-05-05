@@ -120,9 +120,10 @@
               "topRight": "Top Right"
             }
           },
-          "client": {
+          "system": {
             "label": "System",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "Possible Flood Attack Detected"
             }
           },
@@ -372,7 +373,8 @@
       "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
       },
       "account": {

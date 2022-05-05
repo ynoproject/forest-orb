@@ -120,9 +120,10 @@
               "topRight": "우측 상단"
             }
           },
-          "client": {
+          "system": {
             "label": "시스템",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "디도스 공격 감지"
             }
           },
@@ -372,7 +373,8 @@
       "confirmEnableWithData": "이 계정에 이전 세이브 동기화 데이터가 발견되었습니다. 동기화 슬롯에 저장된 세이브 데이터는 동일한 슬롯에 데이터가 있는 경우 계정의 세이브 데이터로 덮어씁니다. 이 기능이 활성화된 상태에서 페이지를 다시 로드하는 경우에만 적용됩니다. 세이브 동기화를 사용하시겠습니까?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {

@@ -120,9 +120,10 @@
               "topRight": "Superior Derecha"
             }
           },
-          "client": {
+          "system": {
             "label": "Sistema",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "Posible Flood Attack detectado"
             }
           },
@@ -372,7 +373,8 @@
       "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "Posible flood attack detectado: Activando modo solitario."
       },
       "account": {

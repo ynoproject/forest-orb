@@ -120,9 +120,10 @@
               "topRight": "右上角"
             }
           },
-          "client": {
+          "system": {
             "label": "系统通知",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "检测到网络攻击"
             }
           },
@@ -372,7 +373,8 @@
       "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
       },
       "account": {

@@ -120,9 +120,10 @@
               "topRight": "右上"
             }
           },
-          "client": {
+          "system": {
             "label": "システム",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "スパム検知"
             }
           },
@@ -372,7 +373,8 @@
       "confirmEnableWithData": "このアカウントには既にセーブデータが保存されています。同じスロットに別のセーブデータが保存されている場合、サーバー側に保存されているセーブデータで上書きされます。この機能を有効にした状態でページを再読み込みした場合にのみ反映されますのでご注意ください。本当にセーブデータ同期を有効にしますか？"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {
