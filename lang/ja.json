@@ -181,7 +181,7 @@
         "title": "アカウント設定",
         "fields": {
           "badge": "バッジ",
-          "badgeGallery": "Manage Badge Gallery",
+          "badgeGallery": "バッジギャラリー管理",
           "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
