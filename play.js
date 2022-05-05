@@ -929,10 +929,6 @@ document.onmousemove = function () {
   }
 };
 
-window.onbeforeunload = function () {
-  return localizedMessages.leavePage;
-};
-
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
   if (isInit && localizedGameIds.indexOf(gameId) > -1)
@@ -959,7 +955,7 @@ function onSelectUiTheme(e) {
 
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
-  fetch(`lang/${globalConfig.lang}.json`)
+  fetchNewest(`lang/${globalConfig.lang}.json`, true)
     .then(response => response.json())
     .then(function (jsonResponse) {
       const version = jsonResponse.version[gameId];
@@ -1009,7 +1005,7 @@ function initLocalization(isInitial) {
         for (let langOpt of languages) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
-            fetch(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
+            fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
               if (!response.ok && response.status === 404) {
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;
@@ -1046,7 +1042,7 @@ function initLocalization(isInitial) {
 }
 
 function initLocations(lang, game, callback) {
-  fetch(`locations/${game}/config.json`)
+  fetchNewest(`locations/${game}/config.json`, game === gameId)
     .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -1089,7 +1085,7 @@ function initLocations(lang, game, callback) {
 
 function initLocalizedMapLocations(lang, game, callback) {
   const fileName = lang === 'en' ? 'config' : lang;
-  fetch(`locations/${game}/${fileName}.json`)
+  fetchNewest(`locations/${game}/${fileName}.json`, game === gameId)
     .then(response => {
       if (!response.ok) {
         gameLocalizedMapLocations[game] = gameMapLocations[game];
@@ -1320,7 +1316,7 @@ function getInfoLabel(label) {
 }
 
 function fetchAndPopulateYnomojiConfig() {
-  fetch('ynomoji.json')
+  fetchNewest('ynomoji.json')
     .then(response => response.json())
     .then(jsonResponse => {
       ynomojiConfig = jsonResponse;

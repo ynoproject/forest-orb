@@ -314,7 +314,7 @@ function updateLocalizedBadges(callback) {
   if (localizedBadgesIgnoreUpdateTimer)
     clearInterval(localizedBadgesIgnoreUpdateTimer);
     
-  fetch(`lang/badge/${globalConfig.lang}.json`)
+  fetchNewest(`lang/badge/${globalConfig.lang}.json`, true)
     .then(response => response.json())
     .then(function (jsonResponse) {
       localizedBadges = jsonResponse;
