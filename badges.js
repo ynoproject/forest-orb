@@ -379,20 +379,12 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
               }
     
               badgeSlotsContainer.appendChild(badgeSlot);
-    
-              // Doesn't work at the moment, likely due to nested tippy instances
-              if (localizedBadges) {
-                const badgeGame = Object.keys(localizedBadges).find(game => {
-                  return Object.keys(localizedBadges[game]).find(b => b === badgeId);
-                });
-                if (badgeGame)
-                  addTooltip(badgeSlot, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
-              }
             }
+
+            const tippyBox = instance.popper.children[0];
     
             if (systemName) {
               const parsedSystemName = (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_');
-              const tippyBox = instance.popper.children[0];
               tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
               tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
               const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
@@ -404,6 +396,23 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
             tooltipContent.appendChild(badgeSlotsContainer);
     
             instance.setContent(tooltipContent.outerHTML);
+
+            if (localizedBadges) {
+              const badges = instance.popper.querySelectorAll('.badge');
+              for (let b = 0; b < badgeSlots.length; b++) {
+                const badgeId = badgeSlots[b];
+                const badgeGame = Object.keys(localizedBadges).find(game => {
+                  return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+                });
+                if (badgeGame) {
+                  const badgeTippy = addTooltip(badges[b], getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
+                  if (systemName) {
+                    badgeTippy.popper.children[0].style = tippyBox.style;
+                    badgeTippy.popper.querySelector('.tooltipContent').style = tooltipTitle.style;
+                  }
+                }
+              }
+            }
           })
           .catch(err => {
             console.error(err);
