@@ -367,9 +367,10 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
               const badgeUrl = `images/badge/${badgeId}.png`;
     
               badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
+
+              const badgeSlotOverlay = overlayBadgeIds.indexOf(badgeId) > -1 ? document.createElement('div') : null;
     
-              if (overlayBadgeIds.indexOf(badgeId) > -1) {
-                const badgeSlotOverlay = document.createElement('div');
+              if (badgeSlotOverlay) {
                 badgeSlotOverlay.classList.add('badgeSlotOverlay');
                 badgeSlotOverlay.classList.add('badgeOverlay');
                 badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
@@ -394,6 +395,9 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
               const tippyBox = instance.popper.children[0];
               tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
               tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+              const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
+              for (let badgeSlotOverlay of badgeSlotOverlays)
+                badgeSlotOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
             }
     
             tooltipContent.appendChild(tooltipTitle);
