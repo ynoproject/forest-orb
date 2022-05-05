@@ -181,7 +181,7 @@
         "title": "账号设置",
         "fields": {
           "badge": "徽章",
-          "badgeGallery": "Manage Badge Gallery",
+          "badgeGallery": "管理徽章展柜",
           "toggleSaveSync": "存档云同步 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -196,7 +196,7 @@
         "title": "徽章"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "徽章展柜"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -443,8 +443,8 @@
       "artCredit": "Art by {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading..."
+      "label": "{PLAYER} 的徽章展柜",
+      "loading": "加载中..."
     },
     "rankings": {
       "categories": {
