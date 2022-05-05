@@ -955,7 +955,7 @@ function onSelectUiTheme(e) {
 
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
-  fetchNewest(`lang/${globalConfig.lang}.json`, true)
+  fetchNewest(`lang/${globalConfig.lang}.json`)
     .then(response => response.json())
     .then(function (jsonResponse) {
       const version = jsonResponse.version[gameId];
@@ -1042,7 +1042,7 @@ function initLocalization(isInitial) {
 }
 
 function initLocations(lang, game, callback) {
-  fetchNewest(`locations/${game}/config.json`, game === gameId)
+  fetchNewest(`locations/${game}/config.json`)
     .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -1085,7 +1085,7 @@ function initLocations(lang, game, callback) {
 
 function initLocalizedMapLocations(lang, game, callback) {
   const fileName = lang === 'en' ? 'config' : lang;
-  fetchNewest(`locations/${game}/${fileName}.json`, game === gameId)
+  fetchNewest(`locations/${game}/${fileName}.json`)
     .then(response => {
       if (!response.ok) {
         gameLocalizedMapLocations[game] = gameMapLocations[game];
