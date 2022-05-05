@@ -385,7 +385,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
     
             if (systemName) {
               const parsedSystemName = (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_');
-              tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
+              tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`);
               tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
               const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
               for (let badgeSlotOverlay of badgeSlotOverlays)
