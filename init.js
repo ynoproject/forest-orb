@@ -37,7 +37,7 @@ function injectScripts() {
   const scriptTags = document.querySelectorAll('script');
   for (let tag of scriptTags) {
     if (tag.src.startsWith(window.location.origin))
-      initialDependencies.push(tag.src.slice(window.location.origin.length + 1));
+      initialDependencies.push(tag.src);
   }
 
   const checkInitialDependencyModified = function (index) {
