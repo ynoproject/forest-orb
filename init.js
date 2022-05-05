@@ -135,25 +135,28 @@ function reloadForDependencyUpdates(hasClientChanges) {
 
 function checkDependenciesModified() {
   let hasChanges = false;
-  const dependencyFilenames = Object.keys(dependencyFiles);
+  const dependencyPaths = Object.keys(dependencyFiles);
   const checkDependency = function (index) {
-    const dep = dependencyFilenames[index];
+    const dep = dependencyPaths[index];
     fetch(dep, { headers: { 'If-Modified-Since': dependencyFiles[dep] }})
     .then(response => {
-      if (response.status === 200)
+      if (response.status === 200) {
+        if (response.headers.has('Last-Modified'))
+          dependencyFiles[dep] = response.headers.get('Last-Modified');
         hasChanges = true;
+      }
     })
     .catch(err => {
       console.error(err);
     })
     .finally(() => {
-      if (index < dependencyFilenames.length - 1)
+      if (index < dependencyPaths.length - 1)
         checkDependency(index + 1);
       else if (hasChanges)
         showSystemToastMessage('siteUpdates', 'info');
     });
   };
-  if (dependencyFilenames.length)
+  if (dependencyPaths.length)
     checkDependency(0);
 }
 
