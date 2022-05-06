@@ -123,7 +123,7 @@
           "system": {
             "label": "系统通知",
             "fields": {
-              "siteUpdates": "Site Updated",
+              "siteUpdates": "网站更新",
               "floodDetected": "检测到网络攻击"
             }
           },
@@ -260,7 +260,7 @@
       },
       "eventLocations": "梦远征",
       "rankings": "瞅一眼排行榜",
-      "nexus": "返回到门的世界"
+      "nexus": "返回到门世界"
     }
   },
   "messages": {
@@ -374,7 +374,7 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "siteUpdates": "检测到网站更新，请刷新网页以获取新内容。",
         "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
       },
       "account": {
