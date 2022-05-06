@@ -86,6 +86,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       badge.style.backgroundImage = `url('${badgeUrl}')`;
 
       if (badgeOverlay) {
+        badge.classList.add('overlayBadge');
+
         badgeOverlay.classList.add('badgeOverlay');
         badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
         badge.appendChild(badgeOverlay);

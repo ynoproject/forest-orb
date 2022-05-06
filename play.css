@@ -2515,7 +2515,7 @@ form .uiTheme {
     image-rendering: auto;
   }
 
-  .badge:not(.scaledBadge) {
+  .badge:not(.scaledBadge):not(.overlayBadge) {
     image-rendering: auto;
   }
 }

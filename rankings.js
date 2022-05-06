@@ -281,6 +281,21 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           const playerCell = document.createElement('td');
           playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge || 'null' }, false, true, true);
 
+          if (ranking.badge && localizedBadges) {
+            const badge = playerCell.querySelector('.badge');
+            if (badge) {
+              const badgeGame = Object.keys(localizedBadges).find(game => {
+                return Object.keys(localizedBadges[game]).find(b => b === ranking.badge);
+              });
+              if (badgeGame)
+                addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
+              if (ranking.name) {
+                addOrUpdatePlayerBadgeGalleryTooltip(badge, ranking.name, systemName);
+                badge.classList.toggle('badgeButton', ranking.name);
+              }
+            }
+          }
+
           const valueCell = document.createElement('td');
           valueCell.innerHTML = getInfoLabel(valueFunc(ranking));
 

@@ -150,6 +150,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
 
   if (badgeEl) {
     if (badge?.overlay) {
+      badgeEl.classList.add('overlayBadge');
+
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
       badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
@@ -382,11 +384,16 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
             }
 
             const tippyBox = instance.popper.children[0];
+
+            let boxStyles;
+            let textStyles;
     
             if (systemName) {
               const parsedSystemName = (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_');
-              tippyBox.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`);
-              tooltipTitle.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+              boxStyles = `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`;
+              textStyles = `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+              tippyBox.setAttribute('style', boxStyles);
+              tooltipTitle.setAttribute('style', textStyles);
               const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
               for (let badgeSlotOverlay of badgeSlotOverlays)
                 badgeSlotOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
@@ -407,8 +414,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
                 if (badgeGame) {
                   const badgeTippy = addTooltip(badges[b], getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
                   if (systemName) {
-                    badgeTippy.popper.children[0].style = tippyBox.style;
-                    badgeTippy.popper.querySelector('.tooltipContent').style = tooltipTitle.style;
+                    badgeTippy.popper.children[0].setAttribute('style', boxStyles);
+                    badgeTippy.popper.querySelector('.tooltipContent').setAttribute('style', textStyles);
                   }
                 }
               }
