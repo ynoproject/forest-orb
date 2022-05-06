@@ -57,7 +57,7 @@ function injectScripts() {
       ? () => injectScript(index + 1)
       : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
-          ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
+          Module.preRun.push(() => ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas');
         Module.postRun.push(() => {
           if (hasChanges)
             reloadForDependencyUpdates(hasClientChanges);
