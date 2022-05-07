@@ -29,27 +29,18 @@ function injectScripts() {
   if (gameId === '2kki')
     scripts.push('2kki.js');
   scripts = scripts.concat([ 'play.js', 'gamecanvas.js', 'index.js' ]);
-  let hasChanges = false;
-  let hasClientChanges = false;
 
-  const initialDependencies = [ 'play.css' ];
+  dependencyFiles['play.css'] = null;
 
   const scriptTags = document.querySelectorAll('script');
   for (let tag of scriptTags) {
     if (tag.src.startsWith(window.location.origin))
-      initialDependencies.push(tag.src);
+      dependencyFiles[tag.src] = null;
   }
-
-  const checkInitialDependencyModified = function (index) {
-    checkDependencyModified(initialDependencies[index], null, xhr => {
-      if (xhr.status === 200)
-        hasChanges = true;
-      if (index < initialDependencies.length - 1)
-        checkInitialDependencyModified(index + 1);
-      else
-        injectScript(0);
-    });
-  };
+  for (let script of scripts)
+    dependencyFiles[script] = null;
+  dependencyFiles['index.json'] = null;
+  dependencyFiles['index.wasm'] = null;
 
   const injectScript = function (index) {
     const script = scripts[index];
@@ -57,44 +48,34 @@ function injectScripts() {
       ? () => injectScript(index + 1)
       : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
-          Module.preRun.push(() => ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas');
+          ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
+  
         Module.postRun.push(() => {
-          if (hasChanges)
-            reloadForDependencyUpdates(hasClientChanges);
-          else {
-            Module.INITIALIZED = true;
-            document.getElementById('loadingOverlay').classList.add('loaded');
-            fetchAndUpdatePlayerInfo();
-            setInterval(checkSession, 60000);
-            window.onbeforeunload = function () {
-              return localizedMessages.leavePage;
-            };
-          }
+          Module.INITIALIZED = true;
+          document.getElementById('loadingOverlay').classList.add('loaded');
+          fetchAndUpdatePlayerInfo();
+          setInterval(checkSession, 60000);
+          setTimeout(() => {
+            checkDependenciesModified();
+            setInterval(checkDependenciesModified, 300000);
+          }, 10000);
+          window.onbeforeunload = function () {
+            return localizedMessages.leavePage;
+          };
         });
         if (typeof onResize !== 'undefined')
           Module.postRun.push(onResize);
       };
 
-    checkDependencyModified(script,
-      xhr => {
-        const scriptTag = document.createElement('script');
-        scriptTag.type = 'text/javascript';
-        scriptTag.text = xhr.responseText;
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'text/javascript';
+    scriptTag.src = script;
+    scriptTag.onload = loadFunc;
 
-        document.body.appendChild(scriptTag);
-      },
-      xhr => {
-        if (xhr.status === 200) {
-          hasChanges = true;
-          if (script === 'index.js')
-            hasClientChanges = true;
-        }
-        loadFunc();
-      }
-    );
+    document.body.appendChild(scriptTag);
   };
 
-  checkInitialDependencyModified(0);
+  injectScript(0);
 }
 
 function checkDependencyModified(filename, onLoaded, onChecked) {
@@ -120,41 +101,32 @@ function checkDependencyModified(filename, onLoaded, onChecked) {
   xhr.send(null);
 }
 
-function reloadForDependencyUpdates(hasClientChanges) {
-  if (hasClientChanges) {
-    const req = { headers: { 'If-Modified-Since': dependencyFiles['index.js'] } };
-    fetch('index.json', req)
-      .finally(_ => {
-        fetch('index.wasm', req).finally(_ => {
-          window.location = window.location;
-        });
-      });
-  } else
-    window.location = window.location;
-}
-
 function checkDependenciesModified() {
   let hasChanges = false;
   const dependencyPaths = Object.keys(dependencyFiles);
   const checkDependency = function (index) {
     const dep = dependencyPaths[index];
-    fetch(dep, { headers: { 'If-Modified-Since': dependencyFiles[dep] }})
-    .then(response => {
-      if (response.status === 200) {
-        if (response.headers.has('Last-Modified'))
+    const hasLastModified = !!dependencyFiles[dep];
+    const req = hasLastModified ? { headers: { 'If-Modified-Since': dependencyFiles[dep] }} : {};
+
+    fetch(dep, req)
+      .then(response => {
+        if (!hasLastModified || (response.status === 200 && response.headers.has('Last-Modified')))
           dependencyFiles[dep] = response.headers.get('Last-Modified');
-        hasChanges = true;
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    })
-    .finally(() => {
-      if (index < dependencyPaths.length - 1)
-        checkDependency(index + 1);
-      else if (hasChanges)
-        showSystemToastMessage('siteUpdates', 'info');
-    });
+        if (hasLastModified && response.status === 200)
+          hasChanges = true;
+      })
+      .catch(err => {
+        console.error(err);
+      })
+      .finally(() => {
+        if (!hasLastModified && dependencyFiles[dep])
+          checkDependency(index);
+        else if (index < dependencyPaths.length - 1)
+          checkDependency(index + 1);
+        else if (hasChanges)
+          showSystemToastMessage('siteUpdates', 'info');
+      });
   };
   if (dependencyPaths.length)
     checkDependency(0);
@@ -430,6 +402,4 @@ function getCookie(cName) {
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());
-
-  setInterval(checkDependenciesModified, 300000);
 })();
