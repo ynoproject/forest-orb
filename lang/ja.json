@@ -374,7 +374,7 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "siteUpdates": "サイトが更新されました。ページを再読み込みすると、サイトの変更が反映されます。",
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {
