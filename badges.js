@@ -213,15 +213,19 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
         
       if (tooltipContent) {
         const baseTooltipContent = tooltipContent;
+        const tooltipOptions = {};
 
-        const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId);
+        const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions);
 
         if (badge.mapId) {
           const mapId = badge.mapId.toString().padStart(4, '0');
           const setTooltipLocation = () => {
             if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
-            else
+            else if (gameId === '2kki') {
+              tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
+              tooltipOptions.onShow = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(`<div class="tooltipContent">${baseTooltipContent.replace('{LOCATION}', locationsHtml)}</div>`));
+            } else
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
             assignTooltip();
           }

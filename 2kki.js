@@ -262,6 +262,41 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
   }
 }
 
+function getOrQuery2kkiLocationsHtml(mapId, callback) {
+  let locationKey = `0000_${mapId}`;
+  if (locationCache && !locationCache.hasOwnProperty(locationKey)) {
+    const locationKeys = Object.keys(locationCache).filter(k => k.endsWith(mapId) && Array.isArray(locationCache[k]));
+    if (locationKeys.length === 1 || locationKeys.map(k => JSON.stringify(locationCache[k])).filter((value, index, self) => self.indexOf(value) === index).length === 1)
+      locationKey = locationKeys[0];
+  }
+  let prevMapId = locationKey.slice(0, 4);
+
+  const setLocationFunc = (_mapId, _prevMapId, locations, _prevLocations, cacheLocation, saveLocation) => {
+    if (cacheLocation) {
+      const locationKey = `${prevMapId}_${mapId}`;
+      if (locations)
+        locationCache[locationKey] = locations;
+      else
+        unknownLocations.push(locationKey);
+      if (saveLocation && locations) {
+        cache.location[locationKey] = locations;
+        updateCache('location');
+      }
+    }
+    callback(getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;')));
+  };
+
+  if (unknownLocations.indexOf(locationKey) > -1)
+    setLocationFunc(mapId, prevMapId);
+  else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+    setLocationFunc(mapId, null, locationCache[locationKey]);
+  else {
+    prevMapId = '0000';
+    queryAndSet2kkiLocation(mapId, prevMapId, null, setLocationFunc)
+      .catch(err => console.error(err));
+  }
+}
+
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
     const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;

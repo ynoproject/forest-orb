@@ -25,10 +25,7 @@ Module = {
 };
 
 function injectScripts() {
-  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js' ];
-  if (gameId === '2kki')
-    scripts.push('2kki.js');
-  scripts = scripts.concat([ 'play.js', 'gamecanvas.js', 'index.js' ]);
+  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', '2kki.js', 'play.js', 'gamecanvas.js', 'index.js' ];
 
   dependencyFiles['play.css'] = null;
 
