@@ -4,12 +4,11 @@ let badgeSlotRows = 1;
 
 let badgeCache;
 let badgeSlotCache;
+let badgeCacheUpdateTimer = null;
 
 let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
-
-const overlayBadgeIds = [ 'mono', 'ticket' ]; // Doing this until we have a better approach since we don't necessarily have the badge cache loaded
 
 function initBadgeControls() {
   const onClickBadgeButton = (prevModal, slotId) => {
@@ -120,6 +119,16 @@ function initBadgeGalleryModal() {
   }
 }
 
+function getBadgeUrl(badge) {
+  let badgeId;
+  if (typeof badge === 'string') {
+    badgeId = badge;
+    badge = badgeId ? badgeCache.find(b => b.badgeId === badgeId) : null;
+  } else
+    badgeId = badge.badgeId;
+  return badgeId ? `images/badge/${badgeId}${badge?.animated ? '.gif' : '.png'}` : '';
+}
+
 function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
   const badgeId = badge.badgeId;
 
@@ -137,7 +146,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
     badgeEl.classList.add('badge');
     if (scaled)
       badgeEl.classList.add('scaledBadge');
-    badgeEl.style.backgroundImage = `url('images/badge/${badgeId}.png')`;
+    badgeEl.style.backgroundImage = `url('${getBadgeUrl(badge)}')`;
   } else {
     if (badgeId !== 'null') {
       item.classList.add('locked');
@@ -255,11 +264,33 @@ function updateBadges(callback) {
     })
     .then(badges => {
       badgeCache = badges.map(badge => {
-        return { badgeId: badge.badgeId, game: badge.game, group: badge.group, mapId: badge.mapId, mapX: badge.mapX, mapY: badge.mapY, seconds: badge.seconds, secret: badge.secret, secretCondition: badge.secretCondition, overlay: badge.overlay, art: badge.art, percent: badge.percent, goals: badge.goals, goalsTotal: badge.goalsTotal, unlocked: badge.unlocked };
+        return {
+          badgeId: badge.badgeId,
+          game: badge.game,
+          group: badge.group,
+          mapId: badge.mapId,
+          mapX: badge.mapX,
+          mapY: badge.mapY,
+          seconds: badge.seconds,
+          secret: badge.secret,
+          secretCondition: badge.secretCondition,
+          overlay: badge.overlay,
+          art: badge.art,
+          animated: badge.animated,
+          percent: badge.percent,
+          goals: badge.goals,
+          goalsTotal: badge.goalsTotal,
+          unlocked: badge.unlocked
+        };
       });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showBadgeToastMessage('badgeUnlocked', 'info');
+        
+      if (badgeCacheUpdateTimer)
+        clearInterval(badgeCacheUpdateTimer);
+      badgeCacheUpdateTimer = setInterval(updateBadges, 900000);
+      
       if (callback)
         callback();
     })
@@ -370,11 +401,11 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
               badgeSlot.classList.add('badgeSlot');
               badgeSlot.classList.add('badge');
     
-              const badgeUrl = `images/badge/${badgeId}.png`;
+              const badgeUrl = getBadgeUrl(badgeId);
     
               badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
 
-              const badgeSlotOverlay = overlayBadgeIds.indexOf(badgeId) > -1 ? document.createElement('div') : null;
+              const badgeSlotOverlay = badgeCache.find(b => b.badgeId === badgeId)?.overlay ? document.createElement('div') : null;
     
               if (badgeSlotOverlay) {
                 badgeSlotOverlay.classList.add('badgeSlotOverlay');

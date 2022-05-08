@@ -9,7 +9,7 @@ function initAccountControls() {
     apiFetch('logout')
       .then(response => {
         if (!response.ok)
-          console.log(response.statusText);
+          console.error(response.statusText);
       }).catch(err => console.error(err));
     setCookie('sessionId', '');
     fetchAndUpdatePlayerInfo();

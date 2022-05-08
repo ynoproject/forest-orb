@@ -1405,6 +1405,7 @@ fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
 
 initDefaultSprites();
+updateBadges();
 fetchAndPopulateYnomojiConfig();
 
 if (!loadedUiTheme)

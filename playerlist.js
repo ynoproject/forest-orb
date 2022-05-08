@@ -72,7 +72,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       badge.classList.add('badge');
       badge.classList.add('nameBadge');
 
-      badgeOverlay = badge && overlayBadgeIds.indexOf(player.badge) > -1 ? document.createElement('div') : null;
+      badgeOverlay = badge && badgeCache.find(b => b.badgeId === player.badge)?.overlay ? document.createElement('div') : null;
 
       if (localizedBadges) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
@@ -82,7 +82,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
           addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
       }
 
-      const badgeUrl = `images/badge/${player.badge}.png`;
+      const badgeUrl = getBadgeUrl(player.badge);
       badge.style.backgroundImage = `url('${badgeUrl}')`;
 
       if (badgeOverlay) {
@@ -266,8 +266,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   }
 
   const showBadge = player?.account && player.badge;
-  const showBadgeOverlay = showBadge && overlayBadgeIds.indexOf(player.badge) > -1;
-  const badgeUrl = showBadge ? `images/badge/${player.badge}.png` : '';
+  const showBadgeOverlay = showBadge && badgeCache.find(b => b.badgeId === player.badge)?.overlay;
+  const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
   playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';

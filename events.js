@@ -205,7 +205,7 @@ function updatePlayerExp() {
       const rankBadge = document.getElementById('expRankBadge');
 
       document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
-      rankBadge.src = rank.badge ? `images/badge/${rank.badge}.png` : '';
+      rankBadge.src = rank.badge ? getBadgeUrl(rank.badge) : '';
       rankBadge.style.display = rank.badge ? 'unset' : 'none';
 
       const rootStyle = document.documentElement.style;
