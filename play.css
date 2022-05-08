@@ -1005,6 +1005,7 @@ body.fullBg #background {
 }
 
 .nameBadge > .badgeOverlay {
+  -webkit-mask-size: contain;
   mask-size: contain;
 }
 
