@@ -985,14 +985,12 @@ function initLocalization(isInitial) {
       }
 
       if (isInitial)
-        initLocations(globalConfig.lang, gameId);
+        initLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
       else if (localizedMapLocations)
-        initLocalizedMapLocations(globalConfig.lang, gameId);
+        initLocalizedMapLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
 
       if (eventPeriodCache)
         updateEventLocationList();
-        
-      fetchAndPopulateRankingCategories();
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');

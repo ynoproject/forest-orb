@@ -36,7 +36,7 @@ function injectScripts() {
   }
   for (let script of scripts)
     dependencyFiles[script] = null;
-  dependencyFiles['index.json'] = null;
+  dependencyFiles[`${window.location.origin}/data/${gameId}/index.json`] = null;
   dependencyFiles['index.wasm'] = null;
 
   const injectScript = function (index) {
