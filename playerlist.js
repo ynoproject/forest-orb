@@ -82,7 +82,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
           addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
       }
 
-      const badgeUrl = getBadgeUrl(player.badge);
+      const badgeUrl = getBadgeUrl(player.badge, true);
       badge.style.backgroundImage = `url('${badgeUrl}')`;
 
       if (badgeOverlay) {

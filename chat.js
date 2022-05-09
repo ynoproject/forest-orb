@@ -133,7 +133,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
         badge.classList.toggle('badgeButton', player.name);
       }
 
-      const badgeUrl = getBadgeUrl(player.badge);
+      const badgeUrl = getBadgeUrl(player.badge, true);
       badge.style.backgroundImage = `url('${badgeUrl}')`;
 
       if (badgeOverlay) {

@@ -119,14 +119,14 @@ function initBadgeGalleryModal() {
   }
 }
 
-function getBadgeUrl(badge) {
+function getBadgeUrl(badge, staticOnly) {
   let badgeId;
   if (typeof badge === 'string') {
     badgeId = badge;
     badge = badgeId ? badgeCache.find(b => b.badgeId === badgeId) : null;
   } else
     badgeId = badge.badgeId;
-  return badgeId ? `images/badge/${badgeId}${badge?.animated ? '.gif' : '.png'}` : '';
+  return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
 }
 
 function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
@@ -146,7 +146,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
     badgeEl.classList.add('badge');
     if (scaled)
       badgeEl.classList.add('scaledBadge');
-    badgeEl.style.backgroundImage = `url('${getBadgeUrl(badge)}')`;
+    badgeEl.style.backgroundImage = `url('${getBadgeUrl(badge, !badge.unlocked)}')`;
   } else {
     if (badgeId !== 'null') {
       item.classList.add('locked');
@@ -286,7 +286,7 @@ function updateBadges(callback) {
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showBadgeToastMessage('badgeUnlocked', 'info');
-        
+
       if (badgeCacheUpdateTimer)
         clearInterval(badgeCacheUpdateTimer);
       badgeCacheUpdateTimer = setInterval(updateBadges, 900000);
