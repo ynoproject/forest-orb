@@ -514,6 +514,10 @@ body.fullBg #background {
   margin-left: 8px;
 }
 
+#footerIconContainer .icon {
+  padding: 0 4px;
+}
+
 #layout {
   width: 100%;
   overflow: hidden;
