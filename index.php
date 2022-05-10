@@ -1,5 +1,5 @@
 <?php
-  $gameId = substr($_SERVER['REQUEST_URI'], 1);
+  $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
   switch ($gameId) {
     case "2kki":
       $gameName = "Yume 2kki";
