@@ -1,11 +1,3 @@
-const gameIdsElements = document.querySelectorAll('[data-game-ids]');
-for (let el of gameIdsElements) {
-  if (el.dataset.gameIds.split(',').indexOf(gameId) > -1)
-    el.style.display = '';
-  else
-    el.remove();
-}
-
 let localizedMessages;
 
 let localizedMapLocations;

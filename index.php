@@ -1,11 +1,45 @@
+<?php
+  $gameId = substr($_SERVER['REQUEST_URI'], 1);
+  switch ($gameId) {
+    case "2kki":
+      $gameName = "Yume 2kki";
+      break;
+    case "flow":
+      $gameName = ".flow";
+      break;
+    case "prayers":
+      $gameName = "Answered Prayers";
+      break;
+    case "deepdreams":
+      $gameName = "Deep Dreams";
+      break;
+    case "someday":
+      $gameName = "Someday";
+      break;
+    case "amillusion":
+      $gameName = "Amillusion";
+      break;
+    case "unevendream":
+      $gameName = "Uneven Dream";
+      break;
+    case "braingirl":
+      $gameName = "Braingirl";
+      break;
+    default:
+      $gameName = "Yume Nikki";
+      break;
+  }
+?>
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Yume Nikki Online Project</title>
+  <title>YNOproject - <?php echo $gameName; ?> Online</title>
   <meta charset="utf-8">
-  <meta name="description" content="Play Yume Nikki (and fangames) online with your friends, no downloads required.">
+  <meta name="description" content="Play <?php echo $gameName; ?> online with your friends in your browser, no downloads needed.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="2kkiVersion" content="" data-game-ids="2kki"> <!-- eg. 0.117g Patch 4 -->
+  <?php if ($gameId == "2kki"): ?>
+    <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
+  <?php endif ?>
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
@@ -77,8 +111,10 @@
               </button>
             </div>
             <div id="rightControls">
-              <div id="mapControls" data-game-ids="2kki"></div>
-              <div id="explorerControls" data-game-ids="2kki" style="display: none"></div>
+              <?php if ($gameId == "2kki"): ?>
+                <div id="mapControls"></div>
+                <div id="explorerControls"></div>
+              <?php endif ?>
               <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">
                 <button id="eventLocationsButton" class="iconButton unselectable" data-i18n="[title]tooltips.eventLocations">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
@@ -109,14 +145,22 @@
           <div id="apad" class="unselectable">
             <div id="apad-escape" class="baseColorBg apadCircBtn apadBtn" data-key="Escape" data-key-code="27"></div>
             <div id="apad-enter" class="baseColorBg apadCircBtn apadBtn" data-key="Enter" data-key-code="13"></div>
-            <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16" data-game-ids="2kki,flow,prayers,deepdreams,someday,amillusion,unevendream,braingirl" style="display: none"></div>
-            <div id="apad-numbers" class="apadBtnContainer" data-game-ids="yume,prayers,someday,braingirl" style="display: none">
-              <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-              <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50" data-game-ids="braingirl" style="display: none"></div>
-              <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-              <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53" data-game-ids="yume,prayers,someday" style="display: none"></div>
-              <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-            </div>
+            <?php if ($gameId != "yume"): ?>
+              <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16"></div>
+            <?php endif ?>
+            <?php if ($gameId == "yume" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl"): ?>
+              <div id="apad-numbers" class="apadBtnContainer">
+                <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49"></div>
+                <?php if ($gameId == "braingirl"): ?>
+                  <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50"></div>
+                <?php endif ?>
+                <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
+                <?php if ($gameId != "braingirl"): ?>
+                  <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53"></div>
+                <?php endif ?>
+                <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57"></div>
+              </div>
+            <?php endif ?>
           </div>
         </div>
       </div>
@@ -480,11 +524,17 @@
               <select id="fontStyle" class="fontStyle">
                 <option value="0" data-i18n="[html]fontStyle.values.style1">Style 1</option>
                 <option value="1" data-i18n="[html]fontStyle.values.style2">Style 2</option>
-                <option value="2" data-i18n="[html]fontStyle.values.style3" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion,braingirl">Style 3</option>
-                <option value="3" data-i18n="[html]fontStyle.values.style4" data-game-ids="yume,2kki,flow,prayers,someday,amillusion,unevendream,braingirl">Style 4</option>
-                <option value="4" data-i18n="[html]fontStyle.values.style5" data-game-ids="yume,2kki,flow">Style 5</option>
-                <option value="5" data-i18n="[html]fontStyle.values.style6" data-game-ids="yume,2kki,flow">Style 6</option>
-                <option value="6" data-i18n="[html]fontStyle.values.style7" data-game-ids="yume,2kki,flow">Style 7</option>
+                <?php if ($gameId !== "someday"): ?>
+                  <option value="2" data-i18n="[html]fontStyle.values.style3">Style 3</option>
+                <?php endif ?>
+                <?php if ($gameId !== "deepdreams"): ?>
+                  <option value="3" data-i18n="[html]fontStyle.values.style4">Style 4</option>
+                <?php endif ?>
+                <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "flow"): ?>
+                  <option value="4" data-i18n="[html]fontStyle.values.style5">Style 5</option>
+                  <option value="5" data-i18n="[html]fontStyle.values.style6">Style 6</option>
+                  <option value="6" data-i18n="[html]fontStyle.values.style7">Style 7</option>
+                <?php endif ?>
               </select>
             </div>
           </div>
@@ -646,11 +696,13 @@
       <div id="toastContainer"></div>
     </div>
     <div id="layoutEnd"></div>
-    <div data-game-ids="2kki" style="display: none;">
-      <br>
-      <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
-      <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
-    </div>
+    <?php if ($gameId == "2kki"): ?>
+      <div>
+        <br>
+        <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
+        <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
+      </div>
+    <?php endif ?>
     <div id="footerIconContainer">
       <a href="https://discord.gg/fRG3AxUeKN" target="_blank" class="icon fillIcon" title="Discord">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
