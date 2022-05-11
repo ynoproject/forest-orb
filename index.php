@@ -1,6 +1,9 @@
 <?php
   $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
   switch ($gameId) {
+    case "yume":
+      $gameName = "Yume Nikki";
+      break;
     case "2kki":
       $gameName = "Yume 2kki";
       break;
@@ -26,7 +29,8 @@
       $gameName = "Braingirl";
       break;
     default:
-      $gameName = "Yume Nikki";
+      $gameId = "2kki";
+      $gameName = "Yume 2kki";
       break;
   }
 ?>

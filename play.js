@@ -1097,7 +1097,7 @@ function initLocalizedMapLocations(lang, game, callback) {
       gameLocalizedMapLocations[game] = {};
       const langMapLocations = jsonResponse.mapLocations;
       massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
-      Object.keys(mapLocations).forEach(function (mapId) {
+      Object.keys(gameMapLocations[game]).forEach(function (mapId) {
         const mapLocation = langMapLocations[mapId];
         const defaultMapLocation = gameMapLocations[game][mapId];
         if (mapLocation) {

@@ -224,11 +224,11 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
         const baseTooltipContent = tooltipContent;
         const tooltipOptions = {};
 
-        const assignTooltip = () => addTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions);
+        const assignTooltip = instance => addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
 
         if (badge.mapId) {
           const mapId = badge.mapId.toString().padStart(4, '0');
-          const setTooltipLocation = () => {
+          const setTooltipLocation = instance => {
             if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
             else if (gameId === '2kki') {
@@ -236,13 +236,19 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
               tooltipOptions.onShow = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(`<div class="tooltipContent">${baseTooltipContent.replace('{LOCATION}', locationsHtml)}</div>`));
             } else
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
-            assignTooltip();
-          }
+            assignTooltip(instance);
+          };
           if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
             setTooltipLocation();
           else {
             tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
-            initLocations(globalConfig.lang, badge.game, setTooltipLocation);
+            tooltipOptions.onShow = instance => {
+              if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
+                setTooltipLocation(instance);
+              else
+                initLocations(globalConfig.lang, badge.game, () => setTooltipLocation(instance));
+            };
+            assignTooltip();
           }
         } else
           assignTooltip();
