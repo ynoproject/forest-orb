@@ -230,10 +230,10 @@ function claimEventLocationPoints(location, free, retryCount) {
     .then(result => {
       if (result > 0) {
         showEventLocationToastMessage('complete', 'expedition', location, result);
-        updateBadges();
+        checkNewBadgeUnlocks();
       } else if (free && result > -1) {
         showEventLocationToastMessage('freeComplete', 'expedition', location);
-        updateBadges();
+        checkNewBadgeUnlocks();
       }
       updateEventLocationList(true);
     })

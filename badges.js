@@ -19,7 +19,7 @@ function initBadgeControls() {
     badgeModalContent.innerHTML = '';
 
     const updateBadgesAndOpenModal = () => {
-      updateBadges(() => {
+      fetchPlayerBadges(playerBadges => {
         let lastGame = null;
         let lastGroup = null;
         const badgeCompareFunc = (a, b) => {
@@ -32,7 +32,7 @@ function initBadgeControls() {
           }
           return 0;
         };
-        const badges = [{ badgeId: 'null', game: null}].concat(badgeCache.sort(badgeCompareFunc));
+        const badges = [{ badgeId: 'null', game: null}].concat(playerBadges.sort(badgeCompareFunc));
         for (let badge of badges) {
           if (badge.game !== lastGame) {
             const gameHeader = document.createElement('h2');
@@ -261,35 +261,46 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
   return item;
 }
 
-function updateBadges(callback) {
-  apiFetch(`badge?command=list`)
+function fetchPlayerBadges(callback) {
+  apiFetch('badge?command=list')
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
     .then(badges => {
-      badgeCache = badges.map(badge => {
-        return {
-          badgeId: badge.badgeId,
-          game: badge.game,
-          group: badge.group,
-          mapId: badge.mapId,
-          mapX: badge.mapX,
-          mapY: badge.mapY,
-          seconds: badge.seconds,
-          secret: badge.secret,
-          secretCondition: badge.secretCondition,
-          overlay: badge.overlay,
-          art: badge.art,
-          animated: badge.animated,
-          percent: badge.percent,
-          goals: badge.goals,
-          goalsTotal: badge.goalsTotal,
-          unlocked: badge.unlocked
-        };
-      });
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
+
+      badges = badges.map(badge => {
+        delete badge.newUnlock;
+        delete badge.hidden;
+        return badge;
+      });
+
+      for (let b = 0; b < newUnlockedBadges.length; b++)
+        showBadgeToastMessage('badgeUnlocked', 'info');
+      
+      if (callback)
+        callback(badges);
+    })
+    .catch(err => console.error(err));
+}
+
+function updateBadges(callback) {
+  apiFetch('badge?command=list&simple=true')
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(badges => {
+      const newUnlockedBadges = badges.filter(b => b.newUnlock);
+      
+      badgeCache = badges.map(badge => {
+        delete badge.newUnlock;
+        return badge;
+      });
+    
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showBadgeToastMessage('badgeUnlocked', 'info');
 
@@ -304,7 +315,7 @@ function updateBadges(callback) {
 }
 
 function updateBadgeSlots(callback) {
-  apiFetch(`badge?command=slotList`)
+  apiFetch('badge?command=slotList')
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -338,6 +349,21 @@ function updatePlayerBadgeSlot(badgeId, slotId, callback) {
         throw new Error(response.statusText);
       if (callback)
         callback();
+    })
+    .catch(err => console.error(err));
+}
+
+function checkNewBadgeUnlocks() {
+  apiFetch('badge?command=new')
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+    })
+    .then(unlockedBadgeIds => {
+      if (unlockedBadgeIds) {
+        for (let b = 0; b < unlockedBadgeIds.length; b++)
+          showBadgeToastMessage('badgeUnlocked', 'info');
+      }
     })
     .catch(err => console.error(err));
 }
@@ -476,7 +502,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
 // EXTERNAL
 function onBadgeUpdateRequested() {
   if (sessionId)
-    updateBadges();
+    checkNewBadgeUnlocks();
 }
 
 function showBadgeToastMessage(key, icon) {
