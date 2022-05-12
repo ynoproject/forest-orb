@@ -105,11 +105,12 @@ function fetchAndPopulateRankingCategories() {
             if (!subCategoryName)
               continue;
             subCategoryLabel = getMassagedLabel(subCategoryName, true);
-          } else {
-            subCategoryLabel = categoryId === 'timeTrial'
-              ? getLocalizedMapLocations(gameId, subCategoryId.padStart(4, '0'), '0000', 0, 0, "&nbsp;|&nbsp;")
-              : getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
-          }
+          } else if (categoryId === 'timeTrial') {
+            subCategoryLabel = localizedMessages.rankings.subCategories.hasOwnProperty(subCategoryId)
+              ? getMassagedLabel(localizedMessages.rankings.subCategories[subCategoryId], true)
+              : getLocalizedMapLocations(gameId, subCategoryId.padStart(4, '0'), '0000', 0, 0, "&nbsp;|&nbsp;");
+          } else
+            subCategoryLabel = getMassagedLabel(localizedMessages.events.period, true).replace('{ORDINAL}', subCategoryId);
           
           const subTab = document.createElement('div');
           subTab.classList.add('subTab');
