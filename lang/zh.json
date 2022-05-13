@@ -479,11 +479,18 @@
           "label": "计时模式",
           "valueLabel": "抵达用时",
           "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "全部",
-        "2": "All Effects"
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {

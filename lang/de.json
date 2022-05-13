@@ -479,11 +479,18 @@
           "label": "Time Trials",
           "valueLabel": "Completion Time",
           "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "All",
-        "2": "All Effects"
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {

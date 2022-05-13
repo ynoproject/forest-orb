@@ -479,11 +479,18 @@
           "label": "Time Trial Mode",
           "valueLabel": "성공 시간",
           "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "전체",
-        "2": "All Effects"
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {
