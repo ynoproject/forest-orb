@@ -259,7 +259,7 @@
         "disbandParty": "パーティーを解散する"
       },
       "eventLocations": "ドリームラリー",
-      "rankings": "Rankings",
+      "rankings": "ランキング",
       "nexus": "扉部屋へ戻る"
     }
   },
@@ -481,16 +481,16 @@
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
+          "label": "ミニゲーム",
           "valueLabel": "Score",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "All",
-        "2": "All Effects",
+        "2": "全エフェクト回収",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)"
+        "rby": "ミニゲームB"
       }
     },
     "2kki": {
