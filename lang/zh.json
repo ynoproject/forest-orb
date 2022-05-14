@@ -442,7 +442,7 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "由 {ARTIST} 绘制"
     },
     "badgeGallery": {
       "label": "{PLAYER} 的徽章展柜",
@@ -481,16 +481,16 @@
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
-          "valueLabel": "Score",
+          "label": "小游戏",
+          "valueLabel": "得分",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "全部",
-        "2": "All Effects",
+        "2": "效果全集",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)"
+        "rby": "红蓝黄 (小游戏 B)"
       }
     },
     "2kki": {
