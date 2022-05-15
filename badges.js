@@ -139,6 +139,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
 
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
+  if (badge?.hidden)
+    badgeContainer.classList.add('special');
   
   const badgeEl = (badge.unlocked || !badge.secret) && badgeId !== 'null' ? document.createElement('div') : null;
 
@@ -185,7 +187,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
         const localizedTooltip = localizedBadges[badge.game][badgeId];
         if (badge.unlocked || !badge.secret) {
           if (localizedTooltip.name)
-            tooltipContent += `<h3 class="tooltipTitle">${getMassagedLabel(localizedTooltip.name)}</h3>`;
+            tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${getMassagedLabel(localizedTooltip.name)}</h3>`;
         } else
           tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
@@ -483,7 +485,10 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
                   const badgeTippy = addTooltip(badges[b], getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
                   if (systemName) {
                     badgeTippy.popper.children[0].setAttribute('style', boxStyles);
-                    badgeTippy.popper.querySelector('.tooltipContent').setAttribute('style', textStyles);
+                    const badgeTextStyles = badgeCache.find(b => b.badgeId === badgeId)?.hidden
+                      ? textStyles.replace(/\-\-base\-/g, '--alt-')
+                      : textStyles;
+                    badgeTippy.popper.querySelector('.tooltipContent').setAttribute('style', badgeTextStyles);
                   }
                 }
               }

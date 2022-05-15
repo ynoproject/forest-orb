@@ -1518,10 +1518,15 @@ body.fullBg #background {
 
 .itemContainer .badgeItem > .badgeContainer {
   background-color: var(--base-bg-color) !important;
+  background-clip: content-box;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
   background-color: var(--modal-base-bg-color) !important;
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer.special {
+  background-image: var(--modal-alt-gradient-b);
 }
 
 .itemContainer .badgeItem > .badgeContainer > div {
