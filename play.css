@@ -2117,6 +2117,10 @@ form .uiTheme {
   background-clip: text;
 }
 
+.tippy-content .tooltipContent.altText {
+  background-image: var(--alt-gradient) !important;
+}
+
 .tippy-content .tooltipTitle {
   margin: 0 0 8px 0;
   text-align: center;

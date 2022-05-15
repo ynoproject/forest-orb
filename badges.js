@@ -139,7 +139,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
 
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
-  if (badge?.hidden)
+  if (badge.hidden && badge.unlocked)
     badgeContainer.classList.add('special');
   
   const badgeEl = (badge.unlocked || !badge.secret) && badgeId !== 'null' ? document.createElement('div') : null;
@@ -160,7 +160,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
   }
 
   if (badgeEl) {
-    if (badge?.overlay) {
+    if (badge.overlay) {
       badgeEl.classList.add('overlayBadge');
 
       const badgeOverlay = document.createElement('div');
@@ -275,7 +275,6 @@ function fetchPlayerBadges(callback) {
 
       badges = badges.map(badge => {
         delete badge.newUnlock;
-        delete badge.hidden;
         return badge;
       });
 

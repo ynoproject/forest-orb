@@ -113,35 +113,40 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     }
 
     let systemName = player?.systemName;
+    
+    const badge = player?.badge ? badgeCache.find(b => b.badgeId === player.badge) : null;
 
-    const badge = player?.badge ? document.createElement('div') : null;
-    const badgeOverlay = badge && badgeCache.find(b => b.badgeId === player.badge)?.overlay ? document.createElement('div') : null;
+    const badgeEl = badge ? document.createElement('div') : null;
+    const badgeOverlayEl = badge?.overlay ? document.createElement('div') : null;
 
     if (badge) {
-      badge.classList.add('badge');
-      badge.classList.add('nameBadge');
+      badgeEl.classList.add('badge');
+      badgeEl.classList.add('nameBadge');
 
       if (localizedBadges) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
           return Object.keys(localizedBadges[game]).find(b => b === player.badge);
         });
-        if (badgeGame)
-          addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+        if (badgeGame) {
+          const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+          if (badge?.hidden)
+            badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+        }
       }
       if (player?.name) {
-        addOrUpdatePlayerBadgeGalleryTooltip(badge, player.name, systemName || getDefaultUiTheme());
-        badge.classList.toggle('badgeButton', player.name);
+        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, systemName || getDefaultUiTheme());
+        badgeEl.classList.toggle('badgeButton', player.name);
       }
 
       const badgeUrl = getBadgeUrl(player.badge, true);
-      badge.style.backgroundImage = `url('${badgeUrl}')`;
+      badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-      if (badgeOverlay) {
-        badge.classList.add('overlayBadge');
+      if (badge.overlay) {
+        badgeEl.classList.add('overlayBadge');
 
-        badgeOverlay.classList.add('badgeOverlay');
-        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
-        badge.appendChild(badgeOverlay);
+        badgeOverlayEl.classList.add('badgeOverlay');
+        badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+        badgeEl.appendChild(badgeOverlayEl);
       }
     }
 
@@ -153,14 +158,14 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           name.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-          if (badgeOverlay)
-            badgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
+          if (badgeOverlayEl)
+            badgeOverlayEl.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
         });
       });
     }
 
-    if (badge)
-      message.appendChild(badge);
+    if (badgeEl)
+      message.appendChild(badgeEl);
     
     message.appendChild(nameEndMarker);
     message.appendChild(document.createTextNode(" "));

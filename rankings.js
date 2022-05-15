@@ -283,16 +283,19 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge || 'null' }, false, true, true);
 
           if (ranking.badge && localizedBadges) {
-            const badge = playerCell.querySelector('.badge');
-            if (badge) {
+            const badgeEl = playerCell.querySelector('.badge');
+            if (badgeEl) {
               const badgeGame = Object.keys(localizedBadges).find(game => {
                 return Object.keys(localizedBadges[game]).find(b => b === ranking.badge);
               });
-              if (badgeGame)
-                addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
+              if (badgeGame) {
+                const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
+                if (badgeCache.find(b => b.badgeId === ranking.badge)?.hidden)
+                  badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+              }
               if (ranking.name) {
-                addOrUpdatePlayerBadgeGalleryTooltip(badge, ranking.name, systemName);
-                badge.classList.toggle('badgeButton', ranking.name);
+                addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, ranking.name, systemName);
+                badgeEl.classList.toggle('badgeButton', ranking.name);
               }
             }
           }

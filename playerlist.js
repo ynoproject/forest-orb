@@ -64,36 +64,30 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       nameTextContainer.appendChild(rankIcon);
     }
 
-    let badge = null;
-    let badgeOverlay = null;
+    let badgeEl = null;
+    let badgeOverlayEl = null;
 
     if (includeBadge && player.badge !== 'null') {
-      badge = document.createElement('div');
-      badge.classList.add('badge');
-      badge.classList.add('nameBadge');
+      badgeEl = document.createElement('div');
+      badgeEl.classList.add('badge');
+      badgeEl.classList.add('nameBadge');
 
-      badgeOverlay = badge && badgeCache.find(b => b.badgeId === player.badge)?.overlay ? document.createElement('div') : null;
+      const badge = badgeCache.find(b => b.badgeId === player.badge);
 
-      if (localizedBadges) {
-        const badgeGame = Object.keys(localizedBadges).find(game => {
-          return Object.keys(localizedBadges[game]).find(b => b === player.badge);
-        });
-        if (badgeGame)
-          addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
-      }
+      badgeOverlayEl = badge?.overlay ? document.createElement('div') : null;
 
       const badgeUrl = getBadgeUrl(player.badge, true);
-      badge.style.backgroundImage = `url('${badgeUrl}')`;
+      badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-      if (badgeOverlay) {
-        badge.classList.add('overlayBadge');
+      if (badge?.overlay) {
+        badgeEl.classList.add('overlayBadge');
 
-        badgeOverlay.classList.add('badgeOverlay');
-        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
-        badge.appendChild(badgeOverlay);
+        badgeOverlayEl.classList.add('badgeOverlay');
+        badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+        badgeEl.appendChild(badgeOverlayEl);
       }
 
-      nameTextContainer.appendChild(badge);
+      nameTextContainer.appendChild(badgeEl);
     }
     
     if (player.systemName) {
@@ -110,8 +104,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       }
       if (rankIcon)
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-      if (badgeOverlay)
-        badgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
+      if (badgeOverlayEl)
+        badgeOverlayEl.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
     }
 
     return nameTextContainer.outerHTML;
@@ -266,8 +260,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   }
 
   const showBadge = player?.account && player.badge;
-  const showBadgeOverlay = showBadge && badgeCache.find(b => b.badgeId === player.badge)?.overlay;
+  const showBadgeOverlay = showBadge && badge?.overlay;
   const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
+  
+  const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
   playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
@@ -280,8 +276,11 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       const badgeGame = Object.keys(localizedBadges).find(game => {
         return Object.keys(localizedBadges[game]).find(b => b === player.badge);
       });
-      if (badgeGame)
+      if (badgeGame) {
         playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true, false, null, playerListEntryBadge._badgeTippy);
+        if (badge.hidden)
+          playerListEntryBadge._badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+      }
     }
     if (player.name) {
       addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
