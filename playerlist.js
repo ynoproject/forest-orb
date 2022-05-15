@@ -260,10 +260,9 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   }
 
   const showBadge = player?.account && player.badge;
+  const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
   const showBadgeOverlay = showBadge && badge?.overlay;
   const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
-  
-  const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
   playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
