@@ -277,7 +277,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       });
       if (badgeGame) {
         playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true, false, null, playerListEntryBadge._badgeTippy);
-        if (badge.hidden)
+        if (!badge || badge.hidden)
           playerListEntryBadge._badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
       }
     }

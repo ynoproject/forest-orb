@@ -290,7 +290,8 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
               });
               if (badgeGame) {
                 const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
-                if (badgeCache.find(b => b.badgeId === ranking.badge)?.hidden)
+                const badge = badgeCache.find(b => b.badgeId === ranking.badge);
+                if (!badge || badge.hidden)
                   badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
               }
               if (ranking.name) {

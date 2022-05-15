@@ -129,7 +129,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
         });
         if (badgeGame) {
           const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
-          if (badge?.hidden)
+          if (!badge || badge.hidden)
             badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
         }
       }
