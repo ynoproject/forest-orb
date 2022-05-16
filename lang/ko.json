@@ -437,6 +437,7 @@
     },
     "badges": {
       "null": "뱃지 없음",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "장소 :&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -454,6 +455,11 @@
           "label": "뱃지",
           "valueLabel": "# 개의 뱃지",
           "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
         "exp": {
           "label": "경험치",

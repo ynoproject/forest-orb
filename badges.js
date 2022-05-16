@@ -184,12 +184,13 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
       tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
     else {
       if (localizedBadges.hasOwnProperty(badge.game) && localizedBadges[badge.game].hasOwnProperty(badgeId)) {
+        let badgeTitle = localizedMessages.badges.locked;
         const localizedTooltip = localizedBadges[badge.game][badgeId];
-        if (badge.unlocked || !badge.secret) {
-          if (localizedTooltip.name)
-            tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${getMassagedLabel(localizedTooltip.name)}</h3>`;
-        } else
-          tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
+        if ((badge.unlocked || !badge.secret) && localizedTooltip.name)
+          badgeTitle = getMassagedLabel(localizedTooltip.name);
+        if (badge.bp)
+          badgeTitle = getMassagedLabel(localizedMessages.badges.badgeTitle).replace('{TITLE}', badgeTitle).replace('{BP}', badge.bp);
+        tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${badgeTitle}</h3>`;
         if ((badge.unlocked || !badge.secret) && localizedTooltip.description)
           tooltipContent += `<div class="tooltipContent">${getMassagedLabel(localizedTooltip.description)}</div>`;
         tooltipContent += '<div class="tooltipSpacer"></div>';

@@ -437,6 +437,7 @@
     },
     "badges": {
       "null": "バッジなし",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -454,6 +455,11 @@
           "label": "バッジ",
           "valueLabel": "バッジ数",
           "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
         "exp": {
           "label": "ExP",

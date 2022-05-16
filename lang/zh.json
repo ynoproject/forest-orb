@@ -437,6 +437,7 @@
     },
     "badges": {
       "null": "无徽章",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "取得位置:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -454,6 +455,11 @@
           "label": "徽章收集",
           "valueLabel": "徽章枚数",
           "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
         "exp": {
           "label": "远征点",

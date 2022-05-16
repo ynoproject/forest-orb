@@ -437,6 +437,7 @@
     },
     "badges": {
       "null": "No Badge",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Location:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -454,6 +455,11 @@
           "label": "Badges",
           "valueLabel": "# of Badges",
           "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
         "exp": {
           "label": "ExP",
