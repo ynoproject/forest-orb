@@ -457,8 +457,8 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
+          "label": "徽章得点",
+          "valueLabel": "徽章点(BP)",
           "value": "{NUMBER} BP"
         },
         "exp": {
