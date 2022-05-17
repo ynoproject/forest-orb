@@ -76,7 +76,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       const badge = badgeCache.find(b => b.badgeId === player.badge);
 
       badgeOverlayEl = badge?.overlay ? document.createElement('div') : null;
-      badgeOverlay2El = badge?.overlay && player.badge === 'adaptive' ? document.createElement('div') : null;
+      badgeOverlay2El = badge?.overlay && badge.maskOverlay ? document.createElement('div') : null;
 
       const badgeUrl = getBadgeUrl(player.badge, true);
       badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
@@ -291,7 +291,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   const showBadge = player?.account && player.badge;
   const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
   const showBadgeOverlay = showBadge && badge?.overlay;
-  const showBadgeOverlay2 = showBadgeOverlay && player.badge === 'adaptive';
+  const showBadgeOverlay2 = showBadgeOverlay && badge.maskOverlay;
   const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
@@ -405,7 +405,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
             playerListEntryBadgeOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
               ? `var(--alt-color-${parsedSystemName})`
               : `var(--base-bg-color-${parsedSystemName})`;
-            if (gameId === '2kki')
+            if (gameId === '2kki' && badge.locOverlay)
               handle2kkiBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
           } else
             playerListEntryBadgeOverlay.style.background = `var(--base-gradient-${parsedSystemName})`;

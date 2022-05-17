@@ -59,7 +59,7 @@ function onLoad2kkiMap(mapId) {
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
-    if (playerData?.badge === 'adaptive')
+    if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.locOverlay)
       updateBadgeButton();
   } else {
     queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, set2kkiClientLocation, true)
@@ -73,7 +73,7 @@ function onLoad2kkiMap(mapId) {
           set2kkiExplorerLinks(null);
         }
         checkEventLocations();
-        if (playerData?.badge === 'adaptive')
+        if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.locOverlay)
           updateBadgeButton();
       }).catch(err => console.error(err));
   }

@@ -118,7 +118,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
     const badgeEl = badge ? document.createElement('div') : null;
     const badgeOverlayEl = badge?.overlay ? document.createElement('div') : null;
-    const badgeOverlay2El = badge?.overlay && player.badge === 'adaptive' ? document.createElement('div') : null;
+    const badgeOverlay2El = badge?.overlay && badge.maskOverlay ? document.createElement('div') : null;
 
     if (badge) {
       badgeEl.classList.add('badge');
@@ -179,7 +179,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
               badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
                 ? `var(--alt-color-${parsedSystemName})`
                 : `var(--base-bg-color-${parsedSystemName})`;
-              if (gameId === '2kki')
+              if (gameId === '2kki' && badge.locOverlay)
                 handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, playerName, mapId, prevMapId, prevLocationsStr);
             } else
               badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;

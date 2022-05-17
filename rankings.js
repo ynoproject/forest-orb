@@ -285,17 +285,17 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           if (ranking.badge && localizedBadges) {
             const badgeEl = playerCell.querySelector('.badge');
             if (badgeEl) {
+              const badge = badgeCache.find(b => b.badgeId === ranking.badge);
               const badgeGame = Object.keys(localizedBadges).find(game => {
                 return Object.keys(localizedBadges[game]).find(b => b === ranking.badge);
               });
               if (badgeGame) {
                 const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
-                const badge = badgeCache.find(b => b.badgeId === ranking.badge);
                 if (!badge || badge.hidden)
                   badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
               }
               if (ranking.name) {
-                if (ranking.badge === 'adaptive' && gameId === '2kki')
+                if (gameId === '2kki' && badge?.overlay && badge.maskOverlay && badge.locOverlay)
                   handle2kkiBadgeOverlayLocationColorOverride(badgeEl.querySelector('.badgeOverlay'), badgeEl.querySelector('.badgeOverlay2'), null, playerName);
                 addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, ranking.name, systemName);
                 badgeEl.classList.toggle('badgeButton', ranking.name);

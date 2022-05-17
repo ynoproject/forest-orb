@@ -71,7 +71,7 @@ function initAccountControls() {
 
 function initAccountSettingsModal() {
   const badgeId = playerData?.badge || 'null';
-  const badge = badgeCache.find(b => b.badgeId === badgeId);
+  const badge = playerData?.badge ? badgeCache.find(b => b.badgeId === badgeId) : null;
 
   const accountBadgeButton = document.getElementById('accountBadgeButton');
   const badgeButton = document.getElementById('badgeButton');
@@ -79,7 +79,7 @@ function initAccountSettingsModal() {
   accountBadgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true, false, true).innerHTML;
   badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
 
-  if (gameId === '2kki' && badgeId === 'adaptive') {
+  if (gameId === '2kki' && badge?.locOverlay) {
     handle2kkiBadgeOverlayLocationColorOverride(accountBadgeButton.querySelector('.badgeOverlay'), accountBadgeButton.querySelector('.badgeOverlay2'), cachedLocations);
     handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
   }
