@@ -47,7 +47,8 @@ let config = {
 
 let cache = {
   location: {},
-  map: {}
+  map: {},
+  locationColor: {}
 };
 
 let locationCache;
@@ -1368,7 +1369,7 @@ function loadOrInitCache() {
             mapCache = Object.assign({}, value);
             break;
           case 'locationColor':
-            locationColor = Object.assign({}, value);
+            locationColorCache = Object.assign({}, value);
             break;
         }
         if (value)

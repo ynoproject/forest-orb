@@ -247,7 +247,7 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
     if (unknownLocations.indexOf(locationKey) > -1)
       callbackFunc(mapId, prevMapId, null, prevLocations);
     else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
-      setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
+      callbackFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
       queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, callback)
         .catch(err => console.error(err));
