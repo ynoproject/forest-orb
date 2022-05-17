@@ -180,7 +180,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
                 ? `var(--alt-color-${parsedSystemName})`
                 : `var(--base-bg-color-${parsedSystemName})`;
               if (gameId === '2kki')
-                handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, name, mapId, prevMapId, prevLocationsStr);
+                handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, playerName, mapId, prevMapId, prevLocationsStr);
             } else
               badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
           }

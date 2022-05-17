@@ -295,6 +295,8 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
                   badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
               }
               if (ranking.name) {
+                if (ranking.badge === 'adaptive' && gameId === '2kki')
+                  handle2kkiBadgeOverlayLocationColorOverride(badgeEl.querySelector('.badgeOverlay'), badgeEl.querySelector('.badgeOverlay2'), null, playerName);
                 addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, ranking.name, systemName);
                 badgeEl.classList.toggle('badgeButton', ranking.name);
               }

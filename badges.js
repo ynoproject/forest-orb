@@ -490,31 +490,36 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             let boxStyles;
             let textStyles;
-    
-            if (systemName) {
-              const parsedSystemName = (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_');
+
+            const parsedSystemName = systemName ? (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_') : null;
+
+            if (parsedSystemName) {
               boxStyles = `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`;
               textStyles = `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
               tippyBox.setAttribute('style', boxStyles);
               tooltipTitle.setAttribute('style', textStyles);
-              const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
-              for (let badgeSlotOverlay of badgeSlotOverlays) {
-                if (badgeSlotOverlay.nextElementSibling) {
-                  badgeSlotOverlay.style.background = `var(--base-color-${parsedSystemName})`;
-                  badgeSlotOverlay.nextElementSibling.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-                    ? `var(--alt-color-${parsedSystemName})`
-                    : `var(--base-bg-color-${parsedSystemName})`;
-                  if (gameId === '2kki')
-                    handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay.nextElementSibling, null, name, mapId, prevMapId, prevLocationsStr);
-                } else
-                  badgeSlotOverlay.style.background = `var(--base-gradient-${parsedSystemName})`;
-              }
             }
     
             tooltipContent.appendChild(tooltipTitle);
             tooltipContent.appendChild(badgeSlotsContainer);
     
             instance.setContent(tooltipContent.outerHTML);
+
+            if (parsedSystemName) {
+              const badgeSlotOverlays = tippyBox.querySelectorAll('.badgeSlotOverlay');
+              for (let badgeSlotOverlay of badgeSlotOverlays) {
+                const badgeSlotOverlay2 = badgeSlotOverlay.parentElement.querySelector('.badgeOverlay2');
+                if (badgeSlotOverlay2) {
+                  badgeSlotOverlay.style.background = `var(--base-color-${parsedSystemName})`;
+                  badgeSlotOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
+                    ? `var(--alt-color-${parsedSystemName})`
+                    : `var(--base-bg-color-${parsedSystemName})`;
+                  if (gameId === '2kki')
+                    handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr);
+                } else
+                  badgeSlotOverlay.style.background = `var(--base-gradient-${parsedSystemName})`;
+              }
+            }
 
             if (localizedBadges) {
               const badges = instance.popper.querySelectorAll('.badge');

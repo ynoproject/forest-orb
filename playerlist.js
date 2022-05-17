@@ -126,8 +126,6 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
           badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
             ? `var(--alt-color-${parsedSystemName})`
             : `var(--base-bg-color-${parsedSystemName})`;
-            if (gameId === '2kki')
-              handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, playerName);
         } else
           badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
       }
