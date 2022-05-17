@@ -24,6 +24,10 @@ function initBadgeControls() {
         let lastGroup = null;
         const badgeCompareFunc = (a, b) => {
           if (a.game !== b.game) {
+            if (a.game === 'ynoproject')
+              return -1;
+            if (b.game === 'ynoproject')
+              return 1;
             if (a.game === gameId)
               return -1;
             if (b.game === gameId)

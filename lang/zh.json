@@ -265,6 +265,7 @@
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "梦日记",
       "2kki": "梦２记",
       "flow": ".flow",

@@ -265,6 +265,7 @@
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
       "flow": ".flow(닷플로우)",
