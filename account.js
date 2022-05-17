@@ -72,8 +72,17 @@ function initAccountControls() {
 function initAccountSettingsModal() {
   const badgeId = playerData?.badge || 'null';
   const badge = badgeCache.find(b => b.badgeId === badgeId);
-  document.getElementById('accountBadgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true, true).innerHTML;
-  document.getElementById('badgeButton').innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+
+  const accountBadgeButton = document.getElementById('accountBadgeButton');
+  const badgeButton = document.getElementById('badgeButton');
+
+  accountBadgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true, false, true).innerHTML;
+  badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+
+  if (gameId === '2kki' && badgeId === 'adaptive') {
+    handle2kkiBadgeOverlayLocationColorOverride(accountBadgeButton.querySelector('.badgeOverlay'), accountBadgeButton.querySelector('.badgeOverlay2'), cachedLocations);
+    handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
+  }
 }
 
 function showAccountToastMessage(key, icon, username) {

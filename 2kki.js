@@ -59,6 +59,8 @@ function onLoad2kkiMap(mapId) {
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
+    if (playerData?.badge === 'adaptive')
+      updateBadgeButton();
   } else {
     queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, set2kkiClientLocation, true)
       .then(locations => {
@@ -71,6 +73,8 @@ function onLoad2kkiMap(mapId) {
           set2kkiExplorerLinks(null);
         }
         checkEventLocations();
+        if (playerData?.badge === 'adaptive')
+          updateBadgeButton();
       }).catch(err => console.error(err));
   }
 }

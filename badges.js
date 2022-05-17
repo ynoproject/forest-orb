@@ -49,7 +49,7 @@ function initBadgeControls() {
             badgeModalContent.appendChild(groupHeader);
             lastGroup = badge.group;
           }
-          const item = getBadgeItem(badge, true, true, true);
+          const item = getBadgeItem(badge, true, true, true, true);
           if (badge.badgeId === (playerData?.badge || 'null'))
             item.children[0].classList.add('selected');
           if (!item.classList.contains('disabled')) {
@@ -115,8 +115,19 @@ function initBadgeGalleryModal() {
       badgeSlotButton.classList.toggle('disabled', s > badgeSlotCache.length + 1);
       badgeSlotButton.classList.toggle('hidden', rowIndex > badgeSlotRows);
       badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
+      if (gameId === '2kki' && badgeId === 'adaptive')
+        handle2kkiBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
     }
   }
+}
+
+function updateBadgeButton() {
+  const badgeId = playerData?.badge || 'null';
+  const badge = badgeCache.find(b => b.badgeId === badgeId);
+  const badgeButton = document.getElementById('badgeButton');
+  badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+  if (gameId === '2kki' && badgeId === 'adaptive')
+    handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
 }
 
 function getBadgeUrl(badge, staticOnly) {
@@ -129,7 +140,7 @@ function getBadgeUrl(badge, staticOnly) {
   return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
 }
 
-function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
+function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
@@ -173,8 +184,6 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
 
         badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
         badgeOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
-
-        handle2kkiBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, cachedLocations);
       } else
         badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
     }
@@ -183,12 +192,14 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
     if (!badge.unlocked) {
       item.classList.add('locked');
       item.classList.add('disabled');
-      badgeContainer.appendChild(getSvgIcon('locked', true));
+      if (lockedIcon)
+        badgeContainer.appendChild(getSvgIcon('locked', true));
     }
   } else if (badgeId !== 'null') {
     item.classList.add('locked');
     item.classList.add('disabled');
-    badgeContainer.appendChild(getSvgIcon('locked', true));
+    if (lockedIcon)
+      badgeContainer.appendChild(getSvgIcon('locked', true));
     badgeContainer.appendChild(document.createElement('div'));
   } else
     badgeContainer.appendChild(emptyIcon ? getSvgIcon('ban', true) : document.createElement('div'));
