@@ -457,7 +457,7 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
+          "label": "BP(バッジポイント)",
           "valueLabel": "BP",
           "value": "{NUMBER} BP"
         },
