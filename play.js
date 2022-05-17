@@ -52,6 +52,7 @@ let cache = {
 
 let locationCache;
 let mapCache;
+let locationColorCache;
 
 let ynomojiConfig = {};
 
@@ -1348,6 +1349,7 @@ function loadOrInitCache() {
 
     locationCache = {};
     mapCache = {};
+    locationColorCache = {};
   };
 
   request.onsuccess = function (_e) {
@@ -1364,6 +1366,9 @@ function loadOrInitCache() {
             break;
           case 'map':
             mapCache = Object.assign({}, value);
+            break;
+          case 'locationColor':
+            locationColor = Object.assign({}, value);
             break;
         }
         if (value)

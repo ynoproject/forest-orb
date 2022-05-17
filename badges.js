@@ -143,30 +143,40 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
     badgeContainer.classList.add('special');
   
   const badgeEl = (badge.unlocked || !badge.secret) && badgeId !== 'null' ? document.createElement('div') : null;
+  const badgeUrl = badgeEl ? getBadgeUrl(badge, !badge.unlocked) : null;
 
   if (badgeEl) {
     badgeEl.classList.add('badge');
     if (scaled)
       badgeEl.classList.add('scaledBadge');
-    badgeEl.style.backgroundImage = `url('${getBadgeUrl(badge, !badge.unlocked)}')`;
-  } else {
-    if (badgeId !== 'null') {
-      item.classList.add('locked');
-      item.classList.add('disabled');
-      badgeContainer.appendChild(getSvgIcon('locked', true));
-      badgeContainer.appendChild(document.createElement('div'));
-    } else
-      badgeContainer.appendChild(emptyIcon ? getSvgIcon('ban', true) : document.createElement('div'));
-  }
+    badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-  if (badgeEl) {
     if (badge.overlay) {
       badgeEl.classList.add('overlayBadge');
 
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
-      badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
       badgeEl.appendChild(badgeOverlay);
+
+      if (badgeId === 'adaptive') {
+        const badgeFgMaskUrl = badgeUrl.replace('.', '_mask_fg.');
+        const badgeBgMaskUrl = badgeUrl.replace('.', '_mask_bg.');
+
+        badgeOverlay.classList.add('badgeOverlayBase');
+
+        const badgeOverlay2 = document.createElement('div');
+        badgeOverlay2.classList.add('badgeOverlay');
+        badgeOverlay2.classList.add('badgeOverlay2');
+        badgeOverlay2.classList.add(getStylePropertyValue('--base-color') !== getStylePropertyValue('--alt-color') ? 'badgeOverlayAlt' : 'badgeOverlayBg');
+
+        badgeEl.appendChild(badgeOverlay2);
+
+        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
+        badgeOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
+
+        handle2kkiBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, cachedLocations);
+      } else
+        badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
     }
 
     badgeContainer.appendChild(badgeEl);
@@ -175,7 +185,13 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, scaled) {
       item.classList.add('disabled');
       badgeContainer.appendChild(getSvgIcon('locked', true));
     }
-  }
+  } else if (badgeId !== 'null') {
+    item.classList.add('locked');
+    item.classList.add('disabled');
+    badgeContainer.appendChild(getSvgIcon('locked', true));
+    badgeContainer.appendChild(document.createElement('div'));
+  } else
+    badgeContainer.appendChild(emptyIcon ? getSvgIcon('ban', true) : document.createElement('div'));
 
   if (includeTooltip) {
     let tooltipContent = '';
@@ -397,7 +413,7 @@ function updateLocalizedBadges(callback) {
     .catch(err => console.error(err));
 }
 
-function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
+function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId, prevMapId, prevLocationsStr) {
   badgeElement.dataset.playerName = name;
   badgeElement.dataset.systemName = sysName;
 
@@ -440,14 +456,31 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
     
               badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
 
-              const badgeSlotOverlay = badgeCache.find(b => b.badgeId === badgeId)?.overlay ? document.createElement('div') : null;
+              const badge = badgeCache.find(b => b.badgeId === badgeId);
+
+              const badgeSlotOverlay = badge?.overlay ? document.createElement('div') : null;
+              const badgeSlotOverlay2 = badge?.overlay && badgeId === 'adaptive' ? document.createElement('div') : null;
     
               if (badgeSlotOverlay) {
                 badgeSlotOverlay.classList.add('badgeSlotOverlay');
                 badgeSlotOverlay.classList.add('badgeOverlay');
-                badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
-    
+
                 badgeSlot.appendChild(badgeSlotOverlay);
+
+                if (badgeSlotOverlay2) {
+                  const badgeFgMaskUrl = badgeUrl.replace('.', '_mask_fg.');
+                  const badgeBgMaskUrl = badgeUrl.replace('.', '_mask_bg.');
+        
+                  badgeSlotOverlay2.classList.add('badgeSlotOverlay');
+                  badgeSlotOverlay2.classList.add('badgeOverlay');
+                  badgeSlotOverlay2.classList.add('badgeOverlay2');
+        
+                  badgeSlot.appendChild(badgeSlotOverlay2);
+        
+                  badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
+                  badgeSlotOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
+                } else
+                  badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
               }
     
               badgeSlotsContainer.appendChild(badgeSlot);
@@ -465,8 +498,17 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName) {
               tippyBox.setAttribute('style', boxStyles);
               tooltipTitle.setAttribute('style', textStyles);
               const badgeSlotOverlays = badgeSlotsContainer.querySelectorAll('.badgeSlotOverlay');
-              for (let badgeSlotOverlay of badgeSlotOverlays)
-                badgeSlotOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
+              for (let badgeSlotOverlay of badgeSlotOverlays) {
+                if (badgeSlotOverlay.nextElementSibling) {
+                  badgeSlotOverlay.style.background = `var(--base-color-${parsedSystemName})`;
+                  badgeSlotOverlay.nextElementSibling.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
+                    ? `var(--alt-color-${parsedSystemName})`
+                    : `var(--base-bg-color-${parsedSystemName})`;
+                  if (gameId === '2kki')
+                    handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay.nextElementSibling, null, name, mapId, prevMapId, prevLocationsStr);
+                } else
+                  badgeSlotOverlay.style.background = `var(--base-gradient-${parsedSystemName})`;
+              }
             }
     
             tooltipContent.appendChild(tooltipTitle);

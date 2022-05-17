@@ -1573,13 +1573,37 @@ body.fullBg #background {
 }
 
 .itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
-  background-image: var(--base-gradient);
+  background: var(--base-gradient);
   -webkit-mask-size: cover;
   mask-size: cover;
 }
 
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
+  background: var(--base-color);
+}
+
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
+  background: var(--alt-color);
+}
+
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
+  background: var(--base-bg-color);
+}
+
 .modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
-  background-image: var(--modal-base-gradient);
+  background: var(--modal-base-gradient);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
+  background: var(--modal-base-color);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
+  background: var(--modal-alt-color);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
+  background: var(--modal-base-bg-color);
 }
 
 #headerIconContainer > .badgeItem {
@@ -1805,6 +1829,11 @@ form .uiTheme {
 .badgeOverlay {
   height: 100%;
   mix-blend-mode: multiply;
+}
+
+.badgeOverlay2 {
+  top: -100%;
+  position: relative;
 }
 
 #expRankBadge {

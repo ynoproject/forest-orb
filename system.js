@@ -604,6 +604,13 @@ function addSystemSvgDropShadow(systemName, color) {
   }
 }
 
+function getStylePropertyValue(name) {
+  const value = document.documentElement.style.getPropertyValue(name);
+  if (value && value.startsWith('var('))
+    return getStylePropertyValue(value.slice(4, -1));
+  return value;
+}
+
 function getColorRgba(color, alpha) {
   return alpha === undefined
     ? `rgb(${color[0]}, ${color[1]}, ${color[2]})`
