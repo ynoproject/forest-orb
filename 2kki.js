@@ -253,7 +253,7 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
     else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
       callbackFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
-      queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, callback)
+      queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, callbackFunc)
         .catch(err => console.error(err));
   }
 }
