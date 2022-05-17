@@ -276,6 +276,8 @@ function checkUpdateLocation(mapId, mapChanged) {
           set2kkiMaps([], null);
           set2kkiExplorerLinks(null);
         }
+        if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.locOverlay)
+          updateBadgeButton();
       }
     }
 
