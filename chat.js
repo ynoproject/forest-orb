@@ -82,17 +82,17 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     name.innerText = getPlayerName(player);
     const nameBeginMarker = document.createElement("span");
     nameBeginMarker.classList.add("nameMarker");
-    nameBeginMarker.textContent = player.account ? "[" : "<";
+    nameBeginMarker.textContent = player?.account ? "[" : "<";
     const nameEndMarker = document.createElement("span");
     nameEndMarker.classList.add("nameMarker");
-    nameEndMarker.textContent = player.account ? "]" : ">";
+    nameEndMarker.textContent = player?.account ? "]" : ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
 
-    if (playerData?.rank > player.rank)
+    if (playerData?.rank > player?.rank)
       addAdminContextMenu(message, player);
 
-    if (player.rank) {
+    if (player?.rank) {
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
@@ -138,7 +138,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
             badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
         }
       }
-      if (player?.name) {
+      if (player.name) {
         addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, systemName || getDefaultUiTheme(), mapId, prevMapId, prevLocationsStr);
         badgeEl.classList.toggle('badgeButton', player.name);
       }
@@ -184,7 +184,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
                 ? `var(--alt-color-${parsedSystemName})`
                 : `var(--base-bg-color-${parsedSystemName})`;
               if (gameId === '2kki' && badge.locOverlay)
-                handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, playerName, mapId, prevMapId, prevLocationsStr);
+                handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);
             } else
               badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
           }
