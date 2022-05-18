@@ -243,7 +243,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         
       tooltipContent += '<label class="tooltipFooter">';
-      if (!badge.unlocked && badge.goalsTotal > 0)
+      if (badge.goalsTotal > 0)
         tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
 
       const percentMultiplier = badge.percent < 1 ? 100 : 10;
