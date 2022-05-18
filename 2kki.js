@@ -458,6 +458,8 @@ function handle2kkiBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2
     badgeOverlay2.style.background = bgColor;
   };
   const queryColorsFunc = locations => {
+    if (!locations)
+      return;
     getOrQuery2kkiLocationColors(locations)
       .then(colors => {
         if (Array.isArray(colors) && colors.length === 2)
