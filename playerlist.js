@@ -226,25 +226,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
-    if (player && playerData?.rank > player.rank) {
-      const banAction = document.createElement('a');
-      banAction.classList.add('listEntryAction');
-      banAction.href = 'javascript:void(0);';
-      banAction.onclick = function () {
-        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true)}?`)) {
-          apiFetch(`admin?command=ban&player=${uuid}`)
-            .then(response => {
-              if (!response.ok)
-                throw new Error(response.statusText);
-              return response.text();
-            })
-            .then(_ => showToastMessage(`${getPlayerName(player, true)} has been banned.`, 'ban', true, systemName))
-            .catch(err => console.error(err));
-        }
-      };
-      banAction.appendChild(getSvgIcon('ban', true));
-      playerListEntryActionContainer.appendChild(banAction);
-    }
+    if (player && playerData?.rank > player.rank)
+      addAdminContextMenu(playerListEntry, player);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 

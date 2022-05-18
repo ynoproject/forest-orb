@@ -88,7 +88,11 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     nameEndMarker.textContent = player.account ? "]" : ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
-    if (player?.rank) {
+
+    if (playerData?.rank > player.rank)
+      addAdminContextMenu(message, player);
+
+    if (player.rank) {
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");

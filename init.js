@@ -197,6 +197,45 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
+function addAdminContextMenu(target, player) {
+  if (!player)
+    return;
+
+  const playerName = getPlayerName(player, true);
+  
+  const adminTooltip = addTooltip(target, `<a href="javascript:void(0);">Ban ${playerName}</a>`, true, false, true, { trigger: 'manual' });
+
+  adminTooltip.popper.querySelector('a').onclick = function () {
+    if (confirm(`Are you sure you want to permanently ban ${playerName}?`)) {
+      apiFetch(`admin?command=ban&player=${player.uuid}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(`${playerName} has been banned.`, 'ban', true, systemName))
+        .catch(err => console.error(err));
+    }
+  };
+
+  target.addEventListener('contextmenu', event => {
+    event.preventDefault();
+  
+    adminTooltip.setProps({
+      getReferenceClientRect: () => ({
+        width: 0,
+        height: 0,
+        top: event.clientY,
+        bottom: event.clientY,
+        left: event.clientX,
+        right: event.clientX,
+      }),
+    });
+  
+    adminTooltip.show();
+  });
+}
+
 function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interactive, options, instance) {
   if (!instance)
     return addTooltip(target, content, asTooltipContent, delayed, interactive, options);
