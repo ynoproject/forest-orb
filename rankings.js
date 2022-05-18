@@ -296,7 +296,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
               }
               if (ranking.name) {
                 if (gameId === '2kki' && badge?.overlay && badge.maskOverlay && badge.locOverlay)
-                  handle2kkiBadgeOverlayLocationColorOverride(badgeEl.querySelector('.badgeOverlay'), badgeEl.querySelector('.badgeOverlay2'), null, playerName);
+                  handle2kkiBadgeOverlayLocationColorOverride(badgeEl.querySelector('.badgeOverlay'), badgeEl.querySelector('.badgeOverlay2'), null, ranking.name);
                 addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, ranking.name, systemName);
                 badgeEl.classList.toggle('badgeButton', ranking.name);
               }

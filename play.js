@@ -94,8 +94,10 @@ function onUpdateConnectionStatus(status) {
       hasConnected = true;
     }
     syncPrevLocation();
-  } else
+  } else {
+    playerUuids = {};
     clearPlayerLists();
+  }
 }
 
 function fetchAndUpdatePlayerInfo() {

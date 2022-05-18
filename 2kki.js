@@ -417,6 +417,8 @@ function getOrQuery2kkiLocationColors(locationName) {
   return new Promise((resolve, _reject) => {
     if (Array.isArray(locationName) && locationName.length && locationName[0].hasOwnProperty('title'))
       locationName = locationName[0].title;
+    else if (locationName.hasOwnProperty('title'))
+      locationName = locationName.title;
     if (locationColorCache.hasOwnProperty(locationName)) {
       resolve(locationColorCache[locationName]);
       return;
