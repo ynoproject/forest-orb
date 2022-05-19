@@ -10,6 +10,13 @@ let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
+const BadgeOverlayType = {
+  GRADIENT: 1,
+  MASK: 2,
+  DUAL: 4,
+  LOCATION: 8
+};
+
 function initBadgeControls() {
   const onClickBadgeButton = (prevModal, slotId) => {
     if (slotId && (slotId > badgeSlotCache.length + 1 || Math.ceil(slotId / badgeSlotsPerRow) > badgeSlotRows))
@@ -119,7 +126,7 @@ function initBadgeGalleryModal() {
       badgeSlotButton.classList.toggle('disabled', s > badgeSlotCache.length + 1);
       badgeSlotButton.classList.toggle('hidden', rowIndex > badgeSlotRows);
       badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
-      if (gameId === '2kki' && badge?.locOverlay)
+      if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
         handle2kkiBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
     }
   }
@@ -130,7 +137,7 @@ function updateBadgeButton() {
   const badge = playerData?.badge ? badgeCache.find(b => b.badgeId === badgeId) : null;
   const badgeButton = document.getElementById('badgeButton');
   badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
-  if (gameId === '2kki' && badge?.locOverlay)
+  if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
     handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
 }
 
@@ -166,16 +173,24 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
       badgeEl.classList.add('scaledBadge');
     badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-    if (badge.overlay) {
+    if (badge.overlayType) {
       badgeEl.classList.add('overlayBadge');
 
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
+      
       badgeEl.appendChild(badgeOverlay);
 
-      if (badge.maskOverlay) {
-        const badgeFgMaskUrl = badgeUrl.replace('.', '_mask_fg.');
-        const badgeBgMaskUrl = badgeUrl.replace('.', '_mask_bg.');
+      const badgeMaskValue = badge.overlayType & BadgeOverlayType.MASK
+        ? `url('${badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')}')`
+        : badgeEl.style.backgroundImage;
+
+      badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeMaskValue}; mask-image: ${badgeMaskValue};`);
+
+      if (badge.overlayType & BadgeOverlayType.DUAL) {
+        const badgeMask2Value = badge.overlayType & BadgeOverlayType.MASK
+          ? `url(${badgeUrl.replace('.', '_mask_bg.')})`
+          : badgeEl.style.backgroundImage;
 
         badgeOverlay.classList.add('badgeOverlayBase');
 
@@ -186,10 +201,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
 
         badgeEl.appendChild(badgeOverlay2);
 
-        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
-        badgeOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
-      } else
-        badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeEl.style.backgroundImage}; mask-image: ${badgeEl.style.backgroundImage};`);
+        badgeOverlay2.setAttribute('style', `-webkit-mask-image: ${badgeMask2Value}; mask-image: ${badgeMask2Value};`);
+      }
     }
 
     badgeContainer.appendChild(badgeEl);
@@ -473,34 +486,36 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
               const badge = badgeCache.find(b => b.badgeId === badgeId);
 
-              const badgeSlotOverlay = badge?.overlay ? document.createElement('div') : null;
-              const badgeSlotOverlay2 = badge?.overlay && badge.maskOverlay ? document.createElement('div') : null;
-    
-              if (badgeSlotOverlay) {
+              if (badge?.overlayType) {
+                const badgeSlotOverlay = document.createElement('div');
+
                 badgeSlotOverlay.classList.add('badgeSlotOverlay');
                 badgeSlotOverlay.classList.add('badgeOverlay');
+                badgeSlotOverlay.dataset.overlayType = badge.overlayType;
 
                 badgeSlot.appendChild(badgeSlotOverlay);
 
-                if (badgeSlotOverlay2) {
-                  const badgeFgMaskUrl = badgeUrl.replace('.', '_mask_fg.');
-                  const badgeBgMaskUrl = badgeUrl.replace('.', '_mask_bg.');
-        
+                const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+                  ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+                  : badgeUrl;
+
+                badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+
+                if (badge.overlayType & BadgeOverlayType.DUAL) {
+                  const badgeSlotOverlay2 = document.createElement('div');
+
                   badgeSlotOverlay2.classList.add('badgeSlotOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay2');
         
                   badgeSlot.appendChild(badgeSlotOverlay2);
-        
-                  badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
-                  badgeSlotOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
 
-                  if (badge.locOverlay) {
-                    badgeSlotOverlay.classList.add('badgeLocOverlay');
-                    badgeSlotOverlay2.classList.add('badgeLocOverlay');
-                  }
-                } else
-                  badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+                  const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+                    ? badgeUrl.replace('.', '_mask_bg.')
+                    : badgeUrl;
+
+                  badgeSlotOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+                }
               }
     
               badgeSlotsContainer.appendChild(badgeSlot);
@@ -528,16 +543,18 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             if (parsedSystemName) {
               const badgeSlotOverlays = tippyBox.querySelectorAll('.badgeSlotOverlay');
               for (let badgeSlotOverlay of badgeSlotOverlays) {
-                const badgeSlotOverlay2 = badgeSlotOverlay.parentElement.querySelector('.badgeOverlay2');
-                if (badgeSlotOverlay2) {
-                  badgeSlotOverlay.style.background = `var(--base-color-${parsedSystemName})`;
+                const overlayType = parseInt(badgeSlotOverlay.dataset.overlayType);
+                badgeSlotOverlay.style.background = `var(--base-${overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+
+                const badgeSlotOverlay2 = overlayType & BadgeOverlayType.DUAL ? badgeSlotOverlay.parentElement.querySelector('.badgeOverlay2') : null;
+               
+                if (badgeSlotOverlay2)
                   badgeSlotOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-                    ? `var(--alt-color-${parsedSystemName})`
+                    ? `var(--alt-${overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
                     : `var(--base-bg-color-${parsedSystemName})`;
-                  if (gameId === '2kki' && badgeSlotOverlay.classList.contains('badgeLocOverlay'))
-                    handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr);
-                } else
-                  badgeSlotOverlay.style.background = `var(--base-gradient-${parsedSystemName})`;
+
+                if (gameId === '2kki' && overlayType & BadgeOverlayType.LOCATION)
+                  handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr);
               }
             }
 

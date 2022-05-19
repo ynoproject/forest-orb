@@ -59,7 +59,7 @@ function onLoad2kkiMap(mapId) {
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
-    if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.locOverlay)
+    if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
       updateBadgeButton();
   } else {
     queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, set2kkiClientLocation, true)
@@ -73,7 +73,7 @@ function onLoad2kkiMap(mapId) {
           set2kkiExplorerLinks(null);
         }
         checkEventLocations();
-        if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.locOverlay)
+        if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
           updateBadgeButton();
       }).catch(err => console.error(err));
   }
@@ -455,7 +455,8 @@ function cache2kkiLocationColors(locationName, fgColor, bgColor) {
 function handle2kkiBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, locations, playerName, mapId, prevMapId, prevLocationsStr) {
   const setOverlayColors = (fgColor, bgColor) => {
     badgeOverlay.style.background = fgColor;
-    badgeOverlay2.style.background = bgColor;
+    if (badgeOverlay2)
+      badgeOverlay2.style.background = bgColor;
   };
   const queryColorsFunc = locations => {
     if (!locations)

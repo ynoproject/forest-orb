@@ -121,8 +121,8 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     const badge = player?.badge ? badgeCache.find(b => b.badgeId === player.badge) : null;
 
     const badgeEl = badge ? document.createElement('div') : null;
-    const badgeOverlayEl = badge?.overlay ? document.createElement('div') : null;
-    const badgeOverlay2El = badge?.overlay && badge.maskOverlay ? document.createElement('div') : null;
+    const badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
+    const badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
 
     if (badge) {
       badgeEl.classList.add('badge');
@@ -153,19 +153,24 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
         badgeEl.appendChild(badgeOverlayEl);
 
+        const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+          ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+          : badgeUrl;
+
+        badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+
         if (badgeOverlay2El) {
-          const badgeFgMaskUrl = badgeUrl.replace('.', '_mask_fg.');
-          const badgeBgMaskUrl = badgeUrl.replace('.', '_mask_bg.');
+          const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+            ? badgeUrl.replace('.', '_mask_bg.')
+            : badgeUrl;
 
           badgeOverlay2El.classList.add('badgeOverlay');
           badgeOverlay2El.classList.add('badgeOverlay2');
 
           badgeEl.appendChild(badgeOverlay2El);
 
-          badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeFgMaskUrl}'); mask-image: url('${badgeFgMaskUrl}');`);
-          badgeOverlay2El.setAttribute('style', `-webkit-mask-image: url('${badgeBgMaskUrl}'); mask-image: url('${badgeBgMaskUrl}');`);
-        } else
-          badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+          badgeOverlay2El.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+        }
       }
     }
 
@@ -178,15 +183,14 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           if (badgeOverlayEl) {
+            badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
             if (badgeOverlay2El) {
-              badgeOverlayEl.style.background = `var(--base-color-${parsedSystemName})`;
               badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-                ? `var(--alt-color-${parsedSystemName})`
+                ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
                 : `var(--base-bg-color-${parsedSystemName})`;
-              if (gameId === '2kki' && badge.locOverlay)
-                handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);
-            } else
-              badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
+            }
+            if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
+              handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);
           }
         });
       });

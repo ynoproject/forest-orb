@@ -79,7 +79,7 @@ function initAccountSettingsModal() {
   accountBadgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true, false, true).innerHTML;
   badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
 
-  if (gameId === '2kki' && badge?.locOverlay) {
+  if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION) {
     handle2kkiBadgeOverlayLocationColorOverride(accountBadgeButton.querySelector('.badgeOverlay'), accountBadgeButton.querySelector('.badgeOverlay2'), cachedLocations);
     handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
   }
