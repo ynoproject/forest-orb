@@ -85,6 +85,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
         badgeEl.classList.add('overlayBadge');
 
         badgeOverlayEl.classList.add('badgeOverlay');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlayEl.classList.add('badgeOverlayMultiply');
         
         badgeEl.appendChild(badgeOverlayEl);
 
@@ -101,6 +103,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
 
           badgeOverlay2El.classList.add('badgeOverlay');
           badgeOverlay2El.classList.add('badgeOverlay2');
+          if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+            badgeOverlay2El.classList.add('badgeOverlayMultiply');
 
           badgeEl.appendChild(badgeOverlay2El);
 
@@ -290,6 +294,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
       : badgeUrl;
 
+    playerListEntryBadgeOverlay.classList.toggle('badgeOverlayMultiply', badge.overlayType & BadgeOverlayType.MULTIPLY);
     playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
 
     if (showBadgeOverlay2) {
@@ -297,6 +302,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         ? badgeUrl.replace('.', '_mask_bg.')
         : badgeUrl;
 
+      playerListEntryBadgeOverlay2.classList.toggle('badgeOverlayMultiply', badge.overlayType & BadgeOverlayType.MULTIPLY);
       playerListEntryBadgeOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
     }
   }

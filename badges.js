@@ -12,9 +12,10 @@ let localizedBadgesIgnoreUpdateTimer = null;
 
 const BadgeOverlayType = {
   GRADIENT: 1,
-  MASK: 2,
-  DUAL: 4,
-  LOCATION: 8
+  MULTIPLY: 2,
+  MASK: 4,
+  DUAL: 8,
+  LOCATION: 16
 };
 
 function initBadgeControls() {
@@ -178,6 +179,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
 
       const badgeOverlay = document.createElement('div');
       badgeOverlay.classList.add('badgeOverlay');
+      if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+        badgeOverlay.classList.add('badgeOverlayMultiply');
       
       badgeEl.appendChild(badgeOverlay);
 
@@ -197,6 +200,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
         const badgeOverlay2 = document.createElement('div');
         badgeOverlay2.classList.add('badgeOverlay');
         badgeOverlay2.classList.add('badgeOverlay2');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlay2.classList.add('badgeOverlayMultiply');
         badgeOverlay2.classList.add(getStylePropertyValue('--base-color') !== getStylePropertyValue('--alt-color') ? 'badgeOverlayAlt' : 'badgeOverlayBg');
 
         badgeEl.appendChild(badgeOverlay2);
@@ -491,6 +496,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
                 badgeSlotOverlay.classList.add('badgeSlotOverlay');
                 badgeSlotOverlay.classList.add('badgeOverlay');
+                if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+                  badgeSlotOverlay.classList.add('badgeOverlayMultiply');
                 badgeSlotOverlay.dataset.overlayType = badge.overlayType;
 
                 badgeSlot.appendChild(badgeSlotOverlay);
@@ -507,6 +514,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                   badgeSlotOverlay2.classList.add('badgeSlotOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay2');
+                  if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+                    badgeSlotOverlay2.classList.add('badgeOverlayMultiply');
         
                   badgeSlot.appendChild(badgeSlotOverlay2);
 

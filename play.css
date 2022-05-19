@@ -1828,6 +1828,9 @@ form .uiTheme {
 
 .badgeOverlay {
   height: 100%;
+}
+
+.badgeOverlayMultiply {
   mix-blend-mode: multiply;
 }
 

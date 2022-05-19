@@ -150,6 +150,8 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
         badgeEl.classList.add('overlayBadge');
 
         badgeOverlayEl.classList.add('badgeOverlay');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlayEl.classList.add('badgeOverlayMultiply');
 
         badgeEl.appendChild(badgeOverlayEl);
 
@@ -166,6 +168,8 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 
           badgeOverlay2El.classList.add('badgeOverlay');
           badgeOverlay2El.classList.add('badgeOverlay2');
+          if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+            badgeOverlay2El.classList.add('badgeOverlayMultiply');
 
           badgeEl.appendChild(badgeOverlay2El);
 
