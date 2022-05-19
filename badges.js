@@ -511,7 +511,6 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 if (badge.overlayType & BadgeOverlayType.DUAL) {
                   const badgeSlotOverlay2 = document.createElement('div');
 
-                  badgeSlotOverlay2.classList.add('badgeSlotOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay');
                   badgeSlotOverlay2.classList.add('badgeOverlay2');
                   if (badge.overlayType & BadgeOverlayType.MULTIPLY)
