@@ -89,7 +89,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
         badgeEl.appendChild(badgeOverlayEl);
 
         const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
-          ? badgeUrl.replace('.', badgeOverlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+          ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
           : badgeUrl;
 
         badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
