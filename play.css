@@ -1816,6 +1816,7 @@ form .uiTheme {
   width: 37px;
   height: 37px;
   margin: 4px;
+  background-size: cover;
 }
 
 .badgeButton {
