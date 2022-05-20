@@ -1038,6 +1038,7 @@ body.fullBg #background {
   min-width: 37px;
   height: 37px;
   margin: -5px -4px -5px 0;
+  background-size: cover;
 }
 
 .listEntrySprite {
