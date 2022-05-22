@@ -197,7 +197,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
-function addAdminContextMenu(target, player) {
+function addAdminContextMenu(target, player, uuid) {
   if (!player)
     return;
 
@@ -207,7 +207,7 @@ function addAdminContextMenu(target, player) {
 
   adminTooltip.popper.querySelector('a').onclick = function () {
     if (confirm(`Are you sure you want to permanently ban ${playerName}?`)) {
-      apiFetch(`admin?command=ban&player=${player.uuid}`)
+      apiFetch(`admin?command=ban&player=${uuid}`)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);

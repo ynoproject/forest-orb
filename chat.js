@@ -23,6 +23,13 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
 
+  let uuid = player?.uuid;
+
+  if (player && typeof player === 'string') {
+    uuid = player;
+    player = globalPlayerData[uuid];
+  }
+
   const system = !type;
   const map = type === MESSAGE_TYPE.MAP;
   const global = type === MESSAGE_TYPE.GLOBAL;
@@ -458,15 +465,12 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  const uuid = playerUuids[id];
-  const player = uuid ? globalPlayerData[uuid] : null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.MAP, player);
+  chatboxAddMessage(msg, MESSAGE_TYPE.MAP, playerUuids[id]);
 }
 
 // EXTERNAL
 function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, x, y, msg) {
-  const player = globalPlayerData[uuid] || null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, player, mapId, prevMapId, prevLocationsStr, x, y);
+  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, mapId, prevMapId, prevLocationsStr, x, y);
 }
 
 // EXTERNAL

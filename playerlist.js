@@ -236,7 +236,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
     if (player && playerData?.rank > player.rank)
-      addAdminContextMenu(playerListEntry, player);
+      addAdminContextMenu(playerListEntry, player, uuid);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
