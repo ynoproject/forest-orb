@@ -203,9 +203,15 @@ function addAdminContextMenu(target, player, uuid) {
 
   const playerName = getPlayerName(player, true);
   
-  const adminTooltip = addTooltip(target, `<a href="javascript:void(0);">Ban ${playerName}</a>`, true, false, true, { trigger: 'manual' });
+  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">Ban ${playerName}</a>`;
+  if (player.account)
+    tooltipHtml += `<br>
+      <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">Grant Badge</a><br>
+      <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">Revoke Badge</a>`;
 
-  adminTooltip.popper.querySelector('a').onclick = function () {
+  const adminTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
+
+  adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
     if (confirm(`Are you sure you want to permanently ban ${playerName}?`)) {
       apiFetch(`admin?command=ban&player=${uuid}`)
         .then(response => {
@@ -217,6 +223,31 @@ function addAdminContextMenu(target, player, uuid) {
         .catch(err => console.error(err));
     }
   };
+
+  const badgeActions = adminTooltip.popper.querySelectorAll('.adminBadgeAction');
+  for (let badgeAction of badgeActions) {
+    badgeAction.onclick = function () {
+      const isGrant = this.classList.contains('grantBadgeAction');
+      const badgeId = prompt(`Enter the badge ID to ${isGrant ? 'grant' : 'revoke from'} ${playerName}.`);
+      if (badgeId) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+        });
+        if (badgeGame) {
+          const badgeName = localizedBadges[badgeGame][badgeId].name;
+          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&player=${uuid}&id=${badgeId}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => showToastMessage(`${badgeName} was successfully ${isGrant ? 'granted to' : 'revoked from'} ${playerName}.`, 'info', true, systemName))
+            .catch(err => console.error(err));
+        } else
+          alert('No badge was found for the provided badge ID.');
+      }
+    };
+  }
 
   target.addEventListener('contextmenu', event => {
     event.preventDefault();
