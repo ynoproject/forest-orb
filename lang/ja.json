@@ -123,7 +123,7 @@
           "system": {
             "label": "システム",
             "fields": {
-              "siteUpdates": "Site Updated",
+              "siteUpdates": "サイト更新通知",
               "floodDetected": "スパム検知"
             }
           },
@@ -231,7 +231,7 @@
       },
       "eventLocations": {
         "title": "ドリームラリー",
-        "rankExp": "Next Rank",
+        "rankExp": "次のランクまで",
         "weekExp": "今週のExP"
       },
       "rankings": {
@@ -298,7 +298,7 @@
     },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",
-      "queryingLocation": "Querying Location...",
+      "queryingLocation": "場所を取得中…",
       "unknownLocation": "場所不明",
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」"
