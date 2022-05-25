@@ -326,21 +326,21 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "{PLAYER}をBAN",
+          "confirm": "本当に{PLAYER}を永久BANしますか？",
+          "success": "{PLAYER}はBANされました。"
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "権限バッジを付与",
+          "prompt": "{PLAYER}に付与するバッジIDを入力してください。",
+          "success": "{BADGE}を{PLAYER}に付与しました。",
+          "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "権限バッジの剥奪",
+          "prompt": "{PLAYER}から剥奪するバッジIDを入力してください。",
+          "success": "{PLAYER}から{BADGE}を剥奪しました。",
+          "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
         }
       }
     },
