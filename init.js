@@ -203,23 +203,23 @@ function addAdminContextMenu(target, player, uuid) {
 
   const playerName = getPlayerName(player, true);
   
-  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">Ban ${playerName}</a>`;
+  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a>`;
   if (player.account)
     tooltipHtml += `<br>
-      <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">Grant Badge</a><br>
+      <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
       <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">Revoke Badge</a>`;
 
   const adminTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
 
   adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
-    if (confirm(`Are you sure you want to permanently ban ${playerName}?`)) {
+    if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
       apiFetch(`admin?command=ban&player=${uuid}`)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
           return response.text();
         })
-        .then(_ => showToastMessage(`${playerName} has been banned.`, 'ban', true, systemName))
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
         .catch(err => console.error(err));
     }
   };
@@ -228,7 +228,8 @@ function addAdminContextMenu(target, player, uuid) {
   for (let badgeAction of badgeActions) {
     badgeAction.onclick = function () {
       const isGrant = this.classList.contains('grantBadgeAction');
-      const badgeId = prompt(`Enter the badge ID to ${isGrant ? 'grant' : 'revoke from'} ${playerName}.`);
+      const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
+      const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
       if (badgeId) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
           return Object.keys(localizedBadges[game]).find(b => b === badgeId);
@@ -241,10 +242,10 @@ function addAdminContextMenu(target, player, uuid) {
                 throw new Error(response.statusText);
               return response.text();
             })
-            .then(_ => showToastMessage(`${badgeName} was successfully ${isGrant ? 'granted to' : 'revoked from'} ${playerName}.`, 'info', true, systemName))
+            .then(_ => showToastMessage(getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName).replace('{PLAYER}', playerName), 'info', true, systemName))
             .catch(err => console.error(err));
         } else
-          alert('No badge was found for the provided badge ID.');
+          alert(localizedContextRoot.fail);
       }
     };
   }
