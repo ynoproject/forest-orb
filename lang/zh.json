@@ -326,21 +326,21 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "封禁 {PLAYER}",
+          "confirm": "确认要永久封禁 {PLAYER} ？",
+          "success": "{PLAYER} 已被永久封禁。"
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "授予徽章",
+          "prompt": "请输入要授予 {PLAYER} 的徽章ID。",
+          "success": "{BADGE} 已成功授予 {PLAYER} 。",
+          "fail": "无法找到该ID对应的徽章。"
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "收回徽章",
+          "prompt": "输入要从 {PLAYER} 收回的徽章ID。",
+          "success": "{BADGE} 已成功从 {PLAYER} 收回。",
+          "fail": "无法找到该ID对应的徽章。"
         }
       }
     },
