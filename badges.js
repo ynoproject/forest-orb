@@ -40,20 +40,7 @@ function initBadgeControls() {
               return -1;
             if (b.game === gameId)
               return 1;
-            if (a.game !== b.game)
-              return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
-            if (a.order !== b.order)
-              return a.order < b.order;
-            if (a.map !== b.map) {
-              if (!a.map)
-                return 1;
-              if (!b.map)
-                return -1;
-              return a.map < b.map ? -1 : 1;
-            }
-            if (a.mapOrder !== b.mapOrder)
-              return a.mapOrder < b.mapOrder;
-            return a.badgeId.localeCompare(b.badgeId, { sensitivity: 'base' });
+            return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
           }
           return 0;
         };
