@@ -574,7 +574,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
       return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
     img.onload = function () {
-      getSpriteImg(img, spriteData, sprite, idx, 1, 24, 32, favicon ? 4 : 2, true, isBrave)
+      getSpriteImg(img, spriteData, sprite, idx, 1, favicon ? 16 : 20, 16, favicon ? 4 : 2, true, isBrave)
         .then(url => resolve(url));
     };
     if (!dir) {
