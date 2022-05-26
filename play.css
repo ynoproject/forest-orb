@@ -1824,7 +1824,7 @@ form .uiTheme {
   -webkit-appearance: button;
 }
 
-.badge.hidden {
+.badge.hidden, .badgeOverlay.hidden {
   display: none;
 }
 
