@@ -1,15 +1,3 @@
-
-const gameDefaultSprite = {
-  'yume': '0000000078',
-  '2kki': 'syujinkou1',
-  'flow': 'sabituki',
-  'prayers': 'Flourette',
-  'deepdreams': 'main',
-  'someday': 'itsuki1',
-  'amillusion': { sprite: 'parapluie ', idx: 1 },
-  'unevendream': 'kubo',
-  'braingirl': 'mikan2'
-}[gameId];
 const roleEmojis = {
   mod: '🛡️',
   dev: '🔧',
@@ -247,12 +235,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (!playerSpriteCacheEntry && uuid !== defaultUuid)
     playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
   if (playerSpriteCacheEntry) {
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+    getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
       if (spriteImg)
         playerListEntrySprite.src = spriteImg
     });
     if (uuid === defaultUuid)
-      updateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
+      updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
@@ -446,13 +434,13 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
   playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
-  getSpriteImg(sprite, idx).then(spriteImg => {
+  getSpriteProfileImg(sprite, idx).then(spriteImg => {
     if (spriteImg !== null && playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
   });
 
   if (uuid === defaultUuid)
-    updateFaviconSprite(sprite, idx);
+    updatePlayerSprite(sprite, idx);
 }
 
 function removePlayerListEntry(playerList, uuid) {
@@ -562,7 +550,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
   return null;
 }
 
-async function getSpriteImg(sprite, idx, favicon, dir) {
+async function getSpriteProfileImg(sprite, idx, favicon, dir) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
   return new Promise(resolve => {
     const spriteData = favicon ? faviconCache : spriteCache;
@@ -578,7 +566,7 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     const defaultIdx = defaultSpriteObj.idx;
     const getDefaultSpriteImg = new Promise(resolve => {
       if (sprite !== defaultSprite || idx !== defaultIdx)
-        getSpriteImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
+        getSpriteProfileImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
       else
         resolve(null);
     });
@@ -586,45 +574,12 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
       return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
     img.onload = function () {
-      const canvas = document.createElement('canvas');
-      canvas.width = 24;
-      canvas.height = 32;
-      const context = canvas.getContext('2d');
-      const startX = (idx % 4) * 72 + 24;
-      const startY = (idx >> 2) * 128 + 64;
-      context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
-      const imageData = context.getImageData(0, 0, 24, 32);
-      const data = imageData.data;
-      const transPixel = data.slice(0, 3);
-      let yOffset = -1;
-      const checkPixelTransparent = isBrave
-        ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
-        : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
-      for (let i = 0; i < data.length; i += 4) {
-        if (checkPixelTransparent(i))
-          data[i + 3] = 0;
-        else if (yOffset === -1)
-          yOffset = Math.max(Math.min(i >> 7, 15), 3);
-      }
-      if (yOffset === -1)
-        yOffset = 0;
-      canvas.width = favicon ? 16 : 20;
-      canvas.height = 16;
-      context.putImageData(imageData, favicon ? -4 : -2, yOffset * -1, favicon ? 4 : 2, 0, 20, 32);
-      canvas.toBlob(blob => {
-        const blobImg = document.createElement('img');
-        const url = URL.createObjectURL(blob);
-      
-        blobImg.onload = () => URL.revokeObjectURL(url);
-      
-        spriteData[sprite][idx] = url;
-        canvas.remove();
-        resolve(url);
-      });
+      getSpriteImg(img, spriteData, sprite, idx, 1, 24, 32, favicon ? 4 : 2, true, isBrave)
+        .then(url => resolve(url));
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
@@ -636,8 +591,10 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
   });
 }
 
-function updateFaviconSprite(sprite, idx) {
-  getSpriteImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+function updatePlayerSprite(sprite, idx) {
+  getSpriteProfileImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+  playerLoaderSprite = sprite;
+  playerLoaderSpriteIdx = idx;
 }
 
 function getDefaultSprite() {
@@ -650,8 +607,8 @@ function initDefaultSprites() {
   const defaultSprite = getDefaultSprite();
   const sprite = defaultSprite.sprite;
   const idx = defaultSprite.idx;
-  getSpriteImg(sprite, idx);
-  getSpriteImg(sprite, idx, true).then(faviconImg => {
+  getSpriteProfileImg(sprite, idx);
+  getSpriteProfileImg(sprite, idx, true).then(faviconImg => {
     const faviconLink = document.createElement('link');
     faviconLink.id = 'favicon';
     faviconLink.rel = 'shortcut icon';

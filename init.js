@@ -6,6 +6,17 @@ const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja'
 };
+const gameDefaultSprite = {
+  'yume': '0000000078',
+  '2kki': 'syujinkou1',
+  'flow': 'sabituki',
+  'prayers': 'Flourette',
+  'deepdreams': 'main',
+  'someday': 'itsuki1',
+  'amillusion': { sprite: 'parapluie ', idx: 1 },
+  'unevendream': 'kubo',
+  'braingirl': 'mikan2'
+}[gameId];
 const dependencyFiles = {};
 const dependencyMaps = {};
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
@@ -49,7 +60,9 @@ function injectScripts() {
   
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
-          document.getElementById('loadingOverlay').classList.add('loaded');
+          const loadingOverlay = document.getElementById('loadingOverlay');
+          loadingOverlay.classList.add('loaded');
+          removeLoader(loadingOverlay);
           fetchAndUpdatePlayerInfo();
           setInterval(checkSession, 60000);
           setTimeout(() => {
@@ -181,6 +194,49 @@ function apiJsonPost(path, data) {
     fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: JSON.stringify(data) })
       .then(response => resolve(response))
       .catch(err => reject(err));
+  });
+}
+
+function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOffset, hasYOffset, isBrave) {
+  return new Promise(resolve => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 24;
+    canvas.height = 32;
+    const context = canvas.getContext('2d');
+    const startX = (idx % 4) * 72 + 24 * frameIdx;
+    const startY = (idx >> 2) * 128 + 64;
+    context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
+    const imageData = context.getImageData(0, 0, 24, 32);
+    const data = imageData.data;
+    const transPixel = data.slice(0, 3);
+    let yOffset = hasYOffset ? -1 : 0;
+    const checkPixelTransparent = isBrave
+      ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
+      : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
+    for (let i = 0; i < data.length; i += 4) {
+      if (checkPixelTransparent(i))
+        data[i + 3] = 0;
+      else if (yOffset === -1)
+        yOffset = Math.max(Math.min(i >> 7, 15), 3);
+    }
+    if (yOffset === -1)
+      yOffset = 0;
+    canvas.width = width;
+    canvas.height = height;
+    context.putImageData(imageData, xOffset * -1, yOffset * -1, xOffset, 0, 24, 32);
+    canvas.toBlob(blob => {
+      const blobImg = document.createElement('img');
+      const url = URL.createObjectURL(blob);
+    
+      blobImg.onload = () => URL.revokeObjectURL(url);
+    
+      if (Array.isArray(spriteData[sprite][idx]))
+        spriteData[sprite][idx][frameIdx] = url;
+      else
+        spriteData[sprite][idx] = url;
+      canvas.remove();
+      resolve(url);
+    });
   });
 }
 

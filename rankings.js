@@ -12,11 +12,10 @@ function initRankingControls() {
     if (!rankingCategoryCache.length)
       return;
 
-    fetchAndLoadRankings(rankingCategoryId, rankingSubCategoryId)
-      .then(success => {
-        if (success)
-          openModal('rankingsModal');
-      });
+    openModal('rankingsModal');
+    addLoader(document.getElementById('rankingsModal'), true);
+
+    fetchAndLoadRankings(rankingCategoryId, rankingSubCategoryId);
   };
 }
 
@@ -175,6 +174,7 @@ function fetchAndLoadRankings(categoryId, subCategoryId) {
 
 function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
   return new Promise(resolve => {
+    addLoader(document.getElementById('rankingsModal'));
     apiFetch(`ranking?command=list&category=${categoryId}&subCategory=${subCategoryId}&page=${page}`)
       .then(response => {
         if (!response.ok)
@@ -312,11 +312,13 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
 
           rankingsContainer.appendChild(rankingRow);
         }
-        
+
+        removeLoader(document.getElementById('rankingsModal'));
         resolve(true);
       })
       .catch(err => {
         console.error(err);
+        removeLoader(document.getElementById('rankingsModal'));
         resolve(false);
       });
   });

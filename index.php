@@ -727,6 +727,7 @@
   <script type="text/javascript" src="toast.js"></script>
   <script type="text/javascript" src="savedata.js"></script>
   <script type="text/javascript" src="init.js"></script>
+  <script type="text/javascript" src="loader.js"></script>
   <script type="text/javascript" src="events.js"></script>
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>

@@ -26,7 +26,7 @@ function initBadgeControls() {
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
-    const updateBadgesAndOpenModal = () => {
+    const updateBadgesAndPopulateModal = () => {
       fetchPlayerBadges(playerBadges => {
         let lastGame = null;
         let lastGroup = null;
@@ -81,14 +81,15 @@ function initBadgeControls() {
           }
           badgeModalContent.appendChild(item);
         }
-
-        openModal('badgesModal', null, prevModal || null);
+        removeLoader(document.getElementById('badgesModal'));
       });
     };
+    openModal('badgesModal', null, prevModal || null);
+    addLoader(document.getElementById('badgesModal'), true);
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
-      updateBadgesAndOpenModal();
+      updateBadgesAndPopulateModal();
     else
-      updateLocalizedBadges(updateBadgesAndOpenModal);
+      updateLocalizedBadges(updateBadgesAndPopulateModal);
   };
 
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();

@@ -615,7 +615,7 @@ function addOrUpdatePartyListEntry(party) {
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+    getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
       if (!spriteImg)
         return;
       if (memberIndex === ownerMemberIndex) {
