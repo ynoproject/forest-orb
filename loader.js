@@ -15,6 +15,9 @@ function addLoader(target, instant) {
   const frameIndexes = [ 1, 0, 1, 2 ]
   Promise.allSettled(getLoaderSprites)
     .then(() => {
+      if (activeLoaders.hasOwnProperty(target))
+        return;
+        
       const el = document.createElement('div');
       el.classList.add('loader');
 
