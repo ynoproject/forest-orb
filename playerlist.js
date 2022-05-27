@@ -1,8 +1,8 @@
 const roleEmojis = {
-  muted: '🔇',
   mod: '🛡️',
   dev: '🔧',
-  partyOwner: '👑'
+  partyOwner: '👑',
+  muted: '🔇'
 };
 const defaultUuid = '0000000000000000';
 let playerData = null;
