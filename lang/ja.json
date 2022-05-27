@@ -101,6 +101,7 @@
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleTabToChat": "タブキーを 押して チャット",
+          "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
         },
         "notificationSettings": "通知 設定",
@@ -119,9 +120,10 @@
               "topRight": "右上"
             }
           },
-          "client": {
+          "system": {
             "label": "システム",
             "fields": {
+              "siteUpdates": "サイト更新通知",
               "floodDetected": "スパム検知"
             }
           },
@@ -129,8 +131,7 @@
             "label": "アカウント",
             "fields": {
               "loggedIn": "ログイン通知",
-              "loggedOut": "ログアウト通知",
-              "badgeUnlocked": "バッジ獲得通知"
+              "loggedOut": "ログアウト通知"
             }
           },
           "parties": {
@@ -158,6 +159,12 @@
               "listUpdated": "ドリームラリー更新通知"
             }
           },
+          "badges": {
+            "label": "バッジ",
+            "fields": {
+              "badgeUnlocked": "バッジ獲得通知"
+            }
+          },
           "saveSync": {
             "label": "セーブデータ同期",
             "fields": {
@@ -175,6 +182,7 @@
         "title": "アカウント設定",
         "fields": {
           "badge": "バッジ",
+          "badgeGallery": "バッジギャラリー管理",
           "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
@@ -187,6 +195,9 @@
       },
       "badges": {
         "title": "バッジ"
+      },
+      "badgeGallery": {
+        "title": "バッジギャラリー設定"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -220,8 +231,11 @@
       },
       "eventLocations": {
         "title": "ドリームラリー",
-        "rankExp": "Next Rank",
+        "rankExp": "次のランクまで",
         "weekExp": "今週のExP"
+      },
+      "rankings": {
+        "title": "ランキング"
       }
     },
     "tooltips": {
@@ -233,7 +247,7 @@
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
       "toggleImmersionMode": "イマージョンモードのオン／オフ",
-      "screenshot": "Take Screenshot",
+      "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
@@ -245,11 +259,13 @@
         "disbandParty": "パーティーを解散する"
       },
       "eventLocations": "ドリームラリー",
+      "rankings": "ランキング",
       "nexus": "扉部屋へ戻る"
     }
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "ゆめにっき",
       "2kki": "ゆめ２っき",
       "flow": ".flow",
@@ -282,7 +298,7 @@
     },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",
-      "queryingLocation": "Querying Location...",
+      "queryingLocation": "場所を取得中…",
       "unknownLocation": "場所不明",
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」"
@@ -306,6 +322,27 @@
     "roles": {
       "mod": "モデレーター",
       "dev": "開発者"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "{PLAYER}をBAN",
+          "confirm": "本当に{PLAYER}を永久BANしますか？",
+          "success": "{PLAYER}はBANされました。"
+        },
+        "grantBadge": {
+          "label": "権限バッジを付与",
+          "prompt": "{PLAYER}に付与するバッジIDを入力してください。",
+          "success": "{BADGE}を{PLAYER}に付与しました。",
+          "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
+        },
+        "revokeBadge": {
+          "label": "権限バッジの剥奪",
+          "prompt": "{PLAYER}から剥奪するバッジIDを入力してください。",
+          "success": "{PLAYER}から{BADGE}を剥奪しました。",
+          "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
+        }
+      }
     },
     "account": {
       "login": {
@@ -358,13 +395,13 @@
       "confirmEnableWithData": "このアカウントには既にセーブデータが保存されています。同じスロットに別のセーブデータが保存されている場合、サーバー側に保存されているセーブデータで上書きされます。この機能を有効にした状態でページを再読み込みした場合にのみ反映されますのでご注意ください。本当にセーブデータ同期を有効にしますか？"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "サイトが更新されました。ページを再読み込みすると、サイトの変更が反映されます。",
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {
         "loggedIn": "{USER}でログインしました。",
-        "loggedOut": "ログアウトしました。",
-        "badgeUnlocked": "バッジを獲得しました！"
+        "loggedOut": "ログアウトしました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
@@ -384,6 +421,9 @@
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
+      },
+      "badges": {
+        "badgeUnlocked": "バッジを獲得しました！"
       },
       "saveSync": {
         "saveUploading": "スロット{SLOT}からセーブデータをアップロードしています…",
@@ -419,156 +459,66 @@
     },
     "badges": {
       "null": "バッジなし",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
-      "gameBadges": {
-        "yume": {
-          "kalimba": {
-            "name": "カリンバ",
-            "description": "カリンバを見る"
-          },
-          "a_r_m": {
-            "name": "サタデーナイトフィーバー",
-            "description": "サタデーナイトフィーバーを見る"
-          },
-          "boombox": {
-            "name": "ラジカセ",
-            "description": "鳥人間ピクニックを見る"
-          },
-          "uboa": {
-            "name": "ウボァ",
-            "description": "ウボァに触れる"
-          },
-          "blackcat": {
-            "name": "黒猫",
-            "description": "デパート屋上で魔女イベントを発生させる"
-          }
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}のバッジギャラリー",
+      "loading": "ロード中…"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "バッジ",
+          "valueLabel": "バッジ数",
+          "value": "{NUMBER}"
         },
-        "2kki": {
-          "mono": {
-            "name": "ドリーマー",
-            "description": "ドリームラリーでミドルランクに到達する"
-          },
-          "bronze": {
-            "name": "ブロンズドリーマー",
-            "description": "ドリームラリーでブロンズランクに到達する"
-          },
-          "silver": {
-            "name": "シルバードリーマー",
-            "description": "ドリームラリーでシルバーランクに到達する"
-          },
-          "gold": {
-            "name": "ゴールドドリーマー",
-            "description": "ドリームラリーでゴールドランクに到達する"
-          },
-          "platinum": {
-            "name": "プラチナドリーマー",
-            "description": "ドリームラリーでプラチナランクに到達する"
-          },
-          "diamond": {
-            "name": "ダイアモンドドリーマー",
-            "description": "ドリームラリーでダイアモンドランクに到達する"
-          },
-          "compass": {
-            "name": "ドリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内30%の世界のラリーを完了させる"
-          },
-          "compass_bronze": {
-            "name": "ブロンズドリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内50%の世界のラリーを完了させる"
-          },
-          "compass_silver": {
-            "name": "シルバードリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内70%の世界のラリーを完了させる"
-          },
-          "compass_gold": {
-            "name": "ゴールドドリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内80%の世界のラリーを完了させる"
-          },
-          "compass_platinum": {
-            "name": "プラチナドリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内90%の世界のラリーを完了させる"
-          },
-          "compass_diamond": {
-            "name": "ダイアモンドドリームランナー",
-            "description": "ドリームラリーで選ばれる世界の内95%の世界のラリーを完了させる"
-          },
-          "crushed": {
-            "name": "クラッシュ",
-            "description": "うろつきが押し潰される所を見る"
-          },
-          "obentou": {
-            "name": "Obentou",
-            "description": "おべんとう"
-          },
-          "compass_28": {
-            "name": "28",
-            "description": "２８"
-          },
-          "blue_orb": {
-            "name": "ブルーオーブ",
-            "description": "たまごに到達する"
-          },
-          "aooh": {
-            "name": "アオォの威光",
-            "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
-          },
-          "hakoko": {
-            "name": "箱子",
-            "description": "目薬屋さんで箱子に話しかける"
-          },
-          "hakoko_prime": {
-            "name": "箱子プライム",
-            "description": " Time Trial Modeで1分40秒以内に目薬屋さんで箱子に話しかける"
-          },
-          "lavender_lesser": {
-            "name": "パープルジェム",
-            "description": "紫湖に到達する"
-          },
-          "lavender": {
-            "name": "ラベンダージェム",
-            "description": "Time Trial Modeで12分以内に紫湖に到達する"
-          },
-          "butterfly_lesser": {
-            "name": "サンセットバタフライブローチ",
-            "description": "Butterflyの最奥に到達する"
-          },
-          "butterfly": {
-            "name": "トワイライトバタフライブローチ",
-            "description": "Time Trial Modeで29分以内にButterflyの最奥に到達する"
-          },
-          "magical_lesser": {
-            "name": "キキ",
-            "description": "マジカルに到達する"
-          },
-          "magical": {
-            "name": "マーリン",
-            "description": " Time Trial Modeで8分30秒以内にマジカルに到達する"
-          },
-          "voxels": {
-            "name": "マジカルブロック",
-            "description": "ブロック島に到達する"
-          },
-          "vending_machine": {
-            "name": "自動販売機",
-            "description": "展示スペースを完成させて訪れる"
-          },
-          "clover": {
-            "name": "深紅色のクローバー",
-            "description": "幸運を祈る…"
-          }
+        "bp": {
+          "label": "BP(バッジポイント)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
-        "prayers": {
-          "koraiyn": {
-            "name": "Koraiyn",
-            "description": "Koraiynって何？"
-          },
-          "missingno": {
-            "name": "けつばん",
-            "description": "けつばんに触れる"
-          }
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "ドリームラリー",
+          "valueLabel": "ドリームラリー完了数",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "エンドレスラリー",
+          "valueLabel": "エンドレスラリー完了数",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "エンドレスラリー完了率",
+          "valueLabel": "完了率",
+          "value": "{PERCENT}%"
+        },
+        "timeTrial": {
+          "label": "スピードラン",
+          "valueLabel": "記録",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "ミニゲーム",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
+      },
+      "subCategories": {
+        "all": "All",
+        "2": "全エフェクト回収",
+        "nasu": "NASU",
+        "rby": "ミニゲームB"
       }
     },
     "2kki": {

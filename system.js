@@ -151,7 +151,7 @@ function setSystemName(name) {
     globalPlayerData[playerData.uuid].systemName = name;
   }
   if (connStatus === 1)
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
 }
 
 // EXTERNAL
@@ -602,6 +602,13 @@ function addSystemSvgDropShadow(systemName, color) {
     svgDropShadowFilter.appendChild(svgDropShadow);
     svgDefs.appendChild(svgDropShadowFilter);
   }
+}
+
+function getStylePropertyValue(name) {
+  const value = document.documentElement.style.getPropertyValue(name);
+  if (value && value.startsWith('var('))
+    return getStylePropertyValue(value.slice(4, -1));
+  return value;
 }
 
 function getColorRgba(color, alpha) {

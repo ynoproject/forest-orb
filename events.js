@@ -97,7 +97,7 @@ function updateEventLocationList(ignoreLocationCheck) {
           const eventLocationTypeContainer = document.createElement('div');
           
           const eventLocationTypeLabel = document.createElement('h3');
-          eventLocationTypeLabel.innerText = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
+          eventLocationTypeLabel.innerHTML = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
 
           eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
           eventLocationList.appendChild(eventLocationTypeContainer);
@@ -149,7 +149,7 @@ function updateEventLocationList(ignoreLocationCheck) {
         const pointsContainer = document.createElement('label');
         pointsContainer.classList.add('eventLocationPoints');
         pointsContainer.classList.add('infoLabel');
-        pointsContainer.innerText = localizedMessages.events.exp.replace('{POINTS}', eventLocation.exp || 0);
+        pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', eventLocation.exp || 0);
 
         const checkbox = document.createElement('div');
         checkbox.classList.add('checkbox');
@@ -205,7 +205,7 @@ function updatePlayerExp() {
       const rankBadge = document.getElementById('expRankBadge');
 
       document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
-      rankBadge.src = rank.badge ? `images/badge/${rank.badge}.png` : '';
+      rankBadge.src = rank.badge ? getBadgeUrl(rank.badge) : '';
       rankBadge.style.display = rank.badge ? 'unset' : 'none';
 
       const rootStyle = document.documentElement.style;
@@ -230,18 +230,18 @@ function claimEventLocationPoints(location, free, retryCount) {
     .then(result => {
       if (result > 0) {
         showEventLocationToastMessage('complete', 'expedition', location, result);
-        updateBadges();
+        checkNewBadgeUnlocks();
       } else if (free && result > -1) {
         showEventLocationToastMessage('freeComplete', 'expedition', location);
-        updateBadges();
+        checkNewBadgeUnlocks();
       }
       updateEventLocationList(true);
     })
     .catch(err => {
       if (!retryCount)
         retryCount = 0;
-      if (retryCount < 5)
-        setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 100);
+      if (retryCount < 10)
+        setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 500);
       else
         console.error(err);
     });
@@ -251,7 +251,13 @@ function checkEventLocations() {
   if (sessionId && cachedLocations && eventLocationCache.length) {
     const incompleteEventLocations = eventLocationCache.filter(el => !el.complete);
     const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
-    const eventLocationMatch = cachedLocations.map(l => l.title).find(l => incompleteEventLocationNames.indexOf(l) > -1);
+    const eventLocationMatch = cachedLocations.map(l => {
+      let locationName = l.title;
+      const colonIndex = locationName.indexOf(':');
+      if (colonIndex > -1)
+        locationName = locationName.slice(0, colonIndex);
+      return locationName;
+    }).find(l => incompleteEventLocationNames.indexOf(l) > -1);
     if (eventLocationMatch)
       claimEventLocationPoints(eventLocationMatch, incompleteEventLocations.find(el => el.title === eventLocationMatch).type === -1);
   }

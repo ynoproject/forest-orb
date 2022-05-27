@@ -1,11 +1,24 @@
 const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
-const localizedGameIds = [ 'yume', '2kki', 'flow', 'prayers', 'deepdreams', 'braingirl' ];
+const localizedGameIds = [ 'yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'braingirl' ];
 const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja'
 };
+const gameDefaultSprite = {
+  'yume': '0000000078',
+  '2kki': 'syujinkou1',
+  'flow': 'sabituki',
+  'prayers': 'Flourette',
+  'deepdreams': 'main',
+  'someday': 'itsuki1',
+  'amillusion': { sprite: 'parapluie ', idx: 1 },
+  'unevendream': 'kubo',
+  'braingirl': 'mikan2'
+}[gameId];
+const dependencyFiles = {};
+const dependencyMaps = {};
 const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 const tippyConfig = {
   arrow: false,
@@ -23,10 +36,19 @@ Module = {
 };
 
 function injectScripts() {
-  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js' ];
-  if (gameId === '2kki')
-    scripts.push('2kki.js');
-  scripts = scripts.concat([ 'play.js', 'gamecanvas.js', 'index.js' ]);
+  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', '2kki.js', 'play.js', 'gamecanvas.js', 'index.js' ];
+
+  dependencyFiles['play.css'] = null;
+
+  const scriptTags = document.querySelectorAll('script');
+  for (let tag of scriptTags) {
+    if (tag.src.startsWith(window.location.origin))
+      dependencyFiles[tag.src] = null;
+  }
+  for (let script of scripts)
+    dependencyFiles[script] = null;
+  dependencyFiles[`${window.location.origin}/data/${gameId}/index.json`] = null;
+  dependencyFiles['index.wasm'] = null;
 
   const injectScript = function (index) {
     const script = scripts[index];
@@ -36,13 +58,23 @@ function injectScripts() {
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
   
-          Module.postRun.push(() => {
-            Module.INITIALIZED = true;
-            document.getElementById('loadingOverlay').classList.add('loaded');
-            fetchAndUpdatePlayerInfo();
-          });
-          if (typeof onResize !== 'undefined')
-            Module.postRun.push(onResize);
+        Module.postRun.push(() => {
+          Module.INITIALIZED = true;
+          const loadingOverlay = document.getElementById('loadingOverlay');
+          loadingOverlay.classList.add('loaded');
+          removeLoader(loadingOverlay);
+          fetchAndUpdatePlayerInfo();
+          setInterval(checkSession, 60000);
+          setTimeout(() => {
+            checkDependenciesModified();
+            setInterval(checkDependenciesModified, 300000);
+          }, 10000);
+          window.onbeforeunload = function () {
+            return localizedMessages.leavePage;
+          };
+        });
+        if (typeof onResize !== 'undefined')
+          Module.postRun.push(onResize);
       };
 
     const scriptTag = document.createElement('script');
@@ -54,6 +86,90 @@ function injectScripts() {
   };
 
   injectScript(0);
+}
+
+function checkDependencyModified(filename, onLoaded, onChecked) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('get', filename, true);
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState == 4) {
+      if (dependencyFiles.hasOwnProperty(filename)) {
+        if (onChecked)
+          onChecked(xhr)
+      } else {
+        if (onLoaded)
+          onLoaded(xhr)
+
+        dependencyFiles[filename] = xhr.getResponseHeader('Last-Modified');
+
+        xhr.open('get', filename, true);
+        xhr.setRequestHeader('If-Modified-Since', dependencyFiles[filename]);
+        xhr.send(null);
+      }
+    }
+  };
+  xhr.send(null);
+}
+
+function checkDependenciesModified() {
+  let hasChanges = false;
+  const dependencyPaths = Object.keys(dependencyFiles);
+  const checkDependency = function (index) {
+    const dep = dependencyPaths[index];
+    const hasLastModified = !!dependencyFiles[dep];
+    const req = hasLastModified ? { headers: { 'If-Modified-Since': dependencyFiles[dep] }} : {};
+
+    fetch(dep, req)
+      .then(response => {
+        if (!hasLastModified || (response.status === 200 && response.headers.has('Last-Modified')))
+          dependencyFiles[dep] = response.headers.get('Last-Modified');
+        if (hasLastModified && response.status === 200)
+          hasChanges = true;
+      })
+      .catch(err => {
+        console.error(err);
+      })
+      .finally(() => {
+        if (!hasLastModified && dependencyFiles[dep])
+          checkDependency(index);
+        else if (index < dependencyPaths.length - 1)
+          checkDependency(index + 1);
+        else if (hasChanges)
+          showSystemToastMessage('siteUpdates', 'info');
+      });
+  };
+  if (dependencyPaths.length)
+    checkDependency(0);
+}
+
+function fetchNewest(path, important, req) {
+  return new Promise((resolve, reject) => {
+    let ret;
+    if (!req)
+      req = {};
+
+    fetch(path, req)
+      .then(response => {
+        ret = response;
+        if (response.headers.has('Last-Modified')) {
+          const lastModified = response.headers.get('Last-Modified');
+          if (!req.headers)
+            req.headers = {};
+          req.headers['If-Modified-Since'] = lastModified;
+          if (important)
+            dependencyFiles[path] = lastModified;
+          fetch(path, req)
+            .then(response => {
+              if (response.status === 200)
+                ret = response;
+              resolve(ret);
+            })
+            .catch(err => reject(err));
+        } else
+          resolve(ret);
+      })
+      .catch(err => reject(err));;
+  });
 }
 
 function apiFetch(path) {
@@ -81,6 +197,49 @@ function apiJsonPost(path, data) {
   });
 }
 
+function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOffset, hasYOffset, isBrave) {
+  return new Promise(resolve => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 24;
+    canvas.height = 32;
+    const context = canvas.getContext('2d');
+    const startX = (idx % 4) * 72 + 24 * frameIdx;
+    const startY = (idx >> 2) * 128 + 64;
+    context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
+    const imageData = context.getImageData(0, 0, 24, 32);
+    const data = imageData.data;
+    const transPixel = data.slice(0, 3);
+    let yOffset = hasYOffset ? -1 : 0;
+    const checkPixelTransparent = isBrave
+      ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
+      : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
+    for (let i = 0; i < data.length; i += 4) {
+      if (checkPixelTransparent(i))
+        data[i + 3] = 0;
+      else if (yOffset === -1)
+        yOffset = Math.max(Math.min(i >> 7, 15), 3);
+    }
+    if (yOffset === -1)
+      yOffset = 0;
+    canvas.width = width;
+    canvas.height = height;
+    context.putImageData(imageData, xOffset * -1, yOffset * -1, xOffset, 0, 24, 32);
+    canvas.toBlob(blob => {
+      const blobImg = document.createElement('img');
+      const url = URL.createObjectURL(blob);
+    
+      blobImg.onload = () => URL.revokeObjectURL(url);
+    
+      if (Array.isArray(spriteData[sprite][idx]))
+        spriteData[sprite][idx][frameIdx] = url;
+      else
+        spriteData[sprite][idx] = url;
+      canvas.remove();
+      resolve(url);
+    });
+  });
+}
+
 function addTooltip(target, content, asTooltipContent, delayed, interactive, options) {
   if (!options)
     options = {};
@@ -91,7 +250,86 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
   options.appendTo = document.getElementById('layout');
   target._tippy?.destroy();
-  tippy(target, Object.assign(options, tippyConfig));
+  return tippy(target, Object.assign(options, tippyConfig));
+}
+
+function addAdminContextMenu(target, player, uuid) {
+  if (!player)
+    return;
+
+  const playerName = getPlayerName(player, true);
+  
+  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a>`;
+  if (player.account)
+    tooltipHtml += `<br>
+      <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
+      <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">Revoke Badge</a>`;
+
+  const adminTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
+
+  adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
+    if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
+      apiFetch(`admin?command=ban&player=${uuid}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
+        .catch(err => console.error(err));
+    }
+  };
+
+  const badgeActions = adminTooltip.popper.querySelectorAll('.adminBadgeAction');
+  for (let badgeAction of badgeActions) {
+    badgeAction.onclick = function () {
+      const isGrant = this.classList.contains('grantBadgeAction');
+      const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
+      const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
+      if (badgeId) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+        });
+        if (badgeGame) {
+          const badgeName = localizedBadges[badgeGame][badgeId].name;
+          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&player=${uuid}&id=${badgeId}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => showToastMessage(getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName).replace('{PLAYER}', playerName), 'info', true, systemName))
+            .catch(err => console.error(err));
+        } else
+          alert(localizedContextRoot.fail);
+      }
+    };
+  }
+
+  target.addEventListener('contextmenu', event => {
+    event.preventDefault();
+  
+    adminTooltip.setProps({
+      getReferenceClientRect: () => ({
+        width: 0,
+        height: 0,
+        top: event.clientY,
+        bottom: event.clientY,
+        left: event.clientX,
+        right: event.clientX,
+      }),
+    });
+  
+    adminTooltip.show();
+  });
+}
+
+function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interactive, options, instance) {
+  if (!instance)
+    return addTooltip(target, content, asTooltipContent, delayed, interactive, options);
+
+  instance.setContent(asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content);
+  return instance;
 }
 
 let loadedLang = false;
@@ -130,6 +368,10 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'tabToChat':
                     if (!value)
                       document.getElementById('tabToChatButton').click();
+                    break;
+                  case 'hideRankings':
+                    if (value)
+                      document.getElementById('toggleRankingsButton').click();
                     break;
                   case 'disableFloodProtection':
                     if (value)

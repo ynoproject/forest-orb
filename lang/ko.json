@@ -101,6 +101,7 @@
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleTabToChat": "탭을 눌러 채팅하기",
+          "toggleRankings": "랭킹",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
         "notificationSettings": "알람 설정",
@@ -119,9 +120,10 @@
               "topRight": "우측 상단"
             }
           },
-          "client": {
+          "system": {
             "label": "시스템",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "디도스 공격 감지"
             }
           },
@@ -129,8 +131,7 @@
             "label": "계정",
             "fields": {
               "loggedIn": "로그인",
-              "loggedOut": "로그아웃",
-              "badgeUnlocked": "뱃지 해금"
+              "loggedOut": "로그아웃"
             }
           },
           "parties": {
@@ -158,6 +159,12 @@
               "listUpdated": "탐험 리스트 업데이트"
             }
           },
+          "badges": {
+            "label": "뱃지",
+            "fields": {
+              "badgeUnlocked": "뱃지 해금"
+            }
+          },
           "saveSync": {
             "label": "세이브 동기화",
             "fields": {
@@ -175,6 +182,7 @@
         "title": "계정 설정",
         "fields": {
           "badge": "뱃지",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "세이브 동기화 (개발중)",
           "saveSyncSlotId": {
             "label": "세이브 동기화 번호",
@@ -187,6 +195,9 @@
       },
       "badges": {
         "title": "뱃지"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "UI 테마",
@@ -222,6 +233,9 @@
         "title": "탐험",
         "rankExp": "다음 랭크",
         "weekExp": "이번주의 경험치"
+      },
+      "rankings": {
+        "title": "랭킹"
       }
     },
     "tooltips": {
@@ -233,7 +247,7 @@
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleImmersionMode": "몰입 모드 활성화",
-      "screenshot": "Take Screenshot",
+      "screenshot": "스크린샷 찍기",
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
@@ -245,11 +259,13 @@
         "disbandParty": "파티 해산"
       },
       "eventLocations": "탐험",
+      "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기"
     }
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
       "flow": ".flow(닷플로우)",
@@ -307,6 +323,27 @@
       "mod": "서버 매니저",
       "dev": "서버 개발자"
     },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        }
+      }
+    },
     "account": {
       "login": {
         "errors": {
@@ -358,13 +395,13 @@
       "confirmEnableWithData": "이 계정에 이전 세이브 동기화 데이터가 발견되었습니다. 동기화 슬롯에 저장된 세이브 데이터는 동일한 슬롯에 데이터가 있는 경우 계정의 세이브 데이터로 덮어씁니다. 이 기능이 활성화된 상태에서 페이지를 다시 로드하는 경우에만 적용됩니다. 세이브 동기화를 사용하시겠습니까?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {
         "loggedIn": "{USER}로 로그인 했습니다",
-        "loggedOut": "로그아웃 하였습니다",
-        "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
+        "loggedOut": "로그아웃 하였습니다"
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",
@@ -384,6 +421,9 @@
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
         "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
+      },
+      "badges": {
+        "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
       },
       "saveSync": {
         "saveUploading": "{SLOT}번 슬롯에서의 세이브 데이터를 업로드합니다...",
@@ -419,156 +459,66 @@
     },
     "badges": {
       "null": "뱃지 없음",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "장소 :&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
-      "gameBadges": {
-        "yume": {
-          "kalimba": {
-            "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
-          },
-          "a_r_m": {
-            "name": "Raving in the Wilderness",
-            "description": "Experience the Aztec Rave Monkey"
-          },
-          "boombox": {
-            "name": "라디오 뱃지",
-            "description": "고비 사막에서 새인간 파티를 관람하기"
-          },
-          "uboa": {
-            "name": "우봐 뱃지",
-            "description": "우봐와 상호작용하기"
-          },
-          "blackcat": {
-            "name": "검은 고양이 뱃지",
-            "description": "백화점 옥상에서 마녀 비행 이벤트를 보기"
-          }
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "뱃지",
+          "valueLabel": "# 개의 뱃지",
+          "value": "{NUMBER}"
         },
-        "2kki": {
-          "mono": {
-            "name": "탐험가 뱃지",
-            "description": "탐험 랭크 <중급>에 도달"
-          },
-          "bronze": {
-            "name": "브론즈 탐험가 뱃지",
-            "description": "탐험 랭크 <브론즈>에 도달"
-          },
-          "silver": {
-            "name": "실버 탐험가 뱃지",
-            "description": "탐험 랭크 <실버>에 도달"
-          },
-          "gold": {
-            "name": "골드 탐험가 뱃지",
-            "description": "탐험 랭크 <골드>에 도달"
-          },
-          "platinum": {
-            "name": "플래티넘 탐험가 뱃지",
-            "description": "탐험 랭크 <플래티넘>에 도달"
-          },
-          "diamond": {
-            "name": "다이아몬드 탐험가 뱃지",
-            "description": "탐험 랭크 <다이아몬드>에 도달"
-          },
-          "compass": {
-            "name": "모험가 뱃지",
-            "description": "방문 가능한 30%의 장소들을 탐험 완료하기"
-          },
-          "compass_bronze": {
-            "name": "브론즈 모험가 뱃지",
-            "description": "방문 가능한 50%의 장소들을 탐험 완료하기"
-          },
-          "compass_silver": {
-            "name": "실버 모험가 뱃지",
-            "description": "방문 가능한 70%의 장소들을 탐험 완료하기"
-          },
-          "compass_gold": {
-            "name": "골드 모험가 뱃지",
-            "description": "방문 가능한 80%의 장소들을 탐험 완료하기"
-          },
-          "compass_platinum": {
-            "name": "플래티넘 모험가 뱃지",
-            "description": "방문 가능한 90%의 장소들을 탐험 완료하기"
-          },
-          "compass_diamond": {
-            "name": "다이아몬드 모험가 뱃지",
-            "description": "방문 가능한 95%의 장소들을 탐험 완료하기"
-          },
-          "crushed": {
-            "name": "쥐포 뱃지",
-            "description": "쥐포가 된 우로츠키 이벤트를 감상하기"
-          },
-          "obentou": {
-            "name": "도시락 뱃지",
-            "description": "오벤토우~"
-          },
-          "compass_28": {
-            "name": "28 뱃지",
-            "description": "Unknown Child's Room 에서 선물상자의 내용물을 확인하기"
-          },
-          "blue_orb": {
-            "name": "파란 구슬 뱃지",
-            "description": "Scrambled Egg Zone 방문하기"
-          },
-          "aooh": {
-            "name": "Aooh의 눈빛",
-            "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
-          },
-          "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
-          },
-          "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
-          },
-          "lavender_lesser": {
-            "name": "보라색 잼",
-            "description": "Lavender Waters 맵 방문하기"
-          },
-          "lavender": {
-            "name": "라벤더 잼",
-            "description": "Time Trial Mode를 키고 Lavender Waters 맵을 12분 이내로 도달하기"  
-          },
-          "butterfly_lesser": {
-            "name": "Sunset Butterfly Brooch",
-            "description": "Lunar Sanctuary 서브 에리어 방문하기"
-          },
-          "butterfly": {
-            "name": "Twilight Butterfly Brooch",
-            "description": "Time Trial Mode를 키고 Lunar Sanctuary 서브 에리어에 29분 이내로 도달하기"
-          },
-          "magical_lesser": {
-            "name": "Kiki",
-            "description": "Reach Magical Passage"
-          },
-          "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
-          },
-          "voxels": {
-            "name": "Magical Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
-          },
-          "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
-          },
-          "clover": {
-            "name": "심홍색 클로버 뱃지",
-            "description": "운수대통!"
-          }
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
-        "prayers": {
-          "koraiyn": {
-            "name": "코라인 뱃지",
-            "description": "코라인(Koraiyn)이 대체 뭐야?"
-          },
-          "missingno": {
-            "name": "글리치 뱃지",
-            "description": "미싱노(Missing NO.)를 찾아서 상호작용하기"
-          }
+        "exp": {
+          "label": "경험치",
+          "valueLabel": "경험치",
+          "value": "{NUMBER} 경험치"
+        },
+        "eventLocationCount": {
+          "label": "탐험",
+          "valueLabel": "# 번의 탐험",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "자유 탐험",
+          "valueLabel": "# 번의 자유 탐험",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "탐험 성공",
+          "valueLabel": "성공률",
+          "value": "{PERCENT}%"
+        },
+        "timeTrial": {
+          "label": "Time Trial Mode",
+          "valueLabel": "성공 시간",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
+      },
+      "subCategories": {
+        "all": "전체",
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {

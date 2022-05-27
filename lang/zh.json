@@ -101,6 +101,7 @@
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
           "toggleTabToChat": "开启Tab键聊天",
+          "toggleRankings": "显示排行榜",
           "toggleFloodProtection": "开启网络攻击保护"
         },
         "notificationSettings": "弹框通知设置",
@@ -119,9 +120,10 @@
               "topRight": "右上角"
             }
           },
-          "client": {
+          "system": {
             "label": "系统通知",
             "fields": {
+              "siteUpdates": "网站更新",
               "floodDetected": "检测到网络攻击"
             }
           },
@@ -129,8 +131,7 @@
             "label": "账号通知",
             "fields": {
               "loggedIn": "登录",
-              "loggedOut": "登出",
-              "badgeUnlocked": "解锁徽章"
+              "loggedOut": "登出"
             }
           },
           "parties": {
@@ -158,6 +159,12 @@
               "listUpdated": "目的地更新"
             }
           },
+          "badges": {
+            "label": "徽章",
+            "fields": {
+              "badgeUnlocked": "解锁徽章"
+            }
+          },
           "saveSync": {
             "label": "云存档通知",
             "fields": {
@@ -175,6 +182,7 @@
         "title": "账号设置",
         "fields": {
           "badge": "徽章",
+          "badgeGallery": "管理徽章展柜",
           "toggleSaveSync": "存档云同步 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -187,6 +195,9 @@
       },
       "badges": {
         "title": "徽章"
+      },
+      "badgeGallery": {
+        "title": "徽章展柜"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -222,6 +233,9 @@
         "title": "梦远征",
         "rankExp": "下一等级",
         "weekExp": "本周点数"
+      },
+      "rankings": {
+        "title": "排行榜"
       }
     },
     "tooltips": {
@@ -233,7 +247,7 @@
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
       "toggleImmersionMode": "开启/关闭沉浸模式",
-      "screenshot": "Take Screenshot",
+      "screenshot": "截屏",
       "settings": "设置",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
@@ -245,11 +259,13 @@
         "disbandParty": "解散队伍"
       },
       "eventLocations": "梦远征",
-      "nexus": "返回到门的世界"
+      "rankings": "瞅一眼排行榜",
+      "nexus": "返回到门世界"
     }
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "梦日记",
       "2kki": "梦２记",
       "flow": ".flow",
@@ -257,8 +273,8 @@
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
-      "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "unevendream": "凹凸梦",
+      "braingirl": "脑女"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "io": {
@@ -306,6 +322,27 @@
     "roles": {
       "mod": "管理员",
       "dev": "开发者"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "封禁 {PLAYER}",
+          "confirm": "确认要永久封禁 {PLAYER} ？",
+          "success": "{PLAYER} 已被永久封禁。"
+        },
+        "grantBadge": {
+          "label": "授予徽章",
+          "prompt": "请输入要授予 {PLAYER} 的徽章ID。",
+          "success": "{BADGE} 已成功授予 {PLAYER} 。",
+          "fail": "无法找到该ID对应的徽章。"
+        },
+        "revokeBadge": {
+          "label": "收回徽章",
+          "prompt": "输入要从 {PLAYER} 收回的徽章ID。",
+          "success": "{BADGE} 已成功从 {PLAYER} 收回。",
+          "fail": "无法找到该ID对应的徽章。"
+        }
+      }
     },
     "account": {
       "login": {
@@ -358,13 +395,13 @@
       "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "检测到网站更新，请刷新网页以获取新内容。",
         "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
-        "loggedOut": "您已登出。",
-        "badgeUnlocked": "您解锁了新的徽章！"
+        "loggedOut": "您已登出。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
@@ -384,6 +421,9 @@
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
         "listUpdated": "远征目的地已更新！"
+      },
+      "badges": {
+        "badgeUnlocked": "您解锁了新的徽章！"
       },
       "saveSync": {
         "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",
@@ -419,156 +459,66 @@
     },
     "badges": {
       "null": "无徽章",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "取得位置:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
-      "gameBadges": {
-        "yume": {
-          "kalimba": {
-            "name": "KALIMBA",
-            "description": "收视KALIMBA电视频道"
-          },
-          "a_r_m": {
-            "name": "古神的狂欢",
-            "description": "观赏阿兹特克锐舞猴"
-          },
-          "boombox": {
-            "name": "手提音响",
-            "description": "在荒漠远观鸟人嬉闹"
-          },
-          "uboa": {
-            "name": "Uboa的笑颜",
-            "description": "被浅濑的深渊吞噬"
-          },
-          "blackcat": {
-            "name": "黑猫",
-            "description": "与黑猫一同目送魔女起航"
-          }
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "由 {ARTIST} 绘制"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER} 的徽章展柜",
+      "loading": "加载中..."
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "徽章收集",
+          "valueLabel": "徽章枚数",
+          "value": "{NUMBER}"
         },
-        "2kki": {
-          "mono": {
-            "name": "梦境远征队",
-            "description": "在梦远征中达到进阶等级"
-          },
-          "bronze": {
-            "name": "青铜远征队",
-            "description": "在梦远征中达到青铜等级"
-          },
-          "silver": {
-            "name": "白银远征队",
-            "description": "在梦远征中达到白银等级"
-          },
-          "gold": {
-            "name": "黄金远征队",
-            "description": "在梦远征中达到黄金等级"
-          },
-          "platinum": {
-            "name": "铂金远征队",
-            "description": "在梦远征中达到铂金等级"
-          },
-          "diamond": {
-            "name": "钻石远征队",
-            "description": "在梦远征中达到钻石等级"
-          },
-          "compass": {
-            "name": "梦境探索者",
-            "description": "在梦远征及无尽流浪中踏遍 30% 的地图"
-          },
-          "compass_bronze": {
-            "name": "青铜探梦者",
-            "description": "在梦远征及无尽流浪中踏遍 50% 的地图"
-          },
-          "compass_silver": {
-            "name": "白银探梦者",
-            "description": "在梦远征及无尽流浪中踏遍 70% 的地图"
-          },
-          "compass_gold": {
-            "name": "黄金探梦者",
-            "description": "在梦远征及无尽流浪中踏遍 80% 的地图"
-          },
-          "compass_platinum": {
-            "name": "铂金探图者",
-            "description": "在梦远征及无尽流浪中踏遍 90% 的地图"
-          },
-          "compass_diamond": {
-            "name": "钻石探梦者",
-            "description": "在梦远征及无尽流浪中踏遍 95% 的地图"
-          },
-          "crushed": {
-            "name": "钢印",
-            "description": "把流浪子刻成钢印"
-          },
-          "obentou": {
-            "name": "便当",
-            "description": "おべんとう"
-          },
-          "compass_28": {
-            "name": "28",
-            "description": "２８"
-          },
-          "blue_orb": {
-            "name": "蓝玉",
-            "description": "造访蛋广场"
-          },
-          "aooh": {
-            "name": "Aooh之凝视",
-            "description": "獗網瑪寤醱腹衾渭楷庌泆岈"
-          },
-          "hakoko": {
-            "name": "箱子",
-            "description": "在目药屋与箱子互动"
-          },
-          "hakoko_prime": {
-            "name": "快递箱子",
-            "description": "在计时模式下，于1分40秒内抵达目药屋并与箱子互动"
-          },
-          "lavender_lesser": {
-            "name": "紫色宝石",
-            "description": "抵达薰衣草之湖"
-          },
-          "lavender": {
-            "name": "浅紫色宝石",
-            "description": "在计时模式下，于12分内抵达薰衣草之湖"
-          },
-          "butterfly_lesser": {
-            "name": "霞光蝴蝶胸针",
-            "description": "抵达天使之夜"
-          },
-          "butterfly": {
-            "name": "暮色蝴蝶胸针",
-            "description": "在计时模式下，于29分内抵达天使之夜"
-          },
-          "magical_lesser": {
-            "name": "琪琪",
-            "description": "抵达魔法通路"
-          },
-          "magical": {
-            "name": "梅林",
-            "description": "在计时模式下，于8分30秒内抵达魔法通路"
-          },
-          "voxels": {
-            "name": "魔法体素",
-            "description": "不惜一切手段抵达方块岛"
-          },
-          "vending_machine": {
-            "name": "自动贩卖机",
-            "description": "达成零食全收集"
-          },
-          "clover": {
-            "name": "红白四叶草纹章",
-            "description": "祝君好运……"
-          }
+        "bp": {
+          "label": "徽章得点",
+          "valueLabel": "徽章点(BP)",
+          "value": "{NUMBER} BP"
         },
-        "prayers": {
-          "koraiyn": {
-            "name": "Koraiyn",
-            "description": "Koraiyn 到底是个啥子？"
-          },
-          "missingno": {
-            "name": "蓝屏",
-            "description": "找到并调查 MissingNo."
-          }
+        "exp": {
+          "label": "远征点",
+          "valueLabel": "远征点",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "远征次数",
+          "valueLabel": "远征次数",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "无尽流浪",
+          "valueLabel": "流浪次数",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "远征踏破",
+          "valueLabel": "地图踏破率",
+          "value": "{PERCENT}%"
+        },
+        "timeTrial": {
+          "label": "计时模式",
+          "valueLabel": "抵达用时",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "小游戏",
+          "valueLabel": "得分",
+          "value": "{NUMBER}"
         }
+      },
+      "subCategories": {
+        "all": "全部",
+        "2": "效果全集",
+        "nasu": "NASU",
+        "rby": "红蓝黄 (小游戏 B)"
       }
     },
     "2kki": {

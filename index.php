@@ -1,11 +1,49 @@
+<?php
+  $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
+  switch ($gameId) {
+    case "yume":
+      $gameName = "Yume Nikki";
+      break;
+    case "2kki":
+      $gameName = "Yume 2kki";
+      break;
+    case "flow":
+      $gameName = ".flow";
+      break;
+    case "prayers":
+      $gameName = "Answered Prayers";
+      break;
+    case "deepdreams":
+      $gameName = "Deep Dreams";
+      break;
+    case "someday":
+      $gameName = "Someday";
+      break;
+    case "amillusion":
+      $gameName = "Amillusion";
+      break;
+    case "unevendream":
+      $gameName = "Uneven Dream";
+      break;
+    case "braingirl":
+      $gameName = "Braingirl";
+      break;
+    default:
+      $gameId = "2kki";
+      $gameName = "Yume 2kki";
+      break;
+  }
+?>
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Yume Nikki Online Project</title>
+  <title>YNOproject - <?php echo $gameName; ?> Online</title>
   <meta charset="utf-8">
-  <meta name="description" content="Play Yume Nikki (and fangames) online with your friends, no downloads required.">
+  <meta name="description" content="Play <?php echo $gameName; ?> online with your friends in your browser, no downloads needed.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="2kkiVersion" content="" data-game-ids="2kki"> <!-- eg. 0.117g Patch 4 -->
+  <?php if ($gameId == "2kki"): ?>
+    <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
+  <?php endif ?>
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
@@ -41,7 +79,11 @@
           </div>
         </div>
       </div>
-      <div id="headerIconContainer">
+      <div id="headerIconContainer" class="itemContainer smallItemContainer">
+        <div id="badgeButton" class="badgeItem item accountRequired unselectable"></div>
+        <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings">
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
+        </button>
         <button id="loginButton" type="button" class="unselectable" data-i18n="[html]account.login">Login</button>
         <button id="logoutButton" type="button" class="unselectable" data-i18n="[html]account.logout">Logout</button>
       </div>
@@ -73,8 +115,10 @@
               </button>
             </div>
             <div id="rightControls">
-              <div id="mapControls" data-game-ids="2kki"></div>
-              <div id="explorerControls" data-game-ids="2kki" style="display: none"></div>
+              <?php if ($gameId == "2kki"): ?>
+                <div id="mapControls"></div>
+                <div id="explorerControls"></div>
+              <?php endif ?>
               <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">
                 <button id="eventLocationsButton" class="iconButton unselectable" data-i18n="[title]tooltips.eventLocations">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
@@ -105,14 +149,22 @@
           <div id="apad" class="unselectable">
             <div id="apad-escape" class="baseColorBg apadCircBtn apadBtn" data-key="Escape" data-key-code="27"></div>
             <div id="apad-enter" class="baseColorBg apadCircBtn apadBtn" data-key="Enter" data-key-code="13"></div>
-            <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16" data-game-ids="2kki,flow,prayers,deepdreams,someday,amillusion,unevendream,braingirl" style="display: none"></div>
-            <div id="apad-numbers" class="apadBtnContainer" data-game-ids="yume,prayers,someday,braingirl" style="display: none">
-              <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-              <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50" data-game-ids="braingirl" style="display: none"></div>
-              <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-              <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53" data-game-ids="yume,prayers,someday" style="display: none"></div>
-              <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57" data-game-ids="yume,prayers,someday,braingirl" style="display: none"></div>
-            </div>
+            <?php if ($gameId != "yume"): ?>
+              <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16"></div>
+            <?php endif ?>
+            <?php if ($gameId == "yume" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl"): ?>
+              <div id="apad-numbers" class="apadBtnContainer">
+                <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49"></div>
+                <?php if ($gameId == "braingirl"): ?>
+                  <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50"></div>
+                <?php endif ?>
+                <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
+                <?php if ($gameId != "braingirl"): ?>
+                  <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53"></div>
+                <?php endif ?>
+                <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57"></div>
+              </div>
+            <?php endif ?>
           </div>
         </div>
       </div>
@@ -148,19 +200,19 @@
               <div id="chatHeader" class="tabHeader">
                 <div id="chatTabs" class="subTabs">
                   <div id="chatTabAll" class="chatTab subTab active">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.all">All</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.all">All</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabMap" class="chatTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.map">Map</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.map">Map</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabGlobal" class="chatTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.global">Global</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.global">Global</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="chatTabParty" class="chatTab partySubTab subTab">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.chat.tab.party">Party</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.chat.tab.party">Party</small>
                     <div class="subTabBg"></div>
                   </div>
                 </div>
@@ -183,11 +235,11 @@
               <div id="playersHeader" class="tabHeader">
                 <div id="playersTabs" class="subTabs">
                   <div id="playersTabMap" class="playersTab subTab active">
-                    <small class="chatTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.map">Map</small>
+                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.map">Map</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="playersTabParty" class="playersTab partySubTab subTab">
-                    <small class="playersTabLabel subTabLabel infoLabel" data-i18n="[html]chatbox.players.tab.party">Party</small>
+                    <small class="playersTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.party">Party</small>
                     <div class="subTabBg"></div>
                   </div>
                 </div>
@@ -363,6 +415,12 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label for="toggleRankingsButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleRankings">Rankings</label>
+                <div>
+                  <button id="toggleRankingsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label for="floodProtectionButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleFloodProtection">Flood Protection</label>
                 <div>
                   <button id="floodProtectionButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
@@ -411,13 +469,17 @@
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.accountSettings.title">Account Settings</h1>
           </div>
-          <div class="modalContent">
+          <div class="modalContent itemContainer">
             <ul class="formControls">
               <li class="formControlRow">
-                <label for="badgeButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.badge">Badge</label>
+                <label for="accountBadgeButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.badge">Badge</label>
                 <div>
-                  <div id="badgeButton" class="badgeItem item unselectable"></div>
+                  <div id="accountBadgeButton" class="badgeItem item unselectable"></div>
                 </div>
+              </li>
+              <li id="badgeGalleryRow" class="formControlRow">
+                <span></span>
+                <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.badgeGallery">Manage Badge Gallery</button>
               </li>
               <li class="formControlRow">
                 <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
@@ -445,25 +507,38 @@
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
           </div>
-          <div class="modalContent"></div>
+          <div class="modalContent itemContainer"></div>
+        </div>
+        <div id="badgeGalleryModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.badgeGallery.title">Manage Badge Gallery</h1>
+          </div>
+          <div class="modalContent itemContainer smallItemContainer"></div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.uiTheme.title">UI Theme</h1>
           </div>
-          <div class="modalContent"></div>
+          <div class="modalContent itemContainer"></div>
           <div class="modalFooter">
             <div class="uiControl">
               <label for="fontStyle" class="unselectable" data-i18n="[html]fontStyle.label">Font Style:</label>
               <select id="fontStyle" class="fontStyle">
                 <option value="0" data-i18n="[html]fontStyle.values.style1">Style 1</option>
                 <option value="1" data-i18n="[html]fontStyle.values.style2">Style 2</option>
-                <option value="2" data-i18n="[html]fontStyle.values.style3" data-game-ids="yume,2kki,flow,prayers,deepdreams,someday,amillusion,braingirl">Style 3</option>
-                <option value="3" data-i18n="[html]fontStyle.values.style4" data-game-ids="yume,2kki,flow,prayers,someday,amillusion,unevendream,braingirl">Style 4</option>
-                <option value="4" data-i18n="[html]fontStyle.values.style5" data-game-ids="yume,2kki,flow">Style 5</option>
-                <option value="5" data-i18n="[html]fontStyle.values.style6" data-game-ids="yume,2kki,flow">Style 6</option>
-                <option value="6" data-i18n="[html]fontStyle.values.style7" data-game-ids="yume,2kki,flow">Style 7</option>
+                <?php if ($gameId !== "someday"): ?>
+                  <option value="2" data-i18n="[html]fontStyle.values.style3">Style 3</option>
+                <?php endif ?>
+                <?php if ($gameId !== "deepdreams"): ?>
+                  <option value="3" data-i18n="[html]fontStyle.values.style4">Style 4</option>
+                <?php endif ?>
+                <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "flow"): ?>
+                  <option value="4" data-i18n="[html]fontStyle.values.style5">Style 5</option>
+                  <option value="5" data-i18n="[html]fontStyle.values.style6">Style 6</option>
+                  <option value="6" data-i18n="[html]fontStyle.values.style7">Style 7</option>
+                <?php endif ?>
               </select>
             </div>
           </div>
@@ -599,16 +674,39 @@
             <div id="eventLocationList" class="scrollableContainer"></div>
           </div>
         </div>
+        <div id="rankingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.rankings.title">Rankings</h1>
+          </div>
+          <div class="modalContent">
+            <div id="rankingCategoryTabs"></div>
+            <div id="rankingSubCategoryTabs" class="subTabs"></div>
+            <table id="rankingsTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Player</th>
+                  <th id="rankingValueHeader"></th>
+                </tr>
+              </thead>
+              <tbody id="rankings"></tbody>
+            </table>
+            <div id="rankingsPagination"></div>
+          </div>
+        </div>
         <div class="modalOverlay"></div>
       </div>
       <div id="toastContainer"></div>
     </div>
     <div id="layoutEnd"></div>
-    <div data-game-ids="2kki" style="display: none;">
-      <br>
-      <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
-      <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
-    </div>
+    <?php if ($gameId == "2kki"): ?>
+      <div>
+        <br>
+        <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
+        <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
+      </div>
+    <?php endif ?>
     <div id="footerIconContainer">
       <a href="https://discord.gg/fRG3AxUeKN" target="_blank" class="icon fillIcon" title="Discord">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">
@@ -629,7 +727,10 @@
   <script type="text/javascript" src="toast.js"></script>
   <script type="text/javascript" src="savedata.js"></script>
   <script type="text/javascript" src="init.js"></script>
+  <script type="text/javascript" src="loader.js"></script>
   <script type="text/javascript" src="events.js"></script>
+  <script type="text/javascript" src="rankings.js"></script>
+  <script type="text/javascript" src="badges.js"></script>
   <script type="text/javascript" src="account.js"></script>
 </body>
 </html>

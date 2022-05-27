@@ -101,6 +101,7 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "Защита от Спама"
         },
         "notificationSettings": "Уведомления",
@@ -119,9 +120,10 @@
               "topRight": "Наверху Справа"
             }
           },
-          "client": {
+          "system": {
             "label": "Система",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "Вероятность спам-атаки"
             }
           },
@@ -129,8 +131,7 @@
             "label": "Аккаунт",
             "fields": {
               "loggedIn": "Вход",
-              "loggedOut": "Выход",
-              "badgeUnlocked": "Значок Открыт"
+              "loggedOut": "Выход"
             }
           },
           "parties": {
@@ -158,6 +159,12 @@
               "listUpdated": "Список Походов Обновлён"
             }
           },
+          "badges": {
+            "label": "Значки",
+            "fields": {
+              "badgeUnlocked": "Значок Открыт"
+            }
+          },
           "saveSync": {
             "label": "Облачное Сохранение",
             "fields": {
@@ -175,6 +182,7 @@
         "title": "Настройки Аккаунта",
         "fields": {
           "badge": "Значок",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Облачное Сохранение (Экспериментальное)",
           "saveSyncSlotId": {
             "label": "ID Слота для Синхронизации",
@@ -187,6 +195,9 @@
       },
       "badges": {
         "title": "Значки"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",
@@ -222,6 +233,9 @@
         "title": "Походы",
         "rankExp": "До след. Ранга",
         "weekExp": "Опыта за Неделю"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,11 +259,13 @@
         "disbandParty": "Распустить Группу"
       },
       "eventLocations": "Походы",
+      "rankings": "Rankings",
       "nexus": "Вернуться на Главную страницу"
     }
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
       "flow": ".flow",
@@ -307,6 +323,27 @@
       "mod": "Модератор",
       "dev": "Разработчик"
     },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        }
+      }
+    },
     "account": {
       "login": {
         "errors": {
@@ -358,13 +395,13 @@
       "confirmEnableWithData": "Обнаружены данные другого Облачного Сохранения в Аккаунте. Если есть Сохранение из облака новее, Сохранение в слоту, что указан как Облачный, будет перезаписано. Учтите, что для применения изменений будет необходимо перезагрузить страницу, имея опцию Облачного Сохранения включённой. Вы уверены, что хотите включить Облачное Сохранение?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "Замечена возможность спам-атаки: Происходит переключение в одиночный режим."
       },
       "account": {
         "loggedIn": "Вы вошли как {USER}.",
-        "loggedOut": "Вы вышли из аккаунта.",
-        "badgeUnlocked": "Значок разблокирован!"
+        "loggedOut": "Вы вышли из аккаунта."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
@@ -384,6 +421,9 @@
         "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
         "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
         "listUpdated": "Список Походов Обновлён."
+      },
+      "badges": {
+        "badgeUnlocked": "Значок разблокирован!"
       },
       "saveSync": {
         "saveUploading": "Выгружаем в облако данные Слота {SLOT}...",
@@ -419,156 +459,66 @@
     },
     "badges": {
       "null": "Нет Значка",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Локация:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
-      "gameBadges": {
-        "yume": {
-          "kalimba": {
-            "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
-          },
-          "a_r_m": {
-            "name": "Raving in the Wilderness",
-            "description": "Experience the Aztec Rave Monkey"
-          },
-          "boombox": {
-            "name": "Бумбокс",
-            "description": "Пронаблюдайте за вечеринкой Птицелюдей (Toringens)"
-          },
-          "uboa": {
-            "name": "Uboa",
-            "description": "Попадитесь в ловушку Uboa"
-          },
-          "blackcat": {
-            "name": "Чёрный кот",
-            "description": "Полетайте на метле с крыши здания"
-          }
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
         },
-        "2kki": {
-          "mono": {
-            "name": "Медаль Туриста",
-            "description": "Достигните Продвинутого ранга в Походах"
-          },
-          "bronze": {
-            "name": "Бронзовая медаль Туриста",
-            "description": "Достигните Бронзового ранга в Походах"
-          },
-          "silver": {
-            "name": "Серебрянная медаль Туриста",
-            "description": "Достигните Серебрянного ранга в Походах"
-          },
-          "gold": {
-            "name": "Золотая медаль Туриста",
-            "description": "Достигните Золотого ранга в Походах"
-          },
-          "platinum": {
-            "name": "Платиновая медаль Туриста",
-            "description": "Достигните Платинового ранга в Походах"
-          },
-          "diamond": {
-            "name": "Алмазная медаль Туриста",
-            "description": "Достигните Алмазного ранга в Походах"
-          },
-          "compass": {
-            "name": "Медаль Путешественника",
-            "description": "Совершите походы в 30% доступных локаций"
-          },
-          "compass_bronze": {
-            "name": "Бронзовая медаль Путешественника",
-            "description": "Совершите походы в 50% доступных локаций"
-          },
-          "compass_silver": {
-            "name": "Серебрянная медаль Путешественника",
-            "description": "Совершите походы в 70% доступных локаций"
-          },
-          "compass_gold": {
-            "name": "Золотая медаль Путешественника",
-            "description": "Совершите походы в 80% доступных локаций"
-          },
-          "compass_platinum": {
-            "name": "Платиновая медаль Путешественника",
-            "description": "Совершите походы в 90% доступных локаций"
-          },
-          "compass_diamond": {
-            "name": "Алмазная медаль Путешественника",
-            "description": "Совершите походы в 95% доступных локаций"
-          },
-          "crushed": {
-            "name": "Пресс",
-            "description": "Посмотрите, как расплющит Уроцуки"
-          },
-          "obentou": {
-            "name": "Obentou",
-            "description": "おべんとう"
-          },
-          "compass_28": {
-            "name": "28",
-            "description": "２８"
-          },
-          "blue_orb": {
-            "name": "Синий шар",
-            "description": "Побывайте в Scrambled Egg Zone"
-          },
-          "aooh": {
-            "name": "Взор Aooh'а",
-            "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
-          },
-          "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
-          },
-          "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
-          },
-          "lavender_lesser": {
-            "name": "Фиолетовый Камень",
-            "description": "Доберитесь до Lavender Waters"
-          },
-          "lavender": {
-            "name": "Сиреневый Камень",
-            "description": "Доберитесь до Lavender Waters за 12 минут или быстрее в Time Trial Mode"
-          },
-          "butterfly_lesser": {
-            "name": "Sunset Butterfly Brooch",
-            "description": "Доберитесь до Lunar Sanctuary"
-          },
-          "butterfly": {
-            "name": "Twilight Butterfly Brooch",
-            "description": "Доберитесь до Lunar Sanctuary за 29 минут или быстрее в Time Trial Mode"
-          },
-          "magical_lesser": {
-            "name": "Kiki",
-            "description": "Reach Magical Passage"
-          },
-          "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
-          },
-          "voxels": {
-            "name": "Magical Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
-          },
-          "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
-          },
-          "clover": {
-            "name": "Розово-Красный клевер",
-            "description": "Феноменальное везение..."
-          }
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
-        "prayers": {
-          "koraiyn": {
-            "name": "Кораин",
-            "description": "Что ещё за Кораин?"
-          },
-          "missingno": {
-            "name": "Заглючено",
-            "description": "Найдите MissingNo."
-          }
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrial": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
+      },
+      "subCategories": {
+        "all": "All",
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {

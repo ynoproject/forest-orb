@@ -1,11 +1,3 @@
-const gameIdsElements = document.querySelectorAll('[data-game-ids]');
-for (let el of gameIdsElements) {
-  if (el.dataset.gameIds.split(',').indexOf(gameId) > -1)
-    el.style.display = '';
-  else
-    el.remove();
-}
-
 let localizedMessages;
 
 let localizedMapLocations;
@@ -34,7 +26,8 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
-  disableFloodProtection: false
+  disableFloodProtection: false,
+  hideRankings: false
 };
 
 let config = {
@@ -54,11 +47,13 @@ let config = {
 
 let cache = {
   location: {},
-  map: {}
+  map: {},
+  locationColor: {}
 };
 
 let locationCache;
 let mapCache;
+let locationColorCache;
 
 let ynomojiConfig = {};
 
@@ -91,7 +86,7 @@ function onUpdateConnectionStatus(status) {
   connStatus = status;
 
   if (status === 1) {
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
     fetchAndUpdatePlayerCount();
     checkEventLocations();
     if (!hasConnected) {
@@ -99,8 +94,10 @@ function onUpdateConnectionStatus(status) {
       hasConnected = true;
     }
     syncPrevLocation();
-  } else
+  } else {
+    playerUuids = {};
     clearPlayerLists();
+  }
 }
 
 function fetchAndUpdatePlayerInfo() {
@@ -120,14 +117,15 @@ function fetchAndUpdatePlayerInfo() {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
+        badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         if (isLogin) {
           trySetChatName(playerName);
-          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, true));
+          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
           if (eventPeriodCache)
             updateEventLocationList();
           else
             updateEventPeriod();
-          updateBadges();
+          updateBadges(updateBadgeButton);
           document.getElementById('content').classList.add('loggedIn');
         } else if (isLogout) {
           trySetChatName('');
@@ -144,6 +142,20 @@ function fetchAndUpdatePlayerInfo() {
       }
     })
     .catch(err => console.error(err));
+}
+
+function checkSession() {
+  if (sessionId && sessionId === getCookie('sessionId')) {
+    apiFetch('info')
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (!jsonResponse.uuid) {
+          setCookie('sessionId', '');
+          fetchAndUpdatePlayerInfo();
+        }
+      })
+      .catch(err => console.error(err));
+  }
 }
 
 let playerCount;
@@ -258,7 +270,7 @@ function checkUpdateLocation(mapId, mapChanged) {
       addChatMapLocation();
 
       if (is2kki) {
-        const locationNames = locations ? locations.filter(l => l.explorer).map(l => l.title) : [];
+        const locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
         set2kkiExplorerLinks(locationNames);
         if (locationNames.length)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
@@ -270,6 +282,9 @@ function checkUpdateLocation(mapId, mapChanged) {
     }
 
     cachedLocations = locations;
+
+    if (is2kki && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+      updateBadgeButton();
   }
 }
 
@@ -428,13 +443,28 @@ document.getElementById('enterNameForm').onsubmit = function () {
       match = currentMatch;
     if (match && !match[1].endsWith(':')) {
       const ynomojis = document.getElementsByClassName('ynomojiButton');
+      const lcMatch = match[1].toLowerCase();
       let hasMatch = false;
       for (let ynomoji of ynomojis) {
-        const visible = ynomoji.dataset.ynomojiId.startsWith(match[1]);
+        const ynomojiId = ynomoji.dataset.ynomojiId;
+        const matchStrings = [ ynomojiId ];
+        const matchPattern = /[A-Z0-9]+/g;
+        let matchResult;
+        while ((matchResult = matchPattern.exec(ynomojiId)) !== null) {
+          if (matchResult.index > 0)
+            matchStrings.push(ynomojiId.slice(matchResult.index));
+        }
+        let visible = false;
+        for (let matchString of matchStrings) {
+          if (matchString.toLowerCase().startsWith(lcMatch)) {
+            visible = true;
+            break;
+          }
+        }
         ynomoji.classList.toggle('hidden', !visible);
         hasMatch |= visible;
       }
-      if (match[1])
+      if (lcMatch)
         ynomojiContainer.classList.toggle('hidden', !hasMatch);
       else {
         const currentInputValue = this.value;
@@ -563,15 +593,25 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('toggleRankingsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('rankingsButton').classList.toggle('hidden', toggled);
+  globalConfig.hideRankings = toggled;
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('floodProtectionButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._ToggleFloodDefender();
 };
 
 initAccountControls();
+initBadgeControls();
 initSaveDataControls();
 initPartyControls();
 initEventControls();
+initRankingControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
@@ -884,10 +924,6 @@ document.onmousemove = function () {
   }
 };
 
-window.onbeforeunload = function () {
-  return localizedMessages.leavePage;
-};
-
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
   if (isInit && localizedGameIds.indexOf(gameId) > -1)
@@ -914,7 +950,7 @@ function onSelectUiTheme(e) {
 
 function initLocalization(isInitial) {
   document.getElementsByTagName('html')[0].lang = globalConfig.lang;
-  fetch(`lang/${globalConfig.lang}.json`)
+  fetchNewest(`lang/${globalConfig.lang}.json`)
     .then(response => response.json())
     .then(function (jsonResponse) {
       const version = jsonResponse.version[gameId];
@@ -944,9 +980,9 @@ function initLocalization(isInitial) {
       }
 
       if (isInitial)
-        initLocations(globalConfig.lang, gameId);
+        initLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
       else if (localizedMapLocations)
-        initLocalizedMapLocations(globalConfig.lang, gameId);
+        initLocalizedMapLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
 
       if (eventPeriodCache)
         updateEventLocationList();
@@ -962,7 +998,7 @@ function initLocalization(isInitial) {
         for (let langOpt of languages) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
-            fetch(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
+            fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
               if (!response.ok && response.status === 404) {
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;
@@ -975,6 +1011,9 @@ function initLocalization(isInitial) {
         const noGameLocInstruction = document.getElementById('noGameLocInstruction');
         noGameLocInstruction.classList.toggle('hidden', !document.querySelector(`#lang option[value='${globalConfig.lang}']`).dataset.noGameLoc);
       }
+
+      updateLocalizedBadgeGroups();
+      updateLocalizedBadges();
 
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
@@ -996,14 +1035,13 @@ function initLocalization(isInitial) {
 }
 
 function initLocations(lang, game, callback) {
-  fetch(`locations/${game}/config.json`)
+  fetchNewest(`locations/${game}/config.json`)
     .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
         return response.json();
     })
     .then(jsonResponse => {
-        ignoredMapIds = jsonResponse.ignoredMapIds || [];
         gameLocationUrlRoots[game] = jsonResponse.urlRoot;
         gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
         gameMapLocations[game] = jsonResponse.mapLocations || null;
@@ -1017,6 +1055,7 @@ function initLocations(lang, game, callback) {
             initLocalizedMapLocations(lang, game, callback);
         }
         if (game === gameId) {
+          ignoredMapIds = jsonResponse.ignoredMapIds || [];
           locationUrlRoot = gameLocationUrlRoots[game];
           localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
           mapLocations = gameMapLocations[game];
@@ -1026,10 +1065,11 @@ function initLocations(lang, game, callback) {
           callback();
     })
     .catch(err => {
-      ignoredMapIds = [];
       gameLocalizedMapLocations[game] = null;
-      if (game === gameId)
+      if (game === gameId) {
+        ignoredMapIds = [];
         localizedMapLocations = null;
+      }
       if (callback)
         callback();
       console.error(err);
@@ -1038,7 +1078,7 @@ function initLocations(lang, game, callback) {
 
 function initLocalizedMapLocations(lang, game, callback) {
   const fileName = lang === 'en' ? 'config' : lang;
-  fetch(`locations/${game}/${fileName}.json`)
+  fetchNewest(`locations/${game}/${fileName}.json`)
     .then(response => {
       if (!response.ok) {
         gameLocalizedMapLocations[game] = gameMapLocations[game];
@@ -1060,7 +1100,7 @@ function initLocalizedMapLocations(lang, game, callback) {
       gameLocalizedMapLocations[game] = {};
       const langMapLocations = jsonResponse.mapLocations;
       massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
-      Object.keys(mapLocations).forEach(function (mapId) {
+      Object.keys(gameMapLocations[game]).forEach(function (mapId) {
         const mapLocation = langMapLocations[mapId];
         const defaultMapLocation = gameMapLocations[game][mapId];
         if (mapLocation) {
@@ -1269,7 +1309,7 @@ function getInfoLabel(label) {
 }
 
 function fetchAndPopulateYnomojiConfig() {
-  fetch('ynomoji.json')
+  fetchNewest('ynomoji.json')
     .then(response => response.json())
     .then(jsonResponse => {
       ynomojiConfig = jsonResponse;
@@ -1311,6 +1351,7 @@ function loadOrInitCache() {
 
     locationCache = {};
     mapCache = {};
+    locationColorCache = {};
   };
 
   request.onsuccess = function (_e) {
@@ -1327,6 +1368,9 @@ function loadOrInitCache() {
             break;
           case 'map':
             mapCache = Object.assign({}, value);
+            break;
+          case 'locationColor':
+            locationColorCache = Object.assign({}, value);
             break;
         }
         if (value)
@@ -1358,6 +1402,7 @@ fetchAndUpdatePlayerCount();
 setInterval(fetchAndUpdatePlayerCount, 15000);
 
 initDefaultSprites();
+updateBadges();
 fetchAndPopulateYnomojiConfig();
 
 if (!loadedUiTheme)

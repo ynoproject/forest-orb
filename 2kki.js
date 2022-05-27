@@ -59,6 +59,8 @@ function onLoad2kkiMap(mapId) {
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
+    if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+      updateBadgeButton();
   } else {
     queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, set2kkiClientLocation, true)
       .then(locations => {
@@ -71,6 +73,8 @@ function onLoad2kkiMap(mapId) {
           set2kkiExplorerLinks(null);
         }
         checkEventLocations();
+        if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+          updateBadgeButton();
       }).catch(err => console.error(err));
   }
 }
@@ -216,17 +220,9 @@ function getLocalized2kkiLocationsHtml(locations, separator) {
     : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
 
-function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
-  const setMessageLocationFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
-    const locationsHtml = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
-    addTooltip(globalMessageIcon, locationsHtml, true, true);
-    globalMessageLocation.innerHTML = locationsHtml;
-    if (globalMessageLocation.dataset.systemOverride) {
-      for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))
-        infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
-      for (let link of globalMessageLocation.querySelectorAll('a'))
-        link.setAttribute('style', `background-image: var(--alt-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
-    }
+function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
+  const callbackFunc = (_mapId, _prevMapId, locations, prevLocations, cacheLocation, saveLocation) => {
+    callback(locations);
     if (cacheLocation) {
       const locationKey = `${prevMapId}_${mapId}`;
       const prevLocationKey = `${mapId}_${prevMapId}`;
@@ -247,18 +243,67 @@ function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocati
   };
 
   if (localizedMapLocations?.hasOwnProperty(mapId))
-    setMessageLocationFunc(mapId, prevMapId, localizedMapLocations[mapId], prevLocations);
+    callbackFunc(mapId, prevMapId, localizedMapLocations[mapId], prevLocations);
   else {
     if (!prevMapId)
       prevMapId = '0000';
     const locationKey = `${prevMapId}_${mapId}`;
     if (unknownLocations.indexOf(locationKey) > -1)
-      setMessageLocationFunc(mapId, prevMapId, null, prevLocations);
+      callbackFunc(mapId, prevMapId, null, prevLocations);
     else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
-      setMessageLocationFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
+      callbackFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
-      queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, setMessageLocationFunc)
+      queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, callbackFunc)
         .catch(err => console.error(err));
+  }
+}
+
+function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
+  getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, locations => {
+    const locationsHtml = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
+    addTooltip(globalMessageIcon, locationsHtml, true, true);
+    globalMessageLocation.innerHTML = locationsHtml;
+    if (globalMessageLocation.dataset.systemOverride) {
+      for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))
+        infoLabel.setAttribute('style', `background-image: var(--base-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
+      for (let link of globalMessageLocation.querySelectorAll('a'))
+        link.setAttribute('style', `background-image: var(--alt-gradient-${globalMessageLocation.dataset.systemOverride}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${globalMessageLocation.dataset.systemOverride})) !important;`);
+    }
+  });
+}
+
+function getOrQuery2kkiLocationsHtml(mapId, callback) {
+  let locationKey = `0000_${mapId}`;
+  if (locationCache && !locationCache.hasOwnProperty(locationKey)) {
+    const locationKeys = Object.keys(locationCache).filter(k => k.endsWith(mapId) && Array.isArray(locationCache[k]));
+    if (locationKeys.length === 1 || locationKeys.map(k => JSON.stringify(locationCache[k])).filter((value, index, self) => self.indexOf(value) === index).length === 1)
+      locationKey = locationKeys[0];
+  }
+  let prevMapId = locationKey.slice(0, 4);
+
+  const setLocationFunc = (_mapId, _prevMapId, locations, _prevLocations, cacheLocation, saveLocation) => {
+    if (cacheLocation) {
+      const locationKey = `${prevMapId}_${mapId}`;
+      if (locations)
+        locationCache[locationKey] = locations;
+      else
+        unknownLocations.push(locationKey);
+      if (saveLocation && locations) {
+        cache.location[locationKey] = locations;
+        updateCache('location');
+      }
+    }
+    callback(getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;')));
+  };
+
+  if (unknownLocations.indexOf(locationKey) > -1)
+    setLocationFunc(mapId, prevMapId);
+  else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+    setLocationFunc(mapId, null, locationCache[locationKey]);
+  else {
+    prevMapId = '0000';
+    queryAndSet2kkiLocation(mapId, prevMapId, null, setLocationFunc)
+      .catch(err => console.error(err));
   }
 }
 
@@ -366,4 +411,89 @@ function get2kkiExplorerButton(locationName, isMulti) {
   ret.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m6.75 0v4.5h4.5v-4.5h-4.5m2.25 4.5v4.5h-1.5v3h3v-3h-1.5m0-3h-7.5v3h-1.5v3h3v-3h-1.5m7.5-3h7.5v3h-1.5v3h3v-3h-1.5m-7.5 3v3.75h-1.125v2.25h2.25v-2.25h-1.125m0-2.25h-7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125m7.5-2.25h7.5v2.25h-1.125v2.25h2.25v-2.25h-1.125"></path></svg>';
 
   return ret;
+}
+
+function getOrQuery2kkiLocationColors(locationName) {
+  return new Promise((resolve, _reject) => {
+    if (Array.isArray(locationName) && locationName.length && locationName[0].hasOwnProperty('title'))
+      locationName = locationName[0].title;
+    else if (locationName.hasOwnProperty('title'))
+      locationName = locationName.title;
+    if (locationColorCache.hasOwnProperty(locationName)) {
+      resolve(locationColorCache[locationName]);
+      return;
+    }
+    const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${locationName}`;
+    const callback = response => {
+      let errCode = null;
+
+      if (!response?.err_code)
+        cache2kkiLocationColors(locationName, response.fgColor, response.bgColor);
+      else
+        errCode = response?.err_code;
+        
+      if (errCode)
+        console.error({ error: response.error, errCode: errCode });
+
+      resolve([response.fgColor, response.bgColor]);
+    };
+    send2kkiApiRequest(url, callback);
+  });
+}
+
+function cache2kkiLocationColors(locationName, fgColor, bgColor) {
+  if (locationName) {
+    const colorsArr = [ fgColor, bgColor ];
+    locationColorCache[locationName] = colorsArr;
+    if (fgColor && bgColor) {
+      cache.locationColor[locationName] = colorsArr;
+      updateCache('locationColor')
+    }
+  }
+}
+
+function handle2kkiBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, locations, playerName, mapId, prevMapId, prevLocationsStr) {
+  const setOverlayColors = (fgColor, bgColor) => {
+    badgeOverlay.style.background = fgColor;
+    if (badgeOverlay2)
+      badgeOverlay2.style.background = bgColor;
+  };
+  const queryColorsFunc = locations => {
+    if (!locations)
+      return;
+    getOrQuery2kkiLocationColors(locations)
+      .then(colors => {
+        if (Array.isArray(colors) && colors.length === 2)
+          setOverlayColors(colors[0], colors[1]);
+      });
+  };
+  if (locations)
+    queryColorsFunc(locations);
+  else {
+    const queryLocationsFunc = (mapId, prevMapId, prevLocations) => {
+      if (!mapLocations || !mapLocations.hasOwnProperty(mapId) || (!mapLocations[mapId].hasOwnProperty('explorer') || mapLocations[mapId].explorer))
+        getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, queryColorsFunc);
+    };
+    const getPrevLocationsFunc = (prevLocationsStr, prevMapId) => prevLocationsStr && (prevMapId || '0000') !== '0000' ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
+
+    let foundPlayer;
+    if (playerName) {
+      const playerEntry = Object.entries(globalPlayerData).find(p => p[1].account && p[1].name === playerName);
+      if (playerEntry) {
+        if (Object.values(playerUuids).indexOf(playerEntry[0]) > -1) {
+          queryColorsFunc(cachedLocations);
+          foundPlayer = true;
+        } else if (joinedPartyCache) {
+          const member = joinedPartyCache.members.find(m => m.account && m.name === playerName);
+          if (member) {
+            queryLocationsFunc(member.mapId, member.prevMapId, getPrevLocationsFunc(member.prevLocations, member.prevMapId));
+            foundPlayer = true;
+          }
+        }
+      }
+    }
+
+    if (!foundPlayer && mapId && mapId !== '0000')
+      queryLocationsFunc(mapId, prevMapId, getPrevLocationsFunc(prevLocationsStr, prevMapId));
+  }
 }

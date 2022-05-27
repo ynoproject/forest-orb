@@ -23,6 +23,13 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
 
+  let uuid = player?.uuid;
+
+  if (player && typeof player === 'string') {
+    uuid = player;
+    player = globalPlayerData[uuid];
+  }
+
   const system = !type;
   const map = type === MESSAGE_TYPE.MAP;
   const global = type === MESSAGE_TYPE.GLOBAL;
@@ -82,12 +89,16 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     name.innerText = getPlayerName(player);
     const nameBeginMarker = document.createElement("span");
     nameBeginMarker.classList.add("nameMarker");
-    nameBeginMarker.textContent = player.account ? "[" : "<";
+    nameBeginMarker.textContent = player?.account ? "[" : "<";
     const nameEndMarker = document.createElement("span");
     nameEndMarker.classList.add("nameMarker");
-    nameEndMarker.textContent = player.account ? "]" : ">";
+    nameEndMarker.textContent = player?.account ? "]" : ">";
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
+
+    if (playerData?.rank > player?.rank)
+      addAdminContextMenu(name, player, uuid);
+
     if (player?.rank) {
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
@@ -113,26 +124,64 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
     }
 
     let systemName = player?.systemName;
+    
+    const badge = player?.badge ? badgeCache.find(b => b.badgeId === player.badge) : null;
 
-    const badge = player?.badge ? document.createElement('div') : null;
-    const badgeOverlay = badge && player.badge === 'mono' ? document.createElement('div') : null;
+    const badgeEl = badge ? document.createElement('div') : null;
+    const badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
+    const badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
 
     if (badge) {
-      badge.classList.add('badge');
+      badgeEl.classList.add('badge');
+      badgeEl.classList.add('nameBadge');
 
-      const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
-        return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
-      });
-      if (badgeGame)
-        addTooltip(badge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+      if (localizedBadges) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === player.badge);
+        });
+        if (badgeGame) {
+          const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+          if (!badge || badge.hidden)
+            badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+        }
+      }
+      if (player.name) {
+        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, systemName || getDefaultUiTheme(), mapId, prevMapId, prevLocationsStr);
+        badgeEl.classList.toggle('badgeButton', player.name);
+      }
 
-      const badgeUrl = `images/badge/${player.badge}.png`;
-      badge.style.backgroundImage = `url('${badgeUrl}')`;
+      const badgeUrl = getBadgeUrl(player.badge, true);
+      badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-      if (badgeOverlay) {
-        badgeOverlay.classList.add('badgeOverlay');
-        badgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
-        badge.appendChild(badgeOverlay);
+      if (badgeOverlayEl) {
+        badgeEl.classList.add('overlayBadge');
+
+        badgeOverlayEl.classList.add('badgeOverlay');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlayEl.classList.add('badgeOverlayMultiply');
+
+        badgeEl.appendChild(badgeOverlayEl);
+
+        const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+          ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+          : badgeUrl;
+
+        badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+
+        if (badgeOverlay2El) {
+          const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+            ? badgeUrl.replace('.', '_mask_bg.')
+            : badgeUrl;
+
+          badgeOverlay2El.classList.add('badgeOverlay');
+          badgeOverlay2El.classList.add('badgeOverlay2');
+          if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+            badgeOverlay2El.classList.add('badgeOverlayMultiply');
+
+          badgeEl.appendChild(badgeOverlay2El);
+
+          badgeOverlay2El.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+        }
       }
     }
 
@@ -144,14 +193,22 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
           name.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-          if (badgeOverlay)
-            badgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
+          if (badgeOverlayEl) {
+            badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+            if (badgeOverlay2El) {
+              badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
+                ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
+                : `var(--base-bg-color-${parsedSystemName})`;
+            }
+            if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
+              handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);
+          }
         });
       });
     }
 
-    if (badge)
-      message.appendChild(badge);
+    if (badgeEl)
+      message.appendChild(badgeEl);
     
     message.appendChild(nameEndMarker);
     message.appendChild(document.createTextNode(" "));
@@ -259,7 +316,7 @@ function trySetChatName(name) {
       playerData.name = playerName;
       globalPlayerData[playerData.uuid].name = playerName;
     }
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid);
+    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
     const ptr = Module.allocate(Module.intArrayFromString(playerName), Module.ALLOC_NORMAL);
     Module._ChangeName(ptr);
     Module._free(ptr);
@@ -408,15 +465,12 @@ function wrapMessageEmojis(node, force) {
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
-  const uuid = playerUuids[id];
-  const player = uuid ? globalPlayerData[uuid] : null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.MAP, player);
+  chatboxAddMessage(msg, MESSAGE_TYPE.MAP, playerUuids[id]);
 }
 
 // EXTERNAL
 function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, x, y, msg) {
-  const player = globalPlayerData[uuid] || null;
-  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, player, mapId, prevMapId, prevLocationsStr, x, y);
+  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, mapId, prevMapId, prevLocationsStr, x, y);
 }
 
 // EXTERNAL

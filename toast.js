@@ -3,13 +3,13 @@ let toastAnimEndTimer;
 let fadeToastQueue = [];
 
 const notificationTypes = {
-  client: [
+  system: [
+    'siteUpdates',
     'floodDetected'
   ],
   account: [
     'loggedIn',
-    'loggedOut',
-    'badgeUnlocked'
+    'loggedOut'
   ],
   parties: [
     'create',
@@ -30,6 +30,9 @@ const notificationTypes = {
     'freeComplete',
     'listUpdated'
   ],
+  badges: [
+    'badgeUnlocked'
+  ],
   saveSync: [
     'saveUploading',
     'saveUploaded',
@@ -45,7 +48,7 @@ let notificationConfig = {
   screenPosition: 'bottomLeft'
 };
 
-const accountNotificationCategories = [ 'account', 'eventLocations', 'saveSync' ];
+const accountNotificationCategories = [ 'account', 'eventLocations', 'badges', 'saveSync' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');
@@ -236,9 +239,13 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
 
 // EXTERNAL
 function showClientToastMessage(key, icon) {
-  if (!notificationConfig.client.all || !notificationConfig.client[key])
+  showSystemToastMessage(key, icon);
+}
+
+function showSystemToastMessage(key, icon) {
+  if (!notificationConfig.system.all || !notificationConfig.system[key])
     return;
-  showToastMessage(getMassagedLabel(localizedMessages.toast.client[key], true), icon, true, null, true);
+  showToastMessage(getMassagedLabel(localizedMessages.toast.system[key], true), icon, true, null, true);
 }
 
 document.addEventListener('visibilitychange', () => {

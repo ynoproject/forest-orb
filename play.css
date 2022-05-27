@@ -159,7 +159,7 @@ body {
 }
 
 .ru-spacing-fix {
-  letter-spacing: -6px !important;
+  letter-spacing: -0.3em !important;
   padding-right: 2px;
 }
 
@@ -216,15 +216,15 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .rankingCategoryTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, .ynomojiButton:hover {
+  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, .rankingCategoryTab:hover .rankingCategoryTabLabel, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -420,14 +420,19 @@ body.fullBg #background {
   position: relative;
   flex-wrap: wrap;
   justify-content: space-between;
-  height: 48px;
+  min-height: 48px;
   max-width: 980px;
-  padding: 0 4px;
-  z-index: 2;
+  border: 12px solid transparent;
+  border-image-width: 2 !important;
+  padding: 12px 16px 0px 16px;
 }
 
 #header.fullBg {
   background-size: 96px;
+}
+
+#headerLogoContainer, #headerIconContainer {
+  padding-bottom: 12px;
 }
 
 #headerLogoContainer {
@@ -499,13 +504,18 @@ body.fullBg #background {
   align-items: center;
 }
 
-#headerIconContainer .icon, #footerIconContainer .icon {
-  margin-left: 8px;
+#headerIconContainer .iconButton {
+  margin-right: 8px;
 }
 
 #footerIconContainer {
   justify-content: center;
   margin-top: 16px;
+  margin-left: 8px;
+}
+
+#footerIconContainer .icon {
+  padding: 0 4px;
 }
 
 #layout {
@@ -552,6 +562,10 @@ body.fullBg #background {
   border-left-width: 0;
   border-right-width: 0;
   width: 100%;
+}
+
+#content.noSideBorders #header {
+  width: calc(100% - 32px);
 }
 
 #content.noSideBorders #layout:not(:fullscreen) #chatboxContainer {
@@ -985,16 +999,17 @@ body.fullBg #background {
   margin: 0 2px;
 }
 
-.message .badge {
+.nameBadge {
   display: inline-block;
   width: 18.5px;
   height: 18.5px;
-  margin: -4px 0 0 0;
+  margin: -4px 0 0 2px;
   background-size: contain;
   vertical-align: middle;
 }
 
-.message .badge > .badgeOverlay {
+.nameBadge > .badgeOverlay {
+  -webkit-mask-size: contain;
   mask-size: contain;
 }
 
@@ -1023,6 +1038,7 @@ body.fullBg #background {
   min-width: 37px;
   height: 37px;
   margin: -5px -4px -5px 0;
+  background-size: cover;
 }
 
 .listEntrySprite {
@@ -1131,7 +1147,7 @@ body.fullBg #background {
   font-weight: normal;
 }
 
-#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage {
+#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage {
   border: 8px solid transparent;
 }
 
@@ -1264,7 +1280,7 @@ body.fullBg #background {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1308,11 +1324,11 @@ body.fullBg #background {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, .subTab.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label {
+#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1466,84 +1482,152 @@ body.fullBg #background {
   text-align: center;
 }
 
-.modalContent > .item {
+.itemContainer > .item {
   margin: 22px;
   text-align: center;
 }
 
-.modalContent > .item > div {
+.itemContainer > .item.hidden {
+  display: none;
+}
+
+.itemContainer > .item > div {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-.modalContent > .badgeItem.disabled > div {
+.itemContainer > .badgeItem.disabled > div {
   cursor: not-allowed;
 }
 
-.modalContent > .uiThemeItem.auto {
+.itemContainer > .uiThemeItem.auto {
   margin-top: 2px;
 }
 
-.modalContent > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
+.itemContainer > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.modalContent > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
+.itemContainer > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
   border-color: white;
 }
 
-.modalContent .badgeItem > div {
+.itemContainer .badgeItem > div {
   width: 98px;
   height: 98px;
 }
 
-.modalContent .badgeItem > .badgeContainer {
+.itemContainer .badgeItem > .badgeContainer {
+  background-color: var(--base-bg-color) !important;
+  background-clip: content-box;
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer {
   background-color: var(--modal-base-bg-color) !important;
 }
 
-.modalContent .badgeItem > .badgeContainer > div {
+.modalContent.itemContainer .badgeItem > .badgeContainer.special {
+  background-image: var(--modal-alt-gradient-b);
+}
+
+.itemContainer .badgeItem > .badgeContainer > div {
   width: 74px;
   height: 74px;
   border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+.modalContent.itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
   border-image: var(--modal-border-image-url) 8 repeat !important;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > div:first-child {
+.itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
   border: none !important;
   margin: 16px 12px 8px 12px;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > .badge:first-child {
+.itemContainer .badgeItem.locked > .badgeContainer > .badge:first-child {
   opacity: 0.325;
   filter: grayscale(1);
 }
 
-.modalContent .badgeItem > .badgeContainer > div:nth-child(2) {
+.itemContainer .badgeItem > .badgeContainer > div:nth-child(2) {
   margin-top: -94px;
   mix-blend-mode: lighten; /* Fixes visual bug with opacity and transition */
 }
 
-.modalContent .badgeItem > .badgeContainer > .icon > svg {
+.itemContainer .badgeItem > .badgeContainer > .icon > svg {
   padding: 8px;
 }
 
-.modalContent .badgeItem.disabled > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.locked > .badgeContainer > .icon:nth-child(2) > svg {
   transition: opacity 0.325s ease-in-out;
 }
 
-.modalContent .badgeItem.disabled:hover > .badgeContainer > .icon:nth-child(2) > svg {
+.itemContainer .badgeItem.locked:hover > .badgeContainer > .icon:nth-child(2) > svg {
   opacity: 0;
 }
 
-.modalContent .badgeItem > .badgeContainer > .badge {
+.itemContainer .badgeItem > .badgeContainer > .badge {
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.modalContent .badgeItem > .badgeContainer > .badge > .badgeOverlay {
-  background-image: var(--modal-base-gradient);
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
+  background: var(--base-gradient);
   -webkit-mask-size: cover;
   mask-size: cover;
+}
+
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
+  background: var(--base-color);
+}
+
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
+  background: var(--alt-color);
+}
+
+.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
+  background: var(--base-bg-color);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
+  background: var(--modal-base-gradient);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
+  background: var(--modal-base-color);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
+  background: var(--modal-alt-color);
+}
+
+.modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
+  background: var(--modal-base-bg-color);
+}
+
+#headerIconContainer > .badgeItem {
+  margin: -5px 8px 0 0;
+}
+
+#headerIconContainer > .badgeItem > .badgeContainer {
+  margin-bottom: -8px;
+}
+
+.smallItemContainer > .item {
+  margin: 16px;
+}
+
+.smallItemContainer > .badgeItem > .badgeContainer {
+  width: 49px;
+  height: 49px;
+}
+
+.smallItemContainer > .badgeItem > .badgeContainer > div {
+  width: 37px;
+  height: 37px;
+  border: 6px solid transparent;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
@@ -1721,13 +1805,40 @@ form .uiTheme {
   align-items: center;
 }
 
-.badge.hidden {
+.badgeSlotsContainer {
+  max-width: 225px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.badgeSlot {
+  width: 37px;
+  height: 37px;
+  margin: 4px;
+  background-size: cover;
+}
+
+.badgeButton {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+.badge.hidden, .badgeOverlay.hidden {
   display: none;
 }
 
 .badgeOverlay {
   height: 100%;
+}
+
+.badgeOverlayMultiply {
   mix-blend-mode: multiply;
+}
+
+.badgeOverlay2 {
+  top: -100%;
+  position: relative;
 }
 
 #expRankBadge {
@@ -1762,8 +1873,11 @@ form .uiTheme {
 }
 
 .expBarLabel {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 24px;
   image-rendering: auto;
-  margin: 2px auto -21px auto;
 }
 
 #rankExpBarLabel::after {
@@ -1778,6 +1892,7 @@ form .uiTheme {
 
 .expBar {
   height: 100%;
+  margin-top: -24px;
   background: var(--base-gradient-b);
   transition: width 0.5s ease-in-out;
 }
@@ -1820,6 +1935,110 @@ form .uiTheme {
   white-space: nowrap;
 }
 
+#rankingCategoryTabs {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.rankingCategoryTab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 4px;
+  margin-right: 4px;
+  pointer-events: all;
+  cursor: pointer;
+  opacity: 0.625;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.rankingCategoryTab:hover {
+  opacity: 1;
+}
+
+.rankingCategoryTab.active {
+  z-index: 2;
+  pointer-events: none;
+  cursor: default;
+  opacity: 1;
+}
+
+.rankingCategoryTabLabel {
+  pointer-events: none;
+  font-weight: normal;
+}
+
+#rankingSubCategoryTabs {
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#rankingsTable, #rankingsTable tr {
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#rankingsTable {
+  width: 100%;
+  border: 12px solid transparent;
+}
+
+#rankingsTable th, #rankingsTable td {
+  border: 8px solid transparent;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#rankingsTable th {
+  border-top-width: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+#rankingsTable th:first-child, #rankingsTable th:last-child, #rankingsTable td:first-child, #rankingsTable td:last-child {
+   text-align: center;
+}
+
+#rankingsTable th:first-child, #rankingsTable td:first-child {
+  border-left-width: 0;
+}
+
+#rankingsTable td:first-child, #rankingsTable td:last-child {
+  white-space: nowrap;
+  padding: 0 8px;
+}
+
+#rankingsTable td:last-child {
+  text-align: right;
+}
+
+#rankingsTable th:nth-child(2), #rankingsTable td:nth-child(2) {
+  width: 100%;
+  padding-left: 4px;
+}
+
+#rankingsTable tr.highlight td {
+  background-color: var(--alt-color-t);
+}
+
+#rankingsPagination {
+  margin-top: 8px;
+}
+
+.rankingPageLink {
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+.rankingPageSkipLink {
+  letter-spacing: -0.15em;
+  padding-right: 0.15em;
+}
+
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
@@ -1830,6 +2049,23 @@ form .uiTheme {
 
 #content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton, #content:not(.loggedIn) .accountRequired {
   display: none;
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.loader.visible {
+  opacity: 1;
+  pointer-events: all;
 }
 
 #toastContainer {
@@ -1917,8 +2153,9 @@ form .uiTheme {
 }
 
 .tippy-box {
-  border: 12px solid transparent;
+  border: 6px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
+  border-image-width: 2 !important;
   background-image: var(--container-bg-image-url) !important;
 }
 
@@ -1931,9 +2168,17 @@ form .uiTheme {
   background-clip: text;
 }
 
+.tippy-content .tooltipContent.altText {
+  background-image: var(--alt-gradient) !important;
+}
+
 .tippy-content .tooltipTitle {
   margin: 0 0 8px 0;
   text-align: center;
+}
+
+.tippy-content .tooltipSpacer {
+  margin-top: 4px;
 }
 
 .tippy-content .tooltipLocation {
@@ -1953,6 +2198,12 @@ form .uiTheme {
 
 .tippy-content .tooltipTitle + .tooltipFooter {
   margin-top: 0;
+}
+
+.tippy-content .tooltipCornerText {
+  display: flex;
+  justify-content: right;
+  font-size: x-small;
 }
 
 @media (hover: none) { 
@@ -2272,7 +2523,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .rankingCategoryTab, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
     border-color: unset !important;
   }
 
@@ -2294,8 +2545,23 @@ form .uiTheme {
     border-bottom-color: unset !important;
   }
 
+  #rankingsTable th, #rankingsTable td {
+    border-top-color: unset !important;
+    border-right: 0;
+    border-bottom: 0;
+    border-left-color: unset !important;
+  }
+  
+  #rankingsTable th:first-child, #rankingsTable td:first-child {
+    border-left: 0;
+  }
+  
+  #rankingsTable th {
+    border-top: 0;
+  }
+
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .rankingCategoryTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label, th {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }
@@ -2309,8 +2575,12 @@ form .uiTheme {
   }
 }
 
-@media not (-webkit-device-pixel-ratio: 1), not (-webkit-device-pixel-ratio: 2) {
-  .badge {
+@media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-max-device-pixel-ratio: 1.9) {
+  #gameLogo {
+    image-rendering: auto;
+  }
+
+  .badge:not(.scaledBadge):not(.overlayBadge) {
     image-rendering: auto;
   }
 }

@@ -1,15 +1,3 @@
-
-const gameDefaultSprite = {
-  'yume': '0000000078',
-  '2kki': 'syujinkou1',
-  'flow': 'sabituki',
-  'prayers': 'Flourette',
-  'deepdreams': 'main',
-  'someday': 'itsuki1',
-  'amillusion': { sprite: 'parapluie ', idx: 1 },
-  'unevendream': 'kubo',
-  'braingirl': 'mikan2'
-}[gameId];
 const roleEmojis = {
   mod: '🛡️',
   dev: '🔧',
@@ -23,7 +11,7 @@ let spriteCache = {};
 let faviconCache = {};
 let playerSpriteCache = {};
 
-function getPlayerName(player, includeMarkers, asHtml) {
+function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
   const isPlayerObj = typeof player === 'object';
   let playerName = isPlayerObj ? player.name : player;
   const unnamed = !playerName;
@@ -63,6 +51,57 @@ function getPlayerName(player, includeMarkers, asHtml) {
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameTextContainer.appendChild(rankIcon);
     }
+
+    let badgeEl = null;
+    let badgeOverlayEl = null;
+    let badgeOverlay2El = null;
+
+    if (includeBadge && player.badge !== 'null') {
+      badgeEl = document.createElement('div');
+      badgeEl.classList.add('badge');
+      badgeEl.classList.add('nameBadge');
+
+      const badge = badgeCache.find(b => b.badgeId === player.badge);
+
+      badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
+      badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
+
+      const badgeUrl = getBadgeUrl(player.badge, true);
+      badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
+
+      if (badgeOverlayEl) {
+        badgeEl.classList.add('overlayBadge');
+
+        badgeOverlayEl.classList.add('badgeOverlay');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlayEl.classList.add('badgeOverlayMultiply');
+        
+        badgeEl.appendChild(badgeOverlayEl);
+
+        const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+          ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+          : badgeUrl;
+
+        badgeOverlayEl.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+        
+        if (badgeOverlay2El) {
+          const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+            ? badgeUrl.replace('.', '_mask_bg.')
+            : badgeUrl;
+
+          badgeOverlay2El.classList.add('badgeOverlay');
+          badgeOverlay2El.classList.add('badgeOverlay2');
+          if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+            badgeOverlay2El.classList.add('badgeOverlayMultiply');
+
+          badgeEl.appendChild(badgeOverlay2El);
+
+          badgeOverlay2El.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+        }
+      }
+
+      nameTextContainer.appendChild(badgeEl);
+    }
     
     if (player.systemName) {
       let systemName = player.systemName.replace(/'/g, '');
@@ -78,6 +117,15 @@ function getPlayerName(player, includeMarkers, asHtml) {
       }
       if (rankIcon)
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+      if (badgeOverlayEl) {
+        if (badgeOverlay2El) {
+          badgeOverlayEl.style.background = `var(--base-color-${parsedSystemName})`;
+          badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
+            ? `var(--alt-color-${parsedSystemName})`
+            : `var(--base-bg-color-${parsedSystemName})`;
+        } else
+          badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
+      }
     }
 
     return nameTextContainer.outerHTML;
@@ -93,7 +141,7 @@ function getPlayerName(player, includeMarkers, asHtml) {
   return playerName;
 }
 
-function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation) {
+function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation, sortEntries) {
   if (!playerList)
     playerList = document.getElementById('playerList');
 
@@ -103,6 +151,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
   const playerListEntryBadge = playerListEntry ? playerListEntry.querySelector('.playerListEntryBadge') : document.createElement('div');
   const playerListEntryBadgeOverlay = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay') : document.createElement('div');
+  const playerListEntryBadgeOverlay2 = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay2') : document.createElement('div');
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
@@ -163,31 +212,19 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryBadgeOverlay.classList.add('playerListEntryBadgeOverlay');
     playerListEntryBadgeOverlay.classList.add('badgeOverlay');
 
+    playerListEntryBadgeOverlay2.classList.add('playerListEntryBadgeOverlay2');
+    playerListEntryBadgeOverlay2.classList.add('badgeOverlay');
+    playerListEntryBadgeOverlay2.classList.add('badgeOverlay2');
+
     playerListEntryBadge.appendChild(playerListEntryBadgeOverlay);
+    playerListEntryBadge.appendChild(playerListEntryBadgeOverlay2);
     playerListEntry.appendChild(playerListEntryBadge);
 
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
     playerListEntryActionContainer.classList.add('listEntryActionContainer');
 
-    if (player && playerData?.rank > player.rank) {
-      const banAction = document.createElement('a');
-      banAction.classList.add('listEntryAction');
-      banAction.href = 'javascript:void(0);';
-      banAction.onclick = function () {
-        if (confirm(`Are you sure you want to permanently ban ${getPlayerName(player, true, true)}?`)) {
-          apiFetch(`admin?command=ban&player=${uuid}`)
-            .then(response => {
-              if (!response.ok)
-                throw new Error(response.statusText);
-              return response.text();
-            })
-            .then(_ => showToastMessage(`${getPlayerName(player, true, true)} has been banned.`, 'ban', true, systemName))
-            .catch(err => console.error(err));
-        }
-      };
-      banAction.appendChild(getSvgIcon('ban', true));
-      playerListEntryActionContainer.appendChild(banAction);
-    }
+    if (player && playerData?.rank > player.rank)
+      addAdminContextMenu(playerListEntry, player, uuid);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
@@ -198,12 +235,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (!playerSpriteCacheEntry && uuid !== defaultUuid)
     playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
   if (playerSpriteCacheEntry) {
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+    getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
       if (spriteImg)
         playerListEntrySprite.src = spriteImg
     });
     if (uuid === defaultUuid)
-      updateFaviconSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
+      updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
@@ -232,21 +269,50 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   }
 
   const showBadge = player?.account && player.badge;
-  const showBadgeOverlay = showBadge && player.badge === 'mono';
-  const badgeUrl = showBadge ? `images/badge/${player.badge}.png` : '';
+  const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
+  const showBadgeOverlay = showBadge && badge?.overlayType;
+  const showBadgeOverlay2 = showBadgeOverlay && badge.overlayType & BadgeOverlayType.DUAL;
+  const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
   playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
 
+  if (showBadgeOverlay) {
+    const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+      ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+      : badgeUrl;
+
+    playerListEntryBadgeOverlay.classList.toggle('badgeOverlayMultiply', badge.overlayType & BadgeOverlayType.MULTIPLY);
+    playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+
+    if (showBadgeOverlay2) {
+      const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+        ? badgeUrl.replace('.', '_mask_bg.')
+        : badgeUrl;
+
+      playerListEntryBadgeOverlay2.classList.toggle('badgeOverlayMultiply', badge.overlayType & BadgeOverlayType.MULTIPLY);
+      playerListEntryBadgeOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+    }
+  }
+
   playerListEntryBadgeOverlay.classList.toggle('hidden', !showBadgeOverlay);
-  playerListEntryBadgeOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeUrl}'); mask-image: url('${badgeUrl}');`);
+  playerListEntryBadgeOverlay2.classList.toggle('hidden', !showBadgeOverlay2);
 
   if (showBadge) {
-    const badgeGame = Object.keys(localizedMessages.badges.gameBadges).find(game => {
-      return Object.keys(localizedMessages.badges.gameBadges[game]).find(b => b === player.badge);
-    });
-    if (badgeGame)
-      addTooltip(playerListEntryBadge, getMassagedLabel(localizedMessages.badges.gameBadges[badgeGame][player.badge].name, true), true, true);
+    if (localizedBadges) {
+      const badgeGame = Object.keys(localizedBadges).find(game => {
+        return Object.keys(localizedBadges[game]).find(b => b === player.badge);
+      });
+      if (badgeGame) {
+        playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true, false, null, playerListEntryBadge._badgeTippy);
+        if (!badge || badge.hidden)
+          playerListEntryBadge._badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+      }
+    }
+    if (player.name) {
+      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
+      playerListEntryBadge.classList.toggle('badgeButton', player.name);
+    }
   }
 
   if (partyOwnerIcon)
@@ -317,12 +383,30 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
           if (showLocation)
             playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
-        if (showBadgeOverlay)
-          playerListEntryBadgeOverlay.style.backgroundImage = `var(--base-gradient-${parsedSystemName})`;
+        if (showBadgeOverlay) {
+          playerListEntryBadgeOverlay.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+          if (showBadgeOverlay2) {
+            playerListEntryBadgeOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
+              ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
+              : `var(--base-bg-color-${parsedSystemName})`;
+          }
+          if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
+            handle2kkiBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
+        }
       });
     });
   }
 
+  if (sortEntries)
+    sortPlayerListEntries(playerList);
+
+  if (playerList.id === 'playerList')
+    updateMapPlayerCount(playerList.childElementCount);
+
+  return playerListEntry;
+}
+
+function sortPlayerListEntries(playerList) {
   if (playerList.childElementCount > 1) {
     const playerListEntries = playerList.querySelectorAll('.playerListEntry');
 
@@ -341,11 +425,6 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         playerList.appendChild(ple);
     });
   }
-
-  if (playerList.id === 'playerList')
-    updateMapPlayerCount(playerList.childElementCount);
-
-  return playerListEntry;
 }
 
 function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
@@ -355,13 +434,13 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
 
   playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
-  getSpriteImg(sprite, idx).then(spriteImg => {
+  getSpriteProfileImg(sprite, idx).then(spriteImg => {
     if (spriteImg !== null && playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
       playerListEntrySprite.src = spriteImg;
   });
 
   if (uuid === defaultUuid)
-    updateFaviconSprite(sprite, idx);
+    updatePlayerSprite(sprite, idx);
 }
 
 function removePlayerListEntry(playerList, uuid) {
@@ -407,7 +486,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
-          if (playerA?.account !== playerB?.account)
+          if (playerA?.account != playerB?.account)
             return playerA?.account ? -1 : 1;
           return 0;
         };
@@ -462,7 +541,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
           }
           if (b.dataset.unnamed)
             return -1;
-          if (playerA?.account !== playerB?.account)
+          if (playerA?.account != playerB?.account)
             return playerA?.account ? -1 : 1;
           return 0;
         };
@@ -471,7 +550,7 @@ function getPlayerListIdEntrySortFunc(playerListId) {
   return null;
 }
 
-async function getSpriteImg(sprite, idx, favicon, dir) {
+async function getSpriteProfileImg(sprite, idx, favicon, dir) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
   return new Promise(resolve => {
     const spriteData = favicon ? faviconCache : spriteCache;
@@ -487,7 +566,7 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
     const defaultIdx = defaultSpriteObj.idx;
     const getDefaultSpriteImg = new Promise(resolve => {
       if (sprite !== defaultSprite || idx !== defaultIdx)
-        getSpriteImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
+        getSpriteProfileImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
       else
         resolve(null);
     });
@@ -495,45 +574,12 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
       return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
     img.onload = function () {
-      const canvas = document.createElement('canvas');
-      canvas.width = 24;
-      canvas.height = 32;
-      const context = canvas.getContext('2d');
-      const startX = (idx % 4) * 72 + 24;
-      const startY = (idx >> 2) * 128 + 64;
-      context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
-      const imageData = context.getImageData(0, 0, 24, 32);
-      const data = imageData.data;
-      const transPixel = data.slice(0, 3);
-      let yOffset = -1;
-      const checkPixelTransparent = isBrave
-        ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
-        : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
-      for (let i = 0; i < data.length; i += 4) {
-        if (checkPixelTransparent(i))
-          data[i + 3] = 0;
-        else if (yOffset === -1)
-          yOffset = Math.max(Math.min(i >> 7, 15), 3);
-      }
-      if (yOffset === -1)
-        yOffset = 0;
-      canvas.width = favicon ? 16 : 20;
-      canvas.height = 16;
-      context.putImageData(imageData, favicon ? -4 : -2, yOffset * -1, favicon ? 4 : 2, 0, 20, 32);
-      canvas.toBlob(blob => {
-        const blobImg = document.createElement('img');
-        const url = URL.createObjectURL(blob);
-      
-        blobImg.onload = () => URL.revokeObjectURL(url);
-      
-        spriteData[sprite][idx] = url;
-        canvas.remove();
-        resolve(url);
-      });
+      getSpriteImg(img, spriteData, sprite, idx, 1, favicon ? 16 : 20, 16, favicon ? 4 : 2, true, isBrave)
+        .then(url => resolve(url));
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
@@ -545,8 +591,10 @@ async function getSpriteImg(sprite, idx, favicon, dir) {
   });
 }
 
-function updateFaviconSprite(sprite, idx) {
-  getSpriteImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+function updatePlayerSprite(sprite, idx) {
+  getSpriteProfileImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+  playerLoaderSprite = sprite;
+  playerLoaderSpriteIdx = idx;
 }
 
 function getDefaultSprite() {
@@ -559,8 +607,8 @@ function initDefaultSprites() {
   const defaultSprite = getDefaultSprite();
   const sprite = defaultSprite.sprite;
   const idx = defaultSprite.idx;
-  getSpriteImg(sprite, idx);
-  getSpriteImg(sprite, idx, true).then(faviconImg => {
+  getSpriteProfileImg(sprite, idx);
+  getSpriteProfileImg(sprite, idx, true).then(faviconImg => {
     const faviconLink = document.createElement('link');
     faviconLink.id = 'favicon';
     faviconLink.rel = 'shortcut icon';
@@ -628,7 +676,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
     if (systemName)
       globalPlayerData[uuid].systemName = systemName;
   }
-  addOrUpdatePlayerListEntry(null, systemName, name, uuid);
+  addOrUpdatePlayerListEntry(null, systemName, name, uuid, false, true);
 }
 
 // EXTERNAL

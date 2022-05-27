@@ -101,6 +101,7 @@
           "toggleNametags": "Nametags",
           "togglePlayerSounds": "Player Sounds",
           "toggleTabToChat": "Press Tab to Chat",
+          "toggleRankings": "Rankings",
           "toggleFloodProtection": "Flood Protection"
         },
         "notificationSettings": "Notification Settings",
@@ -119,9 +120,10 @@
               "topRight": "Top Right"
             }
           },
-          "client": {
+          "system": {
             "label": "System",
             "fields": {
+              "siteUpdates": "Site Updated",
               "floodDetected": "Possible Flood Attack Detected"
             }
           },
@@ -129,8 +131,7 @@
             "label": "Account",
             "fields": {
               "loggedIn": "Logged In",
-              "loggedOut": "Logged Out",
-              "badgeUnlocked": "Badge Unlocked"
+              "loggedOut": "Logged Out"
             }
           },
           "parties": {
@@ -158,6 +159,12 @@
               "listUpdated": "Expedition List Updated"
             }
           },
+          "badges": {
+            "label": "Badges",
+            "fields": {
+              "badgeUnlocked": "Badge Unlocked"
+            }
+          },
           "saveSync": {
             "label": "Save Sync",
             "fields": {
@@ -175,6 +182,7 @@
         "title": "Account Settings",
         "fields": {
           "badge": "Badge",
+          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -187,6 +195,9 @@
       },
       "badges": {
         "title": "Badges"
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery"
       },
       "uiTheme": {
         "title": "UI Theme",
@@ -222,6 +233,9 @@
         "title": "Expeditions",
         "rankExp": "Next Rank",
         "weekExp": "ExP This Week"
+      },
+      "rankings": {
+        "title": "Rankings"
       }
     },
     "tooltips": {
@@ -245,11 +259,13 @@
         "disbandParty": "Disband Party"
       },
       "eventLocations": "Expeditions",
+      "rankings": "Rankings",
       "nexus": "Return to Nexus"
     }
   },
   "messages": {
     "games": {
+      "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
       "flow": ".flow",
@@ -307,6 +323,27 @@
       "mod": "Moderator",
       "dev": "Developer"
     },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        }
+      }
+    },
     "account": {
       "login": {
         "errors": {
@@ -358,13 +395,13 @@
       "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
     },
     "toast": {
-      "client": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
       },
       "account": {
         "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out.",
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "loggedOut": "You have logged out."
       },
       "parties": {
         "create": "{PARTY} has been created.",
@@ -384,6 +421,9 @@
         "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
         "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
+      },
+      "badges": {
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",
@@ -419,156 +459,66 @@
     },
     "badges": {
       "null": "No Badge",
+      "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Location:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% of players have this badge",
-      "gameBadges": {
-        "yume": {
-          "kalimba": {
-            "name": "KALIMBA",
-            "description": "Tune into the KALIMBA TV channel"
-          },
-          "a_r_m": {
-            "name": "Ancient Raves",
-            "description": "Experience the Aztec Rave Monkey"
-          },
-          "boombox": {
-            "name": "Boombox",
-            "description": "Watch the Toriningen party from afar"
-          },
-          "uboa": {
-            "name": "Uboa",
-            "description": "Fall into Uboa's Trap"
-          },
-          "blackcat": {
-            "name": "Black Cat",
-            "description": "Trigger the witch flight event on the mall rooftop"
-          }
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading..."
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
         },
-        "2kki": {
-          "mono": {
-            "name": "Expeditionist",
-            "description": "Reach Intermediate rank in expeditions"
-          },
-          "bronze": {
-            "name": "Bronze Expeditionist",
-            "description": "Reach Bronze rank in expeditions"
-          },
-          "silver": {
-            "name": "Silver Expeditionist",
-            "description": "Reach Silver rank in expeditions"
-          },
-          "gold": {
-            "name": "Gold Expeditionist",
-            "description": "Reach Gold rank in expeditions"
-          },
-          "platinum": {
-            "name": "Platinum Expeditionist",
-            "description": "Reach Platinum rank in expeditions"
-          },
-          "diamond": {
-            "name": "Diamond Expeditionist",
-            "description": "Reach Diamond rank in expeditions"
-          },
-          "compass": {
-            "name": "Expedition Completionist",
-            "description": "Complete expeditions in 30% of available locations"
-          },
-          "compass_bronze": {
-            "name": "Bronze Expedition Completionist",
-            "description": "Complete expeditions in 50% of available locations"
-          },
-          "compass_silver": {
-            "name": "Silver Expedition Completionist",
-            "description": "Complete expeditions in 70% of available locations"
-          },
-          "compass_gold": {
-            "name": "Gold Expedition Completionist",
-            "description": "Complete expeditions in 80% of available locations"
-          },
-          "compass_platinum": {
-            "name": "Platinum Expedition Completionist",
-            "description": "Complete expeditions in 90% of available locations"
-          },
-          "compass_diamond": {
-            "name": "Diamond Expedition Completionist",
-            "description": "Complete expeditions in 95% of available locations"
-          },
-          "crushed": {
-            "name": "Crush",
-            "description": "Watch Urotsuki get smooshed"
-          },
-          "obentou": {
-            "name": "Obentou",
-            "description": "おべんとう"
-          },
-          "compass_28": {
-            "name": "28",
-            "description": "２８"
-          },
-          "blue_orb": {
-            "name": "Blue Orb",
-            "description": "Visit Scrambled Egg Zone"
-          },
-          "aooh": {
-            "name": "Aooh's Glare",
-            "description": ";-82)77C%33,C)1)6+)C*631C&)=32(C-2C%,3+)/37C,397)"
-          },
-          "hakoko": {
-            "name": "Hakoko",
-            "description": "Interact with Hakoko in the Eye Shop"
-          },
-          "hakoko_prime": {
-            "name": "Hakoko Prime",
-            "description": "Reach and interact with Hakoko in 1 minute 40 seconds or less in Time Trial Mode"
-          },
-          "lavender_lesser": {
-            "name": "Purple Gem",
-            "description": "Reach Lavender Waters"
-          },
-          "lavender": {
-            "name": "Lavender Gem",
-            "description": "Reach Lavender Waters in 12 minutes or less in Time Trial Mode"
-          },
-          "butterfly_lesser": {
-            "name": "Sunset Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary"
-          },
-          "butterfly": {
-            "name": "Twilight Butterfly Brooch",
-            "description": "Reach the Lunar Sanctuary in 29 minutes or less in Time Trial Mode"
-          },
-          "magical_lesser": {
-            "name": "Kiki",
-            "description": "Reach Magical Passage"
-          },
-          "magical": {
-            "name": "Merlin",
-            "description": "Reach Magical Passage in 8 and a half minutes or less in Time Trial Mode"
-          },
-          "voxels": {
-            "name": "Magical Voxels",
-            "description": "Exploit the rules of the dream realm and reach Voxel Island"
-          },
-          "vending_machine": {
-            "name": "Vending Machine",
-            "description": "Complete and visit the Snack Gallery"
-          },
-          "clover": {
-            "name": "Pale-Crimson Clover",
-            "description": "Best of luck..."
-          }
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
-        "prayers": {
-          "koraiyn": {
-            "name": "Koraiyn",
-            "description": "What even is a Koraiyn?"
-          },
-          "missingno": {
-            "name": "Glitched Out",
-            "description": "Find and interact with MissingNo."
-          }
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "timeTrial": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
         }
+      },
+      "subCategories": {
+        "all": "All",
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)"
       }
     },
     "2kki": {

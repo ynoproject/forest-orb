@@ -149,7 +149,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
   if (typeof partyMember === 'string')
     partyMember = party ? party.members.find(m => m.uuid === partyMember) : null;
 
-  let partyMemberName = getPlayerName(partyMember, includeRoles, asHtml);
+  let partyMemberName = getPlayerName(partyMember, includeRoles, false, asHtml);
 
   if (asHtml) {
     if (partyMember.uuid === party.ownerUuid) {
@@ -429,6 +429,8 @@ function updateJoinedParty(skipNextUpdate, callback) {
           entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
         addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
       }
+
+      sortPlayerListEntries(partyPlayerList);
       
       if (callback)
         callback();
@@ -613,7 +615,7 @@ function addOrUpdatePartyListEntry(party) {
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });
 
-    getSpriteImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+    getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
       if (!spriteImg)
         return;
       if (memberIndex === ownerMemberIndex) {
@@ -738,6 +740,9 @@ function initOrUpdatePartyModal(partyId) {
     entry.classList.toggle('offline', !member.online);
     addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
   }
+
+  sortPlayerListEntries(partyModalOnlinePlayerList);
+  sortPlayerListEntries(partyModalOfflinePlayerList);
 
   const onlineCountLabel = document.getElementById('partyModalOnlineCount');
   const offlineCountLabel = document.getElementById('partyModalOfflineCount');
