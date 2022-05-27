@@ -260,6 +260,10 @@ function addAdminContextMenu(target, player, uuid) {
   const playerName = getPlayerName(player, true);
   
   let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a>`;
+
+  tooltipHtml += player.muted ? `<br>
+    <a href="javascript:void(0);" class="unmutePlayerAction adminToggleMuteAction">${'Unmute {PLAYER}'.replace('{PLAYER}', playerName)}</a>` : `<br>
+    <a href="javascript:void(0);" class="mutePlayerAction adminToggleMuteAction">${'Mute {PLAYER}'.replace('{PLAYER}', playerName)}</a>`;
   if (player.account)
     tooltipHtml += `<br>
       <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
@@ -279,6 +283,26 @@ function addAdminContextMenu(target, player, uuid) {
         .catch(err => console.error(err));
     }
   };
+
+  const toggleMuteActions = adminTooltip.popper.querySelectorAll('.adminToggleMuteAction');
+  for (let toggleMuteAction of toggleMuteActions) {
+    toggleMuteAction.onclick = function() {
+      const isMute = this.classList.contains('mutePlayerAction');
+      const promptMsg = (`Are you sure you want to ${isMute ? 'mute' : 'unmute'} {PLAYER}?`).replace('{PLAYER}', playerName);
+      if(!confirm(promptMsg)) {
+        return;
+      }
+
+      apiFetch(`admin?command=${isMute ? 'mute' : 'unmute'}&player=${uuid}`)
+        .then(response => {
+          if(!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(`{PLAYER} has been ${isMute ? 'muted': 'unmuted'}.`, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+        .catch(err => console.error(err));
+    }
+  }
 
   const badgeActions = adminTooltip.popper.querySelectorAll('.adminBadgeAction');
   for (let badgeAction of badgeActions) {
