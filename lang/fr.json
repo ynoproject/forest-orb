@@ -11,8 +11,8 @@
   },
   "ui": {
     "account": {
-      "login": "Se Connecter",
-      "logout": "Log Out"
+      "login": "Se connecter",
+      "logout": "Se déconnecter"
     },
     "fontStyle": {
       "label": "Style de police&nbsp;:",
@@ -57,7 +57,7 @@
       }
     },
     "instruction": {
-      "translation": "Besoin d'aide à la traduction",
+      "translation": "Besoin d'aide pour la traduction",
       "noGameLoc": "* Game Localization Unsupported"
     },
     "2kki": {
@@ -82,56 +82,56 @@
           "password": "Mot de passe",
           "confirmPassword": "Confirmer le mot de passe"
         },
-        "submit": "Submit",
+        "submit": "Soumettre",
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
         "login": "Se Connecter"
       },
       "settings": {
-        "title": "Settings",
+        "title": "Paramètres",
         "fields": {
           "lang": "Langue",
           "locationVisibility": {
             "label": "In-Game Location Visibility",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "Privé",
+              "friends": "Amis",
+              "public": "Publique"
             }
           },
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
-          "toggleTabToChat": "Press Tab to Chat",
-          "toggleRankings": "Rankings",
+          "toggleTabToChat": "Appuyez sur Tab pour discuter",
+          "toggleRankings": "Rangs",
           "toggleFloodProtection": "Flood Protection"
         },
-        "notificationSettings": "Notification Settings",
-        "accountSettings": "Account Settings"
+        "notificationSettings": "Paramètres de notification",
+        "accountSettings": "Paramètres du compte"
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "Paramètres de notification",
         "fields": {
           "toggleNotifications": "Notifications",
           "screenPosition": {
             "label": "Screen Position",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "En bas à gauche",
+              "bottomRight": "En bas à droite",
+              "topLeft": "En haut à gauche",
+              "topRight": "En haut à droite"
             }
           },
           "system": {
-            "label": "System",
+            "label": "Système",
             "fields": {
-              "siteUpdates": "Site Updated",
+              "siteUpdates": "Site mis à jour",
               "floodDetected": "Possible Flood Attack Detected"
             }
           },
           "account": {
             "label": "Account",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "Connecté",
+              "loggedOut": "Déconnecté"
             }
           },
           "parties": {
