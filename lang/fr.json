@@ -128,7 +128,7 @@
             }
           },
           "account": {
-            "label": "Account",
+            "label": "Compte",
             "fields": {
               "loggedIn": "Connecté",
               "loggedOut": "Déconnecté"
@@ -162,7 +162,7 @@
           "badges": {
             "label": "Badges",
             "fields": {
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "Badge débloqué"
             }
           },
           "saveSync": {
@@ -171,18 +171,18 @@
               "saveUploading": "Save Uploading",
               "saveUploaded": "Save Downloaded",
               "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveDownloaded": "Sauvegarde Télécharger",
+              "saveUpToDate": "Sauvegarde à jour",
+              "saveCleared": "Sauvegarde Effacée"
             }
           }
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "Paramètres du compte",
         "fields": {
           "badge": "Badge",
-          "badgeGallery": "Manage Badge Gallery",
+          "badgeGallery": "Gérer la galerie de badges",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -197,7 +197,7 @@
         "title": "Badges"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "Gérer la galerie de badges"
       },
       "uiTheme": {
         "title": "Thème UI",
@@ -205,29 +205,29 @@
       },
       "createParty": {
         "title": {
-          "create": "Create Party",
-          "update": "Edit Party"
+          "create": "Créer la Partie",
+          "update": "Modifier la Partie"
         },
         "fields": {
-          "partyName": "Party Name",
+          "partyName": "Nom de la Partie",
           "description": "Description",
-          "public": "Public",
-          "password": "Password",
+          "public": "Publique",
+          "password": "Mot de passe",
           "theme": "Theme"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "submit": "Submit"
+        "showPassword": "Montrer le mot de passe",
+        "hidePassword": "Masquer le mot de passe",
+        "submit": "Soumettre"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "Rejoindre une partie privée",
         "fields": {
-          "password": "Password"
+          "password": "Mot de passe"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "Montrer le mot de passe",
+        "hidePassword": "Masquer le mot de passe",
+        "incorrectPassword": "Mot de passe incorrect : veuillez réessayer.",
+        "submit": "Soumettre"
       },
       "eventLocations": {
         "title": "Expeditions",
@@ -235,7 +235,7 @@
         "weekExp": "ExP This Week"
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "Rangs"
       }
     },
     "tooltips": {
@@ -247,19 +247,19 @@
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Chat",
       "toggleImmersionMode": "Activer le Mode Immersion",
-      "screenshot": "Take Screenshot",
-      "settings": "Settings",
+      "screenshot": "Prendre une capture d'écran",
+      "settings": "Paramètres",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
         "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
-        "createParty": "Create Party",
-        "disbandParty": "Disband Party"
+        "createParty": "Créer une Partie",
+        "disbandParty": "Dissoudre la Partie"
       },
       "eventLocations": "Expeditions",
-      "rankings": "Rankings",
+      "rankings": "Rangs",
       "nexus": "Retourner au Nexus"
     }
   },
