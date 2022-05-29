@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -12,7 +12,7 @@
   "ui": {
     "account": {
       "login": "Iniciar Sesión",
-      "logout": "Log Out"
+      "logout": "Cerrar Sesión"
     },
     "fontStyle": {
       "label": "Estilo de Fuente:",
@@ -58,7 +58,7 @@
     },
     "instruction": {
       "translation": "¡Ayúdanos a traducir!",
-      "noGameLoc": "* Localización no soportada"
+      "noGameLoc": "* Traducción no encontrada"
     },
     "2kki": {
       "hostedWithPermission": "Alojado con la autorización de los desarrolladores de Yume 2kki"
@@ -70,7 +70,7 @@
           "username": "Nombre de Usuario",
           "password": "Contraseña"
         },
-        "submit": "Submit",
+        "submit": "Enviar",
         "registerPrompt": "¿No estás registrado?&nbsp;",
         "register": "Registrarse"
       },
@@ -82,7 +82,7 @@
           "password": "Contraseña",
           "confirmPassword": "Confirmar Contraseña"
         },
-        "submit": "Submit",
+        "submit": "Enviar",
         "loginPrompt": "¿Ya estás registrado?&nbsp;",
         "login": "Iniciar Sesión"
       },
@@ -101,11 +101,11 @@
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleTabToChat": "Presiona Tab para chatear",
-          "toggleRankings": "Rankings",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleRankings": "Clasificaciones",
+          "toggleFloodProtection": "Protección de Flood"
         },
         "notificationSettings": "Configuración de Notificaciones",
-        "accountSettings": "Account Settings"
+        "accountSettings": "Configuración de Cuenta"
       },
       "notificationSettings": {
         "title": "Configuración de Notificaciones",
@@ -123,15 +123,15 @@
           "system": {
             "label": "Sistema",
             "fields": {
-              "siteUpdates": "Site Updated",
+              "siteUpdates": "Sitio Actualizado",
               "floodDetected": "Posible Flood Attack detectado"
             }
           },
           "account": {
-            "label": "Account",
+            "label": "Cuenta",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedIn": "Conectado",
+              "loggedOut": "Desconectado"
             }
           },
           "parties": {
@@ -152,52 +152,52 @@
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "Expediciones",
             "fields": {
-              "complete": "Expedition Complete",
-              "freeComplete": "Free Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "Expedición Completada",
+              "freeComplete": "Expedición Libre Completada",
+              "listUpdated": "Lista de Expediciones Actualizada"
             }
           },
           "badges": {
-            "label": "Badges",
+            "label": "Medallas",
             "fields": {
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "Medalla Desbloqueada"
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "Sincronización de Savefiles",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Downloaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveUploading": "Cargando Save",
+              "saveUploaded": "Save Cargado",
+              "saveDownloading": "Descargando Save",
+              "saveDownloaded": "Save Descargado",
+              "saveUpToDate": "Save Actualizado",
+              "saveCleared": "Limpiado de Datos Sincronizados"
             }
           }
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "Configuración de Cuenta",
         "fields": {
-          "badge": "Badge",
-          "badgeGallery": "Manage Badge Gallery",
-          "toggleSaveSync": "Save Sync (Experimental)",
+          "badge": "Medallas",
+          "badgeGallery": "Administrar Galería de Medallas",
+          "toggleSaveSync": "Sincronización de Savefiles (Experimental)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "Ranura de Savefile a Sincronizar",
             "values": {
-              "0": "None"
+              "0": "Ninguno"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "Limpiar Datos Sincronizados"
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "Medallas"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "Administrar Galería de Medallas"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
@@ -230,12 +230,12 @@
         "submit": "Unirse"
       },
       "eventLocations": {
-        "title": "Expeditions",
-        "rankExp": "Next Rank",
-        "weekExp": "ExP This Week"
+        "title": "Expediciones",
+        "rankExp": "Siguiente Rango",
+        "weekExp": "ExP Semanal"
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "Clasificaciones"
       }
     },
     "tooltips": {
@@ -247,7 +247,7 @@
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
       "toggleImmersionMode": "Alternar Modo Inmersivo",
-      "screenshot": "Take Screenshot",
+      "screenshot": "Capturar Pantalla",
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
@@ -258,8 +258,8 @@
         "createParty": "Crear Equipo",
         "disbandParty": "Eliminar Equipo"
       },
-      "eventLocations": "Expeditions",
-      "rankings": "Rankings",
+      "eventLocations": "Expediciones",
+      "rankings": "Clasificaciones",
       "nexus": "Regresar al Nexo"
     }
   },
@@ -326,21 +326,21 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "Banear {PLAYER}",
+          "confirm": "¿Estás seguro que deseas banear permanentemente a {PLAYER}?",
+          "success": "{PLAYER} ha sido baneado."
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Dar Medalla",
+          "prompt": "Ingrese el ID de la medala que desea dar a {PLAYER}.",
+          "success": "{BADGE} ha sido dada a {PLAYER}.",
+          "fail": "No se encontró una medalla con el ID proveído."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Quitar Medalla",
+          "prompt": "Ingrese el ID de la medala que desea quitar a {PLAYER}.",
+          "success": "{BADGE} le ha sido quitada a {PLAYER}.",
+          "fail": "No se encontró una medalla con el ID proveído."
         }
       }
     },
@@ -352,8 +352,8 @@
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "confirmPasswordMismatch": "Las contraseñas ingresadas no coinciden.",
+          "invalidCredentials": "El nombre de usuario o contraseña ingresados están vacíos o contienen carácteres inválidos.",
           "emailTaken": "La dirección de correo ingresada ya está en uso.",
           "usernameTaken": "El nombre de usuario ingresado ya está en uso."
         }
@@ -385,23 +385,23 @@
         "tabToChat": "Si juegas en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
         "chatTabNotifications": "Cuando te encuentras en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
         "clearChat": "Cuando presionas el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefieres una experiencia inmersiva sobre una social, intenta el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "¿Desea activar la sincronización de savefile? La información del savefile sincronizado será guardado en nuestros servidores, permitiendo que sea accedido desde cualquier dispositivo o navegador en donde esta funcionalidad esté activada. Mientras esté activado, el savefile será automáticamente actualizado al cargar la página.",
+      "confirmEnableWithData": "Se encontró un savefile sincronizado relacionado a esta cuenta. El savefile que se encuentre en la ranura sincronizada será sobreescrito con la información encontrada en nuestros servidores. Esto solo tendrá efecto al actualizar la págia teniendo esta funcionalidad activada. ¿Está seguro que desea activar la sincronización de savefile?"
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
-        "floodDetected": "Posible flood attack detectado: Activando modo solitario."
+        "siteUpdates": "El sitio ha sido actualizado. Recarga la página para obtener los nuevos cambios.",
+        "floodDetected": "Posible Flood Attack detectado: Activando modo solitario."
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedIn": "Te has conectado como {USER}.",
+        "loggedOut": "Te has desconectado."
       },
       "parties": {
         "create": "{PARTY} ha sido creado.",
@@ -418,64 +418,64 @@
         "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
       },
       "eventLocations": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "¡Expedición Completada!\nPor visitar {LOCATION}, se te ha otorgado {EXP}.",
+        "freeComplete": "¡Expedición Completada! Has visitado {LOCATION}.",
+        "listUpdated": "La lista de expediciones ha sido actualizada."
       },
       "badges": {
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "Cargando savefile en ranura {SLOT}...",
+        "saveUploaded": "El savefile en la ranura {SLOT} ha sido cargado.",
+        "saveDownloading": "Actualizando savefile en la ranura {SLOT}...",
+        "saveDownloaded": "El savefile en la ranura {SLOT} ha sido actualizado exitosamente.",
+        "saveUpToDate": "El savefile se encuentra actualizado.",
+        "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos."
       }
     },
     "events": {
       "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "expRank": "Rango: {RANK}",
+      "period": "Temporada {ORDINAL}",
+      "periodEnds": "Termina {DATE}",
+      "availableUntilDate": "Disponible Hasta\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "-1": "Expedición Libre",
+        "0": "Diaria",
+        "1": "Semanal",
+        "2": "Fin de Semana",
+        "3": "Especial"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "Principiante",
+        "1": "Intermedio",
+        "2": "Bronce",
+        "3": "Plata",
+        "4": "Oro",
+        "5": "Platino",
+        "6": "Diamante"
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "No Medalla",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "Ubicación:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "{PERCENT}% de jugadores tienen esta medalla",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "Arte por {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading..."
+      "label": "Galería de {PLAYER}",
+      "loading": "Cargando..."
     },
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "medallas",
+          "valueLabel": "# de Medallas",
           "value": "{NUMBER}"
         },
         "bp": {
@@ -489,34 +489,34 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Expediciones",
+          "valueLabel": "# de Expediciones",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Expedición Libre",
+          "valueLabel": "# de Expediciones",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "Progreso de Expediciones",
+          "valueLabel": "Porcentaje",
           "value": "{PERCENT}%"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Contrarreloj",
+          "valueLabel": "Tiempo",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
-          "valueLabel": "Score",
+          "label": "Minijuegos",
+          "valueLabel": "Puntaje",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "Todo",
+        "2": "Todos los Efectos",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)"
       }
