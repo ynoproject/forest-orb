@@ -182,7 +182,7 @@
         "title": "Paramètres du compte",
         "fields": {
           "badge": "Badge",
-          "badgeGallery": "Gérer la galerie de badges",
+          "badgeGallery": "Gérer la galerie des badges",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -197,7 +197,7 @@
         "title": "Badges"
       },
       "badgeGallery": {
-        "title": "Gérer la galerie de badges"
+        "title": "Gérer la galerie des badges"
       },
       "uiTheme": {
         "title": "Thème UI",
