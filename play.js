@@ -293,8 +293,7 @@ function checkUpdateLocation(mapId, mapChanged) {
 function syncPrevLocation() {
   const prevMapId = cachedPrevMapId || '0000';
   const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
-  apiFetch(`ploc?prevMapId=${prevMapId}&prevLocations=${prevLocationsStr}`)
-    .catch(err => console.error(err));
+  sendSessionCommand('ploc', [ prevMapId, prevLocationsStr ]);
 }
 
 // EXTERNAL
