@@ -148,7 +148,7 @@
               "playerOnline": "Membre de la partie en ligne",
               "playerOffline": "Membre de la partie hors ligne",
               "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "transferPartyOwner": "Promu(e) chef de la partie"
             }
           },
           "eventLocations": {
@@ -170,7 +170,7 @@
             "fields": {
               "saveUploading": "Save Uploading",
               "saveUploaded": "Save Downloaded",
-              "saveDownloading": "Save Downloading",
+              "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde Télécharger",
               "saveUpToDate": "Sauvegarde à jour",
               "saveCleared": "Sauvegarde Effacée"
@@ -231,8 +231,8 @@
       },
       "eventLocations": {
         "title": "Expeditions",
-        "rankExp": "Next Rank",
-        "weekExp": "ExP This Week"
+        "rankExp": "Prochain rang",
+        "weekExp": "ExP cette semaine"
       },
       "rankings": {
         "title": "Rangs"
@@ -251,7 +251,7 @@
       "settings": "Paramètres",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "toggleOwnGlobalMessageLocation": "Afficher/masquer l'emplacement du message de chat global",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
@@ -360,17 +360,17 @@
       }
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
+      "emptyMessage": "Il n'y a actuellement aucun parti actif.",
+      "yourParty": "Ta partie",
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Party Leader",
       "offlineMemberSuffix": " (Offline)",
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
+      "onlineCount": "En ligne - {COUNT}",
+      "offlineCount": "Hors ligne - {COUNT}",
       "actions": {
-        "viewPartyDetails": "View Party Details",
+        "viewPartyDetails": "Voir les détails de la partie",
         "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
+        "joinPrivateParty": "Rejoindre une partie privé",
         "leaveParty": "Leave Party"
       }
     },
