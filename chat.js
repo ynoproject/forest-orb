@@ -285,7 +285,7 @@ function chatInputActionFired() {
   } else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      sendSessionCommand("gsay", [ chatInput.value.trim() ]);
+      sendSessionCommand("gsay", [ chatInput.value.trim(), config.showGlobalMessageLocation ? 1 : 0 ]);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
@@ -470,18 +470,36 @@ function onChatMessageReceived(msg, id) {
 
 // EXTERNAL
 function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, x, y, msg) {
-  chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, mapId, prevMapId, prevLocationsStr, x, y);
 }
 
 // EXTERNAL
 function onPChatMessageReceived(uuid, msg) {
-  let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
-  if (partyMember)
-    chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
-  else {
-    updateJoinedParty(() => {
-      partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
-      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
-    });
-  }
 }
+
+(function () {
+  addSessionCommandHandler('gsay', args => {
+    const uuid = args[0];
+    const mapId = args[1];
+    const prevMapId = args[2];
+    const prevLocationsStr = args[3];
+    const x = parseInt(args[4]);
+    const y = parseInt(args[5]);
+    const msg = args[6];
+    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, mapId, prevMapId, prevLocationsStr, x, y);
+  });
+
+  addSessionCommandHandler('psay', args => {
+    const uuid = args[0];
+    const msg = args[1];
+    
+    let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
+    if (partyMember)
+      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+    else {
+      updateJoinedParty(() => {
+        partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
+        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+      });
+    }
+  });
+})();

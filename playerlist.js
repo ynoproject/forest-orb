@@ -667,6 +667,18 @@ function syncGlobalPlayerData(uuid, name, systemName, rank, account, badge) {
   };
 }
 
+(function () {
+  addSessionCommandHandler('p', args => {
+    const uuid = args[0];
+    const name = args[1];
+    const systemName = args[2];
+    const rank = parseInt(args[3]);
+    const account = parseInt(args[4]) === 1;
+    const badge = args[5];
+    syncGlobalPlayerData(uuid, name, systemName, rank, account, badge);
+  });
+})();
+
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
   const uuid = playerUuids[id];

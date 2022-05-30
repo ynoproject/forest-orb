@@ -345,7 +345,7 @@ function updateJoinedParty(callback) {
   if (!joinedPartyId)
     return;
   
-  sendSessionCommand('p', null, params => {
+  sendSessionCommand('pt', null, params => {
     const party = JSON.parse(params[0]);
     if (party) {
       onUpdateJoinedParty(party);
@@ -419,7 +419,7 @@ function onUpdateJoinedParty(party) {
 }
 
 (function () {
-  addSessionCommandHandler('p', args => onUpdateJoinedParty(JSON.parse(args[0])));
+  addSessionCommandHandler('pt', args => onUpdateJoinedParty(JSON.parse(args[0])));
 })();
 
 function addOrUpdatePartyListEntry(party) {
