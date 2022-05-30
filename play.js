@@ -128,11 +128,13 @@ function fetchAndUpdatePlayerInfo() {
             updateEventPeriod();
           updateBadges(updateBadgeButton);
           document.getElementById('content').classList.add('loggedIn');
-        } else if (isLogout) {
+        } else {
           initSessionWs();
-          trySetChatName('');
-          showAccountToastMessage('loggedOut', 'leave');
-          document.getElementById('content').classList.remove('loggedIn');
+          if (isLogout) {
+            trySetChatName('');
+            showAccountToastMessage('loggedOut', 'leave');
+            document.getElementById('content').classList.remove('loggedIn');
+          }
         }
         if (document.querySelector('#chatboxTabParties.active'))
           updatePartyList(true);

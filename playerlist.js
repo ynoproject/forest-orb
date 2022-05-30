@@ -625,7 +625,7 @@ function initDefaultSprites() {
     const systemName = args[2];
     const rank = parseInt(args[3]);
     const account = parseInt(args[4]) === 1;
-    const badge = args[5];
+    let badge = args[5];
     
     if (badge === 'null')
       badge = null;

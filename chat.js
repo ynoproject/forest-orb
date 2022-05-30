@@ -267,10 +267,13 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
 }
 
 function chatInputActionFired() {
-  if (connStatus !== 1)
-    return;
   const chatInput = document.getElementById("chatInput");
   if (chatInput.value === "")
+    return;
+  if (loginToken && (chatInput.dataset.global || document.getElementById("chatbox").classList.contains("partyChat"))) {
+    if (connStatus === 3)
+      return;
+  } else if (connStatus !== 1)
     return;
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
