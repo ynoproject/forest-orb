@@ -1,6 +1,7 @@
 const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
+const ynoGameId = gameIdMatch || !new RegExp('(?:dev)').exec(window.location) ? gameId : 'dev';
 const localizedGameIds = [ 'yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'braingirl' ];
 const gameDefaultLangs = {
   '2kki': 'ja',
@@ -26,13 +27,13 @@ const tippyConfig = {
   allowHTML: true
 };
 
-const apiUrl = `../connect/${gameId}/api`;
+const apiUrl = `../connect/${ynoGameId}/api`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
 Module = {
   INITIALIZED: false,
-  EASYRPG_GAME: gameId,
-  EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + gameId + '/'
+  EASYRPG_GAME: ynoGameId,
+  EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + ynoGameId + '/'
 };
 
 function injectScripts() {
@@ -47,7 +48,7 @@ function injectScripts() {
   }
   for (let script of scripts)
     dependencyFiles[script] = null;
-  dependencyFiles[`${window.location.origin}/data/${gameId}/index.json`] = null;
+  dependencyFiles[`${window.location.origin}/data/${ynoGameId}/index.json`] = null;
   dependencyFiles['index.wasm'] = null;
 
   const injectScript = function (index) {
@@ -340,7 +341,7 @@ function loadOrInitConfig(configObj, global, configName) {
   if (!configName)
     configName = 'config';
   try {
-    const configKey = global ? configName : `${configName}_${gameId}`;
+    const configKey = global ? configName : `${configName}_${ynoGameId}`;
     if (!window.localStorage.hasOwnProperty(configKey))
       window.localStorage.setItem(configKey, JSON.stringify(configObj));
     else {
@@ -492,7 +493,7 @@ function updateConfig(configObj, global, configName) {
   if (!configName)
     configName = 'config';
   try {
-    window.localStorage[global ? configName : `${configName}_${gameId}`] = JSON.stringify(configObj);
+    window.localStorage[global ? configName : `${configName}_${ynoGameId}`] = JSON.stringify(configObj);
   } catch (error) {
     console.error(error);
   }

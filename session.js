@@ -4,14 +4,25 @@ const wsDelim = '\uffff';
 let sessionCommandHandlers = {};
 let sessionCommandCallbackQueue = {};
 
-function initSessionWs() {
-  let url = `wss://${location.host}/connect/${gameId}/session`;
+function initSessionWs(attempt) {
+  let url = `wss://${location.host}/connect/${ynoGameId}/session`;
   if (loginToken)
     url += `?token=${loginToken}`;
   if (sessionWs)
-    sessionWs.close();
+    closeSession(sessionWs);
   sessionWs = new WebSocket(url);
-  sessionWs.onmessage = function (event) {
+  sessionWs.onclose = () => {
+    if (!attempt)
+      attempt = 1;
+    const delay = Math.min(attempt * 5000, 30000);
+    setTimeout(() => initSessionWs(attempt + 1), delay);
+  };
+  sessionWs.onopen = () => {
+    sessionWs.onclose = () => {
+      setTimeout(() => initSessionWs(1), 5000);
+    };
+  };
+  sessionWs.onmessage = event => {
     const args = event.data.split(wsDelim);
     const command = args[0];
     if (sessionCommandHandlers.hasOwnProperty(command)) {
@@ -21,6 +32,14 @@ function initSessionWs() {
         sessionCommandCallbackQueue[command].shift()(params);
     }
   };
+}
+
+function closeSession() {
+  if (sessionWs) {
+    sessionWs.onclose = null;
+    sessionWs.close();
+    sessionWs = null;
+  }
 }
 
 function addSessionCommandHandler(command, handler) {

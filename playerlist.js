@@ -578,8 +578,8 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      dir = `../data/${ynoGameId}/CharSet/`;
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${ynoGameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
@@ -618,6 +618,27 @@ function initDefaultSprites() {
   });
 }
 
+(function () {
+  addSessionCommandHandler('p', args => {
+    const uuid = args[0];
+    const name = args[1];
+    const systemName = args[2];
+    const rank = parseInt(args[3]);
+    const account = parseInt(args[4]) === 1;
+    const badge = args[5];
+    
+    if (badge === 'null')
+      badge = null;
+    globalPlayerData[uuid] = {
+      name: name,
+      systemName: systemName,
+      rank: rank,
+      account: account,
+      badge: badge
+    };
+  });
+})();
+
 // EXTERNAL
 function syncPlayerData(uuid, rank, account, badge, id) {
   if (badge === 'null')
@@ -653,31 +674,6 @@ function syncPlayerData(uuid, rank, account, badge, id) {
     };
   }
 }
-
-// EXTERNAL
-function syncGlobalPlayerData(uuid, name, systemName, rank, account, badge) {
-  if (badge === 'null')
-    badge = null;
-  globalPlayerData[uuid] = {
-    name: name,
-    systemName: systemName,
-    rank: rank,
-    account: account,
-    badge: badge
-  };
-}
-
-(function () {
-  addSessionCommandHandler('p', args => {
-    const uuid = args[0];
-    const name = args[1];
-    const systemName = args[2];
-    const rank = parseInt(args[3]);
-    const account = parseInt(args[4]) === 1;
-    const badge = args[5];
-    syncGlobalPlayerData(uuid, name, systemName, rank, account, badge);
-  });
-})();
 
 // EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {

@@ -103,8 +103,8 @@ async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getLoaderSpriteImg(sprite, idx, frameIdx, `images/charsets/${gameId}/`).then(url => resolve(url));
+      dir = `../data/${ynoGameId}/CharSet/`;
+      img.onerror = () => getLoaderSpriteImg(sprite, idx, frameIdx, `images/charsets/${ynoGameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);

@@ -98,7 +98,7 @@ function handleSaveFileUpload(evt) {
   if (saveSlot == null)
     return;
 
-  const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+  const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
   request.onsuccess = function (_e) {
 
@@ -111,7 +111,7 @@ function handleSaveFileUpload(evt) {
   
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
+      const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
       objectStorePutRequest.onsuccess = function (_e) {
         setTimeout(() => window.location = window.location, 100);
@@ -123,7 +123,7 @@ function handleSaveFileUpload(evt) {
 }
 
 function handleSaveFileDownload() {
-  const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+  const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
   request.onsuccess = function (_e) {
     const saveSlot = getSaveSlot(true);
@@ -134,7 +134,7 @@ function handleSaveFileDownload() {
     const db = request.result; 
     const transaction = db.transaction(['FILE_DATA'], 'readwrite');
     const objectStore = transaction.objectStore('FILE_DATA');
-    const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
+    const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
     objectStoreRequest.onsuccess = function (_e) {
       const record = objectStoreRequest.result;
@@ -207,13 +207,13 @@ function hasSaveDataForSync() {
   return new Promise(resolve => {
     if (!saveSyncConfig.slotId)
       resolve(false);
-    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSyncConfig.slotId}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSyncConfig.slotId}.lsd`);
 
       objectStoreRequest.onsuccess = () => resolve(true);
       objectStoreRequest.onerror = () => resolve(false);
@@ -227,13 +227,13 @@ function getSaveDataForSync() {
       resolve(null);
 
     slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
-    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
       objectStoreRequest.onsuccess = () => resolve(objectStoreRequest.result);
       objectStoreRequest.onerror = () => resolve(null);
@@ -282,7 +282,7 @@ function trySyncSave() {
             })
             .then(saveSyncData => {
               if (saveSyncData.hasOwnProperty('timestamp') && saveSyncData.hasOwnProperty('contents')) {
-                const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
+                const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
                   saveSyncData.timestamp = new Date(saveSyncData.timestamp);
@@ -292,7 +292,7 @@ function trySyncSave() {
 
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
+                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => {
                     showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
