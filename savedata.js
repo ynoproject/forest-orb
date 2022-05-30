@@ -199,7 +199,7 @@ function setSaveSyncEnabled(enabled, isInit) {
 
 // EXTERNAL
 function onSaveSlotUpdated(slotId) {
-  if (sessionId && saveSyncConfig.enabled && slotId == saveSyncConfig.slotId)
+  if (loginToken && saveSyncConfig.enabled && slotId == saveSyncConfig.slotId)
     getAndUploadSaveSyncData();
 }
 
@@ -243,7 +243,7 @@ function getSaveDataForSync() {
 
 function uploadSaveSyncData(saveData) {
   return new Promise(resolve => {
-    if (!sessionId || !saveSyncConfig.enabled)
+    if (!loginToken || !saveSyncConfig.enabled)
       resolve(false);
     showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
     apiJsonPost(`saveSync?command=push&timestamp=${saveData.timestamp.toISOString()}`, saveData)
@@ -323,7 +323,7 @@ function trySyncSave() {
 
 function clearSaveSyncData() {
   return new Promise(resolve => {
-    if (!sessionId)
+    if (!loginToken)
       resolve(false);
     apiFetch(`saveSync?command=clear`)
       .then(_ => {

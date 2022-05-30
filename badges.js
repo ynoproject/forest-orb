@@ -600,7 +600,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
 // EXTERNAL
 function onBadgeUpdateRequested() {
-  if (sessionId)
+  if (loginToken)
     checkNewBadgeUnlocks();
 }
 

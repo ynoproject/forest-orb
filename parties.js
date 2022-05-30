@@ -1,9 +1,7 @@
 let joinedPartyId = null;
 let joinedPartyUiTheme = null;
 let updatePartyListTimer = null;
-let updateJoinedPartyTimer = null;
 let skipPartyListUpdate = false;
-let skipJoinedPartyUpdate = false;
 let partyCache = {};
 let partyDescriptionCache = {};
 let joinedPartyCache = null;
@@ -63,7 +61,7 @@ function initPartyControls() {
       .then(partyId => {
         if (isUpdate) {
           showPartyToastMessage('update', 'party', formData.get('name'));
-          updateJoinedParty(true, () => initOrUpdatePartyModal(joinedPartyId));
+          updateJoinedParty(() => initOrUpdatePartyModal(joinedPartyId));
         } else {
           showPartyToastMessage('create', 'partyCreate', formData.get('name'));
           setJoinedPartyId(parseInt(partyId));
@@ -182,28 +180,13 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
 function setJoinedPartyId(partyId) {
   const content = document.getElementById('content');
   content.classList.toggle('inParty', !!partyId);
-  if (partyId !== joinedPartyId) {
-    if (partyId) {
-      if (!updateJoinedPartyTimer) {
-        updateJoinedPartyTimer = setInterval(() => {
-          if (skipJoinedPartyUpdate)
-            skipJoinedPartyUpdate = false;
-          else
-            updateJoinedParty();
-        }, 5000);
-      }
-    } else if (updateJoinedPartyTimer) {
-      clearInterval(updateJoinedPartyTimer);
-      updateJoinedPartyTimer = null;
-    }
-  }
   if (config.chatTabIndex === 3)
     setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
   if (config.playersTabIndex === 1)
     setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
   joinedPartyId = partyId || null;
   if (partyId)
-    updateJoinedParty(true, () => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));
+    updateJoinedParty(() => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));
   else {
     joinedPartyCache = null;
     joinedPartyPendingOfflineMemberUuids = [];
@@ -219,7 +202,7 @@ function kickPlayerFromJoinedParty(playerUuid) {
         if (!response.ok)
           throw new Error(response.statusText);
         showPartyToastMessage('kick', 'leave', joinedPartyCache, playerUuid);
-        updateJoinedParty(true);
+        updateJoinedParty();
         updatePartyList(true);
       }).catch(err => console.error(err));
   }
@@ -232,7 +215,7 @@ function transferJoinedPartyOwner(playerUuid) {
         if (!response.ok)
           throw new Error(response.statusText);
         showPartyToastMessage('transferPartyOwner', 'transferPartyOwner', joinedPartyCache, playerUuid);
-        updateJoinedParty(true);
+        updateJoinedParty();
         updatePartyList(true);
       }).catch(err => console.error(err));
   }
@@ -358,87 +341,86 @@ function updatePartyList(skipNextUpdate) {
     skipPartyListUpdate = true;
 }
 
-function updateJoinedParty(skipNextUpdate, callback) {
+function updateJoinedParty(callback) {
   if (!joinedPartyId)
     return;
   
-  apiFetch(`party?command=get&partyId=${joinedPartyId}`)
-    .then(response => {
-      if (!response.ok) {
-        if (response.status === 401) {
-          showPartyToastMessage('remove', 'leave', partyCache[joinedPartyId]);
-          setJoinedPartyId(null);
-          return null;
-        }
-        throw new Error(response.statusText);
-      }
-      return response.json();
-    })
-    .then(party => {
-      if (!party)
-        return;
-      const oldMembers = joinedPartyCache ? joinedPartyCache.members : [];
-      joinedPartyCache = party;
-      
-      if (party.systemName !== joinedPartyUiTheme)
-        setPartyUiTheme(party.systemName);
-
-      const partyPlayerList = document.getElementById('partyPlayerList');
-
-      const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
-      const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
-
-      for (let playerUuid of removedPlayerUuids)
-        removePlayerListEntry(partyPlayerList, playerUuid);
-
-      for (let member of party.members) {
-        const uuid = member.uuid;
-        const oldMember = oldMembers.find(m => m.uuid === uuid);
-        if (oldMember) {
-          const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
-          if (member.online !== oldMember.online) {
-            if (member.online) {
-              if (pendingOfflineMemberIndex > -1)
-                joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
-              else
-                showPartyToastMessage('playerOnline', 'join', party, uuid);
-            } else
-              joinedPartyPendingOfflineMemberUuids.push(uuid);
-          } else if (!member.online) {
-            if (pendingOfflineMemberIndex > -1) {
-              showPartyToastMessage('playerOffline', 'leave', party, uuid);
-              joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
-            }
-          }
-        }
-
-        if (member.badge === 'null')
-          member.badge = null;
-
-        globalPlayerData[member.uuid] = {
-          name: member.name,
-          systemName: member.systemName,
-          rank: member.rank,
-          account: member.account,
-          badge: member.badge || null
-        };
-
-        const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
-        entry.classList.toggle('offline', !member.online);
-        if (!member.online)
-          entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
-        addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
-      }
-
-      sortPlayerListEntries(partyPlayerList);
+  sendSessionCommand('p', null, params => {
+    const party = JSON.parse(params[0]);
+    if (party) {
+      onUpdateJoinedParty(party);
       
       if (callback)
         callback();
-    }).catch(err => console.error(err));
-  
-  if (skipNextUpdate)
-    skipJoinedPartyUpdate = true;
+    } else {
+      showPartyToastMessage('remove', 'leave', partyCache[joinedPartyId]);
+      setJoinedPartyId(null);
+    }
+  });
 }
+
+function onUpdateJoinedParty(party) {
+  if (!party)
+    return;
+  const oldMembers = joinedPartyCache ? joinedPartyCache.members : [];
+  joinedPartyCache = party;
+  
+  if (party.systemName !== joinedPartyUiTheme)
+    setPartyUiTheme(party.systemName);
+
+  const partyPlayerList = document.getElementById('partyPlayerList');
+
+  const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
+  const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
+
+  for (let playerUuid of removedPlayerUuids)
+    removePlayerListEntry(partyPlayerList, playerUuid);
+
+  for (let member of party.members) {
+    const uuid = member.uuid;
+    const oldMember = oldMembers.find(m => m.uuid === uuid);
+    if (oldMember) {
+      const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
+      if (member.online !== oldMember.online) {
+        if (member.online) {
+          if (pendingOfflineMemberIndex > -1)
+            joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
+          else
+            showPartyToastMessage('playerOnline', 'join', party, uuid);
+        } else
+          joinedPartyPendingOfflineMemberUuids.push(uuid);
+      } else if (!member.online) {
+        if (pendingOfflineMemberIndex > -1) {
+          showPartyToastMessage('playerOffline', 'leave', party, uuid);
+          joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
+        }
+      }
+    }
+
+    if (member.badge === 'null')
+      member.badge = null;
+
+    globalPlayerData[member.uuid] = {
+      name: member.name,
+      systemName: member.systemName,
+      rank: member.rank,
+      account: member.account,
+      badge: member.badge || null
+    };
+
+    const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
+    entry.classList.toggle('offline', !member.online);
+    if (!member.online)
+      entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
+    addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
+  }
+
+  sortPlayerListEntries(partyPlayerList);
+}
+
+(function () {
+  addSessionCommandHandler('p', args => onUpdateJoinedParty(JSON.parse(args[0])));
+})();
 
 function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;

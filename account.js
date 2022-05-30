@@ -1,4 +1,4 @@
-let sessionId = null;
+let loginToken = null;
 
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {

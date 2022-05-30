@@ -1,0 +1,49 @@
+let sessionWs;
+
+let initSessionWs;
+let addSessionCommandHandler;
+let sendSessionCommand;
+
+{
+  const wsDelim = '\uffff';
+  let sessionCommandHandlers = {};
+  let sessionCommandCallbackQueue = {};
+
+  initSessionWs = () => {
+    let url = `wss://${location.host}/connect/${gameId}/session`;
+    if (loginToken)
+      url += `?token=${loginToken}`;
+    sessionWs = new WebSocket(url);
+    ws.onmessage = function (event) {
+      const args = event.data.split(wsDelim);
+      const command = args[0];
+      if (sessionCommandHandlers.hasOwnProperty(command)) {
+        const params = args.slice(1);
+        sessionCommandHandlers[command](params)
+          .then(() => {
+            while (sessionCommandCallbackQueue[command].length)
+              sessionCommandCallbackQueue[command].shift()(params);
+          });
+      }
+    };
+  };
+
+  addSessionCommandHandler = (command, handler) => {
+    sessionCommandHandlers[command] = handler;
+    sessionCommandCallbackQueue[command] = [];
+  };
+
+  sendSessionCommand = (command, commandParams, callbackCommand, callbackFunc) => {
+    if (!sessionWs)
+      return;
+  
+    let args = [ command ];
+    if (commandParams?.length)
+      args = args.concat(commandParams);
+
+    if (callbackCommand && callbackFunc && sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
+      sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+
+    sessionWs.send(commandParams.join(wsDelim));
+  };
+}

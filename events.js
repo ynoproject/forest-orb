@@ -66,7 +66,7 @@ function updateEventLocationListScheduled() {
 }
 
 function updateEventLocationList(ignoreLocationCheck) {
-  if (!sessionId || !eventPeriodCache)
+  if (!loginToken || !eventPeriodCache)
     return;
   apiFetch('eventLocations?command=list')
     .then(response => {
@@ -248,7 +248,7 @@ function claimEventLocationPoints(location, free, retryCount) {
 }
 
 function checkEventLocations() {
-  if (sessionId && cachedLocations && eventLocationCache.length) {
+  if (loginToken && cachedLocations && eventLocationCache.length) {
     const incompleteEventLocations = eventLocationCache.filter(el => !el.complete);
     const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
     const eventLocationMatch = cachedLocations.map(l => {

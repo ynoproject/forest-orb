@@ -642,7 +642,7 @@ function syncPlayerData(uuid, rank, account, badge, id) {
   if (id === -1) {
     globalPlayerData[uuid].name = playerName;
     globalPlayerData[uuid].systemName = systemName;
-    globalPlayerData[uuid].account = !!sessionId;
+    globalPlayerData[uuid].account = !!loginToken;
     playerData = {
       uuid: uuid,
       name: playerName,

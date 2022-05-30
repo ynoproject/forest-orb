@@ -80,7 +80,7 @@ function onUpdateConnectionStatus(status) {
   else
     updateStatusText();
 
-  if (sessionId && connStatus === 3 && status !== 3)
+  if (loginToken && connStatus === 3 && status !== 3)
     updateEventLocationList();
 
   connStatus = status;
@@ -102,11 +102,11 @@ function onUpdateConnectionStatus(status) {
 
 function fetchAndUpdatePlayerInfo() {
   const cookieSessionId = getCookie('sessionId');
-  const isLogin = cookieSessionId && cookieSessionId !== sessionId;
-  const isLogout = !cookieSessionId && sessionId && cookieSessionId !== sessionId;
+  const isLogin = cookieSessionId && cookieSessionId !== loginToken;
+  const isLogout = !cookieSessionId && loginToken && cookieSessionId !== loginToken;
   if (isLogin || isLogout) {
-    sessionId = isLogin ? cookieSessionId : null;
-    const ptr = Module.allocate(Module.intArrayFromString(isLogin ? sessionId : ''), Module.ALLOC_NORMAL);
+    loginToken = isLogin ? cookieSessionId : null;
+    const ptr = Module.allocate(Module.intArrayFromString(isLogin ? loginToken : ''), Module.ALLOC_NORMAL);
     Module._SetSessionToken(ptr);
     Module._free(ptr);
   }
@@ -116,7 +116,7 @@ function fetchAndUpdatePlayerInfo() {
       if (jsonResponse.uuid) {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
-        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!sessionId, jsonResponse.badge, -1);
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         if (isLogin) {
           trySetChatName(playerName);
@@ -144,8 +144,8 @@ function fetchAndUpdatePlayerInfo() {
     .catch(err => console.error(err));
 }
 
-function checkSession() {
-  if (sessionId && sessionId === getCookie('sessionId')) {
+function checkLogin() {
+  if (loginToken && loginToken === getCookie('sessionId')) {
     apiFetch('info')
       .then(response => response.json())
       .then(jsonResponse => {
@@ -719,7 +719,7 @@ function setPlayersTab(tab, saveConfig) {
     }
 
     if (tabIndex === 1 && joinedPartyId)
-      updateJoinedParty(true);
+      updateJoinedParty();
   }
 }
 

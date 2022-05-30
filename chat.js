@@ -275,16 +275,17 @@ function chatInputActionFired() {
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
-  const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
   if (!chatInput.dataset.global) {
-    if (!joinedPartyId || !document.getElementById("chatbox").classList.contains("partyChat"))
+    if (!joinedPartyId || !document.getElementById("chatbox").classList.contains("partyChat")) {
+      const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
       Module._SendChatMessageToServer(msgPtr);
-    else
-      Module._SendPChatMessageToServer(msgPtr);
+      Module._free(msgPtr);
+    } else
+      sendSessionCommand("psay", [ chatInput.value.trim() ]);
   } else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      Module._SendGChatMessageToServer(msgPtr);
+      sendSessionCommand("gsay", [ chatInput.value.trim() ]);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
@@ -294,7 +295,6 @@ function chatInputActionFired() {
       }, 15000);
     }
   }
-  Module._free(msgPtr);
   chatInput.value = "";
   document.getElementById("ynomojiContainer").classList.add("hidden");
 }
@@ -478,9 +478,10 @@ function onPChatMessageReceived(uuid, msg) {
   let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
   if (partyMember)
     chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
-  else
-    updateJoinedParty(true, () => {
+  else {
+    updateJoinedParty(() => {
       partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
       chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
     });
+  }
 }
