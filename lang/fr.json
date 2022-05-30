@@ -39,7 +39,7 @@
           "all": "Tout",
           "map": "Map",
           "global": "Global",
-          "party": "Party"
+          "party": "Partie"
         },
         "nickname": {
           "header": "Choisissez un pseudonyme pour pouvoir discuter.",
@@ -58,7 +58,7 @@
     },
     "instruction": {
       "translation": "Besoin d'aide pour la traduction",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "* Localisation du jeu non prise en charge"
     },
     "2kki": {
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
@@ -112,7 +112,7 @@
         "fields": {
           "toggleNotifications": "Notifications",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "Position de l'écran",
             "values": {
               "bottomLeft": "En bas à gauche",
               "bottomRight": "En bas à droite",
@@ -137,16 +137,16 @@
           "parties": {
             "label": "Parties",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed From Party",
-              "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
+              "create": "Parti créé",
+              "update": "Partie mise à jour",
+              "join": "Partie rejoint",
+              "leave": "Partie quitté",
+              "remove": "Retiré de la partie",
+              "disband": "Partie dissoute",
+              "playerJoin": "Le joueur a rejoint la partie",
+              "playerLeave": "Le joueur a quitté la partie",
+              "playerOnline": "Membre de la partie en ligne",
+              "playerOffline": "Membre de la partie hors ligne",
               "kickPlayer": "Kicked Player From Party",
               "transferPartyOwner": "Promoted Player to Party Leader"
             }
@@ -154,9 +154,9 @@
           "eventLocations": {
             "label": "Expeditions",
             "fields": {
-              "complete": "Expedition Complete",
-              "freeComplete": "Free Expedition Complete",
-              "listUpdated": "Expedition List Updated"
+              "complete": "Expédition terminée",
+              "freeComplete": "Expédition gratuite terminée",
+              "listUpdated": "Liste des expéditions mise à jour"
             }
           },
           "badges": {
@@ -338,9 +338,9 @@
         },
         "revokeBadge": {
           "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "prompt": "Entrez l'ID du badge à révoquer pour {PLAYER}.",
+          "success": "{BADGE} a été révoqué avec succès de {PLAYER}.",
+          "fail": "Aucun badge n'a été trouvé pour l'ID de badge fourni."
         }
       }
     },
@@ -352,8 +352,8 @@
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "confirmPasswordMismatch": "Le mot de passe spécifié ne correspond pas.",
+          "invalidCredentials": "Le nom d'utilisateur ou le mot de passe spécifié est vide ou contient des caractères non valides.",
           "emailTaken": "Cette adresse e-mail est déjà utilisée.",
           "usernameTaken": "Cet identifiant existe déjà."
         }
@@ -442,23 +442,23 @@
       "availableUntilDate": "Available Until\n{DATE}",
       "types": {
         "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "0": "Quotidiennement",
+        "1": "Hebdomadaire",
+        "2": "Week-end",
+        "3": "Spécial"
       },
       "expRanks": {
         "0": "Novice",
-        "1": "Intermediate",
+        "1": "Intermédiaire",
         "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "3": "Argenté",
+        "4": "Or",
+        "5": "Platine",
+        "6": "Diamant"
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "Pas de badge",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Location:&nbsp;",
@@ -469,7 +469,7 @@
     },
     "badgeGallery": {
       "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading..."
+      "loading": "Chargement..."
     },
     "rankings": {
       "categories": {
