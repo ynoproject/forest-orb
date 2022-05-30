@@ -38,11 +38,11 @@ function initSessionWs(attempt) {
 }
 
 function closeSession() {
-  if (sessionWs) {
-    sessionWs.onclose = null;
-    sessionWs.close();
-    sessionWs = null;
-  }
+  if (!sessionWs)
+    return;
+  sessionWs.onclose = null;
+  sessionWs.close();
+  sessionWs = null;
 }
 
 function addSessionCommandHandler(command, handler) {

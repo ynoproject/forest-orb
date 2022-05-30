@@ -80,8 +80,12 @@ function onUpdateConnectionStatus(status) {
   else
     updateStatusText();
 
-  if (loginToken && connStatus === 3 && status !== 3)
-    updateEventLocationList();
+  if (connStatus === 3 && status !== 3) {
+    if (loginToken)
+      updateEventLocationList();
+    initSessionWs();
+  } else if (connStatus !== 3 && status === 3)
+    closeSession();
 
   connStatus = status;
 
