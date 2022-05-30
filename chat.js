@@ -288,7 +288,7 @@ function chatInputActionFired() {
   } else {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
-      sendSessionCommand("gsay", [ chatInput.value.trim(), config.showGlobalMessageLocation ? 1 : 0 ]);
+      sendSessionCommand("gsay", [ chatInput.value.trim(), !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
       chatInput.disabled = true;
       chatInput.blur();
       chatInputContainer.classList.add("globalCooldown");
