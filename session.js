@@ -16,11 +16,9 @@ function initSessionWs() {
     const command = args[0];
     if (sessionCommandHandlers.hasOwnProperty(command)) {
       const params = args.slice(1);
-      sessionCommandHandlers[command](params)
-        .then(() => {
-          while (sessionCommandCallbackQueue[command].length)
-            sessionCommandCallbackQueue[command].shift()(params);
-        });
+      sessionCommandHandlers[command](params);
+      while (sessionCommandCallbackQueue[command].length)
+        sessionCommandCallbackQueue[command].shift()(params);
     }
   };
 }
