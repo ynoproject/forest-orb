@@ -1,51 +1,45 @@
 let sessionWs;
 
-let initSessionWs;
-let addSessionCommandHandler;
-let sendSessionCommand;
+const wsDelim = '\uffff';
+let sessionCommandHandlers = {};
+let sessionCommandCallbackQueue = {};
 
-{
-  const wsDelim = '\uffff';
-  let sessionCommandHandlers = {};
-  let sessionCommandCallbackQueue = {};
-
-  initSessionWs = () => {
-    let url = `wss://${location.host}/connect/${gameId}/session`;
-    if (loginToken)
-      url += `?token=${loginToken}`;
-    if (sessionWs)
-      sessionWs.close();
-    sessionWs = new WebSocket(url);
-    sessionWs.onmessage = function (event) {
-      const args = event.data.split(wsDelim);
-      const command = args[0];
-      if (sessionCommandHandlers.hasOwnProperty(command)) {
-        const params = args.slice(1);
-        sessionCommandHandlers[command](params)
-          .then(() => {
-            while (sessionCommandCallbackQueue[command].length)
-              sessionCommandCallbackQueue[command].shift()(params);
-          });
-      }
-    };
+function initSessionWs() {
+  let url = `wss://${location.host}/connect/${gameId}/session`;
+  if (loginToken)
+    url += `?token=${loginToken}`;
+  if (sessionWs)
+    sessionWs.close();
+  sessionWs = new WebSocket(url);
+  sessionWs.onmessage = function (event) {
+    const args = event.data.split(wsDelim);
+    const command = args[0];
+    if (sessionCommandHandlers.hasOwnProperty(command)) {
+      const params = args.slice(1);
+      sessionCommandHandlers[command](params)
+        .then(() => {
+          while (sessionCommandCallbackQueue[command].length)
+            sessionCommandCallbackQueue[command].shift()(params);
+        });
+    }
   };
+}
 
-  addSessionCommandHandler = (command, handler) => {
-    sessionCommandHandlers[command] = handler;
-    sessionCommandCallbackQueue[command] = [];
-  };
+function addSessionCommandHandler(command, handler) {
+  sessionCommandHandlers[command] = handler;
+  sessionCommandCallbackQueue[command] = [];
+}
 
-  sendSessionCommand = (command, commandParams, callbackCommand, callbackFunc) => {
-    if (!sessionWs)
-      return;
-  
-    let args = [ command ];
-    if (commandParams?.length)
-      args = args.concat(commandParams);
+function sendSessionCommand(command, commandParams, callbackCommand, callbackFunc) {
+  if (!sessionWs)
+    return;
 
-    if (callbackCommand && callbackFunc && sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
-      sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+  let args = [ command ];
+  if (commandParams?.length)
+    args = args.concat(commandParams);
 
-    sessionWs.send(args.join(wsDelim));
-  };
+  if (callbackCommand && callbackFunc && sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
+    sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+
+  sessionWs.send(args.join(wsDelim));
 }
