@@ -13,8 +13,10 @@ let sendSessionCommand;
     let url = `wss://${location.host}/connect/${gameId}/session`;
     if (loginToken)
       url += `?token=${loginToken}`;
+    if (sessionWs)
+      sessionWs.close();
     sessionWs = new WebSocket(url);
-    ws.onmessage = function (event) {
+    sessionWs.onmessage = function (event) {
       const args = event.data.split(wsDelim);
       const command = args[0];
       if (sessionCommandHandlers.hasOwnProperty(command)) {
@@ -44,6 +46,6 @@ let sendSessionCommand;
     if (callbackCommand && callbackFunc && sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
       sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
 
-    sessionWs.send(commandParams.join(wsDelim));
+    sessionWs.send(args.join(wsDelim));
   };
 }
