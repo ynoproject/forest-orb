@@ -119,22 +119,26 @@ function fetchAndUpdatePlayerInfo() {
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         if (isLogin) {
-          initSessionWs();
-          trySetChatName(playerName);
-          showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
-          if (eventPeriodCache)
-            updateEventLocationList();
-          else
-            updateEventPeriod();
-          updateBadges(updateBadgeButton);
-          document.getElementById('content').classList.add('loggedIn');
+          initSessionWs()
+            .then(() => {
+              trySetChatName(playerName);
+              showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
+              if (eventPeriodCache)
+                updateEventLocationList();
+              else
+                updateEventPeriod();
+              updateBadges(updateBadgeButton);
+              document.getElementById('content').classList.add('loggedIn');
+            });
         } else {
-          initSessionWs();
-          if (isLogout) {
-            trySetChatName('');
-            showAccountToastMessage('loggedOut', 'leave');
-            document.getElementById('content').classList.remove('loggedIn');
-          }
+          initSessionWs()
+            .then(() => {
+              trySetChatName('');
+              if (isLogout) {
+                showAccountToastMessage('loggedOut', 'leave');
+                document.getElementById('content').classList.remove('loggedIn');
+              }
+            });
         }
         if (document.querySelector('#chatboxTabParties.active'))
           updatePartyList(true);

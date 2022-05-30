@@ -5,33 +5,36 @@ let sessionCommandHandlers = {};
 let sessionCommandCallbackQueue = {};
 
 function initSessionWs(attempt) {
-  let url = `wss://${location.host}/connect/${ynoGameId}/session`;
-  if (loginToken)
-    url += `?token=${loginToken}`;
-  if (sessionWs)
-    closeSession(sessionWs);
-  sessionWs = new WebSocket(url);
-  sessionWs.onclose = () => {
-    if (!attempt)
-      attempt = 1;
-    const delay = Math.min(attempt * 5000, 30000);
-    setTimeout(() => initSessionWs(attempt + 1), delay);
-  };
-  sessionWs.onopen = () => {
+  return new Promise(resolve => {
+    let url = `wss://${location.host}/connect/${ynoGameId}/session`;
+    if (loginToken)
+      url += `?token=${loginToken}`;
+    if (sessionWs)
+      closeSession(sessionWs);
+    sessionWs = new WebSocket(url);
     sessionWs.onclose = () => {
-      setTimeout(() => initSessionWs(1), 5000);
+      if (!attempt)
+        attempt = 1;
+      const delay = Math.min(attempt * 5000, 30000);
+      setTimeout(() => initSessionWs(attempt + 1).then(() => resolve()), delay);
     };
-  };
-  sessionWs.onmessage = event => {
-    const args = event.data.split(wsDelim);
-    const command = args[0];
-    if (sessionCommandHandlers.hasOwnProperty(command)) {
-      const params = args.slice(1);
-      sessionCommandHandlers[command](params);
-      while (sessionCommandCallbackQueue[command].length)
-        sessionCommandCallbackQueue[command].shift()(params);
-    }
-  };
+    sessionWs.onopen = () => {
+      sessionWs.onclose = () => {
+        setTimeout(() => initSessionWs(1), 5000);
+      };
+      resolve();
+    };
+    sessionWs.onmessage = event => {
+      const args = event.data.split(wsDelim);
+      const command = args[0];
+      if (sessionCommandHandlers.hasOwnProperty(command)) {
+        const params = args.slice(1);
+        sessionCommandHandlers[command](params);
+        while (sessionCommandCallbackQueue[command].length)
+          sessionCommandCallbackQueue[command].shift()(params);
+      }
+    };
+  });
 }
 
 function closeSession() {
