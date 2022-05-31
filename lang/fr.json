@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -166,7 +166,7 @@
             }
           },
           "saveSync": {
-            "label": "Syncronisation de la sauvegarde",
+            "label": "Synchronisation de la sauvegarde",
             "fields": {
               "saveUploading": "Sauvegarde en cours de téléversement",
               "saveUploaded": "La sauvegarde a été téléversée",
@@ -183,14 +183,14 @@
         "fields": {
           "badge": "Badge",
           "badgeGallery": "Gérer la galerie des badges",
-          "toggleSaveSync": "Syncronisation de la sauvegarde (Expérimental)",
+          "toggleSaveSync": "Synchronisation de la sauvegarde (Expérimental)",
           "saveSyncSlotId": {
-            "label": "Empacement de la sauvegarde syncronisée",
+            "label": "Emplacement de la sauvegarde synchronisée",
             "values": {
               "0": "Aucune"
             }
           },
-          "clearSaveSync": "Effacer les données de la sauvegarde syncronisée"
+          "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
         }
       },
       "badges": {
@@ -391,13 +391,13 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisé seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
+      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
     },
     "toast": {
       "system": {
         "siteUpdates": "Le site a été mis a jour. Veuillez rafraichir la page pour les nouvelles fonctionnalités.",
-        "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu seul."
+        "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu solo."
       },
       "account": {
         "loggedIn": "Vous êtes connecté en tant que {USER}.",
@@ -431,7 +431,7 @@
         "saveDownloading": "Mise à jour des données enregistrées dans le slot {SLOT}...",
         "saveDownloaded": "Le slot de la sauvegarde {SLOT} a été mis à jour avec succès.",
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
-        "saveCleared": "Les données de la synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils."
+        "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils."
       }
     },
     "events": {
