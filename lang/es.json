@@ -83,7 +83,7 @@
           "confirmPassword": "Confirmar Contraseña"
         },
         "submit": "Enviar",
-        "loginPrompt": "¿Ya estás registrado?&nbsp;",
+        "loginPrompt": "¿Ya está registrado?&nbsp;",
         "login": "Iniciar Sesión"
       },
       "settings": {
@@ -100,7 +100,7 @@
           },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
-          "toggleTabToChat": "Presiona Tab para chatear",
+          "toggleTabToChat": "Presionar Tab para chatear",
           "toggleRankings": "Clasificaciones",
           "toggleFloodProtection": "Protección de Flood"
         },
@@ -182,7 +182,7 @@
         "title": "Configuración de Cuenta",
         "fields": {
           "badge": "Medallas",
-          "badgeGallery": "Administrar Galería de Medallas",
+          "badgeGallery": "Galería de Medallas",
           "toggleSaveSync": "Sincronización de Savefiles (Experimental)",
           "saveSyncSlotId": {
             "label": "Ranura de Savefile a Sincronizar",
@@ -197,7 +197,7 @@
         "title": "Medallas"
       },
       "badgeGallery": {
-        "title": "Administrar Galería de Medallas"
+        "title": "Galería de Medallas"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
@@ -276,17 +276,17 @@
       "unevendream": "Uneven Dream",
       "braingirl": "Braingirl"
     },
-    "leavePage": "¿Estás seguro de que quieres abandonar la página? Todo progreso que no haya sido guardado se perderá.",
+    "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "io": {
       "common": {
         "failedSlotInput": "La ranura seleccionada no es válida: Ingrese un número de ranura para el archivo de guardado entre 1 y 15."
       },
       "upload": {
-        "slotInput": "Ingresa el número de ranura en el cual se desea cargar el archivo de guardado (1 al 15).",
-        "invalidSaveFile": "Selecciona un archivo de guardado válido (formato .lsd)."
+        "slotInput": "Ingrese el número de ranura en el cual se desea cargar el archivo de guardado (1 al 15).",
+        "invalidSaveFile": "Seleccione un archivo de guardado válido (formato .lsd)."
       },
       "download": {
-        "slotInput": "Ingresa el número de ranura en el cual se encuentra el archivo de guardado que se quiere descargar (1 al 15).",
+        "slotInput": "Ingrese el número de ranura en el cual se encuentra el archivo de guardado que se quiere descargar (1 al 15).",
         "emptySlot": "¡Ups! El archivo de guardado en la ranura seleccionada parece estar vacío."
       }
     },
@@ -327,7 +327,7 @@
       "admin": {
         "ban": {
           "label": "Banear {PLAYER}",
-          "confirm": "¿Estás seguro que deseas banear permanentemente a {PLAYER}?",
+          "confirm": "¿Está seguro de que desea banear permanentemente a {PLAYER}?",
           "success": "{PLAYER} ha sido baneado."
         },
         "grantBadge": {
@@ -379,24 +379,24 @@
       "tips": {
         "backupReminder": "Se recomienda descargar frecuentemente los archivos de guardado para evitar perder el progreso en el juego en el caso de que la caché del navegador sea borrada.",
         "menuTheme": "Tu color de nombre y estilo en la lista de jugadores cambia dependiendo del menú que selecciones dentro del juego.",
-        "playersInMap": "Puedes alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
-        "globalChatLocation": "Puedes ver la ubicación desde donde se envío un mensaje global presionando el ícono de globo a la izquierda del mensaje. Puedes volver a presionar el ícono para ocultar esta información.",
+        "playersInMap": "Puede alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
+        "globalChatLocation": "Puede ver la ubicación desde donde se envío un mensaje global presionando el ícono de globo a la izquierda del mensaje. Puede volver a presionar el ícono para ocultar esta información.",
         "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "Si juegas en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
-        "chatTabNotifications": "Cuando te encuentras en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
-        "clearChat": "Cuando presionas el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
+        "tabToChat": "Si juega en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
+        "chatTabNotifications": "Cuando se encuentra en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
+        "clearChat": "Cuando presiona el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
-        "immersionMode": "Si prefieres una experiencia inmersiva sobre una social, intenta el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
+        "immersionMode": "Si prefiere una experiencia inmersiva sobre una social, intente el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
       }
     },
     "saveSync": {
-      "confirmEnable": "¿Desea activar la sincronización de savefile? La información del savefile sincronizado será guardado en nuestros servidores, permitiendo que sea accedido desde cualquier dispositivo o navegador en donde esta funcionalidad esté activada. Mientras esté activado, el savefile será automáticamente actualizado al cargar la página.",
-      "confirmEnableWithData": "Se encontró un savefile sincronizado relacionado a esta cuenta. El savefile que se encuentre en la ranura sincronizada será sobreescrito con la información encontrada en nuestros servidores. Esto solo tendrá efecto al actualizar la págia teniendo esta funcionalidad activada. ¿Está seguro que desea activar la sincronización de savefile?"
+      "confirmEnable": "¿Desea activar la sincronización de savefile? El savefile que se encuentre en la ranura sincronizada será guardado en nuestros servidores, permitiendo que sea accedido desde cualquier dispositivo o navegador en donde esta funcionalidad esté activada. Mientras esté activado, el savefile que esté en la ranura indicada será automáticamente cargado al abrir la página.",
+      "confirmEnableWithData": "Se encontró un savefile sincronizado relacionado a esta cuenta. El savefile que se encuentre en la ranura sincronizada será sobreescrito con la información encontrada en nuestros servidores. Esto solo tendrá efecto al actualizar la página teniendo esta funcionalidad activada. ¿Está seguro que desea activar la sincronización de savefile?"
     },
     "toast": {
       "system": {
-        "siteUpdates": "El sitio ha sido actualizado. Recarga la página para obtener los nuevos cambios.",
+        "siteUpdates": "El sitio ha sido actualizado. Recargue la página para obtener los nuevos cambios.",
         "floodDetected": "Posible Flood Attack detectado: Activando modo solitario."
       },
       "account": {
@@ -406,9 +406,9 @@
       "parties": {
         "create": "{PARTY} ha sido creado.",
         "update": "{PARTY} ha sido actualizado.",
-        "join": "Te has unido a {PARTY}.",
-        "leave": "Has abandonado {PARTY}.",
-        "remove": "Has sido expulsado de {PARTY}.",
+        "join": "Se ha unido a {PARTY}.",
+        "leave": "Ha abandonado {PARTY}.",
+        "remove": "Ha sido expulsado de {PARTY}.",
         "disband": "{PARTY} ha sido eliminado.",
         "playerJoin": "{PLAYER} se ha unido al equipo.",
         "playerLeave": "{PLAYER} ha dejado el equipo.",
@@ -426,11 +426,11 @@
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
       "saveSync": {
-        "saveUploading": "Cargando savefile en ranura {SLOT}...",
-        "saveUploaded": "El savefile en la ranura {SLOT} ha sido cargado.",
+        "saveUploading": "Cargando savefile en ranura {SLOT} a nuestros servidores...",
+        "saveUploaded": "El savefile en la ranura {SLOT} ha sido guardado en nuestros servidores.",
         "saveDownloading": "Actualizando savefile en la ranura {SLOT}...",
         "saveDownloaded": "El savefile en la ranura {SLOT} ha sido actualizado exitosamente.",
-        "saveUpToDate": "El savefile se encuentra actualizado.",
+        "saveUpToDate": "La ranura sincronizada se encuentra actualizada.",
         "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos."
       }
     },
@@ -474,8 +474,8 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "medallas",
-          "valueLabel": "# de Medallas",
+          "label": "Medallas",
+          "valueLabel": "Medallas",
           "value": "{NUMBER}"
         },
         "bp": {
@@ -490,12 +490,12 @@
         },
         "eventLocationCount": {
           "label": "Expediciones",
-          "valueLabel": "# de Expediciones",
+          "valueLabel": "Expediciones",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
           "label": "Expedición Libre",
-          "valueLabel": "# de Expediciones",
+          "valueLabel": "Expediciones",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
