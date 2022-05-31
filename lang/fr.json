@@ -426,12 +426,12 @@
         "badgeUnlocked": "Vous avez obtenu un nouveau badge!"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "Téléchargement des données de sauvegarde du slot {SLOT}...",
+        "saveUploaded": "Vos données de sauvegarde de l'emplacement {SLOT} ont été téléchargées.",
+        "saveDownloading": "Mise à jour des données enregistrées dans le slot {SLOT}...",
+        "saveDownloaded": "Le slot de la sauvegarde {SLOT} a été mis à jour avec succès.",
+        "saveUpToDate": "Les données de sauvegarde sont à jour.",
+        "saveCleared": "Les données de la synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils."
       }
     },
     "events": {
