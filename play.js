@@ -91,7 +91,6 @@ function onUpdateConnectionStatus(status) {
 
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
-    fetchAndUpdatePlayerCount();
     checkEventLocations();
     if (!hasConnected) {
       addChatTip();
@@ -172,12 +171,9 @@ function checkLogin() {
 
 let playerCount;
 
-function fetchAndUpdatePlayerCount() {
-  apiFetch('players')
-    .then(response => response.text())
-    .then(count => updatePlayerCount(count))
-    .catch(err => console.error(err));
-}
+(function () {
+  addSessionCommandHandler('pc', args => updatePlayerCount(parseInt(args[0])));
+})();
 
 function updatePlayerCount(count) {
   if (isNaN(count))
@@ -1408,9 +1404,6 @@ onResize();
 loadOrInitConfig(globalConfig, true);
 loadOrInitConfig(config);
 loadOrInitCache();
-
-fetchAndUpdatePlayerCount();
-setInterval(fetchAndUpdatePlayerCount, 15000);
 
 initDefaultSprites();
 updateBadges();
