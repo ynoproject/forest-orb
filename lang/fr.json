@@ -15,7 +15,7 @@
       "logout": "Se déconnecter"
     },
     "fontStyle": {
-      "label": "Style de police&nbsp;:",
+      "label": "Style de police:",
       "values": {
         "style1": "Style 1",
         "style2": "Style 2",
@@ -27,19 +27,19 @@
       }
     },
     "chatbox": {
-      "location": "Lieu&nbsp;:&nbsp;",
+      "location": "Lieu:",
       "immersionMode": "Mode Immersion",
       "tab": {
         "chat": "Chat",
         "players": "Joueurs",
-        "parties": "Parties"
+        "parties": "Groupe"
       },
       "chat": {
         "tab": {
           "all": "Tout",
-          "map": "Map",
+          "map": "Carte",
           "global": "Global",
-          "party": "Partie"
+          "party": "Groupe"
         },
         "nickname": {
           "header": "Choisissez un pseudonyme pour pouvoir discuter.",
@@ -51,8 +51,8 @@
       },
       "players": {
         "tab": {
-          "map": "Map",
-          "party": "Party"
+          "map": "Carte",
+          "party": "Groupe"
         }
       }
     },
@@ -91,7 +91,7 @@
         "fields": {
           "lang": "Langue",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "Visibilitée de la localisation en jeu",
             "values": {
               "private": "Privé",
               "friends": "Amis",
@@ -102,7 +102,7 @@
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
           "toggleRankings": "Rangs",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleFloodProtection": "Protection Anti-Spam"
         },
         "notificationSettings": "Paramètres de notification",
         "accountSettings": "Paramètres du compte"
@@ -124,7 +124,7 @@
             "label": "Système",
             "fields": {
               "siteUpdates": "Site mis à jour",
-              "floodDetected": "Possible Flood Attack Detected"
+              "floodDetected": "Possible attaque Spam détectée"
             }
           },
           "account": {
@@ -135,24 +135,24 @@
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "Groupes",
             "fields": {
-              "create": "Parti créé",
-              "update": "Partie mise à jour",
-              "join": "Partie rejoint",
-              "leave": "Partie quitté",
-              "remove": "Retiré de la partie",
-              "disband": "Partie dissoute",
-              "playerJoin": "Le joueur a rejoint la partie",
-              "playerLeave": "Le joueur a quitté la partie",
-              "playerOnline": "Membre de la partie en ligne",
-              "playerOffline": "Membre de la partie hors ligne",
-              "kickPlayer": "Kicked Player From Party",
-              "transferPartyOwner": "Promu(e) chef de la partie"
+              "create": "Le Groupe à été créé",
+              "update": "Groupe mis à jour",
+              "join": "Rejoindre le groupe",
+              "leave": "Quitter le groupe",
+              "remove": "Retiré du groupe",
+              "disband": "Groupe dissoute",
+              "playerJoin": "Le joueur a rejoint le groupe",
+              "playerLeave": "Le joueur a quitté le groupe",
+              "playerOnline": "Membre du groupe en ligne",
+              "playerOffline": "Membre du groupe hors ligne",
+              "kickPlayer": "Expluser le joueur du groupe",
+              "transferPartyOwner": "Promu(e) chef du groupe"
             }
           },
           "eventLocations": {
-            "label": "Expeditions",
+            "label": "Expéditions",
             "fields": {
               "complete": "Expédition terminée",
               "freeComplete": "Expédition gratuite terminée",
@@ -166,12 +166,12 @@
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "Syncronisation de la sauvegarde",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Downloaded",
+              "saveUploading": "Sauvegarde en cours de téléversement",
+              "saveUploaded": "La sauvegarde a été téléversée",
               "saveDownloading": "Téléchargement de la sauvegarde",
-              "saveDownloaded": "Sauvegarde Télécharger",
+              "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
               "saveCleared": "Sauvegarde Effacée"
             }
@@ -183,14 +183,14 @@
         "fields": {
           "badge": "Badge",
           "badgeGallery": "Gérer la galerie des badges",
-          "toggleSaveSync": "Save Sync (Experimental)",
+          "toggleSaveSync": "Syncronisation de la sauvegarde (Expérimental)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "Empacement de la sauvegarde syncronisée",
             "values": {
-              "0": "None"
+              "0": "Aucune"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "Effacer les données de la sauvegarde syncronisée"
         }
       },
       "badges": {
@@ -205,11 +205,11 @@
       },
       "createParty": {
         "title": {
-          "create": "Créer la Partie",
-          "update": "Modifier la Partie"
+          "create": "Créer le Groupe",
+          "update": "Modifier le Groupe"
         },
         "fields": {
-          "partyName": "Nom de la Partie",
+          "partyName": "Nom du Groupe",
           "description": "Description",
           "public": "Publique",
           "password": "Mot de passe",
@@ -220,17 +220,17 @@
         "submit": "Soumettre"
       },
       "joinPrivateParty": {
-        "title": "Rejoindre une partie privée",
+        "title": "Rejoindre un groupe privé",
         "fields": {
           "password": "Mot de passe"
         },
         "showPassword": "Montrer le mot de passe",
         "hidePassword": "Masquer le mot de passe",
-        "incorrectPassword": "Mot de passe incorrect : veuillez réessayer.",
+        "incorrectPassword": "Mot de passe incorrect: veuillez réessayer.",
         "submit": "Soumettre"
       },
       "eventLocations": {
-        "title": "Expeditions",
+        "title": "Expéditions",
         "rankExp": "Prochain rang",
         "weekExp": "ExP cette semaine"
       },
@@ -241,8 +241,8 @@
     "tooltips": {
       "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
       "io": {
-        "upload": "Ouvrir un Fichier de Sauvegarde",
-        "download": "Télécharger un Fichier de Sauvegarde"
+        "upload": "Téléverser un fichier de sauvegarde",
+        "download": "Télécharger un fichier de sauvegarde"
       },
       "uiTheme": "Thème UI",
       "toggleChat": "Afficher le Chat",
@@ -255,10 +255,10 @@
         "clearChat": "Effacer le Chat"
       },
       "parties": {
-        "createParty": "Créer une Partie",
-        "disbandParty": "Dissoudre la Partie"
+        "createParty": "Créer un Groupe",
+        "disbandParty": "Dissoudre le Groupe"
       },
-      "eventLocations": "Expeditions",
+      "eventLocations": "Expéditions",
       "rankings": "Rangs",
       "nexus": "Retourner au Nexus"
     }
@@ -309,14 +309,14 @@
       "plural": "{COUNT} Joueurs en Ligne"
     },
     "playersInMap": {
-      "singular": "{COUNT} Joueur sur la Map",
-      "plural": "{COUNT} Joueurs sur la Map"
+      "singular": "{COUNT} Joueur sur la Carte",
+      "plural": "{COUNT} Joueurs sur la Carte"
     },
     "playerList": {
       "unnamed": "Joueur Sans Nom",
       "actions": {
-        "partyKick": "Kick From Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "partyKick": "Expluser du Groupe",
+        "transferPartyOwner": "Transférer le Groupe"
       }
     },
     "roles": {
@@ -326,18 +326,18 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Êtes-vous sûr de vouloir bannir définitivement {PLAYER} ?",
+          "label": "Bannir {PLAYER}",
+          "confirm": "Êtes-vous sûr de vouloir bannir définitivement {PLAYER} ?",
           "success": "{PLAYER} a été banni."
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Donner un Badge",
+          "prompt": "Entrez l'ID du badge à donner à {PLAYER}",
+          "success": "{BADGE} à été donné à {PLAYER} avec succès.",
+          "fail": "Aucun badge avec cet ID n'a été trouvé."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
+          "label": "Révoquer un Badge",
           "prompt": "Entrez l'ID du badge à révoquer pour {PLAYER}.",
           "success": "{BADGE} a été révoqué avec succès de {PLAYER}.",
           "fail": "Aucun badge n'a été trouvé pour l'ID de badge fourni."
@@ -360,18 +360,18 @@
       }
     },
     "parties": {
-      "emptyMessage": "Il n'y a actuellement aucun parti actif.",
-      "yourParty": "Ta partie",
-      "defaultPartyName": "{OWNER}'s Party",
-      "partyOwner": "Party Leader",
-      "offlineMemberSuffix": " (Offline)",
+      "emptyMessage": "Il n'y a actuellement aucun groupe actif.",
+      "yourParty": "Votre groupe",
+      "defaultPartyName": "Groupe de {OWNER}",
+      "partyOwner": "Leader du groupe",
+      "offlineMemberSuffix": " (Hors-ligne)",
       "onlineCount": "En ligne - {COUNT}",
       "offlineCount": "Hors ligne - {COUNT}",
       "actions": {
-        "viewPartyDetails": "Voir les détails de la partie",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Rejoindre une partie privé",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "Voir les détails du groupe",
+        "joinParty": "Rejoindre le groupe",
+        "joinPrivateParty": "Rejoindre un groupe privé",
+        "leaveParty": "Quitter le groupe"
       }
     },
     "chatTips": {
@@ -379,15 +379,15 @@
       "tips": {
         "backupReminder": "Il est recommandé de conserver une sauvegarde locale de votre progression en téléchargeant régulièrement votre sauvegarde. De cette façon, si les données de votre navigateur sont effacées, vous ne perdrez pas votre progression.",
         "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
-        "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la map en cliquant sur le label.",
+        "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la carte en cliquant sur le label.",
         "globalChatLocation": "Vous pouvez voir la localisation d'un message global en survolant ou cliquant sur l'icône de globe à gauche de ce dernier. Afficher ou cacher la localisation d'un message global affichera ou cachera la localisation des messages globaux qui suivront.",
         "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
         "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyer sur la touche de tabulation pour basculer entre le jeu et l'entrée de chat. Cette fonctionnalité peut être désactivée dans les paramètres sous 'Appuyez sur Tab pour discuter'.",
         "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
         "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la chat box, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
-        "parties": "Les parties sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
+        "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
-        "openSource": "YNOProject est un projet open source, et le code source est disponible sur https://github.com/ynoproject/"
+        "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/."
       }
     },
     "saveSync": {
@@ -396,8 +396,8 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "siteUpdates": "Le site a été mis a jour. Veuillez rafraichir la page pour les nouvelles fonctionnalités.",
+        "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu seul."
       },
       "account": {
         "loggedIn": "Vous êtes connecté en tant que {USER}.",
@@ -406,24 +406,24 @@
       "parties": {
         "create": "{PARTY} a été crée.",
         "update": "{PARTY} a été mis à jour.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "join": "Vous avez rejont {PARTY}.",
+        "leave": "Vous avez quitté {PARTY}.",
+        "remove": "Vous avez été explusé(e) de {PARTY}.",
+        "disband": "{PARTY} à été dissoue.",
+        "playerJoin": "{PLAYER} à rejoint le groupe.",
+        "playerLeave": "{PLAYER} à quitté le groupe.",
+        "playerOnline": "{PLAYER} est maintenant en-ligne.",
+        "playerOffline": "{PLAYER} est maintenant hors-ligne.",
+        "kickPlayer": "{PLAYER} à été explusé de la partie.",
+        "transferPartyOwner": "{PLAYER} est maintenant le leader du groupe."
       },
       "eventLocations": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "Expédition terminée!\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
+        "freeComplete": "Expédition terminée! Vous avez visité(e) {LOCATION}.",
+        "listUpdated": "La liste d'expédition a été mis a jour."
       },
       "badges": {
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "Vous avez obtenu un nouveau badge!"
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",
@@ -435,13 +435,13 @@
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "exp": "{POINTS} EXP",
+      "expRank": "Rang: {RANK}",
+      "period": "Saison {ORDINAL}",
+      "periodEnds": "Finis le {DATE}",
+      "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
+        "-1": "Expédition gratuite",
         "0": "Quotidiennement",
         "1": "Hebdomadaire",
         "2": "Week-end",
@@ -459,66 +459,66 @@
     },
     "badges": {
       "null": "Pas de badge",
-      "badgeTitle": "{TITLE} - {BP} BP",
+      "badgeTitle": "{TITLE} - {PB} PB",
       "locked": "???",
       "location": "Location:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "{PERCENT}% de joueurs ont ce badge",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "Art par {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
+      "label": "Gallerie de {PLAYER}",
       "loading": "Chargement..."
     },
     "rankings": {
       "categories": {
         "badgeCount": {
           "label": "badges",
-          "valueLabel": "# of Badges",
+          "valueLabel": "# de Badges",
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
-          "value": "{NUMBER} BP"
+          "label": "PB (Points de Badges)",
+          "valueLabel": "PB",
+          "value": "{NUMBER} PB"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
-          "value": "{NUMBER} ExP"
+          "label": "EXP",
+          "valueLabel": "EXP",
+          "value": "{NUMBER} EXP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Expéditions",
+          "valueLabel": "# d'Expéditions",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Expéditions gratuites",
+          "valueLabel": "# d'Expéditions",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "Expédition terminée",
+          "valueLabel": "Complétée",
           "value": "{PERCENT}%"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Course-contre la montre",
+          "valueLabel": "Temps mis",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
+          "label": "Mini-jeux",
           "valueLabel": "Score",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "Tous",
+        "2": "Chaque effet",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)"
+        "rby": "Rouge Bleu Jaune (Mini-jeu B)"
       }
     },
     "2kki": {
