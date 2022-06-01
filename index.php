@@ -509,6 +509,11 @@
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
           </div>
           <div class="modalContent itemContainer"></div>
+          <?php if ($enableBadgeTools): ?>
+          <div class="modalFooter">
+            <button type="button" onclick="openModal('badgeToolsModal', null, 'badgesModal')">Badge Tools</button>
+          </div>
+          <?php endif ?>
         </div>
         <div id="badgeGalleryModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
