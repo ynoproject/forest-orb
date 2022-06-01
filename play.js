@@ -1021,6 +1021,11 @@ function initLocalization(isInitial) {
 
       updateLocalizedBadgeGroups();
       updateLocalizedBadges();
+      if (typeof badgeTools !== 'undefined') {
+        badgeTools.localizedMessages = {
+          games: localizedMessages.games
+        };
+      }
 
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
@@ -1407,6 +1412,8 @@ loadOrInitCache();
 
 initDefaultSprites();
 updateBadges();
+if (typeof initBadgeTools === 'function')
+  initBadgeTools();
 fetchAndPopulateYnomojiConfig();
 
 if (!loadedUiTheme)

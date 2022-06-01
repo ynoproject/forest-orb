@@ -100,6 +100,10 @@ input, select {
   position: relative;
 }
 
+input[type='number'] {
+  width: 64px;
+}
+
 button.checkboxButton, button[type="button"], button[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
@@ -216,7 +220,7 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .rankingCategoryTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .modalTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
@@ -224,7 +228,7 @@ body {
     transform: scale(1.25);
   }
 
-  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, .rankingCategoryTab:hover .rankingCategoryTabLabel, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
+  #nexusButton:hover, .chatboxTab:hover .chatboxTabLabel, .item:not(.disabled):hover, .modalTab:hover .modalTabLabel, button.checkboxButton:hover, button[type="button"]:not(:disabled):hover, button[type="submit"]:hover {
     transform: scale(1.1);
   }
 }
@@ -1147,7 +1151,7 @@ body.fullBg #background {
   font-weight: normal;
 }
 
-#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage {
+#chatInputContainer, #ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .modalTab, .infoMessage {
   border: 8px solid transparent;
 }
 
@@ -1280,7 +1284,7 @@ body.fullBg #background {
   top: calc(-200% + 8px);
 }
 
-#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .rankingCategoryTab, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+#ynomojiContainer, #enterNameContainer, .chatboxTab, .chatboxTabSection, .modalTab, .infoMessage, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border-image: var(--border-image-url) 10 repeat !important;
 }
 
@@ -1395,6 +1399,10 @@ body.fullBg #background {
 
 .modal.fullBg {
   background-size: calc(100vh - 80px);
+}
+
+.modal.wideModal {
+  max-width: min(720px, calc(100% - 112px));
 }
 
 .fullscreenModal {
@@ -1677,11 +1685,21 @@ body.fullBg #background {
   padding: 0;
 }
 
+.formControls.flexFormControls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .formControlRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
+}
+
+.formControls.flexFormControls .formControlRow.fullWidth {
+  width: 100%;
 }
 
 .formControlRow.indent {
@@ -1716,8 +1734,49 @@ body.fullBg #background {
   padding-right: 8px;
 }
 
+.formControlRow > label:not(:first-child), .formControlRow > div:not(:first-child) > label {
+  margin-left: 16px;
+}
+
 .formControlRow div {
   text-align: right;
+}
+
+.modalTabsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.modalTab {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 4px;
+  margin-right: 4px;
+  pointer-events: all;
+  cursor: pointer;
+  opacity: 0.625;
+  transition: opacity 0.325s ease-in-out;
+}
+
+.modalTab:hover {
+  opacity: 1;
+}
+
+.modalTab.active {
+  z-index: 2;
+  pointer-events: none;
+  cursor: default;
+  opacity: 1;
+}
+
+.modalTabLabel {
+  pointer-events: none;
+  font-weight: normal;
 }
 
 .uiTheme {
@@ -1933,43 +1992,6 @@ form .uiTheme {
   padding-right: 16px;
   text-align: right;
   white-space: nowrap;
-}
-
-#rankingCategoryTabs {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-bottom: 8px;
-}
-
-.rankingCategoryTab {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  text-align: center;
-  padding: 4px;
-  margin-right: 4px;
-  pointer-events: all;
-  cursor: pointer;
-  opacity: 0.625;
-  transition: opacity 0.325s ease-in-out;
-}
-
-.rankingCategoryTab:hover {
-  opacity: 1;
-}
-
-.rankingCategoryTab.active {
-  z-index: 2;
-  pointer-events: none;
-  cursor: default;
-  opacity: 1;
-}
-
-.rankingCategoryTabLabel {
-  pointer-events: none;
-  font-weight: normal;
 }
 
 #rankingSubCategoryTabs {
@@ -2523,7 +2545,7 @@ form .uiTheme {
 
 /* Safari only */
 @media not all and (min-resolution:.001dpcm) {
-  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .rankingCategoryTab, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
+  #layout::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, #layout::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, #header, #ynomojiContainer, #enterNameContainer, .container, .modal, .chatboxTab, .chatboxTabSection, #chatBorder, .modalTab, .toast, input, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
     border-color: unset !important;
   }
 
@@ -2561,7 +2583,7 @@ form .uiTheme {
   }
 
    /* Don't use text background on Safari since it doesn't repeat properly */
-   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .rankingCategoryTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label, th {
+   #enterNameInstruction, .messageContents, .nameText, .nameMarker, .chatboxTabLabel, .subTabLabel, .modalTabLabel, .notice, .instruction, .infoLabel, .infoText, .locationLink, .altText, .toastMessage, h1, h2, h3, h4, a, label, th {
     -webkit-text-fill-color: unset;
     background-image: none !important;
   }

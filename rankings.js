@@ -58,6 +58,7 @@ function fetchAndPopulateRankingCategories() {
 
         const tab = document.createElement('div');
         tab.classList.add('rankingCategoryTab');
+        tab.classList.add('modalTab');
         if (categoryId === rankingCategoryId)
           tab.classList.add('active');
         tab.onclick = function () {
@@ -83,6 +84,7 @@ function fetchAndPopulateRankingCategories() {
 
         const tabLabel = document.createElement('label');
         tabLabel.classList.add('rankingCategoryTabLabel');
+        tabLabel.classList.add('modalTabLabel');
         tabLabel.classList.add('unselectable');
         tabLabel.innerHTML = getMassagedLabel(localizedMessages.rankings.categories[categoryId].label, true);
 
