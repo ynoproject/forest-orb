@@ -27,7 +27,8 @@ let globalConfig = {
   chatTipIndex: -1,
   tabToChat: true,
   disableFloodProtection: false,
-  hideRankings: false
+  hideRankings: false,
+  badgeToolsData: null
 };
 
 let config = {

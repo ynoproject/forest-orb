@@ -10,9 +10,9 @@ function initAccountControls() {
       .then(response => {
         if (!response.ok)
           console.error(response.statusText);
+        setCookie('sessionId', '');
+        fetchAndUpdatePlayerInfo();
       }).catch(err => console.error(err));
-    setCookie('sessionId', '');
-    fetchAndUpdatePlayerInfo();
   };
 
   document.getElementById('loginForm').onsubmit = function () {

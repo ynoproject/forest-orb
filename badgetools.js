@@ -34,8 +34,10 @@ function initBadgeTools() {
         trigger: '',
         value: '',
         values: [],
-        timeTrial: false
-      }
+        timeTrial: false,
+
+        deleted: false
+      };
     },
     computed: {
      switchModeOptions() {
@@ -105,6 +107,19 @@ function initBadgeTools() {
           this.varValues.push(0);
           this.varOps.push('=');
         }
+      },
+      deleteTag() {
+        let index = this.index;
+        const tags = this.$parent.tags;
+        tags[index].deleted = true;
+        while (index < tags.length - 1 && tags[++index].deleted);
+        if (tags[index].deleted) {
+          index = this.index;
+          while (index && tags[--index].deleted);
+        }
+        this.$parent.tagIndex = index;
+        if (this.$parent.reqType === 'tags')
+          this.$parent.reqStrings[this.index] = null;
       }
     },
     watch: {
@@ -149,8 +164,6 @@ function initBadgeTools() {
     },
     mounted() {
       this.mapId = this.$parent.map;
-    },
-    updated() {
       switch (this.$parent.reqType) {
         case 'tag':
           this.$parent.reqString = this.tagId;
@@ -160,13 +173,17 @@ function initBadgeTools() {
           break;
       }
       this.$parent.tags[this.index] = this;
+    },
+    updated() {
+      this.$parent.tags[this.index] = this;
+      this.$root.save();
     }
   };
 
   const badge = {
     template: '#badgeTemplate',
-    components: { tag },
     props: [ 'index' ],
+    components: { tag },
     data() {
       return {
         badgeId: '',
@@ -180,7 +197,7 @@ function initBadgeTools() {
         art: null,
         animated: false,
         bp: 10,
-        reqType: 'tag',
+        reqType: null,
         reqInt: null,
         reqString: null,
         reqStrings: [],
@@ -201,8 +218,9 @@ function initBadgeTools() {
         dev: false,
 
         tagIndex: 0,
-        tags: []
-      }
+        tags: [],
+        deleted: false
+      };
     },
     computed: {
       gameName() {
@@ -242,19 +260,26 @@ function initBadgeTools() {
     },
     methods: {
       addTag() {
-        let tagIndex;
+        let newTag = null;
         switch (this.reqType) {
           case 'tag':
-            tagIndex = 0;
             this.reqString = '';
-            this.tags.push({ index: 0 });
+            newTag = { deleted: false };
             break;
           case 'tags':
-            tagIndex = this.reqStrings.length;
+            const tagIndex = this.reqStrings.length;
             this.reqStrings.push('');
-            this.tags.push({ index: tagIndex });
+            newTag = { deleted: false };
+            if (this.$root.initialized)
+              this.tagIndex = tagIndex;
             break;
         }
+
+        this.tags.push(newTag);
+      },
+      deleteBadge() {
+        while (this.$root.badgeIndex > 1 && this.$root.badges[--this.$root.badgeIndex].deleted);
+        this.$root.badges[this.index].deleted = true;
       }
     },
     watch: {
@@ -283,10 +308,12 @@ function initBadgeTools() {
     },
     mounted() {
       this.gameId = gameId;
-      this.addTag();
+      this.reqType = 'tag';
+      this.$root.badges[this.index] = this;
     },
     updated() {
       this.$root.badges[this.index] = this;
+      this.$root.save();
     }
   };
 
@@ -294,6 +321,8 @@ function initBadgeTools() {
     components: { badge },
     data() {
       return {
+        initialized: false,
+        saveQueued: false,
         localizedMessages: null,
         badgeIndex: 0,
         badges: []
@@ -302,7 +331,76 @@ function initBadgeTools() {
     methods: {
       addBadge() {
         const badgeIndex = this.badges.length;
-        this.badges.push({ index: badgeIndex });
+        const newBadge = { deleted: false };
+        this.badges.push(newBadge);
+        if (this.initialized)
+          this.badgeIndex = badgeIndex;
+      },
+      getBadgeData() {
+        const badges = [];
+
+        if (this.badges.length) {
+          let badgeDataKeys;
+          let tagDataKeys;
+
+          for (let badge of this.badges) {
+            if (!badge?.$data || badge.deleted)
+              continue;
+            if (!badgeDataKeys)
+              badgeDataKeys = Object.keys(badge.$data);
+            const badgeObj = {};
+            for (let badgeKey of badgeDataKeys) {
+              switch (badgeKey) {
+                case 'tags':
+                  badgeObj.tags = [];
+                  for (let tag of badge.tags) {
+                    if (!tag?.$data || tag.deleted)
+                      continue;
+                    if (!tagDataKeys)
+                      tagDataKeys = Object.keys(tag.$data);
+                    const tagObj = {};
+                    for (let tagKey of tagDataKeys) {
+                      switch (tagKey) {
+                        case 'varOp':
+                          merge(tag, tagObj, tagKey, op => op === '=');
+                          break;
+                        case 'varOps':
+                          merge(tag, tagObj, tagKey, ops => !ops.filter(op => op !== '='));
+                          break;
+                        default:
+                          merge(tag, tagObj, tagKey);
+                          break;
+                      }
+                    }
+                    badgeObj.tags.push(tagObj);
+                  }
+                  break;
+                case 'reqString':
+                case 'reqStrings':
+                case 'tagIndex':
+                  break;
+                default:
+                  merge(badge, badgeObj, badgeKey);
+                  break;
+              }
+            }
+            badges.push(badgeObj);
+          }
+        }
+
+        return badges;
+      },
+      save() {
+        if (!this.initialized || this.saveQueued)
+          return;
+        this.saveQueued = true;
+        const self = this;
+        Vue.nextTick(() => {
+          const data = this.getBadgeData();
+          globalConfig.badgeToolsData = data;
+          updateConfig(globalConfig, true);
+          self.saveQueued = false;
+        });
       },
       exportZip() {
         const zip = new JSZip();
@@ -316,7 +414,7 @@ function initBadgeTools() {
         const badges = this.badges;
 
         for (let badge of badges) {
-          if (!badge.badgeId)
+          if (!badge.badgeId || badge.deleted)
             continue;
 
           badge.bp = parseInt(badge.bp);
@@ -353,6 +451,9 @@ function initBadgeTools() {
 
           for (let prop of badgeMergeProps)
             merge(badge, badgeObj, prop);
+
+          if (badgeObj.reqStrings?.length)
+            badge.reqStrings = badge.reqStrings.filter(s => s);
             
           badgeGameFolder.file(`${badge.badgeId}.json`, JSON.stringify(badgeObj, null, 2));
 
@@ -363,7 +464,7 @@ function initBadgeTools() {
             tagsGameFolder = conditionsGameFolders[badge.gameId];
 
             for (let tag of badge.tags) {
-              if (!tag.tagId)
+              if (!tag.tagId || tag.deleted)
                 continue;
 
               const tagObj = {};
@@ -394,8 +495,19 @@ function initBadgeTools() {
                 'timeTrial'
               ];
 
-              for (let prop of tagMergeProps)
-                merge(tag, tagObj, prop);
+              for (let prop of tagMergeProps) {
+                switch (prop) {
+                  case 'varOp':
+                    merge(tag, tagObj, prop, op => op === '=');
+                    break;
+                  case 'varOps':
+                    merge(tag, tagObj, prop, ops => !ops.filter(op => op !== '='));
+                    break;
+                  default:
+                    merge(tag, tagObj, prop);
+                    break;
+                }
+              }
 
               tagsGameFolder.file(`${tag.tagId}.json`, JSON.stringify(tagObj, null, 2));
             }
@@ -427,14 +539,58 @@ function initBadgeTools() {
       }
     },
     mounted() {
-      this.addBadge();
+      const self = this;
+      if (globalConfig.badgeToolsData) {
+        const badges = this.badges;
+
+        for (let badgeData of globalConfig.badgeToolsData) {
+          badgeData = Object.assign({}, badgeData);
+          const tagsData = badgeData.tags;
+          if (tagsData)
+            delete badgeData.tags;
+
+          const badgeIndex = badges.length;
+          this.addBadge();
+
+          Vue.nextTick(() => {
+            const badge = badges[badgeIndex];
+
+            for (let prop of Object.keys(badgeData)) {
+              if (badgeData.hasOwnProperty(prop))
+                badge[prop] = badgeData[prop];
+            }
+
+            Vue.nextTick(() => {
+              if (tagsData) {
+                for (let t = 0; t < tagsData.length; t++) {
+                  const tagData = tagsData[t];
+                  const tagIndex = t;
+                  if (t)
+                    badge.addTag();
+
+                  Vue.nextTick(() => {
+                    const tag = badge.tags[tagIndex];
+
+                    for (let prop of Object.keys(tagData)) {
+                      if (tagData.hasOwnProperty(prop))
+                        tag[prop] = tagData[prop];
+                    }
+                  });
+                }
+              }
+            });
+          });
+        }
+      } else
+        this.addBadge(true);
+      setTimeout(() => self.initialized = true, 500);
     }
   });
   
   badgeTools.mount('#badgeToolsForm');
 }
 
-function merge(source, target, prop) {
-  if (source[prop] && (!Array.isArray(source[prop]) || source[prop].length))
+function merge(source, target, prop, defaultFunc) {
+  if (source[prop] && (!Array.isArray(source[prop]) || source[prop].length) && (!defaultFunc || !defaultFunc(source[prop])))
     target[prop] = source[prop];
 }

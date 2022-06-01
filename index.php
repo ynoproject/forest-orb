@@ -713,177 +713,188 @@
             <form id="badgeToolsForm" enctype="multipart/form-data" method="post" class="fullWidth" @submit="validateForm">
               <h3>Badge</h3>
               <div class="modalTabsContainer">
-                <div class="modalTab" :key="badge.badgeIndex" v-for="badge in badges" :class="{ active: badge.index === badgeIndex }" @click="badgeIndex = badge.index">
-                  <label class="modalTabLabel">{{badge.badgeId}} ({{badge.gameName}})</label>
-                </div>
+                <template :key="b" v-for="(badge, b) in badges">
+                  <div class="modalTab" v-if="!badge.deleted" :class="{ active: b === badgeIndex }" @click="badgeIndex = b">
+                    <label class="modalTabLabel">{{badge.badgeId}} ({{badge.gameName}})</label>
+                  </div>
+                </template>
                 <div class="modalTab" @click="addBadge()"><label class="modalTabLabel">+</label></div>
               </div>
-              <template v-show="b === badgeIndex" :key="b" v-for="(badge, b) in badges">
-                <badge :index="b"></badge>
+              <template :key="b" v-for="(badge, b) in badges">
+                <badge v-if="!badge.deleted" v-show="badge.index === badgeIndex" :index="b" />
               </template>
               <button type="button" @click="exportZip()">Export</button>
             </form>
           </div>
         </div>
         <template id="badgeTemplate">
-          <ul class="formControls flexFormControls">
-            <li class="formControlRow fullWidth">
-              <label class="unselectable">Badge ID</label><input v-model="badgeId" type="text" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Game</label>
-              <select v-model="gameId">
-                <option :key="gameOption.key" :value="gameOption.key" v-for="gameOption in gameOptions">{{gameOption.label}}</option>
-              </select>
-            </li>
-            <li class="formControlRow" v-if="groupOptions.length">
-              <label class="unselectable">Group</label>
-              <select v-model="group">
-                <option :key="groupOption.key" :value="groupOption.key" v-for="groupOption in groupOptions">{{groupOption.label}}</option>
-              </select>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Order</label>
-              <input v-model="order" type="number" min="0" max="9999" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Map Order</label>
-              <input v-model="mapOrder" type="number" min="0" max="9999" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Badge Name</label><input v-model="name" type="text" autocomplete="off" />
-            </li>
-            <li class="formControlRow fullWidth">
-              <div class="textareaContainer">
-                <label class="unselectable">Description</label>
-                <textarea v-model="description" class="autoExpand"></textarea>
-              </div>
-            </li>
-            <li class="formControlRow fullWidth">
-              <div class="textareaContainer">
-                <label class="unselectable">Condition</label>
-                <textarea v-model="condition" class="autoExpand"></textarea>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Artist</label><input v-model="art" type="text" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Animated</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: animated }" type="button" @click="animated = !animated"><span></span></button>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">BP</label>
-              <select v-model="bp">
-                <option :key="i" v-for="i in 11">{{(i - 1) * 5}}</option>
-              </select>
-            </li>
-            <li class="formControlRow fullWidth">
-              <label class="unselectable">Requirement Type</label>
-              <select id="badgeGroup" v-model="reqType">
-                <option value="">None (Mod Granted)</option>
-                <option value="tag">Tag</option>
-                <option value="tags">Multiple Tags</option>
-                <option value="timeTrial">Time Trial</option>
-              </select>
-            </li>
-            <li class="formControlRow" v-if="reqType === 'timeTrial'">
-              <label class="unselectable">Required Int</label>
-              <input v-model="reqInt" type="number" min="0" max="99999" autocomplete="off" />
-            </li>
-            <li class="formControlRow fullWidth" v-if="reqType === 'tags'">
-              <label class="unselectable">Tag Requirement Count</label>
-              <input v-model="reqCount" type="number" min="0" :max="reqStrings.length" autocomplete="off" />
-            </li>
-            <li class="formControlRow fullWidth">
-              <label class="unselectable">Map ID</label>
-              <input v-model="map" type="number" min="0" max="9999" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Secret</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: secret }" type="button" @click="secret = !secret"><span></span></button>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Secret Map</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: secretMap }" type="button" @click="secretMap = !secretMap"><span></span></button>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Secret</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: secretCondition }" type="button" @click="secretCondition = !secretCondition"><span></span></button>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Hidden</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: hidden }" type="button" @click="hidden = !hidden"><span></span></button>
-              </div>
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Parent Badge ID</label><input v-model="parent" type="text" autocomplete="off" />
-            </li>
-            <li class="formControlRow fullWidth">
-              <label class="unselectable">Overlay</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: overlay }" type="button" @click="overlay = !overlay"><span></span></button>
-              </div>
-            </li>
-            <template v-if="overlay">
+          <div>
+            <ul class="formControls flexFormControls">
+              <li class="formControlRow fullWidth">
+                <label class="unselectable">Badge ID</label><input v-model="badgeId" type="text" autocomplete="off" />
+              </li>
               <li class="formControlRow">
-                <label class="unselectable">Gradient</label>
-                <div>
-                  <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeGradient }" type="button" @click="overlayTypeGradient = !overlayTypeGradient"><span></span></button>
+                <label class="unselectable">Game</label>
+                <select v-model="gameId">
+                  <option :key="gameOption.key" :value="gameOption.key" v-for="gameOption in gameOptions">{{gameOption.label}}</option>
+                </select>
+              </li>
+              <li class="formControlRow" v-if="groupOptions.length">
+                <label class="unselectable">Group</label>
+                <select v-model="group">
+                  <option :key="groupOption.key" :value="groupOption.key" v-for="groupOption in groupOptions">{{groupOption.label}}</option>
+                </select>
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Order</label>
+                <input v-model="order" type="number" min="0" max="9999" autocomplete="off" />
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Map Order</label>
+                <input v-model="mapOrder" type="number" min="0" max="9999" autocomplete="off" />
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Badge Name</label><input v-model="name" type="text" autocomplete="off" />
+              </li>
+              <li class="formControlRow fullWidth">
+                <div class="textareaContainer">
+                  <label class="unselectable">Description</label>
+                  <textarea v-model="description" class="autoExpand"></textarea>
+                </div>
+              </li>
+              <li class="formControlRow fullWidth">
+                <div class="textareaContainer">
+                  <label class="unselectable">Condition</label>
+                  <textarea v-model="condition" class="autoExpand"></textarea>
                 </div>
               </li>
               <li class="formControlRow">
-                <label class="unselectable">Multiply</label>
+                <label class="unselectable">Artist</label><input v-model="art" type="text" autocomplete="off" />
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Animated</label>
                 <div>
-                  <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeMultiply }" type="button" @click="overlayTypeMultiply = !overlayTypeMultiply"><span></span></button>
+                  <button class="checkboxButton unselectable" :class="{ toggled: animated }" type="button" @click="animated = !animated"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label class="unselectable">Mask</label>
+                <label class="unselectable">BP</label>
+                <select v-model="bp">
+                  <option :key="i" v-for="i in 11">{{(i - 1) * 5}}</option>
+                </select>
+              </li>
+              <li class="formControlRow fullWidth">
+                <label class="unselectable">Requirement Type</label>
+                <select id="badgeGroup" v-model="reqType">
+                  <option value="">None (Mod Granted)</option>
+                  <option value="tag">Tag</option>
+                  <option value="tags">Multiple Tags</option>
+                  <option value="timeTrial">Time Trial</option>
+                </select>
+              </li>
+              <li class="formControlRow" v-if="reqType === 'timeTrial'">
+                <label class="unselectable">Required Int</label>
+                <input v-model="reqInt" type="number" min="0" max="99999" autocomplete="off" />
+              </li>
+              <li class="formControlRow fullWidth" v-if="reqType === 'tags'">
+                <label class="unselectable">Tag Requirement Count</label>
+                <input v-model="reqCount" type="number" min="0" :max="reqStrings.length" autocomplete="off" />
+              </li>
+              <li class="formControlRow fullWidth">
+                <label class="unselectable">Map ID</label>
+                <input v-model="map" type="number" min="0" max="9999" autocomplete="off" />
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Secret</label>
                 <div>
-                  <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeMask }" type="button" @click="overlayTypeMask = !overlayTypeMask"><span></span></button>
+                  <button class="checkboxButton unselectable" :class="{ toggled: secret }" type="button" @click="secret = !secret"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label class="unselectable">Dual</label>
+                <label class="unselectable">Secret Map</label>
                 <div>
-                  <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeDual }" type="button" @click="overlayTypeDual = !overlayTypeDual"><span></span></button>
+                  <button class="checkboxButton unselectable" :class="{ toggled: secretMap }" type="button" @click="secretMap = !secretMap"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label class="unselectable">Location</label>
+                <label class="unselectable">Secret</label>
                 <div>
-                  <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeLocation }" type="button" @click="overlayTypeLocation = !overlayTypeLocation"><span></span></button>
+                  <button class="checkboxButton unselectable" :class="{ toggled: secretCondition }" type="button" @click="secretCondition = !secretCondition"><span></span></button>
                 </div>
               </li>
-            </template>
-            <li class="formControlRow">
-              <label class="unselectable">Batch</label><input v-model="batch" type="number" min="0" autocomplete="off" />
-            </li>
-            <li class="formControlRow">
-              <label class="unselectable">Dev</label>
-              <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: dev }" type="button" @click="dev = !dev"><span></span></button>
-              </div>
-            </li>
-          </ul>
-          <h3>Tag</h3>
-          <div class="modalTabsContainer" v-if="reqType === 'tags'">
-            <div class="modalTab" :key="tag.tagIndex" v-for="tag in tags" :class="{ active: tag.index === tagIndex }" @click="tagIndex = tag.index">
-              <label class="modalTabLabel">{{tag.tagId}}</label>
+              <li class="formControlRow">
+                <label class="unselectable">Hidden</label>
+                <div>
+                  <button class="checkboxButton unselectable" :class="{ toggled: hidden }" type="button" @click="hidden = !hidden"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Parent Badge ID</label><input v-model="parent" type="text" autocomplete="off" />
+              </li>
+              <li class="formControlRow fullWidth">
+                <label class="unselectable">Overlay</label>
+                <div>
+                  <button class="checkboxButton unselectable" :class="{ toggled: overlay }" type="button" @click="overlay = !overlay"><span></span></button>
+                </div>
+              </li>
+              <template v-if="overlay">
+                <li class="formControlRow">
+                  <label class="unselectable">Gradient</label>
+                  <div>
+                    <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeGradient }" type="button" @click="overlayTypeGradient = !overlayTypeGradient"><span></span></button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable">Multiply</label>
+                  <div>
+                    <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeMultiply }" type="button" @click="overlayTypeMultiply = !overlayTypeMultiply"><span></span></button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable">Mask</label>
+                  <div>
+                    <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeMask }" type="button" @click="overlayTypeMask = !overlayTypeMask"><span></span></button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable">Dual</label>
+                  <div>
+                    <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeDual }" type="button" @click="overlayTypeDual = !overlayTypeDual"><span></span></button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable">Location</label>
+                  <div>
+                    <button class="checkboxButton unselectable" :class="{ toggled: overlayTypeLocation }" type="button" @click="overlayTypeLocation = !overlayTypeLocation"><span></span></button>
+                  </div>
+                </li>
+              </template>
+              <li class="formControlRow">
+                <label class="unselectable">Batch</label><input v-model="batch" type="number" min="0" autocomplete="off" />
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable">Dev</label>
+                <div>
+                  <button class="checkboxButton unselectable" :class="{ toggled: dev }" type="button" @click="dev = !dev"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <button type="button" @click="deleteBadge()">Delete</button>
+              </li>
+            </ul>
+            <h3>Tag</h3>
+            <div class="modalTabsContainer" v-if="reqType === 'tags'">
+              <template :key="t" v-for="(tag, t) in tags">
+                <div class="modalTab" v-if="!tag.deleted" :class="{ active: t === tagIndex }" @click="tagIndex = t">
+                  <label class="modalTabLabel">{{tag.tagId}}</label>
+                </div>
+              </template>
+              <div class="modalTab" @click="addTag();"><label class="modalTabLabel">+</label></div>
             </div>
-            <div class="modalTab" @click="addTag();"><label class="modalTabLabel">+</label></div>
+            <template :key="t" v-for="(tag, t) in tags">
+              <tag v-if="!tag.deleted" v-show="t === tagIndex" :index="t" />
+            </template>
           </div>
-          <tag v-show="t === tagIndex" key="t" v-for="(tag, t) in tags" :index="t"></tag>
         </template>
         <template id="tagTemplate">
           <ul class="formControls flexFormControls">
@@ -1059,6 +1070,9 @@
               <div>
                 <button class="checkboxButton unselectable" :class="{ toggled: varTrigger }" type="button" @click="varTrigger = !varTrigger"><span></span></button>
               </div>
+            </li>
+            <li class="formControlRow">
+              <button type="button" @click="deleteTag()">Delete</button>
             </li>
           </ul>
         </template>
