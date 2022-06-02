@@ -118,8 +118,6 @@ function initBadgeTools() {
           while (index && tags[--index].deleted);
         }
         this.$parent.tagIndex = index;
-        if (this.$parent.reqType === 'tags')
-          this.$parent.reqStrings[this.index] = null;
       }
     },
     watch: {
@@ -164,14 +162,6 @@ function initBadgeTools() {
     },
     mounted() {
       this.mapId = this.$parent.map;
-      switch (this.$parent.reqType) {
-        case 'tag':
-          this.$parent.reqString = this.tagId;
-          break;
-        case 'tags':
-          this.$parent.reqStrings[this.index] = this.tagId;
-          break;
-      }
       this.$parent.tags[this.index] = this;
     },
     updated() {
@@ -199,8 +189,6 @@ function initBadgeTools() {
         bp: 10,
         reqType: null,
         reqInt: null,
-        reqString: null,
-        reqStrings: [],
         reqCount: 0,
         map: 0,
         secret: false,
@@ -240,6 +228,16 @@ function initBadgeTools() {
         }
         return [];
       },
+      reqString() {
+        if (this.reqType !== 'tag' || !this.tags.length)
+          return null;
+        return this.tags[0].tagId;
+      },
+      reqStrings() {
+        if (this.reqType !== 'tags')
+          return null;
+        return this.tags.filter(t => !t.deleted).map(t => t.tagId);
+      },
       overlayType() {
         let ret = 0;
         if (this.overlay) {
@@ -263,12 +261,10 @@ function initBadgeTools() {
         let newTag = null;
         switch (this.reqType) {
           case 'tag':
-            this.reqString = '';
             newTag = { deleted: false };
             break;
           case 'tags':
-            const tagIndex = this.reqStrings.length;
-            this.reqStrings.push('');
+            const tagIndex = this.tags.length;
             newTag = { deleted: false };
             if (this.$root.initialized)
               this.tagIndex = tagIndex;
@@ -293,15 +289,8 @@ function initBadgeTools() {
       },
       reqType(newType, oldType) {
         this.tags = [];
-        switch (oldType) {
-          case 'tag':
-            this.reqString = null;
-            break;
-          case 'tags':
-            this.tagIndex = 0;
-            this.reqStrings = [];
-            break;
-        }
+        if (oldType === 'tags')
+          this.tagIndex = 0;
         if (newType)
           this.addTag();
       }
@@ -375,8 +364,6 @@ function initBadgeTools() {
                     badgeObj.tags.push(tagObj);
                   }
                   break;
-                case 'reqString':
-                case 'reqStrings':
                 case 'tagIndex':
                   break;
                 default:
@@ -451,9 +438,6 @@ function initBadgeTools() {
 
           for (let prop of badgeMergeProps)
             merge(badge, badgeObj, prop);
-
-          if (badgeObj.reqStrings?.length)
-            badge.reqStrings = badge.reqStrings.filter(s => s);
             
           badgeGameFolder.file(`${badge.badgeId}.json`, JSON.stringify(badgeObj, null, 2));
 

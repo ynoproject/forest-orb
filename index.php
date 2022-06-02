@@ -817,7 +817,7 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label class="unselectable">Secret</label>
+                <label class="unselectable">Secret Condition</label>
                 <div>
                   <button class="checkboxButton unselectable" :class="{ toggled: secretCondition }" type="button" @click="secretCondition = !secretCondition"><span></span></button>
                 </div>
