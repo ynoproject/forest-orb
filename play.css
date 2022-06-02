@@ -1490,33 +1490,33 @@ body.fullBg #background {
   text-align: center;
 }
 
-.itemContainer > .item {
+.itemContainer .item {
   margin: 22px;
   text-align: center;
 }
 
-.itemContainer > .item.hidden {
+.itemContainer .item.hidden {
   display: none;
 }
 
-.itemContainer > .item > div {
+.itemContainer .item > div {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-.itemContainer > .badgeItem.disabled > div {
+.itemContainer .badgeItem.disabled > div {
   cursor: not-allowed;
 }
 
-.itemContainer > .uiThemeItem.auto {
+.itemContainer .uiThemeItem.auto {
   margin-top: 2px;
 }
 
-.itemContainer > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
+.itemContainer .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.itemContainer > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
+.itemContainer .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected {
   border-color: white;
 }
 
@@ -1528,6 +1528,11 @@ body.fullBg #background {
 .itemContainer .badgeItem > .badgeContainer {
   background-color: var(--base-bg-color) !important;
   background-clip: content-box;
+}
+
+.itemContainer .itemRow {
+  max-width: 100%;
+  display: flex;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
@@ -1615,24 +1620,24 @@ body.fullBg #background {
   background: var(--modal-base-bg-color);
 }
 
-#headerIconContainer > .badgeItem {
+#headerIconContainer .badgeItem {
   margin: -5px 8px 0 0;
 }
 
-#headerIconContainer > .badgeItem > .badgeContainer {
+#headerIconContainer .badgeItem > .badgeContainer {
   margin-bottom: -8px;
 }
 
-.smallItemContainer > .item {
+.smallItemContainer .item {
   margin: 16px;
 }
 
-.smallItemContainer > .badgeItem > .badgeContainer {
+.smallItemContainer .badgeItem > .badgeContainer {
   width: 49px;
   height: 49px;
 }
 
-.smallItemContainer > .badgeItem > .badgeContainer > div {
+.smallItemContainer .badgeItem > .badgeContainer > div {
   width: 37px;
   height: 37px;
   border: 6px solid transparent;

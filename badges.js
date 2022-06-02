@@ -122,10 +122,10 @@ function initBadgeControls() {
 }
 
 function initBadgeGalleryModal() {
-  for (let r = 1; r <= badgeSlotCache.length; r++) {
-    for (let c = 1; c < badgeSlotCache[r].length; c++) {
+  for (let r = 1; r <= maxBadgeSlotRows; r++) {
+    for (let c = 1; c <= maxBadgeSlotCols; c++) {
       const badgeId = r <= badgeSlotCache.length && c <= badgeSlotCache[r - 1].length ? badgeSlotCache[r - 1][c - 1] : null;
-      const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-row=${r}][data-col=${c}]`);
+      const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-row='${r}'][data-col='${c}']`);
       if (badgeSlotButton) {
         let badge = badgeId && badgeId !== 'null' ? badgeCache.find(b => b.badgeId === badgeId) : null;
         if (!badge)
@@ -485,14 +485,16 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             const badgeSlotRowsContainer = document.createElement('div');
             badgeSlotRowsContainer.classList.add('badgeSlotRowsContainer');
     
-            for (badgeRowSlots of badgeSlots) {
+            badgeSlots.forEach((badgeRowSlots, r) => {
               const badgeSlotRow = document.createElement('div');
               badgeSlotRow.classList.add('badgeSlotRow');
 
-              for (badgeId of badgeRowSlots) {
+              badgeRowSlots.forEach((badgeId, c) => {
                 const badgeSlot = document.createElement('div');
                 badgeSlot.classList.add('badgeSlot');
                 badgeSlot.classList.add('badge');
+                badgeSlot.dataset.rowIndex = r;
+                badgeSlot.dataset.colIndex = c;
       
                 if (badgeId !== 'null') {
                   const badgeUrl = getBadgeUrl(badgeId);
@@ -538,10 +540,10 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 }
 
                 badgeSlotRow.appendChild(badgeSlot);
-              }
+              });
 
-              badgeSlotRowsContainer.appendChild(badgeSlot);
-            }
+              badgeSlotRowsContainer.appendChild(badgeSlotRow);
+            });
 
             const tippyBox = instance.popper.children[0];
 
@@ -582,13 +584,15 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             if (localizedBadges) {
               const badges = instance.popper.querySelectorAll('.badge');
-              for (let b = 0; b < badgeSlots.length; b++) {
-                const badgeId = badgeSlots[b];
+              for (let badge of badges) {
+                const badgeId = badgeSlots[badge.dataset.rowIndex][badge.dataset.colIndex];
+                if (badgeId === 'null')
+                  continue;
                 const badgeGame = Object.keys(localizedBadges).find(game => {
                   return Object.keys(localizedBadges[game]).find(b => b === badgeId);
                 });
                 if (badgeGame) {
-                  const badgeTippy = addTooltip(badges[b], getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
+                  const badgeTippy = addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
                   if (systemName) {
                     badgeTippy.popper.children[0].setAttribute('style', boxStyles);
                     const badgeTextStyles = badgeCache.find(b => b.badgeId === badgeId)?.hidden
