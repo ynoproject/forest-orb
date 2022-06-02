@@ -618,27 +618,6 @@ function initDefaultSprites() {
   });
 }
 
-(function () {
-  addSessionCommandHandler('p', args => {
-    const uuid = args[0];
-    const name = args[1];
-    const systemName = args[2];
-    const rank = parseInt(args[3]);
-    const account = parseInt(args[4]) === 1;
-    let badge = args[5];
-    
-    if (badge === 'null')
-      badge = null;
-    globalPlayerData[uuid] = {
-      name: name,
-      systemName: systemName,
-      rank: rank,
-      account: account,
-      badge: badge
-    };
-  });
-})();
-
 // EXTERNAL
 function syncPlayerData(uuid, rank, account, badge, id) {
   if (badge === 'null')
@@ -700,3 +679,24 @@ function onPlayerDisconnected(id) {
     removePlayerListEntry(null, uuid);
   }
 }
+
+(function () {
+  addSessionCommandHandler('p', args => {
+    const uuid = args[0];
+    const name = args[1];
+    const systemName = args[2];
+    const rank = parseInt(args[3]);
+    const account = parseInt(args[4]) === 1;
+    let badge = args[5];
+    
+    if (badge === 'null')
+      badge = null;
+    globalPlayerData[uuid] = {
+      name: name,
+      systemName: systemName,
+      rank: rank,
+      account: account,
+      badge: badge
+    };
+  });
+})();

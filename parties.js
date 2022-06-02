@@ -418,10 +418,6 @@ function onUpdateJoinedParty(party) {
   sortPlayerListEntries(partyPlayerList);
 }
 
-(function () {
-  addSessionCommandHandler('pt', args => onUpdateJoinedParty(JSON.parse(args[0])));
-})();
-
 function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;
   const partyList = document.getElementById('partyList');
@@ -818,3 +814,7 @@ function showPartyToastMessage(key, icon, party, playerUuid) {
     message = message.replace('{PLAYER}', getPartyMemberName(party, playerUuid, true, true));
   showToastMessage(message, icon, true, party?.systemName);
 }
+
+(function () {
+  addSessionCommandHandler('pt', args => onUpdateJoinedParty(JSON.parse(args[0])));
+})();

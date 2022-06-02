@@ -30,149 +30,136 @@ const eventExpRanks = [
 ];
 let eventPeriodCache;
 let eventLocationCache = [];
-(function() {
-  setTimeout(() => {
-    updateEventLocationListScheduled();
-    setInterval(updateEventLocationListScheduled, 3600000);
-  }, 3600000 - (new Date().getMinutes() * 60 + new Date().getSeconds()) * 1000);
-})();
 
 function initEventControls() {
   document.getElementById('eventLocationsButton').onclick = () => openModal('eventLocationsModal');
 }
 
 function updateEventPeriod() {
-  apiFetch('eventLocations?command=period')
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.json();
-    })
-    .then(eventPeriod => {
-      if (eventPeriod.periodOrdinal < 0)
-        return;
-      eventPeriod.endDate = new Date(eventPeriod.endDate);
-      document.getElementById('eventPeriod').innerHTML = getMassagedLabel(localizedMessages.events.period.replace('{ORDINAL}', eventPeriod.periodOrdinal), true);
-      document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.events.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
-      document.getElementById('eventControls').style.display = 'unset';
-      eventPeriodCache = eventPeriod;
-      updateEventLocationList();
-    });
+  if (!loginToken)
+    return;
+  sendSessionCommand('ep', null, params => onUpdateEventPeriod(JSON.parse(params[0])));
 }
 
-function updateEventLocationListScheduled() {
-  // Delay update randomly to give the server some breathing room since otherwise everyone would be calling this at once
-  setTimeout(updateEventLocationList, Math.random() * 10000);
+function onUpdateEventPeriod(eventPeriod) {
+  if (!eventPeriod || eventPeriod.periodOrdinal < 0)
+    return;
+  
+  eventPeriod.endDate = new Date(eventPeriod.endDate);
+  document.getElementById('eventPeriod').innerHTML = getMassagedLabel(localizedMessages.events.period.replace('{ORDINAL}', eventPeriod.periodOrdinal), true);
+  document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.events.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
+  document.getElementById('eventControls').style.display = 'unset';
+  eventPeriodCache = eventPeriod;
+  updateEventLocations();
 }
 
-function updateEventLocationList(ignoreLocationCheck) {
+function updateEventLocations(ignoreLocationCheck) {
   if (!loginToken || !eventPeriodCache)
     return;
-  apiFetch('eventLocations?command=list')
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.json();
-    })
-    .then(eventLocations => {
-      eventLocationCache = eventLocations.map(l => {
-        l.endDate = new Date(l.endDate);
-        return l;
-      });
+  sendSessionCommand('el', null, params => onUpdateEventLocations(JSON.parse(params[0]), ignoreLocationCheck));
+}
+
+function onUpdateEventLocations(eventLocations, ignoreLocationCheck) {
+  if (!eventLocations)
+    return;
+
+  eventLocationCache = eventLocations.map(l => {
+    l.endDate = new Date(l.endDate);
+    return l;
+  });
+  
+  const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
+  if (config.lastEventLocations !== eventLocationsStr) {
+    showEventLocationToastMessage('listUpdated', 'expedition');
+    config.lastEventLocations = eventLocationsStr;
+    updateConfig(config);
+  }
+
+  const eventLocationList = document.getElementById('eventLocationList');
+  eventLocationList.innerHTML = '';
+
+  let lastType;
+
+  for (let eventLocation of eventLocationCache) {
+    if (eventLocation.type !== lastType) {
+      const eventLocationTypeContainer = document.createElement('div');
       
-      const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
-      if (config.lastEventLocations !== eventLocationsStr) {
-        showEventLocationToastMessage('listUpdated', 'expedition');
-        config.lastEventLocations = eventLocationsStr;
-        updateConfig(config);
-      }
+      const eventLocationTypeLabel = document.createElement('h3');
+      eventLocationTypeLabel.innerHTML = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
 
-      const eventLocationList = document.getElementById('eventLocationList');
-      eventLocationList.innerHTML = '';
+      eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
+      eventLocationList.appendChild(eventLocationTypeContainer);
 
-      let lastType;
+      lastType = eventLocation.type;
+    }
+    
+    const eventLocationListEntry = document.createElement('div');
 
-      for (let eventLocation of eventLocationCache) {
-        if (eventLocation.type !== lastType) {
-          const eventLocationTypeContainer = document.createElement('div');
-          
-          const eventLocationTypeLabel = document.createElement('h3');
-          eventLocationTypeLabel.innerHTML = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
+    eventLocationListEntry.classList.add('eventLocationListEntry');
+    eventLocationListEntry.classList.add('listEntry');
+    if (eventLocation.complete)
+      eventLocationListEntry.classList.add('complete');
 
-          eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
-          eventLocationList.appendChild(eventLocationTypeContainer);
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('detailsContainer');
 
-          lastType = eventLocation.type;
+    const eventLocationName = document.createElement('div');
+    
+    eventLocationName.innerHTML = gameId === '2kki' ? get2kkiLocationHtml(eventLocation) : eventLocation.title;
+
+    const eventLocationDepth = document.createElement('div');
+    eventLocationDepth.classList.add('infoLabel');
+    eventLocationDepth.classList.add('nowrap');
+    
+    for (let d = 0; d < 10; d += 2) {
+      if (d < eventLocation.depth) {
+        if (d + 1 < eventLocation.depth) {
+          eventLocationDepth.innerHTML += '★';
+          continue;
+        } else {
+          const halfStar = document.createElement('div');
+          halfStar.classList.add('halfStar');
+          eventLocationDepth.appendChild(halfStar);
         }
-        
-        const eventLocationListEntry = document.createElement('div');
-
-        eventLocationListEntry.classList.add('eventLocationListEntry');
-        eventLocationListEntry.classList.add('listEntry');
-        if (eventLocation.complete)
-          eventLocationListEntry.classList.add('complete');
-
-        const detailsContainer = document.createElement('div');
-        detailsContainer.classList.add('detailsContainer');
-
-        const eventLocationName = document.createElement('div');
-        
-        eventLocationName.innerHTML = gameId === '2kki' ? get2kkiLocationHtml(eventLocation) : eventLocation.title;
-
-        const eventLocationDepth = document.createElement('div');
-        eventLocationDepth.classList.add('infoLabel');
-        eventLocationDepth.classList.add('nowrap');
-        
-        for (let d = 0; d < 10; d += 2) {
-          if (d < eventLocation.depth) {
-            if (d + 1 < eventLocation.depth) {
-              eventLocationDepth.innerHTML += '★';
-              continue;
-            } else {
-              const halfStar = document.createElement('div');
-              halfStar.classList.add('halfStar');
-              eventLocationDepth.appendChild(halfStar);
-            }
-          }
-          eventLocationDepth.innerHTML += '☆';
-        }
-
-        const endDateContainer = document.createElement('div');
-        endDateContainer.classList.add('eventLocationEndDateContainer');
-
-        const endDateLabelContainer = document.createElement('div');
-
-        const endDateLabel = document.createElement('label');
-        endDateLabel.classList.add('nowrap');
-        endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
-
-        const pointsContainer = document.createElement('label');
-        pointsContainer.classList.add('eventLocationPoints');
-        pointsContainer.classList.add('infoLabel');
-        pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', eventLocation.exp || 0);
-
-        const checkbox = document.createElement('div');
-        checkbox.classList.add('checkbox');
-        if (eventLocation.complete)
-          checkbox.classList.add('toggled');
-
-        detailsContainer.appendChild(eventLocationName);
-        detailsContainer.appendChild(eventLocationDepth);
-        eventLocationListEntry.appendChild(detailsContainer);
-        endDateLabelContainer.appendChild(endDateLabel);
-        endDateContainer.appendChild(endDateLabelContainer);
-        eventLocationListEntry.appendChild(endDateContainer);
-        eventLocationListEntry.appendChild(pointsContainer);
-        checkbox.appendChild(document.createElement('span'));
-        eventLocationListEntry.appendChild(checkbox);
-        eventLocationList.appendChild(eventLocationListEntry);
       }
+      eventLocationDepth.innerHTML += '☆';
+    }
 
-      updatePlayerExp();
+    const endDateContainer = document.createElement('div');
+    endDateContainer.classList.add('eventLocationEndDateContainer');
 
-      if (!ignoreLocationCheck && connStatus === 1)
-        checkEventLocations();
-    });
+    const endDateLabelContainer = document.createElement('div');
+
+    const endDateLabel = document.createElement('label');
+    endDateLabel.classList.add('nowrap');
+    endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
+
+    const pointsContainer = document.createElement('label');
+    pointsContainer.classList.add('eventLocationPoints');
+    pointsContainer.classList.add('infoLabel');
+    pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', eventLocation.exp || 0);
+
+    const checkbox = document.createElement('div');
+    checkbox.classList.add('checkbox');
+    if (eventLocation.complete)
+      checkbox.classList.add('toggled');
+
+    detailsContainer.appendChild(eventLocationName);
+    detailsContainer.appendChild(eventLocationDepth);
+    eventLocationListEntry.appendChild(detailsContainer);
+    endDateLabelContainer.appendChild(endDateLabel);
+    endDateContainer.appendChild(endDateLabelContainer);
+    eventLocationListEntry.appendChild(endDateContainer);
+    eventLocationListEntry.appendChild(pointsContainer);
+    checkbox.appendChild(document.createElement('span'));
+    eventLocationListEntry.appendChild(checkbox);
+    eventLocationList.appendChild(eventLocationListEntry);
+  }
+
+  updatePlayerExp();
+
+  if (!ignoreLocationCheck && connStatus === 1)
+    checkEventLocations();
 }
 
 function updatePlayerExp() {
@@ -235,7 +222,7 @@ function claimEventLocationPoints(location, free, retryCount) {
         showEventLocationToastMessage('freeComplete', 'expedition', location);
         checkNewBadgeUnlocks();
       }
-      updateEventLocationList(true);
+      updateEventLocations(true);
     })
     .catch(err => {
       if (!retryCount)
@@ -275,3 +262,8 @@ function showEventLocationToastMessage(key, icon, location, exp) {
     message = message.replace('{EXP}', localizedMessages.events.exp.replace('{POINTS}', exp));
   showToastMessage(message, icon, true);
 }
+
+(function () {
+  addSessionCommandHandler('ep', args => onUpdateEventPeriod(JSON.parse(args[0])));
+  addSessionCommandHandler('el', args => onUpdateEventLocations(JSON.parse(args[0])));
+})();
