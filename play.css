@@ -1864,10 +1864,13 @@ form .uiTheme {
   align-items: center;
 }
 
-.badgeSlotsContainer {
+.badgeSlotRowsContainer {
   max-width: 225px;
+  display: block;
+}
+
+.badgeSlotRow {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 

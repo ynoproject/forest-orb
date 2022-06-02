@@ -1,6 +1,8 @@
 const badgeSlotsPerRow = 5;
-const maxBadgeSlotRows = 4;
+const maxBadgeSlotRows = 7;
+const maxBadgeSlotCols = 7;
 let badgeSlotRows = 1;
+let badgeSlotCols = 5;
 
 let badgeCache;
 let badgeSlotCache;
@@ -19,8 +21,8 @@ const BadgeOverlayType = {
 };
 
 function initBadgeControls() {
-  const onClickBadgeButton = (prevModal, slotId) => {
-    if (slotId && (slotId > badgeSlotCache.length + 1 || Math.ceil(slotId / badgeSlotsPerRow) > badgeSlotRows))
+  const onClickBadgeButton = (prevModal, slotRow, slotCol) => {
+    if (slotRow && slotCol && (slotRow > badgeSlotRows || slotCol > badgeSlotCols))
       return;
 
     const badgeModalContent = document.querySelector('#badgesModal .modalContent');
@@ -65,8 +67,8 @@ function initBadgeControls() {
           if (badge.badgeId === (playerData?.badge || 'null'))
             item.children[0].classList.add('selected');
           if (!item.classList.contains('disabled')) {
-            item.onclick = slotId 
-              ? () => updatePlayerBadgeSlot(badge.badgeId, slotId, () => {
+            item.onclick = slotRow && slotCol 
+              ? () => updatePlayerBadgeSlot(badge.badgeId, slotRow, slotCol, () => {
                 updateBadgeSlots(() => {
                   initAccountSettingsModal();
                   initBadgeGalleryModal();
@@ -104,32 +106,35 @@ function initBadgeControls() {
 
   const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
 
-  for (let s = 1; s <= maxBadgeSlotRows * badgeSlotsPerRow; s++) {
-    const badgeSlotButton = document.createElement('div');
-    badgeSlotButton.classList.add('badgeSlotButton');
-    badgeSlotButton.classList.add('badgeItem');
-    badgeSlotButton.classList.add('item');
-    badgeSlotButton.classList.add('unselectable');
-    badgeSlotButton.dataset.slotId = s;
-    badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', s);
-    badgeGalleryModalContent.appendChild(badgeSlotButton);
+  for (let r = 1; r <= maxBadgeSlotRows; r++) {
+    for (let c = 1; c <= maxBadgeSlotCols; c++) {
+      const badgeSlotButton = document.createElement('div');
+      badgeSlotButton.classList.add('badgeSlotButton');
+      badgeSlotButton.classList.add('badgeItem');
+      badgeSlotButton.classList.add('item');
+      badgeSlotButton.classList.add('unselectable');
+      badgeSlotButton.dataset.row = r;
+      badgeSlotButton.dataset.col = c;
+      badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', r, c);
+      badgeGalleryModalContent.appendChild(badgeSlotButton);
+    }
   }
 }
 
 function initBadgeGalleryModal() {
-  for (let s = 1; s <= maxBadgeSlotRows * badgeSlotsPerRow; s++) {
-    const rowIndex = Math.ceil(s / badgeSlotsPerRow);
-    const badgeId = s <= badgeSlotCache.length ? badgeSlotCache[s - 1] : null;
-    const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-slot-id='${s}']`);
-    if (badgeSlotButton) {
-      let badge = badgeId ? badgeCache.find(b => b.badgeId === badgeId) : null;
-      if (!badge)
-        badge = { badgeId: 'null' };
-      badgeSlotButton.classList.toggle('disabled', s > badgeSlotCache.length + 1);
-      badgeSlotButton.classList.toggle('hidden', rowIndex > badgeSlotRows);
-      badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
-      if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
-        handle2kkiBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
+  for (let r = 1; r <= badgeSlotCache.length; r++) {
+    for (let c = 1; c < badgeSlotCache[r].length; c++) {
+      const badgeId = r <= badgeSlotCache.length && c <= badgeSlotCache[r - 1].length ? badgeSlotCache[r - 1][c - 1] : null;
+      const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-row=${r}][data-col=${c}]`);
+      if (badgeSlotButton) {
+        let badge = badgeId && badgeId !== 'null' ? badgeCache.find(b => b.badgeId === badgeId) : null;
+        if (!badge)
+          badge = { badgeId: 'null' };
+        badgeSlotButton.classList.toggle('hidden', r > badgeSlotRows || c > badgeSlotCols);
+        badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
+        if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
+          handle2kkiBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
+      }
     }
   }
 }
@@ -375,7 +380,6 @@ function updateBadgeSlots(callback) {
     })
     .then(badgeSlots => {
       badgeSlotCache = badgeSlots || [];
-      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeSlotCache.length ? badgeSlotCache[0] : 'null', -1);
       if (callback)
         callback();
   })
@@ -394,8 +398,8 @@ function updatePlayerBadge(badgeId, callback) {
     .catch(err => console.error(err));
 }
 
-function updatePlayerBadgeSlot(badgeId, slotId, callback) {
-  apiFetch(`badge?command=slotSet&id=${badgeId}&slot=${slotId}`)
+function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
+  apiFetch(`badge?command=slotSet&id=${badgeId}&row=${slotRow}&col=${slotCol}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -477,57 +481,66 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             const tooltipTitle = document.createElement('h4');
             tooltipTitle.classList.add('tooltipTitle');
             tooltipTitle.innerHTML = getMassagedLabel(localizedMessages.badgeGallery.label, true).replace('{PLAYER}', playerName);
+
+            const badgeSlotRowsContainer = document.createElement('div');
+            badgeSlotRowsContainer.classList.add('badgeSlotRowsContainer');
     
-            const badgeSlotsContainer = document.createElement('div');
-            badgeSlotsContainer.classList.add('badgeSlotsContainer');
-    
-            for (badgeId of badgeSlots) {
-              const badgeSlot = document.createElement('div');
-              badgeSlot.classList.add('badgeSlot');
-              badgeSlot.classList.add('badge');
-    
-              const badgeUrl = getBadgeUrl(badgeId);
-    
-              badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
+            for (badgeRowSlots of badgeSlots) {
+              const badgeSlotRow = document.createElement('div');
+              badgeSlotRow.classList.add('badgeSlotRow');
 
-              const badge = badgeCache.find(b => b.badgeId === badgeId);
-
-              if (badge?.overlayType) {
-                const badgeSlotOverlay = document.createElement('div');
-
-                badgeSlotOverlay.classList.add('badgeSlotOverlay');
-                badgeSlotOverlay.classList.add('badgeOverlay');
-                if (badge.overlayType & BadgeOverlayType.MULTIPLY)
-                  badgeSlotOverlay.classList.add('badgeOverlayMultiply');
-                badgeSlotOverlay.dataset.overlayType = badge.overlayType;
-
-                badgeSlot.appendChild(badgeSlotOverlay);
-
-                const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
-                  ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
-                  : badgeUrl;
-
-                badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
-
-                if (badge.overlayType & BadgeOverlayType.DUAL) {
-                  const badgeSlotOverlay2 = document.createElement('div');
-
-                  badgeSlotOverlay2.classList.add('badgeOverlay');
-                  badgeSlotOverlay2.classList.add('badgeOverlay2');
-                  if (badge.overlayType & BadgeOverlayType.MULTIPLY)
-                    badgeSlotOverlay2.classList.add('badgeOverlayMultiply');
+              for (badgeId of badgeRowSlots) {
+                const badgeSlot = document.createElement('div');
+                badgeSlot.classList.add('badgeSlot');
+                badgeSlot.classList.add('badge');
+      
+                if (badgeId !== 'null') {
+                  const badgeUrl = getBadgeUrl(badgeId);
         
-                  badgeSlot.appendChild(badgeSlotOverlay2);
+                  badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
 
-                  const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
-                    ? badgeUrl.replace('.', '_mask_bg.')
-                    : badgeUrl;
+                  const badge = badgeCache.find(b => b.badgeId === badgeId);
 
-                  badgeSlotOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+                  if (badge?.overlayType) {
+                    const badgeSlotOverlay = document.createElement('div');
+
+                    badgeSlotOverlay.classList.add('badgeSlotOverlay');
+                    badgeSlotOverlay.classList.add('badgeOverlay');
+                    if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+                      badgeSlotOverlay.classList.add('badgeOverlayMultiply');
+                    badgeSlotOverlay.dataset.overlayType = badge.overlayType;
+
+                    badgeSlot.appendChild(badgeSlotOverlay);
+
+                    const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
+                      ? badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')
+                      : badgeUrl;
+
+                    badgeSlotOverlay.setAttribute('style', `-webkit-mask-image: url('${badgeMaskUrl}'); mask-image: url('${badgeMaskUrl}');`);
+
+                    if (badge.overlayType & BadgeOverlayType.DUAL) {
+                      const badgeSlotOverlay2 = document.createElement('div');
+
+                      badgeSlotOverlay2.classList.add('badgeOverlay');
+                      badgeSlotOverlay2.classList.add('badgeOverlay2');
+                      if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+                        badgeSlotOverlay2.classList.add('badgeOverlayMultiply');
+            
+                      badgeSlot.appendChild(badgeSlotOverlay2);
+
+                      const badgeMask2Url = badge.overlayType & BadgeOverlayType.MASK
+                        ? badgeUrl.replace('.', '_mask_bg.')
+                        : badgeUrl;
+
+                      badgeSlotOverlay2.setAttribute('style', `-webkit-mask-image: url('${badgeMask2Url}'); mask-image: url('${badgeMask2Url}');`);
+                    }
+                  }
                 }
+
+                badgeSlotRow.appendChild(badgeSlot);
               }
-    
-              badgeSlotsContainer.appendChild(badgeSlot);
+
+              badgeSlotRowsContainer.appendChild(badgeSlot);
             }
 
             const tippyBox = instance.popper.children[0];
@@ -545,7 +558,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             }
     
             tooltipContent.appendChild(tooltipTitle);
-            tooltipContent.appendChild(badgeSlotsContainer);
+            tooltipContent.appendChild(badgeSlotRowsContainer);
     
             instance.setContent(tooltipContent.outerHTML);
 
