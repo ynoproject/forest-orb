@@ -182,7 +182,6 @@
         "title": "アカウント設定",
         "fields": {
           "badge": "バッジ",
-          "badgeGallery": "バッジギャラリー管理",
           "toggleSaveSync": "セーブデータ同期(実験的)",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "バッジ"
+        "title": "バッジ",
+        "manageBadgeGallery": "バッジギャラリー管理"
       },
       "badgeGallery": {
-        "title": "バッジギャラリー設定"
+        "title": "バッジギャラリー設定",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "メニュー タイプ",

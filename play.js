@@ -122,6 +122,7 @@ function fetchAndUpdatePlayerInfo() {
           playerName = jsonResponse.name;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
+        badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         if (isLogin) {
           initSessionWs()
             .then(() => {
@@ -428,7 +429,8 @@ function closeModal() {
       openModal(modalContainer.dataset.lastModalId.slice(lastModalIdSeparatorIndex + 1), modalContainer.dataset.lastModalTheme.slice(lastModalThemeSeparatorIndex + 1));
     }
   }
-};
+}
+
 {
   const modalCloseButtons = document.querySelectorAll('.modalClose');
   for (let button of modalCloseButtons)

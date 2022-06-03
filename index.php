@@ -478,10 +478,6 @@
                   <div id="accountBadgeButton" class="badgeItem item unselectable"></div>
                 </div>
               </li>
-              <li id="badgeGalleryRow" class="formControlRow">
-                <span></span>
-                <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.badgeGallery">Manage Badge Gallery</button>
-              </li>
               <li class="formControlRow">
                 <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
                 <div>
@@ -509,18 +505,33 @@
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
           </div>
           <div class="modalContent itemContainer"></div>
-          <?php if ($enableBadgeTools): ?>
           <div class="modalFooter">
-            <button type="button" onclick="openModal('badgeToolsModal', null, 'badgesModal')">Badge Tools</button>
+            <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.badges.manageBadgeGallery">Manage Badge Gallery</button>
+            <?php if ($enableBadgeTools): ?>
+            <button type="button" onclick="openModal('badgeToolsModal')">Badge Tools</button>
+            <?php endif ?>
           </div>
-          <?php endif ?>
         </div>
-        <div id="badgeGalleryModal" class="modal hidden">
+        <div id="badgeGalleryModal" class="modal semiWideModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badgeGallery.title">Manage Badge Gallery</h1>
+            <div id="badgeGalleryRowProgressContainer" class="badgeGalleryProgressContainer">
+              <label id="badgeGalleryRowProgressLabel" class="progressBarHeading" data-i18n="[html]modal.badgeGallery.badgeGalleryRowProgress">Next Row Upgrade (BP)</label>
+              <div id="badgeGalleryRowProgressBarContainer" class="progressBarContainer">
+                <label id="badgeGalleryRowProgressBarLabel" class="progressBarLabel altText unselectable"></label>
+                <div id="badgeGalleryRowProgressBar" class="progressBar"></div>
+              </div>
+            </div>
+            <div id="badgeGalleryColProgressContainer" class="badgeGalleryProgressContainer">
+              <label id="badgeGalleryColProgressLabel" class="progressBarHeading" data-i18n="[html]modal.badgeGallery.badgeGalleryColProgress">Next Column Upgrade (Badges)</label>
+              <div id="badgeGalleryColProgressBarContainer" class="progressBarContainer">
+                <label id="badgeGalleryColProgressBarLabel" class="progressBarLabel altText unselectable"></label>
+                <div id="badgeGalleryColProgressBar" class="progressBar"></div>
+              </div>
+            </div>
           </div>
-          <div class="modalContent itemContainer smallItemContainer"></div>
+          <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -662,20 +673,20 @@
               </div>
             </div>
             <div id="rankExpContainer">
-              <label id="rankExpLabel" class="expBarHeading" data-i18n="[html]modal.eventLocations.rankExp">Next Rank</label>
-              <div id="rankExpBarContainer" class="expBarContainer">
-                <label id="rankExpBarLabel" class="expBarLabel altText unselectable"></label>
-                <div id="rankExpBar" class="expBar"></div>
+              <label id="rankExpLabel" class="progressBarHeading" data-i18n="[html]modal.eventLocations.rankExp">Next Rank</label>
+              <div id="rankExpBarContainer" class="progressBarContainer">
+                <label id="rankExpBarLabel" class="progressBarLabel altText unselectable"></label>
+                <div id="rankExpBar" class="progressBar"></div>
               </div>
             </div>
             <div id="eventPeriodInfoContainer">
               <h3 id="eventPeriod">Season 1</h3>
               <label id="eventPeriodEndDateLabel">Ends</label>
             </div>
-            <label id="weekExpLabel" class="expBarHeading" data-i18n="[html]modal.eventLocations.weekExp">ExP This Week</label>
-            <div id="weekExpBarContainer" class="expBarContainer">
-              <label id="weekExpBarLabel" class="expBarLabel altText unselectable"></label>
-              <div id="weekExpBar" class="expBar"></div>
+            <label id="weekExpLabel" class="progressBarHeading" data-i18n="[html]modal.eventLocations.weekExp">ExP This Week</label>
+            <div id="weekExpBarContainer" class="progressBarContainer">
+              <label id="weekExpBarLabel" class="progressBarLabel altText unselectable"></label>
+              <div id="weekExpBar" class="progressBar"></div>
             </div>
             <div id="eventLocationList" class="scrollableContainer"></div>
           </div>

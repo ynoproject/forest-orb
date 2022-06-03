@@ -47,6 +47,11 @@
   --rank-total-exp: 100;
   --week-exp: 0;
 
+  --row-level-bp: 0;
+  --row-level-total-bp: 1000;
+  --col-level-bc: 0;
+  --col-level-total-bc: 50;
+
   --content-height: 0;
   --content-scroll: 0;
 
@@ -1401,6 +1406,10 @@ body.fullBg #background {
   background-size: calc(100vh - 80px);
 }
 
+.modal.semiModal {
+  max-width: min(640px, calc(100% - 112px));
+}
+
 .modal.wideModal {
   max-width: min(720px, calc(100% - 112px));
 }
@@ -1490,33 +1499,33 @@ body.fullBg #background {
   text-align: center;
 }
 
-.itemContainer > .item {
+.itemContainer .item {
   margin: 22px;
   text-align: center;
 }
 
-.itemContainer > .item.hidden {
+.itemContainer .item.hidden {
   display: none;
 }
 
-.itemContainer > .item > div {
+.itemContainer .item > div {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-.itemContainer > .badgeItem.disabled > div {
+.itemContainer .badgeItem.disabled > div {
   cursor: not-allowed;
 }
 
-.itemContainer > .uiThemeItem.auto {
+.itemContainer .uiThemeItem.auto {
   margin-top: 2px;
 }
 
-.itemContainer > .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div:not(.partySelected) {
+.itemContainer .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.itemContainer > .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent > .item > div.partySelected {
+.itemContainer .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected {
   border-color: white;
 }
 
@@ -1528,6 +1537,15 @@ body.fullBg #background {
 .itemContainer .badgeItem > .badgeContainer {
   background-color: var(--base-bg-color) !important;
   background-clip: content-box;
+}
+
+.itemContainer .itemRow {
+  display: flex;
+  margin: auto;
+}
+
+.modalContent.itemContainer.itemRowContainer {
+  flex-flow: column;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
@@ -1615,27 +1633,31 @@ body.fullBg #background {
   background: var(--modal-base-bg-color);
 }
 
-#headerIconContainer > .badgeItem {
+#headerIconContainer .badgeItem {
   margin: -5px 8px 0 0;
 }
 
-#headerIconContainer > .badgeItem > .badgeContainer {
+#headerIconContainer .badgeItem > .badgeContainer {
   margin-bottom: -8px;
 }
 
-.smallItemContainer > .item {
+.smallItemContainer .item {
   margin: 16px;
 }
 
-.smallItemContainer > .badgeItem > .badgeContainer {
+.smallItemContainer .badgeItem > .badgeContainer {
   width: 49px;
   height: 49px;
 }
 
-.smallItemContainer > .badgeItem > .badgeContainer > div {
+.smallItemContainer .badgeItem > .badgeContainer > div {
   width: 37px;
   height: 37px;
   border: 6px solid transparent;
+}
+
+#badgeGalleryButton.hidden {
+  display: none;
 }
 
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
@@ -1864,10 +1886,13 @@ form .uiTheme {
   align-items: center;
 }
 
-.badgeSlotsContainer {
+.badgeSlotRowsContainer {
   max-width: 225px;
+  display: block;
+}
+
+.badgeSlotRow {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -1917,11 +1942,11 @@ form .uiTheme {
   margin: 0;
 }
 
-.expBarHeading {
+.progressBarHeading {
   margin-right: auto;
 }
 
-.expBarContainer {
+.progressBarContainer {
   display: flex;
   flex-direction: column;
   width: calc(100% - 8px);
@@ -1931,12 +1956,24 @@ form .uiTheme {
   background-color: var(--base-bg-color);
 }
 
-.expBarLabel {
+.badgeGalleryProgressContainer {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.progressBarLabel {
   display: flex;
   align-items: center;
   margin: 0 auto;
   min-height: 24px;
   image-rendering: auto;
+}
+
+.progressBar {
+  height: 100%;
+  margin-top: -24px;
+  background: var(--base-gradient-b);
+  transition: width 0.5s ease-in-out;
 }
 
 #rankExpBarLabel::after {
@@ -1949,11 +1986,14 @@ form .uiTheme {
   content: counter(week-exp) '/40';
 }
 
-.expBar {
-  height: 100%;
-  margin-top: -24px;
-  background: var(--base-gradient-b);
-  transition: width 0.5s ease-in-out;
+#badgeGalleryRowProgressBarLabel::after {
+  counter-reset: row-level-bp var(--row-level-bp) row-level-total-bp var(--row-level-total-bp);
+  content: counter(row-level-bp) '/' counter(row-level-total-bp);
+}
+
+#badgeGalleryColProgressBarLabel::after {
+  counter-reset: col-level-bc var(--col-level-bc) col-level-total-bc var(--col-level-total-bc);
+  content: counter(col-level-bc) '/' counter(col-level-total-bc);
 }
 
 #rankExpBar {
@@ -1962,6 +2002,14 @@ form .uiTheme {
 
 #weekExpBar {
   width: calc(var(--week-exp) * 2.5%);
+}
+
+#badgeGalleryRowProgressBar {
+  width: calc((var(--row-level-bp) / var(--row-level-total-bp)) * 100%);
+}
+
+#badgeGalleryColProgressBar {
+  width: calc((var(--col-level-bc) / var(--col-level-total-bc)) * 100%);
 }
 
 #eventLocationList {

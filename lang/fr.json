@@ -182,7 +182,6 @@
         "title": "Paramètres du compte",
         "fields": {
           "badge": "Badge",
-          "badgeGallery": "Gérer la galerie des badges",
           "toggleSaveSync": "Synchronisation de la sauvegarde (Expérimental)",
           "saveSyncSlotId": {
             "label": "Emplacement de la sauvegarde synchronisée",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "Badges",
+        "manageBadgeGallery": "Gérer la galerie des badges"
       },
       "badgeGallery": {
-        "title": "Gérer la galerie des badges"
+        "title": "Gérer la galerie des badges",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "Thème UI",
