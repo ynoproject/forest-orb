@@ -1867,16 +1867,19 @@ form .uiTheme {
   width: 100%;
 }
 
-#expRankInfoContainer {
+.modalInfoContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 60%;
+}
+
+#expRankInfoContainer {
   height: 37px;
   margin: 0 20%;
 }
 
-#expRankInfoContainer label {
+.modalInfoContainer label {
   font-size: 20px;
   white-space: nowrap;
 }
@@ -1958,7 +1961,7 @@ form .uiTheme {
 
 .badgeGalleryProgressContainer {
   text-align: left;
-  margin-bottom: 16px;
+  margin-top: 16px;
 }
 
 .progressBarLabel {

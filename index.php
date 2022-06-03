@@ -516,6 +516,10 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badgeGallery.title">Manage Badge Gallery</h1>
+            <div id="badgeGalleryInfoContainer" class="modalInfoContainer">
+              <label id="totalBc">0 Badges</label>
+              <label id="totalBp">0 BP</label>
+            </div>
             <div id="badgeGalleryRowProgressContainer" class="badgeGalleryProgressContainer">
               <label id="badgeGalleryRowProgressLabel" class="progressBarHeading" data-i18n="[html]modal.badgeGallery.badgeGalleryRowProgress">Next Row Upgrade (BP)</label>
               <div id="badgeGalleryRowProgressBarContainer" class="progressBarContainer">
@@ -665,7 +669,7 @@
             <h1 class="modalTitle" data-i18n="[html]modal.eventLocations.title">Expeditions</h1>
           </div>
           <div class="modalContent">
-            <div id="expRankInfoContainer">
+            <div id="expRankInfoContainer" class="modalInfoContainer">
               <label id="totalExp">0 ExP</label>
               <div id="expRankContainer">
                 <label id="expRank">Rank: Novice</label>

@@ -471,7 +471,9 @@
     },
     "badgeGallery": {
       "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading..."
+      "loading": "Loading...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Badges"
     },
     "rankings": {
       "categories": {

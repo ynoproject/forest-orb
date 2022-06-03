@@ -471,7 +471,9 @@
     },
     "badgeGallery": {
       "label": "{PLAYER} 的徽章展柜",
-      "loading": "加载中..."
+      "loading": "加载中...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Badges"
     },
     "rankings": {
       "categories": {
