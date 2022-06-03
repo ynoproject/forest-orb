@@ -561,8 +561,10 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             return response.json();
           })
           .then(badgeSlots => {
-            if (!badgeSlots || badgeSlots.flat().filter(b => b !== 'null').length)
+            if (!badgeSlots || !badgeSlots.flat().filter(b => b !== 'null').length) {
+              instance.hide();
               return;
+            }
 
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent');
