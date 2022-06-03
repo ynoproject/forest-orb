@@ -508,11 +508,11 @@
           <div class="modalFooter">
             <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.badges.manageBadgeGallery">Manage Badge Gallery</button>
             <?php if ($enableBadgeTools): ?>
-            <button type="button" onclick="openModal('badgeToolsModal', null, 'badgesModal')">Badge Tools</button>
+            <button type="button" onclick="openModal('badgeToolsModal')">Badge Tools</button>
             <?php endif ?>
           </div>
         </div>
-        <div id="badgeGalleryModal" class="modal hidden">
+        <div id="badgeGalleryModal" class="modal semiWideModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badgeGallery.title">Manage Badge Gallery</h1>
@@ -531,7 +531,7 @@
               </div>
             </div>
           </div>
-          <div class="modalContent itemContainer smallItemContainer"></div>
+          <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>

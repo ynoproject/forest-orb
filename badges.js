@@ -80,7 +80,7 @@ function initBadgeControls() {
     badgeModalContent.innerHTML = '';
 
     const updateBadgesAndPopulateModal = () => {
-      document.getElementById('badgeGalleryButton').classList.toggle('hidden', slotRow && slotCol);
+      document.getElementById('badgeGalleryButton').classList.toggle('hidden', slotRow && slotCol ? true : false);
       fetchPlayerBadges(playerBadges => {
         let lastGame = null;
         let lastGroup = null;
@@ -131,7 +131,6 @@ function initBadgeControls() {
                 initAccountSettingsModal();
                 closeModal();
               });
-             
           }
           badgeModalContent.appendChild(item);
         }
@@ -152,13 +151,15 @@ function initBadgeControls() {
   document.getElementById('badgeGalleryButton').onclick = () => {
     updateBadgeSlots(() => {
       initBadgeGalleryModal();
-      openModal('badgeGalleryModal', null, 'badgesModal');
+      openModal('badgeGalleryModal');
     });
   };
 
   const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
 
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
+    const badgeSlotRow = document.createElement('div');
+    badgeSlotRow.classList.add('itemRow');
     for (let c = 1; c <= maxBadgeSlotCols; c++) {
       const badgeSlotButton = document.createElement('div');
       badgeSlotButton.classList.add('badgeSlotButton');
@@ -168,8 +169,9 @@ function initBadgeControls() {
       badgeSlotButton.dataset.row = r;
       badgeSlotButton.dataset.col = c;
       badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', r, c);
-      badgeGalleryModalContent.appendChild(badgeSlotButton);
+      badgeSlotRow.appendChild(badgeSlotButton);
     }
+    badgeGalleryModalContent.appendChild(badgeSlotRow);
   }
 }
 

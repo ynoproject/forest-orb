@@ -429,7 +429,8 @@ function closeModal() {
       openModal(modalContainer.dataset.lastModalId.slice(lastModalIdSeparatorIndex + 1), modalContainer.dataset.lastModalTheme.slice(lastModalThemeSeparatorIndex + 1));
     }
   }
-};
+}
+
 {
   const modalCloseButtons = document.querySelectorAll('.modalClose');
   for (let button of modalCloseButtons)

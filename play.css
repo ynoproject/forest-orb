@@ -1406,6 +1406,10 @@ body.fullBg #background {
   background-size: calc(100vh - 80px);
 }
 
+.modal.semiModal {
+  max-width: min(640px, calc(100% - 112px));
+}
+
 .modal.wideModal {
   max-width: min(720px, calc(100% - 112px));
 }
@@ -1536,8 +1540,12 @@ body.fullBg #background {
 }
 
 .itemContainer .itemRow {
-  max-width: 100%;
   display: flex;
+  margin: auto;
+}
+
+.modalContent.itemContainer.itemRowContainer {
+  flex-flow: column;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
