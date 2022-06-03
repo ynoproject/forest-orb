@@ -182,7 +182,6 @@
         "title": "Account Settings",
         "fields": {
           "badge": "Badge",
-          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Save Sync (Experimental)",
           "saveSyncSlotId": {
             "label": "Save Sync Slot ID",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "Badges"
+        "title": "Badges",
+        "manageBadgeGallery": "Manage Badge Gallery"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "Manage Badge Gallery",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "UI Theme",

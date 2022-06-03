@@ -47,6 +47,11 @@
   --rank-total-exp: 100;
   --week-exp: 0;
 
+  --row-level-bp: 0;
+  --row-level-total-bp: 1000;
+  --col-level-bc: 0;
+  --col-level-total-bc: 50;
+
   --content-height: 0;
   --content-scroll: 0;
 
@@ -1643,6 +1648,10 @@ body.fullBg #background {
   border: 6px solid transparent;
 }
 
+#badgeGalleryButton.hidden {
+  display: none;
+}
+
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
   display: none;
 }
@@ -1925,11 +1934,11 @@ form .uiTheme {
   margin: 0;
 }
 
-.expBarHeading {
+.progressBarHeading {
   margin-right: auto;
 }
 
-.expBarContainer {
+.progressBarContainer {
   display: flex;
   flex-direction: column;
   width: calc(100% - 8px);
@@ -1939,12 +1948,24 @@ form .uiTheme {
   background-color: var(--base-bg-color);
 }
 
-.expBarLabel {
+.badgeGalleryProgressContainer {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.progressBarLabel {
   display: flex;
   align-items: center;
   margin: 0 auto;
   min-height: 24px;
   image-rendering: auto;
+}
+
+.progressBar {
+  height: 100%;
+  margin-top: -24px;
+  background: var(--base-gradient-b);
+  transition: width 0.5s ease-in-out;
 }
 
 #rankExpBarLabel::after {
@@ -1957,11 +1978,14 @@ form .uiTheme {
   content: counter(week-exp) '/40';
 }
 
-.expBar {
-  height: 100%;
-  margin-top: -24px;
-  background: var(--base-gradient-b);
-  transition: width 0.5s ease-in-out;
+#badgeGalleryRowProgressBarLabel::after {
+  counter-reset: row-level-bp var(--row-level-bp) row-level-total-bp var(--row-level-total-bp);
+  content: counter(row-level-bp) '/' counter(row-level-total-bp);
+}
+
+#badgeGalleryColProgressBarLabel::after {
+  counter-reset: col-level-bc var(--col-level-bc) col-level-total-bc var(--col-level-total-bc);
+  content: counter(col-level-bc) '/' counter(col-level-total-bc);
 }
 
 #rankExpBar {
@@ -1970,6 +1994,14 @@ form .uiTheme {
 
 #weekExpBar {
   width: calc(var(--week-exp) * 2.5%);
+}
+
+#badgeGalleryRowProgressBar {
+  width: calc((var(--row-level-bp) / var(--row-level-total-bp)) * 100%);
+}
+
+#badgeGalleryColProgressBar {
+  width: calc((var(--col-level-bc) / var(--col-level-total-bc)) * 100%);
 }
 
 #eventLocationList {

@@ -182,7 +182,6 @@
         "title": "账号设置",
         "fields": {
           "badge": "徽章",
-          "badgeGallery": "管理徽章展柜",
           "toggleSaveSync": "存档云同步 (实验性功能)",
           "saveSyncSlotId": {
             "label": "存档文件编号",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "徽章"
+        "title": "徽章",
+        "manageBadgeGallery": "管理徽章展柜"
       },
       "badgeGallery": {
-        "title": "徽章展柜"
+        "title": "徽章展柜",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "界面风格",

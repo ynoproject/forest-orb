@@ -182,7 +182,6 @@
         "title": "Настройки Аккаунта",
         "fields": {
           "badge": "Значок",
-          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "Облачное Сохранение (Экспериментальное)",
           "saveSyncSlotId": {
             "label": "ID Слота для Синхронизации",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "Значки"
+        "title": "Значки",
+        "manageBadgeGallery": "Manage Badge Gallery"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "Manage Badge Gallery",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",

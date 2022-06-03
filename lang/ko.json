@@ -182,7 +182,6 @@
         "title": "계정 설정",
         "fields": {
           "badge": "뱃지",
-          "badgeGallery": "Manage Badge Gallery",
           "toggleSaveSync": "세이브 동기화 (개발중)",
           "saveSyncSlotId": {
             "label": "세이브 동기화 번호",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "뱃지"
+        "title": "뱃지",
+        "manageBadgeGallery": "Manage Badge Gallery"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery"
+        "title": "Manage Badge Gallery",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "UI 테마",

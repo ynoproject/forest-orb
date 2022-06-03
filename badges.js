@@ -1,8 +1,7 @@
-const badgeSlotsPerRow = 5;
 const maxBadgeSlotRows = 7;
 const maxBadgeSlotCols = 7;
 let badgeSlotRows = 1;
-let badgeSlotCols = 5;
+let badgeSlotCols = 3;
 
 let badgeCache;
 let badgeSlotCache;
@@ -12,6 +11,58 @@ let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
+const badgeGalleryRowBpLevels = [
+  {
+    bp: 1000,
+    count: 1
+  },
+  {
+    bp: 2500,
+    count: 2
+  },
+  {
+    bp: 5000,
+    count: 3
+  },
+  {
+    bp: 10000,
+    count: 4
+  },
+  {
+    bp: 17500,
+    count: 5
+  },
+  {
+    bp: 30000,
+    count: 6
+  },
+  {
+    bp: 0,
+    count: 7
+  }
+];
+const badgeGalleryColBcLevels = [
+  {
+    bc: 50,
+    count: 3
+  },
+  {
+    bc: 150,
+    count: 4
+  },
+  {
+    bc: 300,
+    count: 5
+  },
+  {
+    bc: 500,
+    count: 6
+  },
+  {
+    bc: 0,
+    count: 7
+  }
+];
 const BadgeOverlayType = {
   GRADIENT: 1,
   MULTIPLY: 2,
@@ -29,6 +80,7 @@ function initBadgeControls() {
     badgeModalContent.innerHTML = '';
 
     const updateBadgesAndPopulateModal = () => {
+      document.getElementById('badgeGalleryButton').classList.toggle('hidden', slotRow && slotCol);
       fetchPlayerBadges(playerBadges => {
         let lastGame = null;
         let lastGroup = null;
@@ -67,7 +119,7 @@ function initBadgeControls() {
           if (badge.badgeId === (playerData?.badge || 'null'))
             item.children[0].classList.add('selected');
           if (!item.classList.contains('disabled')) {
-            item.onclick = slotRow && slotCol 
+            item.onclick = slotRow && slotCol
               ? () => updatePlayerBadgeSlot(badge.badgeId, slotRow, slotCol, () => {
                 updateBadgeSlots(() => {
                   initAccountSettingsModal();
@@ -100,7 +152,7 @@ function initBadgeControls() {
   document.getElementById('badgeGalleryButton').onclick = () => {
     updateBadgeSlots(() => {
       initBadgeGalleryModal();
-      openModal('badgeGalleryModal', null, 'accountSettingsModal');
+      openModal('badgeGalleryModal', null, 'badgesModal');
     });
   };
 
@@ -122,6 +174,38 @@ function initBadgeControls() {
 }
 
 function initBadgeGalleryModal() {
+  const totalBp = badgeCache.reduce((sum, b) => sum + b.bp, 0);
+  const totalBc = badgeCache.filter(b => !b.hidden).length;
+
+  let levelRowBp = 0;
+  let prevLevelRowBp = 0;
+  
+  for (let rl = 0; rl < badgeGalleryRowBpLevels.length; rl++) {
+    const rowBpLevel = badgeGalleryRowBpLevels[rl];
+    levelRowBp = Math.max(rowBpLevel.bp - prevLevelRowBp, 0);
+    if (totalBp < rowBpLevel.bp)
+      break;
+    prevLevelRowBp = rowBpLevel.bp;
+  }
+
+  let levelColBc = 0;
+  let prevLevelColBc = 0;
+
+  for (let cl = 0; cl < badgeGalleryColBcLevels.length; cl++) {
+    const colBcLevel = badgeGalleryColBcLevels[cl];
+    levelColBc = Math.max(colBcLevel.bc - prevLevelColBc, 0);
+    if (totalBc < colBcLevel.bc)
+      break;
+    prevLevelColBc = colBcLevel.bc;
+  }
+
+  const rootStyle = document.documentElement.style;
+
+  rootStyle.setProperty('--row-level-total-bp', levelRowBp);
+  rootStyle.setProperty('--row-level-bp', totalBp - prevLevelRowBp);
+  rootStyle.setProperty('--col-level-total-bc', levelColBc);
+  rootStyle.setProperty('--col-level-bc', totalBc - prevLevelColBc);
+
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
     for (let c = 1; c <= maxBadgeSlotCols; c++) {
       const badgeId = r <= badgeSlotCache.length && c <= badgeSlotCache[r - 1].length ? badgeSlotCache[r - 1][c - 1] : null;
@@ -472,8 +556,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             return response.json();
           })
           .then(badgeSlots => {
-            if (!badgeSlots)
-              badgeSlots = [];
+            if (!badgeSlots || badgeSlots.flat().filter(b => b !== 'null').length)
+              return;
 
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent');

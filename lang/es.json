@@ -182,7 +182,6 @@
         "title": "Configuración de Cuenta",
         "fields": {
           "badge": "Medallas",
-          "badgeGallery": "Galería de Medallas",
           "toggleSaveSync": "Sincronización de Savefiles (Experimental)",
           "saveSyncSlotId": {
             "label": "Ranura de Savefile a Sincronizar",
@@ -194,10 +193,13 @@
         }
       },
       "badges": {
-        "title": "Medallas"
+        "title": "Medallas",
+        "manageBadgeGallery": "Galería de Medallas"
       },
       "badgeGallery": {
-        "title": "Galería de Medallas"
+        "title": "Galería de Medallas",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
