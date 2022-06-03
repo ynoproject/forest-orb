@@ -54,7 +54,8 @@ const gameUiThemes = {
     'system_GBlike',
     'system_E_eye',
     'Kong_SystemFC',
-    'natl_sys_PinkRibbon'
+    'natl_sys_PinkRibbon',
+    'aediorugap_sys'
   ],
   'flow': [
     'system',
