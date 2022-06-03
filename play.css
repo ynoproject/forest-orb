@@ -1872,6 +1872,7 @@ form .uiTheme {
   justify-content: space-between;
   align-items: center;
   width: 60%;
+  margin: 0 20%;
 }
 
 #expRankInfoContainer {
