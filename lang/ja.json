@@ -198,8 +198,8 @@
       },
       "badgeGallery": {
         "title": "バッジギャラリー設定",
-        "badgeGalleryRowProgress": "次の列追加まで(BP)",
-        "badgeGalleryColProgress": "次の行追加まで(バッジ)"
+        "badgeGalleryRowProgress": "次の行追加まで(BP)",
+        "badgeGalleryColProgress": "次の列追加まで(バッジ)"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
