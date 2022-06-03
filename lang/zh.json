@@ -198,8 +198,8 @@
       },
       "badgeGallery": {
         "title": "徽章展柜",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "badgeGalleryRowProgress": "下一行展柜解锁进度 (BP)",
+        "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -473,7 +473,7 @@
       "label": "{PLAYER} 的徽章展柜",
       "loading": "加载中...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "count": "{COUNT} 徽章"
     },
     "rankings": {
       "categories": {
