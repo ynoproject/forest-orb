@@ -1439,7 +1439,6 @@ loadOrInitCache();
 
 initDefaultSprites();
 updateBadges();
-fetchAndSendSyncedPictures();
 if (typeof initBadgeTools === 'function')
   initBadgeTools();
 fetchAndPopulateYnomojiConfig();
