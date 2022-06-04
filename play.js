@@ -949,6 +949,30 @@ function setName(name, isInit) {
     updateConfig(globalConfig, true);
 }
 
+function fetchAndSendSyncedPictures() {
+  apiFetch('syncedPics')
+    .then(response => response.json())
+    .then(jsonResponse => {
+      if (!jsonResponse)
+        return;
+
+      const pictureNames = jsonResponse.pictureNames;
+      const picturePrefixes = jsonResponse.picturePrefixes
+      
+      if (pictureNames?.length) {
+        const pictureNamesPtr = Module.allocate(Module.intArrayFromString(pictureNames.join(',')), Module.ALLOC_NORMAL);
+        Module._SendSyncPictureNames(pictureNamesPtr);
+        Module._free(pictureNamesPtr);
+      }
+
+      if (picturePrefixes?.length) {
+        const picturePrefixesPtr = Module.allocate(Module.intArrayFromString(picturePrefixes.join(',')), Module.ALLOC_NORMAL);
+        Module._SendSyncPicturePrefixes(picturePrefixesPtr);
+        Module._free(picturePrefixesPtr);
+      }
+    });
+}
+
 function onSelectUiTheme(e) {
   const modalContainer = document.getElementById('modalContainer');
   if (!modalContainer.dataset.lastModalId?.endsWith('createPartyModal'))
@@ -1415,6 +1439,7 @@ loadOrInitCache();
 
 initDefaultSprites();
 updateBadges();
+fetchAndSendSyncedPictures();
 if (typeof initBadgeTools === 'function')
   initBadgeTools();
 fetchAndPopulateYnomojiConfig();
