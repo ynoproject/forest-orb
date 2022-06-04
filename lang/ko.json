@@ -123,7 +123,7 @@
           "system": {
             "label": "시스템",
             "fields": {
-              "siteUpdates": "Site Updated",
+              "siteUpdates": "사이트 업데이트",
               "floodDetected": "디도스 공격 감지"
             }
           },
@@ -194,12 +194,12 @@
       },
       "badges": {
         "title": "뱃지",
-        "manageBadgeGallery": "Manage Badge Gallery"
+        "manageBadgeGallery": "뱃지 갤러리 편집"
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "title": "뱃지 갤러리 편집",
+        "badgeGalleryRowProgress": "다음 행 업그레이드 (BP)",
+        "badgeGalleryColProgress": "다음 열 업그레이드 (뱃지)"
       },
       "uiTheme": {
         "title": "UI 테마",
@@ -328,21 +328,21 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "{PLAYER} 차단",
+          "confirm": "정말로 <{PLAYER}> 님을 차단하시겠습니까?",
+          "success": "{PLAYER} 님을 차단했습니다"
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "뱃지 수여",
+          "prompt": "{PLAYER}에게 뱃지를 수여하기 위해 뱃지 ID를 입력해주세요.",
+          "success": "{BADGE} 를 {PLAYER} 님에게 성공적으로 수여했습니다.",
+          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "뱃지 해제",
+          "prompt": "{PLAYER}에게 뱃지를 해제하기 위해 뱃지 ID를 입력해주세요.",
+          "success": "{BADGE} 를 {PLAYER} 님에게서 성공적으롤 해제했습니다.",
+          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
         }
       }
     },
@@ -398,7 +398,7 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "siteUpdates": "사이트가 업데이트 되었습니다: 새로고침을 눌러 사이트 변경사항을 적용해주세요",
         "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {
@@ -466,14 +466,14 @@
       "location": "장소 :&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
-      "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "time": "{MINUTES}분 {SECONDS}초",
+      "artCredit": "뱃지 디자인 : {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading...",
+      "label": "{PLAYER}님의 뱃지 갤러리",
+      "loading": "로딩중...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "count": "{COUNT} 개의 뱃지 보유"
     },
     "rankings": {
       "categories": {
@@ -483,7 +483,7 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
+          "label": "BP (뱃지 포인트)",
           "valueLabel": "BP",
           "value": "{NUMBER} BP"
         },
@@ -510,19 +510,19 @@
         "timeTrial": {
           "label": "Time Trial Mode",
           "valueLabel": "성공 시간",
-          "value": "{MINUTES}:{SECONDS}"
+          "value": "{MINUTES}분 {SECONDS}초"
         },
         "minigame": {
-          "label": "Minigames",
-          "valueLabel": "Score",
+          "label": "미니게임",
+          "valueLabel": "점수",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
         "all": "전체",
-        "2": "All Effects",
+        "2": "모든 이펙트 얻기",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)"
+        "rby": "빨강/파랑/노랑 (미니게임 B)"
       }
     },
     "2kki": {
