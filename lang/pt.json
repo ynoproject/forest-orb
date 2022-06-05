@@ -4,15 +4,15 @@
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
       "substitutes": {
-        " Patch ": " Parte ",
+        " Patch ": " Patch ",
         "?": "?"
       }
     }
   },
   "ui": {
     "account": {
-      "login": "Log In",
-      "logout": "Log Out"
+      "login": "Entrar",
+      "logout": "Sair"
     },
     "fontStyle": {
       "label": "Estilo da Fonte:",
@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Localização:&nbsp;",
-      "immersionMode": "Modo Imersão",
+      "immersionMode": "Immersion Mode",
       "tab": {
         "chat": "Bate-Papo",
         "players": "Jogadores",
@@ -36,7 +36,7 @@
       },
       "chat": {
         "tab": {
-          "all": "Todas",
+          "all": "Todos",
           "map": "Mapa",
           "global": "Global",
           "party": "Party"
@@ -65,7 +65,7 @@
     },
     "modal": {
       "login": {
-        "title": "Log In",
+        "title": "Entrar",
         "fields": {
           "username": "Nome de Usuário",
           "password": "Senha"
@@ -100,9 +100,9 @@
           },
           "toggleNametags": "Torna visível as Nametags",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
-          "toggleTabToChat": "Tab Para acessar o chat ",
+          "toggleTabToChat": "Atalho Tab para Chat",
           "toggleRankings": "Rankings",
-          "toggleFloodProtection": "Proteção contra Flood"
+          "toggleFloodProtection": "Sistema Anti-Spam"
         },
         "notificationSettings": "Configurações de Notificação",
         "accountSettings": "Configurações da Conta"
@@ -124,7 +124,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Site Atualizado",
-              "floodDetected": "Possível Ataque de Flood Detectado"
+              "floodDetected": "Possível Ataque Spam Detectado"
             }
           },
           "account": {
@@ -189,7 +189,7 @@
               "0": "None"
             }
           },
-          "clearSaveSync": "Limpar Dados do Save da Nuvem"
+          "clearSaveSync": "Limpar dados do Save na Nuvem"
         }
       },
       "badges": {
@@ -197,12 +197,12 @@
         "manageBadgeGallery": "Gerenciar Galeria de Emblemas"
       },
       "badgeGallery": {
-        "title": "Gerenciar Galeria de Emblemas",
+        "title": "Painel da Galeria de Emblemas",
         "badgeGalleryRowProgress": "Atualização da Próxima Linha (PE)",
         "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)"
       },
       "uiTheme": {
-        "title": "Tema da Inteface",
+        "title": "Tema da Interface",
         "auto": "AUTO"
       },
       "createParty": {
@@ -222,7 +222,7 @@
         "submit": "Enviar"
       },
       "joinPrivateParty": {
-        "title": "Entra em Party Privada",
+        "title": "Entra em Party privada",
         "fields": {
           "password": "Senha"
         },
@@ -247,13 +247,13 @@
         "download": "Baixar Arquivo de Save"
       },
       "uiTheme": "Tema da Interface",
-      "toggleChat": "Alternar Chat",
+      "toggleChat": "Ocultar o Chat",
       "toggleImmersionMode": "Alternar pra Immersion Mode",
       "screenshot": "Tirar Screenshot",
       "settings": "Configurações",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Amostrar/Esconder Localização da Mensagem do Chat Global",
+        "toggleOwnGlobalMessageLocation": "Amostrar/Esconder Sua localização no Chat Global",
         "clearChat": "Limpar o Chat"
       },
       "parties": {
@@ -295,13 +295,13 @@
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
-      "2": "Connecting...",
+      "2": "Conectando...",
       "3": "Jogador Único"
     },
     "location": {
       "template": "{LOCATION}",
-      "queryingLocation": "Procurando Localização...",
-      "unknownLocation": "Localização Desconhecida",
+      "queryingLocation": "Achando Localização...",
+      "unknownLocation": "Localização Inválida",
       "2kki": {
         "template": "{LOCATION}"
       }
@@ -372,7 +372,7 @@
       "actions": {
         "viewPartyDetails": "Ver detalhes da Party ",
         "joinParty": "Se Juntar a Party",
-        "joinPrivateParty": "Se Juntar a Party Privada",
+        "joinPrivateParty": "Se Juntar a Party privada",
         "leaveParty": "Sair da Party"
       }
     },
@@ -388,7 +388,7 @@
         "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
         "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todas', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
-        "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
+        "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Immersion Mode. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },
@@ -428,10 +428,10 @@
         "badgeUnlocked": "Você desbloqueou um novo emblema!"
       },
       "saveSync": {
-        "saveUploading": "Carregando dados do Save no Slot {SLOT}...",
-        "saveUploaded": "Seus dados Save do slot {SLOT} foi carregado.",
-        "saveDownloading": "Atualizando dados Save no Slot {SLOT}...",
-        "saveDownloaded": "Save do Slot {SLOT} foi atualizado com sucesso.",
+        "saveUploading": "Carregando dados do Save no slot {SLOT}...",
+        "saveUploaded": "Seus dados do Save no slot {SLOT} foi carregado.",
+        "saveDownloading": "Atualizando dados do Save no slot {SLOT}...",
+        "saveDownloaded": "Save do slot {SLOT} foi atualizado com sucesso.",
         "saveUpToDate": "Os dados do Save estão atualizados.",
         "saveCleared": "Save da Nuvem foi apagado. Isso não afetará os salvamentos existentes em nenhum dos seus dispositivos."
       }
@@ -440,7 +440,7 @@
       "exp": "{POINTS} ExP",
       "expRank": "Rank: {RANK}",
       "period": "Temporada {ORDINAL}",
-      "periodEnds": "Termina {DATE}",
+      "periodEnds": "Termina em {DATE}",
       "availableUntilDate": "Disponível até\n{DATE}",
       "types": {
         "-1": "Expedição Livre",
@@ -478,12 +478,12 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "emblemas",
+          "label": "Emblemas",
           "valueLabel": "# de emblemas",
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "PE (Badge Points)",
+          "label": "PE (Ponto de Emblema)",
           "valueLabel": "PE",
           "value": "{NUMBER} PE"
         },
@@ -527,8 +527,8 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Ver em Yume 2kki Explorer",
-        "multi": "Ver {LOCATION} em Yume 2kki Explorer"
+        "generic": "Yume 2kki Explorer",
+        "multi": "Achar {LOCATION} em Yume 2kki Explorer"
       }
     }
   }
