@@ -332,10 +332,6 @@ function onReceiveInputFeedback(inputId) {
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
         break;
-      case 4:
-        buttonElement = document.getElementById('ownGlobalMessageLocationButton');
-        configKey = 'hideOwnGlobalMessageLocation';
-        break;
       case 5:
         buttonElement = document.getElementById('floodProtectionButton');
         configKey = 'disableFloodProtection';
@@ -531,8 +527,9 @@ document.getElementById('globalMessageButton').onclick = function () {
 };
 
 document.getElementById('ownGlobalMessageLocationButton').onclick = function () {
-  if (Module.INITIALIZED)
-    Module._ToggleGlobalMessageLocation();
+  this.classList.toggle('toggled');
+  config.hideOwnGlobalMessageLocation = this.classList.contains('toggled');
+  updateConfig(config);
 };
 
 {
