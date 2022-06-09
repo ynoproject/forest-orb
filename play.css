@@ -425,6 +425,11 @@ body.fullBg #background {
   border: 24px solid transparent;
 }
 
+.container {
+  border-top: none;
+  padding-top: 16px;
+}
+
 #header {
   position: relative;
   flex-wrap: wrap;
@@ -719,6 +724,8 @@ body.fullBg #background {
 
 #chatboxContainer {
   min-height: 240px;
+  border-left: none;
+  padding-left: 8px;
   z-index: 1;
 }
 
@@ -2320,6 +2327,8 @@ form .uiTheme {
     height: calc(100vh - 594px);
     min-height: 188px;
     max-height: 328px;
+    padding-left: 0;
+    border-left: 24px solid transparent;
   }
 
   #chatbox {
@@ -2457,6 +2466,8 @@ form .uiTheme {
   height: calc(100vh - 638px);
   min-height: 188px;
   max-height: 328px;
+  padding-left: 0;
+  border-left: 24px solid transparent;
 }
 
 #layout:not(:fullscreen).overflow #chatbox {
