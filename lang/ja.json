@@ -124,6 +124,7 @@
             "label": "システム",
             "fields": {
               "siteUpdates": "サイト更新通知",
+              "error": "Error Occurred",
               "floodDetected": "スパム検知"
             }
           },
@@ -399,6 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "サイトが更新されました。ページを再読み込みすると、サイトの変更が反映されます。",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {

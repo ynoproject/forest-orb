@@ -124,6 +124,7 @@
             "label": "系统通知",
             "fields": {
               "siteUpdates": "网站更新",
+              "error": "Error Occurred",
               "floodDetected": "检测到网络攻击"
             }
           },
@@ -399,6 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "检测到网站更新，请刷新网页以获取新内容。",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
       },
       "account": {

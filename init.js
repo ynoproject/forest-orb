@@ -524,6 +524,8 @@ function getCookie(cName) {
   initSaveSyncControls();
   loadOrInitConfig(saveSyncConfig, false, 'saveSyncConfig');
 
+  window.addEventListener('error', () => showSystemToastMessage('error', 'important'));
+
   if (!getCookie('sessionId') || !saveSyncConfig.enabled || !saveSyncConfig.slotId)
     injectScripts();
   else

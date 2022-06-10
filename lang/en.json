@@ -124,6 +124,7 @@
             "label": "System",
             "fields": {
               "siteUpdates": "Site Updated",
+              "error": "Error Occurred",
               "floodDetected": "Possible Flood Attack Detected"
             }
           },
@@ -399,6 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
       },
       "account": {

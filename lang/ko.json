@@ -124,6 +124,7 @@
             "label": "시스템",
             "fields": {
               "siteUpdates": "사이트 업데이트",
+              "error": "Error Occurred",
               "floodDetected": "디도스 공격 감지"
             }
           },
@@ -399,6 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "사이트가 업데이트 되었습니다: 새로고침을 눌러 사이트 변경사항을 적용해주세요",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {

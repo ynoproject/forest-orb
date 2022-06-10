@@ -131,8 +131,6 @@
             </div>
           </div>
 
-          <div id="status" class="baseColor"></div>
-
           <div id="canvasContainer">
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>

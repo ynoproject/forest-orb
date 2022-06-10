@@ -124,6 +124,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Site Atualizado",
+              "error": "Error Occurred",
               "floodDetected": "Possível Ataque Spam Detectado"
             }
           },
@@ -399,6 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "O site foi atualizado. Recarregue a página para obter as alterações mais recentes.",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "Possível Ataque de Flood detectado: Mudando para o modo de Single Player."
       },
       "account": {
