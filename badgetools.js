@@ -514,6 +514,8 @@ function initBadgeTools() {
                 merge(badge, localizedBadge, 'name');
                 merge(badge, localizedBadge, 'description');
                 merge(badge, localizedBadge, 'condition');
+                if (!localizedGameBadges[badge.gameId])
+                  localizedGameBadges[badge.gameId] = {};
                 localizedGameBadges[badge.gameId][badge.badgeId] = localizedBadge;
               }
               langFolder.file(`${lang}.json`, JSON.stringify(localizedGameBadges, null, 2));

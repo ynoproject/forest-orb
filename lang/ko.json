@@ -152,7 +152,7 @@
               "transferPartyOwner": "플레이어를 파티 리더로 임명함"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "탐험",
             "fields": {
               "complete": "탐험 성공",
@@ -232,10 +232,14 @@
         "incorrectPassword": "비밀번호가 올바르지 않습니다. 다시 시도해주세요",
         "submit": "확인"
       },
-      "eventLocations": {
+      "events": {
         "title": "탐험",
         "rankExp": "다음 랭크",
-        "weekExp": "이번주의 경험치"
+        "weekExp": "이번주의 경험치",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "랭킹"
@@ -261,7 +265,7 @@
         "createParty": "파티 생성",
         "disbandParty": "파티 해산"
       },
-      "eventLocations": "탐험",
+      "events": "탐험",
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER}님이 파티에서 강퇴당했습니다",
         "transferPartyOwner": "{PLAYER}님이 파티 리더로 임명되었습니다"
       },
-      "eventLocations": {
+      "events": {
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
         "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
@@ -443,6 +447,7 @@
       "expRank": "랭크: {RANK}",
       "period": "시즌 {ORDINAL}",
       "periodEnds": "종료일: {DATE}",
+      "current": "Current",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
       "types": {
         "-1": "자유 탐험",

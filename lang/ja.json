@@ -152,7 +152,7 @@
               "transferPartyOwner": "パーティー リーダー 昇格 通知"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "ドリームラリー",
             "fields": {
               "complete": "ドリームラリー到達通知",
@@ -232,10 +232,14 @@
         "incorrectPassword": "パスワードが正しくありません：もう一度やり直してください。",
         "submit": "送信"
       },
-      "eventLocations": {
+      "events": {
         "title": "ドリームラリー",
         "rankExp": "次のランクまで",
-        "weekExp": "今週のExP"
+        "weekExp": "今週のExP",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "ランキング"
@@ -261,7 +265,7 @@
         "createParty": "パーティーを組む",
         "disbandParty": "パーティーを解散する"
       },
-      "eventLocations": "ドリームラリー",
+      "events": "ドリームラリー",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
         "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
       },
-      "eventLocations": {
+      "events": {
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
@@ -443,6 +447,7 @@
       "expRank": "Rank: {RANK}",
       "period": "Season {ORDINAL}",
       "periodEnds": "{DATE}まで",
+      "current": "Current",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "types": {
         "-1": "エンドレスラリー",
