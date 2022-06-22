@@ -152,7 +152,7 @@
               "transferPartyOwner": "Promoted Player to Party Leader"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "Expeditions",
             "fields": {
               "complete": "Expedition Complete",
@@ -232,10 +232,14 @@
         "incorrectPassword": "Incorrect Password: Please try again.",
         "submit": "Submit"
       },
-      "eventLocations": {
+      "events": {
         "title": "Expeditions",
         "rankExp": "Next Rank",
-        "weekExp": "ExP This Week"
+        "weekExp": "ExP This Week",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "Rankings"
@@ -261,7 +265,7 @@
         "createParty": "Create Party",
         "disbandParty": "Disband Party"
       },
-      "eventLocations": "Expeditions",
+      "events": "Expeditions",
       "rankings": "Rankings",
       "nexus": "Return to Nexus"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER} has been kicked from the party.",
         "transferPartyOwner": "{PLAYER} has been promoted to party leader."
       },
-      "eventLocations": {
+      "events": {
         "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
         "freeComplete": "Expedition Complete! You visited {LOCATION}.",
         "listUpdated": "The expedition list has been updated."
@@ -443,6 +447,7 @@
       "expRank": "Rank: {RANK}",
       "period": "Season {ORDINAL}",
       "periodEnds": "Ends {DATE}",
+      "current": "Current",
       "availableUntilDate": "Available Until\n{DATE}",
       "types": {
         "-1": "Free Expedition",

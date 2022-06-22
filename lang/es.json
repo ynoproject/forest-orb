@@ -152,7 +152,7 @@
               "transferPartyOwner": "Miembro Promovido a Líder"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "Expediciones",
             "fields": {
               "complete": "Expedición Completada",
@@ -232,10 +232,14 @@
         "incorrectPassword": "Contraseña Incorrecta: Intente Nuevamente.",
         "submit": "Unirse"
       },
-      "eventLocations": {
+      "events": {
         "title": "Expediciones",
         "rankExp": "Siguiente Rango",
-        "weekExp": "ExP Semanal"
+        "weekExp": "ExP Semanal",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "Clasificaciones"
@@ -261,7 +265,7 @@
         "createParty": "Crear Equipo",
         "disbandParty": "Eliminar Equipo"
       },
-      "eventLocations": "Expediciones",
+      "events": "Expediciones",
       "rankings": "Clasificaciones",
       "nexus": "Regresar al Nexo"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER} ha sido expulsado del equipo.",
         "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
       },
-      "eventLocations": {
+      "events": {
         "complete": "¡Expedición Completada!\nPor visitar {LOCATION}, se te ha otorgado {EXP}.",
         "freeComplete": "¡Expedición Completada! Has visitado {LOCATION}.",
         "listUpdated": "La lista de expediciones ha sido actualizada."
@@ -443,6 +447,7 @@
       "expRank": "Rango: {RANK}",
       "period": "Temporada {ORDINAL}",
       "periodEnds": "Termina {DATE}",
+      "current": "Current",
       "availableUntilDate": "Disponible Hasta\n{DATE}",
       "types": {
         "-1": "Expedición Libre",

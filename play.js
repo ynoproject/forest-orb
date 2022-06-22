@@ -83,7 +83,7 @@ function onUpdateConnectionStatus(status) {
 
   if (connStatus === 3 && status !== 3) {
     if (loginToken)
-      updateEventLocations();
+      updateEvents();
     initSessionWs();
   } else if (connStatus !== 3 && status === 3)
     closeSession();
@@ -129,7 +129,7 @@ function fetchAndUpdatePlayerInfo() {
               trySetChatName(playerName);
               showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
               if (eventPeriodCache)
-                updateEventLocations();
+                updateEvents();
               else
                 updateEventPeriod();
               updateBadges(updateBadgeButton);
@@ -1016,7 +1016,7 @@ function initLocalization(isInitial) {
         initLocalizedMapLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
 
       if (eventPeriodCache)
-        updateEventLocations();
+        updateEvents();
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');

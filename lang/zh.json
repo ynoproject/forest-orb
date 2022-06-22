@@ -152,7 +152,7 @@
               "transferPartyOwner": "领队转让"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "梦远征通知",
             "fields": {
               "complete": "梦远征抵达",
@@ -232,10 +232,14 @@
         "incorrectPassword": "密码错误，请重新输入",
         "submit": "提交"
       },
-      "eventLocations": {
+      "events": {
         "title": "梦远征",
         "rankExp": "下一等级",
-        "weekExp": "本周点数"
+        "weekExp": "本周点数",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "排行榜"
@@ -261,7 +265,7 @@
         "createParty": "创建队伍",
         "disbandParty": "解散队伍"
       },
-      "eventLocations": "梦远征",
+      "events": "梦远征",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER} 已被请出队伍。",
         "transferPartyOwner": "{PLAYER} 已被转授为领队。"
       },
-      "eventLocations": {
+      "events": {
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
         "listUpdated": "远征目的地已更新！"
@@ -443,6 +447,7 @@
       "expRank": "等级: {RANK}",
       "period": "第 {ORDINAL} 季",
       "periodEnds": "本季度将于 {DATE} 结束",
+      "current": "Current",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",

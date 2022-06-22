@@ -26,7 +26,7 @@ const notificationTypes = {
     'kickPlayer',
     'transferPartyOwner'
   ],
-  eventLocations: [
+  events: [
     'complete',
     'freeComplete',
     'listUpdated'
@@ -49,7 +49,7 @@ let notificationConfig = {
   screenPosition: 'bottomLeft'
 };
 
-const accountNotificationCategories = [ 'account', 'eventLocations', 'badges', 'saveSync' ];
+const accountNotificationCategories = [ 'account', 'events', 'badges', 'saveSync' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');

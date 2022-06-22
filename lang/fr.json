@@ -152,7 +152,7 @@
               "transferPartyOwner": "Promu(e) chef du groupe"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "Expéditions",
             "fields": {
               "complete": "Expédition terminée",
@@ -232,10 +232,14 @@
         "incorrectPassword": "Mot de passe incorrect: veuillez réessayer.",
         "submit": "Soumettre"
       },
-      "eventLocations": {
+      "events": {
         "title": "Expéditions",
         "rankExp": "Prochain rang",
-        "weekExp": "ExP cette semaine"
+        "weekExp": "ExP cette semaine",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "Rangs"
@@ -261,7 +265,7 @@
         "createParty": "Créer un Groupe",
         "disbandParty": "Dissoudre le Groupe"
       },
-      "eventLocations": "Expéditions",
+      "events": "Expéditions",
       "rankings": "Rangs",
       "nexus": "Retourner au Nexus"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER} à été explusé de la partie.",
         "transferPartyOwner": "{PLAYER} est maintenant le leader du groupe."
       },
-      "eventLocations": {
+      "events": {
         "complete": "Expédition terminée!\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
         "freeComplete": "Expédition terminée! Vous avez visité(e) {LOCATION}.",
         "listUpdated": "La liste d'expédition a été mis a jour."
@@ -443,6 +447,7 @@
       "expRank": "Rang: {RANK}",
       "period": "Saison {ORDINAL}",
       "periodEnds": "Finis le {DATE}",
+      "current": "Current",
       "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
         "-1": "Expédition gratuite",

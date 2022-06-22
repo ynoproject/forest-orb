@@ -121,7 +121,7 @@
                 <div id="explorerControls"></div>
               <?php endif ?>
               <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">
-                <button id="eventLocationsButton" class="iconButton unselectable" data-i18n="[title]tooltips.eventLocations">
+                <button id="eventsButton" class="iconButton unselectable" data-i18n="[title]tooltips.events">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
                 </button>
               </div>
@@ -661,10 +661,10 @@
             </div>
           </div>
         </div>
-        <div id="eventLocationsModal" class="modal accountRequired hidden">
+        <div id="eventsModal" class="modal accountRequired hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 class="modalTitle" data-i18n="[html]modal.eventLocations.title">Expeditions</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.events.title">Expeditions</h1>
           </div>
           <div class="modalContent">
             <div id="expRankInfoContainer" class="modalInfoContainer">
@@ -675,7 +675,7 @@
               </div>
             </div>
             <div id="rankExpContainer">
-              <label id="rankExpLabel" class="progressBarHeading" data-i18n="[html]modal.eventLocations.rankExp">Next Rank</label>
+              <label id="rankExpLabel" class="progressBarHeading" data-i18n="[html]modal.events.rankExp">Next Rank</label>
               <div id="rankExpBarContainer" class="progressBarContainer">
                 <label id="rankExpBarLabel" class="progressBarLabel altText unselectable"></label>
                 <div id="rankExpBar" class="progressBar"></div>
@@ -685,12 +685,23 @@
               <h3 id="eventPeriod">Season 1</h3>
               <label id="eventPeriodEndDateLabel">Ends</label>
             </div>
-            <label id="weekExpLabel" class="progressBarHeading" data-i18n="[html]modal.eventLocations.weekExp">ExP This Week</label>
+            <label id="weekExpLabel" class="progressBarHeading" data-i18n="[html]modal.events.weekExp">ExP This Week</label>
             <div id="weekExpBarContainer" class="progressBarContainer">
               <label id="weekExpBarLabel" class="progressBarLabel altText unselectable"></label>
               <div id="weekExpBar" class="progressBar"></div>
             </div>
-            <div id="eventLocationList" class="scrollableContainer"></div>
+            <div id="eventTabs" class="subTabs">
+              <div id="eventTabLocations" class="eventTab subTab active" data-tab-list="locations">
+                <small class="subTabLabel infoLabel unselectable" data-i18n="[html]modal.events.tabs.locations">Locations</small>
+                <div class="subTabBg"></div>
+              </div>
+              <div id="eventTabVms" class="eventTab subTab" data-tab-list="vms">
+                <small class="subTabLabel infoLabel unselectable" data-i18n="[html]modal.events.tabs.vms">Vending Machine</small>
+                <div class="subTabBg"></div>
+              </div>
+            </div>
+            <div id="eventLocationsList" class="eventList scrollableContainer"></div>
+            <div id="eventVmsList" class="eventList scrollableContainer hidden"></div>
           </div>
         </div>
         <div id="rankingsModal" class="modal hidden">

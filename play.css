@@ -1994,7 +1994,7 @@ form .uiTheme {
 
 #weekExpBarLabel::after {
   counter-reset: week-exp var(--week-exp);
-  content: counter(week-exp) '/40';
+  content: counter(week-exp) '/50';
 }
 
 #badgeGalleryRowProgressBarLabel::after {
@@ -2023,34 +2023,56 @@ form .uiTheme {
   width: calc((var(--col-level-bc) / var(--col-level-total-bc)) * 100%);
 }
 
-#eventLocationList {
+.eventList {
   width: 100%;
 }
 
-#eventLocationList .eventLocationListEntry.complete {
+.eventList.hidden {
+  display: none;
+}
+
+.eventList .eventListEntry.complete {
   opacity: 0.625;
 }
 
-#eventLocationList .eventLocationListEntry .detailsContainer {
+.eventList .eventListEntry .detailsContainer {
   flex-direction: column;
   width: 60%;
 }
 
-#eventLocationList .eventLocationListEntry .eventLocationEndDateContainer {
+.eventList .eventListEntry .eventEndDateContainer {
   display: flex;
   flex-direction: column;
   width: 40%;
   padding-right: 16px;
 }
 
-#eventLocationList .eventLocationListEntry .eventLocationEndDateContainer > div {
+.eventList .eventListEntry .eventEndDateContainer > div {
   text-align: right;
 }
 
-#eventLocationList .eventLocationListEntry .eventLocationPoints {
+.eventList .eventListEntry .eventPoints {
   padding-right: 16px;
   text-align: right;
   white-space: nowrap;
+}
+
+.eventList .eventVmListEntry .vmContainer {
+  width: 60%;
+}
+
+.eventList .eventVmListEntry .vmContainer .vmImage {
+  border: 6px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+  border-image-width: 2 !important;
+}
+
+#eventTabs {
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 16px;
+  border-bottom: 4px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
 }
 
 #rankingSubCategoryTabs {

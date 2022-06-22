@@ -29,10 +29,24 @@ const eventExpRanks = [
   }
 ];
 let eventPeriodCache;
-let eventLocationCache = [];
+let eventsCache = {};
 
 function initEventControls() {
-  document.getElementById('eventLocationsButton').onclick = () => openModal('eventLocationsModal');
+  document.getElementById('eventsButton').onclick = () => openModal('eventsModal');
+  for (let tab of document.getElementsByClassName('eventTab'))
+    tab.onclick = onClickEventTab;
+}
+
+function onClickEventTab() {
+  const eventTabs = document.getElementById('eventTabs');
+  const tabIndex = Array.prototype.indexOf.call(eventTabs.children, this);
+  const activeTabIndex = Array.prototype.indexOf.call(eventTabs.children, eventTabs.querySelector('.active'));
+  if (tabIndex !== activeTabIndex) {
+    for (let eventTab of document.getElementsByClassName('eventTab')) {
+      eventTab.classList.toggle('active', eventTab === this);
+      document.getElementById(`event${eventTab.dataset.tabList.slice(0, 1).toUpperCase()}${eventTab.dataset.tabList.slice(1)}List`).classList.toggle('hidden', eventTab !== this);
+    }
+  }
 }
 
 function updateEventPeriod() {
@@ -50,120 +64,148 @@ function onUpdateEventPeriod(eventPeriod) {
   document.getElementById('eventPeriodEndDateLabel').innerHTML = getMassagedLabel(localizedMessages.events.periodEnds.replace('{DATE}', eventPeriod.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" })), true);
   document.getElementById('eventControls').style.display = 'unset';
   eventPeriodCache = eventPeriod;
-  updateEventLocations();
+  updateEvents();
 }
 
-function updateEventLocations(ignoreLocationCheck) {
+function updateEvents(ignoreLocationCheck) {
   if (!loginToken || !eventPeriodCache)
     return;
-  sendSessionCommand('el', null, params => onUpdateEventLocations(JSON.parse(params[0]), ignoreLocationCheck));
+  sendSessionCommand('e', null, params => onUpdateEvents(JSON.parse(params[0]), ignoreLocationCheck));
 }
 
-function onUpdateEventLocations(eventLocations, ignoreLocationCheck) {
-  if (!eventLocations)
+function onUpdateEvents(events, ignoreLocationCheck) {
+  if (!events)
     return;
 
-  eventLocationCache = eventLocations.map(l => {
-    l.endDate = new Date(l.endDate);
-    return l;
-  });
-  
-  const eventLocationsStr = JSON.stringify(eventLocationCache.map(el => el.title));
-  if (config.lastEventLocations !== eventLocationsStr) {
-    showEventLocationToastMessage('listUpdated', 'expedition');
-    config.lastEventLocations = eventLocationsStr;
+  const eventTypes = Object.keys(events);
+
+  for (let eventType of eventTypes) {
+    eventsCache[eventType] = events[eventType].map(l => {
+      l.endDate = new Date(l.endDate);
+      return l;
+    });
+  }
+    
+  const eventsStr = JSON.stringify(Object.values(eventsCache).flat().map(el => el.title));
+  if (config.lastEvents !== eventsStr) {
+    showEventsToastMessage('listUpdated', 'expedition');
+    config.lastEvents = eventsStr;
     updateConfig(config);
   }
 
-  const eventLocationList = document.getElementById('eventLocationList');
-  eventLocationList.innerHTML = '';
+  for (let eventType of eventTypes) {
+    const eventTypeName = `${eventType.slice(0, 1).toUpperCase()}${eventType.slice(1, -1)}`;
 
-  let lastType;
+    const eventsList = document.getElementById(`event${eventTypeName}sList`);
+    eventsList.innerHTML = '';
 
-  for (let eventLocation of eventLocationCache) {
-    if (eventLocation.type !== lastType) {
-      const eventLocationTypeContainer = document.createElement('div');
-      
-      const eventLocationTypeLabel = document.createElement('h3');
-      eventLocationTypeLabel.innerHTML = getMassagedLabel(localizedMessages.events.types[eventLocation.type], true);
+    let lastType;
 
-      eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
-      eventLocationList.appendChild(eventLocationTypeContainer);
+    for (let event of eventsCache[eventType]) {
+      if (lastType === undefined || event.type !== lastType) {
+        const eventLocationTypeContainer = document.createElement('div');
+        
+        const eventLocationTypeLabel = document.createElement('h3');
+        eventLocationTypeLabel.innerHTML = getMassagedLabel(eventType === 'locations' ? localizedMessages.events.types[event.type] : localizedMessages.events.current, true);
 
-      lastType = eventLocation.type;
-    }
-    
-    const eventLocationListEntry = document.createElement('div');
+        eventLocationTypeContainer.appendChild(eventLocationTypeLabel);
+        eventsList.appendChild(eventLocationTypeContainer);
 
-    eventLocationListEntry.classList.add('eventLocationListEntry');
-    eventLocationListEntry.classList.add('listEntry');
-    if (eventLocation.complete)
-      eventLocationListEntry.classList.add('complete');
-
-    const detailsContainer = document.createElement('div');
-    detailsContainer.classList.add('detailsContainer');
-
-    const eventLocationName = document.createElement('div');
-    
-    eventLocationName.innerHTML = gameId === '2kki' ? get2kkiLocationHtml(eventLocation) : eventLocation.title;
-
-    const eventLocationDepth = document.createElement('div');
-    eventLocationDepth.classList.add('infoLabel');
-    eventLocationDepth.classList.add('nowrap');
-    
-    for (let d = 0; d < 10; d += 2) {
-      if (d < eventLocation.depth) {
-        if (d + 1 < eventLocation.depth) {
-          eventLocationDepth.innerHTML += '★';
-          continue;
-        } else {
-          const halfStar = document.createElement('div');
-          halfStar.classList.add('halfStar');
-          eventLocationDepth.appendChild(halfStar);
-        }
+        lastType = event.type;
       }
-      eventLocationDepth.innerHTML += '☆';
+      
+      const eventListEntry = document.createElement('div');
+
+      eventListEntry.classList.add(`event${eventTypeName}ListEntry`);
+      eventListEntry.classList.add('eventListEntry');
+      eventListEntry.classList.add('listEntry');
+      if (event.complete)
+        eventListEntry.classList.add('complete');
+
+      if (eventType === 'locations') {
+        const detailsContainer = document.createElement('div');
+        detailsContainer.classList.add('detailsContainer');
+  
+        const eventLocationName = document.createElement('div');
+        
+        eventLocationName.innerHTML = gameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
+  
+        detailsContainer.appendChild(eventLocationName);
+
+        const eventLocationDepth = document.createElement('div');
+        eventLocationDepth.classList.add('infoLabel');
+        eventLocationDepth.classList.add('nowrap');
+        
+        for (let d = 0; d < 10; d += 2) {
+          if (d < event.depth) {
+            if (d + 1 < event.depth) {
+              eventLocationDepth.innerHTML += '★';
+              continue;
+            } else {
+              const halfStar = document.createElement('div');
+              halfStar.classList.add('halfStar');
+              eventLocationDepth.appendChild(halfStar);
+            }
+          }
+          eventLocationDepth.innerHTML += '☆';
+        }
+
+        detailsContainer.appendChild(eventLocationDepth);
+        eventListEntry.appendChild(detailsContainer);
+      } else if (eventType === 'vms') {
+        const vmContainer = document.createElement('div');
+        vmContainer.classList.add('vmContainer');
+
+        const vmImage = document.createElement('img');
+        vmImage.classList.add('vmImage');
+        vmImage.src = `${apiUrl}/event?command=vm&id=${event.id}`;
+        
+        vmContainer.appendChild(vmImage);
+        eventListEntry.appendChild(vmContainer);
+      }
+
+      const endDateContainer = document.createElement('div');
+      endDateContainer.classList.add('eventLocationEndDateContainer');
+      endDateContainer.classList.add('eventEndDateContainer');
+
+      const endDateLabelContainer = document.createElement('div');
+
+      const endDateLabel = document.createElement('label');
+      endDateLabel.classList.add('nowrap');
+      endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', event.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
+
+      endDateLabelContainer.appendChild(endDateLabel);
+      endDateContainer.appendChild(endDateLabelContainer);
+      eventListEntry.appendChild(endDateContainer);
+
+      const pointsContainer = document.createElement('label');
+      pointsContainer.classList.add('eventLocationPoints');
+      pointsContainer.classList.add('eventPoints');
+      pointsContainer.classList.add('infoLabel');
+      pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', event.exp || 0);
+
+      eventListEntry.appendChild(pointsContainer);
+
+      const checkbox = document.createElement('div');
+      checkbox.classList.add('checkbox');
+      if (event.complete)
+        checkbox.classList.add('toggled');
+
+      checkbox.appendChild(document.createElement('span'));
+      eventListEntry.appendChild(checkbox);
+
+      eventsList.appendChild(eventListEntry);
     }
 
-    const endDateContainer = document.createElement('div');
-    endDateContainer.classList.add('eventLocationEndDateContainer');
-
-    const endDateLabelContainer = document.createElement('div');
-
-    const endDateLabel = document.createElement('label');
-    endDateLabel.classList.add('nowrap');
-    endDateLabel.innerHTML = getMassagedLabel(localizedMessages.events.availableUntilDate, true).replace('{DATE}', eventLocation.endDate.toLocaleString([], { "dateStyle": "short", "timeStyle": "short" }));
-
-    const pointsContainer = document.createElement('label');
-    pointsContainer.classList.add('eventLocationPoints');
-    pointsContainer.classList.add('infoLabel');
-    pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', eventLocation.exp || 0);
-
-    const checkbox = document.createElement('div');
-    checkbox.classList.add('checkbox');
-    if (eventLocation.complete)
-      checkbox.classList.add('toggled');
-
-    detailsContainer.appendChild(eventLocationName);
-    detailsContainer.appendChild(eventLocationDepth);
-    eventLocationListEntry.appendChild(detailsContainer);
-    endDateLabelContainer.appendChild(endDateLabel);
-    endDateContainer.appendChild(endDateLabelContainer);
-    eventLocationListEntry.appendChild(endDateContainer);
-    eventLocationListEntry.appendChild(pointsContainer);
-    checkbox.appendChild(document.createElement('span'));
-    eventLocationListEntry.appendChild(checkbox);
-    eventLocationList.appendChild(eventLocationListEntry);
+    if (eventType === 'locations' && !ignoreLocationCheck && connStatus === 1)
+      checkEventLocations();
   }
 
   updatePlayerExp();
-
-  if (!ignoreLocationCheck && connStatus === 1)
-    checkEventLocations();
 }
 
 function updatePlayerExp() {
-  apiFetch('eventLocations?command=exp')
+  apiFetch('events?command=exp')
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -200,12 +242,12 @@ function updatePlayerExp() {
       rootStyle.setProperty('--rank-total-exp', rankExp);
       rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
       document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
-      rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 40));
+      rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 50));
     });
 }
 
 function claimEventLocationPoints(location, free, retryCount) {
-  let url = `eventLocations?command=claim&location=${location.replace(/&/g, '%26')}`;
+  let url = `events?command=claim&location=${location.replace(/&/g, '%26')}`;
   if (free)
     url += '&free=1';
   apiFetch(url)
@@ -216,13 +258,13 @@ function claimEventLocationPoints(location, free, retryCount) {
     })
     .then(result => {
       if (result > 0) {
-        showEventLocationToastMessage('complete', 'expedition', location, result);
+        showEventsToastMessage('complete', 'expedition', location, result);
         checkNewBadgeUnlocks();
       } else if (free && result > -1) {
-        showEventLocationToastMessage('freeComplete', 'expedition', location);
+        showEventsToastMessage('freeComplete', 'expedition', location);
         checkNewBadgeUnlocks();
       }
-      updateEventLocations(true);
+      updateEvents(true);
     })
     .catch(err => {
       if (!retryCount)
@@ -235,8 +277,8 @@ function claimEventLocationPoints(location, free, retryCount) {
 }
 
 function checkEventLocations() {
-  if (loginToken && cachedLocations && eventLocationCache.length) {
-    const incompleteEventLocations = eventLocationCache.filter(el => !el.complete);
+  if (loginToken && cachedLocations && eventsCache.locations?.length) {
+    const incompleteEventLocations = eventsCache.locations.filter(el => !el.complete);
     const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
     const eventLocationMatch = cachedLocations.map(l => {
       let locationName = l.title;
@@ -250,12 +292,12 @@ function checkEventLocations() {
   }
 }
 
-function showEventLocationToastMessage(key, icon, location, exp) {
-  if (!notificationConfig.eventLocations.all || !notificationConfig.eventLocations[key])
+function showEventsToastMessage(key, icon, location, exp) {
+  if (!notificationConfig.events.all || !notificationConfig.events[key])
     return;
-  let message = getMassagedLabel(localizedMessages.toast.eventLocations[key], true);
+  let message = getMassagedLabel(localizedMessages.toast.events[key], true);
   if (location) {
-    const locationObj = eventLocationCache.find(el => el.title === location);
+    const locationObj = eventsCache.locations.find(el => el.title === location);
     message = message.replace('{LOCATION}', gameId === '2kki' ? get2kkiLocationHtml(locationObj) : location);
   }
   if (exp)
@@ -265,5 +307,5 @@ function showEventLocationToastMessage(key, icon, location, exp) {
 
 (function () {
   addSessionCommandHandler('ep', args => onUpdateEventPeriod(JSON.parse(args[0])));
-  addSessionCommandHandler('el', args => onUpdateEventLocations(JSON.parse(args[0])));
+  addSessionCommandHandler('e', args => onUpdateEvents(JSON.parse(args[0])));
 })();

@@ -152,7 +152,7 @@
               "transferPartyOwner": "Повышение до Лидера Группы"
             }
           },
-          "eventLocations": {
+          "events": {
             "label": "Походы",
             "fields": {
               "complete": "Поход Выполнен",
@@ -232,10 +232,14 @@
         "incorrectPassword": "Неверный пароль. Пожалуйста, попробуйте снова.",
         "submit": "Войти"
       },
-      "eventLocations": {
+      "events": {
         "title": "Походы",
         "rankExp": "До след. Ранга",
-        "weekExp": "Опыта за Неделю"
+        "weekExp": "Опыта за Неделю",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine"
+        }
       },
       "rankings": {
         "title": "Rankings"
@@ -261,7 +265,7 @@
         "createParty": "Создать Группу",
         "disbandParty": "Распустить Группу"
       },
-      "eventLocations": "Походы",
+      "events": "Походы",
       "rankings": "Rankings",
       "nexus": "Вернуться на Главную страницу"
     }
@@ -421,7 +425,7 @@
         "kickPlayer": "{PLAYER} Исключается из группы.",
         "transferPartyOwner": "{PLAYER} Теперь Лидер группы."
       },
-      "eventLocations": {
+      "events": {
         "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
         "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
         "listUpdated": "Список Походов Обновлён."
@@ -443,6 +447,7 @@
       "expRank": "Ранг: {RANK}",
       "period": "Сезон {ORDINAL}",
       "periodEnds": "Заканчивается {DATE}",
+      "current": "Current",
       "availableUntilDate": "Доступен до\n{DATE}",
       "types": {
         "-1": "Свободные",
