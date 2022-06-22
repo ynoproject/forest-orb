@@ -158,7 +158,13 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
         const vmImage = document.createElement('img');
         vmImage.classList.add('vmImage');
-        vmImage.src = `${apiUrl}/events?command=vm&id=${event.id}`;
+        apiFetch(`events?command=vm&id=${event.id}`)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.blob();
+          })
+          .then(data => vmImage.src = URL.createObjectURL(data));
         
         vmContainer.appendChild(vmImage);
         eventListEntry.appendChild(vmContainer);
