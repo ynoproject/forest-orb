@@ -298,6 +298,12 @@ function checkEventLocations() {
   }
 }
 
+function onClaimEventVmPoints(exp) {
+  showEventsToastMessage('vmComplete', 'expedition', null, exp);
+  checkNewBadgeUnlocks();
+  updateEvents(true);
+}
+
 function showEventsToastMessage(key, icon, location, exp) {
   if (!notificationConfig.events.all || !notificationConfig.events[key])
     return;
@@ -314,4 +320,5 @@ function showEventsToastMessage(key, icon, location, exp) {
 (function () {
   addSessionCommandHandler('ep', args => onUpdateEventPeriod(JSON.parse(args[0])));
   addSessionCommandHandler('e', args => onUpdateEvents(JSON.parse(args[0])));
+  addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
 })();

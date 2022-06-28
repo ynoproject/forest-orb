@@ -265,7 +265,7 @@ function addAdminContextMenu(target, player, uuid) {
   if (player.account)
     tooltipHtml += `<br>
       <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
-      <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">Revoke Badge</a>`;
+      <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.revokeBadge.label, true)}</a>`;
 
   const adminTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
 

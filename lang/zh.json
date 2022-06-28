@@ -157,6 +157,7 @@
             "fields": {
               "complete": "梦远征抵达",
               "freeComplete": "无尽流浪抵达",
+              "vmComplete": "Vending Machine Found",
               "listUpdated": "目的地更新"
             }
           },
@@ -428,6 +429,7 @@
       "events": {
         "complete": "成功抵达 {LOCATION} 。远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
         "listUpdated": "远征目的地已更新！"
       },
       "badges": {
