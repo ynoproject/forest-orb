@@ -157,6 +157,7 @@
             "fields": {
               "complete": "Expedición Completada",
               "freeComplete": "Expedición Libre Completada",
+              "vmComplete": "Vending Machine Found",
               "listUpdated": "Lista de Expediciones Actualizada"
             }
           },
@@ -428,6 +429,7 @@
       "events": {
         "complete": "¡Expedición Completada!\nPor visitar {LOCATION}, se te ha otorgado {EXP}.",
         "freeComplete": "¡Expedición Completada! Has visitado {LOCATION}.",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
         "listUpdated": "La lista de expediciones ha sido actualizada."
       },
       "badges": {

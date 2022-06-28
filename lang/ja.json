@@ -157,6 +157,7 @@
             "fields": {
               "complete": "ドリームラリー到達通知",
               "freeComplete": "エンドレスラリー到達通知",
+              "vmComplete": "Vending Machine Found",
               "listUpdated": "ドリームラリー更新通知"
             }
           },
@@ -428,6 +429,7 @@
       "events": {
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
       },
       "badges": {

@@ -157,6 +157,7 @@
             "fields": {
               "complete": "Поход Выполнен",
               "freeComplete": "Свободный Поход Выполнен",
+              "vmComplete": "Vending Machine Found",
               "listUpdated": "Список Походов Обновлён"
             }
           },
@@ -428,6 +429,7 @@
       "events": {
         "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
         "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
         "listUpdated": "Список Походов Обновлён."
       },
       "badges": {
