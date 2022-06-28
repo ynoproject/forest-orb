@@ -29,6 +29,7 @@ const notificationTypes = {
   events: [
     'complete',
     'freeComplete',
+    'vmComplete',
     'listUpdated'
   ],
   badges: [

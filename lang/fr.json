@@ -239,7 +239,7 @@
         "weekExp": "ExP cette semaine",
         "tabs": {
           "locations": "Locations",
-          "vms": "Vending Machine"
+          "vms": "Vending Machine Finder"
         }
       },
       "rankings": {
@@ -515,6 +515,11 @@
           "label": "Expédition terminée",
           "valueLabel": "Complétée",
           "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
+          "value": "{NUMBER}"
         },
         "timeTrial": {
           "label": "Course-contre la montre",

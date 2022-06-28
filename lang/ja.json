@@ -239,7 +239,7 @@
         "weekExp": "今週のExP",
         "tabs": {
           "locations": "Locations",
-          "vms": "Vending Machine"
+          "vms": "Vending Machine Finder"
         }
       },
       "rankings": {
@@ -515,6 +515,11 @@
           "label": "エンドレスラリー完了率",
           "valueLabel": "完了率",
           "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
+          "value": "{NUMBER}"
         },
         "timeTrial": {
           "label": "スピードラン",
