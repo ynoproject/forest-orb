@@ -312,7 +312,7 @@ function showEventsToastMessage(key, icon, location, exp) {
     const locationObj = eventsCache.locations.find(el => el.title === location);
     message = message.replace('{LOCATION}', gameId === '2kki' ? get2kkiLocationHtml(locationObj) : location);
   }
-  if (exp)
+  if (exp !== undefined)
     message = message.replace('{EXP}', localizedMessages.events.exp.replace('{POINTS}', exp));
   showToastMessage(message, icon, true);
 }

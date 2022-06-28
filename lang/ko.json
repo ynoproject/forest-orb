@@ -239,7 +239,7 @@
         "weekExp": "이번주의 경험치",
         "tabs": {
           "locations": "Locations",
-          "vms": "Vending Machine"
+          "vms": "Vending Machine Finder"
         }
       },
       "rankings": {
@@ -515,6 +515,11 @@
           "label": "탐험 성공",
           "valueLabel": "성공률",
           "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
+          "value": "{NUMBER}"
         },
         "timeTrial": {
           "label": "Time Trial Mode",
