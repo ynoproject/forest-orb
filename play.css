@@ -2048,10 +2048,6 @@ form .uiTheme {
   margin-top: -18px;
 }
 
-.eventList .eventListEntry .detailsContainer .minDepthFillContainer {
-  margin-top: -19px;
-}
-
 .eventList .eventListEntry .detailsContainer .maxDepthFillContainer {
   opacity: 0.5;
 }
