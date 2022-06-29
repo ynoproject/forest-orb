@@ -132,25 +132,54 @@ function onUpdateEvents(events, ignoreLocationCheck) {
   
         detailsContainer.appendChild(eventLocationName);
 
-        const eventLocationDepth = document.createElement('div');
-        eventLocationDepth.classList.add('infoLabel');
-        eventLocationDepth.classList.add('nowrap');
-        
-        for (let d = 0; d < 10; d += 2) {
-          if (d < event.depth) {
-            if (d + 1 < event.depth) {
-              eventLocationDepth.innerHTML += '★';
-              continue;
-            } else {
-              const halfStar = document.createElement('div');
-              halfStar.classList.add('halfStar');
-              eventLocationDepth.appendChild(halfStar);
-            }
+        const getEventLocationDepthContainer = (isOutline, isMin) => {
+          const eventLocationDepth = document.createElement('div');
+          eventLocationDepth.classList.add('depthContainer');
+          if (isOutline)
+            eventLocationDepth.classList.add('depthOutlineContainer');
+          else {
+            eventLocationDepth.classList.add('depthFillContainer');
+            if (isMin)
+              eventLocationDepth.classList.add('minDepthFillContainer');
           }
-          eventLocationDepth.innerHTML += '☆';
-        }
 
+          const depthProp = isMin ? 'minDepth' : 'depth';
+          
+          for (let d = 0; d < 10; d += 2) {
+            let starIcon;
+            if (isOutline)
+              starIcon = getSvgIcon('star');
+            else if (d < event[depthProp]) {
+              if (d + 1 < event[depthProp]) {
+                starIcon = getSvgIcon('star', true);
+                eventLocationDepth.appendChild(starIcon);
+              } else {
+                starIcon = getSvgIcon('star');
+                const starSvg = starIcon.querySelector('svg');
+                const halfStarPath = getSvgIcon('starHalf', true).querySelector('path');
+                halfStarPath.setAttribute('style', `fill: var(--modal-svg-base-gradient); stroke: none; filter: none;`);
+                if (isMin)
+                  starSvg.querySelector('path').remove();
+                starIcon.querySelector('svg').appendChild(halfStarPath);
+              }
+            } else
+              break;
+            eventLocationDepth.appendChild(starIcon);
+          }
+          return eventLocationDepth;
+        };
+
+        detailsContainer.appendChild(getEventLocationDepthContainer(true));
+
+        const eventLocationDepth = getEventLocationDepthContainer();
         detailsContainer.appendChild(eventLocationDepth);
+        if (event.minDepth) {
+          detailsContainer.appendChild(getEventLocationDepthContainer(false, true));
+
+          eventLocationDepth.classList.add('maxDepthFillContainer');
+          addTooltip(eventLocationDepth, getMassagedLabel(localizedMessages.events.shortcut, true), true, true);
+        }
+        
         eventListEntry.appendChild(detailsContainer);
       } else if (eventType === 'vms') {
         const vmContainer = document.createElement('div');

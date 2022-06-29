@@ -450,6 +450,7 @@
       "period": "Season {ORDINAL}",
       "periodEnds": "{DATE}まで",
       "current": "Current",
+      "shortcut": "Can be reached via an unlockable shortcut",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "types": {
         "-1": "エンドレスラリー",

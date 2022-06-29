@@ -450,6 +450,7 @@
       "period": "Сезон {ORDINAL}",
       "periodEnds": "Заканчивается {DATE}",
       "current": "Current",
+      "shortcut": "Can be reached via an unlockable shortcut",
       "availableUntilDate": "Доступен до\n{DATE}",
       "types": {
         "-1": "Свободные",
