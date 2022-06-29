@@ -124,7 +124,7 @@
             "label": "시스템",
             "fields": {
               "siteUpdates": "사이트 업데이트",
-              "error": "Error Occurred",
+              "error": "에러 발생",
               "floodDetected": "디도스 공격 감지"
             }
           },
@@ -268,7 +268,7 @@
   },
   "messages": {
     "games": {
-      "ynoproject": "YNOproject",
+      "ynoproject": "YNOproject(유메 온라인)",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
       "flow": ".flow(닷플로우)",
@@ -400,7 +400,7 @@
     "toast": {
       "system": {
         "siteUpdates": "사이트가 업데이트 되었습니다: 새로고침을 눌러 사이트 변경사항을 적용해주세요",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "error": "이런! 무언가 오류가 발생했습니다. 개발자 콘솔을 열어서 세부 내용을 확인해주세요. 콘솔 창을 열기 위해서 F12를 누르거나 우측 상단의 옵션을 열어 기타 도구-> 개발자 콘솔을 눌러주세요.",
         "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
       },
       "account": {
