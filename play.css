@@ -254,13 +254,17 @@ body {
   filter: var(--svg-shadow);
 }
 
-.iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .playerLocationIcon[title] path {
+.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .playerLocationIcon[title] path {
   stroke: var(--svg-alt-gradient);
 }
 
 #chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #messages .playerLocationIcon path, #chatbox.partyChat #chatInput .icon circle {
   stroke: var(--party-svg-base-gradient);
   filter: var(--party-svg-shadow);
+}
+
+#chatbox.partyChat #messages .iconButton.altIcon path {
+  stroke: var(--party-svg-alt-gradient);
 }
 
 #chatbox.partyChat #messages .infoLabel, #chatbox.partyChat #messages .messageContents {
@@ -307,6 +311,10 @@ body {
   fill: var(--svg-base-gradient);
 }
 
+.fillIcon.altIcon path {
+  fill: var(--svg-alt-gradient);
+}
+
 .notice, .instruction {
   text-align: center;
 }
@@ -322,18 +330,6 @@ body {
 
 .infoContainer .infoText {
   width: unset;
-}
-
-.halfStar {
-  display: inline-block;
-  overflow-x: hidden;
-  width: 8px;
-  vertical-align: bottom;
-  margin-right: -8px;
-}
-
-.halfStar::after {
-  content: "★"
 }
 
 #background {
@@ -1457,9 +1453,17 @@ body.fullBg #background {
   filter: var(--modal-svg-shadow);
 }
 
+.modal .iconButton.altIcon path, .modal .icon.altIcon path {
+  stroke: var(--modal-svg-alt-gradient);
+}
+
 .modal .fillIcon path {
   stroke: none;
   fill: var(--modal-svg-base-gradient);
+}
+
+.modal .fillIcon.altIcon path {
+  fill: var(--modal-svg-alt-gradient);
 }
 
 .modal .altText {
@@ -1687,10 +1691,6 @@ body.fullBg #background {
 #partyModal .modalTitle .icon svg {
   width: 24px;
   height: 24px;
-}
-
-#partyModal .modalTitle .editButton path {
-  fill: var(--modal-svg-alt-gradient);
 }
 
 .modalHeader, .modalFooter {
@@ -2038,6 +2038,31 @@ form .uiTheme {
 .eventList .eventListEntry .detailsContainer {
   flex-direction: column;
   width: 60%;
+}
+
+.eventList .eventListEntry .detailsContainer .depthContainer {
+  display: flex;
+}
+
+.eventList .eventListEntry .detailsContainer .depthFillContainer {
+  margin-top: -18px;
+}
+
+.eventList .eventListEntry .detailsContainer .minDepthFillContainer {
+  margin-top: -19px;
+}
+
+.eventList .eventListEntry .detailsContainer .maxDepthFillContainer {
+  opacity: 0.5;
+}
+
+.eventList .eventListEntry .detailsContainer .depthContainer .icon {
+  width: 14px;
+  margin: 2px 2px 0 0;
+}
+
+.eventList .eventListEntry .detailsContainer .depthFillContainer .icon path {
+  filter: none;
 }
 
 .eventList .eventListEntry .eventEndDateContainer {

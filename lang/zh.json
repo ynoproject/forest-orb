@@ -450,6 +450,7 @@
       "period": "第 {ORDINAL} 季",
       "periodEnds": "本季度将于 {DATE} 结束",
       "current": "Current",
+      "shortcut": "Can be reached via an unlockable shortcut",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",

@@ -654,8 +654,8 @@ function initOrUpdatePartyModal(partyId) {
 
   if (isOwnParty) {
     const editButton = getSvgIcon('edit', true);
-    editButton.classList.add('editButton');
     editButton.classList.add('iconButton');
+    editButton.classList.add('altIcon');
     editButton.onclick = function () {
       if (party) {
         const partyName = document.getElementById('partyName');
