@@ -524,7 +524,11 @@ function getCookie(cName) {
   initSaveSyncControls();
   loadOrInitConfig(saveSyncConfig, false, 'saveSyncConfig');
 
-  window.addEventListener('error', () => showSystemToastMessage('error', 'important'));
+  window.addEventListener('error', event => {
+    if (event.error.message.includes("side-effect in debug-evaluate") && event.defaultPrevented)
+      return;
+    showSystemToastMessage('error', 'important');
+  });
 
   if (!getCookie('sessionId') || !saveSyncConfig.enabled || !saveSyncConfig.slotId)
     injectScripts();
