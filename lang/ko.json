@@ -428,7 +428,7 @@
       },
       "events": {
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
-        "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
+        "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다",
         "vmComplete": "자판기 발견!\n{EXP}를 획득했습니다",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       },
