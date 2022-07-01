@@ -136,7 +136,7 @@
             }
           },
           "parties": {
-            "label": "パーティー 通知",
+            "label": "パーティー",
             "fields": {
               "create": "パーティー 作成 通知",
               "update": "パーティー 更新 通知",
@@ -157,7 +157,7 @@
             "fields": {
               "complete": "ドリームラリー到達通知",
               "freeComplete": "エンドレスラリー到達通知",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "自販機発見通知",
               "listUpdated": "ドリームラリー更新通知"
             }
           },
@@ -238,8 +238,8 @@
         "rankExp": "次のランクまで",
         "weekExp": "今週のExP",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "世界",
+          "vms": "自販機"
         }
       },
       "rankings": {
@@ -429,7 +429,7 @@
       "events": {
         "complete": "＜ドリームラリー＞ {LOCATION}に 到達したので、 {EXP}を 獲得しました！",
         "freeComplete": "＜ドリームラリー＞ {LOCATION}に 到達しました！",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "vmComplete": "＜ドリームラリー＞自販機を見つけました！\n{EXP}を獲得しました！",
         "listUpdated": "＜ドリームラリー＞ ドリームリストが 更新されました！"
       },
       "badges": {
@@ -449,8 +449,8 @@
       "expRank": "Rank: {RANK}",
       "period": "Season {ORDINAL}",
       "periodEnds": "{DATE}まで",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "現在",
+      "shortcut": "ショートカットを開通させていると短縮可能",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "types": {
         "-1": "エンドレスラリー",
@@ -518,8 +518,8 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "自販機見つけ隊",
+          "valueLabel": "見つけた自販機数",
           "value": "{NUMBER}"
         },
         "timeTrial": {
