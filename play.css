@@ -2048,6 +2048,12 @@ form .uiTheme {
   margin-top: -18px;
 }
 
+@-moz-document url-prefix() {
+  .eventList .eventListEntry .detailsContainer .depthFillContainer {
+    margin-top: -20px;
+  }
+}
+
 .eventList .eventListEntry .detailsContainer .maxDepthFillContainer {
   opacity: 0.5;
 }
