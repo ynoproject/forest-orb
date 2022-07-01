@@ -157,7 +157,7 @@
             "fields": {
               "complete": "탐험 성공",
               "freeComplete": "자유 탐험 성공",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "자판기를 찾음",
               "listUpdated": "탐험 리스트 업데이트"
             }
           },
@@ -238,8 +238,8 @@
         "rankExp": "다음 랭크",
         "weekExp": "이번주의 경험치",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "장소 찾기",
+          "vms": "자판기 찾기"
         }
       },
       "rankings": {
@@ -277,12 +277,12 @@
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
       "flow": ".flow(닷플로우)",
-      "prayers": "Answered Prayers",
-      "deepdreams": "Deep Dreams",
-      "someday": "Someday",
-      "amillusion": "Amillusion",
-      "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "prayers": "Answered Prayers(이루어진 기도)",
+      "deepdreams": "Deep Dreams(딥드림즈)",
+      "someday": "Someday(어느 날)",
+      "amillusion": "Amillusion(환각)",
+      "unevendream": "Uneven Dream(요철몽)",
+      "braingirl": "Braingirl(브레인걸)"
     },
     "leavePage": "저장하지 않은 게임 진행 상황이 손실됩니다. 정말로 창을 닫으시겠습니까?",
     "io": {
@@ -429,7 +429,7 @@
       "events": {
         "complete": "탐험 성공!\n{LOCATION}를 방문하여, {EXP}를 획득했습니다",
         "freeComplete": "탐험 성공!\n{LOCATION}를 방문하였습니다.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "vmComplete": "자판기 발견!\n{EXP}를 획득했습니다",
         "listUpdated": "탐험 리스트가 업데이트 되었습니다"
       },
       "badges": {
@@ -449,8 +449,8 @@
       "expRank": "랭크: {RANK}",
       "period": "시즌 {ORDINAL}",
       "periodEnds": "종료일: {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "현재 목표",
+      "shortcut": "잠금 해제 가능한 지름길을 통해 도달할 수 있습니다",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
       "types": {
         "-1": "자유 탐험",
@@ -518,8 +518,8 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "자판기 찾기",
+          "valueLabel": "# 개의 자판기",
           "value": "{NUMBER}"
         },
         "timeTrial": {
@@ -538,7 +538,7 @@
         "2": "모든 이펙트 얻기",
         "nasu": "NASU",
         "rby": "빨강/파랑/노랑 (미니게임 B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
+        "rby_ex": "빨강/파랑/노랑 (미니게임 B) - EX 버전"
       }
     },
     "2kki": {
