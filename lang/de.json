@@ -196,7 +196,18 @@
       },
       "badges": {
         "title": "Badges",
-        "manageBadgeGallery": "Manage Badge Gallery"
+        "manageBadgeGallery": "Manage Badge Gallery",
+        "fields": {
+          "unlockStatus": {
+            "label": "Unlock Status:&nbsp;",
+            "values": {
+              "all": "All",
+              "0": "Locked",
+              "1": "Unlocked"
+            }
+          },
+          "search": "Search:&nbsp;"
+        }
       },
       "badgeGallery": {
         "title": "Manage Badge Gallery",

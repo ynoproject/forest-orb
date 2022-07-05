@@ -196,7 +196,18 @@
       },
       "badges": {
         "title": "Emblemas",
-        "manageBadgeGallery": "Gerenciar Galeria de Emblemas"
+        "manageBadgeGallery": "Gerenciar Galeria de Emblemas",
+        "fields": {
+          "unlockStatus": {
+            "label": "Unlock Status:&nbsp;",
+            "values": {
+              "all": "All",
+              "0": "Locked",
+              "1": "Unlocked"
+            }
+          },
+          "search": "Search:&nbsp;"
+        }
       },
       "badgeGallery": {
         "title": "Painel da Galeria de Emblemas",

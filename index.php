@@ -296,7 +296,7 @@
               </small>
             </span>
             <form id="enterNameForm" action="javascript:chatNameCheck()">
-              <input id="nameInput" type="text" autocomplete="off" maxlength="12"></input>
+              <input id="nameInput" type="text" autocomplete="off" maxlength="12" />
             </form>
           </div>
         </div>
@@ -311,10 +311,10 @@
             <form id="loginForm">
               <ul class="formControls">
                 <li class="formControlRow">
-                  <label for="loginUsername" class="unselectable" data-i18n="[html]modal.login.fields.username">Username</label><input id="loginUsername" name="user" type="text" autocomplete="off" maxlength="12"></input>
+                  <label for="loginUsername" class="unselectable" data-i18n="[html]modal.login.fields.username">Username</label><input id="loginUsername" name="user" type="text" autocomplete="off" maxlength="12" />
                 </li>
                 <li class="formControlRow">
-                  <label for="loginPassword" class="unselectable" data-i18n="[html]modal.login.fields.password">Password</label><input id="loginPassword" name="password" type="password" autocomplete="off"></input>
+                  <label for="loginPassword" class="unselectable" data-i18n="[html]modal.login.fields.password">Password</label><input id="loginPassword" name="password" type="password" autocomplete="off" />
                 </li>
                 <li id="loginErrorRow" class="formControlRow hidden">
                   <label id="loginError"></label>
@@ -336,16 +336,16 @@
             <form id="registerForm">
               <ul class="formControls">
                 <!--<li class="formControlRow">
-                  <label for="registerEmail" class="unselectable" data-i18n="[html]modal.register.fields.email">Email</label><input id="registerEmail" type="text" autocomplete="off"></input>
+                  <label for="registerEmail" class="unselectable" data-i18n="[html]modal.register.fields.email">Email</label><input id="registerEmail" type="text" autocomplete="off" />
                 </li>-->
                 <li class="formControlRow">
-                  <label for="registerUsername" class="unselectable" data-i18n="[html]modal.register.fields.username">Username</label><input id="registerUsername" name="user" type="text" autocomplete="off" maxlength="12"></input>
+                  <label for="registerUsername" class="unselectable" data-i18n="[html]modal.register.fields.username">Username</label><input id="registerUsername" name="user" type="text" autocomplete="off" maxlength="12" />
                 </li>
                 <li class="formControlRow">
-                  <label for="registerPassword" class="unselectable" data-i18n="[html]modal.register.fields.password">Password</label><input id="registerPassword" name="password" type="password" autocomplete="off"></input>
+                  <label for="registerPassword" class="unselectable" data-i18n="[html]modal.register.fields.password">Password</label><input id="registerPassword" name="password" type="password" autocomplete="off" />
                 </li>
                 <li class="formControlRow">
-                  <label for="registerConfirmPassword" class="unselectable" data-i18n="[html]modal.register.fields.confirmPassword">Confirm Password</label><input id="registerConfirmPassword" type="password" autocomplete="off"></input>
+                  <label for="registerConfirmPassword" class="unselectable" data-i18n="[html]modal.register.fields.confirmPassword">Confirm Password</label><input id="registerConfirmPassword" type="password" autocomplete="off" />
                 </li>
                 <li id="registerErrorRow" class="formControlRow hidden">
                   <label id="registerError"></label>
@@ -501,6 +501,20 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
+            <div id="badgeControls" class="uiControls">
+              <div class="uiControl">
+                <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">
+                  Unlock Status:&nbsp;<select id="badgeUnlockStatus">
+                    <option value="" data-i18n="[html]modal.badges.fields.unlocked.values.all">All</option>
+                    <option value="0" data-i18n="[html]modal.badges.fields.unlocked.values.0">Locked</option>
+                    <option value="1" data-i18n="[html]modal.badges.fields.unlocked.values.1">Unlocked</option>
+                  </select>
+                </label>
+              </div>
+              <div class="uiControl">
+                <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search">Search:&nbsp;<input id="badgeSearch" type="text" autocomplete="off" /></label>
+              </div>
+            </div>
           </div>
           <div class="modalContent itemContainer"></div>
           <div class="modalFooter">

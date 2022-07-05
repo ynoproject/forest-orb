@@ -196,7 +196,18 @@
       },
       "badges": {
         "title": "バッジ",
-        "manageBadgeGallery": "バッジギャラリー管理"
+        "manageBadgeGallery": "バッジギャラリー管理",
+        "fields": {
+          "unlockStatus": {
+            "label": "獲得状態：",
+            "values": {
+              "all": "全",
+              "0": "未獲得",
+              "1": "獲得"
+            }
+          },
+          "search": "検索："
+        }
       },
       "badgeGallery": {
         "title": "バッジギャラリー設定",
@@ -534,7 +545,7 @@
         }
       },
       "subCategories": {
-        "all": "All",
+        "all": "全",
         "2": "全エフェクト回収",
         "nasu": "NASU",
         "rby": "ミニゲームB",

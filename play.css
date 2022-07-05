@@ -211,8 +211,18 @@ body {
   overflow-y: auto;
 }
 
+.uiControls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
 .uiControl {
   text-align: center;
+}
+
+.uiControls .uiControl {
+  margin: 0 8px;
 }
 
 .info {
@@ -1409,7 +1419,7 @@ body.fullBg #background {
   background-size: calc(100vh - 80px);
 }
 
-.modal.semiModal {
+.modal.semiWideModal {
   max-width: min(640px, calc(100% - 112px));
 }
 
@@ -1508,6 +1518,10 @@ body.fullBg #background {
 .modalContent .itemCategoryHeader {
   width: 100%;
   text-align: center;
+}
+
+.modalContent .itemCategoryHeader.hidden {
+  display: none;
 }
 
 .itemContainer .item {

@@ -5,6 +5,7 @@ let badgeSlotCols = 3;
 
 let badgeCache;
 let badgeSlotCache;
+let badgeFilterCache = [];
 let badgeCacheUpdateTimer = null;
 
 let localizedBadgeGroups;
@@ -72,11 +73,12 @@ const BadgeOverlayType = {
 };
 
 function initBadgeControls() {
+  const badgeModalContent = document.querySelector('#badgesModal .modalContent');
+
   const onClickBadgeButton = (prevModal, slotRow, slotCol) => {
     if (slotRow && slotCol && (slotRow > badgeSlotRows || slotCol > badgeSlotCols))
       return;
 
-    const badgeModalContent = document.querySelector('#badgesModal .modalContent');
     badgeModalContent.innerHTML = '';
 
     const updateBadgesAndPopulateModal = () => {
@@ -98,11 +100,13 @@ function initBadgeControls() {
           }
           return 0;
         };
+        badgeFilterCache.splice(0, badgeFilterCache.length);
         const badges = [{ badgeId: 'null', game: null}].concat(playerBadges.sort(badgeCompareFunc));
         for (let badge of badges) {
           if (badge.game !== lastGame) {
             const gameHeader = document.createElement('h2');
             gameHeader.classList.add('itemCategoryHeader');
+            gameHeader.dataset.game = badge.game;
             gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game]);
             badgeModalContent.appendChild(gameHeader);
             lastGame = badge.game;
@@ -111,11 +115,13 @@ function initBadgeControls() {
           if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
             const groupHeader = document.createElement('h3');
             groupHeader.classList.add('itemCategoryHeader');
+            groupHeader.dataset.game = badge.game;
+            groupHeader.dataset.group = badge.group;
             groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
             badgeModalContent.appendChild(groupHeader);
             lastGroup = badge.group;
           }
-          const item = getBadgeItem(badge, true, true, true, true);
+          const item = getBadgeItem(badge, true, true, true, true, true);
           if (badge.badgeId === (playerData?.badge || 'null'))
             item.children[0].classList.add('selected');
           if (!item.classList.contains('disabled')) {
@@ -137,6 +143,7 @@ function initBadgeControls() {
         removeLoader(document.getElementById('badgesModal'));
       });
     };
+    updateBadgeVisibility();
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
@@ -147,6 +154,57 @@ function initBadgeControls() {
 
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
   document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton('accountSettingsModal');
+
+  const updateBadgeVisibility = () => {
+    const unlockStatus = document.getElementById('badgeUnlockStatus').value;
+    const searchTerm = document.getElementById('badgeSearch').value.toLowerCase();
+
+    const gameVisibilities = {};
+    const gameGroupVisibilities = {};
+
+    for (let item of badgeFilterCache) {
+      let visible = true;
+      if (unlockStatus !== "")
+        visible &= item.el.classList.contains('locked') === !parseInt(unlockStatus);
+      if (searchTerm.trim().length)
+        visible &= item.title && item.title.indexOf(searchTerm) > -1;
+      if (!gameVisibilities.hasOwnProperty(item.game)) {
+        gameVisibilities[item.game] = false;
+        gameGroupVisibilities[item.game] = {};
+      }
+      if (item.group && !gameGroupVisibilities[item.game].hasOwnProperty(item.group))
+        gameGroupVisibilities[item.game][item.group] = false;
+      if (visible) {
+        if (!gameVisibilities[item.game])
+          gameVisibilities[item.game] = true;
+        if (item.group && !gameGroupVisibilities[item.game][item.group])
+          gameGroupVisibilities[item.game][item.group] = true;
+      }
+      item.el.classList.toggle('hidden', !visible);
+    }
+
+    for (let header of badgeModalContent.querySelectorAll('.itemCategoryHeader'))
+      header.classList.toggle('hidden', !(header.dataset.group ? gameGroupVisibilities[header.dataset.game][header.dataset.group] : gameVisibilities[header.dataset.game]));
+  };
+
+  document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
+
+  let searchTimer = null;
+  document.getElementById('badgeSearch').oninput = function () {
+    const _this = this;
+    const value = this.value;
+    if (searchTimer) {
+      clearTimeout(searchTimer);
+      searchTimer = null;
+    } else
+      addLoader(badgeModalContent, true);
+    searchTimer = setTimeout(() => {
+      searchTimer = null;
+      if (_this.value === value)
+        updateBadgeVisibility();
+      removeLoader(badgeModalContent);
+    }, 500);
+  };
 
   document.getElementById('badgeGalleryButton').onclick = () => {
     updateBadgeSlots(() => {
@@ -247,13 +305,24 @@ function getBadgeUrl(badge, staticOnly) {
   return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
 }
 
-function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
+function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
   item.classList.add('badgeItem');
   item.classList.add('item');
   item.classList.add('unselectable');
+
+  let filterItem;
+  if (filterable && badgeId !== 'null') {
+    filterItem = {
+      el: item,
+      title: '',
+      game: badge.game,
+      group: badge.group
+    };
+    badgeFilterCache.push(filterItem);
+  }
 
   const badgeContainer = document.createElement('div');
   badgeContainer.classList.add('badgeContainer');
@@ -332,6 +401,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
         const localizedTooltip = localizedBadges[badge.game][badgeId];
         if ((badge.unlocked || !badge.secret) && localizedTooltip.name)
           badgeTitle = getMassagedLabel(localizedTooltip.name);
+        if (filterItem)
+          filterItem.title = badgeTitle.toLowerCase();
         if (badge.bp)
           badgeTitle = getMassagedLabel(localizedMessages.badges.badgeTitle).replace('{TITLE}', badgeTitle).replace('{BP}', badge.bp);
         tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${badgeTitle}</h3>`;
@@ -352,8 +423,11 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
           } else
             tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
         }
-      } else
+      } else {
         tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
+        if (filterItem)
+          filterItem.title = localizedMessages.badges.locked;
+      }
         
       tooltipContent += '<label class="tooltipFooter">';
       if (!badge.secret && !badge.secretCondition && badge.goalsTotal > 1)
@@ -377,7 +451,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled) {
           const mapId = badge.mapId.toString().padStart(4, '0');
           const setTooltipLocation = instance => {
             if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
-              tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel("&nbsp;|&nbsp;")));
+              tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel('&nbsp;|&nbsp;')));
             else if (gameId === '2kki') {
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
               tooltipOptions.onShow = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(baseTooltipContent.replace('{LOCATION}', locationsHtml)));
