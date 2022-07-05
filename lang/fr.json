@@ -482,7 +482,7 @@
     },
     "badges": {
       "null": "Pas de badge",
-      "badgeTitle": "{TITLE} - {PB} PB",
+      "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
       "location": "Location:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
