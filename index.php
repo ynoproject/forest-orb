@@ -503,16 +503,16 @@
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
             <div id="badgeControls" class="uiControls">
               <div class="uiControl">
-                <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">
-                  Unlock Status:&nbsp;<select id="badgeUnlockStatus">
-                    <option value="" data-i18n="[html]modal.badges.fields.unlocked.values.all">All</option>
-                    <option value="0" data-i18n="[html]modal.badges.fields.unlocked.values.0">Locked</option>
-                    <option value="1" data-i18n="[html]modal.badges.fields.unlocked.values.1">Unlocked</option>
-                  </select>
-                </label>
+                <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">Unlock Status:&nbsp;</label>
+                <select id="badgeUnlockStatus">
+                  <option value="" data-i18n="[html]modal.badges.fields.unlocked.values.all">All</option>
+                  <option value="0" data-i18n="[html]modal.badges.fields.unlocked.values.0">Locked</option>
+                  <option value="1" data-i18n="[html]modal.badges.fields.unlocked.values.1">Unlocked</option>
+                </select>
               </div>
               <div class="uiControl">
-                <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search">Search:&nbsp;<input id="badgeSearch" type="text" autocomplete="off" /></label>
+                <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search">Search:&nbsp;</label>
+                <input id="badgeSearch" type="text" autocomplete="off" />
               </div>
             </div>
           </div>
