@@ -505,9 +505,9 @@
               <div class="uiControl">
                 <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">Unlock Status:&nbsp;</label>
                 <select id="badgeUnlockStatus">
-                  <option value="" data-i18n="[html]modal.badges.fields.unlocked.values.all">All</option>
-                  <option value="0" data-i18n="[html]modal.badges.fields.unlocked.values.0">Locked</option>
-                  <option value="1" data-i18n="[html]modal.badges.fields.unlocked.values.1">Unlocked</option>
+                  <option value="" data-i18n="[html]modal.badges.fields.unlockStatus.values.all">All</option>
+                  <option value="0" data-i18n="[html]modal.badges.fields.unlockStatus.values.0">Locked</option>
+                  <option value="1" data-i18n="[html]modal.badges.fields.unlockStatus.values.1">Unlocked</option>
                 </select>
               </div>
               <div class="uiControl">
