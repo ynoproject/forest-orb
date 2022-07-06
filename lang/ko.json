@@ -199,14 +199,14 @@
         "manageBadgeGallery": "뱃지 갤러리 편집",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "잠금 상태:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "전체",
+              "0": "잠김",
+              "1": "열림"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "검색:&nbsp;"
         }
       },
       "badgeGallery": {
