@@ -70,7 +70,7 @@
           "username": "Identifiant",
           "password": "Mot de passe"
         },
-        "submit": "Submit",
+        "submit": "Soumettre",
         "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
         "register": "S'inscrire"
       },
@@ -101,7 +101,7 @@
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
-          "toggleRankings": "Rangs",
+          "toggleRankings": "Classement",
           "toggleFloodProtection": "Protection Anti-Spam"
         },
         "notificationSettings": "Paramètres de notification",
@@ -124,7 +124,7 @@
             "label": "Système",
             "fields": {
               "siteUpdates": "Site mis à jour",
-              "error": "Error Occurred",
+              "error": "Erreur survenue",
               "floodDetected": "Possible attaque Spam détectée"
             }
           },
@@ -142,13 +142,13 @@
               "update": "Groupe mis à jour",
               "join": "Rejoindre le groupe",
               "leave": "Quitter le groupe",
-              "remove": "Retiré du groupe",
-              "disband": "Groupe dissoute",
+              "remove": "Retiré(e) du groupe",
+              "disband": "Groupe dissout",
               "playerJoin": "Le joueur a rejoint le groupe",
               "playerLeave": "Le joueur a quitté le groupe",
               "playerOnline": "Membre du groupe en ligne",
               "playerOffline": "Membre du groupe hors ligne",
-              "kickPlayer": "Expluser le joueur du groupe",
+              "kickPlayer": "Expulser le joueur du groupe",
               "transferPartyOwner": "Promu(e) chef du groupe"
             }
           },
@@ -157,7 +157,7 @@
             "fields": {
               "complete": "Expédition terminée",
               "freeComplete": "Expédition gratuite terminée",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "Distributeur automatique trouvé",
               "listUpdated": "Liste des expéditions mise à jour"
             }
           },
@@ -175,7 +175,7 @@
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
-              "saveCleared": "Sauvegarde Effacée"
+              "saveCleared": "Sauvegarde effacée"
             }
           }
         }
@@ -201,9 +201,9 @@
           "unlockStatus": {
             "label": "Unlock Status:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "Tous",
+              "0": "Bloqué(s)",
+              "1": "Débloqué(s)"
             }
           },
           "search": "Search:&nbsp;"
@@ -211,8 +211,8 @@
       },
       "badgeGallery": {
         "title": "Gérer la galerie des badges",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "badgeGalleryRowProgress": "Prochaine amélioration de la rangée (PB)",
+        "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)"
       },
       "uiTheme": {
         "title": "Thème UI",
@@ -228,7 +228,7 @@
           "description": "Description",
           "public": "Publique",
           "password": "Mot de passe",
-          "theme": "Theme"
+          "theme": "Thème"
         },
         "showPassword": "Montrer le mot de passe",
         "hidePassword": "Masquer le mot de passe",
@@ -250,11 +250,11 @@
         "weekExp": "ExP cette semaine",
         "tabs": {
           "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "vms": "Distributeur automatique à trouver"
         }
       },
       "rankings": {
-        "title": "Rangs"
+        "title": "Classement"
       }
     },
     "tooltips": {
@@ -278,7 +278,7 @@
         "disbandParty": "Dissoudre le Groupe"
       },
       "events": "Expéditions",
-      "rankings": "Rangs",
+      "rankings": "Classement",
       "nexus": "Retourner au Nexus"
     }
   },
@@ -310,8 +310,8 @@
       }
     },
     "connStatus": {
-      "0": "Déconnecté",
-      "1": "Connecté",
+      "0": "Déconnecté(e)",
+      "1": "Connecté(e)",
       "2": "Connexion...",
       "3": "Jeu Solo"
     },
@@ -334,8 +334,8 @@
     "playerList": {
       "unnamed": "Joueur Sans Nom",
       "actions": {
-        "partyKick": "Expluser du Groupe",
-        "transferPartyOwner": "Transférer le Groupe"
+        "partyKick": "Expulser du Groupe",
+        "transferPartyOwner": "Changer le chef du Groupe"
       }
     },
     "roles": {
@@ -347,7 +347,7 @@
         "ban": {
           "label": "Bannir {PLAYER}",
           "confirm": "Êtes-vous sûr de vouloir bannir définitivement {PLAYER} ?",
-          "success": "{PLAYER} a été banni."
+          "success": "{PLAYER} a été banni(e)."
         },
         "grantBadge": {
           "label": "Donner un Badge",
@@ -411,46 +411,46 @@
     },
     "saveSync": {
       "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisé seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
-      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
+      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
     },
     "toast": {
       "system": {
-        "siteUpdates": "Le site a été mis a jour. Veuillez rafraichir la page pour les nouvelles fonctionnalités.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour les nouvelles fonctionnalités.",
+        "error": "Oups! On dirait que quelque chose s'est mal passée. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
         "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu solo."
       },
       "account": {
-        "loggedIn": "Vous êtes connecté en tant que {USER}.",
-        "loggedOut": "Vous êtes déconnecté."
+        "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",
+        "loggedOut": "Vous êtes déconnecté(e)."
       },
       "parties": {
         "create": "{PARTY} a été crée.",
         "update": "{PARTY} a été mis à jour.",
-        "join": "Vous avez rejont {PARTY}.",
+        "join": "Vous avez rejoint {PARTY}.",
         "leave": "Vous avez quitté {PARTY}.",
-        "remove": "Vous avez été explusé(e) de {PARTY}.",
-        "disband": "{PARTY} à été dissoue.",
-        "playerJoin": "{PLAYER} à rejoint le groupe.",
-        "playerLeave": "{PLAYER} à quitté le groupe.",
+        "remove": "Vous avez été expulsé(e) de {PARTY}.",
+        "disband": "{PARTY} a été dissous.",
+        "playerJoin": "{PLAYER} a rejoint le groupe.",
+        "playerLeave": "{PLAYER} a quitté(e) le groupe.",
         "playerOnline": "{PLAYER} est maintenant en-ligne.",
         "playerOffline": "{PLAYER} est maintenant hors-ligne.",
-        "kickPlayer": "{PLAYER} à été explusé de la partie.",
-        "transferPartyOwner": "{PLAYER} est maintenant le leader du groupe."
+        "kickPlayer": "{PLAYER} a été expulsé(e) du groupe.",
+        "transferPartyOwner": "{PLAYER} est maintenant le chef du groupe."
       },
       "events": {
         "complete": "Expédition terminée!\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
         "freeComplete": "Expédition terminée! Vous avez visité(e) {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
-        "listUpdated": "La liste d'expédition a été mis a jour."
+        "vmComplete": "Distributeur automatique trouvé!\nVous avez gagné(e) {EXP}.",
+        "listUpdated": "La liste d'expédition a été mise a jour."
       },
       "badges": {
         "badgeUnlocked": "Vous avez obtenu un nouveau badge!"
       },
       "saveSync": {
-        "saveUploading": "Téléchargement des données de sauvegarde du slot {SLOT}...",
+        "saveUploading": "Téléchargement des données de sauvegarde de l'emplacement {SLOT}...",
         "saveUploaded": "Vos données de sauvegarde de l'emplacement {SLOT} ont été téléchargées.",
-        "saveDownloading": "Mise à jour des données enregistrées dans le slot {SLOT}...",
-        "saveDownloaded": "Le slot de la sauvegarde {SLOT} a été mis à jour avec succès.",
+        "saveDownloading": "Mise à jour des données enregistrées dans l'emplacement {SLOT}...",
+        "saveDownloaded": "L'emplacement de la sauvegarde {SLOT} a été mis à jour avec succès.",
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
         "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils."
       }
@@ -460,11 +460,11 @@
       "expRank": "Rang: {RANK}",
       "period": "Saison {ORDINAL}",
       "periodEnds": "Finis le {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "Actuel",
+      "shortcut": "Peut être atteint via un raccourci à débloquer",
       "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
-        "-1": "Expédition gratuite",
+        "-1": "Expédition libre",
         "0": "Quotidiennement",
         "1": "Hebdomadaire",
         "2": "Week-end",
@@ -491,7 +491,7 @@
       "artCredit": "Art par {ARTIST}"
     },
     "badgeGallery": {
-      "label": "Gallerie de {PLAYER}",
+      "label": "Galerie de {PLAYER}",
       "loading": "Chargement...",
       "bp": "{BP} BP",
       "count": "{COUNT} Badges"
@@ -499,7 +499,7 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
+          "label": "Badges",
           "valueLabel": "# de Badges",
           "value": "{NUMBER}"
         },
@@ -519,23 +519,23 @@
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Expéditions gratuites",
+          "label": "Expéditions libres",
           "valueLabel": "# d'Expéditions",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expédition terminée",
+          "label": "Expéditions terminées",
           "valueLabel": "Complétée",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Distributeurs automatiques à trouver",
+          "valueLabel": "# de distributeurs automatiques",
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Course-contre la montre",
-          "valueLabel": "Temps mis",
+          "label": "Course contre-la-montre",
+          "valueLabel": "Temps",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
@@ -549,7 +549,7 @@
         "2": "Chaque effet",
         "nasu": "NASU",
         "rby": "Rouge Bleu Jaune (Mini-jeu B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
+        "rby_ex": "Rouge Bleu Jaune (Mini-jeu B) - Version EX"
       }
     },
     "2kki": {
