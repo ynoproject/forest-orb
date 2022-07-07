@@ -199,14 +199,14 @@
         "manageBadgeGallery": "Gérer la galerie des badges",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "Statut d'obtention:&nbsp;",
             "values": {
               "all": "Tous",
               "0": "Bloqué(s)",
               "1": "Débloqué(s)"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "Rechercher:&nbsp;"
         }
       },
       "badgeGallery": {
