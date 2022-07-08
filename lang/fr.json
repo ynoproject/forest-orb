@@ -156,7 +156,7 @@
             "label": "Expéditions",
             "fields": {
               "complete": "Expédition terminée",
-              "freeComplete": "Expédition gratuite terminée",
+              "freeComplete": "Expédition libre terminée",
               "vmComplete": "Distributeur automatique trouvé",
               "listUpdated": "Liste des expéditions mise à jour"
             }
