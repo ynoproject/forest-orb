@@ -249,7 +249,7 @@
         "rankExp": "Prochain rang",
         "weekExp": "ExP cette semaine",
         "tabs": {
-          "locations": "Locations",
+          "locations": "Lieux",
           "vms": "Distributeur automatique à trouver"
         }
       },
@@ -484,7 +484,7 @@
       "null": "Pas de badge",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "Lieu:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% de joueurs ont ce badge",
       "time": "{MINUTES}:{SECONDS}",
