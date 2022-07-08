@@ -2026,7 +2026,7 @@ form .uiTheme {
 }
 
 #weekExpBar {
-  width: calc(var(--week-exp) * 2.5%);
+  width: calc(var(--week-exp) * 2%);
 }
 
 #badgeGalleryRowProgressBar {
