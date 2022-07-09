@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -101,7 +101,7 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
-          "toggleRankings": "Rankings",
+          "toggleRankings": "Рейтинги",
           "toggleFloodProtection": "Защита от Спама"
         },
         "notificationSettings": "Уведомления",
@@ -123,8 +123,8 @@
           "system": {
             "label": "Система",
             "fields": {
-              "siteUpdates": "Site Updated",
-              "error": "Error Occurred",
+              "siteUpdates": "Обновление сайта",
+              "error": "Произошла Ошибка",
               "floodDetected": "Вероятность спам-атаки"
             }
           },
@@ -157,7 +157,7 @@
             "fields": {
               "complete": "Поход Выполнен",
               "freeComplete": "Свободный Поход Выполнен",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "Торговый Автомат Найден",
               "listUpdated": "Список Походов Обновлён"
             }
           },
@@ -196,23 +196,23 @@
       },
       "badges": {
         "title": "Значки",
-        "manageBadgeGallery": "Manage Badge Gallery",
+        "manageBadgeGallery": "Изменить Галлерею Значков",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "Статус Разблокировки:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "Все",
+              "0": "Закрытые",
+              "1": "Доступные"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "Поиск:&nbsp;"
         }
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "title": "Галлерея Значков",
+        "badgeGalleryRowProgress": "До Следующей Строки (ОЗ)",
+        "badgeGalleryColProgress": "До Следующей Колонки (Значков)"
       },
       "uiTheme": {
         "title": "Стиль Интерфейса",
@@ -249,12 +249,12 @@
         "rankExp": "До след. Ранга",
         "weekExp": "Опыта за Неделю",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "Локации",
+          "vms": "Поисковик Торговых Автоматов"
         }
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "Рейтинги"
       }
     },
     "tooltips": {
@@ -266,7 +266,7 @@
       "uiTheme": "Стиль Интерфейса",
       "toggleChat": "Переключить Чат",
       "toggleImmersionMode": "Переключить Режим Погружения",
-      "screenshot": "Take Screenshot",
+      "screenshot": "Сделать Скриншот",
       "settings": "Настройки",
       "toggleGlobalMessage": "Переключить Отправку в Глобальный Чат",
       "chat": {
@@ -278,7 +278,7 @@
         "disbandParty": "Распустить Группу"
       },
       "events": "Походы",
-      "rankings": "Rankings",
+      "rankings": "Рейтинги",
       "nexus": "Вернуться на Главную страницу"
     }
   },
@@ -345,21 +345,21 @@
     "context": {
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "Забанить {PLAYER}",
+          "confirm": "Вы уверены, что хотите навсегда забанить {PLAYER}?",
+          "success": "Вы забанили {PLAYER}."
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Выдать Значок",
+          "prompt": "Введите ID Значка, который надо выдать {PLAYER}.",
+          "success": "{BADGE} Успешно выдано {PLAYER}.",
+          "fail": "Значка с таким ID Не найдено."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Забрать Значок",
+          "prompt": "Введите ID Значка, который надо забрать у {PLAYER}.",
+          "success": "{BADGE} Успешно забрано у {PLAYER}.",
+          "fail": "Значка с таким ID Не найдено."
         }
       }
     },
@@ -415,8 +415,8 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "siteUpdates": "Сайт был обновлён. Пожалуйста, перезагрузите страницу, дабы получить доступ к наиболее актуальной версии.",
+        "error": "Упс! Похоже, что-то пошло не так. Проверьте консоль браузера, чтобы узнать детали. Чтобы её открыть, нажмите F12 или Правую клавишу мыши и 'Исследовать'.",
         "floodDetected": "Замечена возможность спам-атаки: Происходит переключение в одиночный режим."
       },
       "account": {
@@ -440,7 +440,7 @@
       "events": {
         "complete": "Поход Завершён!\nВы получаете {EXP} за Посещение {LOCATION}.",
         "freeComplete": "Поход Завершён!\nВы посетили {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "vmComplete": "Торговый Автомат Найден!\nВы получаете {EXP}.",
         "listUpdated": "Список Походов Обновлён."
       },
       "badges": {
@@ -460,8 +460,8 @@
       "expRank": "Ранг: {RANK}",
       "period": "Сезон {ORDINAL}",
       "periodEnds": "Заканчивается {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "Актуально",
+      "shortcut": "Можно добраться разблокируемым коротким путём.",
       "availableUntilDate": "Доступен до\n{DATE}",
       "types": {
         "-1": "Свободные",
@@ -482,71 +482,71 @@
     },
     "badges": {
       "null": "Нет Значка",
-      "badgeTitle": "{TITLE} - {BP} BP",
+      "badgeTitle": "{TITLE} - {BP} ОЗ",
       "locked": "???",
       "location": "Локация:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% игроков имеют этот значок",
+      "percentUnlocked": "{PERCENT}% Игроков имеют этот значок",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "Картинка от {ARTIST}"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading...",
-      "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "label": "Галлерея Значков {PLAYER}",
+      "loading": "Загрузка...",
+      "bp": "{BP} ОЗ",
+      "count": "{COUNT} Значков"
     },
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "Значки",
+          "valueLabel": "Число Значков",
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
-          "value": "{NUMBER} BP"
+          "label": "ОЗ (Очки Значков)",
+          "valueLabel": "ОЗ",
+          "value": "{NUMBER} ОЗ"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
-          "value": "{NUMBER} ExP"
+          "label": "Опыт",
+          "valueLabel": "Опыт",
+          "value": "{NUMBER} Опыта"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Походы",
+          "valueLabel": "Число Походов",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Свободных Походов",
+          "valueLabel": "Число Походов",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "Выполнение Походов",
+          "valueLabel": "Выполнение",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Поиск Торговых Автоматов",
+          "valueLabel": "Число Торговых Автоматов",
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Испытания на Время",
+          "valueLabel": "Время Прохождения",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
-          "valueLabel": "Score",
+          "label": "Миниигры",
+          "valueLabel": "Счёт",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "Всё",
+        "2": "Все эффекты",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
         "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
