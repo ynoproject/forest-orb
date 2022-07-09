@@ -124,7 +124,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Site Atualizado",
-              "error": "Error Occurred",
+              "error": "Ocorreu um Erro",
               "floodDetected": "Possível Ataque Spam Detectado"
             }
           },
@@ -157,7 +157,7 @@
             "fields": {
               "complete": "Expedição Concluída",
               "freeComplete": "Expedição Livre Concluída",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "Máquina de Venda Achada",
               "listUpdated": "Lista de Expedição Atualizada"
             }
           },
@@ -199,14 +199,14 @@
         "manageBadgeGallery": "Gerenciar Galeria de Emblemas",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "Status de desbloqueio:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "Todos",
+              "0": "Bloqueado",
+              "1": "Desbloqueado"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "Buscar:&nbsp;"
         }
       },
       "badgeGallery": {
@@ -249,8 +249,8 @@
         "rankExp": "Próximo Rank",
         "weekExp": "ExP nessa semana",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "Localizações",
+          "vms": "Buscador de Máquinas de Vendas"
         }
       },
       "rankings": {
@@ -416,7 +416,7 @@
     "toast": {
       "system": {
         "siteUpdates": "O site foi atualizado. Recarregue a página para obter as alterações mais recentes.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "error": "Oops! Parece que algo deu errado. Veja o console do navegador para detalhes. Para abrir o console, pressione F12 ou clique com o botão direito do mouse e, em seguida, clique em 'Inspect ou Inspecionar'.",
         "floodDetected": "Possível Ataque de Flood detectado: Mudando para o modo de Single Player."
       },
       "account": {
@@ -460,8 +460,8 @@
       "expRank": "Rank: {RANK}",
       "period": "Temporada {ORDINAL}",
       "periodEnds": "Termina em {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "Atual",
+      "shortcut": "Pode ser alcançado através de um atalho desbloqueável",
       "availableUntilDate": "Disponível até\n{DATE}",
       "types": {
         "-1": "Expedição Livre",
@@ -529,8 +529,8 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Buscador de Máquinas de Vendas",
+          "valueLabel": "# de Máquinas de Vendas",
           "value": "{NUMBER}"
         },
         "timeTrial": {
