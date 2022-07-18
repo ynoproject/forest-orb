@@ -52,16 +52,15 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       nameTextContainer.appendChild(rankIcon);
     }
 
+    const badge = includeBadge && player.badge !== 'null' ? badgeCache.find(b => b.badgeId === player.badge) : null;
     let badgeEl = null;
     let badgeOverlayEl = null;
     let badgeOverlay2El = null;
 
-    if (includeBadge && player.badge !== 'null') {
+    if (badge) {
       badgeEl = document.createElement('div');
       badgeEl.classList.add('badge');
       badgeEl.classList.add('nameBadge');
-
-      const badge = badgeCache.find(b => b.badgeId === player.badge);
 
       badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
       badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
@@ -119,9 +118,9 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
-          badgeOverlayEl.style.background = `var(--base-color-${parsedSystemName})`;
+          badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
           badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-            ? `var(--alt-color-${parsedSystemName})`
+            ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
             : `var(--base-bg-color-${parsedSystemName})`;
         } else
           badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
