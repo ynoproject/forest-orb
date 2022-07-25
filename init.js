@@ -177,7 +177,7 @@ function fetchNewest(path, important, req) {
 function apiFetch(path) {
   return new Promise((resolve, reject) => {
     const sId = getCookie('sessionId');
-    const headers = sId ? { 'X-Session': sId } : {};
+    const headers = sId ? { 'Authorization': sId } : {};
     fetch(`${apiUrl}/${path}`, { headers: headers })
       .then(response => resolve(response))
       .catch(err => reject(err));
@@ -192,7 +192,7 @@ function apiJsonPost(path, data) {
     };
     const sId = getCookie('sessionId');
     if (sId)
-      headers['X-Session'] = sId;
+      headers['Authorization'] = sId;
     fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: JSON.stringify(data) })
       .then(response => resolve(response))
       .catch(err => reject(err));
