@@ -44,6 +44,9 @@ function fetchAndPopulateRankingCategories() {
       rankingSubCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
+        if (category.subCategories == null)
+          continue;
+
         const categoryId = category.categoryId;
         
         if (!localizedMessages.rankings.categories.hasOwnProperty(categoryId))
