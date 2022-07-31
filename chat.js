@@ -295,7 +295,7 @@ function chatInputActionFired() {
       window.setTimeout(function () {
         chatInputContainer.classList.remove("globalCooldown");
         chatInput.disabled = false;
-      }, 15000);
+      }, 10000);
     }
   }
   chatInput.value = "";
