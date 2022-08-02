@@ -263,7 +263,7 @@
         "upload": "Téléverser un fichier de sauvegarde",
         "download": "Télécharger un fichier de sauvegarde"
       },
-      "uiTheme": "Thème UI",
+      "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
       "toggleImmersionMode": "Activer le Mode Immersion",
       "screenshot": "Prendre une capture d'écran",
@@ -424,7 +424,7 @@
         "loggedOut": "Vous êtes déconnecté(e)."
       },
       "parties": {
-        "create": "{PARTY} a été crée.",
+        "create": "{PARTY} a été créé.",
         "update": "{PARTY} a été mis à jour.",
         "join": "Vous avez rejoint {PARTY}.",
         "leave": "Vous avez quitté {PARTY}.",
