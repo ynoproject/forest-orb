@@ -2072,6 +2072,10 @@ form .uiTheme {
 }
 
 @-moz-document url-prefix() {
+  .eventList .eventListEntry .detailsContainer .depthFillContainer {
+    margin-top: -20px;
+  }
+
   .eventList .eventListEntry .detailsContainer .depthContainer .icon {
     width: 14px;
     margin: 1px 2px 0 0;
