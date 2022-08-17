@@ -2062,6 +2062,15 @@ form .uiTheme {
   margin-top: -18px;
 }
 
+.eventList .eventListEntry .detailsContainer .maxDepthFillContainer {
+  opacity: 0.5;
+}
+
+.eventList .eventListEntry .detailsContainer .depthContainer .icon {
+  width: 14px;
+  margin: 2px 2px 0 0;
+}
+
 @-moz-document url-prefix() {
   .eventList .eventListEntry .detailsContainer .depthFillContainer {
     margin-top: -20px;
@@ -2071,15 +2080,6 @@ form .uiTheme {
     width: 14px;
     margin: 1px 2px 0 0;
   }
-}
-
-.eventList .eventListEntry .detailsContainer .maxDepthFillContainer {
-  opacity: 0.5;
-}
-
-.eventList .eventListEntry .detailsContainer .depthContainer .icon {
-  width: 14px;
-  margin: 2px 2px 0 0;
 }
 
 .eventList .eventListEntry .detailsContainer .depthFillContainer .icon path {
