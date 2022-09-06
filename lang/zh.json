@@ -346,8 +346,23 @@
       "admin": {
         "ban": {
           "label": "封禁 {PLAYER}",
-          "confirm": "确认要永久封禁 {PLAYER} ？",
-          "success": "{PLAYER} 已被永久封禁。"
+          "confirm": "确认要封禁 {PLAYER} ？",
+          "success": "{PLAYER} 已被封禁。"
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
         },
         "grantBadge": {
           "label": "授予徽章",

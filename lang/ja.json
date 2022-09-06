@@ -346,8 +346,23 @@
       "admin": {
         "ban": {
           "label": "{PLAYER}をBAN",
-          "confirm": "本当に{PLAYER}を永久BANしますか？",
+          "confirm": "本当に{PLAYER}をBANしますか？",
           "success": "{PLAYER}はBANされました。"
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
         },
         "grantBadge": {
           "label": "権限バッジを付与",
