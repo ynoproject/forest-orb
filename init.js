@@ -28,6 +28,7 @@ const tippyConfig = {
 };
 
 const apiUrl = `../connect/${ynoGameId}/api`;
+const adminApiUrl = `../connect/${ynoGameId}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
 Module = {
@@ -174,11 +175,11 @@ function fetchNewest(path, important, req) {
   });
 }
 
-function apiFetch(path) {
+function apiFetch(path, isAdmin = false) {
   return new Promise((resolve, reject) => {
     const sId = getCookie('sessionId');
     const headers = sId ? { 'Authorization': sId } : {};
-    fetch(`${apiUrl}/${path}`, { headers: headers })
+    fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers })
       .then(response => resolve(response))
       .catch(err => reject(err));
   });
@@ -261,7 +262,10 @@ function addAdminContextMenu(target, player, uuid) {
 
   const playerName = getPlayerName(player, true);
   
-  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a>`;
+  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
+  <a href="javascript:void(0);" class="unbanPlayerAction">${getMassagedLabel(localizedMessages.context.admin.unban.label, true).replace('{PLAYER}', playerName)}</a><br>
+    <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true)}</a><br>
+    <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true)}</a>`;
   if (player.account)
     tooltipHtml += `<br>
       <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
@@ -271,7 +275,7 @@ function addAdminContextMenu(target, player, uuid) {
 
   adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
     if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
-      apiFetch(`admin?command=ban&player=${uuid}`)
+      apiFetch(`ban&player=${uuid}`, true)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
@@ -280,6 +284,49 @@ function addAdminContextMenu(target, player, uuid) {
         .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
         .catch(err => console.error(err));
     }
+  };
+
+  adminTooltip.popper.querySelector('.unbanPlayerAction').onclick = function () {
+    if (confirm(localizedMessages.context.admin.unban.confirm.replace('{PLAYER}', playerName))) {
+      apiFetch(`unban&player=${uuid}`, true)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
+        .catch(err => console.error(err));
+    }
+  };
+
+  adminTooltip.popper.querySelector('.mutePlayerAction').onclick = function() {
+    if(!confirm(localizedMessages.context.admin.mute.confirm.replace('{PLAYER}', playerName))) {
+      return;
+    }
+
+    apiFetch(`mute&player=${uuid}`, true)
+      .then(response => {
+        if(!response.ok)
+          throw new Error(response.statusText);
+        return response.text();
+      })
+      .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.mute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+      .catch(err => console.error(err));
+  };
+
+  adminTooltip.popper.querySelector('.unmutePlayerAction').onclick = function() {
+    if(!confirm(localizedMessages.context.admin.unmute.confirm.replace('{PLAYER}', playerName))) {
+      return;
+    }
+
+    apiFetch(`unmute&player=${uuid}`, true)
+      .then(response => {
+        if(!response.ok)
+          throw new Error(response.statusText);
+        return response.text();
+      })
+      .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+      .catch(err => console.error(err));
   };
 
   const badgeActions = adminTooltip.popper.querySelectorAll('.adminBadgeAction');

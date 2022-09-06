@@ -346,8 +346,23 @@
       "admin": {
         "ban": {
           "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to permanently ban {PLAYER}?",
+          "confirm": "Are you sure you want to ban {PLAYER}?",
           "success": "{PLAYER} has been banned."
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
         },
         "grantBadge": {
           "label": "Grant Badge",

@@ -1,7 +1,8 @@
 const roleEmojis = {
   mod: '🛡️',
   dev: '🔧',
-  partyOwner: '👑'
+  partyOwner: '👑',
+  muted: '🔇'
 };
 const defaultUuid = '0000000000000000';
 let playerData = null;
@@ -43,6 +44,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     }
 
     let rankIcon = null;
+    let mutedIcon = null;
 
     if (player.rank) {
       const rank = Math.min(player.rank, 2);
@@ -50,6 +52,13 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       rankIcon.classList.add('rankIcon');
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameTextContainer.appendChild(rankIcon);
+    }
+
+    if (player.muted) {
+      mutedIcon = getSvgIcon("muted", true);
+      mutedIcon.classList.add("muted");
+      addTooltip(mutedIcon, "Muted", true, true);
+      nameTextContainer.appendChild(mutedIcon);
     }
 
     const badge = includeBadge && player.badge !== 'null' ? badgeCache.find(b => b.badgeId === player.badge) : null;
@@ -116,6 +125,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       }
       if (rankIcon)
         rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+      if (mutedIcon)
+        mutedIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
           badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
@@ -133,6 +144,8 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
   if (includeMarkers && isPlayerObj) {
     if (player.rank)
       playerName += roleEmojis[player.rank === 1 ? 'mod' : 'dev'];
+    if (player.muted)
+      playerName += roleEmojis['muted'];
     if (!asHtml && !player.account)
       playerName = `<${playerName}>`;
   }
@@ -154,6 +167,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
+  let mutedIcon = playerListEntry ? playerListEntry.querySelector('.mutedIcon') : null;
   let partyOwnerIcon = playerListEntry ? playerListEntry.querySelector('.partyOwnerIcon') : null;
   let partyKickAction = playerListEntry ? playerListEntry.querySelector('.partyKickAction') : null;
   let transferPartyOwnerAction = playerListEntry ? playerListEntry.querySelector('.transferPartyOwnerAction') : null;
@@ -265,6 +279,16 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameText.after(rankIcon);
     }
+
+    if (mutedIcon)
+      mutedIcon.remove();
+
+    if (player?.muted) {
+      mutedIcon = getSvgIcon("muted", true);
+      mutedIcon.classList.add("muted");
+      addTooltip(mutedIcon, "Muted", true, true);
+      nameText.after(mutedIcon);
+    }
   }
 
   const showBadge = player?.account && player.badge;
@@ -374,7 +398,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
           for (let nameMarker of nameMarkers)
             nameMarker.setAttribute('style', nameMarkerStyle);
         }
-        if (rankIcon || playerListEntryActionContainer.childElementCount || showLocation) {
+        if (rankIcon || mutedIcon || playerListEntryActionContainer.childElementCount || showLocation) {
           if (rankIcon)
             rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           for (let iconPath of playerListEntryActionContainer.querySelectorAll('path'))
