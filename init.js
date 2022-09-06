@@ -263,9 +263,8 @@ function addAdminContextMenu(target, player, uuid) {
   const playerName = getPlayerName(player, true);
   
   let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
-  <a href="javascript:void(0);" class="unbanPlayerAction">${getMassagedLabel(localizedMessages.context.admin.unban.label, true).replace('{PLAYER}', playerName)}</a><br>
-    <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true)}</a><br>
-    <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true)}</a>`;
+    <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
+    <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
   if (player.account)
     tooltipHtml += `<br>
       <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
@@ -282,19 +281,6 @@ function addAdminContextMenu(target, player, uuid) {
           return response.text();
         })
         .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
-        .catch(err => console.error(err));
-    }
-  };
-
-  adminTooltip.popper.querySelector('.unbanPlayerAction').onclick = function () {
-    if (confirm(localizedMessages.context.admin.unban.confirm.replace('{PLAYER}', playerName))) {
-      apiFetch(`unban&player=${uuid}`, true)
-        .then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          return response.text();
-        })
-        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
         .catch(err => console.error(err));
     }
   };
