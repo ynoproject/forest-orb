@@ -84,7 +84,7 @@ html {
   border-radius: 10%;
   margin-top: calc(var(--controls-size) * -0.4);
   bottom: calc(var(--controls-size) * 0.05);
-  left: calc(var(--controls-size) * 0.2);
+  left: calc(var(--controls-size) * 0.21);
   width: calc(var(--controls-size) * 0.6);
   height: calc(var(--controls-size) * 0.4);
 }
