@@ -274,7 +274,7 @@ function addAdminContextMenu(target, player, uuid) {
 
   adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
     if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
-      apiFetch(`ban&player=${uuid}`, true)
+      apiFetch(`ban?player=${uuid}`, true)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
@@ -290,7 +290,7 @@ function addAdminContextMenu(target, player, uuid) {
       return;
     }
 
-    apiFetch(`mute&player=${uuid}`, true)
+    apiFetch(`mute?player=${uuid}`, true)
       .then(response => {
         if(!response.ok)
           throw new Error(response.statusText);
@@ -305,7 +305,7 @@ function addAdminContextMenu(target, player, uuid) {
       return;
     }
 
-    apiFetch(`unmute&player=${uuid}`, true)
+    apiFetch(`unmute?player=${uuid}`, true)
       .then(response => {
         if(!response.ok)
           throw new Error(response.statusText);
