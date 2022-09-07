@@ -1250,7 +1250,7 @@ body.fullBg #background {
 }
 
 #chatInputContainer.globalCooldown #globalCooldownIcon .timerCircle {
-  animation: 10s timer linear;
+  animation: 5s timer linear;
 }
 
 #chatInputContainer:not(.globalCooldown) #globalCooldownIcon {
