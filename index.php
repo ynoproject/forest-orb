@@ -40,7 +40,7 @@
 <head>
   <title>YNOproject - <?php echo $gameName; ?> Online</title>
   <meta charset="utf-8">
-  <meta name="description" content="Play <?php echo $gameName; ?> online with your friends in your browser, no downloads needed.">
+  <meta name="description" content="Play <?php echo $gameName; ?> online in multiplayer with your friends, no account or downloads required.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php if ($gameId == "2kki"): ?>
     <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
