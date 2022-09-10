@@ -350,19 +350,19 @@
           "success": "{PLAYER} a été banni(e)."
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "Débannir {PLAYER}",
+          "confirm": "Êtes-vous sûr de vouloir débannir {PLAYER} ?",
+          "success": "{PLAYER} a été débanni(e)."
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "Rendre muet {PLAYER}",
+          "confirm": "Êtes-vous sûr de vouloir rendre muet {PLAYER} ?",
+          "success": "{PLAYER} a été rendu(e) muet(te)."
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "Démuter {PLAYER}",
+          "confirm": "Êtes-vous sûr de vouloir démuter {PLAYER} ?",
+          "success": "{PLAYER} a été démuté(e)."
         },
         "grantBadge": {
           "label": "Donner un Badge",
