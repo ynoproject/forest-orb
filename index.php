@@ -1,6 +1,6 @@
 <?php
   $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
-  $enableBadgeTools = $_GET['badge_tools'] == 'true';
+  $enableBadgeTools = isset($_GET['badge_tools']) ? $_GET['badge_tools'] == 'true' : false;
   switch ($gameId) {
     case "yume":
       $gameName = "Yume Nikki";
