@@ -199,14 +199,14 @@
         "manageBadgeGallery": "管理徽章展柜",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "解锁状态:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "全部",
+              "0": "未解锁",
+              "1": "已解锁"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "搜索:&nbsp;"
         }
       },
       "badgeGallery": {
