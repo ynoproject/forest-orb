@@ -383,8 +383,7 @@ function initBadgeTools() {
         this.saveQueued = true;
         const self = this;
         Vue.nextTick(() => {
-          const data = this.getBadgeData();
-          globalConfig.badgeToolsData = data;
+          globalConfig.badgeToolsData = this.getBadgeData();
           updateConfig(globalConfig, true);
           self.saveQueued = false;
         });
