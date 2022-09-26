@@ -134,13 +134,12 @@ function removeGamepad(gamepad) {
 
 /** @returns {Gamepad[]} */
 function getGamepads() {
-  var pads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
-  return pads;
+  return navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
 }
 
 function scanGamePads() {
-  var pads = getGamepads();
-  for (var i = 0; i < pads.length; i++) {
+  const pads = getGamepads();
+  for (let i = 0; i < pads.length; i++) {
     if (pads[i]) {
       if (pads[i].index in gamepads)
         gamepads[pads[i].index] = pads[i];
