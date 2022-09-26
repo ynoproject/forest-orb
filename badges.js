@@ -82,7 +82,7 @@ function initBadgeControls() {
     badgeModalContent.innerHTML = '';
 
     const updateBadgesAndPopulateModal = () => {
-      document.getElementById('badgeGalleryButton').classList.toggle('hidden', slotRow && slotCol ? true : false);
+      document.getElementById('badgeGalleryButton').classList.toggle('hidden', slotRow && slotCol);
       fetchPlayerBadges(playerBadges => {
         let lastGame = null;
         let lastGroup = null;

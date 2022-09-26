@@ -494,8 +494,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       } else if (notificationTypes[key].indexOf(nkey) > -1) {
                         if (!nvalue)
                           document.getElementById(`notificationsButton_${key}_${nkey}`).click();
-                      } else
-                        continue;
+                      }
                     }
                   } else
                     continue;
