@@ -441,7 +441,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 {
   const chatInput = document.getElementById('chatInput');
   chatInput.oninput = function () {
-    const ynomojiPattern = /:([a-z0-9\_\-]+(?:\:|$)|$)/gi;
+    const ynomojiPattern = /:([a-z0-9_\-]+(?::|$)|$)/gi;
     const ynomojiContainer = document.getElementById('ynomojiContainer');
     let currentMatch;
     let match;
@@ -1282,7 +1282,7 @@ function getLocalizedLocation(game, location, locationEn, asHtml) {
   let locationValue;
 
   if (asHtml) {
-    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
+    template = template.replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>');
     if (gameLocalizedLocationUrlRoots[game] && location.urlTitle !== null)
       locationValue = `<a href="${gameLocalizedLocationUrlRoots[game]}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
     else if (gameLocationUrlRoots[game] && gameLocalizedLocationUrlRoots[game] !== null && locationEn.urlTitle !== null)
@@ -1370,7 +1370,7 @@ function fetchAndPopulateYnomojiConfig() {
 
 function insertYnomoji(ynomojiId) {
   const chatInput = document.getElementById('chatInput');
-  const ynomojiMatch = /:([a-z0-9\_\-]+)?$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
+  const ynomojiMatch = /:([a-z0-9_\-]+)?$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
   if (ynomojiMatch)
     chatInput.value = `${chatInput.value.slice(0, ynomojiMatch.index)}:${ynomojiId}:${chatInput.value.slice(chatInput.selectionEnd)}`;
   else

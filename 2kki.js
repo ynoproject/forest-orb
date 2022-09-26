@@ -192,7 +192,7 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
 function getLocalized2kkiLocation(title, titleJP, asHtml) {
   let template = localizedMessages.location['2kki'].template;
   if (asHtml)
-    template = template.replace(/(?:})([^{]+)/g, '}<span class="infoLabel">$1</span>');
+    template = template.replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>');
   return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 

@@ -761,7 +761,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                   if (systemName) {
                     badgeTippy.popper.children[0].setAttribute('style', boxStyles);
                     const badgeTextStyles = badgeCache.find(b => b.badgeId === badgeId)?.hidden
-                      ? textStyles.replace(/\-\-base\-/g, '--alt-')
+                      ? textStyles.replace(/--base-/g, '--alt-')
                       : textStyles;
                     badgeTippy.popper.querySelector('.tooltipContent').setAttribute('style', badgeTextStyles);
                   }

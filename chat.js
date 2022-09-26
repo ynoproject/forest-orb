@@ -380,17 +380,17 @@ function markMapUpdateInChat() {
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
     { p: /<\/?[bisux] *>/ig, r: '' },
-    { p: /(?:^|([^\\]))(\*{3,})([^\*\_\~\|\\]+)\2/g, r: '$1<b><i>$3</i></b>' },
-    { p: /(?:^|([^\\]))(\*{2})([^\*\_\~\|\\]+)\2/g, r: '$1<b>$3</b>' },
-    { p: /(?:^|([^\\]))\*([^\*\_\~\|\\]+)\*/g, r: '$1<i>$2</i>' },
-    { p: /(?:^|([^\\]))(\_{3,})([^\*\_\~\|\\]+)\2(?= |$)/g, r: '$1<u><i>$3</i></u>' },
-    { p: /(?:^|([^\\]))(\_{2})([^\*\_\~\|\\]+)\2(?= |$)/g, r: '$1<u>$3</u>' },
-    { p: /(?:^|([^\\]))\_([^\*\_\~\|\\]+)\_(?= |$)/g, r: '$1<i>$2</i>' },
-    { p: /(?:^|([^\\]))(\~{2,})([^\*\_\~\|\\]+)\2/g, r: '$1<s>$3</s>' },
-    { p: /(?:^|([^\\]))(\|{2,})([^\*\_\~\|\\]+)\2/g, r: '$1<x>$3</x>' },
+    { p: /(?:^|([^\\]))(\*{3,})([^*_~|\\]+)\2/g, r: '$1<b><i>$3</i></b>' },
+    { p: /(?:^|([^\\]))(\*{2})([^*_~|\\]+)\2/g, r: '$1<b>$3</b>' },
+    { p: /(?:^|([^\\]))\*([^*_~|\\]+)\*/g, r: '$1<i>$2</i>' },
+    { p: /(?:^|([^\\]))(_{3,})([^*_~|\\]+)\2(?= |$)/g, r: '$1<u><i>$3</i></u>' },
+    { p: /(?:^|([^\\]))(_{2})([^*_~|\\]+)\2(?= |$)/g, r: '$1<u>$3</u>' },
+    { p: /(?:^|([^\\]))_([^*_~|\\]+)_(?= |$)/g, r: '$1<i>$2</i>' },
+    { p: /(?:^|([^\\]))(~{2,})([^*_~|\\]+)\2/g, r: '$1<s>$3</s>' },
+    { p: /(?:^|([^\\]))(\|{2,})([^*_~|\\]+)\2/g, r: '$1<x>$3</x>' },
     { p: /\\\*/g, r: '*' },
-    { p: /\\\_/g, r: '_' },
-    { p: /\\\~/g, r: '~' },
+    { p: /\\_/g, r: '_' },
+    { p: /\\~/g, r: '~' },
     { p: /\\\|/g, r: '|' },
   ];
   for (let e of replacements)
@@ -442,7 +442,7 @@ function populateMessageNodes(msg, node, asHtml) {
 function wrapMessageEmojis(node, force) {
   if (node.childNodes.length && !force) {
     for (let childNode of node.childNodes) {
-      if (/\p{Extended_Pictographic}/u.test(childNode.textContent) || /:([a-z0-9\_\-]+):/i.test(childNode.textContent)) {
+      if (/\p{Extended_Pictographic}/u.test(childNode.textContent) || /:([a-z0-9_\-]+):/i.test(childNode.textContent)) {
         if (childNode.nodeType === Node.TEXT_NODE) {
           const newChildNode = document.createElement("span");
           newChildNode.innerText = childNode.textContent;
@@ -454,7 +454,7 @@ function wrapMessageEmojis(node, force) {
     }
   } else {
     node.innerHTML = node.innerHTML.replace(/(\p{Extended_Pictographic}+)/ug, '<span class="emoji">$1</span>');
-    const ynomojiPattern = /:([a-z0-9\_\-]+):/gi;
+    const ynomojiPattern = /:([a-z0-9_\-]+):/gi;
     let ynomojiMatch;
     while (ynomojiMatch = ynomojiPattern.exec(node.innerHTML)) {
       const ynomojiId = Object.keys(ynomojiConfig).find(id => id === ynomojiMatch[1]);
