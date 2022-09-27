@@ -171,7 +171,7 @@ function fetchNewest(path, important, req) {
         } else
           resolve(ret);
       })
-      .catch(err => reject(err));;
+      .catch(err => reject(err));
   });
 }
 
