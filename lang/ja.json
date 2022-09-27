@@ -350,19 +350,19 @@
           "success": "{PLAYER}はBANされました。"
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "{PLAYER}をBAN解除",
+          "confirm": "本当に{PLAYER}をBAN解除しますか？",
+          "success": "{PLAYER}はBAN解除されました。"
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "{PLAYER}をミュート",
+          "confirm": "本当に{PLAYER}をミュートしますか？",
+          "success": "{PLAYER} はミュートされました。"
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "{PLAYER}をミュート解除",
+          "confirm": "本当に {PLAYER}をミュート解除しますか？",
+          "success": "{PLAYER}はミュート解除されました。"
         },
         "grantBadge": {
           "label": "権限バッジを付与",
