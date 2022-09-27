@@ -226,7 +226,7 @@ function getSaveDataForSync() {
     if (!saveSyncConfig.slotId)
       resolve(null);
 
-    slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
+    const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
     const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
     request.onsuccess = function (_e) {
