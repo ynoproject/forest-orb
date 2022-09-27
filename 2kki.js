@@ -309,7 +309,7 @@ function getOrQuery2kkiLocationsHtml(mapId, callback) {
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${encodeURIComponent(locationName)}&connLocationNames=${encodeURIComponent(connLocationNames).join('&connLocationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
     const callback = response => {
       let ret = [];
       let errCode = null;
@@ -330,7 +330,7 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
 
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${encodeURIComponent(locationNames).join('&locationNames=')}`;
+    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${locationNames.join('&locationNames=')}`;
     const callback = response => {
       let errCode = null;
 
@@ -423,7 +423,7 @@ function getOrQuery2kkiLocationColors(locationName) {
       resolve(locationColorCache[locationName]);
       return;
     }
-    const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${encodeURIComponent(locationName)}`;
+    const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${locationName}`;
     const callback = response => {
       let errCode = null;
 
