@@ -1,0 +1,577 @@
+{
+  "translationComplete": "0",
+  "version": {
+    "2kki": {
+      "label": "Yume 2kki phiên bản {VERSION}",
+      "substitutes": {
+        " Patch ": " bản vá số ",
+        "?": "?"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "Đăng nhập",
+      "logout": "Đăng xuất"
+    },
+    "fontStyle": {
+      "label": "Kiểu chữ:",
+      "values": {
+        "style1": "Kiểu 1",
+        "style2": "Kiểu 2",
+        "style3": "Kiểu 3",
+        "style4": "Kiểu 4",
+        "style5": "Kiểu 5",
+        "style6": "Kiểu 6",
+        "style7": "Kiểu 7"
+      }
+    },
+    "chatbox": {
+      "location": "Địa điểm:&nbsp;",
+      "immersionMode": "Chế độ Đắm chìm",
+      "tab": {
+        "chat": "Chat",
+        "players": "Người chơi",
+        "parties": "Nhóm"
+      },
+      "chat": {
+        "tab": {
+          "all": "Tất cả",
+          "map": "Map",
+          "global": "Chung",
+          "party": "Nhóm"
+        },
+        "nickname": {
+          "header": "Bạn cần đặt tên để sử dụng tính năng chat.",
+          "rule": {
+            "maxLength": "* Tối đa 12 chữ cái",
+            "alphanumeric": "* Chỉ bao gồm chữ cái và số"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Map",
+          "party": "Nhóm"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "Translation Work Needed",
+      "noGameLoc": "* Game Localization Unsupported"
+    },
+    "2kki": {
+      "hostedWithPermission": "Hosted with permission from the Yume 2kki developers"
+    },
+    "modal": {
+      "login": {
+        "title": "Đăng Nhập",
+        "fields": {
+          "username": "Tên người dùng",
+          "password": "Mật khẩu"
+        },
+        "submit": "Đăng nhập",
+        "registerPrompt": "Không có tài khoản?&nbsp;",
+        "register": "Đăng ký"
+      },
+      "register": {
+        "title": "Đăng Ký",
+        "fields": {
+          "email": "Email",
+          "username": "Tên người dùng",
+          "password": "Mật khẩu",
+          "confirmPassword": "Nhập lại mật khẩu"
+        },
+        "submit": "Đăng ký",
+        "loginPrompt": "Đã có tài khoản?&nbsp;",
+        "login": "Đăng nhập"
+      },
+      "settings": {
+        "title": "Cài Đặt",
+        "fields": {
+          "lang": "Ngôn ngữ",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
+          "toggleNametags": "Tên người chơi",
+          "togglePlayerSounds": "Âm thanh người chơi",
+          "toggleTabToChat": "Nhấn Tab để chat",
+          "toggleRankings": "Bảng xếp hạng",
+          "toggleFloodProtection": "Flood Protection"
+        },
+        "notificationSettings": "Cài đặt thông báo",
+        "accountSettings": "Cài đặt tài khoản"
+      },
+      "notificationSettings": {
+        "title": "Cài Đặt Thông Báo",
+        "fields": {
+          "toggleNotifications": "Thông báo",
+          "screenPosition": {
+            "label": "Vị trí cửa sổ",
+            "values": {
+              "bottomLeft": "Góc dưới bên trái",
+              "bottomRight": "Góc dưới bên phải",
+              "topLeft": "Góc trên bên trái",
+              "topRight": "Góc trên bên phải"
+            }
+          },
+          "system": {
+            "label": "Hệ thống",
+            "fields": {
+              "siteUpdates": "Trang được cập nhật",
+              "error": "Đã xảy ra lỗi",
+              "floodDetected": "Possible Flood Attack Detected"
+            }
+          },
+          "account": {
+            "label": "Tài khoản",
+            "fields": {
+              "loggedIn": "Đã đăng nhập",
+              "loggedOut": "Đã đăng xuất"
+            }
+          },
+          "parties": {
+            "label": "Nhóm",
+            "fields": {
+              "create": "Tạo nhóm",
+              "update": "Cập nhật nhóm",
+              "join": "Tham gia nhóm",
+              "leave": "Rời khỏi nhóm",
+              "remove": "Bị xóa khỏi nhóm",
+              "disband": "Giải tán nhóm",
+              "playerJoin": "Người chơi tham gia nhóm",
+              "playerLeave": "Người chơi rời khỏi nhóm",
+              "playerOnline": "Người chơi online",
+              "playerOffline": "Người chơi offline",
+              "kickPlayer": "Xóa người chơi khỏi nhóm",
+              "transferPartyOwner": "Chỉ định người chơi làm trưởng nhóm"
+            }
+          },
+          "events": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "freeComplete": "Free Expedition Complete",
+              "vmComplete": "Vending Machine Found",
+              "listUpdated": "Expedition List Updated"
+            }
+          },
+          "badges": {
+            "label": "Huy hiệu",
+            "fields": {
+              "badgeUnlocked": "Mở khóa huy hiệu"
+            }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Uploaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Cài Đặt Tài Khoản",
+        "fields": {
+          "badge": "Huy hiệu",
+          "toggleSaveSync": "Save Sync (Thử nghiệm)",
+          "saveSyncSlotId": {
+            "label": "Save Sync Slot ID",
+            "values": {
+              "0": "None"
+            }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
+        }
+      },
+      "badges": {
+        "title": "Huy Hiệu",
+        "manageBadgeGallery": "Quản lý huy hiệu trưng bày",
+        "fields": {
+          "unlockStatus": {
+            "label": "Trạng thái:&nbsp;",
+            "values": {
+              "all": "Tất cả",
+              "0": "Bị khóa",
+              "1": "Đã mở khóa"
+            }
+          },
+          "search": "Tìm kiếm:&nbsp;"
+        }
+      },
+      "badgeGallery": {
+        "title": "Quản lý kho huy hiệu",
+        "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
+        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
+      },
+      "uiTheme": {
+        "title": "Phông Nền",
+        "auto": "TỰ ĐỘNG"
+      },
+      "createParty": {
+        "title": {
+          "create": "Tạo nhóm",
+          "update": "Chỉnh sửa nhóm"
+        },
+        "fields": {
+          "partyName": "Tên nhóm",
+          "description": "Mô tả",
+          "public": "Công khai",
+          "password": "Mật khẩu",
+          "theme": "Nền"
+        },
+        "showPassword": "Hiện mật khẩu",
+        "hidePassword": "Ẩn mật khẩu",
+        "submit": "Xong"
+      },
+      "joinPrivateParty": {
+        "title": "Tham gia nhóm kín",
+        "fields": {
+          "password": "Mật khẩu"
+        },
+        "showPassword": "Hiện mật khẩu",
+        "hidePassword": "Ẩn mật khẩu",
+        "incorrectPassword": "Sai mật khẩu: Hãy thử lại.",
+        "submit": "Xong"
+      },
+      "events": {
+        "title": "Expeditions",
+        "rankExp": "Cấp Tiếp Theo",
+        "weekExp": "ExP Tuần Này",
+        "tabs": {
+          "locations": "Địa Điểm",
+          "vms": "Tìm Máy Bán Nước"
+        }
+      },
+      "rankings": {
+        "title": "Bảng Xếp Hạng"
+      }
+    },
+    "tooltips": {
+      "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
+      "io": {
+        "upload": "Upload Save File",
+        "download": "Download Save File"
+      },
+      "uiTheme": "Phông Nền",
+      "toggleChat": "Bật/Tắt Chat",
+      "toggleImmersionMode": "Bật/Tắt Chế độ Đắm chìm",
+      "screenshot": "Chụp ảnh màn hình",
+      "settings": "Cài đặt",
+      "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
+      "chat": {
+        "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm trên Chat Chung",
+        "clearChat": "Xóa Chat"
+      },
+      "parties": {
+        "createParty": "Tạo nhóm",
+        "disbandParty": "Giải tán nhóm"
+      },
+      "events": "Expeditions",
+      "rankings": "Rankings",
+      "nexus": "Return to Nexus"
+    }
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl"
+    },
+    "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ quá trình không được lưu trong game sẽ bị mất.",
+    "io": {
+      "common": {
+        "failedSlotInput": "The provided slot was not valid: please enter a save file slot number from 1 to 15."
+      },
+      "upload": {
+        "slotInput": "Enter the save file slot number to upload to (1 to 15).",
+        "invalidSaveFile": "Please select a valid save file (.lsd format)."
+      },
+      "download": {
+        "slotInput": "Enter the save file slot number to download for (1 to 15).",
+        "emptySlot": "Oops! The save file for the provided slot appears to be empty."
+      }
+    },
+    "connStatus": {
+      "0": "Ngắt kết nối",
+      "1": "Đã kết nối",
+      "2": "Đang kết nối...",
+      "3": "Chế độ Chơi đơn"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Querying Location...",
+      "unknownLocation": "Unknown Location",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} Người chơi Online",
+      "plural": "{COUNT} Người chơi Online"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Người chơi trong Map",
+      "plural": "{COUNT} Người chơi trong Map"
+    },
+    "playerList": {
+      "unnamed": "Không tên",
+      "actions": {
+        "partyKick": "Xóa khỏi nhóm",
+        "transferPartyOwner": "Chỉ định làm trưởng nhóm"
+      }
+    },
+    "roles": {
+      "mod": "Quản trị viên",
+      "dev": "Lập trình viên"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Sai tên người dùng hoặc mật khẩu."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "Mật khẩu không trùng khớp.",
+          "invalidCredentials": "Tên người dùng hoặc mật khẩu trống hoặc chứa ký tự không hợp lệ.",
+          "emailTaken": "Địa chỉ email đã được sử dụng.",
+          "usernameTaken": "Tên người dùng đã được sử dụng."
+        }
+      }
+    },
+    "parties": {
+      "emptyMessage": "Hiện không có nhóm hoạt động.",
+      "yourParty": "Nhóm của bạn",
+      "defaultPartyName": "Nhóm của {OWNER}",
+      "partyOwner": "Trưởng Nhóm",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "Xem chi tiết nhóm",
+        "joinParty": "Tham gia nhóm",
+        "joinPrivateParty": "Tham gia nhóm kín",
+        "leaveParty": "Rời khỏi nhóm"
+      }
+    },
+    "chatTips": {
+      "template": "TIP: {CONTENT}",
+      "tips": {
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
+        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
+        "globalChatLocation": "You can view the location a global chat message was sent from by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
+        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
+        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
+        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
+        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
+        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
+      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi.",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
+        "loggedOut": "Bạn đã đăng xuất."
+      },
+      "parties": {
+        "create": "{PARTY} đã được tạo.",
+        "update": "{PARTY} đã được cập nhật.",
+        "join": "Bạn đã tham gia {PARTY}.",
+        "leave": "Bạn đã rời khỏi {PARTY}.",
+        "remove": "Bạn đã bị xóa khỏi {PARTY}.",
+        "disband": "{PARTY} đã giải tán.",
+        "playerJoin": "{PLAYER} đã tham gia nhóm.",
+        "playerLeave": "{PLAYER} đã rời khỏi nhóm.",
+        "playerOnline": "{PLAYER} đang online.",
+        "playerOffline": "{PLAYER} đã offline.",
+        "kickPlayer": "{PLAYER} đã bị xóa khỏi nhóm.",
+        "transferPartyOwner": "{PLAYER} đã được chỉ định làm trưởng nhóm."
+      },
+      "events": {
+        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      },
+      "badges": {
+        "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Rank: {RANK}",
+      "period": "Mùa {ORDINAL}",
+      "periodEnds": "Kết thúc vào {DATE}",
+      "current": "Hiện tại",
+      "shortcut": "Có thể đến qua lối tắt có thể mở",
+      "availableUntilDate": "Khả dụng đến\n{DATE}",
+      "types": {
+        "-1": "Free Expedition",
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend",
+        "3": "Special"
+      },
+      "expRanks": {
+        "0": "Novice",
+        "1": "Intermediate",
+        "2": "Bronze",
+        "3": "Silver",
+        "4": "Gold",
+        "5": "Platinum",
+        "6": "Diamond"
+      }
+    },
+    "badges": {
+      "null": "Không có",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "Địa điểm:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "Kho Huy hiệu của {PLAYER}",
+      "loading": "Đang tải...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Huy hiệu"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Huy Hiệu",
+          "valueLabel": "Số lượng",
+          "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "Xem trong Yume 2kki Explorer",
+        "multi": "Xem {LOCATION} trong Yume 2kki Explorer"
+      }
+    }
+  }
+}
