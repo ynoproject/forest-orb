@@ -157,7 +157,7 @@
             "fields": {
               "complete": "Expedition Complete",
               "freeComplete": "Free Expedition Complete",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "Đã tìm thấy máy bán nước",
               "listUpdated": "Expedition List Updated"
             }
           },
@@ -174,7 +174,7 @@
               "saveUploaded": "Đã tải lên bản lưu",
               "saveDownloading": "Đang tải xuống bản lưu",
               "saveDownloaded": "Đã tải xuống bản lưu",
-              "saveUpToDate": "Save Up to Date",
+              "saveUpToDate": "Bản lưu là phiên bản mới nhất",
               "saveCleared": "Bản lưu đã được xóa"
             }
           }
@@ -186,7 +186,7 @@
           "badge": "Huy hiệu",
           "toggleSaveSync": "Đồng bộ Tiến trình (Thử nghiệm)",
           "saveSyncSlotId": {
-            "label": "ID Chỗ lưu",
+            "label": "ID Vị trí lưu",
             "values": {
               "0": "None"
             }
@@ -278,7 +278,7 @@
         "disbandParty": "Giải tán nhóm"
       },
       "events": "Expeditions",
-      "rankings": "Rankings",
+      "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus"
     }
   },
@@ -346,35 +346,35 @@
       "admin": {
         "ban": {
           "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "confirm": "Bạn có chắc bạn muốn ban {PLAYER}?",
+          "success": "{PLAYER} đã bị ban."
         },
         "unban": {
           "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "confirm": "Bạn có chắc bạn muốn unban {PLAYER}?",
+          "success": "{PLAYER} đã được unban."
         },
         "mute": {
           "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "confirm": "Bạn có chắc bạn muốn mute {PLAYER}?",
+          "success": "{PLAYER} đã bị mute."
         },
         "unmute": {
           "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "confirm": "Bạn có chắc bạn muốn unmute {PLAYER}?",
+          "success": "{PLAYER} đã được unmute."
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Ban tặng Huy hiệu",
+          "prompt": "Nhập ID huy hiệu để ban tặng cho {PLAYER}.",
+          "success": "{BADGE} đã được ban tặng cho {PLAYER}.",
+          "fail": "Không tìm thấy huy hiệu nào với ID đã nhập."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Thu hồi Huy hiệu",
+          "prompt": "Nhập ID huy hiệu để thu hồi từ {PLAYER}.",
+          "success": "{BADGE} đã được thu hồi từ {PLAYER}.",
+          "fail": "Không tìm thấy huy hiệu nào với ID đã nhập."
         }
       }
     },
@@ -416,23 +416,23 @@
         "playersInMap": "Bạn có thể chuyển giữa số người chơi online và số người chơi trong map bằng cách nhấn vào dòng chữ.",
         "globalChatLocation": "Bạn có thể xem địa điểm của một tin nhắn chung bằng cách di chuột hoặc nhấn vào icon quả địa cầu bên trái tin nhắn. Nó cũng sẽ hiện hoặc ẩn địa điểm những tin nhắn chung tiếp theo dựa trên lựa chọn gần nhất của bạn.",
         "markdownSupport": "Bạn có thể định dạng tin nhắn bằng cách cho tin nhắn vào giữa những ký tự nhất định. Những định dạng hiện có: **in đậm** (\\*\\*chữ\\*\\*), *in nghiêng* (\\*chữ\\*, \\_chữ\\_), __gạch dưới__ (\\_\\_chữ\\_\\_), ~~gạch bỏ~~ (\\~\\~chữ\\~\\~), và ||bôi đen|| (\\|\\|chữ\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
+        "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
+        "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
+        "clearChat": "Khi bạn ấn Xóa Chat ở góc trên bên phải của khung, nếu bạn không trong thẻ 'Tất cả', chỉ tin nhắn trong thẻ bạn đã chọn sẽ bị xóa.",
+        "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
+        "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": "Bạn có muốn bật tính năng Đồng bộ Tiến trình? Dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được tải lên và bạn có thể sử dụng nó bằng tài khoản này trên bất cứ thiết bị hoặc trình duyệt nào có bật tính năng. Khi được bật, dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được cập nhật tự động khi trang được tải.",
+      "confirmEnableWithData": "Đã dò được Dữ liệu Đồng bộ Tiến trình cũ từ tài khoản. Bản lưu trong Vị trí Đồng bộ Tiến trình sẽ bị ghi đè nếu có phiên bản mới hơn ở cùng vị trí. Lưu ý điều này chỉ có hiệu lực khi tải lại trang với tính năng này được bật. Bạn có chắc bạn muốn bật Đồng bộ Tiến trình?"
     },
     "toast": {
       "system": {
         "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'.",
+        "floodDetected": "Nghi vấn có tấn công từ chối dịch vụ: Đang chuyển sang chế độ chơi đơn."
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
@@ -453,21 +453,21 @@
         "transferPartyOwner": "{PLAYER} đã được chỉ định làm trưởng nhóm."
       },
       "events": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "complete": "Expedition Complete!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
+        "freeComplete": "Expedition Complete! Bạn đã đến {LOCATION}.",
+        "vmComplete": "Đã tìm thấy máy bán nước!\nBạn nhận được {EXP}.",
         "listUpdated": "The expedition list has been updated."
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "Đang tải dữ liệu bản lưu từ vị trí {SLOT}...",
+        "saveUploaded": "Dữ liệu bản lưu của bạn từ vị trí {SLOT} đã được tải lên.",
+        "saveDownloading": "Đang cập nhật dữ liệu bản lưu vào vị trí {SLOT}...",
+        "saveDownloaded": "Vị trí lưu {SLOT} đã được cập nhật.",
+        "saveUpToDate": "Dữ liệu bản lưu đang ở phiên bản mới nhất.",
+        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn."
       }
     },
     "events": {
@@ -486,13 +486,13 @@
         "3": "Đặc biệt"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "Nhập môn",
+        "1": "Trung cấp",
+        "2": "Đồng",
+        "3": "Bạc",
+        "4": "Vàng",
+        "5": "Bạch Kim",
+        "6": "Kim Cương"
       }
     },
     "badges": {
@@ -544,27 +544,27 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Săn Tìm Máy Bán Nước",
+          "valueLabel": "Số lượng",
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Thử thách Hẹn giờ",
+          "valueLabel": "Thời gian Hoàn thành",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
           "label": "Minigames",
-          "valueLabel": "Score",
+          "valueLabel": "Điểm",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "Tất cả",
+        "2": "Tất cả Hiệu ứng",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
+        "rby_ex": "Red Blue Yellow (Mini Game B) - Bản EX"
       }
     },
     "2kki": {
