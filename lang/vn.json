@@ -61,7 +61,7 @@
       "noGameLoc": "* Game Localization Unsupported"
     },
     "2kki": {
-      "hostedWithPermission": "Hosted with permission from the Yume 2kki developers"
+      "hostedWithPermission": "Đã được sự cho phép của các tác giả Yume 2kki"
     },
     "modal": {
       "login": {
@@ -168,14 +168,14 @@
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "Đồng bộ Tiến trình",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Uploaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
+              "saveUploading": "Đang tải lên bản lưu",
+              "saveUploaded": "Đã tải lên bản lưu",
+              "saveDownloading": "Đang tải xuống bản lưu",
+              "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveCleared": "Bản lưu đã được xóa"
             }
           }
         }
@@ -184,14 +184,14 @@
         "title": "Cài Đặt Tài Khoản",
         "fields": {
           "badge": "Huy hiệu",
-          "toggleSaveSync": "Save Sync (Thử nghiệm)",
+          "toggleSaveSync": "Đồng bộ Tiến trình (Thử nghiệm)",
           "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
+            "label": "ID Chỗ lưu",
             "values": {
               "0": "None"
             }
           },
-          "clearSaveSync": "Clear Save Sync Data"
+          "clearSaveSync": "Xóa dữ liệu đồng bộ"
         }
       },
       "badges": {
@@ -250,7 +250,7 @@
         "weekExp": "ExP Tuần Này",
         "tabs": {
           "locations": "Địa Điểm",
-          "vms": "Tìm Máy Bán Nước"
+          "vms": "Săn Tìm Máy Bán Nước"
         }
       },
       "rankings": {
@@ -260,8 +260,8 @@
     "tooltips": {
       "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
       "io": {
-        "upload": "Upload Save File",
-        "download": "Download Save File"
+        "upload": "Tải bản lưu lên",
+        "download": "Tải bản lưu xuống"
       },
       "uiTheme": "Phông Nền",
       "toggleChat": "Bật/Tắt Chat",
@@ -279,7 +279,7 @@
       },
       "events": "Expeditions",
       "rankings": "Rankings",
-      "nexus": "Return to Nexus"
+      "nexus": "Quay về Nexus"
     }
   },
   "messages": {
@@ -295,17 +295,17 @@
       "unevendream": "Uneven Dream",
       "braingirl": "Braingirl"
     },
-    "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ quá trình không được lưu trong game sẽ bị mất.",
+    "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "io": {
       "common": {
         "failedSlotInput": "The provided slot was not valid: please enter a save file slot number from 1 to 15."
       },
       "upload": {
-        "slotInput": "Enter the save file slot number to upload to (1 to 15).",
-        "invalidSaveFile": "Please select a valid save file (.lsd format)."
+        "slotInput": "Nhập số thứ tự chỗ lưu cho bản lưu được tải lên (1 đến 15).",
+        "invalidSaveFile": "Hãy chọn bản lưu hợp lệ (đuôi .lsd)."
       },
       "download": {
-        "slotInput": "Enter the save file slot number to download for (1 to 15).",
+        "slotInput": "Nhập số thứ tự chỗ lưu cho bản lưu muốn tải xuống (1 đến 15).",
         "emptySlot": "Oops! The save file for the provided slot appears to be empty."
       }
     },
@@ -317,8 +317,8 @@
     },
     "location": {
       "template": "{LOCATION}",
-      "queryingLocation": "Querying Location...",
-      "unknownLocation": "Unknown Location",
+      "queryingLocation": "Đang tìm địa điểm...",
+      "unknownLocation": "Không rõ Địa điểm",
       "2kki": {
         "template": "{LOCATION}"
       }
@@ -409,7 +409,7 @@
       }
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "MẸO: {CONTENT}",
       "tips": {
         "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
@@ -421,7 +421,7 @@
         "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
         "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
         "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
     "saveSync": {
@@ -430,7 +430,7 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi.",
+        "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
         "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
         "floodDetected": "Possible flood attack detected: Switching to single player mode."
       },
@@ -476,14 +476,14 @@
       "period": "Mùa {ORDINAL}",
       "periodEnds": "Kết thúc vào {DATE}",
       "current": "Hiện tại",
-      "shortcut": "Có thể đến qua lối tắt có thể mở",
+      "shortcut": "Có thể đến được qua lối tắt có thể mở",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
         "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "0": "Hàng ngày",
+        "1": "Hàng tuần",
+        "2": "Cuối tuần",
+        "3": "Đặc biệt"
       },
       "expRanks": {
         "0": "Novice",
@@ -503,7 +503,7 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "Được vẽ bởi {ARTIST}"
     },
     "badgeGallery": {
       "label": "Kho Huy hiệu của {PLAYER}",
@@ -519,7 +519,7 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
+          "label": "BP (Điểm Huy hiệu)",
           "valueLabel": "BP",
           "value": "{NUMBER} BP"
         },
