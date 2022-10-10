@@ -153,12 +153,12 @@
             }
           },
           "events": {
-            "label": "Expeditions",
+            "label": "Tham Quan",
             "fields": {
-              "complete": "Expedition Complete",
-              "freeComplete": "Free Expedition Complete",
+              "complete": "Đã hoàn thành chuyến tham quan",
+              "freeComplete": "Đã hoàn thành tham quan tự do",
               "vmComplete": "Đã tìm thấy máy bán nước",
-              "listUpdated": "Expedition List Updated"
+              "listUpdated": "Đã cập nhật danh sách chuyến tham quan"
             }
           },
           "badges": {
@@ -245,7 +245,7 @@
         "submit": "Xong"
       },
       "events": {
-        "title": "Expeditions",
+        "title": "Tham Quan",
         "rankExp": "Cấp Tiếp Theo",
         "weekExp": "ExP Tuần Này",
         "tabs": {
@@ -277,7 +277,7 @@
         "createParty": "Tạo nhóm",
         "disbandParty": "Giải tán nhóm"
       },
-      "events": "Expeditions",
+      "events": "Tham Quan",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus"
     }
@@ -298,7 +298,7 @@
     "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "io": {
       "common": {
-        "failedSlotInput": "The provided slot was not valid: please enter a save file slot number from 1 to 15."
+        "failedSlotInput": "Vị trí đã nhập không hợp lệ: hãy nhập vị trí bản lưu từ 1 đến 15."
       },
       "upload": {
         "slotInput": "Nhập số thứ tự vị trí lưu cho bản lưu được tải lên (1 đến 15).",
@@ -453,10 +453,10 @@
         "transferPartyOwner": "{PLAYER} đã được chỉ định làm trưởng nhóm."
       },
       "events": {
-        "complete": "Expedition Complete!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
-        "freeComplete": "Expedition Complete! Bạn đã đến {LOCATION}.",
+        "complete": "Đã hoàn thành chuyến tham quan!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
+        "freeComplete": "Đã hoàn thành chuyến tham quan! Bạn đã đến {LOCATION}.",
         "vmComplete": "Đã tìm thấy máy bán nước!\nBạn nhận được {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "listUpdated": "Danh sách chuyến tham quan đã được cập nhật."
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
@@ -479,7 +479,7 @@
       "shortcut": "Có thể đến được qua lối tắt có thể mở",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
+        "-1": "Tham quan Tự do",
         "0": "Hàng ngày",
         "1": "Hàng tuần",
         "2": "Cuối tuần",
@@ -529,18 +529,18 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Tham quan",
+          "valueLabel": "Số chuyến",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Tham quan Tự do",
+          "valueLabel": "Số chuyến",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "Tỷ lệ hoàn thành Tham quan",
+          "valueLabel": "Tỷ lệ",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
@@ -554,7 +554,7 @@
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
+          "label": "Minigame",
           "valueLabel": "Điểm",
           "value": "{NUMBER}"
         }
