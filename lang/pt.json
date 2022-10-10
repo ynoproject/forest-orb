@@ -350,17 +350,17 @@
           "success": "{PLAYER} foi banido."
         },
         "unban": {
-          "label": "Unban {PLAYER}",
+          "label": "Desbanir {PLAYER}",
           "confirm": "Tem certeza de que deseja desbanir {PLAYER}?",
           "success": "{PLAYER} foi desbanido."
         },
         "mute": {
-          "label": "Mute {PLAYER}",
+          "label": "Silenciar {PLAYER}",
           "confirm": "Tem certeza de que deseja silenciar {PLAYER}?",
           "success": "{PLAYER} foi silenciado."
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
+          "label": "Desilenciar {PLAYER}",
           "confirm": "Tem certeza de que deseja desilenciar {PLAYER}?",
           "success": "{PLAYER} foi desilenciado."
         },
