@@ -102,7 +102,7 @@
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleTabToChat": "Nhấn Tab để chat",
           "toggleRankings": "Bảng xếp hạng",
-          "toggleFloodProtection": "Flood Protection"
+          "toggleFloodProtection": "Chống quá tải"
         },
         "notificationSettings": "Cài đặt thông báo",
         "accountSettings": "Cài đặt tài khoản"
@@ -125,7 +125,7 @@
             "fields": {
               "siteUpdates": "Trang được cập nhật",
               "error": "Đã xảy ra lỗi",
-              "floodDetected": "Nghi vấn có tấn công từ chối dịch vụ"
+              "floodDetected": "Nghi vấn có tấn công quá tải"
             }
           },
           "account": {
@@ -432,7 +432,7 @@
       "system": {
         "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
         "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'.",
-        "floodDetected": "Nghi vấn có tấn công từ chối dịch vụ: Đang chuyển sang chế độ chơi đơn."
+        "floodDetected": "Nghi vấn có tấn công gây quá tải: Đang chuyển sang chế độ chơi đơn."
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
