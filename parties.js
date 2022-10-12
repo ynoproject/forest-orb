@@ -776,7 +776,7 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
 
   playerLocationIcon.classList.toggle('hidden', !isInParty || !member.online);
 
-  if (isInParty && member.online) {
+  if (isInParty && member.online && member.mapId) {
     playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(' ', '_') : null;
     if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
