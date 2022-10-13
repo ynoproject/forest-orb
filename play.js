@@ -857,9 +857,17 @@ function updateLocationDisplayContainerPos() {
   const canvasElement = document.getElementById('canvas');
   const locationDisplayContainer = document.getElementById('locationDisplayContainer');
 
-  locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
-  locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
-  locationDisplayContainer.style.maxWidth = `${canvas.offsetWidth}px`;
+  if (document.fullscreenElement) {
+    const canvasRect = canvas.getBoundingClientRect();
+    locationDisplayContainer.style.top = `${canvasRect.y}px`;
+    locationDisplayContainer.style.left = `${canvasRect.x}px`;
+  } else {
+    locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
+    locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
+  }
+
+  locationDisplayContainer.style.maxWidth = `${canvasElement.offsetWidth}px`;
+  locationDisplayContainer.style.transform = canvasElement.style.transform ? canvasElement.style.transform : null;
 }
 
 function updateYnomojiContainerPos(isScrollUpdate) {

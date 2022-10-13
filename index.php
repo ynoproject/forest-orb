@@ -135,7 +135,7 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
-          <div id="locationDisplayContainer">
+          <div id="locationDisplayContainer" class="unselectable">
             <div id="locationDisplayLabelContainer">
               <label id="locationDisplayLabel"></label>
             </div>

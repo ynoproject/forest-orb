@@ -731,6 +731,8 @@ body.fullBg #background {
   font-family: 'JF-Dot-Shinonome12';
   height: 48px;
   margin-top: -48px;
+  pointer-events: none;
+  transform-origin: top left;
   clip-path: inset(48px 0px 0px 0px);
   transition: margin-top 0.325s ease-in-out, clip-path 0.325s ease-in-out;
 }
