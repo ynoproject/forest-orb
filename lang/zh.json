@@ -101,6 +101,7 @@
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
           "toggleTabToChat": "开启Tab键聊天",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "显示排行榜",
           "toggleFloodProtection": "开启网络攻击保护"
         },

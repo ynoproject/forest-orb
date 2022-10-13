@@ -358,6 +358,12 @@ function addChatMapLocation() {
     locMessage.classList.add("map");
     locMessage.classList.add("hidden");
   }
+
+  if (cached2kkiLocations)
+    getOrQuery2kkiLocationColors(locations)
+      .then(colors => updateLocationDisplay(getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;"), Array.isArray(colors) && colors.length === 2 ? colors : null));
+  else
+    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"));
 }
 
 function markMapUpdateInChat() {

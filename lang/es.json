@@ -101,6 +101,7 @@
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleTabToChat": "Presionar Tab para chatear",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Clasificaciones",
           "toggleFloodProtection": "Protección de Flood"
         },

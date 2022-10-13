@@ -101,6 +101,7 @@
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
           "toggleTabToChat": "タブキーを 押して チャット",
+          "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
         },

@@ -64,6 +64,11 @@
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'JF-Dot-Shinonome12';
+  src: url('fonts/JF-Dot-Shinonome12.ttf');
+}
+
 html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   font-family: 'MS PGothic', 'PGothic', 'sans-serif';
   font-size: 16px;
@@ -721,6 +726,55 @@ body.fullBg #background {
   max-height: calc((100vw - 16px) * 0.75);
 }
 
+#locationDisplayContainer {
+  position: absolute;
+  font-family: 'JF-Dot-Shinonome12';
+  height: 48px;
+  margin-top: -48px;
+  clip-path: inset(48px 0px 0px 0px);
+  transition: margin-top 0.325s ease-in-out, clip-path 0.325s ease-in-out;
+}
+
+#locationDisplayContainer.visible {
+  margin-top: 0px;
+  clip-path: inset(0px 0px 0px 0px);
+}
+
+#locationDisplayContainer.fast {
+  transition: margin-top 0.1s ease-in-out, clip-path 0.1s ease-in-out;
+}
+
+#locationDisplayLabelContainer {
+  background-image: var(--container-bg-image-url) !important;
+  border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#locationDisplayLabelContainerOverlay {
+  width: 100%;
+  height: 48px;
+  margin-top: -48px;
+  mix-blend-mode: hue;
+}
+
+#locationDisplayLabel, #locationDisplayLabelOverlay {
+  font-size: x-large;
+  font-weight: normal;
+  white-space: pre;
+}
+
+#locationDisplayLabelOverlay {
+  display: block;
+  margin-top: -36px !important;
+  margin-left: 12px;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  background-image: none !important;
+  -webkit-text-fill-color: unset;
+  mix-blend-mode: hue;
+  filter: none;
+}
+
 #uiControls {
   display: flex;
   align-items: center;
@@ -1045,8 +1099,8 @@ body.fullBg #background {
   align-items: center;
   background-size: 38px;
   background-position: -2px -2px;
-  border: 4px solid transparent;
   background-image: var(--container-bg-image-url) !important;
+  border: 4px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
   padding: 1px;
   margin-bottom: 4px;

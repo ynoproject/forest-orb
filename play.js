@@ -27,6 +27,7 @@ let globalConfig = {
   chatTipIndex: -1,
   tabToChat: true,
   disableFloodProtection: false,
+  locationDisplay: false,
   hideRankings: false,
   badgeToolsData: null
 };
@@ -296,6 +297,70 @@ function checkUpdateLocation(mapId, mapChanged) {
     if (is2kki && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
       updateBadgeButton();
   }
+}
+
+let locationDisplayTimer;
+let locationDisplayQueue = [];
+
+function updateLocationDisplay(locationHtml, colors) {
+  if (!globalConfig.locationDisplay)
+    return;
+
+  const locationDisplayContainer = document.getElementById('locationDisplayContainer');
+  const locationDisplayLabel = document.getElementById('locationDisplayLabel');
+  const locationDisplayLabelOverlay = document.getElementById('locationDisplayLabelOverlay');
+  const locationDisplayLabelContainerOverlay = document.getElementById('locationDisplayLabelContainerOverlay');
+ 
+  if (locationDisplayContainer.classList.contains('visible')) {
+    locationDisplayQueue.push({ labelHtml: locationHtml, colors: colors });
+    hideLocationDisplay(true);
+  } else {
+    locationDisplayContainer.classList.remove('fast');
+
+    if (colors) {
+      locationDisplayLabelOverlay.style.color = colors[0];
+      locationDisplayLabelContainerOverlay.style.backgroundColor = colors[1];
+    }
+
+    locationDisplayLabel.innerHTML = locationHtml;
+    locationDisplayLabelOverlay.innerHTML = locationHtml;
+    locationDisplayContainer.classList.add('visible');
+
+    locationDisplayTimer = setTimeout(() => {
+      locationDisplayTimer = null;
+      hideLocationDisplay();
+    }, 5000);
+  }
+}
+
+function hideLocationDisplay(fast) {
+  if (fast)
+    locationDisplayContainer.classList.add('fast');
+
+  locationDisplayContainer.classList.remove('visible');
+
+  if (locationDisplayTimer) {
+    clearTimeout(locationDisplayTimer);
+    locationDisplayTimer = null;
+  }
+
+  return window.setTimeout(() => {
+    if (locationDisplayQueue.length) {
+      const locationEntry = locationDisplayQueue.shift();
+      updateLocationDisplay(locationEntry.labelHtml, locationEntry.colors);
+    }
+  }, fast ? 100 : 350);
+}
+
+{
+  const cancelKeyCodes = [ 'Escape', 'x', 'c', 'v', 'b', 'n' ];
+
+  document.addEventListener('keydown', e => {
+    if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(e.key)) {
+      locationDisplayQueue.splice(0, locationDisplayQueue.length);
+      hideLocationDisplay(true);
+    }
+  });
 }
 
 function syncPrevLocation() {
@@ -600,6 +665,14 @@ document.getElementById('tabToChatButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('locationDisplayButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('locationDisplayButton').classList.toggle('hidden', toggled);
+  globalConfig.locationDisplay = !toggled;
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('toggleRankingsButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -773,6 +846,16 @@ function onResize() {
   updateCanvasFullscreenSize();
 }
 
+function updateLocationDisplayContainerPos() {
+  const contentElement = document.getElementById('content');
+  const canvasElement = document.getElementById('canvas');
+  const locationDisplayContainer = document.getElementById('locationDisplayContainer');
+
+  locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
+  locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
+  locationDisplayContainer.style.maxWidth = `${canvas.offsetWidth}px`;
+}
+
 function updateYnomojiContainerPos(isScrollUpdate) {
   const chatInput = document.getElementById('chatInput');
   const chatboxContainer = document.getElementById('chatboxContainer');
@@ -896,6 +979,7 @@ function updateCanvasFullscreenSize() {
   messages.scrollTop = messages.scrollHeight;
 
   updateYnomojiContainerPos();
+  updateLocationDisplayContainerPos();
 }
 
 window.onresize = function () { setTimeout(onResize, 0); };
@@ -906,6 +990,7 @@ document.getElementById('content').addEventListener('scroll', function () {
   document.documentElement.style.setProperty('--content-scroll', `${this.scrollTop}px`);
   if (hasTouchscreen)
     updateYnomojiContainerPos(true);
+  updateLocationDisplayContainerPos();
 });
 
 function toggleControls(show) {

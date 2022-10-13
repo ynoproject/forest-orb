@@ -101,6 +101,7 @@
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Classement",
           "toggleFloodProtection": "Protection Anti-Spam"
         },

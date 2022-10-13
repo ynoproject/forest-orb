@@ -101,6 +101,7 @@
           "toggleNametags": "Torna visível as Nametags",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleTabToChat": "Atalho Tab para Chat",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "toggleFloodProtection": "Sistema Anti-Spam"
         },

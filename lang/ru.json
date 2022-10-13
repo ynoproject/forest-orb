@@ -101,6 +101,7 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Рейтинги",
           "toggleFloodProtection": "Защита от Спама"
         },

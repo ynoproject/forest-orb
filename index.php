@@ -135,6 +135,14 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
+          <div id="locationDisplayContainer">
+            <div id="locationDisplayLabelContainer">
+              <label id="locationDisplayLabel"></label>
+            </div>
+            <div id="locationDisplayLabelContainerOverlay"></div>
+            <label id="locationDisplayLabelOverlay"></label>
+          </div>
+
           <div id="dpad" class="unselectable">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" class="baseColorFill">
               <path id="dpad-up" data-key="ArrowUp" data-key-code="38" d="M48,5.8C48,2.5,45.4,0,42,0H29.9C26.6,0,24,2.4,24,5.8V24h24V5.8z" />
@@ -411,6 +419,12 @@
                 <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleTabToChat">Press Tab to Chat</label>
                 <div>
                   <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="locationDisplayButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleLocationDisplay">Location Display</label>
+                <div>
+                  <button id="locationDisplayButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
