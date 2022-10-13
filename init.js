@@ -405,7 +405,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('tabToChatButton').click();
                     break;
                   case 'locationDisplay':
-                    if (!value)
+                    if (value)
                       document.getElementById('locationDisplayButton').click();
                     break;
                   case 'hideRankings':

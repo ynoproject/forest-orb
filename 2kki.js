@@ -46,7 +46,7 @@ function onLoad2kkiMap(mapId) {
     cached2kkiLocations = locationNames ? locations : null;
     if (localizedMapLocations) {
       if (!cached2kkiLocations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
-        addChatMapLocation();
+        addChatMapLocation(cached2kkiLocations);
       cachedLocations = cached2kkiLocations;
     }
     if (!locationNames) {
@@ -103,7 +103,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
           cached2kkiLocations = locations;
           if (localizedMapLocations) {
             if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations))
-              addChatMapLocation();
+              addChatMapLocation(cached2kkiLocations);
             cachedLocations = cached2kkiLocations;
           }
         }

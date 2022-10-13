@@ -278,7 +278,7 @@ function checkUpdateLocation(mapId, mapChanged) {
     if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
       if (!mapChanged)
         markMapUpdateInChat();
-      addChatMapLocation();
+      addChatMapLocation(locations);
 
       if (is2kki) {
         const locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
@@ -310,6 +310,9 @@ function updateLocationDisplay(locationHtml, colors) {
   const locationDisplayLabel = document.getElementById('locationDisplayLabel');
   const locationDisplayLabelOverlay = document.getElementById('locationDisplayLabelOverlay');
   const locationDisplayLabelContainerOverlay = document.getElementById('locationDisplayLabelContainerOverlay');
+
+  if (locationDisplayLabel.innerHTML == locationHtml)
+    return;
  
   if (locationDisplayContainer.classList.contains('visible')) {
     locationDisplayQueue.push({ labelHtml: locationHtml, colors: colors });
@@ -321,6 +324,9 @@ function updateLocationDisplay(locationHtml, colors) {
       locationDisplayLabelOverlay.style.color = colors[0];
       locationDisplayLabelContainerOverlay.style.backgroundColor = colors[1];
     }
+
+    locationDisplayLabelOverlay.classList.toggle('hidden', !colors);
+    locationDisplayLabelContainerOverlay.classList.toggle('hidden', !colors);
 
     locationDisplayLabel.innerHTML = locationHtml;
     locationDisplayLabelOverlay.innerHTML = locationHtml;
@@ -669,7 +675,7 @@ document.getElementById('locationDisplayButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   document.getElementById('locationDisplayButton').classList.toggle('hidden', toggled);
-  globalConfig.locationDisplay = !toggled;
+  globalConfig.locationDisplay = toggled;
   updateConfig(globalConfig, true);
 };
 

@@ -337,10 +337,21 @@ function addChatTip() {
   updateConfig(globalConfig, true);
 }
 
-function addChatMapLocation() {
+function addChatMapLocation(locations) {
   const locationHtml = cached2kkiLocations
     ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;|&nbsp;")
     : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;|&nbsp;");
+
+  if (is2kki)
+    getOrQuery2kkiLocationColors(locations)
+      .then(colors => updateLocationDisplay(
+        cached2kkiLocations && locations === cached2kkiLocations
+          ? getLocalized2kkiLocations(locations, "&nbsp;/&nbsp;")
+          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"),
+        Array.isArray(colors) && colors.length === 2 ? colors : null)
+      );
+  else
+    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"));
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
@@ -358,17 +369,6 @@ function addChatMapLocation() {
     locMessage.classList.add("map");
     locMessage.classList.add("hidden");
   }
-
-  if (cached2kkiLocations)
-    getOrQuery2kkiLocationColors(cachedLocations)
-      .then(colors => updateLocationDisplay(
-        cached2kkiLocations
-          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;")
-          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"),
-        Array.isArray(colors) && colors.length === 2 ? colors : null)
-      );
-  else
-    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"));
 }
 
 function markMapUpdateInChat() {

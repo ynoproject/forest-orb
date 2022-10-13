@@ -754,7 +754,7 @@ body.fullBg #background {
   width: 100%;
   height: 48px;
   margin-top: -48px;
-  mix-blend-mode: hue;
+  mix-blend-mode: color;
 }
 
 #locationDisplayLabel, #locationDisplayLabelOverlay {
@@ -771,8 +771,12 @@ body.fullBg #background {
   background-clip: unset;
   background-image: none !important;
   -webkit-text-fill-color: unset;
-  mix-blend-mode: hue;
+  mix-blend-mode: color;
   filter: none;
+}
+
+#locationDisplayLabelOverlay.hidden, #locationDisplayLabelOverlay.hidden {
+  display: none;
 }
 
 #uiControls {

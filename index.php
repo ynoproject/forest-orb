@@ -424,7 +424,7 @@
               <li class="formControlRow">
                 <label for="locationDisplayButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleLocationDisplay">Location Display</label>
                 <div>
-                  <button id="locationDisplayButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                  <button id="locationDisplayButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
