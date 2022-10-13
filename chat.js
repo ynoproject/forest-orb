@@ -360,8 +360,13 @@ function addChatMapLocation() {
   }
 
   if (cached2kkiLocations)
-    getOrQuery2kkiLocationColors(locations)
-      .then(colors => updateLocationDisplay(getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;"), Array.isArray(colors) && colors.length === 2 ? colors : null));
+    getOrQuery2kkiLocationColors(cachedLocations)
+      .then(colors => updateLocationDisplay(
+        cached2kkiLocations
+          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;")
+          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"),
+        Array.isArray(colors) && colors.length === 2 ? colors : null)
+      );
   else
     updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"));
 }
