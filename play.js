@@ -952,6 +952,7 @@ function updateCanvasFullscreenSize() {
     scaleY -= scaleY % scaleFraction;
     const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
     canvasElement.style.transform = `scale(${scale})`;
+    document.documentElement.style.setProperty('--canvas-scale', scale);
 
     if (window.innerWidth > 1050 || window.innerHeight < 595) {
       const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
@@ -979,6 +980,7 @@ function updateCanvasFullscreenSize() {
     }
   } else {
     canvasElement.style.transform = null;
+    document.documentElement.style.setProperty('--canvas-scale', 1);
     canvasContainer.style.paddingRight = null;
     leftControlsMaxHeight = `${canvasElement.offsetHeight}px`;
   }

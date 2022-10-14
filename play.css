@@ -55,6 +55,8 @@
   --content-height: 0;
   --content-scroll: 0;
 
+  --canvas-scale: 1;
+
   --toast-offset: 0;
 }
 
@@ -730,7 +732,7 @@ body.fullBg #background {
   position: absolute;
   font-family: 'JF-Dot-Shinonome12';
   height: 48px;
-  margin-top: -48px;
+  margin-top: calc(-48px * var(--canvas-scale));
   pointer-events: none;
   transform-origin: top left;
   clip-path: inset(48px 0px 0px 0px);
