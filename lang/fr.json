@@ -15,7 +15,7 @@
       "logout": "Se déconnecter"
     },
     "fontStyle": {
-      "label": "Style de police:",
+      "label": "Style de police :",
       "values": {
         "style1": "Style 1",
         "style2": "Style 2",
@@ -91,7 +91,7 @@
         "fields": {
           "lang": "Langue",
           "locationVisibility": {
-            "label": "Visibilitée de la localisation en jeu",
+            "label": "Visibilitée du Lieu en jeu",
             "values": {
               "private": "Privé",
               "friends": "Amis",
@@ -101,7 +101,7 @@
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
-          "toggleLocationDisplay": "Location Display",
+          "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "toggleFloodProtection": "Protection Anti-Spam"
         },
@@ -242,7 +242,7 @@
         },
         "showPassword": "Montrer le mot de passe",
         "hidePassword": "Masquer le mot de passe",
-        "incorrectPassword": "Mot de passe incorrect: veuillez réessayer.",
+        "incorrectPassword": "Mot de passe incorrect : veuillez réessayer.",
         "submit": "Soumettre"
       },
       "events": {
@@ -438,7 +438,7 @@
     "toast": {
       "system": {
         "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour les nouvelles fonctionnalités.",
-        "error": "Oups! On dirait que quelque chose s'est mal passée. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
+        "error": "Oups ! On dirait que quelque chose s'est mal passée. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
         "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu solo."
       },
       "account": {
@@ -460,13 +460,13 @@
         "transferPartyOwner": "{PLAYER} est maintenant le chef du groupe."
       },
       "events": {
-        "complete": "Expédition terminée!\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
-        "freeComplete": "Expédition terminée! Vous avez visité(e) {LOCATION}.",
-        "vmComplete": "Distributeur automatique trouvé!\nVous avez gagné(e) {EXP}.",
+        "complete": "Expédition terminée !\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
+        "freeComplete": "Expédition terminée ! Vous avez visité(e) {LOCATION}.",
+        "vmComplete": "Distributeur automatique trouvé !\nVous avez gagné(e) {EXP}.",
         "listUpdated": "La liste d'expédition a été mise a jour."
       },
       "badges": {
-        "badgeUnlocked": "Vous avez obtenu un nouveau badge!"
+        "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
       "saveSync": {
         "saveUploading": "Téléchargement des données de sauvegarde de l'emplacement {SLOT}...",
