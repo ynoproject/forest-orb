@@ -199,7 +199,7 @@ function getLocalized2kkiLocation(title, titleJP, asHtml, forDisplay) {
 function getLocalized2kkiLocations(locations, separator, forDisplay) {
   return locations && locations.length
     ? Array.isArray(locations)
-      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP, forDisplay)).join(separator)
+      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP, false, forDisplay)).join(separator)
       : locations
     : getMassagedLabel(localizedMessages.location.unknownLocation);
 }
