@@ -747,6 +747,7 @@ body.fullBg #background {
 }
 
 #locationDisplayLabelContainer {
+  height: 24px;
   background-image: var(--container-bg-image-url) !important;
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
