@@ -419,6 +419,9 @@ function getOrQuery2kkiLocationColors(locationName) {
       locationName = locationName[0].title;
     else if (locationName.hasOwnProperty('title'))
       locationName = locationName.title;
+    const colonIndex = locationName.indexOf(':');
+    if (colonIndex > -1)
+      locationName = locationName.slice(0, colonIndex);
     if (locationColorCache.hasOwnProperty(locationName)) {
       resolve(locationColorCache[locationName]);
       return;
