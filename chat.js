@@ -340,14 +340,14 @@ function addChatTip() {
 function addChatMapLocation(locations) {
   const locationHtml = cached2kkiLocations
     ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;|&nbsp;")
-    : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;|&nbsp;");
+    : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;|&nbsp;");
 
   if (is2kki)
     getOrQuery2kkiLocationColors(locations)
       .then(colors => updateLocationDisplay(
-        cached2kkiLocations && locations === cached2kkiLocations
-          ? getLocalized2kkiLocations(locations, "&nbsp;/&nbsp;")
-          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"),
+        cached2kkiLocations
+          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;")
+          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;"),
         Array.isArray(colors) && colors.length === 2 ? colors : null)
       );
   else
