@@ -173,16 +173,17 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
     const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
+    const cachePrev = Array.isArray(prevLocations) && prevLocations.filter(l => l.titleJP).length;
     if (locations)
       locationCache[locationKey] = locations;
     else
       unknownLocations.push(locationKey);
-    if (prevLocations)
+    if (cachePrev)
       locationCache[prevLocationKey] = prevLocations;
     if (saveLocation && (locations || prevLocations)) {
       if (locations)
         cache.location[locationKey] = locations;
-      if (prevLocations)
+      if (cachePrev)
         cache.location[prevLocationKey] = prevLocations;
       updateCache('location');
     }
@@ -226,16 +227,17 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
     if (cacheLocation) {
       const locationKey = `${prevMapId}_${mapId}`;
       const prevLocationKey = `${mapId}_${prevMapId}`;
+      const cachePrev = Array.isArray(prevLocations) && prevLocations.filter(l => l.titleJP).length;
       if (locations)
         locationCache[locationKey] = locations;
       else
         unknownLocations.push(locationKey);
-      if (prevLocations)
+      if (cachePrev)
         locationCache[prevLocationKey] = prevLocations;
       if (saveLocation && (locations || prevLocations)) {
         if (locations)
           cache.location[locationKey] = locations;
-        if (prevLocations)
+        if (cachePrev)
           cache.location[prevLocationKey] = prevLocations;
         updateCache('location');
       }
