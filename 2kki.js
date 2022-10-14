@@ -189,17 +189,17 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
   }
 }
 
-function getLocalized2kkiLocation(title, titleJP, asHtml) {
-  let template = localizedMessages.location['2kki'].template;
+function getLocalized2kkiLocation(title, titleJP, asHtml, forDisplay) {
+  let template = localizedMessages[forDisplay ? 'locationDisplay' : 'location']['2kki'].template;
   if (asHtml)
     template = template.replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>');
   return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
 }
 
-function getLocalized2kkiLocations(locations, separator) {
+function getLocalized2kkiLocations(locations, separator, forDisplay) {
   return locations && locations.length
     ? Array.isArray(locations)
-      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP)).join(separator)
+      ? locations.map(l => getLocalized2kkiLocation(l.title, l.titleJP, forDisplay)).join(separator)
       : locations
     : getMassagedLabel(localizedMessages.location.unknownLocation);
 }

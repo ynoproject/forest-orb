@@ -324,6 +324,12 @@
         "template": "{LOCATION}"
       }
     },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
     "playersOnline": {
       "singular": "{COUNT} Jogador Online",
       "plural": "{COUNT} Jogadores Online"

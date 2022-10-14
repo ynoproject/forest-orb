@@ -324,6 +324,12 @@
         "template": "{LOCATION_JP} ({LOCATION})"
       }
     },
+    "locationDisplay": {
+      "template": "{LOCATION}（{LOCATION_EN}）",
+      "2kki": {
+        "template": "{LOCATION_JP}（{LOCATION}）"
+      }
+    },
     "playersOnline": {
       "singular": "{COUNT}명이 온라인입니다",
       "plural": "{COUNT}명이 온라인입니다"

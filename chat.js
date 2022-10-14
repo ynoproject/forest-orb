@@ -346,8 +346,8 @@ function addChatMapLocation(locations) {
     getOrQuery2kkiLocationColors(locations)
       .then(colors => updateLocationDisplay(
         cached2kkiLocations
-          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;")
-          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;"),
+          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;", true)
+          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
         Array.isArray(colors) && colors.length === 2 ? colors : null)
       );
   else

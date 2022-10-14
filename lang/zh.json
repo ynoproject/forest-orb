@@ -324,6 +324,12 @@
         "template": "{LOCATION_JP}（{LOCATION}）"
       }
     },
+    "locationDisplay": {
+      "template": "{LOCATION}（{LOCATION_EN}）",
+      "2kki": {
+        "template": "{LOCATION_JP}（{LOCATION}）"
+      }
+    },
     "playersOnline": {
       "singular": "当前有 {COUNT} 位玩家在线",
       "plural": "当前有 {COUNT} 位玩家在线"

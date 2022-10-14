@@ -1297,24 +1297,24 @@ function getMapLocationsFromArray(locations, x, y) {
   return locations;
 }
 
-function getLocalizedMapLocations(game, mapId, prevMapId, x, y, separator) {
+function getLocalizedMapLocations(game, mapId, prevMapId, x, y, separator, forDisplay) {
   if (gameLocalizedMapLocations[game]?.hasOwnProperty(mapId)) {
     const localizedLocations = gameLocalizedMapLocations[game][mapId];
     const locations = gameMapLocations[game][mapId];
     if (localizedLocations.hasOwnProperty('title')) // Text location
-      return getLocalizedLocation(game, localizedLocations, locations);
+      return getLocalizedLocation(game, localizedLocations, locations, false, forDisplay);
     if (Array.isArray(localizedLocations)) // Multiple locations
-      return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i])).join(separator);
+      return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i], false, forDisplay)).join(separator);
     if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
-        return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], false, forDisplay)).join(separator);
       return getLocalizedLocation(game, localizedLocations[prevMapId], locations[prevMapId]);
     }
     if (localizedLocations.hasOwnProperty('else')) { // Else case
       if (localizedLocations.else.hasOwnProperty('title'))
-        return getLocalizedLocation(game, localizedLocations.else, locations.else);
+        return getLocalizedLocation(game, localizedLocations.else, locations.else, false, forDisplay);
       if (Array.isArray(localizedLocations.else))
-        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i])).join(separator);
+        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i], false, forDisplay)).join(separator);
     }
   }
   
@@ -1377,8 +1377,8 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
   }
 }
 
-function getLocalizedLocation(game, location, locationEn, asHtml) {
-  let template = getMassagedLabel(localizedMessages.location.template);
+function getLocalizedLocation(game, location, locationEn, asHtml, forDisplay) {
+  let template = getMassagedLabel(localizedMessages[forDisplay ? 'locationDisplay' : 'location'].template);
   let ret;
   let locationValue;
 
