@@ -101,7 +101,7 @@
           "toggleNametags": "이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleTabToChat": "탭을 눌러 채팅하기",
-          "toggleLocationDisplay": "Location Display",
+          "toggleLocationDisplay": "장소 표시",
           "toggleRankings": "랭킹",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
@@ -285,13 +285,13 @@
   },
   "messages": {
     "games": {
-      "ynoproject": "YNOproject(유메 온라인)",
+      "ynoproject": "YNOproject(유메온라인)",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
       "flow": ".flow(닷플로우)",
       "prayers": "Answered Prayers(이루어진 기도)",
       "deepdreams": "Deep Dreams(딥드림즈)",
-      "someday": "Someday(어느 날)",
+      "someday": "Someday(섬데이)",
       "amillusion": "Amillusion(환각)",
       "unevendream": "Uneven Dream(요철몽)",
       "braingirl": "Braingirl(브레인걸)"
@@ -357,19 +357,19 @@
           "success": "{PLAYER} 님을 차단했습니다"
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "{PLAYER} 차단 해제",
+          "confirm": "정말로 <{PLAYER}> 님을 차단 해제 하시겠습니까?",
+          "success": "{PLAYER} 님을 차단 해제 했습니다."
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "{PLAYER} 채팅 금지",
+          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 금지 하시겠습니까?",
+          "success": "{PLAYER} 님은 채팅 금지 상태가 되었습니다."
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "{PLAYER} 채팅 허용",
+          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 허가 하시겠습니까?",
+          "success": "{PLAYER} 님은 채팅 허용 상태가 되었습니다"
         },
         "grantBadge": {
           "label": "뱃지 수여",
