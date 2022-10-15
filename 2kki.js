@@ -194,7 +194,7 @@ function getLocalized2kkiLocation(title, titleJP, asHtml, forDisplay) {
   let template = localizedMessages[forDisplay ? 'locationDisplay' : 'location']['2kki'].template;
   if (asHtml)
     template = template.replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>');
-  return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP);
+  return getMassagedLabel(template).replace('{LOCATION}', title).replace('{LOCATION_JP}', titleJP || '');
 }
 
 function getLocalized2kkiLocations(locations, separator, forDisplay) {
