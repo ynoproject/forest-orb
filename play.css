@@ -640,6 +640,10 @@ body.fullBg #background {
   display: flex;
 }
 
+#controls-fullscreen {
+  margin-bottom: 8px;
+}
+
 #leftControls button, #rightControls > div > button {
   margin-right: 8px;
   margin-bottom: 8px;
@@ -892,6 +896,7 @@ body.fullBg #background {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  max-height: 18px;
 }
 
 #content:not(.inParty) #playersHeader {
@@ -2378,6 +2383,10 @@ form .uiTheme {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.tippy-content .tooltipContent.noShadow {
+  filter: unset; 
 }
 
 .tippy-content .tooltipContent.altText {

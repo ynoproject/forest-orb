@@ -642,6 +642,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent');
+            tooltipContent.classList.add('noShadow');
     
             const tooltipTitle = document.createElement('h4');
             tooltipTitle.classList.add('tooltipTitle');
