@@ -2124,6 +2124,7 @@ form .uiTheme {
 
 .eventList .eventListEntry .detailsContainer .depthContainer {
   display: flex;
+  height: 18px;
 }
 
 .eventList .eventListEntry .detailsContainer .depthFillContainer {
@@ -2137,17 +2138,6 @@ form .uiTheme {
 .eventList .eventListEntry .detailsContainer .depthContainer .icon {
   width: 14px;
   margin: 2px 2px 0 0;
-}
-
-@-moz-document url-prefix() {
-  .eventList .eventListEntry .detailsContainer .depthFillContainer {
-    margin-top: -20px;
-  }
-
-  .eventList .eventListEntry .detailsContainer .depthContainer .icon {
-    width: 14px;
-    margin: 1px 2px 0 0;
-  }
 }
 
 .eventList .eventListEntry .detailsContainer .depthFillContainer .icon path {
