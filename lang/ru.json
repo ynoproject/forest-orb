@@ -101,7 +101,7 @@
           "toggleNametags": "Ники",
           "togglePlayerSounds": "Звуки Игроков",
           "toggleTabToChat": "Переключение в Чат Tab-у",
-          "toggleLocationDisplay": "Location Display",
+          "toggleLocationDisplay": "Отображение Локации",
           "toggleRankings": "Рейтинги",
           "toggleFloodProtection": "Защита от Спама"
         },
@@ -251,7 +251,7 @@
         "weekExp": "Опыта за Неделю",
         "tabs": {
           "locations": "Локации",
-          "vms": "Поисковик Торговых Автоматов"
+          "vms": "Поиск Торговых Автоматов"
         }
       },
       "rankings": {
@@ -357,19 +357,19 @@
           "success": "Вы забанили {PLAYER}."
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "Разбанить {PLAYER}",
+          "confirm": "Вы уверены, что хотите разбанить {PLAYER}?",
+          "success": "Вы разбанили {PLAYER}."
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "Обеззвучить {PLAYER}",
+          "confirm": "Вы уверены, что хотите обеззвучить {PLAYER}?",
+          "success": "Вы обеззвучили {PLAYER}."
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "Вернуть Голос {PLAYER}",
+          "confirm": "Вы уверены, что хотите вернуть голос {PLAYER}?",
+          "success": "Голос {PLAYER} возвращён."
         },
         "grantBadge": {
           "label": "Выдать Значок",
@@ -570,8 +570,8 @@
         "all": "Всё",
         "2": "Все эффекты",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version"
+        "rby": "Red Blue Yellow (Мини-Игра Б)",
+        "rby_ex": "Red Blue Yellow (Мини-Игра Б) - Версия EX"
       }
     },
     "2kki": {
