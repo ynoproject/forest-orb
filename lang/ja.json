@@ -100,13 +100,40 @@
           },
           "toggleNametags": "プレーヤー 名表示",
           "togglePlayerSounds": "プレーヤー 効果音",
-          "toggleTabToChat": "タブキーを 押して チャット",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
         },
+        "chatSettings": "チャット 設定",
         "notificationSettings": "通知 設定",
-        "accountSettings": "アカウント設定"
+        "accountSettings": "アカウント 設定"
+      },
+      "chatSettings": {
+        "title": "チャット 設定",
+        "fields": {
+          "toggleTabToChat": "タブキーを 押して チャット",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "無限"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "マップ チャット 履歴の 上限"
+          },
+          "globalChatHistoryLimit": {
+            "label": "グローバル チャット 履歴の 上限"
+          },
+          "partyChatHistoryLimit": {
+            "label": "パーティー チャット 履歴の 上限"
+          }
+        }
       },
       "notificationSettings": {
         "title": "通知 設定",
@@ -423,9 +450,10 @@
         "playersInMap": "接続数が表示されているラベルをクリックすると、ゆめ２っきオンライン全体の接続数と同じマップ内の接続数を切り替えることが出来ます。",
         "globalChatLocation": "グローバルチャットに表示されている地球儀のアイコンを押すと、そのグローバルチャットが送信された世界名が表示されます。世界名が表示されている状態で地球儀のアイコンを押すと世界名が非表示になります。",
         "markdownSupport": "このチャットはテキスト装飾に対応しています。 現在対応しているのは：**太字**（\\*\\*テキスト\\*\\*）、*イタリック体*（\\*テキスト\\*、\\_テキスト\\_）、__下線__（\\_\\_テキスト\\_\\_）、~~打ち消し線~~（\\~\\~テキスト\\~\\~）、||スポイラー||（\\|\\|テキスト\\|\\|）。",
-        "tabToChat": "PCでプレイしている場合、タブキーを押すことでゲームの操作とチャット入力を切り替えることができます。この機能は、設定の「タブキーを押してチャット」で無効にすることができます。",
+        "tabToChat": "PCでプレイしている場合、タブキーを押すことでゲームの操作とチャット入力を切り替えることができます。この機能は、チャット設定の「タブキーを押してチャット」で無効にすることができます。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"

@@ -260,6 +260,27 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
       unreadMessageCountLabel.textContent = ++unreadMessageCount < 9 ? unreadMessageCount : `${unreadMessageCount}+`;
   }
 
+  let tabMessagesLimit;
+
+  if (global)
+    tabMessagesLimit = parseInt(globalConfig.globalChatHistoryLimit);
+  else if (party)
+    tabMessagesLimit = parseInt(globalConfig.partyChatHistoryLimit);
+  else
+    tabMessagesLimit = parseInt(globalConfig.mapChatHistoryLimit);
+
+  if (tabMessagesLimit) {
+    let tabMessages;
+    if (global)
+      tabMessages = [...document.querySelectorAll('.messageContainer.global')];
+    else if (party)
+      tabMessages = [...document.querySelectorAll('.messageContainer.party')];
+    else
+      tabMessages = [...document.querySelectorAll('.messageContainer:not(.global):not(.party)')];
+    while (tabMessages.length > tabMessagesLimit)
+      tabMessages.shift().remove();
+  }
+
   if (shouldScroll)
     messages.scrollTop = messages.scrollHeight;
 

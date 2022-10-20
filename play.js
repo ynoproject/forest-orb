@@ -26,6 +26,9 @@ let globalConfig = {
   name: '',
   chatTipIndex: -1,
   tabToChat: true,
+  mapChatHistoryLimit: 250,
+  globalChatHistoryLimit: 250,
+  partyChatHistoryLimit: 500,
   disableFloodProtection: false,
   locationDisplay: false,
   hideRankings: false,
@@ -665,12 +668,6 @@ document.getElementById('playerSoundsButton').onclick = () => {
     Module._TogglePlayerSounds();
 };
 
-document.getElementById('tabToChatButton').onclick = function () {
-  this.classList.toggle('toggled');
-  globalConfig.tabToChat = !this.classList.contains('toggled');
-  updateConfig(globalConfig, true);
-};
-
 document.getElementById('locationDisplayButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -690,6 +687,27 @@ document.getElementById('toggleRankingsButton').onclick = function () {
 document.getElementById('floodProtectionButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._ToggleFloodDefender();
+};
+
+document.getElementById('tabToChatButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.tabToChat = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('mapChatHistoryLimit').onchange = function () {
+  globalConfig.mapChatHistoryLimit = this.value;
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('globalChatHistoryLimit').onchange = function () {
+  globalConfig.globalChatHistoryLimit = this.value;
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('partyChatHistoryLimit').onchange = function () {
+  globalConfig.partyChatHistoryLimit = this.value;
+  updateConfig(globalConfig, true);
 };
 
 initAccountControls();

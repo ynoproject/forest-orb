@@ -415,12 +415,6 @@
                   <button id="playerSoundsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
-              <li class="formControlRow desktopOnly">
-                <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleTabToChat">Press Tab to Chat</label>
-                <div>
-                  <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
-                </div>
-              </li>
               <li class="formControlRow">
                 <label for="locationDisplayButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleLocationDisplay">Location Display</label>
                 <div>
@@ -441,11 +435,76 @@
               </li>
               <li class="formControlRow">
                 <span></span>
+                <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat Settings</button>
+              </li>
+              <li class="formControlRow">
+                <span></span>
                 <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notification Settings</button>
               </li>
               <li class="formControlRow accountRequired">
                 <span></span>
                 <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings">Account Settings</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="chatSettingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.chatSettings.title">Chat Settings</h1>
+          </div>
+          <div class="modalContent">
+            <ul class="formControls">
+              <li class="formControlRow desktopOnly">
+                <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleTabToChat">Press Tab to Chat</label>
+                <div>
+                  <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="mapChatHistoryLimit" class="unselectable" data-i18n="[html]modal.chatSettings.fields.mapChatHistoryLimit.label">Map Chat History Limit</label>
+                <div>
+                  <select id="mapChatHistoryLimit">
+                    <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
+                    <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
+                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
+                    <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
+                    <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
+                    <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
+                    <option value="0" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.0">Unlimited</option>
+                  </select>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="globalChatHistoryLimit" class="unselectable" data-i18n="[html]modal.chatSettings.fields.globalChatHistoryLimit.label">Global Chat History Limit</label>
+                <div>
+                  <select id="globalChatHistoryLimit">
+                    <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
+                    <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
+                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
+                    <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
+                    <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
+                    <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
+                    <option value="0" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.0">Unlimited</option>
+                  </select>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="partyChatHistoryLimit" class="unselectable" data-i18n="[html]modal.chatSettings.fields.partyChatHistoryLimit.label">Map Chat History Limit</label>
+                <div>
+                  <select id="partyChatHistoryLimit">
+                    <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
+                    <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
+                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
+                    <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
+                    <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
+                    <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
+                    <option value="0" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.0">Unlimited</option>
+                  </select>
+                </div>
               </li>
             </ul>
           </div>

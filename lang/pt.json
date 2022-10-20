@@ -100,13 +100,40 @@
           },
           "toggleNametags": "Torna visível as Nametags",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
-          "toggleTabToChat": "Atalho Tab para Chat",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "toggleFloodProtection": "Sistema Anti-Spam"
         },
+        "chatSettings": "Chat Settings",
         "notificationSettings": "Configurações de Notificação",
         "accountSettings": "Configurações da Conta"
+      },
+      "chatSettings": {
+        "title": "Chat Settings",
+        "fields": {
+          "toggleTabToChat": "Atalho Tab para Chat",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Unlimited"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Map Chat History Limit"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Global Chat History Limit"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Party Chat History Limit"
+          }
+        }
       },
       "notificationSettings": {
         "title": "Configurações de Notificação",
@@ -423,9 +450,10 @@
         "playersInMap": "Você pode alternar entre o número de jogadores online e o número de jogadores em seu mapa clicando no rótulo..",
         "globalChatLocation": "Você pode visualizar o local de onde uma mensagem de bate-papo global foi enviada passando o mouse ou clicando no ícone de globo à esquerda da mensagem. Ele também mostrará ou ocultará futuras localizações de mensagens de bate-papo globais com base em sua última exibição ou ocultação.",
         "markdownSupport": "O chat suporta formatação de texto por envolver o texto em certos caracteres. Os atualmente suportados são: **negrito** (\\*\\*texto\\*\\*), *itálico* (\\*texto\\*, \\_texto\\_), __sublinhado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~), e ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "Se você estiver jogando em um PC, você pode pressionar a tecla tab para alternar entre a entrada do jogo e do chat. Essa funcionalidade pode ser desativada nas configurações sob 'Pressione Tab Para o Chat'.",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
         "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todas', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Immersion Mode. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"

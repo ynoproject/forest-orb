@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -100,13 +100,40 @@
           },
           "toggleNametags": "Afficher les Noms",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
-          "toggleTabToChat": "Appuyez sur Tab pour discuter",
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "toggleFloodProtection": "Protection Anti-Spam"
         },
+        "chatSettings": "Chat Settings",
         "notificationSettings": "Paramètres de notification",
         "accountSettings": "Paramètres du compte"
+      },
+      "chatSettings": {
+        "title": "Chat Settings",
+        "fields": {
+          "toggleTabToChat": "Appuyez sur Tab pour discuter",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Unlimited"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Map Chat History Limit"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Global Chat History Limit"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Party Chat History Limit"
+          }
+        }
       },
       "notificationSettings": {
         "title": "Paramètres de notification",
@@ -423,9 +450,10 @@
         "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la carte en cliquant sur le label.",
         "globalChatLocation": "Vous pouvez voir la localisation d'un message global en survolant ou cliquant sur l'icône de globe à gauche de ce dernier. Afficher ou cacher la localisation d'un message global affichera ou cachera la localisation des messages globaux qui suivront.",
         "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
-        "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyer sur la touche de tabulation pour basculer entre le jeu et l'entrée de chat. Cette fonctionnalité peut être désactivée dans les paramètres sous 'Appuyez sur Tab pour discuter'.",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
         "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la chat box, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/."

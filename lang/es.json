@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -100,13 +100,40 @@
           },
           "toggleNametags": "Nombres de Jugadores",
           "togglePlayerSounds": "Sonidos de Jugadores",
-          "toggleTabToChat": "Presionar Tab para chatear",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Clasificaciones",
           "toggleFloodProtection": "Protección de Flood"
         },
+        "chatSettings": "Chat Settings",
         "notificationSettings": "Configuración de Notificaciones",
         "accountSettings": "Configuración de Cuenta"
+      },
+      "chatSettings": {
+        "title": "Chat Settings",
+        "fields": {
+          "toggleTabToChat": "Presionar Tab para chatear",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Unlimited"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Map Chat History Limit"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Global Chat History Limit"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Party Chat History Limit"
+          }
+        }
       },
       "notificationSettings": {
         "title": "Configuración de Notificaciones",
@@ -423,9 +450,10 @@
         "playersInMap": "Puede alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
         "globalChatLocation": "Puede ver la ubicación desde donde se envío un mensaje global presionando el ícono de globo a la izquierda del mensaje. Puede volver a presionar el ícono para ocultar esta información.",
         "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "Si juega en PC, puedes presionar la tecla tab para alternar entre el juego y el cuadro de chat. Esto puede ser desactivado en opciones.",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "Cuando se encuentra en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
         "clearChat": "Cuando presiona el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefiere una experiencia inmersiva sobre una social, intente el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"

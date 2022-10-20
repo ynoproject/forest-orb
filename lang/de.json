@@ -100,13 +100,40 @@
           },
           "toggleNametags": "Namen an/aus",
           "togglePlayerSounds": "Player Sounds",
-          "toggleTabToChat": "Press Tab to Chat",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "toggleFloodProtection": "Flood Protection"
         },
+        "chatSettings": "Chat Settings",
         "notificationSettings": "Notification Settings",
         "accountSettings": "Account Settings"
+      },
+      "chatSettings": {
+        "title": "Chat Settings",
+        "fields": {
+          "toggleTabToChat": "Press Tab to Chat",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Unlimited"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Map Chat History Limit"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Global Chat History Limit"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Party Chat History Limit"
+          }
+        }
       },
       "notificationSettings": {
         "title": "Notification Settings",
@@ -423,9 +450,10 @@
         "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
         "globalChatLocation": "You can view the location a global chat message was sent from by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
         "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the settings under 'Press Tab to Chat'.",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
         "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
         "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"

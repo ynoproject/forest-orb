@@ -404,6 +404,15 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value)
                       document.getElementById('tabToChatButton').click();
                     break;
+                  case 'mapChatHistoryLimit':
+                    document.getElementById('mapChatHistoryLimit').value = value;
+                    break;
+                  case 'globalChatHistoryLimit':
+                    document.getElementById('globalChatHistoryLimit').value = value;
+                    break;
+                  case 'partyChatHistoryLimit':
+                    document.getElementById('partyChatHistoryLimit').value = value;
+                    break;
                   case 'locationDisplay':
                     if (value)
                       document.getElementById('locationDisplayButton').click();
