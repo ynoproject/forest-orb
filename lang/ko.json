@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -98,40 +98,40 @@
               "public": "전체 공개"
             }
           },
-          "toggleNametags": "이름표 표시",
+          "toggleNametags": "다른 플레이어의 이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
-          "toggleLocationDisplay": "장소 표시",
+          "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
-        "chatSettings": "Chat Settings",
+        "chatSettings": "채팅 설정",
         "notificationSettings": "알람 설정",
         "accountSettings": "계정 설정"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "채팅 설정",
         "fields": {
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "chatHistoryLimit": {
             "values": {
-              "25": "25",
-              "50": "50",
-              "100": "100",
-              "250": "250",
-              "500": "500",
-              "1000": "1000",
-              "2500": "2500",
-              "0": "Unlimited"
+              "25": "25 개",
+              "50": "50 개",
+              "100": "100 개",
+              "250": "250 개",
+              "500": "500 개",
+              "1000": "1000 개",
+              "2500": "2500 개",
+              "0": "제한 없음"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "로컬 채팅 내역 한도"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "글로벌 채팅 내역 한도"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "파티 채팅 내역 한도"
           }
         }
       },
@@ -451,10 +451,10 @@
         "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇명의 플레이어가 있는지 알 수 있습니다.",
         "globalChatLocation": "글로벌 채팅 메세지 내역 위의 지구본 아이콘을 클릭하면 메세지를 보낸 위치를 알 수 있습니다. 마지막으로 작성된 글로벌 챗의 위치를 열어놓은 상태라면 이후에 갱신되는 챗에도 위치가 자동으로 표시됩니다.",
         "markdownSupport": "특수 문자를 이용해서 채팅 글씨의 모양을 바꿀 수 있습니다. 현재 가능한 목록 : **굵게** (\\*\\*예시\\*\\*), *기울임* (\\*예시\\*, \\_예시\\_), __밑줄__ (\\_\\_예시\\_\\_), ~~취소선~~ (\\~\\~예시\\~\\~), ||스포일러|| (\\|\\|예시\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "tabToChat": "PC로 플레이 할 경우, 탭(Tab) 키를 눌러서 인게임과 채팅 간의 조작을 토글할 수 있습니다. 이 기능은 '채팅 설정'에서 '탭을 눌러 채팅하기'를 체크 해제하여 비활성화할 수 있습니다.",
         "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메세지가 작성되면 탭이 굵게 표시됩니다.",
         "clearChat": "'채팅 기록 삭제하기' 버튼을 누르면 채팅 내역을 지울 수 있습니다. '전체' 탭이 아닌 다른 탭에서 삭제하였을 경우 해당 탭에 속해있는 채팅만 삭제됩니다.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "채팅 내역이 너무 길다면 게임 플레이 시, 성능 상의 문제가 발생할 수 있습니다. '채팅 설정'에서 '채팅 내역 한도' 옵션을 이용한다면 수동으로 채팅 내역을 삭제할 필요 없이, 제한된 숫자 이상의 과거 채팅 이력이 자동적으로 삭제가 됩니다.",
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가임하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
