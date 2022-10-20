@@ -467,8 +467,8 @@
                   <select id="mapChatHistoryLimit">
                     <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
                     <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
-                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
-                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250" selected>250</option>
+                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100" selected>100</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
                     <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
                     <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
                     <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
@@ -482,8 +482,8 @@
                   <select id="globalChatHistoryLimit">
                     <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
                     <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
-                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
-                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250" selected>250</option>
+                    <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100" selected>100</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
                     <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
                     <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
                     <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
@@ -498,8 +498,8 @@
                     <option value="25" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.25">25</option>
                     <option value="50" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.50">50</option>
                     <option value="100" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.100">100</option>
-                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250">250</option>
-                    <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500" selected>500</option>
+                    <option value="250" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.250" selected>250</option>
+                    <option value="500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.500">500</option>
                     <option value="1000" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.1000">1000</option>
                     <option value="2500" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.2500">2500</option>
                     <option value="0" data-i18n="[html]modal.chatSettings.fields.chatHistoryLimit.values.0">Unlimited</option>
