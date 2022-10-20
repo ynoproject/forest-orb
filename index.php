@@ -17,6 +17,9 @@
     case "flow":
       $gameName = ".flow";
       break;
+    case "muma":
+      $gameName = "Muma Rope";
+      break;
     case "prayers":
       $gameName = "Answered Prayers";
       break;
