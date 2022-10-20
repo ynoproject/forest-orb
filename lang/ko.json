@@ -125,13 +125,13 @@
             }
           },
           "mapChatHistoryLimit": {
-            "label": "로컬 채팅 내역 수 제한"
+            "label": "로컬 채팅 내역 한도"
           },
           "globalChatHistoryLimit": {
-            "label": "글로벌 채팅 내역 수 제한"
+            "label": "글로벌 채팅 내역 한도"
           },
           "partyChatHistoryLimit": {
-            "label": "파티 채팅 내역 수 제한"
+            "label": "파티 채팅 내역 한도"
           }
         }
       },
