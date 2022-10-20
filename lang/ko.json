@@ -98,9 +98,9 @@
               "public": "전체 공개"
             }
           },
-          "toggleNametags": "이름표 표시",
+          "toggleNametags": "다른 플레이어의 이름표 표시",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
-          "toggleLocationDisplay": "장소 표시",
+          "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "toggleFloodProtection": "디도스 공격 보호하기"
         },
@@ -114,24 +114,24 @@
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "chatHistoryLimit": {
             "values": {
-              "25": "25개",
-              "50": "50개",
-              "100": "100개",
-              "250": "250개",
-              "500": "500개",
-              "1000": "1000개",
-              "2500": "2500개",
+              "25": "25 개",
+              "50": "50 개",
+              "100": "100 개",
+              "250": "250 개",
+              "500": "500 개",
+              "1000": "1000 개",
+              "2500": "2500 개",
               "0": "제한 없음"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "로컬 채팅 내역 제한"
+            "label": "로컬 채팅 내역 수 제한"
           },
           "globalChatHistoryLimit": {
-            "label": "글로벌 채팅 내역 제한"
+            "label": "글로벌 채팅 내역 수 제한"
           },
           "partyChatHistoryLimit": {
-            "label": "파티 채팅 내역 제한"
+            "label": "파티 채팅 내역 수 제한"
           }
         }
       },
