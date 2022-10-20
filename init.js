@@ -1,22 +1,22 @@
-const gameIds = ['yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'unevendream', 'braingirl'];
+const gameIds = ['2kki', 'amillusion', 'braingirl', 'deepdreams', 'flow', 'prayers', 'someday', 'unevendream', 'yume'];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[1];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
-const localizedGameIds = [ 'yume', '2kki', 'flow', 'prayers', 'deepdreams', 'someday', 'amillusion', 'braingirl' ];
+const localizedGameIds = [ '2kki', 'amillusion', 'braingirl', 'deepdreams', 'flow', 'prayers', 'someday', 'yume' ];
 const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja'
 };
 const gameDefaultSprite = {
-  'yume': '0000000078',
   '2kki': 'syujinkou1',
+  'amillusion': { sprite: 'parapluie ', idx: 1 },
+  'braingirl': 'mikan2',
+  'deepdreams': 'main',
   'flow': 'sabituki',
   'prayers': 'Flourette',
-  'deepdreams': 'main',
   'someday': 'itsuki1',
-  'amillusion': { sprite: 'parapluie ', idx: 1 },
   'unevendream': 'kubo',
-  'braingirl': 'mikan2'
+  'yume': '0000000078'
 }[gameId];
 const dependencyFiles = {};
 const dependencyMaps = {};

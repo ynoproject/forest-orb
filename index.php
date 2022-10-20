@@ -2,11 +2,17 @@
   $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
   $enableBadgeTools = isset($_GET['badge_tools']) && $_GET['badge_tools'] == 'true';
   switch ($gameId) {
-    case "yume":
-      $gameName = "Yume Nikki";
-      break;
     case "2kki":
       $gameName = "Yume 2kki";
+      break;
+    case "amillusion":
+      $gameName = "Amillusion";
+      break;
+    case "braingirl":
+      $gameName = "Braingirl";
+      break;
+    case "deepdreams":
+      $gameName = "Deep Dreams";
       break;
     case "flow":
       $gameName = ".flow";
@@ -14,20 +20,14 @@
     case "prayers":
       $gameName = "Answered Prayers";
       break;
-    case "deepdreams":
-      $gameName = "Deep Dreams";
-      break;
     case "someday":
       $gameName = "Someday";
-      break;
-    case "amillusion":
-      $gameName = "Amillusion";
       break;
     case "unevendream":
       $gameName = "Uneven Dream";
       break;
-    case "braingirl":
-      $gameName = "Braingirl";
+    case "yume":
+      $gameName = "Yume Nikki";
       break;
     default:
       $gameId = "2kki";

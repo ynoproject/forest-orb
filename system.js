@@ -1,9 +1,4 @@
 const gameUiThemes = {
-  'yume': [
-    '0000000000009',
-    '0000000000010',
-    '0000000000011'
-  ],
   '2kki': [
     'system1',
     'system2',
@@ -57,39 +52,6 @@ const gameUiThemes = {
     'natl_sys_PinkRibbon',
     'aediorugap_sys'
   ],
-  'flow': [
-    'system',
-    'FCシムテム',
-    'systemdot',
-    'systemorange',
-    'system flower',
-    'systemsugar',
-    'system rust',
-    'systemsmile'
-  ],
-  'prayers': [
-    'grey-and-chartreuse',
-    'chartreuse',
-    'customsystem'
-  ],
-  'deepdreams': [
-    'system_sterling',
-    'system_arabian',
-    'system_crystalline',
-    'system_kaleidoscope',
-    'system_rainbow',
-    'system_spiderlily'
-  ],
-  'someday': [
-    'green',
-    '8bit',
-    'blue',
-    'clock',
-    'edible',
-    'rainbow',
-    'threeoneone',
-    'turquoise'
-  ],
   'amillusion': [
     'fleur-2',
     'fleur',
@@ -99,12 +61,6 @@ const gameUiThemes = {
     'system EPACSE',
     'MenuChance',
     'tournesol'
-  ],
-  'unevendream': [
-    '1247-0',
-    '1247-0t',
-    '1247-0k',
-    '1247-pc98'
   ],
   'braingirl': [
     'analog',
@@ -120,27 +76,71 @@ const gameUiThemes = {
     'moss',
     'Carpet',
     'Raspberry'
+  ],
+  'deepdreams': [
+    'system_sterling',
+    'system_arabian',
+    'system_crystalline',
+    'system_kaleidoscope',
+    'system_rainbow',
+    'system_spiderlily'
+  ],
+  'flow': [
+    'system',
+    'FCシムテム',
+    'systemdot',
+    'systemorange',
+    'system flower',
+    'systemsugar',
+    'system rust',
+    'systemsmile'
+  ],
+  'prayers': [
+    'grey-and-chartreuse',
+    'chartreuse',
+    'customsystem'
+  ],
+  'someday': [
+    'green',
+    '8bit',
+    'blue',
+    'clock',
+    'edible',
+    'rainbow',
+    'threeoneone',
+    'turquoise'
+  ],
+  'unevendream': [
+    '1247-0',
+    '1247-0t',
+    '1247-0k',
+    '1247-pc98'
+  ],
+  'yume': [
+    '0000000000009',
+    '0000000000010',
+    '0000000000011'
   ]
 }[gameId];
 
 const gameFullBgUiThemes = {
-  'yume': [ '0000000000010' ],
   '2kki': [],
+  'amillusion': [ 'fleur' ],
+  'braingirl': [],
+  'deepdreams': [],
   'flow': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
-  'deepdreams': [],
   'someday': [],
-  'amillusion': [ 'fleur' ],
   'unevendream': [],
-  'braingirl': []
+  'yume': [ '0000000000010' ],
 }[gameId];
 
 const gameLogoBlendModeOverrides = {
+  'amillusion': 'screen',
+  'braingirl': 'color',
   'deepdreams': 'soft-light',
   'someday': 'hard-light',
-  'amillusion': 'screen',
-  'unevendream': 'color',
-  'braingirl': 'color'
+  'unevendream': 'color'
 };
 
 const contrastRatioThreshold = 2.02;
