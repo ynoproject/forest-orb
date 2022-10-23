@@ -643,6 +643,7 @@ document.getElementById('clearChatButton').onclick = function () {
 };
 
 document.getElementById('screenshotButton').onclick = function () {
+  html2canvas(document.getElementById('canvas'), { logging: false }).then(canvas => {
     const url = canvas.toDataURL();
     const a = document.createElement('a');
     const currentDate = new Date();
@@ -650,6 +651,7 @@ document.getElementById('screenshotButton').onclick = function () {
     a.href = url;
     a.download = `ynoproject_${ynoGameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
     a.click();
+  });
 };
 
 document.getElementById('settingsButton').onclick = () => openModal('settingsModal');

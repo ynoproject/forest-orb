@@ -451,6 +451,9 @@ function sortPlayerListEntries(playerList) {
 }
 
 function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
+  if (playerSpriteCache.hasOwnProperty(uuid) && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
+    return;
+
   if (!playerList)
     playerList = document.getElementById('playerList');
   
