@@ -12,14 +12,18 @@ function initSessionWs(attempt) {
     if (sessionWs)
       closeSession(sessionWs);
     sessionWs = new WebSocket(url);
-    sessionWs.onclose = () => {
+    sessionWs.onclose = e => {
+      if (e.code === 1028)
+        return;
       if (!attempt)
         attempt = 1;
       const delay = Math.min(attempt * 5000, 30000);
       setTimeout(() => initSessionWs(attempt + 1).then(() => resolve()), delay);
     };
     sessionWs.onopen = () => {
-      sessionWs.onclose = () => {
+      sessionWs.onclose = e => {
+        if (e.code === 1028)
+          return;
         setTimeout(() => initSessionWs(1), 5000);
       };
       resolve();
