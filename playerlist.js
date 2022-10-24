@@ -333,7 +333,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       }
     }
     if (player.name) {
-      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, player.systemName || getDefaultUiTheme());
+      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, (player.systemName || getDefaultUiTheme()).replace(/'/g, ''));
       playerListEntryBadge.classList.toggle('badgeButton', player.name);
     }
   }

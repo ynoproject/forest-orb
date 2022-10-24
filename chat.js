@@ -146,7 +146,7 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
         }
       }
       if (player.name) {
-        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, systemName || getDefaultUiTheme(), mapId, prevMapId, prevLocationsStr);
+        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, (systemName || getDefaultUiTheme()).replace(/'/g, ''), mapId, prevMapId, prevLocationsStr);
         badgeEl.classList.toggle('badgeButton', player.name);
       }
 
