@@ -2341,6 +2341,15 @@ form .uiTheme {
   margin: 4px 8px 4px 0;
 }
 
+.toast > .badgeContainer {
+  margin-right: 8px;
+}
+
+.toast > .badgeContainer > .badge {
+  width: 37px;
+  height: 37px;
+}
+
 .toastMessageContainer {
   width: 100%;
 }

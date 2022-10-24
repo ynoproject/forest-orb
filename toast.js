@@ -237,6 +237,8 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
       }
     }, 500);
   }, 10);
+
+  return toast;
 }
 
 // EXTERNAL
