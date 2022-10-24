@@ -498,7 +498,7 @@ function fetchPlayerBadges(callback) {
       });
 
       for (let b = 0; b < newUnlockedBadges.length; b++)
-        showBadgeToastMessage('badgeUnlocked', 'info');
+        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b]);
       
       if (callback)
         callback(badges);
@@ -522,7 +522,7 @@ function updateBadges(callback) {
       });
     
       for (let b = 0; b < newUnlockedBadges.length; b++)
-        showBadgeToastMessage('badgeUnlocked', 'info');
+        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b]);
 
       if (badgeCacheUpdateTimer)
         clearInterval(badgeCacheUpdateTimer);
@@ -582,7 +582,7 @@ function checkNewBadgeUnlocks() {
     .then(unlockedBadgeIds => {
       if (unlockedBadgeIds) {
         for (let b = 0; b < unlockedBadgeIds.length; b++)
-          showBadgeToastMessage('badgeUnlocked', 'info');
+          showBadgeToastMessage('badgeUnlocked', 'info', unlockedBadgeIds[b]);
       }
     })
     .catch(err => console.error(err));
@@ -787,9 +787,22 @@ function onBadgeUpdateRequested() {
     checkNewBadgeUnlocks();
 }
 
-function showBadgeToastMessage(key, icon) {
+function showBadgeToastMessage(key, icon, badgeId) {
   if (!notificationConfig.badges.all || (notificationConfig.badges.hasOwnProperty(key) && !notificationConfig.badges[key]))
     return;
   const message = getMassagedLabel(localizedMessages.toast.badges[key], true);
-  showToastMessage(message, icon, true);
+  const toast = showToastMessage(message, icon, true);
+
+  if (badgeId) {
+    const badgeObj = badgeCache.find(b => b.badgeId === badgeId);
+
+    if (badgeObj) {
+      const badge = getBadgeItem(badgeObj).querySelector('.badgeContainer');
+
+      toast.querySelector('.icon').remove();
+      toast.prepend(badge);
+
+      addTooltip(badge, localizedBadges[badgeObj.game][badgeId].name, true, true);
+    }
+  }
 }
