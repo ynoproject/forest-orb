@@ -643,7 +643,7 @@ document.getElementById('clearChatButton').onclick = function () {
 };
 
 document.getElementById('screenshotButton').onclick = function () {
-  html2canvas(document.getElementById('canvas'), { logging: false }).then(canvas => {
+  html2canvas(document.getElementById('canvas'), { scale: 1, logging: false }).then(canvas => {
     const url = canvas.toDataURL();
     const a = document.createElement('a');
     const currentDate = new Date();
