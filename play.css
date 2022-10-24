@@ -1662,7 +1662,7 @@ body.fullBg #background {
 
 .itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
   border: none !important;
-  margin: 16px 12px 8px 12px;
+  margin: 12px 12px 8px 12px;
 }
 
 .itemContainer .badgeItem.locked > .badgeContainer > .badge:first-child {
