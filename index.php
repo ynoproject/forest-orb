@@ -392,6 +392,7 @@
                       <option value="fr">Français</option>
                       <option value="de">Deutsch</option>
                       <option value="ru">Русский</option>
+                      <option value="vi">Tiếng Việt</option>
                     </select>
                   </div>
                   <label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label>

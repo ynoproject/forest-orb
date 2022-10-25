@@ -1,0 +1,577 @@
+{
+  "translationComplete": "0",
+  "version": {
+    "2kki": {
+      "label": "Yume 2kki phiên bản {VERSION}",
+      "substitutes": {
+        " Patch ": " bản vá số ",
+        "?": "?"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "Đăng nhập",
+      "logout": "Đăng xuất"
+    },
+    "fontStyle": {
+      "label": "Kiểu chữ:",
+      "values": {
+        "style1": "Kiểu 1",
+        "style2": "Kiểu 2",
+        "style3": "Kiểu 3",
+        "style4": "Kiểu 4",
+        "style5": "Kiểu 5",
+        "style6": "Kiểu 6",
+        "style7": "Kiểu 7"
+      }
+    },
+    "chatbox": {
+      "location": "Địa điểm:&nbsp;",
+      "immersionMode": "Chế độ Đắm chìm",
+      "tab": {
+        "chat": "Chat",
+        "players": "Người chơi",
+        "parties": "Nhóm"
+      },
+      "chat": {
+        "tab": {
+          "all": "Tất cả",
+          "map": "Map",
+          "global": "Chung",
+          "party": "Nhóm"
+        },
+        "nickname": {
+          "header": "Bạn cần đặt tên để sử dụng tính năng chat.",
+          "rule": {
+            "maxLength": "* Tối đa 12 chữ cái",
+            "alphanumeric": "* Chỉ bao gồm chữ cái và số"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Map",
+          "party": "Nhóm"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "Translation Work Needed",
+      "noGameLoc": "* Game Localization Unsupported"
+    },
+    "2kki": {
+      "hostedWithPermission": "Đã được sự cho phép của các tác giả Yume 2kki"
+    },
+    "modal": {
+      "login": {
+        "title": "Đăng Nhập",
+        "fields": {
+          "username": "Tên người dùng",
+          "password": "Mật khẩu"
+        },
+        "submit": "Đăng nhập",
+        "registerPrompt": "Không có tài khoản?&nbsp;",
+        "register": "Đăng ký"
+      },
+      "register": {
+        "title": "Đăng Ký",
+        "fields": {
+          "email": "Email",
+          "username": "Tên người dùng",
+          "password": "Mật khẩu",
+          "confirmPassword": "Nhập lại mật khẩu"
+        },
+        "submit": "Đăng ký",
+        "loginPrompt": "Đã có tài khoản?&nbsp;",
+        "login": "Đăng nhập"
+      },
+      "settings": {
+        "title": "Cài Đặt",
+        "fields": {
+          "lang": "Ngôn ngữ",
+          "locationVisibility": {
+            "label": "In-Game Location Visibility",
+            "values": {
+              "private": "Private",
+              "friends": "Friends",
+              "public": "Public"
+            }
+          },
+          "toggleNametags": "Tên người chơi",
+          "togglePlayerSounds": "Âm thanh người chơi",
+          "toggleTabToChat": "Nhấn Tab để chat",
+          "toggleRankings": "Bảng xếp hạng",
+          "toggleFloodProtection": "Chống quá tải"
+        },
+        "notificationSettings": "Cài đặt thông báo",
+        "accountSettings": "Cài đặt tài khoản"
+      },
+      "notificationSettings": {
+        "title": "Cài Đặt Thông Báo",
+        "fields": {
+          "toggleNotifications": "Thông báo",
+          "screenPosition": {
+            "label": "Vị trí cửa sổ",
+            "values": {
+              "bottomLeft": "Góc dưới bên trái",
+              "bottomRight": "Góc dưới bên phải",
+              "topLeft": "Góc trên bên trái",
+              "topRight": "Góc trên bên phải"
+            }
+          },
+          "system": {
+            "label": "Hệ thống",
+            "fields": {
+              "siteUpdates": "Trang được cập nhật",
+              "error": "Đã xảy ra lỗi",
+              "floodDetected": "Nghi vấn có tấn công quá tải"
+            }
+          },
+          "account": {
+            "label": "Tài khoản",
+            "fields": {
+              "loggedIn": "Đã đăng nhập",
+              "loggedOut": "Đã đăng xuất"
+            }
+          },
+          "parties": {
+            "label": "Nhóm",
+            "fields": {
+              "create": "Tạo nhóm",
+              "update": "Cập nhật nhóm",
+              "join": "Tham gia nhóm",
+              "leave": "Rời khỏi nhóm",
+              "remove": "Bị xóa khỏi nhóm",
+              "disband": "Giải tán nhóm",
+              "playerJoin": "Người chơi tham gia nhóm",
+              "playerLeave": "Người chơi rời khỏi nhóm",
+              "playerOnline": "Người chơi online",
+              "playerOffline": "Người chơi offline",
+              "kickPlayer": "Xóa người chơi khỏi nhóm",
+              "transferPartyOwner": "Chỉ định người chơi làm trưởng nhóm"
+            }
+          },
+          "events": {
+            "label": "Tham Quan",
+            "fields": {
+              "complete": "Đã hoàn thành chuyến tham quan",
+              "freeComplete": "Đã hoàn thành tham quan tự do",
+              "vmComplete": "Đã tìm thấy máy bán nước",
+              "listUpdated": "Đã cập nhật danh sách chuyến tham quan"
+            }
+          },
+          "badges": {
+            "label": "Huy hiệu",
+            "fields": {
+              "badgeUnlocked": "Mở khóa huy hiệu"
+            }
+          },
+          "saveSync": {
+            "label": "Đồng bộ Tiến trình",
+            "fields": {
+              "saveUploading": "Đang tải lên bản lưu",
+              "saveUploaded": "Đã tải lên bản lưu",
+              "saveDownloading": "Đang tải xuống bản lưu",
+              "saveDownloaded": "Đã tải xuống bản lưu",
+              "saveUpToDate": "Bản lưu là phiên bản mới nhất",
+              "saveCleared": "Bản lưu đã được xóa"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Cài Đặt Tài Khoản",
+        "fields": {
+          "badge": "Huy hiệu",
+          "toggleSaveSync": "Đồng bộ Tiến trình (Thử nghiệm)",
+          "saveSyncSlotId": {
+            "label": "ID Vị trí lưu",
+            "values": {
+              "0": "None"
+            }
+          },
+          "clearSaveSync": "Xóa dữ liệu đồng bộ"
+        }
+      },
+      "badges": {
+        "title": "Huy Hiệu",
+        "manageBadgeGallery": "Quản lý huy hiệu trưng bày",
+        "fields": {
+          "unlockStatus": {
+            "label": "Trạng thái:&nbsp;",
+            "values": {
+              "all": "Tất cả",
+              "0": "Bị khóa",
+              "1": "Đã mở khóa"
+            }
+          },
+          "search": "Tìm kiếm:&nbsp;"
+        }
+      },
+      "badgeGallery": {
+        "title": "Quản lý kho huy hiệu",
+        "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
+        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
+      },
+      "uiTheme": {
+        "title": "Phông Nền",
+        "auto": "TỰ ĐỘNG"
+      },
+      "createParty": {
+        "title": {
+          "create": "Tạo nhóm",
+          "update": "Chỉnh sửa nhóm"
+        },
+        "fields": {
+          "partyName": "Tên nhóm",
+          "description": "Mô tả",
+          "public": "Công khai",
+          "password": "Mật khẩu",
+          "theme": "Nền"
+        },
+        "showPassword": "Hiện mật khẩu",
+        "hidePassword": "Ẩn mật khẩu",
+        "submit": "Xong"
+      },
+      "joinPrivateParty": {
+        "title": "Tham gia nhóm kín",
+        "fields": {
+          "password": "Mật khẩu"
+        },
+        "showPassword": "Hiện mật khẩu",
+        "hidePassword": "Ẩn mật khẩu",
+        "incorrectPassword": "Sai mật khẩu: Hãy thử lại.",
+        "submit": "Xong"
+      },
+      "events": {
+        "title": "Tham Quan",
+        "rankExp": "Cấp Tiếp Theo",
+        "weekExp": "ExP Tuần Này",
+        "tabs": {
+          "locations": "Địa Điểm",
+          "vms": "Săn Tìm Máy Bán Nước"
+        }
+      },
+      "rankings": {
+        "title": "Bảng Xếp Hạng"
+      }
+    },
+    "tooltips": {
+      "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
+      "io": {
+        "upload": "Tải bản lưu lên",
+        "download": "Tải bản lưu xuống"
+      },
+      "uiTheme": "Phông Nền",
+      "toggleChat": "Bật/Tắt Chat",
+      "toggleImmersionMode": "Bật/Tắt Chế độ Đắm chìm",
+      "screenshot": "Chụp ảnh màn hình",
+      "settings": "Cài đặt",
+      "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
+      "chat": {
+        "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm trên Chat Chung",
+        "clearChat": "Xóa Chat"
+      },
+      "parties": {
+        "createParty": "Tạo nhóm",
+        "disbandParty": "Giải tán nhóm"
+      },
+      "events": "Tham Quan",
+      "rankings": "Bảng Xếp hạng",
+      "nexus": "Quay về Nexus"
+    }
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl"
+    },
+    "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
+    "io": {
+      "common": {
+        "failedSlotInput": "Vị trí đã nhập không hợp lệ: hãy nhập vị trí bản lưu từ 1 đến 15."
+      },
+      "upload": {
+        "slotInput": "Nhập số thứ tự vị trí lưu cho bản lưu được tải lên (1 đến 15).",
+        "invalidSaveFile": "Hãy chọn bản lưu hợp lệ (đuôi .lsd)."
+      },
+      "download": {
+        "slotInput": "Nhập số thứ tự vị trí lưu cho bản lưu muốn tải xuống (1 đến 15).",
+        "emptySlot": "Oops! Vị trí được chọn để tải bản lưu xuống có vẻ trống rỗng."
+      }
+    },
+    "connStatus": {
+      "0": "Ngắt kết nối",
+      "1": "Đã kết nối",
+      "2": "Đang kết nối...",
+      "3": "Chế độ Chơi đơn"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Đang tìm địa điểm...",
+      "unknownLocation": "Không rõ Địa điểm",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} Người chơi Online",
+      "plural": "{COUNT} Người chơi Online"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Người chơi trong Map",
+      "plural": "{COUNT} Người chơi trong Map"
+    },
+    "playerList": {
+      "unnamed": "Không tên",
+      "actions": {
+        "partyKick": "Xóa khỏi nhóm",
+        "transferPartyOwner": "Chỉ định làm trưởng nhóm"
+      }
+    },
+    "roles": {
+      "mod": "Quản trị viên",
+      "dev": "Lập trình viên"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Bạn có chắc bạn muốn ban {PLAYER}?",
+          "success": "{PLAYER} đã bị ban."
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Bạn có chắc bạn muốn unban {PLAYER}?",
+          "success": "{PLAYER} đã được unban."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Bạn có chắc bạn muốn mute {PLAYER}?",
+          "success": "{PLAYER} đã bị mute."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Bạn có chắc bạn muốn unmute {PLAYER}?",
+          "success": "{PLAYER} đã được unmute."
+        },
+        "grantBadge": {
+          "label": "Ban tặng Huy hiệu",
+          "prompt": "Nhập ID huy hiệu để ban tặng cho {PLAYER}.",
+          "success": "{BADGE} đã được ban tặng cho {PLAYER}.",
+          "fail": "Không tìm thấy huy hiệu nào với ID đã nhập."
+        },
+        "revokeBadge": {
+          "label": "Thu hồi Huy hiệu",
+          "prompt": "Nhập ID huy hiệu để thu hồi từ {PLAYER}.",
+          "success": "{BADGE} đã được thu hồi từ {PLAYER}.",
+          "fail": "Không tìm thấy huy hiệu nào với ID đã nhập."
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Sai tên người dùng hoặc mật khẩu."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "Mật khẩu không trùng khớp.",
+          "invalidCredentials": "Tên người dùng hoặc mật khẩu trống hoặc chứa ký tự không hợp lệ.",
+          "emailTaken": "Địa chỉ email đã được sử dụng.",
+          "usernameTaken": "Tên người dùng đã được sử dụng."
+        }
+      }
+    },
+    "parties": {
+      "emptyMessage": "Hiện không có nhóm hoạt động.",
+      "yourParty": "Nhóm của bạn",
+      "defaultPartyName": "Nhóm của {OWNER}",
+      "partyOwner": "Trưởng Nhóm",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "Xem chi tiết nhóm",
+        "joinParty": "Tham gia nhóm",
+        "joinPrivateParty": "Tham gia nhóm kín",
+        "leaveParty": "Rời khỏi nhóm"
+      }
+    },
+    "chatTips": {
+      "template": "MẸO: {CONTENT}",
+      "tips": {
+        "backupReminder": "Bạn nên giữ một bản lưu trong máy bằng cách thường xuyên tải bản lưu xuống. Như vậy, nếu dữ liệu trình duyệt bị xóa, tiến trình của bạn sẽ không bị mất.",
+        "menuTheme": "Màu của tên bạn và phông nền trong danh sách người chơi được dựa trên menu theme trong game của bạn.",
+        "playersInMap": "Bạn có thể chuyển giữa số người chơi online và số người chơi trong map bằng cách nhấn vào dòng chữ.",
+        "globalChatLocation": "Bạn có thể xem địa điểm của một tin nhắn chung bằng cách di chuột hoặc nhấn vào icon quả địa cầu bên trái tin nhắn. Nó cũng sẽ hiện hoặc ẩn địa điểm những tin nhắn chung tiếp theo dựa trên lựa chọn gần nhất của bạn.",
+        "markdownSupport": "Bạn có thể định dạng tin nhắn bằng cách cho tin nhắn vào giữa những ký tự nhất định. Những định dạng hiện có: **in đậm** (\\*\\*chữ\\*\\*), *in nghiêng* (\\*chữ\\*, \\_chữ\\_), __gạch dưới__ (\\_\\_chữ\\_\\_), ~~gạch bỏ~~ (\\~\\~chữ\\~\\~), và ||bôi đen|| (\\|\\|chữ\\|\\|).",
+        "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
+        "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
+        "clearChat": "Khi bạn ấn Xóa Chat ở góc trên bên phải của khung, nếu bạn không trong thẻ 'Tất cả', chỉ tin nhắn trong thẻ bạn đã chọn sẽ bị xóa.",
+        "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
+        "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
+        "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": "Bạn có muốn bật tính năng Đồng bộ Tiến trình? Dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được tải lên và bạn có thể sử dụng nó bằng tài khoản này trên bất cứ thiết bị hoặc trình duyệt nào có bật tính năng. Khi được bật, dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được cập nhật tự động khi trang được tải.",
+      "confirmEnableWithData": "Đã dò được Dữ liệu Đồng bộ Tiến trình cũ từ tài khoản. Bản lưu trong Vị trí Đồng bộ Tiến trình sẽ bị ghi đè nếu có phiên bản mới hơn ở cùng vị trí. Lưu ý điều này chỉ có hiệu lực khi tải lại trang với tính năng này được bật. Bạn có chắc bạn muốn bật Đồng bộ Tiến trình?"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
+        "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'.",
+        "floodDetected": "Nghi vấn có tấn công gây quá tải: Đang chuyển sang chế độ chơi đơn."
+      },
+      "account": {
+        "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
+        "loggedOut": "Bạn đã đăng xuất."
+      },
+      "parties": {
+        "create": "{PARTY} đã được tạo.",
+        "update": "{PARTY} đã được cập nhật.",
+        "join": "Bạn đã tham gia {PARTY}.",
+        "leave": "Bạn đã rời khỏi {PARTY}.",
+        "remove": "Bạn đã bị xóa khỏi {PARTY}.",
+        "disband": "{PARTY} đã giải tán.",
+        "playerJoin": "{PLAYER} đã tham gia nhóm.",
+        "playerLeave": "{PLAYER} đã rời khỏi nhóm.",
+        "playerOnline": "{PLAYER} đang online.",
+        "playerOffline": "{PLAYER} đã offline.",
+        "kickPlayer": "{PLAYER} đã bị xóa khỏi nhóm.",
+        "transferPartyOwner": "{PLAYER} đã được chỉ định làm trưởng nhóm."
+      },
+      "events": {
+        "complete": "Đã hoàn thành chuyến tham quan!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
+        "freeComplete": "Đã hoàn thành chuyến tham quan! Bạn đã đến {LOCATION}.",
+        "vmComplete": "Đã tìm thấy máy bán nước!\nBạn nhận được {EXP}.",
+        "listUpdated": "Danh sách chuyến tham quan đã được cập nhật."
+      },
+      "badges": {
+        "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
+      },
+      "saveSync": {
+        "saveUploading": "Đang tải dữ liệu bản lưu từ vị trí {SLOT}...",
+        "saveUploaded": "Dữ liệu bản lưu của bạn từ vị trí {SLOT} đã được tải lên.",
+        "saveDownloading": "Đang cập nhật dữ liệu bản lưu vào vị trí {SLOT}...",
+        "saveDownloaded": "Vị trí lưu {SLOT} đã được cập nhật.",
+        "saveUpToDate": "Dữ liệu bản lưu đang ở phiên bản mới nhất.",
+        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Rank: {RANK}",
+      "period": "Mùa {ORDINAL}",
+      "periodEnds": "Kết thúc vào {DATE}",
+      "current": "Hiện tại",
+      "shortcut": "Có thể đến được qua lối tắt có thể mở",
+      "availableUntilDate": "Khả dụng đến\n{DATE}",
+      "types": {
+        "-1": "Tham quan Tự do",
+        "0": "Hàng ngày",
+        "1": "Hàng tuần",
+        "2": "Cuối tuần",
+        "3": "Đặc biệt"
+      },
+      "expRanks": {
+        "0": "Nhập môn",
+        "1": "Trung cấp",
+        "2": "Đồng",
+        "3": "Bạc",
+        "4": "Vàng",
+        "5": "Bạch Kim",
+        "6": "Kim Cương"
+      }
+    },
+    "badges": {
+      "null": "Không có",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "Địa điểm:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Được vẽ bởi {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "Kho Huy hiệu của {PLAYER}",
+      "loading": "Đang tải...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Huy hiệu"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Huy Hiệu",
+          "valueLabel": "Số lượng",
+          "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Điểm Huy hiệu)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Tham quan",
+          "valueLabel": "Số chuyến",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Tham quan Tự do",
+          "valueLabel": "Số chuyến",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Tỷ lệ hoàn thành Tham quan",
+          "valueLabel": "Tỷ lệ",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Săn Tìm Máy Bán Nước",
+          "valueLabel": "Số lượng",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "Thử thách Hẹn giờ",
+          "valueLabel": "Thời gian Hoàn thành",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigame",
+          "valueLabel": "Điểm",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "Tất cả",
+        "2": "Tất cả Hiệu ứng",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - Bản EX"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "Xem trong Yume 2kki Explorer",
+        "multi": "Xem {LOCATION} trong Yume 2kki Explorer"
+      }
+    }
+  }
+}
