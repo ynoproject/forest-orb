@@ -316,6 +316,7 @@
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
       "flow": ".flow",
+      "muma": "Muma Rope",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
@@ -343,13 +344,19 @@
       "2": "Đang kết nối...",
       "3": "Chế độ Chơi đơn"
     },
-    "location": {
-      "template": "{LOCATION}",
+	  "location": {	
+      "template": "{LOCATION}",	
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
-      "2kki": {
-        "template": "{LOCATION}"
-      }
+      "2kki": {	
+        "template": "{LOCATION}"	
+      }	
+    },	
+    "locationDisplay": {	
+      "template": "{LOCATION}",	
+      "2kki": {	
+        "template": "{LOCATION}"	
+      }	
     },
     "playersOnline": {
       "singular": "{COUNT} Người chơi Online",
