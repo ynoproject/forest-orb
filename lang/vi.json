@@ -57,8 +57,8 @@
       }
     },
     "instruction": {
-      "translation": "Translation Work Needed",
-      "noGameLoc": "* Game Localization Unsupported"
+      "translation": "Bản dịch chưa hoàn chỉnh",
+      "noGameLoc": "* Không có bản dịch cho trò chơi này"
     },
     "2kki": {
       "hostedWithPermission": "Đã được sự cho phép của các tác giả Yume 2kki"
@@ -104,14 +104,14 @@
           "toggleRankings": "Bảng xếp hạng",
           "toggleFloodProtection": "Chống quá tải"
         },
-        "chatSettings": "Chat Settings",
-        "notificationSettings": "Cài đặt thông báo",
-        "accountSettings": "Cài đặt tài khoản"
+        "chatSettings": "Cài đặt Chat",
+        "notificationSettings": "Cài đặt Thông báo",
+        "accountSettings": "Cài đặt Tài khoản"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "Cài đặt Chat",
         "fields": {
-          "toggleTabToChat": "Press Tab to Chat",
+          "toggleTabToChat": "Nhấn Tab để chat",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -121,17 +121,17 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Không giới hạn"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Giới hạn Lịch sử chat map"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Giới hạn Lịch sử chat chung"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Giới hạn Lịch sử chat nhóm"
           }
         }
       },
@@ -224,7 +224,7 @@
       },
       "badges": {
         "title": "Huy Hiệu",
-        "manageBadgeGallery": "Quản lý huy hiệu trưng bày",
+        "manageBadgeGallery": "Quản lý Kho Huy hiệu",
         "fields": {
           "unlockStatus": {
             "label": "Trạng thái:&nbsp;",
@@ -238,7 +238,7 @@
         }
       },
       "badgeGallery": {
-        "title": "Quản lý kho huy hiệu",
+        "title": "Quản lý Kho Huy hiệu",
         "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
         "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
       },
@@ -454,7 +454,7 @@
         "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
         "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
         "clearChat": "Khi bạn ấn Xóa Chat ở góc trên bên phải của khung, nếu bạn không trong thẻ 'Tất cả', chỉ tin nhắn trong thẻ bạn đã chọn sẽ bị xóa.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "Nếu lịch sử chat của bạn quá dài, hiệu suất có thể bị ảnh hưởng. Trong mục Cài đặt Chat, bạn có thể giới hạn số tin nhắn để tránh vấn đề này mà không phải xóa chat thủ công.",
         "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
