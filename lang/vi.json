@@ -104,8 +104,36 @@
           "toggleRankings": "Bảng xếp hạng",
           "toggleFloodProtection": "Chống quá tải"
         },
+        "chatSettings": "Chat Settings",
         "notificationSettings": "Cài đặt thông báo",
         "accountSettings": "Cài đặt tài khoản"
+      },
+      "chatSettings": {
+        "title": "Chat Settings",
+        "fields": {
+          "toggleTabToChat": "Press Tab to Chat",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Unlimited"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Map Chat History Limit"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Global Chat History Limit"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Party Chat History Limit"
+          }
+        }
       },
       "notificationSettings": {
         "title": "Cài Đặt Thông Báo",
@@ -419,6 +447,7 @@
         "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
         "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
         "clearChat": "Khi bạn ấn Xóa Chat ở góc trên bên phải của khung, nếu bạn không trong thẻ 'Tất cả', chỉ tin nhắn trong thẻ bạn đã chọn sẽ bị xóa.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
         "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
