@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -104,12 +104,12 @@
           "toggleRankings": "Classement",
           "toggleFloodProtection": "Protection Anti-Spam"
         },
-        "chatSettings": "Chat Settings",
+        "chatSettings": "Paramètres du Chat",
         "notificationSettings": "Paramètres de notification",
         "accountSettings": "Paramètres du compte"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "Paramètres du Chat",
         "fields": {
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
           "chatHistoryLimit": {
@@ -121,17 +121,17 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Illimité"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Limite de l'historique du Chat de Carte"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Limite de l'historique du Chat Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Limite de l'historique du Chat de Groupe"
           }
         }
       },
