@@ -50,12 +50,12 @@
   <?php endif ?>
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
-  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css" />
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/loc-i18next@0.1.4/dist/umd/loc-i18next.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 <body>
