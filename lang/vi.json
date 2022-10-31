@@ -100,7 +100,7 @@
           },
           "toggleNametags": "Tên người chơi",
           "togglePlayerSounds": "Âm thanh người chơi",
-          "toggleTabToChat": "Nhấn Tab để chat",
+          "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Bảng xếp hạng",
           "toggleFloodProtection": "Chống quá tải"
         },
