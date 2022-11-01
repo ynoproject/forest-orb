@@ -328,7 +328,7 @@ function chatNameCheck() {
 }
 
 function trySetChatName(name) {
-  if (name === "" || !(/^[A-Za-z0-9]+$/.test(name)))
+  if (name && !(/^[A-Za-z0-9]+$/.test(name)))
     return;
   playerName = name;
   document.getElementById("enterNameContainer").style.display = playerName ? "none" : null;
