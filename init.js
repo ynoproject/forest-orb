@@ -430,7 +430,7 @@ function loadOrInitConfig(configObj, global, configName) {
                 switch (key) {
                   case 'singlePlayer':
                     if (value)
-                      preToggle(document.getElementById('singlePlayerButton'));
+                      document.getElementById('singlePlayerButton').click();
                     break;
                   case 'disableChat':
                     if (value)

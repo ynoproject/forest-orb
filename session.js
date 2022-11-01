@@ -6,11 +6,15 @@ let sessionCommandCallbackQueue = {};
 
 function initSessionWs(attempt) {
   return new Promise(resolve => {
+    if (sessionWs)
+      closeSession(sessionWs);
+    if (config.singlePlayer) {
+      resolve();
+      return;
+    }
     let url = `wss://${location.host}/connect/${ynoGameId}/session`;
     if (loginToken)
       url += `?token=${loginToken}`;
-    if (sessionWs)
-      closeSession(sessionWs);
     sessionWs = new WebSocket(url);
     sessionWs.onclose = e => {
       if (e.code === 1028)
@@ -26,6 +30,7 @@ function initSessionWs(attempt) {
           return;
         setTimeout(() => initSessionWs(1), 5000);
       };
+      Module._SessionReady();
       resolve();
     };
     sessionWs.onmessage = event => {

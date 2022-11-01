@@ -10,6 +10,7 @@ function initAccountControls() {
       .then(response => {
         if (!response.ok)
           console.error(response.statusText);
+        closeSession();
         setCookie('sessionId', '');
         fetchAndUpdatePlayerInfo();
       }).catch(err => console.error(err));
@@ -31,6 +32,7 @@ function initAccountControls() {
         return response.text();
       }).then(sId => {
         if (sId) {
+          closeSession();
           setCookie('sessionId', sId);
           fetchAndUpdatePlayerInfo();
         }

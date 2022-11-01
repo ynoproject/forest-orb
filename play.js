@@ -67,6 +67,9 @@ let hasConnected = false;
 
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
+  if (config.singlePlayer && (status !== 3 || connStatus === 3))
+    return;
+
   const updateStatusText = function () {
     const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
@@ -84,13 +87,6 @@ function onUpdateConnectionStatus(status) {
     }, 500);
   else
     updateStatusText();
-
-  if (connStatus === 3 && status !== 3) {
-    if (loginToken)
-      updateEvents();
-    initSessionWs();
-  } else if (connStatus !== 3 && status === 3)
-    closeSession();
 
   connStatus = status;
 
@@ -393,11 +389,6 @@ function onReceiveInputFeedback(inputId) {
     let configKey;
     let isGlobal;
     switch (inputId) {
-      case 1:
-        buttonElement = document.getElementById('singlePlayerButton');
-        configKey = 'singlePlayer';
-        document.getElementById('layout').classList.toggle('singlePlayer');
-        break;
       case 2:
         buttonElement = document.getElementById('nametagButton');
         configKey = 'disableNametags';
@@ -562,8 +553,16 @@ document.getElementById('enterNameForm').onsubmit = function () {
 }
 
 document.getElementById('singlePlayerButton').onclick = function () {
-  if (Module.INITIALIZED)
-    Module._ToggleSinglePlayer();
+  this.classList.toggle('toggled');
+  document.getElementById('layout').classList.toggle('singlePlayer', this.classList.contains('toggled'));
+  config.singlePlayer = this.classList.contains('toggled');
+  updateConfig(config);
+
+  if (config.singlePlayer) {
+    closeSession();
+    onUpdateConnectionStatus(3);
+  } else
+    initSessionWs();
 };
 
 document.getElementById('chatButton').onclick = function () {
