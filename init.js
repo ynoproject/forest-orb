@@ -67,7 +67,6 @@ function injectScripts() {
           loadingOverlay.classList.add('loaded');
           removeLoader(loadingOverlay);
           fetchAndUpdatePlayerInfo();
-          fetchAndSendSyncedPictures();
           setInterval(checkLogin, 60000);
           setTimeout(() => {
             checkDependenciesModified();
