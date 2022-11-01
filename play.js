@@ -1067,28 +1067,25 @@ function setName(name, isInit) {
     updateConfig(globalConfig, true);
 }
 
-function fetchAndSendSyncedPictures() {
-  apiFetch('syncedPics')
-    .then(response => response.json())
-    .then(jsonResponse => {
-      if (!jsonResponse)
-        return;
+(function () {
+  addSessionCommandHandler('sp', args => onUpdateSyncedPics(JSON.parse(args[0])));
+})();
 
-      const pictureNames = jsonResponse.pictureNames;
-      const picturePrefixes = jsonResponse.picturePrefixes
-      
-      if (pictureNames?.length) {
-        const pictureNamesPtr = Module.allocate(Module.intArrayFromString(pictureNames.join(',')), Module.ALLOC_NORMAL);
-        Module._SendSyncPictureNames(pictureNamesPtr);
-        Module._free(pictureNamesPtr);
-      }
+function onUpdateSyncedPics(syncedPics) {
+  const pictureNames = syncedPics.pictureNames;
+  const picturePrefixes = syncedPics.picturePrefixes;
 
-      if (picturePrefixes?.length) {
-        const picturePrefixesPtr = Module.allocate(Module.intArrayFromString(picturePrefixes.join(',')), Module.ALLOC_NORMAL);
-        Module._SendSyncPicturePrefixes(picturePrefixesPtr);
-        Module._free(picturePrefixesPtr);
-      }
-    });
+  if (pictureNames?.length) {
+    const pictureNamesPtr = Module.allocate(Module.intArrayFromString(pictureNames.join(',')), Module.ALLOC_NORMAL);
+    Module._SendSyncPictureNames(pictureNamesPtr);
+    Module._free(pictureNamesPtr);
+  }
+
+  if (picturePrefixes?.length) {
+    const picturePrefixesPtr = Module.allocate(Module.intArrayFromString(picturePrefixes.join(',')), Module.ALLOC_NORMAL);
+    Module._SendSyncPicturePrefixes(picturePrefixesPtr);
+    Module._free(picturePrefixesPtr);
+  }
 }
 
 function onSelectUiTheme(e) {
