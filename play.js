@@ -63,7 +63,6 @@ let locationColorCache;
 let ynomojiConfig = {};
 
 let connStatus;
-let hasConnected = false;
 
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
@@ -93,10 +92,6 @@ function onUpdateConnectionStatus(status) {
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
     checkEventLocations();
-    if (!hasConnected) {
-      addChatTip();
-      hasConnected = true;
-    }
     syncPrevLocation();
   } else {
     playerUuids = {};

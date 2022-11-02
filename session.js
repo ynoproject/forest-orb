@@ -4,6 +4,8 @@ const wsDelim = '\uffff';
 let sessionCommandHandlers = {};
 let sessionCommandCallbackQueue = {};
 
+let hasConnected;
+
 function initSessionWs(attempt) {
   return new Promise(resolve => {
     if (sessionWs)
@@ -31,6 +33,10 @@ function initSessionWs(attempt) {
         setTimeout(() => initSessionWs(1), 5000);
       };
       Module._SessionReady();
+      if (!hasConnected) {
+        addChatTip();
+        hasConnected = true;
+      }
       resolve();
     };
     sessionWs.onmessage = event => {
