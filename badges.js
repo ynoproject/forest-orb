@@ -791,7 +791,7 @@ function showBadgeToastMessage(key, icon, badgeId) {
   if (!notificationConfig.badges.all || (notificationConfig.badges.hasOwnProperty(key) && !notificationConfig.badges[key]))
     return;
   const message = getMassagedLabel(localizedMessages.toast.badges[key], true);
-  const toast = showToastMessage(message, icon, true);
+  const toast = showToastMessage(message, icon, true, null, !!badgeId);
 
   if (badgeId) {
     const badgeObj = badgeCache.find(b => b.badgeId === badgeId);
