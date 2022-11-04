@@ -483,7 +483,7 @@
         "disband": "{PARTY}は解散 されました。",
         "playerJoin": "{PLAYER}が パーティーに 参加しました。",
         "playerLeave": "{PLAYER}が パーティーから 抜けました。",
-        "playerOnline": "{PLAYER}が オフラインに なりました。",
+        "playerOnline": "{PLAYER}が オンラインに なりました。",
         "playerOffline": "{PLAYER}が オフラインに なりました。",
         "kickPlayer": "{PLAYER}は パーティーから 追い出されました。",
         "transferPartyOwner": "{PLAYER}は パーティーリーダーに 昇格されました。"
