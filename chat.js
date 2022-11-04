@@ -372,7 +372,7 @@ function addChatMapLocation(locations) {
         Array.isArray(colors) && colors.length === 2 ? colors : null)
       );
   else
-    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, "&nbsp;/&nbsp;"));
+    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true));
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
