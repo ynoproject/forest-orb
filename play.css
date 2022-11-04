@@ -1068,8 +1068,7 @@ body.fullBg #background {
 }
 
 .playerLocation {
-  display: flex;
-  flex-flow: wrap;
+  display: block;
 }
 
 .playerLocation.hidden + .message  > .messageContents.notext {
