@@ -454,7 +454,7 @@
         "tabToChat": "PCでプレイしている場合、タブキーを押すことでゲームの操作とチャット入力を切り替えることができます。この機能は、チャット設定の「タブキーを押してチャット」で無効にすることができます。",
         "chatTabNotifications": "全メッセージ以外のチャットタブを表示している時に他のタブでメッセージが送信されるとそのタブに通知マークが付きます。",
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "チャット欄に表示されているチャットが多くなると、ゲームが重くなることがあります。チャット設定で、チャット表示の上限を設定することで、手動でチャットを消去することなく、このような問題を回避することができます。",
         "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
