@@ -99,6 +99,14 @@ function onUpdateConnectionStatus(status) {
   }
 }
 
+// EXTERNAL
+function onRoomSwitch() {
+  syncPrevLocation();
+  clearPlayerLists();
+  addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+  checkEventLocations();
+}
+
 function fetchAndUpdatePlayerInfo() {
   const cookieSessionId = getCookie('sessionId');
   const isLogin = cookieSessionId && cookieSessionId !== loginToken;
