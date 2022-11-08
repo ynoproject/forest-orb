@@ -84,7 +84,7 @@
         },
         "submit": "Enviar",
         "loginPrompt": "Já tem uma conta?&nbsp;",
-        "login": "Log In"
+        "login": "Login"
       },
       "settings": {
         "title": "Configurações",
@@ -109,7 +109,7 @@
         "accountSettings": "Configurações da Conta"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "Configurações do Bate-papo",
         "fields": {
           "toggleTabToChat": "Atalho Tab para Chat",
           "chatHistoryLimit": {
@@ -121,17 +121,17 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Ilimitado"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Limite do Histórico do Chat do Mapa"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Limite do Histórico do Chat do Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Limite do Histórico do Chat da Party"
           }
         }
       },
@@ -491,7 +491,7 @@
       "events": {
         "complete": "Expedição Concluída!\nPor ir a {LOCATION}, você ganhou {EXP}.",
         "freeComplete": "Expedição Concluída!\nPor ir a {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "vmComplete": "Máquina de Venda Encontrada!\nVocê foi premiado com {EXP}.",
         "listUpdated": "A lista de expedições foi atualizada."
       },
       "badges": {
