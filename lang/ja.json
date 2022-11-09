@@ -28,10 +28,10 @@
     },
     "chatbox": {
       "location": "場所：",
-      "immersionMode": "イマージョンモード",
+      "immersionMode": "没入モード",
       "tab": {
         "chat": "チャット",
-        "players": "プレーヤー",
+        "players": "プレイヤー",
         "parties": "パーティー"
       },
       "chat": {
@@ -98,8 +98,8 @@
               "public": "全体"
             }
           },
-          "toggleNametags": "プレーヤー 名表示",
-          "togglePlayerSounds": "プレーヤー 効果音",
+          "toggleNametags": "プレイヤー 名表示",
+          "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
@@ -263,7 +263,7 @@
         "submit": "送信"
       },
       "joinPrivateParty": {
-        "title": "非公開の パーティーの 参加",
+        "title": "非公開の パーティーに 参加",
         "fields": {
           "password": "パスワード"
         },
@@ -367,7 +367,7 @@
       "plural": "{COUNT}人が 接続中（同マップ）"
     },
     "playerList": {
-      "unnamed": "無名プレーヤー",
+      "unnamed": "無名プレイヤー",
       "actions": {
         "partyKick": "パーティーから追い出す",
         "transferPartyOwner": "パーティーリーダーに昇格する"
@@ -438,8 +438,8 @@
       "offlineCount": "オフライン - {COUNT}",
       "actions": {
         "viewPartyDetails": "パーティーの詳細を見る",
-        "joinParty": "パーティーを参加する",
-        "joinPrivateParty": "非公開のパーティーを参加する",
+        "joinParty": "パーティーに参加する",
+        "joinPrivateParty": "非公開のパーティーに参加する",
         "leaveParty": "パーティーから退出する"
       }
     },
