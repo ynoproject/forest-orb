@@ -28,10 +28,10 @@
     },
     "chatbox": {
       "location": "場所：",
-      "immersionMode": "イマージョンモード",
+      "immersionMode": "没入モード",
       "tab": {
         "chat": "チャット",
-        "players": "プレーヤー",
+        "players": "プレイヤー",
         "parties": "パーティー"
       },
       "chat": {
@@ -98,8 +98,8 @@
               "public": "全体"
             }
           },
-          "toggleNametags": "プレーヤー 名表示",
-          "togglePlayerSounds": "プレーヤー 効果音",
+          "toggleNametags": "プレイヤー 名表示",
+          "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleFloodProtection": "スパム対策"
@@ -263,7 +263,7 @@
         "submit": "送信"
       },
       "joinPrivateParty": {
-        "title": "非公開の パーティーの 参加",
+        "title": "非公開の パーティーに 参加",
         "fields": {
           "password": "パスワード"
         },
@@ -293,7 +293,7 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleImmersionMode": "イマージョンモードのオン／オフ",
+      "toggleImmersionMode": "没入モードのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
@@ -367,7 +367,7 @@
       "plural": "{COUNT}人が 接続中（同マップ）"
     },
     "playerList": {
-      "unnamed": "無名プレーヤー",
+      "unnamed": "無名プレイヤー",
       "actions": {
         "partyKick": "パーティーから追い出す",
         "transferPartyOwner": "パーティーリーダーに昇格する"
@@ -438,8 +438,8 @@
       "offlineCount": "オフライン - {COUNT}",
       "actions": {
         "viewPartyDetails": "パーティーの詳細を見る",
-        "joinParty": "パーティーを参加する",
-        "joinPrivateParty": "非公開のパーティーを参加する",
+        "joinParty": "パーティーに参加する",
+        "joinPrivateParty": "非公開のパーティーに参加する",
         "leaveParty": "パーティーから退出する"
       }
     },
@@ -456,7 +456,7 @@
         "clearChat": "チャットボックスの右上にあるチャット消去ボタンをクリックすると、チャットを全消しできます。",
         "chatHistoryLimit": "チャット欄に表示されているチャットが多くなると、ゲームが重くなることがあります。チャット設定で、チャット表示の上限を設定することで、手動でチャットを消去することなく、このような問題を回避することができます。",
         "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
-        "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、イマージョンモードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
+        "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、没入モードをお試しください。ゲーム画面左上にある目のアイコンを押すと、イマ―ジョンモードのon/offができ、イマ―ジョンモードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
     },
