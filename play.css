@@ -1123,6 +1123,35 @@ body.fullBg #background {
   opacity: 0.5;
 }
 
+.playerListEntryMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playerListEntryMedals {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 72px;
+  height: 37px;
+}
+
+.playerListEntryMedals.hidden {
+  display: none;
+}
+
+.playerListEntryMedals > .playerListEntryMedalCount {
+  display: flex;
+  height: 16px;
+}
+
+.playerListEntryMedals > .playerListEntryMedalCount > .playerListEntryMedalCountLabel {
+  margin: 0 4px;
+}
+
 .playerListEntryBadge {
   min-width: 37px;
   height: 37px;
@@ -1147,7 +1176,7 @@ body.fullBg #background {
 }
 
 .listEntry .nameTextContainer {
-  width: 100%;
+  max-width: 100%;
 }
 
 .nameTextContainer .icon {

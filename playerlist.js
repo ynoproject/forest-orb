@@ -5,6 +5,7 @@ const roleEmojis = {
   muted: '🔇'
 };
 const defaultUuid = '0000000000000000';
+const medalTypes = [ 'Diamond', 'Gold', 'Silver', 'Bronze' ];
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
@@ -55,9 +56,10 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     }
 
     if (player.muted) {
-      mutedIcon = getSvgIcon("muted", true);
-      mutedIcon.classList.add("muted");
-      addTooltip(mutedIcon, "Muted", true, true);
+      mutedIcon = getSvgIcon('muted', true);
+      mutedIcon.classList.add('muted');
+      // TODO: Localize
+      addTooltip(mutedIcon, 'Muted', true, true);
       nameTextContainer.appendChild(mutedIcon);
     }
 
@@ -161,6 +163,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement('span');
   const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
+  const playerListEntryMedals = playerListEntry ? playerListEntry.querySelector('.playerListEntryMedals') : document.createElement('div');
+  const playerListEntryMedalCounts = [...Array(medalTypes.length)].map(i => playerListEntry ? playerListEntry.querySelector(`.playerListEntry${medalTypes[i]}MedalCount`) : document.createElement('div'));
   const playerListEntryBadge = playerListEntry ? playerListEntry.querySelector('.playerListEntryBadge') : document.createElement('div');
   const playerListEntryBadgeOverlay = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay') : document.createElement('div');
   const playerListEntryBadgeOverlay2 = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay2') : document.createElement('div');
@@ -180,10 +184,13 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntry.classList.add('listEntry');
     playerListEntry.dataset.uuid = uuid;
 
+    const playerListEntryMain = document.createElement('div');
+    playerListEntryMain.classList.add('playerListEntryMain');
+
     playerListEntrySprite.classList.add('playerListEntrySprite');
     playerListEntrySprite.classList.add('listEntrySprite');
     
-    playerListEntry.appendChild(playerListEntrySprite);
+    playerListEntryMain.appendChild(playerListEntrySprite);
 
     const nameTextContainer = document.createElement('div');
     nameTextContainer.classList.add('nameTextContainer');
@@ -206,10 +213,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       detailsContainer.appendChild(nameTextContainer);
       detailsContainer.appendChild(getSvgIcon('playerLocation'));
 
-      playerListEntry.appendChild(detailsContainer);
+      playerListEntryMain.appendChild(detailsContainer);
     } else {
       nameTextContainer.appendChild(nameText);
-      playerListEntry.appendChild(nameTextContainer);
+      playerListEntryMain.appendChild(nameTextContainer);
     }
 
     if (!player?.account) {
@@ -218,6 +225,32 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameEndMarker.textContent = '>';
       nameTextContainer.appendChild(nameEndMarker);
     }
+
+    playerListEntry.appendChild(playerListEntryMain);
+
+    playerListEntryMedals.classList.add('playerListEntryMedals');
+
+    for (let m = 0; m < medalTypes.length; m++) {
+      const medalCount = playerListEntryMedalCounts[m];
+
+      medalCount.classList.add(`playerListEntry${medalTypes[m]}MedalCount`);
+      medalCount.classList.add('playerListEntryMedalCount');
+
+      const medalCountImg = document.createElement('img');
+      medalCountImg.classList.add('playerListEntryMedalCountImg');
+      medalCountImg.src = `images/medal_${medalTypes[m].toLowerCase()}.png`;
+
+      const medalCountLabel = document.createElement('label');
+      medalCountLabel.classList.add('playerListEntryMedalCountLabel');
+      medalCountLabel.innerHTML = 99;
+
+      medalCount.appendChild(medalCountImg);
+      medalCount.appendChild(medalCountLabel);
+
+      playerListEntryMedals.appendChild(medalCount);
+    }
+
+    playerListEntry.appendChild(playerListEntryMedals);
 
     playerListEntryBadge.classList.add('playerListEntryBadge');
     playerListEntryBadge.classList.add('badge');
@@ -284,12 +317,17 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       mutedIcon.remove();
 
     if (player?.muted) {
-      mutedIcon = getSvgIcon("muted", true);
-      mutedIcon.classList.add("muted");
-      addTooltip(mutedIcon, "Muted", true, true);
+      mutedIcon = getSvgIcon('muted', true);
+      mutedIcon.classList.add('muted');
+      // TODO: Localize
+      addTooltip(mutedIcon, 'Muted', true, true);
       nameText.after(mutedIcon);
     }
   }
+
+  const showMedals = playerData?.rank === 2 && player?.account && !globalConfig.hideRankings;
+
+  playerListEntryMedals.classList.toggle('hidden', !showMedals);
 
   const showBadge = player?.account && player.badge && badgeCache;
   const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
