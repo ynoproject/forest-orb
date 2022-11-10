@@ -185,7 +185,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntry.dataset.uuid = uuid;
 
     const playerListEntryMain = document.createElement('div');
-    playerListEntryMain.classList.add('playerListEntryMain');
+    playerListEntryMain.classList.add('listEntryMain');
 
     playerListEntrySprite.classList.add('playerListEntrySprite');
     playerListEntrySprite.classList.add('listEntrySprite');
@@ -400,7 +400,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
       }
       nameText.parentElement.appendChild(partyOwnerIcon);
-    } else if (playerData?.uuid === party.ownerUuid) {
+    } else if (playerData?.uuid === party.ownerUuid && playerList.id.startsWith('partyModal')) {
       partyKickAction = document.createElement('a');
       partyKickAction.classList.add('partyKickAction');
       partyKickAction.classList.add('listEntryAction');

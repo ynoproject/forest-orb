@@ -1123,7 +1123,7 @@ body.fullBg #background {
   opacity: 0.5;
 }
 
-.playerListEntryMain {
+.listEntry > .listEntryMain {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1136,12 +1136,8 @@ body.fullBg #background {
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 72px;
+  min-width: 80px;
   height: 37px;
-}
-
-.playerListEntryMedals.hidden {
-  display: none;
 }
 
 .playerListEntryMedals > .playerListEntryMedalCount {
@@ -1151,6 +1147,10 @@ body.fullBg #background {
 
 .playerListEntryMedals > .playerListEntryMedalCount > .playerListEntryMedalCountLabel {
   margin: 0 4px;
+}
+
+.playerListEntryMedals.hidden, .playerListEntryMedals > .playerListEntryMedalCount.hidden {
+  display: none;
 }
 
 .playerListEntryBadge {
@@ -1176,7 +1176,7 @@ body.fullBg #background {
   width: 100%;
 }
 
-.listEntry .nameTextContainer {
+.playerListEntry.detailsContainer, .listEntry .nameTextContainer {
   max-width: 100%;
 }
 
@@ -1971,7 +1971,7 @@ form .uiTheme {
 }
 
 #partyModalPlayerListContainer {
-  width: 284px;
+  width: 368px;
 }
 
 #partyModalOfflinePlayerList .playerListEntry {
