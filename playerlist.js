@@ -291,7 +291,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     }
   }
 
-  const showBadge = player?.account && player.badge;
+  const showBadge = player?.account && player.badge && badgeCache;
   const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
   const showBadgeOverlay = showBadge && badge?.overlayType;
   const showBadgeOverlay2 = showBadgeOverlay && badge.overlayType & BadgeOverlayType.DUAL;
