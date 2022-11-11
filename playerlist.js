@@ -683,7 +683,7 @@ function initDefaultSprites() {
 }
 
 // EXTERNAL
-function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
+function syncPlayerData(uuid, rank, account, badge, medals, id) {
   if (badge === 'null')
     badge = null;
 
@@ -693,7 +693,7 @@ function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
     globalPlayerData[uuid].rank = rank;
     globalPlayerData[uuid].account = account;
     globalPlayerData[uuid].badge = badge;
-    //globalPlayerData[uuid].medals = medals;
+    globalPlayerData[uuid].medals = medals;
   } else {
     globalPlayerData[uuid] = {
       name: null,
@@ -701,7 +701,7 @@ function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0, 0 ]//medals
+      medals: medals
     };
   }
 
@@ -716,7 +716,7 @@ function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0, 0 ]//medals
+      medals: medals
     };
   }
 }
@@ -764,7 +764,7 @@ function onPlayerDisconnected(id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0, 0 ]//[ parseInt(args[6]), parseInt(args[7]), parseInt(args[8]), parseInt(args[9]), parseInt(args[10]) ]
+      medals: [ parseInt(args[6]), parseInt(args[7]), parseInt(args[8]), parseInt(args[9]), parseInt(args[10]) ]
     };
   });
 })();
