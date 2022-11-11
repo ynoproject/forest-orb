@@ -325,6 +325,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         break;
     }
 
+    playerListEntryMedals.style.minWidth = `${Math.max(Math.min(medalCount, 5) << 3, 16)}px`;
     playerListEntryMedals.classList.toggle('multiRow', medalCount > 5);
   }
 

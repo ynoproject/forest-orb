@@ -1136,7 +1136,6 @@ body.fullBg #background {
   align-items: flex-end;
   flex-direction: row-reverse;
   flex-wrap: wrap;
-  max-width: 40px;
   padding: 0 8px;
 }
 
