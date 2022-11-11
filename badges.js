@@ -554,7 +554,7 @@ function updatePlayerBadge(badgeId, callback) {
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
-      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeId, -1);
+      syncPlayerData(playerUuids[-1], playerData?.rank, playerData?.account, badgeId, playerData?.medals, -1);
       if (callback)
         callback();
     })
