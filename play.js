@@ -123,7 +123,7 @@ function fetchAndUpdatePlayerInfo() {
       if (jsonResponse.uuid) {
         if (jsonResponse.name)
           playerName = jsonResponse.name;
-        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, -1);
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, jsonResponse.medals, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         if (isLogin) {
