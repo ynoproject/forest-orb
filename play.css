@@ -1142,10 +1142,6 @@ body.fullBg #background {
   padding: 0 8px;
 }
 
-.playerListEntryMedals.multiRow {
-  margin-top: 4px;
-}
-
 .playerListEntryMedals.hidden {
   display: none;
 }
@@ -1153,10 +1149,6 @@ body.fullBg #background {
 .playerListEntryMedals > .playerListEntryMedal {
   height: 16px;
   margin-left: -8px;
-}
-
-.playerListEntryMedals.multiRow > .playerListEntryMedal {
-  margin-top: -4px;
 }
 
 .playerListEntryBadge {

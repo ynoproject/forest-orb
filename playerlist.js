@@ -318,15 +318,14 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         medalImg.classList.add('playerListEntryMedal');
         medalImg.src = imgSrc;
         playerListEntryMedals.prepend(medalImg);
-        if (++medalCount >= 10)
+        if (++medalCount >= 5)
           break;
       }
-      if (medalCount >= 10)
+      if (medalCount >= 5)
         break;
     }
 
-    playerListEntryMedals.style.minWidth = `${Math.max(Math.min(medalCount, 5) << 3, 16)}px`;
-    playerListEntryMedals.classList.toggle('multiRow', medalCount > 5);
+    playerListEntryMedals.style.minWidth = `${Math.max(medalCount << 3, 16)}px`;
   }
 
   const showBadge = player?.account && player.badge && badgeCache;
