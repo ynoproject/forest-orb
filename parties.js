@@ -405,7 +405,8 @@ function onUpdateJoinedParty(party) {
       systemName: member.systemName,
       rank: member.rank,
       account: member.account,
-      badge: member.badge || null
+      badge: member.badge || null,
+      medals: member.medals || [ 0, 0, 0, 0 ]
     };
 
     const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
@@ -588,7 +589,8 @@ function addOrUpdatePartyListEntry(party) {
       systemName: member.systemName,
       rank: member.rank,
       account: member.account,
-      badge: member.badge || null
+      badge: member.badge || null,
+      medals: member.medals || [ 0, 0, 0, 0 ]
     };
 
     const playerSpriteCacheEntry = (playerSpriteCache[member.uuid] = { sprite: member.spriteName, idx: member.spriteIndex });

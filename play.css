@@ -1133,24 +1133,28 @@ body.fullBg #background {
 .playerListEntryMedals {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
+  align-items: flex-end;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
-  min-width: 80px;
-  height: 37px;
+  max-width: 40px;
+  padding-left: 8px;
 }
 
-.playerListEntryMedals > .playerListEntryMedalCount {
-  display: flex;
-  height: 16px;
+.playerListEntryMedals.multiRow {
+  margin-top: 4px;
 }
 
-.playerListEntryMedals > .playerListEntryMedalCount > .playerListEntryMedalCountLabel {
-  margin: 0 4px;
-}
-
-.playerListEntryMedals.hidden, .playerListEntryMedals > .playerListEntryMedalCount.hidden {
+.playerListEntryMedals.hidden {
   display: none;
+}
+
+.playerListEntryMedals > .playerListEntryMedal {
+  height: 16px;
+  margin-left: -8px;
+}
+
+.playerListEntryMedals.multiRow > .playerListEntryMedal {
+  margin-top: -4px;
 }
 
 .playerListEntryBadge {
@@ -1177,7 +1181,7 @@ body.fullBg #background {
 }
 
 .playerListEntry.detailsContainer, .listEntry .nameTextContainer {
-  max-width: 100%;
+  width: 100%;
 }
 
 .nameTextContainer .icon {
