@@ -5,7 +5,7 @@ const roleEmojis = {
   muted: '🔇'
 };
 const defaultUuid = '0000000000000000';
-const medalTypes = [ 'Bronze', 'Silver', 'Gold', 'Platinum' ];
+const medalTypes = [ 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond' ];
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
@@ -700,7 +700,7 @@ function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0 ]//medals
+      medals: [ 0, 0, 0, 0, 0 ]//medals
     };
   }
 
@@ -715,7 +715,7 @@ function syncPlayerData(uuid, rank, account, badge, /*medals,*/ id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0 ]//medals
+      medals: [ 0, 0, 0, 0, 0 ]//medals
     };
   }
 }
@@ -763,7 +763,7 @@ function onPlayerDisconnected(id) {
       rank: rank,
       account: account,
       badge: badge,
-      medals: [ 0, 0, 0, 0 ]//[ parseInt(args[6]), parseInt(args[7]), parseInt(args[8]), parseInt(args[9]) ]
+      medals: [ 0, 0, 0, 0, 0 ]//[ parseInt(args[6]), parseInt(args[7]), parseInt(args[8]), parseInt(args[9]), parseInt(args[10]) ]
     };
   });
 })();

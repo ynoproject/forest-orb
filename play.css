@@ -1137,7 +1137,7 @@ body.fullBg #background {
   flex-direction: row-reverse;
   flex-wrap: wrap;
   max-width: 40px;
-  padding-left: 8px;
+  padding: 0 8px;
 }
 
 .playerListEntryMedals.multiRow {
@@ -1975,7 +1975,7 @@ form .uiTheme {
 }
 
 #partyModalPlayerListContainer {
-  width: 368px;
+  width: 360px;
 }
 
 #partyModalOfflinePlayerList .playerListEntry {
