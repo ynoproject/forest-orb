@@ -62,7 +62,9 @@
 
 @font-face {
   font-family: 'PGothic';
-  src: url('fonts/ms-pgothic.woff2') format('woff2'),
+  src: local("MS PGothic"),
+       local("ＭＳ Ｐゴシック"),
+       url('fonts/ms-pgothic.woff2') format('woff2'),
        url('fonts/ms-pgothic.woff') format('woff');
 }
 
@@ -72,7 +74,7 @@
 }
 
 html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
-  font-family: 'MS PGothic', 'PGothic', 'sans-serif';
+  font-family: 'PGothic', 'sans-serif';
   font-size: 16px;
 }
 
