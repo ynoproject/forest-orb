@@ -187,7 +187,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
         const vmImage = document.createElement('img');
         vmImage.classList.add('vmImage');
-        apiFetch(`events?command=vm&id=${event.id}`)
+        apiFetch(`vm?id=${event.id}`)
           .then(response => {
             if (!response.ok)
               throw new Error(response.statusText);
@@ -240,75 +240,70 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 }
 
 function updatePlayerExp() {
-  apiFetch('events?command=exp')
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.json();
-    })
-    .then(exp => {
-      let rankIndex = -1;
-      let rankExp = 0;
-      let prevRankExp = 0;
-      
-      for (let er = 0; er < eventExpRanks.length; er++) {
-        const expRank = eventExpRanks[er];
-        rankExp = Math.max(expRank.exp - prevRankExp, 0);
-        if (exp.totalExp < expRank.exp) {
-          rankIndex = er;
-          break;
-        }
-        prevRankExp = expRank.exp;
-      }
+  if (!loginToken)
+    return;
+  sendSessionCommand('eexp');
+}
 
-      if (rankIndex === -1)
-        rankIndex = eventExpRanks.length - 1;
+function onUpdatePlayerExp(exp) {
+  let rankIndex = -1;
+  let rankExp = 0;
+  let prevRankExp = 0;
+  
+  for (let er = 0; er < eventExpRanks.length; er++) {
+    const expRank = eventExpRanks[er];
+    rankExp = Math.max(expRank.exp - prevRankExp, 0);
+    if (exp.totalExp < expRank.exp) {
+      rankIndex = er;
+      break;
+    }
+    prevRankExp = expRank.exp;
+  }
 
-      const rank = eventExpRanks[rankIndex];
+  if (rankIndex === -1)
+    rankIndex = eventExpRanks.length - 1;
 
-      const rankBadge = document.getElementById('expRankBadge');
+  const rank = eventExpRanks[rankIndex];
 
-      document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
-      rankBadge.src = rank.badge ? getBadgeUrl(rank.badge) : '';
-      rankBadge.style.display = rank.badge ? 'unset' : 'none';
+  const rankBadge = document.getElementById('expRankBadge');
 
-      const rootStyle = document.documentElement.style;
+  document.getElementById('expRank').innerHTML = getMassagedLabel(localizedMessages.events.expRank.replace('{RANK}', localizedMessages.events.expRanks[rankIndex]), true);
+  rankBadge.src = rank.badge ? getBadgeUrl(rank.badge) : '';
+  rankBadge.style.display = rank.badge ? 'unset' : 'none';
 
-      rootStyle.setProperty('--rank-total-exp', rankExp);
-      rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
-      document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
-      rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 50));
-    });
+  const rootStyle = document.documentElement.style;
+
+  rootStyle.setProperty('--rank-total-exp', rankExp);
+  rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);
+  document.getElementById('totalExp').innerHTML = getMassagedLabel(localizedMessages.events.exp.replace('{POINTS}', exp.totalExp), true);
+  rootStyle.setProperty('--week-exp', Math.min(exp.weekExp, 50));
 }
 
 function claimEventLocationPoints(location, free, retryCount) {
-  let url = `events?command=claim&location=${location.replace(/&/g, '%26')}`;
-  if (free)
-    url += '&free=1';
-  apiFetch(url)
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.text();
-    })
-    .then(result => {
-      if (result > 0) {
-        showEventsToastMessage('complete', 'expedition', location, result);
-        checkNewBadgeUnlocks();
-      } else if (free && result > -1) {
-        showEventsToastMessage('freeComplete', 'expedition', location);
-        checkNewBadgeUnlocks();
-      }
-      updateEvents(true);
-    })
-    .catch(err => {
+  sendSessionCommand('eec', [ location.replace(/&/g, '%26'), free ? 1 : 0 ], params => {
+    const ok = !!parseInt(params[1]);
+    if (ok)
+      onClaimEventLocationPoints(parseInt(params[0]));
+    else {
       if (!retryCount)
         retryCount = 0;
       if (retryCount < 10)
         setTimeout(() => claimEventLocationPoints(location, free, ++retryCount), 500);
       else
         console.error(err);
-    });
+    }
+  });
+}
+
+function onClaimEventLocationPoints(result, ok) {
+  if (result > 0) {
+    showEventsToastMessage('complete', 'expedition', location, result);
+    checkNewBadgeUnlocks();
+  } else if (free && result > -1) {
+    showEventsToastMessage('freeComplete', 'expedition', location);
+    checkNewBadgeUnlocks();
+  }
+  updateEvents(true);
 }
 
 function checkEventLocations() {
@@ -349,5 +344,6 @@ function showEventsToastMessage(key, icon, location, exp) {
 (function () {
   addSessionCommandHandler('ep', args => onUpdateEventPeriod(JSON.parse(args[0])));
   addSessionCommandHandler('e', args => onUpdateEvents(JSON.parse(args[0])));
+  addSessionCommandHandler('eexp', args => onUpdatePlayerExp(JSON.parse(args[0])));
   addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
 })();
