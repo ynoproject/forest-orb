@@ -44,7 +44,8 @@ function initSessionWs(attempt) {
       const command = args[0];
       if (sessionCommandHandlers.hasOwnProperty(command)) {
         const params = args.slice(1);
-        sessionCommandHandlers[command](params);
+        if (sessionCommandHandlers[command])
+          sessionCommandHandlers[command](params);
         while (sessionCommandCallbackQueue[command].length)
           sessionCommandCallbackQueue[command].shift()(params);
       }
@@ -65,7 +66,7 @@ function addSessionCommandHandler(command, handler) {
   sessionCommandCallbackQueue[command] = [];
 }
 
-function sendSessionCommand(command, commandParams, callbackCommand, callbackFunc) {
+function sendSessionCommand(command, commandParams, callbackFunc, callbackCommand) {
   if (!sessionWs)
     return;
 
@@ -73,8 +74,12 @@ function sendSessionCommand(command, commandParams, callbackCommand, callbackFun
   if (commandParams?.length)
     args = args.concat(commandParams);
 
-  if (callbackCommand && callbackFunc && sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
-    sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+  if (callbackFunc) {
+    if (!callbackCommand)
+      callbackCommand = command;
+    if (sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
+      sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
+  }
 
   sessionWs.send(args.join(wsDelim));
 }

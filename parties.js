@@ -348,8 +348,6 @@ function updateJoinedParty(callback) {
   sendSessionCommand('pt', null, params => {
     const party = JSON.parse(params[0]);
     if (party) {
-      onUpdateJoinedParty(party);
-      
       if (callback)
         callback();
     } else {

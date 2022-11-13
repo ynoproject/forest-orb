@@ -52,7 +52,7 @@ function onClickEventTab() {
 function updateEventPeriod() {
   if (!loginToken)
     return;
-  sendSessionCommand('ep', null, params => onUpdateEventPeriod(JSON.parse(params[0])));
+  sendSessionCommand('ep');
 }
 
 function onUpdateEventPeriod(eventPeriod) {
@@ -67,10 +67,10 @@ function onUpdateEventPeriod(eventPeriod) {
   updateEvents();
 }
 
-function updateEvents(ignoreLocationCheck) {
+function updateEvents() {
   if (!loginToken || !eventPeriodCache)
     return;
-  sendSessionCommand('e', null, params => onUpdateEvents(JSON.parse(params[0]), ignoreLocationCheck));
+  sendSessionCommand('e');
 }
 
 function onUpdateEvents(events, ignoreLocationCheck) {
@@ -283,7 +283,7 @@ function claimEventLocationPoints(location, free, retryCount) {
   sendSessionCommand('eec', [ location.replace(/&/g, '%26'), free ? 1 : 0 ], params => {
     const ok = !!parseInt(params[1]);
     if (ok)
-      onClaimEventLocationPoints(parseInt(params[0]));
+      onClaimEventLocationPoints(location, free, parseInt(params[0]), !!parseInt(params[1]), retryCount);
     else {
       if (!retryCount)
         retryCount = 0;
@@ -295,7 +295,7 @@ function claimEventLocationPoints(location, free, retryCount) {
   });
 }
 
-function onClaimEventLocationPoints(result, ok) {
+function onClaimEventLocationPoints(result) {
   if (result > 0) {
     showEventsToastMessage('complete', 'expedition', location, result);
     checkNewBadgeUnlocks();
@@ -303,7 +303,7 @@ function onClaimEventLocationPoints(result, ok) {
     showEventsToastMessage('freeComplete', 'expedition', location);
     checkNewBadgeUnlocks();
   }
-  updateEvents(true);
+  updateEvents();
 }
 
 function checkEventLocations() {
@@ -318,14 +318,14 @@ function checkEventLocations() {
       return locationName;
     }).find(l => incompleteEventLocationNames.indexOf(l) > -1);
     if (eventLocationMatch)
-      claimEventLocationPoints(eventLocationMatch, incompleteEventLocations.find(el => el.title === eventLocationMatch).type === -1);
+      setTimeout(() => claimEventLocationPoints(eventLocationMatch, incompleteEventLocations.find(el => el.title === eventLocationMatch).type === -1), 1000);
   }
 }
 
 function onClaimEventVmPoints(exp) {
   showEventsToastMessage('vmComplete', 'expedition', null, exp);
   checkNewBadgeUnlocks();
-  updateEvents(true);
+  updateEvents();
 }
 
 function showEventsToastMessage(key, icon, location, exp) {
@@ -345,5 +345,6 @@ function showEventsToastMessage(key, icon, location, exp) {
   addSessionCommandHandler('ep', args => onUpdateEventPeriod(JSON.parse(args[0])));
   addSessionCommandHandler('e', args => onUpdateEvents(JSON.parse(args[0])));
   addSessionCommandHandler('eexp', args => onUpdatePlayerExp(JSON.parse(args[0])));
+  addSessionCommandHandler('eec');
   addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
 })();
