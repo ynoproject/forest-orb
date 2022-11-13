@@ -283,7 +283,7 @@ function claimEventLocationPoints(location, free, retryCount) {
   sendSessionCommand('eec', [ location.replace(/&/g, '%26'), free ? 1 : 0 ], params => {
     const ok = !!parseInt(params[1]);
     if (ok)
-      onClaimEventLocationPoints(location, free, parseInt(params[0]), !!parseInt(params[1]), retryCount);
+      onClaimEventLocationPoints(location, free, parseInt(params[0]));
     else {
       if (!retryCount)
         retryCount = 0;
@@ -295,7 +295,7 @@ function claimEventLocationPoints(location, free, retryCount) {
   });
 }
 
-function onClaimEventLocationPoints(result) {
+function onClaimEventLocationPoints(location, free, result) {
   if (result > 0) {
     showEventsToastMessage('complete', 'expedition', location, result);
     checkNewBadgeUnlocks();
