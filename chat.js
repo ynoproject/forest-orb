@@ -296,6 +296,8 @@ function chatInputActionFired() {
       return;
   } else if (connStatus !== 1)
     return;
+  if (chatInput.dataset.global && chatInput.dataset.blockGlobal)
+    return;
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
@@ -310,12 +312,11 @@ function chatInputActionFired() {
     const chatInputContainer = document.getElementById("chatInputContainer");
     if (!chatInputContainer.classList.contains("globalCooldown")) {
       sendSessionCommand("gsay", [ chatInput.value.trim(), !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
-      chatInput.disabled = true;
-      chatInput.blur();
+      chatInput.dataset.blockGlobal = true;
       chatInputContainer.classList.add("globalCooldown");
       window.setTimeout(function () {
         chatInputContainer.classList.remove("globalCooldown");
-        chatInput.disabled = false;
+        delete chatInput.dataset.blockGlobal;
       }, 5000);
     }
   }
