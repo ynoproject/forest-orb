@@ -100,7 +100,7 @@
           },
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
-          "toggleLocationDisplay": "显示位置",
+          "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "toggleFloodProtection": "开启网络攻击保护"
         },
