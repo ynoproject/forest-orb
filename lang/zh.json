@@ -100,16 +100,16 @@
           },
           "toggleNametags": "显示玩家名称",
           "togglePlayerSounds": "同步玩家音效",
-          "toggleLocationDisplay": "Location Display",
+          "toggleLocationDisplay": "显示位置",
           "toggleRankings": "显示排行榜",
           "toggleFloodProtection": "开启网络攻击保护"
         },
-        "chatSettings": "Chat Settings",
+        "chatSettings": "聊天设置",
         "notificationSettings": "弹框通知设置",
         "accountSettings": "账号设置"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "聊天设置",
         "fields": {
           "toggleTabToChat": "开启Tab键聊天",
           "chatHistoryLimit": {
@@ -121,17 +121,17 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "无限制"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "区域聊天记录上限"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "全局聊天记录上限"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "小队聊天记录上限"
           }
         }
       },
@@ -370,7 +370,7 @@
       "unnamed": "无名子",
       "actions": {
         "partyKick": "请出队伍",
-        "transferPartyOwner": "转授领队"
+        "transferPartyOwner": "转让领队"
       }
     },
     "roles": {
@@ -385,19 +385,19 @@
           "success": "{PLAYER} 已被封禁。"
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "解封 {PLAYER}",
+          "confirm": "确认要解封 {PLAYER}？",
+          "success": "{PLAYER} 已被解封。"
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "禁言 {PLAYER}",
+          "confirm": "确认要禁言 {PLAYER}？",
+          "success": "{PLAYER} 已被禁言。"
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "取消禁言 {PLAYER}",
+          "confirm": "确认要允许 {PLAYER} 发言？",
+          "success": "{PLAYER} 已被允许发言。"
         },
         "grantBadge": {
           "label": "授予徽章",
@@ -451,10 +451,10 @@
         "playersInMap": "点击右上方的玩家数量可以切换显示总在线人数与当前地图中的人数。",
         "globalChatLocation": "通过鼠标悬停或点击聊天内容左侧的地球图标可以查看该公屏消息的发送地点。系统会记住其显示状态并自动显示/隐藏下一条公屏消息的地点。",
         "markdownSupport": "在输入框中使用某些符号可以为文本添加格式，例如：**粗体**（\\*\\*文字\\*\\*）、*斜体*（\\*文字\\*、\\_文字\\_）、__下划线__（\\_\\_文字\\_\\_）、~~删除线~~（\\~\\~文字\\~\\~）、||黑幕||（\\|\\|文字\\|\\|）。",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "tabToChat": "如果您在使用PC游玩，您可以按下Tab键来切换游戏操作与聊天框输入。您可以在聊天设置中关闭该功能。",
         "chatTabNotifications": "当您位于“全部”以外的聊天频道时，若其他频道收到了新的未读消息，该频道的标题字体将被加粗以提醒您查看。",
         "clearChat": "当您位于“全部”以外的聊天频道时，点击聊天框右上角的清除聊天记录按钮将只清空当前频道下的聊天记录。",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "过长的聊天记录可能导致卡顿。您可以在聊天设置中为聊天记录数量设限。",
         "parties": "使用组队功能可以和伙伴们在旅途中保持联系。您可以在玩家列表的“我的队伍”标签下看到其他队员的所在位置，并可以在“队伍”聊天频道下与队员私聊。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
