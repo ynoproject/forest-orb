@@ -1,0 +1,614 @@
+{
+  "translationComplete": "0",
+  "version": {
+    "2kki": {
+      "label": "{VERSION} يومي تووكي نسخة",
+      "substitutes": {
+        " Patch ": " تصحيح ",
+        "?": "؟"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "تسجيل الدخول",
+      "logout": "تسجيل الخروج"
+    },
+    "fontStyle": {
+      "label": ":نمط الخط",
+      "values": {
+        "style1": "نمط 1",
+        "style2": "نمط 2",
+        "style3": "نمط 3",
+        "style4": "نمط 4",
+        "style5": "نمط 5",
+        "style6": "نمط 6",
+        "style7": "نمط 7"
+      }
+    },
+    "chatbox": {
+      "location": "&nbsp;:الموقع",
+      "immersionMode": "نمط الانغمار",
+      "tab": {
+        "chat": "الحديث",
+        "players": "اللاعبين",
+        "parties": "الحفلات"
+      },
+      "chat": {
+        "tab": {
+          "all": "الكل",
+          "map": "الخريطة",
+          "global": "العالمي",
+          "party": "الحفلة"
+        },
+        "nickname": {
+          "header": "يجب عليك وضع اسم مستعار قبل ان تتمكن من المحادثة",
+          "rule": {
+            "maxLength": "* الحد الأقصى 12 رمزا",
+            "alphanumeric": "* يسمح فقط بالحروف الأبجدية والأرقام"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "الخريطة",
+          "party": "الحفلة"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "مطلوب عمل الترجمة",
+      "noGameLoc": "* ترجمة اللعبة غير مدعومة"
+    },
+    "2kki": {
+      "hostedWithPermission": "Yume 2kki استضافت بإذن من مطورين"
+    },
+    "modal": {
+      "login": {
+        "title": "تسجيل الدخول",
+        "fields": {
+          "username": "اسم المستخدم",
+          "password": "كلمة السر"
+        },
+        "submit": "إرسال",
+        "registerPrompt": "&nbsp;لا تملك حسابا؟",
+        "register": "تسجيل"
+      },
+      "register": {
+        "title": "تسجيل",
+        "fields": {
+          "email": "البريد الإلكتروني",
+          "username": "اسم المستخدم",
+          "password": "كلمة السر",
+          "confirmPassword": "تأكيد كلمة السر"
+        },
+        "submit": "إرسال",
+        "loginPrompt": "&nbsp;تملك حسابا بالفعل؟",
+        "login": "تسجيل الدخول"
+      },
+      "settings": {
+        "title": "الإعدادات",
+        "fields": {
+          "lang": "اللغة",
+          "locationVisibility": {
+            "label": "رؤية الموقع داخل اللعبة",
+            "values": {
+              "private": "خاص",
+              "friends": "أصدقاء",
+              "public": "عام"
+            }
+          },
+          "toggleNametags": "علامات الأسماء",
+          "togglePlayerSounds": "أصوات اللاعبين",
+          "toggleLocationDisplay": "عرض الموقع",
+          "toggleRankings": "المراكز",
+          "toggleFloodProtection": "الوقاية من الفيضانات"
+        },
+        "chatSettings": "إعدادات المحادثة",
+        "notificationSettings": "إعدادات التنبيهات",
+        "accountSettings": "إعدادات الحساب"
+      },
+      "chatSettings": {
+        "title": "إعدادات المحادثة",
+        "fields": {
+          "toggleTabToChat": "للمحادثة Tab اضغط على",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "غير محدود"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "حد حفظ محادثة الخريطة"
+          },
+          "globalChatHistoryLimit": {
+            "label": "حد حفظ المحادثة العالمية"
+          },
+          "partyChatHistoryLimit": {
+            "label": "حد حفظ محادثة الحفلة"
+          }
+        }
+      },
+      "notificationSettings": {
+        "title": "إعدادات التنبيهات",
+        "fields": {
+          "toggleNotifications": "التنبيهات",
+          "screenPosition": {
+            "label": "الموضع على الشاشة",
+            "values": {
+              "bottomLeft": "أسفل اليسار",
+              "bottomRight": "أسفل اليمين",
+              "topLeft": "أعلى اليسار",
+              "topRight": "أعلى اليمين"
+            }
+          },
+          "system": {
+            "label": "نظام",
+            "fields": {
+              "siteUpdates": "تم تحديث الموقع",
+              "error": "حدث خطأ",
+              "floodDetected": "تم اكتشاف هجوم فيضان محتمل"
+            }
+          },
+          "account": {
+            "label": "الحساب",
+            "fields": {
+              "loggedIn": "مسجل الدخول",
+              "loggedOut": "مسجل الخروج"
+            }
+          },
+          "parties": {
+            "label": "حفلات",
+            "fields": {
+              "create": "تم إنشاء الحفلة",
+              "update": "تم تحديث الحفلة",
+              "join": "تم الانضمام إلى الحفلة",
+              "leave": "تم الخروج من الحفلة",
+              "remove": "تم الحذف من الحفلة",
+              "disband": "تم تفكيك الحفلة",
+              "playerJoin": "إنضم لاعب إلى الحفلة",
+              "playerLeave": "خرج لاعب إلى الحفلة",
+              "playerOnline": "عضو الحفلة متصل",
+              "playerOffline": "عضو الحفلة غير متصل",
+              "kickPlayer": "تم الحذف اللاعب من الحفلة",
+              "transferPartyOwner": "تم ترقية اللاعب إلى قائد الحفلة"
+            }
+          },
+          "events": {
+            "label": "Expeditions",
+            "fields": {
+              "complete": "Expedition Complete",
+              "freeComplete": "Free Expedition Complete",
+              "vmComplete": "Vending Machine Found",
+              "listUpdated": "Expedition List Updated"
+            }
+          },
+          "badges": {
+            "label": "Badges",
+            "fields": {
+              "badgeUnlocked": "Badge Unlocked"
+            }
+          },
+          "saveSync": {
+            "label": "Save Sync",
+            "fields": {
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Uploaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Account Settings",
+        "fields": {
+          "badge": "Badge",
+          "toggleSaveSync": "Save Sync (Experimental)",
+          "saveSyncSlotId": {
+            "label": "Save Sync Slot ID",
+            "values": {
+              "0": "None"
+            }
+          },
+          "clearSaveSync": "Clear Save Sync Data"
+        }
+      },
+      "badges": {
+        "title": "Badges",
+        "manageBadgeGallery": "Manage Badge Gallery",
+        "fields": {
+          "unlockStatus": {
+            "label": "Unlock Status:&nbsp;",
+            "values": {
+              "all": "All",
+              "0": "Locked",
+              "1": "Unlocked"
+            }
+          },
+          "search": "Search:&nbsp;"
+        }
+      },
+      "badgeGallery": {
+        "title": "Manage Badge Gallery",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+      },
+      "uiTheme": {
+        "title": "UI Theme",
+        "auto": "AUTO"
+      },
+      "createParty": {
+        "title": {
+          "create": "Create Party",
+          "update": "Edit Party"
+        },
+        "fields": {
+          "partyName": "Party Name",
+          "description": "Description",
+          "public": "Public",
+          "password": "Password",
+          "theme": "Theme"
+        },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "submit": "Submit"
+      },
+      "joinPrivateParty": {
+        "title": "Join Private Party",
+        "fields": {
+          "password": "Password"
+        },
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "incorrectPassword": "Incorrect Password: Please try again.",
+        "submit": "Submit"
+      },
+      "events": {
+        "title": "Expeditions",
+        "rankExp": "Next Rank",
+        "weekExp": "ExP This Week",
+        "tabs": {
+          "locations": "Locations",
+          "vms": "Vending Machine Finder"
+        }
+      },
+      "rankings": {
+        "title": "Rankings"
+      }
+    },
+    "tooltips": {
+      "toggleSinglePlayer": "Toggle Single Player",
+      "io": {
+        "upload": "Upload Save File",
+        "download": "Download Save File"
+      },
+      "uiTheme": "UI Theme",
+      "toggleChat": "Toggle Chat",
+      "toggleImmersionMode": "Toggle Immersion Mode",
+      "screenshot": "Take Screenshot",
+      "settings": "Settings",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "chat": {
+        "toggleOwnGlobalMessageLocation": "Show/Hide Global Chat Message Location",
+        "clearChat": "Clear Chat"
+      },
+      "parties": {
+        "createParty": "Create Party",
+        "disbandParty": "Disband Party"
+      },
+      "events": "Expeditions",
+      "rankings": "Rankings",
+      "nexus": "Return to Nexus"
+    }
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "flow": ".flow",
+      "muma": "Muma Rope",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl"
+    },
+    "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
+    "io": {
+      "common": {
+        "failedSlotInput": "The provided slot was not valid: please enter a save file slot number from 1 to 15."
+      },
+      "upload": {
+        "slotInput": "Enter the save file slot number to upload to (1 to 15).",
+        "invalidSaveFile": "Please select a valid save file (.lsd format)."
+      },
+      "download": {
+        "slotInput": "Enter the save file slot number to download for (1 to 15).",
+        "emptySlot": "Oops! The save file for the provided slot appears to be empty."
+      }
+    },
+    "connStatus": {
+      "0": "Disconnected",
+      "1": "Connected",
+      "2": "Connecting...",
+      "3": "Single Player"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Querying Location...",
+      "unknownLocation": "Unknown Location",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} Player Online",
+      "plural": "{COUNT} Players Online"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
+    },
+    "playerList": {
+      "unnamed": "Unnamed Player",
+      "actions": {
+        "partyKick": "Kick From Party",
+        "transferPartyOwner": "Promote to Party Leader"
+      }
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Developer"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
+        },
+        "unban": {
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
+        },
+        "mute": {
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
+        },
+        "unmute": {
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Username or password is incorrect."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "The specified email address is already in use.",
+          "usernameTaken": "The specified username is already in use."
+        }
+      }
+    },
+    "parties": {
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "partyOwner": "Party Leader",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "View Party Details",
+        "joinParty": "Join Party",
+        "joinPrivateParty": "Join Private Party",
+        "leaveParty": "Leave Party"
+      }
+    },
+    "chatTips": {
+      "template": "TIP: {CONTENT}",
+      "tips": {
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
+        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
+        "globalChatLocation": "You can view the location a global chat message was sent from by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
+        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
+        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
+        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
+      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
+        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+      },
+      "account": {
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out."
+      },
+      "parties": {
+        "create": "{PARTY} has been created.",
+        "update": "{PARTY} has been updated.",
+        "join": "You have joined {PARTY}.",
+        "leave": "You have left {PARTY}.",
+        "remove": "You have been removed from {PARTY}.",
+        "disband": "{PARTY} has been disbanded.",
+        "playerJoin": "{PLAYER} has joined the party.",
+        "playerLeave": "{PLAYER} has left the party.",
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+      },
+      "events": {
+        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
+      },
+      "badges": {
+        "badgeUnlocked": "You have unlocked a new badge!"
+      },
+      "saveSync": {
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Rank: {RANK}",
+      "period": "Season {ORDINAL}",
+      "periodEnds": "Ends {DATE}",
+      "current": "Current",
+      "shortcut": "Can be reached via an unlockable shortcut",
+      "availableUntilDate": "Available Until\n{DATE}",
+      "types": {
+        "-1": "Free Expedition",
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend",
+        "3": "Special"
+      },
+      "expRanks": {
+        "0": "Novice",
+        "1": "Intermediate",
+        "2": "Bronze",
+        "3": "Silver",
+        "4": "Gold",
+        "5": "Platinum",
+        "6": "Diamond"
+      }
+    },
+    "badges": {
+      "null": "No Badge",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "Location:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Art by {ARTIST}"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Badges"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Badges",
+          "valueLabel": "# of Badges",
+          "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigames",
+          "valueLabel": "Score",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "All",
+        "2": "All Effects",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",
+        "fuji_ex": "FUJI EX"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
+      }
+    }
+  }
+}
