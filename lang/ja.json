@@ -316,13 +316,13 @@
       "yume": "ゆめにっき",
       "2kki": "ゆめ２っき",
       "flow": ".flow",
-      "muma": "Muma Rope",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
       "unevendream": "おうとつゆめ",
-      "braingirl": "ブレインガール"
+      "braingirl": "ブレインガール",
+      "muma": "Muma|Rope"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "io": {

@@ -316,13 +316,13 @@
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
       "flow": ".flow",
-      "muma": "Muma Rope",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
       "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "io": {

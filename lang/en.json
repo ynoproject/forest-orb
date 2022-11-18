@@ -316,13 +316,13 @@
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
       "flow": ".flow",
-      "muma": "Muma Rope",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
       "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope"
     },
     "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
     "io": {

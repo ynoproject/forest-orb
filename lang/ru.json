@@ -317,12 +317,12 @@
       "2kki": "Yume 2kki",
       "flow": ".flow",
       "prayers": "Answered Prayers",
-      "muma": "Muma Rope",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
       "amillusion": "Amillusion",
       "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope"
     },
     "leavePage": "Вы уверены, что хотите покинуть страницу? Весь несохранённый прогресс будет утерян.",
     "io": {
