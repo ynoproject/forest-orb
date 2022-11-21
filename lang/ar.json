@@ -2,7 +2,7 @@
   "translationComplete": "0",
   "version": {
     "2kki": {
-      "label": "{VERSION} يومي تووكي نسخة",
+      "label": "{VERSION} يومي تووكي) نسخة) Yume 2kki",
       "substitutes": {
         " Patch ": " تصحيح ",
         "?": "؟"
@@ -173,7 +173,7 @@
               "remove": "تم الحذف من الحفلة",
               "disband": "تم تفكيك الحفلة",
               "playerJoin": "إنضم لاعب إلى الحفلة",
-              "playerLeave": "خرج لاعب إلى الحفلة",
+              "playerLeave": "خرج لاعب من الحفلة",
               "playerOnline": "عضو الحفلة متصل",
               "playerOffline": "عضو الحفلة غير متصل",
               "kickPlayer": "تم الحذف اللاعب من الحفلة",
@@ -239,7 +239,7 @@
       },
       "badgeGallery": {
         "title": "إدارة معرض الشارات",
-        "badgeGalleryRowProgress": " (نقات الشاران) ترقية الصف التالي",
+        "badgeGalleryRowProgress": " (نقات الشارات) ترقية الصف التالي",
         "badgeGalleryColProgress": "ترقية العمود التالي (شارات)"
       },
       "uiTheme": {
@@ -313,16 +313,16 @@
   "messages": {
     "games": {
       "ynoproject": "YNOproject",
-      "yume": "Yume Nikki",
-      "2kki": "Yume 2kki",
-      "flow": ".flow",
-      "muma": "Muma Rope",
-      "prayers": "Answered Prayers",
-      "deepdreams": "Deep Dreams",
-      "someday": "Someday",
-      "amillusion": "Amillusion",
-      "unevendream": "Uneven Dream",
-      "braingirl": "Braingirl"
+      "yume": "Yume Nikki (يومي نيكي)",
+      "2kki": "Yume 2kki (يومي تووكي)",
+      "flow": ".flow (دوت فلو)",
+      "prayers": "Answered Prayers (دعوات مستجابة)",
+      "deepdreams": "Deep Dreams (احلام عميقة)",
+      "someday": "Someday (يوما ما)",
+      "amillusion": "Amillusion (الوهم)",
+      "unevendream": "Uneven Dream (حلم منقسم)",
+      "braingirl": "Braingirl (برين جيرل)"
+      "muma": "Muma|Rope (حبل|موما)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "io": {
@@ -359,8 +359,8 @@
       }
     },
     "playersOnline": {
-      "singular": "{COUNT} Player Online",
-      "plural": "{COUNT} Players Online"
+      "singular": "لاعب متصل {COUNT}",
+      "plural": "لاعبين متصلين {COUNT}"
     },
     "playersInMap": {
       "singular": "لاعب في الخريطة {COUNT}",
@@ -406,7 +406,7 @@
           "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
         },
         "revokeBadge": {
-          "label": "شارة ازالة",
+          "label": "ازالة شارة",
           "prompt": "{PLAYER} أدخل معرف الشارة لإزالتها للاعب",
           "success": ".{PLAYER} إلى الاعب {BADGE} تم ازالة شارة",
           "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
@@ -444,73 +444,73 @@
       }
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "{CONTENT} :نصيحة",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
-        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
-        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "globalChatLocation": "You can view the location a global chat message was sent from by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
-        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "backupReminder": "!يقترح بالاحتفاظ بنسخة احتياطية محلية من تقدمك عن طريق تنزيل ملف الحفظ بانتظام. بهذه الطريقة ، إذا تم مسح بيانات متصفحك ، فلن تفقد تقدمك",
+        "menuTheme": "!يعتمد لون اسمك ونمط قائمة اللاعبين على نمط القائمة داخل اللعبة",
+        "playersInMap": ".يمكنك التبديل بين عدد اللاعبين المتصلين وعدد اللاعبين في خريطتك بالنقر فوق المربع",
+        "globalChatLocation": ".يمكنك عرض الموقع الذي تم إرسال رسالة عامة منه عن طريق التمرير بالماوس فوقه أو النقر فوق رمز الكرة الأرضية الموجود على يسار الرسالة. سيعرض أيضًا أو يخفي مواقع الرسائل العامة المستقبلية بناءً على آخر عرض أو إخفاء",
+        "markdownSupport":. ". **bold** (\\*\\*text\\*\\*) و ، *italic* (\\*text\\*, \\_text\\_)، __underline__ (\\_\\_text\\_\\_)، ~~strikethrough~~ (\\~\\~text\\~\\~)، ||spoiler|| (\\|\\|text\\|\\|) :يدعم الحديث تنسيق النص عن طريق التفاف النص في رموز معينة. المدعومة حاليًا هي",
+        "tabToChat": ".(للتحدث Tab للتبديل بين اللعبة والمحادثة. يمكن تعطيل هذه الميزة في إعدادات الحديث ضمن (اضغط على Tab إذا كنت تلعب على جهاز كمبيوتر ، فيمكنك الضغط على مفتاح",
+        "chatTabNotifications": ".عندما تكون في فئة نقاش غير (الكل) ، إذا تم إرسال رسالة جديدة في الفئة المصفاة الأخرى ، فسيتم إضافة خط غامق إلى تصنيف الفئة لإعلامك",
+        "clearChat": ".عند النقر فوق زر مسح الحديث في الجزء العلوي الأيمن من مربع الحديث ، إذا لم تكن حاليًا في فئة (الكل) ، فسيؤدي ذلك فقط إلى إزالة الرسائل الخاصة بفئة الحديث الحالية التي أنت فيها.",
+        "chatHistoryLimit": ".إذا كان سجل حديثك طويلًا جدًا ، فقد تواجه مشكلات في الأداء على الموقع. في إعدادات الحديث ، يمكنك تحديد سجل المحادثات الخاص بك وفقًا لذلك لتجنب هذه المشكلات دون الحاجة إلى مسح حديثك يدويًا",
+        "parties": ".تعتبر الحفلات طريقة رائعة للبقاء مع الأشخاص في أي مغامرة. يمكنك رؤية مواقع أعضاء مجموعتك والتحدث معهم في محادثة خاصة",
+        "immersionMode": "!إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
+        "openSource": "https://github.com/ynoproject/ مفتوح المصدر ومستودعات الكود متاحة على YNOproject"
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
+      "confirmEnable": ".هل تريد تشغيل مزامنة حفظ الملفات؟ سيتم تحميل بياناتك من موضع مزامنة ملف الحفظ وستتمكن من الوصول إليها من هذا الحساب على أي جهاز أو متصفح تم تشغيل هذه الميزة به. أثناء التشغيل ، سيتم تحديث بيانات موضع مزامنة ملف الحفظ المحددة تلقائيًا عند تحميل الصفحة",
+      "confirmEnableWithData": "تم العثور على بيانات مزامنة ملف الحفظ السابقة لهذا الحساب. سيتم استبدال الحفظ المخزن في موضع مزامنة ملف الحفظ  ببيانات ملف الحفظ الجديدة في حالة وجود نسخة أحدث في نفس الموضع. يرجى ملاحظة أن هذا لن يسري إلا عند إعادة تحميل الصفحة مع تاكيد تشغيل هذه الميزة. هل أنت متأكد أنك تريد تشغيله؟"
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
-        "floodDetected": "Possible flood attack detected: Switching to single player mode."
+        "siteUpdates": ".تم تحديث الموقع، أعد تحميل الصفحة للحصول على أحدث التغييرات",
+        "error": ".Inspect اوانقر بزر الماوس الأيمن ثم اضغط على F12 عفوًا! يبدو أنه حدث خطأ ما. راجع وحدة تحكم المتصفح للحصول على التفاصيل. لفتح وحدة التحكم ، اضغط على",
+        "floodDetected": ".تم اكتشاف هجوم فيضان محتمل: التبديل إلى وضع اللاعب الفردي"
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
+        "loggedOut": ".لقد قمت بتسجيل الخروج"
       },
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "create": ".{PARTY} تم إنشاء الحفلة",
+        "update": ".{PARTY} تم تحديث الحفلة",
+        "join": ".{PARTY} تم الانضمام إلى الحفلة",
+        "leave": ".{PARTY} تم الخروج من الحفلة",
+        "remove": ".{PARTY} تم حذفك من الحفلة",
+        "disband": ".{PARTY} تم تفكيك الحفلة",
+        "playerJoin": ".إلى الحفلة {PLAYER} إنضم اللاعب",
+        "playerLeave": ".من الحفلة {PLAYER} خرج اللاعب",
+        "playerOnline": ".متصل {PLAYER} عضو الحفلة",
+        "playerOffline": ".غير متصل {PLAYER} عضو الحفلة",
+        "kickPlayer": ".من الحفلة {PLAYER} تم الحذف اللاعب",
+        "transferPartyOwner": ".إلى قائد الحفلة {PLAYER} تم ترقية اللاعب"
       },
       "events": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "!اكتملت الرحلة الاستكشافية\n .{EXP} تم منحك ،{LOCATION} لزيارة ",
+        "freeComplete": ".{LOCATION} اكتملت الرحلة الاستكشافية! لقد زرت",
+        "vmComplete": "!تم العثور على آلة البيع \n.{EXP} لقد حصلت على",
+        "listUpdated": ".تم تحديث قائمة الرحلات الاستكشافية"
       },
       "badges": {
-        "badgeUnlocked": "!لقد فتحت شارة جديدة"
+        "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveUploading": "...{SLOT} يتم تحميل ملف الحفظ من موضع",
+        "saveUploaded": ".بنجاح {SLOT} تم تحميل ملف الحفظ من موضع",
+        "saveDownloading": "...{SLOT} يتم تحديث ملف الحفظ من موضع",
+        "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
+        "saveUpToDate": ".تم تحديث ملف الحفظ",
+        "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك"
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
+      "exp": "{POINTS} :نقاط الرحلات الاستكشافية",
       "expRank": "{RANK}:المرتبة",
-      "period": "{ORDINAL} موسم",
-      "periodEnds": "Ends {DATE}",
+      "period": "{ORDINAL} :موسم",
+      "periodEnds": "{DATE} :ينتهي",
       "current": "الحالي",
       "shortcut": "يمكن الوصول إليها عبر طريق مختصر قابل للفتح",
       "availableUntilDate": "متاح حتى\n{DATE}",
@@ -533,7 +533,7 @@
     },
     "badges": {
       "null": "لا شارة",
-      "badgeTitle": "{TITLE} - {BP} BP",
+      "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -542,9 +542,9 @@
       "artCredit": "{ARTIST} رسم الفنان/ة"
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
+      "label": "{PLAYER} معرض شارات",
       "loading": "...جاري التحميل",
-      "bp": "{BP} BP",
+      "bp": "نقات الشارات {BP}",
       "count": "شارات {COUNT}"
     },
     "rankings": {
@@ -552,17 +552,17 @@
         "badgeCount": {
           "label": "شارات",
           "valueLabel": "من الشارات #",
-          "value": "{NUMBER}"
+          "value": "{NUMBER}" 
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
-          "value": "{NUMBER} BP"
+          "label": "(نقات الشارات)",
+          "valueLabel": "نقات الشارات",
+          "value": "نقات الشارات {NUMBER}"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
-          "value": "{NUMBER} ExP"
+          "label": "نقاط الرحلات الاستكشافية",
+          "valueLabel": "نقاط الرحلات الاستكشافية",
+          "value": "نقاط الرحلات الاستكشافية {NUMBER}"
         },
         "eventLocationCount": {
           "label": "الرحلاات الاستكشافية",
@@ -580,8 +580,8 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "مكتشف آلة البيع",
+          "valueLabel": "من آلات البيع #",
           "value": "{NUMBER}"
         },
         "timeTrial": {
@@ -606,8 +606,8 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "View in Yume 2kki Explorer",
-        "multi": "View {LOCATION} in Yume 2kki Explorer"
+        "generic": "Yume 2kki Explorer عرض في",
+        "multi": "Yume 2kki Explorer في {LOCATION} عرد"
       }
     }
   }
