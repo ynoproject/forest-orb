@@ -275,7 +275,7 @@
       "events": {
         "title": "الرحلات الاستكشافية",
         "rankExp": "المرتبة التالية",
-        "weekExp": "هذا الأسبوع ExP",
+        "weekExp": "نقاط الرحلات الاستكشافية هذا الأسبوع",
         "tabs": {
           "locations": "المواقع",
           "vms": "مكتشف آلة البيع"
@@ -385,62 +385,62 @@
           "success": ".{PLAYER} تم منع"
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "{PLAYER} ازالة منع",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة منع",
+          "success": ".{PLAYER} تم ازالة منع"
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "{PLAYER} كتم"
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد كتم",
+          "success": ".{PLAYER} تم كتم"
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "{PLAYER} ازالة كتم",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة كتم",
+          "success": ".{PLAYER} تم ازالة كتم"
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "منح شارة",
+          "prompt": "{PLAYER} أدخل معرف الشارة لمنحها للاعب",
+          "success": ".{PLAYER} إلى الاعب {BADGE} تم منح شارة",
+          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "شارة ازالة",
+          "prompt": "{PLAYER} أدخل معرف الشارة لإزالتها للاعب",
+          "success": ".{PLAYER} إلى الاعب {BADGE} تم ازالة شارة",
+          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
         }
       }
     },
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": ".اسم المستخدم أو كلمة السر غير صحيحة"
         }
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "confirmPasswordMismatch": ".كلمات السر المحددة لا تتطابق",
+          "invalidCredentials": ".اسم المستخدم أو كلمة المرور المحددة فارغة أو تحتوي على أحرف غير صالحة",
+          "emailTaken": ".عنوان البريد الإلكتروني المحدد قيد الاستخدام بالفعل",
+          "usernameTaken": ".اسم المستخدم المحدد قيد الاستخدام بالفعل"
         }
       }
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
-      "defaultPartyName": "{OWNER}'s Party",
-      "partyOwner": "Party Leader",
+      "emptyMessage": ".لا يوجد حاليا أي حفلات نشطة",
+      "yourParty": "حفلتك",
+      "defaultPartyName": "{OWNER} حفلة",
+      "partyOwner": "قائد الحفلة",
       "offlineMemberSuffix": " (Offline)",
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
+      "onlineCount": "{COUNT} - متصل",
+      "offlineCount": "{COUNT} - غير متصل}",
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "عرض تفاصيل الحفلة",
+        "joinParty": "الإنضمام إلى الحفلة",
+        "joinPrivateParty": "الانضمام إلى الحفلة الخاصة",
+        "leaveParty": "الخروج من الحفلة"
       }
     },
     "chatTips": {
@@ -495,7 +495,7 @@
         "listUpdated": "The expedition list has been updated."
       },
       "badges": {
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "!لقد فتحت شارة جديدة"
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",
@@ -508,50 +508,50 @@
     },
     "events": {
       "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
+      "expRank": "{RANK}:المرتبة",
+      "period": "{ORDINAL} موسم",
       "periodEnds": "Ends {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "current": "الحالي",
+      "shortcut": "يمكن الوصول إليها عبر طريق مختصر قابل للفتح",
+      "availableUntilDate": "متاح حتى\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "-1": "رحلة استكشافية مجانية",
+        "0": "يومي",
+        "1": "أسبوعي",
+        "2": "نهاية الاسبوع",
+        "3": "خاص"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
-        "2": "Bronze",
-        "3": "Silver",
-        "4": "Gold",
-        "5": "Platinum",
-        "6": "Diamond"
+        "0": "مبتدئ",
+        "1": "متوسط",
+        "2": "برونزي",
+        "3": "فضي",
+        "4": "ذهبي",
+        "5": "بلاتيني",
+        "6": "الماسي"
       }
     },
     "badges": {
-      "null": "No Badge",
+      "null": "لا شارة",
       "badgeTitle": "{TITLE} - {BP} BP",
-      "locked": "???",
-      "location": "Location:&nbsp;",
+      "locked": "؟؟؟",
+      "location": "&nbsp;:الموقع",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "من اللاعبين لديهم هذه الشارة {PERCENT}%",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "{ARTIST} رسم الفنان/ة"
     },
     "badgeGallery": {
       "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading...",
+      "loading": "...جاري التحميل",
       "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "count": "شارات {COUNT}"
     },
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "Badges",
-          "valueLabel": "# of Badges",
+          "label": "شارات",
+          "valueLabel": "من الشارات #",
           "value": "{NUMBER}"
         },
         "bp": {
@@ -565,18 +565,18 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "الرحلاات الاستكشافية",
+          "valueLabel": "من الرحلاات الاستكشافية #",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "الرحلاات الاستكشافية المجانية",
+          "valueLabel": "من الرحلاات الاستكشافية #",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "إكمال الرحلة الاستكشافية",
+          "valueLabel": "إكمال",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
@@ -585,22 +585,22 @@
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "تحديات الوقت",
+          "valueLabel": "وقت الانتهاء",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
-          "valueLabel": "Score",
+          "label": "العاب صغيرة",
+          "valueLabel": "نقاط",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "الكل",
+        "2": "(all effects) جميع التأثيرات",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - EX نسخة",
         "fuji_ex": "FUJI EX"
       }
     },
