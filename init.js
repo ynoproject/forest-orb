@@ -175,7 +175,7 @@ function fetchNewest(path, important, req) {
   });
 }
 
-function apiFetch(path, isAdmin = false) {
+function apiFetch(path, isAdmin) {
   return new Promise((resolve, reject) => {
     const sId = getCookie('sessionId');
     const headers = sId ? { 'Authorization': sId } : {};

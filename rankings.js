@@ -1,3 +1,5 @@
+const rankingsUrl = `../rankings`;
+
 let rankingCategoryCache = [];
 let rankingCategoryId;
 let rankingSubCategoryId;
@@ -19,8 +21,18 @@ function initRankingControls() {
   };
 }
 
+function rankingsApiFetch(path) {
+  return new Promise((resolve, reject) => {
+    const sId = getCookie('sessionId');
+    const headers = sId ? { 'Authorization': sId } : {};
+    fetch(`${rankingsUrl}/${path}`, { headers: headers })
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  });
+}
+
 function fetchAndPopulateRankingCategories() {
-  apiFetch('ranking?command=categories')
+  rankingsApiFetch(`categories?game=${gameId}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -160,7 +172,7 @@ function fetchAndPopulateRankingCategories() {
 
 function fetchAndLoadRankings(categoryId, subCategoryId) {
   return new Promise(resolve => {
-    apiFetch(`ranking?command=page&category=${categoryId}&subCategory=${subCategoryId}`)
+    rankingsApiFetch(`page?category=${categoryId}&subCategory=${subCategoryId}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -180,7 +192,7 @@ function fetchAndLoadRankings(categoryId, subCategoryId) {
 function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
   return new Promise(resolve => {
     addLoader(document.getElementById('rankingsModal'));
-    apiFetch(`ranking?command=list&category=${categoryId}&subCategory=${subCategoryId}&page=${page}`)
+    rankingsApiFetch(`list?game=${gameId}&category=${categoryId}&subCategory=${subCategoryId}&page=${page}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
