@@ -321,7 +321,7 @@
       "someday": "Someday (يوما ما)",
       "amillusion": "Amillusion (الوهم)",
       "unevendream": "Uneven Dream (حلم منقسم)",
-      "braingirl": "Braingirl (برين جيرل)"
+      "braingirl": "Braingirl (برين جيرل)",
       "muma": "Muma|Rope (حبل|موما)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
@@ -390,7 +390,7 @@
           "success": ".{PLAYER} تم ازالة منع"
         },
         "mute": {
-          "label": "{PLAYER} كتم"
+          "label": "{PLAYER} كتم",
           "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد كتم",
           "success": ".{PLAYER} تم كتم"
         },
