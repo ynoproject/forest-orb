@@ -1,0 +1,614 @@
+{
+  "translationComplete": "0",
+  "version": {
+    "2kki": {
+      "label": "{VERSION} يومي تووكي) نسخة) Yume 2kki",
+      "substitutes": {
+        " Patch ": " تصحيح ",
+        "?": "؟"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "تسجيل الدخول",
+      "logout": "تسجيل الخروج"
+    },
+    "fontStyle": {
+      "label": ":نمط الخط",
+      "values": {
+        "style1": "نمط 1",
+        "style2": "نمط 2",
+        "style3": "نمط 3",
+        "style4": "نمط 4",
+        "style5": "نمط 5",
+        "style6": "نمط 6",
+        "style7": "نمط 7"
+      }
+    },
+    "chatbox": {
+      "location": "&nbsp;:الموقع",
+      "immersionMode": "نمط الانغمار",
+      "tab": {
+        "chat": "الحديث",
+        "players": "اللاعبين",
+        "parties": "الحفلات"
+      },
+      "chat": {
+        "tab": {
+          "all": "الكل",
+          "map": "الخريطة",
+          "global": "العالمي",
+          "party": "الحفلة"
+        },
+        "nickname": {
+          "header": "يجب عليك وضع اسم مستعار قبل ان تتمكن من المحادثة",
+          "rule": {
+            "maxLength": "* الحد الأقصى 12 رمزا",
+            "alphanumeric": "* يسمح فقط بالحروف الأبجدية والأرقام"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "الخريطة",
+          "party": "الحفلة"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "مطلوب عمل الترجمة",
+      "noGameLoc": "* ترجمة اللعبة غير مدعومة"
+    },
+    "2kki": {
+      "hostedWithPermission": "Yume 2kki استضافت بإذن من مطورين"
+    },
+    "modal": {
+      "login": {
+        "title": "تسجيل الدخول",
+        "fields": {
+          "username": "اسم المستخدم",
+          "password": "كلمة السر"
+        },
+        "submit": "إرسال",
+        "registerPrompt": "&nbsp;لا تملك حسابا؟",
+        "register": "تسجيل"
+      },
+      "register": {
+        "title": "تسجيل",
+        "fields": {
+          "email": "البريد الإلكتروني",
+          "username": "اسم المستخدم",
+          "password": "كلمة السر",
+          "confirmPassword": "تأكيد كلمة السر"
+        },
+        "submit": "إرسال",
+        "loginPrompt": "&nbsp;تملك حسابا بالفعل؟",
+        "login": "تسجيل الدخول"
+      },
+      "settings": {
+        "title": "الإعدادات",
+        "fields": {
+          "lang": "اللغة",
+          "locationVisibility": {
+            "label": "رؤية الموقع داخل اللعبة",
+            "values": {
+              "private": "خاص",
+              "friends": "أصدقاء",
+              "public": "عام"
+            }
+          },
+          "toggleNametags": "علامات الأسماء",
+          "togglePlayerSounds": "أصوات اللاعبين",
+          "toggleLocationDisplay": "عرض الموقع",
+          "toggleRankings": "المراكز",
+          "toggleFloodProtection": "الوقاية من الفيضانات"
+        },
+        "chatSettings": "إعدادات المحادثة",
+        "notificationSettings": "إعدادات التنبيهات",
+        "accountSettings": "إعدادات الحساب"
+      },
+      "chatSettings": {
+        "title": "إعدادات المحادثة",
+        "fields": {
+          "toggleTabToChat": "للمحادثة Tab اضغط على",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "غير محدود"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "حد حفظ محادثة الخريطة"
+          },
+          "globalChatHistoryLimit": {
+            "label": "حد حفظ المحادثة العالمية"
+          },
+          "partyChatHistoryLimit": {
+            "label": "حد حفظ محادثة الحفلة"
+          }
+        }
+      },
+      "notificationSettings": {
+        "title": "إعدادات التنبيهات",
+        "fields": {
+          "toggleNotifications": "التنبيهات",
+          "screenPosition": {
+            "label": "الموضع على الشاشة",
+            "values": {
+              "bottomLeft": "أسفل اليسار",
+              "bottomRight": "أسفل اليمين",
+              "topLeft": "أعلى اليسار",
+              "topRight": "أعلى اليمين"
+            }
+          },
+          "system": {
+            "label": "نظام",
+            "fields": {
+              "siteUpdates": "تم تحديث الموقع",
+              "error": "حدث خطأ",
+              "floodDetected": "تم اكتشاف هجوم فيضان محتمل"
+            }
+          },
+          "account": {
+            "label": "الحساب",
+            "fields": {
+              "loggedIn": "مسجل الدخول",
+              "loggedOut": "مسجل الخروج"
+            }
+          },
+          "parties": {
+            "label": "حفلات",
+            "fields": {
+              "create": "تم إنشاء الحفلة",
+              "update": "تم تحديث الحفلة",
+              "join": "تم الانضمام إلى الحفلة",
+              "leave": "تم الخروج من الحفلة",
+              "remove": "تم الحذف من الحفلة",
+              "disband": "تم تفكيك الحفلة",
+              "playerJoin": "إنضم لاعب إلى الحفلة",
+              "playerLeave": "خرج لاعب من الحفلة",
+              "playerOnline": "عضو الحفلة متصل",
+              "playerOffline": "عضو الحفلة غير متصل",
+              "kickPlayer": "تم الحذف اللاعب من الحفلة",
+              "transferPartyOwner": "تم ترقية اللاعب إلى قائد الحفلة"
+            }
+          },
+          "events": {
+            "label": "الرحلات الاستكشافية",
+            "fields": {
+              "complete": "اكتملت الرحلة الاستكشافية",
+              "freeComplete": "اكتملت الرحلة الاستكشافية المجانية",
+              "vmComplete": "وجدت آلة البيع",
+              "listUpdated": "تم تحديث قائمة الرحلات الاستكشافية"
+            }
+          },
+          "badges": {
+            "label": "شارات",
+            "fields": {
+              "badgeUnlocked": "تم الحصول على الشارة"
+            }
+          },
+          "saveSync": {
+            "label": "مزامنة ملف الحفظ",
+            "fields": {
+              "saveUploading": "وضع ملف الحفظ",
+              "saveUploaded": "تم وضع ملف الحفظ",
+              "saveDownloading": "تحميل ملف الحفظ",
+              "saveDownloaded": "تم تحميل ملف الحفظ",
+              "saveUpToDate": "تم تحديث ملف الحفظ",
+              "saveCleared": "تم مسح ملف الحفظ"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "إعدادت الحساب",
+        "fields": {
+          "badge": "شارة",
+          "toggleSaveSync": "(تجريبي) مزامنة ملف الحفظ",
+          "saveSyncSlotId": {
+            "label": "موضع مزامنة ملف الحفظ",
+            "values": {
+              "0": "لا يوجد"
+            }
+          },
+          "clearSaveSync": "مسح بيانات مزامنة ملف الحفظ"
+        }
+      },
+      "badges": {
+        "title": "Badges",
+        "manageBadgeGallery": "إدارة معرض الشارات",
+        "fields": {
+          "unlockStatus": {
+            "label": "&nbsp;:حالة الفتح",
+            "values": {
+              "all": "جميع",
+              "0": "مقفل",
+              "1": "مفتوح"
+            }
+          },
+          "search": "&nbsp;:البحث"
+        }
+      },
+      "badgeGallery": {
+        "title": "إدارة معرض الشارات",
+        "badgeGalleryRowProgress": " (نقات الشارات) ترقية الصف التالي",
+        "badgeGalleryColProgress": "ترقية العمود التالي (شارات)"
+      },
+      "uiTheme": {
+        "title": "تصميم واجهة المستخدم",
+        "auto": "تلقاءي"
+      },
+      "createParty": {
+        "title": {
+          "create": "إنشاء حفلة",
+          "update": "تعديل الحفلة"
+        },
+        "fields": {
+          "partyName": "اسم الحفلة",
+          "description": "وصف",
+          "public": "عامة",
+          "password": "كلمة السر",
+          "theme": "التصميم"
+        },
+        "showPassword": "كشف كلمة السر",
+        "hidePassword": "اخفاء كلمة السر",
+        "submit": "إرسال"
+      },
+      "joinPrivateParty": {
+        "title": "الانضمام إلى الحفلة الخاصة",
+        "fields": {
+          "password": "كلمة السر"
+        },
+        "showPassword": "كشف كلمة السر",
+        "hidePassword": "اخفاء كلمة السر",
+        "incorrectPassword": "كلمة السر غير صحيحة. من فضلك حاول مرة اخري.",
+        "submit": "إرسال"
+      },
+      "events": {
+        "title": "الرحلات الاستكشافية",
+        "rankExp": "المرتبة التالية",
+        "weekExp": "نقاط الرحلات الاستكشافية هذا الأسبوع",
+        "tabs": {
+          "locations": "المواقع",
+          "vms": "مكتشف آلة البيع"
+        }
+      },
+      "rankings": {
+        "title": "المراتب"
+      }
+    },
+    "tooltips": {
+      "toggleSinglePlayer": "وضع لاعب واحد",
+      "io": {
+        "upload": "وضع ملف الحفظ",
+        "download": "تحميل ملف الحفظ"
+      },
+      "uiTheme": "تصميم واجهة المستخدم",
+      "toggleChat": "وضع المحادثة",
+      "toggleImmersionMode": "وضع نمط الانغمار",
+      "screenshot": "اخذ صورة للشاشة",
+      "settings": "إعدادات",
+      "toggleGlobalMessage": "وضع المحادثة العامة",
+      "chat": {
+        "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في المحادثة العامة",
+        "clearChat": "مسح تاريخ المحادثة"
+      },
+      "parties": {
+        "createParty": "إنشاء حفلة",
+        "disbandParty": "تفكيك الحفلة"
+      },
+      "events": "الرحلات الاستكشافية",
+      "rankings": "المراتب",
+      "nexus": "(Nexus) الرجوع إلى النكسس"
+    }
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki (يومي نيكي)",
+      "2kki": "Yume 2kki (يومي تووكي)",
+      "flow": ".flow (دوت فلو)",
+      "prayers": "Answered Prayers (دعوات مستجابة)",
+      "deepdreams": "Deep Dreams (احلام عميقة)",
+      "someday": "Someday (يوما ما)",
+      "amillusion": "Amillusion (الوهم)",
+      "unevendream": "Uneven Dream (حلم منقسم)",
+      "braingirl": "Braingirl (برين جيرل)",
+      "muma": "Muma|Rope (حبل|موما)"
+    },
+    "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
+    "io": {
+      "common": {
+        "failedSlotInput": "الموضع المقدم غير صالح: الرجاء إدخال رقم موضع ملف الحفظ من 1 إلى 15"
+      },
+      "upload": {
+        "slotInput": "أدخل رقم موضع ملف الحفظ للتحميل إلى (من 1 إلى 15)",
+        "invalidSaveFile": "(.lsd الرجاء تحديد ملف حفظ صحيح (نمط"
+      },
+      "download": {
+        "slotInput": "أدخل رقم موضع ملف الحفظ للتحميل إلى (من 1 إلى 15)",
+        "emptySlot": "أُووبس! يبدو أن ملف الحفظ للموضع المختار فارغ"
+      }
+    },
+    "connStatus": {
+      "0": "غير متصل",
+      "1": "متصل",
+      "2": "...محاولة الاتصال",
+      "3": "لاعب واحد"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "...جاري الاستعلام عن الموقع",
+      "unknownLocation": "موقع غير معروف",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "لاعب متصل {COUNT}",
+      "plural": "لاعبين متصلين {COUNT}"
+    },
+    "playersInMap": {
+      "singular": "لاعب في الخريطة {COUNT}",
+      "plural": "لاعبون في الخريطة {COUNT}"
+    },
+    "playerList": {
+      "unnamed": "لاعب غير مسمى",
+      "actions": {
+        "partyKick": "حذف اللاعب من الحفلة",
+        "transferPartyOwner": "ترقية اللاعب إلى قائد الحفلة"
+      }
+    },
+    "roles": {
+      "mod": "مشرف",
+      "dev": "مطور"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "{PLAYER} منع",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد منع",
+          "success": ".{PLAYER} تم منع"
+        },
+        "unban": {
+          "label": "{PLAYER} ازالة منع",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة منع",
+          "success": ".{PLAYER} تم ازالة منع"
+        },
+        "mute": {
+          "label": "{PLAYER} كتم",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد كتم",
+          "success": ".{PLAYER} تم كتم"
+        },
+        "unmute": {
+          "label": "{PLAYER} ازالة كتم",
+          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة كتم",
+          "success": ".{PLAYER} تم ازالة كتم"
+        },
+        "grantBadge": {
+          "label": "منح شارة",
+          "prompt": "{PLAYER} أدخل معرف الشارة لمنحها للاعب",
+          "success": ".{PLAYER} إلى الاعب {BADGE} تم منح شارة",
+          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
+        },
+        "revokeBadge": {
+          "label": "ازالة شارة",
+          "prompt": "{PLAYER} أدخل معرف الشارة لإزالتها للاعب",
+          "success": ".{PLAYER} إلى الاعب {BADGE} تم ازالة شارة",
+          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": ".اسم المستخدم أو كلمة السر غير صحيحة"
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": ".كلمات السر المحددة لا تتطابق",
+          "invalidCredentials": ".اسم المستخدم أو كلمة المرور المحددة فارغة أو تحتوي على أحرف غير صالحة",
+          "emailTaken": ".عنوان البريد الإلكتروني المحدد قيد الاستخدام بالفعل",
+          "usernameTaken": ".اسم المستخدم المحدد قيد الاستخدام بالفعل"
+        }
+      }
+    },
+    "parties": {
+      "emptyMessage": ".لا يوجد حاليا أي حفلات نشطة",
+      "yourParty": "حفلتك",
+      "defaultPartyName": "{OWNER} حفلة",
+      "partyOwner": "قائد الحفلة",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "{COUNT} - متصل",
+      "offlineCount": "{COUNT} - غير متصل}",
+      "actions": {
+        "viewPartyDetails": "عرض تفاصيل الحفلة",
+        "joinParty": "الإنضمام إلى الحفلة",
+        "joinPrivateParty": "الانضمام إلى الحفلة الخاصة",
+        "leaveParty": "الخروج من الحفلة"
+      }
+    },
+    "chatTips": {
+      "template": "{CONTENT} :نصيحة",
+      "tips": {
+        "backupReminder": "!يقترح بالاحتفاظ بنسخة احتياطية محلية من تقدمك عن طريق تنزيل ملف الحفظ بانتظام. بهذه الطريقة ، إذا تم مسح بيانات متصفحك ، فلن تفقد تقدمك",
+        "menuTheme": "!يعتمد لون اسمك ونمط قائمة اللاعبين على نمط القائمة داخل اللعبة",
+        "playersInMap": ".يمكنك التبديل بين عدد اللاعبين المتصلين وعدد اللاعبين في خريطتك بالنقر فوق المربع",
+        "globalChatLocation": ".يمكنك عرض الموقع الذي تم إرسال رسالة عامة منه عن طريق التمرير بالماوس فوقه أو النقر فوق رمز الكرة الأرضية الموجود على يسار الرسالة. سيعرض أيضًا أو يخفي مواقع الرسائل العامة المستقبلية بناءً على آخر عرض أو إخفاء",
+        "markdownSupport": ". **bold** (\\*\\*text\\*\\*) و ، *italic* (\\*text\\*, \\_text\\_)، __underline__ (\\_\\_text\\_\\_)، ~~strikethrough~~ (\\~\\~text\\~\\~)، ||spoiler|| (\\|\\|text\\|\\|) :يدعم الحديث تنسيق النص عن طريق التفاف النص في رموز معينة. المدعومة حاليًا هي",
+        "tabToChat": ".(للتحدث Tab للتبديل بين اللعبة والمحادثة. يمكن تعطيل هذه الميزة في إعدادات الحديث ضمن (اضغط على Tab إذا كنت تلعب على جهاز كمبيوتر ، فيمكنك الضغط على مفتاح",
+        "chatTabNotifications": ".عندما تكون في فئة نقاش غير (الكل) ، إذا تم إرسال رسالة جديدة في الفئة المصفاة الأخرى ، فسيتم إضافة خط غامق إلى تصنيف الفئة لإعلامك",
+        "clearChat": ".عند النقر فوق زر مسح الحديث في الجزء العلوي الأيمن من مربع الحديث ، إذا لم تكن حاليًا في فئة (الكل) ، فسيؤدي ذلك فقط إلى إزالة الرسائل الخاصة بفئة الحديث الحالية التي أنت فيها.",
+        "chatHistoryLimit": ".إذا كان سجل حديثك طويلًا جدًا ، فقد تواجه مشكلات في الأداء على الموقع. في إعدادات الحديث ، يمكنك تحديد سجل المحادثات الخاص بك وفقًا لذلك لتجنب هذه المشكلات دون الحاجة إلى مسح حديثك يدويًا",
+        "parties": ".تعتبر الحفلات طريقة رائعة للبقاء مع الأشخاص في أي مغامرة. يمكنك رؤية مواقع أعضاء مجموعتك والتحدث معهم في محادثة خاصة",
+        "immersionMode": "!إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
+        "openSource": "https://github.com/ynoproject/ مفتوح المصدر ومستودعات الكود متاحة على YNOproject"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": ".هل تريد تشغيل مزامنة حفظ الملفات؟ سيتم تحميل بياناتك من موضع مزامنة ملف الحفظ وستتمكن من الوصول إليها من هذا الحساب على أي جهاز أو متصفح تم تشغيل هذه الميزة به. أثناء التشغيل ، سيتم تحديث بيانات موضع مزامنة ملف الحفظ المحددة تلقائيًا عند تحميل الصفحة",
+      "confirmEnableWithData": "تم العثور على بيانات مزامنة ملف الحفظ السابقة لهذا الحساب. سيتم استبدال الحفظ المخزن في موضع مزامنة ملف الحفظ  ببيانات ملف الحفظ الجديدة في حالة وجود نسخة أحدث في نفس الموضع. يرجى ملاحظة أن هذا لن يسري إلا عند إعادة تحميل الصفحة مع تاكيد تشغيل هذه الميزة. هل أنت متأكد أنك تريد تشغيله؟"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": ".تم تحديث الموقع، أعد تحميل الصفحة للحصول على أحدث التغييرات",
+        "error": ".Inspect اوانقر بزر الماوس الأيمن ثم اضغط على F12 عفوًا! يبدو أنه حدث خطأ ما. راجع وحدة تحكم المتصفح للحصول على التفاصيل. لفتح وحدة التحكم ، اضغط على",
+        "floodDetected": ".تم اكتشاف هجوم فيضان محتمل: التبديل إلى وضع اللاعب الفردي"
+      },
+      "account": {
+        "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
+        "loggedOut": ".لقد قمت بتسجيل الخروج"
+      },
+      "parties": {
+        "create": ".{PARTY} تم إنشاء الحفلة",
+        "update": ".{PARTY} تم تحديث الحفلة",
+        "join": ".{PARTY} تم الانضمام إلى الحفلة",
+        "leave": ".{PARTY} تم الخروج من الحفلة",
+        "remove": ".{PARTY} تم حذفك من الحفلة",
+        "disband": ".{PARTY} تم تفكيك الحفلة",
+        "playerJoin": ".إلى الحفلة {PLAYER} إنضم اللاعب",
+        "playerLeave": ".من الحفلة {PLAYER} خرج اللاعب",
+        "playerOnline": ".متصل {PLAYER} عضو الحفلة",
+        "playerOffline": ".غير متصل {PLAYER} عضو الحفلة",
+        "kickPlayer": ".من الحفلة {PLAYER} تم الحذف اللاعب",
+        "transferPartyOwner": ".إلى قائد الحفلة {PLAYER} تم ترقية اللاعب"
+      },
+      "events": {
+        "complete": "!اكتملت الرحلة الاستكشافية\n .{EXP} تم منحك ،{LOCATION} لزيارة ",
+        "freeComplete": ".{LOCATION} اكتملت الرحلة الاستكشافية! لقد زرت",
+        "vmComplete": "!تم العثور على آلة البيع \n.{EXP} لقد حصلت على",
+        "listUpdated": ".تم تحديث قائمة الرحلات الاستكشافية"
+      },
+      "badges": {
+        "badgeUnlocked": "!لقد حصلت على شارة جديدة"
+      },
+      "saveSync": {
+        "saveUploading": "...{SLOT} يتم تحميل ملف الحفظ من موضع",
+        "saveUploaded": ".بنجاح {SLOT} تم تحميل ملف الحفظ من موضع",
+        "saveDownloading": "...{SLOT} يتم تحديث ملف الحفظ من موضع",
+        "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
+        "saveUpToDate": ".تم تحديث ملف الحفظ",
+        "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك"
+      }
+    },
+    "events": {
+      "exp": "{POINTS} :نقاط الرحلات الاستكشافية",
+      "expRank": "{RANK}:المرتبة",
+      "period": "{ORDINAL} :موسم",
+      "periodEnds": "{DATE} :ينتهي",
+      "current": "الحالي",
+      "shortcut": "يمكن الوصول إليها عبر طريق مختصر قابل للفتح",
+      "availableUntilDate": "متاح حتى\n{DATE}",
+      "types": {
+        "-1": "رحلة استكشافية مجانية",
+        "0": "يومي",
+        "1": "أسبوعي",
+        "2": "نهاية الاسبوع",
+        "3": "خاص"
+      },
+      "expRanks": {
+        "0": "مبتدئ",
+        "1": "متوسط",
+        "2": "برونزي",
+        "3": "فضي",
+        "4": "ذهبي",
+        "5": "بلاتيني",
+        "6": "الماسي"
+      }
+    },
+    "badges": {
+      "null": "لا شارة",
+      "badgeTitle": "{BP} نقات الشارات - {TITLE}",
+      "locked": "؟؟؟",
+      "location": "&nbsp;:الموقع",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "من اللاعبين لديهم هذه الشارة {PERCENT}%",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "{ARTIST} رسم الفنان/ة"
+    },
+    "badgeGallery": {
+      "label": "{PLAYER} معرض شارات",
+      "loading": "...جاري التحميل",
+      "bp": "نقات الشارات {BP}",
+      "count": "شارات {COUNT}"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "شارات",
+          "valueLabel": "من الشارات #",
+          "value": "{NUMBER}" 
+        },
+        "bp": {
+          "label": "(نقات الشارات)",
+          "valueLabel": "نقات الشارات",
+          "value": "نقات الشارات {NUMBER}"
+        },
+        "exp": {
+          "label": "نقاط الرحلات الاستكشافية",
+          "valueLabel": "نقاط الرحلات الاستكشافية",
+          "value": "نقاط الرحلات الاستكشافية {NUMBER}"
+        },
+        "eventLocationCount": {
+          "label": "الرحلاات الاستكشافية",
+          "valueLabel": "من الرحلاات الاستكشافية #",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "الرحلاات الاستكشافية المجانية",
+          "valueLabel": "من الرحلاات الاستكشافية #",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "إكمال الرحلة الاستكشافية",
+          "valueLabel": "إكمال",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "مكتشف آلة البيع",
+          "valueLabel": "من آلات البيع #",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "تحديات الوقت",
+          "valueLabel": "وقت الانتهاء",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "العاب صغيرة",
+          "valueLabel": "نقاط",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "الكل",
+        "2": "(all effects) جميع التأثيرات",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - EX نسخة",
+        "fuji_ex": "FUJI EX"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "Yume 2kki Explorer عرض في",
+        "multi": "Yume 2kki Explorer في {LOCATION} عرد"
+      }
+    }
+  }
+}
