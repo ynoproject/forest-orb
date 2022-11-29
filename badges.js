@@ -140,10 +140,10 @@ function initBadgeControls() {
           }
           badgeModalContent.appendChild(item);
         }
+        updateBadgeVisibility();
         removeLoader(document.getElementById('badgesModal'));
       });
     };
-    updateBadgeVisibility();
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
