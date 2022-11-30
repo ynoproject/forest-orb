@@ -228,6 +228,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntry.appendChild(playerListEntryMain);
 
     playerListEntryMedals.classList.add('playerListEntryMedals');
+    playerListEntryMedals.classList.add('medalsContainer');
 
     playerListEntry.appendChild(playerListEntryMedals);
 
@@ -316,6 +317,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       for (let m = 0; m < player.medals[t]; m++) {
         const medalImg = document.createElement('img');
         medalImg.classList.add('playerListEntryMedal');
+        medalImg.classList.add('medal');
         medalImg.src = imgSrc;
         playerListEntryMedals.prepend(medalImg);
         if (++medalCount >= 5)

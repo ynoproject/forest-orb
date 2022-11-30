@@ -1106,6 +1106,25 @@ body.fullBg #background {
   cursor: pointer;
 }
 
+.medalsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  max-width: 40px;
+  padding: 0 8px;
+}
+
+.medalsContainer.hidden {
+  display: none;
+}
+
+.medal {
+  height: 16px;
+  margin-left: -8px;
+}
+
 .listEntry {
   display: flex;
   justify-content: space-between;
@@ -1128,25 +1147,6 @@ body.fullBg #background {
   justify-content: space-between;
   align-items: center;
   margin-right: auto;
-}
-
-.playerListEntryMedals {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  max-width: 40px;
-  padding: 0 8px;
-}
-
-.playerListEntryMedals.hidden {
-  display: none;
-}
-
-.playerListEntryMedals > .playerListEntryMedal {
-  height: 16px;
-  margin-left: -8px;
 }
 
 .playerListEntryBadge {
@@ -2249,12 +2249,18 @@ form .uiTheme {
 }
 
 #rankingsTable th:nth-child(2), #rankingsTable td:nth-child(2) {
+  display: flex;
   width: 100%;
   padding-left: 4px;
 }
 
 #rankingsTable tr.highlight td {
   background-color: var(--alt-color-t);
+}
+
+#rankingsTable tr td .medalsContainer {
+  justify-content: right;
+  padding-right: 16px;
 }
 
 #rankingsPagination {

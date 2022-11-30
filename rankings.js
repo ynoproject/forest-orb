@@ -320,6 +320,30 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
             }
           }
 
+          if (ranking.medals) {
+            const medalsContainer = document.createElement('div');
+            medalsContainer.classList.add('medalsContainer');
+
+            let medalCount = 0;
+            for (let t = medalTypes.length - 1; t >= 0; t--) {
+              const imgSrc = `images/medal_${medalTypes[t].toLowerCase()}.png`;
+              for (let m = 0; m < ranking.medals[t]; m++) {
+                const medalImg = document.createElement('img');
+                medalImg.classList.add('medal');
+                medalImg.src = imgSrc;
+                medalsContainer.prepend(medalImg);
+                if (++medalCount >= 5)
+                  break;
+              }
+              if (medalCount >= 5)
+                break;
+            }
+        
+            medalsContainer.style.minWidth = `${Math.max(medalCount << 3, 16)}px`;
+
+            playerCell.appendChild(medalsContainer);
+          }
+
           const valueCell = document.createElement('td');
           valueCell.innerHTML = getInfoLabel(valueFunc(ranking));
 
