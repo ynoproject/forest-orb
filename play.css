@@ -2254,6 +2254,10 @@ form .uiTheme {
   padding-left: 4px;
 }
 
+#rankingsTable td:nth-child(2) {
+  justify-content: space-between;
+}
+
 #rankingsTable tr.highlight td {
   background-color: var(--alt-color-t);
 }
