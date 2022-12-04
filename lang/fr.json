@@ -27,7 +27,7 @@
       }
     },
     "chatbox": {
-      "location": "Lieu:",
+      "location": "Lieu :",
       "immersionMode": "Mode Immersion",
       "tab": {
         "chat": "Chat",
@@ -95,7 +95,7 @@
             "values": {
               "private": "Privé",
               "friends": "Amis",
-              "public": "Publique"
+              "public": "Public"
             }
           },
           "toggleNametags": "Afficher les Noms",
@@ -159,14 +159,14 @@
           "account": {
             "label": "Compte",
             "fields": {
-              "loggedIn": "Connecté",
-              "loggedOut": "Déconnecté"
+              "loggedIn": "Connecté(e)",
+              "loggedOut": "Déconnecté(e)"
             }
           },
           "parties": {
             "label": "Groupes",
             "fields": {
-              "create": "Le Groupe à été créé",
+              "create": "Le Groupe a été créé",
               "update": "Groupe mis à jour",
               "join": "Rejoindre le groupe",
               "leave": "Quitter le groupe",
@@ -216,7 +216,7 @@
           "saveSyncSlotId": {
             "label": "Emplacement de la sauvegarde synchronisée",
             "values": {
-              "0": "Aucune"
+              "0": "Aucun"
             }
           },
           "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
@@ -227,14 +227,14 @@
         "manageBadgeGallery": "Gérer la galerie des badges",
         "fields": {
           "unlockStatus": {
-            "label": "Statut d'obtention:&nbsp;",
+            "label": "Statut d'obtention :&nbsp;",
             "values": {
               "all": "Tous",
-              "0": "Bloqué(s)",
-              "1": "Débloqué(s)"
+              "0": "Bloqués",
+              "1": "Débloqués"
             }
           },
-          "search": "Rechercher:&nbsp;"
+          "search": "Rechercher :&nbsp;"
         }
       },
       "badgeGallery": {
@@ -254,7 +254,7 @@
         "fields": {
           "partyName": "Nom du Groupe",
           "description": "Description",
-          "public": "Publique",
+          "public": "Public",
           "password": "Mot de passe",
           "theme": "Thème"
         },
@@ -327,7 +327,7 @@
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "io": {
       "common": {
-        "failedSlotInput": "L'emplacement fourni n'est pas valide&nbsp;: entrez un numéro d'emplacement de sauvegarde entre 1 et 15."
+        "failedSlotInput": "L'emplacement fourni n'est pas valide : veuillez entrer un numéro d'emplacement de sauvegarde entre 1 et 15."
       },
       "upload": {
         "slotInput": "Entrez le numéro de l'emplacement de sauvegarde dans lequel placer le fichier (de 1 à 15).",
@@ -402,7 +402,7 @@
         "grantBadge": {
           "label": "Donner un Badge",
           "prompt": "Entrez l'ID du badge à donner à {PLAYER}",
-          "success": "{BADGE} à été donné à {PLAYER} avec succès.",
+          "success": "{BADGE} a été donné à {PLAYER} avec succès.",
           "fail": "Aucun badge avec cet ID n'a été trouvé."
         },
         "revokeBadge": {
@@ -439,7 +439,7 @@
       "actions": {
         "viewPartyDetails": "Voir les détails du groupe",
         "joinParty": "Rejoindre le groupe",
-        "joinPrivateParty": "Rejoindre un groupe privé",
+        "joinPrivateParty": "Rejoindre le groupe privé",
         "leaveParty": "Quitter le groupe"
       }
     },
@@ -453,7 +453,7 @@
         "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
         "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche tab pour basculer entre le jeu et la saisie dans le chat. Cette fonctionnalité peut être désactivée dans les Paramètres du Chat avec l'option 'Appuyez sur Tab pour discuter'.",
         "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
-        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la chat box, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
+        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la boîte de chat, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
         "chatHistoryLimit": "Si votre historique de chat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Chat, vous pouvez limiter votre historique de chat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre chat.",
         "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
@@ -461,14 +461,14 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisé seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
+      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
       "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
     },
     "toast": {
       "system": {
         "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour les nouvelles fonctionnalités.",
-        "error": "Oups ! On dirait que quelque chose s'est mal passée. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
-        "floodDetected": "Possible attaque spam détectée: Vous jouez maintenant en mode de jeu solo."
+        "error": "Oups ! On dirait que quelque chose s'est mal passé. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
+        "floodDetected": "Possible attaque spam détectée : Vous jouez maintenant en mode de jeu solo."
       },
       "account": {
         "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",
@@ -489,9 +489,9 @@
         "transferPartyOwner": "{PLAYER} est maintenant le chef du groupe."
       },
       "events": {
-        "complete": "Expédition terminée !\nPour avoir visité(e) {LOCATION}, vous avez gagné(e) {EXP}.",
-        "freeComplete": "Expédition terminée ! Vous avez visité(e) {LOCATION}.",
-        "vmComplete": "Distributeur automatique trouvé !\nVous avez gagné(e) {EXP}.",
+        "complete": "Expédition terminée !\nPour avoir visité {LOCATION}, vous avez gagné {EXP}.",
+        "freeComplete": "Expédition terminée ! Vous avez visité {LOCATION}.",
+        "vmComplete": "Distributeur automatique trouvé !\nVous avez gagné {EXP}.",
         "listUpdated": "La liste d'expédition a été mise a jour."
       },
       "badges": {
@@ -508,15 +508,15 @@
     },
     "events": {
       "exp": "{POINTS} EXP",
-      "expRank": "Rang: {RANK}",
+      "expRank": "Rang : {RANK}",
       "period": "Saison {ORDINAL}",
-      "periodEnds": "Finis le {DATE}",
+      "periodEnds": "Termine le {DATE}",
       "current": "Actuel",
       "shortcut": "Peut être atteint via un raccourci à débloquer",
       "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
         "-1": "Expédition libre",
-        "0": "Quotidiennement",
+        "0": "Quotidien",
         "1": "Hebdomadaire",
         "2": "Week-end",
         "3": "Spécial"
@@ -525,7 +525,7 @@
         "0": "Novice",
         "1": "Intermédiaire",
         "2": "Bronze",
-        "3": "Argenté",
+        "3": "Argent",
         "4": "Or",
         "5": "Platine",
         "6": "Diamant"
@@ -535,9 +535,9 @@
       "null": "Pas de badge",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
-      "location": "Lieu:&nbsp;",
+      "location": "Lieu :&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% de joueurs ont ce badge",
+      "percentUnlocked": "{PERCENT}% des joueurs ont ce badge",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art par {ARTIST}"
     },
@@ -585,7 +585,7 @@
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Course contre-la-montre",
+          "label": "Contre-la-montre",
           "valueLabel": "Temps",
           "value": "{MINUTES}:{SECONDS}"
         },
