@@ -670,6 +670,11 @@ document.getElementById('nametagButton').onclick = () => {
     Module._ToggleNametags();
 };
 
+document.getElementById('newNametagsButton').onclick = () => {
+  if (Module.INITIALIZED)
+    Module._ToggleNewNametags();
+};
+
 document.getElementById('playerSoundsButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._TogglePlayerSounds();
