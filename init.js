@@ -440,6 +440,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       preToggle(document.getElementById('nametagButton'));
                     break;
+                  case 'newNametags':
+                    if (value)
+                      preToggle(document.getElementById('newNametagsButton'));
+                    break;
                   case 'disablePlayerSounds':
                     if (value)
                       preToggle(document.getElementById('playerSoundsButton'));

@@ -99,6 +99,7 @@
             }
           },
           "toggleNametags": "Torna visível as Nametags",
+          "toggleNewNametags": "Full Nametags",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",

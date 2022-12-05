@@ -415,6 +415,12 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label for="newNametagsButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNewNametags">Full Nametags</label>
+                <div>
+                  <button id="newNametagsButton" class="checkboxButton unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label for="playerSoundsButton" class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds</label>
                 <div>
                   <button id="playerSoundsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>

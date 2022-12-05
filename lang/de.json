@@ -99,6 +99,7 @@
             }
           },
           "toggleNametags": "Namen an/aus",
+          "toggleNewNametags": "Full Nametags",
           "togglePlayerSounds": "Player Sounds",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",

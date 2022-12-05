@@ -39,6 +39,7 @@ let config = {
   singlePlayer: false,
   disableChat: false,
   disableNametags: false,
+  newNametags: false,
   disablePlayerSounds: false,
   immersionMode: false,
   chatTabIndex: 0,
@@ -399,6 +400,10 @@ function onReceiveInputFeedback(inputId) {
       case 3:
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
+        break;
+      case 4:
+        buttonElement = document.getElementById('newNametagsButton');
+        configKey = 'newNametags';
         break;
       case 5:
         buttonElement = document.getElementById('floodProtectionButton');

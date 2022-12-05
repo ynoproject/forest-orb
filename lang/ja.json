@@ -99,6 +99,7 @@
             }
           },
           "toggleNametags": "プレイヤー 名表示",
+          "toggleNewNametags": "Full Nametags",
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
