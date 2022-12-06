@@ -44,7 +44,7 @@
         "nickname": {
           "header": "设置一个昵称即可开始和大家聊天！",
           "rule": {
-            "maxLength": "※长度限12个字符",
+            "maxLength": "※长度限10个字符",
             "alphanumeric": "※仅可使用英文字母和数字，暂不支持特殊符号"
           }
         }

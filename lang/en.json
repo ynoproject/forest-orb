@@ -44,7 +44,7 @@
         "nickname": {
           "header": "You must set a nickname before you can chat.",
           "rule": {
-            "maxLength": "* Maximum 12 characters",
+            "maxLength": "* Maximum 10 characters",
             "alphanumeric": "* Alphanumeric characters only"
           }
         }

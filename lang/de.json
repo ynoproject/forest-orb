@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Du musst einen Chat-Namen angeben um zu chatten.",
           "rule": {
-            "maxLength": "* Maximal 12 Zeichen",
+            "maxLength": "* Maximal 10 Zeichen",
             "alphanumeric": "* Nur Alphanumerische Zeichen"
           }
         }

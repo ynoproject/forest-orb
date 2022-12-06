@@ -44,7 +44,7 @@
         "nickname": {
           "header": "채팅을 시작하기 전에 닉네임을 반드시 설정해주세요",
           "rule": {
-            "maxLength": "* 최대 12자까지 가능합니다",
+            "maxLength": "* 최대 10자까지 가능합니다",
             "alphanumeric": "* 알파벳 문자만 가능합니다"
           }
         }

@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Defina seu nickname antes de acessar o bate papo.",
           "rule": {
-            "maxLength": "* 12 caracteres no máximo",
+            "maxLength": "* 10 caracteres no máximo",
             "alphanumeric": "* Apenas caracteres alfanuméricos"
           }
         }

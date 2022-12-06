@@ -307,7 +307,7 @@
               </small>
             </span>
             <form id="enterNameForm" action="javascript:chatNameCheck()">
-              <input id="nameInput" type="text" autocomplete="off" maxlength="12" />
+              <input id="nameInput" type="text" autocomplete="off" maxlength="10" />
             </form>
           </div>
         </div>

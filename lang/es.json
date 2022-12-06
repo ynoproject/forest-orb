@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Debes seleccionar un apodo antes de usar el chat.",
           "rule": {
-            "maxLength": "* Máximo de 12 caracteres",
+            "maxLength": "* Máximo de 10 caracteres",
             "alphanumeric": "* Solo caracteres alfanuméricos"
           }
         }

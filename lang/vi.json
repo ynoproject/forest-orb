@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Bạn cần đặt tên để sử dụng tính năng chat.",
           "rule": {
-            "maxLength": "* Tối đa 12 chữ cái",
+            "maxLength": "* Tối đa 10 chữ cái",
             "alphanumeric": "* Chỉ bao gồm chữ cái và số"
           }
         }

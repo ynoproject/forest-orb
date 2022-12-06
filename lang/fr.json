@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Choisissez un pseudonyme pour pouvoir discuter.",
           "rule": {
-            "maxLength": "* Maximum 12 caractères",
+            "maxLength": "* Maximum 10 caractères",
             "alphanumeric": "* Caractères alphanumériques uniquement"
           }
         }
