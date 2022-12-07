@@ -13,6 +13,7 @@ const gameDefaultSprite = {
   'braingirl': 'mikan2',
   'deepdreams': 'main',
   'flow': 'sabituki',
+  'genie': 'syujinkou1',
   'muma': 'muma1',
   'prayers': 'Flourette',
   'someday': 'itsuki1',

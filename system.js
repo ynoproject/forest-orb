@@ -95,6 +95,11 @@ const gameUiThemes = {
     'system rust',
     'systemsmile'
   ],
+  'genie': [
+    'system_Negtive',
+    'system_Home',
+    'system_Springs'
+  ],
   'muma': [
     'SYSTEM'
   ],
@@ -132,6 +137,7 @@ const gameFullBgUiThemes = {
   'braingirl': [],
   'deepdreams': [],
   'flow': [],
+  'genie': [],
   'muma': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'someday': [],
