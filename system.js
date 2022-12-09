@@ -149,6 +149,7 @@ const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
   'braingirl': 'color',
   'deepdreams': 'soft-light',
+  'genie': 'color',
   'someday': 'hard-light',
   'unevendream': 'color'
 };
