@@ -2125,11 +2125,11 @@ form .uiTheme {
 }
 
 #badgeGalleryRowProgressBar {
-  width: calc((var(--row-level-bp) / var(--row-level-total-bp)) * 100%);
+  width: calc(min((var(--row-level-bp) / var(--row-level-total-bp)) * 100%, 100%));
 }
 
 #badgeGalleryColProgressBar {
-  width: calc((var(--col-level-bc) / var(--col-level-total-bc)) * 100%);
+  width: calc(min((var(--col-level-bc) / var(--col-level-total-bc)) * 100%, 100%));
 }
 
 .eventList {

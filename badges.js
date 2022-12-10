@@ -14,32 +14,44 @@ let localizedBadgesIgnoreUpdateTimer = null;
 
 const badgeGalleryRowBpLevels = [
   {
-    bp: 1000,
+    bp: 500,
     count: 1
   },
   {
-    bp: 2500,
+    bp: 1500,
     count: 2
   },
   {
-    bp: 5000,
+    bp: 3000,
     count: 3
   },
   {
-    bp: 10000,
+    bp: 5000,
     count: 4
   },
   {
-    bp: 17500,
+    bp: 7500,
     count: 5
   },
   {
-    bp: 30000,
+    bp: 10000,
     count: 6
   },
   {
-    bp: 0,
+    bp: 15000,
     count: 7
+  },
+  {
+    bp: 25000,
+    count: 8
+  },
+  {
+    bp: 50000,
+    count: 9
+  },
+  {
+    bp: 0,
+    count: 10
   }
 ];
 const badgeGalleryColBcLevels = [
