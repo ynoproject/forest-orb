@@ -18,15 +18,15 @@ const badgeGalleryRowBpLevels = [
     count: 1
   },
   {
-    bp: 1500,
+    bp: 1000,
     count: 2
   },
   {
-    bp: 3000,
+    bp: 2000,
     count: 3
   },
   {
-    bp: 5000,
+    bp: 4000,
     count: 4
   },
   {
@@ -34,15 +34,15 @@ const badgeGalleryRowBpLevels = [
     count: 5
   },
   {
-    bp: 10000,
+    bp: 12500,
     count: 6
   },
   {
-    bp: 15000,
+    bp: 20000,
     count: 7
   },
   {
-    bp: 25000,
+    bp: 30000,
     count: 8
   },
   {
