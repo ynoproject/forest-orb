@@ -99,7 +99,7 @@
             }
           },
           "toggleNametags": "Ники",
-          "toggleNewNametags": "Full Nametags",
+          "toggleNewNametags": "Не сокращать имена пользователей",
           "togglePlayerSounds": "Звуки игроков",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
