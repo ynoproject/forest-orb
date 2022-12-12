@@ -47,6 +47,7 @@ const gameUiThemes = {
     'Kon_sys_6',
     'RioSystem5',
     'system_GBlike',
+    'horatsuki sys1',
     'system_E_eye',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon',
