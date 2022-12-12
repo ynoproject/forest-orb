@@ -9,7 +9,7 @@ const MESSAGE_TYPE = {
   PARTY: 3
 };
 
-function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr, x, y) {
+function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -242,22 +242,24 @@ function chatboxAddMessage(msg, type, player, mapId, prevMapId, prevLocationsStr
   const globalChat = chatbox.classList.contains("globalChat");
   const partyChat = chatbox.classList.contains("partyChat");
 
-  if ((globalChat || partyChat) && (system || map))
-    document.getElementById("chatTabMap").classList.add("unread");
-  else if ((mapChat || partyChat) && global)
-    document.getElementById("chatTabGlobal").classList.add("unread");
-  else if ((mapChat || globalChat) && party)
-    document.getElementById("chatTabParty").classList.add("unread");
-  else if (!system && !document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
-    const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
-    const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
-    if (unreadMessageCountContainer.classList.contains("hidden")) {
-      unreadMessageCountLabel.textContent = "0";
-      unreadMessageCountContainer.classList.remove("hidden");
+  if (!ignoreNotify) {
+    if ((globalChat || partyChat) && (system || map))
+      document.getElementById("chatTabMap").classList.add("unread");
+    else if ((mapChat || partyChat) && global)
+      document.getElementById("chatTabGlobal").classList.add("unread");
+    else if ((mapChat || globalChat) && party)
+      document.getElementById("chatTabParty").classList.add("unread");
+    else if (!system && !document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
+      const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
+      const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
+      if (unreadMessageCountContainer.classList.contains("hidden")) {
+        unreadMessageCountLabel.textContent = "0";
+        unreadMessageCountContainer.classList.remove("hidden");
+      }
+      let unreadMessageCount = parseInt(unreadMessageCountLabel.textContent);
+      if (!unreadMessageCount || unreadMessageCount < 9)
+        unreadMessageCountLabel.textContent = ++unreadMessageCount < 9 ? unreadMessageCount : `${unreadMessageCount}+`;
     }
-    let unreadMessageCount = parseInt(unreadMessageCountLabel.textContent);
-    if (!unreadMessageCount || unreadMessageCount < 9)
-      unreadMessageCountLabel.textContent = ++unreadMessageCount < 9 ? unreadMessageCount : `${unreadMessageCount}+`;
   }
 
   let tabMessagesLimit;
@@ -356,7 +358,7 @@ function addChatTip() {
   if (++globalConfig.chatTipIndex >= Object.keys(tips).length)
     globalConfig.chatTipIndex = 0;
   const tipIndex = globalConfig.chatTipIndex;
-  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])));
+  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])), null, null, true);
   updateConfig(globalConfig, true);
 }
 
@@ -386,7 +388,7 @@ function addChatMapLocation(locations) {
   if (lastLocMessage && new DOMParser().parseFromString(locationHtml, "text/html").documentElement.textContent === lastLocMessage.innerText)
     return;
 
-  const locMessage = chatboxAddMessage(locationHtml);
+  const locMessage = chatboxAddMessage(locationHtml, null, null, true);
   if (locMessage) {
     locMessage.classList.add("locMessage");
     locMessage.classList.add("map");
@@ -503,14 +505,6 @@ function onChatMessageReceived(msg, id) {
   chatboxAddMessage(msg, MESSAGE_TYPE.MAP, playerUuids[id]);
 }
 
-// EXTERNAL
-function onGChatMessageReceived(uuid, mapId, prevMapId, prevLocationsStr, x, y, msg) {
-}
-
-// EXTERNAL
-function onPChatMessageReceived(uuid, msg) {
-}
-
 (function () {
   addSessionCommandHandler('gsay', args => {
     const uuid = args[0];
@@ -520,7 +514,7 @@ function onPChatMessageReceived(uuid, msg) {
     const x = parseInt(args[4]);
     const y = parseInt(args[5]);
     const msg = args[6];
-    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, mapId, prevMapId, prevLocationsStr, x, y);
+    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, false, mapId, prevMapId, prevLocationsStr, x, y);
   });
 
   addSessionCommandHandler('psay', args => {
@@ -529,11 +523,11 @@ function onPChatMessageReceived(uuid, msg) {
     
     let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
     if (partyMember)
-      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
     else {
       updateJoinedParty(() => {
         partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
-        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
       });
     }
   });
