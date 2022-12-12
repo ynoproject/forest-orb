@@ -14,7 +14,7 @@ let localizedBadgesIgnoreUpdateTimer = null;
 
 const badgeGalleryRowBpLevels = [
   {
-    bp: 500,
+    bp: 300,
     count: 1
   },
   {
