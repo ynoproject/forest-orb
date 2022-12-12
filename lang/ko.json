@@ -98,8 +98,15 @@
               "public": "전체 공개"
             }
           },
-          "toggleNametags": "다른 플레이어의 이름표 표시",
-          "toggleNewNametags": "Full Nametags",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",

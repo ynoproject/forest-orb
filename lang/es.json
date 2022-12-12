@@ -98,8 +98,15 @@
               "public": "Público"
             }
           },
-          "toggleNametags": "Nombres de Jugadores",
-          "toggleNewNametags": "Full Nametags",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Clasificaciones",

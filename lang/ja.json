@@ -98,8 +98,15 @@
               "public": "全体"
             }
           },
-          "toggleNametags": "プレイヤー 名表示",
-          "toggleNewNametags": "ネームタグ 全表示",
+          "nametagMode": {
+            "label": "プレイヤー 名表示",
+            "values": {
+              "none": "なし",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",

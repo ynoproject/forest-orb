@@ -38,8 +38,7 @@ let globalConfig = {
 let config = {
   singlePlayer: false,
   disableChat: false,
-  disableNametags: false,
-  newNametags: false,
+  nametagMode: 1,
   disablePlayerSounds: false,
   immersionMode: false,
   chatTabIndex: 0,
@@ -393,19 +392,11 @@ function onReceiveInputFeedback(inputId) {
     let configKey;
     let isGlobal;
     switch (inputId) {
-      case 2:
-        buttonElement = document.getElementById('nametagButton');
-        configKey = 'disableNametags';
-        break;
-      case 3:
+      case 1:
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
         break;
-      case 4:
-        buttonElement = document.getElementById('newNametagsButton');
-        configKey = 'newNametags';
-        break;
-      case 5:
+      case 2:
         buttonElement = document.getElementById('floodProtectionButton');
         configKey = 'disableFloodProtection';
         isGlobal = true;
@@ -420,6 +411,12 @@ function onReceiveInputFeedback(inputId) {
       updateConfig(isGlobal ? globalConfig : config, isGlobal);
     }
   }
+}
+
+// EXTERNAL
+function onNametagModeUpdated(mode) {
+  config.nametagMode = mode;
+  updateConfig(config);
 }
 
 function preToggle(buttonElement) {
@@ -665,14 +662,9 @@ document.getElementById('lang').onchange = function () {
   setLang(this.value);
 };
 
-document.getElementById('nametagButton').onclick = () => {
+document.getElementById('nametagMode').onchange = function () {
   if (Module.INITIALIZED)
-    Module._ToggleNametags();
-};
-
-document.getElementById('newNametagsButton').onclick = () => {
-  if (Module.INITIALIZED)
-    Module._ToggleNewNametags();
+    Module._SetNametagMode(this.value);
 };
 
 document.getElementById('playerSoundsButton').onclick = () => {

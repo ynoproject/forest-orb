@@ -64,6 +64,7 @@ function injectScripts() {
   
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
+          Module._SetNametagMode(config.nametagMode);
           const loadingOverlay = document.getElementById('loadingOverlay');
           loadingOverlay.classList.add('loaded');
           removeLoader(loadingOverlay);
@@ -437,13 +438,8 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('chatButton').click();
                     break;
-                  case 'disableNametags':
-                    if (value)
-                      preToggle(document.getElementById('nametagButton'));
-                    break;
-                  case 'newNametags':
-                    if (value)
-                      preToggle(document.getElementById('newNametagsButton'));
+                  case 'nametagMode':
+                    document.getElementById('nametagMode').value = value;
                     break;
                   case 'disablePlayerSounds':
                     if (value)

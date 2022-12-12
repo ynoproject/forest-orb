@@ -98,8 +98,15 @@
               "public": "Public"
             }
           },
-          "toggleNametags": "Afficher les Noms",
-          "toggleNewNametags": "Afficher entièrement les Noms",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",

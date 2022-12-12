@@ -98,8 +98,15 @@
               "public": "所有人可见"
             }
           },
-          "toggleNametags": "显示玩家名称",
-          "toggleNewNametags": "Full Nametags",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "同步玩家音效",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",

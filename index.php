@@ -412,15 +412,14 @@
                 </div>
               </li>-->
               <li class="formControlRow">
-                <label for="nametagButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNametags">Nametags</label>
+                <label for="nametagMode" class="unselectable" data-i18n="[html]modal.settings.fields.nametagMode">Nametags</label>
                 <div>
-                  <button id="nametagButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
-                </div>
-              </li>
-              <li class="formControlRow">
-                <label for="newNametagsButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleNewNametags">Full Nametags</label>
-                <div>
-                  <button id="newNametagsButton" class="checkboxButton unselectable"><span></span></button>
+                  <select id="nametagMode">
+                    <option value="0" data-i18n="modal.settings.fields.nametagMode.values.none">None</option>
+                    <option value="1" data-i18n="modal.settings.fields.nametagMode.values.none">Classic</option>
+                    <option value="2" data-i18n="modal.settings.fields.nametagMode.values.compact">Compact</option>
+                    <option value="3" data-i18n="modal.settings.fields.nametagMode.values.slim">Slim</option>
+                  </select>
                 </div>
               </li>
               <li class="formControlRow">
