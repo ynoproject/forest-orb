@@ -44,7 +44,7 @@
         "nickname": {
           "header": "Bạn cần đặt tên để sử dụng tính năng chat.",
           "rule": {
-            "maxLength": "* Tối đa 10 chữ cái",
+            "maxLength": "* Tối đa 10 ký tự",
             "alphanumeric": "* Chỉ bao gồm chữ cái và số"
           }
         }
@@ -57,7 +57,7 @@
       }
     },
     "instruction": {
-      "translation": "Bản dịch chưa hoàn chỉnh",
+      "translation": "Đóng góp cho bản dịch",
       "noGameLoc": "* Không có bản dịch cho trò chơi này"
     },
     "2kki": {
@@ -98,8 +98,8 @@
               "public": "Public"
             }
           },
-          "toggleNametags": "Tên người chơi",
-          "toggleNewNametags": "Full Nametags",
+          "toggleNametags": "Hiện tên người chơi",
+          "toggleNewNametags": "Hiện tên người chơi đầy đủ",
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
@@ -524,8 +524,8 @@
         "3": "Đặc biệt"
       },
       "expRanks": {
-        "0": "Nhập môn",
-        "1": "Trung cấp",
+        "0": "Nhập Môn",
+        "1": "Trung Cấp",
         "2": "Đồng",
         "3": "Bạc",
         "4": "Vàng",
