@@ -415,10 +415,10 @@
                 <label for="nametagMode" class="unselectable" data-i18n="[html]modal.settings.fields.nametagMode.label">Nametags</label>
                 <div>
                   <select id="nametagMode">
-                    <option value="0" data-i18n="modal.settings.fields.nametagMode.values.none">None</option>
-                    <option value="1" data-i18n="modal.settings.fields.nametagMode.values.classic" selected>Classic</option>
-                    <option value="2" data-i18n="modal.settings.fields.nametagMode.values.compact">Compact</option>
-                    <option value="3" data-i18n="modal.settings.fields.nametagMode.values.slim">Slim</option>
+                    <option value="0" data-i18n="[html]modal.settings.fields.nametagMode.values.none">None</option>
+                    <option value="1" data-i18n="[html]modal.settings.fields.nametagMode.values.classic" selected>Classic</option>
+                    <option value="2" data-i18n="[html]modal.settings.fields.nametagMode.values.compact">Compact</option>
+                    <option value="3" data-i18n="[html]modal.settings.fields.nametagMode.values.slim">Slim</option>
                   </select>
                 </div>
               </li>
