@@ -99,12 +99,12 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Nom des Joueurs",
             "values": {
-              "none": "None",
-              "classic": "Classic",
+              "none": "Aucun",
+              "classic": "Classique",
               "compact": "Compact",
-              "slim": "Slim"
+              "slim": "Mince"
             }
           },
           "togglePlayerSounds": "Activer les Sons des Joueurs",
