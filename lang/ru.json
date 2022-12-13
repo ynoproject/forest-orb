@@ -99,12 +99,12 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Ники",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "Скрыть",
+              "classic": "Классические",
+              "compact": "Компактные",
+              "slim": "Тонкие"
             }
           },
           "togglePlayerSounds": "Звуки игроков",
@@ -129,7 +129,7 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Неограниченно"
             }
           },
           "mapChatHistoryLimit": {
@@ -520,7 +520,7 @@
       "expRank": "Ранг: {RANK}",
       "period": "Сезон: {ORDINAL}",
       "periodEnds": "Заканчивается: {DATE}",
-      "current": "Актуально",
+      "current": "Доступно",
       "shortcut": "Можно добраться разблокируемым коротким путём.",
       "availableUntilDate": "Доступен до:\n{DATE}",
       "types": {
