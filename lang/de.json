@@ -98,8 +98,15 @@
               "public": "Public"
             }
           },
-          "toggleNametags": "Namen an/aus",
-          "toggleNewNametags": "Full Nametags",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "Player Sounds",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",

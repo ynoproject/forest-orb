@@ -98,8 +98,15 @@
               "public": "عام"
             }
           },
-          "toggleNametags": "علامات الأسماء",
-          "toggleNewNametags": "Full Nametags",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",

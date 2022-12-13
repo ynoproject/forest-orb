@@ -98,8 +98,15 @@
               "public": "Для всех"
             }
           },
-          "toggleNametags": "Ники",
-          "toggleNewNametags": "Не сокращать имена пользователей",
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "None",
+              "classic": "Classic",
+              "compact": "Compact",
+              "slim": "Slim"
+            }
+          },
           "togglePlayerSounds": "Звуки игроков",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
