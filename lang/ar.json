@@ -99,12 +99,12 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "أسماء اللاعبين",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "لا أسماء",
+              "classic": "كلاسيك",
+              "compact": "معتدل",
+              "slim": "رفيع"
             }
           },
           "togglePlayerSounds": "أصوات اللاعبين",
@@ -331,7 +331,7 @@
       "unevendream": "Uneven Dream (حلم منقسم)",
       "braingirl": "Braingirl (برين جيرل)",
       "muma": "Muma|Rope (حبل|موما)",
-      "genie": "Dream Genie"
+      "genie": "Dream Genie (حلم جني)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "io": {
