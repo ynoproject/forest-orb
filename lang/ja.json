@@ -102,9 +102,9 @@
             "label": "プレイヤー 名表示",
             "values": {
               "none": "なし",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "classic": "クラシック",
+              "compact": "コンパクト",
+              "slim": "スリム"
             }
           },
           "togglePlayerSounds": "プレイヤー 効果音",
