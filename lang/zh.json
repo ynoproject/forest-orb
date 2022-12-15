@@ -103,7 +103,7 @@
             "values": {
               "none": "不显示",
               "classic": "经典",
-              "compact": "全名（大）",
+              "compact": "全名",
               "slim": "全名（小）"
             }
           },
