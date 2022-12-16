@@ -168,7 +168,8 @@
             "label": "Аккаунт",
             "fields": {
               "loggedIn": "Вход",
-              "loggedOut": "Выход"
+              "loggedOut": "Выход",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "Вы вошли как {USER}.",
-        "loggedOut": "Вы вышли из аккаунта."
+        "loggedOut": "Вы вышли из аккаунта.",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "Была создана {PARTY}.",

@@ -168,7 +168,8 @@
             "label": "계정",
             "fields": {
               "loggedIn": "로그인",
-              "loggedOut": "로그아웃"
+              "loggedOut": "로그아웃",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "{USER}로 로그인 했습니다",
-        "loggedOut": "로그아웃 하였습니다"
+        "loggedOut": "로그아웃 하였습니다",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",

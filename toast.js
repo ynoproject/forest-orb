@@ -10,7 +10,8 @@ const notificationTypes = {
   ],
   account: [
     'loggedIn',
-    'loggedOut'
+    'loggedOut',
+    'passwordUpdate'
   ],
   parties: [
     'create',

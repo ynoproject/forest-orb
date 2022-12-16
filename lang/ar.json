@@ -168,7 +168,8 @@
             "label": "الحساب",
             "fields": {
               "loggedIn": "مسجل الدخول",
-              "loggedOut": "مسجل الخروج"
+              "loggedOut": "مسجل الخروج",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
-        "loggedOut": ".لقد قمت بتسجيل الخروج"
+        "loggedOut": ".لقد قمت بتسجيل الخروج",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": ".{PARTY} تم إنشاء الحفلة",

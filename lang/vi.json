@@ -168,7 +168,8 @@
             "label": "Tài khoản",
             "fields": {
               "loggedIn": "Đã đăng nhập",
-              "loggedOut": "Đã đăng xuất"
+              "loggedOut": "Đã đăng xuất",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
-        "loggedOut": "Bạn đã đăng xuất."
+        "loggedOut": "Bạn đã đăng xuất.",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY} đã được tạo.",

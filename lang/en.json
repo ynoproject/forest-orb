@@ -168,7 +168,8 @@
             "label": "Account",
             "fields": {
               "loggedIn": "Logged In",
-              "loggedOut": "Logged Out"
+              "loggedOut": "Logged Out",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out."
+        "loggedOut": "You have logged out.",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY} has been created.",

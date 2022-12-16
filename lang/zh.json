@@ -168,7 +168,8 @@
             "label": "账号通知",
             "fields": {
               "loggedIn": "登录",
-              "loggedOut": "登出"
+              "loggedOut": "登出",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
-        "loggedOut": "您已登出。"
+        "loggedOut": "您已登出。",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",

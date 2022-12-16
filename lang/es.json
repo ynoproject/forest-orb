@@ -168,7 +168,8 @@
             "label": "Cuenta",
             "fields": {
               "loggedIn": "Conectado",
-              "loggedOut": "Desconectado"
+              "loggedOut": "Desconectado",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "Te has conectado como {USER}.",
-        "loggedOut": "Te has desconectado."
+        "loggedOut": "Te has desconectado.",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY} ha sido creado.",

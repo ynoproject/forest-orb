@@ -89,10 +89,11 @@ function initAccountControls() {
           response.text().then(error => {
             document.getElementById('passwordError').innerHTML = getMassagedLabel(localizedMessages.account.password.errors[error === 'bad login' ? 'badLogin' : 'internalServerError'], true);
             document.getElementById('passwordErrorRow').classList.remove('hidden');
-            openModal('passwordModal');
+            openModal('passwordModal', 'accountSettingsModal');
           });
           return;
         }
+        showAccountToastMessage('password.success', 'info');
         document.getElementById('passwordErrorRow').classList.add('hidden');
       })
       .catch(err => console.error(err));
@@ -117,9 +118,9 @@ function initAccountSettingsModal() {
 }
 
 function initPasswordModal() {
-  document.getElementById('oldPassword').innerHTML = '';
-  document.getElementById('newPassword').innerHTML = '';
-  document.getElementById('newConfirmPassword').innerHTML = '';
+  document.getElementById('oldPassword').value = '';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('newConfirmPassword').value = '';
   document.getElementById('passwordErrorRow').classList.add('hidden');
 }
 

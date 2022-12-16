@@ -168,7 +168,8 @@
             "label": "アカウント",
             "fields": {
               "loggedIn": "ログイン通知",
-              "loggedOut": "ログアウト通知"
+              "loggedOut": "ログアウト通知",
+              "passwordUpdate": "Password Updated"
             }
           },
           "parties": {
@@ -498,7 +499,8 @@
       },
       "account": {
         "loggedIn": "{USER}でログインしました。",
-        "loggedOut": "ログアウトしました。"
+        "loggedOut": "ログアウトしました。",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
