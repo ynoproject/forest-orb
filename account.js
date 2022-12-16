@@ -119,7 +119,7 @@ function initAccountSettingsModal() {
 function initPasswordModal() {
   document.getElementById('oldPassword').innerHTML = '';
   document.getElementById('newPassword').innerHTML = '';
-  document.getElementById('newConfirmPasword').innerHTML = '';
+  document.getElementById('newConfirmPassword').innerHTML = '';
   document.getElementById('passwordErrorRow').classList.add('hidden');
 }
 

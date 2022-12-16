@@ -602,7 +602,7 @@
                   <label for="newPassword" class="unselectable" data-i18n="[html]modal.password.fields.newPassword">New Password</label><input id="newPassword" name="newPassword" type="password" autocomplete="off" />
                 </li>
                 <li class="formControlRow">
-                  <label for="confirmPassword" class="unselectable" data-i18n="[html]modal.password.fields.newConfirmPasword">Confirm New Password</label><input id="newConfirmPasword" type="password" autocomplete="off" />
+                  <label for="confirmPassword" class="unselectable" data-i18n="[html]modal.password.fields.newConfirmPassword">Confirm New Password</label><input id="newConfirmPassword" type="password" autocomplete="off" />
                 </li>
                 <li id="passwordErrorRow" class="formControlRow hidden">
                   <label id="passwordError"></label>

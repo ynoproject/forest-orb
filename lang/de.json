@@ -236,7 +236,7 @@
         "fields": {
           "oldPassword": "Old Password",
           "newPassword": "New Password",
-          "newConfirmPasword": "Confirm New Password"
+          "newConfirmPassword": "Confirm New Password"
         },
         "submit": "Submit"
       },
