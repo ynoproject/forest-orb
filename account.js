@@ -89,11 +89,11 @@ function initAccountControls() {
           response.text().then(error => {
             document.getElementById('passwordError').innerHTML = getMassagedLabel(localizedMessages.account.password.errors[error === 'bad login' ? 'badLogin' : 'internalServerError'], true);
             document.getElementById('passwordErrorRow').classList.remove('hidden');
-            openModal('passwordModal', 'accountSettingsModal');
+            openModal('passwordModal', null, 'accountSettingsModal');
           });
           return;
         }
-        showAccountToastMessage('password.success', 'info');
+        showAccountToastMessage('passwordUpdated', 'info');
         document.getElementById('passwordErrorRow').classList.add('hidden');
       })
       .catch(err => console.error(err));
