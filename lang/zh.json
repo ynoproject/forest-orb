@@ -227,8 +227,18 @@
               "0": "无"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "清空云端存档"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "徽章",
@@ -434,6 +444,13 @@
           "invalidCredentials": "用户名和密码为空或包含不支持的字符！",
           "emailTaken": "您输入的邮箱地址已被占用！",
           "usernameTaken": "您输入的用户名已被占用！"
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

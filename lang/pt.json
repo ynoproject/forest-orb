@@ -227,8 +227,18 @@
               "0": "None"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "Limpar dados do Save na Nuvem"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Emblemas",
@@ -434,6 +444,13 @@
           "invalidCredentials": "O nome de usuário ou senha especificado está vazio ou contém caracteres inválidos.",
           "emailTaken": "O endereço de email especificado já está em uso.",
           "usernameTaken": "O nome de usuário especificado já está em uso."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

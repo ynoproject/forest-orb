@@ -227,8 +227,18 @@
               "0": "Нет"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "Очистить данные облачного сохранения"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Значки",
@@ -434,6 +444,13 @@
           "invalidCredentials": "Указанные логин и пароль пустые или содержат недопустимые символы.",
           "emailTaken": "Данный e-mail уже используется.",
           "usernameTaken": "Данный логин уже используется."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

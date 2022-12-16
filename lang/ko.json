@@ -227,8 +227,18 @@
               "0": "없음"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "동기화된 세이브 삭제하기"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "뱃지",
@@ -434,6 +444,13 @@
           "invalidCredentials": "닉네임이나 비밀번호에 공백 또는 사용할 수 없는 문자가 있습니다",
           "emailTaken": "해당 이메일은 이미 사용하고 있습니다",
           "usernameTaken": "해당 아이디는 이미 사용하고 있습니다"
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

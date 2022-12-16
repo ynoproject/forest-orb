@@ -69,6 +69,35 @@ function initAccountControls() {
     initAccountSettingsModal();
     openModal('accountSettingsModal', null, 'settingsModal');
   };
+
+  document.getElementById('changePasswordButton').onclick = () => {
+    initPasswordModal();
+    openModal('passwordModal', null, 'accountSettings');
+  };
+
+  document.getElementById('changePasswordForm').onsubmit = function () {
+    const form = this;
+    if (document.getElementById('newPassword').value !== document.getElementById('newConfirmPassword').value) {
+      document.getElementById('passwordError').innerHTML = getMassagedLabel(localizedMessages.account.password.errors.confirmPasswordMismatch, true);
+      document.getElementById('passwordErrorRow').classList.remove('hidden');
+      return false;
+    }
+    closeModal();
+    apiFetch(`changePw?${new URLSearchParams(new FormData(form)).toString()}`)
+      .then(response => {
+        if (!response.ok) {
+          response.text().then(error => {
+            document.getElementById('passwordError').innerHTML = getMassagedLabel(localizedMessages.account.password.errors[error === 'bad login' ? 'badLogin' : 'internalServerError'], true);
+            document.getElementById('passwordErrorRow').classList.remove('hidden');
+            openModal('passwordModal');
+          });
+          return;
+        }
+        document.getElementById('passwordErrorRow').classList.add('hidden');
+      })
+      .catch(err => console.error(err));
+    return false;
+  };
 }
 
 function initAccountSettingsModal() {
@@ -85,6 +114,13 @@ function initAccountSettingsModal() {
     handle2kkiBadgeOverlayLocationColorOverride(accountBadgeButton.querySelector('.badgeOverlay'), accountBadgeButton.querySelector('.badgeOverlay2'), cachedLocations);
     handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
   }
+}
+
+function initPasswordModal() {
+  document.getElementById('oldPassword').innerHTML = '';
+  document.getElementById('newPassword').innerHTML = '';
+  document.getElementById('newConfirmPasword').innerHTML = '';
+  document.getElementById('passwordErrorRow').classList.add('hidden');
 }
 
 function showAccountToastMessage(key, icon, username) {

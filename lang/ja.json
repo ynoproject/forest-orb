@@ -227,8 +227,18 @@
               "0": "なし"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "セーブデータ同期を削除"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "バッジ",
@@ -434,6 +444,13 @@
           "invalidCredentials": "指定されたユーザー名またはパスワードが空、もしくは無効な文字が含まれています。",
           "emailTaken": "このメールアドレスは 既に 使用されています。",
           "usernameTaken": "このユーザー名は 既に 使用されています。"
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

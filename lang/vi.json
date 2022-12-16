@@ -227,8 +227,18 @@
               "0": "Không"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "Xóa dữ liệu đồng bộ"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Huy Hiệu",
@@ -434,6 +444,13 @@
           "invalidCredentials": "Tên người dùng hoặc mật khẩu trống hoặc chứa ký tự không hợp lệ.",
           "emailTaken": "Địa chỉ email đã được sử dụng.",
           "usernameTaken": "Tên người dùng đã được sử dụng."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

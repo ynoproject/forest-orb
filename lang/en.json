@@ -227,8 +227,18 @@
               "0": "None"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "Clear Save Sync Data"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Badges",
@@ -434,6 +444,13 @@
           "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
           "emailTaken": "The specified email address is already in use.",
           "usernameTaken": "The specified username is already in use."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

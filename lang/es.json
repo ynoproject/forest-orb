@@ -227,8 +227,18 @@
               "0": "Ninguno"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "Limpiar Datos Sincronizados"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Medallas",
@@ -434,6 +444,13 @@
           "invalidCredentials": "El nombre de usuario o contraseña ingresados están vacíos o contienen carácteres inválidos.",
           "emailTaken": "La dirección de correo ingresada ya está en uso.",
           "usernameTaken": "El nombre de usuario ingresado ya está en uso."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },

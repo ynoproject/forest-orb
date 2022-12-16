@@ -227,8 +227,18 @@
               "0": "لا يوجد"
             }
           },
+          "changePassword": "Change Password",
           "clearSaveSync": "مسح بيانات مزامنة ملف الحفظ"
         }
+      },
+      "password": {
+        "title": "Change Password",
+        "fields": {
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPasword": "Confirm New Password"
+        },
+        "submit": "Submit"
       },
       "badges": {
         "title": "Badges",
@@ -434,6 +444,13 @@
           "invalidCredentials": ".اسم المستخدم أو كلمة المرور المحددة فارغة أو تحتوي على أحرف غير صالحة",
           "emailTaken": ".عنوان البريد الإلكتروني المحدد قيد الاستخدام بالفعل",
           "usernameTaken": ".اسم المستخدم المحدد قيد الاستخدام بالفعل"
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },
