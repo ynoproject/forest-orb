@@ -72,7 +72,7 @@ function initAccountControls() {
 
   document.getElementById('changePasswordButton').onclick = () => {
     initPasswordModal();
-    openModal('passwordModal', null, 'accountSettings');
+    openModal('passwordModal', null, 'accountSettingsModal');
   };
 
   document.getElementById('changePasswordForm').onsubmit = function () {
@@ -83,7 +83,7 @@ function initAccountControls() {
       return false;
     }
     closeModal();
-    apiFetch(`changePw?${new URLSearchParams(new FormData(form)).toString()}`)
+    apiFetch(`changepw?${new URLSearchParams(new FormData(form)).toString()}`)
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {
