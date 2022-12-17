@@ -112,7 +112,7 @@ async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
       };
     }
 
-    img.src = `${dir}${sprite}.png`;
+    img.src = !sprite?.startsWith('#') ? `${dir}${sprite}.png` : '';
   });
 }
 

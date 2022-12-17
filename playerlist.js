@@ -662,7 +662,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
       };
     }
 
-    img.src = `${dir}${sprite}.png`;
+    img.src = !sprite?.startsWith('#') ? `${dir}${sprite}.png` : '';
   });
 }
 
