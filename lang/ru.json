@@ -500,7 +500,7 @@
       "account": {
         "loggedIn": "Вы вошли как {USER}.",
         "loggedOut": "Вы вышли из аккаунта.",
-        "passwordUpdated": "Ваш пароль был изменен успешно."
+        "passwordUpdated": "Ваш пароль был изменён успешно."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
