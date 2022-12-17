@@ -978,6 +978,14 @@ body.fullBg #background {
   display: none;
 }
 
+#layout:not(:fullscreen) #chatbox #messages {
+  background-color: rgba(var(--shadow-color), 0.5);
+}
+
+#layout:not(:fullscreen) #chatbox.partyChat #messages {
+  background-color: rgba(var(--party-shadow-color), 0.5);
+}
+
 #chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
   background-size: 70px;
   background-position-x: -8px;
@@ -991,6 +999,14 @@ body.fullBg #background {
 
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
+  #chatbox #messages {
+    background-color: rgba(var(--shadow-color), 0.5);
+  }
+  
+  #chatbox.partyChat #messages {
+    background-color: rgba(var(--party-shadow-color), 0.5);
+  }
+
   #chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
     background-image: var(--party-container-bg-image-url) !important;
   }
