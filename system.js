@@ -519,7 +519,7 @@ function getFontShadow(uiTheme, callback) {
     callback(getColorRgb(pixel));
     canvas.remove();
   };
-  img.src = 'images/ui/' + gameId +'/' + uiTheme + '/fontshadow.png';
+  img.src = 'images/ui/' + gameId + '/' + uiTheme + '/fontshadow.png';
 }
 
 function getBaseBgColor(uiTheme, callback) {
