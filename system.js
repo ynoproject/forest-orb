@@ -538,7 +538,7 @@ function getBaseBgColor(uiTheme, callback) {
     const g = Math.round((pixel[1] + pixel2[1] + pixel3[1]) / 3);
     const b = Math.round((pixel[2] + pixel2[2] + pixel3[2]) / 3);
     uiThemeBgColors[uiTheme] = [ r, g, b ];
-    callback('rgba(' + r + ', ' + g + ', ' + b + ', 1)');
+    callback(`${r}, ${g}, ${b}`);
     canvas.remove();
   };
   img.src = 'images/ui/' + gameId + '/' + uiTheme + '/containerbg.png';

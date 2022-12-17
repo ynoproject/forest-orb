@@ -978,11 +978,11 @@ body.fullBg #background {
   display: none;
 }
 
-#layout:not(:fullscreen) #chatbox #messages {
+#layout:not(:fullscreen) #chatbox .chatboxTabSection, #layout:not(:fullscreen) #chatInputContainer form {
   background-color: rgba(var(--shadow-color), 0.5);
 }
 
-#layout:not(:fullscreen) #chatbox.partyChat #messages {
+#layout:not(:fullscreen) #chatbox.partyChat .chatboxTabSection, #layout:not(:fullscreen) #chatbox.partyChat #chatInputContainer form {
   background-color: rgba(var(--party-shadow-color), 0.5);
 }
 
@@ -999,11 +999,11 @@ body.fullBg #background {
 
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
-  #chatbox #messages {
+  #chatbox .chatboxTabSection {
     background-color: rgba(var(--shadow-color), 0.5);
   }
   
-  #chatbox.partyChat #messages {
+  #chatbox.partyChat .chatboxTabSection {
     background-color: rgba(var(--party-shadow-color), 0.5);
   }
 
@@ -1291,7 +1291,10 @@ body.fullBg #background {
 
 #chatInputContainer form {
   width: 100%;
-  margin-right: -32px;
+  margin-left: -6px;
+  margin-right: -38px;
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 #chatbox.allChat #chatInputContainer.globalCooldown form {
