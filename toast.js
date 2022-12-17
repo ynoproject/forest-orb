@@ -191,7 +191,7 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
   const toastMessage = document.createElement('div');
   toastMessage.classList.add('toastMessage');
   if (systemName)
-    toastMessage.setAttribute('style', `background-image: var(--base-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${systemName}));`);
+    toastMessage.setAttribute('style', `background-image: var(--base-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${systemName})));`);
 
   toastMessage.innerHTML = message;
 
@@ -201,7 +201,7 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
   const closeButton = document.createElement('a');
   closeButton.classList.add('closeToast');
   if (systemName)
-    closeButton.setAttribute('style', `background-image: var(--alt-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px var(--shadow-color-${systemName}));`);
+    closeButton.setAttribute('style', `background-image: var(--alt-gradient-${systemName}) !important; drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${systemName})));`);
   closeButton.innerText = '✖';
   closeButton.href = 'javascript:void(0);';
   closeButton.onclick = () => toast.remove();

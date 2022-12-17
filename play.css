@@ -1,8 +1,7 @@
 :root {
-  --base-color: rgb(216, 216, 216);
-  --alt-color: rgb(255, 255, 157);
-  --alt-color-t: rgba(255, 255, 157, 0.5);
-  --base-bg-color: rgb(45, 17, 23);
+  --base-color: 216, 216, 216;
+  --alt-color: 255, 255, 157;
+  --base-bg-color: 45, 17, 23;
   --shadow-color: black;
   --base-gradient: linear-gradient(to bottom, rgb(216, 216, 216) 0% 100%);
   --alt-gradient: linear-gradient(to bottom, rgb(216, 173, 173) 0% 100%);
@@ -15,8 +14,8 @@
   --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
   --border-image-url: url('images/ui/2kki/system1/border.png');
 
-  --modal-base-color: var(--base-color);
-  --modal-alt-color: var(--alt-color);
+  --modal-base-color: rgb(var(--base-color));
+  --modal-alt-color: rgb(var(--alt-color));
   --modal-base-bg-color: var(--base-bg-color);
   --modal-shadow-color: var(--shadow-color);
   --modal-base-gradient: var(--base-gradient);
@@ -30,9 +29,8 @@
   --modal-container-bg-image-url: var(--container-bg-image-url);
   --modal-border-image-url: var(--border-image-url);
 
-  --party-base-color: var(--base-color);
-  --party-alt-color: var(--alt-color);
-  --party-alt-color-t: var(--alt-color-t);
+  --party-base-color: rgb(var(--base-color));
+  --party-alt-color: rgb(var(--alt-color));
   --party-base-bg-color: var(--base-bg-color);
   --party-shadow-color: var(--shadow-color);
   --party-base-gradient: var(--base-gradient);
@@ -79,7 +77,7 @@ html, input, textarea, select, .checkbox, button.checkboxButton, button[type="bu
 }
 
 html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
-  color: var(--base-color) !important;
+  color: rgb(var(--base-color)) !important;
   background-color: black;
 }
 
@@ -106,8 +104,8 @@ label {
 }
 
 input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
-  background-color: var(--base-bg-color) !important;
-  text-shadow: 1.5px 1.5px var(--shadow-color);
+  background-color: rgb(var(--base-bg-color)) !important;
+  text-shadow: 1.5px 1.5px rgb(var(--shadow-color));
 }
 
 input, select {
@@ -194,17 +192,17 @@ body {
 }
 
 .messageContainer.party .message .nameMarker {
-  color: var(--party-alt-color) !important;
-  filter: drop-shadow(1.5px 1.5px var(--party-shadow-color));
+  color: rgb(var(--party-alt-color)) !important;
+  filter: drop-shadow(1.5px 1.5px rgb(var(--party-shadow-color)));
   background-image: var(--party-alt-gradient) !important;
 }
 
 .baseColorBg {
-  background-color: var(--base-color) !important;
+  background-color: rgb(var(--base-color)) !important;
 }
 
 .baseColorFill {
-  fill: var(--base-color) !important;
+  fill: rgb(var(--base-color)) !important;
 }
 
 .pointer {
@@ -240,7 +238,7 @@ body {
 }
 
 .infoMessage {
-  background-color: var(--base-bg-color);
+  background-color: rgb(var(--base-bg-color));
 }
 
 @media (hover: hover) {
@@ -288,7 +286,7 @@ body {
 
 #chatbox.partyChat #messages .infoLabel, #chatbox.partyChat #messages .messageContents {
   background-image: var(--party-base-gradient) !important;
-  filter: drop-shadow(1.5px 1.5px var(--party-shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--party-shadow-color)));
 }
 
 #chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
@@ -296,7 +294,7 @@ body {
 }
 
 #chatbox.partyChat #messages .messageContainer.highlight {
-  background: var(--party-alt-color-t);
+  background: rgba(var(--party-alt-color), 0.5);
 }
 
 #chatbox.partyChat #messages .playerLocationIcon[title] path {
@@ -304,9 +302,9 @@ body {
 }
 
 #chatbox.partyChat #chatInput {
-  color: var(--party-base-color) !important;
-  background-color: var(--party-base-bg-color) !important;
-  text-shadow: 1.5px 1.5px var(--party-shadow-color);
+  color: rgb(var(--party-base-color)) !important;
+  background-color: rgb(var(--party-base-bg-color)) !important;
+  text-shadow: 1.5px 1.5px rgb(var(--party-shadow-color));
 }
 
 .iconButton.fadeToggle:not(.toggled) path {
@@ -560,7 +558,7 @@ body.fullBg #background {
 #layout::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
   border: 8px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
-  background-color: var(--base-bg-color);
+  background-color: rgb(var(--base-bg-color));
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
@@ -957,7 +955,7 @@ body.fullBg #background {
 }
 
 #unreadMessageCount {
-  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color)));
 }
 
 .chatboxTabContent, .chatboxTabContent > .divider {
@@ -1005,7 +1003,7 @@ body.fullBg #background {
 }
 
 .messageContainer.highlight {
-  background: var(--alt-color-t);
+  background: rgba(var(--alt-color), 0.5);
 }
 
 #chatbox.allChat .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {
@@ -1017,7 +1015,7 @@ body.fullBg #background {
 }
 
 .messageContents .spoiler {
-  border: 1px solid var(--base-color);
+  border: 1px solid rgb(var(--base-color));
 }
 
 .messageContents.notext .spoiler {
@@ -1025,7 +1023,7 @@ body.fullBg #background {
 }
 
 .messageContents .spoiler:not(.show) {
-  background-color: var(--shadow-color);
+  background-color: rgb(var(--shadow-color));
   cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1193,7 +1191,7 @@ body.fullBg #background {
 .listEntry .nameText {
   width: 100%;
   background-image: var(--base-color-image-url) !important;
-  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color)));
 }
 
 .listEntry .partyNameContainer {
@@ -1410,7 +1408,7 @@ body.fullBg #background {
   min-height: 32px;
   padding: 4px;
   margin-bottom: 9px;
-  background-color: var(--base-bg-color);
+  background-color: rgb(var(--base-bg-color));
   z-index: 3;
 }
 
@@ -1450,7 +1448,7 @@ body.fullBg #background {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color)));
 }
 
 #enterNameInstruction span {
@@ -1543,10 +1541,10 @@ body.fullBg #background {
 }
 
 .modal input, .modal textarea, .modal select, .modal .checkbox, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
-  color: var(--modal-base-color) !important;
+  color: rgb(var(--modal-base-color)) !important;
   border-image: var(--modal-border-image-url) 8 repeat !important;
-  background-color: var(--modal-base-bg-color) !important;
-  text-shadow: 1.5px 1.5px var(--modal-shadow-color);
+  background-color: rgb(var(--modal-base-bg-color)) !important;
+  text-shadow: 1.5px 1.5px rgb(var(--modal-shadow-color));
 }
 
 .modal a:not(.modalClose):not(.listEntryAction) {
@@ -1576,16 +1574,16 @@ body.fullBg #background {
 }
 
 .modal .baseColorBg {
-  background-color: var(--modal-base-color) !important;
+  background-color: rgb(var(--modal-base-color)) !important;
 }
 
 .modal .baseColorFill {
-  fill: var(--modal-base-color) !important;
+  fill: rgb(var(--modal-base-color)) !important;
 }
 
 .modal .infoLabel, .modal .infoText, .modal h1, .modal h2, .modal h3, .modal h4, .modal a:not(.listEntryAction), .modal label {
   background-image: var(--modal-base-gradient) !important;
-  filter: drop-shadow(1.5px 1.5px var(--modal-shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--modal-shadow-color)));
 }
 
 .modalContent {
@@ -1599,7 +1597,7 @@ body.fullBg #background {
 
 .modalContent::-webkit-scrollbar-track {
   border-image: var(--modal-border-image-url) 8 repeat !important;
-  background-color: var(--modal-base-bg-color);
+  background-color: rgb(var(--modal-base-bg-color));
 }
 
 .modalContent::-webkit-scrollbar-thumb {
@@ -1655,7 +1653,7 @@ body.fullBg #background {
 }
 
 .itemContainer .badgeItem > .badgeContainer {
-  background-color: var(--base-bg-color) !important;
+  background-color: rgb(var(--base-bg-color)) !important;
   background-clip: content-box;
 }
 
@@ -1669,7 +1667,7 @@ body.fullBg #background {
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
-  background-color: var(--modal-base-bg-color) !important;
+  background-color: rgb(var(--modal-base-bg-color)) !important;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer.special {
@@ -1726,15 +1724,15 @@ body.fullBg #background {
 }
 
 .itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
-  background: var(--base-color);
+  background: rgb(var(--base-color));
 }
 
 .itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
-  background: var(--alt-color);
+  background: rgb(var(--alt-color));
 }
 
 .itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
-  background: var(--base-bg-color);
+  background: rgb(var(--base-bg-color));
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlay {
@@ -1742,15 +1740,15 @@ body.fullBg #background {
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBase {
-  background: var(--modal-base-color);
+  background: rgb(var(--modal-base-color));
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayAlt {
-  background: var(--modal-alt-color);
+  background: rgb(var(--modal-alt-color));
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer > .badge > .badgeOverlayBg {
-  background: var(--modal-base-bg-color);
+  background: rgb(var(--modal-base-bg-color));
 }
 
 #headerIconContainer .badgeItem {
@@ -2073,7 +2071,7 @@ form .uiTheme {
   height: 24px;
   border: 4px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
-  background-color: var(--base-bg-color);
+  background-color: rgb(var(--base-bg-color));
 }
 
 .badgeGalleryProgressContainer {
@@ -2261,7 +2259,7 @@ form .uiTheme {
 }
 
 #rankingsTable tr.highlight td {
-  background-color: var(--alt-color-t);
+  background-color: rgba(var(--alt-color), 0.5);
 }
 
 #rankingsTable tr td .medalsContainer {
@@ -2415,7 +2413,7 @@ form .uiTheme {
 .tippy-content .tooltipContent {
   display: inline;
   background-image: var(--base-gradient) !important;
-  filter: drop-shadow(1.5px 1.5px var(--shadow-color));
+  filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2772,7 +2770,7 @@ form .uiTheme {
 
 #layout:fullscreen .chatboxTab.active {
   background-image: none !important;
-  background-color: var(--base-bg-color);
+  background-color: rgb(var(--base-bg-color));
 }
 
 #layout.chatboxOverlap:fullscreen #messages {
@@ -2829,11 +2827,11 @@ form .uiTheme {
   }
 
   .altText, a:not(.modalClose):not(.listEntryAction) {
-    color: var(--alt-color);
+    color: rgb(var(--alt-color));
   }
 
   .modal .altText, .modal a:not(.modalClose):not(.listEntryAction) {
-    color: var(--modal-alt-color);
+    color: rgb(var(--modal-alt-color));
   }
 }
 

@@ -190,15 +190,20 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       const parsedSystemName = systemName.replace(" ", "_");
       initUiThemeContainerStyles(systemName, false, () => {
         initUiThemeFontStyles(systemName, 0, false, () => {
-          name.setAttribute("style", `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+          name.setAttribute("style", `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           if (badgeOverlayEl) {
-            badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+            badgeOverlayEl.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+              ? `var(--base-gradient-${parsedSystemName})`
+              : `rgb(var(--base-color-${parsedSystemName}))`;
             if (badgeOverlay2El) {
-              badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-                ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
-                : `var(--base-bg-color-${parsedSystemName})`;
+              if (getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)) {
+                badgeOverlay2El.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+                  ? `var(--alt-gradient-${parsedSystemName})`
+                  : `rgb(var(--alt-color-${parsedSystemName}))`;
+              } else
+                badgeOverlay2El.style.background = `var(--base-bg-color-${parsedSystemName})`;
             }
             if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
               handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);

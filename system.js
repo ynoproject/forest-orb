@@ -143,7 +143,7 @@ const gameFullBgUiThemes = {
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'someday': [],
   'unevendream': [],
-  'yume': [ '0000000000010' ],
+  'yume': [ '0000000000010' ]
 }[gameId];
 
 const gameLogoBlendModeOverrides = {
@@ -284,7 +284,6 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
 
   let baseColorProp = `--base-color-${parsedUiTheme}`;
   let altColorProp = `--alt-color-${parsedUiTheme}`;
-  let altColorTProp = `--alt-color-t-${parsedUiTheme}`;
   let baseGradientProp = `--base-gradient-${parsedUiTheme}`;
   let baseGradientBProp = `--base-gradient-b-${parsedUiTheme}`;
   let altGradientProp = `--alt-gradient-${parsedUiTheme}`;
@@ -297,7 +296,6 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
     const fontStylePropSuffix = `-${fontStyle}`;
     baseColorProp += fontStylePropSuffix;
     altColorProp += fontStylePropSuffix;
-    altColorTProp += fontStylePropSuffix;
     baseGradientProp += fontStylePropSuffix;
     baseGradientBProp += fontStylePropSuffix;
     altGradientProp += fontStylePropSuffix;
@@ -318,9 +316,8 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
       if (!rootStyle.getPropertyValue(baseColorProp)) {
         addSystemSvgGradient(uiTheme, baseColors);
         addSystemSvgGradient(uiTheme, altColors, true);
-        rootStyle.setProperty(baseColorProp, getColorRgba(baseColors[8]));
-        rootStyle.setProperty(altColorProp, getColorRgba(altColors[8]));
-        rootStyle.setProperty(altColorTProp, getColorRgba(altColors[8], 0.5));
+        rootStyle.setProperty(baseColorProp, getColorRgb(baseColors[8]));
+        rootStyle.setProperty(altColorProp, getColorRgb(altColors[8]));
         rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
         rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
         rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
@@ -333,7 +330,6 @@ function initUiThemeFontStyles(uiTheme, fontStyle, setTheme, callback) {
       if (setTheme) {
         rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
         rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
-        rootStyle.setProperty('--alt-color-t', `var(${altColorTProp})`);
         rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
         rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
         rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
@@ -390,7 +386,7 @@ function setPartyUiTheme(uiTheme) {
     
   };
   const fontCallback = () => {
-    const styleProps = [ 'base-color', 'alt-color', 'alt-color-t', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
+    const styleProps = [ 'base-color', 'alt-color', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
     const propThemeSuffix = uiTheme ? `-${uiTheme.replace(' ', '_')}` : '';
     for (let prop of styleProps)
       rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
@@ -512,7 +508,7 @@ function getFontColors(uiTheme, fontStyle, callback) {
 function getFontShadow(uiTheme, callback) {
   let pixel = uiThemeFontShadows[uiTheme];
   if (pixel)
-    return callback(getColorRgba(pixel));
+    return callback(getColorRgb(pixel));
   const img = new Image();
   img.onload = function () {
     const canvas = document.createElement('canvas');
@@ -520,7 +516,7 @@ function getFontShadow(uiTheme, callback) {
     context.drawImage(img, 0, 0);
     pixel = context.getImageData(0, 8, 1, 1).data;
     uiThemeFontShadows[uiTheme] = [ pixel[0], pixel[1], pixel[2] ];
-    callback(getColorRgba(pixel));
+    callback(getColorRgb(pixel));
     canvas.remove();
   };
   img.src = 'images/ui/' + gameId +'/' + uiTheme + '/fontshadow.png';
@@ -530,7 +526,7 @@ function getBaseBgColor(uiTheme, callback) {
   const img = new Image();
   let pixel = uiThemeBgColors[uiTheme];
   if (pixel)
-    return callback(getColorRgba(pixel));
+    return callback(getColorRgb(pixel));
   img.onload = function () {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
@@ -550,11 +546,11 @@ function getBaseBgColor(uiTheme, callback) {
 
 function getGradientText(colors, smooth) {
   let lastColor = colors[0];
-  let ret = `${getColorRgba(lastColor)} 0 `;
+  let ret = `rgb(${getColorRgb(lastColor)}) 0 `;
   colors.forEach(function (color, c) {
     if (color[0] !== lastColor[0] || color[1] !== lastColor[1] || color[2] !== lastColor[2]) {
       const percent = Math.floor(((c + 1) / colors.length) * 10000) / 100;
-      ret += `${percent}%, ${getColorRgba(color)} `;
+      ret += `${percent}%, rgb(${getColorRgb(color)}) `;
       if (!smooth)
         ret += `${percent}% `;
       lastColor = color;
@@ -579,7 +575,7 @@ function updateSvgGradient(gradient, colors) {
 
 function getSvgGradientStop(color, offset) {
   const ret = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-  ret.setAttribute('stop-color', getColorRgba(color));
+  ret.setAttribute('stop-color', `rgb(${getColorRgb(color)})`);
   ret.setAttribute('offset', `${offset}%`);
   return ret;
 }
@@ -624,10 +620,8 @@ function getStylePropertyValue(name) {
   return value;
 }
 
-function getColorRgba(color, alpha) {
-  return alpha === undefined
-    ? `rgb(${color[0]}, ${color[1]}, ${color[2]})`
-    : `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
+function getColorRgb(color) {
+  return `${color[0]}, ${color[1]}, ${color[2]}`;
 }
 
 function getTinyColor(color) {

@@ -734,7 +734,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
               boxStyles = `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`;
               if (gameFullBgUiThemes.indexOf(parsedSystemName) > -1)
                 boxStyles += ' background-size: contain;';
-              textStyles = `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+              textStyles = `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
               tippyBox.setAttribute('style', boxStyles);
               tooltipTitle.setAttribute('style', textStyles);
             }
@@ -748,14 +748,20 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
               const badgeSlotOverlays = tippyBox.querySelectorAll('.badgeSlotOverlay');
               for (let badgeSlotOverlay of badgeSlotOverlays) {
                 const overlayType = parseInt(badgeSlotOverlay.dataset.overlayType);
-                badgeSlotOverlay.style.background = `var(--base-${overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+                badgeSlotOverlay.style.background = overlayType & BadgeOverlayType.GRADIENT
+                  ? `var(--base-gradient-${parsedSystemName})`
+                  : `rgb(var(--base-color-${parsedSystemName}))`;
 
                 const badgeSlotOverlay2 = overlayType & BadgeOverlayType.DUAL ? badgeSlotOverlay.parentElement.querySelector('.badgeOverlay2') : null;
                
-                if (badgeSlotOverlay2)
-                  badgeSlotOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-                    ? `var(--alt-${overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
-                    : `var(--base-bg-color-${parsedSystemName})`;
+                if (badgeSlotOverlay2) {
+                  if (getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)) {
+                    badgeSlotOverlay2.style.background = overlayType & BadgeOverlayType.GRADIENT
+                      ? `var(--alt-gradient-${parsedSystemName})`
+                      : `rgb(var(--alt-color-${parsedSystemName}))`;
+                  } else
+                    badgeSlotOverlay2.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`
+                }
 
                 if (gameId === '2kki' && overlayType & BadgeOverlayType.LOCATION)
                   handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr);

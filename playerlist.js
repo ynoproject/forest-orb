@@ -118,10 +118,10 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       if (unnamed || gameUiThemes.indexOf(systemName) === -1)
         systemName = getDefaultUiTheme();
       const parsedSystemName = systemName.replace(' ', '_');
-      nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+      nameText.setAttribute('style', `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
       const nameMarkers = nameTextContainer.querySelectorAll('.nameMarker');
       if (nameMarkers.length) {
-        const nameMarkerStyle = `color: var(--alt-color-${parsedSystemName}); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+        const nameMarkerStyle = `color: rgb(var(--alt-color-${parsedSystemName})); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
         for (let nameMarker of nameMarkers)
           nameMarker.setAttribute('style', nameMarkerStyle);
       }
@@ -131,10 +131,15 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
         mutedIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
-          badgeOverlayEl.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
-          badgeOverlay2El.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-            ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
-            : `var(--base-bg-color-${parsedSystemName})`;
+          badgeOverlayEl.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+            ? `var(--base-gradient-${parsedSystemName})`
+            : `rgb(var(--base-color-${parsedSystemName}))`;
+          if (getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)) {
+            badgeOverlay2El.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+              ? `var(--alt-gradient-${parsedSystemName})`
+              : `rgb(var(--alt-color-${parsedSystemName}))`;
+          } else
+            badgeOverlay2El.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`;
         } else
           badgeOverlayEl.style.background = `var(--base-gradient-${parsedSystemName})`;
       }
@@ -430,10 +435,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     initUiThemeContainerStyles(systemName, false, () => {
       initUiThemeFontStyles(systemName, 0, false, () => {
         playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-        nameText.setAttribute('style', `color: var(--base-color-${parsedSystemName}); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`);
+        nameText.setAttribute('style', `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
         const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
         if (nameMarkers.length) {
-          const nameMarkerStyle = `color: var(--alt-color-${parsedSystemName}); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px var(--shadow-color-${parsedSystemName}));`;
+          const nameMarkerStyle = `color: rgb(var(--alt-color-${parsedSystemName})); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
           for (let nameMarker of nameMarkers)
             nameMarker.setAttribute('style', nameMarkerStyle);
         }
@@ -446,11 +451,16 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
             playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
         if (showBadgeOverlay) {
-          playerListEntryBadgeOverlay.style.background = `var(--base-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`;
+          playerListEntryBadgeOverlay.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+            ? `var(--base-gradient-${parsedSystemName})`
+            : `rgb(var(--base-color-${parsedSystemName}))`;
           if (showBadgeOverlay2) {
-            playerListEntryBadgeOverlay2.style.background = getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)
-              ? `var(--alt-${badge.overlayType & BadgeOverlayType.GRADIENT ? 'gradient' : 'color'}-${parsedSystemName})`
-              : `var(--base-bg-color-${parsedSystemName})`;
+            if (getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)) {
+              playerListEntryBadgeOverlay2.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
+                ? `var(--alt-gradient-${parsedSystemName})`
+                : `rgb(var(--alt-color-${parsedSystemName}))`;
+            } else
+            playerListEntryBadgeOverlay2.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`;
           }
           if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
             handle2kkiBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
