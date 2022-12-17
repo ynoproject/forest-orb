@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -15,7 +15,7 @@
       "logout": "Выйти"
     },
     "fontStyle": {
-      "label": "Стиль Шрифта:",
+      "label": "Стиль шрифта:",
       "values": {
         "style1": "Стиль 1",
         "style2": "Стиль 2",
@@ -160,7 +160,7 @@
             "label": "Система",
             "fields": {
               "siteUpdates": "Обновление сайта",
-              "error": "Произошла ошибка.",
+              "error": "Произошла ошибка",
               "floodDetected": "Вероятность спам-атаки"
             }
           },
@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "Вход",
               "loggedOut": "Выход",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Пароль обновлен"
             }
           },
           "parties": {
@@ -192,27 +192,27 @@
           "events": {
             "label": "Походы",
             "fields": {
-              "complete": "Поход выполнен.",
-              "freeComplete": "Свободный поход выполнен.",
-              "vmComplete": "Торговый автомат найден.",
-              "listUpdated": "Список походов обновлён."
+              "complete": "Поход выполнен",
+              "freeComplete": "Свободный поход выполнен",
+              "vmComplete": "Торговый автомат найден",
+              "listUpdated": "Список походов обновлён"
             }
           },
           "badges": {
             "label": "Значки",
             "fields": {
-              "badgeUnlocked": "Значок открыт."
+              "badgeUnlocked": "Значок открыт"
             }
           },
           "saveSync": {
             "label": "Облачное сохранение",
             "fields": {
-              "saveUploading": "Выгрузка сохранения...",
-              "saveUploaded": "Выгрузка завершена.",
-              "saveDownloading": "Загрузка сохранения...",
-              "saveDownloaded": "Загрузка завершена.",
-              "saveUpToDate": "Сохранение актуально.",
-              "saveCleared": "Сохранение очищено."
+              "saveUploading": "Выгрузка сохранения",
+              "saveUploaded": "Выгрузка завершена",
+              "saveDownloading": "Загрузка сохранения",
+              "saveDownloaded": "Загрузка завершена",
+              "saveUpToDate": "Сохранение актуально",
+              "saveCleared": "Сохранение очищено"
             }
           }
         }
@@ -221,25 +221,25 @@
         "title": "Настройки аккаунта",
         "fields": {
           "badge": "Значок",
-          "toggleSaveSync": "Облачное сохранение (экспериментальное)",
+          "toggleSaveSync": "Облачное сохранение(экспериментальное)",
           "saveSyncSlotId": {
             "label": "ID Слота для синхронизации",
             "values": {
               "0": "Нет"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Изменить пароль",
           "clearSaveSync": "Очистить данные облачного сохранения"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Изменить пароль",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Старый пароль",
+          "newPassword": "Новый пароль",
+          "newConfirmPassword": "Подтвердите новый пароль"
         },
-        "submit": "Submit"
+        "submit": "Изменить"
       },
       "badges": {
         "title": "Значки",
@@ -449,9 +449,9 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Пароли не совпадают.",
+          "badLogin": "Пароль для входа не подходит.",
+          "internalServerError": "Произошла ошибка: пожалуйста повторите попытке позже."
         }
       }
     },
@@ -500,7 +500,7 @@
       "account": {
         "loggedIn": "Вы вошли как {USER}.",
         "loggedOut": "Вы вышли из аккаунта.",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Ваш пароль был изменен успешно."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
