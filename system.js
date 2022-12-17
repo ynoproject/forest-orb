@@ -606,7 +606,7 @@ function addSystemSvgDropShadow(systemName, color) {
     svgDropShadow.setAttribute('dx', '1');
     svgDropShadow.setAttribute('dy', '1');
     svgDropShadow.setAttribute('stdDeviation', '0.2');
-    svgDropShadow.setAttribute('flood-color', color);
+    svgDropShadow.setAttribute('flood-color', `rgb(${color})`);
 
     svgDropShadowFilter.appendChild(svgDropShadow);
     svgDefs.appendChild(svgDropShadowFilter);
