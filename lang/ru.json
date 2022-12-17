@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "Вход",
               "loggedOut": "Выход",
-              "passwordUpdate": "Пароль обновлен"
+              "passwordUpdate": "Пароль обновлён"
             }
           },
           "parties": {
