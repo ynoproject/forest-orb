@@ -99,12 +99,12 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "玩家名样式",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "不显示",
+              "classic": "经典（缩写）",
+              "compact": "全名",
+              "slim": "全名（小）"
             }
           },
           "togglePlayerSounds": "同步玩家音效",
@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "登录",
               "loggedOut": "登出",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "密码已更新"
             }
           },
           "parties": {
@@ -228,18 +228,18 @@
               "0": "无"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "修改密码",
           "clearSaveSync": "清空云端存档"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "修改密码",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "旧密码",
+          "newPassword": "新密码",
+          "newConfirmPassword": "重复以确认"
         },
-        "submit": "Submit"
+        "submit": "提交"
       },
       "badges": {
         "title": "徽章",
@@ -449,9 +449,9 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "两次密码不相匹",
+          "badLogin": "登录密码错误",
+          "internalServerError": "发生错误：请稍后再试"
         }
       }
     },
@@ -500,7 +500,7 @@
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
         "loggedOut": "您已登出。",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "账号密码修改成功。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
