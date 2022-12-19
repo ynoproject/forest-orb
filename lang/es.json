@@ -480,7 +480,6 @@
         "backupReminder": "Se recomienda descargar frecuentemente los archivos de guardado para evitar perder el progreso en el juego en el caso de que la caché del navegador sea borrada.",
         "menuTheme": "Tu color de nombre y estilo en la lista de jugadores cambia dependiendo del menú que selecciones dentro del juego.",
         "playersInMap": "Puede alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
-        "globalChatLocation": "Puede ver la ubicación desde donde se envío un mensaje global presionando el ícono de globo a la izquierda del mensaje. Puede volver a presionar el ícono para ocultar esta información.",
         "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
         "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "Cuando se encuentra en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
