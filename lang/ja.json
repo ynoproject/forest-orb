@@ -317,7 +317,8 @@
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "グローバルメッセージ世界名のオン／オフ",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "チャットを消去"
       },
       "parties": {

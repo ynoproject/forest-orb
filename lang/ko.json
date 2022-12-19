@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -317,7 +317,8 @@
       "settings": "옵션",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "글로벌 채팅 장소 표시",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {

@@ -762,28 +762,24 @@ function initOrUpdatePartyModal(partyId) {
 
 function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
   const isInParty = partyId == joinedPartyId;
-  const playerLocationIcon = entry.querySelector('.playerLocationIcon');
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   
   if (initLocation) {
     playerLocation = document.createElement('small');
     playerLocation.classList.add('playerLocation');
-    if (!config.showPartyMemberLocation)
-      playerLocation.classList.add('hidden');
-    playerLocationIcon.after(playerLocation);
+    entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 
-  playerLocationIcon.classList.toggle('hidden', !isInParty || !member.online);
+  playerLocation.classList.toggle('hidden', !isInParty || !member.online);
 
   if (isInParty && member.online && member.mapId) {
     playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(' ', '_') : null;
     if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
-      set2kkiGlobalChatMessageLocation(playerLocationIcon, playerLocation, member.mapId, member.prevMapId, prevLocations);
+      set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);
     } else {
       const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
-      addTooltip(playerLocationIcon, locationsHtml, true);
       playerLocation.innerHTML = locationsHtml;
       if (playerLocation.dataset.systemOverride) {
         for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
@@ -792,17 +788,6 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
           anchor.setAttribute('style', `background-image: var(--alt-gradient-${playerLocation.dataset.systemOverride}) !important;`);
       }
     }
-  }
-
-  if (initLocation) {
-    playerLocationIcon.classList.add('pointer');
-
-    playerLocationIcon.onclick = function () {
-      const locationLabel = this.nextElementSibling;
-      locationLabel.classList.toggle('hidden');
-      config.showPartyMemberLocation = !locationLabel.classList.contains('hidden');
-      updateConfig(config);
-    };
   }
 }
 

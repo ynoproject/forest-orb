@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Версия {VERSION}",
@@ -317,7 +317,8 @@
       "settings": "Настройки",
       "toggleGlobalMessage": "Переключить отправку в глобальный чат",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Показать/скрыть локацию в глобальных сообщениях",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "Очистить чат"
       },
       "parties": {

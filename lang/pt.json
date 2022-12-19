@@ -317,7 +317,8 @@
       "settings": "Configurações",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Amostrar/Esconder Sua localização no Chat Global",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "Limpar o Chat"
       },
       "parties": {

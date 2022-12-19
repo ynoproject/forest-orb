@@ -317,7 +317,8 @@
       "settings": "设置",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "在公屏消息中公开/隐藏我的位置",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "清空记录"
       },
       "parties": {

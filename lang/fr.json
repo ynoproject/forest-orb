@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -317,7 +317,8 @@
       "settings": "Paramètres",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Afficher/masquer l'emplacement du message de chat global",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "Effacer le Chat"
       },
       "parties": {

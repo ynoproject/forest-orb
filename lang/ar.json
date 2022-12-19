@@ -317,7 +317,8 @@
       "settings": "إعدادات",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في المحادثة العامة",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "مسح تاريخ المحادثة"
       },
       "parties": {

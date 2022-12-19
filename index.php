@@ -230,6 +230,11 @@
                   </div>
                 </div>
                 <div id="chatButtons" class="tabButtons">
+                  <button id="globalMessageLocationsButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.chat.toggleGlobalMessageLocations">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                      <path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18v18q-10-9 0-18 10 9 0 18m-7.5-4q7.5-3 15 0m-15-10q7.5 2 15 0m-16.5 5h18" /><path d="m-2 16l22-14" />
+                    </svg>
+                  </button>
                   <button id="ownGlobalMessageLocationButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.chat.toggleOwnGlobalMessageLocation">
                     <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
                       <path d="m3 5q1-5 6-5t6 5-6 11q-7-6-6-11m6-2a1 1 0 0 0 0 5 1 1 0 0 0 0 -5m-2 11c-1 0-3 1-3 2s2 2 5 2 5-1 5-2-2-2-3-2" /><path d="m-2 16l22-14" />

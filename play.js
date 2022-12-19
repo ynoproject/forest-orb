@@ -44,9 +44,8 @@ let config = {
   chatTabIndex: 0,
   playersTabIndex: 0,
   globalMessage: false,
+  hideGlobalMessageLocations: false,
   hideOwnGlobalMessageLocation: false,
-  showGlobalMessageLocation: false,
-  showPartyMemberLocation: true,
   lastEventLocations: null
 };
 
@@ -601,6 +600,14 @@ document.getElementById('globalMessageButton').onclick = function () {
     delete chatInput.dataset.global;
   chatInput.disabled = toggled && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
   config.globalMessage = toggled;
+  updateConfig(config);
+};
+
+document.getElementById('globalMessageLocationsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('messages').classList.toggle('hideLocations', toggled);
+  config.hideGlobalMessageLocations = toggled;
   updateConfig(config);
 };
 
