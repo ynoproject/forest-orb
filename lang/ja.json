@@ -37,9 +37,9 @@
       "chat": {
         "tab": {
           "all": "全",
-          "map": "マップ",
-          "global": "グローバル",
-          "party": "パーティー"
+          "map": "ﾏｯﾌﾟ",
+          "global": "ｸﾞﾛｰﾊﾞﾙ",
+          "party": "ﾊﾟｰﾃｨｰ"
         },
         "nickname": {
           "header": "チャットを する前に、 ニックネームを 設定する 必要が あります。",
@@ -317,7 +317,8 @@
       "settings": "設定",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "グローバルメッセージ世界名のオン／オフ",
+        "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
+        "toggleOwnGlobalMessageLocation": "チャットの場所の共有のオン／オフ",
         "clearChat": "チャットを消去"
       },
       "parties": {
@@ -454,6 +455,9 @@
           "internalServerError": "エラーが発生しました:後でもう一度お試しください。"
         }
       }
+    },
+    "chat": {
+      "globalMessage": "グローバルメッセージ"
     },
     "parties": {
       "emptyMessage": "現在、 活動中の パーティーは ありません。",
