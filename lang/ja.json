@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "ログイン通知",
               "loggedOut": "ログアウト通知",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "パスワード変更通知"
             }
           },
           "parties": {
@@ -228,18 +228,18 @@
               "0": "なし"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "パスワード変更",
           "clearSaveSync": "セーブデータ同期を削除"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "パスワード変更",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "現在のパスワード",
+          "newPassword": "変更後のパスワード",
+          "newConfirmPassword": "変更後のパスワード(確認)"
         },
-        "submit": "Submit"
+        "submit": "決定"
       },
       "badges": {
         "title": "バッジ",
@@ -263,7 +263,7 @@
       },
       "uiTheme": {
         "title": "メニュー タイプ",
-        "auto": "AUTO"
+        "auto": "自動"
       },
       "createParty": {
         "title": {
@@ -443,15 +443,15 @@
         "errors": {
           "confirmPasswordMismatch": "パスワードが一致しません。",
           "invalidCredentials": "指定されたユーザー名またはパスワードが空、もしくは無効な文字が含まれています。",
-          "emailTaken": "このメールアドレスは 既に 使用されています。",
-          "usernameTaken": "このユーザー名は 既に 使用されています。"
+          "emailTaken": "このメールアドレスは既に使用されています。",
+          "usernameTaken": "このユーザー名は既に使用されています。"
         }
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "変更後のパスワードが一致しません。",
+          "badLogin": "パスワードが間違っています。",
+          "internalServerError": "エラーが発生しました:後でもう一度お試しください。"
         }
       }
     },
@@ -500,7 +500,7 @@
       "account": {
         "loggedIn": "{USER}でログインしました。",
         "loggedOut": "ログアウトしました。",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "パスワードの変更が完了しました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
@@ -536,8 +536,8 @@
     },
     "events": {
       "exp": "{POINTS}ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
+      "expRank": "ランク: {RANK}",
+      "period": "シーズン {ORDINAL}",
       "periodEnds": "{DATE}まで",
       "current": "現在",
       "shortcut": "ショートカットを開通させていると短縮可能",
