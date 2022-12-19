@@ -106,7 +106,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       if (joinedPartyCache.systemName) {
         const parsedPartySystemName = joinedPartyCache.systemName.replace(" ", "_");
         const iconStyle = `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`;
-        partyIcon.querySelector("path").setAttribute("style", iconStyle);
+        chatTypeIcon.querySelector("path").setAttribute("style", iconStyle);
         if (partyOwnerIcon)
           partyOwnerIcon.querySelector("path").setAttribute("style", iconStyle);
       }
