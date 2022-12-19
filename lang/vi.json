@@ -455,6 +455,9 @@
         }
       }
     },
+    "chat": {
+      "globalMessage": "Global Message"
+    },
     "parties": {
       "emptyMessage": "Hiện không có nhóm hoạt động.",
       "yourParty": "Nhóm của bạn",

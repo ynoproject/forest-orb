@@ -37,16 +37,15 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   if (!system) {
     let rankIcon;
-    let partyIcon;
+    let chatTypeIcon;
 
     if (global || party) {
       const showLocation = (mapId || "0000") !== "0000" && (localizedMapLocations || gameId === "2kki");
 
       msgContainer.classList.add(global ? "global" : "party");
-      if (global || showLocation)
-        msgContainer.appendChild(getSvgIcon("playerLocation"));
-
       if (showLocation) {
+        msgContainer.appendChild(getSvgIcon("playerLocation"));
+        
         const playerLocationIcon = msgContainer.children[0];
         const playerLocation = document.createElement("small");
 
@@ -76,11 +75,16 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       }
     }
 
-    if (party) {
-      partyIcon = getSvgIcon("party", true);
-      if (joinedPartyCache)
-        addTooltip(partyIcon, getPartyName(joinedPartyCache, false, true), true, true);
-      message.appendChild(partyIcon);
+    if (global || party) {
+      if (global) {
+        chatTypeIcon = getSvgIcon("global", true);
+        addTooltip(chatTypeIcon, getMassagedLabel(localizedMessages.chat.globalMessage, true), true, true);
+      } else {
+        chatTypeIcon = getSvgIcon("party", true);
+        if (joinedPartyCache)
+          addTooltip(chatTypeIcon, getPartyName(joinedPartyCache, false, true), true, true);
+      }
+      message.appendChild(chatTypeIcon);
     }
 
     const name = document.createElement("span");

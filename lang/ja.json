@@ -455,6 +455,9 @@
         }
       }
     },
+    "chat": {
+      "globalMessage": "グローバルメッセージ"
+    },
     "parties": {
       "emptyMessage": "現在、 活動中の パーティーは ありません。",
       "yourParty": "自分の パーティー",
