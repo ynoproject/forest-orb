@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "Connecté(e)",
               "loggedOut": "Déconnecté(e)",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Mot de passe mis à jour"
             }
           },
           "parties": {
@@ -228,18 +228,18 @@
               "0": "Aucun"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Changer de mot de passe",
           "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Changer de mot de passe",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Ancien mot de passe",
+          "newPassword": "Nouveau mot de passe",
+          "newConfirmPassword": "Confirmer le nouveau mot de passe"
         },
-        "submit": "Submit"
+        "submit": "Soumettre"
       },
       "badges": {
         "title": "Badges",
@@ -317,8 +317,8 @@
       "settings": "Paramètres",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
+        "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
+        "toggleOwnGlobalMessageLocation": "Partager/Cacher votre Lieu dans les messages de Chat",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
@@ -450,14 +450,14 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Les nouveaux mots de passe ne correspondent pas.",
+          "badLogin": "Le mot de passe de connexion est incorrect.",
+          "internalServerError": "Une erreur est survenue : veuillez réessayer plus tard."
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Message Global"
     },
     "parties": {
       "emptyMessage": "Il n'y a actuellement aucun groupe actif.",
@@ -504,7 +504,7 @@
       "account": {
         "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",
         "loggedOut": "Vous êtes déconnecté(e).",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Votre mot de passe a été mis à jour avec succès."
       },
       "parties": {
         "create": "{PARTY} a été créé.",
