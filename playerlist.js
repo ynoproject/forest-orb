@@ -442,13 +442,11 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
           for (let nameMarker of nameMarkers)
             nameMarker.setAttribute('style', nameMarkerStyle);
         }
-        if (rankIcon || mutedIcon || playerListEntryActionContainer.childElementCount || showLocation) {
+        if (rankIcon || mutedIcon || playerListEntryActionContainer.childElementCount) {
           if (rankIcon)
             rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
           for (let iconPath of playerListEntryActionContainer.querySelectorAll('path'))
             iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-          if (showLocation)
-            playerListEntry.querySelector('.playerLocationIcon path').setAttribute('style', `stroke: var(--svg-alt-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName})`);
         }
         if (showBadgeOverlay) {
           playerListEntryBadgeOverlay.style.background = badge.overlayType & BadgeOverlayType.GRADIENT

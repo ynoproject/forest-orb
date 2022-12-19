@@ -260,10 +260,9 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
   }
 }
 
-function set2kkiGlobalChatMessageLocation(globalMessageIcon, globalMessageLocation, mapId, prevMapId, prevLocations) {
+function set2kkiGlobalChatMessageLocation(globalMessageLocation, mapId, prevMapId, prevLocations) {
   getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, locations => {
     const locationsHtml = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
-    addTooltip(globalMessageIcon, locationsHtml, true, true);
     globalMessageLocation.innerHTML = locationsHtml;
     if (globalMessageLocation.dataset.systemOverride) {
       for (let infoLabel of globalMessageLocation.querySelectorAll('.infoLabel'))

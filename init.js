@@ -467,6 +467,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('globalMessageButton').click();
                     break;
+                  case 'hideGlobalMessageLocations':
+                    if (value)
+                      document.getElementById('globalMessageLocationsButton').click();
+                    break;
                   case 'hideOwnGlobalMessageLocation':
                     if (value)
                       preToggle(document.getElementById('ownGlobalMessageLocationButton'));

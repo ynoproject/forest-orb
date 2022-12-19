@@ -317,7 +317,8 @@
       "settings": "Cài đặt",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm trên Chat Chung",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "Xóa Chat"
       },
       "parties": {
@@ -454,6 +455,9 @@
           "internalServerError": "An error occurred: please try again later."
         }
       }
+    },
+    "chat": {
+      "globalMessage": "Global Message"
     },
     "parties": {
       "emptyMessage": "Hiện không có nhóm hoạt động.",

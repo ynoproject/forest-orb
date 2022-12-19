@@ -271,11 +271,11 @@ body {
   filter: var(--svg-shadow);
 }
 
-.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child, .playerLocationIcon[title] path {
+.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child {
   stroke: var(--svg-alt-gradient);
 }
 
-#chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #messages .playerLocationIcon path, #chatbox.partyChat #chatInput .icon circle {
+#chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
   stroke: var(--party-svg-base-gradient);
   filter: var(--party-svg-shadow);
 }
@@ -295,10 +295,6 @@ body {
 
 #chatbox.partyChat #messages .messageContainer.highlight {
   background: rgba(var(--party-alt-color), 0.5);
-}
-
-#chatbox.partyChat #messages .playerLocationIcon[title] path {
-  stroke: var(--party-svg-alt-gradient);
 }
 
 #chatbox.partyChat #chatInput {
@@ -974,6 +970,17 @@ body.fullBg #background {
   padding-bottom: 4px;
 }
 
+#chatbox #chatHeader #chatButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 64px;
+  min-width: 54px;
+}
+
+#chatbox #messages.hideLocations .playerLocation {
+  display: none;
+}
+
 #chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
   display: none;
 }
@@ -1063,24 +1070,6 @@ body.fullBg #background {
 .messageContents .spoiler:not(.show) .ynomojiWrapper {
   opacity: 0;
   pointer-events: none;
-}
-
-.playerLocationIcon {
-  float: left;
-  width: 12px;
-  height: 0px;
-  padding-right: 4px;
-  padding-bottom: 6px;
-  margin-top: -2px;
-  margin-left: 2px;
-}
-
-.detailsContainer .playerLocationIcon {
-  height: 12px;
-}
-
-.playerLocationIcon svg {
-  vertical-align: middle;
 }
 
 .playerLocation {
@@ -1458,7 +1447,7 @@ body.fullBg #background {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocationIcon.hidden, .playerLocation.hidden, .playerLocationIcon.hidden + .playerLocation, .subTab.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
+#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocation.hidden, .subTab.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden {
   display: none;
 }
 

@@ -317,7 +317,8 @@
       "settings": "Opciones",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
-        "toggleOwnGlobalMessageLocation": "Alternar Ubicación de Mensajes de Chat",
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "clearChat": "Limpiar Chat"
       },
       "parties": {
@@ -454,6 +455,9 @@
           "internalServerError": "An error occurred: please try again later."
         }
       }
+    },
+    "chat": {
+      "globalMessage": "Global Message"
     },
     "parties": {
       "emptyMessage": "No se encontraron equipos activos.",
