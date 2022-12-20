@@ -621,13 +621,19 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
-            <div id="badgeControls" class="uiControls">
+            <div id="badgeControls" class="uiControls wrap">
               <div class="uiControl">
                 <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">Unlock Status:&nbsp;</label>
                 <select id="badgeUnlockStatus">
                   <option value="" data-i18n="[html]modal.badges.fields.unlockStatus.values.all">All</option>
                   <option value="0" data-i18n="[html]modal.badges.fields.unlockStatus.values.0">Locked</option>
                   <option value="1" data-i18n="[html]modal.badges.fields.unlockStatus.values.1">Unlocked</option>
+                </select>
+              </div>
+              <div class="uiControl">
+                <label for="badgeSortOrder" class="unselectable" data-i18n="[html]modal.badges.fields.sortOrder.label">Sort Order:&nbsp;</label>
+                <select id="badgeSortOrder">
+                  <option value="" data-i18n="[html]modal.badges.fields.sortOrder.values.default">Default</option>
                 </select>
               </div>
               <div class="uiControl">

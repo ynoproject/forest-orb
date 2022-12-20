@@ -12,6 +12,8 @@ let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
+let badgeGameIds = [];
+
 const badgeGalleryRowBpLevels = [
   {
     bp: 300,
@@ -76,6 +78,18 @@ const badgeGalleryColBcLevels = [
     count: 7
   }
 ];
+const badgeSortOrderTypes = {
+  'bp': (a, b, desc) => {
+    if (a.bp === b.bp)
+      return 0;
+    return a.bp > b.bp === desc ? -1 : 1;
+  },
+  'percent': (a, b, desc) => {
+    if (a.percent === b.percent)
+      return 0;
+    return a.percent > b.percent === desc ? -1 : 1;
+  }
+};
 const BadgeOverlayType = {
   GRADIENT: 1,
   MULTIPLY: 2,
@@ -87,75 +101,119 @@ const BadgeOverlayType = {
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
 
+  const sortOrder = document.getElementById('badgeSortOrder');
+
+  for (let sot of Object.keys(badgeSortOrderTypes)) {
+    const optionAsc = document.createElement('option');
+    const optionDesc = document.createElement('option');
+
+    optionAsc.value = sot;
+    optionDesc.value = `${sot}_desc`;
+
+    sortOrder.appendChild(optionAsc);
+    sortOrder.appendChild(optionDesc);
+  }
+
+  const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
+    fetchPlayerBadges(playerBadges => {
+      const sortOrderDesc = sortOrder.value.endsWith('_desc');
+      const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
+      let lastGame = null;
+      let lastGroup = null;
+      const badgeCompareFunc = (a, b) => {
+        if (a.game !== b.game) {
+          if (a.game === 'ynoproject')
+            return -1;
+          if (b.game === 'ynoproject')
+            return 1;
+          if (a.game === gameId)
+            return -1;
+          if (b.game === gameId)
+            return 1;
+          return (badgeGameIds || gameIds).indexOf(a.game) < (badgeGameIds || gameIds).indexOf(b.game) ? -1 : 1;
+        }
+        if (sortOrderType) {
+          if (a.group !== b.group) {
+            if (a.group < b.group)
+              return -1;
+            return 1;
+          }
+          return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
+        }
+        return 0;
+      };
+      badgeFilterCache.splice(0, badgeFilterCache.length);
+      const badges = [{ badgeId: 'null', game: null}].concat(playerBadges.sort(badgeCompareFunc));
+      for (let badge of badges) {
+        if (badge.game !== lastGame) {
+          const gameHeader = document.createElement('h2');
+          gameHeader.classList.add('itemCategoryHeader');
+          gameHeader.dataset.game = badge.game;
+          gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game]);
+          badgeModalContent.appendChild(gameHeader);
+          lastGame = badge.game;
+          lastGroup = null;
+        }
+        if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
+          const groupHeader = document.createElement('h3');
+          groupHeader.classList.add('itemCategoryHeader');
+          groupHeader.dataset.game = badge.game;
+          groupHeader.dataset.group = badge.group;
+          groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
+          badgeModalContent.appendChild(groupHeader);
+          lastGroup = badge.group;
+        }
+        const item = getBadgeItem(badge, true, true, true, true, true);
+        if (badge.badgeId === (playerData?.badge || 'null'))
+          item.children[0].classList.add('selected');
+        if (!item.classList.contains('disabled')) {
+          item.onclick = slotRow && slotCol
+            ? () => updatePlayerBadgeSlot(badge.badgeId, slotRow, slotCol, () => {
+              updateBadgeSlots(() => {
+                initAccountSettingsModal();
+                initBadgeGalleryModal();
+                closeModal()
+              });
+            })
+            : () => updatePlayerBadge(badge.badgeId, () => {
+              initAccountSettingsModal();
+              closeModal();
+            });
+        }
+        badgeModalContent.appendChild(item);
+      }
+      updateBadgeVisibility();
+      removeLoader(document.getElementById('badgesModal'));
+    });
+  }
+
+  const updateBadgesAndPopulateModal = (slotRow, slotCol) => {
+    sortOrder.onchange = () => onChangeBadgeSortOrder(slotRow, slotCol);
+    document.getElementById('badgeGalleryButton').classList.toggle('hidden', !!(slotRow && slotCol));
+    
+    for (let sot of Object.keys(badgeSortOrderTypes)) {
+      const optionAsc = sortOrder.querySelector(`option[value="${sot}"]`);
+      const optionDesc = sortOrder.querySelector(`option[value="${sot}_desc"]`);
+
+      optionAsc.innerHTML = getMassagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.asc));
+      optionDesc.innerHTML = getMassagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.desc));
+    }
+    
+    fetchAndUpdateBadgeModalBadges(slotRow, slotCol);
+  };
+
+  const onChangeBadgeSortOrder = (slotRow, slotCol) => {
+    badgeModalContent.innerHTML = '';
+    addLoader(document.getElementById('badgesModal'), true);
+    updateBadgesAndPopulateModal(slotRow, slotCol);
+  };
+
   const onClickBadgeButton = (prevModal, slotRow, slotCol) => {
     if (slotRow && slotCol && (slotRow > badgeSlotRows || slotCol > badgeSlotCols))
       return;
 
     badgeModalContent.innerHTML = '';
 
-    const updateBadgesAndPopulateModal = () => {
-      document.getElementById('badgeGalleryButton').classList.toggle('hidden', !!(slotRow && slotCol));
-      fetchPlayerBadges(playerBadges => {
-        let lastGame = null;
-        let lastGroup = null;
-        const badgeCompareFunc = (a, b) => {
-          if (a.game !== b.game) {
-            if (a.game === 'ynoproject')
-              return -1;
-            if (b.game === 'ynoproject')
-              return 1;
-            if (a.game === gameId)
-              return -1;
-            if (b.game === gameId)
-              return 1;
-            return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
-          }
-          return 0;
-        };
-        badgeFilterCache.splice(0, badgeFilterCache.length);
-        const badges = [{ badgeId: 'null', game: null}].concat(playerBadges.sort(badgeCompareFunc));
-        for (let badge of badges) {
-          if (badge.game !== lastGame) {
-            const gameHeader = document.createElement('h2');
-            gameHeader.classList.add('itemCategoryHeader');
-            gameHeader.dataset.game = badge.game;
-            gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game]);
-            badgeModalContent.appendChild(gameHeader);
-            lastGame = badge.game;
-            lastGroup = null;
-          }
-          if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
-            const groupHeader = document.createElement('h3');
-            groupHeader.classList.add('itemCategoryHeader');
-            groupHeader.dataset.game = badge.game;
-            groupHeader.dataset.group = badge.group;
-            groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
-            badgeModalContent.appendChild(groupHeader);
-            lastGroup = badge.group;
-          }
-          const item = getBadgeItem(badge, true, true, true, true, true);
-          if (badge.badgeId === (playerData?.badge || 'null'))
-            item.children[0].classList.add('selected');
-          if (!item.classList.contains('disabled')) {
-            item.onclick = slotRow && slotCol
-              ? () => updatePlayerBadgeSlot(badge.badgeId, slotRow, slotCol, () => {
-                updateBadgeSlots(() => {
-                  initAccountSettingsModal();
-                  initBadgeGalleryModal();
-                  closeModal()
-                });
-              })
-              : () => updatePlayerBadge(badge.badgeId, () => {
-                initAccountSettingsModal();
-                closeModal();
-              });
-          }
-          badgeModalContent.appendChild(item);
-        }
-        updateBadgeVisibility();
-        removeLoader(document.getElementById('badgesModal'));
-      });
-    };
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)

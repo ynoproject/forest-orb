@@ -224,12 +224,21 @@ body {
   margin-bottom: 8px;
 }
 
+.uiControls.wrap {
+  flex-wrap: wrap;
+}
+
 .uiControl {
   text-align: center;
 }
 
 .uiControls .uiControl {
   margin: 0 8px;
+}
+
+.uiControls.wrap .uiControl {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .info {

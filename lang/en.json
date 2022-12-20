@@ -253,6 +253,12 @@
               "1": "Unlocked"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Search:&nbsp;"
         }
       },
@@ -480,7 +486,6 @@
         "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
         "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "globalChatLocation": "You can view the location a global chat message was sent from by hovering over or clicking the globe icon to the left of the message. It will also show or hide future global chat message locations based on your last show or hide.",
         "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
         "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
@@ -571,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}"
+      "artCredit": "Art by {ARTIST}",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "{PLAYER}'s Badge Gallery",

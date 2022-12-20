@@ -253,6 +253,12 @@
               "1": "Đã mở khóa"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Tìm kiếm:&nbsp;"
         }
       },
@@ -480,7 +486,6 @@
         "backupReminder": "Bạn nên giữ một bản lưu trong máy bằng cách thường xuyên tải bản lưu xuống. Như vậy, nếu dữ liệu trình duyệt bị xóa, tiến trình của bạn sẽ không bị mất.",
         "menuTheme": "Màu của tên bạn và phông nền trong danh sách người chơi được dựa trên menu theme trong game của bạn.",
         "playersInMap": "Bạn có thể chuyển giữa số người chơi online và số người chơi trong map bằng cách nhấn vào dòng chữ.",
-        "globalChatLocation": "Bạn có thể xem địa điểm của một tin nhắn chung bằng cách di chuột hoặc nhấn vào icon quả địa cầu bên trái tin nhắn. Nó cũng sẽ hiện hoặc ẩn địa điểm những tin nhắn chung tiếp theo dựa trên lựa chọn gần nhất của bạn.",
         "markdownSupport": "Bạn có thể định dạng tin nhắn bằng cách cho tin nhắn vào giữa những ký tự nhất định. Những định dạng hiện có: **in đậm** (\\*\\*chữ\\*\\*), *in nghiêng* (\\*chữ\\*, \\_chữ\\_), __gạch dưới__ (\\_\\_chữ\\_\\_), ~~gạch bỏ~~ (\\~\\~chữ\\~\\~), và ||bôi đen|| (\\|\\|chữ\\|\\|).",
         "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
         "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
@@ -571,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Được vẽ bởi {ARTIST}"
+      "artCredit": "Được vẽ bởi {ARTIST}",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Kho Huy hiệu của {PLAYER}",

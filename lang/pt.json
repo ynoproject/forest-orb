@@ -253,6 +253,12 @@
               "1": "Desbloqueado"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Buscar:&nbsp;"
         }
       },
@@ -480,7 +486,6 @@
         "backupReminder": "É recomendável que você mantenha um backup local do seu progresso baixando regularmente o seu save. Dessa forma, se os dados do seu navegador forem apagados, você não perderá seu progresso.",
         "menuTheme": "A cor do seu nome e o estilo de entrada da lista de jogadores são baseados no tema do menu do jogo.",
         "playersInMap": "Você pode alternar entre o número de jogadores online e o número de jogadores em seu mapa clicando no rótulo..",
-        "globalChatLocation": "Você pode visualizar o local de onde uma mensagem de bate-papo global foi enviada passando o mouse ou clicando no ícone de globo à esquerda da mensagem. Ele também mostrará ou ocultará futuras localizações de mensagens de bate-papo globais com base em sua última exibição ou ocultação.",
         "markdownSupport": "O chat suporta formatação de texto por envolver o texto em certos caracteres. Os atualmente suportados são: **negrito** (\\*\\*texto\\*\\*), *itálico* (\\*texto\\*, \\_texto\\_), __sublinhado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~), e ||spoiler|| (\\|\\|texto\\|\\|).",
         "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
         "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
@@ -571,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% dos jogadores têm este emblema",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Arte de {ARTIST}"
+      "artCredit": "Arte de {ARTIST}",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Galeria de Emblemas de {PLAYER}",
