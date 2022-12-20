@@ -183,6 +183,7 @@ function initBadgeControls() {
         badgeModalContent.appendChild(item);
       }
       updateBadgeVisibility();
+      removeLoader(document.getElementById('badgesModal'));
     });
   }
 
@@ -199,7 +200,6 @@ function initBadgeControls() {
     }
     
     fetchAndUpdateBadgeModalBadges(slotRow, slotCol);
-    removeLoader(document.getElementById('badgesModal'));
   };
 
   const onChangeBadgeSortOrder = (slotRow, slotCol) => {
