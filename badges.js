@@ -217,9 +217,9 @@ function initBadgeControls() {
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);
     if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
-      updateBadgesAndPopulateModal();
+      updateBadgesAndPopulateModal(slotRow, slotCol);
     else
-      updateLocalizedBadges(updateBadgesAndPopulateModal);
+      updateLocalizedBadges(() => updateBadgesAndPopulateModal(slotRow, slotCol));
   };
 
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
