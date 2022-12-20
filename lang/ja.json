@@ -254,9 +254,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "ソート:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "デフォルト"
             }
           },
           "search": "検索："
@@ -581,10 +581,10 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "獲得率"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "昇順",
+        "desc": "降順"
       }
     },
     "badgeGallery": {
