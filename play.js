@@ -1063,7 +1063,7 @@ document.onmousemove = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  if (isInit && localizedGameIds.indexOf(gameId) > -1)
+  if (isInit && gameIds.indexOf(gameId) > -1)
     Module.EASYRPG_LANGUAGE = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
   initLocalization(isInit);
   if (!isInit)
@@ -1107,9 +1107,10 @@ function initLocalization(isInitial) {
 
       localizedMessages = jsonResponse.messages;
       
-      if (isInitial)
+      if (isInitial) {
         onUpdateConnectionStatus(0);
-      else {
+        badgeGameIds = Object.keys(localizedMessages.games);
+      } else {
         if (connStatus !== undefined)
           onUpdateConnectionStatus(connStatus);
         if (playerCount !== undefined)

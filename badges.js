@@ -12,6 +12,8 @@ let localizedBadgeGroups;
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
+let badgeGameIds = [];
+
 const badgeGalleryRowBpLevels = [
   {
     bp: 300,
@@ -108,7 +110,7 @@ function initBadgeControls() {
               return -1;
             if (b.game === gameId)
               return 1;
-            return gameIds.indexOf(a.game) < gameIds.indexOf(b.game) ? -1 : 1;
+            return (badgeGameIds || gameIds).indexOf(a.game) < (badgeGameIds || gameIds).indexOf(b.game) ? -1 : 1;
           }
           return 0;
         };

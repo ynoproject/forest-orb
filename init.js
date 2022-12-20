@@ -1,8 +1,7 @@
-const gameIds = ['2kki', 'amillusion', 'braingirl', 'deepdreams', 'flow', 'genie', 'muma', 'prayers', 'someday', 'unevendream', 'yume'];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'deepdreams', 'flow', 'genie', 'muma', 'prayers', 'someday', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
-const localizedGameIds = [ '2kki', 'amillusion', 'braingirl', 'deepdreams', 'flow', 'genie', 'muma', 'prayers', 'someday', 'yume' ];
 const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja'
