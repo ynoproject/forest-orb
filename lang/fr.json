@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -253,6 +253,12 @@
               "1": "Débloqués"
             }
           },
+          "sortOrder": {
+            "label": "Ordre de classement :&nbsp;",
+            "values": {
+              "default": "Défaut"
+            }
+          },
           "search": "Rechercher :&nbsp;"
         }
       },
@@ -450,7 +456,7 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "Les nouveaux mots de passe ne correspondent pas.",
+          "confirmPasswordMismatch": "Les nouveaux mots de passe spécifiés ne correspondent pas.",
           "badLogin": "Le mot de passe de connexion est incorrect.",
           "internalServerError": "Une erreur est survenue : veuillez réessayer plus tard."
         }
@@ -480,7 +486,6 @@
         "backupReminder": "Il est recommandé de conserver une sauvegarde locale de votre progression en téléchargeant régulièrement votre sauvegarde. De cette façon, si les données de votre navigateur sont effacées, vous ne perdrez pas votre progression.",
         "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
         "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la carte en cliquant sur le label.",
-        "globalChatLocation": "Vous pouvez voir la localisation d'un message global en survolant ou cliquant sur l'icône de globe à gauche de ce dernier. Afficher ou cacher la localisation d'un message global affichera ou cachera la localisation des messages globaux qui suivront.",
         "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
         "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche tab pour basculer entre le jeu et la saisie dans le chat. Cette fonctionnalité peut être désactivée dans les Paramètres du Chat avec l'option 'Appuyez sur Tab pour discuter'.",
         "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
@@ -492,7 +497,7 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
+      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
       "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
     },
     "toast": {
@@ -571,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% des joueurs ont ce badge",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art par {ARTIST}"
+      "artCredit": "Art par {ARTIST}",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "PB",
+          "percent": "Pourcentage d'obtention"
+        },
+        "asc": "Croissant",
+        "desc": "Décroissant"
+      }
     },
     "badgeGallery": {
       "label": "Galerie de {PLAYER}",
