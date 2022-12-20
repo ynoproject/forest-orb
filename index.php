@@ -621,7 +621,7 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.badges.title">Badge</h1>
-            <div id="badgeControls" class="uiControls">
+            <div id="badgeControls" class="uiControls wrap">
               <div class="uiControl">
                 <label for="badgeUnlockStatus" class="unselectable" data-i18n="[html]modal.badges.fields.unlockStatus.label">Unlock Status:&nbsp;</label>
                 <select id="badgeUnlockStatus">
