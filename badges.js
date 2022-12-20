@@ -197,8 +197,8 @@ function initBadgeControls() {
         const optionAsc = sortOrder.querySelector(`option[value="${sot}"]`);
         const optionDesc = sortOrder.querySelector(`option[value="${sot}_desc"]`);
 
-        optionAsc.innerHTML = getMessagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.asc));
-        optionDesc.innerHTML = getMessagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.desc));
+        optionAsc.innerHTML = getMassagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.asc));
+        optionDesc.innerHTML = getMassagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.desc));
       }
     };
     openModal('badgesModal', null, prevModal || null);
