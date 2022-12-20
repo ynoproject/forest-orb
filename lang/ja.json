@@ -221,7 +221,7 @@
         "title": "アカウント設定",
         "fields": {
           "badge": "バッジ",
-          "toggleSaveSync": "セーブデータ同期(実験的)",
+          "toggleSaveSync": "セーブデータ同期（実験的）",
           "saveSyncSlotId": {
             "label": "同期させるセーブデータスロット",
             "values": {
@@ -237,7 +237,7 @@
         "fields": {
           "oldPassword": "現在のパスワード",
           "newPassword": "変更後のパスワード",
-          "newConfirmPassword": "変更後のパスワード(確認)"
+          "newConfirmPassword": "変更後のパスワード（確認）"
         },
         "submit": "決定"
       },
@@ -254,7 +254,7 @@
             }
           },
           "sortOrder": {
-            "label": "ソート:&nbsp;",
+            "label": "ソート：",
             "values": {
               "default": "デフォルト"
             }
@@ -264,8 +264,8 @@
       },
       "badgeGallery": {
         "title": "バッジギャラリー設定",
-        "badgeGalleryRowProgress": "次の行追加まで(BP)",
-        "badgeGalleryColProgress": "次の列追加まで(バッジ)"
+        "badgeGalleryRowProgress": "次の行追加まで（BP）",
+        "badgeGalleryColProgress": "次の列追加まで（バッジ）"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -458,7 +458,7 @@
         "errors": {
           "confirmPasswordMismatch": "変更後のパスワードが一致しません。",
           "badLogin": "パスワードが間違っています。",
-          "internalServerError": "エラーが発生しました:後でもう一度お試しください。"
+          "internalServerError": "エラーが発生しました：後でもう一度お試しください。"
         }
       }
     },
@@ -503,7 +503,7 @@
     "toast": {
       "system": {
         "siteUpdates": "サイトが更新されました。ページを再読み込みすると、サイトの変更が反映されます。",
-        "error": "おっと！エラーが発生しました。エラー内容は、ブラウザのコンソールを確認してください。｢F12キーを押す｣もしくは｢右クリックして｢検証｣をクリックする｣と、開発者ツールが立ち上がります。次に、console(コンソール)タブをクリックするとエラー内容が書かれたログを確認できます。",
+        "error": "おっと！エラーが発生しました。エラー内容は、ブラウザのコンソールを確認してください。｢F12キーを押す｣もしくは｢右クリックして｢検証｣をクリックする｣と、開発者ツールが立ち上がります。次に、console（コンソール）タブをクリックするとエラー内容が書かれたログを確認できます。",
         "floodDetected": "スパム攻撃されている可能性があると検知されました。一人用モードに切り替えました。"
       },
       "account": {
@@ -574,11 +574,11 @@
       "locked": "？？？",
       "location": "場所：",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "このバッジを持っているプレイヤーの割合:{PERCENT}%",
+      "percentUnlocked": "このバッジを持っているプレイヤーの割合：{PERCENT}%",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}",
       "sortOrder": {
-        "template": "{TYPE} ({ORDER})",
+        "template": "{TYPE}（{ORDER}）",
         "types": {
           "bp": "BP",
           "percent": "獲得率"
@@ -601,7 +601,7 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP(バッジポイント)",
+          "label": "BP（バッジポイント）",
           "valueLabel": "BP",
           "value": "{NUMBER} BP"
         },
