@@ -578,7 +578,7 @@
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}",
       "sortOrder": {
-        "template": "{VALUE} ({ORDER})",
+        "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
           "percent": "Percent Unlocked"

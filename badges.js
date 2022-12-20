@@ -246,6 +246,14 @@ function initBadgeControls() {
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
 
+  document.getElementById('badgeSortOrder').onchange = () => {
+    const badgesModal = document.getElementById('badgesModal');
+    badgeModalContent.innerHTML = '';
+    addLoader(badgesModal, true);
+    updateBadgesAndPopulateModal();
+    removeLoader(badgesModal);
+  };
+
   let searchTimer = null;
   document.getElementById('badgeSearch').oninput = function () {
     const _this = this;

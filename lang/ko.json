@@ -578,7 +578,7 @@
       "time": "{MINUTES}분 {SECONDS}초",
       "artCredit": "뱃지 디자인 : {ARTIST}",
       "sortOrder": {
-        "template": "{VALUE} ({ORDER})",
+        "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
           "percent": "Percent Unlocked"

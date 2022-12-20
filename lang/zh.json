@@ -578,7 +578,7 @@
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "由 {ARTIST} 绘制",
       "sortOrder": {
-        "template": "{VALUE} ({ORDER})",
+        "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
           "percent": "Percent Unlocked"
