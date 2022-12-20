@@ -253,6 +253,12 @@
               "1": "Débloqués"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Rechercher :&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% des joueurs ont ce badge",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art par {ARTIST}"
+      "artCredit": "Art par {ARTIST}",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Galerie de {PLAYER}",

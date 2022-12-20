@@ -253,6 +253,12 @@
               "1": "Desbloqueado"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Buscar:&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% dos jogadores têm este emblema",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Arte de {ARTIST}"
+      "artCredit": "Arte de {ARTIST}",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Galeria de Emblemas de {PLAYER}",

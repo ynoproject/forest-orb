@@ -253,6 +253,12 @@
               "1": "Unlocked"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Search:&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% de jugadores tienen esta medalla",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Arte por {ARTIST}"
+      "artCredit": "Arte por {ARTIST}",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Galería de {PLAYER}",

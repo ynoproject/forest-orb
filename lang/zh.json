@@ -253,6 +253,12 @@
               "1": "已解锁"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "搜索:&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "由 {ARTIST} 绘制"
+      "artCredit": "由 {ARTIST} 绘制",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "{PLAYER} 的徽章展柜",

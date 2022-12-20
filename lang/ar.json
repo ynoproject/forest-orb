@@ -253,6 +253,12 @@
               "1": "مفتوح"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "&nbsp;:البحث"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "من اللاعبين لديهم هذه الشارة {PERCENT}%",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "{ARTIST} رسم الفنان/ة"
+      "artCredit": "{ARTIST} رسم الفنان/ة",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "{PLAYER} معرض شارات",

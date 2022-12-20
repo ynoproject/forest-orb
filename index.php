@@ -631,6 +631,12 @@
                 </select>
               </div>
               <div class="uiControl">
+                <label for="badgeSortOrder" class="unselectable" data-i18n="[html]modal.badges.fields.sortOrder.label">Sort Order:&nbsp;</label>
+                <select id="badgeSortOrder">
+                  <option value="" data-i18n="[html]modal.badges.fields.sortOrder.values.default">Default</option>
+                </select>
+              </div>
+              <div class="uiControl">
                 <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search">Search:&nbsp;</label>
                 <input id="badgeSearch" type="text" autocomplete="off" />
               </div>

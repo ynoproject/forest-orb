@@ -78,6 +78,18 @@ const badgeGalleryColBcLevels = [
     count: 7
   }
 ];
+const badgeSortOrderTypes = {
+  'bp': (a, b, desc) => {
+    if (a.bp === b.bp)
+      return 0;
+    return a.bp > b.bp === desc ? -1 : 1;
+  },
+  'percent': (a, b, desc) => {
+    if (a.percent === b.percent)
+      return 0;
+    return a.percent > b.percent === desc ? -1 : 1;
+  }
+};
 const BadgeOverlayType = {
   GRADIENT: 1,
   MULTIPLY: 2,
@@ -89,6 +101,19 @@ const BadgeOverlayType = {
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
 
+  const sortOrder = document.getElementById('badgeSortOrder');
+
+  for (let sot of Object.keys(badgeSortOrderTypes)) {
+    const optionAsc = document.createElement('option');
+    const optionDesc = document.createElement('option');
+
+    optionAsc.value = sot;
+    optionDesc.value = `${sot}_desc`;
+
+    sortOrder.appendChild(optionAsc);
+    sortOrder.appendChild(optionDesc);
+  }
+
   const onClickBadgeButton = (prevModal, slotRow, slotCol) => {
     if (slotRow && slotCol && (slotRow > badgeSlotRows || slotCol > badgeSlotCols))
       return;
@@ -98,6 +123,8 @@ function initBadgeControls() {
     const updateBadgesAndPopulateModal = () => {
       document.getElementById('badgeGalleryButton').classList.toggle('hidden', !!(slotRow && slotCol));
       fetchPlayerBadges(playerBadges => {
+        const sortOrderDesc = sortOrder.value.endsWith('_desc');
+        const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
         let lastGame = null;
         let lastGroup = null;
         const badgeCompareFunc = (a, b) => {
@@ -111,6 +138,14 @@ function initBadgeControls() {
             if (b.game === gameId)
               return 1;
             return (badgeGameIds || gameIds).indexOf(a.game) < (badgeGameIds || gameIds).indexOf(b.game) ? -1 : 1;
+          }
+          if (sortOrderType) {
+            if (a.group !== b.group) {
+              if (a.group < b.group)
+                return -1;
+              return 1;
+            }
+            return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
           }
           return 0;
         };
@@ -157,6 +192,14 @@ function initBadgeControls() {
         updateBadgeVisibility();
         removeLoader(document.getElementById('badgesModal'));
       });
+
+      for (let sot of Object.keys(badgeSortOrderTypes)) {
+        const optionAsc = sortOrder.querySelector(`option[value="${sot}"]`);
+        const optionDesc = sortOrder.querySelector(`option[value="${sot}_desc"]`);
+
+        optionAsc.innerHTML = getMessagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.asc));
+        optionDesc.innerHTML = getMessagedLabel(localizedMessages.badges.sortOrder.template.replace('{TYPE}', localizedMessages.badges.sortOrder.types[sot]).replace('{ORDER}', localizedMessages.badges.sortOrder.desc));
+      }
     };
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);

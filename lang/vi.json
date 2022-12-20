@@ -253,6 +253,12 @@
               "1": "Đã mở khóa"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "Tìm kiếm:&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Được vẽ bởi {ARTIST}"
+      "artCredit": "Được vẽ bởi {ARTIST}",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "Kho Huy hiệu của {PLAYER}",

@@ -253,6 +253,12 @@
               "1": "열림"
             }
           },
+          "sortOrder": {
+            "label": "Sort Order:&nbsp;",
+            "values": {
+              "default": "Default"
+            }
+          },
           "search": "검색:&nbsp;"
         }
       },
@@ -570,7 +576,16 @@
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 뱃지를 가지고 있습니다",
       "time": "{MINUTES}분 {SECONDS}초",
-      "artCredit": "뱃지 디자인 : {ARTIST}"
+      "artCredit": "뱃지 디자인 : {ARTIST}",
+      "sortOrder": {
+        "template": "{VALUE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Percent Unlocked"
+        },
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
     },
     "badgeGallery": {
       "label": "{PLAYER}님의 뱃지 갤러리",
