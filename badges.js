@@ -259,8 +259,6 @@ function initBadgeControls() {
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
 
-  document.getElementById('badgeSortOrder').onchange = ;
-
   let searchTimer = null;
   document.getElementById('badgeSearch').oninput = function () {
     const _this = this;
