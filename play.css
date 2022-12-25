@@ -1681,6 +1681,7 @@ body.fullBg #background {
 
 .modalContent.itemContainer.itemRowContainer {
   flex-flow: column;
+  justify-content: space-between;
 }
 
 .modalContent.itemContainer .badgeItem > .badgeContainer {
