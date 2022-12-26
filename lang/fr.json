@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "Connecté(e)",
               "loggedOut": "Déconnecté(e)",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Mot de passe mis à jour"
             }
           },
           "parties": {
@@ -228,18 +228,18 @@
               "0": "Aucun"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Changer de mot de passe",
           "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Changer de mot de passe",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Ancien mot de passe",
+          "newPassword": "Nouveau mot de passe",
+          "newConfirmPassword": "Confirmer le nouveau mot de passe"
         },
-        "submit": "Submit"
+        "submit": "Soumettre"
       },
       "badges": {
         "title": "Badges",
@@ -254,9 +254,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "Ordre de classement :&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "Défaut"
             }
           },
           "search": "Rechercher :&nbsp;"
@@ -323,8 +323,8 @@
       "settings": "Paramètres",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
+        "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
+        "toggleOwnGlobalMessageLocation": "Partager/Cacher votre Lieu dans les messages de Chat",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
@@ -456,14 +456,14 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Les nouveaux mots de passe spécifiés ne correspondent pas.",
+          "badLogin": "Le mot de passe de connexion est incorrect.",
+          "internalServerError": "Une erreur est survenue : veuillez réessayer plus tard."
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Message Global"
     },
     "parties": {
       "emptyMessage": "Il n'y a actuellement aucun groupe actif.",
@@ -497,7 +497,7 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
+      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
       "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
     },
     "toast": {
@@ -509,7 +509,7 @@
       "account": {
         "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",
         "loggedOut": "Vous êtes déconnecté(e).",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Votre mot de passe a été mis à jour avec succès."
       },
       "parties": {
         "create": "{PARTY} a été créé.",
@@ -580,11 +580,11 @@
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {
-          "bp": "BP",
-          "percent": "Percent Unlocked"
+          "bp": "PB",
+          "percent": "Pourcentage d'obtention"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "Croissant",
+        "desc": "Décroissant"
       }
     },
     "badgeGallery": {
