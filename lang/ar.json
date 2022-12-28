@@ -169,7 +169,7 @@
             "fields": {
               "loggedIn": "مسجل الدخول",
               "loggedOut": "مسجل الخروج",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "تم تحديث كلمة السر"
             }
           },
           "parties": {
@@ -228,21 +228,21 @@
               "0": "لا يوجد"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "تغيير كلمة السر",
           "clearSaveSync": "مسح بيانات مزامنة ملف الحفظ"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "تغيير كلمة السر",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "كلمة السر القديمة",
+          "newPassword": "كلمة السر الجديدة",
+          "newConfirmPassword": "تأكيد كلمة السر الجديدة"
         },
-        "submit": "Submit"
+        "submit": "إرسال"
       },
       "badges": {
-        "title": "Badges",
+        "title": "شارات",
         "manageBadgeGallery": "إدارة معرض الشارات",
         "fields": {
           "unlockStatus": {
@@ -254,9 +254,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "&nbsp;:ترتيب",
             "values": {
-              "default": "Default"
+              "default": "المعتاد"
             }
           },
           "search": "&nbsp;:البحث"
@@ -323,8 +323,8 @@
       "settings": "إعدادات",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
+        "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",
+        "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في رسائل المحادثة",
         "clearChat": "مسح تاريخ المحادثة"
       },
       "parties": {
@@ -456,21 +456,21 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "كلمات السر الجديدة المحددة غير متطابقة",
+          "badLogin": "كلمة مرور تسجيل الدخول غير صحيحة",
+          "internalServerError": "لقد حدث خطأ، رجاء أعد المحاولة لاحقا"
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "رسالة عامة"
     },
     "parties": {
       "emptyMessage": ".لا يوجد حاليا أي حفلات نشطة",
       "yourParty": "حفلتك",
       "defaultPartyName": "{OWNER} حفلة",
       "partyOwner": "قائد الحفلة",
-      "offlineMemberSuffix": " (Offline)",
+      "offlineMemberSuffix": " (غير متصل)",
       "onlineCount": "{COUNT} - متصل",
       "offlineCount": "{COUNT} - غير متصل}",
       "actions": {
@@ -509,7 +509,7 @@
       "account": {
         "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
         "loggedOut": ".لقد قمت بتسجيل الخروج",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "تم تحديث كلمة السر الخاصة بك بنجاح"
       },
       "parties": {
         "create": ".{PARTY} تم إنشاء الحفلة",
