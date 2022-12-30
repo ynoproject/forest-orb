@@ -254,9 +254,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "排序方式:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "默认"
             }
           },
           "search": "搜索:&nbsp;"
@@ -323,8 +323,8 @@
       "settings": "设置",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
+        "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
+        "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
         "clearChat": "清空记录"
       },
       "parties": {
@@ -463,7 +463,7 @@
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "公屏消息"
     },
     "parties": {
       "emptyMessage": "当前暂无活动中的队伍。",
@@ -581,10 +581,10 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "玩家解锁率"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "升序",
+        "desc": "降序"
       }
     },
     "badgeGallery": {
