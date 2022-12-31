@@ -581,7 +581,7 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "해금율"
+          "percent": "해금률"
         },
         "asc": "오름차순",
         "desc": "내림차순"
