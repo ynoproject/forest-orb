@@ -285,7 +285,11 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
 function chatInputActionFired() {
   const chatInput = document.getElementById("chatInput");
-  if (chatInput.value === "")
+  if (!chatInput?.value.trim().length)
+    return;
+  const htmlTextEl = document.createElement("span");
+  htmlTextEl.innerHTML = parseMessageTextForMarkdown(chatInput.value);
+  if (!htmlTextEl.innerText.trim().length)
     return;
   if (loginToken && (chatInput.dataset.global || document.getElementById("chatbox").classList.contains("partyChat"))) {
     if (connStatus === 3)
