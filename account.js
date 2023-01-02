@@ -124,6 +124,90 @@ function initPasswordModal() {
   document.getElementById('passwordErrorRow').classList.add('hidden');
 }
 
+function updateModControls() {
+  const modSettingsControls = document.getElementById('modSettingsModal').querySelector('.formControls');
+  let modSettingsButton = document.getElementById('modSettingsButton');
+  if (playerData.rank >= 1) {
+    if (modSettingsButton)
+      return;
+    modSettingsButton = document.createElement('button');
+    modSettingsButton.id = 'modSettingsButton';
+    modSettingsButton.classList.add('unselectable');
+    modSettingsButton.classList.add('iconButton');
+    addTooltip(modSettingsButton, 'Moderator Settings', true);
+    modSettingsButton.onclick = () => openModal('modSettingsModal');
+    modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';
+    document.getElementById('leftControls').appendChild(modSettingsButton);
+    
+    const addModControlsButton = (label, onClick) => {
+      const row = document.createElement('li');
+      row.classList.add('formControlRow');
+
+      const spacer = document.createElement('span');
+
+      const button = document.createElement('button');
+      button.classList.add('unselectable');
+      button.type = 'button';
+      button.innerHTML = label;
+      button.onclick = onClick;
+
+      row.appendChild(spacer);
+      row.appendChild(button);
+
+      modSettingsControls.appendChild(row);
+    };
+
+    const adminPlayerAction = (action, queryAppend, playerPromptMessage, successMessage, successIcon) => {
+      const playerName = prompt(playerPromptMessage);
+      if (!playerName)
+        return;
+      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}${queryAppend ? `&${queryAppend}` : ''}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(response => showToastMessage((typeof successMessage === 'function' ? successMessage(response) : successMessage).replace('{PLAYER}', playerName), successIcon, true))
+        .catch(err => console.error(err));
+    };
+
+    // TODO: Localize
+    addModControlsButton('Reset a Password',
+      () => adminPlayerAction('admin?command=resetpw', `newPassword=${newPassword}`, 'Enter the name of the account to reset the password for', newPassword => `The new password for {PLAYER} is ${newPassword}`, 'info'));
+    addModControlsButton('Ban a Player',
+      () => adminPlayerAction('ban', null, 'Enter the name of the account to ban', getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+    addModControlsButton('Unban a Player',
+      () => adminPlayerAction('unban', null, 'Enter the name of the account to unban', getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
+    addModControlsButton('Mute a Player',
+      () => adminPlayerAction('mute', null, 'Enter the name of the account to mute', getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
+    addModControlsButton('Unmute a Player',
+      () => adminPlayerAction('unmute', null, 'Enter the name of the account to unmute', getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
+
+    const grantRevokeBadgeAction = isGrant => {
+      const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
+      const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
+      if (badgeId) {
+        const badgeGame = Object.keys(localizedBadges).find(game => {
+          return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+        });
+        if (badgeGame) {
+          const badgeName = localizedBadges[badgeGame][badgeId].name;
+          adminPlayerAction(`admin?command=${isGrant ? 'grant' : 'revoke'}badge`, `id=${badgeId}`,
+            isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from',
+            getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName), 'info');
+        } else
+          alert(localizedContextRoot.fail);
+      }
+    };
+
+    addModControlsButton('Grant a Badge', () => grantRevokeBadgeAction(true));
+    addModControlsButton('Revoke a Badge', () => grantRevokeBadgeAction(false));
+  } else if (modSettingsButton) {
+    modSettingsButton.remove();
+    modSettingsControls.innerHTML = '';
+  }
+}
+
 function showAccountToastMessage(key, icon, username) {
   if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
     return;

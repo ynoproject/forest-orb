@@ -275,7 +275,7 @@ function addAdminContextMenu(target, player, uuid) {
 
   adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
     if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
-      apiFetch(`ban?player=${uuid}`, true)
+      apiFetch(`ban?uuid=${uuid}`, true)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
@@ -291,7 +291,7 @@ function addAdminContextMenu(target, player, uuid) {
       return;
     }
 
-    apiFetch(`mute?player=${uuid}`, true)
+    apiFetch(`mute?uuid=${uuid}`, true)
       .then(response => {
         if(!response.ok)
           throw new Error(response.statusText);
@@ -306,7 +306,7 @@ function addAdminContextMenu(target, player, uuid) {
       return;
     }
 
-    apiFetch(`unmute?player=${uuid}`, true)
+    apiFetch(`unmute?uuid=${uuid}`, true)
       .then(response => {
         if(!response.ok)
           throw new Error(response.statusText);
@@ -328,7 +328,7 @@ function addAdminContextMenu(target, player, uuid) {
         });
         if (badgeGame) {
           const badgeName = localizedBadges[badgeGame][badgeId].name;
-          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&player=${uuid}&id=${badgeId}`)
+          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&uuid=${uuid}&id=${badgeId}`)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);

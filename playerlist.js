@@ -727,6 +727,7 @@ function syncPlayerData(uuid, rank, account, badge, medals, id) {
       badge: badge,
       medals: medals
     };
+    updateModControls();
   }
 }
 
