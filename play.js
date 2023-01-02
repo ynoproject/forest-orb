@@ -10,6 +10,8 @@ let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
 
+let yumeWikiSupported;
+
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
     if (isUI && value.indexOf(' ') > -1)
@@ -287,10 +289,11 @@ function checkUpdateLocation(mapId, mapChanged) {
         if (locationNames.length)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
         else {
-          set2kkiMaps([], null);
+          setMaps([], null);
           set2kkiExplorerLinks(null);
         }
-      }
+      } else if (yumeWikiSupported)
+        queryAndSetWikiMaps(locations);
     }
 
     cachedLocations = locations;
@@ -1203,6 +1206,7 @@ function initLocations(lang, game, callback) {
           localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
           mapLocations = gameMapLocations[game];
           localizedMapLocations = gameLocalizedMapLocations[game];
+          yumeWikiSupported = locationUrlRoot === `https://yume.wiki/${ynoGameId}/`;
         }
         if (callback && (!gameMapLocations[game] || lang === 'en'))
           callback();
@@ -1449,6 +1453,49 @@ function getMassagedLabel(label, isUI) {
 
 function getInfoLabel(label) {
   return `<span class="infoLabel">${label}</span>`;
+}
+
+function queryAndSetWikiMaps(locations) {
+  const maps = [];
+  Promise.all(locations.map(l => wikiApiFetch('maps', `location=${l.urlTitle || l.title}`).then(response => {
+    if (Array.isArray(response)) {
+      for (let map of response)
+        maps.push({ url: map.path, label: map.caption });
+    }
+  }))).then(() => setMaps(maps, locations.map(l => l.title), true, true));
+
+  setMaps([], null, true);
+}
+
+function setMaps(maps, locationNames, cacheMaps, saveMaps) {
+  const mapControls = document.getElementById('mapControls');
+  mapControls.innerHTML = '';
+  if (maps && maps.length) {
+    for (let map of maps)
+      mapControls.appendChild(getMapButton(map.url, map.label));
+  }
+  if (cacheMaps && locationNames) {
+    mapCache[locationNames.join(',')] = maps;
+    if (saveMaps) {
+      cache.map[locationNames.join(',')] = maps;
+      updateCache('map');
+    }
+  }
+}
+
+function getMapButton(url, label) {
+  const ret = document.createElement('button');
+  ret.classList.add('mapButton');
+  ret.classList.add('unselectable');
+  ret.classList.add('iconButton');
+  addTooltip(ret, label, true);
+  ret.onclick = () => {
+    const handle = window.open(url, '_blank', 'noreferrer');
+    if (handle)
+        handle.focus();
+  };
+  ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
+  return ret;
 }
 
 function fetchAndPopulateYnomojiConfig() {

@@ -201,6 +201,16 @@ function apiJsonPost(path, data) {
   });
 }
 
+function wikiApiFetch(action, query) {
+  return new Promise((resolve, reject) => {
+    if (!yumeWikiSupported)
+      reject('Game not supported by yume.wiki');
+    fetch(`../wikiwrapper/${action}?game=${ynoGameId}&${query}`)
+      .then(response => resolve(response))
+      .catch(err => reject(err));
+  });
+}
+
 function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOffset, hasYOffset, isBrave) {
   return new Promise(resolve => {
     const canvas = document.createElement('canvas');

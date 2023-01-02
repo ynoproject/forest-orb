@@ -122,8 +122,8 @@
               </button>
             </div>
             <div id="rightControls">
+              <div id="mapControls"></div>
               <?php if ($gameId == "2kki"): ?>
-                <div id="mapControls"></div>
                 <div id="explorerControls"></div>
               <?php endif ?>
               <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">

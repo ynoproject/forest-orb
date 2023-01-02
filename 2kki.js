@@ -51,11 +51,11 @@ function onLoad2kkiMap(mapId) {
     }
     if (!locationNames) {
       set2kkiExplorerLinks(null);
-      set2kkiMaps([]);
+      setMaps([]);
     } else {
       set2kkiExplorerLinks(locationNames);
       if (mapCache.hasOwnProperty(locationNames.join(',')))
-        set2kkiMaps(mapCache[locationNames.join(',')], locationNames);
+        setMaps(mapCache[locationNames.join(',')], locationNames);
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
     }
@@ -69,7 +69,7 @@ function onLoad2kkiMap(mapId) {
         if (locationNames)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
         else {
-          set2kkiMaps([], null, true, true);
+          setMaps([], null, true, true);
           set2kkiExplorerLinks(null);
         }
         checkEventLocations();
@@ -336,7 +336,7 @@ function queryAndSet2kkiMaps(locationNames) {
       let errCode = null;
 
       if (Array.isArray(response))
-        set2kkiMaps(response, locationNames, true, true);
+        setMaps(response, locationNames, true, true);
       else
         errCode = response?.err_code;
         
@@ -347,39 +347,8 @@ function queryAndSet2kkiMaps(locationNames) {
     };
     send2kkiApiRequest(url, callback);
 
-    set2kkiMaps([], null, true);
+    setMaps([], null, true);
   });
-}
-
-function set2kkiMaps(maps, locationNames, cacheMaps, saveMaps) {
-  const mapControls = document.getElementById('mapControls');
-  mapControls.innerHTML = '';
-  if (maps && maps.length) {
-    for (let map of maps)
-      mapControls.appendChild(get2kkiMapButton(map.url, map.label));
-  }
-  if (cacheMaps && locationNames) {
-    mapCache[locationNames.join(',')] = maps;
-    if (saveMaps) {
-      cache.map[locationNames.join(',')] = maps;
-      updateCache('map')
-    }
-  }
-}
-
-function get2kkiMapButton(url, label) {
-  const ret = document.createElement('button');
-  ret.classList.add('mapButton');
-  ret.classList.add('unselectable');
-  ret.classList.add('iconButton');
-  addTooltip(ret, label, true);
-  ret.onclick = () => {
-    const handle = window.open(url, '_blank', 'noreferrer');
-    if (handle)
-        handle.focus();
-  };
-  ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
-  return ret;
 }
 
 function set2kkiExplorerLinks(locationNames) {
