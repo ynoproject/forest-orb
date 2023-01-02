@@ -292,8 +292,13 @@ function checkUpdateLocation(mapId, mapChanged) {
           setMaps([], null);
           set2kkiExplorerLinks(null);
         }
-      } else if (yumeWikiSupported)
-        queryAndSetWikiMaps(locations);
+      } else if (yumeWikiSupported) {
+        const locationNames = locations.map(l => l.title);
+        if (mapCache.hasOwnProperty(locationNames.join(',')))
+          setMaps(mapCache[locationNames.join(',')], locationNames);
+        else
+          queryAndSetWikiMaps(locations);
+      }
     }
 
     cachedLocations = locations;
