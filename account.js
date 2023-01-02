@@ -157,33 +157,36 @@ function updateModControls() {
       modSettingsControls.appendChild(row);
     };
 
-    const adminPlayerAction = (action, queryAppend, playerPromptMessage, successMessage, successIcon) => {
+    const adminPlayerAction = (action, playerPromptMessage, successMessage, successIcon) => {
       const playerName = prompt(playerPromptMessage);
       if (!playerName)
         return;
-      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}${queryAppend ? `&${queryAppend}` : ''}`)
+      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}`)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
           return response.text();
         })
-        .then(response => showToastMessage((typeof successMessage === 'function' ? successMessage(response) : successMessage).replace('{PLAYER}', playerName), successIcon, true))
+        .then(response => showToastMessage((typeof successMessage === 'function' ? successMessage(response) : successMessage).replace('{PLAYER}', playerName), successIcon, true, null, true))
         .catch(err => console.error(err));
     };
 
     // TODO: Localize
     addModControlsButton('Reset a Password',
-      () => adminPlayerAction('admin?command=resetpw', `newPassword=${newPassword}`, 'Enter the name of the account to reset the password for', newPassword => `The new password for {PLAYER} is ${newPassword}`, 'info'));
+      () => adminPlayerAction('admin?command=resetpw', 'Enter the name of the account to reset the password for', newPassword => `The new password for {PLAYER} is ${newPassword}`, 'info'));
     addModControlsButton('Ban a Player',
-      () => adminPlayerAction('ban', null, 'Enter the name of the account to ban', getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+      () => adminPlayerAction('ban', 'Enter the name of the account to ban', getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
     addModControlsButton('Unban a Player',
-      () => adminPlayerAction('unban', null, 'Enter the name of the account to unban', getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
+      () => adminPlayerAction('unban', 'Enter the name of the account to unban', getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
     addModControlsButton('Mute a Player',
-      () => adminPlayerAction('mute', null, 'Enter the name of the account to mute', getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
+      () => adminPlayerAction('mute', 'Enter the name of the account to mute', getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
     addModControlsButton('Unmute a Player',
-      () => adminPlayerAction('unmute', null, 'Enter the name of the account to unmute', getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
+      () => adminPlayerAction('unmute', 'Enter the name of the account to unmute', getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
 
     const grantRevokeBadgeAction = isGrant => {
+      const playerName = prompt( isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from');
+      if (!playerName)
+        return;
       const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
       const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
       if (badgeId) {
@@ -192,9 +195,14 @@ function updateModControls() {
         });
         if (badgeGame) {
           const badgeName = localizedBadges[badgeGame][badgeId].name;
-          adminPlayerAction(`admin?command=${isGrant ? 'grant' : 'revoke'}badge`, `id=${badgeId}`,
-            isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from',
-            getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName), 'info');
+          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&user=${playerName}&id=${badgeId}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(() => showToastMessage(getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName).replace('{PLAYER}', playerName), 'info', true, null, true))
+            .catch(err => console.error(err));
         } else
           alert(localizedContextRoot.fail);
       }
