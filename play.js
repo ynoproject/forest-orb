@@ -51,11 +51,13 @@ let config = {
   lastEventLocations: null
 };
 
-let cache = {
-  location: {},
-  map: {},
-  locationColor: {}
+const CACHE_TYPE = {
+  location: 'location',
+  map: 'map',
+  locationColor: 'locationColor'
 };
+
+let cache = Object.fromEntries(Object.keys(CACHE_TYPE).map(ct => [ ct, {} ]));
 
 let locationCache;
 let mapCache;
@@ -1482,8 +1484,8 @@ function setMaps(maps, locationNames, cacheMaps, saveMaps) {
   if (cacheMaps && locationNames) {
     mapCache[locationNames.join(',')] = maps;
     if (saveMaps) {
-      cache.map[locationNames.join(',')] = maps;
-      updateCache('map');
+      setCacheValue(CACHE_TYPE.map, locationNames.join(','), maps);
+      updateCache(CACHE_TYPE.map);
     }
   }
 }
@@ -1557,17 +1559,16 @@ function loadOrInitCache() {
       const valueReq = transaction.objectStore('CACHE').get(k.toUpperCase());
       valueReq.onsuccess = valueReqRes => {
         const value = valueReqRes.target.result;
-        switch (k) {
-          case 'location':
-            locationCache = Object.assign({}, value);
-            break;
-          case 'map':
-            mapCache = Object.assign({}, value);
-            break;
-          case 'locationColor':
-            locationColorCache = Object.assign({}, value);
-            break;
-        }
+        const currentTime = new Date().getTime();
+        const localValue = value
+          ? Object.fromEntries(Object.keys(value).filter(k => value[k].hasOwnProperty('time') && (currentTime - value[k].time) / (1000 * 3600 * 24) < 7).map(k => [ k, value[k].value ]))
+          : {};
+        if (k === CACHE_TYPE.location)
+          locationCache = localValue;
+        else if (k === CACHE_TYPE.map)
+          mapCache = localValue;
+        else if (k === CACHE_TYPE.locationColor)
+          locationColorCache = localValue;
         if (value)
           cache[k] = value;
       };
@@ -1585,6 +1586,13 @@ function updateCache(cacheType) {
       transaction.objectStore('CACHE').put(cache[cacheType], cacheType.toUpperCase());
     };
   }
+}
+
+function setCacheValue(cacheType, key, value) {
+  if (!cache.hasOwnProperty(cacheType))
+    return;
+
+  cache[cacheType][key] = { time: new Date().getTime(), value: value };
 }
 
 onResize();

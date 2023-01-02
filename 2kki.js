@@ -182,10 +182,10 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
       locationCache[prevLocationKey] = prevLocations;
     if (saveLocation && (locations || prevLocations)) {
       if (locations)
-        cache.location[locationKey] = locations;
+        setCacheValue(CACHE_TYPE.location, locationKey, locations);
       if (cachePrev)
-        cache.location[prevLocationKey] = prevLocations;
-      updateCache('location');
+        setCacheValue(CACHE_TYPE.location, prevLocationKey, prevLocations);
+      updateCache(CACHE_TYPE.location);
     }
   }
 }
@@ -236,10 +236,10 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
         locationCache[prevLocationKey] = prevLocations;
       if (saveLocation && (locations || prevLocations)) {
         if (locations)
-          cache.location[locationKey] = locations;
+          setCacheValue(CACHE_TYPE.location, locationKey, locations);
         if (cachePrev)
-          cache.location[prevLocationKey] = prevLocations;
-        updateCache('location');
+          setCacheValue(CACHE_TYPE.location, prevLocationKey, prevLocations);
+        updateCache(CACHE_TYPE.location);
       }
     }
   };
@@ -290,8 +290,8 @@ function getOrQuery2kkiLocationsHtml(mapId, callback) {
       else
         unknownLocations.push(locationKey);
       if (saveLocation && locations) {
-        cache.location[locationKey] = locations;
-        updateCache('location');
+        setCacheValue(CACHE_TYPE.location, locationKey, locations);
+        updateCache(CACHE_TYPE.location);
       }
     }
     callback(getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;')));
@@ -419,8 +419,8 @@ function cache2kkiLocationColors(locationName, fgColor, bgColor) {
     const colorsArr = [ fgColor, bgColor ];
     locationColorCache[locationName] = colorsArr;
     if (fgColor && bgColor) {
-      cache.locationColor[locationName] = colorsArr;
-      updateCache('locationColor')
+      setCacheValue(CACHE_TYPE.locationColor, locationName, colorsArr);
+      updateCache(CACHE_TYPE.locationColor)
     }
   }
 }
