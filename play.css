@@ -67,12 +67,19 @@
 }
 
 @font-face {
+  font-family: 'Verdana-Cyrillic';
+  src: local('Verdana');
+  size-adjust: 80%;
+  unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
+}
+
+@font-face {
   font-family: 'JF-Dot-Shinonome12';
   src: url('fonts/JF-Dot-Shinonome12.ttf');
 }
 
 html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
-  font-family: 'PGothic', 'sans-serif';
+  font-family: 'Verdana-Cyrillic', 'PGothic', 'sans-serif';
   font-size: 16px;
 }
 
@@ -172,11 +179,6 @@ body {
 
 .nowrap {
   white-space: nowrap;
-}
-
-.ru-spacing-fix {
-  letter-spacing: -0.3em !important;
-  padding-right: 2px;
 }
 
 .emoji {

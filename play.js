@@ -17,9 +17,6 @@ const langLabelMassageFunctions = {
     if (isUI && value.indexOf(' ') > -1)
       return value.split(/ +/g).map(v => `<span class="nowrap">${v}</span>`).join('');
     return value;
-  },
-  'ru': (value, _isUI) => {
-    return value.replace(/([\u0400-\u04FF]+)/g, '<span class="ru-spacing-fix">$1</span>');
   }
 };
 
