@@ -206,6 +206,11 @@ function wikiApiFetch(action, query) {
     if (!yumeWikiSupported)
       reject('Game not supported by yume.wiki');
     fetch(`../wikiwrapper/${action}?game=${ynoGameId}&${query}`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.json();
+      })
       .then(response => resolve(response))
       .catch(err => reject(err));
   });
