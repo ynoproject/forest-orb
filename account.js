@@ -134,7 +134,7 @@ function updateModControls() {
     modSettingsButton.id = 'modSettingsButton';
     modSettingsButton.classList.add('unselectable');
     modSettingsButton.classList.add('iconButton');
-    addTooltip(modSettingsButton, 'Moderator Settings', true);
+    addTooltip(modSettingsButton, 'Moderator Settings', true, true);
     modSettingsButton.onclick = () => openModal('modSettingsModal');
     modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';
     document.getElementById('leftControls').appendChild(modSettingsButton);
@@ -143,15 +143,12 @@ function updateModControls() {
       const row = document.createElement('li');
       row.classList.add('formControlRow');
 
-      const spacer = document.createElement('span');
-
       const button = document.createElement('button');
       button.classList.add('unselectable');
       button.type = 'button';
       button.innerHTML = label;
       button.onclick = onClick;
 
-      row.appendChild(spacer);
       row.appendChild(button);
 
       modSettingsControls.appendChild(row);
@@ -184,7 +181,7 @@ function updateModControls() {
       () => adminPlayerAction('unmute', 'Enter the name of the account to unmute', getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
 
     const grantRevokeBadgeAction = isGrant => {
-      const playerName = prompt( isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from');
+      const playerName = prompt(isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from');
       if (!playerName)
         return;
       const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
