@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleLocationDisplay": "Affichage du Lieu",
-          "toggleRankings": "Classement",
-          "toggleFloodProtection": "Protection Anti-Spam"
+          "toggleRankings": "Classement"
         },
         "chatSettings": "Paramètres du Chat",
         "notificationSettings": "Paramètres de notification",
@@ -160,8 +159,7 @@
             "label": "Système",
             "fields": {
               "siteUpdates": "Site mis à jour",
-              "error": "Erreur survenue",
-              "floodDetected": "Possible attaque Spam détectée"
+              "error": "Erreur survenue"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour les nouvelles fonctionnalités.",
-        "error": "Oups ! On dirait que quelque chose s'est mal passé. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'.",
-        "floodDetected": "Possible attaque spam détectée : Vous jouez maintenant en mode de jeu solo."
+        "error": "Oups ! On dirait que quelque chose s'est mal passé. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'."
       },
       "account": {
         "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",

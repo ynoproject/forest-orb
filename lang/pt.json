@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Rankings",
-          "toggleFloodProtection": "Sistema Anti-Spam"
+          "toggleRankings": "Rankings"
         },
         "chatSettings": "Chat Settings",
         "notificationSettings": "Configurações de Notificação",
@@ -160,8 +159,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Site Atualizado",
-              "error": "Ocorreu um Erro",
-              "floodDetected": "Possível Ataque Spam Detectado"
+              "error": "Ocorreu um Erro"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "O site foi atualizado. Recarregue a página para obter as alterações mais recentes.",
-        "error": "Oops! Parece que algo deu errado. Veja o console do navegador para detalhes. Para abrir o console, pressione F12 ou clique com o botão direito do mouse e, em seguida, clique em 'Inspect ou Inspecionar'.",
-        "floodDetected": "Possível Ataque de Flood detectado: Mudando para o modo de Single Player."
+        "error": "Oops! Parece que algo deu errado. Veja o console do navegador para detalhes. Para abrir o console, pressione F12 ou clique com o botão direito do mouse e, em seguida, clique em 'Inspect ou Inspecionar'."
       },
       "account": {
         "loggedIn": "Você fez login como {USER}.",

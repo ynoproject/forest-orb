@@ -437,10 +437,6 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('toggleRankingsButton').click();
                     break;
-                  case 'disableFloodProtection':
-                    if (value)
-                      preToggle(document.getElementById('floodProtectionButton'));
-                    break;
                 }
               } else {
                 switch (key) {

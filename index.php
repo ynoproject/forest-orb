@@ -446,12 +446,6 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="floodProtectionButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleFloodProtection">Flood Protection</label>
-                <div>
-                  <button id="floodProtectionButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
-                </div>
-              </li>
-              <li class="formControlRow">
                 <span></span>
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat Settings</button>
               </li>

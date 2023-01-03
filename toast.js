@@ -5,8 +5,7 @@ let fadeToastQueue = [];
 const notificationTypes = {
   system: [
     'siteUpdates',
-    'error',
-    'floodDetected'
+    'error'
   ],
   account: [
     'loggedIn',

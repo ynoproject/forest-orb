@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
-          "toggleRankings": "랭킹",
-          "toggleFloodProtection": "디도스 공격 보호하기"
+          "toggleRankings": "랭킹"
         },
         "chatSettings": "채팅 설정",
         "notificationSettings": "알람 설정",
@@ -160,8 +159,7 @@
             "label": "시스템",
             "fields": {
               "siteUpdates": "사이트 업데이트",
-              "error": "에러 발생",
-              "floodDetected": "디도스 공격 감지"
+              "error": "에러 발생"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "사이트가 업데이트 되었습니다: 새로고침을 눌러 사이트 변경사항을 적용해주세요",
-        "error": "이런! 무언가 오류가 발생했습니다. 개발자 콘솔을 열어서 세부 내용을 확인해주세요. 콘솔 창을 열기 위해서 F12를 누르거나 우측 상단의 옵션을 열어 기타 도구-> 개발자 콘솔을 눌러주세요.",
-        "floodDetected": "디도스 공격이 감지되었습니다: 싱글 플레이어 모드로 자동 전환합니다"
+        "error": "이런! 무언가 오류가 발생했습니다. 개발자 콘솔을 열어서 세부 내용을 확인해주세요. 콘솔 창을 열기 위해서 F12를 누르거나 우측 상단의 옵션을 열어 기타 도구-> 개발자 콘솔을 눌러주세요."
       },
       "account": {
         "loggedIn": "{USER}로 로그인 했습니다",

@@ -28,7 +28,6 @@ let globalConfig = {
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
   partyChatHistoryLimit: 250,
-  disableFloodProtection: false,
   locationDisplay: false,
   hideRankings: false,
   badgeToolsData: null
@@ -402,11 +401,6 @@ function onReceiveInputFeedback(inputId) {
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
         break;
-      case 2:
-        buttonElement = document.getElementById('floodProtectionButton');
-        configKey = 'disableFloodProtection';
-        isGlobal = true;
-        break;
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
@@ -700,11 +694,6 @@ document.getElementById('toggleRankingsButton').onclick = function () {
   document.getElementById('rankingsButton').classList.toggle('hidden', toggled);
   globalConfig.hideRankings = toggled;
   updateConfig(globalConfig, true);
-};
-
-document.getElementById('floodProtectionButton').onclick = () => {
-  if (Module.INITIALIZED)
-    Module._ToggleFloodDefender();
 };
 
 document.getElementById('tabToChatButton').onclick = function () {

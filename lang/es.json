@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Clasificaciones",
-          "toggleFloodProtection": "Protección de Flood"
+          "toggleRankings": "Clasificaciones"
         },
         "chatSettings": "Chat Settings",
         "notificationSettings": "Configuración de Notificaciones",
@@ -160,8 +159,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Sitio Actualizado",
-              "error": "Error Occurred",
-              "floodDetected": "Posible Flood Attack detectado"
+              "error": "Error Occurred"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "El sitio ha sido actualizado. Recargue la página para obtener los nuevos cambios.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'.",
-        "floodDetected": "Posible Flood Attack detectado: Activando modo solitario."
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'."
       },
       "account": {
         "loggedIn": "Te has conectado como {USER}.",

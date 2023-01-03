@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "同步玩家音效",
           "toggleLocationDisplay": "位置弹窗提示",
-          "toggleRankings": "显示排行榜",
-          "toggleFloodProtection": "开启网络攻击保护"
+          "toggleRankings": "显示排行榜"
         },
         "chatSettings": "聊天设置",
         "notificationSettings": "弹框通知设置",
@@ -160,8 +159,7 @@
             "label": "系统通知",
             "fields": {
               "siteUpdates": "网站更新",
-              "error": "发生错误",
-              "floodDetected": "检测到网络攻击"
+              "error": "发生错误"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "检测到网站更新，请刷新网页以获取新内容。",
-        "error": "哎呀！出了点小误差。您可以使用F12或右键菜单内的“审查元素”启动浏览器控制台以查看详情。",
-        "floodDetected": "检测到疑似网络攻击的行为，已暂时切换至单人模式。"
+        "error": "哎呀！出了点小误差。您可以使用F12或右键菜单内的“审查元素”启动浏览器控制台以查看详情。"
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",

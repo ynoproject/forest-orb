@@ -109,8 +109,7 @@
           },
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
-          "toggleRankings": "Bảng xếp hạng",
-          "toggleFloodProtection": "Chống quá tải"
+          "toggleRankings": "Bảng xếp hạng"
         },
         "chatSettings": "Cài đặt Chat",
         "notificationSettings": "Cài đặt Thông báo",
@@ -160,8 +159,7 @@
             "label": "Hệ thống",
             "fields": {
               "siteUpdates": "Trang được cập nhật",
-              "error": "Đã xảy ra lỗi",
-              "floodDetected": "Nghi vấn có tấn công quá tải"
+              "error": "Đã xảy ra lỗi"
             }
           },
           "account": {
@@ -503,8 +501,7 @@
     "toast": {
       "system": {
         "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
-        "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'.",
-        "floodDetected": "Nghi vấn có tấn công gây quá tải: Đang chuyển sang chế độ chơi đơn."
+        "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'."
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
