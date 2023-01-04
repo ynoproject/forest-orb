@@ -323,7 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
         "toggleOwnGlobalMessageLocation": "チャットの場所の共有のオン／オフ",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "チャットのタイムスタンプ表示のオン／オフ",
         "clearChat": "チャットを消去"
       },
       "parties": {
