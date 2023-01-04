@@ -1087,6 +1087,7 @@ body.fullBg #background {
 .messageHeader {
   display: flex;
   justify-content: space-between;
+  padding-right: 2px;
 }
 
 .playerLocation {
@@ -1095,6 +1096,10 @@ body.fullBg #background {
 
 .playerLocation.hidden + .message  > .messageContents.notext {
   vertical-align: top;
+}
+
+.messageTimestamp {
+  
 }
 
 .message, .toastMessage {
