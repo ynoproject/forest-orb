@@ -445,7 +445,7 @@ function updateChatMessageTimestamps() {
   const timestamps = document.getElementById("messages").querySelectorAll('.messageTimestamp');
 
   for (let timestamp of timestamps)
-    timestamp.innerHTML = getChatMessageTimestampLabel(new Date(timestamp.dataset.time));
+    timestamp.innerHTML = getChatMessageTimestampLabel(new Date(parseInt(timestamp.dataset.time)));
 }
 
 function syncChatHistory() {
