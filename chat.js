@@ -102,7 +102,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
         addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
         message.appendChild(partyOwnerIcon);
       }
-      if (joinedPartyCache.systemName) {
+      if (joinedPartyCache?.systemName) {
         const parsedPartySystemName = joinedPartyCache.systemName.replace(" ", "_");
         const iconStyle = `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`;
         chatTypeIcon.querySelector("path").setAttribute("style", iconStyle);
