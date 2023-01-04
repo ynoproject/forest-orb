@@ -485,6 +485,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       preToggle(document.getElementById('ownGlobalMessageLocationButton'));
                     break;
+                  case 'hideMessageTimestamps':
+                    if (value)
+                      document.getElementById('messageTimestampsButton').click();
+                    break;
                   case 'uiTheme':
                     if (gameUiThemes.indexOf(value) > -1) {
                       document.querySelector('.uiTheme').value = value;

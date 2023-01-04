@@ -618,6 +618,14 @@ document.getElementById('ownGlobalMessageLocationButton').onclick = function () 
   updateConfig(config);
 };
 
+document.getElementById('messageTimestampsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('messages').classList.toggle('hideTimestamps', toggled);
+  config.hideMessageTimestamps = toggled;
+  updateConfig(config);
+};
+
 {
   config.uiTheme = 'Default';
 

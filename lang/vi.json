@@ -323,6 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
         "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
+        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
         "clearChat": "Xóa Chat"
       },
       "parties": {
@@ -401,6 +402,10 @@
     "roles": {
       "mod": "Quản trị viên",
       "dev": "Lập trình viên"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
     "context": {
       "admin": {

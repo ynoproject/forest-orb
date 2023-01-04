@@ -323,6 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleOwnGlobalMessageLocation": "Partager/Cacher votre Lieu dans les messages de Chat",
+        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
@@ -401,6 +402,10 @@
     "roles": {
       "mod": "Modérateur",
       "dev": "Développeur"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
     "context": {
       "admin": {

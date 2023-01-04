@@ -323,6 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
+        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
         "clearChat": "清空记录"
       },
       "parties": {
@@ -401,6 +402,10 @@
     "roles": {
       "mod": "管理员",
       "dev": "开发者"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
     "context": {
       "admin": {

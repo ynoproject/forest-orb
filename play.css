@@ -984,11 +984,12 @@ body.fullBg #background {
 #chatbox #chatHeader #chatButtons {
   display: flex;
   justify-content: space-between;
-  width: 64px;
-  min-width: 54px;
+  min-width: 72px;
+  max-width: 86px;
+  flex-grow: 1;
 }
 
-#chatbox #messages.hideLocations .playerLocation {
+#chatbox #messages.hideLocations .playerLocation a, #chatbox #messages.hideTimestamps .messageTimestamp {
   display: none;
 }
 
@@ -1081,6 +1082,11 @@ body.fullBg #background {
 .messageContents .spoiler:not(.show) .ynomojiWrapper {
   opacity: 0;
   pointer-events: none;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
 }
 
 .playerLocation {

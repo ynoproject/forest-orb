@@ -323,6 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "채팅 메세지 장소 보이기/숨기기",
         "toggleOwnGlobalMessageLocation": "본인의 채팅 메세지 장소 보이기/숨기기",
+        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {
@@ -401,6 +402,10 @@
     "roles": {
       "mod": "서버 매니저",
       "dev": "서버 개발자"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
     "context": {
       "admin": {

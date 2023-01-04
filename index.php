@@ -240,6 +240,11 @@
                       <path d="m3 5q1-5 6-5t6 5-6 11q-7-6-6-11m6-2a1 1 0 0 0 0 5 1 1 0 0 0 0 -5m-2 11c-1 0-3 1-3 2s2 2 5 2 5-1 5-2-2-2-3-2" /><path d="m-2 16l22-14" />
                     </svg>
                   </button>
+                  <button id="messageTimestampsButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.chat.toggleMessageTimestamps">
+                    <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
+                      <path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18m0 3v6l4 4" /><path d="m-2 16l22-14" />
+                    </svg>
+                  </button>
                   <button id="clearChatButton" class="iconButton unselectable" data-i18n="[title]tooltips.chat.clearChat">
                     <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="15" height="15">
                       <path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m9.5-14.75l-7 7m0-7l7 7" />

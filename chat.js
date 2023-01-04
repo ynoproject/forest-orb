@@ -39,11 +39,15 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     let rankIcon;
     let chatTypeIcon;
 
+    const msgHeader = document.createElement("div");
+    msgHeader.classList.add("messageHeader");
+
     if (global || party) {
       const showLocation = (mapId || "0000") !== "0000" && (localizedMapLocations || gameId === "2kki");
 
       msgContainer.classList.add(global ? "global" : "party");
       msgContainer.dataset.msgId = msgId;
+
       if (showLocation) {
         const playerLocation = document.createElement("small");
 
@@ -57,8 +61,9 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
         playerLocation.classList.add("playerLocation");
 
-        msgContainer.appendChild(playerLocation);
-      }
+        msgHeader.appendChild(playerLocation);
+      } else
+        msgHeader.appendChild(document.createElement('span'));
 
       if (global) {
         chatTypeIcon = getSvgIcon("global", true);
@@ -69,7 +74,32 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
           addTooltip(chatTypeIcon, getPartyName(joinedPartyCache, false, true), true, true);
       }
       message.appendChild(chatTypeIcon);
-    }
+    } else
+      msgHeader.appendChild(document.createElement('span'));
+
+    const defaultDate = !timestamp;
+    if (defaultDate)
+      timestamp = new Date();
+
+    const msgTimestamp = document.createElement("small");
+
+    msgTimestamp.classList.add('messageTimestamp');
+
+    const timeString = timestamp.toLocaleString([], { "timeStyle": "short" });
+    const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString([], { "weekday": "short" }) : null;
+
+    let timestampLabel = getMassagedLabel(localizedMessages.timestamp[weekdayString ? "timeAndWeekday" : "time"], true).replace("{TIME}", timeString);
+    if (weekdayString)
+      timestampLabel = timestampLabel.replace("{WEEKDAY}", weekdayString);
+
+    msgTimestamp.innerHTML = timestampLabel;
+
+    const timestampIcon = getSvgIcon('timestamp', true);
+    timestampIcon.classList.add('timestampIcon');
+
+    msgTimestamp.appendChild(timestampIcon);
+    msgHeader.appendChild(msgTimestamp);
+    msgContainer.appendChild(msgHeader);
 
     const name = document.createElement("span");
     name.classList.add("nameText");
@@ -423,24 +453,28 @@ function syncChatHistory() {
         return response.json();
       })
       .then(chatHistory => {
-        for (let player of chatHistory.players) {
-          let badge = player.badge;
-          
-          if (badge === 'null')
-            badge = null;
+        if (chatHistory.players) {
+          for (let player of chatHistory.players) {
+            let badge = player.badge;
+            
+            if (badge === 'null')
+              badge = null;
 
-          globalPlayerData[player.uuid] = {
-            name: player.name,
-            systemName: player.systemName,
-            rank: player.rank,
-            account: player.account,
-            badge: badge,
-            medals: player.medals
-          };
+            globalPlayerData[player.uuid] = {
+              name: player.name,
+              systemName: player.systemName,
+              rank: player.rank,
+              account: player.account,
+              badge: badge,
+              medals: player.medals
+            };
+          }
         }
 
-        for (let message of chatHistory.messages)
-          chatboxAddMessage(message.contents, message.party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.GLOBAL, message.uuid, true, message.mapId, message.prevMapId, message.prevLocations, message.x, message.y, message.msgId, message.timestamp);
+        if (chatHistory.messages) {
+          for (let message of chatHistory.messages)
+            chatboxAddMessage(message.contents, message.party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.GLOBAL, message.uuid, true, message.mapId, message.prevMapId, message.prevLocations, message.x, message.y, message.msgId, new Date(message.timestamp));
+        }
 
         resolve();
       })
