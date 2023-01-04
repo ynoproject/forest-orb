@@ -1098,10 +1098,6 @@ body.fullBg #background {
   vertical-align: top;
 }
 
-.messageTimestamp {
-  
-}
-
 .message, .toastMessage {
   word-break: break-word;
   image-rendering: auto;

@@ -1141,6 +1141,8 @@ function initLocalization(isInitial) {
       else if (localizedMapLocations)
         initLocalizedMapLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
 
+      updateChatMessageTimestamps();
+
       if (eventPeriodCache)
         updateEvents();
 

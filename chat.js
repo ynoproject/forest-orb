@@ -77,22 +77,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     } else
       msgHeader.appendChild(document.createElement('span'));
 
-    const defaultDate = !timestamp;
-    if (defaultDate)
-      timestamp = new Date();
-
-    const msgTimestamp = document.createElement("small");
-
-    msgTimestamp.classList.add('messageTimestamp');
-
-    const timeString = timestamp.toLocaleString([], { "timeStyle": "short" });
-    const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString([], { "weekday": "short" }) : null;
-
-    let timestampLabel = getMassagedLabel(localizedMessages.timestamp[weekdayString ? "timeAndWeekday" : "time"], true).replace("{TIME}", timeString);
-    if (weekdayString)
-      timestampLabel = timestampLabel.replace("{WEEKDAY}", weekdayString);
-
-    msgTimestamp.innerHTML = timestampLabel;
+    msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp);
 
     msgHeader.appendChild(msgTimestamp);
     msgContainer.appendChild(msgHeader);
@@ -436,11 +421,40 @@ function markMapUpdateInChat() {
   }
 }
 
+function getChatMessageTimestampLabel(timestamp) {
+  const defaultDate = !timestamp;
+  if (defaultDate)
+    timestamp = new Date();
+
+  const msgTimestamp = document.createElement("small");
+
+  msgTimestamp.classList.add('messageTimestamp');
+  msgTimestamp.dataset.time = timestamp.getTime();
+
+  const timeString = timestamp.toLocaleString([], { "timeStyle": "short" });
+  const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString([], { "weekday": "short" }) : null;
+
+  let timestampLabel = getMassagedLabel(localizedMessages.timestamp[weekdayString ? "timeAndWeekday" : "time"], true).replace("{TIME}", timeString);
+  if (weekdayString)
+    timestampLabel = timestampLabel.replace("{WEEKDAY}", weekdayString);
+
+  return timestampLabel;
+}
+
+function updateChatMessageTimestamps() {
+  const timestamps = document.getElementById("messages").querySelectorAll('.messageTimestamp');
+
+  for (let timestamp of timestamps)
+    timestamp.innerHTML = getChatMessageTimestampLabel(new Date(timestamp.dataset.time));
+}
+
 function syncChatHistory() {
   return new Promise((resolve, reject) => {
     const messages = document.getElementById("messages");
     const idMessages = messages.querySelectorAll('.messageContainer[data-msg-id]');
     const lastMessageId = idMessages.length ? idMessages[idMessages.length - 1].dataset.msgId : null;
+
+    updateChatMessageTimestamps();
 
     apiFetch('chathistory' + (lastMessageId ? `?lastMsgId=${lastMessageId}` : ''))
       .then(response => {
