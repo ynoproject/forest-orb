@@ -659,7 +659,7 @@ document.getElementById('clearChatButton').onclick = function () {
 
   if (lastGlobalMessageId || lastPartyMessageId) {
     // Sync last message ID so subsequent reconnects don't repopulate cleared chat history
-    apiFetch(`clearchathistory?lastGlobalMsgId=${lastGlobalMessageId}&lastPartyMessageId=${lastPartyMessageId}`)
+    apiFetch(`clearchathistory?lastGlobalMsgId=${lastGlobalMessageId || ''}&lastPartyMsgId=${lastPartyMessageId || ''}`)
       .then(response => {
         if (!response.ok)
           console.error(response.statusText);
