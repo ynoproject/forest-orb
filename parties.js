@@ -184,7 +184,9 @@ function setJoinedPartyId(partyId) {
     setChatTab(partyId ? document.getElementById('chatTabParty') : document.getElementById('chatTabAll'));
   if (config.playersTabIndex === 1)
     setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
-  joinedPartyId = partyId || null;
+  if (!partyId)
+    partyId = null;
+  joinedPartyId = partyId;
   if (partyId)
     updateJoinedParty(() => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));
   else {

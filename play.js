@@ -641,8 +641,10 @@ document.getElementById('clearChatButton').onclick = function () {
   const mapFiltered = chatbox.classList.contains('mapChat');
   const globalFiltered = chatbox.classList.contains('globalChat');
   const partyFiltered = chatbox.classList.contains('partyChat');
-  const idMessages = messagesElement.querySelectorAll('.messageContainer[data-msg-id]');
-  const lastMessageId = idMessages.length ? idMessages[idMessages.length - 1].dataset.msgId : null;
+  const idGlobalMessages = messagesElement.querySelectorAll('.messageContainer.global[data-msg-id]');
+  const idPartyMessages = messagesElement.querySelectorAll('.messageContainer.party[data-msg-id]');
+  const lastGlobalMessageId = !mapFiltered && !partyFiltered && idGlobalMessages.length ? idGlobalMessages[idGlobalMessages.length - 1].dataset.msgId : null;
+  const lastPartyMessageId = !mapFiltered && !globalFiltered && idPartyMessages.length ? idPartyMessages[idPartyMessages.length - 1].dataset.msgId : null;
   if (mapFiltered || globalFiltered || partyFiltered) {
     const messages = messagesElement.querySelectorAll(`.messageContainer${globalFiltered ? '.global' : partyFiltered ? '.party' : ':not(.global):not(.party)'}`);
     for (let message of messages)
@@ -655,9 +657,9 @@ document.getElementById('clearChatButton').onclick = function () {
       unreadChatTab.classList.remove('unread');
   }
 
-  if (lastMessageId) {
+  if (lastGlobalMessageId || lastPartyMessageId) {
     // Sync last message ID so subsequent reconnects don't repopulate cleared chat history
-    apiFetch(`clearchathistory?lastMsgId=${lastMessageId}`)
+    apiFetch(`clearchathistory?lastGlobalMsgId=${lastGlobalMessageId}&lastPartyMessageId=${lastPartyMessageId}`)
       .then(response => {
         if (!response.ok)
           console.error(response.statusText);

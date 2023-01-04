@@ -38,6 +38,9 @@ function initSessionWs(attempt) {
           .catch(err => console.error(err))
           .finally(addChatTip);
         hasConnected = true;
+      } else {
+        syncChatHistory()
+          .catch(err => console.error(err))
       }
       resolve();
     };
