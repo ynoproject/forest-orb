@@ -77,6 +77,11 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     } else
       msgHeader.appendChild(document.createElement('span'));
 
+    const msgTimestamp = document.createElement("small");
+
+    msgTimestamp.classList.add('messageTimestamp');
+    msgTimestamp.dataset.time = timestamp.getTime();
+
     msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp);
 
     msgHeader.appendChild(msgTimestamp);
@@ -425,11 +430,6 @@ function getChatMessageTimestampLabel(timestamp) {
   const defaultDate = !timestamp;
   if (defaultDate)
     timestamp = new Date();
-
-  const msgTimestamp = document.createElement("small");
-
-  msgTimestamp.classList.add('messageTimestamp');
-  msgTimestamp.dataset.time = timestamp.getTime();
 
   const timeString = timestamp.toLocaleString([], { "timeStyle": "short" });
   const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString([], { "weekday": "short" }) : null;
