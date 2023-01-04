@@ -34,7 +34,9 @@ function initSessionWs(attempt) {
       };
       Module._SessionReady();
       if (!hasConnected) {
-        addChatTip();
+        syncChatHistory()
+          .catch(err => console.error(err))
+          .finally(addChatTip);
         hasConnected = true;
       }
       resolve();

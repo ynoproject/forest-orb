@@ -9,7 +9,7 @@ const MESSAGE_TYPE = {
   PARTY: 3
 };
 
-function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y) {
+function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp) {
   const messages = document.getElementById("messages");
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
@@ -43,6 +43,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       const showLocation = (mapId || "0000") !== "0000" && (localizedMapLocations || gameId === "2kki");
 
       msgContainer.classList.add(global ? "global" : "party");
+      msgContainer.dataset.msgId = msgId;
       if (showLocation) {
         const playerLocation = document.createElement("small");
 
@@ -58,9 +59,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
         msgContainer.appendChild(playerLocation);
       }
-    }
 
-    if (global || party) {
       if (global) {
         chatTypeIcon = getSvgIcon("global", true);
         addTooltip(chatTypeIcon, getMassagedLabel(localizedMessages.chat.globalMessage, true), true, true);
@@ -411,6 +410,44 @@ function markMapUpdateInChat() {
   }
 }
 
+function syncChatHistory() {
+  return new Promise((resolve, reject) => {
+    const messages = document.getElementById("messages");
+    const idMessages = messages.querySelectorAll('.messageContainer[data-msg-id]');
+    const lastMessageId = idMessages.length ? idMessages[idMessages.length - 1].dataset.msgId : null;
+
+    apiFetch('chathistory' + (lastMessageId ? `?lastMsgId=${lastMessageId}` : ''))
+      .then(response => {
+        if (!response.ok)
+          reject(response.statusText);
+        return response.json();
+      })
+      .then(chatHistory => {
+        for (let player of chatHistory.players) {
+          let badge = player.badge;
+          
+          if (badge === 'null')
+            badge = null;
+
+          globalPlayerData[player.uuid] = {
+            name: player.name,
+            systemName: player.systemName,
+            rank: player.rank,
+            account: player.account,
+            badge: badge,
+            medals: player.medals
+          };
+        }
+
+        for (let message of chatHistory.messages)
+          chatboxAddMessage(message.contents, message.party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.GLOBAL, message.uuid, true, message.mapId, message.prevMapId, message.prevLocations, message.x, message.y, message.msgId, message.timestamp);
+
+        resolve();
+      })
+      .catch(err => reject(err));
+  });
+}
+
 function parseMessageTextForMarkdown(msg) {
   const replacements = [
     { p: /<\/?[bisux] *>/ig, r: '' },
@@ -512,20 +549,22 @@ function onChatMessageReceived(msg, id) {
     const x = parseInt(args[4]);
     const y = parseInt(args[5]);
     const msg = args[6];
-    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, false, mapId, prevMapId, prevLocationsStr, x, y);
+    const msgId = args[7]
+    chatboxAddMessage(msg, MESSAGE_TYPE.GLOBAL, uuid, false, mapId, prevMapId, prevLocationsStr, x, y, msgId);
   });
 
   addSessionCommandHandler('psay', args => {
     const uuid = args[0];
     const msg = args[1];
+    const msgId = args[2];
     
     let partyMember = joinedPartyCache ? joinedPartyCache.members.find(m => m.uuid === uuid) : null;
     if (partyMember)
-      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+      chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
     else {
       updateJoinedParty(() => {
         partyMember = joinedPartyCache.members.find(m => m.uuid === uuid);
-        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y);
+        chatboxAddMessage(msg, MESSAGE_TYPE.PARTY, partyMember, false, partyMember.mapId, partyMember.prevMapId, partyMember.prevLocations, partyMember.x, partyMember.y, msgId);
       });
     }
   });
