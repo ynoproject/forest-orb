@@ -323,7 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleOwnGlobalMessageLocation": "Partager/Cacher votre Lieu dans les messages de Chat",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
