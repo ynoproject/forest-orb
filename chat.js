@@ -94,10 +94,6 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
     msgTimestamp.innerHTML = timestampLabel;
 
-    const timestampIcon = getSvgIcon('timestamp', true);
-    timestampIcon.classList.add('timestampIcon');
-
-    msgTimestamp.appendChild(timestampIcon);
     msgHeader.appendChild(msgTimestamp);
     msgContainer.appendChild(msgHeader);
 
