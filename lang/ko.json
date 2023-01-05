@@ -323,7 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "채팅 메세지 장소 보이기/숨기기",
         "toggleOwnGlobalMessageLocation": "본인의 채팅 메세지 장소 보이기/숨기기",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "채팅 메세지 타임 스탬프 보이기/숨기기",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {
