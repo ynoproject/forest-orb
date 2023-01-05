@@ -456,7 +456,7 @@ function syncChatHistory() {
 
     updateChatMessageTimestamps();
 
-    apiFetch('chathistory' + (lastMessageId ? `?lastMsgId=${lastMessageId}` : ''))
+    apiFetch(`chathistory?globalMsgLimit=${globalConfig.globalChatHistoryLimit}&partyMsgLimit=${globalConfig.partyChatHistoryLimit}${lastMessageId ? `&lastMsgId=${lastMessageId}` : ''}`)
       .then(response => {
         if (!response.ok)
           reject(response.statusText);
