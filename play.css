@@ -479,22 +479,17 @@ body.fullBg #background {
   z-index: 1;
 }
 
-#content:not(.downscale2) #nexusButton {
-  padding-top: 8px;
-  margin-right: -30px;
-}
-
-#content.downscale2 #nexusButton {
+#content.downscale #nexusButton {
   margin-left: -6px;
 }
 
-#content.downscale2 #nexusButton svg:first-child, #content.downscale2 #nexusButton svg:nth-child(2), #content:not(.downscale2) #nexusButton svg:last-child {
+#content.downscale #nexusButton svg:first-child, #content.downscale #nexusButton svg:nth-child(2), #content:not(.downscale) #nexusButton svg:last-child {
   display: none;
 }
 
 #content #nexusButton svg:nth-child(2) {
   position: relative;
-  left: -135px;
+  left: 7px;
 }
 
 #nexusButton:not(:hover) svg:not(:first-child) path:last-child, #nexusButton:hover svg:not(:first-child) path:first-child {
