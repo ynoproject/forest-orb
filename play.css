@@ -989,7 +989,7 @@ body.fullBg #background {
   flex-grow: 1;
 }
 
-#chatbox #messages.hideLocations .playerLocation a, #chatbox #messages.hideTimestamps .messageTimestamp {
+#chatbox #messages.hideLocations .playerLocation > *, #chatbox #messages.hideTimestamps .messageTimestamp {
   display: none;
 }
 
