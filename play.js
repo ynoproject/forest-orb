@@ -236,23 +236,29 @@ let cachedPrev2kkiLocations = null; // Used only by Yume 2kki
 let tpX = -1;
 let tpY = -1;
 let ignoredMapIds = [];
+let mapCheckTimer;
 
 // EXTERNAL
 function onLoadMap(mapName) {
-  let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
-  if (mapIdMatch) {
-    const mapId = mapIdMatch[1];
+  if (mapCheckTimer)
+    clearTimeout(mapCheckTimer);
+  mapCheckTimer = setTimeout(() => {
+    mapCheckTimer = null;
+    let mapIdMatch = /^Map(\d{4})\.lmu$/.exec(mapName);
+    if (mapIdMatch) {
+      const mapId = mapIdMatch[1];
 
-    if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
-      return;
+      if (mapId === cachedMapId || ignoredMapIds.indexOf(mapId) > -1)
+        return;
 
-    markMapUpdateInChat();
+      markMapUpdateInChat();
 
-    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
-      onLoad2kkiMap(mapId);
-    else
-      checkUpdateLocation(mapId, true);
-  }
+      if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
+        onLoad2kkiMap(mapId);
+      else
+        checkUpdateLocation(mapId, true);
+    }
+  }, 0);
 }
 
 function checkUpdateLocation(mapId, mapChanged) {
