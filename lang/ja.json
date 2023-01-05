@@ -394,7 +394,7 @@
     },
     "playerList": {
       "unnamed": "無名プレイヤー",
-      "muted": "Muted",
+      "muted": "ミュート済",
       "actions": {
         "partyKick": "パーティーから追い出す",
         "transferPartyOwner": "パーティーリーダーに昇格する"
@@ -660,36 +660,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "モデレーター設定",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "パスワード変更",
+          "playerPrompt": "パスワードをリセットしたいアカウントの名前を入力してください",
+          "success": "{PLAYER}の新しいパスワードは{PASSWORD}です。"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "プレイヤーのBAN",
+          "playerPrompt": "BANするアカウントの名前を入力してください"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "プレイヤーのBAN解除",
+          "playerPrompt": "BAN解除するアカウントの名前を入力してください"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "プレイヤーのミュート",
+          "playerPrompt": "ミュートするアカウントの名前を入力してください"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "プレイヤーのミュート解除",
+          "playerPrompt": "ミュート解除するアカウントの名前を入力してください"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "権限バッジの付与",
+          "playerPrompt": "権限バッジを付与するアカウントの名前を入力してください"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "権限バッジの剝奪",
+          "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください"
         }
       }
     }
