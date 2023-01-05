@@ -99,12 +99,12 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Tên người chơi",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "Ẩn",
+              "classic": "Rút gọn",
+              "compact": "Đầy đủ",
+              "slim": "Phông nhỏ"
             }
           },
           "togglePlayerSounds": "Âm thanh người chơi",
@@ -167,7 +167,7 @@
             "fields": {
               "loggedIn": "Đã đăng nhập",
               "loggedOut": "Đã đăng xuất",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Đã cập nhật mật khẩu"
             }
           },
           "parties": {
@@ -226,18 +226,18 @@
               "0": "Không"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Đổi mật khẩu",
           "clearSaveSync": "Xóa dữ liệu đồng bộ"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Đổi Mật khẩu",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Mật khẩu cũ",
+          "newPassword": "Mật khẩu mới",
+          "newConfirmPassword": "Xác nhận lại mật khẩu mới"
         },
-        "submit": "Submit"
+        "submit": "Xác nhận"
       },
       "badges": {
         "title": "Huy Hiệu",
@@ -252,9 +252,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "Thứ tự lọc:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "Mặc định"
             }
           },
           "search": "Tìm kiếm:&nbsp;"
@@ -321,9 +321,9 @@
       "settings": "Cài đặt",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
+        "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm của bạn trong tin nhắn",
+        "toggleMessageTimestamps": "Hiện/Ẩn Thời gian của tin nhắn",
         "clearChat": "Xóa Chat"
       },
       "parties": {
@@ -460,14 +460,14 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Mật khẩu mới và mật khẩu xác nhận lại không khớp.",
+          "badLogin": "Sai mật khẩu đăng nhập.",
+          "internalServerError": "Đã có lỗi xảy ra: vui lòng thử lại sau."
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Tin nhắn Chung"
     },
     "parties": {
       "emptyMessage": "Hiện không có nhóm hoạt động.",
@@ -512,7 +512,7 @@
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
         "loggedOut": "Bạn đã đăng xuất.",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Đã cập nhật mật khẩu thành công."
       },
       "parties": {
         "create": "{PARTY} đã được tạo.",
