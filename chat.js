@@ -133,7 +133,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
     let systemName = player?.systemName;
     
-    const badge = player?.badge ? badgeCache.find(b => b.badgeId === player.badge) : null;
+    const badge = player?.badge ? badgeCache?.find(b => b.badgeId === player.badge) : null;
 
     const badgeEl = badge ? document.createElement('div') : null;
     const badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
