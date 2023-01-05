@@ -58,8 +58,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     if (player.muted) {
       mutedIcon = getSvgIcon('muted', true);
       mutedIcon.classList.add('muted');
-      // TODO: Localize
-      addTooltip(mutedIcon, 'Muted', true, true);
+      addTooltip(mutedIcon, getMassagedLabel(localizedMessages.playerList.muted, true), true, true);
       nameTextContainer.appendChild(mutedIcon);
     }
 
@@ -304,8 +303,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     if (player?.muted) {
       mutedIcon = getSvgIcon('muted', true);
       mutedIcon.classList.add('muted');
-      // TODO: Localize
-      addTooltip(mutedIcon, 'Muted', true, true);
+      addTooltip(mutedIcon, getMassagedLabel(localizedMessages.playerList.muted, true), true, true);
       nameText.after(mutedIcon);
     }
   }

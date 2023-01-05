@@ -394,6 +394,7 @@
     },
     "playerList": {
       "unnamed": "익명의 플레이어",
+      "muted": "Muted",
       "actions": {
         "partyKick": "파티에서 강퇴하기",
         "transferPartyOwner": "파티 리더로 임명하기"
@@ -656,6 +657,40 @@
       "explorerLink": {
         "generic": "Yume 2kki Explorer 열기",
         "multi": "Yume 2kki Explorer 에서 {LOCATION} 보기"
+      }
+    },
+    "modSettings": {
+      "title": "Moderator Settings",
+      "actions": {
+        "resetPassword": {
+          "label": "Reset a Password",
+          "playerPrompt": "Enter the name of the account to reset the password for",
+          "success": "The new password for {PLAYER} is {PASSWORD}"
+        },
+        "ban": {
+          "label": "Ban a Player",
+          "playerPrompt": "Enter the name of the account to ban"
+        },
+        "unban": {
+          "label": "Unban a Player",
+          "playerPrompt": "Enter the name of the account to unban"
+        },
+        "mute": {
+          "label": "Mute a Player",
+          "playerPrompt": "Enter the name of the account to mute"
+        },
+        "unmute": {
+          "label": "Unmute a Player",
+          "playerPrompt": "Enter the name of the account to unmute"
+        },
+        "grantBadge": {
+          "label": "Grant a Badge",
+          "playerPrompt": "Enter the name of the account to grant the badge to"
+        },
+        "revokeBadge": {
+          "label": "Revoke a Badge",
+          "playerPrompt": "Enter the name of the account to revoke the badge from"
+        }
       }
     }
   }

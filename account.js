@@ -134,7 +134,7 @@ function updateModControls() {
     modSettingsButton.id = 'modSettingsButton';
     modSettingsButton.classList.add('unselectable');
     modSettingsButton.classList.add('iconButton');
-    addTooltip(modSettingsButton, 'Moderator Settings', true, true);
+    addTooltip(modSettingsButton, getMassagedLabel(localizedMessages.modSettings.title, true), true, true);
     modSettingsButton.onclick = () => openModal('modSettingsModal');
     modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';
     document.getElementById('leftControls').appendChild(modSettingsButton);
@@ -168,20 +168,19 @@ function updateModControls() {
         .catch(err => console.error(err));
     };
 
-    // TODO: Localize
-    addModControlsButton('Reset a Password',
-      () => adminPlayerAction('admin?command=resetpw', 'Enter the name of the account to reset the password for', newPassword => `The new password for {PLAYER} is ${newPassword}`, 'info'));
-    addModControlsButton('Ban a Player',
-      () => adminPlayerAction('ban', 'Enter the name of the account to ban', getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
-    addModControlsButton('Unban a Player',
-      () => adminPlayerAction('unban', 'Enter the name of the account to unban', getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
-    addModControlsButton('Mute a Player',
-      () => adminPlayerAction('mute', 'Enter the name of the account to mute', getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
-    addModControlsButton('Unmute a Player',
-      () => adminPlayerAction('unmute', 'Enter the name of the account to unmute', getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
+    addModControlsButton(localizedMessages.modSettings.actions.resetPassword.label,
+      () => adminPlayerAction('admin?command=resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actiions.resetPassword.playerPrompt.success, true).replace('{PASSWORD}', newPassword), 'info'));
+    addModControlsButton(localizedMessages.modSettings.actions.ban.label,
+      () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+    addModControlsButton(localizedMessages.modSettings.actions.unban.label,
+      () => adminPlayerAction('unban', localizedMessages.modSettings.actions.unban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
+    addModControlsButton(localizedMessages.modSettings.actions.mute.label,
+      () => adminPlayerAction('mute', localizedMessages.modSettings.actions.mute.playerPrompt, getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
+    addModControlsButton(localizedMessages.modSettings.actions.unmute.label,
+      () => adminPlayerAction('unmute', localizedMessages.modSettings.actions.unmute.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
 
     const grantRevokeBadgeAction = isGrant => {
-      const playerName = prompt(isGrant ? 'Enter the name of the account to grant the badge to' : 'Enter the name of the account to revoke the badge from');
+      const playerName = prompt(localizedMessages.modSettings.actions[isGrant ? 'grantBadge' : 'revokeBadge'].playerPrompt);
       if (!playerName)
         return;
       const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
@@ -205,8 +204,8 @@ function updateModControls() {
       }
     };
 
-    addModControlsButton('Grant a Badge', () => grantRevokeBadgeAction(true));
-    addModControlsButton('Revoke a Badge', () => grantRevokeBadgeAction(false));
+    addModControlsButton(localizedMessages.modSettings.actions.grantBadge.label, () => grantRevokeBadgeAction(true));
+    addModControlsButton(localizedMessages.modSettings.actions.revokeBadge.label, () => grantRevokeBadgeAction(false));
   } else if (modSettingsButton) {
     modSettingsButton.remove();
     modSettingsControls.innerHTML = '';
