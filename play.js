@@ -130,11 +130,14 @@ function fetchAndUpdatePlayerInfo() {
             .then(() => {
               trySetChatName(playerName);
               showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
+              updateBadges(() => {
+                updateBadgeButton();
+                // Initialize event period after initial badge cache population due to ExP rank badge dependency
+                if (!eventPeriodCache)
+                  updateEventPeriod();
+              });
               if (eventPeriodCache)
                 updateEvents();
-              else
-                updateEventPeriod();
-              updateBadges(updateBadgeButton);
               document.getElementById('content').classList.add('loggedIn');
             });
         } else {
