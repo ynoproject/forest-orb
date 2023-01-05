@@ -431,8 +431,8 @@ function markMapUpdateInChat() {
 }
 
 function getChatMessageTimestampLabel(timestamp, defaultDate) {
-  const timeString = timestamp.toLocaleString(globalConfig.lang, { "timeStyle": "short" });
-  const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString(globalConfig.lang, { "weekday": "short" }) : null;
+  const timeString = timestamp.toLocaleString(globalConfig.lang === 'en' ? [] : globalConfig.lang, { "timeStyle": "short" });
+  const weekdayString = !defaultDate && new Date().toDateString() !== timestamp.toDateString() ? timestamp.toLocaleString(globalConfig.lang === 'en' ? [] : globalConfig.lang, { "weekday": "short" }) : null;
 
   let timestampLabel = getMassagedLabel(localizedMessages.timestamp[weekdayString ? "timeAndWeekday" : "time"], true).replace("{TIME}", timeString);
   if (weekdayString)
