@@ -479,6 +479,10 @@ body.fullBg #background {
   z-index: 1;
 }
 
+#content:not(.downscale) #nexusButton {
+  margin-right: 8px;
+}
+
 #content.downscale #nexusButton {
   margin-left: -6px;
 }
