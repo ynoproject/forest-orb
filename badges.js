@@ -865,22 +865,31 @@ function onBadgeUpdateRequested() {
     checkNewBadgeUnlocks();
 }
 
-function showBadgeToastMessage(key, icon, badgeId) {
+function showBadgeToastMessage(key, icon, badge) {
   if (!notificationConfig.badges.all || (notificationConfig.badges.hasOwnProperty(key) && !notificationConfig.badges[key]))
     return;
   const message = getMassagedLabel(localizedMessages.toast.badges[key], true);
   const toast = showToastMessage(message, icon, true, null, !!badgeId);
 
-  if (badgeId) {
-    const badgeObj = badgeCache.find(b => b.badgeId === badgeId);
+  if (badge) {
+    let badgeId = typeof badge === 'string' ? badge : badge.badgeId;
+    let badgeObj = typeof badge === 'string' ? badgeCache.find(b => b.badgeId === badgeId) : badge;
+
+    if (typeof badge === 'string') {
+      badgeId = badge;
+      badgeObj = badgeCache.find(b => b.badgeId === badgeId);
+    } else {
+      badgeId = badge.badgeId;
+      badgeObj = badge;
+    }
 
     if (badgeObj) {
-      const badge = getBadgeItem(badgeObj).querySelector('.badgeContainer');
+      const badgeEl = getBadgeItem(badgeObj).querySelector('.badgeContainer');
 
       toast.querySelector('.icon').remove();
-      toast.prepend(badge);
+      toast.prepend(badgeEl);
 
-      addTooltip(badge, localizedBadges[badgeObj.game][badgeId].name, true, true);
+      addTooltip(badgeEl, localizedBadges[badgeObj.game][badgeId].name, true, true);
     }
   }
 }
