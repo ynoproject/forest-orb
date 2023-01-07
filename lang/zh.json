@@ -102,7 +102,7 @@
             "label": "玩家名样式",
             "values": {
               "none": "不显示",
-              "classic": "经典（缩写）",
+              "classic": "经典",
               "compact": "全名",
               "slim": "全名（小）"
             }
@@ -323,7 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",
         "clearChat": "清空记录"
       },
       "parties": {
@@ -348,7 +348,7 @@
       "unevendream": "凹凸梦",
       "braingirl": "脑女",
       "muma": "Muma|Rope",
-      "genie": "Dream Genie"
+      "genie": "梦鬼"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "io": {
@@ -357,11 +357,11 @@
       },
       "upload": {
         "slotInput": "输入上传的目标存档编号（1~15）",
-        "invalidSaveFile": "请选择正确的存档文件（文件格式为.lsd）。"
+        "invalidSaveFile": "駄目！请选择正确的存档文件（文件格式为.lsd）。"
       },
       "download": {
         "slotInput": "输入想要下载的存档编号（1~15）",
-        "emptySlot": "哎呀！这个编号对应的存档好像是空的。"
+        "emptySlot": "無理！这个编号对应的存档好像是空的。"
       }
     },
     "connStatus": {
@@ -372,7 +372,7 @@
     },
     "location": {
       "template": "{LOCATION}（{LOCATION_EN}）",
-      "queryingLocation": "正在查询地点...",
+      "queryingLocation": "定位中...",
       "unknownLocation": "未知领域",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）"
@@ -394,7 +394,7 @@
     },
     "playerList": {
       "unnamed": "无名子",
-      "muted": "Muted",
+      "muted": "禁言中",
       "actions": {
         "partyKick": "请出队伍",
         "transferPartyOwner": "转让领队"
@@ -502,12 +502,12 @@
     },
     "saveSync": {
       "confirmEnable": "您想启用存档云同步功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
-      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档，如果您在既有存档槽位同步云端数据将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
+      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档。在已有数据的存档槽进行同步将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
     },
     "toast": {
       "system": {
         "siteUpdates": "检测到网站更新，请刷新网页以获取新内容。",
-        "error": "哎呀！出了点小误差。您可以使用F12或右键菜单内的“审查元素”启动浏览器控制台以查看详情。"
+        "error": "诶呀！出了点小误差。您可以使用F12或右键菜单内的“审查元素”启动浏览器控制台以查看详情。"
       },
       "account": {
         "loggedIn": "成功登录账号 {USER} 。",
@@ -531,7 +531,7 @@
       "events": {
         "complete": "成功抵达 {LOCATION} 。\n远征告捷！您已获得 {EXP} 。",
         "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
-        "vmComplete": "成功找到自贩机！\n您已获得 {EXP}。",
+        "vmComplete": "发现自贩机！\n您已获得 {EXP}。",
         "listUpdated": "远征目的地已更新！"
       },
       "badges": {
@@ -660,36 +660,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "管理员设置",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "重置用户密码",
+          "playerPrompt": "请输入目标用户名",
+          "success": "用户 {PLAYER} 的密码已变更为 {PASSWORD}"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "封禁玩家",
+          "playerPrompt": "请输入淘气鬼的用户名"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "解封玩家",
+          "playerPrompt": "请输入要宽恕的用户名"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "禁言玩家",
+          "playerPrompt": "请输入要禁言的用户名"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "解禁玩家",
+          "playerPrompt": "请输入要取消禁言的用户名"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "授予徽章",
+          "playerPrompt": "请输入要授予徽章的用户名"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "收回徽章",
+          "playerPrompt": "请输入要收回徽章的用户名"
         }
       }
     }
