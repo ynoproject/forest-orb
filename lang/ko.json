@@ -394,7 +394,7 @@
     },
     "playerList": {
       "unnamed": "익명의 플레이어",
-      "muted": "Muted",
+      "muted": "채팅 금지됨",
       "actions": {
         "partyKick": "파티에서 강퇴하기",
         "transferPartyOwner": "파티 리더로 임명하기"
@@ -660,36 +660,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "매니저 설정",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "비밀번호 재설정하기",
+          "playerPrompt": "비밀번호 재설정이 필요한 계정의 아이디를 입력해주세요",
+          "success": "{PLAYER}님의 새로운 비밀번호가 {PASSWORD}로 설정되었습니다"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "플레이어 차단 설정",
+          "playerPrompt": "차단할 플레이어의 이름을 입력해주세요"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "플레이어 차단 해제",
+          "playerPrompt": "차단 해제할 플레이어의 이름을 입력해주세요"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "플레이어 채팅 금지 설정",
+          "playerPrompt": "채팅을 금지시킬 플레이어의 이름을 입력해주세요"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "플레이어 채팅 금지 해제",
+          "playerPrompt": "채팅을 허용할 플레이어의 이름을 입력해주세요"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "뱃지 수여하기",
+          "playerPrompt": "뱃지를 수여할 플레이어의 이름을 입력해주세요"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "뱃지 해제하기",
+          "playerPrompt": "뱃지를 해제할 플레이어의 이름을 입력해주세요"
         }
       }
     }
