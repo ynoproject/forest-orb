@@ -568,7 +568,7 @@ function fetchPlayerBadges(callback) {
       });
 
       for (let b = 0; b < newUnlockedBadges.length; b++)
-        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b]);
+        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b].badgeId);
       
       if (callback)
         callback(badges);
@@ -592,7 +592,7 @@ function updateBadges(callback) {
       });
     
       for (let b = 0; b < newUnlockedBadges.length; b++)
-        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b]);
+        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b].badgeId);
 
       if (badgeCacheUpdateTimer)
         clearInterval(badgeCacheUpdateTimer);
@@ -865,23 +865,14 @@ function onBadgeUpdateRequested() {
     checkNewBadgeUnlocks();
 }
 
-function showBadgeToastMessage(key, icon, badge) {
+function showBadgeToastMessage(key, icon, badgeId) {
   if (!notificationConfig.badges.all || (notificationConfig.badges.hasOwnProperty(key) && !notificationConfig.badges[key]))
     return;
   const message = getMassagedLabel(localizedMessages.toast.badges[key], true);
   const toast = showToastMessage(message, icon, true, null, !!badgeId);
 
-  if (badge) {
-    let badgeId = typeof badge === 'string' ? badge : badge.badgeId;
-    let badgeObj = typeof badge === 'string' ? badgeCache.find(b => b.badgeId === badgeId) : badge;
-
-    if (typeof badge === 'string') {
-      badgeId = badge;
-      badgeObj = badgeCache.find(b => b.badgeId === badgeId);
-    } else {
-      badgeId = badge.badgeId;
-      badgeObj = badge;
-    }
+  if (badgeId) {
+    const badgeObj = badgeCache.find(b => b.badgeId === badgeId);
 
     if (badgeObj) {
       const badgeEl = getBadgeItem(badgeObj).querySelector('.badgeContainer');
