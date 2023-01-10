@@ -169,7 +169,7 @@ function updateModControls() {
     };
 
     addModControlsButton(localizedMessages.modSettings.actions.resetPassword.label,
-      () => adminPlayerAction('admin?command=resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actiions.resetPassword.playerPrompt.success, true).replace('{PASSWORD}', newPassword), 'info'));
+      () => adminPlayerAction('admin?command=resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actions.resetPassword.success, true).replace('{PASSWORD}', newPassword), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.ban.label,
       () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
     addModControlsButton(localizedMessages.modSettings.actions.unban.label,
