@@ -90,7 +90,8 @@ function onUpdateConnectionStatus(status) {
 
   if (status === 1) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
-    checkEventLocations();
+    if (eventPeriodCache)
+      updateEvents();
     syncPrevLocation();
   } else {
     playerUuids = {};
