@@ -323,7 +323,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
         "toggleOwnGlobalMessageLocation": "Переключить отображение Вашей локации в сообщениях",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "Переключить отображение Меток времени у сообщений",
         "clearChat": "Очистить чат"
       },
       "parties": {
@@ -394,7 +394,7 @@
     },
     "playerList": {
       "unnamed": "Безымянный игрок",
-      "muted": "Muted",
+      "muted": "Без голоса",
       "actions": {
         "partyKick": "Выгнать из группы,",
         "transferPartyOwner": "Передать лидерство в группе"
@@ -660,36 +660,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Функционал Модератора",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Сброс пароля",
+          "playerPrompt": "Введите имя аккаунта, которому необходимо сбросить пароль",
+          "success": "Новый пароль игрока {PLAYER} теперь {PASSWORD}"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Забанить игрока",
+          "playerPrompt": "Введите имя аккаунта, что необходимо забанить"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Разбанить игрока",
+          "playerPrompt": "Введите имя аккаунта, что необходимо разбанить"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Заглушить игрока",
+          "playerPrompt": "Введите имя аккаунта, что необходимо заглушить"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Вернуть голос игроку",
+          "playerPrompt": "Введите имя аккаунта, которому необходимо вернуть голос"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Выдать значок",
+          "playerPrompt": "Введите имя аккаунта, которому необходимо выдать значок"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Забрать значок",
+          "playerPrompt": "Введите имя аккаунта, у которого необходимо забрать значок"
         }
       }
     }
