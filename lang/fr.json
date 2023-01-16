@@ -91,7 +91,7 @@
         "fields": {
           "lang": "Langue",
           "locationVisibility": {
-            "label": "Visibilitée du Lieu en jeu",
+            "label": "Visibilité du Lieu en jeu",
             "values": {
               "private": "Privé",
               "friends": "Amis",
@@ -510,8 +510,8 @@
         "error": "Oups ! On dirait que quelque chose s'est mal passé. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'."
       },
       "account": {
-        "loggedIn": "Vous êtes connecté(e) en tant que {USER}.",
-        "loggedOut": "Vous êtes déconnecté(e).",
+        "loggedIn": "Vous êtes connecté en tant que {USER}.",
+        "loggedOut": "Vous êtes déconnecté.",
         "passwordUpdated": "Votre mot de passe a été mis à jour avec succès."
       },
       "parties": {
@@ -522,7 +522,7 @@
         "remove": "Vous avez été expulsé(e) de {PARTY}.",
         "disband": "{PARTY} a été dissous.",
         "playerJoin": "{PLAYER} a rejoint le groupe.",
-        "playerLeave": "{PLAYER} a quitté(e) le groupe.",
+        "playerLeave": "{PLAYER} a quitté le groupe.",
         "playerOnline": "{PLAYER} est maintenant en-ligne.",
         "playerOffline": "{PLAYER} est maintenant hors-ligne.",
         "kickPlayer": "{PLAYER} a été expulsé(e) du groupe.",
@@ -660,36 +660,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Paramètres de modérateur",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Réinitialiser un mot de passe",
+          "playerPrompt": "Entrez le nom du compte dont le mot de passe doit être réinitialisé",
+          "success": "Le nouveau mot de passe de {PLAYER} est {PASSWORD}"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Bannir un Joueur",
+          "playerPrompt": "Entrez le nom du compte à bannir"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Débannir un Joueur",
+          "playerPrompt": "Entrez le nom du compte à débannir"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Rendre muet un Joueur",
+          "playerPrompt": "Entrez le nom du compte à rendre muet"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Démuter un Joueur",
+          "playerPrompt": "Entrez le nom du compte à démuter"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Donner un Badge",
+          "playerPrompt": "Entrez le nom du compte auquel un badge doit être donné"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Révoquer un Badge",
+          "playerPrompt": "Entrez le nom du compte auquel un badge doit être révoqué"
         }
       }
     }
