@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "同步玩家音效",
           "toggleLocationDisplay": "位置弹窗提示",
-          "toggleRankings": "显示排行榜"
+          "toggleRankings": "显示排行榜",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "聊天设置",
         "notificationSettings": "弹框通知设置",

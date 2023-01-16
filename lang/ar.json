@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleLocationDisplay": "عرض الموقع",
-          "toggleRankings": "المراكز"
+          "toggleRankings": "المراكز",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "إعدادات المحادثة",
         "notificationSettings": "إعدادات التنبيهات",

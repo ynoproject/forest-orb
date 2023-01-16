@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleLocationDisplay": "Affichage du Lieu",
-          "toggleRankings": "Classement"
+          "toggleRankings": "Classement",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "Paramètres du Chat",
         "notificationSettings": "Paramètres de notification",

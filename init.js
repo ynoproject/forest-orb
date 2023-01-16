@@ -437,6 +437,24 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('toggleRankingsButton').click();
                     break;
+                  case 'screenshotFix':
+                    if (value) {
+                      document.getElementById('screenshotFixButton').click();
+                      // Enable preserve drawing buffer which may impact performance but fixes black screenshots
+                      canvas.getContext('webgl', {
+                        alpha: false,
+                        antialias: false,
+                        depth: true,
+                        desynchronized: false,
+                        failIfMajorPerformanceCaveat: false,
+                        powerPreference: 'default',
+                        premultipliedAlpha: true,
+                        preserveDrawingBuffer: true,
+                        stencil: false,
+                        xrCompatible: false
+                      });
+                    }
+                    break;
                 }
               } else {
                 switch (key) {

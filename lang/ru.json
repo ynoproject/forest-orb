@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "Звуки игроков",
           "toggleLocationDisplay": "Отображение локации",
-          "toggleRankings": "Рейтинги"
+          "toggleRankings": "Рейтинги",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "Настройки чата",
         "notificationSettings": "Уведомления",

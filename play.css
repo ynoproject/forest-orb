@@ -253,11 +253,11 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .modalTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .modalTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton, .helpLink {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover {
+  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover, .helpLink:hover {
     transform: scale(1.25);
   }
 
@@ -284,6 +284,16 @@ body {
 
 .iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child {
   stroke: var(--svg-alt-gradient);
+}
+
+.helpLink {
+  display: inline-block;
+  filter: none !important;
+}
+
+.helpLink svg {
+  width: 12px;
+  height: 12px;
 }
 
 #chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
@@ -333,6 +343,7 @@ body {
 .fillIcon path {
   stroke: none;
   fill: var(--svg-base-gradient);
+  fill-rule: evenodd;
 }
 
 .fillIcon.altIcon path {

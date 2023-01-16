@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
-          "toggleRankings": "ランキング"
+          "toggleRankings": "ランキング",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "チャット 設定",
         "notificationSettings": "通知 設定",

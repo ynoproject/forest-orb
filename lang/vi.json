@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
-          "toggleRankings": "Bảng xếp hạng"
+          "toggleRankings": "Bảng xếp hạng",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "Cài đặt Chat",
         "notificationSettings": "Cài đặt Thông báo",

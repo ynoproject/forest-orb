@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Clasificaciones"
+          "toggleRankings": "Clasificaciones",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "Chat Settings",
         "notificationSettings": "Configuración de Notificaciones",

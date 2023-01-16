@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
-          "toggleRankings": "랭킹"
+          "toggleRankings": "랭킹",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "채팅 설정",
         "notificationSettings": "알람 설정",

@@ -30,6 +30,7 @@ let globalConfig = {
   partyChatHistoryLimit: 250,
   locationDisplay: false,
   hideRankings: false,
+  screenshotFix: false,
   badgeToolsData: null
 };
 
@@ -715,9 +716,7 @@ document.getElementById('playerSoundsButton').onclick = () => {
 
 document.getElementById('locationDisplayButton').onclick = function () {
   this.classList.toggle('toggled');
-  const toggled = this.classList.contains('toggled');
-  document.getElementById('locationDisplayButton').classList.toggle('hidden', toggled);
-  globalConfig.locationDisplay = toggled;
+  globalConfig.locationDisplay = this.classList.contains('toggled');
   updateConfig(globalConfig, true);
 };
 
@@ -726,6 +725,12 @@ document.getElementById('toggleRankingsButton').onclick = function () {
   const toggled = this.classList.contains('toggled');
   document.getElementById('rankingsButton').classList.toggle('hidden', toggled);
   globalConfig.hideRankings = toggled;
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('screenshotFixButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.screenshotFix = this.classList.contains('toggled');
   updateConfig(globalConfig, true);
 };
 
@@ -1201,7 +1206,7 @@ function initLocalization(isInitial) {
         locI18next.init(i18next)('[data-i18n]');
         const tooltipElements = document.querySelectorAll('[title]');
         for (let el of tooltipElements) {
-          addTooltip(el, el.title, true, true);
+          addTooltip(el, el.title, true, !el.classList.contains('helpLink'));
           el.removeAttribute('title');
         }
       });

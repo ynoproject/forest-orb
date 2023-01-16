@@ -109,7 +109,11 @@
           },
           "togglePlayerSounds": "Player Sounds",
           "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Rankings"
+          "toggleRankings": "Rankings",
+          "toggleScreenshotFix": {
+            "label": "Screenshot Fix",
+            "helpText": "Requires page reload; may impact performance"
+          }
         },
         "chatSettings": "Chat Settings",
         "notificationSettings": "Notification Settings",
