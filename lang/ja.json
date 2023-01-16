@@ -111,8 +111,8 @@
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "スクリーンショット修正",
+            "helpText": "スクリーンショットの撮影に失敗することがある不具合の修正(ページの再読み込みが必要で、パフォーマンスが落ちる場合があります)"
           }
         },
         "chatSettings": "チャット 設定",
