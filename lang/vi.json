@@ -112,7 +112,7 @@
           "toggleRankings": "Bảng xếp hạng",
           "toggleScreenshotFix": {
             "label": "Screenshot Fix",
-            "helpText": "Requires page reload; may impact performance"
+            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
           }
         },
         "chatSettings": "Cài đặt Chat",

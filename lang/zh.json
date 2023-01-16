@@ -112,7 +112,7 @@
           "toggleRankings": "显示排行榜",
           "toggleScreenshotFix": {
             "label": "Screenshot Fix",
-            "helpText": "Requires page reload; may impact performance"
+            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
           }
         },
         "chatSettings": "聊天设置",
