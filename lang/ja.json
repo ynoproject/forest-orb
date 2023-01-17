@@ -113,7 +113,7 @@
           "toggleRankings": "ランキング",
           "toggleScreenshotFix": {
             "label": "スクリーンショット修正",
-            "helpText": "スクリーンショットの撮影に失敗することがある不具合の修正(ページの再読み込みが必要で、パフォーマンスが落ちる場合があります)"
+            "helpText": "スクリーンショットの撮影に失敗することがある不具合の修正（ページの再読み込みが必要で、パフォーマンスが落ちる場合があります）"
           }
         },
         "chatSettings": "チャット 設定",
@@ -411,7 +411,7 @@
     },
     "timestamp": {
       "time": "{TIME}",
-      "timeAndWeekday": "{TIME} ({WEEKDAY})"
+      "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
     "context": {
       "admin": {
