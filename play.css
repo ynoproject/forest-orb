@@ -866,6 +866,7 @@ body.fullBg #background {
 
 #reconnectButton.active {
   animation-name: spin;
+  animation-delay: 0.325s;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
