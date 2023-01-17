@@ -590,6 +590,11 @@ body.fullBg #background {
   image-rendering: pixelated;
 }
 
+#layout, .scrollableContainer, .modalContent {
+  scrollbar-color: rgb(var(--base-color)) rgb(var(--base-bg-color));
+  scrollbar-width: 18px;
+}
+
 #layout.downscale .container.fullBg {
   background-size: 530px;
 }
@@ -1666,6 +1671,7 @@ body.fullBg #background {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  scrollbar-color: rgb(var(--modal-base-color)) rgb(var(--modal-base-bg-color));
 }
 
 .modalContent::-webkit-scrollbar-track {
