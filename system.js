@@ -49,6 +49,7 @@ const gameUiThemes = {
     'system_GBlike',
     'horatsuki sys1',
     'system_E_eye',
+    'System_kuraud',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon',
     'aediorugap_sys'
