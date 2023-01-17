@@ -51,7 +51,8 @@ const gameUiThemes = {
     'system_E_eye',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon',
-    'aediorugap_sys'
+    'aediorugap_sys',
+    'System_kuraud'
   ],
   'amillusion': [
     'fleur-2',
