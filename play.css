@@ -253,11 +253,11 @@ body {
 }
 
 @media (hover: hover) {
-  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .modalTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton, .helpLink {
+  .iconButton, a.fillIcon, .chatboxTabLabel, .item:not(.disabled), a.listEntryAction .icon, .modalTabLabel, a.rankingPageLink, button.checkboxButton, button[type="button"]:not(:disabled), button[type="submit"], .ynomojiButton, .iconLink {
     transition: transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
   }
 
-  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover, .helpLink:hover {
+  .iconButton:hover, a.fillIcon:hover, a.listEntryAction:hover .icon, a.rankingPageLink:hover, .ynomojiButton:hover, .iconLink:hover {
     transform: scale(1.25);
   }
 
@@ -266,14 +266,14 @@ body {
   }
 }
 
-.iconButton {
+.iconButton, .iconLink {
   background: transparent;
   border: none;
   cursor: pointer;
   -webkit-appearance: button;
 }
 
-.iconButton.hidden {
+.iconButton.hidden, .iconLink.hidden {
   display: none;
 }
 
@@ -286,12 +286,12 @@ body {
   stroke: var(--svg-alt-gradient);
 }
 
-.helpLink {
+.iconLink {
   display: inline-block;
   filter: none !important;
 }
 
-.helpLink svg {
+.iconLink svg {
   width: 12px;
   height: 12px;
 }
@@ -343,11 +343,14 @@ body {
 .fillIcon path {
   stroke: none;
   fill: var(--svg-base-gradient);
-  fill-rule: evenodd;
 }
 
 .fillIcon.altIcon path {
   fill: var(--svg-alt-gradient);
+}
+
+.fillIcon.invertFillIcon {
+  fill-rule: evenodd;
 }
 
 .notice, .instruction {
@@ -851,6 +854,36 @@ body.fullBg #background {
 
 #connStatusIcon.singlePlayer {
   background-image: linear-gradient(#595959, #404040);
+}
+
+#connStatusText {
+  margin-right: 6px;
+}
+
+#reconnectButton {
+  opacity: 1;
+}
+
+#reconnectButton.active {
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+#reconnectButton.disabled {
+  opacity: 0.625;
+  transform: scale(1);
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 #locationLabel {
@@ -1375,7 +1408,6 @@ body.fullBg #background {
     stroke-dashoffset: 60;
     stroke-dasharray: 60;
   }
-  
   to {
     stroke-dashoffset: 0;
     stroke-dasharray: 60;

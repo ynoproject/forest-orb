@@ -11,6 +11,9 @@ const MESSAGE_TYPE = {
 
 function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp) {
   const messages = document.getElementById("messages");
+
+  if (msgId && messages.querySelector(`.messageContainer[data-msg-id="${msgId}"]`))
+    return null;
   
   const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
 

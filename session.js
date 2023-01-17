@@ -9,7 +9,7 @@ let hasConnected;
 function initSessionWs(attempt) {
   return new Promise(resolve => {
     if (sessionWs)
-      closeSession(sessionWs);
+      closeSessionWs(sessionWs);
     if (config.singlePlayer) {
       resolve();
       return;
@@ -58,7 +58,7 @@ function initSessionWs(attempt) {
   });
 }
 
-function closeSession() {
+function closeSessionWs() {
   if (!sessionWs)
     return;
   sessionWs.onclose = null;
