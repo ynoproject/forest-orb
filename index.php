@@ -454,7 +454,7 @@
                 <label for="screenshotFixButton" class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleScreenshotFix.label">Screenshot Fix</span>
                   <a href="javascript:void(0);" class="helpLink" data-i18n="[title]modal.settings.fields.toggleScreenshotFix.helpText">
-                    <div class="helpIcon icon fillIcon altIcon">
+                    <div class="helpIcon icon fillIcon invertFillIcon altIcon">
                       <svg viewBox="0 0 18 18">
                         <path d="m9 0a1 1 90 0 0 0 18 1 1 90 0 0 0-18m-1.25 10.25a1 1 90 0 0 2.5 0.5q0.25-1 1.25-1.5c0.75-0.5 2.5-1.5 2.5-3.75 0-4-7.75-5.5-9.5-0.5a0.25 0.25 90 0 0 2.75 0.5c0.25-1.75 4-2.25 3.75 0.5 0 1.5-3 2.25-3.25 4.25m1.25 6a0.25 0.25 90 0 0 0-3.25 0.25 0.25 90 0 0 0 3.25" />
                       </svg>

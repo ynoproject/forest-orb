@@ -343,11 +343,14 @@ body {
 .fillIcon path {
   stroke: none;
   fill: var(--svg-base-gradient);
-  fill-rule: evenodd;
 }
 
 .fillIcon.altIcon path {
   fill: var(--svg-alt-gradient);
+}
+
+.fillIcon.invertFillIcon {
+  fill-rule: evenodd;
 }
 
 .notice, .instruction {
