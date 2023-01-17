@@ -186,14 +186,14 @@
           <div id="chatboxInfo">
             <div id="onlineInfo" class="info hidden">
               <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
-              <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
+              <label id="connStatusText" class="infoText">Disconnected</label>
               <a id="reconnectButton" href="javascript:void(0);" class="reconnectLink iconLink multiplayerOnly unselectable" data-i18n="[title]chatbox.reconnect">
                 <div class="reconnectIcon icon fillIcon altIcon">
                   <svg viewBox="0 0 18 18">
                     <path d="m0 7q1.5-7 9-7 3 0 5.5 2.5l2-2.5 1.5 8h-8l2-2.5q-5-3.5-8 1.5h-4m18 4q-1.5 7-9 7-3 0-5.5-2.5l-2 2.5-1.5-8h8l-2 2.5q5 3.5 8-1.5h4"></path>
                   </svg>
                 </div>
-              </a>
+              </a></span><span id="playerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
             </div>
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>
