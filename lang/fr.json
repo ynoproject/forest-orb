@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "Lieu :",
       "immersionMode": "Mode Immersion",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "Chat",
         "players": "Joueurs",

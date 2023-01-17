@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "현위치",
       "immersionMode": "몰입 모드",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "채팅",
         "players": "플레이어",

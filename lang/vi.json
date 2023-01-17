@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "Địa điểm:&nbsp;",
       "immersionMode": "Chế độ Đắm chìm",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "Chat",
         "players": "Người chơi",

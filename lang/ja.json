@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "場所：",
       "immersionMode": "没入モード",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "チャット",
         "players": "プレイヤー",

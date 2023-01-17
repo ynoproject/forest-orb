@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "当前位置：",
       "immersionMode": "沉浸模式已开启",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "聊天记录",
         "players": "玩家列表",

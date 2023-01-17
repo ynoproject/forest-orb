@@ -187,6 +187,13 @@
             <div id="onlineInfo" class="info hidden">
               <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
               <label id="connStatusText" class="infoText">Disconnected</label></span><span id="playerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
+              <a id="reconnectButton" href="javascript:void(0);" class="reconnectLink iconLink multiplayerOnly unselectable" data-i18n="[html]chatbox.reconnect">
+                <div class="reconnectIcon icon fillIcon altIcon">
+                  <svg viewBox="0 0 18 18">
+                    <path d="m0 7q1.5-7 9-7 3 0 5.5 2.5l2-2.5 1.5 8h-8l2-2.5q-5-3.5-8 1.5h-4m18 4q-1.5 7-9 7-3 0-5.5-2.5l-2 2.5-1.5-8h8l-2 2.5q5 3.5 8-1.5h4"></path>
+                  </svg>
+                </div>
+              </a>
             </div>
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>
@@ -453,7 +460,7 @@
               <li class="formControlRow">
                 <label for="screenshotFixButton" class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleScreenshotFix.label">Screenshot Fix</span>
-                  <a href="javascript:void(0);" class="helpLink" data-i18n="[title]modal.settings.fields.toggleScreenshotFix.helpText">
+                  <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleScreenshotFix.helpText">
                     <div class="helpIcon icon fillIcon invertFillIcon altIcon">
                       <svg viewBox="0 0 18 18">
                         <path d="m9 0a1 1 90 0 0 0 18 1 1 90 0 0 0-18m-1.25 10.25a1 1 90 0 0 2.5 0.5q0.25-1 1.25-1.5c0.75-0.5 2.5-1.5 2.5-3.75 0-4-7.75-5.5-9.5-0.5a0.25 0.25 90 0 0 2.75 0.5c0.25-1.75 4-2.25 3.75 0.5 0 1.5-3 2.25-3.25 4.25m1.25 6a0.25 0.25 90 0 0 0-3.25 0.25 0.25 90 0 0 0 3.25" />

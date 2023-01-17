@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "Localização:&nbsp;",
       "immersionMode": "Immersion Mode",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "Bate-Papo",
         "players": "Jogadores",

@@ -29,6 +29,7 @@
     "chatbox": {
       "location": "&nbsp;:الموقع",
       "immersionMode": "نمط الانغمار",
+      "reconnect": "Reconnect",
       "tab": {
         "chat": "الحديث",
         "players": "اللاعبين",
