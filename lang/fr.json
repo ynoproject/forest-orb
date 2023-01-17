@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -112,8 +112,8 @@
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "Correction des captures d'écran",
+            "helpText": "Corrige le problème où la fonction capture d'écran peut produire des captures d'écran blank vides ; requiert le rechargement de la page et peut impacter les performances"
           }
         },
         "chatSettings": "Paramètres du Chat",
