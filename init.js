@@ -29,6 +29,7 @@ const tippyConfig = {
   allowHTML: true
 };
 
+const sessionIdKey = 'ynoproject_sessionId';
 const apiUrl = `../connect/${ynoGameId}/api`;
 const adminApiUrl = `../connect/${ynoGameId}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
@@ -179,7 +180,7 @@ function fetchNewest(path, important, req) {
 
 function apiFetch(path, isAdmin) {
   return new Promise((resolve, reject) => {
-    const sId = getCookie('sessionId');
+    const sId = getCookie(sessionIdKey);
     const headers = sId ? { 'Authorization': sId } : {};
     fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers })
       .then(response => resolve(response))
@@ -193,7 +194,7 @@ function apiJsonPost(path, data) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     };
-    const sId = getCookie('sessionId');
+    const sId = getCookie(sessionIdKey);
     if (sId)
       headers['Authorization'] = sId;
     fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: JSON.stringify(data) })
@@ -613,7 +614,7 @@ function getCookie(cName) {
     showSystemToastMessage('error', 'important');
   });
 
-  if (!getCookie('sessionId') || !saveSyncConfig.enabled || !saveSyncConfig.slotId)
+  if (!getCookie(sessionIdKey) || !saveSyncConfig.enabled || !saveSyncConfig.slotId)
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());

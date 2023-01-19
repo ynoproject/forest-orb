@@ -23,7 +23,7 @@ function initRankingControls() {
 
 function rankingsApiFetch(path) {
   return new Promise((resolve, reject) => {
-    const sId = getCookie('sessionId');
+    const sId = getCookie(SESSION_ID_KEY);
     const headers = sId ? { 'Authorization': sId } : {};
     fetch(`${rankingsUrl}/${path}`, { headers: headers })
       .then(response => resolve(response))

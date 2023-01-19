@@ -11,7 +11,7 @@ function initAccountControls() {
         if (!response.ok)
           console.error(response.statusText);
         closeSessionWs();
-        setCookie('sessionId', '');
+        setCookie(sessionIdKey, '');
         fetchAndUpdatePlayerInfo();
       }).catch(err => console.error(err));
   };
@@ -33,7 +33,7 @@ function initAccountControls() {
       }).then(sId => {
         if (sId) {
           closeSessionWs();
-          setCookie('sessionId', sId);
+          setCookie(sessionIdKey, sId);
           fetchAndUpdatePlayerInfo();
         }
       }).catch(err => console.error(err));

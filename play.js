@@ -109,7 +109,7 @@ function onRoomSwitch() {
 }
 
 function fetchAndUpdatePlayerInfo() {
-  const cookieSessionId = getCookie('sessionId');
+  const cookieSessionId = getCookie(sessionIdKey);
   const isLogin = cookieSessionId && cookieSessionId !== loginToken;
   const isLogout = !cookieSessionId && loginToken && cookieSessionId !== loginToken;
   if (isLogin || isLogout) {
@@ -157,7 +157,7 @@ function fetchAndUpdatePlayerInfo() {
         else
           fetchAndUpdateJoinedPartyId();
       } else if (isLogin) {
-        setCookie('sessionId', '');
+        setCookie(sessionIdKey, '');
         fetchAndUpdatePlayerInfo();
       }
     })
@@ -165,12 +165,12 @@ function fetchAndUpdatePlayerInfo() {
 }
 
 function checkLogin() {
-  if (loginToken && loginToken === getCookie('sessionId')) {
+  if (loginToken && loginToken === getCookie(sessionIdKey)) {
     apiFetch('info')
       .then(response => response.json())
       .then(jsonResponse => {
         if (!jsonResponse.uuid) {
-          setCookie('sessionId', '');
+          setCookie(sessionIdKey, '');
           fetchAndUpdatePlayerInfo();
         }
       })

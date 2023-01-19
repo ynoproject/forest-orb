@@ -50,7 +50,7 @@ function initSaveSyncControls() {
     })
   };
 
-  if (getCookie('sessionId')) {
+  if (getCookie(sessionIdKey)) {
     apiFetch('saveSync?command=timestamp')
       .then(response => {
         if (!response.ok)
