@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Localização:&nbsp;",
-      "immersionMode": "Immersion Mode",
+      "immersionMode": "Modo Imersão",
       "reconnect": "Reconnect",
       "tab": {
         "chat": "Bate-Papo",
@@ -100,11 +100,11 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Nomes dos Jogadores",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
+              "none": "Nenhum",
+              "classic": "Clássico",
+              "compact": "Compacto",
               "slim": "Slim"
             }
           },
@@ -112,8 +112,8 @@
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "Correção de Captura de Tela",
+            "helpText": "Corrige o problema onde a função de captura de tela pode produzir capturas de tela em branco; requer o recarregamento da página e pode afetar o desempenho"
           }
         },
         "chatSettings": "Chat Settings",
@@ -172,7 +172,7 @@
             "fields": {
               "loggedIn": "Logado",
               "loggedOut": "Deslogado",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Senha Atualizada"
             }
           },
           "parties": {
@@ -186,8 +186,8 @@
               "disband": "Party foi Dissolvida",
               "playerJoin": "Player Se juntou a Party",
               "playerLeave": "Player Saiu da Party",
-              "playerOnline": "Party Member ficou Online",
-              "playerOffline": "Party Member ficou Offline",
+              "playerOnline": "Membro da Party ficou Online",
+              "playerOffline": "Membro da Party ficou Offline",
               "kickPlayer": "Player foi expulso da Party",
               "transferPartyOwner": "O Player foi promovido a líder da Party"
             }
@@ -211,11 +211,11 @@
             "label": "Save na Nuvem",
             "fields": {
               "saveUploading": "Enviando o Save",
-              "saveUploaded": "Enviado o Save",
+              "saveUploaded": "Save Enviado",
               "saveDownloading": "Baixando o Save",
-              "saveDownloaded": "Baixado o Save",
+              "saveDownloaded": "Save Baixado",
               "saveUpToDate": "Save Atualizado",
-              "saveCleared": "Limpo o Save"
+              "saveCleared": "Save Limpo"
             }
           }
         }
@@ -231,16 +231,16 @@
               "0": "None"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Mudar Senha",
           "clearSaveSync": "Limpar dados do Save na Nuvem"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Mudar Senha",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Senha Antiga",
+          "newPassword": "Nova Senha",
+          "newConfirmPassword": "Confirmar Nova Senha"
         },
         "submit": "Submit"
       },
@@ -291,7 +291,7 @@
         "submit": "Enviar"
       },
       "joinPrivateParty": {
-        "title": "Entra em Party privada",
+        "title": "Entrar em Party privada",
         "fields": {
           "password": "Senha"
         },
@@ -329,14 +329,14 @@
       },
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
-      "toggleImmersionMode": "Alternar pra Immersion Mode",
-      "screenshot": "Tirar Screenshot",
+      "toggleImmersionMode": "Alternar para Modo de Imersão",
+      "screenshot": "Capturar a Tela",
       "settings": "Configurações",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleGlobalMessageLocations": "Mostrar/Ocultar localizações em Mensagens de Bate-Papo",
+        "toggleOwnGlobalMessageLocation": "Compartilhar/Ocultar sua Localização em Mensagens de Bate-Papo",
+        "toggleMessageTimestamps": "Mostrar/Ocultar a Hora em Mensagens de Bate-Papo",
         "clearChat": "Limpar o Chat"
       },
       "parties": {
@@ -475,9 +475,9 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "As novas senhas especificadas não correspondem.",
+          "badLogin": "Senha de acesso está incorreta.",
+          "internalServerError": "Um erro ocorreu: por favor tente novamente mais tarde."
         }
       }
     },
@@ -506,12 +506,12 @@
         "menuTheme": "A cor do seu nome e o estilo de entrada da lista de jogadores são baseados no tema do menu do jogo.",
         "playersInMap": "Você pode alternar entre o número de jogadores online e o número de jogadores em seu mapa clicando no rótulo..",
         "markdownSupport": "O chat suporta formatação de texto por envolver o texto em certos caracteres. Os atualmente suportados são: **negrito** (\\*\\*texto\\*\\*), *itálico* (\\*texto\\*, \\_texto\\_), __sublinhado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~), e ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "tabToChat": "Se você estiver jogando em um PC, você pode pressionar a tecla Tab para alternar entre o jogo e a entrada de Bate-Papo. Essa função pode ser desativada nas Configurações de Bate-Papo em 'Atalho Tab para Chat'.",
         "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
         "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todas', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
-        "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Immersion Mode. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
+        "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },
@@ -527,7 +527,7 @@
       "account": {
         "loggedIn": "Você fez login como {USER}.",
         "loggedOut": "Você Deslogou.",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Sua senha foi atualizada com sucesso."
       },
       "parties": {
         "create": "{PARTY} foi criado.",
@@ -599,10 +599,10 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "Porcentagem desbloqueada"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "Ascendente",
+        "desc": "Descendente"
       }
     },
     "badgeGallery": {
@@ -675,36 +675,36 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Configurações de Moderador",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Redefinir uma Senha",
+          "playerPrompt": "Digite o nome da conta para redefinir a senha da conta",
+          "success": "A nova senha para {PLAYER} é {PASSWORD}"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Banir um Jogador",
+          "playerPrompt": "Digite o nome da conta para banir"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Desbanir um Jogador",
+          "playerPrompt": "Digite o nome da conta para desbanir"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Silenciar um Jogador",
+          "playerPrompt": "Digite o nome da conta para silenciar"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Desilenciar um Jogador",
+          "playerPrompt": "Digite o nome da conta para desilenciar"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Conceder um Emblema",
+          "playerPrompt": "Digite o nome da conta para conceder o emblema"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Revogar um Emblema",
+          "playerPrompt": "Digite o nome da conta para revogar o emblema"
         }
       }
     }
