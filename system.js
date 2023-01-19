@@ -79,6 +79,13 @@ const gameUiThemes = {
     'Carpet',
     'Raspberry'
   ],
+  'cu': [
+    'system',
+    'system2',
+    'maple-penmenu',
+    'millie_system_sun',
+    'millie_system_wood2'
+  ],
   'deepdreams': [
     'system_sterling',
     'system_arabian',
@@ -137,6 +144,7 @@ const gameFullBgUiThemes = {
   '2kki': [],
   'amillusion': [ 'fleur' ],
   'braingirl': [],
+  'cu': [],
   'deepdreams': [],
   'flow': [],
   'genie': [],
@@ -150,11 +158,14 @@ const gameFullBgUiThemes = {
 const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
   'braingirl': 'color',
+  'cu': 'color',
   'deepdreams': 'soft-light',
   'genie': 'color',
   'someday': 'hard-light',
   'unevendream': 'color'
 };
+
+const pixelatedLogoGameIds = [ 'cu' ];
 
 const contrastRatioThreshold = 2.02;
 

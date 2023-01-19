@@ -11,6 +11,9 @@
     case "braingirl":
       $gameName = "Braingirl";
       break;
+    case "cu":
+      $gameName = "Collective Unconscious";
+      break;
     case "deepdreams":
       $gameName = "Deep Dreams";
       break;
@@ -165,14 +168,19 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl"): ?>
+            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
+                <?php if ($gameId == "cu"): ?>
+                  <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="0" data-key-code="48"></div>
+                <?php endif ?>
                 <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="1" data-key-code="49"></div>
-                <?php if ($gameId == "braingirl"): ?>
+                <?php if ($gameId == "cu" || $gameId == "braingirl"): ?>
                   <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="2" data-key-code="50"></div>
                 <?php endif ?>
-                <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
-                <?php if ($gameId != "braingirl"): ?>
+                <?php if ($gameId != "cu"): ?>
+                  <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="3" data-key-code="51"></div>
+                <?php endif ?>
+                <?php if ($gameId != "cu" && $gameId != "braingirl"): ?>
                   <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="5" data-key-code="53"></div>
                 <?php endif ?>
                 <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="9" data-key-code="57"></div>
@@ -715,7 +723,7 @@
                   <?php if ($gameId !== "deepdreams"): ?>
                     <option value="3" data-i18n="[html]fontStyle.values.style4">Style 4</option>
                   <?php endif ?>
-                  <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "flow"): ?>
+                  <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "cu" || $gameId == "flow"): ?>
                     <option value="4" data-i18n="[html]fontStyle.values.style5">Style 5</option>
                     <option value="5" data-i18n="[html]fontStyle.values.style6">Style 6</option>
                     <option value="6" data-i18n="[html]fontStyle.values.style7">Style 7</option>
