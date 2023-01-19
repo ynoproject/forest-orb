@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "현위치",
       "immersionMode": "몰입 모드",
-      "reconnect": "Reconnect",
+      "reconnect": "재연결",
       "tab": {
         "chat": "채팅",
         "players": "플레이어",
@@ -112,8 +112,8 @@
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "더 나은 스크린샷 찍기",
+            "helpText": "스크린샷을 찍을 시에 때때로 검은 화면이 되는 오류를 고쳐줍니다. 체크 후 새로고침을 해야 적용이 되며, 게임 성능에 영향을 미칠 수 있습니다."
           }
         },
         "chatSettings": "채팅 설정",
