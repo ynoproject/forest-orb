@@ -224,8 +224,6 @@ gameLogoImg.onload = function () {
   }
   
   const gameLogo = document.getElementById('gameLogo');
-  if (pixelatedLogoGameIds.indexOf(gameId) > -1)
-    gameLogo.classList.add('pixelated');
   gameLogo.setAttribute('style', `background-image: url('${gameLogoUrl}'); width: ${width}px; height: ${height}px;`);
   document.getElementById('gameLogoOverlay').setAttribute('style', `-webkit-mask-image: url('${gameLogoUrl}'); mask-image: url('${gameLogoUrl}'); mix-blend-mode: ${gameLogoBlendModeOverrides[gameId] || 'multiply'};`);
   gameLogo.classList.remove('hidden');

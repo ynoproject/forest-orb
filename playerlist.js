@@ -502,7 +502,7 @@ function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
   if (!playerList)
     playerList = document.getElementById('playerList');
   
-  const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] > img.playerListEntrySprite`);
+  const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] img.playerListEntrySprite`);
 
   playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
   getSpriteProfileImg(sprite, idx).then(spriteImg => {

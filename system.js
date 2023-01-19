@@ -165,8 +165,6 @@ const gameLogoBlendModeOverrides = {
   'unevendream': 'color'
 };
 
-const pixelatedLogoGameIds = [ 'cu' ];
-
 const contrastRatioThreshold = 2.02;
 
 function setSystemName(name) {
