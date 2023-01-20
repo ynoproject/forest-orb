@@ -358,6 +358,7 @@ body {
 }
 
 .notice {
+  display: block;
   font-weight: bold;
 }
 

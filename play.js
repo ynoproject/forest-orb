@@ -31,6 +31,7 @@ let globalConfig = {
   locationDisplay: false,
   hideRankings: false,
   screenshotFix: false,
+  rulesReviewed: false,
   badgeToolsData: null
 };
 

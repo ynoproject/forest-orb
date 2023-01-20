@@ -338,9 +338,6 @@
               <input id="nameInput" type="text" autocomplete="off" maxlength="10" />
             </form>
           </div>
-          <div id="reviewRulesContainer" style="display: none">
-            <a href="javascript:void(0);" onclick="openModal('rulesModal')" data-i18n="[html]ui.reviewRules">Review Rules</a>
-          </div>
         </div>
       </div>
       <div id="modalContainer" class="hidden">
@@ -1304,13 +1301,15 @@
       <div id="toastContainer"></div>
     </div>
     <div id="layoutEnd"></div>
-    <?php if ($gameId == "2kki"): ?>
-      <div>
-        <br>
-        <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
-        <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
-      </div>
-    <?php endif ?>
+    <div>
+      <?php if ($gameId == "2kki"): ?>
+      <br>
+      <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
+      <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
+      <?php endif ?>
+      <br>
+      <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]ui.reviewRules">Review Rules</a>
+    </div>
     <div id="footerIconContainer">
       <a href="https://discord.gg/ynoproject" target="_blank" class="icon fillIcon" title="Discord">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32">

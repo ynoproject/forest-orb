@@ -582,14 +582,16 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
-{
-    function showRules() {
-        openModal('rulesModal');
-        document.getElementById('reviewRulesContainer').style.display = '';
-        document.getElementById('chatInput').removeEventListener('click', showRules);
-    }
-    document.getElementById('chatInput').addEventListener('click', showRules);
+function showRules() {
+  openModal('rulesModal');
+  document.getElementById('chatInput').removeEventListener('click', showRules);
+  if (!globalConfig.rulesReviewed) {
+    globalConfig.rulesReviewed = true;
+    updateConfig(globalConfig, true);
+  }
 }
+
+document.getElementById('chatInput').addEventListener('click', showRules);
 
 // EXTERNAL
 function onChatMessageReceived(msg, id) {

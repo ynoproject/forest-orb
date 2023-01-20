@@ -457,6 +457,9 @@ function loadOrInitConfig(configObj, global, configName) {
                       });
                     }
                     break;
+                  case 'rulesReviewed':
+                    if (value)
+                      document.getElementById('chatInput').removeEventListener('click', showRules);
                 }
               } else {
                 switch (key) {
