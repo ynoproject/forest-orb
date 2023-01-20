@@ -311,6 +311,14 @@
       },
       "rankings": {
         "title": "Rankings"
+      },
+      "rules": {
+        "title": "Rules",
+        "rule1": "Please be respectful and polite.",
+        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
+        "rule3": "No politics.",
+        "rule4": "No inflammatory remarks (including slurs).",
+        "rule5": "No cheating of any kind for any reason."
       }
     },
     "tooltips": {
@@ -338,7 +346,8 @@
       "events": "Expedições",
       "rankings": "Rankings",
       "nexus": "Voltar para o Nexus"
-    }
+    },
+    "reviewRules": "Review Rules"
   },
   "messages": {
     "games": {

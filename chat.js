@@ -582,6 +582,15 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
+{
+    function showRules() {
+        openModal('rulesModal');
+        document.getElementById('reviewRulesContainer').style.display = '';
+        document.getElementById('chatInput').removeEventListener('click', showRules);
+    }
+    document.getElementById('chatInput').addEventListener('click', showRules);
+}
+
 // EXTERNAL
 function onChatMessageReceived(msg, id) {
   chatboxAddMessage(msg, MESSAGE_TYPE.MAP, playerUuids[id]);

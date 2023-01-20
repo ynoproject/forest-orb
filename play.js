@@ -453,6 +453,13 @@ function preToggle(buttonElement) {
     textarea.addEventListener('keyup', function () { this.style.height = `${calcTextareaHeight(textarea.value)}px`; });
 }
 
+/**
+ * Opens a modal.
+ * @param {string} modalId The modal's ID.
+ * @param {string} theme The theme for the modal to use. Player-selected or in-game menu theme is used if none is specified.
+ * @param {string} lastModalId The previously-opened modal, used when opening sub-modals.
+ * @param {Object} modalData Data to be passed to the modal.
+ */
 function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
   modalContainer.classList.remove('hidden');
