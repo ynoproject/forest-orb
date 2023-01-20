@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "Локация:&nbsp;",
       "immersionMode": "Режим погружения",
-      "reconnect": "Reconnect",
+      "reconnect": "Переподключиться",
       "tab": {
         "chat": "Чат",
         "players": "Игроки",
