@@ -313,12 +313,12 @@
         "title": "랭킹"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "채팅룰",
+        "rule1": "상대방에게 공손하고 예의바르게 행동해주십시오",
+        "rule2": "19금 대화는 금지입니다 (후방주의물, 고어, 기타 등등).",
+        "rule3": "정치적 발언은 금지입니다",
+        "rule4": "선동적인 발언은 금지입니다 (비난 포함).",
+        "rule5": "어느 경우더라도 치트는 사용하지 마십시오"
       }
     },
     "tooltips": {
@@ -347,7 +347,7 @@
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "채팅룰 다시보기"
   },
   "messages": {
     "games": {
