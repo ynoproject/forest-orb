@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "Lieu :",
       "immersionMode": "Mode Immersion",
-      "reconnect": "Reconnect",
+      "reconnect": "Se reconnecter",
       "tab": {
         "chat": "Chat",
         "players": "Joueurs",
@@ -113,7 +113,7 @@
           "toggleRankings": "Classement",
           "toggleScreenshotFix": {
             "label": "Correction des captures d'écran",
-            "helpText": "Corrige le problème où la fonction capture d'écran peut produire des captures d'écran blank vides ; requiert le rechargement de la page et peut impacter les performances"
+            "helpText": "Corrige le problème où la fonction capture d'écran peut produire des captures d'écran vides ; requiert le rechargement de la page et peut impacter les performances"
           }
         },
         "chatSettings": "Paramètres du Chat",
@@ -313,12 +313,12 @@
         "title": "Classement"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "Règles",
+        "rule1": "Veuillez être respectueux et poli.",
+        "rule2": "Pas de discussion +18 (NSFW, gore, etc.).",
+        "rule3": "Pas de politiques.",
+        "rule4": "Pas de remarques provocatrices (insultes comprises).",
+        "rule5": "Pas de triche de toute sorte, peu importe la raison."
       }
     },
     "tooltips": {
@@ -347,7 +347,7 @@
       "rankings": "Classement",
       "nexus": "Retourner au Nexus"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Relire les règles"
   },
   "messages": {
     "games": {
