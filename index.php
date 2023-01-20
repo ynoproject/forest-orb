@@ -1308,7 +1308,7 @@
       <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
       <?php endif ?>
       <br>
-      <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]ui.reviewRules">Review Rules</a>
+      <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]reviewRules">Review Rules</a>
     </div>
     <div id="footerIconContainer">
       <a href="https://discord.gg/ynoproject" target="_blank" class="icon fillIcon" title="Discord">
