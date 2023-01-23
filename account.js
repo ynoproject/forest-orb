@@ -158,7 +158,7 @@ function updateModControls() {
       const playerName = prompt(playerPromptMessage);
       if (!playerName)
         return;
-      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}`)
+      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}`, !action.startsWith('admin?'))
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
