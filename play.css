@@ -127,6 +127,10 @@ select {
   overflow-y: auto;
 }
 
+select option:checked {
+  background: rgba(var(--alt-color), 0.5) !important;
+}
+
 button.checkboxButton, button[type="button"], button[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
@@ -1632,6 +1636,10 @@ body.fullBg #background {
 
 .modal a:not(.modalClose):not(.listEntryAction) {
   background-image: var(--modal-alt-gradient) !important;
+}
+
+.modal select option:checked {
+  background: rgba(var(--modal-alt-color), 0.5) !important;
 }
 
 .modal .iconButton path, .modal .icon path {
