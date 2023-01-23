@@ -123,6 +123,10 @@ input[type='number'] {
   width: 64px;
 }
 
+select {
+  overflow-y: auto;
+}
+
 button.checkboxButton, button[type="button"], button[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
@@ -572,11 +576,11 @@ body.fullBg #background {
   scroll-snap-align: start;
 }
 
-#layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar {
+#layout::-webkit-scrollbar, .scrollableContainer::-webkit-scrollbar, .modalContent::-webkit-scrollbar, select::-webkit-scrollbar {
   width: 18px;
 }
 
-#layout::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track {
+#layout::-webkit-scrollbar-track, .scrollableContainer::-webkit-scrollbar-track, .modalContent::-webkit-scrollbar-track, select::-webkit-scrollbar-track {
   border: 8px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
   background-color: rgb(var(--base-bg-color));
@@ -584,14 +588,14 @@ body.fullBg #background {
   image-rendering: pixelated;
 }
 
-#layout::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb {
+#layout::-webkit-scrollbar-thumb, .scrollableContainer::-webkit-scrollbar-thumb, .modalContent::-webkit-scrollbar-thumb, select::-webkit-scrollbar-thumb {
   border: 8px solid transparent;
   border-image: var(--border-image-url) 6 round !important;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
 
-#layout, .scrollableContainer, .modalContent {
+#layout, .scrollableContainer, .modalContent, select {
   scrollbar-color: rgb(var(--base-color)) rgb(var(--base-bg-color));
   scrollbar-width: 18px;
 }

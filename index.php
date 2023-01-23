@@ -409,7 +409,7 @@
                 <div>
                   <label id="translationInstruction" class="nofilter hidden"><a id="translationLink" target="_blank" data-i18n="[html]instruction.translation">Translation Work Needed</a></label>
                   <div>
-                    <select id="lang">
+                    <select id="lang" size="4">
                       <option value="en">English</option>
                       <option value="ja">日本語</option>
                       <option value="zh">中文</option>
@@ -439,7 +439,7 @@
               <li class="formControlRow">
                 <label for="nametagMode" class="unselectable" data-i18n="[html]modal.settings.fields.nametagMode.label">Nametags</label>
                 <div>
-                  <select id="nametagMode">
+                  <select id="nametagMode" size="4">
                     <option value="0" data-i18n="[html]modal.settings.fields.nametagMode.values.none">None</option>
                     <option value="1" data-i18n="[html]modal.settings.fields.nametagMode.values.classic" selected>Classic</option>
                     <option value="2" data-i18n="[html]modal.settings.fields.nametagMode.values.compact">Compact</option>
@@ -572,7 +572,7 @@
               <li class="formControlRow">
                 <label for="notificationScreenPosition" class="unselectable" data-i18n="[html]modal.notificationSettings.fields.screenPosition.label">Screen Position</label>
                 <div>
-                  <select id="notificationScreenPosition">
+                  <select id="notificationScreenPosition" size="4">
                     <option value="bottomLeft" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.bottomLeft">Bottom Left</option>
                     <option value="bottomRight" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.bottomRight">Bottom Right</option>
                     <option value="topLeft" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.topLeft">Top Left</option>
