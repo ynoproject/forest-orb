@@ -14,8 +14,8 @@
   --container-bg-image-url: url('images/ui/2kki/system1/containerbg.png');
   --border-image-url: url('images/ui/2kki/system1/border.png');
 
-  --modal-base-color: rgb(var(--base-color));
-  --modal-alt-color: rgb(var(--alt-color));
+  --modal-base-color: var(--base-color);
+  --modal-alt-color: var(--alt-color);
   --modal-base-bg-color: var(--base-bg-color);
   --modal-shadow-color: var(--shadow-color);
   --modal-base-gradient: var(--base-gradient);
@@ -29,8 +29,8 @@
   --modal-container-bg-image-url: var(--container-bg-image-url);
   --modal-border-image-url: var(--border-image-url);
 
-  --party-base-color: rgb(var(--base-color));
-  --party-alt-color: rgb(var(--alt-color));
+  --party-base-color: var(--base-color);
+  --party-alt-color: var(--alt-color);
   --party-base-bg-color: var(--base-bg-color);
   --party-shadow-color: var(--shadow-color);
   --party-base-gradient: var(--base-gradient);
