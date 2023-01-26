@@ -304,6 +304,19 @@ body {
   height: 12px;
 }
 
+#chatbox.partyChat #messages::-webkit-scrollbar-track, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-track {
+  border-image-source: var(--party-border-image-url) !important;
+  background-color: rgb(var(--party-base-bg-color));
+}
+
+#chatbox.partyChat #messages::-webkit-scrollbar-thumb, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-thumb {
+  border-image-source: var(--party-border-image-url) !important;
+}
+
+#chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
+  scrollbar-color: rgb(var(--party-base-color)) rgb(var(--party-base-bg-color));
+}
+
 #chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
   stroke: var(--party-svg-base-gradient);
   filter: var(--party-svg-shadow);
@@ -319,7 +332,7 @@ body {
 }
 
 #chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
-  border-image: var(--party-border-image-url) 8 repeat !important;
+  border-image-source: var(--party-border-image-url) !important;
 }
 
 #chatbox.partyChat #messages .messageContainer.highlight {
@@ -1063,7 +1076,7 @@ body.fullBg #background {
   background-color: rgba(var(--shadow-color), 0.5);
 }
 
-#layout:not(:fullscreen) #chatbox.partyChat .chatboxTabSection, #layout:not(:fullscreen) #chatbox.partyChat #chatInputContainer form {
+#layout:not(:fullscreen) #chatbox.partyChat #chatInputContainer form {
   background-color: rgba(var(--party-shadow-color), 0.5);
 }
 
@@ -1071,7 +1084,7 @@ body.fullBg #background {
   background-size: 70px;
   background-position-x: -8px;
   background-position-y: -16px;
-  border-image: var(--party-border-image-url) 10 repeat !important;
+  border-image-source: var(--party-border-image-url) !important;
 }
 
 #layout:not(:fullscreen) #chatbox.partyChat #messages, #layout:not(:fullscreen) #chatbox.partyPlayers #partyPlayerList {
@@ -1633,7 +1646,7 @@ body.fullBg #background {
 
 .modal input, .modal textarea, .modal select, .modal .checkbox, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
   color: rgb(var(--modal-base-color)) !important;
-  border-image: var(--modal-border-image-url) 8 repeat !important;
+  border-image-source: var(--modal-border-image-url) !important;
   background-color: rgb(var(--modal-base-bg-color)) !important;
   text-shadow: 1.5px 1.5px rgb(var(--modal-shadow-color));
 }
@@ -1779,7 +1792,7 @@ body.fullBg #background {
 }
 
 .modalContent.itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
-  border-image: var(--modal-border-image-url) 8 repeat !important;
+  border-image-source: var(--modal-border-image-url) !important;
 }
 
 .itemContainer .badgeItem.locked > .badgeContainer > div:first-child {
