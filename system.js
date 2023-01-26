@@ -463,15 +463,19 @@ let applyThemeStyles;
       themeGameId = gameId;
 
     const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}_` : ''}${uiTheme}`;
+    const themeStylesId = `theme${themeSuffix}`;
 
-    let themeStyles = document.getElementById(`theme${themeSuffix}`);
+    let themeStyles = document.getElementById(themeStylesId);
     if (!themeStyles) {
+      const themePropSuffix = `-${themeGameId !== gameId ? `${themeGameId}-` : ''}${uiTheme}`;
+
       themeStyles = document.createElement('style');
-      themeStyles.innerHTML = themeStyleTemplate.replace(/\{THEME\}/g, themeSuffix).replace(/\{THEME_PROP\}/g, themeSuffix.replace(/\_/g, '-')).replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
+      themeStyles.id = themeStylesId;
+      themeStyles.innerHTML = themeStyleTemplate.replace(/\{THEME\}/g, themeSuffix).replace(/\{THEME_PROP\}/g, themePropSuffix).replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
       document.head.appendChild(themeStyles);
     }
 
-    el.classList.add(`theme${themeSuffix}`);
+    el.classList.add(themeStylesId);
   };
 }
 

@@ -140,7 +140,11 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
           detailsContainer.appendChild(gameLink);
 
-          applyThemeStyles(eventListEntry, getDefaultUiTheme(eventGameId).replace(' ', '_'), themeGameId);
+          const gameThemeName = getDefaultUiTheme(eventGameId);
+
+          initUiThemeContainerStyles(gameThemeName, null, false, () => {
+            initUiThemeFontStyles(gameThemeName, null, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), themeGameId));
+          });
         }
         
         eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
