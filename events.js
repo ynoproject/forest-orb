@@ -113,6 +113,8 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
         lastType = event.type;
       }
+
+      const eventGameId = event.game || gameId;
       
       const eventListEntry = document.createElement('div');
 
@@ -127,8 +129,19 @@ function onUpdateEvents(events, ignoreLocationCheck) {
         detailsContainer.classList.add('detailsContainer');
   
         const eventLocationName = document.createElement('div');
+
+        if (gameId !== eventGameId) {
+          const gameLink = document.createElement('a');
+
+          gameLink.classList.add('gameLink');
+          gameLink.href = `../${eventGameId}/`;
+          gameLink.target = '_blank';
+          gameLink.innerText = localizedMessages.games[eventGameId];
+
+          detailsContainer.appendChild(gameLink);
+        }
         
-        eventLocationName.innerHTML = gameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
+        eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
   
         detailsContainer.appendChild(eventLocationName);
 

@@ -2240,6 +2240,11 @@ form .uiTheme {
   width: 60%;
 }
 
+.eventList .eventListEntry .detailsContainer .gameLink {
+  font-size: small;
+  margin-bottom: 2px;
+}
+
 .eventList .eventListEntry .detailsContainer .depthContainer {
   display: flex;
   height: 18px;
