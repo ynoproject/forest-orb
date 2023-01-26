@@ -154,7 +154,7 @@ const allGameFullBgUiThemes = {
   'someday': [],
   'unevendream': [],
   'yume': [ '0000000000010' ]
-}[gameId];
+};
 
 const gameFullBgUiThemes = allGameFullBgUiThemes[gameId];
 
@@ -455,7 +455,7 @@ let applyThemeStyles;
       background-image: var(--alt-gradient{THEME_PROP}) !important;
     }
   `;
-  
+
   applyThemeStyles = (el, uiTheme, themeGameId) => {
     if (!el)
       return;
