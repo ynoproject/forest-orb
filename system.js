@@ -141,7 +141,7 @@ const allGameUiThemes = {
 };
 const gameUiThemes = allGameUiThemes[gameId];
 
-const gameFullBgUiThemes = {
+const allGameFullBgUiThemes = {
   '2kki': [],
   'amillusion': [ 'fleur' ],
   'braingirl': [],
@@ -155,6 +155,8 @@ const gameFullBgUiThemes = {
   'unevendream': [],
   'yume': [ '0000000000010' ]
 }[gameId];
+
+const gameFullBgUiThemes = allGameFullBgUiThemes[gameId];
 
 const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
@@ -261,12 +263,13 @@ function initUiThemeContainerStyles(uiTheme, themeGameId, setTheme, callback) {
     themeGameId = gameId;
 
   const parsedUiTheme = uiTheme.replace(' ', '_');
+  const themeGamePropSuffix = themeGameId !== gameId ? `${themeGameId}-` : '';
   
-  const baseBgColorProp = `--base-bg-color-${parsedUiTheme}`;
-  const shadowColorProp = `--shadow-color-${parsedUiTheme}`;
-  const svgShadowProp = `--svg-shadow-${parsedUiTheme}`;
-  const containerBgImageUrlProp = `--container-bg-image-url-${parsedUiTheme}`;
-  const borderImageUrlProp = `--border-image-url-${parsedUiTheme}`;
+  const baseBgColorProp = `--base-bg-color-${themeGamePropSuffix}${parsedUiTheme}`;
+  const shadowColorProp = `--shadow-color-${themeGamePropSuffix}${parsedUiTheme}`;
+  const svgShadowProp = `--svg-shadow-${themeGamePropSuffix}${parsedUiTheme}`;
+  const containerBgImageUrlProp = `--container-bg-image-url-${themeGamePropSuffix}${parsedUiTheme}`;
+  const borderImageUrlProp = `--border-image-url-${themeGamePropSuffix}${parsedUiTheme}`;
 
   getBaseBgColor(uiTheme, themeGameId, function (color) {
     getFontShadow(uiTheme, themeGameId, function (shadow) {
@@ -371,6 +374,105 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
       }
     });
   });
+}
+
+let applyThemeStyles;
+
+{
+  const themeStyleTemplate = `
+    .listEntry.theme{THEME}, .toast.theme{THEME} {
+      background-image: var(--container-bg-image-url{THEME_PROP}) !important;
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+    }
+
+    .theme{THEME} .infoLabel, .theme{THEME} .infoText, .toast.theme{THEME} .toastMessage, .theme{THEME} h1, .theme{THEME} h2, .theme{THEME} h3, .theme{THEME} h4, .theme{THEME} a:not(.listEntryAction), .theme{THEME} label {
+      background-image: var(--base-gradient{THEME_PROP}) !important;
+      filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
+    }
+
+    .theme{THEME} a:not(.modalClose):not(.listEntryAction) {
+      background-image: var(--alt-gradient{THEME_PROP}) !important;
+    }
+
+    .nameText.theme{THEME}, .theme{THEME} .nameText, .theme{THEME} .partyListEntryMemberCountText {
+      color: rgb(var(--base-color{THEME_PROP}));
+      background-image: var(--base-gradient{THEME_PROP}) !important;
+      filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
+    }
+
+    .theme{THEME} .nameMarker {
+      color: rgb(var(--alt-color{THEME_PROP}));
+      background-image: var(--alt-gradient{THEME_PROP}) !important;
+      filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
+    }
+
+    .theme{THEME} .checkbox {
+      color: rgb(var(--base-color{THEME_PROP})) !important;
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+      background-color: rgb(var(--base-bg-color{THEME_PROP})) !important;
+      text-shadow: 1.5px 1.5px rgb(var(--shadow-color{THEME_PROP}));
+    }
+
+    .theme{THEME}.icon path, .theme{THEME} .icon path {
+      stroke: var(--svg-base-gradient{THEME_PROP});
+      filter: var(--svg-shadow{THEME_PROP});
+    }
+
+    .theme{THEME}.fillIcon path, .theme{THEME} .fillIcon path {
+      stroke: none;
+      fill: var(--svg-base-gradient{THEME_PROP});
+      filter: var(--svg-shadow{THEME_PROP});
+    }
+    
+    .badge.theme{THEME} > .badgeOverlay, .theme{THEME} .badge > .badgeOverlay {
+      background: var(--base-gradient{THEME_PROP});
+    }
+    
+    .badge.theme{THEME} > .badgeOverlayBase, .theme{THEME} .badge > .badgeOverlayBase {
+      background: rgb(var(--base-color{THEME_PROP}));
+    }
+    
+    .badge.theme{THEME} > .badgeOverlayAlt, .theme{THEME} .badge > .badgeOverlayAlt {
+      background: rgb(var(--alt-color{THEME_PROP}));
+    }
+    
+    .badge.theme{THEME} > .badgeOverlayBg, .theme{THEME} .badge > .badgeOverlayBg {
+      background: rgb(var(--base-bg-color{THEME_PROP}));
+    }
+
+    .tippy-box.theme{THEME} {
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+      background-image: var(--container-bg-image-url{THEME_PROP}) !important;
+      {FULL_BG|background-size: contain;}
+    }
+    
+    .tippy-box.theme{THEME} .tippy-content .tooltipContent {
+      background-image: var(--base-gradient{THEME_PROP}) !important;
+      filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
+    }
+    
+    .tippy-box.theme{THEME} .tippy-content .tooltipContent.altText {
+      background-image: var(--alt-gradient{THEME_PROP}) !important;
+    }
+  `;
+  
+  applyThemeStyles = (el, uiTheme, themeGameId) => {
+    if (!el)
+      return;
+    if (!themeGameId)
+      themeGameId = gameId;
+
+    const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}_` : ''}${uiTheme}`;
+
+    let themeStyles = document.getElementById(`theme${themeSuffix}`);
+    if (!themeStyles) {
+      themeStyles = document.createElement('style');
+      themeStyles.innerHTML = themeStyleTemplate.replace(/\{THEME\}/g, themeSuffix).replace(/\{THEME_PROP\}/g, themeSuffix.replace(/\_/g, '-')).replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
+      document.head.appendChild(themeStyles);
+    }
+
+    el.classList.add(`theme${themeSuffix}`);
+  };
 }
 
 function setModalUiTheme(modalId, uiTheme, setData) {

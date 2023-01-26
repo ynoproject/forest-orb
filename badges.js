@@ -788,14 +788,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             const parsedSystemName = systemName ? (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_') : null;
 
-            if (parsedSystemName) {
-              boxStyles = `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important; border-image-width: 2 !important;`;
-              if (gameFullBgUiThemes.indexOf(parsedSystemName) > -1)
-                boxStyles += ' background-size: contain;';
-              textStyles = `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
-              tippyBox.setAttribute('style', boxStyles);
-              tooltipTitle.setAttribute('style', textStyles);
-            }
+            if (parsedSystemName)
+              applyThemeStyles(tippyBox, parsedSystemName);
     
             tooltipContent.appendChild(tooltipTitle);
             tooltipContent.appendChild(badgeSlotRowsContainer);

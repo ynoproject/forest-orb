@@ -201,9 +201,9 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       const parsedSystemName = systemName.replace(" ", "_");
       initUiThemeContainerStyles(systemName, null, false, () => {
         initUiThemeFontStyles(systemName, null, 0, false, () => {
-          name.setAttribute("style", `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
+          applyThemeStyles(name, parsedSystemName);
           if (rankIcon)
-            rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+            applyThemeStyles(rankIcon, parsedSystemName);
           if (badgeOverlayEl) {
             badgeOverlayEl.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
               ? `var(--base-gradient-${parsedSystemName})`

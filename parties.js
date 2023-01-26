@@ -543,14 +543,7 @@ function addOrUpdatePartyListEntry(party) {
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
-      partyListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-      initUiThemeFontStyles(systemName, null, 0, false, () => {
-        nameText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
-        memberCountText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
-        memberCount.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-        for (let iconPath of partyListEntryActionContainer.querySelectorAll('path'))
-          iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-      });
+      initUiThemeFontStyles(systemName, null, 0, false, () => applyThemeStyles(partyListEntry, parsedSystemName));
     });
   }
 
@@ -783,12 +776,8 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
     } else {
       const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
       playerLocation.innerHTML = locationsHtml;
-      if (playerLocation.dataset.systemOverride) {
-        for (let infoLabel of playerLocation.querySelectorAll('infoLabel'))
-          infoLabel.setAttribute('style', `background-image: var(--base-gradient-${playerLocation.dataset.systemOverride}) !important;`);
-        for (let anchor of playerLocation.querySelectorAll('a'))
-          anchor.setAttribute('style', `background-image: var(--alt-gradient-${playerLocation.dataset.systemOverride}) !important;`);
-      }
+      if (playerLocation.dataset.systemOverride)
+        applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
     }
   }
 }

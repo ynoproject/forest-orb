@@ -139,6 +139,8 @@ function onUpdateEvents(events, ignoreLocationCheck) {
           gameLink.innerText = localizedMessages.games[eventGameId];
 
           detailsContainer.appendChild(gameLink);
+
+          applyThemeStyles(eventListEntry, getDefaultUiTheme(eventGameId).replace(' ', '_'), themeGameId);
         }
         
         eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
@@ -170,7 +172,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
                 starIcon = getSvgIcon('star');
                 const starSvg = starIcon.querySelector('svg');
                 const halfStarPath = getSvgIcon('starHalf', true).querySelector('path');
-                halfStarPath.setAttribute('style', `fill: var(--modal-svg-base-gradient); stroke: none; filter: none;`);
+                halfStarPath.setAttribute('style', `fill: var(--${gameId === eventGameId ? 'modal-svg-base-gradient' : `svg-base-gradient_${eventGameId}_${getDefaultUiTheme(eventGameId)}`})`);
                 if (isMin)
                   starSvg.querySelector('path').remove();
                 starIcon.querySelector('svg').appendChild(halfStarPath);

@@ -117,17 +117,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       if (unnamed || gameUiThemes.indexOf(systemName) === -1)
         systemName = getDefaultUiTheme();
       const parsedSystemName = systemName.replace(' ', '_');
-      nameText.setAttribute('style', `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
-      const nameMarkers = nameTextContainer.querySelectorAll('.nameMarker');
-      if (nameMarkers.length) {
-        const nameMarkerStyle = `color: rgb(var(--alt-color-${parsedSystemName})); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
-        for (let nameMarker of nameMarkers)
-          nameMarker.setAttribute('style', nameMarkerStyle);
-      }
-      if (rankIcon)
-        rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-      if (mutedIcon)
-        mutedIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
+      applyThemeStyles(nameTextContainer);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
           badgeOverlayEl.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
@@ -432,20 +422,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
       initUiThemeFontStyles(systemName, null, 0, false, () => {
-        playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-        nameText.setAttribute('style', `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
-        const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
-        if (nameMarkers.length) {
-          const nameMarkerStyle = `color: rgb(var(--alt-color-${parsedSystemName})); background-image: var(--alt-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`;
-          for (let nameMarker of nameMarkers)
-            nameMarker.setAttribute('style', nameMarkerStyle);
-        }
-        if (rankIcon || mutedIcon || playerListEntryActionContainer.childElementCount) {
-          if (rankIcon)
-            rankIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-          for (let iconPath of playerListEntryActionContainer.querySelectorAll('path'))
-            iconPath.setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);
-        }
+        applyThemeStyles(playerListEntry, parsedSystemName);
         if (showBadgeOverlay) {
           playerListEntryBadgeOverlay.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
             ? `var(--base-gradient-${parsedSystemName})`
