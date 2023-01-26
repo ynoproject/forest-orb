@@ -429,11 +429,11 @@ let applyThemeStyles;
     }
     
     .modalContent.itemContainer .badgeItem.theme{THEME} > .badgeContainer {
-      background-color: rgb(var(--modal-base-bg-color{THEME_PROP})) !important;
+      background-color: rgb(var(--base-bg-color{THEME_PROP})) !important;
     }
     
     .modalContent.itemContainer .badgeItem.theme{THEME} > .badgeContainer.special {
-      background-image: var(--modal-alt-gradient-b{THEME_PROP});
+      background-image: var(--alt-gradient-b{THEME_PROP});
     }
     
     .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div {
@@ -441,7 +441,7 @@ let applyThemeStyles;
     }
     
     .modalContent.itemContainer .badgeItem.locked.theme{THEME} > .badgeContainer > div:first-child {
-      border-image-source: var(--modal-border-image-url{THEME_PROP}) !important;
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
     }
     
     .badge.theme{THEME} > .badgeOverlay, .theme{THEME} .badge > .badgeOverlay {
