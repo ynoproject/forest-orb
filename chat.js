@@ -87,6 +87,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     const msgTimestamp = document.createElement("small");
 
     msgTimestamp.classList.add('messageTimestamp');
+    msgTimestamp.classList.add('infoLabel');
     msgTimestamp.dataset.time = timestamp.getTime();
 
     msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp, defaultDate);

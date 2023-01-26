@@ -120,6 +120,7 @@ function initBadgeControls() {
       const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
       let lastGame = null;
       let lastGroup = null;
+      let lastParsedSystemName = null;
       const badgeCompareFunc = (a, b) => {
         if (a.game !== b.game) {
           if (a.game === 'ynoproject')
@@ -153,6 +154,12 @@ function initBadgeControls() {
           badgeModalContent.appendChild(gameHeader);
           lastGame = badge.game;
           lastGroup = null;
+          if (badge.game !== 'ynoproject') {
+            const defaultSystemName = getDefaultUiTheme(badge.game);
+            initUiThemeContainerStyles(defaultSystemName, badge.game, false, () => initUiThemeFontStyles(defaultSystemName, badge.game, 0));
+            applyThemeStyles(gameHeader, (lastParsedSystemName = defaultSystemName.replace(' ', '_')), badge.game)
+          } else
+            lastParsedSystemName = null;
         }
         if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
           const groupHeader = document.createElement('h3');
@@ -162,8 +169,10 @@ function initBadgeControls() {
           groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
           badgeModalContent.appendChild(groupHeader);
           lastGroup = badge.group;
+          if (lastParsedSystemName)
+            applyThemeStyles(groupHeader, lastParsedSystemName, lastGame);
         }
-        const item = getBadgeItem(badge, true, true, true, true, true);
+        const item = getBadgeItem(badge, true, true, true, true, true, lastParsedSystemName);
         if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
@@ -185,7 +194,7 @@ function initBadgeControls() {
       updateBadgeVisibility();
       removeLoader(document.getElementById('badgesModal'));
     });
-  }
+  };
 
   const updateBadgesAndPopulateModal = (slotRow, slotCol) => {
     sortOrder.onchange = () => onChangeBadgeSortOrder(slotRow, slotCol);
@@ -375,7 +384,7 @@ function getBadgeUrl(badge, staticOnly) {
   return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
 }
 
-function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable) {
+function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable, parsedSystemName) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
@@ -460,6 +469,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   } else
     badgeContainer.appendChild(emptyIcon ? getSvgIcon('ban', true) : document.createElement('div'));
 
+  if (parsedSystemName)
+    applyThemeStyles(item, parsedSystemName, badge.game);
+
   if (includeTooltip) {
     let tooltipContent = '';
 
@@ -515,7 +527,11 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         const baseTooltipContent = tooltipContent;
         const tooltipOptions = {};
 
-        const assignTooltip = instance => addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
+        const assignTooltip = instance => {
+          const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
+          if (parsedSystemName)
+            applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName, badge.game);
+        };
 
         if (badge.mapId) {
           const mapId = badge.mapId.toString().padStart(4, '0');
@@ -783,9 +799,6 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             const tippyBox = instance.popper.children[0];
 
-            let boxStyles;
-            let textStyles;
-
             const parsedSystemName = systemName ? (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_') : null;
 
             if (parsedSystemName)
@@ -831,13 +844,9 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 });
                 if (badgeGame) {
                   const badgeTippy = addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
-                  if (systemName) {
-                    badgeTippy.popper.children[0].setAttribute('style', boxStyles);
-                    const badgeTextStyles = badgeCache.find(b => b.badgeId === badgeId)?.hidden
-                      ? textStyles.replace(/--base-/g, '--alt-')
-                      : textStyles;
-                    badgeTippy.popper.querySelector('.tooltipContent').setAttribute('style', badgeTextStyles);
-                  }
+                  applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName);
+                  if (badgeCache.find(b => b.badgeId === badgeId)?.hidden)
+                    badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
                 }
               }
             }

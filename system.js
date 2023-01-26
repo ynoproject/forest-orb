@@ -284,7 +284,7 @@ function initUiThemeContainerStyles(uiTheme, themeGameId, setTheme, callback) {
         rootStyle.setProperty(borderImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/border.png')`);
       }
 
-      if (setTheme) {
+      if (setTheme && themeGameId === gameId) {
         rootStyle.setProperty('--base-bg-color', `var(${baseBgColorProp})`);
         rootStyle.setProperty('--shadow-color', `var(${shadowColorProp})`);
         rootStyle.setProperty('--svg-shadow', `var(${svgShadowProp})`);
@@ -350,7 +350,7 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
         rootStyle.setProperty(baseColorImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/font${fontStyle + 1}.png')`);
       }
 
-      if (setTheme) {
+      if (setTheme && themeGameId === gameId) {
         rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
         rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
         rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
@@ -385,7 +385,7 @@ let applyThemeStyles;
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
     }
 
-    .theme{THEME} .infoLabel, .theme{THEME} .infoText, .toast.theme{THEME} .toastMessage, .theme{THEME} h1, .theme{THEME} h2, .theme{THEME} h3, .theme{THEME} h4, .theme{THEME} a:not(.listEntryAction), .theme{THEME} label {
+    .theme{THEME} .infoLabel, .theme{THEME} .infoText, .toast.theme{THEME} .toastMessage, h1.theme{THEME}, .theme{THEME} h1, h2.theme{THEME}, .theme{THEME} h2, h3.theme{THEME}, .theme{THEME} h3, h4.theme{THEME}, .theme{THEME} h4, .theme{THEME} a:not(.listEntryAction), .theme{THEME} label {
       background-image: var(--base-gradient{THEME_PROP}) !important;
       filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
     }
@@ -423,6 +423,26 @@ let applyThemeStyles;
       fill: var(--svg-base-gradient{THEME_PROP});
       filter: var(--svg-shadow{THEME_PROP});
     }
+
+    .itemContainer .badgeItem.theme{THEME} > .badgeContainer {
+      background-color: rgb(var(--base-bg-color{THEME_PROP})) !important;
+    }
+    
+    .modalContent.itemContainer .badgeItem.theme{THEME} > .badgeContainer {
+      background-color: rgb(var(--modal-base-bg-color{THEME_PROP})) !important;
+    }
+    
+    .modalContent.itemContainer .badgeItem.theme{THEME} > .badgeContainer.special {
+      background-image: var(--modal-alt-gradient-b{THEME_PROP});
+    }
+    
+    .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div {
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+    }
+    
+    .modalContent.itemContainer .badgeItem.locked.theme{THEME} > .badgeContainer > div:first-child {
+      border-image-source: var(--modal-border-image-url{THEME_PROP}) !important;
+    }
     
     .badge.theme{THEME} > .badgeOverlay, .theme{THEME} .badge > .badgeOverlay {
       background: var(--base-gradient{THEME_PROP});
@@ -450,6 +470,10 @@ let applyThemeStyles;
       background-image: var(--base-gradient{THEME_PROP}) !important;
       filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));
     }
+
+    .tippy-box.theme{THEME} .tippy-content .tooltipContent.noShadow {
+      filter: unset;
+    }
     
     .tippy-box.theme{THEME} .tippy-content .tooltipContent.altText {
       background-image: var(--alt-gradient{THEME_PROP}) !important;
@@ -457,7 +481,7 @@ let applyThemeStyles;
   `;
 
   applyThemeStyles = (el, uiTheme, themeGameId) => {
-    if (!el)
+    if (!el || !uiTheme)
       return;
     if (!themeGameId)
       themeGameId = gameId;
@@ -475,7 +499,14 @@ let applyThemeStyles;
       document.head.appendChild(themeStyles);
     }
 
-    el.classList.add(themeStylesId);
+    for (let cls of el.classList) {
+      if (cls.startsWith('theme_')) {
+        if (cls === themeStylesId)
+          return;
+        el.classList.remove('cls');
+      }
+      el.classList.add(themeStylesId);
+    }
   };
 }
 

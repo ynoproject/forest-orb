@@ -326,6 +326,10 @@ body {
   background: rgba(var(--party-alt-color), 0.5);
 }
 
+#chatbox.partyChat #messages .messageContainer .playerLocation a {
+  background-image: var(--party-alt-gradient) !important;
+}
+
 #chatbox.partyChat #chatInput {
   color: rgb(var(--party-base-color)) !important;
   background-color: rgb(var(--party-base-bg-color)) !important;
