@@ -117,7 +117,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       if (unnamed || gameUiThemes.indexOf(systemName) === -1)
         systemName = getDefaultUiTheme();
       const parsedSystemName = systemName.replace(' ', '_');
-      applyThemeStyles(nameTextContainer, player.systemName);
+      applyThemeStyles(nameTextContainer, parsedSystemName);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
           badgeOverlayEl.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
