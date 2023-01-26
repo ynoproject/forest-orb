@@ -199,8 +199,8 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     if (systemName) {
       systemName = systemName.replace(/'/g, "");
       const parsedSystemName = systemName.replace(" ", "_");
-      initUiThemeContainerStyles(systemName, false, () => {
-        initUiThemeFontStyles(systemName, 0, false, () => {
+      initUiThemeContainerStyles(systemName, null, false, () => {
+        initUiThemeFontStyles(systemName, null, 0, false, () => {
           name.setAttribute("style", `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
           if (rankIcon)
             rankIcon.querySelector("path").setAttribute("style", `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);

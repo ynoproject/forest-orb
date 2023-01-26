@@ -542,9 +542,9 @@ function addOrUpdatePartyListEntry(party) {
     if (gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(' ', '_');
-    initUiThemeContainerStyles(systemName, false, () => {
+    initUiThemeContainerStyles(systemName, null, false, () => {
       partyListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
-      initUiThemeFontStyles(systemName, 0, false, () => {
+      initUiThemeFontStyles(systemName, null, 0, false, () => {
         nameText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
         memberCountText.setAttribute('style', `background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
         memberCount.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedSystemName}); filter: var(--svg-shadow-${parsedSystemName});`);

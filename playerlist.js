@@ -430,8 +430,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(' ', '_');
-    initUiThemeContainerStyles(systemName, false, () => {
-      initUiThemeFontStyles(systemName, 0, false, () => {
+    initUiThemeContainerStyles(systemName, null, false, () => {
+      initUiThemeFontStyles(systemName, null, 0, false, () => {
         playerListEntry.setAttribute('style', `background-image: var(--container-bg-image-url-${parsedSystemName}) !important; border-image: var(--border-image-url-${parsedSystemName}) 8 repeat !important;`);
         nameText.setAttribute('style', `color: rgb(var(--base-color-${parsedSystemName})); background-image: var(--base-gradient-${parsedSystemName}) !important; filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color-${parsedSystemName})));`);
         const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');

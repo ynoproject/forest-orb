@@ -294,7 +294,7 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           positionCell.innerHTML = getInfoLabel(ranking.position);
 
           const systemName = (ranking.systemName || getDefaultUiTheme()).replace(/'/g, "");
-          initUiThemeContainerStyles(systemName, false, () => initUiThemeFontStyles(systemName, 0, false));
+          initUiThemeContainerStyles(systemName, null, false, () => initUiThemeFontStyles(systemName, null, 0));
 
           const playerCell = document.createElement('td');
           playerCell.innerHTML = getPlayerName({ name: ranking.name, systemName: ranking.systemName || 'null', rank: ranking.rank, account: true, badge: ranking.badge || 'null' }, false, true, true);
