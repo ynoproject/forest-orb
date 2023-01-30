@@ -56,6 +56,8 @@ function fetchAndPopulateRankingCategories() {
       rankingSubCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
+        if (category.categoryId.endsWith(`_${gameId}`))
+          category.categoryId = category.categoryId.slice(0, (gameId.length + 1) * -1);
         if (category.subCategories == null)
           continue;
 
