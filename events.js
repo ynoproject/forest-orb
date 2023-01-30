@@ -142,8 +142,8 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
           const gameThemeName = getDefaultUiTheme(eventGameId);
 
-          initUiThemeContainerStyles(gameThemeName, null, false, () => {
-            initUiThemeFontStyles(gameThemeName, null, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), themeGameId));
+          initUiThemeContainerStyles(gameThemeName, eventGameId, false, () => {
+            initUiThemeFontStyles(gameThemeName, eventGameId, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId));
           });
         }
         
