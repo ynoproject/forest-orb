@@ -1,5 +1,7 @@
 const rankingsUrl = `../rankings`;
 
+const perGameCategoryIds = [];
+
 let rankingCategoryCache = [];
 let rankingCategoryId;
 let rankingSubCategoryId;
@@ -56,8 +58,11 @@ function fetchAndPopulateRankingCategories() {
       rankingSubCategoryTabs.innerHTML = '';
 
       for (let category of rankingCategoryCache) {
-        if (category.categoryId.endsWith(`_${gameId}`))
+        if (category.categoryId.endsWith(`_${gameId}`)) {
           category.categoryId = category.categoryId.slice(0, (gameId.length + 1) * -1);
+          if (perGameCategoryIds.indexOf(category.categoryId) === -1)
+            perGameCategoryIds.push(category.categoryId);
+        }
         if (category.subCategories == null)
           continue;
 
@@ -173,8 +178,9 @@ function fetchAndPopulateRankingCategories() {
 }
 
 function fetchAndLoadRankings(categoryId, subCategoryId) {
+  const queryCategoryId = perGameCategoryIds.indexOf(categoryId) > -1 ? `${categoryId}_${gameId}` : categoryId;
   return new Promise(resolve => {
-    rankingsApiFetch(`page?category=${categoryId}&subCategory=${subCategoryId}`)
+    rankingsApiFetch(`page?category=${queryCategoryId}&subCategory=${subCategoryId}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -192,9 +198,10 @@ function fetchAndLoadRankings(categoryId, subCategoryId) {
 }
 
 function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
+  const queryCategoryId = perGameCategoryIds.indexOf(categoryId) > -1 ? `${categoryId}_${gameId}` : categoryId;
   return new Promise(resolve => {
     addLoader(document.getElementById('rankingsModal'));
-    rankingsApiFetch(`list?game=${gameId}&category=${categoryId}&subCategory=${subCategoryId}&page=${page}`)
+    rankingsApiFetch(`list?game=${gameId}&category=${queryCategoryId}&subCategory=${subCategoryId}&page=${page}`)
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
