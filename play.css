@@ -2257,7 +2257,7 @@ form .uiTheme {
   width: 60%;
 }
 
-.eventList .eventListEntry .detailsContainer .gameLink {
+.eventList .eventListEntry .detailsContainer .gameLink, .eventList .eventVmListEntry .vmContainer .gameLink {
   font-size: small;
   margin-bottom: 2px;
 }
@@ -2302,7 +2302,14 @@ form .uiTheme {
 }
 
 .eventList .eventVmListEntry .vmContainer {
-  width: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  margin-right: auto;
+}
+
+.eventList .eventVmListEntry .vmContainer .gameLink {
+  text-align: center;
 }
 
 .eventList .eventVmListEntry .vmContainer .vmImage {

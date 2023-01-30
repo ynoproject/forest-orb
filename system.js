@@ -460,6 +460,10 @@ let applyThemeStyles;
       background: rgb(var(--base-bg-color{THEME_PROP}));
     }
 
+    .eventVmListEntry.theme{THEME} .vmContainer .vmImage {
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+    }
+
     .tippy-box.theme{THEME} {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
       background-image: var(--container-bg-image-url{THEME_PROP}) !important;

@@ -124,28 +124,22 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       if (event.complete)
         eventListEntry.classList.add('complete');
 
+      const gameLink = gameId !== eventGameId ? document.createElement('a') : null;
+      if (gameLink) {
+        gameLink.classList.add('gameLink');
+        gameLink.href = `../${eventGameId}/`;
+        gameLink.target = '_blank';
+        gameLink.innerText = localizedMessages.games[eventGameId];
+      }
+
       if (eventType === 'locations') {
         const detailsContainer = document.createElement('div');
         detailsContainer.classList.add('detailsContainer');
   
         const eventLocationName = document.createElement('div');
 
-        if (gameId !== eventGameId) {
-          const gameLink = document.createElement('a');
-
-          gameLink.classList.add('gameLink');
-          gameLink.href = `../${eventGameId}/`;
-          gameLink.target = '_blank';
-          gameLink.innerText = localizedMessages.games[eventGameId];
-
+        if (gameLink)
           detailsContainer.appendChild(gameLink);
-
-          const gameThemeName = getDefaultUiTheme(eventGameId);
-
-          initUiThemeContainerStyles(gameThemeName, eventGameId, false, () => {
-            initUiThemeFontStyles(gameThemeName, eventGameId, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId));
-          });
-        }
         
         eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
   
@@ -213,9 +207,20 @@ function onUpdateEvents(events, ignoreLocationCheck) {
             return response.blob();
           })
           .then(data => vmImage.src = URL.createObjectURL(data));
+
+        if (gameLink)
+          vmContainer.appendChild(gameLink);
         
         vmContainer.appendChild(vmImage);
         eventListEntry.appendChild(vmContainer);
+      }
+
+      if (gameLink) {
+        const gameThemeName = getDefaultUiTheme(eventGameId);
+
+        initUiThemeContainerStyles(gameThemeName, eventGameId, false, () => {
+          initUiThemeFontStyles(gameThemeName, eventGameId, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId));
+        });
       }
 
       const endDateContainer = document.createElement('div');
