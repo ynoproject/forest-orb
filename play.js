@@ -1271,7 +1271,7 @@ function fetchAndInitLocations(lang, game) {
             massageMapLocations(gameMapLocations[game], jsonResponse.locationUrlTitles || null);
             if (lang === 'en') {
               gameLocalizedMapLocations[game] = gameMapLocations[game];
-              initLocalizedLocations();
+              initLocalizedLocations(game);
             } else
               fetchAndInitLocalizedMapLocations(lang, game).then(resolve);
           }
@@ -1351,11 +1351,11 @@ function fetchAndInitLocalizedMapLocations(lang, game) {
 }
 
 function initLocalizedLocations(game) {
-  gameLocalizedLocationsMap[game] = {};
-  gameLocationsMap[game] = {};
-
   if (!gameMapLocations[game] || !gameLocalizedMapLocations[game])
     return;
+
+  gameLocalizedLocationsMap[game] = {};
+  gameLocationsMap[game] = {};
 
   const trySetLocalizedLocation = (mapLocation, localizedMapLocation) => {
     if (mapLocation.title.indexOf(':') > -1)
