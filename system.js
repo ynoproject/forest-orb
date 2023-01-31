@@ -493,7 +493,7 @@ let applyThemeStyles;
     if (!themeGameId)
       themeGameId = gameId;
 
-    const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}_` : ''}${uiTheme}`;
+    const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}__` : ''}${uiTheme}`;
     const themeStylesId = `theme${themeSuffix}`;
 
     let themeStyles = document.getElementById(themeStylesId);
@@ -627,9 +627,9 @@ function updateThemedContainer(themedContainer) {
   for (let cls of themedContainer.classList) {
     if (cls.startsWith('theme_')) {
       themeName = cls.slice(cls.indexOf('_') + 1);
-      if (themeName.indexOf('_') > -1) {
-        themeGameId = themeName.slice(0, themeName.indexOf('_'));
-        themeName = themeName.slice(themeGameId.length + 1);
+      if (themeName.indexOf('__') > -1) {
+        themeGameId = themeName.slice(0, themeName.indexOf('__'));
+        themeName = themeName.slice(themeGameId.length + 2);
       }
       break;
     }
