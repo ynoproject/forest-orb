@@ -78,12 +78,23 @@ function onUpdateEvents(events, ignoreLocationCheck) {
     return;
 
   const eventTypes = Object.keys(events);
+  const eventNewGameIds = [];
 
   for (let eventType of eventTypes) {
     eventsCache[eventType] = events[eventType].map(l => {
       l.endDate = new Date(l.endDate);
       return l;
     });
+    for (let event of eventsCache[eventType]) {
+      if (event.game && !gameMapLocations[event.game] && eventNewGameIds.indexOf(event.game) === -1)
+        eventNewGameIds.push(event.game);
+    }
+  }
+
+  if (eventNewGameIds.length) {
+    const fetchLocationTasks = eventNewGameIds.map(gameId => fetchAndInitLocations(globalConfig.lang, gameId));
+    Promise.allSettled(fetchLocationTasks).then(() => onUpdateEvents(events, ignoreLocationCheck));
+    return;
   }
     
   const eventsStr = JSON.stringify(Object.values(eventsCache).flat().map(el => el.title));
@@ -141,7 +152,11 @@ function onUpdateEvents(events, ignoreLocationCheck) {
         if (gameLink)
           detailsContainer.appendChild(gameLink);
         
-        eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
+        eventLocationName.innerHTML = eventGameId === '2kki'
+          ? get2kkiLocationHtml(event)
+          : gameLocationsMap[eventGameId].hasOwnProperty(event.title)
+            ? getLocalizedLocation(eventGameId, gameLocalizedLocationsMap[eventGameId][event.title], gameLocationsMap[eventGameId][event.title], true)
+            : event.title;
   
         detailsContainer.appendChild(eventLocationName);
 
