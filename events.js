@@ -219,9 +219,13 @@ function onUpdateEvents(events, ignoreLocationCheck) {
         const gameThemeName = getDefaultUiTheme(eventGameId);
 
         initUiThemeContainerStyles(gameThemeName, eventGameId, false, () => {
-          initUiThemeFontStyles(gameThemeName, eventGameId, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId));
+          initUiThemeFontStyles(gameThemeName, eventGameId, 0, false);
         });
+        
+        applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId);
       }
+
+      updateThemedContainer(eventListEntry);
 
       const endDateContainer = document.createElement('div');
       endDateContainer.classList.add('eventLocationEndDateContainer');

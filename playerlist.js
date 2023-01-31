@@ -422,7 +422,6 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
       initUiThemeFontStyles(systemName, null, 0, false, () => {
-        applyThemeStyles(playerListEntry, parsedSystemName);
         if (showBadgeOverlay) {
           playerListEntryBadgeOverlay.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
             ? `var(--base-gradient-${parsedSystemName})`
@@ -440,7 +439,10 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
         }
       });
     });
+    applyThemeStyles(playerListEntry, parsedSystemName);
   }
+
+  updateThemedContainer(playerListEntry);
 
   if (sortEntries)
     sortPlayerListEntries(playerList);

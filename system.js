@@ -220,6 +220,9 @@ function setUiTheme(value, isInit) {
   const containers = document.querySelectorAll('.container');
   for (let container of containers)
     container.classList.toggle('fullBg', useFullBg);
+  const themedContainers = document.querySelectorAll('.listEntry, .toast');
+  for (let themedContainer of themedContainers)
+    updateThemedContainer(themedContainer);
   document.getElementById('header').classList.toggle('fullBg', useFullBg);
   document.querySelector('body').classList.toggle('fullBg', useFullBg);
   if (isInit)
@@ -467,7 +470,7 @@ let applyThemeStyles;
     .tippy-box.theme{THEME} {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
       background-image: var(--container-bg-image-url{THEME_PROP}) !important;
-      {FULL_BG|background-size: contain;}
+      {FULL_BG|background-origin: border-box; background-size: contain;}
     }
     
     .tippy-box.theme{THEME} .tippy-content .tooltipContent {
@@ -613,6 +616,26 @@ function getUiThemeOption(uiTheme) {
   item.appendChild(container);
 
   return item;
+}
+
+function updateThemedContainer(themedContainer) {
+  if (!themedContainer)
+    return;
+
+  let themeName = systemName;
+  let themeGameId = gameId;
+  for (let cls of themedContainer.classList) {
+    if (cls.startsWith('theme_')) {
+      themeName = cls.slice(cls.indexOf('_') + 1);
+      if (themeName.indexOf('_') > -1) {
+        themeGameId = themeName.slice(0, themeName.indexOf('_'));
+        themeName = themeName.slice(themeGameId.length + 1);
+      }
+      break;
+    }
+  }
+  
+  themedContainer.classList.toggle('fullBg', allGameFullBgUiThemes[themeGameId].indexOf(themeName) > -1)
 }
 
 let uiThemeBgColors = {};

@@ -543,9 +543,12 @@ function addOrUpdatePartyListEntry(party) {
       systemName = getDefaultUiTheme();
     const parsedSystemName = systemName.replace(' ', '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
-      initUiThemeFontStyles(systemName, null, 0, false, () => applyThemeStyles(partyListEntry, parsedSystemName));
+      initUiThemeFontStyles(systemName, null, 0, false);
     });
+    applyThemeStyles(partyListEntry, parsedSystemName)
   }
+
+  updateThemedContainer(partyListEntry);
 
   const ownerMemberIndex = party.members.map(m => m.uuid).indexOf(party.ownerUuid);
   const ownerMember = party.members[ownerMemberIndex];

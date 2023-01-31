@@ -1240,6 +1240,12 @@ body.fullBg #background {
   margin-bottom: 4px;
 }
 
+.listEntry.fullBg {
+  background-origin: border-box;
+  background-size: contain;
+  background-position: 0;
+}
+
 .playerListEntry.offline {
   opacity: 0.5;
 }
@@ -2474,6 +2480,12 @@ form .uiTheme {
   background-image: var(--container-bg-image-url) !important;
   background-size: 35px;
   background-position-y: -8px;
+}
+
+.toast.fullBg {
+  background-origin: border-box;
+  background-size: contain;
+  background-position: 0;
 }
 
 #toastContainer.top .toast {

@@ -177,6 +177,8 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
   if (systemName)
     applyThemeStyles(toast, systemName);
 
+  updateThemedContainer(toast);
+
   if (icon) {
     const toastIcon = getSvgIcon(icon, iconFill);
     toast.appendChild(toastIcon);
