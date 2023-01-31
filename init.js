@@ -1,4 +1,4 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cu', 'deepdreams', 'flow', 'genie', 'muma', 'prayers', 'someday', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cu', 'deepdreams', 'flow', 'genie', 'mikan', 'muma', 'prayers', 'someday', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
@@ -14,6 +14,7 @@ const gameDefaultSprite = {
   'deepdreams': 'main',
   'flow': 'sabituki',
   'genie': 'syujinkou1',
+  'mikan': 'syuzinkou_01',
   'muma': 'muma1',
   'prayers': 'Flourette',
   'someday': 'itsuki1',

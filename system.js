@@ -109,6 +109,11 @@ const allGameUiThemes = {
     'system_Home',
     'system_Springs'
   ],
+  'mikan': [
+    's_1',
+    's_2',
+    's_3'
+  ],
   'muma': [
     'SYSTEM'
   ],
@@ -149,6 +154,7 @@ const allGameFullBgUiThemes = {
   'deepdreams': [],
   'flow': [],
   'genie': [],
+  'mikan': [],
   'muma': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'someday': [],
