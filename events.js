@@ -170,7 +170,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
                 starIcon = getSvgIcon('star');
                 const starSvg = starIcon.querySelector('svg');
                 const halfStarPath = getSvgIcon('starHalf', true).querySelector('path');
-                halfStarPath.setAttribute('style', `fill: var(--${gameId === eventGameId ? 'modal-svg-base-gradient' : `svg-base-gradient_${eventGameId}_${getDefaultUiTheme(eventGameId)}`})`);
+                halfStarPath.setAttribute('style', `fill: var(--${gameId === eventGameId ? 'modal-svg-base-gradient' : `svg-base-gradient-${eventGameId}-${getDefaultUiTheme(eventGameId)}`})`);
                 if (isMin)
                   starSvg.querySelector('path').remove();
                 starIcon.querySelector('svg').appendChild(halfStarPath);
