@@ -2231,7 +2231,7 @@ form .uiTheme {
 }
 
 #rankExpBar {
-  width: calc((min(var(--rank-exp), var(--rank-total-exp)) / var(--rank-total-exp)) * 100%);
+  width: calc((min(var(--rank-exp), max(var(--rank-total-exp), 1)) / max(var(--rank-total-exp), 1)) * 100%);
 }
 
 #weekExpBar {
