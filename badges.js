@@ -553,7 +553,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
               if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
                 setTooltipLocation(instance);
               else
-                initLocations(globalConfig.lang, badge.game, () => setTooltipLocation(instance));
+                fetchAndInitLocations(globalConfig.lang, badge.game).then(() => setTooltipLocation(instance));
             };
             assignTooltip();
           }

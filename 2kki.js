@@ -208,8 +208,8 @@ function getLocalized2kkiLocations(locations, separator, forDisplay) {
 function get2kkiLocationHtml(location) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf('：') > -1 ? location.titleJP.slice(0, location.titleJP.indexOf('：')) : location.titleJP);
-  const locationHtml = `<a href="${locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
-  const locationHtmlJP = urlTitleJP ? `<a href="${localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
+  const locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  const locationHtmlJP = urlTitleJP ? `<a href="${gameLocalizedLocationUrlRoots['2kki'] || localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
   return locationHtmlJP ? getLocalized2kkiLocation(locationHtml, locationHtmlJP, true) : locationHtml;
 }
 

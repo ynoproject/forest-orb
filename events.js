@@ -78,12 +78,23 @@ function onUpdateEvents(events, ignoreLocationCheck) {
     return;
 
   const eventTypes = Object.keys(events);
+  const eventNewGameIds = [];
 
   for (let eventType of eventTypes) {
     eventsCache[eventType] = events[eventType].map(l => {
       l.endDate = new Date(l.endDate);
       return l;
     });
+    for (let event of eventsCache[eventType]) {
+      if (event.game && !gameMapLocations[event.game] && eventNewGameIds.indexOf(event.game) === -1)
+        eventNewGameIds.push(event.game);
+    }
+  }
+
+  if (eventNewGameIds.length) {
+    const fetchLocationTasks = eventNewGameIds.map(gameId => fetchAndInitLocations(globalConfig.lang, gameId));
+    Promise.allSettled(fetchLocationTasks).then(() => onUpdateEvents(events, ignoreLocationCheck));
+    return;
   }
     
   const eventsStr = JSON.stringify(Object.values(eventsCache).flat().map(el => el.title));
@@ -124,30 +135,28 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       if (event.complete)
         eventListEntry.classList.add('complete');
 
+      const gameLink = gameId !== eventGameId ? document.createElement('a') : null;
+      if (gameLink) {
+        gameLink.classList.add('gameLink');
+        gameLink.href = `../${eventGameId}/`;
+        gameLink.target = '_blank';
+        gameLink.innerText = localizedMessages.games[eventGameId];
+      }
+
       if (eventType === 'locations') {
         const detailsContainer = document.createElement('div');
         detailsContainer.classList.add('detailsContainer');
   
         const eventLocationName = document.createElement('div');
 
-        if (gameId !== eventGameId) {
-          const gameLink = document.createElement('a');
-
-          gameLink.classList.add('gameLink');
-          gameLink.href = `../${eventGameId}/`;
-          gameLink.target = '_blank';
-          gameLink.innerText = localizedMessages.games[eventGameId];
-
+        if (gameLink)
           detailsContainer.appendChild(gameLink);
-
-          const gameThemeName = getDefaultUiTheme(eventGameId);
-
-          initUiThemeContainerStyles(gameThemeName, null, false, () => {
-            initUiThemeFontStyles(gameThemeName, null, 0, false, () => applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), themeGameId));
-          });
-        }
         
-        eventLocationName.innerHTML = eventGameId === '2kki' ? get2kkiLocationHtml(event) : event.title;
+        eventLocationName.innerHTML = eventGameId === '2kki'
+          ? get2kkiLocationHtml(event)
+          : gameLocationsMap[eventGameId].hasOwnProperty(event.title)
+            ? getLocalizedLocation(eventGameId, gameLocalizedLocationsMap[eventGameId][event.title], gameLocationsMap[eventGameId][event.title], true)
+            : event.title;
   
         detailsContainer.appendChild(eventLocationName);
 
@@ -176,7 +185,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
                 starIcon = getSvgIcon('star');
                 const starSvg = starIcon.querySelector('svg');
                 const halfStarPath = getSvgIcon('starHalf', true).querySelector('path');
-                halfStarPath.setAttribute('style', `fill: var(--${gameId === eventGameId ? 'modal-svg-base-gradient' : `svg-base-gradient_${eventGameId}_${getDefaultUiTheme(eventGameId)}`})`);
+                halfStarPath.setAttribute('style', `fill: var(--${gameId === eventGameId ? 'modal-svg-base-gradient' : `svg-base-gradient-${eventGameId}-${getDefaultUiTheme(eventGameId)}`})`);
                 if (isMin)
                   starSvg.querySelector('path').remove();
                 starIcon.querySelector('svg').appendChild(halfStarPath);
@@ -213,10 +222,25 @@ function onUpdateEvents(events, ignoreLocationCheck) {
             return response.blob();
           })
           .then(data => vmImage.src = URL.createObjectURL(data));
+
+        if (gameLink)
+          vmContainer.appendChild(gameLink);
         
         vmContainer.appendChild(vmImage);
         eventListEntry.appendChild(vmContainer);
       }
+
+      if (gameLink) {
+        const gameThemeName = getDefaultUiTheme(eventGameId);
+
+        initUiThemeContainerStyles(gameThemeName, eventGameId, false, () => {
+          initUiThemeFontStyles(gameThemeName, eventGameId, 0, false);
+        });
+        
+        applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId);
+      }
+
+      updateThemedContainer(eventListEntry);
 
       const endDateContainer = document.createElement('div');
       endDateContainer.classList.add('eventLocationEndDateContainer');

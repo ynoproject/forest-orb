@@ -109,6 +109,11 @@ const allGameUiThemes = {
     'system_Home',
     'system_Springs'
   ],
+  'mikan': [
+    's_1',
+    's_2',
+    's_3'
+  ],
   'muma': [
     'SYSTEM'
   ],
@@ -149,6 +154,7 @@ const allGameFullBgUiThemes = {
   'deepdreams': [],
   'flow': [],
   'genie': [],
+  'mikan': [],
   'muma': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'someday': [],
@@ -220,6 +226,9 @@ function setUiTheme(value, isInit) {
   const containers = document.querySelectorAll('.container');
   for (let container of containers)
     container.classList.toggle('fullBg', useFullBg);
+  const themedContainers = document.querySelectorAll('.listEntry, .toast');
+  for (let themedContainer of themedContainers)
+    updateThemedContainer(themedContainer);
   document.getElementById('header').classList.toggle('fullBg', useFullBg);
   document.querySelector('body').classList.toggle('fullBg', useFullBg);
   if (isInit)
@@ -460,10 +469,14 @@ let applyThemeStyles;
       background: rgb(var(--base-bg-color{THEME_PROP}));
     }
 
+    .eventVmListEntry.theme{THEME} .vmContainer .vmImage {
+      border-image-source: var(--border-image-url{THEME_PROP}) !important;
+    }
+
     .tippy-box.theme{THEME} {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
       background-image: var(--container-bg-image-url{THEME_PROP}) !important;
-      {FULL_BG|background-size: contain;}
+      {FULL_BG|background-origin: border-box; background-size: contain;}
     }
     
     .tippy-box.theme{THEME} .tippy-content .tooltipContent {
@@ -486,7 +499,7 @@ let applyThemeStyles;
     if (!themeGameId)
       themeGameId = gameId;
 
-    const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}_` : ''}${uiTheme}`;
+    const themeSuffix = `_${themeGameId !== gameId ? `${themeGameId}__` : ''}${uiTheme}`;
     const themeStylesId = `theme${themeSuffix}`;
 
     let themeStyles = document.getElementById(themeStylesId);
@@ -609,6 +622,26 @@ function getUiThemeOption(uiTheme) {
   item.appendChild(container);
 
   return item;
+}
+
+function updateThemedContainer(themedContainer) {
+  if (!themedContainer)
+    return;
+
+  let themeName = systemName;
+  let themeGameId = gameId;
+  for (let cls of themedContainer.classList) {
+    if (cls.startsWith('theme_')) {
+      themeName = cls.slice(cls.indexOf('_') + 1);
+      if (themeName.indexOf('__') > -1) {
+        themeGameId = themeName.slice(0, themeName.indexOf('__'));
+        themeName = themeName.slice(themeGameId.length + 2);
+      }
+      break;
+    }
+  }
+  
+  themedContainer.classList.toggle('fullBg', allGameFullBgUiThemes[themeGameId].indexOf(themeName) > -1)
 }
 
 let uiThemeBgColors = {};

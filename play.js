@@ -9,6 +9,8 @@ let gameLocalizedMapLocations = {};
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
+let gameLocalizedLocationsMap = {};
+let gameLocationsMap = {};
 
 let yumeWikiSupported;
 
@@ -1186,15 +1188,18 @@ function initLocalization(isInitial) {
           updatePlayerCount(playerCount);
       }
 
+      const initLocationsCallback = () => {
+        fetchAndPopulateRankingCategories();
+          if (eventPeriodCache)
+            updateEvents();
+      };
+
       if (isInitial)
-        initLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
+        fetchAndInitLocations(globalConfig.lang, gameId).then(initLocationsCallback);
       else if (localizedMapLocations)
-        initLocalizedMapLocations(globalConfig.lang, gameId, fetchAndPopulateRankingCategories);
+        fetchAndInitLocalizedMapLocations(globalConfig.lang, gameId).then(initLocationsCallback);
 
       updateChatMessageTimestamps();
-
-      if (eventPeriodCache)
-        updateEvents();
 
       const translationComplete = jsonResponse.translationComplete === '1';
       const translationInstruction = document.getElementById('translationInstruction');
@@ -1248,98 +1253,137 @@ function initLocalization(isInitial) {
     });
 }
 
-function initLocations(lang, game, callback) {
-  fetchNewest(`locations/${game}/config.json`)
-    .then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
+function fetchAndInitLocations(lang, game) {
+  return new Promise(resolve => {
+    fetchNewest(`locations/${game}/config.json`)
+      .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.json();
+      })
+      .then(jsonResponse => {
+          gameLocationUrlRoots[game] = jsonResponse.urlRoot;
+          gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
+          gameMapLocations[game] = jsonResponse.mapLocations || null;
+          if (gameMapLocations[game] && !Object.keys(gameMapLocations[game]).length)
+            gameMapLocations[game] = null;
+          if (gameMapLocations[game]) {
+            massageMapLocations(gameMapLocations[game], jsonResponse.locationUrlTitles || null);
+            if (lang === 'en') {
+              gameLocalizedMapLocations[game] = gameMapLocations[game];
+              initLocalizedLocations(game);
+            } else
+              fetchAndInitLocalizedMapLocations(lang, game).then(resolve);
+          }
+          if (game === gameId) {
+            ignoredMapIds = jsonResponse.ignoredMapIds || [];
+            locationUrlRoot = gameLocationUrlRoots[game];
+            localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
+            mapLocations = gameMapLocations[game];
+            localizedMapLocations = gameLocalizedMapLocations[game];
+            yumeWikiSupported = locationUrlRoot === `https://yume.wiki/${ynoGameId}/`;
+          }
+          if (!gameMapLocations[game] || lang === 'en')
+            resolve();
+      })
+      .catch(err => {
+        gameLocalizedMapLocations[game] = null;
+        if (game === gameId) {
+          ignoredMapIds = [];
+          localizedMapLocations = null;
+        }
+        console.error(err);
+        resolve();
+      });
+  });
+}
+
+function fetchAndInitLocalizedMapLocations(lang, game) {
+  return new Promise(resolve => {
+    const fileName = lang === 'en' ? 'config' : lang;
+    fetchNewest(`locations/${game}/${fileName}.json`)
+      .then(response => {
+        if (!response.ok) {
+          gameLocalizedMapLocations[game] = gameMapLocations[game];
+          if (game === gameId) {
+            localizedMapLocations = mapLocations;
+            initLocalizedLocations(game);
+            resolve();
+          }
+          return null; // Assume map location localizations for this language don't exist
+        }
         return response.json();
     })
     .then(jsonResponse => {
-        gameLocationUrlRoots[game] = jsonResponse.urlRoot;
-        gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
-        gameMapLocations[game] = jsonResponse.mapLocations || null;
-        if (gameMapLocations[game] && !Object.keys(gameMapLocations[game]).length)
-          gameMapLocations[game] = null;
-        if (gameMapLocations[game]) {
-          massageMapLocations(gameMapLocations[game], jsonResponse.locationUrlTitles || null);
-          if (lang === 'en')
-            gameLocalizedMapLocations[game] = gameMapLocations[game];
-          else
-            initLocalizedMapLocations(lang, game, callback);
+        if (!jsonResponse) {
+          resolve();
+          return;
         }
+        gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
+        gameLocalizedMapLocations[game] = {};
+        const langMapLocations = jsonResponse.mapLocations;
+        massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
+        Object.keys(gameMapLocations[game]).forEach(function (mapId) {
+          const mapLocation = langMapLocations[mapId];
+          const defaultMapLocation = gameMapLocations[game][mapId];
+          if (mapLocation) {
+            gameLocalizedMapLocations[game][mapId] = mapLocation;
+            if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
+              for (let l in defaultMapLocation) {
+                if (defaultMapLocation[l].hasOwnProperty('coords'))
+                  mapLocation[l].coords = defaultMapLocation[l].coords;
+              }
+            }
+          } else
+            gameLocalizedMapLocations[game][mapId] = defaultMapLocation;
+        });
         if (game === gameId) {
-          ignoredMapIds = jsonResponse.ignoredMapIds || [];
-          locationUrlRoot = gameLocationUrlRoots[game];
           localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
-          mapLocations = gameMapLocations[game];
           localizedMapLocations = gameLocalizedMapLocations[game];
-          yumeWikiSupported = locationUrlRoot === `https://yume.wiki/${ynoGameId}/`;
         }
-        if (callback && (!gameMapLocations[game] || lang === 'en'))
-          callback();
+        initLocalizedLocations(game);
+        resolve();
     })
-    .catch(err => {
-      gameLocalizedMapLocations[game] = null;
-      if (game === gameId) {
-        ignoredMapIds = [];
-        localizedMapLocations = null;
-      }
-      if (callback)
-        callback();
-      console.error(err);
+    .catch(_err => { // Assume map location localizations for this language don't exist
+      resolve();
     });
+  });
 }
 
-function initLocalizedMapLocations(lang, game, callback) {
-  const fileName = lang === 'en' ? 'config' : lang;
-  fetchNewest(`locations/${game}/${fileName}.json`)
-    .then(response => {
-      if (!response.ok) {
-        gameLocalizedMapLocations[game] = gameMapLocations[game];
-        if (game === gameId) {
-          localizedMapLocations = mapLocations;
-          if (callback)
-            callback();
-        }
-        return null; // Assume map location localizations for this language don't exist
+function initLocalizedLocations(game) {
+  if (!gameMapLocations[game] || !gameLocalizedMapLocations[game])
+    return;
+
+  gameLocalizedLocationsMap[game] = {};
+  gameLocationsMap[game] = {};
+
+  const trySetLocalizedLocation = (mapLocation, localizedMapLocation) => {
+    if (mapLocation.title.indexOf(':') > -1)
+      return;
+    gameLocalizedLocationsMap[game][mapLocation.title] = localizedMapLocation;
+    gameLocationsMap[game][mapLocation.title] = mapLocation;
+  };
+  
+  for (let mapId of Object.keys(gameMapLocations[game])) {
+    const locations = gameMapLocations[game][mapId];
+    if (!locations)
+        continue;
+    if (locations.hasOwnProperty('title')) // Text location
+      trySetLocalizedLocation(locations, gameLocalizedMapLocations[game][mapId]);
+    else if (Array.isArray(locations)) // Multiple locations
+      locations.forEach((location, i) => trySetLocalizedLocation(location, gameLocalizedMapLocations[game][mapId][i]));
+    else {
+      for (let key of Object.keys(locations)) {
+        const locationsInner = gameMapLocations[game][mapId][key];
+        if (!locationsInner)
+            continue;
+        if (locationsInner.hasOwnProperty('title'))
+          trySetLocalizedLocation(locationsInner, gameLocalizedMapLocations[game][mapId][key]);
+        else
+          locationsInner.forEach((location, i) => trySetLocalizedLocation(location, gameLocalizedMapLocations[game][mapId][key][i]));
       }
-      return response.json();
-  })
-  .then(jsonResponse => {
-      if (!jsonResponse) {
-        callback();
-        return;
-      }
-      gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
-      gameLocalizedMapLocations[game] = {};
-      const langMapLocations = jsonResponse.mapLocations;
-      massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
-      Object.keys(gameMapLocations[game]).forEach(function (mapId) {
-        const mapLocation = langMapLocations[mapId];
-        const defaultMapLocation = gameMapLocations[game][mapId];
-        if (mapLocation) {
-          gameLocalizedMapLocations[game][mapId] = mapLocation;
-          if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
-            for (let l in defaultMapLocation) {
-              if (defaultMapLocation[l].hasOwnProperty('coords'))
-                mapLocation[l].coords = defaultMapLocation[l].coords;
-            }
-          }
-        } else
-          gameLocalizedMapLocations[game][mapId] = defaultMapLocation;
-      });
-      if (game === gameId) {
-        localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
-        localizedMapLocations = gameLocalizedMapLocations[game];
-      }
-      if (callback)
-        callback();
-  })
-  .catch(_err => { // Assume map location localizations for this language don't exist
-    if (callback)
-      callback();
-  });
+    }
+  }
 }
 
 function getMapLocationsArray(mapLocations, mapId, prevMapId, x, y) {
