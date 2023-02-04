@@ -399,7 +399,7 @@ function getOrQuery2kkiLocationColors(locationName) {
     const callback = response => {
       let errCode = null;
 
-      if (response?.err_code === '')
+      if (response && !response.err_code)
         cache2kkiLocationColors(locationName, response.fgColor, response.bgColor);
       else
         errCode = response?.err_code;
