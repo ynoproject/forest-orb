@@ -11,13 +11,16 @@ function send2kkiApiRequest(url, callback) {
     const req = new XMLHttpRequest();
     req.responseType = 'json';
     req.open('GET', url);
+    req.timeout = 10000;
     req.send();
 
-    req.onload = _e => {
+    let onReqEnd = _e => {
       for (let cb of pendingRequests[url])
+        // response is null if request was not successful
         cb(req.response);
       delete pendingRequests[url];
     };
+    req.onloadend = req.ontimeout = onReqEnd;
   }
 }
 
@@ -396,7 +399,7 @@ function getOrQuery2kkiLocationColors(locationName) {
     const callback = response => {
       let errCode = null;
 
-      if (!response?.err_code)
+      if (response && !response.err_code)
         cache2kkiLocationColors(locationName, response.fgColor, response.bgColor);
       else
         errCode = response?.err_code;
@@ -404,7 +407,7 @@ function getOrQuery2kkiLocationColors(locationName) {
       if (errCode)
         console.error({ error: response.error, errCode: errCode });
 
-      resolve([response.fgColor, response.bgColor]);
+      resolve([response?.fgColor, response?.bgColor]);
     };
     send2kkiApiRequest(url, callback);
   });
