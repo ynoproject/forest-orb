@@ -100,9 +100,9 @@ const allGameUiThemes = {
     'systemdot',
     'systemorange',
     'system flower',
-    'systemsugar',
+    'system sugar',
     'system rust',
-    'systemsmile'
+    'system smile'
   ],
   'genie': [
     'system_Negtive',
