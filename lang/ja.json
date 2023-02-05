@@ -680,15 +680,15 @@
       "actions": {
         "resetPassword": {
           "label": "パスワード変更",
-          "playerPrompt": "パスワードをリセットしたいアカウントの名前を入力してください",
+          "playerPrompt": "パスワードをリセットしたいアカウントの名前を入力してください。",
           "success": "{PLAYER}の新しいパスワードは{PASSWORD}です。"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "ユーザー名変更",
+          "playerPrompt": "ユーザー名を変更したいアカウントの名前を入力してください。",
+          "namePrompt": "{PLAYER}の新しいユーザー名を入力してください。",
+          "success": "{PLAYER}のユーザー名は{NAME}に変更されました。",
+          "error": "{PLAYER}のユーザー名の変更に失敗しました。(このユーザー名は既に使用されています。)"
         },
         "ban": {
           "label": "プレイヤーのBAN",
