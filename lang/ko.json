@@ -683,6 +683,13 @@
           "playerPrompt": "비밀번호 재설정이 필요한 계정의 아이디를 입력해주세요",
           "success": "{PLAYER}님의 새로운 비밀번호가 {PASSWORD}로 설정되었습니다"
         },
+        "changeUsername": {
+          "label": "Change a Username",
+          "playerPrompt": "Enter the name of the account to change the username for",
+          "namePrompt": "Enter the new username for {PLAYER}",
+          "success": "Username for {PLAYER} has been changed to {NAME}",
+          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+        },
         "ban": {
           "label": "플레이어 차단 설정",
           "playerPrompt": "차단할 플레이어의 이름을 입력해주세요"

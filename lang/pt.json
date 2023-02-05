@@ -683,6 +683,13 @@
           "playerPrompt": "Digite o nome da conta para redefinir a senha da conta",
           "success": "A nova senha para {PLAYER} é {PASSWORD}"
         },
+        "changeUsername": {
+          "label": "Change a Username",
+          "playerPrompt": "Enter the name of the account to change the username for",
+          "namePrompt": "Enter the new username for {PLAYER}",
+          "success": "Username for {PLAYER} has been changed to {NAME}",
+          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+        },
         "ban": {
           "label": "Banir um Jogador",
           "playerPrompt": "Digite o nome da conta para banir"

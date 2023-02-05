@@ -170,6 +170,25 @@ function updateModControls() {
 
     addModControlsButton(localizedMessages.modSettings.actions.resetPassword.label,
       () => adminPlayerAction('admin?command=resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actions.resetPassword.success, true).replace('{PASSWORD}', newPassword), 'info'));
+    addModControlsButton(localizedMessages.modSettings.actions.changeUsername.label,
+      () => {
+        const playerName = prompt(localizedMessages.modSettings.actions.changeUsername.playerPrompt);
+        if (!playerName)
+          return;
+        const newPlayerName = prompt(localizedMessages.modSettings.actions.changeUsername.namePrompt.replace('{PLAYER}', playerName));
+        if (!newPlayerName)
+          return;
+        apiFetch(`changeusername?user=${playerName}&newUser=${newPlayerName}`, true)
+          .then(response => {
+            if (!response.ok) {
+              showToastMessage(getMassagedLabel(localizedMessages.modSettings.actions.changeUsername.error, true).replace('{PLAYER}', playerName));
+              throw new Error(response.statusText);
+            }
+            return response.text();
+          })
+          .then(_ => showToastMessage(getMassagedLabel(localizedMessages.modSettings.actions.changeUsername.success, true).replace('{PLAYER}', playerName).replace('{NAME}', newPlayerName), 'info', true, null, true))
+          .catch(err => console.error(err));
+      });
     addModControlsButton(localizedMessages.modSettings.actions.ban.label,
       () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
     addModControlsButton(localizedMessages.modSettings.actions.unban.label,
