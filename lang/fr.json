@@ -641,7 +641,7 @@
         },
         "eventLocationCompletion": {
           "label": "Expéditions terminées",
-          "valueLabel": "Complétées",
+          "valueLabel": "Complétée",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
