@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -318,7 +318,7 @@
         "rule2": "Pas de discussion +18 (NSFW, gore, etc.).",
         "rule3": "Pas de politiques.",
         "rule4": "Pas de remarques provocatrices (insultes comprises).",
-        "rule5": "Pas de triche de toute sorte, peu importe la raison."
+        "rule5": "Pas de triche de toute sorte, qu'importe la raison."
       }
     },
     "tooltips": {
@@ -410,7 +410,7 @@
     },
     "playerList": {
       "unnamed": "Joueur Sans Nom",
-      "muted": "Muted",
+      "muted": "Muet",
       "actions": {
         "partyKick": "Expulser du Groupe",
         "transferPartyOwner": "Changer le chef du Groupe"
@@ -641,7 +641,7 @@
         },
         "eventLocationCompletion": {
           "label": "Expéditions terminées",
-          "valueLabel": "Complétée",
+          "valueLabel": "Complétées",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
@@ -684,11 +684,11 @@
           "success": "Le nouveau mot de passe de {PLAYER} est {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Changer un nom d'utilisateur",
+          "playerPrompt": "Entrez le nom du compte dont le nom d'utilisateur doit être changé",
+          "namePrompt": "Entrez le nouveau nom d'utilisateur pour {PLAYER}",
+          "success": "Le nom d'utilisateur de {PLAYER} a été changé en {NAME}",
+          "error": "Échec du changement de nom d'utilisateur pour {PLAYER} ; le nom spécifié est peut-être déjà utilisé"
         },
         "ban": {
           "label": "Bannir un Joueur",
