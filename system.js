@@ -48,6 +48,7 @@ const allGameUiThemes = {
     'RioSystem5',
     'system_GBlike',
     'horatsuki sys1',
+    'yumehako-sys1',
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',
