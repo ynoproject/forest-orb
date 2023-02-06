@@ -684,11 +684,11 @@
           "success": "{PLAYER}님의 새로운 비밀번호가 {PASSWORD}로 설정되었습니다"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "계정 닉네임 변경",
+          "playerPrompt": "변경할 계정의 기존 닉네임을 입력해주세요",
+          "namePrompt": "{PLAYER}님의 새 닉네임을 입력해주세요",
+          "success": "{PLAYER}님의 닉네임이 {NAME}으로 변경되었습니다",
+          "error": "{PLAYER}님의 닉네임 변경에 실패하였습니다 (이미 사용하고 있는 닉네임을 입력하셨습니다)"
         },
         "ban": {
           "label": "플레이어 차단 설정",
