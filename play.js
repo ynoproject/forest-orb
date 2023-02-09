@@ -1377,9 +1377,6 @@ function fetchAndInitLocalizedMapLocations(lang, game) {
 >>>>>>> be6cbea (Always set localized locations to default when fetch fails)
     })
     .then(jsonResponse => {
-      if (!jsonResponse) {
-        return Promise.reject();
-      }
       gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
       gameLocalizedMapLocations[game] = {};
       const langMapLocations = jsonResponse.mapLocations;
