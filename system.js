@@ -171,6 +171,7 @@ const gameLogoBlendModeOverrides = {
   'cu': 'color',
   'deepdreams': 'soft-light',
   'genie': 'color',
+  'mikan': 'soft-light',
   'someday': 'hard-light',
   'unevendream': 'color'
 };
