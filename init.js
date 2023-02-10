@@ -4,7 +4,8 @@ const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
 const gameDefaultLangs = {
   '2kki': 'ja',
-  'flow': 'ja'
+  'flow': 'ja',
+  'mikan': 'ja'
 };
 const gameDefaultSprite = {
   '2kki': 'syujinkou1',
