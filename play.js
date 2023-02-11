@@ -1402,8 +1402,10 @@ function fetchAndInitLocalizedMapLocations(lang, game) {
       initLocalizedLocations(game);
     })
     .catch(_err => { // Assume map location localizations for this language don't exist
+      gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
       gameLocalizedMapLocations[game] = gameMapLocations[game];
       if (game === gameId) {
+        localizedLocationUrlRoot = locationUrlRoot;
         localizedMapLocations = mapLocations;
         initLocalizedLocations(game);
       }
