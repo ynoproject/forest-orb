@@ -388,24 +388,14 @@ function addChatMapLocation(locations) {
     ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;|&nbsp;")
     : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;|&nbsp;");
 
-  if (is2kki)
-    getOrQuery2kkiLocationColors(locations)
-      .then(colors => updateLocationDisplay(
-        cached2kkiLocations
-          ? getLocalized2kkiLocations(cached2kkiLocations, "&nbsp;/&nbsp;", true)
-          : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
-        Array.isArray(colors) && colors.length === 2 ? colors : null)
-      );
-  else {
-    if (eventPeriodCache) {
-      getOrQuery2kkiLocationColors(locations)
-        .then(colors => updateLocationDisplay(cachedLocations,
-          getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
-            Array.isArray(colors) && colors.length === 2 ? colors : null))
-    } else
-      updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true));
-  }
-
+  if (eventPeriodCache)
+    getOrQueryLocationColors(locations)
+      .then(colors => updateLocationDisplay(cachedLocations,
+        getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
+          Array.isArray(colors) && colors.length === 2 ? colors : null))
+  else
+    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true));
+    
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;
   if (lastLocMessage?.classList.contains("hidden")) {
