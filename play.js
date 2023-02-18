@@ -185,6 +185,7 @@ let playerCount;
 
 (function () {
   addSessionCommandHandler('pc', args => updatePlayerCount(parseInt(args[0])));
+  addSessionCommandHandler('lcol');
 })();
 
 function updatePlayerCount(count) {
@@ -1608,6 +1609,107 @@ function getMapButton(url, label) {
   };
   ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
   return ret;
+}
+
+function getOrQueryLocationColors(locationName) {
+  return new Promise((resolve, _reject) => {
+    if (Array.isArray(locationName) && locationName.length && locationName[0].hasOwnProperty('title'))
+      locationName = locationName[0].title;
+    else if (locationName.hasOwnProperty('title'))
+      locationName = locationName.title;
+    const colonIndex = locationName.indexOf(':');
+    if (colonIndex > -1)
+      locationName = locationName.slice(0, colonIndex);
+    if (locationColorCache.hasOwnProperty(locationName)) {
+      resolve(locationColorCache[locationName]);
+      return;
+    }
+
+    if (gameId === '2kki') {
+      const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${locationName}`;
+      const callback = response => {
+        let errCode = null;
+
+        if (response && !response.err_code)
+          cacheLocationColors(locationName, response.fgColor, response.bgColor);
+        else
+          errCode = response?.err_code;
+          
+        if (errCode)
+          console.error({ error: response.error, errCode: errCode });
+
+        resolve([response?.fgColor, response?.bgColor]);
+      };
+      send2kkiApiRequest(url, callback);
+    } else {
+      sendSessionCommand('lcol', [ locationName ], params => {
+        if (params.length === 2) {
+          cacheLocationColors(locationName, params[0], params[1]);
+          resolve(params[0], params[1]);
+          return;
+        }
+        resolve('#000000', '#000000');
+      });
+    }
+  });
+}
+
+function cacheLocationColors(locationName, fgColor, bgColor) {
+  if (locationName) {
+    const colorsArr = [ fgColor, bgColor ];
+    locationColorCache[locationName] = colorsArr;
+    if (fgColor && bgColor) {
+      setCacheValue(CACHE_TYPE.locationColor, locationName, colorsArr);
+      updateCache(CACHE_TYPE.locationColor)
+    }
+  }
+}
+
+function handleBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, locations, playerName, mapId, prevMapId, prevLocationsStr, x, y) {
+  const setOverlayColors = (fgColor, bgColor) => {
+    badgeOverlay.style.background = fgColor;
+    if (badgeOverlay2)
+      badgeOverlay2.style.background = bgColor;
+  };
+  const queryColorsFunc = locations => {
+    if (!locations)
+      return;
+    getOrQueryLocationColors(locations)
+      .then(colors => {
+        if (Array.isArray(colors) && colors.length === 2)
+          setOverlayColors(colors[0], colors[1]);
+      });
+  };
+  if (locations)
+    queryColorsFunc(locations);
+  else if (gameId === '2kki') {
+    const queryLocationsFunc = (mapId, prevMapId, prevLocations) => {
+      if (!mapLocations || !mapLocations.hasOwnProperty(mapId) || (!mapLocations[mapId].hasOwnProperty('explorer') || mapLocations[mapId].explorer))
+        getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, queryColorsFunc);
+    };
+    const getPrevLocationsFunc = (prevLocationsStr, prevMapId) => prevLocationsStr && (prevMapId || '0000') !== '0000' ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
+
+    let foundPlayer;
+    if (playerName) {
+      const playerEntry = Object.entries(globalPlayerData).find(p => p[1].account && p[1].name === playerName);
+      if (playerEntry) {
+        if (Object.values(playerUuids).indexOf(playerEntry[0]) > -1) {
+          queryColorsFunc(cachedLocations);
+          foundPlayer = true;
+        } else if (joinedPartyCache) {
+          const member = joinedPartyCache.members.find(m => m.account && m.name === playerName);
+          if (member) {
+            queryLocationsFunc(member.mapId, member.prevMapId, getPrevLocationsFunc(member.prevLocations, member.prevMapId));
+            foundPlayer = true;
+          }
+        }
+      }
+    }
+
+    if (!foundPlayer && mapId && mapId !== '0000')
+      queryLocationsFunc(mapId, prevMapId, getPrevLocationsFunc(prevLocationsStr, prevMapId));
+  } else if (mapLocations && mapLocations.hasOwnProperty(mapId))
+      queryColorsFunc(getMapLocationsArray(mapLocations, mapId, prevMapId, x, y));
 }
 
 function fetchAndPopulateYnomojiConfig() {

@@ -365,6 +365,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       }
     }
     if (player.name) {
+      // Doesn't support x/y so location color badges may be incorrect for maps with multiple locations
       addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, (player.systemName || getDefaultUiTheme()).replace(/'/g, ''));
       playerListEntryBadge.classList.toggle('badgeButton', player.name);
     }
@@ -434,8 +435,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
             } else
             playerListEntryBadgeOverlay2.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`;
           }
-          if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
-            handle2kkiBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
+          if (badge.overlayType & BadgeOverlayType.LOCATION)
+            handleBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
         }
       });
     });

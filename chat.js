@@ -158,7 +158,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
         }
       }
       if (player.name) {
-        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, (systemName || getDefaultUiTheme()).replace(/'/g, ''), mapId, prevMapId, prevLocationsStr);
+        addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, player.name, (systemName || getDefaultUiTheme()).replace(/'/g, ''), mapId, prevMapId, prevLocationsStr, x, y);
         badgeEl.classList.toggle('badgeButton', player.name);
       }
 
@@ -217,8 +217,8 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
               } else
                 badgeOverlay2El.style.background = `var(--base-bg-color-${parsedSystemName})`;
             }
-            if (gameId === '2kki' && badge.overlayType & BadgeOverlayType.LOCATION)
-              handle2kkiBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr);
+            if (badge.overlayType & BadgeOverlayType.LOCATION)
+              handleBadgeOverlayLocationColorOverride(badgeOverlayEl, badgeOverlay2El, null, player?.name, mapId, prevMapId, prevLocationsStr, x, y);
           }
         });
       });
@@ -396,8 +396,15 @@ function addChatMapLocation(locations) {
           : getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
         Array.isArray(colors) && colors.length === 2 ? colors : null)
       );
-  else
-    updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true));
+  else {
+    if (eventPeriodCache) {
+      getOrQuery2kkiLocationColors(locations)
+        .then(colors => updateLocationDisplay(cachedLocations,
+          getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true),
+            Array.isArray(colors) && colors.length === 2 ? colors : null))
+    } else
+      updateLocationDisplay(getLocalizedMapLocations(gameId, cachedMapId, cachedPrevMapId, tpX, tpY, "&nbsp;/&nbsp;", true));
+  }
 
   const locMessages = document.getElementById("messages").querySelectorAll(".messageContainer.locMessage");
   let lastLocMessage = locMessages.length ? locMessages[locMessages.length - 1] : null;

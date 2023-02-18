@@ -358,8 +358,8 @@ function initBadgeGalleryModal() {
           badge = { badgeId: 'null' };
         badgeSlotButton.classList.toggle('hidden', r > badgeSlotRows || c > badgeSlotCols);
         badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
-        if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
-          handle2kkiBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
+        if (badge?.overlayType & BadgeOverlayType.LOCATION)
+          handleBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
       }
     }
   }
@@ -370,8 +370,8 @@ function updateBadgeButton() {
   const badge = playerData?.badge ? badgeCache.find(b => b.badgeId === badgeId) : null;
   const badgeButton = document.getElementById('badgeButton');
   badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
-  if (gameId === '2kki' && badge?.overlayType & BadgeOverlayType.LOCATION)
-    handle2kkiBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
+  if (badge?.overlayType & BadgeOverlayType.LOCATION)
+    handleBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
 }
 
 function getBadgeUrl(badge, staticOnly) {
@@ -700,7 +700,7 @@ function updateLocalizedBadges(callback) {
     .catch(err => console.error(err));
 }
 
-function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId, prevMapId, prevLocationsStr) {
+function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId, prevMapId, prevLocationsStr, x, y) {
   badgeElement.dataset.playerName = name;
   badgeElement.dataset.systemName = sysName;
 
@@ -828,8 +828,8 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                     badgeSlotOverlay2.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`
                 }
 
-                if (gameId === '2kki' && overlayType & BadgeOverlayType.LOCATION)
-                  handle2kkiBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr);
+                if (overlayType & BadgeOverlayType.LOCATION)
+                  handleBadgeOverlayLocationColorOverride(badgeSlotOverlay, badgeSlotOverlay2, null, playerName, mapId, prevMapId, prevLocationsStr, x, y);
               }
             }
 
