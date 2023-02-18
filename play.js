@@ -1645,10 +1645,10 @@ function getOrQueryLocationColors(locationName) {
       sendSessionCommand('lcol', [ locationName ], params => {
         if (params.length === 2) {
           cacheLocationColors(locationName, params[0], params[1]);
-          resolve(params[0], params[1]);
+          resolve([params[0], params[1]]);
           return;
         }
-        resolve('#000000', '#000000');
+        resolve(['#FFFFFF', '#FFFFFF']);
       });
     }
   });
