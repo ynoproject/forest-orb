@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "Localização:&nbsp;",
       "immersionMode": "Modo Imersão",
-      "reconnect": "Reconnect",
+      "reconnect": "Reconectar",
       "tab": {
         "chat": "Bate-Papo",
         "players": "Jogadores",
@@ -109,21 +109,21 @@
             }
           },
           "togglePlayerSounds": "Escutar as ações dos jogadores",
-          "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Rankings",
+          "toggleLocationDisplay": "Exibição de localização",
+          "toggleRankings": "Placares",
           "toggleScreenshotFix": {
             "label": "Correção de Captura de Tela",
             "helpText": "Corrige o problema onde a função de captura de tela pode produzir capturas de tela em branco; requer o recarregamento da página e pode afetar o desempenho"
           }
         },
-        "chatSettings": "Chat Settings",
+        "chatSettings": "Configurações do Bate-Papo",
         "notificationSettings": "Configurações de Notificação",
         "accountSettings": "Configurações da Conta"
       },
       "chatSettings": {
         "title": "Configurações do Bate-papo",
         "fields": {
-          "toggleTabToChat": "Atalho Tab para Chat",
+          "toggleTabToChat": "Atalho Tab para usar o Chat",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -242,7 +242,7 @@
           "newPassword": "Nova Senha",
           "newConfirmPassword": "Confirmar Nova Senha"
         },
-        "submit": "Submit"
+        "submit": "Enviar"
       },
       "badges": {
         "title": "Emblemas",
@@ -257,9 +257,9 @@
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "Ordem de classificação:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "Padrão"
             }
           },
           "search": "Buscar:&nbsp;"
@@ -310,15 +310,15 @@
         }
       },
       "rankings": {
-        "title": "Rankings"
+        "title": "Placares"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "Regras",
+        "rule1": "Por favor, seja respeitoso e educado.",
+        "rule2": "Sem discussões 18+ (NSFW, gore, etc.).",
+        "rule3": "Sem política.",
+        "rule4": "Sem comentários provocantes (incluindo insultos).",
+        "rule5": "Sem trapaças de qualquer tipo por qualquer motivo."
       }
     },
     "tooltips": {
@@ -344,10 +344,10 @@
         "disbandParty": "Desfazer Party"
       },
       "events": "Expedições",
-      "rankings": "Rankings",
+      "rankings": "Placares",
       "nexus": "Voltar para o Nexus"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Ver Regras"
   },
   "messages": {
     "games": {
@@ -602,8 +602,8 @@
           "bp": "BP",
           "percent": "Porcentagem desbloqueada"
         },
-        "asc": "Ascendente",
-        "desc": "Descendente"
+        "asc": "Crescente",
+        "desc": "Decrescente"
       }
     },
     "badgeGallery": {
@@ -684,11 +684,11 @@
           "success": "A nova senha para {PLAYER} é {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Alterar um nome de usuário",
+          "playerPrompt": "Digite o nome da conta para alterar o nome de usuário",
+          "namePrompt": "Digite o novo nome de usuário para {PLAYER}",
+          "success": "O nome de usuário de {PLAYER} foi alterado para {NAME}",
+          "error": "Falha ao alterar o nome de usuário de {PLAYER}; o nome especificado pode já estar em uso"
         },
         "ban": {
           "label": "Banir um Jogador",
