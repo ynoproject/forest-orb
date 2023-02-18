@@ -1708,8 +1708,8 @@ function handleBadgeOverlayLocationColorOverride(badgeOverlay, badgeOverlay2, lo
 
     if (!foundPlayer && mapId && mapId !== '0000')
       queryLocationsFunc(mapId, prevMapId, getPrevLocationsFunc(prevLocationsStr, prevMapId));
-  } else if (mapLocations && mapLocations.hasOwnProperty(mapId))
-      queryColorsFunc(getMapLocationsArray(mapLocations, mapId, prevMapId, x, y));
+  } else if (mapLocations && mapLocations.hasOwnProperty(mapId || cachedMapId))
+      queryColorsFunc(getMapLocationsArray(mapLocations, mapId || cachedMapId, prevMapId || cachedPrevMapId, x || tpX, y || tpY));
 }
 
 function fetchAndPopulateYnomojiConfig() {
