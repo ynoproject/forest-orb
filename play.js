@@ -1310,7 +1310,8 @@ function fetchAndInitLocalizedMapLocations(lang, game) {
             localizedMapLocations = mapLocations;
             initLocalizedLocations(game);
             resolve();
-          }
+          } else
+            initLocalizedLocations(game);
           return null; // Assume map location localizations for this language don't exist
         }
         return response.json();
