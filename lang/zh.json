@@ -354,7 +354,7 @@
       "ynoproject": "YNOproject",
       "yume": "梦日记",
       "2kki": "梦２记",
-      "cu": "Collective Unconscious",
+      "cu": "Collective Unconsciousness",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -684,11 +684,11 @@
           "success": "用户 {PLAYER} 的密码已变更为 {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "更换用户名",
+          "playerPrompt": "输入要更名的用户",
+          "namePrompt": "输入 {PLAYER} 新的用户名",
+          "success": "{PLAYER} 已更名为 {NAME}",
+          "error": "{PLAYER} 更名失败：该用户名可能已被使用"
         },
         "ban": {
           "label": "封禁玩家",
