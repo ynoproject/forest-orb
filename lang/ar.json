@@ -108,6 +108,8 @@
               "slim": "رفيع"
             }
           },
+          "soundVolume": "Sound Volume",
+          "musicVolume": "Music Volume",
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",
@@ -332,6 +334,7 @@
       "toggleImmersionMode": "وضع نمط الانغمار",
       "screenshot": "اخذ صورة للشاشة",
       "settings": "إعدادات",
+      "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
         "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",

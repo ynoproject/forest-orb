@@ -108,6 +108,8 @@
               "slim": "Тонкие"
             }
           },
+          "soundVolume": "Sound Volume",
+          "musicVolume": "Music Volume",
           "togglePlayerSounds": "Звуки игроков",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
@@ -332,6 +334,7 @@
       "toggleImmersionMode": "Переключить режим погружения",
       "screenshot": "Сделать скриншот",
       "settings": "Настройки",
+      "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
       "chat": {
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",

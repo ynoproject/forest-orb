@@ -420,6 +420,14 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('nameInput').value = value;
                     setName(value, true);
                     break;
+                  case 'soundVolume':
+                    document.getElementById('soundVolume').value = value;
+                    setSoundVolume(value, true);
+                    break;
+                  case 'musicVolume':
+                    document.getElementById('musicVolume').value = value;
+                    setMusicVolume(value, true);
+                    break;
                   case 'tabToChat':
                     if (!value)
                       document.getElementById('tabToChatButton').click();
@@ -483,6 +491,10 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'immersionMode':
                     if (value)
                       document.getElementById('immersionModeButton').click();
+                    break;
+                  case 'mute':
+                    if (value)
+                      document.getElementById('muteButton').click();
                     break;
                   case 'chatTabIndex':
                     if (value) {
