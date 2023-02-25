@@ -433,8 +433,8 @@ function onReceiveInputFeedback(inputId) {
         config[configKey] = toggled;
       updateConfig(isGlobal ? globalConfig : config, isGlobal);
       if (configKey === 'mute') {
-        setSoundVolume(toggled ? 0 : globalConfig.soundVolume, true);
-        setMusicVolume(toggled ? 0 : globalConfig.musicVolume, true);
+        Module._SetSoundVolume(toggled ? 0 : globalConfig.soundVolume);
+        Module._SetMusicVolume(toggled ? 0 : globalConfig.musicVolume);
       }
     }
   }
