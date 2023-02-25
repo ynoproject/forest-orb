@@ -496,7 +496,7 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'mute':
                     if (value)
-                      document.getElementById('muteButton').click();
+                      preToggle(document.getElementById('muteButton'));
                     break;
                   case 'chatTabIndex':
                     if (value) {
