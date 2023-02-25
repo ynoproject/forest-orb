@@ -1178,7 +1178,7 @@ function setName(name, isInit) {
 function setSoundVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (Module.INITIALIZED)
+  if (Module.INITIALIZED && !config.mute)
     Module._SetSoundVolume(value);
   globalConfig.soundVolume = value;
   if (!isInit)
@@ -1188,7 +1188,7 @@ function setSoundVolume(value, isInit) {
 function setMusicVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (Module.INITIALIZED)
+  if (Module.INITIALIZED && !config.mute)
     Module._SetMusicVolume(value);
   globalConfig.musicVolume = value;
   if (!isInit)

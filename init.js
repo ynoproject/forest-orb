@@ -68,8 +68,8 @@ function injectScripts() {
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
           Module._SetNametagMode(config.nametagMode);
-          setSoundVolume(globalConfig.soundVolume);
-          setMusicVolume(globalConfig.musicVolume);
+          Module._SetSoundVolume(globalConfig.soundVolume);
+          Module._SetMusicVolume(globalConfig.musivVolume);
           const loadingOverlay = document.getElementById('loadingOverlay');
           loadingOverlay.classList.add('loaded');
           removeLoader(loadingOverlay);
