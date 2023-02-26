@@ -108,8 +108,8 @@
               "slim": "全名（小）"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "音效音量",
+          "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
@@ -334,7 +334,7 @@
       "toggleImmersionMode": "开启/关闭沉浸模式",
       "screenshot": "截屏",
       "settings": "设置",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
