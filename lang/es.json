@@ -108,6 +108,8 @@
               "slim": "Slim"
             }
           },
+          "soundVolume": "Sound Volume",
+          "musicVolume": "Music Volume",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Clasificaciones",
@@ -332,6 +334,7 @@
       "toggleImmersionMode": "Alternar Modo Inmersivo",
       "screenshot": "Capturar Pantalla",
       "settings": "Opciones",
+      "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
         "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",

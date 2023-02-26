@@ -68,6 +68,8 @@ function injectScripts() {
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
           Module._SetNametagMode(config.nametagMode);
+          Module._SetSoundVolume(globalConfig.soundVolume);
+          Module._SetMusicVolume(globalConfig.musivVolume);
           const loadingOverlay = document.getElementById('loadingOverlay');
           loadingOverlay.classList.add('loaded');
           removeLoader(loadingOverlay);
@@ -420,6 +422,14 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('nameInput').value = value;
                     setName(value, true);
                     break;
+                  case 'soundVolume':
+                    document.getElementById('soundVolume').value = value;
+                    setSoundVolume(value, true);
+                    break;
+                  case 'musicVolume':
+                    document.getElementById('musicVolume').value = value;
+                    setMusicVolume(value, true);
+                    break;
                   case 'tabToChat':
                     if (!value)
                       document.getElementById('tabToChatButton').click();
@@ -483,6 +493,10 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'immersionMode':
                     if (value)
                       document.getElementById('immersionModeButton').click();
+                    break;
+                  case 'mute':
+                    if (value)
+                      preToggle(document.getElementById('muteButton'));
                     break;
                   case 'chatTabIndex':
                     if (value) {

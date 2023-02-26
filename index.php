@@ -125,6 +125,8 @@
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 8q0-1 1-1h1.5c1 0 1-2 2-2h3c1 0 1 2 2 2h1.5q1 0 1 1v4q0 1-1 1h-10q-1 0-1-1zm6-0.5a2 2 90 0 0 0 4 2 2 90 0 0 0 -4m-9-2.5v-2q0-1 1-1h2m12 0h2q1 0 1 1v2m0 8v2q0 1-1 1h-2m-12 0h-2q-1 0-1-1v-2"></path></svg>
               </button><button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 5.5a1 1 90 0 0 0 7 1 1 90 0 0 0 -7m-7 5.5l-2-0.25v-3.5l2-0.25 0.75-1.5-1.25-1.75 2.25-2.25 1.75 1.25 1.5-0.75 0.25-2h3.5l0.25 2 1.5 0.75 1.75-1.25 2.25 2.25-1.25 1.75 0.75 1.5 2 0.25v3.5l-2 0.25-0.75 1.5 1.25 1.75-2.25 2.25-1.75-1.25-1.5 0.75-0.25 2h-3.5l-0.25-2-1.5-0.75-1.75 1.25-2.25-2.25 1.25-1.75-0.75-1.5" /></svg>
+              </button><button id="muteButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleMute">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 7h3l4-4v12l-4-4h-3v-4m10 0q1 2 0 4m3-5.5q2 3.5 0 7m3-9.5q4 6 0 12" /><path d="m-2 16l22-14" /></svg>
               </button>
             </div>
             <div id="rightControls">
@@ -448,6 +450,18 @@
                     <option value="2" data-i18n="[html]modal.settings.fields.nametagMode.values.compact">Compact</option>
                     <option value="3" data-i18n="[html]modal.settings.fields.nametagMode.values.slim">Slim</option>
                   </select>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="soundVolume" class="unselectable" data-i18n="[html]modal.settings.fields.soundVolume">Sound Volume</label>
+                <div>
+                  <input id="soundVolume" type="range" min="0" max="100" value="100" step="5" class="slider" />
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="musicVolume" class="unselectable" data-i18n="[html]modal.settings.fields.musicVolume">Music Volume</label>
+                <div>
+                  <input id="musicVolume" type="range" min="0" max="100" value="100" step="5" class="slider" />
                 </div>
               </li>
               <li class="formControlRow">

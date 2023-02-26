@@ -108,6 +108,8 @@
               "slim": "スリム"
             }
           },
+          "soundVolume": "Sound Volume",
+          "musicVolume": "Music Volume",
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
@@ -332,6 +334,7 @@
       "toggleImmersionMode": "没入モードのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
+      "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",

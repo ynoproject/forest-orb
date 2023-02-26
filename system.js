@@ -49,6 +49,8 @@ const allGameUiThemes = {
     'system_GBlike',
     'horatsuki sys1',
     'yumehako-sys1',
+    'sniperbob_system44',
+    'sniperbob_system45',
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',

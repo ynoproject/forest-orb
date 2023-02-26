@@ -25,6 +25,8 @@ const langLabelMassageFunctions = {
 let globalConfig = {
   lang: 'en',
   name: '',
+  soundVolume: 100,
+  musicVolume: 100,
   chatTipIndex: -1,
   tabToChat: true,
   mapChatHistoryLimit: 100,
@@ -40,6 +42,7 @@ let globalConfig = {
 let config = {
   singlePlayer: false,
   disableChat: false,
+  mute: false,
   nametagMode: 1,
   disablePlayerSounds: false,
   immersionMode: false,
@@ -416,14 +419,23 @@ function onReceiveInputFeedback(inputId) {
         buttonElement = document.getElementById('playerSoundsButton');
         configKey = 'disablePlayerSounds';
         break;
+      case 2:
+        buttonElement = document.getElementById('muteButton');
+        configKey = 'mute';
+        break;
     }
     if (configKey) {
       buttonElement.classList.toggle('toggled');
+      const toggled = buttonElement.classList.contains('toggled');
       if (isGlobal)
-        globalConfig[configKey] = buttonElement.classList.contains('toggled');
+        globalConfig[configKey] = toggled;
       else
-        config[configKey] = buttonElement.classList.contains('toggled');
+        config[configKey] = toggled;
       updateConfig(isGlobal ? globalConfig : config, isGlobal);
+      if (configKey === 'mute') {
+        Module._SetSoundVolume(toggled ? 0 : globalConfig.soundVolume);
+        Module._SetMusicVolume(toggled ? 0 : globalConfig.musicVolume);
+      }
     }
   }
 }
@@ -737,6 +749,21 @@ document.getElementById('screenshotButton').onclick = function () {
 };
 
 document.getElementById('settingsButton').onclick = () => openModal('settingsModal');
+
+document.getElementById('muteButton').onclick = function () {
+  if (Module.INITIALIZED)
+    Module._ToggleMute();
+};
+
+document.getElementById('soundVolume').onchange = function () {
+  setSoundVolume(parseInt(this.value));
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('musicVolume').onchange = function () {
+  setMusicVolume(parseInt(this.value));
+  updateConfig(globalConfig, true);
+};
 
 document.getElementById('lang').onchange = function () {
   setLang(this.value);
@@ -1144,6 +1171,26 @@ function setLang(lang, isInit) {
 
 function setName(name, isInit) {
   globalConfig.name = name;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setSoundVolume(value, isInit) {
+  if (isNaN(value))
+    return;
+  if (Module.INITIALIZED && !config.mute)
+    Module._SetSoundVolume(value);
+  globalConfig.soundVolume = value;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setMusicVolume(value, isInit) {
+  if (isNaN(value))
+    return;
+  if (Module.INITIALIZED && !config.mute)
+    Module._SetMusicVolume(value);
+  globalConfig.musicVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
 }

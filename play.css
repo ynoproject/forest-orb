@@ -131,6 +131,42 @@ select option:checked {
   background: rgba(var(--alt-color), 0.5) !important;
 }
 
+input.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 128px;
+  height: 2px;
+  padding: 0 0px;
+  outline: none;
+}
+
+input.slider::-webkit-slider-runnable-track {
+  margin: 0 -8px;
+}
+
+input.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 8px solid transparent;
+  border-image: var(--border-image-url) 6 round !important;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
+input.slider::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: 8px solid transparent;
+  border-image: var(--border-image-url) 6 round !important;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  cursor: pointer;
+}
+
 button.checkboxButton, button[type="button"], button[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
@@ -304,51 +340,6 @@ body {
   height: 12px;
 }
 
-#chatbox.partyChat #messages::-webkit-scrollbar-track, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-track {
-  border-image-source: var(--party-border-image-url) !important;
-  background-color: rgb(var(--party-base-bg-color));
-}
-
-#chatbox.partyChat #messages::-webkit-scrollbar-thumb, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-thumb {
-  border-image-source: var(--party-border-image-url) !important;
-}
-
-#chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
-  scrollbar-color: rgb(var(--party-base-color)) rgb(var(--party-base-bg-color));
-}
-
-#chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
-  stroke: var(--party-svg-base-gradient);
-  filter: var(--party-svg-shadow);
-}
-
-#chatbox.partyChat #messages .iconButton.altIcon path {
-  stroke: var(--party-svg-alt-gradient);
-}
-
-#chatbox.partyChat #messages .infoLabel, #chatbox.partyChat #messages .messageContents {
-  background-image: var(--party-base-gradient) !important;
-  filter: drop-shadow(1.5px 1.5px rgb(var(--party-shadow-color)));
-}
-
-#chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
-  border-image-source: var(--party-border-image-url) !important;
-}
-
-#chatbox.partyChat #messages .messageContainer.highlight {
-  background: rgba(var(--party-alt-color), 0.5);
-}
-
-#chatbox.partyChat #messages .messageContainer .playerLocation a {
-  background-image: var(--party-alt-gradient) !important;
-}
-
-#chatbox.partyChat #chatInput {
-  color: rgb(var(--party-base-color)) !important;
-  background-color: rgb(var(--party-base-bg-color)) !important;
-  text-shadow: 1.5px 1.5px rgb(var(--party-shadow-color));
-}
-
 .iconButton.fadeToggle:not(.toggled) path {
   opacity: 0.5;
 }
@@ -394,6 +385,51 @@ body {
 
 .infoContainer .infoText {
   width: unset;
+}
+
+#chatbox.partyChat #messages::-webkit-scrollbar-track, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-track {
+  border-image-source: var(--party-border-image-url) !important;
+  background-color: rgb(var(--party-base-bg-color));
+}
+
+#chatbox.partyChat #messages::-webkit-scrollbar-thumb, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-thumb {
+  border-image-source: var(--party-border-image-url) !important;
+}
+
+#chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
+  scrollbar-color: rgb(var(--party-base-color)) rgb(var(--party-base-bg-color));
+}
+
+#chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
+  stroke: var(--party-svg-base-gradient);
+  filter: var(--party-svg-shadow);
+}
+
+#chatbox.partyChat #messages .iconButton.altIcon path {
+  stroke: var(--party-svg-alt-gradient);
+}
+
+#chatbox.partyChat #messages .infoLabel, #chatbox.partyChat #messages .messageContents {
+  background-image: var(--party-base-gradient) !important;
+  filter: drop-shadow(1.5px 1.5px rgb(var(--party-shadow-color)));
+}
+
+#chatbox.partyChat #messages .messageContainer, #chatbox.partyChat #chatBorder {
+  border-image-source: var(--party-border-image-url) !important;
+}
+
+#chatbox.partyChat #messages .messageContainer.highlight {
+  background: rgba(var(--party-alt-color), 0.5);
+}
+
+#chatbox.partyChat #messages .messageContainer .playerLocation a {
+  background-image: var(--party-alt-gradient) !important;
+}
+
+#chatbox.partyChat #chatInput {
+  color: rgb(var(--party-base-color)) !important;
+  background-color: rgb(var(--party-base-bg-color)) !important;
+  text-shadow: 1.5px 1.5px rgb(var(--party-shadow-color));
 }
 
 #background {
