@@ -755,14 +755,20 @@ document.getElementById('muteButton').onclick = function () {
     Module._ToggleMute();
 };
 
+document.getElementById('soundVolume').oninput = function () {
+  setSoundVolume(parseInt(this.value), true);
+};
+
 document.getElementById('soundVolume').onchange = function () {
   setSoundVolume(parseInt(this.value));
-  updateConfig(globalConfig, true);
+};
+
+document.getElementById('musicVolume').oninput = function () {
+  setMusicVolume(parseInt(this.value), true);
 };
 
 document.getElementById('musicVolume').onchange = function () {
   setMusicVolume(parseInt(this.value));
-  updateConfig(globalConfig, true);
 };
 
 document.getElementById('lang').onchange = function () {
