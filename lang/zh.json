@@ -108,8 +108,8 @@
               "slim": "全名（小）"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "音效音量",
+          "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
@@ -334,7 +334,7 @@
       "toggleImmersionMode": "开启/关闭沉浸模式",
       "screenshot": "截屏",
       "settings": "设置",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
@@ -687,11 +687,11 @@
           "success": "用户 {PLAYER} 的密码已变更为 {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "更换用户名",
+          "playerPrompt": "输入要更名的用户",
+          "namePrompt": "输入 {PLAYER} 新的用户名",
+          "success": "{PLAYER} 已更名为 {NAME}",
+          "error": "{PLAYER} 更名失败：该用户名可能已被使用"
         },
         "ban": {
           "label": "封禁玩家",
