@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "Địa điểm:&nbsp;",
       "immersionMode": "Chế độ Đắm chìm",
-      "reconnect": "Reconnect",
+      "reconnect": "Kết nối lại",
       "tab": {
         "chat": "Chat",
         "players": "Người chơi",
@@ -114,8 +114,8 @@
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "Sửa Ảnh chụp màn hình",
+            "helpText": "Sửa lỗi chụp màn hình trả về ảnh đen; cần tải lại trang để có hiệu lực và có thể ảnh hưởng hiệu suất"
           }
         },
         "chatSettings": "Cài đặt Chat",
@@ -315,12 +315,12 @@
         "title": "Bảng Xếp Hạng"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "Nội quy",
+        "rule1": "Hãy cư xử lịch sự và tôn trọng người khác.",
+        "rule2": "Không bàn về những chủ đề 18+ (NSFW, máu me,...).",
+        "rule3": "Không bàn về chính trị.",
+        "rule4": "Không phát ngôn gây tranh cãi (bao gồm từ lóng).",
+        "rule5": "Không gian lận bằng bất kỳ lý do nào."
       }
     },
     "tooltips": {
@@ -350,7 +350,7 @@
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Xem Nội quy"
   },
   "messages": {
     "games": {
@@ -603,10 +603,10 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "Tỷ lệ mở khóa"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "Tăng dần",
+        "desc": "Giảm dần"
       }
     },
     "badgeGallery": {
@@ -679,43 +679,43 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Cài đặt cho Người kiểm duyệt",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Đặt lại mật khẩu",
+          "playerPrompt": "Nhập tên người dùng cần đặt lại mật khẩu",
+          "success": "Mật khẩu mới cho {PLAYER} là {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Thay đổi Tên người dùng",
+          "playerPrompt": "Nhập tên người dùng cần đổi",
+          "namePrompt": "Nhập tên người dùng mới cho {PLAYER}",
+          "success": "Tên người dùng {PLAYER} đã được đổi thành {NAME}",
+          "error": "Đổi tên người dùng cho {PLAYER} thất bại; tên có thể đã được sử dụng"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Ban Người chơi",
+          "playerPrompt": "Nhập tên người chơi để ban"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Bỏ ban Người chơi",
+          "playerPrompt": "Nhập tên người chơi để bỏ ban"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Mute Người chơi",
+          "playerPrompt": "Nhập tên người chơi để mute"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Bỏ mute Người chơi",
+          "playerPrompt": "Nhập tên người chơi để bỏ mute"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Trao Huy hiệu",
+          "playerPrompt": "Nhập tên người chơi để trao huy hiệu"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Thu hồi Huy hiệu",
+          "playerPrompt": "Nhập tên người chơi để thu hồi huy hiệu"
         }
       }
     }
