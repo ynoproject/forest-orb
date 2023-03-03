@@ -108,8 +108,8 @@
               "slim": "Тонкие"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "Громкость звуков",
+          "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
@@ -334,7 +334,7 @@
       "toggleImmersionMode": "Переключить режим погружения",
       "screenshot": "Сделать скриншот",
       "settings": "Настройки",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "Переключить звук",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
       "chat": {
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
@@ -687,11 +687,11 @@
           "success": "Новый пароль игрока {PLAYER} теперь {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Сменить Имя пользователя",
+          "playerPrompt": "Введите имя аккаунта, чьё Имя пользователя необходимо сменить",
+          "namePrompt": "Введите новое имя пользователя для {PLAYER}",
+          "success": "Имя пользователя {PLAYER} было изменено на {NAME}",
+          "error": "Не удалось сменить имя пользователя {PLAYER}; Вероятно, указанное имя уже используется"
         },
         "ban": {
           "label": "Забанить игрока",
