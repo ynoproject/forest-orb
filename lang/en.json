@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Player Sounds",
+          "toggleImmersionMode": {
+            "label": "Immersion Mode",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "UI Theme",
       "toggleChat": "Toggle Chat",
-      "toggleImmersionMode": "Toggle Immersion Mode",
       "screenshot": "Take Screenshot",
       "settings": "Settings",
       "toggleMute": "Toggle Mute",

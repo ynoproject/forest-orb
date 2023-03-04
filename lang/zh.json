@@ -111,6 +111,10 @@
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
+          "toggleImmersionMode": {
+            "label": "沉浸模式",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
-      "toggleImmersionMode": "开启/关闭沉浸模式",
       "screenshot": "截屏",
       "settings": "设置",
       "toggleMute": "静音",

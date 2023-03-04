@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "أصوات اللاعبين",
+          "toggleImmersionMode": {
+            "label": "نمط الانغمار",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "تصميم واجهة المستخدم",
       "toggleChat": "وضع المحادثة",
-      "toggleImmersionMode": "وضع نمط الانغمار",
       "screenshot": "اخذ صورة للشاشة",
       "settings": "إعدادات",
       "toggleMute": "Toggle Mute",

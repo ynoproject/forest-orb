@@ -639,19 +639,6 @@ document.getElementById('chatButton').onclick = function () {
   updateConfig(config);
 };
 
-document.getElementById('immersionModeButton').onclick = function () {
-  this.classList.toggle('toggled');
-  const toggled = this.classList.contains('toggled');
-  if (toggled) {
-    document.querySelector('.chatboxTab[data-tab-section="chat"]').click();
-    document.getElementById('chatTabMap').click();
-  }
-  document.getElementById('layout').classList.toggle('immersionMode', toggled);
-  onResize();
-  config.immersionMode = toggled;
-  updateConfig(config);
-};
-
 document.getElementById('globalMessageButton').onclick = function () {
   this.classList.toggle('toggled');
   const chatInput = document.getElementById('chatInput');
@@ -783,6 +770,19 @@ document.getElementById('nametagMode').onchange = function () {
 document.getElementById('playerSoundsButton').onclick = () => {
   if (Module.INITIALIZED)
     Module._TogglePlayerSounds();
+};
+
+document.getElementById('immersionModeButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  if (toggled) {
+    document.querySelector('.chatboxTab[data-tab-section="chat"]').click();
+    document.getElementById('chatTabMap').click();
+  }
+  document.getElementById('layout').classList.toggle('immersionMode', toggled);
+  onResize();
+  config.immersionMode = toggled;
+  updateConfig(config);
 };
 
 document.getElementById('locationDisplayButton').onclick = function () {

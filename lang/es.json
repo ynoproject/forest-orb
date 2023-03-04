@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Sonidos de Jugadores",
+          "toggleImmersionMode": {
+            "label": "Modo Inmersivo",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Clasificaciones",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
-      "toggleImmersionMode": "Alternar Modo Inmersivo",
       "screenshot": "Capturar Pantalla",
       "settings": "Opciones",
       "toggleMute": "Toggle Mute",

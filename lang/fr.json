@@ -1,5 +1,5 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -111,6 +111,10 @@
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
+          "toggleImmersionMode": {
+            "label": "Mode Immersion",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
-      "toggleImmersionMode": "Activer le Mode Immersion",
       "screenshot": "Prendre une capture d'écran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",

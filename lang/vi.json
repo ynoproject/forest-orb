@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Âm thanh người chơi",
+          "toggleImmersionMode": {
+            "label": "Chế độ Đắm chìm",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "Phông Nền",
       "toggleChat": "Bật/Tắt Chat",
-      "toggleImmersionMode": "Bật/Tắt Chế độ Đắm chìm",
       "screenshot": "Chụp ảnh màn hình",
       "settings": "Cài đặt",
       "toggleMute": "Toggle Mute",

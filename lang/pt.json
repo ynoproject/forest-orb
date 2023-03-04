@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
+          "toggleImmersionMode": {
+            "label": "Modo de Imersão",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
-      "toggleImmersionMode": "Alternar para Modo de Imersão",
       "screenshot": "Capturar a Tela",
       "settings": "Configurações",
       "toggleMute": "Toggle Mute",

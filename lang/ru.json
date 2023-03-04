@@ -111,6 +111,10 @@
           "soundVolume": "Громкость звуков",
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
+          "toggleImmersionMode": {
+            "label": "режим погружения",
+            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+          },
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
           "toggleScreenshotFix": {
@@ -331,7 +335,6 @@
       },
       "uiTheme": "Стиль интерфейса",
       "toggleChat": "Переключить чат",
-      "toggleImmersionMode": "Переключить режим погружения",
       "screenshot": "Сделать скриншот",
       "settings": "Настройки",
       "toggleMute": "Переключить звук",

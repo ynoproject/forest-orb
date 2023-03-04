@@ -111,11 +111,15 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "プレイヤー 効果音",
+          "toggleImmersionMode": {
+            "label": "没入モード",
+            "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
+          },
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "toggleScreenshotFix": {
             "label": "スクリーンショット修正",
-            "helpText": "スクリーンショットの撮影に失敗することがある不具合の修正（ページの再読み込みが必要で、パフォーマンスが落ちる場合があります）"
+            "helpText": "スクリーンショットの 撮影に 失敗することがある 不具合の 修正 （ページの 再読み込みが 必要で、 パフォーマンスが 落ちる 場合があります）"
           }
         },
         "chatSettings": "チャット 設定",
@@ -331,7 +335,6 @@
       },
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleImmersionMode": "没入モードのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
       "toggleMute": "Toggle Mute",
