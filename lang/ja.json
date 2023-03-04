@@ -683,39 +683,39 @@
       "actions": {
         "resetPassword": {
           "label": "パスワード変更",
-          "playerPrompt": "パスワードをリセットしたいアカウントの名前を入力してください",
+          "playerPrompt": "パスワードをリセットしたいアカウントの名前を入力してください。",
           "success": "{PLAYER}の新しいパスワードは{PASSWORD}です。"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "ユーザー名変更",
+          "playerPrompt": "ユーザー名を変更したいアカウントの名前を入力してください。",
+          "namePrompt": "{PLAYER}の新しいユーザー名を入力してください。",
+          "success": "{PLAYER}のユーザー名は{NAME}に変更されました。",
+          "error": "{PLAYER}のユーザー名の変更に失敗しました。(このユーザー名は既に使用されています。)"
         },
         "ban": {
           "label": "プレイヤーのBAN",
-          "playerPrompt": "BANするアカウントの名前を入力してください"
+          "playerPrompt": "BANするアカウントの名前を入力してください。"
         },
         "unban": {
           "label": "プレイヤーのBAN解除",
-          "playerPrompt": "BAN解除するアカウントの名前を入力してください"
+          "playerPrompt": "BAN解除するアカウントの名前を入力してください。"
         },
         "mute": {
           "label": "プレイヤーのミュート",
-          "playerPrompt": "ミュートするアカウントの名前を入力してください"
+          "playerPrompt": "ミュートするアカウントの名前を入力してください。"
         },
         "unmute": {
           "label": "プレイヤーのミュート解除",
-          "playerPrompt": "ミュート解除するアカウントの名前を入力してください"
+          "playerPrompt": "ミュート解除するアカウントの名前を入力してください。"
         },
         "grantBadge": {
           "label": "権限バッジの付与",
-          "playerPrompt": "権限バッジを付与するアカウントの名前を入力してください"
+          "playerPrompt": "権限バッジを付与するアカウントの名前を入力してください。"
         },
         "revokeBadge": {
           "label": "権限バッジの剝奪",
-          "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください"
+          "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください。"
         }
       }
     }
