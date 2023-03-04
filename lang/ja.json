@@ -108,8 +108,8 @@
               "slim": "スリム"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "SEの音量",
+          "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleImmersionMode": {
             "label": "没入モード",
@@ -337,7 +337,7 @@
       "toggleChat": "チャットのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "消音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
@@ -353,7 +353,7 @@
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "ルールを見る"
   },
   "messages": {
     "games": {
