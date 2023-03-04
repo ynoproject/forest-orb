@@ -1389,8 +1389,8 @@ function fetchAndInitLocalizedMapLocations(lang, game) {
       if (game === gameId) {
         localizedLocationUrlRoot = locationUrlRoot;
         localizedMapLocations = mapLocations;
-        initLocalizedLocations(game);
       }
+      initLocalizedLocations(game);
     });
 }
 
