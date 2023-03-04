@@ -1353,28 +1353,10 @@ function fetchAndInitLocations(lang, game) {
 }
 
 function fetchAndInitLocalizedMapLocations(lang, game) {
-<<<<<<< HEAD
-  return new Promise(resolve => {
-    const fileName = lang === 'en' ? 'config' : lang;
-    fetchNewest(`locations/${game}/${fileName}.json`)
-      .then(response => {
-        if (!response.ok) {
-          gameLocalizedMapLocations[game] = gameMapLocations[game];
-          if (game === gameId) {
-            localizedMapLocations = mapLocations;
-            initLocalizedLocations(game);
-            resolve();
-          } else
-            initLocalizedLocations(game);
-          return null; // Assume map location localizations for this language don't exist
-        }
-        return response.json();
-=======
   const fileName = lang === 'en' ? 'config' : lang;
   return fetchNewest(`locations/${game}/${fileName}.json`)
     .then(response => {
       return response.ok ? response.json() : Promise.reject();
->>>>>>> be6cbea (Always set localized locations to default when fetch fails)
     })
     .then(jsonResponse => {
       gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
