@@ -1353,56 +1353,45 @@ function fetchAndInitLocations(lang, game) {
 }
 
 function fetchAndInitLocalizedMapLocations(lang, game) {
-  return new Promise(resolve => {
-    const fileName = lang === 'en' ? 'config' : lang;
-    fetchNewest(`locations/${game}/${fileName}.json`)
-      .then(response => {
-        if (!response.ok) {
-          gameLocalizedMapLocations[game] = gameMapLocations[game];
-          if (game === gameId) {
-            localizedMapLocations = mapLocations;
-            initLocalizedLocations(game);
-            resolve();
-          } else
-            initLocalizedLocations(game);
-          return null; // Assume map location localizations for this language don't exist
-        }
-        return response.json();
+  const fileName = lang === 'en' ? 'config' : lang;
+  return fetchNewest(`locations/${game}/${fileName}.json`)
+    .then(response => {
+      return response.ok ? response.json() : Promise.reject();
     })
     .then(jsonResponse => {
-        if (!jsonResponse) {
-          resolve();
-          return;
-        }
-        gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
-        gameLocalizedMapLocations[game] = {};
-        const langMapLocations = jsonResponse.mapLocations;
-        massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
-        Object.keys(gameMapLocations[game]).forEach(function (mapId) {
-          const mapLocation = langMapLocations[mapId];
-          const defaultMapLocation = gameMapLocations[game][mapId];
-          if (mapLocation) {
-            gameLocalizedMapLocations[game][mapId] = mapLocation;
-            if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
-              for (let l in defaultMapLocation) {
-                if (defaultMapLocation[l].hasOwnProperty('coords'))
-                  mapLocation[l].coords = defaultMapLocation[l].coords;
-              }
+      gameLocalizedLocationUrlRoots[game] = jsonResponse.urlRoot;
+      gameLocalizedMapLocations[game] = {};
+      const langMapLocations = jsonResponse.mapLocations;
+      massageMapLocations(langMapLocations, jsonResponse.locationUrlTitles || null);
+      Object.keys(gameMapLocations[game]).forEach(function (mapId) {
+        const mapLocation = langMapLocations[mapId];
+        const defaultMapLocation = gameMapLocations[game][mapId];
+        if (mapLocation) {
+          gameLocalizedMapLocations[game][mapId] = mapLocation;
+          if (Array.isArray(defaultMapLocation) && Array.isArray(mapLocation) && defaultMapLocation.length === mapLocation.length) {
+            for (let l in defaultMapLocation) {
+              if (defaultMapLocation[l].hasOwnProperty('coords'))
+                mapLocation[l].coords = defaultMapLocation[l].coords;
             }
-          } else
-            gameLocalizedMapLocations[game][mapId] = defaultMapLocation;
-        });
-        if (game === gameId) {
-          localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
-          localizedMapLocations = gameLocalizedMapLocations[game];
-        }
-        initLocalizedLocations(game);
-        resolve();
+          }
+        } else
+          gameLocalizedMapLocations[game][mapId] = defaultMapLocation;
+      });
+      if (game === gameId) {
+        localizedLocationUrlRoot = gameLocalizedLocationUrlRoots[game];
+        localizedMapLocations = gameLocalizedMapLocations[game];
+      }
+      initLocalizedLocations(game);
     })
     .catch(_err => { // Assume map location localizations for this language don't exist
-      resolve();
+      gameLocalizedLocationUrlRoots[game] = gameLocationUrlRoots[game];
+      gameLocalizedMapLocations[game] = gameMapLocations[game];
+      if (game === gameId) {
+        localizedLocationUrlRoot = locationUrlRoot;
+        localizedMapLocations = mapLocations;
+      }
+      initLocalizedLocations(game);
     });
-  });
 }
 
 function initLocalizedLocations(game) {
