@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -113,7 +113,7 @@
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleImmersionMode": {
             "label": "Mode Immersion",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
