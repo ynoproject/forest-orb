@@ -282,21 +282,19 @@ function trySyncSave() {
               return response.json();
             })
             .then(saveSyncData => {
-              if (saveSyncData.hasOwnProperty('timestamp') && saveSyncData.hasOwnProperty('contents')) {
+              if (saveSyncData) {
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
-                  const contents = typeof saveSyncData.contents === 'string'
-                    ? binToSaveData(saveSyncData.contents)
+                  const contents = typeof saveSyncData === 'string'
+                    ? binToSaveData(saveSyncData)
                     : saveSyncData.contents;
-                  saveSyncData.timestamp = new Date(saveSyncData.timestamp);
-                  saveSyncData.contents = Uint8Array.from(Object.values(contents));
 
                   const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
 
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveSyncData, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
+                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: new Date(timestamp), mode: 33206, contents: Uint8Array.from(Object.values(contents)) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => {
                     showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
