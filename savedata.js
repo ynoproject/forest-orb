@@ -275,14 +275,19 @@ function trySyncSave() {
       })
       .then(timestamp => {
         getSaveDataForSync().then(saveData => {
-          if (timestamp && (!saveData || saveData.timestamp < new Date(timestamp))) {
+          if (timestamp && (timestamp = new Date(timestamp)) && (!saveData || saveData.timestamp < timestamp)) {
+            const isNewData = timestamp > new Date(Date.UTC(2023, 3, 11, 1, 45));
             apiFetch('saveSync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
-              return response.arrayBuffer();
+              return isNewData ? response.arrayBuffer() : response.json();
             })
             .then(saveSyncData => {
               if (saveSyncData) {
+                saveSyncData = isNewData
+                  ? new Uint8Array(saveSyncData)
+                  : Uint8Array.from(Object.values(saveSyncData.contents));
+
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
@@ -290,7 +295,7 @@ function trySyncSave() {
 
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: new Date(timestamp), mode: 33206, contents: new Uint8Array(saveSyncData) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
+                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: timestamp, mode: 33206, contents: new Uint8Array(saveSyncData) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => {
                     showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
