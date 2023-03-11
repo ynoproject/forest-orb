@@ -247,7 +247,7 @@ function uploadSaveSyncData(saveData) {
     if (!loginToken || !saveSyncConfig.enabled)
       resolve(false);
     showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
-    apiJsonPost(`saveSync?command=push`, saveDataToBin(saveData.contents))
+    apiPost('saveSync?command=push', saveData.contents)
       .then(_ => {
         showSaveSyncToastMessage('saveUploaded', 'save', saveSyncConfig.slotId);
         resolve(true);
@@ -279,22 +279,18 @@ function trySyncSave() {
             apiFetch('saveSync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
-              return response.json();
+              return response.arrayBuffer();
             })
             .then(saveSyncData => {
               if (saveSyncData) {
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
-                  const contents = typeof saveSyncData === 'string'
-                    ? binToSaveData(saveSyncData)
-                    : saveSyncData.contents;
-
                   const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
 
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: new Date(timestamp), mode: 33206, contents: Uint8Array.from(Object.values(contents)) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
+                  const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: new Date(timestamp), mode: 33206, contents: new Uint8Array(saveSyncData) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => {
                     showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
@@ -334,22 +330,6 @@ function clearSaveSyncData() {
       })
       .catch(_err => resolve(false));
   });
-}
-
-function saveDataToBin(data) {
-  let len = data.length;
-  let ret = '';
-	for (let i = 0; i < len; i++)
-		ret += String.fromCharCode(data[i]);
-	return ret;
-}
-
-function binToSaveData(binData) {
-  let len = binData.length;
-	let ret = new Uint8Array(len);
-	for (let i = 0; i < len; i++)
-		ret[i] = binData.charCodeAt(i);
-	return ret;
 }
 
 let saveDataToastQueue = [];
