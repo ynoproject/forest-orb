@@ -19,23 +19,24 @@ function initSaveSyncControls() {
     saveSyncConfig.slotId = this.value;
     updateConfig(saveSyncConfig, false, 'saveSyncConfig');
     if (this.value) {
+      const getSaveSyncData = timestamp => {
+        getSaveDataForSync().then(saveData => {
+          if (saveData && (!timestamp || saveData.timestamp > new Date(timestamp)))
+            uploadSaveSyncData(saveData).then(success => {
+              if (success)
+                document.getElementById('clearSaveSyncButton').removeAttribute('disabled');
+            });
+        });
+      };
       hasSaveDataForSync().then(hasSaveData => {
         if (hasSaveData) {
           apiFetch('saveSync?command=timestamp')
             .then(response => {
               if (!response.ok)
-                throw new Error('Failed to retrieve timestamp for save sync data');
+                return getSaveSyncData(null);
               return response.text();
             })
-            .then(timestamp => {
-              getSaveDataForSync().then(saveData => {
-                if (saveData && (!timestamp || saveData.timestamp > new Date(timestamp)))
-                  uploadSaveSyncData(saveData).then(success => {
-                    if (success)
-                      document.getElementById('clearSaveSyncButton').removeAttribute('disabled');
-                  });
-              });
-            })
+            .then(timestamp => getSaveSyncData(timestamp))
             .catch(err => console.error(err));
         }
       });
@@ -246,7 +247,7 @@ function uploadSaveSyncData(saveData) {
     if (!loginToken || !saveSyncConfig.enabled)
       resolve(false);
     showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
-    apiJsonPost(`saveSync?command=push&timestamp=${saveData.timestamp.toISOString()}`, saveData)
+    apiJsonPost(`saveSync?command=push`, saveDataToBin(saveData.contents))
       .then(_ => {
         showSaveSyncToastMessage('saveUploaded', 'save', saveSyncConfig.slotId);
         resolve(true);
@@ -285,8 +286,11 @@ function trySyncSave() {
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
+                  const contents = typeof saveSyncData.contents === 'string'
+                    ? binToSaveData(saveSyncData.contents)
+                    : saveSyncData.contents;
                   saveSyncData.timestamp = new Date(saveSyncData.timestamp);
-                  saveSyncData.contents = Uint8Array.from(Object.values(saveSyncData.contents));
+                  saveSyncData.contents = Uint8Array.from(Object.values(contents));
 
                   const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
 
@@ -332,6 +336,22 @@ function clearSaveSyncData() {
       })
       .catch(_err => resolve(false));
   });
+}
+
+function saveDataToBin(data) {
+  let len = data.length;
+  let ret = '';
+	for (let i = 0; i < len; i++)
+		ret += String.fromCharCode(data[i]);
+	return ret;
+}
+
+function binToSaveData(binData) {
+  let len = binData.length;
+	let ret = new Uint8Array(len);
+	for (let i = 0; i < len; i++)
+		ret[i] = binData.charCodeAt(i);
+	return ret;
 }
 
 let saveDataToastQueue = [];
