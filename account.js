@@ -132,8 +132,7 @@ function updateModControls() {
       return;
     modSettingsButton = document.createElement('button');
     modSettingsButton.id = 'modSettingsButton';
-    modSettingsButton.classList.add('unselectable');
-    modSettingsButton.classList.add('iconButton');
+    modSettingsButton.classList.add('unselectable', 'iconButton');
     addTooltip(modSettingsButton, getMassagedLabel(localizedMessages.modSettings.title, true), true, true);
     modSettingsButton.onclick = () => openModal('modSettingsModal');
     modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';

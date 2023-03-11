@@ -435,12 +435,10 @@ function addOrUpdatePartyListEntry(party) {
 
   if (!partyListEntry) {
     partyListEntry = document.createElement('div');
-    partyListEntry.classList.add('partyListEntry');
-    partyListEntry.classList.add('listEntry');
+    partyListEntry.classList.add('partyListEntry', 'listEntry');
     partyListEntry.dataset.id = party.id;
 
-    partyListEntrySprite.classList.add('partyListEntrySprite');
-    partyListEntrySprite.classList.add('listEntrySprite');
+    partyListEntrySprite.classList.add('partyListEntrySprite', 'listEntrySprite');
 
     partyListEntry.appendChild(partyListEntrySprite);
 
@@ -467,8 +465,7 @@ function addOrUpdatePartyListEntry(party) {
     detailsContainer.appendChild(partyMemberSpritesContainer);
     partyListEntry.appendChild(detailsContainer);
 
-    partyListEntryActionContainer.classList.add('partyListEntryActionContainer');
-    partyListEntryActionContainer.classList.add('listEntryActionContainer');
+    partyListEntryActionContainer.classList.add('partyListEntryActionContainer', 'listEntryActionContainer');
 
     const viewDetailsAction = document.createElement('a');
     viewDetailsAction.classList.add('listEntryAction');
@@ -493,9 +490,7 @@ function addOrUpdatePartyListEntry(party) {
       if (joinLeaveAction)
         joinLeaveAction.remove();
       joinLeaveAction = document.createElement('a');
-      joinLeaveAction.classList.add('listEntryAction');
-      joinLeaveAction.classList.add('partyJoinLeaveAction');
-      joinLeaveAction.classList.add(actionClass);
+      joinLeaveAction.classList.add('listEntryAction', 'partyJoinLeaveAction', actionClass);
       joinLeaveAction.href = 'javascript:void(0);';
       joinLeaveAction.onclick = isInParty
         ? function () {
@@ -598,8 +593,7 @@ function addOrUpdatePartyListEntry(party) {
         partyListEntrySprite.src = spriteImg;
       } else {
         const spriteImgIcon = document.createElement('img');
-        spriteImgIcon.classList.add('partyListEntrySprite');
-        spriteImgIcon.classList.add('listEntrySprite');
+        spriteImgIcon.classList.add('partyListEntrySprite', 'listEntrySprite');
         let partyMemberName = getPartyMemberName(party, member, true, true);
         if (!member.online) {
           spriteImgIcon.classList.add('offline');
@@ -652,8 +646,7 @@ function initOrUpdatePartyModal(partyId) {
 
   if (isOwnParty) {
     const editButton = getSvgIcon('edit', true);
-    editButton.classList.add('iconButton');
-    editButton.classList.add('altIcon');
+    editButton.classList.add('iconButton', 'altIcon');
     editButton.onclick = function () {
       if (party) {
         const partyName = document.getElementById('partyName');

@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "次の行追加まで（BP）",
         "badgeGalleryColProgress": "次の列追加まで（バッジ）"
       },
+      "save": {
+        "title": "セーブデータ管理",
+        "reload": "変更を保存してリロード"
+      },
       "uiTheme": {
         "title": "メニュー タイプ",
         "auto": "自動"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "シングルプレイヤーのオン／オフ",
-      "io": {
-        "upload": "セーブデータをアップロード",
-        "download": "セーブデータをダウンロード"
-      },
+      "save": "セーブデータ管理",
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
-    "io": {
-      "common": {
-        "failedSlotInput": "入力されたスロットが無効です。セーブデータのスロット番号を1～15で入力してください。"
-      },
-      "upload": {
-        "slotInput": "アップロード先のセーブデータのスロット番号（1～15）を入力します。",
-        "invalidSaveFile": "有効なセーブファイル（.lsd形式）を選択してください。"
-      },
-      "download": {
-        "slotInput": "ダウンロードするセーブデータのスロット番号（1～15）を入力します。",
-        "emptySlot": "おっと! 入力されたスロット番号のセーブファイルが空になっているようです。"
-      }
-    },
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
@@ -520,6 +508,26 @@
         "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、没入モードをお試しください。ゲーム画面左上にある目のアイコンを押すと、没入モードのon/offができ、没入モードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "ファイル&nbsp;{SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "セーブデータを アップロード",
+        "invalidSaveFile": "有効なセーブファイル（.lsd形式）を選択してください。"
+      },
+      "download": {
+        "tooltip": "セーブデータを ダウンロード",
+        "emptySlot": "おっと! スロット番号のセーブファイルが空になっているようです。"
+      },
+      "delete": {
+        "tooltip": "セーブデータを 削除",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

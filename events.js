@@ -129,9 +129,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       
       const eventListEntry = document.createElement('div');
 
-      eventListEntry.classList.add(`event${eventTypeName}ListEntry`);
-      eventListEntry.classList.add('eventListEntry');
-      eventListEntry.classList.add('listEntry');
+      eventListEntry.classList.add(`event${eventTypeName}ListEntry`, 'eventListEntry', 'listEntry');
       if (event.complete)
         eventListEntry.classList.add('complete');
 
@@ -243,8 +241,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       updateThemedContainer(eventListEntry);
 
       const endDateContainer = document.createElement('div');
-      endDateContainer.classList.add('eventLocationEndDateContainer');
-      endDateContainer.classList.add('eventEndDateContainer');
+      endDateContainer.classList.add('eventLocationEndDateContainer', 'eventEndDateContainer');
 
       const endDateLabelContainer = document.createElement('div');
 
@@ -257,9 +254,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       eventListEntry.appendChild(endDateContainer);
 
       const pointsContainer = document.createElement('label');
-      pointsContainer.classList.add('eventLocationPoints');
-      pointsContainer.classList.add('eventPoints');
-      pointsContainer.classList.add('infoLabel');
+      pointsContainer.classList.add('eventLocationPoints', 'eventPoints', 'infoLabel');
       pointsContainer.innerHTML = getMassagedLabel(localizedMessages.events.exp, true).replace('{POINTS}', event.exp || 0);
 
       eventListEntry.appendChild(pointsContainer);

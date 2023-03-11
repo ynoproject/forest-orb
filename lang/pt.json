@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "Atualização da Próxima Linha (PE)",
         "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "Tema da Interface",
         "auto": "AUTO"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Alternar pra Single Player",
-      "io": {
-        "upload": "Enviar Arquivo de Save",
-        "download": "Baixar Arquivo de Save"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
       "screenshot": "Capturar a Tela",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "Tem certeza de que deseja sair da página? Qualquer progresso no jogo não salvo será perdido.",
-    "io": {
-      "common": {
-        "failedSlotInput": "O slot fornecido não é válido: por favor insira um número de slot do save entre 1 a 15."
-      },
-      "upload": {
-        "slotInput": "Insira o número de slot do save para enviar (1 á 15).",
-        "invalidSaveFile": "Por favor selecione um save válido (formato: .lsd)."
-      },
-      "download": {
-        "slotInput": "Insira o número de slot de save para baixar (1 á 15).",
-        "emptySlot": "Não á nada aqui, escolha outro slot."
-      }
-    },
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -520,6 +508,26 @@
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Enviar Arquivo de Save",
+        "invalidSaveFile": "Por favor selecione um save válido (formato: .lsd)."
+      },
+      "download": {
+        "tooltip": "Baixar Arquivo de Save",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

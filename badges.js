@@ -299,10 +299,7 @@ function initBadgeControls() {
     badgeSlotRow.classList.add('itemRow');
     for (let c = 1; c <= maxBadgeSlotCols; c++) {
       const badgeSlotButton = document.createElement('div');
-      badgeSlotButton.classList.add('badgeSlotButton');
-      badgeSlotButton.classList.add('badgeItem');
-      badgeSlotButton.classList.add('item');
-      badgeSlotButton.classList.add('unselectable');
+      badgeSlotButton.classList.add('badgeSlotButton', 'badgeItem', 'item', 'unselectable');
       badgeSlotButton.dataset.row = r;
       badgeSlotButton.dataset.col = c;
       badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', r, c);
@@ -388,9 +385,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
-  item.classList.add('badgeItem');
-  item.classList.add('item');
-  item.classList.add('unselectable');
+  item.classList.add('badgeItem', 'item', 'unselectable');
 
   let filterItem;
   if (filterable && badgeId !== 'null') {
@@ -441,8 +436,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         badgeOverlay.classList.add('badgeOverlayBase');
 
         const badgeOverlay2 = document.createElement('div');
-        badgeOverlay2.classList.add('badgeOverlay');
-        badgeOverlay2.classList.add('badgeOverlay2');
+        badgeOverlay2.classList.add('badgeOverlay', 'badgeOverlay2');
         if (badge.overlayType & BadgeOverlayType.MULTIPLY)
           badgeOverlay2.classList.add('badgeOverlayMultiply');
         badgeOverlay2.classList.add(getStylePropertyValue('--base-color') !== getStylePropertyValue('--alt-color') ? 'badgeOverlayAlt' : 'badgeOverlayBg');
@@ -455,14 +449,12 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
 
     badgeContainer.appendChild(badgeEl);
     if (!badge.unlocked) {
-      item.classList.add('locked');
-      item.classList.add('disabled');
+      item.classList.add('locked', 'disabled');
       if (lockedIcon)
         badgeContainer.appendChild(getSvgIcon('locked', true));
     }
   } else if (badgeId !== 'null') {
-    item.classList.add('locked');
-    item.classList.add('disabled');
+    item.classList.add('locked', 'disabled');
     if (lockedIcon)
       badgeContainer.appendChild(getSvgIcon('locked', true));
     badgeContainer.appendChild(document.createElement('div'));
@@ -727,8 +719,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             }
 
             const tooltipContent = document.createElement('div');
-            tooltipContent.classList.add('tooltipContent');
-            tooltipContent.classList.add('noShadow');
+            tooltipContent.classList.add('tooltipContent', 'noShadow');
     
             const tooltipTitle = document.createElement('h4');
             tooltipTitle.classList.add('tooltipTitle');
@@ -743,8 +734,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
               badgeRowSlots.forEach((badgeId, c) => {
                 const badgeSlot = document.createElement('div');
-                badgeSlot.classList.add('badgeSlot');
-                badgeSlot.classList.add('badge');
+                badgeSlot.classList.add('badgeSlot', 'badge');
                 badgeSlot.dataset.rowIndex = r;
                 badgeSlot.dataset.colIndex = c;
       
@@ -758,8 +748,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                   if (badge?.overlayType) {
                     const badgeSlotOverlay = document.createElement('div');
 
-                    badgeSlotOverlay.classList.add('badgeSlotOverlay');
-                    badgeSlotOverlay.classList.add('badgeOverlay');
+                    badgeSlotOverlay.classList.add('badgeSlotOverlay', 'badgeOverlay');
                     if (badge.overlayType & BadgeOverlayType.MULTIPLY)
                       badgeSlotOverlay.classList.add('badgeOverlayMultiply');
                     badgeSlotOverlay.dataset.overlayType = badge.overlayType;
@@ -775,8 +764,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                     if (badge.overlayType & BadgeOverlayType.DUAL) {
                       const badgeSlotOverlay2 = document.createElement('div');
 
-                      badgeSlotOverlay2.classList.add('badgeOverlay');
-                      badgeSlotOverlay2.classList.add('badgeOverlay2');
+                      badgeSlotOverlay2.classList.add('badgeOverlay', 'badgeOverlay2');
                       if (badge.overlayType & BadgeOverlayType.MULTIPLY)
                         badgeSlotOverlay2.classList.add('badgeOverlayMultiply');
             

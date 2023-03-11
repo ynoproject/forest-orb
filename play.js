@@ -610,8 +610,7 @@ document.getElementById('reconnectButton').onclick = function () {
   if (reconnectCooldownTimer || connStatus >= 2)
     return;
 
-  this.classList.add('active');
-  this.classList.add('disabled');
+  this.classList.add('active', 'disabled');
 
   const reconnectButton = this;
   let reconnected;
@@ -1641,9 +1640,7 @@ function setMaps(maps, locationNames, cacheMaps, saveMaps) {
 
 function getMapButton(url, label) {
   const ret = document.createElement('button');
-  ret.classList.add('mapButton');
-  ret.classList.add('unselectable');
-  ret.classList.add('iconButton');
+  ret.classList.add('mapButton', 'unselectable', 'iconButton');
   addTooltip(ret, label, true);
   ret.onclick = () => {
     const handle = window.open(url, '_blank', 'noreferrer');

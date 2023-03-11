@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": " (نقات الشارات) ترقية الصف التالي",
         "badgeGalleryColProgress": "ترقية العمود التالي (شارات)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "تصميم واجهة المستخدم",
         "auto": "تلقاءي"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "وضع لاعب واحد",
-      "io": {
-        "upload": "وضع ملف الحفظ",
-        "download": "تحميل ملف الحفظ"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "تصميم واجهة المستخدم",
       "toggleChat": "وضع المحادثة",
       "screenshot": "اخذ صورة للشاشة",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
-    "io": {
-      "common": {
-        "failedSlotInput": "الموضع المقدم غير صالح: الرجاء إدخال رقم موضع ملف الحفظ من 1 إلى 15"
-      },
-      "upload": {
-        "slotInput": "أدخل رقم موضع ملف الحفظ للتحميل إلى (من 1 إلى 15)",
-        "invalidSaveFile": "(.lsd الرجاء تحديد ملف حفظ صحيح (نمط"
-      },
-      "download": {
-        "slotInput": "أدخل رقم موضع ملف الحفظ للتحميل إلى (من 1 إلى 15)",
-        "emptySlot": "أُووبس! يبدو أن ملف الحفظ للموضع المختار فارغ"
-      }
-    },
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
@@ -520,6 +508,26 @@
         "parties": ".تعتبر الحفلات طريقة رائعة للبقاء مع الأشخاص في أي مغامرة. يمكنك رؤية مواقع أعضاء مجموعتك والتحدث معهم في محادثة خاصة",
         "immersionMode": "!إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
         "openSource": "https://github.com/ynoproject/ مفتوح المصدر ومستودعات الكود متاحة على YNOproject"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "وضع ملف الحفظ",
+        "invalidSaveFile": "(.lsd الرجاء تحديد ملف حفظ صحيح (نمط"
+      },
+      "download": {
+        "tooltip": "تحميل ملف الحفظ",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

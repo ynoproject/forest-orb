@@ -69,7 +69,49 @@ function initSaveSyncControls() {
 }
 
 function initSaveDataControls() {
-  document.getElementById('uploadButton').onclick = function () {
+  document.getElementById('saveButton').onclick = () => {
+    updateSaveSlotList();
+
+    openModal('saveModal');
+  };
+
+  document.getElementById('saveModalReloadButton').onclick = () => window.location = window.location;
+}
+
+function updateSaveSlotList() {
+  const saveSlotList = document.getElementById('saveSlotList');
+  saveSlotList.innerHTML = '';
+
+  for (let s = 1; s <= 15; s++) {
+    saveSlotList.appendChild(getSaveSlotListEntry(s));
+  }
+}
+
+function getSaveSlotListEntry(slotId) {
+  const slot = document.createElement('div');
+  slot.classList.add('saveSlotListEntry', 'listEntry');
+  slot.dataset.slotId = slotId;
+
+  const title = document.createElement('label');
+  title.innerHTML = getMassagedLabel(localizedMessages.save.slot.title, true).replace('{SLOT_ID}', slotId);
+
+  slot.appendChild(title);
+
+  const content = document.createElement('div');
+  content.classList.add('saveSlotListEntryContent');
+
+  const contentLabel = document.createElement('label');
+  contentLabel.innerHTML = getMassagedLabel(localizedMessages.save.slot.readingLabel, true);
+
+  content.appendChild(contentLabel);
+
+  const buttonsContainer = document.createElement('div');
+  buttonsContainer.classList.add('saveSlotButtonsContainer');
+
+  const uploadButton = getSvgIcon('saveUpload');
+  
+  uploadButton.classList.add('saveSlotUploadButton', 'saveSlotButton', 'unselectable', 'iconButton');
+  uploadButton.onclick = () => {
     let saveFile = document.getElementById('saveFile');
     if (saveFile)
       saveFile.remove();
@@ -78,94 +120,186 @@ function initSaveDataControls() {
     saveFile.type = 'file';
     saveFile.id = 'saveFile';
     saveFile.style.display = 'none';
-    saveFile.addEventListener('change', handleSaveFileUpload);
+    saveFile.addEventListener('change',
+      e => uploadSaveFile(e.target.files[0], formatSaveSlotId(slotId))
+        .then(success => {
+          const reloadButton = document.getElementById('saveModalReloadButton');
+          if (success) {
+            if (reloadButton.classList.contains('hidden'))
+              setTimeout(() => reloadButton.classList.remove('hidden'), 100);
+            slot.insertAdjacentElement('afterend', getSaveSlotListEntry(slotId));
+            slot.remove();
+          }
+        })
+    );
     saveFile.click();
   };
-  
-  document.getElementById('downloadButton').onclick = handleSaveFileDownload;
+  addTooltip(uploadButton, getMassagedLabel(localizedMessages.save.upload.tooltip, true), true, true);
+
+  const downloadButton = getSvgIcon('saveDownload');
+  downloadButton.classList.add('saveSlotDownloadButton', 'saveSlotButton', 'unselectable', 'iconButton', 'hidden');
+  downloadButton.onclick = () => downloadSaveFile(formatSaveSlotId(slotId));
+  addTooltip(downloadButton, getMassagedLabel(localizedMessages.save.download.tooltip, true), true, true);
+
+  const deleteButton = getSvgIcon('delete');
+  deleteButton.classList.add('saveSlotDeleteButton', 'saveSlotButton', 'unselectable', 'iconButton', 'hidden');
+  deleteButton.onclick = () => deleteSaveFile(formatSaveSlotId(slotId))
+    .then(success => {
+      const reloadButton = document.getElementById('saveModalReloadButton');
+      if (success) {
+        if (reloadButton.classList.contains('hidden'))
+          setTimeout(() => reloadButton.classList.remove('hidden'), 100);
+        slot.insertAdjacentElement('afterend', getSaveSlotListEntry(slotId));
+        slot.remove();
+      }
+    });
+  addTooltip(deleteButton, getMassagedLabel(localizedMessages.save.delete.tooltip, true), true, true);
+
+  buttonsContainer.appendChild(uploadButton);
+  buttonsContainer.appendChild(downloadButton);
+  buttonsContainer.appendChild(deleteButton);
+  content.appendChild(buttonsContainer);
+
+  slot.appendChild(content);
+
+  getSaveSlotData(slotId)
+    .then(saveData => {
+      contentLabel.innerHTML = saveData == null
+        ? getMassagedLabel(localizedMessages.save.slot.emptyLabel, true)
+        : saveData.timestamp.toLocaleString(globalConfig.lang === 'en' ? [] : globalConfig.lang, { "dateStyle": "short", "timeStyle": "short" });
+
+      if (saveData != null) {
+        contentLabel.classList.add('altText');
+        downloadButton.classList.remove('hidden');
+        deleteButton.classList.remove('hidden');
+      }
+    })
+    .catch(err => {
+      contentLabel.innerHTML = getMassagedLabel(localizedMessages.save.slot.errorLabel, true);
+      console.error(err);
+    })
+
+  return slot;
 }
 
-function handleSaveFileUpload(evt) {
-  const save = evt.target.files[0];
+function uploadSaveFile(file, saveSlot) {
+  return new Promise(resolve => {
+    if (!file || !saveSlot)
+      return resolve(false);
 
-  if (!/\.lsd$/i.test(save.name)) {
-    alert(localizedMessages.io.upload.invalidSaveFile);
-    document.getElementById('uploadButton').click();
-    return;
-  }
+    if (!/\.lsd$/i.test(file.name)) {
+      alert(localizedMessages.io.upload.invalidSaveFile);
+      document.getElementById('uploadButton').click();
+      return;
+    }
 
-  const saveSlot = getSaveSlot();
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
-  if (saveSlot == null)
-    return;
+    request.onsuccess = function (_e) {
 
-  const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+      const reader = new FileReader();
+      let readerResult;
 
-  request.onsuccess = function (_e) {
+      reader.onload = file => {
+        readerResult = file.currentTarget.result;
+        const saveFile = { timestamp: new Date(), mode: 33206, contents: new Uint8Array(readerResult) };
+    
+        const db = request.result; 
+        const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+        const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
-    const reader = new FileReader();
-    let readerResult;
+        objectStorePutRequest.onsuccess = () => resolve(true);
+        objectStorePutRequest.onerror = () => resolve(false);
+      };
+      reader.onerror = () => resolve(false);
 
-    reader.onload = function (file) {
-      readerResult = file.currentTarget.result;
-      const saveFile = { timestamp: new Date(), mode: 33206, contents: new Uint8Array(readerResult) };
-  
+      reader.readAsArrayBuffer(file);
+    };
+    request.onerror = () => resolve(false);
+  });
+}
+
+function downloadSaveFile(saveSlot) {
+  return new Promise(resolve => {
+    if (!saveSlot)
+        return resolve(false);
+
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+
+    request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
+      const objectStore = transaction.objectStore('FILE_DATA');
+      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
-      objectStorePutRequest.onsuccess = function (_e) {
-        setTimeout(() => window.location = window.location, 100);
+      objectStoreRequest.onsuccess = function (_e) {
+        const record = objectStoreRequest.result;
+
+        if (!record) {
+          alert(localizedMessages.io.download.emptySlot);
+          resolve(false);
+        }
+
+        const blob = new Blob([record.contents], {type: 'text/json'});
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = `Save${saveSlot}.lsd`;
+        link.click();
+        link.remove();
+        resolve(true);
       };
+      objectStoreRequest.onerror = () => resolve(false);
     };
-
-    reader.readAsArrayBuffer(save);
-  };
+    request.onerror = () => resolve(false);
+  });
+ 
 }
 
-function handleSaveFileDownload() {
-  const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+function deleteSaveFile(saveSlot) {
+  return new Promise(resolve => {
+    if (!saveSlot || !confirm(localizedMessages.save.delete.confirmDelete.replace('{SLOT_ID}', parseInt(saveSlot))))
+      return resolve(false);
 
-  request.onsuccess = function (_e) {
-    const saveSlot = getSaveSlot(true);
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
-    if (saveSlot == null)
-      return;
+    request.onsuccess = function (_e) {
+      const db = request.result; 
+      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+      const objectStoreDeleteRequest = transaction.objectStore('FILE_DATA').delete(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
-    const db = request.result; 
-    const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-    const objectStore = transaction.objectStore('FILE_DATA');
-    const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
-
-    objectStoreRequest.onsuccess = function (_e) {
-      const record = objectStoreRequest.result;
-
-      if (!record) {
-        alert(localizedMessages.io.download.emptySlot);
-        return;
-      }
-
-      const blob = new Blob([record.contents], {type: 'text/json'});
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.download = `Save${saveSlot}.lsd`;
-      link.click();
-      link.remove();
+      objectStoreDeleteRequest.onsuccess = () => resolve(true);
+      objectStoreDeleteRequest.onerror = () => resolve(false);
     };
-  };
+    request.onerror = () => resolve(false);
+  });
 }
 
-function getSaveSlot(download) {
-  let fileIndex = prompt(localizedMessages.io[download ? 'download' : 'upload'].slotInput, 1);
-  let fileIndexInt;
+function getSaveSlotData(saveSlotId) {
+  return new Promise(resolve => {
+    if (!saveSlotId)
+      resolve(null);
 
-  while (fileIndex != null && !/^\d+$/.test(fileIndex) || (fileIndexInt = parseInt(fileIndex)) < 1 || fileIndexInt > 15)
-    fileIndex = prompt(localizedMessages.io.common.failedSlotInput);
+    const slotId = saveSlotId < 10 ? `0${saveSlotId}` : saveSlotId.toString();
+    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
-  if (fileIndex == null)
-    return null;
+    request.onsuccess = function (_e) {
+      const db = request.result; 
+      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+      const objectStore = transaction.objectStore('FILE_DATA');
+      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
-  return fileIndexInt < 10 ? `0${fileIndexInt}` : fileIndexInt.toString();
+      objectStoreRequest.onsuccess = () => resolve(objectStoreRequest.result);
+      objectStoreRequest.onerror = () => resolve(null);
+    };
+  });
+}
+
+function formatSaveSlotId(saveSlotId) {
+  if (saveSlotId < 1)
+    saveSlotId = 1;
+  else if (saveSlotId > 15)
+    saveSlotId = 15;
+  return saveSlotId < 10 ? `0${saveSlotId}` : saveSlotId.toString();
 }
 
 function setSaveSyncEnabled(enabled, isInit) {
@@ -223,23 +357,7 @@ function hasSaveDataForSync() {
 }
 
 function getSaveDataForSync() {
-  return new Promise(resolve => {
-    if (!saveSyncConfig.slotId)
-      resolve(null);
-
-    const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
-    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
-
-    request.onsuccess = function (_e) {
-      const db = request.result; 
-      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
-
-      objectStoreRequest.onsuccess = () => resolve(objectStoreRequest.result);
-      objectStoreRequest.onerror = () => resolve(null);
-    };
-  });
+  return getSaveSlotData(saveSyncConfig.slotId);
 }
 
 function uploadSaveSyncData(saveData) {

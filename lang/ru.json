@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "До следующей строки (ОЗ)",
         "badgeGalleryColProgress": "До следующей колонки (значков)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "Стиль интерфейса",
         "auto": "Как в игре"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Переключить режим одиночной игры",
-      "io": {
-        "upload": "Загрузить сохранение",
-        "download": "Скачать сохранение"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "Стиль интерфейса",
       "toggleChat": "Переключить чат",
       "screenshot": "Сделать скриншот",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "Вы уверены, что хотите покинуть страницу? Весь несохранённый прогресс будет утерян.",
-    "io": {
-      "common": {
-        "failedSlotInput": "Неверно указан слот: пожалуйста, введите номер слота сохранения от 1 до 15."
-      },
-      "upload": {
-        "slotInput": "Введите, в какой слот следует загрузить сохранение (От 1 до 15).",
-        "invalidSaveFile": "Пожалуйста, выберите корректный файл сохранения (В формате .lsd)."
-      },
-      "download": {
-        "slotInput": "Укажите номер слота для загрузки (От 1 до 15).",
-        "emptySlot": "Ой! Похоже, указанный Вами слот сохранения пуст."
-      }
-    },
     "connStatus": {
       "0": "Вне сети",
       "1": "В сети",
@@ -520,6 +508,26 @@
         "parties": "Группы - хороший способ путешествовать вместе с другими людьми. Вы можете видеть местонахождение других участников группы и общаться с ними в отдельном канале чата.",
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте режим погружения. В нём скрывается общий чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Загрузить сохранение",
+        "invalidSaveFile": "Пожалуйста, выберите корректный файл сохранения (В формате .lsd)."
+      },
+      "download": {
+        "tooltip": "Скачать сохранение",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

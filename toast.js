@@ -77,9 +77,7 @@ function initNotificationsConfigAndControls() {
 
     const categoryButton = document.createElement('button');
     categoryButton.id = categoryButtonId;
-    categoryButton.classList.add('checkboxButton');
-    categoryButton.classList.add('inverseToggle');
-    categoryButton.classList.add('unselectable');
+    categoryButton.classList.add('checkboxButton', 'inverseToggle', 'unselectable');
     categoryButton.onclick = function () {
       const toggled = !this.classList.contains('toggled');
       this.classList.toggle('toggled', toggled);
@@ -103,8 +101,7 @@ function initNotificationsConfigAndControls() {
       categoryConfig[type] = true;
 
       const typeRow = document.createElement('li');
-      typeRow.classList.add('formControlRow');
-      typeRow.classList.add('indent');
+      typeRow.classList.add('formControlRow', 'indent');
       if (accountRequired)
         typeRow.classList.add('accountRequired');
       typeRow.dataset.category = category;
@@ -120,9 +117,7 @@ function initNotificationsConfigAndControls() {
 
       const typeButton = document.createElement('button');
       typeButton.id = typeButtonId;
-      typeButton.classList.add('checkboxButton');
-      typeButton.classList.add('inverseToggle');
-      typeButton.classList.add('unselectable');
+      typeButton.classList.add('checkboxButton', 'inverseToggle', 'unselectable');
       typeButton.onclick = function () {
         this.classList.toggle('toggled');
         notificationConfig[category][type] = !this.classList.contains('toggled');

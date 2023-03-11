@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "下一行展柜解锁进度 (BP)",
         "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "界面风格",
         "auto": "自动"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "单人/多人模式切换",
-      "io": {
-        "upload": "上传存档文件",
-        "download": "下载存档文件"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
       "screenshot": "截屏",
@@ -373,19 +374,6 @@
       "mikan": "未完梦像"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
-    "io": {
-      "common": {
-        "failedSlotInput": "输入的存档编号无效。请输入1~15以内的存档编号。"
-      },
-      "upload": {
-        "slotInput": "输入上传的目标存档编号（1~15）",
-        "invalidSaveFile": "駄目！请选择正确的存档文件（文件格式为.lsd）。"
-      },
-      "download": {
-        "slotInput": "输入想要下载的存档编号（1~15）",
-        "emptySlot": "無理！这个编号对应的存档好像是空的。"
-      }
-    },
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
@@ -520,6 +508,26 @@
         "parties": "使用组队功能可以和伙伴们在旅途中保持联系。您可以在玩家列表的“我的队伍”标签下看到其他队员的所在位置，并可以在“队伍”聊天频道下与队员私聊。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "上传存档文件",
+        "invalidSaveFile": "駄目！请选择正确的存档文件（文件格式为.lsd）。"
+      },
+      "download": {
+        "tooltip": "下载存档文件",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

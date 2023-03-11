@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "Prochaine amélioration de la rangée (PB)",
         "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "Thème d'IU",
         "auto": "AUTO"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
-      "io": {
-        "upload": "Téléverser un fichier de sauvegarde",
-        "download": "Télécharger un fichier de sauvegarde"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
       "screenshot": "Prendre une capture d'écran",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
-    "io": {
-      "common": {
-        "failedSlotInput": "L'emplacement fourni n'est pas valide : veuillez entrer un numéro d'emplacement de sauvegarde entre 1 et 15."
-      },
-      "upload": {
-        "slotInput": "Entrez le numéro de l'emplacement de sauvegarde dans lequel placer le fichier (de 1 à 15).",
-        "invalidSaveFile": "Sélectionnez un fichier de sauvegarde valide (format .lsd)."
-      },
-      "download": {
-        "slotInput": "Entrez le numéro de l'emplacement de sauvegarde à télécharger (de 1 à 15).",
-        "emptySlot": "Oups ! Le fichier de sauvegarde pour cet emplacement semble être vide."
-      }
-    },
     "connStatus": {
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
@@ -520,6 +508,26 @@
         "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/."
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Téléverser un fichier de sauvegarde",
+        "invalidSaveFile": "Sélectionnez un fichier de sauvegarde valide (format .lsd)."
+      },
+      "download": {
+        "tooltip": "Télécharger un fichier de sauvegarde",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {
