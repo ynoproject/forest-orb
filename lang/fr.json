@@ -513,7 +513,7 @@
     "save": {
       "slot": {
         "title": "Fichier {SLOT_ID}",
-        "readingLabel": "Chargement du fichier de sauvegarde...",
+        "readingLabel": "Lecture du fichier de sauvegarde...",
         "emptyLabel": "Vide",
         "errorLabel": "Erreur"
       },
