@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "ゆめ２っきver{VERSION}",
@@ -371,7 +371,7 @@
       "braingirl": "ブレインガール",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
-      "mikan": "Mikan Muzou"
+      "mikan": "未完夢像"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "connStatus": {
@@ -513,9 +513,9 @@
     "save": {
       "slot": {
         "title": "ファイル&nbsp;{SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "readingLabel": "ファイルデータ読み込み中...",
+        "emptyLabel": "空のデータ",
+        "errorLabel": "エラー"
       },
       "upload": {
         "tooltip": "セーブデータを アップロード",
@@ -527,7 +527,7 @@
       },
       "delete": {
         "tooltip": "セーブデータを 削除",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "confirmDelete": "ファイル{SLOT_ID}のセーブデータを削除してもよろしいですか？"
       }
     },
     "saveSync": {
