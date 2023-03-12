@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
         "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "UI Stil",
         "auto": "AUTO"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Toggle Single Player",
-      "io": {
-        "upload": "Save hochladen",
-        "download": "Save runterladen"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
       "screenshot": "Take Screenshot",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "Bist du dir sicher, dass du diese Seite verlassen möchtest? Nicht gespeicherte Fortschritte werden verloren gehen.",
-    "io": {
-      "common": {
-        "failedSlotInput": "Der angegebene Speicherplatz war nicht gültig. Bitte gebe eine Speicherplatz Nummer von 1-15 an."
-      },
-      "upload": {
-        "slotInput": "Gebe den Speicherplatz an in dem du speichern möchtest. (1 bis 15).",
-        "invalidSaveFile": "Bitte benutze eine Datei im gültigen Format. (.lsd Format)."
-      },
-      "download": {
-        "slotInput": "Gebe den Speicherstand an, den du runterladen möchstest. (1 bis 15).",
-        "emptySlot": "Oops! Der angegebene Speicherplatz scheint leer zu sein."
-      }
-    },
     "connStatus": {
       "0": "Verbindung unterbrochen",
       "1": "Verbunden",
@@ -522,6 +510,26 @@
         "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
       }
     },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Save hochladen",
+        "invalidSaveFile": "Bitte benutze eine Datei im gültigen Format. (.lsd Format)."
+      },
+      "download": {
+        "tooltip": "Save runterladen",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+      }
+    },
     "saveSync": {
       "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
       "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?"
@@ -562,7 +570,7 @@
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",
         "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data in slot {SLOT}...",
+        "saveDownloading": "Updating save data for file {SLOT}...",
         "saveDownloaded": "Save slot {SLOT} was updated successfully.",
         "saveUpToDate": "Save data is up to date.",
         "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."

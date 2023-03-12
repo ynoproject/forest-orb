@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
         "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "Tema de Inferfaz",
         "auto": "AUTO"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Alternar Modo Solitario",
-      "io": {
-        "upload": "Cargar archivo de guardado",
-        "download": "Descargar archivo de guardado"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
       "screenshot": "Capturar Pantalla",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
-    "io": {
-      "common": {
-        "failedSlotInput": "La ranura seleccionada no es válida: Ingrese un número de ranura para el archivo de guardado entre 1 y 15."
-      },
-      "upload": {
-        "slotInput": "Ingrese el número de ranura en el cual se desea cargar el archivo de guardado (1 al 15).",
-        "invalidSaveFile": "Seleccione un archivo de guardado válido (formato .lsd)."
-      },
-      "download": {
-        "slotInput": "Ingrese el número de ranura en el cual se encuentra el archivo de guardado que se quiere descargar (1 al 15).",
-        "emptySlot": "¡Ups! El archivo de guardado en la ranura seleccionada parece estar vacío."
-      }
-    },
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -520,6 +508,26 @@
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefiere una experiencia inmersiva sobre una social, intente el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Cargar archivo de guardado",
+        "invalidSaveFile": "Seleccione un archivo de guardado válido (formato .lsd)."
+      },
+      "download": {
+        "tooltip": "Descargar archivo de guardado",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

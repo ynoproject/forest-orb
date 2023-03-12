@@ -590,8 +590,7 @@ function getUiThemeOption(uiTheme) {
     uiTheme = systemName || getDefaultUiTheme();
 
   const item = document.createElement('div');
-  item.classList.add('uiThemeItem');
-  item.classList.add('item');
+  item.classList.add('uiThemeItem', 'item');
   if (isAuto)
     item.classList.add('auto');
   item.classList.add('unselectable');

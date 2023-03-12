@@ -192,7 +192,7 @@ function apiFetch(path, isAdmin) {
   });
 }
 
-function apiJsonPost(path, data) {
+function apiPost(path, data) {
   return new Promise((resolve, reject) => {
     const headers = {
       'Accept': 'application/json',
@@ -201,10 +201,14 @@ function apiJsonPost(path, data) {
     const sId = getCookie(sessionIdKey);
     if (sId)
       headers['Authorization'] = sId;
-    fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: JSON.stringify(data) })
+    fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: data })
       .then(response => resolve(response))
       .catch(err => reject(err));
   });
+}
+
+function apiJsonPost(path, data) {
+  return apiPost(path, JSON.stringify(data));
 }
 
 function wikiApiFetch(action, query) {

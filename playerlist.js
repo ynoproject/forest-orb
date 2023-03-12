@@ -69,8 +69,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
 
     if (badge) {
       badgeEl = document.createElement('div');
-      badgeEl.classList.add('badge');
-      badgeEl.classList.add('nameBadge');
+      badgeEl.classList.add('badge', 'nameBadge');
 
       badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
       badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
@@ -98,8 +97,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
             ? badgeUrl.replace('.', '_mask_bg.')
             : badgeUrl;
 
-          badgeOverlay2El.classList.add('badgeOverlay');
-          badgeOverlay2El.classList.add('badgeOverlay2');
+          badgeOverlay2El.classList.add('badgeOverlay', 'badgeOverlay2');
           if (badge.overlayType & BadgeOverlayType.MULTIPLY)
             badgeOverlay2El.classList.add('badgeOverlayMultiply');
 
@@ -173,15 +171,13 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   if (!playerListEntry) {
     playerListEntry = document.createElement('div');
-    playerListEntry.classList.add('playerListEntry');
-    playerListEntry.classList.add('listEntry');
+    playerListEntry.classList.add('playerListEntry', 'listEntry');
     playerListEntry.dataset.uuid = uuid;
 
     const playerListEntryMain = document.createElement('div');
     playerListEntryMain.classList.add('listEntryMain');
 
-    playerListEntrySprite.classList.add('playerListEntrySprite');
-    playerListEntrySprite.classList.add('listEntrySprite');
+    playerListEntrySprite.classList.add('playerListEntrySprite', 'listEntrySprite');
     
     playerListEntryMain.appendChild(playerListEntrySprite);
 
@@ -221,27 +217,21 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     playerListEntry.appendChild(playerListEntryMain);
 
-    playerListEntryMedals.classList.add('playerListEntryMedals');
-    playerListEntryMedals.classList.add('medalsContainer');
+    playerListEntryMedals.classList.add('playerListEntryMedals', 'medalsContainer');
 
     playerListEntry.appendChild(playerListEntryMedals);
 
-    playerListEntryBadge.classList.add('playerListEntryBadge');
-    playerListEntryBadge.classList.add('badge');
+    playerListEntryBadge.classList.add('playerListEntryBadge', 'badge');
 
-    playerListEntryBadgeOverlay.classList.add('playerListEntryBadgeOverlay');
-    playerListEntryBadgeOverlay.classList.add('badgeOverlay');
+    playerListEntryBadgeOverlay.classList.add('playerListEntryBadgeOverlay', 'badgeOverlay');
 
-    playerListEntryBadgeOverlay2.classList.add('playerListEntryBadgeOverlay2');
-    playerListEntryBadgeOverlay2.classList.add('badgeOverlay');
-    playerListEntryBadgeOverlay2.classList.add('badgeOverlay2');
+    playerListEntryBadgeOverlay2.classList.add('playerListEntryBadgeOverlay2', 'badgeOverlay', 'badgeOverlay2');
 
     playerListEntryBadge.appendChild(playerListEntryBadgeOverlay);
     playerListEntryBadge.appendChild(playerListEntryBadgeOverlay2);
     playerListEntry.appendChild(playerListEntryBadge);
 
-    playerListEntryActionContainer.classList.add('playerListEntryActionContainer');
-    playerListEntryActionContainer.classList.add('listEntryActionContainer');
+    playerListEntryActionContainer.classList.add('playerListEntryActionContainer', 'listEntryActionContainer');
 
     if (player && playerData?.rank > player.rank)
       addAdminContextMenu(playerListEntry, player, uuid);
@@ -309,8 +299,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       const imgSrc = `images/medal_${medalTypes[t].toLowerCase()}.png`;
       for (let m = 0; m < player.medals[t]; m++) {
         const medalImg = document.createElement('img');
-        medalImg.classList.add('playerListEntryMedal');
-        medalImg.classList.add('medal');
+        medalImg.classList.add('playerListEntryMedal', 'medal');
         medalImg.src = imgSrc;
         playerListEntryMedals.prepend(medalImg);
         if (++medalCount >= 5)
@@ -397,8 +386,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       nameText.parentElement.appendChild(partyOwnerIcon);
     } else if (playerData?.uuid === party.ownerUuid && playerList.id.startsWith('partyModal')) {
       partyKickAction = document.createElement('a');
-      partyKickAction.classList.add('partyKickAction');
-      partyKickAction.classList.add('listEntryAction');
+      partyKickAction.classList.add('partyKickAction', 'listEntryAction');
       partyKickAction.href = 'javascript:void(0);';
       partyKickAction.onclick = () => kickPlayerFromJoinedParty(uuid);
       partyKickAction.appendChild(getSvgIcon('leave', true));
@@ -406,8 +394,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       playerListEntryActionContainer.appendChild(partyKickAction);
 
       const transferPartyOwnerAction = document.createElement('a');
-      transferPartyOwnerAction.classList.add('transferPartyOwnerAction');
-      transferPartyOwnerAction.classList.add('listEntryAction');
+      transferPartyOwnerAction.classList.add('transferPartyOwnerAction', 'listEntryAction');
       transferPartyOwnerAction.href = 'javascript:void(0);';
       transferPartyOwnerAction.onclick = () => transferJoinedPartyOwner(uuid);
       transferPartyOwnerAction.appendChild(getSvgIcon('transferPartyOwner', true));

@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "다음 행 업그레이드 (BP)",
         "badgeGalleryColProgress": "다음 열 업그레이드 (뱃지)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "UI 테마",
         "auto": "자동"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
-      "io": {
-        "upload": "세이브 파일 불러오기",
-        "download": "세이브 파일 다운로드"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "screenshot": "스크린샷 찍기",
@@ -373,19 +374,6 @@
       "mikan": "未完夢像(미완몽상)"
     },
     "leavePage": "저장하지 않은 게임 진행 상황이 손실됩니다. 정말로 창을 닫으시겠습니까?",
-    "io": {
-      "common": {
-        "failedSlotInput": "입력한 슬롯이 올바르지 않습니다. 1 ~ 15 범위의 세이브 파일 슬롯 번호를 입력해주세요."
-      },
-      "upload": {
-        "slotInput": "1 ~ 15 범위의 세이브 파일 슬롯 번호를 입력해주세요.",
-        "invalidSaveFile": "올바른 세이브 파일을 선택해주세요 (.lsd 확장자)."
-      },
-      "download": {
-        "slotInput": "1 ~ 15 범위의 세이브 파일 슬롯 번호를 입력해주세요.",
-        "emptySlot": "이런! 입력한 슬롯에 대한 세이브 파일이 비어 있습니다."
-      }
-    },
     "connStatus": {
       "0": "연결 끊김",
       "1": "연결됨",
@@ -520,6 +508,26 @@
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가입하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "세이브 파일 불러오기",
+        "invalidSaveFile": "올바른 세이브 파일을 선택해주세요 (.lsd 확장자)."
+      },
+      "download": {
+        "tooltip": "세이브 파일 다운로드",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {

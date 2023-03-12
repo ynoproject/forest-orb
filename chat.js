@@ -86,8 +86,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
     const msgTimestamp = document.createElement("small");
 
-    msgTimestamp.classList.add('messageTimestamp');
-    msgTimestamp.classList.add('infoLabel');
+    msgTimestamp.classList.add('messageTimestamp', 'infoLabel');
     msgTimestamp.dataset.time = timestamp.getTime();
 
     msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp, defaultDate);
@@ -144,8 +143,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     const badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
 
     if (badge) {
-      badgeEl.classList.add('badge');
-      badgeEl.classList.add('nameBadge');
+      badgeEl.classList.add('badge', 'nameBadge');
 
       if (localizedBadges) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
@@ -185,8 +183,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
             ? badgeUrl.replace('.', '_mask_bg.')
             : badgeUrl;
 
-          badgeOverlay2El.classList.add('badgeOverlay');
-          badgeOverlay2El.classList.add('badgeOverlay2');
+          badgeOverlay2El.classList.add('badgeOverlay', 'badgeOverlay2');
           if (badge.overlayType & BadgeOverlayType.MULTIPLY)
             badgeOverlay2El.classList.add('badgeOverlayMultiply');
 
@@ -409,9 +406,7 @@ function addChatMapLocation(locations) {
 
   const locMessage = chatboxAddMessage(locationHtml, null, null, true);
   if (locMessage) {
-    locMessage.classList.add("locMessage");
-    locMessage.classList.add("map");
-    locMessage.classList.add("hidden");
+    locMessage.classList.add("locMessage", "map", "hidden");
   }
 }
 

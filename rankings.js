@@ -79,8 +79,7 @@ function fetchAndPopulateRankingCategories() {
         }
 
         const tab = document.createElement('div');
-        tab.classList.add('rankingCategoryTab');
-        tab.classList.add('modalTab');
+        tab.classList.add('rankingCategoryTab', 'modalTab');
         if (categoryId === rankingCategoryId)
           tab.classList.add('active');
         tab.onclick = function () {
@@ -105,9 +104,7 @@ function fetchAndPopulateRankingCategories() {
         };
 
         const tabLabel = document.createElement('label');
-        tabLabel.classList.add('rankingCategoryTabLabel');
-        tabLabel.classList.add('modalTabLabel');
-        tabLabel.classList.add('unselectable');
+        tabLabel.classList.add('rankingCategoryTabLabel', 'modalTabLabel', 'unselectable');
         tabLabel.innerHTML = getMassagedLabel(localizedMessages.rankings.categories[categoryId].label, true);
 
         tab.appendChild(tabLabel);
@@ -152,10 +149,7 @@ function fetchAndPopulateRankingCategories() {
           };
           
           const subTabLabel = document.createElement('small');
-          subTabLabel.classList.add('rankingSubCategoryTabLabel');
-          subTabLabel.classList.add('subTabLabel');
-          subTabLabel.classList.add('infoLabel');
-          subTabLabel.classList.add('unselectable');
+          subTabLabel.classList.add('rankingSubCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
           if (categoryId === rankingCategoryId) {
             if (subCategoryId === rankingSubCategoryId)
               subTab.classList.add('active');
@@ -222,16 +216,14 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
 
         if (page > 1) {
           const firstPageLink = document.createElement('a');
-          firstPageLink.classList.add('rankingPageLink');
-          firstPageLink.classList.add('rankingPageSkipLink');
+          firstPageLink.classList.add('rankingPageLink', 'rankingPageSkipLink');
           firstPageLink.href = 'javascript:void(0);';
           firstPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, 1);
           firstPageLink.innerText = '◀◀';
           rankingsPaginationContainer.appendChild(firstPageLink);
 
           const prevPageLink = document.createElement('a');
-          prevPageLink.classList.add('rankingPageLink');
-          prevPageLink.classList.add('rankingPageLink');
+          prevPageLink.classList.add('rankingPageLink', 'rankingPageLink');
           prevPageLink.href = 'javascript:void(0);';
           prevPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, page - 1);
           prevPageLink.innerText = '◀';
@@ -255,16 +247,14 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
 
         if (page < pageCount) {
           const nextPageLink = document.createElement('a');
-          nextPageLink.classList.add('rankingPageLink');
-          nextPageLink.classList.add('rankingPageLink');
+          nextPageLink.classList.add('rankingPageLink', 'rankingPageLink');
           nextPageLink.href = 'javascript:void(0);';
           nextPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, page + 1);
           nextPageLink.innerText = '▶';
           rankingsPaginationContainer.appendChild(nextPageLink);
 
           const lastPageLink = document.createElement('a');
-          lastPageLink.classList.add('rankingPageLink');
-          lastPageLink.classList.add('rankingPageSkipLink');
+          lastPageLink.classList.add('rankingPageLink', 'rankingPageSkipLink');
           lastPageLink.href = 'javascript:void(0);';
           lastPageLink.onclick = () => fetchAndLoadRankingsPage(categoryId, subCategoryId, pageCount);
           lastPageLink.innerText = '▶▶';

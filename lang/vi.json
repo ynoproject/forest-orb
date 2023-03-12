@@ -276,6 +276,10 @@
         "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
         "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
       },
+      "save": {
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload"
+      },
       "uiTheme": {
         "title": "Phông Nền",
         "auto": "TỰ ĐỘNG"
@@ -329,10 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
-      "io": {
-        "upload": "Tải bản lưu lên",
-        "download": "Tải bản lưu xuống"
-      },
+      "save": "Manage Save Data",
       "uiTheme": "Phông Nền",
       "toggleChat": "Bật/Tắt Chat",
       "screenshot": "Chụp ảnh màn hình",
@@ -373,19 +374,6 @@
       "mikan": "Mikan Muzou"
     },
     "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
-    "io": {
-      "common": {
-        "failedSlotInput": "Vị trí đã nhập không hợp lệ: hãy nhập vị trí bản lưu từ 1 đến 15."
-      },
-      "upload": {
-        "slotInput": "Nhập số thứ tự vị trí lưu cho bản lưu được tải lên (1 đến 15).",
-        "invalidSaveFile": "Hãy chọn bản lưu hợp lệ (đuôi .lsd)."
-      },
-      "download": {
-        "slotInput": "Nhập số thứ tự vị trí lưu cho bản lưu muốn tải xuống (1 đến 15).",
-        "emptySlot": "Oops! Vị trí được chọn để tải bản lưu xuống có vẻ trống rỗng."
-      }
-    },
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -520,6 +508,26 @@
         "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
+      },
+      "upload": {
+        "tooltip": "Tải bản lưu lên",
+        "invalidSaveFile": "Hãy chọn bản lưu hợp lệ (đuôi .lsd)."
+      },
+      "download": {
+        "tooltip": "Tải bản lưu xuống",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
+      },
+      "delete": {
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {
