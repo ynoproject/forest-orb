@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -113,7 +113,7 @@
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleImmersionMode": {
             "label": "Mode Immersion",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
@@ -277,8 +277,8 @@
         "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "Gérer les Données de Sauvegarde",
+        "reload": "Sauvegarder les changements et recharger la page"
       },
       "uiTheme": {
         "title": "Thème d'IU",
@@ -333,7 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
-      "save": "Manage Save Data",
+      "save": "Gérer les Données de Sauvegarde",
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
       "screenshot": "Prendre une capture d'écran",
@@ -512,22 +512,22 @@
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "Fichier {SLOT_ID}",
+        "readingLabel": "Lecture du fichier de sauvegarde...",
+        "emptyLabel": "Vide",
+        "errorLabel": "Erreur"
       },
       "upload": {
         "tooltip": "Téléverser un fichier de sauvegarde",
         "invalidSaveFile": "Sélectionnez un fichier de sauvegarde valide (format .lsd)."
       },
       "download": {
-        "tooltip": "Télécharger un fichier de sauvegarde",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "tooltip": "Télécharger le fichier de sauvegarde",
+        "emptySlot": "Oups ! On dirait que le fichier de sauvegarde pour cet emplacement est vide."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "Effacer le fichier de sauvegarde",
+        "confirmDelete": "Êtes-vous sûr de vouloir effacer les données de sauvegarde pour le fichier {SLOT_ID} ?"
       }
     },
     "saveSync": {
