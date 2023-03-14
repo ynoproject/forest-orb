@@ -108,12 +108,12 @@
               "slim": "Phông nhỏ"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "Âm lượng Âm thanh",
+          "musicVolume": "Âm lượng Âm nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleImmersionMode": {
             "label": "Chế độ Đắm chìm",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
@@ -277,8 +277,8 @@
         "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "Quản lý Dữ liệu lưu",
+        "reload": "Lưu thay đổi và tải lại"
       },
       "uiTheme": {
         "title": "Phông Nền",
@@ -333,12 +333,12 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
-      "save": "Manage Save Data",
-      "uiTheme": "Phông Nền",
+      "save": "Quản lý Dữ liệu lưu",
+      "uiTheme": "Phông nền",
       "toggleChat": "Bật/Tắt Chat",
       "screenshot": "Chụp ảnh màn hình",
       "settings": "Cài đặt",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "Bật/Tắt tiếng",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
@@ -512,10 +512,10 @@
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "Tệp {SLOT_ID}",
+        "readingLabel": "Đang đọc dữ liệu...",
+        "emptyLabel": "Trống",
+        "errorLabel": "Lỗi"
       },
       "upload": {
         "tooltip": "Tải bản lưu lên",
@@ -523,11 +523,11 @@
       },
       "download": {
         "tooltip": "Tải bản lưu xuống",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "Oops! Vị trí đã chọn không có bản lưu nào."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "Xóa bản lưu",
+        "confirmDelete": "Bạn có chắc chắn muốn xóa bản lưu của tệp {SLOT_ID}?"
       }
     },
     "saveSync": {
