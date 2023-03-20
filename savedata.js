@@ -394,17 +394,14 @@ function trySyncSave() {
       .then(timestamp => {
         getSaveDataForSync().then(saveData => {
           if (timestamp && (timestamp = new Date(timestamp)) && (!saveData || saveData.timestamp < timestamp)) {
-            const isNewData = timestamp > new Date(Date.UTC(2023, 3, 11, 1, 45));
             apiFetch('saveSync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
-              return isNewData ? response.arrayBuffer() : response.json();
+              return response.arrayBuffer();
             })
             .then(saveSyncData => {
               if (saveSyncData) {
-                saveSyncData = isNewData
-                  ? new Uint8Array(saveSyncData)
-                  : Uint8Array.from(Object.values(saveSyncData.contents));
+                saveSyncData = new Uint8Array(saveSyncData);
 
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
