@@ -311,7 +311,8 @@ function chatInputActionFired() {
   htmlTextEl.innerHTML = parseMessageTextForMarkdown(chatInput.value);
   if (!htmlTextEl.innerText.trim().length)
     return;
-  if (loginToken && (chatInput.dataset.global || document.getElementById("chatbox").classList.contains("partyChat"))) {
+  const partyChat = document.getElementById("chatbox").classList.contains("partyChat");
+  if (loginToken && (chatInput.dataset.global || partyChat)) {
     if (connStatus === 3)
       return;
   } else if (connStatus !== 1)
@@ -321,8 +322,8 @@ function chatInputActionFired() {
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
-  if (!chatInput.dataset.global) {
-    if (!joinedPartyId || !document.getElementById("chatbox").classList.contains("partyChat")) {
+  if (!chatInput.dataset.global || partyChat) {
+    if (!joinedPartyId || !partyChat) {
       const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
       Module._SendChatMessageToServer(msgPtr);
       Module._free(msgPtr);
