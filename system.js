@@ -51,6 +51,7 @@ const allGameUiThemes = {
     'yumehako-sys1',
     'sniperbob_system44',
     'sniperbob_system45',
+    'moka_sys',
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',
