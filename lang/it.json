@@ -104,8 +104,8 @@
             "values": {
               "none": "Normali",
               "classic": "Classici",
-              "compact": "Compatto",
-              "slim": "Sottile"
+              "compact": "Compatti",
+              "slim": "Sottili"
             }
           },
           "soundVolume": "Volume Effetti Sonori",
@@ -338,7 +338,7 @@
       "toggleChat": "Attiva Chat",
       "screenshot": "Cattura Schermata",
       "settings": "Opzioni",
-      "toggleMute": "Mettiti in Modalità Muta",
+      "toggleMute": "Muta",
       "toggleGlobalMessage": "Attiva Chat Globale",
       "chat": {
         "toggleGlobalMessageLocations": "Mostra/Nascondi Luoghi dei Messaggi nella Chat",
