@@ -623,7 +623,7 @@
     "badgeGallery": {
       "label": "Galerie de {PLAYER}",
       "loading": "Chargement...",
-      "bp": "{BP} BP",
+      "bp": "{BP} PB",
       "count": "{COUNT} Badges"
     },
     "rankings": {
