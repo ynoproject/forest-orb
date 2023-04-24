@@ -157,7 +157,7 @@ function initBadgeControls() {
           if (badge.game !== 'ynoproject') {
             const defaultSystemName = getDefaultUiTheme(badge.game);
             initUiThemeContainerStyles(defaultSystemName, badge.game, false, () => initUiThemeFontStyles(defaultSystemName, badge.game, 0));
-            applyThemeStyles(gameHeader, (lastParsedSystemName = defaultSystemName.replace(' ', '_')), badge.game)
+            applyThemeStyles(gameHeader, (lastParsedSystemName = defaultSystemName.replace(/ /g, '_')), badge.game)
           } else
             lastParsedSystemName = null;
         }
@@ -787,7 +787,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
 
             const tippyBox = instance.popper.children[0];
 
-            const parsedSystemName = systemName ? (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(' ', '_') : null;
+            const parsedSystemName = systemName ? (gameUiThemes.indexOf(systemName) > -1 ? systemName : getDefaultUiTheme()).replace(/ /g, '_') : null;
 
             if (parsedSystemName)
               applyThemeStyles(tippyBox, parsedSystemName);

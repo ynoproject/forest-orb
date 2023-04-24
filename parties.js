@@ -129,7 +129,7 @@ function getPartyName(party, includeLock, asHtml) {
         let partySystemName = party.systemName;
         if (gameUiThemes.indexOf(partySystemName) === -1)
           partySystemName = getDefaultUiTheme();
-        const parsedPartySystemName = partySystemName.replace(' ', '_');
+        const parsedPartySystemName = partySystemName.replace(/ /g, '_');
         partyLockIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName});`);
       }
 
@@ -161,7 +161,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
         let partySystemName = party.systemName;
         if (gameUiThemes.indexOf(partySystemName) === -1)
           partySystemName = getDefaultUiTheme();
-        const parsedPartySystemName = partySystemName.replace(' ', '_');
+        const parsedPartySystemName = partySystemName.replace(/ /g, '_');
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
       }
       
@@ -536,7 +536,7 @@ function addOrUpdatePartyListEntry(party) {
     let systemName = party.systemName.replace(/'/g, '');
     if (gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    const parsedSystemName = systemName.replace(' ', '_');
+    const parsedSystemName = systemName.replace(/ /g, '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
       initUiThemeFontStyles(systemName, null, 0, false);
     });
@@ -765,7 +765,7 @@ function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
   playerLocation.classList.toggle('hidden', !isInParty || !member.online);
 
   if (isInParty && member.online && member.mapId) {
-    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(' ', '_') : null;
+    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(/ /g, '_') : null;
     if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);

@@ -114,7 +114,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       let systemName = player.systemName.replace(/'/g, '');
       if (unnamed || gameUiThemes.indexOf(systemName) === -1)
         systemName = getDefaultUiTheme();
-      const parsedSystemName = systemName.replace(' ', '_');
+      const parsedSystemName = systemName.replace(/ /g, '_');
       applyThemeStyles(nameTextContainer, parsedSystemName);
       if (badgeOverlayEl) {
         if (badgeOverlay2El) {
@@ -380,7 +380,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       partyOwnerIcon = getSvgIcon('partyOwner', true);
       addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
       if (party.systemName) {
-        const parsedPartySystemName = party.systemName.replace(' ', '_');
+        const parsedPartySystemName = party.systemName.replace(/ /g, '_');
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
       }
       nameText.parentElement.appendChild(partyOwnerIcon);
@@ -407,7 +407,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     systemName = systemName.replace(/'/g, '');
     if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    const parsedSystemName = systemName.replace(' ', '_');
+    const parsedSystemName = systemName.replace(/ /g, '_');
     initUiThemeContainerStyles(systemName, null, false, () => {
       initUiThemeFontStyles(systemName, null, 0, false, () => {
         if (showBadgeOverlay) {

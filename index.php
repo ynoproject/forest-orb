@@ -35,6 +35,9 @@
     case "someday":
       $gameName = "Someday";
       break;
+    case "ultraviolet":
+      $gameName = "Ultra Violet";
+      break;
     case "unevendream":
       $gameName = "Uneven Dream";
       break;
@@ -169,7 +172,7 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="Shift" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl"): ?>
+            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl" || $gameId == "ultraviolet"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
                 <?php if ($gameId == "cu"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="0" data-key-code="48"></div>

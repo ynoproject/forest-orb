@@ -235,7 +235,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
           initUiThemeFontStyles(gameThemeName, eventGameId, 0, false);
         });
         
-        applyThemeStyles(eventListEntry, gameThemeName.replace(' ', '_'), eventGameId);
+        applyThemeStyles(eventListEntry, gameThemeName.replace(/ /g, '_'), eventGameId);
       }
 
       updateThemedContainer(eventListEntry);

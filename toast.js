@@ -164,7 +164,7 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
   if (systemName) {
     if (gameUiThemes.indexOf(systemName) === -1)
       systemName = getDefaultUiTheme();
-    systemName = systemName.replace(' ', '_')
+    systemName = systemName.replace(/ /g, '_')
   }
     
   const toast = document.createElement('div');
