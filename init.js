@@ -5,7 +5,8 @@ const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? game
 const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja',
-  'mikan': 'ja'
+  'mikan': 'ja',
+  'ultraviolet': 'ja'
 };
 const gameDefaultSprite = {
   '2kki': 'syujinkou1',
