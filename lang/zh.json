@@ -113,7 +113,7 @@
           "togglePlayerSounds": "同步玩家音效",
           "toggleImmersionMode": {
             "label": "沉浸模式",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
@@ -277,8 +277,8 @@
         "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "存档",
+        "reload": "保存更改"
       },
       "uiTheme": {
         "title": "界面风格",
@@ -333,7 +333,7 @@
     },
     "tooltips": {
       "toggleSinglePlayer": "单人/多人模式切换",
-      "save": "Manage Save Data",
+      "save": "存档数据管理",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
       "screenshot": "截屏",
@@ -512,10 +512,10 @@
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "文件 {SLOT_ID}",
+        "readingLabel": "读取中...",
+        "emptyLabel": "空",
+        "errorLabel": "出错"
       },
       "upload": {
         "tooltip": "上传存档文件",
@@ -523,11 +523,11 @@
       },
       "download": {
         "tooltip": "下载存档文件",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "存档为空，无法下载"
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "删除存档",
+        "confirmDelete": "确定要删除文件 {SLOT_ID} 吗?"
       }
     },
     "saveSync": {
