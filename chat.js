@@ -196,7 +196,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
     if (systemName) {
       systemName = systemName.replace(/'/g, "");
-      const parsedSystemName = systemName.replace(" ", "_");
+      const parsedSystemName = systemName.replace(/ /g, "_");
       initUiThemeContainerStyles(systemName, null, false, () => {
         initUiThemeFontStyles(systemName, null, 0, false, () => {
           applyThemeStyles(name, parsedSystemName);
