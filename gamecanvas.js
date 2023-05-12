@@ -120,14 +120,18 @@ function bindKey(node, key, keyCode) {
 
 /** @type {{[key: number]: Gamepad}} */
 const gamepads = {};
-const haveEvents = 'ongamepadonnected' in window;
+const haveEvents = 'ongamepadconnected' in window;
 
 function addGamepad(gamepad) {
+  if (gamepad == undefined)
+    return;
   gamepads[gamepad.index] = gamepad;
   updateTouchControlsVisibility();
 }
 
 function removeGamepad(gamepad) {
+  if (gamepad == undefined)
+    return;
   delete gamepads[gamepad.index];
   updateTouchControlsVisibility();
 }
