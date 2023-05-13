@@ -170,7 +170,7 @@
             <div id="apad-escape" class="baseColorBg apadCircBtn apadBtn" data-key="Escape" data-key-code="27"></div>
             <div id="apad-enter" class="baseColorBg apadCircBtn apadBtn" data-key="Enter" data-key-code="13"></div>
             <?php if ($gameId != "yume"): ?>
-              <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="ShiftLeft" data-key-code="16"></div>
+              <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="LeftShift" data-key-code="16"></div>
             <?php endif ?>
             <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl" || $gameId == "ultraviolet"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
