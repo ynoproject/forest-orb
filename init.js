@@ -44,8 +44,10 @@ Module = {
   EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + ynoGameId + '/'
 };
 
-function injectScripts() {
-  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', '2kki.js', 'play.js', 'gamecanvas.js', 'index.js' ];
+async function injectScripts() {
+  const supportsSimd = await wasmFeatureDetect.simd();
+
+  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', '2kki.js', 'play.js', 'gamecanvas.js', `index${supportsSimd ? '-simd' : ''}.js` ];
 
   dependencyFiles['play.css'] = null;
 
@@ -57,7 +59,7 @@ function injectScripts() {
   for (let script of scripts)
     dependencyFiles[script] = null;
   dependencyFiles[`${window.location.origin}/data/${ynoGameId}/index.json`] = null;
-  dependencyFiles['index.wasm'] = null;
+  dependencyFiles[`ynoengine${supportsSimd ? '-simd' : ''}.wasm`] = null;
 
   const injectScript = function (index) {
     const script = scripts[index];
