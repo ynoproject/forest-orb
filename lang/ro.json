@@ -192,8 +192,8 @@
               "disband": "Grup Desființat",
               "playerJoin": "Player a intrat în Grup",
               "playerLeave": "Player a ieșit din Grup",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
+              "playerOnline": "Membru din Grup Online",
+              "playerOffline": "Membru din Grup Offline",
               "kickPlayer": "Player a fost scos din Grup",
               "transferPartyOwner": "Player a for promovat la Lider"
             }
@@ -339,7 +339,7 @@
       "screenshot": "Fă Captură de Ecran",
       "settings": "Setări",
       "toggleMute": "Comută Mute-ul",
-      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "toggleGlobalMessage": "Comută Vorbitul pe Chat Global",
       "chat": {
         "toggleGlobalMessageLocations": "Arată/Ascunde Locația în Mesaje",
         "toggleOwnGlobalMessageLocation": "Arată/Ascunde-ți Locația în Chat",
@@ -407,7 +407,7 @@
       "unnamed": "Jucător fără Nume",
       "muted": "Amuțit",
       "actions": {
-        "partyKick": "Kick From Party",
+        "partyKick": "Scoate din Grup",
         "transferPartyOwner": "Promovează ca Lider"
       }
     },
@@ -635,9 +635,9 @@
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
-          "value": "{NUMBER} BP"
+          "label": "PI (Puncte Insigne)",
+          "valueLabel": "PI",
+          "value": "{NUMBER} PI"
         },
         "exp": {
           "label": "ExP",
