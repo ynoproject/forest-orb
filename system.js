@@ -52,7 +52,7 @@ const allGameUiThemes = {
     'sniperbob_system44',
     'sniperbob_system45',
     'moka_sys',
-	'21keb_sys_1',
+    '21keb_sys_1',
     'JIVV_sys sakura',
     'JIVV_sys dusk',
     'Kong_Gothic window_system',
