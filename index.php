@@ -424,6 +424,7 @@
                       <option value="fr">Français</option>
                       <option value="de">Deutsch</option>
                       <option value="it">Italiano</option>
+                      <option value="ro">Română</option>
                       <option value="ru">Русский</option>
                       <option value="vi">Tiếng Việt</option>
                       <option value="ar">العربية</option>
