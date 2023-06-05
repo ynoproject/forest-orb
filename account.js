@@ -6,14 +6,16 @@ function initAccountControls() {
     openModal('loginModal');
   };
   document.getElementById('logoutButton').onclick = () => {
-    apiFetch('logout')
-      .then(response => {
-        if (!response.ok)
-          console.error(response.statusText);
-        closeSessionWs();
-        setCookie(sessionIdKey, '');
-        fetchAndUpdatePlayerInfo();
-      }).catch(err => console.error(err));
+	if (confirm("Are you sure you want to log out?")) {
+	    apiFetch('logout')
+		  .then(response => {
+			if (!response.ok)
+			  console.error(response.statusText);
+			closeSessionWs();
+			setCookie(sessionIdKey, '');
+			fetchAndUpdatePlayerInfo();
+		  }).catch(err => console.error(err));
+	}
   };
 
   document.getElementById('loginForm').onsubmit = function () {

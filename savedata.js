@@ -91,6 +91,7 @@ function getSaveSlotListEntry(slotId) {
   const slot = document.createElement('div');
   slot.classList.add('saveSlotListEntry', 'listEntry');
   slot.dataset.slotId = slotId;
+  updateThemedContainer(slot);
 
   const title = document.createElement('label');
   title.innerHTML = getMassagedLabel(localizedMessages.save.slot.title, true).replace('{SLOT_ID}', slotId);

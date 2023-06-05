@@ -502,7 +502,7 @@ let applyThemeStyles;
     .tippy-box.theme{THEME} {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
       background-image: var(--container-bg-image-url{THEME_PROP}) !important;
-      {FULL_BG|background-origin: border-box; background-size: contain;}
+      {FULL_BG|background-origin: border-box; background-size: cover;}
     }
     
     .tippy-box.theme{THEME} .tippy-content .tooltipContent {
@@ -653,7 +653,7 @@ function updateThemedContainer(themedContainer) {
   if (!themedContainer)
     return;
 
-  let themeName = systemName;
+  let themeName = config.uiTheme;
   let themeGameId = gameId;
   for (let cls of themedContainer.classList) {
     if (cls.startsWith('theme_')) {
