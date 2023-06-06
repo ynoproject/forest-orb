@@ -387,6 +387,26 @@ body {
   width: unset;
 }
 
+#fontStyle {
+  color: rgb(var(--base-color)) !important;
+}
+
+#fontStyle > option {
+  color: rgb(var(--modal-base-color));
+}
+
+#rankingsModal > .modalContent {
+  justify-content: start;
+}
+
+.eventListEntry {
+  min-width: fit-content;
+}
+
+#messages {
+  overscroll-behavior: none;
+}
+
 #chatbox.partyChat #messages::-webkit-scrollbar-track, #chatbox.partyPlayers #partyPlayerList::-webkit-scrollbar-track {
   border-image-source: var(--party-border-image-url) !important;
   background-color: rgb(var(--party-base-bg-color));
@@ -398,6 +418,11 @@ body {
 
 #chatbox.partyChat #messages, #chatbox.partyPlayers #partyPlayerList {
   scrollbar-color: rgb(var(--party-base-color)) rgb(var(--party-base-bg-color));
+}
+
+#chatbox.partyChat #messages.fullBg, #chatbox.partyPlayers #partyPlayerList.fullBg {
+  background-size: auto calc(100% + 6px) !important;
+  background-position: 0 -6px !important;
 }
 
 #chatbox.partyChat #messages .iconButton path, #chatbox.partyChat #chatInput .icon circle {
@@ -537,10 +562,6 @@ body.fullBg #background {
   padding: 12px 16px 0px 16px;
 }
 
-#header.fullBg {
-  background-size: 96px;
-}
-
 #headerLogoContainer, #headerIconContainer {
   padding-bottom: 12px;
 }
@@ -594,6 +615,7 @@ body.fullBg #background {
   -o-transition: opacity 0.15s ease-in-out;
   transition: opacity 0.15s ease-in-out;
   background-size: cover;
+  image-rendering: pixelated;
 }
 
 #gameLogo.hidden {
@@ -1654,10 +1676,6 @@ body.fullBg #background {
   z-index: 20;
 }
 
-.modal.fullBg {
-  background-size: calc(100vh - 80px);
-}
-
 .modal.semiWideModal {
   max-width: min(640px, calc(100% - 112px));
 }
@@ -1766,6 +1784,10 @@ body.fullBg #background {
 
 .modalContent .itemCategoryHeader.hidden {
   display: none;
+}
+
+#header.fullBg, .modal.fullBg {
+  background-size: auto calc(100% + 32px);
 }
 
 .itemContainer .item {
@@ -2612,6 +2634,10 @@ form .uiTheme {
   border-image: var(--border-image-url) 8 repeat !important;
   border-image-width: 2 !important;
   background-image: var(--container-bg-image-url) !important;
+}
+
+.fullBg [class="tippy-box"] {
+  background-size: auto 100% !important;
 }
 
 .tippy-content .tooltipContent {
