@@ -375,6 +375,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "Ești sigur că dorești să părăsești pagina? Orice progres nesalvat în joc va fi pierdut.",
+    "logout": "Are you sure you want to log out?",
     "connStatus": {
       "0": "Deconectat",
       "1": "Conectat",

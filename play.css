@@ -2636,7 +2636,7 @@ form .uiTheme {
   background-image: var(--container-bg-image-url) !important;
 }
 
-.fullBg [class="tippy-box"] {
+.fullBg .tippy-box {
   background-size: auto 100% !important;
 }
 

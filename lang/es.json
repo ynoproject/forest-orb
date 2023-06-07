@@ -375,6 +375,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
+    "logout": "Are you sure you want to log out?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",

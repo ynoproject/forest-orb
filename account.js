@@ -6,7 +6,7 @@ function initAccountControls() {
     openModal('loginModal');
   };
   document.getElementById('logoutButton').onclick = () => {
-	if (confirm("Are you sure you want to log out?")) {
+	if (confirm(localizedMessages.logout)) {
 	    apiFetch('logout')
 		  .then(response => {
 			if (!response.ok)

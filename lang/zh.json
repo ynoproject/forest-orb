@@ -374,6 +374,7 @@
       "mikan": "未完梦像"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
+    "logout": "Are you sure you want to log out?",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",

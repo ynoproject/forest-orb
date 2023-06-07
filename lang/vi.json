@@ -375,6 +375,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
+    "logout": "Are you sure you want to log out?",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",

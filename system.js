@@ -653,7 +653,7 @@ function updateThemedContainer(themedContainer) {
   if (!themedContainer)
     return;
 
-  let themeName = config.uiTheme;
+  let themeName = systemName;
   let themeGameId = gameId;
   for (let cls of themedContainer.classList) {
     if (cls.startsWith('theme_')) {
