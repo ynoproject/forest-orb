@@ -520,7 +520,7 @@ function initBadgeTools() {
               langFolder.file(`${lang}.json`, JSON.stringify(localizedGameBadges, null, 2));
             });
         });
-        Promise.allSettled(fetchLangFiles).then(() => zip.generateAsync({ type: 'base64' }).then(base64 => location.href = `data:application/zip;base64,${base64}`));
+        Promise.allSettled(fetchLangFiles).then(() => zip.generateAsync({ type: 'blob' }).then(blob => saveAs(blob, 'badges.zip')));
       }
     },
     mounted() {

@@ -1393,6 +1393,7 @@
 
   <?php if ($enableBadgeTools): ?>
   <script type="text/javascript" src="https://unpkg.com/vue@3"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js"></script>
   <script type="text/javascript" src="badgetools.js"></script>
   <?php endif ?>
