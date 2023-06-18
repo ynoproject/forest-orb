@@ -1,4 +1,4 @@
-const rankingsUrl = `../rankings`;
+const rankingsUrl = `https://connect.ynoproject.net/rankings`;
 
 const perGameCategoryIds = [];
 

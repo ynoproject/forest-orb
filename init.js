@@ -34,14 +34,14 @@ const tippyConfig = {
 };
 
 const sessionIdKey = 'ynoproject_sessionId';
-const apiUrl = `../connect/${ynoGameId}/api`;
-const adminApiUrl = `../connect/${ynoGameId}/admin`;
+const apiUrl = `https://connect.ynoproject.net/${ynoGameId}/api`;
+const adminApiUrl = `https://connect.ynoproject.net/${ynoGameId}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
 Module = {
   INITIALIZED: false,
   EASYRPG_GAME: ynoGameId,
-  EASYRPG_WS_URL: 'wss://ynoproject.net/connect/' + ynoGameId + '/'
+  EASYRPG_WS_URL: 'wss://connect.ynoproject.net/' + ynoGameId + '/'
 };
 
 async function injectScripts() {
