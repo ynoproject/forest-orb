@@ -395,10 +395,6 @@ body {
   color: rgb(var(--modal-base-color));
 }
 
-#rankingsModal > .modalContent {
-  justify-content: start;
-}
-
 .eventListEntry {
   min-width: fit-content;
 }
