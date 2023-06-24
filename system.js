@@ -56,6 +56,7 @@ const allGameUiThemes = {
     'JIVV_sys sakura',
     'JIVV_sys dusk',
     'Kong_Gothic window_system',
+    'takikomi_syst1',
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',
