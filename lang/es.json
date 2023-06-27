@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versión {VERSION}",
@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "Ubicación:&nbsp;",
       "immersionMode": "Modo Inmersivo",
-      "reconnect": "Reconnect",
+      "reconnect": "Reconectar",
       "tab": {
         "chat": "Chat",
         "players": "Jugadores",
@@ -43,7 +43,7 @@
           "party": "Equipo"
         },
         "nickname": {
-          "header": "Debes seleccionar un apodo antes de usar el chat.",
+          "header": "Debes seleccionar un nombre de usuario antes de usar el chat.",
           "rule": {
             "maxLength": "* Máximo de 10 caracteres",
             "alphanumeric": "* Solo caracteres alfanuméricos"
@@ -100,34 +100,34 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Estilo de Nombres",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "Ocultar",
+              "classic": "Clásico",
+              "compact": "Compacto",
+              "slim": "Delgado"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "Volumen de Sonido",
+          "musicVolume": "Volumen de Música",
           "togglePlayerSounds": "Sonidos de Jugadores",
           "toggleImmersionMode": {
             "label": "Modo Inmersivo",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "Desactiva el contador de jugadores, el chat global y el indicador de mapas con el objetivo de entregar una experiencia inmersiva"
           },
-          "toggleLocationDisplay": "Location Display",
+          "toggleLocationDisplay": "Mostrar Ubicación",
           "toggleRankings": "Clasificaciones",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "Solución de Pantallazos",
+            "helpText": "Soluciona el problema donde las capturas de pantalla tomadas desde la página aparecen en negro. Requiere recargar la página y podría afectar el rendimiento"
           }
         },
-        "chatSettings": "Chat Settings",
+        "chatSettings": "Configuraciones de Chat",
         "notificationSettings": "Configuración de Notificaciones",
         "accountSettings": "Configuración de Cuenta"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "Configuraciones de Chat",
         "fields": {
           "toggleTabToChat": "Presionar Tab para chatear",
           "chatHistoryLimit": {
@@ -139,17 +139,17 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Ilimitado"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Límite Historial Chat de Mapa"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Límite Historial Chat Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Límite Historial Chat de Equipo"
           }
         }
       },
@@ -170,7 +170,7 @@
             "label": "Sistema",
             "fields": {
               "siteUpdates": "Sitio Actualizado",
-              "error": "Error Occurred"
+              "error": "Error Ocurrido"
             }
           },
           "account": {
@@ -178,7 +178,7 @@
             "fields": {
               "loggedIn": "Conectado",
               "loggedOut": "Desconectado",
-              "passwordUpdate": "Password Updated"
+              "passwordUpdate": "Contraseña Actualizada"
             }
           },
           "parties": {
@@ -203,7 +203,7 @@
             "fields": {
               "complete": "Expedición Completada",
               "freeComplete": "Expedición Libre Completada",
-              "vmComplete": "Vending Machine Found",
+              "vmComplete": "Máquina Expendedora Encontrada",
               "listUpdated": "Lista de Expediciones Actualizada"
             }
           },
@@ -237,48 +237,48 @@
               "0": "Ninguno"
             }
           },
-          "changePassword": "Change Password",
+          "changePassword": "Cambiar Contraseña",
           "clearSaveSync": "Limpiar Datos Sincronizados"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Cambiar Contraseña",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Contraseña Antigua",
+          "newPassword": "Nueva Contraseña",
+          "newConfirmPassword": "Confirmar Nueva Contraseña"
         },
-        "submit": "Submit"
+        "submit": "Enviar"
       },
       "badges": {
         "title": "Medallas",
         "manageBadgeGallery": "Galería de Medallas",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "Estado:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked"
+              "all": "Todos",
+              "0": "Bloqueados",
+              "1": "Desbloqueados"
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "Orden:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "Predeterminado"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": "Buscar:&nbsp;"
         }
       },
       "badgeGallery": {
         "title": "Galería de Medallas",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "badgeGalleryRowProgress": "Siguiente Mejora de Filas (BP)",
+        "badgeGalleryColProgress": "Siguiente Mejora de Columnas (Medallas)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "Gestionar Datos de Guardado",
+        "reload": "Guardar Cambios y Recargar"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
@@ -315,35 +315,35 @@
         "rankExp": "Siguiente Rango",
         "weekExp": "ExP Semanal",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "Ubicaciones",
+          "vms": "Máquinas Expendedoras"
         }
       },
       "rankings": {
         "title": "Clasificaciones"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "Reglas",
+        "rule1": "Por favor, se respetuoso y cortés.",
+        "rule2": "No discusiones de temas +18 (NSFW, gore, etc.).",
+        "rule3": "No discusiones políticas.",
+        "rule4": "No comentarios inflamatorio (incluyendo insultos).",
+        "rule5": "No trampas de ningún tipo por ningún motivo."
       }
     },
     "tooltips": {
       "toggleSinglePlayer": "Alternar Modo Solitario",
-      "save": "Manage Save Data",
+      "save": "Gestionar Datos de Guardado",
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
       "screenshot": "Capturar Pantalla",
       "settings": "Opciones",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "Alternar Silencio",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleGlobalMessageLocations": "Mostrar/Ocultar Ubicaciones en Mensajes de Chat",
+        "toggleOwnGlobalMessageLocation": "Mostrar/Ocultar Tu Ubicación en Mensajes de Chat",
+        "toggleMessageTimestamps": "Mostrar/Ocultar Marcas de Tiempo en Mensajes de Chat",
         "clearChat": "Limpiar Chat"
       },
       "parties": {
@@ -354,7 +354,7 @@
       "rankings": "Clasificaciones",
       "nexus": "Regresar al Nexo"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Ver Reglas"
   },
   "messages": {
     "games": {
@@ -375,7 +375,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
-    "logout": "Are you sure you want to log out?",
+    "logout": "¿Está seguro que desea cerrar sesión?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -406,7 +406,7 @@
     },
     "playerList": {
       "unnamed": "Anónimo",
-      "muted": "Muted",
+      "muted": "Silenciado",
       "actions": {
         "partyKick": "Expulsar del Equipo",
         "transferPartyOwner": "Promover a Líder"
@@ -429,22 +429,22 @@
         },
         "unban": {
           "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "confirm": "¿Está seguro que quiere desbanear a {PLAYER}?",
+          "success": "{PLAYER} ha sido desbaneado."
         },
         "mute": {
           "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "confirm": "¿Está seguro que desea silenciar a {PLAYER}?",
+          "success": "{PLAYER} ha sido silenciado."
         },
         "unmute": {
           "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "confirm": "¿Está seguro que desea desenmudecer {PLAYER}?",
+          "success": "{PLAYER} ha sido desenmudecido."
         },
         "grantBadge": {
           "label": "Dar Medalla",
-          "prompt": "Ingrese el ID de la medala que desea dar a {PLAYER}.",
+          "prompt": "Ingrese el ID de la medalla que desea dar a {PLAYER}.",
           "success": "{BADGE} ha sido dada a {PLAYER}.",
           "fail": "No se encontró una medalla con el ID proveído."
         },
@@ -472,14 +472,14 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Las contraseñas no coinciden.",
+          "badLogin": "Contraseña incorrecta.",
+          "internalServerError": "Se ha encontrado un error: Intente nuevamente."
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Mensaje Global"
     },
     "parties": {
       "emptyMessage": "No se encontraron equipos activos.",
@@ -503,10 +503,10 @@
         "menuTheme": "Tu color de nombre y estilo en la lista de jugadores cambia dependiendo del menú que selecciones dentro del juego.",
         "playersInMap": "Puede alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
         "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~) y ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "tabToChat": "Si juegas en PC, puedes presionar la tecla Tab para alternar entre el juego y el chat. Esta opción puede desactivarse en 'Configuraciones de Chat', bajo la opción 'Presionar Tab para chatear'.",
         "chatTabNotifications": "Cuando se encuentra en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
         "clearChat": "Cuando presiona el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "chatHistoryLimit": "Si tu historial de chat es demasiado largo, podrías comenzar a experimental problemas de rendimiento. En 'Opciones de Chat' puedes limitar la cantidad de mensajes que almacenará el historial de chat para evitar hacerlo manualmente.",
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefiere una experiencia inmersiva sobre una social, intente el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
@@ -514,9 +514,9 @@
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
+        "title": "Archivo {SLOT_ID}",
+        "readingLabel": "Leyendo Archivo...",
+        "emptyLabel": "Vacío",
         "errorLabel": "Error"
       },
       "upload": {
@@ -525,11 +525,11 @@
       },
       "download": {
         "tooltip": "Descargar archivo de guardado",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "¡Ups! El archivo de guardado parece estar vacío."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "Descargar archivo de guardado",
+        "confirmDelete": "¿Está seguro que desea eliminar el archivo de guardado en la ranura {SLOT_ID}?"
       }
     },
     "saveSync": {
@@ -539,12 +539,12 @@
     "toast": {
       "system": {
         "siteUpdates": "El sitio ha sido actualizado. Recargue la página para obtener los nuevos cambios.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'."
+        "error": "¡Ups! Parece que algo salió mal. Revise la consola del navegador por más detalles. Para abrir la consola, presione F12 y luego 'Inspeccionar'."
       },
       "account": {
         "loggedIn": "Te has conectado como {USER}.",
         "loggedOut": "Te has desconectado.",
-        "passwordUpdated": "Your password was updated successfully."
+        "passwordUpdated": "Su contraseña ha sido actualizada exitosamente."
       },
       "parties": {
         "create": "{PARTY} ha sido creado.",
@@ -558,12 +558,12 @@
         "playerOnline": "{PLAYER} se ha conectado.",
         "playerOffline": "{PLAYER} se ha desconectado.",
         "kickPlayer": "{PLAYER} ha sido expulsado del equipo.",
-        "transferPartyOwner": "{PLAYER} es ahora el líder del equipo."
+        "transferPartyOwner": "{PLAYER} es ahora líder del equipo."
       },
       "events": {
         "complete": "¡Expedición Completada!\nPor visitar {LOCATION}, se te ha otorgado {EXP}.",
         "freeComplete": "¡Expedición Completada! Has visitado {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "vmComplete": "¡Máquina Expendedora Encontrada!\nHas ganado {EXP}.",
         "listUpdated": "La lista de expediciones ha sido actualizada."
       },
       "badges": {
@@ -583,8 +583,8 @@
       "expRank": "Rango: {RANK}",
       "period": "Temporada {ORDINAL}",
       "periodEnds": "Termina {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
+      "current": "Actual",
+      "shortcut": "Puede ser accedido a través de un atajo desbloqueable",
       "availableUntilDate": "Disponible Hasta\n{DATE}",
       "types": {
         "-1": "Expedición Libre",
@@ -616,17 +616,17 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "Porcentaje Desbloqueado"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "Ascendente",
+        "desc": "Descendente"
       }
     },
     "badgeGallery": {
       "label": "Galería de {PLAYER}",
       "loading": "Cargando...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "count": "{COUNT} Medallas"
     },
     "rankings": {
       "categories": {
@@ -661,8 +661,8 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Máquinas Expendedoras",
+          "valueLabel": "# de Máquinas Expendedoras",
           "value": "{NUMBER}"
         },
         "timeTrial": {
@@ -680,8 +680,8 @@
         "all": "Todo",
         "2": "Todos los Efectos",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",
+        "rby": "Red Blue Yellow (Mini Juego B)",
+        "rby_ex": "Red Blue Yellow (Mini Juego B) - Versión EX",
         "fuji_ex": "FUJI EX"
       }
     },
@@ -692,43 +692,43 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Opciones de Moderador",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Reestablecer Contraseña",
+          "playerPrompt": "Ingrese el nombre de la cuenta a la cual desea reestablecer la contraseña",
+          "success": "La nueva contraseña para {PLAYER} es {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Cambiar Nombre de Usuario",
+          "playerPrompt": "Ingrese el nombre de la cuenta a la cual desea cambiar el nombre de usuario",
+          "namePrompt": "Ingrese el nuevo nombre de usuario para {PLAYER}",
+          "success": "El nombre de usuario para {PLAYER} ha sido cambiado a {NAME}",
+          "error": "No se ha podio cambiar el nombre de usuario para {PLAYER}; es posible que el nuevo nombre ya esté en uso"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Banear Jugador",
+          "playerPrompt": "Ingrese el nombre de la cuenta a banear"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Desbanear Jugador",
+          "playerPrompt": "Ingrese el nombre de la cuenta a desbanear"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Silenciar Jugador",
+          "playerPrompt": "Ingrese el nombre de la cuenta a silenciar"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Desenmudecer Jugador",
+          "playerPrompt": "Ingrese el nombre de la cuenta a desenmudecer"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Otorgar Medalla",
+          "playerPrompt": "Ingrese el nombre de la cuenta a la cual desea otorgar una medalla"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Quitar Medalla",
+          "playerPrompt": "Ingrese el nombre de la cuenta a la cual desea quitar una medalla"
         }
       }
     }
