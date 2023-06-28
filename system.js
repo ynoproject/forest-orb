@@ -93,7 +93,14 @@ const allGameUiThemes = {
     'system2',
     'maple-penmenu',
     'millie_system_sun',
-    'millie_system_wood2'
+    'nacre_system_dusk',
+    'nacre_system_vague_memory',
+    'nacre_system_squids',
+    'bWF5_system_willow',
+    'delly_system_blue',
+    'delly_horrid',
+    'nacre_system_ammolites',
+    'roninnozlo_Menu_FILM'
   ],
   'deepdreams': [
     'system_sterling',
