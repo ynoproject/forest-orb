@@ -656,7 +656,7 @@
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "エンドレスラリー完了率",
+          "label": "ラリー完了率",
           "valueLabel": "完了率",
           "value": "{PERCENT}%"
         },
