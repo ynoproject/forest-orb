@@ -54,7 +54,7 @@ function initAccountControls() {
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {
-            document.getElementById('registerError').innerHTML = getMassagedLabel(localizedMessages.account.register.errors[error === 'user exists' ? 'usernameTaken' : 'invalidCredentials'], true);
+            document.getElementById('registerError').innerHTML = getMassagedLabel(localizedMessages.account.register.errors[error.replace('\n', '') === 'user exists' ? 'usernameTaken' : 'invalidCredentials'], true);
             document.getElementById('registerErrorRow').classList.remove('hidden');
             openModal('registerModal');
           });
