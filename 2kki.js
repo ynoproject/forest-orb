@@ -330,7 +330,13 @@ function queryConnected2kkiLocationNames(locationName, connLocationNames) {
 
 function queryAndSet2kkiMaps(locationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${locationNames.join('&locationNames=')}`;
+    const massagedLocationNames = locationNames.map(locationName => {
+      const colonIndex = locationName.indexOf(':');
+      if (colonIndex > -1)
+        locationName = locationName.slice(0, colonIndex);
+      return locationName;
+    });
+    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${massagedLocationNames.join('&locationNames=')}`;
     const callback = response => {
       let errCode = null;
 

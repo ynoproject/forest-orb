@@ -1614,7 +1614,14 @@ function getInfoLabel(label) {
 
 function queryAndSetWikiMaps(locations) {
   const maps = [];
-  Promise.all(locations.map(l => wikiApiFetch('maps', `location=${l.urlTitle || l.title}`).then(response => {
+  const massagedLocationNames = locations.map(l => {
+    let locationName = l.urlTitle || l.title;
+    const colonIndex = locationName.indexOf(':');
+    if (colonIndex > -1)
+      locationName = locationName.slice(0, colonIndex);
+    return locationName;
+  });
+  Promise.all(massagedLocationNames.map(l => wikiApiFetch('maps', `location=${l}`).then(response => {
     if (Array.isArray(response)) {
       for (let map of response)
         maps.push({ url: map.path, label: map.caption });
