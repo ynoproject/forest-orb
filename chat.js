@@ -251,7 +251,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   messages.appendChild(msgContainer);
 
   if (player && !global && !party)
-    addMapChatMessage(message.innerHTML);
+    addGameChatMessage(message.innerHTML);
 
   const chatbox = document.getElementById("chatbox");
 
@@ -306,19 +306,19 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   return msgContainer;
 }
 
-function addMapChatMessage(messageHtml) {
-  const mapChatContainer = document.getElementById('mapChatContainer');
+function addGameChatMessage(messageHtml) {
+  const gameChatContainer = document.getElementById('gameChatContainer');
 
   const messageContainer = document.createElement('div');
-  messageContainer.classList.add('mapChatMessageContainer');
+  messageContainer.classList.add('gameChatMessageContainer');
 
   const message = document.createElement('div');
-  message.classList.add('mapChatMessage');
+  message.classList.add('gameChatMessage');
   message.classList.add('message');
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
-  mapChatContainer.insertBefore(messageContainer, mapChatContainer.children[mapChatContainer.children.length - 1]);
+  gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.children.length - 1]);
 
   setTimeout(() => {
     messageContainer.classList.add('fade');

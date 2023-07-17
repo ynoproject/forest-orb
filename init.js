@@ -438,9 +438,9 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
                     break;
-                  case 'gameMapChat':
+                  case 'gameChat':
                     if (!value)
-                      document.getElementById('gameMapChatButton').click();
+                      document.getElementById('gameChatButton').click();
                     break;
                   case 'tabToChat':
                     if (!value)

@@ -129,7 +129,7 @@
       "chatSettings": {
         "title": "채팅 설정",
         "fields": {
-          "toggleGameMapChat": "In-Game Map Chat Overlay",
+          "toggleGameChat": "In-Game Chat Overlay",
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "chatHistoryLimit": {
             "values": {

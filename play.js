@@ -28,7 +28,7 @@ let globalConfig = {
   soundVolume: 100,
   musicVolume: 100,
   chatTipIndex: -1,
-  gameMapChat: true,
+  gameChat: true,
   tabToChat: true,
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
@@ -805,10 +805,10 @@ document.getElementById('screenshotFixButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('gameMapChatButton').onclick = function () {
+document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
-  globalConfig.gameMapChat = !toggled;
+  globalConfig.gameChat = !toggled;
   document.getElementById('mapChatContainer').classList.toggle('hidden', toggled);
   updateConfig(globalConfig, true);
 };

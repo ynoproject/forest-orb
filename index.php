@@ -545,9 +545,9 @@
           <div class="modalContent">
             <ul class="formControls">
             <li class="formControlRow">
-                <label for="gameMapChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameMapChat">In-Game Map Chat Overlay</label>
+                <label for="gameChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat">In-Game Chat Overlay</label>
                 <div>
-                  <button id="gameMapChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                  <button id="gameChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow desktopOnly">

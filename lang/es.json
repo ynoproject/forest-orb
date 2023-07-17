@@ -129,7 +129,7 @@
       "chatSettings": {
         "title": "Configuraciones de Chat",
         "fields": {
-          "toggleGameMapChat": "In-Game Map Chat Overlay",
+          "toggleGameChat": "In-Game Chat Overlay",
           "toggleTabToChat": "Presionar Tab para chatear",
           "chatHistoryLimit": {
             "values": {
