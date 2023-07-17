@@ -415,7 +415,6 @@ function initChat() {
       const msgPtr = Module.allocate(Module.intArrayFromString(e.target.innerText.trim()), Module.ALLOC_NORMAL);
       Module._SendChatMessageToServer(msgPtr);
       Module._free(msgPtr);
-      chatboxAddMessage(e.target.innerText.trim(), MESSAGE_TYPE.MAP, {});
       e.target.innerHTML = '';
     }
   }
