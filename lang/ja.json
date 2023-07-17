@@ -129,6 +129,7 @@
       "chatSettings": {
         "title": "チャット 設定",
         "fields": {
+          "toggleGameMapChat": "In-Game Map Chat Overlay",
           "toggleTabToChat": "タブキーを 押して チャット",
           "chatHistoryLimit": {
             "values": {

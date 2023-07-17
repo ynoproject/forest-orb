@@ -149,6 +149,8 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
+          <div id="mapChatContainer"></div>
+
           <div id="locationDisplayContainer" class="unselectable">
             <div id="locationDisplayLabelContainer">
               <label id="locationDisplayLabel"></label>
@@ -536,6 +538,12 @@
           </div>
           <div class="modalContent">
             <ul class="formControls">
+            <li class="formControlRow">
+                <label for="gameMapChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameMapChat">In-Game Map Chat Overlay</label>
+                <div>
+                  <button id="gameMapChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
               <li class="formControlRow desktopOnly">
                 <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleTabToChat">Press Tab to Chat</label>
                 <div>

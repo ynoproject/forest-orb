@@ -28,6 +28,7 @@ let globalConfig = {
   soundVolume: 100,
   musicVolume: 100,
   chatTipIndex: -1,
+  gameMapChat: true,
   tabToChat: true,
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
@@ -804,6 +805,14 @@ document.getElementById('screenshotFixButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('gameMapChatButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  globalConfig.gameMapChat = !toggled;
+  document.getElementById('mapChatContainer').classList.toggle('hidden', toggled);
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('tabToChatButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.tabToChat = !this.classList.contains('toggled');
@@ -987,22 +996,38 @@ function onResize() {
   updateCanvasFullscreenSize();
 }
 
-function updateLocationDisplayContainerPos() {
+function updateCanvasOverlays() {
   const contentElement = document.getElementById('content');
   const canvasElement = document.getElementById('canvas');
+  const mapChatContainer = document.getElementById('mapChatContainer');
   const locationDisplayContainer = document.getElementById('locationDisplayContainer');
 
   if (document.fullscreenElement) {
     const canvasRect = canvas.getBoundingClientRect();
-    locationDisplayContainer.style.top = `${canvasRect.y}px`;
-    locationDisplayContainer.style.left = `${canvasRect.x}px`;
+    mapChatContainer.style.top = locationDisplayContainer.style.top = `${canvasRect.y}px`;
+    mapChatContainer.style.left = locationDisplayContainer.style.left = `${canvasRect.x}px`;
   } else {
-    locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
-    locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
+    mapChatContainer.style.top = locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
+    mapChatContainer.style.left = locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
+  }
+
+  let mapChatWidth = canvasElement.offsetWidth;
+  let mapChatHeight = canvasElement.offsetHeight / 2;
+
+  if (!document.fullscreenElement && contentElement.classList.contains('downscale')) {
+    if (contentElement.classList.contains('downscale2')) {
+      mapChatWidth *= 2;
+      mapChatHeight *= 2;
+    } else {
+      mapChatWidth *= 1 / 0.75;
+      mapChatHeight *= 1 / 0.75;
+    }
   }
 
   locationDisplayContainer.style.maxWidth = `${canvasElement.offsetWidth}px`;
-  locationDisplayContainer.style.transform = canvasElement.style.transform ? canvasElement.style.transform : null;
+  mapChatContainer.style.width = `${mapChatWidth}px`;
+  mapChatContainer.style.height = `${mapChatHeight}px`;
+  mapChatContainer.style.marginTop = `calc(${canvasElement.offsetHeight / 2}px * var(--canvas-scale))`;
 }
 
 function updateYnomojiContainerPos(isScrollUpdate) {
@@ -1130,7 +1155,7 @@ function updateCanvasFullscreenSize() {
   messages.scrollTop = messages.scrollHeight;
 
   updateYnomojiContainerPos();
-  updateLocationDisplayContainerPos();
+  updateCanvasOverlays();
 }
 
 window.onresize = function () { setTimeout(onResize, 0); };
@@ -1141,7 +1166,7 @@ document.getElementById('content').addEventListener('scroll', function () {
   document.documentElement.style.setProperty('--content-scroll', `${this.scrollTop}px`);
   if (hasTouchscreen)
     updateYnomojiContainerPos(true);
-  updateLocationDisplayContainerPos();
+  updateCanvasOverlays();
 });
 
 function toggleControls(show) {

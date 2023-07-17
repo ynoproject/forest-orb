@@ -438,6 +438,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
                     break;
+                  case 'gameMapChat':
+                    if (!value)
+                      document.getElementById('gameMapChatButton').click();
+                    break;
                   case 'tabToChat':
                     if (!value)
                       document.getElementById('tabToChatButton').click();

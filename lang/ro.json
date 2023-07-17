@@ -129,6 +129,7 @@
       "chatSettings": {
         "title": "Setări Chat",
         "fields": {
+          "toggleGameMapChat": "In-Game Map Chat Overlay",
           "toggleTabToChat": "Apasă Tab pentru a vorbi",
           "chatHistoryLimit": {
             "values": {

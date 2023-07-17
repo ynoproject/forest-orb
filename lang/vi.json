@@ -129,6 +129,7 @@
       "chatSettings": {
         "title": "Cài đặt Chat",
         "fields": {
+          "toggleGameMapChat": "In-Game Map Chat Overlay",
           "toggleTabToChat": "Nhấn Tab để chat",
           "chatHistoryLimit": {
             "values": {

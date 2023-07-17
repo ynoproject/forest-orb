@@ -250,6 +250,9 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
+  if (!global && !party)
+    addMapChatMessage(message.innerHTML);
+
   const chatbox = document.getElementById("chatbox");
 
   const mapChat = chatbox.classList.contains("mapChat");
@@ -301,6 +304,26 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     messages.scrollTop = messages.scrollHeight;
 
   return msgContainer;
+}
+
+function addMapChatMessage(messageHtml) {
+  const mapChatContainer = document.getElementById('mapChatContainer');
+
+  const messageContainer = document.createElement('div');
+  messageContainer.classList.add('mapChatMessageContainer');
+
+  const message = document.createElement('div');
+  message.classList.add('mapChatMessage');
+  message.classList.add('message');
+  message.innerHTML = messageHtml;
+
+  messageContainer.appendChild(message);
+  mapChatContainer.appendChild(messageContainer);
+
+  setTimeout(() => {
+    messageContainer.classList.add('fade');
+    setTimeout(() => messageContainer.remove(), 1000);
+  }, 10000);
 }
 
 function chatInputActionFired() {

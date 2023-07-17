@@ -129,6 +129,7 @@
       "chatSettings": {
         "title": "聊天设置",
         "fields": {
+          "toggleGameMapChat": "In-Game Map Chat Overlay",
           "toggleTabToChat": "开启Tab键聊天",
           "chatHistoryLimit": {
             "values": {

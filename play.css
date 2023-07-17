@@ -371,6 +371,8 @@ body {
 
 .notice, .instruction {
   text-align: center;
+  width: fit-content;
+  margin: auto;
 }
 
 .notice {
@@ -837,6 +839,43 @@ body.fullBg #background {
   max-height: calc((100vw - 16px) * 0.75);
 }
 
+#mapChatContainer {
+  position: absolute;
+  font-family: 'JF-Dot-Shinonome12';
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  pointer-events: none;
+  transform-origin: top left;
+  transform: scale(var(--canvas-scale));
+  display: none; /* For testing */
+}
+
+#mapChatContainer.hidden {
+  display: none;
+}
+
+#content.downscale #layout:not(:fullscreen) #mapChatContainer {
+  transform: scale(calc(var(--canvas-scale) * 0.75));
+}
+
+#content.downscale2 #layout:not(:fullscreen) #mapChatContainer {
+  transform: scale(calc(var(--canvas-scale) * 0.5));
+}
+
+#mapChatContainer > .mapChatMessageContainer {
+  width: fit-content;
+  padding: 4px;
+  background-color: rgba(var(--shadow-color), 0.5);
+}
+
+#mapChatContainer > .mapChatMessageContainer.fade {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
 #locationDisplayContainer {
   position: absolute;
   font-family: 'JF-Dot-Shinonome12';
@@ -844,6 +883,7 @@ body.fullBg #background {
   margin-top: calc(-48px * var(--canvas-scale));
   pointer-events: none;
   transform-origin: top left;
+  transform: scale(var(--canvas-scale));
   clip-path: inset(48px 0px 0px 0px);
   transition: margin-top 0.325s ease-in-out, clip-path 0.325s ease-in-out;
 }
@@ -1236,7 +1276,7 @@ body.fullBg #background {
   image-rendering: auto;
 }
 
-.message .icon, .listEntry .nameText .icon {
+.message .icon, .listEntry .nameText .icon, .mapChatMessage .icon {
   display: inline-block;
   vertical-align: text-top;
   width: 12px;
