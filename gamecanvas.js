@@ -195,6 +195,10 @@ if (hasTouchscreen) {
       }
       if (input)
         window.setTimeout(() => input.focus(), 0);
+    } else if (globalConfig.gameMapChat && event.key === 't') {
+      const mapChatInput = document.getElementById('mapChatInput');
+      mapChatInput.onfocus()
+      setTimeout(() => mapChatInput.focus(), 0);
     }
   });
 

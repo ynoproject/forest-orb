@@ -318,11 +318,14 @@ function addMapChatMessage(messageHtml) {
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
-  mapChatContainer.appendChild(messageContainer);
+  mapChatContainer.insertBefore(messageContainer, mapChatContainer.children[mapChatContainer.children.length - 1]);
 
   setTimeout(() => {
     messageContainer.classList.add('fade');
-    setTimeout(() => messageContainer.remove(), 1000);
+    setTimeout(() => {
+      messageContainer.classList.remove('fade');
+      messageContainer.classList.add('expired');
+    }, 1000);
   }, 10000);
 }
 
@@ -393,6 +396,29 @@ function trySetChatName(name) {
 
 function initChat() {
   document.getElementById("chatboxContainer").style.display = "table-cell";
+  
+  const mapChatContainer = document.getElementById('mapChatContainer');
+  const mapChatInput = document.getElementById('mapChatInput');
+  mapChatInput.onfocus = function() {
+    mapChatContainer.classList.add('focused');
+    document.execCommand('selectAll', false, null);
+    document.getSelection().collapseToEnd();
+  };
+  mapChatInput.onblur = () => mapChatContainer.classList.remove('focused');
+  mapChatInput.onkeydown = function (e) {
+    if (e.key === 'Enter') {
+      if (!e.target.innerText.trim()) {
+        document.getElementById('canvas').focus();
+        return;
+      }
+      e.preventDefault();
+      const msgPtr = Module.allocate(Module.intArrayFromString(e.target.innerText.trim()), Module.ALLOC_NORMAL);
+      Module._SendChatMessageToServer(msgPtr);
+      Module._free(msgPtr);
+      chatboxAddMessage(e.target.innerText.trim(), MESSAGE_TYPE.MAP, {});
+      e.target.innerHTML = '';
+    }
+  }
 }
 
 function addChatTip() {

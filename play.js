@@ -234,7 +234,7 @@ gameLogoImg.onload = function () {
   const gameLogo = document.getElementById('gameLogo');
   gameLogo.setAttribute('style', `background-image: url('${gameLogoUrl}'); width: ${width}px; height: ${height}px;`);
   document.getElementById('gameLogoOverlay').setAttribute('style', `-webkit-mask-image: url('${gameLogoUrl}'); mask-image: url('${gameLogoUrl}'); mix-blend-mode: ${gameLogoBlendModeOverrides[gameId] || 'multiply'};`);
-  gameLogo.classList.remove('hidden');
+  gameLogo.classList.remove('transparent');
 };
 gameLogoImg.src = gameLogoUrl;
 

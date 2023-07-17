@@ -91,7 +91,7 @@
           </svg>
         </button>
         <div id="gameLogoContainer">
-          <div id="gameLogo" class="hidden">
+          <div id="gameLogo" class="transparent">
             <div id="gameLogoOverlay"></div>
           </div>
         </div>
@@ -149,7 +149,13 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
-          <div id="mapChatContainer"></div>
+          <div id="mapChatContainer">
+            <div id="mapChatInputContainer" class="mapChatMessageContainer">
+              <div class="mapChatMessage message">
+                <div class="messageContents">>&nbsp;<span id="mapChatInput" contenteditable="true"></div>
+              </div>
+            </div>
+          </div>
 
           <div id="locationDisplayContainer" class="unselectable">
             <div id="locationDisplayLabelContainer">

@@ -92,6 +92,7 @@ html {
   overflow-y: hidden;
 }
 
+
 #chatBorder, .toast, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
@@ -215,6 +216,10 @@ body {
   padding-bottom: 8px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -315,10 +320,6 @@ body {
   border: none;
   cursor: pointer;
   -webkit-appearance: button;
-}
-
-.iconButton.hidden, .iconLink.hidden {
-  display: none;
 }
 
 .iconButton path, .icon path, .icon circle {
@@ -616,7 +617,7 @@ body.fullBg #background {
   image-rendering: pixelated;
 }
 
-#gameLogo.hidden {
+#gameLogo.transparent {
   opacity: 0;
 }
 
@@ -852,10 +853,6 @@ body.fullBg #background {
   transform: scale(var(--canvas-scale));
 }
 
-#mapChatContainer.hidden {
-  display: none;
-}
-
 #content.downscale #layout:not(:fullscreen) #mapChatContainer {
   transform: scale(calc(var(--canvas-scale) * 0.75));
 }
@@ -872,7 +869,23 @@ body.fullBg #background {
 
 #mapChatContainer > .mapChatMessageContainer.fade {
   transition: opacity 1s ease-in-out;
+  
+}
+
+#mapChatContainer > .mapChatMessageContainer.fade, #mapChatContainer > .mapChatMessageContainer.expired {
   opacity: 0;
+}
+
+#mapChatContainer:not(.focused) > #mapChatInputContainer {
+  display: none;
+}
+
+#mapChatContainer.focused > .mapChatMessageContainer {
+  opacity: 1 !important;
+}
+
+#mapChatContainer #mapChatInput {
+  outline: 0px solid transparent;
 }
 
 #locationDisplayContainer {
@@ -926,10 +939,6 @@ body.fullBg #background {
   -webkit-text-fill-color: unset;
   mix-blend-mode: color;
   filter: none;
-}
-
-#locationDisplayLabelOverlay.hidden, #locationDisplayLabelOverlay.hidden {
-  display: none;
 }
 
 #uiControls {
@@ -1311,10 +1320,6 @@ body.fullBg #background {
   padding: 0 8px;
 }
 
-.medalsContainer.hidden {
-  display: none;
-}
-
 .medal {
   height: 16px;
   margin-left: -8px;
@@ -1642,10 +1647,6 @@ body.fullBg #background {
   margin-top: 8px;
 }
 
-#modalContainer.hidden, .modal.hidden, .info.hidden, .playerCountLabel.hidden, #unreadMessageCountContainer.hidden, .chatboxTabSection.hidden, .messageContainer.locMessage.hidden, .playerLocation.hidden, .subTab.hidden, #ynomojiContainer.hidden, .ynomojiButton.hidden, #partyModalDescriptionContainer.hidden, .partyModalPlayerCount.hidden, #saveModalReloadButton.hidden {
-  display: none;
-}
-
 #enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
@@ -1676,10 +1677,6 @@ body.fullBg #background {
 #translationInstruction, #noGameLocInstruction {
   font-size: small;
   padding: 0;
-}
-
-#translationInstruction.hidden, #noGameLocInstruction.hidden {
-  display: none;
 }
 
 #modalContainer {
@@ -1817,10 +1814,6 @@ body.fullBg #background {
   text-align: center;
 }
 
-.modalContent .itemCategoryHeader.hidden {
-  display: none;
-}
-
 #header.fullBg, .modal.fullBg {
   background-size: auto calc(100% + 32px);
 }
@@ -1828,10 +1821,6 @@ body.fullBg #background {
 .itemContainer .item {
   margin: 22px;
   text-align: center;
-}
-
-.itemContainer .item.hidden {
-  display: none;
 }
 
 .itemContainer .item > div {
@@ -1983,10 +1972,6 @@ body.fullBg #background {
   border: 6px solid transparent;
 }
 
-#badgeGalleryButton.hidden {
-  display: none;
-}
-
 .modalContent .showHidePasswordLink.showPassword > span:first-child, .modalContent .showHidePasswordLink:not(.showPassword) > span:last-child {
   display: none;
 }
@@ -2049,10 +2034,6 @@ body.fullBg #background {
 
 .formControlRow.indent {
   padding-left: 40px;
-}
-
-.formControlRow.hidden {
-  display: none;
 }
 
 .formControlRow > div:first-child {
@@ -2213,10 +2194,6 @@ form .uiTheme {
   margin-right: 8px;
 }
 
-#saveSlotList .saveSlotListEntry .saveSlotListEntryContent .saveSlotButtonsContainer .saveSlotButton.hidden {
-  display: none;
-}
-
 #eventPeriodInfoContainer {
   display: flex;
   flex-direction: column;
@@ -2267,10 +2244,6 @@ form .uiTheme {
 .badgeButton {
   cursor: pointer;
   -webkit-appearance: button;
-}
-
-.badge.hidden, .badgeOverlay.hidden {
-  display: none;
 }
 
 .badgeOverlay {
@@ -2375,10 +2348,6 @@ form .uiTheme {
 
 .eventList {
   width: 100%;
-}
-
-.eventList.hidden {
-  display: none;
 }
 
 .eventList .eventListEntry.complete {
