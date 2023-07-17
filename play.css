@@ -850,7 +850,6 @@ body.fullBg #background {
   pointer-events: none;
   transform-origin: top left;
   transform: scale(var(--canvas-scale));
-  display: none; /* For testing */
 }
 
 #mapChatContainer.hidden {
