@@ -250,7 +250,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
-  if (!global && !party)
+  if (player && !global && !party)
     addMapChatMessage(message.innerHTML);
 
   const chatbox = document.getElementById("chatbox");
