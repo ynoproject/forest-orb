@@ -313,18 +313,18 @@ function addGameChatMessage(messageHtml, messageType) {
 
   const messageContainer = document.createElement('div');
   messageContainer.classList.add('gameChatMessageContainer');
+  if (messageType === 2) {
+    if (!globalConfig.gameChatGlobal)
+      messageContainer.classList.add('hidden');
+  } else if (messageType === 1) {
+    if (!globalConfig.gameChatParty && !joinedPartyId)
+      messageContainer.classList.add('hidden');
+  }
+  messageContainer.dataset.messageType = messageType;
 
   const message = document.createElement('div');
   message.classList.add('gameChatMessage');
   message.classList.add('message');
-  if (messageType === 2) {
-    if (!globalConfig.gameChatGlobal)
-      message.classList.add('hidden');
-  } else if (messageType === 1) {
-    if (!globalConfig.gameChatParty && !joinedPartyId)
-      message.classList.add('hidden');
-  }
-  message.dataset.messageType = messageType;
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
@@ -369,12 +369,12 @@ function cycleGameChatMode() {
 }
 
 function updateGameChatMessageVisibility() {
-  const gameChatMessages = document.getElementsByClassName('gameChatMessage');
-  for (let message of gameChatMessages) {
-    if (message.dataset.messageType == 2)
-      message.classList.toggle('hidden', !globalConfig.gameChatGlobal);
-    else if (message.dataset.messageType == 1)
-      message.classList.toggle('hidden', !globalConfig.gameChatParty);
+  const gameChatMessageContainers = document.getElementsByClassName('gameChatMessageContainer');
+  for (let messageContainer of gameChatMessageContainers) {
+    if (messageContainer.dataset.messageType == 2)
+      messageContainer.classList.toggle('hidden', !globalConfig.gameChatGlobal);
+    else if (messageContainer.dataset.messageType == 1)
+      messageContainer.classList.toggle('hidden', !globalConfig.gameChatParty);
   }
 }
 
