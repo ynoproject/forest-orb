@@ -317,10 +317,10 @@ function addGameChatMessage(messageHtml, messageType) {
   const message = document.createElement('div');
   message.classList.add('gameChatMessage');
   message.classList.add('message');
-  if (messageType === 1) {
+  if (messageType === 2) {
     if (!globalConfig.gameChatGlobal)
       message.classList.add('hidden');
-  } else if (messageType === 2) {
+  } else if (messageType === 1) {
     if (!globalConfig.gameChatParty && !joinedPartyId)
       message.classList.add('hidden');
   }
@@ -371,9 +371,9 @@ function cycleGameChatMode() {
 function updateGameChatMessageVisibility() {
   const gameChatMessages = document.getElementsByClassName('gameChatMessage');
   for (let message of gameChatMessages) {
-    if (message.dataset.messageType == 1)
+    if (message.dataset.messageType == 2)
       message.classList.toggle('hidden', !globalConfig.gameChatGlobal);
-    else if (message.dataset.messageType == 2)
+    else if (message.dataset.messageType == 1)
       message.classList.toggle('hidden', !globalConfig.gameChatParty);
   }
 }
