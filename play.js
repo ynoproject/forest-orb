@@ -811,7 +811,7 @@ document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   globalConfig.gameChat = toggled;
-  document.getElementById('gameChatContainer').classList.toggle('hidden', toggled);
+  document.getElementById('gameChatContainer').classList.toggle('hidden', !toggled);
   const gameChatRows = document.getElementsByClassName('gameChatRow');
   for (let row of gameChatRows)
     row.classList.toggle('hidden', !toggled);
@@ -822,7 +822,7 @@ document.getElementById('gameChatGlobalButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   globalConfig.gameChatGlobal = toggled;
-  if (toggled && gameChatModeIndex === 1)
+  if (!toggled && gameChatModeIndex === 1)
     cycleGameChatMode();
   updateGameChatMessageVisibility();
   updateConfig(globalConfig, true);
@@ -832,7 +832,7 @@ document.getElementById('gameChatPartyButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   globalConfig.gameChatParty = toggled;
-  if (toggled && gameChatModeIndex === 2)
+  if (!toggled && gameChatModeIndex === 2)
     cycleGameChatMode();
   updateGameChatMessageVisibility();
   updateConfig(globalConfig, true);
