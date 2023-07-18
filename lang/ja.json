@@ -130,9 +130,9 @@
         "title": "チャット 設定",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "ゲーム内にチャットをオーバーレイ表示する",
+            "global": "グローバルチャットのオーバーレイ表示",
+            "party": "パーティチャットのオーバーレイ表示"
           },
           "toggleTabToChat": "タブキーを 押して チャット",
           "chatHistoryLimit": {
