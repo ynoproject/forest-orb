@@ -472,10 +472,10 @@ function initChat() {
           Module._free(msgPtr);
           break;
         case 1:
-          sendSessionCommand('psay', [ chatMessageContent ]);
+          sendSessionCommand('gsay', [ chatMessageContent, !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
           break;
         case 2:
-          sendSessionCommand('gsay', [ chatMessageContent ]);
+          sendSessionCommand('psay', [ chatMessageContent ]);
           break;
       }
       e.target.innerHTML = '';
@@ -483,7 +483,7 @@ function initChat() {
       document.getElementById('canvas').focus();
       return;
     }
-  }
+  };
 }
 
 function addChatTip() {
