@@ -129,7 +129,11 @@
       "chatSettings": {
         "title": "チャット 設定",
         "fields": {
-          "toggleGameChat": "In-Game Chat Overlay",
+          "toggleGameChat": {
+            "label": "In-Game Chat Overlay",
+            "global": "Global Chat Overlay",
+            "party": "Party Chat Overlay"
+          },
           "toggleTabToChat": "タブキーを 押して チャット",
           "chatHistoryLimit": {
             "values": {

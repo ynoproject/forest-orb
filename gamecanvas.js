@@ -195,8 +195,21 @@ if (hasTouchscreen) {
       }
       if (input)
         window.setTimeout(() => input.focus(), 0);
-    } else if (globalConfig.gameChat && event.key === 't') {
+    } else if (globalConfig.gameChat && (event.key === 't' || event.key === 'm'
+      || (event.key === 'g' && globalConfig.gameChatGlobal)
+      || (event.key === 'p' && globalConfig.gameChatParty && joinedPartyId))) {
       const gameChatInput = document.getElementById('gameChatInput');
+      switch (event.key) {
+        case 'm':
+          setGameChatMode(0);
+          break;
+        case 'g':
+          setGameChatMode(1);
+          break;
+        case 'p':
+          setGameChatMode(2);
+          break;
+      }
       setTimeout(() => {
         gameChatInput.onfocus();
         gameChatInput.focus();

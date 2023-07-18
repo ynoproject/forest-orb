@@ -129,7 +129,11 @@
       "chatSettings": {
         "title": "Cài đặt Chat",
         "fields": {
-          "toggleGameChat": "In-Game Chat Overlay",
+          "toggleGameChat": {
+            "label": "In-Game Chat Overlay",
+            "global": "Global Chat Overlay",
+            "party": "Party Chat Overlay"
+          },
           "toggleTabToChat": "Nhấn Tab để chat",
           "chatHistoryLimit": {
             "values": {

@@ -841,7 +841,7 @@ body.fullBg #background {
   max-height: calc((100vw - 16px) * 0.75);
 }
 
-#mapChatContainer {
+#gameChatContainer {
   position: absolute;
   font-family: 'JF-Dot-Shinonome12';
   font-size: 16px;
@@ -854,39 +854,43 @@ body.fullBg #background {
   transform: scale(var(--canvas-scale));
 }
 
-#content.downscale #layout:not(:fullscreen) #mapChatContainer {
+#content.downscale #layout:not(:fullscreen) #gameChatContainer {
   transform: scale(calc(var(--canvas-scale) * 0.75));
 }
 
-#content.downscale2 #layout:not(:fullscreen) #mapChatContainer {
+#content.downscale2 #layout:not(:fullscreen) #gameChatContainer {
   transform: scale(calc(var(--canvas-scale) * 0.5));
 }
 
-#mapChatContainer > .mapChatMessageContainer {
+#gameChatContainer > .gameChatMessageContainer {
   width: fit-content;
   padding: 4px;
   background-color: rgba(var(--shadow-color), 0.5);
 }
 
-#mapChatContainer > .mapChatMessageContainer.fade {
+#gameChatContainer > .gameChatMessageContainer.fade {
   transition: opacity 1s ease-in-out;
   
 }
 
-#mapChatContainer > .mapChatMessageContainer.fade, #mapChatContainer > .mapChatMessageContainer.expired {
+#gameChatContainer > .gameChatMessageContainer.fade, #gameChatContainer > .gameChatMessageContainer.expired {
   opacity: 0;
 }
 
-#mapChatContainer:not(.focused) > #mapChatInputContainer {
+#gameChatContainer:not(.focused) > #gameChatInputContainer {
   display: none;
 }
 
-#mapChatContainer.focused > .mapChatMessageContainer {
+#gameChatContainer.focused > .gameChatMessageContainer {
   opacity: 1 !important;
 }
 
-#mapChatContainer #mapChatInput {
+#gameChatContainer #gameChatInput {
   outline: 0px solid transparent;
+}
+
+#gameChatModeIcon {
+  margin-right: 6px;
 }
 
 #locationDisplayContainer {
@@ -1285,7 +1289,7 @@ body.fullBg #background {
   image-rendering: auto;
 }
 
-.message .icon, .listEntry .nameText .icon, .mapChatMessage .icon {
+.message .icon, .listEntry .nameText .icon, .gameChatMessage .icon {
   display: inline-block;
   vertical-align: text-top;
   width: 12px;

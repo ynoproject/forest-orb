@@ -29,6 +29,8 @@ let globalConfig = {
   musicVolume: 100,
   chatTipIndex: -1,
   gameChat: true,
+  gameChatGlobal: false,
+  gameChatParty: true,
   tabToChat: true,
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
@@ -809,7 +811,30 @@ document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   globalConfig.gameChat = !toggled;
-  document.getElementById('mapChatContainer').classList.toggle('hidden', toggled);
+  document.getElementById('gameChatContainer').classList.toggle('hidden', toggled);
+  const gameChatRows = document.getElementsByClassName('gameChatRow');
+  for (let row of gameChatRows)
+    row.classList.toggle('hidden', toggled);
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('gameChatGlobalButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  globalConfig.gameChatGlobal = !toggled;
+  if (toggled && gameChatModeIndex === 1)
+    cycleGameChatMode();
+  updateGameChatMessageVisibility();
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('gameChatPartyButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  globalConfig.gameChatParty = !toggled;
+  if (toggled && gameChatModeIndex === 2)
+    cycleGameChatMode();
+  updateGameChatMessageVisibility();
   updateConfig(globalConfig, true);
 };
 
@@ -999,16 +1024,16 @@ function onResize() {
 function updateCanvasOverlays() {
   const contentElement = document.getElementById('content');
   const canvasElement = document.getElementById('canvas');
-  const mapChatContainer = document.getElementById('mapChatContainer');
+  const gameChatContainer = document.getElementById('gameChatContainer');
   const locationDisplayContainer = document.getElementById('locationDisplayContainer');
 
   if (document.fullscreenElement) {
     const canvasRect = canvas.getBoundingClientRect();
-    mapChatContainer.style.top = locationDisplayContainer.style.top = `${canvasRect.y}px`;
-    mapChatContainer.style.left = locationDisplayContainer.style.left = `${canvasRect.x}px`;
+    gameChatContainer.style.top = locationDisplayContainer.style.top = `${canvasRect.y}px`;
+    gameChatContainer.style.left = locationDisplayContainer.style.left = `${canvasRect.x}px`;
   } else {
-    mapChatContainer.style.top = locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
-    mapChatContainer.style.left = locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
+    gameChatContainer.style.top = locationDisplayContainer.style.top = `${canvasElement.offsetTop - contentElement.scrollTop}px`;
+    gameChatContainer.style.left = locationDisplayContainer.style.left = `${canvasElement.offsetLeft}px`;
   }
 
   let mapChatWidth = canvasElement.offsetWidth;
@@ -1025,9 +1050,9 @@ function updateCanvasOverlays() {
   }
 
   locationDisplayContainer.style.maxWidth = `${canvasElement.offsetWidth}px`;
-  mapChatContainer.style.width = `${mapChatWidth}px`;
-  mapChatContainer.style.height = `${mapChatHeight}px`;
-  mapChatContainer.style.marginTop = `calc(${canvasElement.offsetHeight / 2}px * var(--canvas-scale))`;
+  gameChatContainer.style.width = `${mapChatWidth}px`;
+  gameChatContainer.style.height = `${mapChatHeight}px`;
+  gameChatContainer.style.marginTop = `calc(${canvasElement.offsetHeight / 2}px * var(--canvas-scale))`;
 }
 
 function updateYnomojiContainerPos(isScrollUpdate) {

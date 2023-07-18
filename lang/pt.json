@@ -129,7 +129,11 @@
       "chatSettings": {
         "title": "Configurações do Bate-papo",
         "fields": {
-          "toggleGameChat": "In-Game Chat Overlay",
+          "toggleGameChat": {
+            "label": "In-Game Chat Overlay",
+            "global": "Global Chat Overlay",
+            "party": "Party Chat Overlay"
+          },
           "toggleTabToChat": "Atalho Tab para usar o Chat",
           "chatHistoryLimit": {
             "values": {

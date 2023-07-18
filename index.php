@@ -149,10 +149,10 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
-          <div id="mapChatContainer">
-            <div id="mapChatInputContainer" class="mapChatMessageContainer">
-              <div class="mapChatMessage message">
-                <div class="messageContents">>&nbsp;<span id="mapChatInput" contenteditable="true"></div>
+          <div id="gameChatContainer">
+            <div id="gameChatInputContainer" class="gameChatMessageContainer">
+              <div class="gameChatMessage message">
+                <div class="messageContents">>&nbsp;<span id="gameChatModeIcon"></span><span id="gameChatInput" contenteditable="true"></div>
               </div>
             </div>
           </div>
@@ -544,10 +544,22 @@
           </div>
           <div class="modalContent">
             <ul class="formControls">
-            <li class="formControlRow">
-                <label for="gameChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat">In-Game Chat Overlay</label>
+              <li class="formControlRow">
+                <label for="gameChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.label">In-Game Chat Overlay</label>
                 <div>
                   <button id="gameChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow indent gameChatRow">
+                <label for="gameChatGlobalButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.global">Global Chat Overlay</label>
+                <div>
+                  <button id="gameChatGlobalButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow indent gameChatRow">
+                <label for="gameChatPartyButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.party">Party Chat Overlay</label>
+                <div>
+                  <button id="gameChatPartyButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow desktopOnly">

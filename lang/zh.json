@@ -129,7 +129,11 @@
       "chatSettings": {
         "title": "聊天设置",
         "fields": {
-          "toggleGameChat": "In-Game Chat Overlay",
+          "toggleGameChat": {
+            "label": "In-Game Chat Overlay",
+            "global": "Global Chat Overlay",
+            "party": "Party Chat Overlay"
+          },
           "toggleTabToChat": "开启Tab键聊天",
           "chatHistoryLimit": {
             "values": {

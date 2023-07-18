@@ -250,8 +250,8 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
-  if (player && !global && !party)
-    addGameChatMessage(message.innerHTML);
+  if (player)
+    addGameChatMessage(message.innerHTML, type);
 
   const chatbox = document.getElementById("chatbox");
 
@@ -306,7 +306,9 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   return msgContainer;
 }
 
-function addGameChatMessage(messageHtml) {
+let gameChatModeIndex = 0;
+
+function addGameChatMessage(messageHtml, messageType) {
   const gameChatContainer = document.getElementById('gameChatContainer');
 
   const messageContainer = document.createElement('div');
@@ -315,10 +317,21 @@ function addGameChatMessage(messageHtml) {
   const message = document.createElement('div');
   message.classList.add('gameChatMessage');
   message.classList.add('message');
+  if (messageType === 1) {
+    if (!globalConfig.gameChatGlobal)
+      message.classList.add('hidden');
+  } else if (messageType === 2) {
+    if (!globalConfig.gameChatParty && !joinedPartyId)
+      message.classList.add('hidden');
+  }
+  message.dataset.messageType = messageType;
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
-  gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.children.length - 1]);
+  gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.childElementCount - 1]);
+
+  if (gameChatContainer.childElementCount > 30)
+    gameChatContainer.firstChild.remove();
 
   setTimeout(() => {
     messageContainer.classList.add('fade');
@@ -327,6 +340,42 @@ function addGameChatMessage(messageHtml) {
       messageContainer.classList.add('expired');
     }, 1000);
   }, 10000);
+}
+
+function setGameChatMode(modeIndex) {
+  const chatModeIcon = document.getElementById('gameChatModeIcon');
+  gameChatModeIndex = modeIndex;
+  if (modeIndex) {
+    if (modeIndex === 1) {
+      if (globalConfig.gameChatGlobal)
+        chatModeIcon.innerHTML = getSvgIcon('global', true).outerHTML;
+      else
+        cycleGameChatMode();
+    } else {
+      if (globalConfig.gameChatParty && joinedPartyId)
+        chatModeIcon.innerHTML = getSvgIcon('party', true).outerHTML;
+      else
+        cycleGameChatMode();
+    }
+  } else
+    chatModeIcon.innerHTML = '';
+}
+
+function cycleGameChatMode() {
+  if (gameChatModeIndex < 2)
+    setGameChatMode(gameChatModeIndex + 1);
+  else
+    setGameChatMode(0);
+}
+
+function updateGameChatMessageVisibility() {
+  const gameChatMessages = document.getElementsByClassName('gameChatMessage');
+  for (let message of gameChatMessages) {
+    if (message.dataset.messageType == 1)
+      message.classList.toggle('hidden', !globalConfig.gameChatGlobal);
+    else if (message.dataset.messageType == 2)
+      message.classList.toggle('hidden', !globalConfig.gameChatParty);
+  }
 }
 
 function chatInputActionFired() {
@@ -397,25 +446,42 @@ function trySetChatName(name) {
 function initChat() {
   document.getElementById("chatboxContainer").style.display = "table-cell";
   
-  const mapChatContainer = document.getElementById('mapChatContainer');
-  const mapChatInput = document.getElementById('mapChatInput');
-  mapChatInput.onfocus = function() {
-    mapChatContainer.classList.add('focused');
+  const gameChatContainer = document.getElementById('gameChatContainer');
+  const gameChatInput = document.getElementById('gameChatInput');
+  gameChatInput.onfocus = function() {
+    gameChatContainer.classList.add('focused');
     document.execCommand('selectAll', false, null);
     document.getSelection().collapseToEnd();
   };
-  mapChatInput.onblur = () => mapChatContainer.classList.remove('focused');
-  mapChatInput.onkeydown = function (e) {
-    if (e.key === 'Enter') {
-      if (!e.target.innerText.trim()) {
+  gameChatInput.onblur = () => gameChatContainer.classList.remove('focused');
+  gameChatInput.onkeydown = function (e) {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      cycleGameChatMode();
+    } else if (e.key === 'Enter') {
+      const chatMessageContent = e.target.innerText.trim();
+      if (!chatMessageContent) {
         document.getElementById('canvas').focus();
         return;
       }
       e.preventDefault();
-      const msgPtr = Module.allocate(Module.intArrayFromString(e.target.innerText.trim()), Module.ALLOC_NORMAL);
-      Module._SendChatMessageToServer(msgPtr);
-      Module._free(msgPtr);
+      switch (gameChatModeIndex) {
+        case 0:
+          const msgPtr = Module.allocate(Module.intArrayFromString(chatMessageContent), Module.ALLOC_NORMAL);
+          Module._SendChatMessageToServer(msgPtr);
+          Module._free(msgPtr);
+          break;
+        case 1:
+          sendSessionCommand('psay', [ chatMessageContent ]);
+          break;
+        case 2:
+          sendSessionCommand('gsay', [ chatMessageContent ]);
+          break;
+      }
       e.target.innerHTML = '';
+    } else if (e.key === 'Escape') {
+      document.getElementById('canvas').focus();
+      return;
     }
   }
 }

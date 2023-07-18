@@ -194,6 +194,8 @@ function setJoinedPartyId(partyId) {
     joinedPartyPendingOfflineMemberUuids = [];
     content.classList.remove('partyOwner');
     setPartyUiTheme(null);
+    if (gameChatModeIndex === 2)
+      cycleGameChatMode();
   }
 }
 

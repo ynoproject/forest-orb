@@ -442,6 +442,14 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value)
                       document.getElementById('gameChatButton').click();
                     break;
+                  case 'gameChatGlobal':
+                    if (!value)
+                      document.getElementById('gameChatGlobalButton').click();
+                    break;
+                  case 'gameChatParty':
+                    if (!value)
+                      document.getElementById('gameChatPartyButton').click();
+                    break;
                   case 'tabToChat':
                     if (!value)
                       document.getElementById('tabToChatButton').click();
