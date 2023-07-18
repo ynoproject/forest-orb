@@ -330,8 +330,9 @@ function addGameChatMessage(messageHtml, messageType) {
   messageContainer.appendChild(message);
   gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.childElementCount - 1]);
 
-  if (gameChatContainer.childElementCount > 30)
-    gameChatContainer.firstChild.remove();
+  const typeMessages = Array.from(gameChatContainer.children).filter(m => m.dataset.messageType == messageType);
+  if (typeMessages.length > 10)
+    typeMessages[0].remove();
 
   setTimeout(() => {
     messageContainer.classList.add('fade');
