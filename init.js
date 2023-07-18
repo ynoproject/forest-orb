@@ -439,15 +439,15 @@ function loadOrInitConfig(configObj, global, configName) {
                     setMusicVolume(value, true);
                     break;
                   case 'gameChat':
-                    if (value)
+                    if (!value)
                       document.getElementById('gameChatButton').click();
                     break;
                   case 'gameChatGlobal':
-                    if (value)
+                    if (!value)
                       document.getElementById('gameChatGlobalButton').click();
                     break;
                   case 'gameChatParty':
-                    if (value)
+                    if (!value)
                       document.getElementById('gameChatPartyButton').click();
                     break;
                   case 'tabToChat':

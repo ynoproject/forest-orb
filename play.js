@@ -810,18 +810,18 @@ document.getElementById('screenshotFixButton').onclick = function () {
 document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
-  globalConfig.gameChat = toggled;
+  globalConfig.gameChat = !toggled;
   document.getElementById('gameChatContainer').classList.toggle('hidden', toggled);
   const gameChatRows = document.getElementsByClassName('gameChatRow');
   for (let row of gameChatRows)
-    row.classList.toggle('hidden', !toggled);
+    row.classList.toggle('hidden', toggled);
   updateConfig(globalConfig, true);
 };
 
 document.getElementById('gameChatGlobalButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
-  globalConfig.gameChatGlobal = toggled;
+  globalConfig.gameChatGlobal = !toggled;
   if (toggled && gameChatModeIndex === 1)
     cycleGameChatMode();
   updateGameChatMessageVisibility();
@@ -831,7 +831,7 @@ document.getElementById('gameChatGlobalButton').onclick = function () {
 document.getElementById('gameChatPartyButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
-  globalConfig.gameChatParty = toggled;
+  globalConfig.gameChatParty = !toggled;
   if (toggled && gameChatModeIndex === 2)
     cycleGameChatMode();
   updateGameChatMessageVisibility();

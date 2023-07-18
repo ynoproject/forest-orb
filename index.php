@@ -547,19 +547,19 @@
               <li class="formControlRow">
                 <label for="gameChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.label">In-Game Chat Overlay</label>
                 <div>
-                  <button id="gameChatButton" class="checkboxButton unselectable"><span></span></button>
+                  <button id="gameChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow indent gameChatRow">
                 <label for="gameChatGlobalButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.global">Global Chat Overlay</label>
                 <div>
-                  <button id="gameChatGlobalButton" class="checkboxButton unselectable"><span></span></button>
+                  <button id="gameChatGlobalButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow indent gameChatRow">
                 <label for="gameChatPartyButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.party">Party Chat Overlay</label>
                 <div>
-                  <button id="gameChatPartyButton" class="checkboxButton unselectable"><span></span></button>
+                  <button id="gameChatPartyButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow desktopOnly">
