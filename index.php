@@ -149,7 +149,7 @@
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 
-          <div id="gameChatContainer">
+          <div id="gameChatContainer" class="hidden">
             <div id="gameChatInputContainer" class="gameChatMessageContainer">
               <div class="gameChatMessage message">
                 <div class="messageContents">>&nbsp;<span id="gameChatModeIcon"></span><span id="gameChatInput" contenteditable="true"></div>
