@@ -374,8 +374,8 @@ function updateGameChatMessageVisibility() {
   for (let messageContainer of gameChatMessageContainers) {
     if (messageContainer.dataset.messageType == 2)
       messageContainer.classList.toggle('hidden', !globalConfig.gameChatGlobal);
-    else if (messageContainer.dataset.messageType == 1)
-      messageContainer.classList.toggle('hidden', !globalConfig.gameChatParty);
+    else if (messageContainer.dataset.messageType == 3)
+      messageContainer.classList.toggle('hidden', !globalConfig.gameChatParty || !joinedPartyId);
   }
 }
 
