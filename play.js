@@ -387,10 +387,11 @@ function hideLocationDisplay(fast) {
 }
 
 {
-  const cancelKeyCodes = [ 'Escape', 'x', 'c', 'v', 'b', 'n' ];
+  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n' ];
 
   document.addEventListener('keydown', e => {
-    if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(e.key)) {
+    const keyLc = e.key;
+    if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(keyLc)) {
       locationDisplayQueue.splice(0, locationDisplayQueue.length);
       hideLocationDisplay(true);
     }
