@@ -1522,22 +1522,22 @@ body.fullBg #background {
   padding-right: 52px;
 }
 
-#globalCooldownIcon {
+.globalCooldownIcon {
   position: relative;
   top: calc(50% - 9px);
   width: 18px;
   height: 18px;
 }
 
-#globalCooldownIcon svg {
+.globalCooldownIcon svg {
   stroke-width: 1.5;
 }
 
-#globalCooldownIcon .bgCircle {
+.globalCooldownIcon .bgCircle {
   opacity: 0.325;
 }
 
-#globalCooldownIcon .timerCircle {
+.globalCooldownIcon .timerCircle {
   stroke: var(--svg-alt-gradient) !important;
   stroke-dashoffset: 60;
   stroke-dasharray: 0;
@@ -1555,15 +1555,19 @@ body.fullBg #background {
   }
 }
 
-#chatInputContainer.globalCooldown #globalCooldownIcon .timerCircle {
+#chatInputContainer.globalCooldown .globalCooldownIcon .timerCircle, #gameChatInputContainer.globalCooldown .globalCooldownIcon .timerCircle {
   animation: 5s timer linear;
 }
 
-#chatInputContainer:not(.globalCooldown) #globalCooldownIcon {
+#chatInputContainer:not(.globalCooldown) .globalCooldownIcon, #gameChatInputContainer:not(.globalCooldown) .globalCooldownIcon {
   display: none;
 }
 
-#chatbox:not(.allChat) #globalCooldownIcon {
+#gameChatInputContainer.globalCooldown #gameChatInput {
+  margin-left: 12px;
+}
+
+#chatbox:not(.allChat) .globalCooldownIcon {
   left: 8px;
 }
 

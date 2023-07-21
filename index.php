@@ -152,7 +152,7 @@
           <div id="gameChatContainer" class="hidden">
             <div id="gameChatInputContainer" class="gameChatMessageContainer">
               <div class="gameChatMessage message">
-                <div class="messageContents">>&nbsp;<span id="gameChatModeIcon"></span><span id="gameChatInput" contenteditable="true"></div>
+                <div class="messageContents">>&nbsp;<span id="gameChatModeIcon"></span><div class="globalCooldownIcon icon hidden"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><circle class="bgCircle" cx="9" cy="9" r="9" /><circle class="timerCircle" cx="9" cy="9" r="9" /></svg></div><span id="gameChatInput" contenteditable="true"></span></div>
               </div>
             </div>
           </div>
@@ -324,7 +324,7 @@
               <div id="globalChatInputOverlay"></div>
               <div id="chatBorder"></div>
             </form>
-            <div id="globalCooldownIcon" class="icon">
+            <div class="globalCooldownIcon icon">
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
                 <circle class="bgCircle" cx="9" cy="9" r="9" />
                 <circle class="timerCircle" cx="9" cy="9" r="9" />

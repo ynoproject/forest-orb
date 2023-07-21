@@ -360,6 +360,7 @@ function setGameChatMode(modeIndex) {
     }
   } else
     chatModeIcon.innerHTML = '';
+  document.getElementById('gameChatInputContainer').querySelector('.globalCooldownIcon').classList.toggle('hidden', modeIndex !== 1);
 }
 
 function cycleGameChatMode() {
@@ -405,18 +406,8 @@ function chatInputActionFired() {
       Module._free(msgPtr);
     } else
       sendSessionCommand("psay", [ chatInput.value.trim() ]);
-  } else {
-    const chatInputContainer = document.getElementById("chatInputContainer");
-    if (!chatInputContainer.classList.contains("globalCooldown")) {
-      sendSessionCommand("gsay", [ chatInput.value.trim(), !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
-      chatInput.dataset.blockGlobal = true;
-      chatInputContainer.classList.add("globalCooldown");
-      window.setTimeout(function () {
-        chatInputContainer.classList.remove("globalCooldown");
-        delete chatInput.dataset.blockGlobal;
-      }, 5000);
-    }
-  }
+  } else if (!trySendGlobalMessage(chatInput.value.trim()))
+    return;
   chatInput.value = "";
   document.getElementById("ynomojiContainer").classList.add("hidden");
 }
@@ -466,6 +457,8 @@ function initChat() {
         return;
       }
       e.preventDefault();
+      if (!playerName)
+        return;
       switch (gameChatModeIndex) {
         case 0:
           const msgPtr = Module.allocate(Module.intArrayFromString(chatMessageContent), Module.ALLOC_NORMAL);
@@ -473,7 +466,8 @@ function initChat() {
           Module._free(msgPtr);
           break;
         case 1:
-          sendSessionCommand('gsay', [ chatMessageContent, !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
+          if (!trySendGlobalMessage(chatMessageContent))
+            return;
           break;
         case 2:
           sendSessionCommand('psay', [ chatMessageContent ]);
@@ -485,6 +479,30 @@ function initChat() {
       return;
     }
   };
+}
+
+function trySendGlobalMessage(content) {
+  const chatInput = document.getElementById("chatInput");
+  if (chatInput.blockGlobal)
+    return false;
+
+  const chatInputContainer = document.getElementById("chatInputContainer");
+  
+  if (!chatInputContainer.classList.contains("globalCooldown")) {
+    const chatInputContainers = [ chatInputContainer, document.getElementById("gameChatInputContainer") ];
+    const chatInputs = [ chatInput, document.getElementById('gameChatInput') ];
+    sendSessionCommand("gsay", [ content, !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
+    chatInputs.forEach(el => el.dataset.blockGlobal = true);
+    chatInputContainers.forEach(el => el.classList.add("globalCooldown"));
+    window.setTimeout(function () {
+      chatInputContainers.forEach(el => el.classList.remove("globalCooldown"));
+      chatInputs.forEach(el => delete el.dataset.blockGlobal);
+    }, 5000);
+
+    return true;
+  }
+
+  return false;
 }
 
 function addChatTip() {
