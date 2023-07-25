@@ -647,6 +647,7 @@ if (gameId === '2kki') {
   document.getElementById('explorerButton').onclick = function () {
     this.classList.toggle('toggled');
     document.getElementById('layout').classList.toggle('explorer');
+    onResize();
     config.explorer = this.classList.contains('toggled');
     updateConfig(config);
   };
@@ -1141,6 +1142,7 @@ function updateCanvasFullscreenSize() {
   
   if (document.fullscreenElement) {
     const showChat = !layoutElement.classList.contains('hideChat');
+    const showExplorer = contentElement.classList.contains('loggedIn') && layoutElement.classList.contains('explorer');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
     const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
@@ -1163,10 +1165,13 @@ function updateCanvasFullscreenSize() {
     } else {
       const canvasScaledHeight = canvasElement.offsetHeight * scale;
       const unusedHeight = window.innerHeight - (canvasScaledHeight + 32);
+      let chatboxActualHeight = unusedHeight;
+      if (showExplorer)
+        chatboxActualHeight -= (document.getElementById('explorerFrame').offsetHeight + 12);
       if (unusedHeight >= 376 && showChat) {
         canvasContainerMarginTop = `-${(window.innerHeight - canvasScaledHeight) / 2}px`
         chatboxContainerMarginTop = `${(window.innerHeight - unusedHeight) - 40}px`;
-        chatboxHeight = `${unusedHeight}px`;
+        chatboxHeight = `${chatboxActualHeight}px`;
         leftControlsMaxHeight = `${canvasScaledHeight}px`;
       } else {
         chatboxContainerMarginTop = '24px';

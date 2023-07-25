@@ -679,11 +679,11 @@ body.fullBg #background {
   scrollbar-width: 18px;
 }
 
-#layout.downscale .container.fullBg {
+#content.downscale .container.fullBg {
   background-size: 530px;
 }
 
-#layout.downscale2 .container.fullBg {
+#content.downscale2 .container.fullBg {
   background-size: 410px;
 }
 
@@ -1237,6 +1237,8 @@ body.fullBg #background {
 
 .messageContents .spoiler {
   border: 1px solid rgb(var(--base-color));
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .messageContents.notext .spoiler {
@@ -1691,12 +1693,18 @@ body.fullBg #background {
   text-align: center;
 }
 
+#layout.chatboxOverlap:fullscreen #explorerContainer, #layout.hideChat:fullscreen #explorerContainer {
+  text-align: right;
+}
+
 #explorerFrame {
   width: calc(100% - 16px);
   height: calc(100% - 16px);
   border-width: 8px;
   border-image: var(--border-image-url) 4 repeat !important;
   background-color: rgba(var(--shadow-color), 0.5);
+  pointer-events: all;
+  cursor: pointer;
 }
 
 #footer {
@@ -2751,6 +2759,10 @@ form .uiTheme {
     max-height: 313px;
   }
 
+  #content.loggedIn #layout.explorer:fullscreen #chatbox {
+    max-height: calc(100% - 312px);
+  }
+
   .chatboxTabSection {
     width: 284px;
   }
@@ -2790,21 +2802,21 @@ form .uiTheme {
     height: calc(100vh - 474px);
   }
 
-  #content.loggedIn.downscale #layout.explorer #chatboxContainer {
+  #content.loggedIn.downscale #layout.explorer:not(:fullscreen) #chatboxContainer {
     height: calc(100vh - (464px - max(min(100vh - 512px, 284px), 150px)));
     max-height: 640px;
   }
 
-  #content.loggedIn.downscale #layout.explorer.hideChat #chatboxContainer {
+  #content.loggedIn.downscale #layout.explorer.hideChat:not(:fullscreen) #chatboxContainer {
     height: calc(max(min(100vh - 512px, 284px), 150px) + 32px);
   }
 
-  #content.loggedIn.downscale2 #layout.explorer #chatboxContainer {
+  #content.loggedIn.downscale2 #layout.explorer:not(:fullscreen) #chatboxContainer {
     height: calc(100vh - (424px - max(min(100vh - 512px, 284px), 150px)));
     max-height: 640px;
   }
 
-  #content.loggedIn:not(.downscale) #layout.explorer.hideChat #chatboxContainer {
+  #content.loggedIn:not(.downscale) #layout.explorer.hideChat:not(:fullscreen) #chatboxContainer {
     text-align: center;
     height: unset;
   }
@@ -2822,7 +2834,7 @@ form .uiTheme {
     height: calc(100vh - 350px);
   }
 
-  #content.loggedIn:not(.downscale) #layout.explorer #chatbox {
+  #content.loggedIn:not(.downscale) #layout.explorer:not(:fullscreen) #chatbox {
     width: calc(100% - (max(min(100vh - 644px, 284px), 150px) + 24px));
     float: left;
   }
@@ -2839,7 +2851,7 @@ form .uiTheme {
     display: none;
   }
 
-  #content:not(.downscale) #explorerContainer {
+  #content:not(.downscale) #layout:not(:fullscreen) #explorerContainer {
     margin-top: 28px;
     margin-left: 8px;
     width: calc(100vh - 644px) !important;
@@ -2850,11 +2862,11 @@ form .uiTheme {
     max-height: 300px;
   }
 
-  #content:not(.downscale) #layout.explorer.hideChat #explorerContainer {
+  #content:not(.downscale) #layout.explorer.hideChat:not(:fullscreen) #explorerContainer {
     margin-top: 8px;
   }
 
-  #content.downscale #explorerContainer {
+  #content.downscale #explorerContainer, #content #layout:fullscreen #explorerContainer {
     width: 100%;
     margin-top: 8px;
     float: left;
@@ -2862,13 +2874,27 @@ form .uiTheme {
     max-height: 300px;
   }
 
-  #content.downscale #explorerFrame {
+  #content.downscale #layout:fullscreen:not(.chatboxOverlap) #explorerContainer {
+    height: calc(100vh - 612px);
+  }
+
+  #content.downscale #explorerFrame, #content #layout:fullscreen #explorerFrame {
     width: calc(100vh - 512px);
     height: calc(100vh - 512px);
     min-width: 150px;
     min-height: 150px;
     max-width: 284px;
     max-height: 284px;
+  }
+
+  #content #layout:fullscreen:not(.chatboxOverlap) #explorerFrame {
+    width: calc(100vh - 960px);
+    height: calc(100vh - 960px);
+  }
+
+  #content.downscale #layout:fullscreen:not(.chatboxOverlap) #explorerFrame {
+    width: calc(min(100vh - 612px, 100vw - 64px));
+    height: calc(min(100vh - 612px, 100vw - 64px));
   }
 
   /* Ignore :fullscreen on iOS since it's not supported */
@@ -3050,12 +3076,21 @@ form .uiTheme {
     max-height: 100vh;
   }
 
-  #layout.hideChat #chatboxContainer {
+  #layout.hideChat:not(:fullscreen) #chatboxContainer {
     display: none !important;
   }
 
-  #explorerContainer {
+  #layout:not(:fullscreen) #explorerContainer {
     display: none;
+  }
+
+  #layout:fullscreen #explorerContainer {
+    width: 100%;
+    height: 166px;
+  }
+
+  #layout:fullscreen #explorerFrame {
+    width: 150px;
   }
 }
 
@@ -3076,6 +3111,10 @@ form .uiTheme {
 
 #layout:fullscreen #chatboxContainer, #layout:fullscreen #chatbox {
   height: calc(100% - 24px);
+}
+
+#content.loggedIn #layout.explorer:fullscreen #chatbox {
+  height: calc((100% - 24px) - max(min(100vh - 512px, 300px), 150px));
 }
 
 #layout.overflow.chatboxOverlap:fullscreen #chatboxContainer {
@@ -3135,6 +3174,15 @@ form .uiTheme {
 
 #layout:fullscreen #uiControls {
   display: none;
+}
+
+#content.downscale:not(.downscale2) #layout:fullscreen:not(.chatboxOverlap) #explorerContainer, #content.downscale2 #layout:fullscreen.chatboxOverlap #explorerContainer {
+  width: 100%;
+}
+
+#content.downscale:not(.downscale2) #layout:fullscreen:not(.chatboxOverlap) #explorerFrame, #content.downscale2 #layout:fullscreen.chatboxOverlap #explorerFrame {
+  width: 150px;
+  height: 150px;
 }
 
 /* Safari only */
