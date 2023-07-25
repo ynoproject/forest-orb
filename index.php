@@ -121,7 +121,7 @@
                 <svg viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m4.5 3c4.5-4.5 13.5-3 13.5-0.375m-4.125 6.375c-1.875 0-3.375 1.5-1.875 1.875m3 2.625c3 1.5-4.5 6-10.5 4.5-7.5-3-4.5-12 0-15m9-0.75a1.5 1.5 90 0 0 0 3.75 1.5 1.5 90 0 0 0-3.75m-6 0.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m-3.75 4.5a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m1.5 5.25a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m6-0.75a1.5 1.5 90 0 0-0.75 4.5q2.25 0 3-1.875m7.5-14.625q-6 4.5-7.5 10.5l1.5 0.75q4.5-3.75 6-11.25m-7.5 10.5c-3 0-1.5 3-3 4.5 6 0 4.5-3 4.5-3.75m-3.75 2.25c0.75 1.5 1.5 0 1.5 1.275" /></svg>
               </button><button id="chatButton" class="iconButton toggleButton offToggleButton unselectable" data-i18n="[title]tooltips.toggleChat">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m11.25-12.75a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3"/><path d="m-2 16l22-14" /></svg>
-              </button><button id="explorerButton" style="display: none" class="iconButton toggleButton onToggleButton accountRequired unselectable" data-i18n="[title]tooltips.toggleExplorer">
+              </button><button id="explorerButton" style="display: none" class="iconButton toggleButton onToggleButton desktopOnly accountRequired unselectable" data-i18n="[title]tooltips.toggleExplorer">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m6.75 6.75h4.5v4.5h-4.5v-4.5m2.25 0v-3.75h-1.5v-3h3v3h-1.5m2.25 6h3.75v-1.5h3v3h-3v-1.5m-6 2.25v3.75h1.5v3h-3v-3h1.5m-2.25-6h-3.75v-1.5h-3v3h3v-1.5"/><path d="m-2 16l22-14" /></svg>
               </button><button id="screenshotButton" class="iconButton unselectable" data-i18n="[title]tooltips.screenshot">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 8q0-1 1-1h1.5c1 0 1-2 2-2h3c1 0 1 2 2 2h1.5q1 0 1 1v4q0 1-1 1h-10q-1 0-1-1zm6-0.5a2 2 90 0 0 0 4 2 2 90 0 0 0 -4m-9-2.5v-2q0-1 1-1h2m12 0h2q1 0 1 1v2m0 8v2q0 1-1 1h-2m-12 0h-2q-1 0-1-1v-2"></path></svg>
@@ -355,7 +355,7 @@
           </div>
         </div>
         <?php if ($gameId == "2kki"): ?>
-          <div id="explorerContainer" class="desktopOnly accountRequired" data-game-ids>
+          <div id="explorerContainer" style="display: none" class="desktopOnly accountRequired" data-game-ids>
             <iframe id="explorerFrame" class="unselectable"></iframe>
           </div>
         <?php endif ?>
