@@ -45,6 +45,7 @@ let globalConfig = {
 let config = {
   singlePlayer: false,
   disableChat: false,
+  explorer: false,
   mute: false,
   nametagMode: 1,
   disablePlayerSounds: false,
@@ -641,6 +642,15 @@ document.getElementById('chatButton').onclick = function () {
   config.disableChat = this.classList.contains('toggled');
   updateConfig(config);
 };
+
+if (gameId === '2kki') {
+  document.getElementById('explorerButton').onclick = function () {
+    this.classList.toggle('toggled');
+    document.getElementById('layout').classList.toggle('explorer');
+    config.explorer = this.classList.contains('toggled');
+    updateConfig(config);
+  };
+}
 
 document.getElementById('globalMessageButton').onclick = function () {
   this.classList.toggle('toggled');

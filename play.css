@@ -328,7 +328,7 @@ body {
   filter: var(--svg-shadow);
 }
 
-.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.offToggle).toggled path, .iconButton button:not(.offToggle).preToggled path, .iconButton.offToggle.toggled path:last-child, .iconButton.offToggle.preToggled path:last-child {
+.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.toggleButton).toggled path, .iconButton button:not(.toggleButton).preToggled path, .iconButton.offToggleButton.toggled path:last-child, .iconButton.offToggleButton.preToggled path:last-child, .iconButton.onToggleButton:not(.toggled):not(.preToggled) path:last-child {
   stroke: var(--svg-alt-gradient);
 }
 
@@ -346,11 +346,11 @@ body {
   opacity: 0.5;
 }
 
-.iconButton.offToggle path:last-child {
+.iconButton.toggleButton path:last-child {
   stroke-width: 1.5;
 }
 
-.iconButton.offToggle:not(.toggled):not(.preToggled) path:last-child {
+.iconButton.offToggleButton:not(.toggled):not(.preToggled) path:last-child, .iconButton.onToggleButton.toggled path:last-child, .iconButton.onToggleButton.preToggled path:last-child {
   display: none;
 }
 
@@ -960,7 +960,11 @@ body.fullBg #background {
   z-index: 1;
 }
 
-#layout.hideChat #chatboxContainer, #layout.hideChat #globalChatButton {
+#content:not(.loggedIn) #layout.hideChat #chatboxContainer, #layout.hideChat:not(.explorer) #chatboxContainer, #layout.hideChat #globalChatButton {
+  display: none !important;
+}
+
+#content.loggedIn #layout.hideChat.explorer #chatbox {
   display: none !important;
 }
 
@@ -1674,6 +1678,25 @@ body.fullBg #background {
 
 #onlineInfo {
   justify-content: space-between;
+}
+
+#layout:not(.explorer) #explorerContainer {
+  display: none;
+}
+
+#explorerContainer {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+}
+
+#explorerFrame {
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  border-width: 8px;
+  border-image: var(--border-image-url) 4 repeat !important;
+  background-color: rgba(var(--shadow-color), 0.5);
 }
 
 #footer {
@@ -2724,8 +2747,16 @@ form .uiTheme {
     max-height: 617px;
   }
 
+  #content.loggedIn #layout.explorer #chatbox {
+    max-height: 313px;
+  }
+
   .chatboxTabSection {
     width: 284px;
+  }
+
+  #explorerContainer {
+    margin-top: 4px;
   }
 
   .container {
@@ -2759,6 +2790,25 @@ form .uiTheme {
     height: calc(100vh - 474px);
   }
 
+  #content.loggedIn.downscale #layout.explorer #chatboxContainer {
+    height: calc(100vh - (464px - max(min(100vh - 512px, 284px), 150px)));
+    max-height: 640px;
+  }
+
+  #content.loggedIn.downscale #layout.explorer.hideChat #chatboxContainer {
+    height: calc(max(min(100vh - 512px, 284px), 150px) + 32px);
+  }
+
+  #content.loggedIn.downscale2 #layout.explorer #chatboxContainer {
+    height: calc(100vh - (424px - max(min(100vh - 512px, 284px), 150px)));
+    max-height: 640px;
+  }
+
+  #content.loggedIn:not(.downscale) #layout.explorer.hideChat #chatboxContainer {
+    text-align: center;
+    height: unset;
+  }
+
   #content.downscale #chatbox {
     height: calc(100vh - 470px);
   }
@@ -2772,6 +2822,11 @@ form .uiTheme {
     height: calc(100vh - 350px);
   }
 
+  #content.loggedIn:not(.downscale) #layout.explorer #chatbox {
+    width: calc(100% - (max(min(100vh - 644px, 284px), 150px) + 24px));
+    float: left;
+  }
+
   .info {
     padding-bottom: 4px;
   }
@@ -2782,6 +2837,38 @@ form .uiTheme {
 
   #layout:not(:fullscreen) #connStatusText, #layout:not(:fullscreen) #locationLabel {
     display: none;
+  }
+
+  #content:not(.downscale) #explorerContainer {
+    margin-top: 28px;
+    margin-left: 8px;
+    width: calc(100vh - 644px) !important;
+    height: calc(100vh - 644px) !important;
+    min-width: 164px;
+    min-height: 164px;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  #content:not(.downscale) #layout.explorer.hideChat #explorerContainer {
+    margin-top: 8px;
+  }
+
+  #content.downscale #explorerContainer {
+    width: 100%;
+    margin-top: 8px;
+    float: left;
+    height: calc(100vh - 512px);
+    max-height: 300px;
+  }
+
+  #content.downscale #explorerFrame {
+    width: calc(100vh - 512px);
+    height: calc(100vh - 512px);
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 284px;
+    max-height: 284px;
   }
 
   /* Ignore :fullscreen on iOS since it's not supported */
@@ -2887,6 +2974,15 @@ form .uiTheme {
   border-left: 24px solid transparent;
 }
 
+#content.loggedIn #layout:not(:fullscreen).overflow.hideChat.explorer #chatboxContainer {
+  text-align: center;
+}
+
+#content.loggedIn #layout:not(:fullscreen).overflow.explorer #chatbox {
+  width: calc(100% - (max(min(100vh - 644px, 284px), 150px) + 24px));
+  float: left;
+}
+
 #layout:not(:fullscreen).overflow #chatbox {
   height: calc(100vh - 634px);
   min-height: 200px;
@@ -2895,6 +2991,15 @@ form .uiTheme {
 
 #layout:not(:fullscreen).overflow .chatboxTabSection {
   width: calc(100% - 16px);
+}
+
+#layout:not(:fullscreen).overflow #explorerContainer {
+  width: calc(100vh - 644px) !important;
+  height: calc(100vh - 644px) !important;
+  min-width: 164px;
+  min-height: 164px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 /* Ignore :fullscreen on iOS since it's not supported */
@@ -2943,6 +3048,14 @@ form .uiTheme {
 
   #chatboxContainer {
     max-height: 100vh;
+  }
+
+  #layout.hideChat #chatboxContainer {
+    display: none !important;
+  }
+
+  #explorerContainer {
+    display: none;
   }
 }
 

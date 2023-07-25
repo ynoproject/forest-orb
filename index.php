@@ -113,19 +113,21 @@
               <defs id="svgDefs"></defs>
             </svg>
             <div id="leftControls">
-              <button id="singlePlayerButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleSinglePlayer">
+              <button id="singlePlayerButton" class="iconButton toggleButton offToggleButton unselectable" data-i18n="[title]tooltips.toggleSinglePlayer">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 15.5a1 1 0 0 0 0-3 1 1 0 0 0 0 3m-4-4q4-4 8 0m-10.5-3q6.5-5 13 0m-15.5-3q9-7 18 0" /><path d="m-2 16l22-14" /></svg>
               </button><button id="saveButton" class="iconButton unselectable" data-i18n="[title]tooltips.save">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 1.5q0-1.5 1.5-1.5h11.25l2.25 2.25v12.75q0 1.5-1.5 1.5h-12q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v6.75m-7.5-6h6m-6 2.25h6m-6 2.25h6" /></svg>
               </button><button id="uiThemeButton" class="iconButton unselectable" data-i18n="[title]tooltips.uiTheme">
                 <svg viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m4.5 3c4.5-4.5 13.5-3 13.5-0.375m-4.125 6.375c-1.875 0-3.375 1.5-1.875 1.875m3 2.625c3 1.5-4.5 6-10.5 4.5-7.5-3-4.5-12 0-15m9-0.75a1.5 1.5 90 0 0 0 3.75 1.5 1.5 90 0 0 0-3.75m-6 0.75a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m-3.75 4.5a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m1.5 5.25a1.5 1.5 90 0 0 0 3 1.5 1.5 90 0 0 0-3m6-0.75a1.5 1.5 90 0 0-0.75 4.5q2.25 0 3-1.875m7.5-14.625q-6 4.5-7.5 10.5l1.5 0.75q4.5-3.75 6-11.25m-7.5 10.5c-3 0-1.5 3-3 4.5 6 0 4.5-3 4.5-3.75m-3.75 2.25c0.75 1.5 1.5 0 1.5 1.275" /></svg>
-              </button><button id="chatButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleChat">
+              </button><button id="chatButton" class="iconButton toggleButton offToggleButton unselectable" data-i18n="[title]tooltips.toggleChat">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 18l6-4.5h6q3 0 3-3v-7.5q0-3-3-3h-12q-3 0-3 3v7.5q0 3 3 3h1.5l-1.5 4.5m11.25-12.75a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3m-5.25 0a1.5 1.5 90 0 1 0 3 1.5 1.5 90 0 1 0 -3"/><path d="m-2 16l22-14" /></svg>
+              </button><button id="explorerButton" style="display: none" class="iconButton toggleButton onToggleButton accountRequired unselectable" data-i18n="[title]tooltips.toggleExplorer">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m6.75 6.75h4.5v4.5h-4.5v-4.5m2.25 0v-3.75h-1.5v-3h3v3h-1.5m2.25 6h3.75v-1.5h3v3h-3v-1.5m-6 2.25v3.75h1.5v3h-3v-3h1.5m-2.25-6h-3.75v-1.5h-3v3h3v-1.5"/><path d="m-2 16l22-14" /></svg>
               </button><button id="screenshotButton" class="iconButton unselectable" data-i18n="[title]tooltips.screenshot">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 8q0-1 1-1h1.5c1 0 1-2 2-2h3c1 0 1 2 2 2h1.5q1 0 1 1v4q0 1-1 1h-10q-1 0-1-1zm6-0.5a2 2 90 0 0 0 4 2 2 90 0 0 0 -4m-9-2.5v-2q0-1 1-1h2m12 0h2q1 0 1 1v2m0 8v2q0 1-1 1h-2m-12 0h-2q-1 0-1-1v-2"></path></svg>
               </button><button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 5.5a1 1 90 0 0 0 7 1 1 90 0 0 0 -7m-7 5.5l-2-0.25v-3.5l2-0.25 0.75-1.5-1.25-1.75 2.25-2.25 1.75 1.25 1.5-0.75 0.25-2h3.5l0.25 2 1.5 0.75 1.75-1.25 2.25 2.25-1.25 1.75 0.75 1.5 2 0.25v3.5l-2 0.25-0.75 1.5 1.25 1.75-2.25 2.25-1.75-1.25-1.5 0.75-0.25 2h-3.5l-0.25-2-1.5-0.75-1.75 1.25-2.25-2.25 1.25-1.75-0.75-1.5" /></svg>
-              </button><button id="muteButton" class="iconButton offToggle unselectable" data-i18n="[title]tooltips.toggleMute">
+              </button><button id="muteButton" class="iconButton toggleButton offToggleButton unselectable" data-i18n="[title]tooltips.toggleMute">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 7h3l4-4v12l-4-4h-3v-4m10 0q1 2 0 4m3-5.5q2 3.5 0 7m3-9.5q4 6 0 12" /><path d="m-2 16l22-14" /></svg>
               </button>
             </div>
@@ -352,6 +354,11 @@
             </form>
           </div>
         </div>
+        <?php if ($gameId == "2kki"): ?>
+          <div id="explorerContainer" class="desktopOnly accountRequired" data-game-ids>
+            <iframe id="explorerFrame" class="unselectable"></iframe>
+          </div>
+        <?php endif ?>
       </div>
       <div id="modalContainer" class="hidden">
         <div id="loginModal" class="modal hidden">

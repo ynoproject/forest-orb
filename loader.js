@@ -47,7 +47,13 @@ function addLoader(target, instant) {
       const img = document.createElement('img');
 
       el.appendChild(img);
-      target.appendChild(el);
+
+      const isIframe = target.nodeName === 'IFRAME';
+
+      if (isIframe)
+        target.parentElement.appendChild(el);
+      else
+        target.appendChild(el);
 
       if (instant)
         el.classList.add('visible');

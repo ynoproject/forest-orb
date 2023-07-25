@@ -341,6 +341,7 @@
       "save": "存档数据管理",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
+      "toggleExplorer": "Toggle Yume 2kki Explorer Integration",
       "screenshot": "截屏",
       "settings": "设置",
       "toggleMute": "静音",

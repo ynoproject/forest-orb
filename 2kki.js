@@ -357,6 +357,12 @@ function queryAndSet2kkiMaps(locationNames) {
 }
 
 function set2kkiExplorerLinks(locationNames) {
+  const explorerFrame = document.getElementById('explorerFrame');
+  if (explorerFrame && locationNames) {
+    addLoader(explorerFrame, true);
+    explorerFrame.onload = () => removeLoader(explorerFrame);
+    explorerFrame.src = `https://2kki.app/location?locations=${locationNames.join('|')}&lang=${globalConfig.lang}`;
+  }
   const explorerControls = document.getElementById('explorerControls');
   if (!explorerControls)
     return;

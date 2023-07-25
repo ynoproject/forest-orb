@@ -503,6 +503,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('chatButton').click();
                     break;
+                  case 'explorer':
+                    if (value && gameId === '2kki')
+                      document.getElementById('explorerButton').click();
+                    break;
                   case 'nametagMode':
                     document.getElementById('nametagMode').value = value;
                     break;
