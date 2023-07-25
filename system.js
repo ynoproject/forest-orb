@@ -61,7 +61,8 @@ const allGameUiThemes = {
     'System_kuraud',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon',
-    'aediorugap_sys'
+    'aediorugap_sys',
+    'Bean_sys1'
   ],
   'amillusion': [
     'fleur-2',
