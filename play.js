@@ -1030,6 +1030,15 @@ function onResize() {
     }
   }
 
+  if (gameId === '2kki' && content.classList.contains('loggedIn') && layout.classList.contains('explorer')) {
+    const explorerContainer = document.getElementById('explorerContainer');
+    const explorerParent = window.innerWidth >= 1051 && window.innerHeight >= 595 && !document.fullscreenElement
+      ? document.getElementById('mainContainer')
+      : document.getElementById('chatboxContainer');
+    if (explorerContainer.parentElement !== explorerParent)
+      explorerParent.appendChild(explorerContainer);
+  }
+
   updateCanvasFullscreenSize();
 }
 
@@ -1142,7 +1151,7 @@ function updateCanvasFullscreenSize() {
   
   if (document.fullscreenElement) {
     const showChat = !layoutElement.classList.contains('hideChat');
-    const showExplorer = contentElement.classList.contains('loggedIn') && layoutElement.classList.contains('explorer');
+    const showExplorer = gameId === '2kki' && contentElement.classList.contains('loggedIn') && layoutElement.classList.contains('explorer');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
     const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;

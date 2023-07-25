@@ -1697,6 +1697,11 @@ body.fullBg #background {
   text-align: right;
 }
 
+#mainContainer #explorerContainer {
+  width: 640px;
+  margin: auto;
+}
+
 #explorerFrame {
   width: calc(100% - 16px);
   height: calc(100% - 16px);
@@ -1705,6 +1710,10 @@ body.fullBg #background {
   background-color: rgba(var(--shadow-color), 0.5);
   pointer-events: all;
   cursor: pointer;
+}
+
+#mainContainer #explorerFrame {
+  height: 284px;
 }
 
 #footer {
@@ -2746,6 +2755,15 @@ form .uiTheme {
     max-height: 667px;
   }
 
+  #content.loggedIn #layout.explorer {
+    max-height: 898px;
+  }
+
+  #content.loggedIn #layout.explorer #canvas {
+    margin-top: 69px;
+    margin-bottom: 4px;
+  }
+
   #chatboxContainer {
     width: 300px;
   }
@@ -2755,8 +2773,12 @@ form .uiTheme {
     max-height: 617px;
   }
 
+  #content.loggedIn #layout.hideChat #chatboxContainer {
+    display: none !important;
+  }
+
   #content.loggedIn #layout.explorer #chatbox {
-    max-height: 313px;
+    max-height: 100%;
   }
 
   #content.loggedIn #layout.explorer:fullscreen #chatbox {
@@ -2774,6 +2796,10 @@ form .uiTheme {
   .container {
     height: calc(100vh - 58px);
     max-height: 617px;
+  }
+
+  #content.loggedIn #layout.explorer:not(:fullscreen) .container {
+    max-height: 848px;
   }
 }
 
