@@ -358,12 +358,6 @@ function queryAndSet2kkiMaps(locationNames) {
 }
 
 function set2kkiExplorerLinks(locationNames) {
-  const explorerFrame = document.getElementById('explorerFrame');
-  if (explorerFrame && locationNames) {
-    addLoader(explorerFrame, true);
-    explorerFrame.onload = () => removeLoader(explorerFrame);
-    explorerFrame.src = `https://2kki.app/location?locations=${locationNames.join('|')}&lang=${globalConfig.lang}`;
-  }
   const explorerControls = document.getElementById('explorerControls');
   if (!explorerControls)
     return;
@@ -393,3 +387,25 @@ function get2kkiExplorerButton(locationName, isMulti) {
 
   return ret;
 }
+
+(function () {
+  if (!is2kki)
+    return;
+
+  addSessionCommandHandler('l', () => {
+    const locationNames = cachedLocations.map(l => {
+      let locationName = l.title;
+      const colonIndex = locationName.indexOf(':');
+      if (colonIndex > -1)
+        locationName = locationName.slice(0, colonIndex);
+      return locationName;
+    });
+
+    const explorerFrame = document.getElementById('explorerFrame');
+    if (explorerFrame && locationNames) {
+      addLoader(explorerFrame, true);
+      explorerFrame.onload = () => removeLoader(explorerFrame);
+      apiFetch('explorer').then(res => res.text()).then(url => explorerFrame.src = url ? `${url}&lang=${globalConfig.lang}` : '');
+    }
+  });
+})();

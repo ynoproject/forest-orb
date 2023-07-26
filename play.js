@@ -415,9 +415,7 @@ function syncLocationChange() {
     return locationName;
   });
 
-  sendSessionCommand('l', locationNames, () => {
-    // Callback
-  });
+  sendSessionCommand('l', locationNames);
 }
 
 // EXTERNAL
