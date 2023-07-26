@@ -25,6 +25,7 @@ document.querySelector('#controls-fullscreen').addEventListener('click', () => {
     } else
       document.webkitExitFullscreen();
   }
+  onResize();
 });
 
 /**

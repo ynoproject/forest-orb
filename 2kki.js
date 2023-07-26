@@ -75,6 +75,7 @@ function onLoad2kkiMap(mapId) {
           setMaps([], null, true, true);
           set2kkiExplorerLinks(null);
         }
+        syncLocationChange();
         checkEventLocations();
         if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
           updateBadgeButton();

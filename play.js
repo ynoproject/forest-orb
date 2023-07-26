@@ -115,6 +115,7 @@ function onRoomSwitch() {
   syncPrevLocation();
   clearPlayerLists();
   addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+  syncLocationChange();
   checkEventLocations();
 }
 
@@ -403,6 +404,20 @@ function syncPrevLocation() {
   const prevMapId = cachedPrevMapId || '0000';
   const prevLocationsStr = cachedPrev2kkiLocations?.length ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|'))) : '';
   sendSessionCommand('ploc', [ prevMapId, prevLocationsStr ]);
+}
+
+function syncLocationChange() {
+  const locationNames = cachedLocations.map(l => {
+    let locationName = l.title;
+    const colonIndex = locationName.indexOf(':');
+    if (colonIndex > -1)
+      locationName = locationName.slice(0, colonIndex);
+    return locationName;
+  });
+
+  sendSessionCommand('l', locationNames, () => {
+    // Callback
+  });
 }
 
 // EXTERNAL
