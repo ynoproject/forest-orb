@@ -803,17 +803,19 @@ document.getElementById('playerSoundsButton').onclick = () => {
     Module._TogglePlayerSounds();
 };
 
-document.getElementById('enableExplorerButton').onclick = function () {
-  this.classList.toggle('toggled');
-  const toggled = this.classList.contains('toggled');
-  [ document.getElementById('explorerButton'), document.getElementById('explorerContainer') ].forEach(el => {
-    if (!el)
-      return;
-    el.style.display = toggled ? null : 'none';
-  });
-  onResize();
-  config.enableExplorer = toggled;
-  updateConfig(config);
+if (gameId === '2kki') {
+  document.getElementById('enableExplorerButton').onclick = function () {
+    this.classList.toggle('toggled');
+    const toggled = this.classList.contains('toggled');
+    [ document.getElementById('explorerButton'), document.getElementById('explorerContainer') ].forEach(el => {
+      if (!el)
+        return;
+      el.style.display = toggled ? null : 'none';
+    });
+    onResize();
+    config.enableExplorer = toggled;
+    updateConfig(config);
+  }
 }
 
 document.getElementById('immersionModeButton').onclick = function () {
