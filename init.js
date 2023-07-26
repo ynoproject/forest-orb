@@ -514,6 +514,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       preToggle(document.getElementById('playerSoundsButton'));
                     break;
+                  case 'enableExplorer':
+                    if (value)
+                      document.getElementById('enableExplorerButton').click();
+                    break;
                   case 'immersionMode':
                     if (value)
                       document.getElementById('immersionModeButton').click();

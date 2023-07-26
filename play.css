@@ -2554,7 +2554,7 @@ form .uiTheme {
   padding-right: 0.15em;
 }
 
-#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
 

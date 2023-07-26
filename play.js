@@ -45,7 +45,6 @@ let globalConfig = {
 let config = {
   singlePlayer: false,
   disableChat: false,
-  explorer: false,
   mute: false,
   nametagMode: 1,
   disablePlayerSounds: false,
@@ -57,6 +56,11 @@ let config = {
   hideOwnGlobalMessageLocation: false,
   lastEventLocations: null
 };
+
+if (gameId === '2kki') {
+  config.explorer = false;
+  config.enableExplorer = false;
+}
 
 const CACHE_TYPE = {
   location: 'location',
@@ -799,6 +803,19 @@ document.getElementById('playerSoundsButton').onclick = () => {
     Module._TogglePlayerSounds();
 };
 
+document.getElementById('enableExplorerButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  [ document.getElementById('explorerButton'), document.getElementById('explorerContainer') ].forEach(el => {
+    if (!el)
+      return;
+    el.style.display = toggled ? null : 'none';
+  });
+  onResize();
+  config.enableExplorer = toggled;
+  updateConfig(config);
+}
+
 document.getElementById('immersionModeButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -807,7 +824,10 @@ document.getElementById('immersionModeButton').onclick = function () {
     document.getElementById('chatTabMap').click();
   }
   document.getElementById('layout').classList.toggle('immersionMode', toggled);
-  onResize();
+  if (toggled && config.explorer)
+    document.getElementById('explorerButton').click();
+  else
+    onResize();
   config.immersionMode = toggled;
   updateConfig(config);
 };

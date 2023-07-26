@@ -111,6 +111,10 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
+          "toggleEnableExplorer": {
+            "label": "Enable Yume 2kki Navigator",
+            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+          },
           "toggleImmersionMode": {
             "label": "Modo de Imersão",
             "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
@@ -341,7 +345,7 @@
       "save": "Manage Save Data",
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
-      "toggleExplorer": "Toggle Yume 2kki Explorer Integration",
+      "toggleExplorer": "Toggle Yume 2kki Navigator",
       "screenshot": "Capturar a Tela",
       "settings": "Configurações",
       "toggleMute": "Toggle Mute",

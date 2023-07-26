@@ -111,6 +111,10 @@
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
+          "toggleEnableExplorer": {
+            "label": "Enable Yume 2kki Navigator",
+            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+          },
           "toggleImmersionMode": {
             "label": "没入モード",
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
@@ -341,7 +345,7 @@
       "save": "セーブデータ管理",
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
-      "toggleExplorer": "Toggle Yume 2kki Explorer Integration",
+      "toggleExplorer": "Toggle Yume 2kki Navigator",
       "screenshot": "スクリーンショットを撮る",
       "settings": "設定",
       "toggleMute": "消音のオン／オフ",
