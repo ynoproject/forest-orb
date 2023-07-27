@@ -2778,7 +2778,7 @@ form .uiTheme {
   }
 
   #content.loggedIn #layout.explorer #chatbox {
-    max-height: 100%;
+    max-height: calc(100% - (max(min(calc(100vh - 468px), 284px), 150px) + 16px));
   }
 
   #content.loggedIn #layout.explorer:fullscreen #chatbox {
@@ -2800,6 +2800,19 @@ form .uiTheme {
 
   #content.loggedIn #layout.explorer:not(:fullscreen) .container {
     max-height: 848px;
+  }
+
+  @media only screen and (max-height: 999px) {
+    #layout:not(:fullscreen) #explorerFrame {
+      width: max(min(calc(100vh - 468px), 284px), 150px);
+      height: max(min(calc(100vh - 468px), 284px), 150px);
+    }
+  }
+
+  @media only screen and (min-height: 1000px) {
+    #content.loggedIn #layout.explorer #chatbox {
+      max-height: 100%;
+    }
   }
 }
 

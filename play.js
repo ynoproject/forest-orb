@@ -1063,7 +1063,7 @@ function onResize() {
 
   if (gameId === '2kki' && content.classList.contains('loggedIn') && layout.classList.contains('explorer')) {
     const explorerContainer = document.getElementById('explorerContainer');
-    const explorerParent = window.innerWidth >= 1051 && window.innerHeight >= 595 && !document.fullscreenElement
+    const explorerParent = window.innerWidth >= 1051 && window.innerHeight >= 1000 && !document.fullscreenElement
       ? document.getElementById('mainContainer')
       : document.getElementById('chatboxContainer');
     if (explorerContainer.parentElement !== explorerParent)
