@@ -415,7 +415,13 @@ function get2kkiWikiLocationName(location) {
           throw new Error(response.statusText);
         return response.text();
       })
-      .then(url => explorerFrame.src = url ? `${url}&lang=${globalConfig.lang}` : '')
+      .then(url => {
+        const newUrl = url ? `${url}&lang=${globalConfig.lang}` : '';
+        if (explorerFrame.src !== newUrl)
+          explorerFrame.src = newUrl;
+        else
+          removeLoader(explorerFrame);
+      })
       .catch(err => console.error(err));;
     }
   });
