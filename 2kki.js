@@ -402,10 +402,16 @@ function get2kkiExplorerButton(locationName, isMulti) {
     });
 
     const explorerFrame = document.getElementById('explorerFrame');
-    if (explorerFrame && locationNames) {
+    if (explorerFrame && locationNames && loginToken) {
       addLoader(explorerFrame, true);
       explorerFrame.onload = () => removeLoader(explorerFrame);
-      apiFetch('explorer').then(res => res.text()).then(url => explorerFrame.src = url ? `${url}&lang=${globalConfig.lang}` : '');
+      apiFetch('explorer').then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.text();
+      })
+      .then(url => explorerFrame.src = url ? `${url}&lang=${globalConfig.lang}` : '')
+      .catch(err => console.error(err));;
     }
   });
 })();
