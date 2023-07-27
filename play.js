@@ -411,13 +411,7 @@ function syncPrevLocation() {
 }
 
 function syncLocationChange() {
-  const locationNames = cachedLocations.map(l => {
-    let locationName = l.title;
-    const colonIndex = locationName.indexOf(':');
-    if (colonIndex > -1)
-      locationName = locationName.slice(0, colonIndex);
-    return locationName;
-  });
+  const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
 
   sendSessionCommand('l', locationNames);
 }

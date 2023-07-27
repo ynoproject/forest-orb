@@ -388,19 +388,24 @@ function get2kkiExplorerButton(locationName, isMulti) {
   return ret;
 }
 
+function get2kkiWikiLocationName(location) {
+  let locationName = location.title;
+    if (location.urlTitle)
+      locationName = location.urlTitle.replace(/%26/g, "&").replace(/%27/g, "'").replace(/\_/g, " ").replace(/#.*/, "");
+    else {
+      const colonIndex = locationName.indexOf(':');
+      if (colonIndex > -1)
+        locationName = locationName.slice(0, colonIndex);
+    }
+    return locationName;
+}
+
 (function () {
   if (!is2kki)
     return;
 
   addSessionCommandHandler('l', () => {
-    const locationNames = cachedLocations.map(l => {
-      let locationName = l.title;
-      const colonIndex = locationName.indexOf(':');
-      if (colonIndex > -1)
-        locationName = locationName.slice(0, colonIndex);
-      return locationName;
-    });
-
+    const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
     const explorerFrame = document.getElementById('explorerFrame');
     if (explorerFrame && locationNames && loginToken) {
       addLoader(explorerFrame, true);
