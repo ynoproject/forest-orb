@@ -806,6 +806,8 @@ if (gameId === '2kki') {
         return;
       el.style.display = toggled ? null : 'none';
     });
+    if (!toggled && config.explorer)
+      document.getElementById('explorerButton').click();
     onResize();
     config.enableExplorer = toggled;
     updateConfig(config);
