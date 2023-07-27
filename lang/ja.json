@@ -112,8 +112,8 @@
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleEnableExplorer": {
-            "label": "Enable Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "label": "ゆめ２っきナビゲーターを有効にする",
+            "helpText": "ゆめ２っきナビゲーターはゆめ２っきエクスプローラーを一体化したもので、現在地の接続を一目で見ることができます。この機能はあなたの体験に大きな影響を与える可能性があります。ですから、この機能を有効にする前に、ゲームの大部分を探索しておくことを強くお勧めします。ゆめ２っきナビゲーターを使用するにはログインする必要があります。"
           },
           "toggleImmersionMode": {
             "label": "没入モード",
