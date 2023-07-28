@@ -440,6 +440,7 @@
                       <option value="de">Deutsch</option>
                       <option value="it">Italiano</option>
                       <option value="ro">Română</option>
+                      <option value="tr">Türkçe</option>
                       <option value="ru">Русский</option>
                       <option value="vi">Tiếng Việt</option>
                       <option value="ar">العربية</option>
