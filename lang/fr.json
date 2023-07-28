@@ -112,8 +112,8 @@
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleEnableExplorer": {
-            "label": "Enable Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "label": "Activer Yume 2kki Navigator",
+            "helpText": "Yume 2kki Navigator est une intégration de Yume 2kki Explorer permettant de voir les connexions du monde où vous vous situez en un clin d'œil. Cette fonctionnalité peut drastiquement affecter votre expérience et de ce fait, il est fortement recommandé d'explorer une bonne partie du jeu à l'aveugle avant d'activer cette fonctionnalité. Vous devez être connecté pour utiliser Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
             "label": "Mode Immersion",
@@ -134,9 +134,9 @@
         "title": "Paramètres du Chat",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "Surcouche du Chat en jeu",
+            "global": "Surcouche du Chat Global",
+            "party": "Surcouche du Chat de Groupe"
           },
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
           "chatHistoryLimit": {
@@ -345,7 +345,7 @@
       "save": "Gérer les Données de Sauvegarde",
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "Activer Yume 2kki Navigator",
       "screenshot": "Prendre une capture d'écran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",
