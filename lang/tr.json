@@ -1,0 +1,746 @@
+{
+  "translationComplete": "1",
+  "version": {
+    "2kki": {
+      "label": "Yume 2kki Versiyon {VERSION}",
+      "substitutes": {
+        " Patch ": " Yama ",
+        "?": "?"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "Giriş Yap",
+      "logout": "Çıkış Yap"
+    },
+    "fontStyle": {
+      "label": "Yazı Tipi Stili:",
+      "values": {
+        "style1": "Stil 1",
+        "style2": "Stil 2",
+        "style3": "Stil 3",
+        "style4": "Stil 4",
+        "style5": "Stil 5",
+        "style6": "Stil 6",
+        "style7": "Stil 7"
+      }
+    },
+    "chatbox": {
+      "location": "Konum:&nbsp;",
+      "immersionMode": "İmersiyon Modu",
+      "reconnect": "Yeniden Bağlan",
+      "tab": {
+        "chat": "Sohbet",
+        "players": "Oyuncular",
+        "parties": "Partiler"
+      },
+      "chat": {
+        "tab": {
+          "all": "Hepsi",
+          "map": "Harita",
+          "global": "Küresel",
+          "party": "Parti"
+        },
+        "nickname": {
+          "header": "Konuşmadan önce kullanıcı adı girmelisin.",
+          "rule": {
+            "maxLength": "* Maksimum 10 karakter",
+            "alphanumeric": "* Sadece Alfasayısal karakterler"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Harita",
+          "party": "Parti"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "Çeviri Çalışması Gerekli",
+      "noGameLoc": "* Oyun Lokalizasyonu Desteklenmiyor"
+    },
+    "2kki": {
+      "hostedWithPermission": "Yume 2kki geliştirici"
+    },
+    "modal": {
+      "login": {
+        "title": "Giriş Yap",
+        "fields": {
+          "username": "Kullanıcı Adı",
+          "password": "Şifre"
+        },
+        "submit": "Giriş",
+        "registerPrompt": "Hesabın yok mu?&nbsp;",
+        "register": "Hesap Oluştur"
+      },
+      "register": {
+        "title": "Hesap Oluştur",
+        "fields": {
+          "email": "E-posta",
+          "username": "Kullanıcı Adı",
+          "password": "Şifre",
+          "confirmPassword": "Şifreyi Doğrula"
+        },
+        "submit": "Giriş",
+        "loginPrompt": "Zaten hesabın var mı?&nbsp;",
+        "login": "Giriş Yap"
+      },
+      "settings": {
+        "title": "Ayarlar",
+        "fields": {
+          "lang": "Dil",
+          "locationVisibility": {
+            "label": "Oyun İçi Konum Görünürlüğü",
+            "values": {
+              "private": "Gizli",
+              "friends": "Sadece Arkadaşlar",
+              "public": "Herkese Açık"
+            }
+          },
+          "nametagMode": {
+            "label": "İsim Çubuğu",
+            "values": {
+              "none": "Hiçbiri",
+              "classic": "Klasik",
+              "compact": "Sıkışık",
+              "slim": "Kısa"
+            }
+          },
+          "soundVolume": "Ses Seviyesi",
+          "musicVolume": "Müzik Seviyesi",
+          "togglePlayerSounds": "Oyuncu Sesleri",
+          "toggleEnableExplorer": {
+            "label": "Yume 2kki Gezginini Etkinleştir",
+            "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Kaşifi entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."
+          },
+          "toggleImmersionMode": {
+            "label": "İmersiyon Modu",
+            "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
+          },
+          "toggleLocationDisplay": "Konum Göstergesi",
+          "toggleRankings": "Sıralama",
+          "toggleScreenshotFix": {
+            "label": "Ekran Alıntı Çözücü",
+            "helpText": "Ekran alıntısının boş olma sorununu çözebilir; sayfayı yenilemek gereklidir ve performansı etkileyebilir"
+          }
+        },
+        "chatSettings": "Sohbet Ayarları",
+        "notificationSettings": "Bildirim Ayarları",
+        "accountSettings": "Hesap Ayarları"
+      },
+      "chatSettings": {
+        "title": "Sohbet Ayarları",
+        "fields": {
+          "toggleGameChat": {
+            "label": "Oyun İçi Sohbet Bindirme",
+            "global": "Küresel Sohbet Bindirme",
+            "party": "Parti Sohbeti Bindirme"
+          },
+          "toggleTabToChat": "Sohbet için Tab'a basın",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Sınırsız"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Harita Sohbet Geçmiş Limiti"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Küresel Sohbet Geçmiş Limiti"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Parti Sohbet Geçmiş Limiti"
+          }
+        }
+      },
+      "notificationSettings": {
+        "title": "Bildirim Ayarları",
+        "fields": {
+          "toggleNotifications": "Bildirimler",
+          "screenPosition": {
+            "label": "Ekran Pozisyonu",
+            "values": {
+              "bottomLeft": "Sol Alt",
+              "bottomRight": "Sağ Alt",
+              "topLeft": "Sol Üst",
+              "topRight": "Sağ Üst"
+            }
+          },
+          "system": {
+            "label": "Sistem",
+            "fields": {
+              "siteUpdates": "Site Güncellendi",
+              "error": "Hata Oluştu"
+            }
+          },
+          "account": {
+            "label": "Hesap",
+            "fields": {
+              "loggedIn": "Girildi",
+              "loggedOut": "Çıkıldı",
+              "passwordUpdate": "Şifre Güncellendi"
+            }
+          },
+          "parties": {
+            "label": "Partiler",
+            "fields": {
+              "create": "Parti Oluşturuldu",
+              "update": "Parti Güncellendi",
+              "join": "Partiye Girildi",
+              "leave": "Partiden Çıkıldı",
+              "remove": "Partiden Çıkarıldı",
+              "disband": "Parti Ayırıldı",
+              "playerJoin": "Kullanıcı Partiye Katıldı",
+              "playerLeave": "Kullanıcı Partiden Ayrıldı",
+              "playerOnline": "Parti Üyesi Çevrimiçi",
+              "playerOffline": "Parti Üyesi Çevrimdışı",
+              "kickPlayer": "Kullanıcı Partiden Atıldı",
+              "transferPartyOwner": "Kullanıcı Parti Liderine Yükseltildi"
+            }
+          },
+          "events": {
+            "label": "Seyahatler",
+            "fields": {
+              "complete": "Seyahat Tamamlandı",
+              "freeComplete": "Özgür Seyahat Tamamlandı",
+              "vmComplete": "Otomat Bulundu",
+              "listUpdated": "Seyahat Listesi Güncellendi"
+            }
+          },
+          "badges": {
+            "label": "Rozetler",
+            "fields": {
+              "badgeUnlocked": "Rozet Açıldı"
+            }
+          },
+          "saveSync": {
+            "label": "Kaydı Senkronize Et",
+            "fields": {
+              "saveUploading": "Kayıt Yükleniyor",
+              "saveUploaded": "Kayıt Yüklendi",
+              "saveDownloading": "Kayıt İndiriliyor",
+              "saveDownloaded": "Kayıt İndirildi",
+              "saveUpToDate": "Kayıt Güncel",
+              "saveCleared": "Kayıt Temizlendi"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Hesap Ayarları",
+        "fields": {
+          "badge": "Rozet",
+          "toggleSaveSync": "Kaydı Senkronize et (Deneysel)",
+          "saveSyncSlotId": {
+            "label": "Kayıt Senkronize Slot ID",
+            "values": {
+              "0": "Yok"
+            }
+          },
+          "changePassword": "Şifre Değiştir",
+          "clearSaveSync": "Kayıt Senkronize Verilerini Temizle"
+        }
+      },
+      "password": {
+        "title": "Şifre Değiştir",
+        "fields": {
+          "oldPassword": "Eski Şifre",
+          "newPassword": "Yeni Şifre",
+          "newConfirmPassword": "Şifreyi Doğrula"
+        },
+        "submit": "Giriş"
+      },
+      "badges": {
+        "title": "Rozetler",
+        "manageBadgeGallery": "Rozet Galerisini Yönet",
+        "fields": {
+          "unlockStatus": {
+            "label": "Kilit Açılma Durumu:&nbsp;",
+            "values": {
+              "all": "Hepsi",
+              "0": "Kilitli",
+              "1": "Açılmış"
+            }
+          },
+          "sortOrder": {
+            "label": "Listeleme Sırası:&nbsp;",
+            "values": {
+              "default": "Temel"
+            }
+          },
+          "search": "Ara:&nbsp;"
+        }
+      },
+      "badgeGallery": {
+        "title": "Rozet Galerisini Yönet",
+        "badgeGalleryRowProgress": "Sonraki Sıra Güçlendirmesi(BP)",
+        "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)"
+      },
+      "save": {
+        "title": "Kayıt Verisini Yönet",
+        "reload": "Değişiklikleri Kaydet ve Yenile"
+      },
+      "uiTheme": {
+        "title": "UI Teması",
+        "auto": "OTO"
+      },
+      "createParty": {
+        "title": {
+          "create": "Parti Oluştur",
+          "update": "Partiyi Düzenle"
+        },
+        "fields": {
+          "partyName": "Parti Adı",
+          "description": "Açıklama",
+          "public": "Herkese Açık",
+          "password": "Şifre",
+          "theme": "Tema"
+        },
+        "showPassword": "Şifreyi Göster",
+        "hidePassword": "Şifreyi Gizle",
+        "submit": "Giriş"
+      },
+      "joinPrivateParty": {
+        "title": "Gizli Partiye Katıl",
+        "fields": {
+          "password": "Şifre"
+        },
+        "showPassword": "Şifreyi Göster",
+        "hidePassword": "Şifreyi Gizle",
+        "incorrectPassword": "Yanlış Şifre: Lütfen tekrar deneyin.",
+        "submit": "Giriş"
+      },
+      "events": {
+        "title": "Seyahatler",
+        "rankExp": "Sonraki Düzey",
+        "weekExp": "Bu haftaki ExP",
+        "tabs": {
+          "locations": "Konumlar",
+          "vms": "Otomat Bulucu"
+        }
+      },
+      "rankings": {
+        "title": "Sıralamalar"
+      },
+      "rules": {
+        "title": "Kurallar",
+        "rule1": "Lütfen saygılı ve nazik olun.",
+        "rule2": "18+ konuşma yasak(NSFW, gore, vb.).",
+        "rule3": "Siyaset yasak.",
+        "rule4": "Kışkırtıcı sözler yasak (küfürler dahil).",
+        "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak."
+      }
+    },
+    "tooltips": {
+      "toggleSinglePlayer": "Tek Oyunculu Değiştir",
+      "save": "Kayıt Verisini Yönet",
+      "uiTheme": "UI Teması",
+      "toggleChat": "Sohbeti Aç",
+      "toggleExplorer": "Yume 2kki Gezginini Aç",
+      "screenshot": "Ekran Alıntısı Al",
+      "settings": "Ayarlar",
+      "toggleMute": "Susturmayı Değiştir",
+      "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",
+      "chat": {
+        "toggleGlobalMessageLocations": " Sohbet Mesaj Konumlarını Göster/Gizle",
+        "toggleOwnGlobalMessageLocation": "Sohbette Kendi Konumunu Göster/Gizle",
+        "toggleMessageTimestamps": "Sohbet Mesaj Zamanlarını Göster/Gizle",
+        "clearChat": "Sohbeti Temizle"
+      },
+      "parties": {
+        "createParty": "Parti Oluştur",
+        "disbandParty": "Partiyi Ayır"
+      },
+      "events": "Seyahat",
+      "rankings": "Sıralamalar",
+      "nexus": "Bağ Noktasına Geri Dön"
+    },
+    "reviewRules": "Kuralları Göster"
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "cu": "Collective Unconscious",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope",
+      "genie": "Dream Genie",
+      "mikan": "Mikan Muzou",
+      "ultraviolet": "Ultra Violet"
+    },
+    "leavePage": "Sayfayı terk etmek istediğinden emin misin? Kaydedilmemiş herhangi bir bilgi kaybedilecek.",
+    "logout": "Hesaptan çıkmak istediğinden emin misin?",
+    "connStatus": {
+      "0": "Bağlantı Kesildi",
+      "1": "Bağlı",
+      "2": "Bağlanılıyor...",
+      "3": "Tek Oyunculu"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Konum Sorgulanıyor",
+      "unknownLocation": "Bilinmeyen Konum",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} Oyuncu Çevrimiçi",
+      "plural": "{COUNT} Oyuncu Çevrimiçi"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} Oyuncu Haritada",
+      "plural": "{COUNT} Oyuncu Haritada"
+    },
+    "playerList": {
+      "unnamed": "İsimsiz Oyuncu",
+      "muted": "Susturulmuş",
+      "actions": {
+        "partyKick": "Partiden At",
+        "transferPartyOwner": "Parti Liderine Yükselt"
+      }
+    },
+    "roles": {
+      "mod": "Moderatör",
+      "dev": "Geliştirici"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
+    },
+    "context": {
+      "admin": {
+        "ban": {
+          "label": "{PLAYER}'i banla",
+          "confirm": "{PLAYER}'i banlamak istediğinden emin misin?",
+          "success": "{PLAYER} banlanıldı."
+        },
+        "unban": {
+          "label": "{PLAYER}'in Banını Kaldır",
+          "confirm": "{PLAYER}'in Banını Kaldırmak istediğinden emin misin?",
+          "success": "{PLAYER}'in banı kaldırıldı."
+        },
+        "mute": {
+          "label": "{PLAYER}'i sustur",
+          "confirm": "{PLAYER}'i susturmak istediğinden emin misin?",
+          "success": "{PLAYER} Susturuldu."
+        },
+        "unmute": {
+          "label": "{PLAYER}'in susturmasını kaldır",
+          "confirm": "{PLAYER}'in susturmasını kaldırmak istediğinden emin misin?",
+          "success": "{PLAYER}'in susturması kaldırıldı."
+        },
+        "grantBadge": {
+          "label": "Rozet Ver",
+          "prompt": "{PLAYER}'e rozet vermek için başarım IDsi girin.",
+          "success": "{BADGE}, başarıyla {PLAYER}'e verildi.",
+          "fail": "Bahsedilen rozet IDsinde bir başarım bulunamadı."
+        },
+        "revokeBadge": {
+          "label": "Rozet Kaldır",
+          "prompt": "{PLAYER}'dan almak için rozet IDsini girin.",
+          "success": "{BADGE}, başarıyla {PLAYER}'dan alındı.",
+          "fail": "Bahsedilen rozet IDsinde bir rozet bulunamadı."
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Kullanıcı adı ya da şifre yanlış."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "Bahsedilen şifreler uyuşmuyor.",
+          "invalidCredentials": "Bahsedilen kullanıcı adı ya da şifre boş ya da geçersiz karakter içeriyor.",
+          "emailTaken": "Bahsedilen Eposta zaten kayıtlı.",
+          "usernameTaken": "Bahsedilen kullanıcı adı zaten kullanılıyor."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "Bahsedilen yeni şifreler uyuşmuyor.",
+          "badLogin": "Giriş şifresi yanlış.",
+          "internalServerError": "Bir hata oluştu: lütfen daha sonra tekrar deneyin."
+        }
+      }
+    },
+    "chat": {
+      "globalMessage": "Küresel Mesaj"
+    },
+    "parties": {
+      "emptyMessage": "Şu anda aktif bir parti yok.",
+      "yourParty": "Senin Partin",
+      "defaultPartyName": "{OWNER}'in Partisi",
+      "partyOwner": "Parti Lideri",
+      "offlineMemberSuffix": " (Çevrimdışı)",
+      "onlineCount": "Çevrimiçi - {COUNT}",
+      "offlineCount": "Çevrimdışı - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "Parti Detaylarını Görüntüle",
+        "joinParty": "Partiye Katıl",
+        "joinPrivateParty": "Gizli Partiye Katıl",
+        "leaveParty": "Partiden Ayrıl"
+      }
+    },
+    "chatTips": {
+      "template": "TÜYO: {CONTENT}",
+      "tips": {
+        "backupReminder": "Kaydınızı manüel bir şekilde indirerek lokal olarak saklamanız önerilir. Böylece eğer tarayıcı verileriniz silinirse bilgileriniz kaybolmaz.",
+        "menuTheme": "İsim renginiz ve oyuncu listesi girişiniz sizin oyun içi menü temanıza göre belirlenir.",
+        "playersInMap": "Yazıya basarak çevrimiçi oyuncu sayısı ve senin haritandaki oyuncu sayısı arasında geçiş yapabilirsin.",
+        "markdownSupport": "Sohbet belirli karakterlerle metni kaplayarak metin biçimlendirmeyi destekler. Şu an desteklenenler: **kalın** (\\*\\*metin\\*\\*), *italik* (\\*metin\\*, \\_metin\\_), __altıçizgili__ (\\_\\_metin\\_\\_), ~~üstüçizgili~~ (\\~\\~metin\\~\\~), ve ||spoiler|| (\\|\\|metin\\|\\|).",
+        "tabToChat": "Eğer bilgisayarda oynuyorsan, Tab'a basarak sohbet ve oyun girişleri arasında değişim yapabilirsin. Bu özellik Sohbet ayarlarında 'Sohbet için Tab'a basın' altında kapatılabilir.",
+        "chatTabNotifications": "'Hepsi' dışında bir sohbet sekmesinde iken, öbür filtrelenmiş sekmede yeni bir mesaj gönderilirse, sana haber vermek için o sekmeye kalınlaşma eklenir.",
+        "clearChat": "Ekranın sağ üst köşesindeki sohbeti temizle butonuna bastığında, eğer 'Hepsi' sekmesinde değilsen, sadece olduğun sohbet sekmesindeki mesajları siler.",
+        "chatHistoryLimit": "Eğer sohbet geçmişi çok uzarsa, performansını etkileyebilir. Sohbet ayarlarından sohbet geçmişini sınırlayıp bu sorunlardan manüel olarak mesajları silmeden kaçınabilirsin. ",
+        "parties": "Partiler maceralarda insanlarda birlikte kalmak için çok iyi bir yoldur. Parti üyelerinin yerini görebilirsin ve onlarla gizli sohbetten konuşabilirsin.",
+        "immersionMode": "Eğer sosyalden çok sürükleyici bir deneyim tercih ediyorsanız, İmersiyon Modunu deneyin. Bu küresel sohbeti, oyuncu listesi, ve oyuncu sayısını kapatır. Böylece dolaşırken başka bir oyuncuyu görmek daha ilginç olur.",
+        "openSource": "YNOproject açık kaynaklıdır ve kod depoları şu sitede mevcuttur: https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "Dosya {SLOT_ID}",
+        "readingLabel": "Dosya Verileri Okunuyor...",
+        "emptyLabel": "Boş",
+        "errorLabel": "Hata"
+      },
+      "upload": {
+        "tooltip": "Kayıt Dosyası Yükle",
+        "invalidSaveFile": "Lütfen geçerli bir kayıt seçin (.lsd şeklinde)."
+      },
+      "download": {
+        "tooltip": "Kayıt Dosyası İndir",
+        "emptySlot": "Hay aksi! Bu slotun kayıt dosyası boş gibi görünüyor."
+      },
+      "delete": {
+        "tooltip": "Kayıt Dosyası Sil",
+        "confirmDelete": "{SLOT_ID} dosyası için kayıt dosyasını silmek istediğinden emin misin?"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": "Kayıt senkronizasyonunu etkinleştirmek istediğinden emin misin? Kayıt senkronizasyonu slotundaki kaydın yüklenecek ve bu özellik açık olan herhangi bir cihazdan veya tarayıcıda bu hesaptan erişebileceksin. Etkinleştirildiğinde, bahsi geçen kayıt senkronizasyonu slotunun verisi sayfa yüklendiğinde otomatik olarak güncellenecek.",
+      "confirmEnableWithData": "Bu hesap için bir önceki kayıt senkronizasyonu bulundu. Eğer aynı slotta yeni bir tanesi bulunursa kayıt senkronizasyonu slotundaki bir kayıt, kayıt senkronizasyonu verisiyle değiştirilecek. Lütfen bunun sadece bu özellikle sayfa yenilendiğinde etkiye gireceğini not edin. Kayıt senkronizasyonunu etkinleştirmek istediğinden emin misin?"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": "Site Güncellendi. Yeni değişiklikler için sayfayı yenileyin.",
+        "error": "Hay aksi! Bir şeyler yanlış gitmiş gibi görünüyor. Detaylar için tarayıcı konsoluna göz at. Konsolu açmak için, F12'ye basın ya da sayfaya sağ tıklayıp 'incele'yi seçin."
+      },
+      "account": {
+        "loggedIn": "{USER} olarak giriş yaptın.",
+        "loggedOut": "Hesaptan çıkış yaptın.",
+        "passwordUpdated": "Şifren başarıyla güncellendi."
+      },
+      "parties": {
+        "create": "{PARTY} oluşturuldu.",
+        "update": "{PARTY} güncellendi.",
+        "join": "{PARTY}'e katıldın.",
+        "leave": "{PARTY}'i terk ettin.",
+        "remove": "{PARTY}'dan atıldın.",
+        "disband": "{PARTY} Ayırıldı.",
+        "playerJoin": "{PLAYER} partiye katıldı.",
+        "playerLeave": "{PLAYER} partiden ayrıldı.",
+        "playerOnline": "{PLAYER} çevrimiçi oldu.",
+        "playerOffline": "{PLAYER} çevrimdışı oldu.",
+        "kickPlayer": "{PLAYER} partiden atıldı.",
+        "transferPartyOwner": "{PLAYER} parti liderine yükseltildi."
+      },
+      "events": {
+        "complete": "Seyahat tamamlandı!\n{LOCATION}'i ziyaret ettiğin için {EXP} kazandın.",
+        "freeComplete": "Seyahat tamamlandı! {LOCATION}'i ziyaret ettin.",
+        "vmComplete": "Otomat bulundu!\n {EXP} kazandın.",
+        "listUpdated": "Seyahat listesi güncellendi."
+      },
+      "badges": {
+        "badgeUnlocked": "Yeni bir başarım açtın!"
+      },
+      "saveSync": {
+        "saveUploading": "Slot {SLOT} kayıt verileri yükleniyor...",
+        "saveUploaded": "Slot {SLOT} kayıt verileri yüklendi.",
+        "saveDownloading": "Kayıt verileri slot {SLOT} için güncelleniyor...",
+        "saveDownloaded": "Kayıt slotu {SLOT} başarıyla güncellendi.",
+        "saveUpToDate": "Kayıt verileri güncel.",
+        "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Düzey: {RANK}",
+      "period": "Sezon {ORDINAL}",
+      "periodEnds": "Bitiş {DATE}",
+      "current": "Mevcut",
+      "shortcut": "Açılabilir bir kısayolla erişilebilir",
+      "availableUntilDate": "şu tarihe kadar mevcut:\n{DATE} ",
+      "types": {
+        "-1": "Özgür Seyahat",
+        "0": "Günlük",
+        "1": "Haftalık",
+        "2": "Haftasonu",
+        "3": "Özel"
+      },
+      "expRanks": {
+        "0": "Acemi",
+        "1": "Orta Düzey",
+        "2": "Bronz",
+        "3": "Gümüş",
+        "4": "Altın",
+        "5": "Platin",
+        "6": "Elmas"
+      }
+    },
+    "badges": {
+      "null": "Başarım Yok",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "Konum:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "Oyuncuların {PERCENT}% si Bu Rozete Sahip",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Resim {ARTIST} Tarafından",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Açılan Yüzdelik"
+        },
+        "asc": "Yükselerek",
+        "desc": "Azalarak"
+      }
+    },
+    "badgeGallery": {
+      "label": "{PLAYER}'in Rozet Galerisi",
+      "loading": "Yükleniyor...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Rozet"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Rozetler",
+          "valueLabel": "# Rozet",
+          "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Başarım Puanları)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Seyahatler",
+          "valueLabel": "# Seyahat",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Özgür Seyahatler",
+          "valueLabel": "# Seyahat",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Seyahat Bitirişi",
+          "valueLabel": "Bitiriş",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Otomat Bulucu",
+          "valueLabel": "# Otomat",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "Zaman Testi",
+          "valueLabel": "Bitirme Süresi",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minioyunlar",
+          "valueLabel": "Skor",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "Tümü",
+        "2": "Tüm Efektler",
+        "nasu": "NASU",
+        "rby": "Kırmızı Mavi Sarı (Mini Oyun B)",
+        "rby_ex": "Kırmızı Mavi Sarı (Mini Oyun B) - EX Versiyonu",
+        "fuji_ex": "FUJI EX"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "Yume 2kki Kaşifinde Gör",
+        "multi": "{LOCATION}'i Yume 2kki Kaşifinde Göster"
+      }
+    },
+    "modSettings": {
+      "title": "Moderatör Ayarları",
+      "actions": {
+        "resetPassword": {
+          "label": "Bir Şifre Sıfırla",
+          "playerPrompt": "Şifresini Sıfırlamak için hesabın adını girin",
+          "success": "{PLAYER} için şifre {PASSWORD} e değiştirildi"
+        },
+        "changeUsername": {
+          "label": "Bir Kullanıcı Adı Değiştir",
+          "playerPrompt": "Kullanıcı adını değiştirmek için hesabın adını girin",
+          "namePrompt": "{PLAYER} için yeni kullanıcı adı girin",
+          "success": "{PLAYER}'in kullanıcı adı {NAME}'e değiştirildi",
+          "error": "{PLAYER}'in adı değiştirilemedi; bahsedilen isim zaten kullanılıyor olabilir"
+        },
+        "ban": {
+          "label": "Bir Kullanıcı Banla",
+          "playerPrompt": "Banlamak için hesabın adını girin"
+        },
+        "unban": {
+          "label": "Bir Kullanıcı Banı Kaldır",
+          "playerPrompt": "Ban kaldırmak için hesabın adını girin"
+        },
+        "mute": {
+          "label": "Bir Kullanıcıyı Sustur",
+          "playerPrompt": "Susturmak için hesabın adını girin"
+        },
+        "unmute": {
+          "label": "Bir kullanıcının susturmasını kaldır",
+          "playerPrompt": "Susturma kaldırmak için hesabın adını girin"
+        },
+        "grantBadge": {
+          "label": "Bir Rozet Ver",
+          "playerPrompt": "Rozet vermek için hesabın adını girin"
+        },
+        "revokeBadge": {
+          "label": "Bir Rozet Kaldır",
+          "playerPrompt": "Rozetini kaldırmak için hesabın adını girin"
+        }
+      }
+    }
+  }
+}
