@@ -405,6 +405,8 @@ function get2kkiWikiLocationName(location) {
     return;
 
   addSessionCommandHandler('l', () => {
+    if (!config.enableExplorer)
+      return;
     const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
     const explorerFrame = document.getElementById('explorerFrame');
     if (explorerFrame && locationNames && loginToken) {
