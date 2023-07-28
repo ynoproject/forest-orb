@@ -694,6 +694,11 @@ body.fullBg #background {
   z-index: 2;
 }
 
+/* Fix for a fullscreen bug that shifts the game canvas when focus is changed */
+#layout:fullscreen #mainContainer {
+  padding-top: 0px;
+}
+
 #content.noSideBorders #header, #content.noSideBorders #mainContainer {
   border-left-width: 0;
   border-right-width: 0;

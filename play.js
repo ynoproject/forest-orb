@@ -156,6 +156,7 @@ function fetchAndUpdatePlayerInfo() {
               if (eventPeriodCache)
                 updateEvents();
               document.getElementById('content').classList.add('loggedIn');
+              onResize();
             });
         } else {
           initSessionWs()
@@ -164,6 +165,7 @@ function fetchAndUpdatePlayerInfo() {
               if (isLogout) {
                 showAccountToastMessage('loggedOut', 'leave');
                 document.getElementById('content').classList.remove('loggedIn');
+                onResize();
               }
             });
         }
