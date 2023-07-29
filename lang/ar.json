@@ -29,7 +29,7 @@
     "chatbox": {
       "location": "&nbsp;:الموقع",
       "immersionMode": "نمط الانغمار",
-      "reconnect": "Reconnect",
+      "reconnect": "أعد الاتصال",
       "tab": {
         "chat": "الحديث",
         "players": "اللاعبين",
@@ -108,22 +108,22 @@
               "slim": "رفيع"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "صوت المؤثرات الصوتية",
+          "musicVolume": "صوت الموسيقا",
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleEnableExplorer": {
-            "label": "Enable Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "label": "تفعيل ملاح يومي تووكي",
+            "helpText": "الملاح هو تكامل لمستكشف يومي تووكي الذي يسمح لك بمشاهدة اتصالات موقعك في لمحة. قد تؤثر هذه الميزة بشكل كبير على تجربتك ويوصى بشدة باستكشاف معظم اللعبة بشكل أعمى قبل تفعيل الميزة. يجب عليك تسجيل الدخول لاستخدام الملاح"
           },
           "toggleImmersionMode": {
             "label": "نمط الانغمار",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
           },
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",
           "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
+            "label": "إصلاح لقطة الشاشة",
+            "helpText": "يعمل على إصلاح المشكلة حيث قد تؤدي ميزة لقطة الشاشة إلى إنتاج لقطات شاشة فارغة ؛ يتطلب إعادة تحميل الصفحة وقد يؤثر على الأداء"
           }
         },
         "chatSettings": "إعدادات المحادثة",
@@ -134,9 +134,9 @@
         "title": "إعدادات المحادثة",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "تراكب المحادثة داخل اللعبة",
+            "global": "تراكب المحادثة العالمية",
+            "party": "تراكب محادثة الحفلة"
           },
           "toggleTabToChat": "للمحادثة Tab اضغط على",
           "chatHistoryLimit": {
@@ -286,8 +286,8 @@
         "badgeGalleryColProgress": "ترقية العمود التالي (شارات)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "إدارة حفظ البيانات",
+        "reload": "حفظ التغييرات وإعادة التحميل"
       },
       "uiTheme": {
         "title": "تصميم واجهة المستخدم",
@@ -332,28 +332,28 @@
         "title": "المراتب"
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "title": "القواعد",
+        "rule1": "من فضلك كن محترما ومهذبا",
+        "rule2": "لا مناقشة +18 (NSFW ، دموية ، اباحية)",
+        "rule3": "لا مناقشات سياسية",
+        "rule4": "عدم استخدام التعليقات القابلة للاشتعال (بما في ذلك الإهانات)",
+        "rule5": "لا غش من أي نوع ولأي سبب"
       }
     },
     "tooltips": {
       "toggleSinglePlayer": "وضع لاعب واحد",
-      "save": "Manage Save Data",
+      "save": "إدارة حفظ البيانات",
       "uiTheme": "تصميم واجهة المستخدم",
       "toggleChat": "وضع المحادثة",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "تفعيل Yume 2kki ملاح",
       "screenshot": "اخذ صورة للشاشة",
       "settings": "إعدادات",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "تفعيل كتم الصوت",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
         "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",
         "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في رسائل المحادثة",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "toggleMessageTimestamps": "إظهار / إخفاء الطوابع الزمنية لرسالة المحادثة",
         "clearChat": "مسح تاريخ المحادثة"
       },
       "parties": {
@@ -364,7 +364,7 @@
       "rankings": "المراتب",
       "nexus": "(Nexus) الرجوع إلى النكسس"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "مراجعة القواعد"
   },
   "messages": {
     "games": {
@@ -381,11 +381,11 @@
       "braingirl": "Braingirl (برين جيرل)",
       "muma": "Muma|Rope (حبل|موما)",
       "genie": "Dream Genie (حلم جني)",
-      "mikan": "Mikan Muzou",
-      "ultraviolet": "Ultra Violet"
+      "mikan": "Mikan Muzou (ميكان موزو)",
+      "ultraviolet": "Ultra Violet (الترا فايلوت)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
-    "logout": "Are you sure you want to log out?",
+    "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
@@ -626,10 +626,10 @@
         "template": "{TYPE} ({ORDER})",
         "types": {
           "bp": "BP",
-          "percent": "Percent Unlocked"
+          "percent": "نسبة الفتح"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "تصاعدي",
+        "desc": "تنازلي"
       }
     },
     "badgeGallery": {
@@ -697,48 +697,48 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Yume 2kki Explorer عرض في",
-        "multi": "Yume 2kki Explorer في {LOCATION} عرد"
+        "generic": "Yume 2kki عرض في مستكشف",
+        "multi": "Yume 2kki في مستكشف {LOCATION} عرض"
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "إعدادات المشرفين",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "إعادة تعيين كلمة المرور",
+          "playerPrompt": "أدخل اسم الحساب لإعادة تعيين كلمة المرور الخاصة به",
+          "success": "كلمة المرور الجديدة لـ {PASSWORD} هي {PLAYER}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "قم بتغيير اسم المستخدم",
+          "playerPrompt": "أدخل اسم الحساب لتغيير اسم المستخدم الخاص به",
+          "namePrompt": "أدخل اسم المستخدم الجديد لـ {PLAYER}",
+          "success": "تم تغيير اسم المستخدم لـ {NAME} إلى {PLAYER}",
+          "error": "فشل تغيير اسم المستخدم لـ {PLAYER} ؛ قد يكون الاسم المحدد قيد الاستخدام بالفعل"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "حظر لاعب",
+          "playerPrompt": "أدخل اسم الحساب المراد حظره"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "إلغاء حظر لاعب",
+          "playerPrompt": "أدخل اسم الحساب المطلوب إلغاء حظره"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "كتم لاعب",
+          "playerPrompt": "أدخل اسم الحساب الذي تريد كتمه"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "إلغاء كتم لاعب",
+          "playerPrompt": "أدخل اسم الحساب لإلغاء كتمه"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "امنح شارة",
+          "playerPrompt": "أدخل اسم الحساب لمنح الشارة إليه"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "إبطال الشارة",
+          "playerPrompt": "أدخل اسم الحساب لإلغاء الشارة منه"
         }
       }
     }
