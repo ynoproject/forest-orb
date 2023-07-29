@@ -2764,6 +2764,10 @@ form .uiTheme {
     max-height: 898px;
   }
 
+  #content.loggedIn #layout.explorer #canvasContainer {
+    align-items: baseline;
+  }
+
   #content.loggedIn #layout.explorer #canvas {
     margin-top: 69px;
     margin-bottom: 4px;
