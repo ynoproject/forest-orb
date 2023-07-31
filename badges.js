@@ -718,6 +718,33 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
               return;
             }
 
+            let minRowIndex = badgeSlots.length - 1;
+            let maxRowIndex = 0;
+            let minColIndex = badgeSlots[0].length - 1;
+            let maxColIndex = 0;
+
+            badgeSlots.forEach((badgeRowSlots, r) => {
+              let rowHasBadge = false;
+              badgeRowSlots.forEach((badgeId, c) => {
+                if (badgeId === 'null')
+                  return;
+                if (rowHasBadge) {
+                  if (c > maxColIndex)
+                    maxColIndex = c;
+                } else {
+                  rowHasBadge = true;
+                  if (c < minColIndex)
+                    minColIndex = c;
+                }
+              });
+              if (rowHasBadge) {
+                if (r < minRowIndex)
+                  minRowIndex = r;
+                if (r > maxRowIndex)
+                  maxRowIndex = r;
+              }
+            });
+
             const tooltipContent = document.createElement('div');
             tooltipContent.classList.add('tooltipContent', 'noShadow');
     
@@ -729,10 +756,16 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             badgeSlotRowsContainer.classList.add('badgeSlotRowsContainer');
     
             badgeSlots.forEach((badgeRowSlots, r) => {
+              if (r < minRowIndex || r > maxRowIndex)
+                return;
+
               const badgeSlotRow = document.createElement('div');
               badgeSlotRow.classList.add('badgeSlotRow');
 
               badgeRowSlots.forEach((badgeId, c) => {
+                if (c < minColIndex || c > maxColIndex)
+                  return;
+                  
                 const badgeSlot = document.createElement('div');
                 badgeSlot.classList.add('badgeSlot', 'badge');
                 badgeSlot.dataset.rowIndex = r;
