@@ -413,7 +413,7 @@ function syncPrevLocation() {
 }
 
 function syncLocationChange() {
-  const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
+  const locationNames = cachedLocations ? cachedLocations.map(l => get2kkiWikiLocationName(l)) : [];
 
   sendSessionCommand('l', locationNames);
 }
@@ -1772,8 +1772,12 @@ function getOrQueryLocationColors(locationName) {
   return new Promise((resolve, _reject) => {
     if (Array.isArray(locationName) && locationName.length && locationName[0].hasOwnProperty('title'))
       locationName = locationName[0].title;
-    else if (locationName.hasOwnProperty('title'))
+    else if (locationName?.hasOwnProperty('title'))
       locationName = locationName.title;
+    else if (!locationName) {
+      resolve(['#FFFFFF', '#FFFFFF']);
+      return;
+    }
     const colonIndex = locationName.indexOf(':');
     if (colonIndex > -1)
       locationName = locationName.slice(0, colonIndex);

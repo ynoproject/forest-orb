@@ -389,6 +389,8 @@ function get2kkiExplorerButton(locationName, isMulti) {
 }
 
 function get2kkiWikiLocationName(location) {
+  if (typeof location === 'string')
+    return location;
   let locationName = location.title;
     if (location.urlTitle)
       locationName = location.urlTitle.replace(/%26/g, "&").replace(/%27/g, "'").replace(/\_/g, " ").replace(/#.*/, "");
@@ -407,6 +409,10 @@ function get2kkiWikiLocationName(location) {
   addSessionCommandHandler('l', () => {
     if (!config.enableExplorer)
       return;
+    if (!cachedLocations) {
+      explorerFrame.src = '';
+      return;
+    }
     const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
     const explorerFrame = document.getElementById('explorerFrame');
     if (explorerFrame && locationNames && loginToken) {
