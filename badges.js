@@ -728,14 +728,11 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
               badgeRowSlots.forEach((badgeId, c) => {
                 if (badgeId === 'null')
                   return;
-                if (rowHasBadge) {
-                  if (c > maxColIndex)
-                    maxColIndex = c;
-                } else {
-                  rowHasBadge = true;
-                  if (c < minColIndex)
-                    minColIndex = c;
-                }
+                rowHasBadge = true;
+                if (c < minColIndex)
+                  minColIndex = c;
+                if (c > maxColIndex)
+                  maxColIndex = c;
               });
               if (rowHasBadge) {
                 if (r < minRowIndex)
