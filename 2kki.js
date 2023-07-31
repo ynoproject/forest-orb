@@ -1,5 +1,4 @@
 const is2kki = gameId === '2kki';
-const unknownLocations = [];
 
 const pendingRequests = {};
 
@@ -33,9 +32,6 @@ function onLoad2kkiMap(mapId) {
 
   if (locations && typeof locations === 'string')
     locations = null;
-
-  if (unknownLocations.indexOf(locationKey) > -1)
-    locations = getMassagedLabel(localizedMessages.location.unknownLocation);
 
   if (!cachedMapId)
     document.getElementById('location').classList.remove('hidden');
@@ -180,8 +176,6 @@ function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cache
     const cachePrev = Array.isArray(prevLocations) && prevLocations.filter(l => l.titleJP).length;
     if (locations)
       locationCache[locationKey] = locations;
-    else
-      unknownLocations.push(locationKey);
     if (cachePrev)
       locationCache[prevLocationKey] = prevLocations;
     if (saveLocation && (locations || prevLocations)) {
@@ -234,8 +228,6 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
       const cachePrev = Array.isArray(prevLocations) && prevLocations.filter(l => l.titleJP).length;
       if (locations)
         locationCache[locationKey] = locations;
-      else
-        unknownLocations.push(locationKey);
       if (cachePrev)
         locationCache[prevLocationKey] = prevLocations;
       if (saveLocation && (locations || prevLocations)) {
@@ -254,9 +246,7 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
     if (!prevMapId)
       prevMapId = '0000';
     const locationKey = `${prevMapId}_${mapId}`;
-    if (unknownLocations.indexOf(locationKey) > -1)
-      callbackFunc(mapId, prevMapId, null, prevLocations);
-    else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+    if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
       callbackFunc(mapId, prevMapId, locationCache[locationKey], prevLocations);
     else
       queryAndSet2kkiLocation(mapId, prevMapId !== '0000' ? prevMapId : null, prevLocations, callbackFunc)
@@ -287,8 +277,6 @@ function getOrQuery2kkiLocationsHtml(mapId, callback) {
       const locationKey = `${prevMapId}_${mapId}`;
       if (locations)
         locationCache[locationKey] = locations;
-      else
-        unknownLocations.push(locationKey);
       if (saveLocation && locations) {
         setCacheValue(CACHE_TYPE.location, locationKey, locations);
         updateCache(CACHE_TYPE.location);
@@ -297,9 +285,7 @@ function getOrQuery2kkiLocationsHtml(mapId, callback) {
     callback(getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;')));
   };
 
-  if (unknownLocations.indexOf(locationKey) > -1)
-    setLocationFunc(mapId, prevMapId);
-  else if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
+  if (locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey]))
     setLocationFunc(mapId, null, locationCache[locationKey]);
   else {
     prevMapId = '0000';
@@ -409,12 +395,12 @@ function get2kkiWikiLocationName(location) {
   addSessionCommandHandler('l', () => {
     if (!config.enableExplorer)
       return;
+    const explorerFrame = document.getElementById('explorerFrame');
     if (!cachedLocations) {
       explorerFrame.src = '';
       return;
     }
     const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
-    const explorerFrame = document.getElementById('explorerFrame');
     if (explorerFrame && locationNames && loginToken) {
       addLoader(explorerFrame, true);
       explorerFrame.onload = () => removeLoader(explorerFrame);
