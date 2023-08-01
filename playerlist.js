@@ -594,13 +594,15 @@ function updateBlocklist(updateModal) {
     apiFetch('blocklist')
       .then(response => response.json())
       .then(jsonResponse => {
-        const blocklist = jsonResponse;
+        const blocklist = jsonResponse || [];
         const blocklistModalPlayerList = document.getElementById('blocklistModalPlayerList');
 
         if (updateModal)
           blocklistModalPlayerList.innerHTML = '';
 
         blockedPlayerUuids = [];
+
+        Array.from(document.querySelectorAll('.messageContainer.blockedHidden, .gameChatMessageContainer.blockedHidden')).map(el => el.classList.add('pendingUnblock'));
 
         for (let blockedPlayer of blocklist) {
           globalPlayerData[blockedPlayer.uuid] = {
@@ -613,12 +615,22 @@ function updateBlocklist(updateModal) {
           };
           blockedPlayerUuids.push(blockedPlayer.uuid);
 
+          Array.from(document.querySelectorAll(`.messageContainer[data-sender-uuid='${blockedPlayer.uuid}'], .gameChatMessageContainer[data-sender-uuid='${blockedPlayer.uuid}']`)).map(el => {
+            el.classList.add('blockedHidden');
+            el.classList.remove('pendingUnblock');
+          });
+
           if (updateModal) {
             addOrUpdatePlayerListEntry(blocklistModalPlayerList, blockedPlayer.systemName, blockedPlayer.name, blockedPlayer.uuid);
 
             updatePlayerListEntrySprite(blocklistModalPlayerList, blockedPlayer.spriteName, blockedPlayer.spriteIndex, blockedPlayer.uuid);
           }
         };
+
+        Array.from(document.querySelectorAll('.messageContainer.pendingUnblock, .gameChatMessageContainer.pendingUnblock')).map(el => {
+          el.classList.remove('blockedHidden');
+          el.classList.remove('pendingUnblock');
+        });
 
         if (updateModal)
           document.getElementById('blocklistModalEmptyLabel').classList.toggle('hidden', !!blocklist.length);

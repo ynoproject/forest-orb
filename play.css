@@ -890,6 +890,10 @@ body.fullBg #background {
   opacity: 1 !important;
 }
 
+#gameChatContainer > .gameChatMessageContainer.blockedHidden {
+  display: none !important;
+}
+
 #gameChatContainer #gameChatInput {
   outline: 0px solid transparent;
 }
@@ -1230,6 +1234,10 @@ body.fullBg #background {
 
 .messageContainer.highlight {
   background: rgba(var(--alt-color), 0.5);
+}
+
+.messageContainer.blockedHidden {
+  display: none !important;
 }
 
 #chatbox.allChat .lastAllTabMessageInLoc, #chatbox.mapChat .lastMapTabMessageInLoc, .messageContainer.locMessage {

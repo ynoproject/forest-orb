@@ -142,6 +142,7 @@ function fetchAndUpdatePlayerInfo() {
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, jsonResponse.medals, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
+        updateBlocklist(false);
         if (isLogin) {
           initSessionWs()
             .then(() => {

@@ -50,6 +50,10 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
       msgContainer.classList.add(global ? "global" : "party");
       msgContainer.dataset.msgId = msgId;
+      msgContainer.dataset.senderUuid = uuid;
+
+      if (blockedPlayerUuids.indexOf(uuid) > -1)
+        msgContainer.classList.add('blockedHidden');
 
       if (showLocation) {
         const playerLocation = document.createElement("small");
@@ -250,7 +254,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   messages.appendChild(msgContainer);
 
   if (player)
-    addGameChatMessage(message.innerHTML, type);
+    addGameChatMessage(message.innerHTML, type, uuid);
 
   const chatbox = document.getElementById("chatbox");
 
@@ -307,7 +311,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
 let gameChatModeIndex = 0;
 
-function addGameChatMessage(messageHtml, messageType) {
+function addGameChatMessage(messageHtml, messageType, senderUuid) {
   const gameChatContainer = document.getElementById('gameChatContainer');
 
   const messageContainer = document.createElement('div');
@@ -320,6 +324,10 @@ function addGameChatMessage(messageHtml, messageType) {
       messageContainer.classList.add('hidden');
   }
   messageContainer.dataset.messageType = messageType;
+  messageContainer.dataset.senderUuid = senderUuid;
+
+  if (blockedPlayerUuids.indexOf(senderUuid) > -1)
+    messageContainer.classList.add('blockedHidden');
 
   const message = document.createElement('div');
   message.classList.add('gameChatMessage');
