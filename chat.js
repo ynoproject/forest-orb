@@ -316,7 +316,7 @@ function addGameChatMessage(messageHtml, messageType) {
   if (messageType === 2) {
     if (!globalConfig.gameChatGlobal)
       messageContainer.classList.add('hidden');
-  } else if (messageType === 1) {
+  } else if (messageType === 3) {
     if (!globalConfig.gameChatParty || !joinedPartyId)
       messageContainer.classList.add('hidden');
   }
