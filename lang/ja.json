@@ -126,14 +126,14 @@
             "helpText": "スクリーンショットの 撮影に 失敗することがある 不具合の 修正 （ページの 再読み込みが 必要で、 パフォーマンスが 落ちる 場合があります）"
           }
         },
-        "blocklist": "Blocklist",
+        "blocklist": "ブロックリスト",
         "chatSettings": "チャット 設定",
         "notificationSettings": "通知 設定",
         "accountSettings": "アカウント 設定"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "ブロックリスト",
+        "empty": "あなたのブロックリストは現在空です"
       },
       "chatSettings": {
         "title": "チャット 設定",
@@ -196,10 +196,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "プレイヤー",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "プレイヤーのブロック",
+              "playerUnblocked": "プレイヤーのブロック解除"
             }
           },
           "parties": {
@@ -444,12 +444,12 @@
     },
      "context": {
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "{PLAYER}をブロック",
+        "confirm": "{PLAYER}をブロックしてもよろしいですか？"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "{PLAYER}をブロック解除",
+        "confirm": "{PLAYER}をブロック解除してもよろしいですか？?"
       },
       "admin": {
         "ban": {
@@ -577,8 +577,8 @@
         "passwordUpdated": "パスワードの変更が完了しました。"
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER}をブロックしました。",
+        "playerUnblocked": "{PLAYER}をブロック解除しました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
