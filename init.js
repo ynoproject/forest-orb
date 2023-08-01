@@ -287,7 +287,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
 }
 
 function addPlayerContextMenu(target, player, uuid) {
-  if (!player || uuid === playerData?.uuid)
+  if (!player || uuid === playerData?.uuid || uuid === defaultUuid)
     return;
 
   const isMod = playerData?.rank > player?.rank;
