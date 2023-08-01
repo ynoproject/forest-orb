@@ -286,24 +286,81 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
-function addAdminContextMenu(target, player, uuid) {
-  if (!player)
+function addPlayerContextMenu(target, player, uuid) {
+  if (!player || uuid === playerData?.uuid)
     return;
 
+  const isMod = playerData?.rank > player?.rank;
+  const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
   const playerName = getPlayerName(player, true);
   
-  let tooltipHtml = `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
-    <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
-    <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
-  if (player.account)
-    tooltipHtml += `<br>
-      <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
-      <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.revokeBadge.label, true)}</a>`;
+  let tooltipHtml = !isBlocked
+    ? `<a href="javascript:void(0);" class="blockPlayerAction">${getMassagedLabel(localizedMessages.context.block.label, true).replace('{PLAYER}', playerName)}</a>`
+    : `<a href="javascript:void(0);" class="unblockPlayerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
+  
+  if (isMod) {
+    tooltipHtml += `<br><a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
+    if (player.account)
+      tooltipHtml += `<br>
+        <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
+        <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.revokeBadge.label, true)}</a>`;
+  }
 
-  const adminTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
+  const playerTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
 
-  adminTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
-    if (confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName))) {
+  if (!isBlocked) {
+    playerTooltip.popper.querySelector('.blockPlayerAction').onclick = function () {
+      if (blockedPlayerUuids.indexOf(uuid) > -1)
+        return;
+
+      if (!confirm(localizedMessages.context.block.confirm.replace('{PLAYER}', playerName)))
+        return;
+
+      apiFetch(`blockplayer?uuid=${uuid}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => {
+          blockedPlayerUuids.push(uuid);
+          showPlayerToastMessage('blockPlayer', playerName, 'ban', true, systemName);
+          updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+        })
+        .catch(err => console.error(err));
+    };
+  } else {
+    playerTooltip.popper.querySelector('.unblockPlayerAction').onclick = function() {
+      if (blockedPlayerUuids.indexOf(uuid) === -1)
+        return;
+
+      if (!confirm(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName)))
+        return;
+
+      apiFetch(`unblockplayer?uuid=${uuid}`)
+        .then(response => {
+          if(!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => {
+          const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
+          if (blockedPlayerUuidIndex > -1)
+            blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
+          showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
+          updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+        })
+        .catch(err => console.error(err));
+    };
+  }
+
+  if (isMod) {
+    playerTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
+      if (!confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName)))
+        return;
+
       apiFetch(`ban?uuid=${uuid}`, true)
         .then(response => {
           if (!response.ok)
@@ -312,69 +369,67 @@ function addAdminContextMenu(target, player, uuid) {
         })
         .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
         .catch(err => console.error(err));
-    }
-  };
-
-  adminTooltip.popper.querySelector('.mutePlayerAction').onclick = function() {
-    if(!confirm(localizedMessages.context.admin.mute.confirm.replace('{PLAYER}', playerName))) {
-      return;
-    }
-
-    apiFetch(`mute?uuid=${uuid}`, true)
-      .then(response => {
-        if(!response.ok)
-          throw new Error(response.statusText);
-        return response.text();
-      })
-      .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.mute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
-      .catch(err => console.error(err));
-  };
-
-  adminTooltip.popper.querySelector('.unmutePlayerAction').onclick = function() {
-    if(!confirm(localizedMessages.context.admin.unmute.confirm.replace('{PLAYER}', playerName))) {
-      return;
-    }
-
-    apiFetch(`unmute?uuid=${uuid}`, true)
-      .then(response => {
-        if(!response.ok)
-          throw new Error(response.statusText);
-        return response.text();
-      })
-      .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
-      .catch(err => console.error(err));
-  };
-
-  const badgeActions = adminTooltip.popper.querySelectorAll('.adminBadgeAction');
-  for (let badgeAction of badgeActions) {
-    badgeAction.onclick = function () {
-      const isGrant = this.classList.contains('grantBadgeAction');
-      const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
-      const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
-      if (badgeId) {
-        const badgeGame = Object.keys(localizedBadges).find(game => {
-          return Object.keys(localizedBadges[game]).find(b => b === badgeId);
-        });
-        if (badgeGame) {
-          const badgeName = localizedBadges[badgeGame][badgeId].name;
-          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&uuid=${uuid}&id=${badgeId}`)
-            .then(response => {
-              if (!response.ok)
-                throw new Error(response.statusText);
-              return response.text();
-            })
-            .then(_ => showToastMessage(getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName).replace('{PLAYER}', playerName), 'info', true, systemName))
-            .catch(err => console.error(err));
-        } else
-          alert(localizedContextRoot.fail);
-      }
     };
+
+    playerTooltip.popper.querySelector('.mutePlayerAction').onclick = function() {
+      if (!confirm(localizedMessages.context.admin.mute.confirm.replace('{PLAYER}', playerName)))
+        return;
+
+      apiFetch(`mute?uuid=${uuid}`, true)
+        .then(response => {
+          if(!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.mute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+        .catch(err => console.error(err));
+    };
+
+    playerTooltip.popper.querySelector('.unmutePlayerAction').onclick = function() {
+      if (!confirm(localizedMessages.context.admin.unmute.confirm.replace('{PLAYER}', playerName)))
+        return;
+
+      apiFetch(`unmute?uuid=${uuid}`, true)
+        .then(response => {
+          if(!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+        .catch(err => console.error(err));
+    };
+
+    const badgeActions = playerTooltip.popper.querySelectorAll('.adminBadgeAction');
+    for (let badgeAction of badgeActions) {
+      badgeAction.onclick = function () {
+        const isGrant = this.classList.contains('grantBadgeAction');
+        const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
+        const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
+        if (badgeId) {
+          const badgeGame = Object.keys(localizedBadges).find(game => {
+            return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+          });
+          if (badgeGame) {
+            const badgeName = localizedBadges[badgeGame][badgeId].name;
+            apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&uuid=${uuid}&id=${badgeId}`)
+              .then(response => {
+                if (!response.ok)
+                  throw new Error(response.statusText);
+                return response.text();
+              })
+              .then(_ => showToastMessage(getMassagedLabel(localizedContextRoot.success, true).replace('{BADGE}', badgeName).replace('{PLAYER}', playerName), 'info', true, systemName))
+              .catch(err => console.error(err));
+          } else
+            alert(localizedContextRoot.fail);
+        }
+      };
+    }
   }
 
   target.addEventListener('contextmenu', event => {
     event.preventDefault();
   
-    adminTooltip.setProps({
+    playerTooltip.setProps({
       getReferenceClientRect: () => ({
         width: 0,
         height: 0,
@@ -385,7 +440,7 @@ function addAdminContextMenu(target, player, uuid) {
       }),
     });
   
-    adminTooltip.show();
+    playerTooltip.show();
   });
 }
 

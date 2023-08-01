@@ -126,9 +126,14 @@
             "helpText": "يعمل على إصلاح المشكلة حيث قد تؤدي ميزة لقطة الشاشة إلى إنتاج لقطات شاشة فارغة ؛ يتطلب إعادة تحميل الصفحة وقد يؤثر على الأداء"
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "إعدادات المحادثة",
         "notificationSettings": "إعدادات التنبيهات",
         "accountSettings": "إعدادات الحساب"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "إعدادات المحادثة",
@@ -188,6 +193,13 @@
               "loggedIn": "مسجل الدخول",
               "loggedOut": "مسجل الخروج",
               "passwordUpdate": "تم تحديث كلمة السر"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -430,7 +442,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "{PLAYER} منع",
@@ -555,6 +575,10 @@
         "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
         "loggedOut": ".لقد قمت بتسجيل الخروج",
         "passwordUpdated": "تم تحديث كلمة السر الخاصة بك بنجاح"
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": ".{PARTY} تم إنشاء الحفلة",

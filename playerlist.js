@@ -9,6 +9,7 @@ const medalTypes = [ 'Bronze', 'Silver', 'Gold', 'Platinum', 'Diamond' ];
 let playerData = null;
 let playerUuids = {};
 let globalPlayerData = {};
+let blockedPlayerUuids = [];
 let spriteCache = {};
 let faviconCache = {};
 let playerSpriteCache = {};
@@ -233,8 +234,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer', 'listEntryActionContainer');
 
-    if (player && playerData?.rank > player.rank)
-      addAdminContextMenu(playerListEntry, player, uuid);
+    if (player)
+      addPlayerContextMenu(playerListEntry, player, uuid);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
@@ -588,6 +589,45 @@ function getPlayerListIdEntrySortFunc(playerListId) {
   return null;
 }
 
+function updateBlocklist(updateModal) {
+  return new Promise(resolve => {
+    apiFetch('blocklist')
+      .then(response => response.json())
+      .then(jsonResponse => {
+        const blocklist = jsonResponse;
+        const blocklistModalPlayerList = document.getElementById('blocklistModalPlayerList');
+
+        if (updateModal)
+          blocklistModalPlayerList.innerHTML = '';
+
+        blockedPlayerUuids = [];
+
+        for (let blockedPlayer of blocklist) {
+          globalPlayerData[blockedPlayer.uuid] = {
+            name: blockedPlayer.name,
+            systemName: blockedPlayer.systemName,
+            rank: blockedPlayer.rank,
+            account: blockedPlayer.account,
+            badge: blockedPlayer.badge || null,
+            medals: blockedPlayer.medals
+          };
+          blockedPlayerUuids.push(blockedPlayer.uuid);
+
+          if (updateModal) {
+            addOrUpdatePlayerListEntry(blocklistModalPlayerList, blockedPlayer.systemName, blockedPlayer.name, blockedPlayer.uuid);
+
+            updatePlayerListEntrySprite(blocklistModalPlayerList, blockedPlayer.spriteName, blockedPlayer.spriteIndex, blockedPlayer.uuid);
+          }
+        };
+
+        if (updateModal)
+          document.getElementById('blocklistModalEmptyLabel').classList.toggle('hidden', !!blocklist.length);
+
+        resolve();
+    });
+  });
+}
+
 async function getSpriteProfileImg(sprite, idx, favicon, dir) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
   return new Promise(resolve => {
@@ -720,6 +760,13 @@ function onPlayerDisconnected(id) {
     delete playerUuids[id];
     removePlayerListEntry(null, uuid);
   }
+}
+
+function showPlayerToastMessage(key, playerName, icon, iconFill, systemName, persist) {
+  if (!notificationConfig.players.all || !notificationConfig.players[key])
+    return;
+  const message = getMassagedLabel(localizedMessages.toast.players[key], true).replace('{PLAYER}', playerName);
+  showToastMessage(message, icon, iconFill, systemName, persist);
 }
 
 (function () {

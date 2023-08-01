@@ -549,6 +549,10 @@
               </li>
               <li class="formControlRow">
                 <span></span>
+                <button id="blocklistButton" class="unselectable" type="button" data-i18n="[html]modal.settings.blocklist">Blocklist</button>
+              </li>
+              <li class="formControlRow">
+                <span></span>
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat Settings</button>
               </li>
               <li class="formControlRow">
@@ -560,6 +564,18 @@
                 <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings">Account Settings</button>
               </li>
             </ul>
+          </div>
+        </div>
+        <div id="blocklistModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.blocklist.title">Blocklist</h1>
+          </div>
+          <div class="modalContent">
+            <span id="blocklistModalEmptyLabel" class="infoLabel" data-i18n="[html]modal.blocklist.empty">Your blocklist is currently empty</span>
+            <div id="blocklistModalPlayerListContainer" class="scrollableContainer">
+              <div id="blocklistModalPlayerList" class="playerList"></div>
+            </div>
           </div>
         </div>
         <div id="chatSettingsModal" class="modal hidden">

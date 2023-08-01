@@ -12,6 +12,10 @@ const notificationTypes = {
     'loggedOut',
     'passwordUpdate'
   ],
+  players: [
+    'playerBlocked',
+    'playerUnblocked'
+  ],
   parties: [
     'create',
     'update',

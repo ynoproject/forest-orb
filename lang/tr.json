@@ -126,9 +126,14 @@
             "helpText": "Ekran alıntısının boş olma sorununu çözebilir; sayfayı yenilemek gereklidir ve performansı etkileyebilir"
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "Sohbet Ayarları",
         "notificationSettings": "Bildirim Ayarları",
         "accountSettings": "Hesap Ayarları"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "Sohbet Ayarları",
@@ -188,6 +193,13 @@
               "loggedIn": "Girildi",
               "loggedOut": "Çıkıldı",
               "passwordUpdate": "Şifre Güncellendi"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -430,7 +442,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "{PLAYER}'i banla",
@@ -555,6 +575,10 @@
         "loggedIn": "{USER} olarak giriş yaptın.",
         "loggedOut": "Hesaptan çıkış yaptın.",
         "passwordUpdated": "Şifren başarıyla güncellendi."
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": "{PARTY} oluşturuldu.",

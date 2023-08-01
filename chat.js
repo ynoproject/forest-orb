@@ -107,8 +107,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
 
-    if (playerData?.rank > player?.rank)
-      addAdminContextMenu(name, player, uuid);
+    addPlayerContextMenu(name, player, uuid);
 
     if (player?.rank) {
       const rank = Math.min(player.rank, 2);

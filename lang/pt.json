@@ -126,9 +126,14 @@
             "helpText": "Corrige o problema onde a função de captura de tela pode produzir capturas de tela em branco; requer o recarregamento da página e pode afetar o desempenho"
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "Configurações do Bate-Papo",
         "notificationSettings": "Configurações de Notificação",
         "accountSettings": "Configurações da Conta"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "Configurações do Bate-papo",
@@ -188,6 +193,13 @@
               "loggedIn": "Logado",
               "loggedOut": "Deslogado",
               "passwordUpdate": "Senha Atualizada"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -430,7 +442,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "Banir {PLAYER}",
@@ -555,6 +575,10 @@
         "loggedIn": "Você fez login como {USER}.",
         "loggedOut": "Você Deslogou.",
         "passwordUpdated": "Sua senha foi atualizada com sucesso."
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": "{PARTY} foi criado.",

@@ -126,9 +126,14 @@
             "helpText": "Исправляет возможное возникновение проблемы с чёрными скриншотами, производимыми сайтом; Требует перезагрузки страницы и может повлиять на производительность."
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "Настройки чата",
         "notificationSettings": "Уведомления",
         "accountSettings": "Настройки аккаунта"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "Настройки чата",
@@ -188,6 +193,13 @@
               "loggedIn": "Вход",
               "loggedOut": "Выход",
               "passwordUpdate": "Пароль обновлён"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -430,7 +442,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "Забанить {PLAYER}",
@@ -555,6 +575,10 @@
         "loggedIn": "Вы вошли как {USER}.",
         "loggedOut": "Вы вышли из аккаунта.",
         "passwordUpdated": "Ваш пароль был изменён успешно."
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": "Была создана {PARTY}.",

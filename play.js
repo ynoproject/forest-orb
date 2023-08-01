@@ -904,6 +904,11 @@ document.getElementById('partyChatHistoryLimit').onchange = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('blocklistButton').onclick = function () {
+    updateBlocklist(true);
+    openModal('blocklistModal', null, 'settingsModal');
+};
+
 initAccountControls();
 initBadgeControls();
 initSaveDataControls();

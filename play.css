@@ -2210,7 +2210,7 @@ form .uiTheme {
   word-break: break-word;
 }
 
-#partyModalPlayerListContainer {
+#partyModalPlayerListContainer, #blocklistModalPlayerListContainer {
   width: 360px;
 }
 

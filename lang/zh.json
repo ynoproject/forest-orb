@@ -126,9 +126,14 @@
             "helpText": "尝试修复截出空白截图的问题。开启后需要刷新页面，且可能影响浏览器性能。"
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "聊天设置",
         "notificationSettings": "弹框通知设置",
         "accountSettings": "账号设置"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "聊天设置",
@@ -188,6 +193,13 @@
               "loggedIn": "登录",
               "loggedOut": "登出",
               "passwordUpdate": "密码已更新"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -429,7 +441,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "封禁 {PLAYER}",
@@ -554,6 +574,10 @@
         "loggedIn": "成功登录账号 {USER} 。",
         "loggedOut": "您已登出。",
         "passwordUpdated": "账号密码修改成功。"
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",

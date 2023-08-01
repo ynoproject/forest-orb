@@ -126,9 +126,14 @@
             "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
           }
         },
+        "blocklist": "Blocklist",
         "chatSettings": "Chat Settings",
         "notificationSettings": "Notification Settings",
         "accountSettings": "Account Settings"
+      },
+      "blocklist": {
+        "title": "Blocklist",
+        "empty": "Your blocklist is currently empty"
       },
       "chatSettings": {
         "title": "Chat Settings",
@@ -188,6 +193,13 @@
               "loggedIn": "Logged In",
               "loggedOut": "Logged Out",
               "passwordUpdate": "Password Updated"
+            }
+          },
+          "players": {
+            "label": "Players",
+            "fields": {
+              "playerBlocked": "Player Blocked",
+              "playerUnblocked": "Player Unblocked"
             }
           },
           "parties": {
@@ -430,7 +442,15 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-    "context": {
+     "context": {
+      "block": {
+        "label": "Block {PLAYER}",
+        "confirm": "Are you sure you want to block {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Unblock {PLAYER}",
+        "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
       "admin": {
         "ban": {
           "label": "Ban {PLAYER}",
@@ -555,6 +575,10 @@
         "loggedIn": "You have logged in as {USER}.",
         "loggedOut": "You have logged out.",
         "passwordUpdated": "Your password was updated successfully."
+      },
+      "players": {
+        "playerBlocked": "{PLAYER} has been blocked.",
+        "playerUnblocked": "{PLAYER} has been unblocked."
       },
       "parties": {
         "create": "{PARTY} has been created.",
