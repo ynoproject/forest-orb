@@ -827,6 +827,10 @@ body.fullBg #background {
   height: 240px;
 }
 
+#layout:fullscreen canvas.fsnocursor {
+  cursor: none !important;
+}
+
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
   #content.downscale canvas {

@@ -1259,6 +1259,7 @@ document.getElementById('content').addEventListener('scroll', function () {
 });
 
 function toggleControls(show) {
+  document.getElementById('canvas').classList.toggle('fsnocursor', !show);
   document.getElementById('controls').classList.toggle('fshidden', !show);
 }
 
