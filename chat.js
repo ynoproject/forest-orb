@@ -111,7 +111,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     message.appendChild(nameBeginMarker);
     message.appendChild(name);
 
-    addPlayerContextMenu(name, player, uuid);
+    addPlayerContextMenu(name, player, uuid, global ? MESSAGE_TYPE.GLOBAL : party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.MAP);
 
     if (player?.rank) {
       const rank = Math.min(player.rank, 2);

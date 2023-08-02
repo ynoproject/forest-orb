@@ -443,6 +443,9 @@
       "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
      "context": {
+      "ping": {
+        "label": "Ping {PLAYER}"
+      },
       "block": {
         "label": "{PLAYER}をブロック",
         "confirm": "{PLAYER}をブロックしてもよろしいですか？"

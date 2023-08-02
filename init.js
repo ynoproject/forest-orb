@@ -286,7 +286,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
-function addPlayerContextMenu(target, player, uuid) {
+function addPlayerContextMenu(target, player, uuid, messageType) {
   if (!player || uuid === playerData?.uuid || uuid === defaultUuid)
     return;
 
@@ -295,11 +295,18 @@ function addPlayerContextMenu(target, player, uuid) {
   const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
   const playerName = getPlayerName(player, true);
   
-  let tooltipHtml = isBlockable
-    ? !isBlocked
+  let tooltipHtml = '';
+
+  if (messageType)
+    tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
+
+  if (isBlockable) {
+    if (tooltipHtml)
+      tooltipHtml += '<br>';
+    tooltipHtml += !isBlocked
       ? `<a href="javascript:void(0);" class="blockPlayerAction">${getMassagedLabel(localizedMessages.context.block.label, true).replace('{PLAYER}', playerName)}</a>`
-      : `<a href="javascript:void(0);" class="unblockPlayerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`
-    : '';
+      : `<a href="javascript:void(0);" class="unblockPlayerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
+  }
   
   if (isMod) {
     if (tooltipHtml)
@@ -314,6 +321,35 @@ function addPlayerContextMenu(target, player, uuid) {
   }
 
   const playerTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
+
+  if (messageType) {
+    playerTooltip.popper.querySelector('.pingPlayerAction').onclick = function () {
+      const chatbox = document.getElementById('chatbox');
+      const chatInput = document.getElementById('chatInput');
+      const globalMessageButton = document.getElementById('globalMessageButton');
+
+      switch (messageType) {
+        case MESSAGE_TYPE.MAP:
+          if (chatbox.classList.contains('globalChat') || chatbox.classList.contains('partyChat'))
+            document.getElementById('chatTabAll').click();
+          if (chatInput.dataset.global)
+            globalMessageButton.click();
+          break;
+        case MESSAGE_TYPE.GLOBAL:
+          if (chatbox.classList.contains('globalMap') || chatbox.classList.contains('partyChat'))
+            document.getElementById('chatTabAll').click();
+          if (!chatInput.dataset.global)
+            globalMessageButton.click();
+          break;
+        case MESSAGE_TYPE.PARTY:
+          if (!chatbox.classList.contains('partyChat'))
+            document.getElementById('chatTabParty').click();
+          break;
+      }
+
+      chatInput.value += `@${getPlayerName(player)}`;
+    };
+  }
 
   if (isBlockable) {
     if (!isBlocked) {

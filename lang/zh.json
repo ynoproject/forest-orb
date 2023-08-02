@@ -442,6 +442,9 @@
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
      "context": {
+      "ping": {
+        "label": "Ping {PLAYER}"
+      },
       "block": {
         "label": "Block {PLAYER}",
         "confirm": "Are you sure you want to block {PLAYER}?"

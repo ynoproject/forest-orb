@@ -235,7 +235,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer', 'listEntryActionContainer');
 
     if (player)
-      addPlayerContextMenu(playerListEntry, player, uuid);
+      addPlayerContextMenu(playerListEntry, player, uuid, playerList.id === 'playerList' ? MESSAGE_TYPE.MAP : playerList.id === 'partyPlayerList' ? MESSAGE_TYPE.PARTY : null);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
