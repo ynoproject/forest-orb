@@ -112,7 +112,7 @@
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleEnableExplorer": {
-            "label": "Activer Yume 2kki Navigator",
+            "label": "Yume 2kki Navigator",
             "helpText": "Yume 2kki Navigator est une intégration de Yume 2kki Explorer permettant de voir les connexions du monde où vous vous situez en un clin d'œil. Cette fonctionnalité peut drastiquement affecter votre expérience et de ce fait, il est fortement recommandé d'explorer une bonne partie du jeu à l'aveugle avant d'activer cette fonctionnalité. Vous devez être connecté pour utiliser Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "Paramètres du Chat",
-        "notificationSettings": "Paramètres de notification",
-        "accountSettings": "Paramètres du compte"
+        "chatSettings": "Chat",
+        "notificationSettings": "Notifications",
+        "accountSettings": "Compte"
       },
       "blocklist": {
         "title": "Blocklist",

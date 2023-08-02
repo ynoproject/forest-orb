@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "Настройки чата",
+        "chatSettings": "Чата",
         "notificationSettings": "Уведомления",
-        "accountSettings": "Настройки аккаунта"
+        "accountSettings": "Аккаунта"
       },
       "blocklist": {
         "title": "Blocklist",

@@ -112,7 +112,7 @@
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleEnableExplorer": {
-            "label": "Enable Yume 2kki Navigator",
+            "label": "Yume 2kki Navigator",
             "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "Configurações do Bate-Papo",
-        "notificationSettings": "Configurações de Notificação",
-        "accountSettings": "Configurações da Conta"
+        "chatSettings": "Bate-Papo",
+        "notificationSettings": "Notificação",
+        "accountSettings": "Conta"
       },
       "blocklist": {
         "title": "Blocklist",

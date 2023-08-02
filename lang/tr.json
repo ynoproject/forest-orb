@@ -112,7 +112,7 @@
           "musicVolume": "Müzik Seviyesi",
           "togglePlayerSounds": "Oyuncu Sesleri",
           "toggleEnableExplorer": {
-            "label": "Yume 2kki Gezginini Etkinleştir",
+            "label": "Yume 2kki Gezginini",
             "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Kaşifi entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "Sohbet Ayarları",
-        "notificationSettings": "Bildirim Ayarları",
-        "accountSettings": "Hesap Ayarları"
+        "chatSettings": "Sohbet",
+        "notificationSettings": "Bildirim",
+        "accountSettings": "Hesap"
       },
       "blocklist": {
         "title": "Blocklist",

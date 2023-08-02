@@ -547,21 +547,11 @@
                   <button id="screenshotFixButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-              <li class="formControlRow">
-                <span></span>
+              <li class="formControlRow buttonRow">
                 <button id="blocklistButton" class="unselectable" type="button" data-i18n="[html]modal.settings.blocklist">Blocklist</button>
-              </li>
-              <li class="formControlRow">
-                <span></span>
-                <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat Settings</button>
-              </li>
-              <li class="formControlRow">
-                <span></span>
-                <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notification Settings</button>
-              </li>
-              <li class="formControlRow accountRequired">
-                <span></span>
-                <button id="accountSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.accountSettings">Account Settings</button>
+                <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat</button>
+                <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notifications</button>
+                <button id="accountSettingsButton" class="unselectable accountRequired" type="button" data-i18n="[html]modal.settings.accountSettings">Account</button>
               </li>
             </ul>
           </div>
@@ -691,8 +681,7 @@
           </div>
           <div class="modalContent itemContainer">
             <ul class="formControls">
-              <li class="formControlRow">
-                <span></span>
+              <li class="formControlRow buttonRow">
                 <button id="changePasswordButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.changePassword">Change Password</button>
               </li>
               <li class="formControlRow">
@@ -715,8 +704,7 @@
                   </select>
                 </div>
               </li>
-              <li id="saveSyncSlotIdRow" class="formControlRow">
-                <span></span>
+              <li id="saveSyncSlotIdRow" class="formControlRow buttonRow">
                 <button id="clearSaveSyncButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.clearSaveSync">Clear Save Sync Data</button>
               </li>
             </ul>

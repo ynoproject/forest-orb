@@ -112,7 +112,7 @@
           "musicVolume": "صوت الموسيقا",
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleEnableExplorer": {
-            "label": "تفعيل ملاح يومي تووكي",
+            "label": "ملاح يومي تووكي",
             "helpText": "الملاح هو تكامل لمستكشف يومي تووكي الذي يسمح لك بمشاهدة اتصالات موقعك في لمحة. قد تؤثر هذه الميزة بشكل كبير على تجربتك ويوصى بشدة باستكشاف معظم اللعبة بشكل أعمى قبل تفعيل الميزة. يجب عليك تسجيل الدخول لاستخدام الملاح"
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "إعدادات المحادثة",
-        "notificationSettings": "إعدادات التنبيهات",
-        "accountSettings": "إعدادات الحساب"
+        "chatSettings": "المحادثة",
+        "notificationSettings": "التنبيهات",
+        "accountSettings": "الحساب"
       },
       "blocklist": {
         "title": "Blocklist",

@@ -112,7 +112,7 @@
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleEnableExplorer": {
-            "label": "Enable Yume 2kki Navigator",
+            "label": "Yume 2kki Navigator",
             "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "Blocklist",
-        "chatSettings": "채팅 설정",
-        "notificationSettings": "알람 설정",
-        "accountSettings": "계정 설정"
+        "chatSettings": "채팅",
+        "notificationSettings": "알람",
+        "accountSettings": "계정"
       },
       "blocklist": {
         "title": "Blocklist",

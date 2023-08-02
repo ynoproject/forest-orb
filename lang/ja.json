@@ -112,7 +112,7 @@
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
           "toggleEnableExplorer": {
-            "label": "ゆめ２っきナビゲーターを有効にする",
+            "label": "ゆめ２っきナビゲーター",
             "helpText": "ゆめ２っきナビゲーターはゆめ２っきエクスプローラーを一体化したもので、現在地の接続を一目で見ることができます。この機能はあなたの体験に大きな影響を与える可能性があります。ですから、この機能を有効にする前に、ゲームの大部分を探索しておくことを強くお勧めします。ゆめ２っきナビゲーターを使用するにはログインする必要があります。"
           },
           "toggleImmersionMode": {
@@ -127,9 +127,9 @@
           }
         },
         "blocklist": "ブロックリスト",
-        "chatSettings": "チャット 設定",
-        "notificationSettings": "通知 設定",
-        "accountSettings": "アカウント 設定"
+        "chatSettings": "チャット",
+        "notificationSettings": "通知",
+        "accountSettings": "アカウント"
       },
       "blocklist": {
         "title": "ブロックリスト",

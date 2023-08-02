@@ -2130,6 +2130,14 @@ body.fullBg #background {
   text-align: right;
 }
 
+.formControlRow.buttonRow {
+  justify-content: center;
+}
+
+.formControlRow.buttonRow > button {
+  margin: 0 8px;
+}
+
 .modalTabsContainer {
   display: flex;
   flex-wrap: wrap;
