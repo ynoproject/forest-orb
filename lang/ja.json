@@ -444,7 +444,7 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "{PLAYER}にメンション"
       },
       "block": {
         "label": "{PLAYER}をブロック",
