@@ -443,7 +443,7 @@
     },
      "context": {
       "ping": {
-        "label": "Ping {PLAYER}"
+        "label": "Mention {PLAYER}"
       },
       "block": {
         "label": "Block {PLAYER}",
