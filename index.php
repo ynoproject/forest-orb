@@ -483,14 +483,14 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="playerSoundsButton" class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds</label>
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayerSounds">Player Sounds</label>
                 <div>
                   <button id="playerSoundsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <?php if ($gameId == "2kki"): ?>
               <li class="formControlRow">
-                <label for="enableExplorerButton" class="unselectable">
+                <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleEnableExplorer.label">Navigator</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleEnableExplorer.helpText">
                     <div class="helpIcon icon fillIcon invertFillIcon altIcon">
@@ -506,7 +506,7 @@
               </li>
               <?php endif ?>
               <li class="formControlRow">
-                <label for="immersionModeButton" class="unselectable">
+                <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleImmersionMode.label">Immersion Mode</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleImmersionMode.helpText">
                     <div class="helpIcon icon fillIcon invertFillIcon altIcon">
@@ -521,19 +521,19 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="locationDisplayButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleLocationDisplay">Location Display</label>
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleLocationDisplay">Location Display</label>
                 <div>
                   <button id="locationDisplayButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="toggleRankingsButton" class="unselectable" data-i18n="[html]modal.settings.fields.toggleRankings">Rankings</label>
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleRankings">Rankings</label>
                 <div>
                   <button id="toggleRankingsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="screenshotFixButton" class="unselectable">
+                <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleScreenshotFix.label">Screenshot Fix</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleScreenshotFix.helpText">
                     <div class="helpIcon icon fillIcon invertFillIcon altIcon">
@@ -576,25 +576,25 @@
           <div class="modalContent">
             <ul class="formControls">
               <li class="formControlRow">
-                <label for="gameChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.label">In-Game Chat Overlay</label>
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.label">In-Game Chat Overlay</label>
                 <div>
                   <button id="gameChatButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow indent gameChatRow">
-                <label for="gameChatGlobalButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.global">Global Chat Overlay</label>
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.global">Global Chat Overlay</label>
                 <div>
                   <button id="gameChatGlobalButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow indent gameChatRow">
-                <label for="gameChatPartyButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.party">Party Chat Overlay</label>
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleGameChat.party">Party Chat Overlay</label>
                 <div>
                   <button id="gameChatPartyButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow desktopOnly">
-                <label for="tabToChatButton" class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleTabToChat">Press Tab to Chat</label>
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.toggleTabToChat">Press Tab to Chat</label>
                 <div>
                   <button id="tabToChatButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
@@ -655,7 +655,7 @@
           <div class="modalContent">
             <ul class="formControls">
               <li class="formControlRow">
-                <label for="notificationsButton" class="unselectable" data-i18n="[html]modal.notificationSettings.fields.toggleNotifications">Notifications</label>
+                <label class="unselectable" data-i18n="[html]modal.notificationSettings.fields.toggleNotifications">Notifications</label>
                 <div>
                   <button id="notificationsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
@@ -858,7 +858,7 @@
                   </div>
                 </li>
                 <li class="formControlRow">
-                  <label for="publicPartyButton" class="unselectable" data-i18n="[html]modal.createParty.fields.public">Public</label>
+                  <label class="unselectable" data-i18n="[html]modal.createParty.fields.public">Public</label>
                   <div>
                     <button id="publicPartyButton" class="checkboxButton inverseToggle unselectable" type="button"><span></span></button>
                     <input type="checkbox" name="public" style="display: none" checked />
