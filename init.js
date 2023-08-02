@@ -287,8 +287,10 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
 }
 
 function addPlayerContextMenu(target, player, uuid, messageType) {
-  if (!player || uuid === playerData?.uuid || uuid === defaultUuid)
+  if (!player || uuid === playerData?.uuid || uuid === defaultUuid) {
+    target.addEventListener('contextmenu', event => event.preventDefault());
     return;
+  }
 
   const isMod = playerData?.rank > player?.rank;
   const isBlockable = playerData?.rank >= player?.rank;
@@ -347,7 +349,8 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
           break;
       }
 
-      chatInput.value += `@${getPlayerName(player)}`;
+      chatInput.value += `@${getPlayerName(player)} `;
+      setTimeout(() => chatInput.focus(), 0);
     };
   }
 
@@ -469,8 +472,10 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     }
   }
 
-  if (!tooltipHtml)
+  if (!tooltipHtml) {
+    target.addEventListener('contextmenu', event => event.preventDefault());
     return;
+  }
 
   target.addEventListener('contextmenu', event => {
     event.preventDefault();
