@@ -360,7 +360,7 @@
           </div>
         <?php endif ?>
       </div>
-      <div id="modalContainer" class="hidden">
+      <div id="modalContainer" class="modalContainer hidden">
         <div id="loginModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
@@ -1402,6 +1402,7 @@
         <?php endif ?>
         <div class="modalOverlay"></div>
       </div>
+      <div id="modalFadeOutContainer" class="modalContainer"></div>
       <div id="toastContainer"></div>
     </div>
     <div id="layoutEnd"></div>

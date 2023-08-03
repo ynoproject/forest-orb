@@ -497,7 +497,8 @@ function preToggle(buttonElement) {
  */
 function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
-  modalContainer.classList.remove('hidden');
+  modalContainer.classList.remove('fadeOut', 'hidden');
+  modalContainer.classList.add('fadeIn');
 
   if (lastModalId) {
     if (modalContainer.dataset.lastModalId) {
@@ -518,8 +519,14 @@ function openModal(modalId, theme, lastModalId, modalData) {
     }
   }
   const activeModal = document.querySelector('.modal:not(.hidden)');
-  if (activeModal && activeModal.id !== modalId)
-    activeModal.classList.add('hidden');
+  if (activeModal && activeModal.id !== modalId) {
+    document.getElementById('modalFadeOutContainer').appendChild(activeModal);
+    activeModal.classList.add('fadeOut', 'hidden');
+    setTimeout(() => {
+      activeModal.classList.remove('fadeOut');
+      modalContainer.prepend(activeModal);
+    }, 245);
+  }
 
   setModalUiTheme(modalId, theme || (config.uiTheme === 'auto' ? systemName : config.uiTheme));
 
@@ -529,16 +536,33 @@ function openModal(modalId, theme, lastModalId, modalData) {
     for (let k of Object.keys(modalData))
       modal.dataset[k] = modalData[k];
   }
+  modal.classList.add('fadeIn');
   modal.classList.remove('hidden');
+
+  setTimeout(() => {
+    modalContainer.classList.remove('fadeIn');
+    modal.classList.remove('fadeIn');
+  }, 245);
 }
 
 function closeModal() {
+  const modalFadeOutContainer = document.getElementById('modalFadeOutContainer');
+  if (modalFadeOutContainer.childElementCount)
+    return;
   const modalContainer = document.getElementById('modalContainer');
-  if (!modalContainer.dataset.lastModalId)
-    modalContainer.classList.add('hidden');
+  if (!modalContainer.dataset.lastModalId) {
+    modalContainer.classList.add('fadeOut', 'hidden');
+    setTimeout(() => modalContainer.classList.remove('fadeOut'), 245);
+  }
   const activeModal = document.querySelector('.modal:not(.hidden)');
-  if (activeModal)
-    activeModal.classList.add('hidden');
+  if (activeModal) {
+    modalFadeOutContainer.appendChild(activeModal);
+    activeModal.classList.add('fadeOut', 'hidden');
+    setTimeout(() => {
+      activeModal.classList.remove('fadeOut');
+      modalContainer.prepend(activeModal);
+    }, 245);
+  }
   if (modalContainer.dataset.lastModalId) {
     const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
     if (lastModalIdSeparatorIndex === -1)

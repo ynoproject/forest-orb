@@ -1035,10 +1035,10 @@ body.fullBg #background {
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -1745,7 +1745,7 @@ body.fullBg #background {
   padding: 0;
 }
 
-#modalContainer {
+.modalContainer {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -1754,7 +1754,21 @@ body.fullBg #background {
   left: 0;
   width: 100%;
   height: 100%;
+  opacity: 1;
   z-index: 10;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.modalContainer.hidden.fadeOut {
+  display: flex !important;
+}
+
+.modalContainer.hidden {
+  opacity: 0;
+}
+
+.modalContainer.hidden.fadeOut, #modalFadeOutContainer {
+  pointer-events: none;
 }
 
 .modal {
@@ -1780,6 +1794,36 @@ body.fullBg #background {
 
 .modal.wideModal {
   max-width: min(720px, calc(100% - 112px));
+}
+
+.modal.hidden.fadeOut {
+  display: flex !important;
+}
+
+.modal.fadeIn, .modal.fadeOut {
+  animation-name: modalFade;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in-out;
+}
+
+.modal.fadeOut {
+  animation-direction: reverse;
+}
+
+@keyframes modalFade {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal.fadeIn .loader, .modal.fadeOut .loader {
+  top: -24px !important;
+  left: -24px !important;
 }
 
 .fullscreenModal {
@@ -1902,11 +1946,11 @@ body.fullBg #background {
   margin-top: 2px;
 }
 
-.itemContainer .item > div, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected) {
+.itemContainer .item > div, .modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected) {
   border: 2px solid transparent;
 }
 
-.itemContainer .item > div.selected, #modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected {
+.itemContainer .item > div.selected, .modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected {
   border-color: white;
 }
 
@@ -2042,7 +2086,7 @@ body.fullBg #background {
   display: none;
 }
 
-#modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, #modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter, #createPartyModal:not([data-update]) .modalTitle .updateTitle, #createPartyModal[data-update] .modalTitle .createTitle {
+.modalContainer[data-last-modal-id$="createPartyModal"] .uiThemeItem.auto, .modalContainer[data-last-modal-id$="createPartyModal"] .modalFooter, #createPartyModal:not([data-update]) .modalTitle .updateTitle, #createPartyModal[data-update] .modalTitle .createTitle {
   display: none;
 }
 
