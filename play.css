@@ -235,6 +235,10 @@ body {
   -webkit-text-fill-color: white;
 }
 
+.spoiler:not(.show) .emoji {
+  -webkit-text-fill-color: transparent;
+}
+
 .nofilter {
   filter: none !important;
 }
