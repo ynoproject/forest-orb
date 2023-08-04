@@ -38,6 +38,8 @@ let globalConfig = {
   locationDisplay: false,
   hideRankings: false,
   screenshotFix: false,
+  preloads: false,
+  questionablePreloads: false,
   rulesReviewed: false,
   badgeToolsData: null
 };
@@ -303,6 +305,8 @@ function checkUpdateLocation(mapId, mapChanged) {
 
   cachedPrevMapId = cachedMapId;
   cachedMapId = mapId;
+  
+  preloadFilesFromMapId(mapId);
 
   if (localizedMapLocations) {
     const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY);
@@ -839,6 +843,12 @@ if (gameId === '2kki') {
     config.enableExplorer = toggled;
     updateConfig(config);
   }
+  
+  document.getElementById('toggleQuestionablePreloadsButton').onclick = function () {
+	this.classList.toggle('toggled');
+	globalConfig.questionablePreloads = this.classList.contains('toggled');
+	updateConfig(globalConfig, true);
+  };
 }
 
 document.getElementById('immersionModeButton').onclick = function () {
@@ -874,6 +884,15 @@ document.getElementById('toggleRankingsButton').onclick = function () {
 document.getElementById('screenshotFixButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.screenshotFix = this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('togglePreloadsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  for (let row of document.getElementsByClassName('preloadRow'))
+    row.classList.toggle('hidden', !toggled);
+  globalConfig.preloads = toggled;
   updateConfig(globalConfig, true);
 };
 
@@ -1992,6 +2011,262 @@ function setCacheValue(cacheType, key, value) {
     return;
 
   cache[cacheType][key] = { time: new Date().getTime(), value: value };
+}
+
+let preloadFiles;
+let preloadedFiles = {};
+let gameLoadedFiles = new Set();
+let preloadLocalizationFiles = {};
+
+function initPreloadList() {
+  fetch(`https://raw.githubusercontent.com/ynoproject/ynopreloads/master/${gameId}.json`)
+    .then(response => {
+      if (!response.ok)
+        return;
+      return response.text();
+    })
+    .then(responseText => {
+      if (!responseText)
+        return;
+      preloadFiles = JSON.parse(responseText.replaceAll('\"*/', '\"/'));
+      if (preloadFiles) {
+        let preloadFilesReplace = {};
+        for (let preload of Object.entries(preloadFiles)) {
+          for (let mapId of preload[0].split('/')) {
+            if (!preloadFilesReplace.hasOwnProperty(mapId))
+              preloadFilesReplace[mapId] = [];
+            preloadFilesReplace[mapId] = preloadFilesReplace[mapId].concat(preload[1]);
+          }
+        }
+        preloadFiles = preloadFilesReplace;
+        
+        // Get game localization files
+        fetch("https://api.github.com/repos/ynoproject/ynotranslations/git/trees/master?recursive=1")
+          .then(response => response.json())
+          .then(jsonResponse => {
+            let gameFiles = [];
+            let gameFilesLangs = [];
+            let gameFilesLowerCase = [];
+            for (let path of jsonResponse.tree) {
+              path = path.path;
+              if (path.startsWith(gameId + "/")) {
+                path = path.replace(gameId + "/", "/");
+                let lang = path.substring(1, path.substring(1, path.length).indexOf("/") + 1);
+                let fileName = path.replace("/" + lang, "").replace(".lmu", ".po");
+                gameFiles.push(fileName);
+                gameFilesLowerCase.push(fileName.toLowerCase());
+                gameFilesLangs.push(lang);
+              }
+            }
+  
+            let mapFiles;
+            let translated = {};
+            for (let map of Object.values(preloadFiles)) {
+              let file;
+              for (let fileIndex = 0; fileIndex < map.length; fileIndex++) {
+                let langsCurrent = "";
+                file = map[fileIndex];
+                if (typeof file === "object") {
+                  if (!file.length) {
+                    let filesAdd = [];
+                    for (let file1 = 0; file1 < file.files.length; file1++)
+                      filesAdd.push([file.files[file1], file.lang || ""]);
+                    map = map.concat(filesAdd);
+                    continue;
+                  }
+                  else {
+                    langsCurrent = file[1];
+                    file = file[0];
+                  }
+                }
+  
+                let fileLocalizedName = file.toLowerCase().replace(".lmu", ".po");
+  
+                for (let index = 0; index < gameFiles.length; index++) {
+                  if (gameFilesLowerCase[index] === fileLocalizedName) {
+                    if (!preloadLocalizationFiles.hasOwnProperty(gameFilesLangs[index]))
+                      preloadLocalizationFiles[gameFilesLangs[index]] = {};
+                    preloadLocalizationFiles[gameFilesLangs[index]][file] = gameFiles[index];
+                  }
+                }
+              }
+            }
+          })
+          .catch(err => console.error(err));
+      }
+    })
+    .catch(err => console.error(err));
+}
+
+function preloadFileAndSave(link, languageLink, translatedFileName) {
+  link = languageLink + (translatedFileName ? translatedFileName : link);
+  if (gameLoadedFiles.has(link))
+	return;
+  gameLoadedFiles.add(link);
+  let request = new XMLHttpRequest();
+  request.onload = function() {
+	if (request.status >= 200 && request.status < 300)
+      preloadedFiles[link] = request.response;
+  }
+  request.responseType = "arraybuffer";
+  request.open("GET", "/data/" + gameId + (languageLink ? "/Language" : "") + encodeURIComponent(link));
+  request.send();
+}
+
+function preloadFilesFromMapId(mapId) {
+  if (!preloadFiles || !preloadFiles.hasOwnProperty(mapId))
+    return;
+  let langLink;
+  let translatedFileName;
+  for (let preloadFile of preloadFiles[mapId]) {
+    if (typeof preloadFile === "object") {
+      let pfX = preloadFile.x?.toString() || tpX.toString();
+      let pfY;
+      let index = 0;
+      for (let pfI of pfX.split('/')) {
+        if (tpX.toString() === pfI || pfI === "-1") {
+          pfX = tpX;
+          pfY = preloadFile.y?.toString().split('/')[index] || tpY.toString();
+          if (tpY.toString() === pfY || pfY === "-1") {
+            pfY = tpY;
+            break;
+          }
+        }
+        index++;
+      }
+      if (tpX === pfX && tpY === pfY && (!preloadFile.questionable || globalConfig.questionablePreloads)) {
+        let current = 0;
+        let currentTimeout = preloadFile.delay || 0;
+        const totalAtOnce = 40;
+        const delayAdd = 450;
+
+        for (let preloadFileInside of preloadFile.files) {
+          if (gameLoadedFiles.has(preloadFileInside))
+            continue;
+          if (preloadLocalizationFiles.hasOwnProperty(preloadsGameLang) && preloadLocalizationFiles[preloadsGameLang].hasOwnProperty(preloadFileInside)) {
+            translatedFileName = preloadLocalizationFiles[preloadsGameLang][preloadFileInside];
+            langLink = "/" + preloadsGameLang;
+            if (preloadFileInside.endsWith(".lmu")) {
+              if (preloadFile.slow)
+                setTimeout(preloadFileAndSave, currentTimeout, preloadFileInside, langLink, translatedFileName);
+              else
+                preloadFileAndSave(preloadFileInside, langLink, translatedFileName);
+              current++;
+              if (current % totalAtOnce === 0) {
+                currentTimeout += delayAdd;
+              }
+              translatedFileName = "";
+              langLink = "";
+            }
+          }
+          else {
+            langLink = "";
+            translatedFileName = "";
+          }
+          if (preloadFile.slow)
+            setTimeout(preloadFileAndSave, currentTimeout, preloadFileInside, langLink, translatedFileName);
+          else
+            preloadFileAndSave(preloadFileInside, langLink, translatedFileName);
+          current++;
+          if (current % totalAtOnce === 0) {
+            currentTimeout += delayAdd;
+          }
+        }
+      }
+      continue;
+    }
+    if (!gameLoadedFiles.has(preloadFile)) {
+      if (preloadLocalizationFiles.hasOwnProperty(preloadsGameLang) && preloadLocalizationFiles[preloadsGameLang].hasOwnProperty(preloadFile)) {
+        translatedFileName = preloadLocalizationFiles[preloadsGameLang][preloadFile];
+        langLink = "/" + preloadsGameLang;
+        if (preloadFile.endsWith(".lmu")) {
+          preloadFileAndSave(preloadFile, langLink, translatedFileName);
+          translatedFileName = "";
+          langLink = "";
+        }
+      }
+      else {
+        langLink = "";
+        translatedFileName = "";
+      }
+      preloadFileAndSave(preloadFile, langLink, translatedFileName);
+    }
+  }
+}
+
+function getFilePathForPreloads(path) {
+  return path.replace(`/data/${gameId}`, "").replace("/Language", "");
+}
+
+let preloadsGameLang = "default";
+let preloadsLangDetected = false;
+let prevLoadedFiles = [];
+
+function initPreloads() {
+  const ca = wasmImports.ca;
+  wasmImports.ca = function(url, file, request, param, arg, onload, onerror, onprogress) {
+    if (preloadFiles) {
+      var _url = UTF8ToString(url);
+              
+      let filePath = getFilePathForPreloads(decodeURIComponent(_url));
+      gameLoadedFiles.add(filePath);
+
+      // Game language detection
+      if (_url.indexOf("/Language") !== -1 && !filePath.endsWith("/meta.ini")) {
+        preloadsGameLang = filePath.substring(1, filePath.substring(1, filePath.length).indexOf("/") + 1)
+      }
+      if (filePath.indexOf("/Title") !== -1) {
+        gameLoadedFiles = new Set(Object.keys(preloadedFiles));
+        preloadsGameLang = "default";
+        for (let prevFile of prevLoadedFiles) {
+          if (prevFile.indexOf("/Language") !== -1) {
+            let folderFilePath = getFilePathForPreloads(decodeURIComponent(prevFile));
+            preloadsGameLang = folderFilePath.substring(1, folderFilePath.substring(1, folderFilePath.length).indexOf("/") + 1);
+            break
+          }
+        }
+        if (preloadsLangDetected) {
+          preloadFilesFromMapId("title")
+        }
+        preloadsLangDetected = true
+      }
+      prevLoadedFiles.push(_url);
+      if (prevLoadedFiles.length > 4) {
+        prevLoadedFiles.shift(1)
+      }
+      if (filePath.endsWith(".lmu")) {
+        preloadFilesFromMapId("event" + filePath.replace("/Map", "").replace(".lmu", ""))
+      }
+      if (preloadedFiles.hasOwnProperty(filePath)) {
+        runtimeKeepalivePush();
+        var _file = UTF8ToString(file);
+        _file = PATH_FS.resolve(_file);
+        var _request = UTF8ToString(request);
+        var index = _file.lastIndexOf("/");
+        var http = new XMLHttpRequest;
+        var handle = wget.getNextWgetRequestHandle();
+        var destinationDirectory = PATH.dirname(_file);
+        try {
+          FS.unlink(_file)
+        } catch (e) {}
+        FS.mkdirTree(destinationDirectory);
+        FS.createDataFile(_file.substr(0, index), _file.substr(index + 1), new Uint8Array(preloadedFiles[filePath]), true, true, false);
+        if (onload) {
+          withStackSave((function() {
+            ((a1,a2,a3)=>dynCall_viii.apply(null, [onload, a1, a2, a3]))(handle, arg, stringToUTF8OnStack(_file))
+            }
+          ))
+        }
+        if (filePath !== "/CharSet/syujinkou_effect_action_01.png") {
+          delete preloadedFiles[filePath];
+        }
+                    
+        wget.wgetRequests[handle] = http;
+        return handle
+      }
+    }
+    ca(url, file, request, param, arg, onload, onerror, onprogress);
+  }
 }
 
 onResize();
