@@ -170,6 +170,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
 function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
   document.getElementById('locationText').innerHTML = getLocalized2kkiLocationsHtml(locations, '<br>');
   onUpdateChatboxInfo();
+  preloadFilesFromMapId(mapId);
   if (cacheLocation) {
     const locationKey = `${(prevMapId || '0000')}_${mapId}`;
     const prevLocationKey = `${mapId}_${(prevMapId || '0000')}`;
