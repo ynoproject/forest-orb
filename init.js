@@ -68,6 +68,8 @@ async function injectScripts() {
       : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
+	    if (globalConfig.preloads)
+          initPreloads();
   
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
@@ -79,6 +81,7 @@ async function injectScripts() {
           removeLoader(loadingOverlay);
           fetchAndUpdatePlayerInfo();
           setInterval(checkLogin, 60000);
+          preloadFilesFromMapId("title");
           setTimeout(() => {
             checkDependenciesModified();
             setInterval(checkDependenciesModified, 300000);
@@ -594,6 +597,20 @@ function loadOrInitConfig(configObj, global, configName) {
                         xrCompatible: false
                       });
                     }
+                    break;
+				  case 'preloads':
+                    if (value) {
+                      initPreloadList();
+                      document.getElementById('togglePreloadsButton').click();
+                    }
+                    else {
+                      for (let row of document.getElementsByClassName('preloadRow'))
+                        row.classList.add('hidden');
+                    }
+                    break;
+                  case 'questionablePreloads':
+                    if (value && gameId === '2kki')
+                      document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
                   case 'rulesReviewed':
                     if (value)
