@@ -68,7 +68,7 @@ async function injectScripts() {
       : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
-	    if (globalConfig.preloads)
+        if (globalConfig.preloads)
           initPreloads();
   
         Module.postRun.push(() => {
@@ -598,7 +598,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       });
                     }
                     break;
-				  case 'preloads':
+                  case 'preloads':
                     if (value) {
                       initPreloadList();
                       document.getElementById('togglePreloadsButton').click();
