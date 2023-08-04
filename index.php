@@ -547,7 +547,7 @@
                   <button id="screenshotFixButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-			  <li class="formControlRow">
+              <li class="formControlRow">
                 <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.togglePreloads.label">Enable Preloads</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.togglePreloads.helpText">
@@ -562,8 +562,8 @@
                   <button id="togglePreloadsButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-			  <?php if ($gameId == "2kki"): ?>
-			  <li class="formControlRow">
+              <?php if ($gameId == "2kki"): ?>
+              <li class="formControlRow">
                 <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.toggleQuestionablePreloads.label">Preload PC Wallpapers</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleQuestionablePreloads.helpText">
@@ -578,7 +578,7 @@
                   <button id="toggleQuestionablePreloadsButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-			  <?php endif ?>
+              <?php endif ?>
               <li class="formControlRow buttonRow">
                 <button id="blocklistButton" class="unselectable" type="button" data-i18n="[html]modal.settings.blocklist">Blocklist</button>
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat</button>
