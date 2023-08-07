@@ -124,7 +124,12 @@
           "toggleScreenshotFix": {
             "label": "截图修复",
             "helpText": "尝试修复截出空白截图的问题。开启后需要刷新页面，且可能影响浏览器性能。"
-          }
+          },
+          "togglePreloads": {
+            "label": "Preloads",
+            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+          },
+          "toggleQuestionablePreloads": "Preload PC Wallpapers"
         },
         "blocklist": "Blocklist",
         "chatSettings": "聊天",

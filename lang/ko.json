@@ -124,7 +124,12 @@
           "toggleScreenshotFix": {
             "label": "더 나은 스크린샷 찍기",
             "helpText": "스크린샷을 찍을 때 가끔 사진이 검은 화면으로 되는 오류를 고쳐줍니다. 체크 후 새로고침을 해야 적용이 되며, 활성화 시 게임 성능에 영향을 미칠 수 있습니다."
-          }
+          },
+          "togglePreloads": {
+            "label": "Preloads",
+            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+          },
+          "toggleQuestionablePreloads": "Preload PC Wallpapers"
         },
         "blocklist": "Blocklist",
         "chatSettings": "채팅",

@@ -124,7 +124,12 @@
           "toggleScreenshotFix": {
             "label": "Фикс Скриншотов",
             "helpText": "Исправляет возможное возникновение проблемы с чёрными скриншотами, производимыми сайтом; Требует перезагрузки страницы и может повлиять на производительность."
-          }
+          },
+          "togglePreloads": {
+            "label": "Preloads",
+            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+          },
+          "toggleQuestionablePreloads": "Preload PC Wallpapers"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Чата",

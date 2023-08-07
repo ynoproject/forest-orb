@@ -124,7 +124,12 @@
           "toggleScreenshotFix": {
             "label": "Correction des captures d'écran",
             "helpText": "Corrige le problème où la fonction capture d'écran peut produire des captures d'écran vides ; requiert le rechargement de la page et peut impacter les performances"
-          }
+          },
+          "togglePreloads": {
+            "label": "Preloads",
+            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+          },
+          "toggleQuestionablePreloads": "Preload PC Wallpapers"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",

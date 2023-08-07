@@ -124,7 +124,12 @@
           "toggleScreenshotFix": {
             "label": "Screenshot Fix",
             "helpText": "Fixes the issue where the screenshot feature may produce blank screenshots; requires page reload and may impact performance"
-          }
+          },
+          "togglePreloads": {
+            "label": "Preloads",
+            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+          },
+          "toggleQuestionablePreloads": "Preload PC Wallpapers"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",

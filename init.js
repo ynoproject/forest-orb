@@ -47,7 +47,7 @@ Module = {
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
-  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
+  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', 'preloads.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
 
   dependencyFiles['play.css'] = null;
 
@@ -602,10 +602,6 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value) {
                       initPreloadList();
                       document.getElementById('togglePreloadsButton').click();
-                    }
-                    else {
-                      for (let row of document.getElementsByClassName('preloadRow'))
-                        row.classList.add('hidden');
                     }
                     break;
                   case 'questionablePreloads':
