@@ -285,6 +285,7 @@ function onLoadMap(mapName) {
 }
 
 function checkUpdateLocation(mapId, mapChanged) {
+  preloadFilesFromMapId(mapId);
   if (!mapChanged && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId)))
     return;
 
@@ -305,8 +306,6 @@ function checkUpdateLocation(mapId, mapChanged) {
 
   cachedPrevMapId = cachedMapId;
   cachedMapId = mapId;
-  
-  preloadFilesFromMapId(mapId);
 
   if (localizedMapLocations) {
     const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY);
@@ -1034,7 +1033,7 @@ function setChatTab(tab, saveConfig) {
     chatbox.classList.toggle('mapChat', tabIndex === 1);
     chatbox.classList.toggle('globalChat', tabIndex === 2);
     chatbox.classList.toggle('partyChat', tabIndex === 3);
-	messages.classList.toggle('fullBg', tabIndex === 3 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
+    messages.classList.toggle('fullBg', tabIndex === 3 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
     messages.scrollTop = messages.scrollHeight;
 
     if (saveConfig) {
@@ -1060,7 +1059,7 @@ function setPlayersTab(tab, saveConfig) {
     }
 
     document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 1);
-	document.getElementById('partyPlayerList').classList.toggle('fullBg', tabIndex === 1 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
+    document.getElementById('partyPlayerList').classList.toggle('fullBg', tabIndex === 1 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
 
     if (saveConfig) {
       config.playersTabIndex = tabIndex;
