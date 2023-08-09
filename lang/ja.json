@@ -126,10 +126,10 @@
             "helpText": "スクリーンショットの 撮影に 失敗することがある 不具合の 修正 （ページの 再読み込みが 必要で、 パフォーマンスが 落ちる 場合があります）"
           },
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "プリロード",
+            "helpText": "頻繁に使用されるゲームアセットをプリロードし、必要なときに利用できるようにします（ページの再読み込みが必要です）"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "PCの壁紙をプリロードする"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
