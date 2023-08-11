@@ -108,45 +108,45 @@
               "slim": "슬림"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "소리 볼륨",
+          "musicVolume": "음악 볼륨",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "helpText": "Yume 2kki Navigator는 현재 위치와 연결된 장소들을 한눈에 볼 수 있는 Yume 2kki Explorer의 통합본입니다. 이 기능은 당신의 경험에 크게 영향을 미칠 수 있으므로 이 기능을 활성화하기 전 대부분의 장소를 탐색하는 것을 강력히 추천해 드립니다. Yume 2kki Navigator는 로그인 해야 사용할 수 있습니다."
           },
           "toggleImmersionMode": {
             "label": "몰입 모드",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "보다 몰입감 높은 경험을 제공하기 위해 플레이어 수, 글로벌 채팅 및 맵을 표시하지 않습니다."
           },
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "toggleScreenshotFix": {
             "label": "더 나은 스크린샷 찍기",
-            "helpText": "스크린샷을 찍을 때 가끔 사진이 검은 화면으로 되는 오류를 고쳐줍니다. 체크 후 새로고침을 해야 적용이 되며, 활성화 시 게임 성능에 영향을 미칠 수 있습니다."
+            "helpText": "스크린샷을 찍을 때 가끔 사진이 검은 화면으로 되는 오류를 고쳐줍니다. 체크 후 새로고침을 해야 적용되며, 활성화 시 게임 성능에 영향을 미칠 수 있습니다."
           },
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "프리로드",
+            "helpText": "빈번하게 사용되는 게임 애셋을 우선적으로 불러와 필요할 때 사용할 수 있도록 합니다. 체크 후 새로고침을 해야 적용됩니다."
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "PC 배경화면을 프리로드 하기"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "차단 목록",
         "chatSettings": "채팅",
         "notificationSettings": "알람",
         "accountSettings": "계정"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "차단 목록",
+        "empty": "차단 목록이 비어있습니다"
       },
       "chatSettings": {
         "title": "채팅 설정",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "인게임 채팅을 오버레이하여 표시",
+            "global": "글로벌 채팅을 오버레이하여 표시",
+            "party": "파티 채팅을 오버레이하여 표시"
           },
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "chatHistoryLimit": {
@@ -197,14 +197,14 @@
             "fields": {
               "loggedIn": "로그인",
               "loggedOut": "로그아웃",
-              "passwordUpdate": "비밀번호 변경 됨"
+              "passwordUpdate": "비밀번호 변경됨"
             }
           },
           "players": {
-            "label": "Players",
+            "label": "플레이어",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "플레이어 차단",
+              "playerUnblocked": "플레이어 차단 해제"
             }
           },
           "parties": {
@@ -303,8 +303,8 @@
         "badgeGalleryColProgress": "다음 열 업그레이드 (뱃지)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "세이브 데이터 관리",
+        "reload": "변경 사항을 저장 후 새로고침"
       },
       "uiTheme": {
         "title": "UI 테마",
@@ -350,16 +350,16 @@
       },
       "rules": {
         "title": "규칙",
-        "rule1": "상대방에게 공손하고 예의바르게 행동해주십시오",
+        "rule1": "상대방에게 공손하고 예의바르게 행동해주십시오.",
         "rule2": "19금 대화는 금지입니다 (후방주의물, 고어, 기타 등등).",
-        "rule3": "정치적 발언은 금지입니다",
+        "rule3": "정치적 발언은 금지입니다.",
         "rule4": "선동적인 언행은 금지입니다 (비난 포함).",
-        "rule5": "어느 경우더라도 치트는 사용하지 마십시오"
+        "rule5": "어느 경우더라도 치트는 사용하지 마십시오."
       }
     },
     "tooltips": {
       "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
-      "save": "Manage Save Data",
+      "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
       "toggleExplorer": "Toggle Yume 2kki Navigator",
@@ -388,7 +388,7 @@
       "ynoproject": "YNOproject(유메 온라인)",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
-      "cu": "Collective Unconscious(집단적 무의식)",
+      "cu": "Collective Unconscious(집단 무의식)",
       "flow": ".flow(닷플로우)",
       "prayers": "Answered Prayers(이루어진 기도들)",
       "deepdreams": "Deep Dreams(딥 드림즈)",
@@ -399,10 +399,10 @@
       "muma": "Muma|Rope(무마|로프)",
       "genie": "Dream Genie(드림 지니)",
       "mikan": "未完夢像(미완몽상)",
-      "ultraviolet": "Ultra Violet"
+      "ultraviolet": "Ultra Violet(울트라 바이올렛)"
     },
     "leavePage": "저장하지 않은 게임 진행 상황이 손실됩니다. 정말로 창을 닫으시겠습니까?",
-    "logout": "Are you sure you want to log out?",
+    "logout": "정말로 로그아웃 하시겠습니까?",
     "connStatus": {
       "0": "연결 끊김",
       "1": "연결됨",
@@ -452,44 +452,44 @@
         "label": "Mention {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "{PLAYER} 차단",
+        "confirm": "정말로 {PLAYER} 님을 차단하시겠습니까?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "{PLAYER} 차단",
+        "confirm": "정말로 {PLAYER} 님을 차단 해제하시겠습니까?"
       },
       "admin": {
         "ban": {
-          "label": "{PLAYER} 차단",
-          "confirm": "정말로 <{PLAYER}> 님을 차단하시겠습니까?",
-          "success": "{PLAYER} 님을 차단했습니다"
+          "label": "{PLAYER} 추방",
+          "confirm": "정말로 <{PLAYER}> 님을 추방하시겠습니까?",
+          "success": "{PLAYER} 님을 추방했습니다"
         },
         "unban": {
-          "label": "{PLAYER} 차단 해제",
-          "confirm": "정말로 <{PLAYER}> 님을 차단 해제 하시겠습니까?",
-          "success": "{PLAYER} 님을 차단 해제 했습니다."
+          "label": "{PLAYER} 추방 해제",
+          "confirm": "정말로 <{PLAYER}> 님을 추방 해제하시겠습니까?",
+          "success": "{PLAYER} 님을 추방 해제했습니다."
         },
         "mute": {
           "label": "{PLAYER} 채팅 금지",
-          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 금지 하시겠습니까?",
+          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 금지하시겠습니까?",
           "success": "{PLAYER} 님은 채팅 금지 상태가 되었습니다."
         },
         "unmute": {
           "label": "{PLAYER} 채팅 허용",
-          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 허가 하시겠습니까?",
+          "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 허가하시겠습니까?",
           "success": "{PLAYER} 님은 채팅 허용 상태가 되었습니다"
         },
         "grantBadge": {
           "label": "뱃지 수여",
-          "prompt": "{PLAYER}에게 뱃지를 수여하기 위해 뱃지 ID를 입력해주세요.",
+          "prompt": "{PLAYER} 님에게 뱃지를 수여하기 위해 뱃지 ID를 입력해주세요.",
           "success": "{BADGE} 를 {PLAYER} 님에게 성공적으로 수여했습니다.",
           "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
         },
         "revokeBadge": {
           "label": "뱃지 해제",
-          "prompt": "{PLAYER}에게 뱃지를 해제하기 위해 뱃지 ID를 입력해주세요.",
-          "success": "{BADGE} 를 {PLAYER} 님에게서 성공적으롤 해제했습니다.",
+          "prompt": "{PLAYER} 님에게 뱃지를 해제하기 위해 뱃지 ID를 입력해주세요.",
+          "success": "{BADGE} 를 {PLAYER} 님에게서 성공적으로 해제했습니다.",
           "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
         }
       }
@@ -541,21 +541,21 @@
         "menuTheme": "플레이어들의 닉네임 색깔은 적용하고 있는 메뉴타입에 따라서 결정됩니다.",
         "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇명의 플레이어가 있는지 알 수 있습니다.",
         "markdownSupport": "특수 문자를 이용해서 채팅 글씨의 모양을 바꿀 수 있습니다. 현재 가능한 목록 : **굵게** (\\*\\*예시\\*\\*), *기울임* (\\*예시\\*, \\_예시\\_), __밑줄__ (\\_\\_예시\\_\\_), ~~취소선~~ (\\~\\~예시\\~\\~), ||스포일러|| (\\|\\|예시\\|\\|).",
-        "tabToChat": "PC로 플레이 할 경우, 탭(Tab) 키를 눌러서 인게임과 채팅 간의 조작을 토글할 수 있습니다. 이 기능은 '채팅 설정'에서 '탭을 눌러 채팅하기'를 체크 해제하여 비활성화할 수 있습니다.",
+        "tabToChat": "PC로 플레이 할 경우, 탭(Tab) 키를 눌러서 인게임과 채팅 간의 조작을 전환할 수 있습니다. 이 기능은 '채팅 설정'에서 '탭을 눌러 채팅하기'를 체크 해제하여 비활성화할 수 있습니다.",
         "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메세지가 작성되면 탭이 굵게 표시됩니다.",
         "clearChat": "'채팅 기록 삭제하기' 버튼을 누르면 채팅 내역을 지울 수 있습니다. '전체' 탭이 아닌 다른 탭에서 삭제하였을 경우 해당 탭에 속해있는 채팅만 삭제됩니다.",
         "chatHistoryLimit": "채팅 내역이 너무 길다면 게임 플레이 시, 성능 상의 문제가 발생할 수 있습니다. '채팅 설정'에서 '채팅 내역 한도' 옵션을 이용한다면 수동으로 채팅 내역을 삭제할 필요 없이, 제한된 숫자 이상의 과거 채팅 이력이 자동적으로 삭제가 됩니다.",
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가입하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
-        "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
+        "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경 쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
       }
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "파일 {SLOT_ID}",
+        "readingLabel": "파일 데이터를 읽는 중...",
+        "emptyLabel": "비어있음",
+        "errorLabel": "에러"
       },
       "upload": {
         "tooltip": "세이브 파일 불러오기",
@@ -563,11 +563,11 @@
       },
       "download": {
         "tooltip": "세이브 파일 다운로드",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "이런! 슬롯에 세이브 파일이 비어있는 것 같습니다."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "세이브 파일 삭제",
+        "confirmDelete": "정말로 {SLOT_ID}의 세이브 데이터를 삭제하시겠습니까?"
       }
     },
     "saveSync": {
@@ -585,8 +585,8 @@
         "passwordUpdated": "비밀번호를 성공적으로 변경하였습니다."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} 님이 차단되었습니다.",
+        "playerUnblocked": "{PLAYER} 님이 차단 해제되었습니다."
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",
@@ -746,31 +746,31 @@
           "playerPrompt": "변경할 계정의 기존 닉네임을 입력해주세요",
           "namePrompt": "{PLAYER}님의 새 닉네임을 입력해주세요",
           "success": "{PLAYER}님의 닉네임이 {NAME}으로 변경되었습니다",
-          "error": "{PLAYER}님의 닉네임 변경에 실패하였습니다 (이미 사용하고 있는 닉네임을 입력하셨습니다)"
+          "error": "{PLAYER}님의 닉네임 변경에 실패하였습니다 (이미 사용 중인 닉네임입니다)"
         },
         "ban": {
           "label": "플레이어 차단 설정",
-          "playerPrompt": "차단할 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "차단할 플레이어의 닉네임을 입력해주세요"
         },
         "unban": {
           "label": "플레이어 차단 해제",
-          "playerPrompt": "차단 해제할 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "차단 해제할 플레이어의 닉네임을 입력해주세요"
         },
         "mute": {
           "label": "플레이어 채팅 금지 설정",
-          "playerPrompt": "채팅을 금지시킬 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "채팅을 금지할 플레이어의 닉네임을 입력해주세요"
         },
         "unmute": {
           "label": "플레이어 채팅 금지 해제",
-          "playerPrompt": "채팅을 허용할 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "채팅을 허용할 플레이어의 닉네임을 입력해주세요"
         },
         "grantBadge": {
           "label": "뱃지 수여하기",
-          "playerPrompt": "뱃지를 수여할 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "뱃지를 수여할 플레이어의 닉네임을 입력해주세요"
         },
         "revokeBadge": {
           "label": "뱃지 해제하기",
-          "playerPrompt": "뱃지를 해제할 플레이어의 이름을 입력해주세요"
+          "playerPrompt": "뱃지를 해제할 플레이어의 닉네임을 입력해주세요"
         }
       }
     }
