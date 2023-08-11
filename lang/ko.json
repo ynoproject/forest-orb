@@ -339,7 +339,7 @@
       "events": {
         "title": "탐험",
         "rankExp": "다음 랭크",
-        "weekExp": "이번주의 경험치",
+        "weekExp": "이번 주의 경험치",
         "tabs": {
           "locations": "장소 찾기",
           "vms": "자판기 찾기"
@@ -468,12 +468,12 @@
         "unban": {
           "label": "{PLAYER} 추방 해제",
           "confirm": "정말로 <{PLAYER}> 님을 추방 해제하시겠습니까?",
-          "success": "{PLAYER} 님을 추방 해제했습니다."
+          "success": "{PLAYER} 님을 추방 해제했습니다"
         },
         "mute": {
           "label": "{PLAYER} 채팅 금지",
           "confirm": "정말로 <{PLAYER}> 님의 채팅 사용을 금지하시겠습니까?",
-          "success": "{PLAYER} 님은 채팅 금지 상태가 되었습니다."
+          "success": "{PLAYER} 님은 채팅 금지 상태가 되었습니다"
         },
         "unmute": {
           "label": "{PLAYER} 채팅 허용",
@@ -482,15 +482,15 @@
         },
         "grantBadge": {
           "label": "뱃지 수여",
-          "prompt": "{PLAYER} 님에게 뱃지를 수여하기 위해 뱃지 ID를 입력해주세요.",
-          "success": "{BADGE} 를 {PLAYER} 님에게 성공적으로 수여했습니다.",
-          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
+          "prompt": "{PLAYER} 님에게 뱃지를 수여하기 위해 뱃지 ID를 입력해주세요",
+          "success": "{BADGE} 를 {PLAYER} 님에게 성공적으로 수여했습니다",
+          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다"
         },
         "revokeBadge": {
           "label": "뱃지 해제",
           "prompt": "{PLAYER} 님에게 뱃지를 해제하기 위해 뱃지 ID를 입력해주세요.",
-          "success": "{BADGE} 를 {PLAYER} 님에게서 성공적으로 해제했습니다.",
-          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다."
+          "success": "{BADGE} 를 {PLAYER} 님에게서 성공적으로 해제했습니다",
+          "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다"
         }
       }
     },
@@ -510,8 +510,8 @@
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "새로운 비밀번호가 일치하지 않습니다.",
-          "badLogin": "로그인 비밀번호가 올바르지 않습니다.",
+          "confirmPasswordMismatch": "새로운 비밀번호가 일치하지 않습니다",
+          "badLogin": "로그인 비밀번호가 올바르지 않습니다",
           "internalServerError": "에러가 발생했습니다 : 나중에 다시 시도해주세요."
         }
       }
@@ -539,7 +539,7 @@
       "tips": {
         "backupReminder": "정기적으로 세이브 파일을 다운로드하여 로컬 백업을 유지하는 편이 좋습니다. 이렇게 하면 브라우저 데이터가 지워져도 진행률이 손실되지 않습니다.",
         "menuTheme": "플레이어들의 닉네임 색깔은 적용하고 있는 메뉴타입에 따라서 결정됩니다.",
-        "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇명의 플레이어가 있는지 알 수 있습니다.",
+        "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇 명의 플레이어가 있는지 알 수 있습니다.",
         "markdownSupport": "특수 문자를 이용해서 채팅 글씨의 모양을 바꿀 수 있습니다. 현재 가능한 목록 : **굵게** (\\*\\*예시\\*\\*), *기울임* (\\*예시\\*, \\_예시\\_), __밑줄__ (\\_\\_예시\\_\\_), ~~취소선~~ (\\~\\~예시\\~\\~), ||스포일러|| (\\|\\|예시\\|\\|).",
         "tabToChat": "PC로 플레이 할 경우, 탭(Tab) 키를 눌러서 인게임과 채팅 간의 조작을 전환할 수 있습니다. 이 기능은 '채팅 설정'에서 '탭을 눌러 채팅하기'를 체크 해제하여 비활성화할 수 있습니다.",
         "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메세지가 작성되면 탭이 굵게 표시됩니다.",
@@ -567,7 +567,7 @@
       },
       "delete": {
         "tooltip": "세이브 파일 삭제",
-        "confirmDelete": "정말로 {SLOT_ID}의 세이브 데이터를 삭제하시겠습니까?"
+        "confirmDelete": "정말로 {SLOT_ID}번 슬롯의 세이브 데이터를 삭제하시겠습니까?"
       }
     },
     "saveSync": {
@@ -582,11 +582,11 @@
       "account": {
         "loggedIn": "{USER}로 로그인 했습니다",
         "loggedOut": "로그아웃 하였습니다",
-        "passwordUpdated": "비밀번호를 성공적으로 변경하였습니다."
+        "passwordUpdated": "비밀번호를 성공적으로 변경하였습니다"
       },
       "players": {
-        "playerBlocked": "{PLAYER} 님이 차단되었습니다.",
-        "playerUnblocked": "{PLAYER} 님이 차단 해제되었습니다."
+        "playerBlocked": "{PLAYER} 님이 차단되었습니다",
+        "playerUnblocked": "{PLAYER} 님이 차단 해제되었습니다"
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",
