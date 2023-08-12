@@ -357,8 +357,8 @@
         "rule5": "いかなる理由であれ、不正行為は禁止です。"
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "未発見の場所",
+        "complete": "あなたは到達可能なすべての場所を発見しました！おめでとう！！"
       }
     },
     "tooltips": {
@@ -384,7 +384,7 @@
       "events": "ドリームラリー",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "未発見の場所を見る"
     },
     "reviewRules": "ルールを見る"
   },
