@@ -966,6 +966,37 @@ if (gameId === '2kki') {
   // Yume 2kki Explorer doesn't support mobile
   if (hasTouchscreen)
     document.getElementById('explorerControls').remove();
+
+  document.getElementById('explorerUndiscoveredLocationsLink').onclick = () => {
+    const modal = document.getElementById('explorerUndiscoveredLocationsModal');
+    const undiscoveredLocations = document.getElementById('explorerUndiscoveredLocations');
+    undiscoveredLocations.innerHTML = '';
+    openModal(modal.id);
+    addLoader(modal);
+    apiFetch('explorerlocations')
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.json();
+      }).then(jsonResponse => {
+        removeLoader(modal);
+        const hasUndiscoveredLocations = Array.isArray(jsonResponse) && jsonResponse.length;
+        undiscoveredLocations.classList.toggle('hidden', !hasUndiscoveredLocations);
+        document.getElementById('explorerUndiscoveredLocationsEmptyLabel').classList.toggle('hidden', hasUndiscoveredLocations);
+        if (!hasUndiscoveredLocations)
+          return;
+
+        // TODO: Localization
+        const sortedLocations = jsonResponse
+          .map(l => { return { title: l }; })
+          .sort((a, b) => a.title.localeCompare(b.title, { sensitivity: 'base' }));
+
+        undiscoveredLocations.innerHTML = `<li>${getLocalized2kkiLocationsHtml(sortedLocations, '</li><li>')}</li>`;
+      }).catch(() => {
+        removeLoader(modal);
+        closeModal(modal);
+      });
+  };
 }
 
 Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
@@ -1118,6 +1149,9 @@ function onResize() {
       : document.getElementById('chatboxContainer');
     if (explorerContainer.parentElement !== explorerParent)
       explorerParent.appendChild(explorerContainer);
+    const explorerFrame = document.getElementById('explorerFrame');
+    const explorerUndiscoveredLocationsLink = document.getElementById('explorerUndiscoveredLocationsLink');
+    explorerUndiscoveredLocationsLink.style.left = `${explorerFrame.offsetLeft}px`;
   }
 
   updateCanvasFullscreenSize();

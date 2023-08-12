@@ -355,6 +355,10 @@
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Походы",
       "rankings": "Рейтинги",
-      "nexus": "Вернуться на главную страницу"
+      "nexus": "Вернуться на главную страницу",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Просмотреть правила"
   },

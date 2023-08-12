@@ -355,6 +355,10 @@
         "rule3": "Fără politică.",
         "rule4": "Fără remarci incendiare (inclusiv jigniri).",
         "rule5": "Fără trișat în orice fel, din oricare motiv."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Expediții",
       "rankings": "Ranguri",
-      "nexus": "Întoarce-te la Nexus"
+      "nexus": "Întoarce-te la Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Revizionează Regulile"
   },

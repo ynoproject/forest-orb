@@ -355,6 +355,10 @@
         "rule3": "Không bàn về chính trị.",
         "rule4": "Không phát ngôn gây tranh cãi (bao gồm từ lóng).",
         "rule5": "Không gian lận bằng bất kỳ lý do nào."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Tham Quan",
       "rankings": "Bảng Xếp hạng",
-      "nexus": "Quay về Nexus"
+      "nexus": "Quay về Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Xem Nội quy"
   },

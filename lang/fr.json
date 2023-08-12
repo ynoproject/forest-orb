@@ -355,6 +355,10 @@
         "rule3": "Pas de politiques.",
         "rule4": "Pas de remarques provocatrices (insultes comprises).",
         "rule5": "Pas de triche de toute sorte, qu'importe la raison."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Expéditions",
       "rankings": "Classement",
-      "nexus": "Retourner au Nexus"
+      "nexus": "Retourner au Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Relire les règles"
   },

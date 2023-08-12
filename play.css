@@ -1737,6 +1737,31 @@ body.fullBg #background {
   height: 284px;
 }
 
+#explorerUndiscoveredLocationsLink {
+  position: absolute;
+  padding: 12px;
+}
+
+#explorerUndiscoveredLocationsLink svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.625;
+  transition: 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+#explorerUndiscoveredLocationsLink:hover svg {
+  opacity: 1;
+}
+
+#explorerUndiscoveredLocations {
+  padding: 0;
+}
+
+#explorerUndiscoveredLocations li {
+  list-style-type: none;
+  padding: 2px 0;
+}
+
 #footer {
   display: flex;
   width: 100%;

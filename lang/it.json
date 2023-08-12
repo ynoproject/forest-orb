@@ -355,6 +355,10 @@
         "rule3": "Niente discorsi sulla politica.",
         "rule4": "Niente espressioni provocatorie (fra cui insulti raziali o sessuali etc.).",
         "rule5": "Niente trucchi di nessun genere per nessun motivo."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Spedizioni",
       "rankings": "Classifiche",
-      "nexus": "Ritorna al Nexus"
+      "nexus": "Ritorna al Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Riguarda le Regole"
   },

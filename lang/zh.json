@@ -355,6 +355,10 @@
         "rule3": "不谈政治。",
         "rule4": "禁止侮辱性称呼（如各类种族蔑称）。",
         "rule5": "不要在游戏中作弊。"
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "梦远征",
       "rankings": "瞅一眼排行榜",
-      "nexus": "返回到门世界"
+      "nexus": "返回到门世界",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "多人游戏守则"
   },

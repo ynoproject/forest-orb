@@ -355,6 +355,10 @@
         "rule3": "لا مناقشات سياسية",
         "rule4": "عدم استخدام التعليقات القابلة للاشتعال (بما في ذلك الإهانات)",
         "rule5": "لا غش من أي نوع ولأي سبب"
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "الرحلات الاستكشافية",
       "rankings": "المراتب",
-      "nexus": "(Nexus) الرجوع إلى النكسس"
+      "nexus": "(Nexus) الرجوع إلى النكسس",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "مراجعة القواعد"
   },

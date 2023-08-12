@@ -355,6 +355,10 @@
         "rule3": "No discusiones políticas.",
         "rule4": "No comentarios inflamatorio (incluyendo insultos).",
         "rule5": "No trampas de ningún tipo por ningún motivo."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Expediciones",
       "rankings": "Clasificaciones",
-      "nexus": "Regresar al Nexo"
+      "nexus": "Regresar al Nexo",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Ver Reglas"
   },

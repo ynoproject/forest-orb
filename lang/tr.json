@@ -355,6 +355,10 @@
         "rule3": "Siyaset yasak.",
         "rule4": "Kışkırtıcı sözler yasak (küfürler dahil).",
         "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
@@ -379,7 +383,8 @@
       },
       "events": "Seyahat",
       "rankings": "Sıralamalar",
-      "nexus": "Bağ Noktasına Geri Dön"
+      "nexus": "Bağ Noktasına Geri Dön",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Kuralları Göster"
   },
