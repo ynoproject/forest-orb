@@ -454,7 +454,7 @@ function sortPlayerListEntries(playerList) {
         if (sortValue !== 0)
           return sortValue;
       }
-      return a.innerText.localeCompare(b.innerText, { sensitivity:'base' });
+      return a.innerText.localeCompare(b.innerText, { sensitivity: 'base' });
     });
 
     entries.forEach(function (ple) {

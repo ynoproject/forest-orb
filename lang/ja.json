@@ -355,6 +355,10 @@
         "rule3": "政治的な会話は禁止です。",
         "rule4": "扇動的な発言(中傷を含む)は禁止です。",
         "rule5": "いかなる理由であれ、不正行為は禁止です。"
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {

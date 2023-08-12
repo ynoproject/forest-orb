@@ -6,16 +6,17 @@ let activeLoaders = {};
 function addLoader(target, instant) {
   if (activeLoaders.hasOwnProperty(target))
     return;
+  activeLoaders[target] = true;
 
   const getLoaderSprites = [
     getLoaderSpriteImg(playerLoaderSprite, playerLoaderSpriteIdx, 0),
     getLoaderSpriteImg(playerLoaderSprite, playerLoaderSpriteIdx, 1),
     getLoaderSpriteImg(playerLoaderSprite, playerLoaderSpriteIdx, 2)
   ];
-  const frameIndexes = [ 1, 0, 1, 2 ]
+  const frameIndexes = [ 1, 0, 1, 2 ];
   Promise.allSettled(getLoaderSprites)
     .then(() => {
-      if (activeLoaders.hasOwnProperty(target))
+      if (!activeLoaders.hasOwnProperty(target) || activeLoaders[target] !== true)
         return;
         
       const el = document.createElement('div');
@@ -84,10 +85,12 @@ function updateLoader(target) {
 
 function removeLoader(target) {
   if (activeLoaders.hasOwnProperty(target)) {
-    const el = activeLoaders[target].element;
-    el.classList.remove('visible');
-    setTimeout(() => el.remove(), 500);
-    clearInterval(activeLoaders[target].timer);
+    if (activeLoaders[target] !== true) {
+      const el = activeLoaders[target].element;
+      el.classList.remove('visible');
+      setTimeout(() => el.remove(), 500);
+      clearInterval(activeLoaders[target].timer);
+    }
     delete activeLoaders[target];
   }
 }

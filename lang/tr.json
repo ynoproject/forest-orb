@@ -355,6 +355,10 @@
         "rule3": "Siyaset yasak.",
         "rule4": "Kışkırtıcı sözler yasak (küfürler dahil).",
         "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {

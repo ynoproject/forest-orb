@@ -355,6 +355,10 @@
         "rule3": "정치적 발언은 금지입니다",
         "rule4": "선동적인 언행은 금지입니다 (비난 포함).",
         "rule5": "어느 경우더라도 치트는 사용하지 마십시오"
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Undiscovered Locations",
+        "complete": "You've discovered every available location! Congrats!!"
       }
     },
     "tooltips": {
