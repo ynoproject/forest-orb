@@ -383,7 +383,8 @@
       },
       "events": "탐험",
       "rankings": "랭킹",
-      "nexus": "넥서스로 돌아가기"
+      "nexus": "넥서스로 돌아가기",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "규칙 다시보기"
   },

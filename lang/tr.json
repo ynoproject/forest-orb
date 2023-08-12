@@ -383,7 +383,8 @@
       },
       "events": "Seyahat",
       "rankings": "Sıralamalar",
-      "nexus": "Bağ Noktasına Geri Dön"
+      "nexus": "Bağ Noktasına Geri Dön",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Kuralları Göster"
   },

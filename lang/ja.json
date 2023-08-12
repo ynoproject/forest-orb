@@ -383,7 +383,8 @@
       },
       "events": "ドリームラリー",
       "rankings": "ランキング",
-      "nexus": "扉部屋へ戻る"
+      "nexus": "扉部屋へ戻る",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "ルールを見る"
   },

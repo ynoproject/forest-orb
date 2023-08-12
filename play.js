@@ -978,13 +978,12 @@ if (gameId === '2kki') {
         if (!response.ok)
           throw new Error(response.statusText);
         return response.json();
-      })
-      .then(jsonResponse => {
+      }).then(jsonResponse => {
         removeLoader(modal);
         const hasUndiscoveredLocations = Array.isArray(jsonResponse) && jsonResponse.length;
         undiscoveredLocations.classList.toggle('hidden', !hasUndiscoveredLocations);
         document.getElementById('explorerUndiscoveredLocationsEmptyLabel').classList.toggle('hidden', hasUndiscoveredLocations);
-        if (hasUndiscoveredLocations)
+        if (!hasUndiscoveredLocations)
           return;
 
         // TODO: Localization
@@ -992,9 +991,10 @@ if (gameId === '2kki') {
           .map(l => { return { title: l }; })
           .sort((a, b) => a.title.localeCompare(b.title, { sensitivity: 'base' }));
 
-        undiscoveredLocations.innerHTML = `<li>${getLocalized2kkiLocations(sortedLocations, '</li><li>')}</li>`;
+        undiscoveredLocations.innerHTML = `<li>${getLocalized2kkiLocationsHtml(sortedLocations, '</li><li>')}</li>`;
       }).catch(() => {
         removeLoader(modal);
+        closeModal(modal);
       });
   };
 }

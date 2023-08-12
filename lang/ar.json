@@ -383,7 +383,8 @@
       },
       "events": "الرحلات الاستكشافية",
       "rankings": "المراتب",
-      "nexus": "(Nexus) الرجوع إلى النكسس"
+      "nexus": "(Nexus) الرجوع إلى النكسس",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "مراجعة القواعد"
   },

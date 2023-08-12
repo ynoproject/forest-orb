@@ -383,7 +383,8 @@
       },
       "events": "Походы",
       "rankings": "Рейтинги",
-      "nexus": "Вернуться на главную страницу"
+      "nexus": "Вернуться на главную страницу",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Просмотреть правила"
   },

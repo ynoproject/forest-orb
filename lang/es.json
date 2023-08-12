@@ -383,7 +383,8 @@
       },
       "events": "Expediciones",
       "rankings": "Clasificaciones",
-      "nexus": "Regresar al Nexo"
+      "nexus": "Regresar al Nexo",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Ver Reglas"
   },

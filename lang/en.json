@@ -383,7 +383,8 @@
       },
       "events": "Expeditions",
       "rankings": "Rankings",
-      "nexus": "Return to Nexus"
+      "nexus": "Return to Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Review Rules"
   },

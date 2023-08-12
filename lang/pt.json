@@ -383,7 +383,8 @@
       },
       "events": "Expedições",
       "rankings": "Placares",
-      "nexus": "Voltar para o Nexus"
+      "nexus": "Voltar para o Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Ver Regras"
   },

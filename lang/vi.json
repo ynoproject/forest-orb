@@ -383,7 +383,8 @@
       },
       "events": "Tham Quan",
       "rankings": "Bảng Xếp hạng",
-      "nexus": "Quay về Nexus"
+      "nexus": "Quay về Nexus",
+      "explorerUndiscoveredLocations": "View Undiscovered Locations"
     },
     "reviewRules": "Xem Nội quy"
   },
