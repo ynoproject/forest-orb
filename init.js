@@ -70,6 +70,9 @@ async function injectScripts() {
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
         if (globalConfig.preloads)
           initPreloads();
+
+        if (gameId === '2kki')
+          init2kkiFileVersionAppend();
   
         Module.postRun.push(() => {
           Module.INITIALIZED = true;

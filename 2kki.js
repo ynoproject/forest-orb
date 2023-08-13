@@ -389,6 +389,19 @@ function get2kkiWikiLocationName(location) {
     return locationName;
 }
 
+function init2kkiFileVersionAppend() {
+  const gameVersion = document.querySelector('meta[name="2kkiVersion"]').content;
+  if (!gameVersion)
+    return;
+  const ca = wasmImports.ca;
+  wasmImports.ca = function (url, file, request, param, arg, onload, onerror, onprogress) {
+    let _url = UTF8ToString(url);
+    if (_url)
+      url = stringToNewUTF8(`${_url}${_url.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion.replace(' Patch ', 'p')}`);
+    ca(url, file, request, param, arg, onload, onerror, onprogress);
+  };
+}
+
 function checkShow2kkiVersionUpdate() {
   return new Promise(resolve => {
     const versionDisplay = document.querySelector('.versionDisplay');
