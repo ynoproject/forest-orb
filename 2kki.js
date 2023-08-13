@@ -1,5 +1,7 @@
 const is2kki = gameId === '2kki';
 
+let gameVersion;
+
 const pendingRequests = {};
 
 function send2kkiApiRequest(url, callback) {
@@ -390,14 +392,13 @@ function get2kkiWikiLocationName(location) {
 }
 
 function init2kkiFileVersionAppend() {
-  const gameVersion = document.querySelector('meta[name="2kkiVersion"]').content;
   if (!gameVersion)
     return;
   const ca = wasmImports.ca;
   wasmImports.ca = function (url, file, request, param, arg, onload, onerror, onprogress) {
     let _url = UTF8ToString(url);
     if (_url)
-      url = stringToNewUTF8(`${_url}${_url.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion.replace(' Patch ', 'p')}`);
+      url = stringToNewUTF8(`${_url}${_url.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion}`);
     ca(url, file, request, param, arg, onload, onerror, onprogress);
   };
 }
