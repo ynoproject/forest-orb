@@ -477,9 +477,15 @@ function checkShow2kkiVersionUpdate() {
       })
       .then(url => {
         const newUrl = url ? `${url}&lang=${globalConfig.lang}` : '';
-        if (explorerFrame.src !== newUrl)
+        if (explorerFrame.src !== newUrl) {
           explorerFrame.src = newUrl;
-        else
+          apiFetch('explorercompletion')
+            .then(response => response.text())
+            .then(textResponse => {
+              const completionPercent = parseInt(textResponse);
+              document.getElementById('explorerUndiscoveredLocationsLink').classList.toggle('hidden', !completionPercent || completionPercent < 95);
+            });
+        } else
           removeLoader(explorerFrame);
       })
       .catch(err => console.error(err));
