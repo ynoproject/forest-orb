@@ -78,15 +78,18 @@ function initPreloadList() {
 function preloadFileAndSave(link, languageLink, translatedFileName) {
   link = languageLink + (translatedFileName ? translatedFileName : link);
   if (gameLoadedFiles.has(link))
-	  return;
+    return;
   gameLoadedFiles.add(link);
   const request = new XMLHttpRequest();
   request.onload = function () {
     if (request.status >= 200 && request.status < 300)
-        preloadedFiles[link] = request.response;
+      preloadedFiles[link] = request.response;
   };
   request.responseType = "arraybuffer";
-  request.open("GET", "/data/" + gameId + (languageLink ? "/Language" : "") + encodeURIComponent(link));
+  let versionAdd = "";
+  if (gameVersion)
+    versionAdd = `${link.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion}`;
+  request.open("GET", `/data/${gameId}${languageLink ? "/Language" : ""}${encodeURIComponent(link)}${versionAdd}`);
   request.send();
 }
 

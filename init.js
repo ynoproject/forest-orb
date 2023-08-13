@@ -68,11 +68,13 @@ async function injectScripts() {
       : () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
+        
+        if (gameId === '2kki') {
+          gameVersion = document.querySelector('meta[name="2kkiVersion"]')?.content?.replace(' Patch ', 'p');
+          init2kkiFileVersionAppend();
+        }
         if (globalConfig.preloads)
           initPreloads();
-
-        if (gameId === '2kki')
-          init2kkiFileVersionAppend();
   
         Module.postRun.push(() => {
           Module.INITIALIZED = true;
