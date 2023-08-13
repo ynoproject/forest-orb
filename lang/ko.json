@@ -113,7 +113,7 @@
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
-            "helpText": "Yume 2kki Navigator는 현재 위치와 연결된 장소들을 한눈에 볼 수 있는 Yume 2kki Explorer의 통합본입니다. 이 기능은 당신의 경험에 크게 영향을 미칠 수 있으므로 이 기능을 활성화하기 전 대부분의 장소를 탐색하는 것을 강력히 추천해 드립니다. Yume 2kki Navigator는 로그인 해야 사용할 수 있습니다."
+            "helpText": "Yume 2kki Navigator는 현재 위치와 연결된 장소들을 한눈에 볼 수 있는 Yume 2kki Explorer와 연동된 기능입니다. 이 기능은 당신의 경험에 크게 영향을 미칠 수 있으므로 이 기능을 활성화하기 전 대부분의 장소를 탐색하는 것을 강력히 추천해 드립니다. Yume 2kki Navigator는 로그인 해야 사용할 수 있습니다."
           },
           "toggleImmersionMode": {
             "label": "몰입 모드",
@@ -242,9 +242,9 @@
           "saveSync": {
             "label": "세이브 동기화",
             "fields": {
-              "saveUploading": "세이브 데이터 업로딩",
+              "saveUploading": "세이브 데이터 업로드 중",
               "saveUploaded": "세이브 데이터 업로드 완료",
-              "saveDownloading": "세이브 데이터 다운로딩",
+              "saveDownloading": "세이브 데이터 다운로드 중",
               "saveDownloaded": "세이브 데이터 다운로드 완료",
               "saveUpToDate": "세이브 데이터 업데이트",
               "saveCleared": "세이브 데이터 삭제됨"
@@ -256,7 +256,7 @@
         "title": "계정 설정",
         "fields": {
           "badge": "뱃지",
-          "toggleSaveSync": "세이브 동기화 (개발중)",
+          "toggleSaveSync": "세이브 동기화 (개발 중)",
           "saveSyncSlotId": {
             "label": "세이브 동기화 번호",
             "values": {
@@ -357,8 +357,8 @@
         "rule5": "어느 경우더라도 치트는 사용하지 마십시오."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "미발견 장소",
+        "complete": "축하합니다!! 방문할 수 있는 모든 장소를 발견하셨습니다!"
       }
     },
     "tooltips": {
