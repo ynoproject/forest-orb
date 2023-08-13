@@ -237,6 +237,3 @@ if (hasTouchscreen) {
 }
 
 updateTouchControlsVisibility();
-
-if (typeof ENV === 'undefined')
-  document.getElementById('loadingOverlay').classList.add('loaded');

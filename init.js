@@ -75,13 +75,13 @@ async function injectScripts() {
           Module.INITIALIZED = true;
           Module._SetNametagMode(config.nametagMode);
           Module._SetSoundVolume(globalConfig.soundVolume);
-          Module._SetMusicVolume(globalConfig.musivVolume);
+          Module._SetMusicVolume(globalConfig.musicVolume);
           const loadingOverlay = document.getElementById('loadingOverlay');
-          loadingOverlay.classList.add('loaded');
           removeLoader(loadingOverlay);
+          checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
           fetchAndUpdatePlayerInfo();
           setInterval(checkLogin, 60000);
-          preloadFilesFromMapId("title");
+          preloadFilesFromMapId('title');
           setTimeout(() => {
             checkDependenciesModified();
             setInterval(checkDependenciesModified, 300000);

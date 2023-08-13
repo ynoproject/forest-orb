@@ -1478,7 +1478,11 @@
     </div>
     <div id="backgroundTransition"></div>
     <div id="bottom"></div>
-    <div id="loadingOverlay"></div>
+    <div id="loadingOverlay">
+      <?php if ($gameId == "2kki"): ?>
+      <div class="versionDisplay unselectable" class="hidden transparent"></div>
+      <?php endif ?>
+    </div>
   </div>
   <script type="text/javascript" src="icons.js"></script>
   <script type="text/javascript" src="toast.js"></script>

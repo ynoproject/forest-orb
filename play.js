@@ -1,3 +1,4 @@
+let localizedVersion;
 let localizedMessages;
 
 let localizedMapLocations;
@@ -60,6 +61,7 @@ let config = {
 };
 
 if (gameId === '2kki') {
+  config.last2kkiVersion = document.querySelector('meta[name="2kkiVersion"]').content;
   config.explorer = false;
   config.enableExplorer = false;
 }
@@ -1407,17 +1409,12 @@ function initLocalization(isInitial) {
   fetchNewest(`lang/${globalConfig.lang}.json`)
     .then(response => response.json())
     .then(function (jsonResponse) {
-      const version = jsonResponse.version[gameId];
-      if (version) {
+      localizedVersion = jsonResponse.version[gameId];
+      if (localizedVersion) {
         const versionElement = document.querySelector('.version');
         const versionMeta = document.querySelector(`meta[name="${gameId}Version"]`);
-        if (versionElement && versionMeta) {
-          const substituteKeys = Object.keys(version.substitutes);
-          let versionLabel = version.label.replace('{VERSION}', versionMeta.content || '?');
-          for (let sk of substituteKeys)
-            versionLabel = versionLabel.replace(sk, version.substitutes[sk]);
-          versionElement.innerHTML = getMassagedLabel(versionLabel);
-        }
+        if (versionElement && versionMeta)
+          versionElement.innerHTML = getMassagedLabel(getLocalizedVersion(versionMeta.content));
       }
 
       massageLabels(jsonResponse.ui);
@@ -1497,6 +1494,14 @@ function initLocalization(isInitial) {
         }
       });
     });
+}
+
+function getLocalizedVersion(versionText) {
+  const substituteKeys = Object.keys(localizedVersion.substitutes);
+  let versionLabel = localizedVersion.label.replace('{VERSION}', versionText || '?');
+  for (let sk of substituteKeys)
+    versionLabel = versionLabel.replace(sk, localizedVersion.substitutes[sk]);
+  return versionLabel;
 }
 
 function fetchAndInitLocations(lang, game) {
@@ -1988,6 +1993,15 @@ function insertYnomoji(ynomojiId) {
   else
     chatInput.value += `:${ynomojiId}:`;
   chatInput.oninput();
+}
+
+function checkShowVersionUpdate() {
+  return new Promise(resolve => {
+    if (gameId !== '2kki')
+      return resolve();
+
+    checkShow2kkiVersionUpdate().then(() => resolve());
+  });
 }
 
 function loadOrInitCache() {

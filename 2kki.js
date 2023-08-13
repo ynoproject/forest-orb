@@ -389,6 +389,71 @@ function get2kkiWikiLocationName(location) {
     return locationName;
 }
 
+function checkShow2kkiVersionUpdate() {
+  return new Promise(resolve => {
+    const versionDisplay = document.querySelector('.versionDisplay');
+    const removeUpdateDisplayAndResolve = () => {
+      versionDisplay.remove();
+      document.querySelector('.versionDisplayZoom')?.remove();
+      resolve();
+    };
+
+    const currentVersion = document.querySelector('meta[name="2kkiVersion"]').content;
+    if (!currentVersion || currentVersion === config.last2kkiVersion)
+      return removeUpdateDisplayAndResolve();
+
+    const versionText = document.querySelector('.version').innerText;
+    
+    const versionPrefixText = versionText.slice(0, versionText.indexOf(currentVersion));
+    const versionNewSuffixText = versionText.slice(versionPrefixText.length);
+    const versionOldSuffixText = getLocalizedVersion(config.last2kkiVersion).slice(versionPrefixText.length);
+
+    const versionPrefix = document.createElement('h1');
+    versionPrefix.innerText = versionPrefixText.trim();
+    if (versionPrefixText.endsWith(' '))
+      versionPrefix.innerHTML += '&nbsp;';
+
+    versionDisplay.appendChild(versionPrefix);
+
+    const versionSuffix = document.createElement('h1');
+    versionSuffix.classList.add('versionDisplaySuffix');
+
+    const versionNewSuffix = document.createElement('span');
+    versionNewSuffix.classList.add('infoLabel');
+    versionNewSuffix.innerText = versionNewSuffixText;
+
+    const versionOldSuffix = document.createElement('span');
+    versionOldSuffix.classList.add('infoLabel');
+    versionOldSuffix.innerText = versionOldSuffixText;
+
+    versionSuffix.appendChild(versionOldSuffix);
+    versionSuffix.appendChild(versionNewSuffix);
+
+    versionDisplay.appendChild(versionSuffix);
+
+    versionDisplay.classList.remove('hidden');
+
+    config.last2kkiVersion = currentVersion;
+    updateConfig(config);
+
+    setTimeout(() => {
+      const textHeight = versionPrefix.offsetHeight;
+      versionSuffix.style.height = `${textHeight}px`;
+
+      versionDisplay.classList.remove('transparent');
+
+      setTimeout(() => versionOldSuffix.style.marginTop = `-${textHeight + 4}px`, 1000);
+      setTimeout(() => {
+        const versionDisplayZoom = versionDisplay.cloneNode(true);
+        versionDisplayZoom.classList.add('versionDisplayZoom');
+        versionDisplay.after(versionDisplayZoom);
+        setTimeout(() => versionDisplayZoom.classList.add('zoom', 'transparent'), 10);
+      }, 1625);
+      setTimeout(removeUpdateDisplayAndResolve, 3500);
+    }, 0);
+  });
+}
+
 (function () {
   if (!is2kki)
     return;
@@ -417,7 +482,7 @@ function get2kkiWikiLocationName(location) {
         else
           removeLoader(explorerFrame);
       })
-      .catch(err => console.error(err));;
+      .catch(err => console.error(err));
     }
   });
 })();
