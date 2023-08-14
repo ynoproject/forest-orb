@@ -405,16 +405,21 @@ function init2kkiFileVersionAppend() {
 
 function checkShow2kkiVersionUpdate() {
   return new Promise(resolve => {
+    const chatboxContainer = document.getElementById('chatboxContainer');
     const versionDisplay = document.querySelector('.versionDisplay');
     const removeUpdateDisplayAndResolve = () => {
-      versionDisplay.remove();
+      chatboxContainer.classList.remove('hidden');
+      setTimeout(() => versionDisplay.remove());
       document.querySelector('.versionDisplayZoom')?.remove();
+      onResize();
       resolve();
     };
 
     const currentVersion = document.querySelector('meta[name="2kkiVersion"]').content;
     if (!currentVersion || currentVersion === config.last2kkiVersion)
       return removeUpdateDisplayAndResolve();
+
+    chatboxContainer.classList.add('hidden');
 
     const versionText = document.querySelector('.version').innerText;
     
@@ -462,7 +467,7 @@ function checkShow2kkiVersionUpdate() {
         versionDisplayZoom.classList.add('versionDisplayZoom');
         versionDisplay.after(versionDisplayZoom);
         setTimeout(() => versionDisplayZoom.classList.add('zoom', 'transparent'), 10);
-      }, 1625);
+      }, 1875);
       setTimeout(removeUpdateDisplayAndResolve, 3500);
     }, 0);
   });

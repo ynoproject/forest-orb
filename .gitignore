@@ -1,5 +1,7 @@
 ynoengine*.js
 ynoengine*.wasm
 
+/ynoproject.net/*
+
 /images/ynomoji/*.png
 /images/ynomoji/*.webp
