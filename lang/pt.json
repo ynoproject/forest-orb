@@ -108,16 +108,16 @@
               "slim": "Slim"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
+          "soundVolume": "Volume do Som",
+          "musicVolume": "Volume da Música",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "helpText": "O Yume 2kki Navigator é uma integração do Yume 2kki Explorer que permite visualizar rapidamente as conexões da sua localização. Esse recurso pode afetar drasticamente sua experiência e é altamente recomendável que você explore a maior parte do jogo às cegas antes de ativá-lo. Você deve estar conectado para usar o Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
             "label": "Modo de Imersão",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "helpText": "Desativa a contagem de jogadores, o bate-papo global e os mapas para proporcionar uma experiência mais imersiva."
           },
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
@@ -126,10 +126,10 @@
             "helpText": "Corrige o problema onde a função de captura de tela pode produzir capturas de tela em branco; requer o recarregamento da página e pode afetar o desempenho"
           },
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Pré-Carregamentos",
+            "helpText": "Pré-carregue os recursos do jogo usados com frequência para garantir que estejam disponíveis quando necessário; requer recarregamento da página."
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",
@@ -138,15 +138,15 @@
       },
       "blocklist": {
         "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "empty": "Sua Blocklist está vazia no momento"
       },
       "chatSettings": {
         "title": "Configurações do Bate-papo",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "Overlay de bate-papo no jogo",
+            "global": "Overlay de bate-papo do Global",
+            "party": "Overlay do bate-papo da Party"
           },
           "toggleTabToChat": "Atalho Tab para usar o Chat",
           "chatHistoryLimit": {
@@ -201,10 +201,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Jogadores",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Jogador Bloqueado",
+              "playerUnblocked": "Jogador Desbloqueado"
             }
           },
           "parties": {
@@ -357,19 +357,19 @@
         "rule5": "Sem trapaças de qualquer tipo por qualquer motivo."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Locais ainda Não Descobertos",
+        "complete": "Você descobriu todos os locais disponíveis! Parabéns!!!"
       }
     },
     "tooltips": {
       "toggleSinglePlayer": "Alternar pra Single Player",
-      "save": "Manage Save Data",
+      "save": "Gerenciar Dados Salvos",
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "Navegador Alternativo do Yume 2kki",
       "screenshot": "Capturar a Tela",
       "settings": "Configurações",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "Alternar o Modo Mudo",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
         "toggleGlobalMessageLocations": "Mostrar/Ocultar localizações em Mensagens de Bate-Papo",
@@ -384,7 +384,7 @@
       "events": "Expedições",
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos"
     },
     "reviewRules": "Ver Regras"
   },
@@ -407,7 +407,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "Tem certeza de que deseja sair da página? Qualquer progresso no jogo não salvo será perdido.",
-    "logout": "Are you sure you want to log out?",
+    "logout": "Tem certeza de que deseja fazer logout?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -454,15 +454,15 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "Menção {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "Bloqueio {PLAYER}",
+        "confirm": "Tem certeza de que deseja bloquear {PLAYER}?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "Desbloquear {PLAYER}",
+        "confirm": "Tem certeza de que deseja desbloquear {PLAYER}?"
       },
       "admin": {
         "ban": {
@@ -522,7 +522,7 @@
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Mensagem Global"
     },
     "parties": {
       "emptyMessage": "No momento não há Parties ativas.",
@@ -557,10 +557,10 @@
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "Arquivo {SLOT_ID}",
+        "readingLabel": "Leitura de Dados de Arquivo...",
+        "emptyLabel": "Vazio",
+        "errorLabel": "Erro"
       },
       "upload": {
         "tooltip": "Enviar Arquivo de Save",
@@ -568,11 +568,11 @@
       },
       "download": {
         "tooltip": "Baixar Arquivo de Save",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "Ops! O arquivo salvo para o slot parece estar vazio."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "Excluir Arquivo Salvo",
+        "confirmDelete": "Tem certeza de que deseja excluir os dados salvos do arquivo {SLOT_ID}?"
       }
     },
     "saveSync": {
@@ -590,8 +590,8 @@
         "passwordUpdated": "Sua senha foi atualizada com sucesso."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} foi bloqueado.",
+        "playerUnblocked": "{PLAYER} foi desbloqueado."
       },
       "parties": {
         "create": "{PARTY} foi criado.",
