@@ -235,6 +235,12 @@
               "badgeUnlocked": "Rozet Açıldı"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Kaydı Senkronize Et",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Sıralamalar"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Kurallar",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "Yeni bir başarım açtın!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Slot {SLOT} kayıt verileri yükleniyor...",

@@ -235,6 +235,12 @@
               "badgeUnlocked": "Emblema Desbloqueado"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Save na Nuvem",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Placares"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Regras",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "Você desbloqueou um novo emblema!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Carregando dados do Save no slot {SLOT}...",

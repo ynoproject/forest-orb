@@ -235,6 +235,12 @@
               "badgeUnlocked": "Badge Unlocked"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Save Sync",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Rankings"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Rules",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "You have unlocked a new badge!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",

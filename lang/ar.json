@@ -235,6 +235,12 @@
               "badgeUnlocked": "تم الحصول على الشارة"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "مزامنة ملف الحفظ",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "المراتب"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "القواعد",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "...{SLOT} يتم تحميل ملف الحفظ من موضع",

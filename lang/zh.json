@@ -235,6 +235,12 @@
               "badgeUnlocked": "解锁徽章"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "云存档通知",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "排行榜"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "多人游戏守则",
@@ -610,6 +619,9 @@
       },
       "badges": {
         "badgeUnlocked": "您解锁了新的徽章！"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",

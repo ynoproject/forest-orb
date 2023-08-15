@@ -235,6 +235,12 @@
               "badgeUnlocked": "뱃지 해금"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "세이브 동기화",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "랭킹"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "규칙",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "{SLOT}번 슬롯에서의 세이브 데이터를 업로드합니다...",

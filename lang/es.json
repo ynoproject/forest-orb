@@ -235,6 +235,12 @@
               "badgeUnlocked": "Medalla Desbloqueada"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Sincronización de Savefiles",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Clasificaciones"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Reglas",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Cargando savefile en ranura {SLOT} a nuestros servidores...",

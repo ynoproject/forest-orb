@@ -235,6 +235,12 @@
               "badgeUnlocked": "Insignă Deblocată"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Save Sync",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Ranguri"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Reguli",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "Ai deblocat o nouă insignă!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Se postează datele din slotul {SLOT}...",

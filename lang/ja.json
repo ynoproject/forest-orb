@@ -235,6 +235,12 @@
               "badgeUnlocked": "バッジ獲得通知"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "セーブデータ同期",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "ランキング"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "ルール",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "スロット{SLOT}からセーブデータをアップロードしています…",

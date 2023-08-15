@@ -395,6 +395,17 @@ body {
   width: unset;
 }
 
+.screenshotThumbnail {
+  width: 160px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.toastMessage > .screenshotThumbnail {
+  display: block;
+  margin: 0 auto 8px auto;
+}
+
 #fontStyle {
   color: rgb(var(--base-color)) !important;
 }
@@ -2684,6 +2695,16 @@ form .uiTheme {
 .rankingPageSkipLink {
   letter-spacing: -0.15em;
   padding-right: 0.15em;
+}
+
+#screenshotModal .screenshot {
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  height: -moz-available;
+  height: -webkit-fill-available;
+  height: fill-available;
+  object-fit: contain;
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {

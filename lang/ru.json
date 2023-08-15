@@ -235,6 +235,12 @@
               "badgeUnlocked": "Значок открыт"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Облачное сохранение",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Рейтинги"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Правила",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "Значок разблокирован!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Выгружаем в облако данные слота {SLOT}...",

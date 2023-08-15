@@ -1017,6 +1017,13 @@
             <div id="rankingsPagination"></div>
           </div>
         </div>
+        <div id="screenshotModal" class="modal fullscreenModal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalContent"></div>
+          <div class="modalFooter">
+            <button class="downloadScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.download">Download</button>
+          </div>
+        </div>
         <div id="rulesModal" class="modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">

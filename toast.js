@@ -39,6 +39,9 @@ const notificationTypes = {
   badges: [
     'badgeUnlocked'
   ],
+  screenshots: [
+    'screenshotTaken'
+  ],
   saveSync: [
     'saveUploading',
     'saveUploaded',

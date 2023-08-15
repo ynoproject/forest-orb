@@ -235,6 +235,12 @@
               "badgeUnlocked": "Mở khóa huy hiệu"
             }
           },
+          "screenshots": {
+            "label": "Screenshots",
+            "fields": {
+              "screenshotTaken": "Screenshot Taken"
+            }
+          },
           "saveSync": {
             "label": "Đồng bộ Tiến trình",
             "fields": {
@@ -343,6 +349,9 @@
       },
       "rankings": {
         "title": "Bảng Xếp Hạng"
+      },
+      "screenshot": {
+        "download": "Download"
       },
       "rules": {
         "title": "Nội quy",
@@ -611,6 +620,9 @@
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
         "saveUploading": "Đang tải dữ liệu bản lưu từ vị trí {SLOT}...",
