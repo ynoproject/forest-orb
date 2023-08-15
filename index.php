@@ -541,21 +541,6 @@
               </li>
               <li class="formControlRow">
                 <label class="unselectable">
-                  <span data-i18n="[html]modal.settings.fields.toggleScreenshotFix.label">Screenshot Fix</span>
-                  <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.toggleScreenshotFix.helpText">
-                    <div class="helpIcon icon fillIcon invertFillIcon altIcon">
-                      <svg viewBox="0 0 18 18">
-                        <path d="m9 0a1 1 90 0 0 0 18 1 1 90 0 0 0-18m-1.25 10.25a1 1 90 0 0 2.5 0.5q0.25-1 1.25-1.5c0.75-0.5 2.5-1.5 2.5-3.75 0-4-7.75-5.5-9.5-0.5a0.25 0.25 90 0 0 2.75 0.5c0.25-1.75 4-2.25 3.75 0.5 0 1.5-3 2.25-3.25 4.25m1.25 6a0.25 0.25 90 0 0 0-3.25 0.25 0.25 90 0 0 0 3.25" />
-                      </svg>
-                    </div>
-                  </a>
-                </label>
-                <div>
-                  <button id="screenshotFixButton" class="checkboxButton unselectable"><span></span></button>
-                </div>
-              </li>
-              <li class="formControlRow">
-                <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.togglePreloads.label">Preloads</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.togglePreloads.helpText">
                     <div class="helpIcon icon fillIcon invertFillIcon altIcon">
@@ -1490,6 +1475,7 @@
   <script type="text/javascript" src="init.js"></script>
   <script type="text/javascript" src="session.js"></script>
   <script type="text/javascript" src="loader.js"></script>
+  <script type="text/javascript" src="screenshots.js"></script>
   <script type="text/javascript" src="events.js"></script>
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>

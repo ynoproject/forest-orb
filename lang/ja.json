@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
-          "toggleScreenshotFix": {
-            "label": "スクリーンショット修正",
-            "helpText": "スクリーンショットの 撮影に 失敗することがある 不具合の 修正 （ページの 再読み込みが 必要で、 パフォーマンスが 落ちる 場合があります）"
-          },
           "togglePreloads": {
             "label": "プリロード",
             "helpText": "頻繁に使用されるゲームアセットをプリロードし、必要なときに利用できるようにします（ページの再読み込みが必要です）"

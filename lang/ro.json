@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "Afișare Locație",
           "toggleRankings": "Ranking-uri",
-          "toggleScreenshotFix": {
-            "label": "Screenshot Fix",
-            "helpText": "Rezolvă problema în care funcția de screenshot poate produce capturi goale; necesită reîncărcarea paginii și poate avea impact asupra performanței"
-          },
           "togglePreloads": {
             "label": "Preloads",
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"

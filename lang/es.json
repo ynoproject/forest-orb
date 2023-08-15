@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "Mostrar Ubicación",
           "toggleRankings": "Clasificaciones",
-          "toggleScreenshotFix": {
-            "label": "Solución de Pantallazos",
-            "helpText": "Soluciona el problema donde las capturas de pantalla tomadas desde la página aparecen en negro. Requiere recargar la página y podría afectar el rendimiento"
-          },
           "togglePreloads": {
             "label": "Preloads",
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"

@@ -38,7 +38,6 @@ let globalConfig = {
   partyChatHistoryLimit: 250,
   locationDisplay: false,
   hideRankings: false,
-  screenshotFix: false,
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
@@ -782,16 +781,6 @@ document.getElementById('clearChatButton').onclick = function () {
   }
 };
 
-document.getElementById('screenshotButton').onclick = function () {
-  const url = canvas.toDataURL();
-  const a = document.createElement('a');
-  const currentDate = new Date();
-  const [month, day, year, hour, minute, second] = [currentDate.getMonth(), currentDate.getDate(), currentDate.getFullYear(), currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()]
-  a.href = url;
-  a.download = `ynoproject_${ynoGameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
-  a.click();
-};
-
 document.getElementById('settingsButton').onclick = () => openModal('settingsModal');
 
 document.getElementById('muteButton').onclick = function () {
@@ -882,12 +871,6 @@ document.getElementById('toggleRankingsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('screenshotFixButton').onclick = function () {
-  this.classList.toggle('toggled');
-  globalConfig.screenshotFix = this.classList.contains('toggled');
-  updateConfig(globalConfig, true);
-};
-
 document.getElementById('togglePreloadsButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -958,6 +941,7 @@ initAccountControls();
 initBadgeControls();
 initSaveDataControls();
 initPartyControls();
+initScreenshotControls();
 initEventControls();
 initRankingControls();
 

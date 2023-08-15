@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
-          "toggleScreenshotFix": {
-            "label": "더 나은 스크린샷 찍기",
-            "helpText": "스크린샷을 찍을 때 가끔 사진이 검은 화면으로 되는 오류를 고쳐줍니다. 체크 후 새로고침을 해야 적용되며, 활성화 시 게임 성능에 영향을 미칠 수 있습니다."
-          },
           "togglePreloads": {
             "label": "프리로드",
             "helpText": "빈번하게 사용되는 게임 애셋을 우선적으로 불러와 필요할 때 사용할 수 있도록 합니다. 체크 후 새로고침을 해야 적용됩니다."

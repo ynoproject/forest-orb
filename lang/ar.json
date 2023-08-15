@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",
-          "toggleScreenshotFix": {
-            "label": "إصلاح لقطة الشاشة",
-            "helpText": "يعمل على إصلاح المشكلة حيث قد تؤدي ميزة لقطة الشاشة إلى إنتاج لقطات شاشة فارغة ؛ يتطلب إعادة تحميل الصفحة وقد يؤثر على الأداء"
-          },
           "togglePreloads": {
             "label": "Preloads",
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"

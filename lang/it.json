@@ -121,10 +121,6 @@
           },
           "toggleLocationDisplay": "Visualizza Ubicazione",
           "toggleRankings": "Classifica",
-          "toggleScreenshotFix": {
-            "label": "Sistema catture di schermata",
-            "helpText": "Sistema il problema in cui le catture di schermata possono produrre catture vuote; richiede la ricarica della pagina e potrebbe influenzare le prestazioni di gioco"
-          },
           "togglePreloads": {
             "label": "Preloads",
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
