@@ -253,9 +253,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "スクリーンショット",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "スクリーンショット撮影通知"
             }
           },
           "saveSync": {
@@ -368,7 +368,7 @@
         "title": "ランキング"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "ダウンロード"
       },
       "rules": {
         "title": "ルール",
@@ -639,7 +639,7 @@
         "badgeUnlocked": "バッジを獲得しました！"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
         "saveUploading": "スロット{SLOT}からセーブデータをアップロードしています…",
