@@ -371,10 +371,10 @@
       "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "Yume 2kki Navigator 활성화",
       "screenshot": "스크린샷 찍기",
       "settings": "옵션",
-      "toggleMute": "Toggle Mute",
+      "toggleMute": "음소",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
         "toggleGlobalMessageLocations": "채팅 메세지 장소 보이기/숨기기",
