@@ -239,7 +239,12 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
+    const shouldScroll = playerList.scrollHeight > playerList.clientHeight && Math.abs((playerList.scrollHeight - playerList.scrollTop) - playerList.clientHeight) <= 20;
+
     playerList.appendChild(playerListEntry);
+
+    if (shouldScroll)
+      playerList.scrollTop = playerList.scrollHeight;
   }
 
   let playerSpriteCacheEntry = playerSpriteCache[uuid];
