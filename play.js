@@ -38,6 +38,8 @@ let globalConfig = {
   partyChatHistoryLimit: 250,
   locationDisplay: false,
   hideRankings: false,
+  autoDownloadScreenshots: false,
+  screenshotResolution: 1,
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,

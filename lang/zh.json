@@ -129,6 +129,7 @@
         },
         "blocklist": "Blocklist",
         "chatSettings": "聊天",
+        "screenshotSettings": "Screenshots",
         "notificationSettings": "弹框通知",
         "accountSettings": "账号"
       },
@@ -165,6 +166,21 @@
           },
           "partyChatHistoryLimit": {
             "label": "小队聊天记录上限"
+          }
+        }
+      },
+      "screenshotSettings": {
+        "title": "Screenshot Settings",
+        "fields": {
+          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "screenshotResolution": {
+            "label": "Screenshot Download Resolution",
+            "values": {
+              "1": "1x - 320x240",
+              "2": "2x - 640x480",
+              "3": "3x - 960x720",
+              "4": "4x - 1280x960"
+            }
           }
         }
       },

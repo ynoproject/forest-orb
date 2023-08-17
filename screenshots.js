@@ -1,4 +1,16 @@
 function initScreenshotControls() {
+  document.getElementById('autoDownloadScreenshotsButton').onclick = function () {
+    this.classList.toggle('toggled');
+    const toggled = this.classList.contains('toggled');
+    globalConfig.autoDownloadScreenshots = toggled;
+    updateConfig(globalConfig, true);
+  };
+
+  document.getElementById('screenshotResolution').onchange = function () {
+    globalConfig.screenshotResolution = this.value;
+    updateConfig(globalConfig, true);
+  };
+
   document.getElementById('screenshotButton').onclick = () => takeScreenshot(0);
 }
 
@@ -17,7 +29,26 @@ function viewScreenshot(url, date) {
   openModal('screenshotModal');
 }
 
-function downloadScreenshot(url, date) {
+function downloadScreenshot(url, date, resized) {
+  if (!resized && globalConfig.screenshotResolution > 1) {
+    const scaleCanvas = document.createElement("canvas");
+    const scaleContext = scaleCanvas.getContext("2d");
+
+    const width = 320 * globalConfig.screenshotResolution;
+    const height = 240 * globalConfig.screenshotResolution;
+
+    scaleCanvas.width = width;
+    scaleCanvas.height = height;
+
+    const img = new Image(320, 240);
+    img.onload = () => {
+      scaleContext.drawImage(img, 0, 0);
+      downloadScreenshot(scaleCanvas.toDataURL(), date, true);
+    };
+    img.src = url;
+    return;
+  }
+
   const a = document.createElement('a');
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()]
   a.href = url;
@@ -29,8 +60,8 @@ function takeScreenshot(retryCount) {
   const screenshotCanvas = document.createElement("canvas");
   const screenshotContext = screenshotCanvas.getContext("2d");
 
-  screenshotCanvas.width = '320';
-  screenshotCanvas.height = '240';
+  screenshotCanvas.width = 320;
+  screenshotCanvas.height = 240;
 
   screenshotContext.drawImage(canvas, 0, 0, 320, 240);
 
@@ -49,8 +80,12 @@ function takeScreenshot(retryCount) {
       document.documentElement.style.setProperty('--toast-offset', `-${toast.getBoundingClientRect().height + 8}px`);
 
       thumb.onclick = () => viewScreenshot(url, dateTaken);
-    } else
-      downloadScreenshot(url, dateTaken);
+
+      if (!globalConfig.autoDownloadScreenshots)
+        return;
+    }
+
+    downloadScreenshot(url, dateTaken);
   } else if (retryCount < 8)
     setTimeout(() => takeScreenshot(retryCount + 1), 0);
 

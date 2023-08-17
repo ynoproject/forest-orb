@@ -585,6 +585,13 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('toggleRankingsButton').click();
                     break;
+                  case 'autoDownloadScreenshots':
+                    if (value)
+                      document.getElementById('autoDownloadScreenshotsButton').click();
+                    break;
+                  case 'screenshotResolution':
+                    document.getElementById('screenshotResolution').value = value;
+                    break;
                   case 'preloads':
                     if (value) {
                       initPreloadList();
