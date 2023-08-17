@@ -122,20 +122,20 @@
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Предзагрузки",
+            "helpText": "Предзагрузить часто используемые ресурсы, чтобы они всегда были доступны при необходимости; Требует перезагрузки страницы."
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "Предзагрузить обои ПК"
         },
-        "blocklist": "Blocklist",
-        "chatSettings": "Чата",
-        "screenshotSettings": "Screenshots",
+        "blocklist": "Заблокированные",
+        "chatSettings": "Чат",
+        "screenshotSettings": "Скриншоты",
         "notificationSettings": "Уведомления",
-        "accountSettings": "Аккаунта"
+        "accountSettings": "Аккаунт"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "Заблокированные",
+        "empty": "Вы ещё никого не заблокировали"
       },
       "chatSettings": {
         "title": "Настройки чата",
@@ -170,11 +170,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Настройки скриншотов",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Скачивать снимки экрана игры",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Разрешение загружаемых снимков",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -213,10 +213,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Игроки",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Блокировка игрока",
+              "playerUnblocked": "Разблокировка игрока"
             }
           },
           "parties": {
@@ -252,9 +252,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "Скриншоты",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Снимок экрана сделан"
             }
           },
           "saveSync": {
@@ -367,7 +367,7 @@
         "title": "Рейтинги"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "Скачать"
       },
       "rules": {
         "title": "Правила",
@@ -378,8 +378,8 @@
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Неисследованная локация",
+        "complete": "Вы исследовали все доступные локации! Поздравляем!!!"
       }
     },
     "tooltips": {
@@ -405,7 +405,7 @@
       "events": "Походы",
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации"
     },
     "reviewRules": "Просмотреть правила"
   },
@@ -475,15 +475,15 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "Упомянуть {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "Заблокировать {PLAYER}",
+        "confirm": "Вы уверены, что хотите заблокировать {PLAYER}?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "Разблокировать {PLAYER}",
+        "confirm": "Вы уверены, что хотите разблокировать {PLAYER}?"
       },
       "admin": {
         "ban": {
@@ -611,8 +611,8 @@
         "passwordUpdated": "Ваш пароль был изменён успешно."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "Игрок {PLAYER} теперь блокируется.",
+        "playerUnblocked": "Игрок {PLAYER} больше не блокируется."
       },
       "parties": {
         "create": "Была создана {PARTY}.",
@@ -638,7 +638,7 @@
         "badgeUnlocked": "Значок разблокирован!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Снимок игрового экрана успешно сделан."
       },
       "saveSync": {
         "saveUploading": "Выгружаем в облако данные слота {SLOT}...",
