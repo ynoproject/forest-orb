@@ -98,7 +98,7 @@ function checkScreenshot(canvas) {
   for (let y = 8; y < canvas.height - 8; y += 16) {
     for (let x = 8; x < canvas.width - 8; x += 16) {
       const pixel = context.getImageData(x, y, 1, 1).data;
-      if (pixel[0] || pixel[1] || pixel[2])
+      if (pixel[3] && (pixel[0] || pixel[1] || pixel[2]))
         return true;
     }
   }
