@@ -618,6 +618,12 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.togglePlayMentionSound">Play Mention Sound</label>
+                <div>
+                  <button id="playMentionSoundButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label for="mapChatHistoryLimit" class="unselectable" data-i18n="[html]modal.chatSettings.fields.mapChatHistoryLimit.label">Map Chat History Limit</label>
                 <div>
                   <select id="mapChatHistoryLimit">

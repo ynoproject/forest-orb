@@ -146,6 +146,7 @@
             "party": "パーティチャットのオーバーレイ表示"
           },
           "toggleTabToChat": "タブキーを 押して チャット",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

@@ -146,6 +146,7 @@
             "party": "Surcouche du Chat de Groupe"
           },
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

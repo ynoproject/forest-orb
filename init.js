@@ -568,6 +568,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value)
                       document.getElementById('tabToChatButton').click();
                     break;
+                  case 'playMentionSound':
+                    if (!value)
+                      document.getElementById('playMentionSoundButton').click();
+                    break;
                   case 'mapChatHistoryLimit':
                     document.getElementById('mapChatHistoryLimit').value = value;
                     break;

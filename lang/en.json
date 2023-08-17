@@ -146,6 +146,7 @@
             "party": "Party Chat Overlay"
           },
           "toggleTabToChat": "Press Tab to Chat",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

@@ -146,6 +146,7 @@
             "party": "Оверлей группового чата"
           },
           "toggleTabToChat": "Переключение в чат по Tab",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

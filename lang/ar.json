@@ -146,6 +146,7 @@
             "party": "تراكب محادثة الحفلة"
           },
           "toggleTabToChat": "للمحادثة Tab اضغط على",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

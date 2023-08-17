@@ -9,6 +9,8 @@ const MESSAGE_TYPE = {
   PARTY: 3
 };
 
+const mentionSe = new Audio('./audio/mention.wav');
+
 function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp) {
   const messages = document.getElementById("messages");
 
@@ -231,8 +233,11 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     message.appendChild(document.createTextNode(" "));
   }
 
-  if (playerName && new RegExp(`(^|[^a-z\d])@${playerName}($|[^a-z\d])`, 'i').test(msg))
+  if (playerName && new RegExp(`(^|[^a-z\d])@${playerName}($|[^a-z\d])`, 'i').test(msg)) {
     msgContainer.classList.add("highlight");
+    if (globalConfig.playMentionSound)
+      mentionSe.play();
+  }
   
   populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);

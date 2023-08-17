@@ -146,6 +146,7 @@
             "party": "파티 채팅을 오버레이하여 표시"
           },
           "toggleTabToChat": "탭을 눌러 채팅하기",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25 개",

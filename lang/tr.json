@@ -146,6 +146,7 @@
             "party": "Parti Sohbeti Bindirme"
           },
           "toggleTabToChat": "Sohbet için Tab'a basın",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

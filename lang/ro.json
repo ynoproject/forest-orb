@@ -146,6 +146,7 @@
             "party": "Party Chat Overlay"
           },
           "toggleTabToChat": "Apasă Tab pentru a vorbi",
+          "togglePlayMentionSound": "Play Mention Sound",
           "chatHistoryLimit": {
             "values": {
               "25": "25",

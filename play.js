@@ -36,6 +36,7 @@ let globalConfig = {
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
   partyChatHistoryLimit: 250,
+  playMentionSound: true,
   locationDisplay: false,
   hideRankings: false,
   autoDownloadScreenshots: false,
@@ -916,6 +917,12 @@ document.getElementById('gameChatPartyButton').onclick = function () {
 document.getElementById('tabToChatButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.tabToChat = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('playMentionSoundButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.playMentionSound = !this.classList.contains('toggled');
   updateConfig(globalConfig, true);
 };
 
