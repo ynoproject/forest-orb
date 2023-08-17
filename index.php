@@ -1404,7 +1404,7 @@
                   <div>
                     <label class="unselectable">Op</label>
                     <select v-model="varOps[v]">
-                      <option :key="v" v-for="varOp in varOpOptions[v]">{{varOp}}</option>
+                      <option :key="v" v-for="varOp in varOpOptions">{{varOp}}</option>
                     </select>
                   </div>
                   <div>
