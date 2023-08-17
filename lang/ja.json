@@ -129,7 +129,7 @@
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "スクリーンショット",
         "notificationSettings": "通知",
         "accountSettings": "アカウント"
       },
@@ -146,7 +146,7 @@
             "party": "パーティチャットのオーバーレイ表示"
           },
           "toggleTabToChat": "タブキーを 押して チャット",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "メンション通知音を再生する",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -171,11 +171,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "スクリーンショット設定",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "スクリーンショットを自動でダウンロードする",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "ダウンロードするスクリーンショットの解像度",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
