@@ -146,7 +146,7 @@
             "party": "Surcouche du Chat de Groupe"
           },
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
-          "togglePlayMentionSound": "Jouer un son lorsque mentionné",
+          "togglePlayMentionSound": "Jouer un son lorsque mentionné(e)",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -380,7 +380,7 @@
       },
       "explorerUndiscoveredLocations": {
         "title": "Lieux non découverts",
-        "complete": "Vous avez découvert tous les lieux visitables ! Félicitations !!"
+        "complete": "Vous avez découvert tous les lieux disponibles ! Félicitations !!"
       }
     },
     "tooltips": {
