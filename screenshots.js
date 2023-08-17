@@ -40,9 +40,11 @@ function downloadScreenshot(url, date, resized) {
     scaleCanvas.width = width;
     scaleCanvas.height = height;
 
+    scaleContext.imageSmoothingEnabled = false;
+
     const img = new Image(320, 240);
     img.onload = () => {
-      scaleContext.drawImage(img, 0, 0);
+      scaleContext.drawImage(img, 0, 0, width, height);
       downloadScreenshot(scaleCanvas.toDataURL(), date, true);
     };
     img.src = url;
@@ -98,7 +100,7 @@ function checkScreenshot(canvas) {
   for (let y = 8; y < canvas.height - 8; y += 16) {
     for (let x = 8; x < canvas.width - 8; x += 16) {
       const pixel = context.getImageData(x, y, 1, 1).data;
-      if (pixel[3] && (pixel[0] || pixel[1] || pixel[2]))
+      if (pixel[0] || pixel[1] || pixel[2])
         return true;
     }
   }
