@@ -113,7 +113,7 @@
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "helpText": "Yume 2kki Navigator là chức năng tích hợp Yume 2kki Explorer giúp bạn nhanh chóng xem những kết nối từ địa điểm của bạn. Tính năng này có thể ảnh hưởng lớn đến trải nghiệm trò chơi và chúng tôi khuyến nghị bạn tự khám phá hầu hết trò chơi trước khi sử dụng tính năng này. Bạn phải đăng nhập để sử dụng Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
             "label": "Chế độ Đắm chìm",
@@ -122,31 +122,31 @@
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Preload",
+            "helpText": "Tải sẵn những tài nguyên được sử dụng thường xuyên để đảm bảo có thể sử dụng khi cần; yêu cầu tải lại trang"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "Tải sẵn Hình nền PC"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "Chụp màn hình",
         "notificationSettings": "Thông báo",
         "accountSettings": "Tài khoản"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "Danh sách chặn",
+        "empty": "Danh sách chặn của bạn hiện đang trống"
       },
       "chatSettings": {
         "title": "Cài đặt Chat",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "Chat Overlay trong game",
+            "global": "Overlay chat chung",
+            "party": "Overlay chat nhóm"
           },
           "toggleTabToChat": "Nhấn Tab để chat",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "Phát âm thanh gắn thẻ",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -171,11 +171,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Cài đặt Chụp màn hình",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Tự động tải xuống ảnh chụp",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Độ phân giải ảnh chụp màn hình",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -214,10 +214,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Người chơi",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Đã chặn người chơi",
+              "playerUnblocked": "Đã bỏ chặn người chơi"
             }
           },
           "parties": {
@@ -253,9 +253,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "Chụp màn hình",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Đã chụp ảnh màn hình"
             }
           },
           "saveSync": {
@@ -368,7 +368,7 @@
         "title": "Bảng Xếp Hạng"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "Tải xuống"
       },
       "rules": {
         "title": "Nội quy",
@@ -379,8 +379,8 @@
         "rule5": "Không gian lận bằng bất kỳ lý do nào."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Địa điểm chưa khám phá",
+        "complete": "Bạn đã khám phá hết tất cả địa điểm! Chúc mừng!!"
       }
     },
     "tooltips": {
@@ -388,7 +388,7 @@
       "save": "Quản lý Dữ liệu lưu",
       "uiTheme": "Phông nền",
       "toggleChat": "Bật/Tắt Chat",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "Bật/Tắt Yume 2kki Navigator",
       "screenshot": "Chụp ảnh màn hình",
       "settings": "Cài đặt",
       "toggleMute": "Bật/Tắt tiếng",
@@ -406,7 +406,7 @@
       "events": "Tham Quan",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá"
     },
     "reviewRules": "Xem Nội quy"
   },
@@ -429,7 +429,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
-    "logout": "Are you sure you want to log out?",
+    "logout": "Bạn có chắc muốn đăng xuất?",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -479,12 +479,12 @@
         "label": "Mention {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "Chặn {PLAYER}",
+        "confirm": "Bạn có chắc chắn muốn chặn {PLAYER}?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "Bỏ chặn {PLAYER}",
+        "confirm": "Bạn có chắc chắn muốn bỏ chặn {PLAYER}?"
       },
       "admin": {
         "ban": {
@@ -612,8 +612,8 @@
         "passwordUpdated": "Đã cập nhật mật khẩu thành công."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "Đã chặn {PLAYER}.",
+        "playerUnblocked": "Đã bỏ chặn {PLAYER}."
       },
       "parties": {
         "create": "{PARTY} đã được tạo.",
@@ -639,7 +639,7 @@
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Đã chụp ảnh màn hình."
       },
       "saveSync": {
         "saveUploading": "Đang tải dữ liệu bản lưu từ vị trí {SLOT}...",
