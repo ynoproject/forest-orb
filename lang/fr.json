@@ -122,20 +122,20 @@
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Préchargement",
+            "helpText": "Précharge fréquemment les ressources utilisées par le jeu pour d'assurer qu'elles soient disponibles lorsque nécessaires. Nécessite un rechargement de la page pour s'appliquer."
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "Liste de blocage",
         "chatSettings": "Chat",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "Captures d'écran",
         "notificationSettings": "Notifications",
         "accountSettings": "Compte"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "Liste de blocage",
+        "empty": "Votre liste d'utilisateurs bloqués est actuellement vide"
       },
       "chatSettings": {
         "title": "Paramètres du Chat",
@@ -146,7 +146,7 @@
             "party": "Surcouche du Chat de Groupe"
           },
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "Jouer un son lorsque mentionné(e)",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -171,11 +171,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Paramètres des captures d'écran",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Télécharger automatiquement les captures d'écran",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Résolution des captures d'écran au téléchargement",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -214,10 +214,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Joueurs",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Joueur bloqué",
+              "playerUnblocked": "Joueur débloqué"
             }
           },
           "parties": {
@@ -253,9 +253,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "Captures d'écran",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Capture d'écran prise"
             }
           },
           "saveSync": {
@@ -368,7 +368,7 @@
         "title": "Classement"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "Télécharger"
       },
       "rules": {
         "title": "Règles",
@@ -379,8 +379,8 @@
         "rule5": "Pas de triche de toute sorte, qu'importe la raison."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Lieux non découverts",
+        "complete": "Vous avez découvert tous les lieux disponibles ! Félicitations !!"
       }
     },
     "tooltips": {
@@ -406,7 +406,7 @@
       "events": "Expéditions",
       "rankings": "Classement",
       "nexus": "Retourner au Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "Voir les lieux non découverts"
     },
     "reviewRules": "Relire les règles"
   },
@@ -476,35 +476,35 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "Mentionner {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "Bloquer {PLAYER}",
+        "confirm": "Êtes-vous sûr(e) de vouloir bloquer {PLAYER} ?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "Débloquer {PLAYER}",
+        "confirm": "Êtes-vous sûr(e) de vouloir débloquer {PLAYER} ?"
       },
       "admin": {
         "ban": {
           "label": "Bannir {PLAYER}",
-          "confirm": "Êtes-vous sûr de vouloir bannir {PLAYER} ?",
+          "confirm": "Êtes-vous sûr(e) de vouloir bannir {PLAYER} ?",
           "success": "{PLAYER} a été banni(e)."
         },
         "unban": {
           "label": "Débannir {PLAYER}",
-          "confirm": "Êtes-vous sûr de vouloir débannir {PLAYER} ?",
+          "confirm": "Êtes-vous sûr(e) de vouloir débannir {PLAYER} ?",
           "success": "{PLAYER} a été débanni(e)."
         },
         "mute": {
           "label": "Rendre muet {PLAYER}",
-          "confirm": "Êtes-vous sûr de vouloir rendre muet {PLAYER} ?",
+          "confirm": "Êtes-vous sûr(e) de vouloir rendre muet {PLAYER} ?",
           "success": "{PLAYER} a été rendu(e) muet(te)."
         },
         "unmute": {
           "label": "Démuter {PLAYER}",
-          "confirm": "Êtes-vous sûr de vouloir démuter {PLAYER} ?",
+          "confirm": "Êtes-vous sûr(e) de vouloir démuter {PLAYER} ?",
           "success": "{PLAYER} a été démuté(e)."
         },
         "grantBadge": {
@@ -612,8 +612,8 @@
         "passwordUpdated": "Votre mot de passe a été mis à jour avec succès."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} a été bloqué(e).",
+        "playerUnblocked": "{PLAYER} a été débloqué(e)."
       },
       "parties": {
         "create": "{PARTY} a été créé.",
@@ -639,7 +639,7 @@
         "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Votre capture d'écran a été prise."
       },
       "saveSync": {
         "saveUploading": "Téléchargement des données de sauvegarde de l'emplacement {SLOT}...",
