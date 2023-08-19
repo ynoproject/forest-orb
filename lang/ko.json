@@ -129,7 +129,7 @@
         },
         "blocklist": "차단 목록",
         "chatSettings": "채팅",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "스크린샷",
         "notificationSettings": "알람",
         "accountSettings": "계정"
       },
@@ -146,7 +146,7 @@
             "party": "파티 채팅을 오버레이하여 표시"
           },
           "toggleTabToChat": "탭을 눌러 채팅하기",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "멘션 알람 켜기",
           "chatHistoryLimit": {
             "values": {
               "25": "25 개",
@@ -171,11 +171,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "스크린샷 설정",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "자동으로 스크린샷 다운로드하기",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "스크린샷 해상도",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -455,8 +455,8 @@
       "plural": "{COUNT}명이 온라인입니다"
     },
     "playersInMap": {
-      "singular": "현위치에 {COUNT}명이 있습니다",
-      "plural": "현위치에 {COUNT}명이 있습니다"
+      "singular": "현 위치에 {COUNT}명이 있습니다",
+      "plural": "현 위치에 {COUNT}명이 있습니다"
     },
     "playerList": {
       "unnamed": "익명의 플레이어",
@@ -476,7 +476,7 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "멘션 {PLAYER}"
       },
       "block": {
         "label": "{PLAYER} 차단",
@@ -515,7 +515,7 @@
         },
         "revokeBadge": {
           "label": "뱃지 회수",
-          "prompt": "{PLAYER} 님에게 뱃지를 회수하기 위해 뱃지 ID를 입력해주세요.",
+          "prompt": "{PLAYER} 님에게 뱃지를 회수하기 위해 뱃지 ID를 입력해주세요",
           "success": "{BADGE}를 {PLAYER} 님에게서 성공적으로 회수했습니다",
           "fail": "입력한 뱃지 ID와 일치하는 항목이 존재하지 않습니다"
         }
@@ -738,7 +738,7 @@
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trial Mode",
+          "label": "타임 어택",
           "valueLabel": "성공 시간",
           "value": "{MINUTES}분 {SECONDS}초"
         },
