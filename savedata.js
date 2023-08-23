@@ -283,6 +283,7 @@ function getSaveSlotData(saveSlotId) {
     const slotId = saveSlotId < 10 ? `0${saveSlotId}` : saveSlotId.toString();
     const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
+    request.onupgradeneeded = e => e.target.result.createObjectStore('FILE_DATA');
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');

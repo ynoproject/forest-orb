@@ -2196,6 +2196,7 @@ body.fullBg #background {
 
 .formControls {
   list-style-type: none;
+  overflow-x: hidden;
   padding: 0;
 }
 
