@@ -112,8 +112,8 @@
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
           "toggleEnableExplorer": {
-            "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "label": "梦2记导航窗",
+            "helpText": "整合梦2记导航，可以直观地查看当前位置的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前先尝试探索游戏的大部分内容。您必须登录才能使用梦2记导航窗。"
           },
           "toggleImmersionMode": {
             "label": "沉浸模式",
@@ -122,31 +122,31 @@
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "预加载",
+            "helpText": "预先加载游戏资源，以便需要时取用；需要重新加载网页"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "预加载电脑壁纸"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "黑名单",
         "chatSettings": "聊天",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "截屏",
         "notificationSettings": "弹框通知",
         "accountSettings": "账号"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "黑名单",
+        "empty": "你的黑名单当前为空"
       },
       "chatSettings": {
         "title": "聊天设置",
         "fields": {
           "toggleGameChat": {
-            "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "label": "在游戏中显示聊天框",
+            "global": "显示全局聊天框",
+            "party": "显示小队聊天框"
           },
           "toggleTabToChat": "开启Tab键聊天",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "被提及时播放提示音",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -171,11 +171,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "截屏设置",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "自动下载屏幕截图",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "截图分辨率",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -214,10 +214,10 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "玩家通知",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "拉黑",
+              "playerUnblocked": "解除拉黑"
             }
           },
           "parties": {
@@ -253,9 +253,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "截屏",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "拍摄屏幕截图"
             }
           },
           "saveSync": {
@@ -368,7 +368,7 @@
         "title": "排行榜"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "下载"
       },
       "rules": {
         "title": "多人游戏守则",
@@ -379,8 +379,8 @@
         "rule5": "不要在游戏中作弊。"
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "未探索地点",
+        "complete": "您已经探索完所有可以到达的地方！恭喜！！"
       }
     },
     "tooltips": {
@@ -388,7 +388,7 @@
       "save": "存档数据管理",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
+      "toggleExplorer": "显示/隐藏梦2记导航窗",
       "screenshot": "截屏",
       "settings": "设置",
       "toggleMute": "静音",
@@ -406,7 +406,7 @@
       "events": "梦远征",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "显示未探索地点"
     },
     "reviewRules": "多人游戏守则"
   },
@@ -429,7 +429,7 @@
       "ultraviolet": "Ultra Violet"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
-    "logout": "Are you sure you want to log out?",
+    "logout": "确定要登出吗？",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
@@ -476,15 +476,15 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "提及 {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "拉黑 {PLAYER}",
+        "confirm": "确定要拉黑 {PLAYER} 吗？"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "解除拉黑 {PLAYER}",
+        "confirm": "确定要解除拉黑 {PLAYER} 吗？"
       },
       "admin": {
         "ban": {
@@ -612,8 +612,8 @@
         "passwordUpdated": "账号密码修改成功。"
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "已拉黑 {PLAYER}",
+        "playerUnblocked": "已解除拉黑 {PLAYER}"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",
@@ -639,7 +639,7 @@
         "badgeUnlocked": "您解锁了新的徽章！"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "已拍摄屏幕截图。"
       },
       "saveSync": {
         "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",
