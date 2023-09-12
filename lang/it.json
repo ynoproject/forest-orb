@@ -87,7 +87,6 @@
         "loginPrompt": "Hai già un profilo?&nbsp;",
         "login": "Connettiti"
       },
-      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Opzioni",
         "fields": {
@@ -369,10 +368,12 @@
         "title": "Classifiche"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "Download",
+        "save": "Save to My Screenshots"
       },
       "myScreenshots": {
-        "title": "My Screenshots"
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
       },
       "rules": {
         "title": "Regole",
@@ -760,6 +761,13 @@
         "rby": "Rosso Blu Giallo (Mini Game B)",
         "rby_ex": "Rosso Blu Giallo (Mini Game B) - EX Version",
         "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "delete": {
+        "tooltip": "Delete Screenshot",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {

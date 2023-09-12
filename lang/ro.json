@@ -87,7 +87,6 @@
         "loginPrompt": "Ai deja cont?&nbsp;",
         "login": "Conectare"
       },
-      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Setări",
         "fields": {
@@ -369,10 +368,12 @@
         "title": "Ranguri"
       },
       "screenshot": {
-        "download": "Download"
+        "download": "Download",
+        "save": "Save to My Screenshots"
       },
       "myScreenshots": {
-        "title": "My Screenshots"
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
       },
       "rules": {
         "title": "Reguli",
@@ -760,6 +761,13 @@
         "rby": "Red Blue Yellow (Mini Game B)",
         "rby_ex": "Red Blue Yellow (Mini Game B) - Versiunea EX",
         "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "delete": {
+        "tooltip": "Delete Screenshot",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {

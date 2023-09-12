@@ -87,7 +87,6 @@
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
         "login": "Se Connecter"
       },
-      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Paramètres",
         "fields": {
@@ -369,10 +368,12 @@
         "title": "Classement"
       },
       "screenshot": {
-        "download": "Télécharger"
+        "download": "Télécharger",
+        "save": "Save to My Screenshots"
       },
       "myScreenshots": {
-        "title": "My Screenshots"
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
       },
       "rules": {
         "title": "Règles",
@@ -760,6 +761,13 @@
         "rby": "Rouge Bleu Jaune (Mini-jeu B)",
         "rby_ex": "Rouge Bleu Jaune (Mini-jeu B) - Version EX",
         "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "delete": {
+        "tooltip": "Delete Screenshot",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {

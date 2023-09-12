@@ -406,9 +406,22 @@ body {
   margin: 0 auto 8px auto;
 }
 
-.screenshotItem {
-  border: 8px solid transparent;
+.screenshotItem img, .screenshotControls {
+  border: 8px solid transparent !important;
   border-image: var(--border-image-url) 4 repeat !important;
+}
+
+.screenshotControls {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+  padding: 4px;
+  border-top: none !important;
+  background-color: rgb(var(--base-bg-color));
+}
+
+.screenshotControls .iconButton {
+  width: 24px;
 }
 
 #fontStyle {

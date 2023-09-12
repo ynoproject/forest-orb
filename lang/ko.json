@@ -87,7 +87,6 @@
         "loginPrompt": "이미 계정을 가지고 계신가요?&nbsp;",
         "login": "로그인"
       },
-      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "옵션",
         "fields": {
@@ -369,10 +368,12 @@
         "title": "랭킹"
       },
       "screenshot": {
-        "download": "다운로드"
+        "download": "다운로드",
+        "save": "Save to My Screenshots"
       },
       "myScreenshots": {
-        "title": "My Screenshots"
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
       },
       "rules": {
         "title": "규칙",
@@ -760,6 +761,13 @@
         "rby": "빨강/파랑/노랑 (미니게임 B)",
         "rby_ex": "빨강/파랑/노랑 (미니게임 B) - EX 버전",
         "fuji_ex": "FUJI EX (후지 EX)"
+      }
+    },
+    "screenshots": {
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "delete": {
+        "tooltip": "Delete Screenshot",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {

@@ -125,7 +125,7 @@
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m6.75 6.75h4.5v4.5h-4.5v-4.5m2.25 0v-3.75h-1.5v-3h3v3h-1.5m2.25 6h3.75v-1.5h3v3h-3v-1.5m-6 2.25v3.75h1.5v3h-3v-3h1.5m-2.25-6h-3.75v-1.5h-3v3h3v-1.5"/><path d="m-2 16l22-14" /></svg>
               </button><?php endif ?><button id="screenshotButton" class="iconButton unselectable" data-i18n="[title]tooltips.screenshot">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m3 8q0-1 1-1h1.5c1 0 1-2 2-2h3c1 0 1 2 2 2h1.5q1 0 1 1v4q0 1-1 1h-10q-1 0-1-1zm6-0.5a2 2 90 0 0 0 4 2 2 90 0 0 0 -4m-9-2.5v-2q0-1 1-1h2m12 0h2q1 0 1 1v2m0 8v2q0 1-1 1h-2m-12 0h-2q-1 0-1-1v-2"></path></svg>
-              </button><button id="myScreenshotsButton" style="display: none" class="iconButton accountRequired unselectable" data-i18n="[title]tooltips.myScreenshots">
+              </button><button id="myScreenshotsButton" class="iconButton accountRequired unselectable" data-i18n="[title]tooltips.myScreenshots">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 2h18v13h-18zv13-11.5 11.5zm2.5 10.5v-1.5l2.75-3 2.25 1.5 3.75-3.75 4.25 3.25v3.5zm0-6.75a0.75 0.75 90 0 0 3 0 0.75 0.75 90 0 0-3 0z"></path></svg>
               </button><button id="settingsButton" class="iconButton unselectable" data-i18n="[title]tooltips.settings">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 5.5a1 1 90 0 0 0 7 1 1 90 0 0 0 -7m-7 5.5l-2-0.25v-3.5l2-0.25 0.75-1.5-1.25-1.75 2.25-2.25 1.75 1.25 1.5-0.75 0.25-2h3.5l0.25 2 1.5 0.75 1.75-1.25 2.25 2.25-1.25 1.75 0.75 1.5 2 0.25v3.5l-2 0.25-0.75 1.5 1.25 1.75-2.25 2.25-1.75-1.25-1.5 0.75-0.25 2h-3.5l-0.25-2-1.5-0.75-1.75 1.25-2.25-2.25 1.25-1.75-0.75-1.5" /></svg>
@@ -1058,14 +1058,19 @@
           <div class="modalContent"></div>
           <div class="modalFooter">
             <button class="downloadScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.download">Download</button>
+            <button class="saveScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.save">Save to My Screenshots</button>
           </div>
         </div>
         <div id="myScreenshotsModal" class="modal wideModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.myScreenshots.title">My Screenshots</h1>
+            <h3 id="myScreenshotsLimitLabel"></h3>
           </div>
           <div class="modalContent itemContainer">
+          </div>
+          <div class="modalFooter">
+            <span id="myScreenshotsEmptyLabel" class="infoLabel hidden" data-i18n="[html]modal.myScreenshots.empty">You haven't saved any screenshots yet.</span>
           </div>
         </div>
         <div id="rulesModal" class="modal hidden">

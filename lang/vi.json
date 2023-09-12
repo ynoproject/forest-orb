@@ -87,7 +87,6 @@
         "loginPrompt": "Đã có tài khoản?&nbsp;",
         "login": "Đăng nhập"
       },
-      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Cài Đặt",
         "fields": {
@@ -369,10 +368,12 @@
         "title": "Bảng Xếp Hạng"
       },
       "screenshot": {
-        "download": "Tải xuống"
+        "download": "Tải xuống",
+        "save": "Save to My Screenshots"
       },
       "myScreenshots": {
-        "title": "My Screenshots"
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
       },
       "rules": {
         "title": "Nội quy",
@@ -760,6 +761,13 @@
         "rby": "Red Blue Yellow (Mini Game B)",
         "rby_ex": "Red Blue Yellow (Mini Game B) - Bản EX",
         "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "delete": {
+        "tooltip": "Delete Screenshot",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {
