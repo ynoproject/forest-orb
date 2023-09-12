@@ -87,6 +87,7 @@
         "loginPrompt": "Уже есть аккаунт?&nbsp;",
         "login": "Войти"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Настройки",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Скачать"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "Правила",
         "rule1": "Пожалуйста, будьте вежливы и учтивы.",
@@ -390,6 +394,7 @@
       "toggleChat": "Переключить чат",
       "toggleExplorer": "Переключить Навигатор Yume 2kki",
       "screenshot": "Сделать скриншот",
+      "myScreenshots": "My Screenshots",
       "settings": "Настройки",
       "toggleMute": "Переключить звук",
       "toggleGlobalMessage": "Переключить отправку в общий чат",

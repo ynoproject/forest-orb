@@ -87,6 +87,7 @@
         "loginPrompt": "Đã có tài khoản?&nbsp;",
         "login": "Đăng nhập"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Cài Đặt",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Tải xuống"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "Nội quy",
         "rule1": "Hãy cư xử lịch sự và tôn trọng người khác.",
@@ -390,6 +394,7 @@
       "toggleChat": "Bật/Tắt Chat",
       "toggleExplorer": "Bật/Tắt Yume 2kki Navigator",
       "screenshot": "Chụp ảnh màn hình",
+      "myScreenshots": "My Screenshots",
       "settings": "Cài đặt",
       "toggleMute": "Bật/Tắt tiếng",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",

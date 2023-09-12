@@ -87,6 +87,7 @@
         "loginPrompt": "Already have an account?&nbsp;",
         "login": "Log In"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Settings",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Download"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "Rules",
         "rule1": "Please be respectful and polite.",
@@ -390,6 +394,7 @@
       "toggleChat": "Chat an/aus",
       "toggleExplorer": "Toggle Yume 2kki Navigator",
       "screenshot": "Take Screenshot",
+      "myScreenshots": "My Screenshots",
       "settings": "Settings",
       "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",

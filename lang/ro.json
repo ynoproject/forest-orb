@@ -87,6 +87,7 @@
         "loginPrompt": "Ai deja cont?&nbsp;",
         "login": "Conectare"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Setări",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Download"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "Reguli",
         "rule1": "Fii respectuos și politicos.",
@@ -390,6 +394,7 @@
       "toggleChat": "Comută Chat-ul",
       "toggleExplorer": "Toggle Yume 2kki Navigator",
       "screenshot": "Fă Captură de Ecran",
+      "myScreenshots": "My Screenshots",
       "settings": "Setări",
       "toggleMute": "Comută Mute-ul",
       "toggleGlobalMessage": "Comută Vorbitul pe Chat Global",

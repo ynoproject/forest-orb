@@ -87,6 +87,7 @@
         "loginPrompt": "已有账号？请点此&nbsp;",
         "login": "登录"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "设置",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Download"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "多人游戏守则",
         "rule1": "尊重他人，友好往来。",
@@ -390,6 +394,7 @@
       "toggleChat": "显示/隐藏聊天栏",
       "toggleExplorer": "Toggle Yume 2kki Navigator",
       "screenshot": "截屏",
+      "myScreenshots": "My Screenshots",
       "settings": "设置",
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",

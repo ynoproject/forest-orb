@@ -406,6 +406,11 @@ body {
   margin: 0 auto 8px auto;
 }
 
+.screenshotItem {
+  border: 8px solid transparent;
+  border-image: var(--border-image-url) 4 repeat !important;
+}
+
 #fontStyle {
   color: rgb(var(--base-color)) !important;
 }

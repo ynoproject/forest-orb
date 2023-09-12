@@ -87,6 +87,7 @@
         "loginPrompt": "Zaten hesabın var mı?&nbsp;",
         "login": "Giriş Yap"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "Ayarlar",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Download"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "Kurallar",
         "rule1": "Lütfen saygılı ve nazik olun.",
@@ -390,6 +394,7 @@
       "toggleChat": "Sohbeti Aç",
       "toggleExplorer": "Yume 2kki Gezginini Aç",
       "screenshot": "Ekran Alıntısı Al",
+      "myScreenshots": "My Screenshots",
       "settings": "Ayarlar",
       "toggleMute": "Susturmayı Değiştir",
       "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",

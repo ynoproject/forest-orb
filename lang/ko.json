@@ -87,6 +87,7 @@
         "loginPrompt": "이미 계정을 가지고 계신가요?&nbsp;",
         "login": "로그인"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "옵션",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "다운로드"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "규칙",
         "rule1": "상대방에게 공손하고 예의바르게 행동해주십시오.",
@@ -390,6 +394,7 @@
       "toggleChat": "채팅 표시",
       "toggleExplorer": "Yume 2kki Navigator 활성화",
       "screenshot": "스크린샷 찍기",
+      "myScreenshots": "My Screenshots",
       "settings": "옵션",
       "toggleMute": "음소거",
       "toggleGlobalMessage": "글로벌 채팅 활성화",

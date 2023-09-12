@@ -12,6 +12,29 @@ function initScreenshotControls() {
   };
 
   document.getElementById('screenshotButton').onclick = () => takeScreenshot(0);
+  document.getElementById('myScreenshotsButton').onclick = () => {
+    const screenshotItemsList = document.querySelector('#myScreenshotsModal .itemContainer');
+
+    apiFetch('getplayerscreenshots').then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    }).then(screenshots => {
+      for (let screenshot of screenshots) {
+        const screenshotItem = document.createElement('div');
+        screenshotItem.classList.add('screenshotItem', 'item');
+
+        const screenshotThumbnail = document.createElement('img');
+        screenshotThumbnail.classList.add('screenshotThumbnail');
+        screenshotThumbnail.src = `${serverUrl}/screenshots/${screenshot.owner}/${screenshot.id}.png`;
+
+        screenshotItem.append(screenshotThumbnail);
+        screenshotItemsList.append(screenshotItem);
+      }
+
+      openModal('myScreenshotsModal');
+    });
+  };
 }
 
 function viewScreenshot(url, date) {

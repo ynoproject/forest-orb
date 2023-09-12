@@ -87,6 +87,7 @@
         "loginPrompt": "すでに アカウントを お持ちの方は",
         "login": "ログインする"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "設定",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "ダウンロード"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "ルール",
         "rule1": "礼儀正しく、丁寧な対応を心がけてください。",
@@ -390,6 +394,7 @@
       "toggleChat": "チャットのオン／オフ",
       "toggleExplorer": "ゆめ２っきナビゲーターのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
+      "myScreenshots": "My Screenshots",
       "settings": "設定",
       "toggleMute": "消音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",

@@ -87,6 +87,7 @@
         "loginPrompt": "&nbsp;تملك حسابا بالفعل؟",
         "login": "تسجيل الدخول"
       },
+      "myScreenshots": "My Screenshots",
       "settings": {
         "title": "الإعدادات",
         "fields": {
@@ -370,6 +371,9 @@
       "screenshot": {
         "download": "Download"
       },
+      "myScreenshots": {
+        "title": "My Screenshots"
+      },
       "rules": {
         "title": "القواعد",
         "rule1": "من فضلك كن محترما ومهذبا",
@@ -390,6 +394,7 @@
       "toggleChat": "وضع المحادثة",
       "toggleExplorer": "تفعيل Yume 2kki ملاح",
       "screenshot": "اخذ صورة للشاشة",
+      "myScreenshots": "My Screenshots",
       "settings": "إعدادات",
       "toggleMute": "تفعيل كتم الصوت",
       "toggleGlobalMessage": "وضع المحادثة العامة",
