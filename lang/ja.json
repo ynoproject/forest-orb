@@ -369,11 +369,11 @@
       },
       "screenshot": {
         "download": "ダウンロード",
-        "save": "Save to My Screenshots"
+        "save": "マイスクリーンショットに保存する"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "マイスクリーンショット",
+        "empty": "まだスクリーンショットを保存していません。"
       },
       "rules": {
         "title": "ルール",
@@ -395,7 +395,7 @@
       "toggleChat": "チャットのオン／オフ",
       "toggleExplorer": "ゆめ２っきナビゲーターのオン／オフ",
       "screenshot": "スクリーンショットを撮る",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "マイスクリーンショット",
       "settings": "設定",
       "toggleMute": "消音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
@@ -764,10 +764,10 @@
       }
     },
     "screenshots": {
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "limit": "{LIMIT}枚中{COUNT}枚のスロットを使用中",
       "delete": {
-        "tooltip": "Delete Screenshot",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "スクリーンショットを削除",
+        "confirm": "本当にこのスクリーンショットを削除してよろしいですか？"
       }
     },
     "2kki": {
