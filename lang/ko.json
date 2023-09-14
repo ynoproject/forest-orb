@@ -112,8 +112,8 @@
           "musicVolume": "음악 볼륨",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
           "toggleEnableExplorer": {
-            "label": "Yume 2kki Navigator",
-            "helpText": "Yume 2kki Navigator는 현재 위치와 연결된 장소들을 한눈에 볼 수 있는 Yume 2kki Explorer와 연동된 기능입니다. 이 기능은 당신의 경험에 크게 영향을 미칠 수 있으므로 이 기능을 활성화하기 전 대부분의 장소를 탐색하는 것을 강력히 추천해 드립니다. Yume 2kki Navigator는 로그인 해야 사용할 수 있습니다."
+            "label": "유메2키 내비게이터",
+            "helpText": "유메2키 내비게이터는 현재 위치와 연결된 장소들을 한눈에 볼 수 있는 유메2키 익스플로러와 연동된 기능입니다. 이 기능은 당신의 경험에 크게 영향을 미칠 수 있으므로 이 기능을 활성화하기 전 대부분의 장소를 탐색하는 것을 강력히 추천해 드립니다. 유메2키 내비게이터는 로그인 해야 사용할 수 있습니다."
           },
           "toggleImmersionMode": {
             "label": "몰입 모드",
@@ -369,11 +369,11 @@
       },
       "screenshot": {
         "download": "다운로드",
-        "save": "Save to My Screenshots"
+        "save": "나의 스크린샷에 저장"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "나의 스크린샷",
+        "empty": "아직 스크린샷을 저장하지 않았습니다"
       },
       "rules": {
         "title": "규칙",
@@ -393,9 +393,9 @@
       "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
-      "toggleExplorer": "Yume 2kki Navigator 활성화",
+      "toggleExplorer": "유메2키 내비게이터 활성화",
       "screenshot": "스크린샷 찍기",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "나의 스크린샷",
       "settings": "옵션",
       "toggleMute": "음소거",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
@@ -764,16 +764,16 @@
       }
     },
     "screenshots": {
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "limit": "슬롯 {COUNT}/{LIMIT} 사용 중",
       "delete": {
-        "tooltip": "Delete Screenshot",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "스크린샷 삭제",
+        "confirm": "정말 이 스크린샷을 삭제하시겠습니까?"
       }
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Yume 2kki Explorer 열기",
-        "multi": "Yume 2kki Explorer 에서 {LOCATION} 보기"
+        "generic": "유메2키 익스플로러 열기",
+        "multi": "유메2키 익스플로러에서 {LOCATION} 보기"
       }
     },
     "modSettings": {
