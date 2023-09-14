@@ -241,6 +241,7 @@ function initScreenshotsModal(isCommunity) {
     if (communityScreenshotsScrollTimer) {
       clearInterval(communityScreenshotsScrollTimer);
       communityScreenshotsScrollTimer = null;
+      screenshotItemsList.onscroll = null;
     }
   }
 
