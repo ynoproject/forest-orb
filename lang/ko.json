@@ -141,9 +141,9 @@
         "title": "채팅 설정",
         "fields": {
           "toggleGameChat": {
-            "label": "인게임 채팅을 오버레이하여 표시",
-            "global": "글로벌 채팅을 오버레이하여 표시",
-            "party": "파티 채팅을 오버레이하여 표시"
+            "label": "인게임 채팅을 게임 화면 위에 표시",
+            "global": "글로벌 채팅을 게임 화면 위에 표시",
+            "party": "파티 채팅을 게임 화면 위에 표시"
           },
           "toggleTabToChat": "탭을 눌러 채팅하기",
           "togglePlayMentionSound": "멘션 알람 켜기",
@@ -368,12 +368,40 @@
         "title": "랭킹"
       },
       "screenshot": {
+        "title": "Your Screenshot",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },
       "myScreenshots": {
         "title": "나의 스크린샷",
         "empty": "아직 스크린샷을 저장하지 않았습니다"
+      },
+      "communityScreenshots": {
+        "title": "Community Screenshots",
+        "scrollToRefresh": "Scroll to Top to Refresh",
+        "fields": {
+          "game": {
+            "label": "Game:&nbsp;",
+            "values": {
+              "all": "All"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "recent": "Newest",
+              "likes": "Most Liked"
+            }
+          },
+          "interval": {
+            "values": {
+              "day": "Today",
+              "week": "This Week",
+              "month": "This Month",
+              "year": "This Year",
+              "all": "All Time"
+            }
+          }
+        }
       },
       "rules": {
         "title": "규칙",
@@ -400,9 +428,9 @@
       "toggleMute": "음소거",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
-        "toggleGlobalMessageLocations": "채팅 메세지 장소 보이기/숨기기",
-        "toggleOwnGlobalMessageLocation": "본인의 채팅 메세지 장소 보이기/숨기기",
-        "toggleMessageTimestamps": "채팅 메세지 타임 스탬프 보이기/숨기기",
+        "toggleGlobalMessageLocations": "채팅 메시지 장소 보이기/숨기기",
+        "toggleOwnGlobalMessageLocation": "본인의 채팅 메시지 장소 보이기/숨기기",
+        "toggleMessageTimestamps": "채팅 메시지 타임 스탬프 보이기/숨기기",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {
@@ -410,6 +438,7 @@
         "disbandParty": "파티 해산"
       },
       "events": "탐험",
+      "communityScreenshots": "Community Screenshots",
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
       "explorerUndiscoveredLocations": "미발견 장소 보기"
@@ -550,7 +579,7 @@
       }
     },
     "chat": {
-      "globalMessage": "글로벌 메세지"
+      "globalMessage": "글로벌 메시지"
     },
     "parties": {
       "emptyMessage": "활성화된 파티가 없습니다",
@@ -575,7 +604,7 @@
         "playersInMap": "채팅 칸 위에 있는 '~명이 온라인입니다.' 부분을 클릭하면 현재 자신이 위치하고 있는 맵에 몇 명의 플레이어가 있는지 알 수 있습니다.",
         "markdownSupport": "특수 문자를 이용해서 채팅 글씨의 모양을 바꿀 수 있습니다. 현재 가능한 목록 : **굵게** (\\*\\*예시\\*\\*), *기울임* (\\*예시\\*, \\_예시\\_), __밑줄__ (\\_\\_예시\\_\\_), ~~취소선~~ (\\~\\~예시\\~\\~), ||스포일러|| (\\|\\|예시\\|\\|).",
         "tabToChat": "PC로 플레이 할 경우, 탭(Tab) 키를 눌러서 인게임과 채팅 간의 조작을 전환할 수 있습니다. 이 기능은 설정의 '채팅'에서 '탭을 눌러 채팅하기'를 체크 해제하여 비활성화할 수 있습니다.",
-        "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메세지가 작성되면 탭이 굵게 표시됩니다.",
+        "chatTabNotifications": "'로컬' 이나 '글로벌' 채팅 탭을 선택했을 때, 다른 탭에서 새로운 메시지가 작성되면 탭이 굵게 표시됩니다.",
         "clearChat": "'채팅 기록 삭제하기' 버튼을 누르면 채팅 내역을 지울 수 있습니다. '전체' 탭이 아닌 다른 탭에서 삭제하였을 경우 해당 탭에 속해있는 채팅만 삭제됩니다.",
         "chatHistoryLimit": "채팅 내역이 너무 길다면 게임 플레이 시, 성능 상의 문제가 발생할 수 있습니다. 설정의 '채팅'에서 '채팅 내역 한도' 옵션을 이용한다면 수동으로 채팅 내역을 삭제할 필요 없이, 제한된 숫자 이상의 과거 채팅 이력이 자동적으로 삭제가 됩니다.",
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가입하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
@@ -644,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "스크린샷이 촬영되었습니다"
       },
       "saveSync": {
@@ -764,7 +793,27 @@
       }
     },
     "screenshots": {
+      "playerScreenshot": "{USER}'s Screenshot",
       "limit": "슬롯 {COUNT}/{LIMIT} 사용 중",
+      "public": {
+        "tooltip": {
+          "on": "Set Public",
+          "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
+        }
+      },
+      "like": {
+        "tooltip": {
+          "on": "Like",
+          "off": "Unlike"
+        }
+      },
       "delete": {
         "tooltip": "스크린샷 삭제",
         "confirm": "정말 이 스크린샷을 삭제하시겠습니까?"
