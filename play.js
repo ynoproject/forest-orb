@@ -148,6 +148,7 @@ function fetchAndUpdatePlayerInfo() {
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, jsonResponse.medals, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
+        screenshotLimit = jsonResponse.screenshotLimit || 10;
         updateBlocklist(false);
         if (isLogin) {
           initSessionWs()
@@ -230,6 +231,7 @@ function updateMapPlayerCount(count) {
 
 let playerName;
 let systemName;
+let modalUiTheme;
 
 setSystemName(getDefaultUiTheme());
 populateUiThemes();
@@ -510,10 +512,10 @@ function openModal(modalId, theme, lastModalId, modalData) {
   if (lastModalId) {
     if (modalContainer.dataset.lastModalId) {
       modalContainer.dataset.lastModalId = `${modalContainer.dataset.lastModalId},${lastModalId}`;
-      modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme},${theme || ''}`;
+      modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme},${modalUiTheme || ''}`;
     } else {
       modalContainer.dataset.lastModalId = lastModalId;
-      modalContainer.dataset.lastModalTheme = theme || '';
+      modalContainer.dataset.lastModalTheme = modalUiTheme || '';
     }
   } else if (modalContainer.dataset.lastModalId) {
     const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
@@ -527,7 +529,13 @@ function openModal(modalId, theme, lastModalId, modalData) {
   }
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId) {
+    const activeModalContent = activeModal.querySelector('.modalContent');
+    const contentScrollTop = activeModalContent?.scrollTop;
     document.getElementById('modalFadeOutContainer').appendChild(activeModal);
+    if (contentScrollTop) {
+      activeModalContent.scrollTop = contentScrollTop;
+      activeModalContent.dataset.scrollTop = contentScrollTop;
+    }
     activeModal.classList.add('fadeOut', 'hidden');
     setTimeout(() => {
       activeModal.classList.remove('fadeOut');
@@ -545,6 +553,12 @@ function openModal(modalId, theme, lastModalId, modalData) {
   }
   modal.classList.add('fadeIn');
   modal.classList.remove('hidden');
+
+  const modalContent = modal.querySelector('.modalContent');
+  if (modalContent.dataset.scrollTop) {
+    modalContent.scrollTop = Math.min(modalContent.dataset.scrollTop, modalContent.scrollHeight);
+    delete modalContent.dataset.scrollTop;
+  }
 
   setTimeout(() => {
     modalContainer.classList.remove('fadeIn');
@@ -1423,6 +1437,15 @@ function initLocalization(isInitial) {
         if (playerCount !== undefined)
           updatePlayerCount(playerCount);
       }
+
+      const gameSelects = Array.from(document.querySelectorAll('.gameSelect'));
+      gameSelects.forEach(select => {
+        Object.keys(localizedMessages.games).forEach(game => {
+          const matchingOption = select.querySelector(`option[value='${game}']`);
+          if (matchingOption)
+            matchingOption.innerText = localizedMessages.games[game];
+        });
+      });
 
       const initLocationsCallback = () => {
         fetchAndPopulateRankingCategories();

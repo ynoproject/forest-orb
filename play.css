@@ -218,6 +218,7 @@ body {
 
 .hidden {
   display: none !important;
+  content-visibility: hidden;
 }
 
 .unselectable {
@@ -272,6 +273,39 @@ body {
 .scrollableContainer {
   height: 100%;
   overflow-y: auto;
+}
+
+.infiniteScrollContainer {
+  transition: padding 0.5s ease-in-out;
+  padding-top: 0px;
+  scrollbar-gutter: stable;
+}
+
+.infiniteScrollContainer.scrollToRefresh {
+  padding-top: 16px;
+}
+
+.infiniteScrollContainer:not(.end) {
+  padding-bottom: 32px;
+}
+
+.infiniteScrollRefreshIndicator {
+  position: sticky;
+  background-color: rgba(var(--modal-shadow-color), 0.5);
+  margin-right: 16px;
+  margin-bottom: -32px;
+  padding: 8px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.infiniteScrollRefreshIndicator.transparent {
+  opacity: 0;
+}
+
+.infiniteScrollRefreshIndicator label {
+  padding: 4px;
 }
 
 .uiControls {
@@ -332,7 +366,7 @@ body {
   filter: var(--svg-shadow);
 }
 
-.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.toggleButton).toggled path, .iconButton button:not(.toggleButton).preToggled path, .iconButton.offToggleButton.toggled path:last-child, .iconButton.offToggleButton.preToggled path:last-child, .iconButton.onToggleButton:not(.toggled):not(.preToggled) path:last-child {
+.iconButton.altIcon path, .icon.altIcon path, .iconButton:not(.toggleButton).toggled path, .iconButton.altToggleButton.toggled path, .iconButton button:not(.toggleButton).preToggled path, .iconButton.offToggleButton.toggled path:last-child, .iconButton.offToggleButton.preToggled path:last-child, .iconButton.onToggleButton:not(.toggled):not(.preToggled) path:last-child {
   stroke: var(--svg-alt-gradient);
 }
 
@@ -367,7 +401,7 @@ body {
   fill: var(--svg-base-gradient);
 }
 
-.fillIcon.altIcon path {
+.fillIcon.altIcon path, .iconButton.fillIcon.altToggleButton.toggled path {
   fill: var(--svg-alt-gradient);
 }
 
@@ -404,6 +438,101 @@ body {
 .toastMessage > .screenshotThumbnail {
   display: block;
   margin: 0 auto 8px auto;
+}
+
+.screenshotItem {
+  width: 176px;
+  height: 176px;
+  opacity: 1;
+  transition: opacity 0.325s ease-in-out, transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5) !important;
+}
+
+.screenshotItem.hideContents {
+  opacity: 0;
+  content-visibility: hidden;
+}
+
+.screenshotControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 152px;
+  margin-top: -8px;
+  padding: 8px 4px 4px 4px;
+}
+
+.screenshotItem .screenshotThumbnailContainer {
+  display: inline;
+}
+
+.screenshotItem.spoiler .screenshotThumbnail {
+  filter: blur(2px);
+}
+
+.screenshotItem .spoilerLabel {
+  display: block;
+  margin: -69px 0 50px 0;
+  pointer-events: none;
+}
+
+.screenshotItem:not(.spoiler) .spoilerLabel {
+  display: none;
+  content-visibility: hidden;
+}
+
+.screenshotItem .screenshotThumbnailContainer, .screenshotItem > .screenshotControls {
+  border: 8px solid transparent !important;
+  border-image: var(--border-image-url) 4 repeat !important;
+}
+
+.screenshotItem > .screenshotControls {
+  background-color: rgb(var(--base-bg-color));
+  border-top: none !important;
+}
+
+.screenshot + .screenshotControls {
+  justify-content: space-around;
+  width: 240px;
+  padding: 0 32px;
+  background: linear-gradient(90deg, rgba(var(--modal-shadow-color), 0) 0%, rgba(var(--modal-shadow-color), 0.325) 12.5%, 87.5%, rgba(var(--modal-shadow-color), 0) 100%);
+  margin-top: -64px;
+}
+
+.screenshotControls .iconButton {
+  width: 24px;
+  margin: 2px 0 -2px 0;
+}
+
+.screenshot + .screenshotControls .iconButton {
+  width: 36px;
+}
+
+.screenshotControls .publicToggle:not(.toggled) {
+  opacity: 0.5;
+}
+
+.screenshotControls .publicToggle:not(.toggled) + .likeContainer, .screenshotControls .publicToggle:not(.toggled) + .likeContainer + .spoilerToggle {
+  display: none;
+  content-visibility: hidden;
+}
+
+.screenshotControls .likeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.screenshotControls .likeContainer > .likeCount {
+  margin-left: 8px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.screenshot + .screenshotControls .likeContainer > .likeCount {
+  font-size: x-large;
+}
+
+.screenshotItem > .nameTextContainer {
+  padding-top: 4px;
 }
 
 #fontStyle {
@@ -928,7 +1057,6 @@ body.fullBg #background {
 
 #gameChatContainer > .gameChatMessageContainer.fade {
   transition: opacity 1s ease-in-out;
-  
 }
 
 #gameChatContainer > .gameChatMessageContainer.fade, #gameChatContainer > .gameChatMessageContainer.expired {
@@ -1839,6 +1967,7 @@ body.fullBg #background {
 
 .modalContainer.hidden {
   opacity: 0;
+  content-visibility: hidden;
 }
 
 .modalContainer.hidden.fadeOut, #modalFadeOutContainer {
@@ -1978,6 +2107,10 @@ body.fullBg #background {
   height: 100%;
   overflow-y: auto;
   scrollbar-color: rgb(var(--modal-base-color)) rgb(var(--modal-base-bg-color));
+}
+
+.modalContent.noScroll {
+  overflow: hidden;
 }
 
 .modalContent::-webkit-scrollbar-track {

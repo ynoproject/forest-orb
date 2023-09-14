@@ -368,7 +368,40 @@
         "title": "排行榜"
       },
       "screenshot": {
-        "download": "下载"
+        "title": "Your Screenshot",
+        "download": "下载",
+        "save": "Save to My Screenshots"
+      },
+      "myScreenshots": {
+        "title": "My Screenshots",
+        "empty": "You haven't saved any screenshots yet."
+      },
+      "communityScreenshots": {
+        "title": "Community Screenshots",
+        "scrollToRefresh": "Scroll to Top to Refresh",
+        "fields": {
+          "game": {
+            "label": "Game:&nbsp;",
+            "values": {
+              "all": "All"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "recent": "Newest",
+              "likes": "Most Liked"
+            }
+          },
+          "interval": {
+            "values": {
+              "day": "Today",
+              "week": "This Week",
+              "month": "This Month",
+              "year": "This Year",
+              "all": "All Time"
+            }
+          }
+        }
       },
       "rules": {
         "title": "多人游戏守则",
@@ -390,6 +423,7 @@
       "toggleChat": "显示/隐藏聊天栏",
       "toggleExplorer": "显示/隐藏梦2记导航窗",
       "screenshot": "截屏",
+      "myScreenshots": "My Screenshots",
       "settings": "设置",
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
@@ -404,6 +438,7 @@
         "disbandParty": "解散队伍"
       },
       "events": "梦远征",
+      "communityScreenshots": "Community Screenshots",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地点"
@@ -755,6 +790,33 @@
         "rby": "红蓝黄 (小游戏 B)",
         "rby_ex": "红蓝黄 (小游戏 B) - EX模式",
         "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "playerScreenshot": "{USER}'s Screenshot",
+      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "public": {
+        "tooltip": {
+          "on": "Set Public",
+          "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
+        }
+      },
+      "like": {
+        "tooltip": {
+          "on": "Like",
+          "off": "Unlike"
+        }
+      },
+      "delete": {
+        "tooltip": "Delete",
+        "confirm": "Are you sure you want to delete this screenshot?"
       }
     },
     "2kki": {

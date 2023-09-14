@@ -34,8 +34,9 @@ const tippyConfig = {
 };
 
 const sessionIdKey = 'ynoproject_sessionId';
-const apiUrl = `https://connect.ynoproject.net/${ynoGameId}/api`;
-const adminApiUrl = `https://connect.ynoproject.net/${ynoGameId}/admin`;
+const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
+const apiUrl = `${serverUrl}/api`;
+const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
 Module = {
@@ -204,11 +205,13 @@ function apiFetch(path, isAdmin) {
   });
 }
 
-function apiPost(path, data) {
+function apiPost(path, data, contentType) {
+  if (!contentType)
+    contentType = 'application/json';
   return new Promise((resolve, reject) => {
     const headers = {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Accept': contentType,
+      'Content-Type': contentType
     };
     const sId = getCookie(sessionIdKey);
     if (sId)
