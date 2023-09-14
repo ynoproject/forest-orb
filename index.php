@@ -69,6 +69,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrollwatch@2.0.1/dist/ScrollWatch-2.0.1.min.js"></script>
 </head>
 <body>
   <div id="background"></div>
@@ -98,6 +99,9 @@
       </div>
       <div id="headerIconContainer" class="itemContainer smallItemContainer">
         <div id="badgeButton" class="badgeItem item accountRequired unselectable"></div>
+        <button id="communityScreenshotsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.communityScreenshots">
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 3.5h18v11.5h-1.5v-10h-16.5zm18 11.5v1.5h-18v-11.5h1.5v10zm-15.5-1v-1.5l2.75-3 2.25 1.5 3.75-3.75 4.25 3.25v3.5zm0-6.75a0.75 0.75 90 0 0 3 0 0.75 0.75 90 0 0-3 0z" /></svg>
+        </button>
         <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
         </button>
@@ -1055,7 +1059,11 @@
         </div>
         <div id="screenshotModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
-          <div class="modalContent"></div>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.screenshotModal.title">Your Screenshot</h1>
+            <h1 class="playerScreenshotModalTitle hidden"></h1>
+          </div>
+          <div class="modalContent noScroll"></div>
           <div class="modalFooter">
             <button class="downloadScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.download">Download</button>
             <button class="saveScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.save">Save to My Screenshots</button>
@@ -1066,11 +1074,45 @@
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.myScreenshots.title">My Screenshots</h1>
             <h3 id="myScreenshotsLimitLabel"></h3>
+            <span id="myScreenshotsEmptyLabel" class="infoLabel hidden" data-i18n="[html]modal.myScreenshots.empty">You haven't saved any screenshots yet.</span>
           </div>
           <div class="modalContent itemContainer">
           </div>
-          <div class="modalFooter">
-            <span id="myScreenshotsEmptyLabel" class="infoLabel hidden" data-i18n="[html]modal.myScreenshots.empty">You haven't saved any screenshots yet.</span>
+        </div>
+        <div id="communityScreenshotsModal" class="modal fullscreenModal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.communityScreenshots.title">Community Screenshots</h1>
+            <div id="communityScreenshotsControls" class="uiControls wrap">
+              <div class="uiControl">
+                <label for="communityScreenshotsGame" class="unselectable" data-i18n="[html]modal.communityScreenshots.fields.game.label">Game:&nbsp;</label>
+                <select id="communityScreenshotsGame" class="gameSelect">
+                  <option value="" data-i18n="[html]modal.communityScreenshots.fields.game.values.all">All</option>
+                </select>
+              </div>
+              <div class="uiControl">
+                <span></span>
+                <select id="communityScreenshotsSortOrder">
+                  <option value="recent" data-i18n="[html]modal.communityScreenshots.fields.sortOrder.values.recent">Newest</option>
+                  <option value="likes" data-i18n="[html]modal.communityScreenshots.fields.sortOrder.values.likes">Most Liked</option>
+                </select>
+              </div>
+              <div class="uiControl">
+                <span></span>
+                <select id="communityScreenshotsInterval">
+                  <option value="day" data-i18n="[html]modal.communityScreenshots.fields.interval.values.day">Today</option>
+                  <option value="week" data-i18n="[html]modal.communityScreenshots.fields.interval.values.week">This Week</option>
+                  <option value="month" data-i18n="[html]modal.communityScreenshots.fields.interval.values.month">This Month</option>
+                  <option value="year" data-i18n="[html]modal.communityScreenshots.fields.interval.values.year">This Year</option>
+                  <option value="" data-i18n="[html]modal.communityScreenshots.fields.interval.values.all">All Time</option>
+                </select>
+              </div>
+            </div>
+            <div class="infiniteScrollRefreshIndicator transparent unselectable">
+              <label class="infoLabel" data-i18n="[html]modal.communityScreenshots.scrollToRefresh">Scroll to Top to Refresh</label>
+            </div>
+          </div>
+          <div class="modalContent infiniteScrollContainer itemContainer">
           </div>
         </div>
         <div id="rulesModal" class="modal hidden">

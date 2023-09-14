@@ -368,12 +368,40 @@
         "title": "ランキング"
       },
       "screenshot": {
+        "title": "Your Screenshot",
         "download": "ダウンロード",
         "save": "マイスクリーンショットに保存する"
       },
       "myScreenshots": {
         "title": "マイスクリーンショット",
         "empty": "まだスクリーンショットを保存していません。"
+      },
+      "communityScreenshots": {
+        "title": "Community Screenshots",
+        "scrollToRefresh": "Scroll to Top to Refresh",
+        "fields": {
+          "game": {
+            "label": "Game:&nbsp;",
+            "values": {
+              "all": "All"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "recent": "Newest",
+              "likes": "Most Liked"
+            }
+          },
+          "interval": {
+            "values": {
+              "day": "Today",
+              "week": "This Week",
+              "month": "This Month",
+              "year": "This Year",
+              "all": "All Time"
+            }
+          }
+        }
       },
       "rules": {
         "title": "ルール",
@@ -410,6 +438,7 @@
         "disbandParty": "パーティーを解散する"
       },
       "events": "ドリームラリー",
+      "communityScreenshots": "Community Screenshots",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
       "explorerUndiscoveredLocations": "未発見の場所を見る"
@@ -644,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
@@ -764,7 +793,27 @@
       }
     },
     "screenshots": {
+      "playerScreenshot": "{USER}'s Screenshot",
       "limit": "{LIMIT}枚中{COUNT}枚のスロットを使用中",
+      "public": {
+        "tooltip": {
+          "on": "Set Public",
+          "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
+        }
+      },
+      "like": {
+        "tooltip": {
+          "on": "Like",
+          "off": "Unlike"
+        }
+      },
       "delete": {
         "tooltip": "スクリーンショットを削除",
         "confirm": "本当にこのスクリーンショットを削除してよろしいですか？"

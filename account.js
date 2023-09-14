@@ -50,7 +50,7 @@ function initAccountControls() {
       return false;
     }
     closeModal();
-    apiFetch('register', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
+    apiPost('register', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {
