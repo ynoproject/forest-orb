@@ -368,7 +368,7 @@
         "title": "ランキング"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "スクリーンショット",
         "download": "ダウンロード",
         "save": "マイスクリーンショットに保存する"
       },
@@ -377,28 +377,28 @@
         "empty": "まだスクリーンショットを保存していません。"
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "コミュニティのスクリーンショット",
+        "scrollToRefresh": "一番上にスクロールして更新",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "ゲーム:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "全て"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "新着順",
+              "likes": "いいねが多い順"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "今日",
+              "week": "今週",
+              "month": "今月",
+              "year": "今年",
+              "all": "全て"
             }
           }
         }
@@ -438,7 +438,7 @@
         "disbandParty": "パーティーを解散する"
       },
       "events": "ドリームラリー",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
       "explorerUndiscoveredLocations": "未発見の場所を見る"
@@ -793,29 +793,29 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
+      "playerScreenshot": "{USER}のスクリーンショット",
       "limit": "{LIMIT}枚中{COUNT}枚のスロットを使用中",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "公開する",
+          "off": "非公開にする"
         }
       },
       "spoiler": {
-        "label": "Spoiler",
+        "label": "ネタバレ",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "ネタバレに設定する",
+          "off": "ネタバレを解除する"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "いいね",
+          "off": "いいねを取り消す"
         }
       },
       "delete": {
-        "tooltip": "スクリーンショットを削除",
+        "tooltip": "削除",
         "confirm": "本当にこのスクリーンショットを削除してよろしいですか？"
       }
     },
