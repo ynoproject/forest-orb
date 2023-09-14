@@ -518,7 +518,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
         });
       });
     };
-    addTooltip(likeButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip[screenshot.spoiler ? 'off' : 'on'], true), true);
+    addTooltip(spoilerButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip[screenshot.spoiler ? 'off' : 'on'], true), true);
 
     const spoilerButtonOffIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     spoilerButtonOffIndicator.setAttribute('d', 'm-2 16l22-14');
