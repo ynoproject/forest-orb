@@ -268,11 +268,24 @@ function initScreenshotsModal(isCommunity) {
 
       const screenshotItem = document.createElement('div');
       screenshotItem.classList.add('screenshotItem', 'item', 'hideContents');
+      if (screenshot.spoiler)
+        screenshotItem.classList.add('spoiler');
+
+      const screenshotThumbnailContainer = document.createElement('div');
+      screenshotThumbnailContainer.classList.add('screenshotThumbnailContainer');
 
       const screenshotThumbnail = document.createElement('img');
       screenshotThumbnail.classList.add('screenshotThumbnail', 'unselectable');
       screenshotThumbnail.src = `${serverUrl}/screenshots/${uuid}/${screenshot.id}.png`;
       screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), screenshot, screenshotsModal.id);
+
+      screenshotThumbnailContainer.append(screenshotThumbnail);
+
+      const spoilerLabel = document.createElement('h3');
+      spoilerLabel.classList.add('spoilerLabel', 'infoLabel', 'unselectable');
+      spoilerLabel.innerHTML = getMassagedLabel(localizedMessages.screenshots.spoiler.label, true);
+
+      screenshotThumbnailContainer.appendChild(spoilerLabel);
 
       const screenshotControls = getScreenshotControls(isCommunity, screenshot, () => {
         screenshotItem.remove();
@@ -282,7 +295,7 @@ function initScreenshotsModal(isCommunity) {
           updateMyScreenshotsModalHeader(screenshotItemsList.childElementCount);
       });
 
-      screenshotItem.append(screenshotThumbnail);
+      screenshotItem.append(screenshotThumbnailContainer);
       screenshotItem.append(screenshotControls);
 
       if (isCommunity) {
@@ -456,7 +469,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
   likeContainer.classList.add('likeContainer');
 
   const likeButton = getSvgIcon('like');
-  likeButton.classList.add('iconButton', 'toggleButton');
+  likeButton.classList.add('iconButton', 'toggleButton', 'altToggleButton');
   if (screenshot.liked)
     likeButton.classList.add('toggled', 'fillIcon');
   likeButton.onclick = function () {
@@ -486,6 +499,34 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
   likeCountLabel.classList.add('likeCount', 'unselectable');
 
   if (!isCommunity || screenshot.owner.uuid === playerData.uuid || playerData.rank) {
+    const spoilerButton = getSvgIcon('visible');
+    spoilerButton.classList.add('iconButton', 'offToggleButton', 'spoilerToggle');
+    if (screenshot.spoiler)
+      spoilerButton.classList.add('toggled');
+    spoilerButton.onclick = function () {
+      const toggled = !this.classList.contains('toggled');
+      apiFetch(`screenshot?command=setSpoiler&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        screenshot.spoiler = toggled;
+        document.querySelectorAll(`.screenshotControls[data-screenshot-id='${screenshot.id}'] .spoilerToggle`).forEach(spoilerButton => {
+          spoilerButton.classList.toggle('toggled', toggled);
+          addTooltip(spoilerButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip[toggled ? 'off' : 'on'], true), true);
+          const prevEl = spoilerButton.parentElement.previousElementSibling;
+          if (prevEl && prevEl.classList.contains('screenshotThumbnailContainer'))
+            prevEl.parentElement.classList.toggle('spoiler', toggled);
+        });
+      });
+    };
+    addTooltip(likeButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip[screenshot.spoiler ? 'off' : 'on'], true), true);
+
+    const spoilerButtonOffIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    spoilerButtonOffIndicator.setAttribute('d', 'm-2 16l22-14');
+    
+    spoilerButton.querySelector('svg').appendChild(spoilerButtonOffIndicator);
+
+    screenshotControls.append(spoilerButton);
+
     const deleteButton = getSvgIcon('delete');
     deleteButton.classList.add('iconButton');
     deleteButton.onclick = () => {

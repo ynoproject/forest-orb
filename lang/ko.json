@@ -673,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "새로운 뱃지를 해금하였습니다!"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "스크린샷이 촬영되었습니다"
       },
       "saveSync": {
@@ -799,6 +799,13 @@
         "tooltip": {
           "on": "Set Public",
           "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
         }
       },
       "like": {

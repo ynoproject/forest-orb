@@ -673,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
@@ -799,6 +799,13 @@
         "tooltip": {
           "on": "Set Public",
           "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
         }
       },
       "like": {

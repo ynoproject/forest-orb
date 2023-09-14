@@ -673,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "Yeni bir başarım açtın!"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -799,6 +799,13 @@
         "tooltip": {
           "on": "Set Public",
           "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
         }
       },
       "like": {

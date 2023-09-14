@@ -673,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "Votre capture d'écran a été prise."
       },
       "saveSync": {
@@ -799,6 +799,13 @@
         "tooltip": {
           "on": "Set Public",
           "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
         }
       },
       "like": {

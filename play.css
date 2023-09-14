@@ -401,7 +401,7 @@ body {
   fill: var(--svg-base-gradient);
 }
 
-.fillIcon.altIcon path {
+.fillIcon.altIcon path, .iconButton.fillIcon.altToggleButton.toggled path {
   fill: var(--svg-alt-gradient);
 }
 
@@ -461,7 +461,26 @@ body {
   padding: 8px 4px 4px 4px;
 }
 
-.screenshotItem img, .screenshotItem > .screenshotControls {
+.screenshotItem .screenshotThumbnailContainer {
+  display: inline;
+}
+
+.screenshotItem.spoiler .screenshotThumbnail {
+  filter: blur(2px);
+}
+
+.screenshotItem .spoilerLabel {
+  display: block;
+  margin: -69px 0 50px 0;
+  pointer-events: none;
+}
+
+.screenshotItem:not(.spoiler) .spoilerLabel {
+  display: none;
+  content-visibility: hidden;
+}
+
+.screenshotItem .screenshotThumbnailContainer, .screenshotItem > .screenshotControls {
   border: 8px solid transparent !important;
   border-image: var(--border-image-url) 4 repeat !important;
 }
@@ -472,6 +491,7 @@ body {
 }
 
 .screenshot + .screenshotControls {
+  width: 240px;
   padding: 0 32px;
   background: linear-gradient(90deg, rgba(var(--modal-shadow-color), 0) 0%, rgba(var(--modal-shadow-color), 0.325) 12.5%, 87.5%, rgba(var(--modal-shadow-color), 0) 100%);
   margin-top: -64px;
@@ -490,7 +510,7 @@ body {
   opacity: 0.5;
 }
 
-.screenshotControls .publicToggle:not(.toggled) + .likeContainer {
+.screenshotControls .publicToggle:not(.toggled) + .likeContainer, .screenshotControls .publicToggle:not(.toggled) + .likeContainer + .spoilerToggle {
   display: none;
   content-visibility: hidden;
 }

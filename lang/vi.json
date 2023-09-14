@@ -673,7 +673,7 @@
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
-      "screenshots": {
+     "screenshots": {
         "screenshotTaken": "Đã chụp ảnh màn hình."
       },
       "saveSync": {
@@ -799,6 +799,13 @@
         "tooltip": {
           "on": "Set Public",
           "off": "Set Private"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Mark as Spoiler",
+          "off": "Remove Spoiler"
         }
       },
       "like": {
