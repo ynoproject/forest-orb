@@ -491,6 +491,7 @@ body {
 }
 
 .screenshot + .screenshotControls {
+  justify-content: space-around;
   width: 240px;
   padding: 0 32px;
   background: linear-gradient(90deg, rgba(var(--modal-shadow-color), 0) 0%, rgba(var(--modal-shadow-color), 0.325) 12.5%, 87.5%, rgba(var(--modal-shadow-color), 0) 100%);
