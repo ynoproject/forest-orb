@@ -424,7 +424,7 @@ let applyThemeStyles;
 
 {
   const themeStyleTemplate = `
-    .listEntry.theme{THEME}, .toast.theme{THEME} {
+    .listEntry.theme{THEME}, .screenshotItem.theme{THEME} .screenshotControls, .toast.theme{THEME} {
       background-image: var(--container-bg-image-url{THEME_PROP}) !important;
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
     }
@@ -480,7 +480,7 @@ let applyThemeStyles;
       background-image: var(--alt-gradient-b{THEME_PROP});
     }
     
-    .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div {
+    .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div, .screenshotItem.theme{THEME} > .screenshotThumbnail {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
     }
     
@@ -579,6 +579,8 @@ function setModalUiTheme(modalId, uiTheme, setData) {
         modalContainer.dataset.lastModalTheme = `${modalContainer.dataset.lastModalTheme.slice(0, lastModalThemeSeparatorIndex + 1)}${uiTheme || ''}`;
     }
   }
+  
+  modalUiTheme = uiTheme;
 }
 
 function setPartyUiTheme(uiTheme) {

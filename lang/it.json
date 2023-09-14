@@ -368,12 +368,40 @@
         "title": "Classifiche"
       },
       "screenshot": {
+        "title": "Your Screenshot",
         "download": "Download",
         "save": "Save to My Screenshots"
       },
       "myScreenshots": {
         "title": "My Screenshots",
         "empty": "You haven't saved any screenshots yet."
+      },
+      "communityScreenshots": {
+        "title": "Community Screenshots",
+        "scrollToRefresh": "Scroll to Top to Refresh",
+        "fields": {
+          "game": {
+            "label": "Game:&nbsp;",
+            "values": {
+              "all": "All"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "recent": "Newest",
+              "likes": "Most Liked"
+            }
+          },
+          "interval": {
+            "values": {
+              "day": "Today",
+              "week": "This Week",
+              "month": "This Month",
+              "year": "This Year",
+              "all": "All Time"
+            }
+          }
+        }
       },
       "rules": {
         "title": "Regole",
@@ -410,6 +438,7 @@
         "disbandParty": "Elimina Gruppo"
       },
       "events": "Spedizioni",
+      "communityScreenshots": "Community Screenshots",
       "rankings": "Classifiche",
       "nexus": "Ritorna al Nexus",
       "explorerUndiscoveredLocations": "View Undiscovered Locations"
@@ -764,9 +793,22 @@
       }
     },
     "screenshots": {
+      "playerScreenshot": "{USER}'s Screenshot",
       "limit": "{COUNT}/{LIMIT} Slots Used",
+      "public": {
+        "tooltip": {
+          "on": "Set Public",
+          "off": "Set Private"
+        }
+      },
+      "like": {
+        "tooltip": {
+          "on": "Like",
+          "off": "Unlike"
+        }
+      },
       "delete": {
-        "tooltip": "Delete Screenshot",
+        "tooltip": "Delete",
         "confirm": "Are you sure you want to delete this screenshot?"
       }
     },

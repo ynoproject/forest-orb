@@ -1,5 +1,11 @@
 let screenshotCount = 0;
 let screenshotLimit = 10;
+let communityScreenshotsGame = '';
+let communityScreenshotsSortOrder = 'recent';
+let communityScreenshotsInterval = 'day';
+let communityScreenshotsScrollTop = 0;
+let communityScreenshotsScrollTimer = null;
+let communityScreenshotsScrollWatch = null;
 
 function initScreenshotControls() {
   document.getElementById('autoDownloadScreenshotsButton').onclick = function () {
@@ -16,22 +22,62 @@ function initScreenshotControls() {
 
   document.getElementById('screenshotButton').onclick = () => takeScreenshot(0);
   document.getElementById('myScreenshotsButton').onclick = () => {
-    initMyScreenshotsModal();
+    initScreenshotsModal(false);
     openModal('myScreenshotsModal');
+  };
+  document.getElementById('communityScreenshotsButton').onclick = () => {
+    initScreenshotsModal(true);
+    openModal('communityScreenshotsModal');
+  };
+
+  const communityScreenshotsGameSelect = document.getElementById('communityScreenshotsGame');
+
+  apiFetch('screenshot?command=getScreenshotGames').then(response => {
+    if (!response.ok)
+      throw new Error(response.statusText);
+    return response.json();
+  }).then(screenshotGames => {
+    for (let gameId of gameIds) {
+      if (screenshotGames.indexOf(gameId) > -1) {
+        const gameOption = document.createElement('option');
+        gameOption.value = gameId;
+        communityScreenshotsGameSelect.append(gameOption);
+      }
+    }
+  });
+
+  communityScreenshotsGameSelect.onchange = function () {
+    communityScreenshotsGame = this.value;
+    initScreenshotsModal(true);
+  };
+  document.getElementById('communityScreenshotsSortOrder').onchange = function () {
+    communityScreenshotsSortOrder = this.value;
+    initScreenshotsModal(true);
+  };
+  document.getElementById('communityScreenshotsInterval').onchange = function () {
+    communityScreenshotsInterval = this.value;
+    initScreenshotsModal(true);
   };
 }
 
-function viewScreenshot(url, date, lastModal) {
+function viewScreenshot(url, date, screenshotData, lastModal) {
   const isRemote = url.startsWith(serverUrl);
 
   const screenshot = document.createElement('img');
-  screenshot.classList.add('screenshot');
+  screenshot.classList.add('screenshot', 'unselectable');
   screenshot.src = url;
 
   const screenshotModal = document.getElementById('screenshotModal');
   const screenshotModalContent = screenshotModal.querySelector('.modalContent');
   screenshotModalContent.innerHTML = '';
   screenshotModalContent.append(screenshot);
+
+  if (screenshotData)
+    screenshotModalContent.append(getScreenshotControls(screenshotData.hasOwnProperty('owner'), screenshotData, () => {
+      if (!screenshotData.owner)
+        initScreenshotsModal(false);
+      closeModal('screenshotModal');
+    }));
 
   const saveButton = screenshotModal.querySelector('.saveScreenshotButton');
 
@@ -46,11 +92,24 @@ function viewScreenshot(url, date, lastModal) {
     uploadScreenshot(url, date).then(success => {
       removeLoader(screenshotModal);
       if (success) {
-        initMyScreenshotsModal();
+        initScreenshotsModal(false);
         openModal('myScreenshotsModal');
       }
     });
   };
+
+  const modalTitle = screenshotModal.querySelector('.modalTitle');
+  const playerModalTitle = screenshotModal.querySelector('.playerScreenshotModalTitle');
+
+  if (!screenshotData?.owner?.uuid || screenshotData.owner.uuid === playerData.uuid) {
+    modalTitle.classList.remove('hidden');
+    playerModalTitle.classList.add('hidden');
+    playerModalTitle.innerHTML = '';
+  } else {
+    modalTitle.classList.add('hidden');
+    playerModalTitle.innerHTML = getMassagedLabel(localizedMessages.screenshots.playerScreenshot, true).replace('{USER}', screenshotData.owner.name);
+    playerModalTitle.classList.remove('hidden');
+  }
   
   openModal('screenshotModal', null, lastModal);
 }
@@ -129,7 +188,7 @@ function takeScreenshot(retryCount) {
 
 function uploadScreenshot(url) {
   return new Promise(resolve => {
-    apiPost('screenshot?command=uploadScreenshot', getScreenshotBinary(url), 'application/png')
+    apiPost('screenshot?command=upload', getScreenshotBinary(url), 'application/png')
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
@@ -165,67 +224,291 @@ function getScreenshotBinary(url) {
   return ret;
 }
 
-function initMyScreenshotsModal() {
-  const myScreenshotsModal = document.getElementById('myScreenshotsModal');
-  const screenshotItemsList = myScreenshotsModal.querySelector('.itemContainer');
+function updateMyScreenshotsModalHeader(screenshotCount) {
+  document.getElementById('myScreenshotsLimitLabel').innerHTML = getMassagedLabel(localizedMessages.screenshots.limit, true).replace('{COUNT}', screenshotCount).replace('{LIMIT}', screenshotLimit);
+  document.getElementById('myScreenshotsEmptyLabel').classList.toggle('hidden', !!screenshotCount);
+}
+
+function initScreenshotsModal(isCommunity) {
+  const screenshotsModal = document.getElementById(isCommunity ? 'communityScreenshotsModal' : 'myScreenshotsModal');
+  const scrollToRefreshIndicator = isCommunity ? screenshotsModal.querySelector('.infiniteScrollRefreshIndicator') : null;
+  const screenshotItemsList = screenshotsModal.querySelector('.itemContainer');
   screenshotItemsList.innerHTML = '';
+  if (isCommunity) {
+    scrollToRefreshIndicator.classList.add('transparent');
+    screenshotItemsList.classList.remove('scrollToRefresh');
+    screenshotItemsList.classList.remove('end');
+    if (communityScreenshotsScrollTimer) {
+      clearInterval(communityScreenshotsScrollTimer);
+      communityScreenshotsScrollTimer = null;
+    }
+  }
 
-  const limitLabel = document.getElementById('myScreenshotsLimitLabel');
-  const emptyLabel = document.getElementById('myScreenshotsEmptyLabel');
-  
-  addLoader(myScreenshotsModal);
+  let limitOffset = 0;
 
-  apiFetch('screenshot?command=getPlayerScreenshots').then(response => {
-    if (!response.ok)
-      throw new Error(response.statusText);
-    return response.json();
-  }).then(screenshots => {
-    removeLoader(myScreenshotsModal);
+  const contentWidth = window.innerWidth - 112 - 18;
+  const itemsPerRow = Math.floor(contentWidth / 220);
+  const chunkSize = itemsPerRow * 2;
 
-    screenshotCount = screenshots?.length || 0;
+  const addScreenshots = screenshots => {
+    if (!isCommunity) {
+      screenshotCount = screenshots?.length || 0;
+      updateMyScreenshotsModalHeader(screenshotCount);
+    }
 
-    limitLabel.innerHTML = getMassagedLabel(localizedMessages.screenshots.limit.replace('{COUNT}', screenshotCount).replace('{LIMIT}', screenshotLimit), true);
-    emptyLabel.classList.toggle('hidden', !!screenshotCount);
-
-    if (!screenshotCount)
+    if (!screenshots?.length)
       return;
 
     for (let screenshot of screenshots) {
+      const uuid = (isCommunity ? screenshot.owner : screenshot).uuid;
+      let screenshotSystemName = (isCommunity ? screenshot.owner : screenshot).systemName.replace(/'/g, '');
+      if (allGameUiThemes[screenshot.game].indexOf(screenshotSystemName) === -1)
+        screenshotSystemName = getDefaultUiTheme(screenshot.game);
+      const parsedSystemName = screenshotSystemName.replace(/ /g, '_');
+
       const screenshotItem = document.createElement('div');
-      screenshotItem.classList.add('screenshotItem', 'item');
+      screenshotItem.classList.add('screenshotItem', 'item', 'hideContents');
 
       const screenshotThumbnail = document.createElement('img');
-      screenshotThumbnail.classList.add('screenshotThumbnail');
-      screenshotThumbnail.src = `${serverUrl}/screenshots/${screenshot.uuid}/${screenshot.id}.png`;
-      screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), 'myScreenshotsModal');
+      screenshotThumbnail.classList.add('screenshotThumbnail', 'unselectable');
+      screenshotThumbnail.src = `${serverUrl}/screenshots/${uuid}/${screenshot.id}.png`;
+      screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), screenshot, screenshotsModal.id);
 
-      const screenshotControls = document.createElement('div');
-      screenshotControls.classList.add('screenshotControls');
-
-      const deleteButton = getSvgIcon('delete');
-      deleteButton.classList.add('iconButton');
-      deleteButton.onclick = () => {
-        if (!confirm(localizedMessages.screenshots.delete.confirm))
-          return;
-        
-        addLoader(myScreenshotsModal);
-
-        apiFetch(`screenshot?command=deleteScreenshot&id=${screenshot.id}`).then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          initMyScreenshotsModal();
-        });
-      };
-      addTooltip(deleteButton, getMassagedLabel(localizedMessages.screenshots.delete.tooltip, true), true);
-
-      screenshotControls.append(deleteButton);
+      const screenshotControls = getScreenshotControls(isCommunity, screenshot, () => {
+        screenshotItem.remove();
+        if (isCommunity)
+          limitOffset++;
+        else
+          updateMyScreenshotsModalHeader(screenshotItemsList.childElementCount);
+      });
 
       screenshotItem.append(screenshotThumbnail);
       screenshotItem.append(screenshotControls);
+
+      if (isCommunity) {
+        screenshotControls.insertAdjacentHTML('afterend', getPlayerName({ name: screenshot.owner.name, systemName: screenshotSystemName, rank: screenshot.owner.rank, account: true, badge: screenshot.owner.badge || 'null' }, false, true, true));
+
+        const playerName = screenshotItem.querySelector('.nameTextContainer');
+        const badgeEl = playerName.querySelector('.badge');
+        if (badgeEl) {
+          const badge = badgeCache.find(b => b.badgeId === screenshot.owner.badge);
+          const badgeGame = Object.keys(localizedBadges).find(game => {
+            return Object.keys(localizedBadges[game]).find(b => b === screenshot.owner.badge);
+          });
+          if (badgeGame) {
+            const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][screenshot.owner.badge].name, true), true, true);
+            if (!badge || badge.hidden)
+              badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+          }
+          if (screenshot.owner.name) {
+            if (badge?.overlayType & BadgeOverlayType.LOCATION)
+              handleBadgeOverlayLocationColorOverride(badgeEl.querySelector('.badgeOverlay'), badgeEl.querySelector('.badgeOverlay2'), null, screenshot.owner.name);
+            addOrUpdatePlayerBadgeGalleryTooltip(badgeEl, screenshot.owner.name, screenshotSystemName);
+            badgeEl.classList.toggle('badgeButton', screenshot.owner.name);
+          }
+        }
+      }
       
       screenshotItemsList.append(screenshotItem);
+
+      initUiThemeContainerStyles(screenshotSystemName, screenshot.game, false, () => {
+        initUiThemeFontStyles(screenshotSystemName, screenshot.game, 0, false, () => setTimeout(() => screenshotItem.classList.remove('hideContents'), 0));
+      });
+
+      applyThemeStyles(screenshotItem, parsedSystemName, screenshot.game);
+
+      updateThemedContainer(screenshotItem);
     }
-  });
+  };
+
+  if (isCommunity) {
+    const getFeedQuery = (offset, limit, offsetId) => {
+      let query = `screenshot?command=getScreenshotFeed&offset=${offset}&limit=${limit}`;
+      if (offsetId)
+        query += `&offsetId=${offsetId}`;
+      if (communityScreenshotsGame)
+        query += `&game=${communityScreenshotsGame}`;
+      if (communityScreenshotsSortOrder)
+        query += `&sortOrder=${communityScreenshotsSortOrder}`;
+      if (communityScreenshotsInterval)
+        query += `&interval=${communityScreenshotsInterval}`;
+      return query;
+    };
+
+    let offset = 0;
+    let offsetId;
+
+    if (communityScreenshotsScrollWatch)
+      communityScreenshotsScrollWatch.destroy();
+    communityScreenshotsScrollWatch = new ScrollWatch({
+      container: '#communityScreenshotsModal .modalContent',
+      watch: '.screenshotItem',
+      watchOnce: false,
+      infiniteScroll: true,
+      infiniteOffset: 32,
+      debounce: true,
+      scrollDebounce: 25,
+      resizeDebounce: 25,
+      watchOffsetYTop: 250,
+      watchOffsetYBottom: 250,
+      onElementInView: e => e.el.classList.remove('hideContents'),
+      onElementOutOfView: e => e.el.classList.add('hideContents'),
+      onInfiniteYInView: () => {
+        const query = getFeedQuery(offset, chunkSize + limitOffset, offsetId);
+        offset += chunkSize + limitOffset;
+        if (limitOffset)
+          limitOffset = 0;
+        apiFetch(query).then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.json();
+        }).then(screenshots => {
+          if (screenshots?.length) {
+            if (!offsetId) {
+              offsetId = screenshots[0].id;
+              removeLoader(screenshotsModal);
+            }
+            addScreenshots(screenshots);
+            communityScreenshotsScrollWatch.refresh();
+          } else {
+            if (!offsetId)
+              removeLoader(screenshotsModal);
+            communityScreenshotsScrollWatch.pauseInfiniteScroll();
+            screenshotItemsList.classList.add('end');
+          }
+        });
+      }
+    });
+
+    communityScreenshotsScrollTimer = setInterval(() => {
+      if (!offsetId)
+        return;
+      apiFetch(getFeedQuery(0, 1)).then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.json();
+      }).then(screenshots => {
+        if (screenshots?.length && screenshots[0].id !== offsetId) {
+          clearInterval(communityScreenshotsScrollTimer);
+          communityScreenshotsScrollTimer = null;
+
+          scrollToRefreshIndicator.classList.remove('transparent');
+          screenshotItemsList.classList.add('scrollToRefresh');
+          if (screenshotItemsList.scrollTop < 32) {
+            screenshotItemsList.scrollTo({
+              top: 32,
+              behavior: 'smooth'
+            });
+          }
+          setTimeout(() => {
+            screenshotItemsList.onscroll = e => {
+              if (e.target.scrollTop < 32) {
+                screenshotItemsList.onscroll = null;
+                setTimeout(() => initScreenshotsModal(true), 500);
+              }
+            };
+          }, 250);
+        }
+      });
+    }, 30000);
+  } else {
+    apiFetch('screenshot?command=getPlayerScreenshots').then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    }).then(screenshots => {
+      removeLoader(screenshotsModal);
+      addScreenshots(screenshots);
+    });
+  }
+  
+  addLoader(screenshotsModal);
+}
+
+function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
+  const screenshotControls = document.createElement('div');
+  screenshotControls.classList.add('screenshotControls');
+  screenshotControls.dataset.screenshotId = screenshot.id;
+
+  if (!isCommunity) {
+    const publicButton = getSvgIcon('playerLocation');
+    publicButton.classList.add('iconButton', 'toggleButton', 'altToggleButton', 'publicToggle');
+    if (screenshot.public)
+      publicButton.classList.add('toggled');
+    publicButton.onclick = function () {
+      const toggled = !this.classList.contains('toggled');
+      apiFetch(`screenshot?command=setPublic&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        screenshot.public = toggled;
+        document.querySelectorAll(`.screenshotControls[data-screenshot-id='${screenshot.id}'] .publicToggle`).forEach(publicButton => {
+          publicButton.classList.toggle('toggled', toggled);
+          addTooltip(publicButton, getMassagedLabel(localizedMessages.screenshots.public.tooltip[toggled ? 'off' : 'on'], true), true);
+        });
+      });
+    };
+    addTooltip(publicButton, getMassagedLabel(localizedMessages.screenshots.public.tooltip[screenshot.public ? 'off' : 'on'], true), true);
+
+    screenshotControls.append(publicButton);
+  }
+
+  const likeContainer = document.createElement('div');
+  likeContainer.classList.add('likeContainer');
+
+  const likeButton = getSvgIcon('like');
+  likeButton.classList.add('iconButton', 'toggleButton');
+  if (screenshot.liked)
+    likeButton.classList.add('toggled', 'fillIcon');
+  likeButton.onclick = function () {
+    const toggled = !this.classList.contains('toggled');
+    apiFetch(`screenshot?command=setLike&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      screenshot.liked = toggled;
+      screenshot.likeCount += (toggled ? 1 : -1);
+      document.querySelectorAll(`.screenshotControls[data-screenshot-id='${screenshot.id}'] .likeContainer`).forEach(likeContainer => {
+        const likeButton = likeContainer.querySelector('.toggleButton');
+        likeButton.classList.toggle('toggled');
+        likeButton.classList.toggle('fillIcon');
+        addTooltip(likeButton, getMassagedLabel(localizedMessages.screenshots.like.tooltip[toggled ? 'off' : 'on'], true), true);
+        likeContainer.querySelector('.infoLabel').innerText = screenshot.likeCount;
+      });
+    });
+  };
+  addTooltip(likeButton, getMassagedLabel(localizedMessages.screenshots.like.tooltip[screenshot.liked ? 'off' : 'on'], true), true);
+
+  likeContainer.append(likeButton);
+  screenshotControls.append(likeContainer);
+
+  likeButton.insertAdjacentHTML('afterend', getInfoLabel(screenshot.likeCount));
+
+  const likeCountLabel = likeContainer.querySelector('.infoLabel');
+  likeCountLabel.classList.add('likeCount', 'unselectable');
+
+  if (!isCommunity || screenshot.owner.uuid === playerData.uuid || playerData.rank) {
+    const deleteButton = getSvgIcon('delete');
+    deleteButton.classList.add('iconButton');
+    deleteButton.onclick = () => {
+      if (!confirm(localizedMessages.screenshots.delete.confirm))
+        return;
+
+      let query = `screenshot?command=delete&id=${screenshot.id}`;
+      if (isCommunity && screenshot.owner.uuid !== playerData.uuid)
+        query += `&uuid=${screenshot.owner.uuid}`;
+
+      apiFetch(query).then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        if (deleteCallback)
+          deleteCallback();
+      });
+    };
+    addTooltip(deleteButton, getMassagedLabel(localizedMessages.screenshots.delete.tooltip, true), true);
+
+    screenshotControls.append(deleteButton);
+  }
+
+  return screenshotControls;
 }
 
 function showScreenshotToastMessage(key, icon, iconFill, systemName, persist) {
