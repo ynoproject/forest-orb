@@ -129,7 +129,7 @@
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
-        "screenshotSettings": "Скриншоты",
+        "screenshotSettings": "Снимки",
         "notificationSettings": "Уведомления",
         "accountSettings": "Аккаунт"
       },
@@ -146,7 +146,7 @@
             "party": "Оверлей группового чата"
           },
           "toggleTabToChat": "Переключение в чат по Tab",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "Звук упоминания",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -171,7 +171,7 @@
         }
       },
       "screenshotSettings": {
-        "title": "Настройки скриншотов",
+        "title": "Настройки снимков",
         "fields": {
           "autoDownloadScreenshots": "Скачивать снимки экрана игры",
           "screenshotResolution": {
@@ -253,9 +253,9 @@
             }
           },
           "screenshots": {
-            "label": "Скриншоты",
+            "label": "Снимки",
             "fields": {
-              "screenshotTaken": "Снимок экрана сделан"
+              "screenshotTaken": "Снимок игры сделан"
             }
           },
           "saveSync": {
@@ -368,37 +368,37 @@
         "title": "Рейтинги"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "Ваш снимок",
         "download": "Скачать",
-        "save": "Save to My Screenshots"
+        "save": "Сохранить в Ваши снимки"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Ваши снимки",
+        "empty": "Вы ещё не сохранили ни одного снимка."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "Снимки сообщества",
+        "scrollToRefresh": "Прокрутите вверх чтобы Обновить",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Игра:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Все"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "Новейшие",
+              "likes": "Лучшие"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Сегодня",
+              "week": "Эта неделя",
+              "month": "Этот месяц",
+              "year": "Этот год",
+              "all": "Всё время"
             }
           }
         }
@@ -422,8 +422,8 @@
       "uiTheme": "Стиль интерфейса",
       "toggleChat": "Переключить чат",
       "toggleExplorer": "Переключить Навигатор Yume 2kki",
-      "screenshot": "Сделать скриншот",
-      "myScreenshots": "My Screenshots",
+      "screenshot": "Сделать снимок",
+      "myScreenshots": "Мои снимки",
       "settings": "Настройки",
       "toggleMute": "Переключить звук",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
@@ -438,7 +438,7 @@
         "disbandParty": "Распустить группу"
       },
       "events": "Походы",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
       "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации"
@@ -793,30 +793,30 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "Снимок от {USER}",
+      "limit": "Использованно слотов: {COUNT}/{LIMIT}",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Сделать публичным",
+          "off": "Сделать приватным"
         }
       },
       "spoiler": {
-        "label": "Spoiler",
+        "label": "Спойлер",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Пометить как спойлер",
+          "off": "Убрать отметку спойлера"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "Понравилось",
+          "off": "Не нравится"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Удалить",
+        "confirm": "Вы уверенны, что хотите удалить этот снимок?"
       }
     },
     "2kki": {
