@@ -2833,13 +2833,18 @@ form .uiTheme {
 }
 
 #screenshotModal .screenshot {
-  width: -moz-available;
   width: -webkit-fill-available;
   width: fill-available;
-  height: -moz-available;
   height: -webkit-fill-available;
   height: fill-available;
   object-fit: contain;
+}
+
+@supports (-moz-appearance:none) {
+  #screenshotModal .screenshot {
+    width: inherit;
+    height: inherit;
+  }
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
