@@ -81,7 +81,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 
   const saveButton = screenshotModal.querySelector('.saveScreenshotButton');
 
-  screenshotModal.querySelector('.downloadScreenshotButton').onclick = () => downloadScreenshot(url, date);
+  screenshotModal.querySelector('.downloadScreenshotButton').onclick = () => downloadScreenshot(url, date, screenshotData?.game);
 
   saveButton.classList.toggle('hidden', isRemote);
   saveButton.disabled = screenshotCount >= screenshotLimit ? 'disabled' : undefined;
@@ -114,10 +114,10 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   openModal('screenshotModal', null, lastModal);
 }
 
-function downloadScreenshot(url, date, resized) {
+function downloadScreenshot(url, date, gameId, resized) {
   if (url.startsWith(serverUrl)) {
     fetch(url).then(response => response.blob()).then(blob => {
-      downloadScreenshot(URL.createObjectURL(blob), date, true);
+      downloadScreenshot(URL.createObjectURL(blob), date, gameId, true);
     });
     return;
   }
@@ -137,7 +137,7 @@ function downloadScreenshot(url, date, resized) {
     const img = new Image(320, 240);
     img.onload = () => {
       scaleContext.drawImage(img, 0, 0, width, height);
-      downloadScreenshot(scaleCanvas.toDataURL(), date, true);
+      downloadScreenshot(scaleCanvas.toDataURL(), date, gameId, true);
     };
     img.src = url;
     return;
@@ -146,7 +146,7 @@ function downloadScreenshot(url, date, resized) {
   const a = document.createElement('a');
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
   a.href = url;
-  a.download = `ynoproject_${ynoGameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
+  a.download = `ynoproject_${gameId || ynoGameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
   a.click();
 }
 
