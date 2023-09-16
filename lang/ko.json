@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "유메2키 버전 {VERSION}",
@@ -368,7 +368,7 @@
         "title": "랭킹"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "나의 스크린샷",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },
@@ -377,28 +377,28 @@
         "empty": "아직 스크린샷을 저장하지 않았습니다"
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "커뮤니티 스크린샷",
+        "scrollToRefresh": "위쪽으로 스크롤하여 새로고침하기",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "게임명:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "전체"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "최신순",
+              "likes": "인기순"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "오늘",
+              "week": "이번주",
+              "month": "이번달",
+              "year": "올해",
+              "all": "전체"
             }
           }
         }
@@ -438,7 +438,7 @@
         "disbandParty": "파티 해산"
       },
       "events": "탐험",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
       "explorerUndiscoveredLocations": "미발견 장소 보기"
@@ -793,25 +793,25 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
+      "playerScreenshot": "{USER}님의 스크린샷",
       "limit": "슬롯 {COUNT}/{LIMIT} 사용 중",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "공개로 설정",
+          "off": "비공개로 설정"
         }
       },
       "spoiler": {
-        "label": "Spoiler",
+        "label": "스포일러",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "스포일러 표시",
+          "off": "스포일러 제거"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "좋아요",
+          "off": "싫어요"
         }
       },
       "delete": {
