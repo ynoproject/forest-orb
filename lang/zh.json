@@ -368,37 +368,37 @@
         "title": "排行榜"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "屏幕截图",
         "download": "下载",
-        "save": "Save to My Screenshots"
+        "save": "保存到我的截图"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "我的截图",
+        "empty": "您尚未保存任何截图。"
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "社区截图",
+        "scrollToRefresh": "滚动到顶部以刷新",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "游戏:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "全部"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "最新发布",
+              "likes": "最受欢迎"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "今日",
+              "week": "本周",
+              "month": "本月",
+              "year": "今年",
+              "all": "全部"
             }
           }
         }
@@ -423,7 +423,7 @@
       "toggleChat": "显示/隐藏聊天栏",
       "toggleExplorer": "显示/隐藏梦2记导航窗",
       "screenshot": "截屏",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "我的截图",
       "settings": "设置",
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
@@ -438,7 +438,7 @@
         "disbandParty": "解散队伍"
       },
       "events": "梦远征",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地点"
@@ -793,30 +793,30 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "{USER}的截图",
+      "limit": "已用槽位 {COUNT}/{LIMIT}",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "设为公开",
+          "off": "设为私密"
         }
       },
       "spoiler": {
-        "label": "Spoiler",
+        "label": "剧透",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "标记为剧透",
+          "off": "取消剧透标记"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "点赞",
+          "off": "取消点赞"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "删除",
+        "confirm": "您确定要删除该截图吗？"
       }
     },
     "2kki": {
