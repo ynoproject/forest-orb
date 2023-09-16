@@ -66,8 +66,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "はい",
+        "cancel": "キャンセル"
       },
       "login": {
         "title": "ログイン",
