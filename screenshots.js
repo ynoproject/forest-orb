@@ -531,18 +531,17 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
     const deleteButton = getSvgIcon('delete');
     deleteButton.classList.add('iconButton');
     deleteButton.onclick = () => {
-      if (!confirm(localizedMessages.screenshots.delete.confirm))
-        return;
+      showConfirmModal(localizedMessages.screenshots.delete.confirm, () => {
+        let query = `screenshot?command=delete&id=${screenshot.id}`;
+        if (isCommunity && screenshot.owner.uuid !== playerData.uuid)
+          query += `&uuid=${screenshot.owner.uuid}`;
 
-      let query = `screenshot?command=delete&id=${screenshot.id}`;
-      if (isCommunity && screenshot.owner.uuid !== playerData.uuid)
-        query += `&uuid=${screenshot.owner.uuid}`;
-
-      apiFetch(query).then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
-        if (deleteCallback)
-          deleteCallback();
+        apiFetch(query).then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          if (deleteCallback)
+            deleteCallback();
+        });
       });
     };
     addTooltip(deleteButton, getMassagedLabel(localizedMessages.screenshots.delete.tooltip, true), true);

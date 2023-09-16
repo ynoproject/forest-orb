@@ -65,6 +65,10 @@
       "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "로그인",
         "fields": {

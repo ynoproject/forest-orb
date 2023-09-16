@@ -371,89 +371,84 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
         if (blockedPlayerUuids.indexOf(uuid) > -1)
           return;
 
-        if (!confirm(localizedMessages.context.block.confirm.replace('{PLAYER}', playerName)))
-          return;
-
-        apiFetch(`blockplayer?uuid=${uuid}`)
-          .then(response => {
-            if (!response.ok)
-              throw new Error(response.statusText);
-            return response.text();
-          })
-          .then(_ => {
-            blockedPlayerUuids.push(uuid);
-            showPlayerToastMessage('blockPlayer', playerName, 'ban', true, systemName);
-            updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
-          })
-          .catch(err => console.error(err));
+        showConfirmModal(localizedMessages.context.block.confirm.replace('{PLAYER}', playerName), () => {
+          apiFetch(`blockplayer?uuid=${uuid}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => {
+              blockedPlayerUuids.push(uuid);
+              showPlayerToastMessage('blockPlayer', playerName, 'ban', true, systemName);
+              updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+            })
+            .catch(err => console.error(err));
+        });
       };
     } else {
       playerTooltip.popper.querySelector('.unblockPlayerAction').onclick = function() {
         if (blockedPlayerUuids.indexOf(uuid) === -1)
           return;
 
-        if (!confirm(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName)))
-          return;
-
-        apiFetch(`unblockplayer?uuid=${uuid}`)
-          .then(response => {
-            if(!response.ok)
-              throw new Error(response.statusText);
-            return response.text();
-          })
-          .then(_ => {
-            const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
-            if (blockedPlayerUuidIndex > -1)
-              blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
-            showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
-            updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
-          })
-          .catch(err => console.error(err));
+        showConfirmModal(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName), () => {
+          apiFetch(`unblockplayer?uuid=${uuid}`)
+            .then(response => {
+              if(!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => {
+              const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
+              if (blockedPlayerUuidIndex > -1)
+                blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
+              showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
+              updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+            })
+            .catch(err => console.error(err));
+          });
       };
     }
   }
 
   if (isMod) {
     playerTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
-      if (!confirm(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName)))
-        return;
-
-      apiFetch(`ban?uuid=${uuid}`, true)
-        .then(response => {
-          if (!response.ok)
-            throw new Error(response.statusText);
-          return response.text();
-        })
-        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
-        .catch(err => console.error(err));
+      showConfirmModal(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName), () => {
+        apiFetch(`ban?uuid=${uuid}`, true)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.ban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
+          .catch(err => console.error(err));
+        });
     };
 
     playerTooltip.popper.querySelector('.mutePlayerAction').onclick = function() {
-      if (!confirm(localizedMessages.context.admin.mute.confirm.replace('{PLAYER}', playerName)))
-        return;
-
-      apiFetch(`mute?uuid=${uuid}`, true)
-        .then(response => {
-          if(!response.ok)
-            throw new Error(response.statusText);
-          return response.text();
-        })
-        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.mute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
-        .catch(err => console.error(err));
+      showConfirmModal(localizedMessages.context.admin.mute.confirm.replace('{PLAYER}', playerName), () => {
+        apiFetch(`mute?uuid=${uuid}`, true)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.mute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+          .catch(err => console.error(err));
+        });
     };
 
     playerTooltip.popper.querySelector('.unmutePlayerAction').onclick = function() {
-      if (!confirm(localizedMessages.context.admin.unmute.confirm.replace('{PLAYER}', playerName)))
-        return;
-
-      apiFetch(`unmute?uuid=${uuid}`, true)
-        .then(response => {
-          if(!response.ok)
-            throw new Error(response.statusText);
-          return response.text();
-        })
-        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
-        .catch(err => console.error(err));
+      showConfirmModal(localizedMessages.context.admin.unmute.confirm.replace('{PLAYER}', playerName), () => {
+        apiFetch(`unmute?uuid=${uuid}`, true)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
+          .catch(err => console.error(err));
+        });
     };
 
     const badgeActions = playerTooltip.popper.querySelectorAll('.adminBadgeAction');

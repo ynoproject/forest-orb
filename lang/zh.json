@@ -65,6 +65,10 @@
       "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "登录",
         "fields": {

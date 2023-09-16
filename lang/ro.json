@@ -65,6 +65,10 @@
       "hostedWithPermission": "Găzduit cu permisiunea dezvoltatorilor Yume 2kki"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "Conectare",
         "fields": {

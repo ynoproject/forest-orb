@@ -65,6 +65,10 @@
       "hostedWithPermission": "Yume 2kki geliştirici"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "Giriş Yap",
         "fields": {

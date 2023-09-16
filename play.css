@@ -1966,11 +1966,14 @@ body.fullBg #background {
 }
 
 .modalContainer.hidden {
-  opacity: 0;
   content-visibility: hidden;
 }
 
-.modalContainer.hidden.fadeOut, #modalFadeOutContainer {
+.modalContainer.hidden, #confirmModalContainer.fadeOut {
+  opacity: 0;
+}
+
+.modalContainer.fadeOut, #modalFadeOutContainer, #confirmModalContainer.fadeOut {
   pointer-events: none;
 }
 
@@ -2325,6 +2328,10 @@ body.fullBg #background {
   height: 100%;
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
+}
+
+.confirmModal {
+  padding: 0;
 }
 
 .formControls {

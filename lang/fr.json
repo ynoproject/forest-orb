@@ -65,6 +65,10 @@
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "Se Connecter",
         "fields": {

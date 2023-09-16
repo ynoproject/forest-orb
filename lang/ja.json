@@ -65,6 +65,10 @@
       "hostedWithPermission": "ゆめ２っきの 開発者の 許可を 得て 掲載しています"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "ログイン",
         "fields": {

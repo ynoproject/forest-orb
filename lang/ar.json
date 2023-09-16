@@ -65,6 +65,10 @@
       "hostedWithPermission": "Yume 2kki استضافت بإذن من مطورين"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "تسجيل الدخول",
         "fields": {

@@ -527,7 +527,7 @@ function openModal(modalId, theme, lastModalId, modalData) {
       modalContainer.dataset.lastModalTheme = modalContainer.dataset.lastModalTheme.slice(0, modalContainer.dataset.lastModalTheme.lastIndexOf(','));
     }
   }
-  const activeModal = document.querySelector('.modal:not(.hidden)');
+  const activeModal = document.querySelector('#modalContainer .modal:not(.hidden)');
   if (activeModal && activeModal.id !== modalId) {
     const activeModalContent = activeModal.querySelector('.modalContent');
     const contentScrollTop = activeModalContent?.scrollTop;
@@ -596,10 +596,52 @@ function closeModal() {
 }
 
 {
-  const modalCloseButtons = document.querySelectorAll('.modalClose');
+  const modalCloseButtons = document.querySelectorAll('#modalContainer .modalClose');
   for (let button of modalCloseButtons)
     button.onclick = closeModal;
-  document.querySelector('.modalOverlay').onclick = closeModal;
+  document.querySelector('#modalContainer .modalOverlay').onclick = closeModal;
+}
+
+function showConfirmModal(message, okCallback, cancelCallback) {
+  const modalContainer = document.getElementById('confirmModalContainer');
+  modalContainer.classList.remove('fadeOut', 'hidden');
+  modalContainer.classList.add('fadeIn');
+
+  const modal = document.getElementById('confirmModal');
+
+  modal.querySelector('.confirmMessage').innerHTML = getMassagedLabel(message, true);
+
+  modal.querySelector('.confirmOkButton').onclick = () => closeConfirmModal(okCallback);
+  modal.querySelector('.confirmCancelButton').onclick = () => closeConfirmModal(cancelCallback);
+
+  modal.classList.add('fadeIn');
+  modal.classList.remove('hidden');
+
+  modal.querySelector('.modalClose').onclick = () => closeConfirmModal(cancelCallback);
+  modalContainer.querySelector('.modalOverlay').onclick = () => closeConfirmModal(cancelCallback);
+
+  setTimeout(() => {
+    modalContainer.classList.remove('fadeIn');
+    modal.classList.remove('fadeIn');
+  }, 245);
+}
+
+function closeConfirmModal(callback) {
+  const modalContainer = document.getElementById('confirmModalContainer');
+  const modal = document.getElementById('confirmModal');
+
+  modalContainer.classList.add('fadeOut');
+  modal.classList.add('fadeOut');
+
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    modal.classList.remove('fadeOut');
+    modalContainer.classList.add('hidden');
+    modalContainer.classList.remove('fadeOut');
+  }, 245);
+
+  if (callback)
+    callback();
 }
 
 document.getElementById('enterNameForm').onsubmit = function () {

@@ -1530,6 +1530,21 @@
         <div class="modalOverlay"></div>
       </div>
       <div id="modalFadeOutContainer" class="modalContainer"></div>
+      <div id="confirmModalContainer" class="confirmModalContainer modalContainer hidden">
+        <div id="confirmModal" class="confirmModal modal">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalContent">
+            <div>
+              <label class="confirmMessage infoLabel"></label>
+            </div>
+          </div>
+          <div class="modalFooter">
+            <button class="confirmOkButton unselectable" type="button" data-i18n="[html]modal.confirm.ok">Ok</button>
+            <button class="confirmCancelButton unselectable" type="button" data-i18n="[html]modal.confirm.cancel">Cancel</button>
+          </div>
+        </div>
+        <div class="modalOverlay"></div>
+      </div>
       <div id="toastContainer"></div>
     </div>
     <div id="layoutEnd"></div>

@@ -65,6 +65,10 @@
       "hostedWithPermission": "Đã được sự cho phép của các tác giả Yume 2kki"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "Đăng Nhập",
         "fields": {

@@ -65,6 +65,10 @@
       "hostedWithPermission": "Mit der Erlaubnis der Yume 2kki Entwickler gehostet"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Cancel"
+      },
       "login": {
         "title": "Log In",
         "fields": {

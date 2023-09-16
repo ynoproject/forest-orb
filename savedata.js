@@ -258,20 +258,22 @@ function downloadSaveFile(saveSlot) {
 
 function deleteSaveFile(saveSlot) {
   return new Promise(resolve => {
-    if (!saveSlot || !confirm(localizedMessages.save.delete.confirmDelete.replace('{SLOT_ID}', parseInt(saveSlot))))
+    if (!saveSlot)
       return resolve(false);
 
-    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+    showConfirmModal(localizedMessages.save.delete.confirmDelete.replace('{SLOT_ID}', parseInt(saveSlot)), () => {
+      const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
-    request.onsuccess = function (_e) {
-      const db = request.result; 
-      const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-      const objectStoreDeleteRequest = transaction.objectStore('FILE_DATA').delete(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
+      request.onsuccess = function (_e) {
+        const db = request.result; 
+        const transaction = db.transaction(['FILE_DATA'], 'readwrite');
+        const objectStoreDeleteRequest = transaction.objectStore('FILE_DATA').delete(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
 
-      objectStoreDeleteRequest.onsuccess = () => resolve(true);
-      objectStoreDeleteRequest.onerror = () => resolve(false);
-    };
-    request.onerror = () => resolve(false);
+        objectStoreDeleteRequest.onsuccess = () => resolve(true);
+        objectStoreDeleteRequest.onerror = () => resolve(false);
+      };
+      request.onerror = () => resolve(false);
+    }, () => resolve(false));
   });
 }
 
@@ -317,7 +319,7 @@ function setSaveSyncEnabled(enabled, isInit) {
     }
   };
   if (!isInit && !saveSyncButton.classList.contains('toggled')) {
-    if (confirm(localizedMessages.saveSync.confirmEnable)) {
+    showConfirmModal(localizedMessages.saveSync.confirmEnable, () => {
       apiFetch('saveSync?command=timestamp')
         .then(response => {
           if (!response.ok)
@@ -325,11 +327,13 @@ function setSaveSyncEnabled(enabled, isInit) {
           return response.text();
         })
         .then(timestamp => {
-          if (!timestamp || confirm(localizedMessages.saveSync.confirmEnableWithData))
+          if (!timestamp)
             toggle();
+          else
+            showConfirmModal(localizedMessages.saveSync.confirmEnableWithData, toggle);
         })
         .catch(err => console.error(err));
-    }
+    });
   } else
     toggle();
 }
