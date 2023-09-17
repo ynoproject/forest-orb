@@ -466,6 +466,11 @@ body {
 }
 
 .screenshotItem.spoiler .screenshotThumbnail {
+  filter: blur(8px);
+  transition: filter 0.25s ease-in-out;
+}
+
+.screenshotItem.spoiler:hover .screenshotThumbnail {
   filter: blur(2px);
 }
 
