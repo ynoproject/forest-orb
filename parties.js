@@ -186,6 +186,10 @@ function setJoinedPartyId(partyId) {
     setPlayersTab(partyId ? document.getElementById('playersTabParty') : document.getElementById('playersTabMap'));
   if (!partyId)
     partyId = null;
+  if (config.privateMode && partyId !== joinedPartyId) {
+    sendSessionCommand('pr', [ 0 ]);
+    sendSessionCommand('pr', [ 1 ]);
+  }
   joinedPartyId = partyId;
   if (partyId)
     updateJoinedParty(() => content.classList.toggle('partyOwner', playerData?.uuid === joinedPartyCache.ownerUuid));

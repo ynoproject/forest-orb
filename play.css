@@ -388,7 +388,7 @@ body {
   opacity: 0.5;
 }
 
-.iconButton.toggleButton path:last-child {
+.iconButton.toggleButton:not(.transparentToggleButton) path:last-child {
   stroke-width: 1.5;
 }
 
