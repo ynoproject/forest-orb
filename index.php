@@ -1532,7 +1532,7 @@
       </div>
       <div id="modalFadeOutContainer" class="modalContainer"></div>
       <div id="confirmModalContainer" class="confirmModalContainer modalContainer hidden">
-        <div id="confirmModal" class="confirmModal modal">
+        <div id="confirmModal" class="confirmModal modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalContent">
             <div>
