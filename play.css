@@ -2010,6 +2010,7 @@ body.fullBg #background {
   animation-name: modalFade;
   animation-duration: 0.25s;
   animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
 }
 
 .modal.fadeOut {

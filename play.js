@@ -536,8 +536,9 @@ function openModal(modalId, theme, lastModalId, modalData) {
       activeModalContent.scrollTop = contentScrollTop;
       activeModalContent.dataset.scrollTop = contentScrollTop;
     }
-    activeModal.classList.add('fadeOut', 'hidden');
+    activeModal.classList.add('fadeOut');
     setTimeout(() => {
+      activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
     }, 245);
@@ -578,8 +579,9 @@ function closeModal() {
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal) {
     modalFadeOutContainer.appendChild(activeModal);
-    activeModal.classList.add('fadeOut', 'hidden');
+    activeModal.classList.add('fadeOut');
     setTimeout(() => {
+      activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
     }, 245);
