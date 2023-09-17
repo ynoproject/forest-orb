@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "وضع لاعب واحد",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "إدارة حفظ البيانات",
       "uiTheme": "تصميم واجهة المستخدم",
       "toggleChat": "وضع المحادثة",
@@ -473,7 +473,7 @@
       "0": "غير متصل",
       "1": "متصل",
       "2": "...محاولة الاتصال",
-      "3": "لاعب واحد"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

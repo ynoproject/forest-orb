@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Переключить режим одиночной игры",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Управление данными сохранений",
       "uiTheme": "Стиль интерфейса",
       "toggleChat": "Переключить чат",
@@ -473,7 +473,7 @@
       "0": "Вне сети",
       "1": "В сети",
       "2": "Соединение...",
-      "3": "Одиночная игра"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

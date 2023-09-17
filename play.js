@@ -48,7 +48,7 @@ let globalConfig = {
 };
 
 let config = {
-  singlePlayer: false,
+  privateMode: false,
   disableChat: false,
   mute: false,
   nametagMode: 1,
@@ -86,15 +86,15 @@ let connStatus;
 
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
-  if (config.singlePlayer && (status !== 3 || connStatus === 3))
-    return;
+  if (status === 1 && config.privateMode)
+    status = 3;
 
   const updateStatusText = function () {
     const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
     connStatusIcon.classList.toggle('connecting', status === 2);
     connStatusIcon.classList.toggle('connected', status === 1);
-    connStatusIcon.classList.toggle('singlePlayer', status === 3);
+    connStatusIcon.classList.toggle('privateMode', status === 3);
     if (localizedMessages)
       connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
     connStatusText.classList.toggle('altText', !status);
@@ -150,10 +150,17 @@ function fetchAndUpdatePlayerInfo() {
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         screenshotLimit = jsonResponse.screenshotLimit || 10;
         updateBlocklist(false);
+        const updateParty = () => {
+          if (document.querySelector('#chatboxTabParties.active'))
+            updatePartyList(true);
+          else
+            fetchAndUpdateJoinedPartyId();
+        };
         if (isLogin) {
           initSessionWs()
             .then(() => {
               trySetChatName(playerName);
+              updateParty();
               showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
               updateBadges(() => {
                 updateBadgeButton();
@@ -170,6 +177,7 @@ function fetchAndUpdatePlayerInfo() {
           initSessionWs()
             .then(() => {
               trySetChatName('');
+              updateParty();
               if (isLogout) {
                 showAccountToastMessage('loggedOut', 'leave');
                 document.getElementById('content').classList.remove('loggedIn');
@@ -177,10 +185,6 @@ function fetchAndUpdatePlayerInfo() {
               }
             });
         }
-        if (document.querySelector('#chatboxTabParties.active'))
-          updatePartyList(true);
-        else
-          fetchAndUpdateJoinedPartyId();
       } else if (isLogin) {
         setCookie(sessionIdKey, '');
         fetchAndUpdatePlayerInfo();
@@ -606,10 +610,16 @@ function closeModal() {
 
 function showConfirmModal(message, okCallback, cancelCallback) {
   const modalContainer = document.getElementById('confirmModalContainer');
-  modalContainer.classList.remove('fadeOut', 'hidden');
-  modalContainer.classList.add('fadeIn');
 
   const modal = document.getElementById('confirmModal');
+  
+  if (!modal.classList.contains('hidden')) {
+    setTimeout(() => showConfirmModal(message, okCallback, cancelCallback), 245);
+    return;
+  }
+
+  modalContainer.classList.remove('fadeOut', 'hidden');
+  modalContainer.classList.add('fadeIn');
 
   modal.querySelector('.confirmMessage').innerHTML = getMassagedLabel(message, true);
 
@@ -699,23 +709,25 @@ document.getElementById('enterNameForm').onsubmit = function () {
   document.getElementById('chatboxContainer').onmouseleave = function () { document.getElementById('ynomojiContainer').classList.add('hidden'); };
 }
 
-document.getElementById('singlePlayerButton').onclick = function () {
+document.getElementById('privateModeButton').onclick = function () {
+  if (!sessionWs)
+    return;
+
   this.classList.toggle('toggled');
-  document.getElementById('layout').classList.toggle('singlePlayer', this.classList.contains('toggled'));
-  config.singlePlayer = this.classList.contains('toggled');
+  document.getElementById('layout').classList.toggle('privateMode', this.classList.contains('toggled'));
+  config.privateMode = this.classList.contains('toggled');
   updateConfig(config);
 
-  if (config.singlePlayer) {
-    closeSessionWs();
-    onUpdateConnectionStatus(3);
-  } else
-    initSessionWs();
+  sendSessionCommand('pr', [ config.privateMode ? 1 : 0 ]);
+
+  if (connStatus == 1 || connStatus == 3)
+    onUpdateConnectionStatus(config.privateMode ? 3 : 1);
 };
 
 let reconnectCooldownTimer;
 
 document.getElementById('reconnectButton').onclick = function () {
-  if (reconnectCooldownTimer || connStatus >= 2)
+  if (reconnectCooldownTimer || connStatus == 2)
     return;
 
   this.classList.add('active', 'disabled');
@@ -1054,6 +1066,8 @@ if (gameId === '2kki') {
 
 Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
   pc.onclick = function () {
+    if (config.privateMode)
+      return;
     const playerCountLabels = document.querySelectorAll('.playerCountLabel');
     for (let pcl of playerCountLabels)
       pcl.classList.toggle('hidden');

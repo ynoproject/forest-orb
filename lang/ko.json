@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "싱글 플레이 모드로 전환하기",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
@@ -473,7 +473,7 @@
       "0": "연결 끊김",
       "1": "연결됨",
       "2": "연결 중...",
-      "3": "싱글 플레이"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION} ({LOCATION_EN})",

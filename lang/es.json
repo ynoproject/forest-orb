@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Alternar Modo Solitario",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Gestionar Datos de Guardado",
       "uiTheme": "Tema de Inferfaz",
       "toggleChat": "Alternar Chat",
@@ -473,7 +473,7 @@
       "0": "Desconectado",
       "1": "Conectado",
       "2": "Conectando...",
-      "3": "Modo Solitario"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

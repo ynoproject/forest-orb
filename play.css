@@ -370,6 +370,10 @@ body {
   stroke: var(--svg-alt-gradient);
 }
 
+.iconButton.transparentToggleButton.toggled path:first-child {
+  opacity: 0.5;
+}
+
 .iconLink {
   display: inline-block;
   filter: none !important;
@@ -929,10 +933,6 @@ body.fullBg #background {
   opacity: 0;
 }
 
-#layout.singlePlayer .multiplayerOnly {
-  display: none !important;
-}
-
 #explorerControls, #mapControls {
   display: flex;
 }
@@ -1189,7 +1189,7 @@ body.fullBg #background {
   background-image: linear-gradient(#00b33c, #00802b);
 }
 
-#connStatusIcon.singlePlayer {
+#connStatusIcon.privateMode {
   background-image: linear-gradient(#595959, #404040);
 }
 

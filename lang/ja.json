@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "シングルプレイヤーのオン／オフ",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "セーブデータ管理",
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
@@ -473,7 +473,7 @@
       "0": "接続なし",
       "1": "接続済み",
       "2": "接続中…",
-      "3": "シングルプレイヤー"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",

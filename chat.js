@@ -401,10 +401,7 @@ function chatInputActionFired() {
   if (!htmlTextEl.innerText.trim().length)
     return;
   const partyChat = document.getElementById("chatbox").classList.contains("partyChat");
-  if (loginToken && (chatInput.dataset.global || partyChat)) {
-    if (connStatus === 3)
-      return;
-  } else if (connStatus !== 1)
+  if (!chatInput.dataset.global && !partyChat && (connStatus != 1 && connStatus != 3))
     return;
   if (chatInput.dataset.global && chatInput.dataset.blockGlobal)
     return;

@@ -610,9 +610,9 @@ function loadOrInitConfig(configObj, global, configName) {
                 }
               } else {
                 switch (key) {
-                  case 'singlePlayer':
+                  case 'privateMode':
                     if (value)
-                      document.getElementById('singlePlayerButton').click();
+                      preToggle(document.getElementById('privateModeButton'));
                     break;
                   case 'disableChat':
                     if (value)

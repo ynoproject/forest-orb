@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "单人/多人模式切换",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "存档数据管理",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
@@ -473,7 +473,7 @@
       "0": "已断开",
       "1": "已连接",
       "2": "连接中",
-      "3": "单人模式"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}（{LOCATION_EN}）",

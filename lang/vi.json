@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Bật/Tắt Chế độ Chơi đơn",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Quản lý Dữ liệu lưu",
       "uiTheme": "Phông nền",
       "toggleChat": "Bật/Tắt Chat",
@@ -473,7 +473,7 @@
       "0": "Không có kết nối",
       "1": "Đã kết nối",
       "2": "Đang kết nối...",
-      "3": "Chế độ Chơi đơn"
+      "3": "Private Mode"
     },
 	  "location": {	
       "template": "{LOCATION}",	

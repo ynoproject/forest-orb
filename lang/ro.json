@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Comută la Single Player",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Gestionează Datele Salvate",
       "uiTheme": "Tema UI",
       "toggleChat": "Comută Chat-ul",
@@ -473,7 +473,7 @@
       "0": "Deconectat",
       "1": "Conectat",
       "2": "Se conectează...",
-      "3": "Single Player"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

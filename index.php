@@ -117,8 +117,8 @@
               <defs id="svgDefs"></defs>
             </svg>
             <div id="leftControls">
-              <button id="singlePlayerButton" class="iconButton toggleButton offToggleButton unselectable" data-i18n="[title]tooltips.toggleSinglePlayer">
-                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m9 15.5a1 1 0 0 0 0-3 1 1 0 0 0 0 3m-4-4q4-4 8 0m-10.5-3q6.5-5 13 0m-15.5-3q9-7 18 0" /><path d="m-2 16l22-14" /></svg>
+              <button id="privateModeButton" class="iconButton toggleButton altToggleButton transparentToggleButton unselectable" data-i18n="[title]tooltips.togglePrivateMode">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m5 0a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7 0.375 0 0.5 0 1.25 0.125-0.25 1.625 1.25 3.125 2.5 3.125q0.125 0.25 0.125 0.5c-1.75 0-3.625 1-3.875 4.125q-2.375 0-4-0.875m12-13a1 1 90 0 1 0 5 1 1 90 0 1 0-5m4 13c0-5-1-7-4-7-0.375 0-0.5 0-1.25 0.125 0.25 1.625-1.25 3.125-2.5 3.125q-0.125 0.25-0.125 0.5c1.75 0 3.625 1 3.875 4.125q2.375 0 4-0.875" /><path d="m9 4a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7s4 2 4 7q-4 2-8 0" /></svg>
               </button><button id="saveButton" class="iconButton unselectable" data-i18n="[title]tooltips.save">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 1.5q0-1.5 1.5-1.5h11.25l2.25 2.25v12.75q0 1.5-1.5 1.5h-12q-1.5 0-1.5-1.5v-13.5m4.5-1.5v3.75q0 0.75 0.75 0.75h4.5q0.75 0 0.75-0.75v-3.75m-1.75 1v2.5h0.75v-2.5h-0.75m-5.75 15.5v-6.75q0-0.75 0.75-0.75h7.5q0.75 0 0.75 0.75v6.75m-7.5-6h6m-6 2.25h6m-6 2.25h6" /></svg>
               </button><button id="uiThemeButton" class="iconButton unselectable" data-i18n="[title]tooltips.uiTheme">
@@ -142,7 +142,7 @@
               <?php if ($gameId == "2kki"): ?>
                 <div id="explorerControls"></div>
               <?php endif ?>
-              <div id="eventControls" class="multiplayerOnly accountRequired" style="display: none">
+              <div id="eventControls" class="accountRequired" style="display: none">
                 <button id="eventsButton" class="iconButton unselectable" data-i18n="[title]tooltips.events">
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
                 </button>
@@ -216,13 +216,13 @@
             <div id="onlineInfo" class="info hidden">
               <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
               <label id="connStatusText" class="infoText">Disconnected</label>
-              <a id="reconnectButton" href="javascript:void(0);" class="reconnectLink iconLink multiplayerOnly unselectable" data-i18n="[title]chatbox.reconnect">
+              <a id="reconnectButton" href="javascript:void(0);" class="reconnectLink iconLink unselectable" data-i18n="[title]chatbox.reconnect">
                 <div class="reconnectIcon icon fillIcon altIcon">
                   <svg viewBox="0 0 18 18">
                     <path d="m0 7q1.5-7 9-7 3 0 5.5 2.5l2-2.5 1.5 8h-8l2-2.5q-5-3.5-8 1.5h-4m18 4q-1.5 7-9 7-3 0-5.5-2.5l-2 2.5-1.5-8h8l-2 2.5q5 3.5 8-1.5h4"></path>
                   </svg>
                 </div>
-              </a></span><span id="playerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel multiplayerOnly unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel multiplayerOnly unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
+              </a></span><span id="playerCountLabel" class="playerCountLabel infoLabel unselectable"></span><span id="mapPlayerCountLabel" class="playerCountLabel infoLabel unselectable hidden"></span><span id="immersionModeLabel" class="infoLabel unselectable" data-i18n="[html]chatbox.immersionMode">Immersion Mode</span>
             </div>
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>
@@ -326,7 +326,7 @@
               <div id="partyList" class="partyList chatboxTabContent scrollableContainer"></div>
             </div>
           </div>
-          <div id="chatInputContainer" class="multiplayerOnly" style="display: none">
+          <div id="chatInputContainer" style="display: none">
             <form action="javascript:chatInputActionFired()">
               <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" />
               <div id="globalChatInputOverlay"></div>
@@ -344,8 +344,8 @@
               </svg>
             </button>
           </div>
-          <div id="ynomojiContainer" class="scrollableContainer multiplayerOnly hidden"></div>
-          <div id="enterNameContainer" class="multiplayerOnly">
+          <div id="ynomojiContainer" class="scrollableContainer hidden"></div>
+          <div id="enterNameContainer">
             <span id="enterNameInstruction">
               <span data-i18n="[html]chatbox.chat.nickname.header">You must set a nickname before you can chat.</span>
               <br>

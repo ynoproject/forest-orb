@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Tek Oyunculu Değiştir",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Kayıt Verisini Yönet",
       "uiTheme": "UI Teması",
       "toggleChat": "Sohbeti Aç",
@@ -473,7 +473,7 @@
       "0": "Bağlantı Kesildi",
       "1": "Bağlı",
       "2": "Bağlanılıyor...",
-      "3": "Tek Oyunculu"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

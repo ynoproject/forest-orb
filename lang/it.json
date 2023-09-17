@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Attiva Modalità Giocatore Singolo",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Gestisci Dati di Salvataggio",
       "uiTheme": "Tema dell'Interfaccia",
       "toggleChat": "Attiva Chat",
@@ -473,7 +473,7 @@
       "0": "Disconnesso",
       "1": "Connesso",
       "2": "In Connessione...",
-      "3": "Gioco Solitario"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

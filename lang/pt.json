@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Alternar pra Single Player",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Gerenciar Dados Salvos",
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
@@ -473,7 +473,7 @@
       "0": "Desconectado",
       "1": "Conectado",
       "2": "Conectando...",
-      "3": "Jogador Único"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",

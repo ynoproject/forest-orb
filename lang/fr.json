@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "toggleSinglePlayer": "Activer le Mode de Jeu Solo",
+      "togglePrivateMode": "Toggle Private Mode",
       "save": "Gérer les Données de Sauvegarde",
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
@@ -473,7 +473,7 @@
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
       "2": "Connexion...",
-      "3": "Jeu Solo"
+      "3": "Private Mode"
     },
     "location": {
       "template": "{LOCATION}",
