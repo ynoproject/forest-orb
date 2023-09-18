@@ -65,13 +65,17 @@
       "hostedWithPermission": "Hostowane za pozwoleniem deweloperów Yume 2kki"
     },
     "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Anuluj"
+      },
       "login": {
         "title": "Logowanie",
         "fields": {
           "username": "Nazwa",
           "password": "Hasło"
         },
-        "submit": "Submit",
+        "submit": "Prześlij",
         "registerPrompt": "Nie masz konta?&nbsp;",
         "register": "Zarejestruj się"
       },
@@ -83,7 +87,7 @@
           "password": "Hasło",
           "confirmPassword": "Potwierdź hasło"
         },
-        "submit": "Submit",
+        "submit": "Prześlij",
         "loginPrompt": "Masz już konto?&nbsp;",
         "login": "Zaloguj się"
       },
