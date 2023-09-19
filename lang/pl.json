@@ -430,7 +430,7 @@
       "myScreenshots": "Moje zrzuty ekranu",
       "settings": "Ustawienia",
       "toggleMute": "Wycisz",
-      "toggleGlobalMessage": "Włącz/wyłącz wiadomości globalnego czatu",
+      "toggleGlobalMessage": "Czatuj globalnie/lokalnie",
       "chat": {
         "toggleGlobalMessageLocations": "Pokaż/ukryj lokalizacje w czacie",
         "toggleOwnGlobalMessageLocation": "Pokaż/ukryj swoją lokalizację w czacie",
