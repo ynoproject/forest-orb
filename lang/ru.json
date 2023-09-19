@@ -66,8 +66,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "ОК",
+        "cancel": "Отмена"
       },
       "login": {
         "title": "Войти",
@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "Переключить Приватный режим",
       "save": "Управление данными сохранений",
       "uiTheme": "Стиль интерфейса",
       "toggleChat": "Переключить чат",
