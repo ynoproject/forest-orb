@@ -66,8 +66,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "はい",
+        "cancel": "キャンセル"
       },
       "login": {
         "title": "ログイン",
@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "プライベートモードのオン／オフ",
       "save": "セーブデータ管理",
       "uiTheme": "メニュータイプ",
       "toggleChat": "チャットのオン／オフ",
@@ -473,7 +473,7 @@
       "0": "接続なし",
       "1": "接続済み",
       "2": "接続中…",
-      "3": "Private Mode"
+      "3": "プライベートモード"
     },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",

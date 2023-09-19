@@ -66,8 +66,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "Confirmer",
+        "cancel": "Annuler"
       },
       "login": {
         "title": "Se Connecter",
@@ -372,37 +372,37 @@
         "title": "Classement"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "Votre capture d'écran",
         "download": "Télécharger",
-        "save": "Save to My Screenshots"
+        "save": "Sauvegarder dans Mes captures décran"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Mes captures décran",
+        "empty": "Vous n'avez sauvegardé aucune capture d'écran."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "Captures d'écran de la communauté",
+        "scrollToRefresh": "Faites défiler au sommet pour rafraîchir",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Jeu :&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Tous"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "Récents",
+              "likes": "Plus aimés"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Aujourd'hui",
+              "week": "Cette semaine",
+              "month": "Ce mois-ci",
+              "year": "Cette année",
+              "all": "Toute période"
             }
           }
         }
@@ -421,13 +421,13 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "Activer le mode privé",
       "save": "Gérer les Données de Sauvegarde",
       "uiTheme": "Thème IU",
       "toggleChat": "Afficher le Chat",
       "toggleExplorer": "Activer Yume 2kki Navigator",
       "screenshot": "Prendre une capture d'écran",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "Mes captures décran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",
       "toggleGlobalMessage": "Activer le Chat Global",
@@ -442,7 +442,7 @@
         "disbandParty": "Dissoudre le Groupe"
       },
       "events": "Expéditions",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "Captures d'écran de la communauté",
       "rankings": "Classement",
       "nexus": "Retourner au Nexus",
       "explorerUndiscoveredLocations": "Voir les lieux non découverts"
@@ -473,7 +473,7 @@
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
       "2": "Connexion...",
-      "3": "Private Mode"
+      "3": "Mode privé"
     },
     "location": {
       "template": "{LOCATION}",
@@ -797,30 +797,30 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "Captures d'écran de {USER}",
+      "limit": "{COUNT}/{LIMIT} emplacements utilisés",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Rendre public",
+          "off": "Rendre privé"
         }
       },
       "spoiler": {
         "label": "Spoiler",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Marquer en tant que spoiler",
+          "off": "Retirer le spoiler"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "J'aime",
+          "off": "J'aime pas"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Effacer",
+        "confirm": "Êtes-vous sûr de vouloir effacer cette capture d'écran ?"
       }
     },
     "2kki": {
