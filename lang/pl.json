@@ -38,7 +38,7 @@
       "chat": {
         "tab": {
           "all": "Wszystko",
-          "map": "W tej mapie",
+          "map": "Mapa",
           "global": "Globalny",
           "party": "Grupowy"
         },
@@ -104,7 +104,7 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Podgląd nazw",
             "values": {
               "none": "Brak",
               "classic": "Klasyczne",
