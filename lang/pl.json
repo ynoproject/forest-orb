@@ -1,0 +1,874 @@
+{
+  "translationComplete": "1",
+  "version": {
+    "2kki": {
+      "label": "Yume 2kki wersja {VERSION}",
+      "substitutes": {
+        " Patch ": " łatka ",
+        "?": "?"
+      }
+    }
+  },
+  "ui": {
+    "account": {
+      "login": "Logowanie",
+      "logout": "Wylogowanie"
+    },
+    "fontStyle": {
+      "label": "Styl czcionki:",
+      "values": {
+        "style1": "Styl 1",
+        "style2": "Styl 2",
+        "style3": "Styl 3",
+        "style4": "Styl 4",
+        "style5": "Styl 5",
+        "style6": "Styl 6",
+        "style7": "Styl 7"
+      }
+    },
+    "chatbox": {
+      "location": "Location:&nbsp;",
+      "immersionMode": "Tryb immersji",
+      "reconnect": "Połącz ponownie",
+      "tab": {
+        "chat": "Czat",
+        "players": "Gracze",
+        "parties": "Grupy"
+      },
+      "chat": {
+        "tab": {
+          "all": "Wszystko",
+          "map": "W tej mapie",
+          "global": "Globalny",
+          "party": "Grupowy"
+        },
+        "nickname": {
+          "header": "Musisz ustawić ksywkę zanim zaczniesz czatować.",
+          "rule": {
+            "maxLength": "* Max. 10 znaków",
+            "alphanumeric": "* Tylko znaki alfanumeryczne"
+          }
+        }
+      },
+      "players": {
+        "tab": {
+          "map": "Mapa",
+          "party": "Grupa"
+        }
+      }
+    },
+    "instruction": {
+      "translation": "Potrzebne tłumaczenie",
+      "noGameLoc": "* Tłumaczenie gry niedostępne"
+    },
+    "2kki": {
+      "hostedWithPermission": "Hostowane za pozwoleniem deweloperów Yume 2kki"
+    },
+    "modal": {
+      "confirm": {
+        "ok": "OK",
+        "cancel": "Anuluj"
+      },
+      "login": {
+        "title": "Logowanie",
+        "fields": {
+          "username": "Nazwa",
+          "password": "Hasło"
+        },
+        "submit": "Prześlij",
+        "registerPrompt": "Nie masz konta?&nbsp;",
+        "register": "Zarejestruj się"
+      },
+      "register": {
+        "title": "Rejestracja",
+        "fields": {
+          "email": "Email",
+          "username": "Nazwa",
+          "password": "Hasło",
+          "confirmPassword": "Potwierdź hasło"
+        },
+        "submit": "Prześlij",
+        "loginPrompt": "Masz już konto?&nbsp;",
+        "login": "Zaloguj się"
+      },
+      "settings": {
+        "title": "Ustawienia",
+        "fields": {
+          "lang": "Język",
+          "locationVisibility": {
+            "label": "Widoczność lokalizacji",
+            "values": {
+              "private": "Prywatna",
+              "friends": "Tylko dla przyjaciół",
+              "public": "Publiczna"
+            }
+          },
+          "nametagMode": {
+            "label": "Nametags",
+            "values": {
+              "none": "Brak",
+              "classic": "Klasyczne",
+              "compact": "Kompaktowe",
+              "slim": "Pomniejszone"
+            }
+          },
+          "soundVolume": "Głośność dźwięków",
+          "musicVolume": "Głośność muzyki",
+          "togglePlayerSounds": "Dźwięki innych graczy",
+          "toggleEnableExplorer": {
+            "label": "Yume 2kki Navigator",
+            "helpText": "Yume 2kki Navigator to integracja usługi Yume 2kki Explorer, która pokazuje dostępne połączenia do mapy w której jesteś. Może to drastycznie zmienić twoje doświadczenia w grze, więc polecamy eksplorować większość gry przed jej włączeniem. Żeby używać tej funkcji, musisz się zalogować."
+          },
+          "toggleImmersionMode": {
+            "label": "Tryb immersji",
+            "helpText": "Wyłącza licznik ilości graczy, czat globalny i mapy dla immersyjnego doświadczenia"
+          },
+          "toggleLocationDisplay": "Wyświetlacz lokalizacji",
+          "toggleRankings": "Rankingi",
+          "togglePreloads": {
+            "label": "Wczesne ładowanie",
+            "helpText": "Wcześnie załaduj pliki często używane w grze; wymaga ponownego załadowania strony"
+          },
+          "toggleQuestionablePreloads": "Wczesne ładowanie tapet"
+        },
+        "blocklist": "Zablokowani użytkownicy",
+        "chatSettings": "Czat",
+        "screenshotSettings": "Zrzuty ekranu",
+        "notificationSettings": "Powiadomienia",
+        "accountSettings": "Konto"
+      },
+      "blocklist": {
+        "title": "Zablokowani użytkownicy",
+        "empty": "Nie blokujesz żadnych użytkowników"
+      },
+      "chatSettings": {
+        "title": "Ustawienia czatu",
+        "fields": {
+          "toggleGameChat": {
+            "label": "Nakładka z czatem",
+            "global": "Nakładka z czatem globalnym",
+            "party": "Nakładka z czatem grupy"
+          },
+          "toggleTabToChat": "Wciśnij Tab by czatować",
+          "togglePlayMentionSound": "Graj dźwięk powiadomienia",
+          "chatHistoryLimit": {
+            "values": {
+              "25": "25",
+              "50": "50",
+              "100": "100",
+              "250": "250",
+              "500": "500",
+              "1000": "1000",
+              "2500": "2500",
+              "0": "Nielimitowany"
+            }
+          },
+          "mapChatHistoryLimit": {
+            "label": "Limit historii czatu mapy"
+          },
+          "globalChatHistoryLimit": {
+            "label": "Limit historii czatu globalnego"
+          },
+          "partyChatHistoryLimit": {
+            "label": "Limit historii czasu grupy"
+          }
+        }
+      },
+      "screenshotSettings": {
+        "title": "Ustawienia zrzutów ekranu",
+        "fields": {
+          "autoDownloadScreenshots": "Automatycznie pobieraj zrzuty ekranu",
+          "screenshotResolution": {
+            "label": "Rozdzielczość pobranych zrzutów ekranu",
+            "values": {
+              "1": "1x - 320x240",
+              "2": "2x - 640x480",
+              "3": "3x - 960x720",
+              "4": "4x - 1280x960"
+            }
+          }
+        }
+      },
+      "notificationSettings": {
+        "title": "Ustawienia powiadomień",
+        "fields": {
+          "toggleNotifications": "Powiadomienia",
+          "screenPosition": {
+            "label": "Położenie powiadomień",
+            "values": {
+              "bottomLeft": "Lewy dolny róg",
+              "bottomRight": "Prawy dolny róg",
+              "topLeft": "Lewy górny róg",
+              "topRight": "Prawy górny róg"
+            }
+          },
+          "system": {
+            "label": "System",
+            "fields": {
+              "siteUpdates": "Strona została zaktualizowana",
+              "error": "Wystąpił błąd"
+            }
+          },
+          "account": {
+            "label": "Konto",
+            "fields": {
+              "loggedIn": "Zalogowany",
+              "loggedOut": "Wyogowany",
+              "passwordUpdate": "Hasło zmienione"
+            }
+          },
+          "players": {
+            "label": "Gracze",
+            "fields": {
+              "playerBlocked": "Gracz zablokowany",
+              "playerUnblocked": "Gracz odblokowany"
+            }
+          },
+          "parties": {
+            "label": "Grupy",
+            "fields": {
+              "create": "Stworzono grupę",
+              "update": "Aktualizowano grupę",
+              "join": "Dołączono do grupy",
+              "leave": "Opuszczono grupę",
+              "remove": "Usunięto z grupy",
+              "disband": "Usunięto grupę",
+              "playerJoin": "Gracz dołączył do grupy",
+              "playerLeave": "Gracz opuścił grupę",
+              "playerOnline": "Gracz jest online",
+              "playerOffline": "Gracz jest offline",
+              "kickPlayer": "Wyrzucono gracza z grupy",
+              "transferPartyOwner": "Promowano gracza do lidera grupy"
+            }
+          },
+          "events": {
+            "label": "Ekspedycje",
+            "fields": {
+              "complete": "Ekspedycja ukończona",
+              "freeComplete": "Darmowa Ekspedycja ukończona",
+              "vmComplete": "Automat znaleziony",
+              "listUpdated": "Aktualizacja listy ekspedycji"
+            }
+          },
+          "badges": {
+            "label": "Odznaki",
+            "fields": {
+              "badgeUnlocked": "Odznaka odblokowana"
+            }
+          },
+          "screenshots": {
+            "label": "Zrzuty ekranu",
+            "fields": {
+              "screenshotTaken": "Zrzut ekranu wykonany"
+            }
+          },
+          "saveSync": {
+            "label": "Synchronizacja zapisów",
+            "fields": {
+              "saveUploading": "Zapis przesyłany",
+              "saveUploaded": "Zapis przesłany",
+              "saveDownloading": "Zapis pobierany",
+              "saveDownloaded": "Zapis pobrany",
+              "saveUpToDate": "Zapis aktualny",
+              "saveCleared": "Zapis usunięty"
+            }
+          }
+        }
+      },
+      "accountSettings": {
+        "title": "Ustawienia konta",
+        "fields": {
+          "badge": "Odznaka",
+          "toggleSaveSync": "Synchronizacja zapisów (Eksperymentalny)",
+          "saveSyncSlotId": {
+            "label": "ID do synchronizacji zapisów",
+            "values": {
+              "0": "Brak"
+            }
+          },
+          "changePassword": "Zmień hasło",
+          "clearSaveSync": "Usuń dane synchronizacji zapisów"
+        }
+      },
+      "password": {
+        "title": "Zmień hasło",
+        "fields": {
+          "oldPassword": "Stare hasło",
+          "newPassword": "Nowe hasło",
+          "newConfirmPassword": "Potwierdź nowe hasło"
+        },
+        "submit": "Wyślij"
+      },
+      "badges": {
+        "title": "Odznaki",
+        "manageBadgeGallery": "Zarządzaj galerią odznak",
+        "fields": {
+          "unlockStatus": {
+            "label": "Status odblokowania:&nbsp;",
+            "values": {
+              "all": "Wszystkie",
+              "0": "Zablokowane",
+              "1": "Odblokowane"
+            }
+          },
+          "sortOrder": {
+            "label": "Układ sortowania:&nbsp;",
+            "values": {
+              "default": "Domyślny"
+            }
+          },
+          "search": "Szukaj:&nbsp;"
+        }
+      },
+      "badgeGallery": {
+        "title": "Zarządzaj galerią odznak",
+        "badgeGalleryRowProgress": "Następne powiększenie poziomo (BP)",
+        "badgeGalleryColProgress": "Następne powiększenie pionowo (Odznaki)"
+      },
+      "save": {
+        "title": "Zarządzaj zapisami",
+        "reload": "Zapisz zmiany i zrestartuj"
+      },
+      "uiTheme": {
+        "title": "Motyw",
+        "auto": "Automatyczny"
+      },
+      "createParty": {
+        "title": {
+          "create": "Stwórz grupę",
+          "update": "Modyfikuj grupę"
+        },
+        "fields": {
+          "partyName": "Nazwa grupy",
+          "description": "Opis",
+          "public": "Publiczna",
+          "password": "Hasło",
+          "theme": "Motyw"
+        },
+        "showPassword": "Pokaż hasło",
+        "hidePassword": "Ukryj hasło",
+        "submit": "Wyślij"
+      },
+      "joinPrivateParty": {
+        "title": "Dołącz do prywatnej grupy",
+        "fields": {
+          "password": "Hasło"
+        },
+        "showPassword": "Pokaż hasło",
+        "hidePassword": "Ukryj hasło",
+        "incorrectPassword": "Niepoprawne hasło. Spróbuj ponownie.",
+        "submit": "Wyślij"
+      },
+      "events": {
+        "title": "Ekspedycje",
+        "rankExp": "Następna ranga",
+        "weekExp": "ExP w tym tygodniu",
+        "tabs": {
+          "locations": "lokalizacje",
+          "vms": "Automat"
+        }
+      },
+      "rankings": {
+        "title": "Rankingi"
+      },
+      "screenshot": {
+        "title": "Twój zrzut ekranu",
+        "download": "Pobierz",
+        "save": "Zapisz do moich zrzutów ekranu"
+      },
+      "myScreenshots": {
+        "title": "Moje zrzuty ekranu",
+        "empty": "Nie zapisano żadnych zrzutów ekranu."
+      },
+      "communityScreenshots": {
+        "title": "Zrzuty ekranu społeczności",
+        "scrollToRefresh": "Przewiń do góry by odświeżyć",
+        "fields": {
+          "game": {
+            "label": "Gra:&nbsp;",
+            "values": {
+              "all": "Wszystkie"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "recent": "Najnowsze",
+              "likes": "Najwięcej polubiane"
+            }
+          },
+          "interval": {
+            "values": {
+              "day": "Dziś",
+              "week": "W tym tygodniu",
+              "month": "W tym miesiącu",
+              "year": "W tym roku",
+              "all": "Kiedykolwiek"
+            }
+          }
+        }
+      },
+      "rules": {
+        "title": "Zasady",
+        "rule1": "Bądź uprzejmy i miej szacunek dla innych.",
+        "rule2": "Zakaz dyskusji 18+ (NSFW, gore, itp.).",
+        "rule3": "Zakaz polityki.",
+        "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
+        "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu."
+      },
+      "explorerUndiscoveredLocations": {
+        "title": "Nieodkryte lokalizacje",
+        "complete": "Odkryto wszystkie lokalizacje! Gratulacje!"
+      }
+    },
+    "tooltips": {
+      "togglePrivateMode": "Włącz tryb prywatny",
+      "save": "Zarządzaj zapisami",
+      "uiTheme": "Motyw",
+      "toggleChat": "Pokaż/ukryj czat",
+      "toggleExplorer": "Pokaż/ukryj Yume 2kki Navigator",
+      "screenshot": "Zrzut ekranu",
+      "myScreenshots": "Moje zrzuty ekranu",
+      "settings": "Ustawienia",
+      "toggleMute": "Wycisz",
+      "toggleGlobalMessage": "Włącz/wyłącz wiadomości globalnego czatu",
+      "chat": {
+        "toggleGlobalMessageLocations": "Pokaż/ukryj lokalizacje w czacie",
+        "toggleOwnGlobalMessageLocation": "Pokaż/ukryj swoją lokalizację w czacie",
+        "toggleMessageTimestamps": "Pokaż/ukryj czas wysłania wiadomości",
+        "clearChat": "Wyczyść czat"
+      },
+      "parties": {
+        "createParty": "Stwórz grupę",
+        "disbandParty": "Usuń grupę"
+      },
+      "events": "Ekspedycje",
+      "communityScreenshots": "Zrzuty ekranu społeczności",
+      "rankings": "Rankingi",
+      "nexus": "Powróć do Nexusu",
+      "explorerUndiscoveredLocations": "Pokaż nieodkryte lokalizacje"
+    },
+    "reviewRules": "Sprawdź zasady"
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "cu": "Collective Unconscious",
+      "flow": ".flow",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope",
+      "genie": "Dream Genie",
+      "mikan": "Mikan Muzou",
+      "ultraviolet": "Ultra Violet"
+    },
+    "leavePage": "Czy na pewno chcesz opuścić stronę? Niezapisane dane zostaną utracone.",
+    "logout": "Czy na pewno chcesz się wylogować?",
+    "connStatus": {
+      "0": "Rozłączony",
+      "1": "Połączony",
+      "2": "Łączenie...",
+      "3": "Tryb prywatny"
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Sprawdzanie lokalizacji...",
+      "unknownLocation": "Nieznana lokalizacja",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} gracz online",
+      "plural": "{COUNT} graczy online"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} gracz na mapie",
+      "plural": "{COUNT} graczy na mapie"
+    },
+    "playerList": {
+      "unnamed": "Gracz bez nazwy",
+      "muted": "Wyciszony",
+      "actions": {
+        "partyKick": "Wyrzuć z grupy",
+        "transferPartyOwner": "Promuj na lidera grupy"
+      }
+    },
+    "roles": {
+      "mod": "Moderator",
+      "dev": "Deweloper"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
+    },
+    "context": {
+      "ping": {
+        "label": "Pinguj {PLAYER}"
+      },
+      "block": {
+        "label": "Zablokuj {PLAYER}",
+        "confirm": "Czy na pewno chcesz zablokować {PLAYER}?"
+      },
+      "unblock": {
+        "label": "Odblokuj {PLAYER}",
+        "confirm": "Czy na pewno chcesz odblokować {PLAYER}?"
+      },
+      "admin": {
+        "ban": {
+          "label": "Zbanuj {PLAYER}",
+          "confirm": "Czy na pewno chcesz zbanować {PLAYER}?",
+          "success": "{PLAYER} został/a zbanowany/a."
+        },
+        "unban": {
+          "label": "Odbanuj {PLAYER}",
+          "confirm": "Czy na pewno chcesz odbanować {PLAYER}?",
+          "success": "{PLAYER} został/a odbanowany/a."
+        },
+        "mute": {
+          "label": "Wycisz {PLAYER}",
+          "confirm": "Czy na pewno chcesz wyciszyć {PLAYER}?",
+          "success": "{PLAYER} został/a wyciszony/a."
+        },
+        "unmute": {
+          "label": "Odcisz {PLAYER}",
+          "confirm": "Czy na pewno chcesz odciszyć {PLAYER}?",
+          "success": "{PLAYER} został/a odciszony/a."
+        },
+        "grantBadge": {
+          "label": "Nadaj odznakę",
+          "prompt": "Podaj ID odznaki do nadania graczowi {PLAYER}.",
+          "success": "Odznaka {BADGE} została nadana graczowi {PLAYER}.",
+          "fail": "Nie znaleziono odznaki z tym ID."
+        },
+        "revokeBadge": {
+          "label": "Odebraj odznakę",
+          "prompt": "Podaj ID odznaki do odebrania graczowi {PLAYER}.",
+          "success": "Odznaka {BADGE} została odebrana graczowi {PLAYER}.",
+          "fail": "Nie znaleziono odznaki z tym ID."
+        }
+      }
+    },
+    "account": {
+      "login": {
+        "errors": {
+          "invalidLogin": "Login lub hasło są nieprawidłowe."
+        }
+      },
+      "register": {
+        "errors": {
+          "confirmPasswordMismatch": "Podane hasła nie zgadzają się.",
+          "invalidCredentials": "Login lub hasło są puste lub zawierają niedozwolone znaki.",
+          "emailTaken": "Ten email jest już w użyciu.",
+          "usernameTaken": "Ta nazwa jest już w użyciu."
+        }
+      },
+      "password": {
+        "errors": {
+          "confirmPasswordMismatch": "Podane hasła nie zgadzają się.",
+          "badLogin": "Niepoprawne hasło.",
+          "internalServerError": "Wystąpił błąd: spróbuj ponownie później."
+        }
+      }
+    },
+    "chat": {
+      "globalMessage": "Globalna wiadomość"
+    },
+    "parties": {
+      "emptyMessage": "Nie ma aktywnych grup.",
+      "yourParty": "Twoja grupa",
+      "defaultPartyName": "Grupa {OWNER}",
+      "partyOwner": "Lider grupy",
+      "offlineMemberSuffix": " (Offline)",
+      "onlineCount": "Online - {COUNT}",
+      "offlineCount": "Offline - {COUNT}",
+      "actions": {
+        "viewPartyDetails": "Sprawdź detale grupy",
+        "joinParty": "Dołącz do grupy",
+        "joinPrivateParty": "Dołącz do prywatnej grupy",
+        "leaveParty": "Opuść grupę"
+      }
+    },
+    "chatTips": {
+      "template": "PORADA: {CONTENT}",
+      "tips": {
+        "backupReminder": "Rekomendujemy częste pobieranie swoich zapisów. W ten sposób, jeżeli wyczyścisz dane przegładarki nie stracisz swoich danych.",
+        "menuTheme": "Kolor twojej nazwy i styl na liście graczy zależy od wybranego w grze motywu.",
+        "playersInMap": "Możesz zmienić to, czy widzisz ile osób jest online czy ile osób jest w tej samej mapie co ty klikając na tekst obok liczby.",
+        "markdownSupport": "Czat wspiera formatowanie tekstu za pomocą różnych znaków. Aktualnie wspierane są: **pogrubienie** (\\*\\*text\\*\\*), *kursywa* (\\*text\\*, \\_text\\_), __podkreślenie__ (\\_\\_text\\_\\_), ~~przekreślenie~~ (\\~\\~text\\~\\~), i ||spoiler|| (\\|\\|text\\|\\|).",
+        "tabToChat": "Jeżeli grasz na komputerze, możesz użyć klawisza Tab by przełączyć się między czatem a grą. Ta funkcja może być wyłączona w ustawieniach czatu jako 'Wciśnij Tab by czatować'.",
+        "chatTabNotifications": "Jeżeli jesteś w innej zakładce niż 'Wszystko', gdy pojawi się wiadomość w innej zakładce, nazwa tej zakładki zostanie pogrubiona.",
+        "clearChat": "Jeżeli wciśnisz przycisk wyczyszczenia czatu w innej zakładce niż 'Wszystko', usunięte zostaną tylko wiadomości w tej zakładce.",
+        "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz zauważyć spadek w szybkości strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu by nie musieć ciągle własnoręcznie czyścić czatu.",
+        "parties": "Grupy są świetnym sposobem na trzymanie się razem z innymi na wycieczkach. Możesz zobaczyć lokalizację członków swojej grupy oraz rozmawiać z nimi w osobnym czacie.",
+        "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od socjalnego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych graczy jest bardziej interesujące.",
+        "openSource": "Kod źródłowy YNOProject jest dostępny na https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+        "title": "Zapis {SLOT_ID}",
+        "readingLabel": "Odczytywanie zapisów...",
+        "emptyLabel": "Pusty",
+        "errorLabel": "Błąd"
+      },
+      "upload": {
+        "tooltip": "Prześlij zapis",
+        "invalidSaveFile": "Wybierz poprawny plik zapisu (format .lsd)."
+      },
+      "download": {
+        "tooltip": "Pobierz zapis",
+        "emptySlot": "W tym miejscu nie ma zapisu."
+      },
+      "delete": {
+        "tooltip": "Usuń zapis",
+        "confirmDelete": "Czy na pewno chcesz usunąć zapis {SLOT_ID}?"
+      }
+    },
+    "saveSync": {
+      "confirmEnable": "Czy czesz włączyć synchronizację zapisów? Dane z synchronizowanego zapisu zostaną przesłane do odebrania przez jakąkolwiek przeglądarkę lub urządzenie które włączy tą funkcję. Przy włączonej funkcji, zapis będzie automatycznie uaktualniony po odświeżeniu strony.",
+      "confirmEnableWithData": "Dane synchronizacji zapisów zostały znalezione dla tego konta. Dane synchronizowanego zapisu zostaną zastąpione prze jakikolwiek nowszy zapis w tym samym miejscu. Stanie się to tylko po odświeżeniu strony. Czy na pewno chcesz włączyć synchronizację zapisów?"
+    },
+    "toast": {
+      "system": {
+        "siteUpdates": "Strona została zaktualizowana. Odśwież stronę by otrzymać najnowsze zmiany.",
+        "error": "Coś poszło nie tak! Sprawdź konsolę przeglądarki dla detali. By otworzyć konsolę, wciśnij F12 lub wciśnij prawy przycisk myszki a potem 'Inspektuj'."
+      },
+      "account": {
+        "loggedIn": "Zalogowano się jako {USER}.",
+        "loggedOut": "Zostałęś/aś wylogowany/a.",
+        "passwordUpdated": "Twoje hasło zostało zaktualizowane pomyślnie."
+      },
+      "players": {
+        "playerBlocked": "Gracz {PLAYER} został zablokowany.",
+        "playerUnblocked": "Gracz {PLAYER} został odblokowany."
+      },
+      "parties": {
+        "create": "Grupa {PARTY} została stworzona.",
+        "update": "Grupa {PARTY} została zaktualizowana.",
+        "join": "Dołączono do grupy {PARTY}.",
+        "leave": "Opuszczono grupę {PARTY}.",
+        "remove": "Zostałeś/aś wyrzucony/a z grupy {PARTY}.",
+        "disband": "Grupa {PARTY} została usunięta.",
+        "playerJoin": "Gracz {PLAYER} dołączył do grupy.",
+        "playerLeave": "Gracz {PLAYER} opuścił grupę.",
+        "playerOnline": "{PLAYER} jest teraz online.",
+        "playerOffline": "{PLAYER} jest teraz offline.",
+        "kickPlayer": "Gracz {PLAYER} został wyrzucony z grupy.",
+        "transferPartyOwner": "Gracz {PLAYER} został promowany na lidera grupy."
+      },
+      "events": {
+        "complete": "Ekspedycja ukończona!\nZa zwiedzenie {LOCATION} otrzymujesz {EXP}.",
+        "freeComplete": "Ekspedycja ukończona! Zwiedzono {LOCATION}.",
+        "vmComplete": "Automat znaleziony!\nOtrzymujesz {EXP}.",
+        "listUpdated": "Lista ekspedycji została zaktualizowana."
+      },
+      "badges": {
+        "badgeUnlocked": "Odblokowano nową odznakę!"
+      },
+      "screenshots": {
+        "screenshotTaken": "Zrzut ekranu został wykonany."
+      },
+      "saveSync": {
+        "saveUploading": "Przesyłanie zapisu {SLOT}...",
+        "saveUploaded": "Zapis {SLOT} został przesłany.",
+        "saveDownloading": "Aktualizowanie zapisu {SLOT}...",
+        "saveDownloaded": "Zapis {SLOT} został zakualizowany.",
+        "saveUpToDate": "Masz już aktualny zapis.",
+        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to na plików pobranych na twoich urządzeniach."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Ranga: {RANK}",
+      "period": "Sezon {ORDINAL}",
+      "periodEnds": "Kończy się {DATE}",
+      "current": "Aktualne",
+      "shortcut": "Dostępne przez odblokowywalny skrót",
+      "availableUntilDate": "Dostępne do\n{DATE}",
+      "types": {
+        "-1": "Darmowa Ekspedycja",
+        "0": "Dzienna",
+        "1": "Tygodniowa",
+        "2": "Weekendowa",
+        "3": "Specjalna"
+      },
+      "expRanks": {
+        "0": "Początkujący",
+        "1": "Pośredni",
+        "2": "Brąz",
+        "3": "Srebro",
+        "4": "Złoto",
+        "5": "Platyna",
+        "6": "Diament"
+      }
+    },
+    "badges": {
+      "null": "Brak odznaki",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "lokalizacja:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "{PERCENT}% graczy ma tą odznakę",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Narysowane przez {ARTIST}",
+      "sortOrder": {
+        "template": "{TYPE} ({ORDER})",
+        "types": {
+          "bp": "BP",
+          "percent": "Procent odblokowany"
+        },
+        "asc": "Rosnąco",
+        "desc": "Malejąco"
+      }
+    },
+    "badgeGallery": {
+      "label": "Galeria odznak {PLAYER}",
+      "loading": "Ładowanie...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} odznak"
+    },
+    "rankings": {
+      "categories": {
+        "badgeCount": {
+          "label": "Odznaki",
+          "valueLabel": "Ilość odznak",
+          "value": "{NUMBER}"
+        },
+        "bp": {
+          "label": "BP (Punkty odznak)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
+        },
+        "exp": {
+          "label": "ExP",
+          "valueLabel": "ExP",
+          "value": "{NUMBER} ExP"
+        },
+        "eventLocationCount": {
+          "label": "Ekspedycje",
+          "valueLabel": "Ilość ekspedycji",
+          "value": "{NUMBER}"
+        },
+        "freeEventLocationCount": {
+          "label": "Darmowe Ekspedycje",
+          "valueLabel": "Ilość ekspedycji",
+          "value": "{NUMBER}"
+        },
+        "eventLocationCompletion": {
+          "label": "Kompletność ekspedycji",
+          "valueLabel": "Kompletność",
+          "value": "{PERCENT}%"
+        },
+        "eventVmCount": {
+          "label": "Automaty",
+          "valueLabel": "Ilość znalezionych automatów",
+          "value": "{NUMBER}"
+        },
+        "timeTrial": {
+          "label": "Time Triale",
+          "valueLabel": "Czas",
+          "value": "{MINUTES}:{SECONDS}"
+        },
+        "minigame": {
+          "label": "Minigry",
+          "valueLabel": "Wynik",
+          "value": "{NUMBER}"
+        }
+      },
+      "subCategories": {
+        "all": "Wszystkie",
+        "2": "Wszystkie efekty",
+        "nasu": "NASU",
+        "rby": "Red Blue Yellow (Mini Game B)",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - wersja EX",
+        "fuji_ex": "FUJI EX"
+      }
+    },
+    "screenshots": {
+      "playerScreenshot": "Zrzut ekranu {USER}",
+      "limit": "{COUNT}/{LIMIT} miejsz zużytych",
+      "public": {
+        "tooltip": {
+          "on": "Ustaw jako publiczny",
+          "off": "Ustaw jako prywatny"
+        }
+      },
+      "spoiler": {
+        "label": "Spoiler",
+        "tooltip": {
+          "on": "Ustaw jako spoiler",
+          "off": "Usuń spoiler"
+        }
+      },
+      "like": {
+        "tooltip": {
+          "on": "Polub",
+          "off": "Usuń polubienie"
+        }
+      },
+      "delete": {
+        "tooltip": "Usuń",
+        "confirm": "Czy na pewno chcesz usunąć ten zrzut ekranu?"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+        "generic": "Otwórz w Yume 2kki Explorer",
+        "multi": "Otwórz {LOCATION} w Yume 2kki Explorer"
+      }
+    },
+    "modSettings": {
+      "title": "Ustawienia dla moderatorów",
+      "actions": {
+        "resetPassword": {
+          "label": "Resetuj czyjeś hasło",
+          "playerPrompt": "Podaj nazwę gracza dla którego chcesz zresetować hasło",
+          "success": "Nowym hasłem dla {PLAYER} jest {PASSWORD}"
+        },
+        "changeUsername": {
+          "label": "Zmień czyjąś nazwę",
+          "playerPrompt": "Podaj nazwę gracza dla którego chcesz zmienić nazwę",
+          "namePrompt": "Podaj nową nazwę dla {PLAYER}",
+          "success": "Nazwa gracza {PLAYER} została zmieniona na {NAME}",
+          "error": "Nie udało się zmienić nazwy gracza {PLAYER}; ta nazwa może już być w użyciu"
+        },
+        "ban": {
+          "label": "Zbanuj gracza",
+          "playerPrompt": "Podaj nazwę gracza do zbanowania"
+        },
+        "unban": {
+          "label": "Odbanuj gracza",
+          "playerPrompt": "Podaj nazwę gracza do odbanowania"
+        },
+        "mute": {
+          "label": "Wycisz gracza",
+          "playerPrompt": "Podaj nazwę gracza do wyciszenia"
+        },
+        "unmute": {
+          "label": "Odcisz gracza",
+          "playerPrompt": "Podaj nazwę gracza do odciszenia"
+        },
+        "grantBadge": {
+          "label": "Nadaj odznakę",
+          "playerPrompt": "Podaj nazwę gracza dla którego chcesz nadać odznakę"
+        },
+        "revokeBadge": {
+          "label": "Odebraj odznakę",
+          "playerPrompt": "Podaj nazwę gracza którego odznakę czesz odebrać"
+        }
+      }
+    }
+  }
+}
