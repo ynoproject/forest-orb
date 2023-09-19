@@ -718,7 +718,7 @@
       "null": "Brak odznaki",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
-      "location": "lokalizacja:&nbsp;",
+      "location": "Lokalizacja:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% graczy ma tą odznakę",
       "time": "{MINUTES}:{SECONDS}",
@@ -798,7 +798,7 @@
     },
     "screenshots": {
       "playerScreenshot": "Zrzut ekranu {USER}",
-      "limit": "{COUNT}/{LIMIT} miejsz zużytych",
+      "limit": "{COUNT}/{LIMIT} miejsc zużytych",
       "public": {
         "tooltip": {
           "on": "Ustaw jako publiczny",
