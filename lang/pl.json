@@ -40,7 +40,7 @@
           "all": "Razem",
           "map": "Mapa",
           "global": "Globalny",
-          "party": "Grupowy"
+          "party": "Grupa"
         },
         "nickname": {
           "header": "Musisz ustawić ksywkę zanim zaczniesz czatować.",
@@ -245,7 +245,7 @@
             "label": "Ekspedycje",
             "fields": {
               "complete": "Ekspedycja ukończona",
-              "freeComplete": "Darmowa Ekspedycja ukończona",
+              "freeComplete": "Darmowa ekspedycja ukończona",
               "vmComplete": "Automat znaleziony",
               "listUpdated": "Aktualizacja listy ekspedycji"
             }
@@ -698,7 +698,7 @@
       "shortcut": "Dostępne przez odblokowywalny skrót",
       "availableUntilDate": "Dostępne do\n{DATE}",
       "types": {
-        "-1": "Darmowa Ekspedycja",
+        "-1": "Darmowa ekspedycja",
         "0": "Dzienna",
         "1": "Tygodniowa",
         "2": "Weekendowa",
@@ -762,7 +762,7 @@
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Darmowe Ekspedycje",
+          "label": "Darmowe ekspedycje",
           "valueLabel": "Ilość ekspedycji",
           "value": "{NUMBER}"
         },
