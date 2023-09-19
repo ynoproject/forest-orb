@@ -11,8 +11,8 @@
   },
   "ui": {
     "account": {
-      "login": "Logowanie",
-      "logout": "Wylogowanie"
+      "login": "Zaloguj się",
+      "logout": "Wyloguj się"
     },
     "fontStyle": {
       "label": "Styl czcionki:",
