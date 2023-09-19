@@ -452,12 +452,12 @@
                       <option value="fr">Français</option>
                       <option value="de">Deutsch</option>
                       <option value="it">Italiano</option>
+                      <option value="pl">Polski</option>
                       <option value="ro">Română</option>
                       <option value="tr">Türkçe</option>
                       <option value="ru">Русский</option>
                       <option value="vi">Tiếng Việt</option>
                       <option value="ar">العربية</option>
-                      <option value="pl">Polski</option>
                     </select>
                   </div>
                   <label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label>
