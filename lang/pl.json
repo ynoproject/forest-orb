@@ -279,7 +279,7 @@
         "title": "Ustawienia konta",
         "fields": {
           "badge": "Odznaka",
-          "toggleSaveSync": "Synchronizacja zapisów (Eksperymentalny)",
+          "toggleSaveSync": "Synchronizacja zapisów (Eksperymentalne)",
           "saveSyncSlotId": {
             "label": "ID do synchronizacji zapisów",
             "values": {
@@ -364,7 +364,7 @@
         "rankExp": "Następna ranga",
         "weekExp": "ExP w tym tygodniu",
         "tabs": {
-          "locations": "lokalizacje",
+          "locations": "Miejsca",
           "vms": "Automat"
         }
       },
