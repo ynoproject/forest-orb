@@ -72,12 +72,13 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   screenshotModalContent.innerHTML = '';
   screenshotModalContent.append(screenshot);
 
-  if (screenshotData)
+  if (screenshotData?.hasOwnProperty('id')) {
     screenshotModalContent.append(getScreenshotControls(screenshotData.hasOwnProperty('owner'), screenshotData, () => {
       if (!screenshotData.owner)
         initScreenshotsModal(false);
       closeModal('screenshotModal');
     }));
+  }
 
   const saveButton = screenshotModal.querySelector('.saveScreenshotButton');
 
@@ -85,18 +86,20 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 
   saveButton.classList.toggle('hidden', isRemote);
   saveButton.disabled = screenshotCount >= screenshotLimit ? 'disabled' : undefined;
-  saveButton.onclick = () => {
-    if (isRemote)
-      return;
-    addLoader(screenshotModal, true);
-    uploadScreenshot(url, date).then(success => {
-      removeLoader(screenshotModal);
-      if (success) {
-        initScreenshotsModal(false);
-        openModal('myScreenshotsModal');
-      }
-    });
-  };
+  if (!isRemote) {
+    saveButton.onclick = () => {
+      if (isRemote)
+        return;
+      addLoader(screenshotModal, true);
+      uploadScreenshot(url, screenshotData?.mapId, screenshotData?.mapX, screenshotData?.mapY).then(success => {
+        removeLoader(screenshotModal);
+        if (success) {
+          initScreenshotsModal(false);
+          openModal('myScreenshotsModal');
+        }
+      });
+    };
+  }
 
   const modalTitle = screenshotModal.querySelector('.modalTitle');
   const playerModalTitle = screenshotModal.querySelector('.playerScreenshotModalTitle');
@@ -164,6 +167,15 @@ function takeScreenshot(retryCount) {
 
   if (isValid) {
     const dateTaken = new Date();
+    
+    const mapId = cachedMapId;
+
+    const coords = Module._GetPlayerCoords();
+
+    const mapX = Module.getValue(coords, 'int*');
+    const mapY = Module.getValue(coords + 4, 'int*');
+  
+    Module._free(coords);
 
     if (notificationConfig.all && notificationConfig.screenshots.all && notificationConfig.screenshots.screenshotTaken) {
       const toast = showScreenshotToastMessage('screenshotTaken', 'image', true, null, true);
@@ -173,7 +185,7 @@ function takeScreenshot(retryCount) {
       toast.querySelector('.toastMessage').prepend(thumb);
       document.documentElement.style.setProperty('--toast-offset', `-${toast.getBoundingClientRect().height + 8}px`);
 
-      thumb.onclick = () => viewScreenshot(url, dateTaken);
+      thumb.onclick = () => viewScreenshot(url, dateTaken, { mapId, mapX, mapY });
 
       if (!globalConfig.autoDownloadScreenshots)
         return;
@@ -186,9 +198,9 @@ function takeScreenshot(retryCount) {
   screenshotCanvas.remove();
 }
 
-function uploadScreenshot(url) {
+function uploadScreenshot(url, mapId, mapX, mapY) {
   return new Promise(resolve => {
-    apiPost('screenshot?command=upload', getScreenshotBinary(url), 'application/png')
+    apiPost(`screenshot?command=upload&mapId=${mapId}&mapX=${mapX}&mapY=${mapY}`, getScreenshotBinary(url), 'application/png')
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
