@@ -421,7 +421,7 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "公开/私密模式切换",
       "save": "存档数据管理",
       "uiTheme": "界面风格",
       "toggleChat": "显示/隐藏聊天栏",
@@ -473,7 +473,7 @@
       "0": "已断开",
       "1": "已连接",
       "2": "连接中",
-      "3": "Private Mode"
+      "3": "私密模式"
     },
     "location": {
       "template": "{LOCATION}（{LOCATION_EN}）",
