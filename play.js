@@ -344,7 +344,11 @@ function checkUpdateLocation(mapId, mapChanged) {
 
     cachedLocations = locations;
 
-    if (is2kki && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+    if (!mapChanged) {
+      syncLocationChange();
+      checkEventLocations();
+    }
+    if (yumeWikiSupported && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
       updateBadgeButton();
   }
 }
