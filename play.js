@@ -319,7 +319,8 @@ function checkUpdateLocation(mapId, mapChanged) {
 
   if (localizedMapLocations) {
     const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY);
-    if (!locations || !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations)) {
+    const locationsUpdated = !locations !== !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations);
+    if (locationsUpdated) {
       if (!mapChanged)
         markMapUpdateInChat();
       addChatMapLocation(locations);
@@ -344,12 +345,15 @@ function checkUpdateLocation(mapId, mapChanged) {
 
     cachedLocations = locations;
 
-    if (!mapChanged) {
-      syncLocationChange();
-      checkEventLocations();
+    if (locationsUpdated) {
+      if (!mapChanged) {
+        syncLocationChange();
+        checkEventLocations();
+      }
+
+      if (yumeWikiSupported && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+        updateBadgeButton();
     }
-    if (yumeWikiSupported && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
-      updateBadgeButton();
   }
 }
 
