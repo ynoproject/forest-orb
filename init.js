@@ -308,7 +308,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
 
   const isMod = playerData?.rank > player?.rank;
   const isBlockable = playerData?.rank >= player?.rank;
-  const playerName = getPlayerName(player, true);
+  const playerName = getPlayerName(player, true, false, true);
   
   let tooltipHtml = '';
 

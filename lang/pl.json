@@ -11,8 +11,8 @@
   },
   "ui": {
     "account": {
-      "login": "Logowanie",
-      "logout": "Wylogowanie"
+      "login": "Zaloguj się",
+      "logout": "Wyloguj się"
     },
     "fontStyle": {
       "label": "Styl czcionki:",
@@ -37,10 +37,10 @@
       },
       "chat": {
         "tab": {
-          "all": "Wszystko",
-          "map": "W tej mapie",
+          "all": "Razem",
+          "map": "Mapa",
           "global": "Globalny",
-          "party": "Grupowy"
+          "party": "Grupa"
         },
         "nickname": {
           "header": "Musisz ustawić ksywkę zanim zaczniesz czatować.",
@@ -105,7 +105,7 @@
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Podgląd nazw",
             "values": {
               "none": "Brak",
               "classic": "Klasyczne",
@@ -259,7 +259,7 @@
             "label": "Ekspedycje",
             "fields": {
               "complete": "Ekspedycja ukończona",
-              "freeComplete": "Darmowa Ekspedycja ukończona",
+              "freeComplete": "Darmowa ekspedycja ukończona",
               "vmComplete": "Automat znaleziony",
               "listUpdated": "Aktualizacja listy ekspedycji"
             }
@@ -293,7 +293,7 @@
         "title": "Ustawienia konta",
         "fields": {
           "badge": "Odznaka",
-          "toggleSaveSync": "Synchronizacja zapisów (Eksperymentalny)",
+          "toggleSaveSync": "Synchronizacja zapisów (Eksperymentalne)",
           "saveSyncSlotId": {
             "label": "ID do synchronizacji zapisów",
             "values": {
@@ -378,7 +378,7 @@
         "rankExp": "Następna ranga",
         "weekExp": "ExP w tym tygodniu",
         "tabs": {
-          "locations": "lokalizacje",
+          "locations": "Miejsca",
           "vms": "Automat"
         }
       },
@@ -444,7 +444,7 @@
       "myScreenshots": "Moje zrzuty ekranu",
       "settings": "Ustawienia",
       "toggleMute": "Wycisz",
-      "toggleGlobalMessage": "Włącz/wyłącz wiadomości globalnego czatu",
+      "toggleGlobalMessage": "Czatuj globalnie/lokalnie",
       "chat": {
         "toggleGlobalMessageLocations": "Pokaż/ukryj lokalizacje w czacie",
         "toggleOwnGlobalMessageLocation": "Pokaż/ukryj swoją lokalizację w czacie",
@@ -609,6 +609,7 @@
       "globalMessage": "Globalna wiadomość"
     },
     "friends": {
+      "friend": "Friend",
       "categories": {
         "incoming": "Incoming",
         "outgoing": "Outgoing",
@@ -742,7 +743,7 @@
       "shortcut": "Dostępne przez odblokowywalny skrót",
       "availableUntilDate": "Dostępne do\n{DATE}",
       "types": {
-        "-1": "Darmowa Ekspedycja",
+        "-1": "Darmowa ekspedycja",
         "0": "Dzienna",
         "1": "Tygodniowa",
         "2": "Weekendowa",
@@ -762,7 +763,7 @@
       "null": "Brak odznaki",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
-      "location": "lokalizacja:&nbsp;",
+      "location": "Lokalizacja:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% graczy ma tą odznakę",
       "time": "{MINUTES}:{SECONDS}",
@@ -806,7 +807,7 @@
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Darmowe Ekspedycje",
+          "label": "Darmowe ekspedycje",
           "valueLabel": "Ilość ekspedycji",
           "value": "{NUMBER}"
         },
@@ -842,7 +843,7 @@
     },
     "screenshots": {
       "playerScreenshot": "Zrzut ekranu {USER}",
-      "limit": "{COUNT}/{LIMIT} miejsz zużytych",
+      "limit": "{COUNT}/{LIMIT} miejsc zużytych",
       "public": {
         "tooltip": {
           "on": "Ustaw jako publiczny",

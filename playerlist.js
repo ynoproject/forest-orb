@@ -46,6 +46,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     }
 
     let rankIcon = null;
+    let friendIcon = null;
     let mutedIcon = null;
 
     if (player.rank) {
@@ -54,6 +55,13 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       rankIcon.classList.add('rankIcon');
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[rank === 1 ? 'mod' : 'dev'], true), true, true);
       nameTextContainer.appendChild(rankIcon);
+    }
+
+    if (playerFriendsCache.find(pf => pf.accepted && isPlayerObj ? pf.uuid === player.uuid : pf.name === playerName)) {
+      friendIcon = getSvgIcon('friend', true);
+      friendIcon.classList.add('friendIcon');
+      addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
+      nameTextContainer.appendChild(friendIcon);
     }
 
     if (player.muted) {
@@ -162,6 +170,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   const playerListEntryBadgeOverlay2 = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay2') : document.createElement('div');
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
+  let friendIcon = playerListEntry ? playerListEntry.querySelector('.friendIcon') : null;
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
   let mutedIcon = playerListEntry ? playerListEntry.querySelector('.mutedIcon') : null;
   let acceptFriendAction = playerListEntry ? playerListEntry.querySelector('.acceptFriendAction') : null;
@@ -274,6 +283,16 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     else
       playerListEntry.dataset.unnamed = 'unnamed';
 
+    if (friendIcon)
+      friendIcon.remove();
+
+    if (playerFriendsCache.find(pf => pf.accepted && pf.uuid === uuid)) {
+      friendIcon = getSvgIcon('friend', true);
+      friendIcon.classList.add('friendIcon');
+      addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
+      nameText.after(friendIcon);
+    }
+
     if (rankIcon)
       rankIcon.remove();
 
@@ -296,10 +315,9 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     }
   }
 
-  const showMedals = player?.account && player?.medals && !globalConfig.hideRankings;
+  let showMedals = player?.account && player?.medals && !globalConfig.hideRankings;
 
   playerListEntryMedals.innerHTML = '';
-  playerListEntryMedals.classList.toggle('hidden', !showMedals);
 
   if (player?.medals) {
     let medalCount = 0;
@@ -382,6 +400,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   if (playerList.id === 'friendsPlayerList') {
     const playerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+    if (showMedals)
+      showMedals = playerFriend?.accepted;
     if (playerFriend && !playerFriend.accepted) {
       if (playerFriend.incoming) {
         acceptFriendAction = document.createElement('a');
@@ -470,6 +490,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       }
     }
   }
+
+  playerListEntryMedals.classList.toggle('hidden', !showMedals);
 
   if (systemName) {
     systemName = systemName.replace(/'/g, '');
