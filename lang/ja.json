@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "ﾏｯﾌﾟ",
-          "friends": "Friends",
+          "friends": "ﾌﾚﾝﾄﾞ",
           "party": "ﾊﾟｰﾃｨｰ"
         }
       }
@@ -221,21 +221,21 @@
           "players": {
             "label": "プレイヤー",
             "fields": {
-              "playerBlocked": "プレイヤーのブロック",
-              "playerUnblocked": "プレイヤーのブロック解除"
+              "playerBlocked": "プレイヤーのブロック通知",
+              "playerUnblocked": "プレイヤーのブロック解除通知"
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "フレンド",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "フレンド登録通知",
+              "remove": "フレンド解除通知",
+              "accept": "フレンド申請承認通知",
+              "reject": "フレンド申請却下通知",
+              "cancel": "フレンド申請取り消し通知",
+              "incoming": "フレンド申請受信通知",
+              "playerOnline": "フレンドオンライン通知",
+              "playerOffline": "フレンドオフライン通知"
             }
           },
           "parties": {
@@ -515,9 +515,9 @@
       "unnamed": "無名プレイヤー",
       "muted": "ミュート済",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "フレンド申請を承認",
+        "rejectFriend": "フレンド申請を却下",
+        "cancelFriend": "フレンド申請を取り消す",
         "partyKick": "パーティーから追い出す",
         "transferPartyOwner": "パーティーリーダーに昇格する"
       }
@@ -535,10 +535,10 @@
         "label": "{PLAYER}にメンション"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "{PLAYER}のフレンドになる"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "{PLAYER}のフレンドを解除"
       },
       "block": {
         "label": "{PLAYER}をブロック",
@@ -610,10 +610,10 @@
     },
     "friends": {
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "受信中",
+        "outgoing": "申請中",
+        "online": "オンライン",
+        "offline": "オフライン"
       }
     },
     "parties": {
@@ -622,8 +622,8 @@
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "オンライン",
+        "offline": "オフライン"
       },
       "onlineCount": "オンライン - {COUNT}",
       "offlineCount": "オフライン - {COUNT}",
@@ -689,12 +689,12 @@
         "playerUnblocked": "{PLAYER}をブロック解除しました。"
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "{PLAYER}にフレンド申請を送信しました。",
+        "remove": "{PLAYER}のフレンドを解除しました。",
+        "accept": "{PLAYER}のフレンド申請を承諾しました。",
+        "reject": "{PLAYER}のフレンド申請を却下しました。",
+        "cancel": "{PLAYER}へのフレンド申請を取り消しました。",
+        "incoming": "{PLAYER}からの新しいフレンド申請を受信しました。",
         "playerOnline": "{PLAYER}が オンラインに なりました。",
         "playerOffline": "{PLAYER}が オフラインに なりました。"
       },
