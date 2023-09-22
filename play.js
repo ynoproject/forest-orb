@@ -109,24 +109,28 @@ function onUpdateConnectionStatus(status) {
 
   connStatus = status;
 
-  if (status === 1) {
+  if (status === 1 || status === 3) {
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+    updatePlayerFriends(true);
+    updateJoinedParty();
     if (eventPeriodCache)
       updateEvents();
     syncPrevLocation();
   } else {
     playerUuids = {};
-    clearPlayerLists();
+    clearPlayerList();
   }
 }
 
 // EXTERNAL
 function onRoomSwitch() {
   syncPrevLocation();
-  clearPlayerLists();
+  clearPlayerList();
   addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
   syncLocationChange();
   checkEventLocations();
+  updatePlayerFriends(true);
+  updateJoinedParty();
 }
 
 function fetchAndUpdatePlayerInfo() {
@@ -160,6 +164,7 @@ function fetchAndUpdatePlayerInfo() {
           initSessionWs()
             .then(() => {
               trySetChatName(playerName);
+              updatePlayerFriends(true);
               updateParty();
               showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
               updateBadges(() => {
@@ -177,6 +182,7 @@ function fetchAndUpdatePlayerInfo() {
           initSessionWs()
             .then(() => {
               trySetChatName('');
+              updatePlayerFriends(true);
               updateParty();
               if (isLogout) {
                 showAccountToastMessage('loggedOut', 'leave');
@@ -598,6 +604,9 @@ function closeModal() {
       modalContainer.prepend(activeModal);
     }, 245);
   }
+
+  setModalUiTheme('confirmModal', config.uiTheme === 'auto' ? systemName : config.uiTheme);
+
   if (modalContainer.dataset.lastModalId) {
     const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
     if (lastModalIdSeparatorIndex === -1)
@@ -1164,15 +1173,16 @@ function setPlayersTab(tab, saveConfig) {
         playersTab.classList.remove('unread');
     }
 
-    document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 1);
-    document.getElementById('partyPlayerList').classList.toggle('fullBg', tabIndex === 1 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
+    document.getElementById('chatbox').classList.toggle('friendsPlayers', tabIndex === 1);
+    document.getElementById('chatbox').classList.toggle('partyPlayers', tabIndex === 2);
+    document.getElementById('partyPlayerList').classList.toggle('fullBg', tabIndex === 2 && gameFullBgUiThemes.indexOf(joinedPartyUiTheme) > -1);
 
     if (saveConfig) {
       config.playersTabIndex = tabIndex;
       updateConfig(config);
     }
 
-    if (tabIndex === 1 && joinedPartyId)
+    if (tabIndex === 2 && joinedPartyId)
       updateJoinedParty();
   }
 }

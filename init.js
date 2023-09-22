@@ -48,7 +48,7 @@ Module = {
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
-  let scripts = [ 'chat.js', 'playerlist.js', 'parties.js', 'system.js', 'preloads.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
+  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
 
   dependencyFiles['play.css'] = null;
 
@@ -303,34 +303,42 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     return;
   }
 
+  if (player && !player.hasOwnProperty('uuid'))
+    player = Object.assign({ uuid }, player);
+
   const isMod = playerData?.rank > player?.rank;
   const isBlockable = playerData?.rank >= player?.rank;
-  const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
-  const playerName = getPlayerName(player, true);
+  const playerName = getPlayerName(player, true, false, true);
   
   let tooltipHtml = '';
 
   if (messageType)
-    tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
+    tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
+
+  if (loginToken) {
+    if (tooltipHtml)
+      tooltipHtml += '<br>';
+    tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
+                    <a href="javascript:void(0);" class="removePlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.removeFriend.label, true).replace('{PLAYER}', playerName)}</a>`;
+  }
 
   if (isBlockable) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
-    tooltipHtml += !isBlocked
-      ? `<a href="javascript:void(0);" class="blockPlayerAction">${getMassagedLabel(localizedMessages.context.block.label, true).replace('{PLAYER}', playerName)}</a>`
-      : `<a href="javascript:void(0);" class="unblockPlayerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
+    tooltipHtml += `<a href="javascript:void(0);" class="blockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.block.label, true).replace('{PLAYER}', playerName)}</a>
+                    <a href="javascript:void(0);" class="unblockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
   }
   
   if (isMod) {
     if (tooltipHtml)
       tooltipHtml += '<br>'
-    tooltipHtml += `<a href="javascript:void(0);" class="banPlayerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
-      <a href="javascript:void(0);" class="mutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
-      <a href="javascript:void(0);" class="unmutePlayerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
+    tooltipHtml += `<a href="javascript:void(0);" class="banPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="mutePlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="unmutePlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
     if (player.account)
       tooltipHtml += `<br>
-        <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
-        <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction">${getMassagedLabel(localizedMessages.context.admin.revokeBadge.label, true)}</a>`;
+        <a href="javascript:void(0);" class="grantBadgeAction adminBadgeAction playerAction">${getMassagedLabel(localizedMessages.context.admin.grantBadge.label, true)}</a><br>
+        <a href="javascript:void(0);" class="revokeBadgeAction adminBadgeAction playerAction">${getMassagedLabel(localizedMessages.context.admin.revokeBadge.label, true)}</a>`;
   }
 
   const playerTooltip = addTooltip(target, tooltipHtml, true, false, true, { trigger: 'manual' });
@@ -365,50 +373,94 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     };
   }
 
+  if (loginToken) {
+    playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
+      let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+      if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
+        return;
+      apiFetch(`addplayerfriend?uuid=${uuid}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => {
+          const isRequest = !playerFriendsCache.find(pf => pf.uuid === uuid);
+          if (isRequest) {
+            playerFriendsCache.push(player);
+            showFriendsToastMessage('add', 'friendAdd', player);
+          } else
+            showFriendsToastMessage('accept', 'approve', player);
+          updatePlayerFriends(true);
+        })
+        .catch(err => console.error(err));
+    };
+    playerTooltip.popper.querySelector('.removePlayerFriendAction').onclick = function () {
+      let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid)
+      if (!cachedPlayerFriend)
+        return;
+      apiFetch(`removeplayerfriend?uuid=${uuid}`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => {
+          cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+          if (cachedPlayerFriend) {
+            if (cachedPlayerFriend.accepted)
+              showFriendsToastMessage('remove', 'friendRemove', cachedPlayerFriend);
+            else
+              showFriendsToastMessage(cachedPlayerFriend.incoming ? 'reject' : 'cancel', 'deny', cachedPlayerFriend);
+            playerFriendsCache.splice(playerFriendsCache.indexOf(cachedPlayerFriend), 1);
+          }
+          updatePlayerFriends(true);
+        })
+        .catch(err => console.error(err));
+    };
+  }
+
   if (isBlockable) {
-    if (!isBlocked) {
-      playerTooltip.popper.querySelector('.blockPlayerAction').onclick = function () {
-        if (blockedPlayerUuids.indexOf(uuid) > -1)
-          return;
+    playerTooltip.popper.querySelector('.blockPlayerAction').onclick = function () {
+      if (blockedPlayerUuids.indexOf(uuid) > -1)
+        return;
 
-        showConfirmModal(localizedMessages.context.block.confirm.replace('{PLAYER}', playerName), () => {
-          apiFetch(`blockplayer?uuid=${uuid}`)
-            .then(response => {
-              if (!response.ok)
-                throw new Error(response.statusText);
-              return response.text();
-            })
-            .then(_ => {
-              blockedPlayerUuids.push(uuid);
-              showPlayerToastMessage('blockPlayer', playerName, 'ban', true, systemName);
-              updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
-            })
-            .catch(err => console.error(err));
+      showConfirmModal(localizedMessages.context.block.confirm.replace('{PLAYER}', playerName), () => {
+        apiFetch(`blockplayer?uuid=${uuid}`)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => {
+            blockedPlayerUuids.push(uuid);
+            showPlayerToastMessage('blockPlayer', playerName, 'ban', true, systemName);
+            updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+          })
+          .catch(err => console.error(err));
+      });
+    };
+    playerTooltip.popper.querySelector('.unblockPlayerAction').onclick = function() {
+      if (blockedPlayerUuids.indexOf(uuid) === -1)
+        return;
+
+      showConfirmModal(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName), () => {
+        apiFetch(`unblockplayer?uuid=${uuid}`)
+          .then(response => {
+            if(!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => {
+            const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
+            if (blockedPlayerUuidIndex > -1)
+              blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
+            showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
+            updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
+          })
+          .catch(err => console.error(err));
         });
-      };
-    } else {
-      playerTooltip.popper.querySelector('.unblockPlayerAction').onclick = function() {
-        if (blockedPlayerUuids.indexOf(uuid) === -1)
-          return;
-
-        showConfirmModal(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName), () => {
-          apiFetch(`unblockplayer?uuid=${uuid}`)
-            .then(response => {
-              if(!response.ok)
-                throw new Error(response.statusText);
-              return response.text();
-            })
-            .then(_ => {
-              const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
-              if (blockedPlayerUuidIndex > -1)
-                blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
-              showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
-              updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
-            })
-            .catch(err => console.error(err));
-          });
-      };
-    }
+    };
   }
 
   if (isMod) {
@@ -483,8 +535,37 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     return;
   }
 
+  Array.from(playerTooltip.popper.querySelectorAll('.playerAction')).forEach(action => {
+    const actionOnClick = action.onclick;
+    action.onclick = () => {
+      if (actionOnClick)
+        actionOnClick();
+      playerTooltip.hide();
+    };
+  });
+
   target.addEventListener('contextmenu', event => {
     event.preventDefault();
+
+    const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
+
+    const addFriendAction = playerTooltip.popper.querySelector('.addPlayerFriendAction');
+    const removeFriendAction = playerTooltip.popper.querySelector('.removePlayerFriendAction');
+
+    if (addFriendAction)
+      addFriendAction.classList.toggle('hidden', isFriend);
+    if (removeFriendAction)
+      removeFriendAction.classList.toggle('hidden', !isFriend);
+
+    const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
+
+    const blockAction = playerTooltip.popper.querySelector('.blockPlayerAction');
+    const unblockAction = playerTooltip.popper.querySelector('.unblockPlayerAction');
+
+    if (blockAction)
+      blockAction.classList.toggle('hidden', isBlocked);
+    if (unblockAction)
+      unblockAction.classList.toggle('hidden', !isBlocked);
   
     playerTooltip.setProps({
       getReferenceClientRect: () => ({

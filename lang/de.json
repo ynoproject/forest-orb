@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Map",
+          "friends": "Friends",
           "party": "Party"
         }
       }
@@ -224,6 +225,19 @@
               "playerUnblocked": "Player Unblocked"
             }
           },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
+            }
+          },
           "parties": {
             "label": "Parties",
             "fields": {
@@ -231,13 +245,13 @@
               "update": "Updated Party",
               "join": "Joined Party",
               "leave": "Left Party",
-              "remove": "Removed From Party",
+              "remove": "Removed from Party",
               "disband": "Disbanded Party",
               "playerJoin": "Player Joined Party",
               "playerLeave": "Player Left Party",
               "playerOnline": "Party Member Online",
               "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player From Party",
+              "kickPlayer": "Kicked Player from Party",
               "transferPartyOwner": "Promoted Player to Party Leader"
             }
           },
@@ -501,7 +515,10 @@
       "unnamed": "Unnamed Player",
       "muted": "Muted",
       "actions": {
-        "partyKick": "Kick From Party",
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
+        "partyKick": "Kick from Party",
         "transferPartyOwner": "Promote to Party Leader"
       }
     },
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "Mention {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Block {PLAYER}",
@@ -585,12 +608,24 @@
     "chat": {
       "globalMessage": "Global Message"
     },
+    "friends": {
+      "friend": "Friend",
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "There are currently no active parties.",
       "yourParty": "Your Party",
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Party Leader",
-      "offlineMemberSuffix": " (Offline)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "Online - {COUNT}",
       "offlineCount": "Offline - {COUNT}",
       "actions": {
@@ -653,6 +688,16 @@
       "players": {
         "playerBlocked": "{PLAYER} has been blocked.",
         "playerUnblocked": "{PLAYER} has been unblocked."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline."
       },
       "parties": {
         "create": "{PARTY} has been created.",

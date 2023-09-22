@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "로컬",
+          "friends": "Friends",
           "party": "파티 멤버"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "플레이어 차단",
               "playerUnblocked": "플레이어 차단 해제"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "익명의 플레이어",
       "muted": "채팅 금지됨",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "파티에서 강퇴하기",
         "transferPartyOwner": "파티 리더로 임명하기"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "멘션 {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "{PLAYER} 차단",
@@ -585,12 +608,24 @@
     "chat": {
       "globalMessage": "글로벌 메시지"
     },
+    "friends": {
+      "friend": "Friend",
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "활성화된 파티가 없습니다",
       "yourParty": "현재 가입된 파티",
       "defaultPartyName": "{OWNER}님의 파티",
       "partyOwner": "파티 리더",
-      "offlineMemberSuffix": " (오프라인)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "온라인 - {COUNT}",
       "offlineCount": "오프라인 - {COUNT}",
       "actions": {
@@ -653,6 +688,16 @@
       "players": {
         "playerBlocked": "{PLAYER} 님이 차단되었습니다",
         "playerUnblocked": "{PLAYER} 님이 차단 해제되었습니다"
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER}님이 온라인입니다",
+        "playerOffline": "{PLAYER}님이 오프라인입니다"
       },
       "parties": {
         "create": "{PARTY}가 생성되었습니다",

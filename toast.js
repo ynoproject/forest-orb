@@ -16,6 +16,16 @@ const notificationTypes = {
     'playerBlocked',
     'playerUnblocked'
   ],
+  friends: [
+    'add',
+    'remove',
+    'accept',
+    'reject',
+    'cancel',
+    'incoming',
+    'playerOnline',
+    'playerOffline'
+  ],
   parties: [
     'create',
     'update',
@@ -245,9 +255,12 @@ function showClientToastMessage(key, icon) {
 }
 
 function showSystemToastMessage(key, icon) {
-  if (!notificationConfig.system.all || !notificationConfig.system[key])
+  if (!notificationConfig.system.all || !notificationConfig.system[key] || document.querySelector(`.systemToast[data-notification-key='${key}']`))
     return;
-  showToastMessage(getMassagedLabel(localizedMessages.toast.system[key], true), icon, true, null, true);
+  const toast = showToastMessage(getMassagedLabel(localizedMessages.toast.system[key], true), icon, true, null, true);
+  toast.classList.add('systemToast');
+  if (toast)
+    toast.dataset.notificationKey = key;
 }
 
 document.addEventListener('visibilitychange', () => {

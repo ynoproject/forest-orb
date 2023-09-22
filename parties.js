@@ -376,6 +376,8 @@ function onUpdateJoinedParty(party) {
 
   const partyPlayerList = document.getElementById('partyPlayerList');
 
+  Array.from(partyPlayerList.querySelectorAll('.listEntryCategoryHeader')).map(h => h.remove());
+
   const oldPlayerUuids = Array.from(partyPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
   const removedPlayerUuids = oldPlayerUuids.filter(uuid => !party.members.find(m => m.uuid === uuid));
 
@@ -386,18 +388,20 @@ function onUpdateJoinedParty(party) {
     const uuid = member.uuid;
     const oldMember = oldMembers.find(m => m.uuid === uuid);
     if (oldMember) {
+      const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
       const pendingOfflineMemberIndex = joinedPartyPendingOfflineMemberUuids.indexOf(uuid);
       if (member.online !== oldMember.online) {
         if (member.online) {
           if (pendingOfflineMemberIndex > -1)
             joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
-          else
-            showPartyToastMessage('playerOnline', 'join', party, uuid);
+          else if (!isFriend || !notificationConfig.friends.playerOnline)
+            showPartyToastMessage('playerOnline', 'party', party, uuid);
         } else
           joinedPartyPendingOfflineMemberUuids.push(uuid);
       } else if (!member.online) {
         if (pendingOfflineMemberIndex > -1) {
-          showPartyToastMessage('playerOffline', 'leave', party, uuid);
+          if (!isFriend || !notificationConfig.friends.playerOffline)
+            showPartyToastMessage('playerOffline', 'party', party, uuid);
           joinedPartyPendingOfflineMemberUuids.splice(pendingOfflineMemberIndex, 1);
         }
       }
@@ -417,12 +421,13 @@ function onUpdateJoinedParty(party) {
 
     const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
     entry.classList.toggle('offline', !member.online);
-    if (!member.online)
-      entry.querySelector('.nameText').appendChild(document.createTextNode(localizedMessages.parties.offlineMemberSuffix));
-    addOrUpdatePartyMemberPlayerEntryLocation(party.id, member, entry);
+    entry.dataset.categoryId = member.online ? 'online' : 'offline';
+    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
   }
 
   sortPlayerListEntries(partyPlayerList);
+
+  [ 'online', 'offline' ].forEach(c => updatePlayerListEntryHeader(partyPlayerList, 'parties', c));
 }
 
 function addOrUpdatePartyListEntry(party) {
@@ -713,7 +718,7 @@ function initOrUpdatePartyModal(partyId) {
     
     const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
     entry.classList.toggle('offline', !member.online);
-    addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry);
+    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
   }
 
   sortPlayerListEntries(partyModalOnlinePlayerList);
@@ -754,33 +759,6 @@ function initOrUpdatePartyModal(partyId) {
     const description = partyDescriptionCache[partyId];
     partyDescriptionText.innerText = description;
     partyDescriptionContainer.classList.toggle('hidden', !description);
-  }
-}
-
-function addOrUpdatePartyMemberPlayerEntryLocation(partyId, member, entry) {
-  const isInParty = partyId == joinedPartyId;
-  let playerLocation = entry.querySelector('.playerLocation');
-  const initLocation = !playerLocation;
-  
-  if (initLocation) {
-    playerLocation = document.createElement('small');
-    playerLocation.classList.add('playerLocation');
-    entry.querySelector('.detailsContainer').appendChild(playerLocation);
-  }
-
-  playerLocation.classList.toggle('hidden', !isInParty || !member.online);
-
-  if (isInParty && member.online && member.mapId) {
-    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(/ /g, '_') : null;
-    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
-      const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
-      set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);
-    } else {
-      const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
-      playerLocation.innerHTML = locationsHtml;
-      if (playerLocation.dataset.systemOverride)
-        applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
-    }
   }
 }
 

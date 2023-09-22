@@ -40,10 +40,9 @@ function initSessionWs(attempt) {
           .catch(err => console.error(err))
           .finally(addChatTip);
         hasConnected = true;
-      } else {
+      } else
         syncChatHistory()
-          .catch(err => console.error(err))
-      }
+          .catch(err => console.error(err));
       resolve();
     };
     sessionWs.onmessage = event => {

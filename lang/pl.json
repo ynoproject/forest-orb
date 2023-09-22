@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Mapa",
+          "friends": "Friends",
           "party": "Grupa"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "Gracz zablokowany",
               "playerUnblocked": "Gracz odblokowany"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "Gracz bez nazwy",
       "muted": "Wyciszony",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "Wyrzuć z grupy",
         "transferPartyOwner": "Promuj na lidera grupy"
       }
@@ -516,6 +533,12 @@
     "context": {
       "ping": {
         "label": "Pinguj {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Zablokuj {PLAYER}",
@@ -585,12 +608,24 @@
     "chat": {
       "globalMessage": "Globalna wiadomość"
     },
+    "friends": {
+      "friend": "Friend",
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "Nie ma aktywnych grup.",
       "yourParty": "Twoja grupa",
       "defaultPartyName": "Grupa {OWNER}",
       "partyOwner": "Lider grupy",
-      "offlineMemberSuffix": " (Offline)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "Online - {COUNT}",
       "offlineCount": "Offline - {COUNT}",
       "actions": {
@@ -653,6 +688,16 @@
       "players": {
         "playerBlocked": "Gracz {PLAYER} został zablokowany.",
         "playerUnblocked": "Gracz {PLAYER} został odblokowany."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} jest teraz online.",
+        "playerOffline": "{PLAYER} jest teraz offline."
       },
       "parties": {
         "create": "Grupa {PARTY} została stworzona.",

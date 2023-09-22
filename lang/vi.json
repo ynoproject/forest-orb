@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Map",
+          "friends": "Friends",
           "party": "Nhóm"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "Đã chặn người chơi",
               "playerUnblocked": "Đã bỏ chặn người chơi"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "Không tên",
       "muted": "Muted",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "Xóa khỏi nhóm",
         "transferPartyOwner": "Chỉ định làm trưởng nhóm"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "Mention {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Chặn {PLAYER}",
@@ -585,12 +608,24 @@
     "chat": {
       "globalMessage": "Tin nhắn Chung"
     },
+    "friends": {
+      "friend": "Friend",
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "Hiện không có nhóm hoạt động.",
       "yourParty": "Nhóm của bạn",
       "defaultPartyName": "Nhóm của {OWNER}",
       "partyOwner": "Trưởng Nhóm",
-      "offlineMemberSuffix": " (Offline)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "Online - {COUNT}",
       "offlineCount": "Offline - {COUNT}",
       "actions": {
@@ -653,6 +688,16 @@
       "players": {
         "playerBlocked": "Đã chặn {PLAYER}.",
         "playerUnblocked": "Đã bỏ chặn {PLAYER}."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} đang online.",
+        "playerOffline": "{PLAYER} đã offline."
       },
       "parties": {
         "create": "{PARTY} đã được tạo.",
