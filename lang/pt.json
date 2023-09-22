@@ -33,7 +33,7 @@
       "tab": {
         "chat": "Bate-Papo",
         "players": "Jogadores",
-        "parties": "Parties"
+        "parties": "Partys"
       },
       "chat": {
         "tab": {
@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "Mapa",
-          "friends": "Friends",
+          "friends": "Amigos",
           "party": "Party"
         }
       }
@@ -134,7 +134,7 @@
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "Captura de Tela",
         "notificationSettings": "Notificação",
         "accountSettings": "Conta"
       },
@@ -151,7 +151,7 @@
             "party": "Overlay do bate-papo da Party"
           },
           "toggleTabToChat": "Atalho Tab para usar o Chat",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "Tocar Som de Menção",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -176,11 +176,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Configurações de Captura de Tela",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Download Automático de Capturas de Tela",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Resolução do Download da Captura de Tela",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -226,20 +226,20 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Amigos",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Amigo Adicionado",
+              "remove": "Amigo Removido",
+              "accept": "Solicitação de Amizade Aceita",
+              "reject": "Solicitação de Amizade Rejeitada",
+              "cancel": "Solicitação de Amizade Cancelada",
+              "incoming": "Solicitação de Amizade Recebida",
+              "playerOnline": "Amigo Online",
+              "playerOffline": "Amigo Offline"
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "Partys",
             "fields": {
               "create": "Party Criada",
               "update": "Party Atualizada",
@@ -340,8 +340,8 @@
         "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload"
+        "title": "Gerenciar Dados Salvos",
+        "reload": "Salvar Alterações e Recarregar"
       },
       "uiTheme": {
         "title": "Tema da Interface",
@@ -386,37 +386,37 @@
         "title": "Placares"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "Suas Capturas de Tela",
         "download": "Download",
-        "save": "Save to My Screenshots"
+        "save": "Salvar em Minhas capturas de tela"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Minhas Capturas de Tela",
+        "empty": "Você ainda não salvou nenhuma captura de tela."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "Capturas de Tela da Comunidade",
+        "scrollToRefresh": "Role até o topo para atualizar",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Jogo:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Todos"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "Mais recente",
+              "likes": "Mais curtidas"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Hoje",
+              "week": "Esta Semana",
+              "month": "Este Mês",
+              "year": "Este Ano",
+              "all": "Todo o Tempo"
             }
           }
         }
@@ -435,13 +435,13 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "Alternar o Modo Privado",
       "save": "Gerenciar Dados Salvos",
       "uiTheme": "Tema da Interface",
       "toggleChat": "Ocultar o Chat",
       "toggleExplorer": "Navegador Alternativo do Yume 2kki",
       "screenshot": "Capturar a Tela",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "Minhas Capturas de Tela",
       "settings": "Configurações",
       "toggleMute": "Alternar o Modo Mudo",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
@@ -456,7 +456,7 @@
         "disbandParty": "Desfazer Party"
       },
       "events": "Expedições",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "Capturas de Tela da Comunidade",
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
       "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos"
@@ -513,13 +513,13 @@
     },
     "playerList": {
       "unnamed": "Jogador Sem Nome",
-      "muted": "Muted",
+      "muted": "Silenciado",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Aceitar Solicitação de Amizade",
+        "rejectFriend": "Rejeitar Solicitação de Amizade",
+        "cancelFriend": "Cancelar Solicitação de Amizade",
         "partyKick": "Expulsar da Party",
-        "transferPartyOwner": "Promover a líder da Party"
+        "transferPartyOwner": "Promover a Líder da Party"
       }
     },
     "roles": {
@@ -532,16 +532,16 @@
     },
      "context": {
       "ping": {
-        "label": "Menção {PLAYER}"
+        "label": "Menciona o {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Ser amigo de {PLAYER}"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Deixar de ser amigo de {PLAYER}"
       },
       "block": {
-        "label": "Bloqueio {PLAYER}",
+        "label": "Bloquear {PLAYER}",
         "confirm": "Tem certeza de que deseja bloquear {PLAYER}?"
       },
       "unblock": {
@@ -609,10 +609,10 @@
       "globalMessage": "Mensagem Global"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Amigo",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
+        "incoming": "Recebendo - {COUNT}",
+        "outgoing": "Saindo - {COUNT}",
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
       }
@@ -688,12 +688,12 @@
         "playerUnblocked": "{PLAYER} foi desbloqueado."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "Você enviou uma solicitação de amizade para {PLAYER}.",
+        "remove": "Você removeu o {PLAYER} de seus amigos.",
+        "accept": "A solicitação de amizade de {PLAYER} foi aceita.",
+        "reject": "A solicitação de amizade de {PLAYER} foi rejeitada.",
+        "cancel": "Sua solicitação de amizade para {PLAYER} foi cancelada.",
+        "incoming": "Você tem uma nova solicitação de amizade de {PLAYER}.",
         "playerOnline": "{PLAYER} está online.",
         "playerOffline": "{PLAYER} está offline."
       },
@@ -840,30 +840,30 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "Captura de Tela de {USER}",
+      "limit": "{COUNT}/{LIMIT} de Slots Usados",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Definir Público",
+          "off": "Definir Privado"
         }
       },
       "spoiler": {
         "label": "Spoiler",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Marcar como Spoiler",
+          "off": "Remover Spoiler"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "Gostei",
+          "off": "Não Gostei"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Excluir",
+        "confirm": "Tem certeza de que deseja excluir essa captura de tela?"
       }
     },
     "2kki": {
