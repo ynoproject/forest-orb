@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Карта",
+          "friends": "Friends",
           "party": "Группа"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "Блокировка игрока",
               "playerUnblocked": "Разблокировка игрока"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "Безымянный игрок",
       "muted": "Без голоса",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "Выгнать из группы,",
         "transferPartyOwner": "Передать лидерство в группе"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "Упомянуть {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Заблокировать {PLAYER}",
@@ -585,12 +608,23 @@
     "chat": {
       "globalMessage": "Из общего чата"
     },
+    "friends": {
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "Пока ещё никто не создал ни одной группы.",
       "yourParty": "Ваша группа",
       "defaultPartyName": "Группа {OWNER}",
       "partyOwner": "Глава группы",
-      "offlineMemberSuffix": "(Вне сети)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "В сети - {COUNT}",
       "offlineCount": "Вне сети - {COUNT}",
       "actions": {
@@ -653,6 +687,16 @@
       "players": {
         "playerBlocked": "Игрок {PLAYER} теперь блокируется.",
         "playerUnblocked": "Игрок {PLAYER} больше не блокируется."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} в сети.",
+        "playerOffline": "{PLAYER} вне сети."
       },
       "parties": {
         "create": "Была создана {PARTY}.",

@@ -1287,10 +1287,10 @@ body.fullBg #background {
   max-height: 18px;
 }
 
-#content:not(.inParty) #playersHeader {
+#content:not(.loggedIn):not(.inParty) #playersHeader {
   display: none;
 }
- 
+
 .subTabs {
   display: flex;
 }
@@ -1352,7 +1352,13 @@ body.fullBg #background {
   overflow-x: hidden;
 }
 
-#content:not(.inParty) .playerList, #content.inParty:not(.partyOwner) .partyList {
+.playerList > .listEntryCategoryHeader {
+  margin-bottom: 4px;
+  border-bottom: 8px solid transparent;
+  border-image: var(--border-image-url) 8 repeat !important;
+}
+
+#content:not(.loggedIn):not(.inParty) .playerList, #content.inParty:not(.partyOwner) .partyList {
   border-top: none;
 }
 
@@ -1374,7 +1380,7 @@ body.fullBg #background {
   display: none;
 }
 
-#chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.partyPlayers #playerList {
+#chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.friendsPlayers) #friendsPlayerList, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.friendsPlayers #playerList, #chatbox.partyPlayers #playerList {
   display: none;
 }
 

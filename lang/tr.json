@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Harita",
+          "friends": "Friends",
           "party": "Parti"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "Player Blocked",
               "playerUnblocked": "Player Unblocked"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "İsimsiz Oyuncu",
       "muted": "Susturulmuş",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "Partiden At",
         "transferPartyOwner": "Parti Liderine Yükselt"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "Mention {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Block {PLAYER}",
@@ -585,12 +608,23 @@
     "chat": {
       "globalMessage": "Küresel Mesaj"
     },
+    "friends": {
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "Şu anda aktif bir parti yok.",
       "yourParty": "Senin Partin",
       "defaultPartyName": "{OWNER}'in Partisi",
       "partyOwner": "Parti Lideri",
-      "offlineMemberSuffix": " (Çevrimdışı)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "Çevrimiçi - {COUNT}",
       "offlineCount": "Çevrimdışı - {COUNT}",
       "actions": {
@@ -653,6 +687,16 @@
       "players": {
         "playerBlocked": "{PLAYER} has been blocked.",
         "playerUnblocked": "{PLAYER} has been unblocked."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} çevrimiçi oldu.",
+        "playerOffline": "{PLAYER} çevrimdışı oldu."
       },
       "parties": {
         "create": "{PARTY} oluşturuldu.",

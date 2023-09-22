@@ -164,6 +164,8 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
   let mutedIcon = playerListEntry ? playerListEntry.querySelector('.mutedIcon') : null;
+  let acceptFriendAction = playerListEntry ? playerListEntry.querySelector('.acceptFriendAction') : null;
+  let rejectCancelFriendAction = playerListEntry ? playerListEntry.querySelector('.rejectCancelFriendAction') : null;
   let partyOwnerIcon = playerListEntry ? playerListEntry.querySelector('.partyOwnerIcon') : null;
   let partyKickAction = playerListEntry ? playerListEntry.querySelector('.partyKickAction') : null;
   let transferPartyOwnerAction = playerListEntry ? playerListEntry.querySelector('.transferPartyOwnerAction') : null;
@@ -366,6 +368,11 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     }
   }
 
+  if (acceptFriendAction)
+    acceptFriendAction.remove();
+  if (rejectCancelFriendAction)
+    rejectCancelFriendAction.remove();
+
   if (partyOwnerIcon)
     partyOwnerIcon.remove();
   if (partyKickAction)
@@ -373,39 +380,94 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (transferPartyOwnerAction)
     transferPartyOwnerAction.remove();
 
-  let party;
-  if (playerList.id === 'partyPlayerList')
-    party = joinedPartyCache;
-  else if (playerList.id.startsWith('partyModal')) {
-    const partyModalPartyId = document.getElementById('partyModal').dataset.partyId;
-    party = Object.values(partyCache).find(p => p.id == partyModalPartyId);
-  }
-
-  if (party) {
-    if (uuid === party.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party.ownerUuid)) {
-      partyOwnerIcon = getSvgIcon('partyOwner', true);
-      addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
-      if (party.systemName) {
-        const parsedPartySystemName = party.systemName.replace(/ /g, '_');
-        partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+  if (playerList.id === 'friendsPlayerList') {
+    const playerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+    if (playerFriend && !playerFriend.accepted) {
+      if (playerFriend.incoming) {
+        acceptFriendAction = document.createElement('a');
+        acceptFriendAction.classList.add('acceptFriendAction', 'listEntryAction');
+        acceptFriendAction.href = 'javascript:void(0);';
+        acceptFriendAction.onclick = () => {
+          apiFetch(`addplayerfriend?uuid=${uuid}`)
+            .then(response => {
+              if (!response.ok)
+                throw new Error(response.statusText);
+              return response.text();
+            })
+            .then(_ => {
+              const cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+              if (cachedPlayerFriend) {
+                cachedPlayerFriend.accepted = true;
+                showFriendsToastMessage('accept', 'approve', cachedPlayerFriend);
+              }
+              updatePlayerFriends(true);
+            })
+            .catch(err => console.error(err));
+        };
+        acceptFriendAction.appendChild(getSvgIcon('approve', true));
+        addTooltip(acceptFriendAction, getMassagedLabel(localizedMessages.playerList.actions.approveFriend, true), true, true);
+        playerListEntryActionContainer.appendChild(acceptFriendAction);
       }
-      nameText.parentElement.appendChild(partyOwnerIcon);
-    } else if (playerData?.uuid === party.ownerUuid && playerList.id.startsWith('partyModal')) {
-      partyKickAction = document.createElement('a');
-      partyKickAction.classList.add('partyKickAction', 'listEntryAction');
-      partyKickAction.href = 'javascript:void(0);';
-      partyKickAction.onclick = () => kickPlayerFromJoinedParty(uuid);
-      partyKickAction.appendChild(getSvgIcon('leave', true));
-      addTooltip(partyKickAction, getMassagedLabel(localizedMessages.playerList.actions.partyKick, true), true, true);
-      playerListEntryActionContainer.appendChild(partyKickAction);
 
-      const transferPartyOwnerAction = document.createElement('a');
-      transferPartyOwnerAction.classList.add('transferPartyOwnerAction', 'listEntryAction');
-      transferPartyOwnerAction.href = 'javascript:void(0);';
-      transferPartyOwnerAction.onclick = () => transferJoinedPartyOwner(uuid);
-      transferPartyOwnerAction.appendChild(getSvgIcon('transferPartyOwner', true));
-      addTooltip(transferPartyOwnerAction, getMassagedLabel(localizedMessages.playerList.actions.transferPartyOwner, true), true, true);
-      playerListEntryActionContainer.appendChild(transferPartyOwnerAction);
+      rejectCancelFriendAction = document.createElement('a');
+      rejectCancelFriendAction.classList.add('rejectCancelFriendAction', 'listEntryAction');
+      rejectCancelFriendAction.href = 'javascript:void(0);';
+      rejectCancelFriendAction.onclick = () => {
+        apiFetch(`removeplayerfriend?uuid=${uuid}`)
+          .then(response => {
+            if (!response.ok)
+              throw new Error(response.statusText);
+            return response.text();
+          })
+          .then(_ => {
+            const cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
+            if (cachedPlayerFriend) {
+              playerFriendsCache.splice(playerFriendsCache.indexOf(cachedPlayerFriend), 1);
+              showFriendsToastMessage(playerFriend.incoming ? 'reject' : 'cancel', 'deny', cachedPlayerFriend);
+            }
+            updatePlayerFriends(true);
+          })
+          .catch(err => console.error(err));
+      };
+      rejectCancelFriendAction.appendChild(getSvgIcon('deny', true));
+      addTooltip(rejectCancelFriendAction, getMassagedLabel(localizedMessages.playerList.actions[playerFriend.incoming ? 'rejectFriend' : 'cancelFriend'], true), true, true);
+      playerListEntryActionContainer.appendChild(rejectCancelFriendAction);
+    }
+  } else {
+    let party;
+    if (playerList.id === 'partyPlayerList')
+      party = joinedPartyCache;
+    else if (playerList.id.startsWith('partyModal')) {
+      const partyModalPartyId = document.getElementById('partyModal').dataset.partyId;
+      party = Object.values(partyCache).find(p => p.id == partyModalPartyId);
+    }
+
+    if (party) {
+      if (uuid === party.ownerUuid || (uuid === defaultUuid && playerData?.uuid === party.ownerUuid)) {
+        partyOwnerIcon = getSvgIcon('partyOwner', true);
+        addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
+        if (party.systemName) {
+          const parsedPartySystemName = party.systemName.replace(/ /g, '_');
+          partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
+        }
+        nameText.parentElement.appendChild(partyOwnerIcon);
+      } else if (playerData?.uuid === party.ownerUuid && playerList.id.startsWith('partyModal')) {
+        partyKickAction = document.createElement('a');
+        partyKickAction.classList.add('partyKickAction', 'listEntryAction');
+        partyKickAction.href = 'javascript:void(0);';
+        partyKickAction.onclick = () => kickPlayerFromJoinedParty(uuid);
+        partyKickAction.appendChild(getSvgIcon('leave', true));
+        addTooltip(partyKickAction, getMassagedLabel(localizedMessages.playerList.actions.partyKick, true), true, true);
+        playerListEntryActionContainer.appendChild(partyKickAction);
+
+        const transferPartyOwnerAction = document.createElement('a');
+        transferPartyOwnerAction.classList.add('transferPartyOwnerAction', 'listEntryAction');
+        transferPartyOwnerAction.href = 'javascript:void(0);';
+        transferPartyOwnerAction.onclick = () => transferJoinedPartyOwner(uuid);
+        transferPartyOwnerAction.appendChild(getSvgIcon('transferPartyOwner', true));
+        addTooltip(transferPartyOwnerAction, getMassagedLabel(localizedMessages.playerList.actions.transferPartyOwner, true), true, true);
+        playerListEntryActionContainer.appendChild(transferPartyOwnerAction);
+      }
     }
   }
 
@@ -445,6 +507,44 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     updateMapPlayerCount(playerList.childElementCount);
 
   return playerListEntry;
+}
+
+function addOrUpdatePlayerListEntryLocation(locationVisible, member, entry) {
+  let playerLocation = entry.querySelector('.playerLocation');
+  const initLocation = !playerLocation;
+  
+  if (initLocation) {
+    playerLocation = document.createElement('small');
+    playerLocation.classList.add('playerLocation');
+    entry.querySelector('.detailsContainer').appendChild(playerLocation);
+  }
+
+  playerLocation.classList.toggle('hidden', !locationVisible || !member.online);
+
+  if (locationVisible && member.online && member.mapId) {
+    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(/ /g, '_') : null;
+    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
+      const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
+      set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);
+    } else {
+      const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
+      playerLocation.innerHTML = locationsHtml;
+      if (playerLocation.dataset.systemOverride)
+        applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
+    }
+  }
+}
+
+function updatePlayerListEntryHeader(playerList, key, categoryId) {
+  const firstElement = playerList.querySelector(`.listEntry[data-category-id='${categoryId}']`);
+  if (!firstElement)
+    return;
+
+  const header = document.createElement('span');
+  header.classList.add('infoText', 'listEntryCategoryHeader');
+  header.innerHTML = getMassagedLabel(localizedMessages[key].categories[categoryId], true);
+
+  playerList.insertBefore(header, firstElement);
 }
 
 function sortPlayerListEntries(playerList) {
@@ -499,6 +599,7 @@ function removePlayerListEntry(playerList, uuid) {
 }
 
 function clearPlayerList(playerList) {
+  console.trace(playerList.id);
   if (!playerList)
     playerList = document.getElementById('playerList');
 
@@ -510,6 +611,7 @@ function clearPlayerList(playerList) {
 
 function clearPlayerLists() {
   clearPlayerList(document.getElementById('playerList'));
+  clearPlayerList(document.getElementById('friendsPlayerList'));
   clearPlayerList(document.getElementById('partyPlayerList'))
 }
 
@@ -546,8 +648,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             const memberA = joinedPartyCache?.members.find(m => m.uuid === a.dataset.uuid);
             const memberB = joinedPartyCache?.members.find(m => m.uuid === b.dataset.uuid);
             if (memberA && memberB) {
-              if (memberA.online !== memberB.online)
-                return memberB.online ? 1 : -1;
+              if (a.dataset.categoryId !== b.dataset.categoryId)
+                return a.dataset.categoryId === 'online' ? -1 : 1;
             } else if (memberA)
               return -1;
             else if (memberB)
@@ -562,6 +664,28 @@ function getPlayerListIdEntrySortFunc(playerListId) {
               return 1;
             return baseFunc(a, b);
           };
+      case 'friendsPlayerList':
+        return (a, b) => {
+          const categoryA = a.dataset.categoryId;
+          const categoryB = b.dataset.categoryId;
+          if (categoryA !== categoryB) {
+            const getCategoryIndex = category => {
+              switch (category) {
+                case 'incoming':
+                  return 1;
+                case 'outgoing':
+                  return 2;
+                case 'online':
+                  return 3;
+                case 'offline':
+                  return 4;
+              };
+            };
+            return getCategoryIndex(categoryA) < getCategoryIndex(categoryB) ? -1 : 1;
+          }
+          return 0;
+        };
+        break;
       case 'partyModalOnlinePlayerList':
       case 'partyModalOfflinePlayerList':
         return (a, b) => {

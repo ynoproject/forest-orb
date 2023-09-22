@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "Carte",
+          "friends": "Friends",
           "party": "Groupe"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "Joueur bloqué",
               "playerUnblocked": "Joueur débloqué"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "Joueur Sans Nom",
       "muted": "Muet",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "Expulser du Groupe",
         "transferPartyOwner": "Changer le chef du Groupe"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "Mentionner {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "Bloquer {PLAYER}",
@@ -585,12 +608,23 @@
     "chat": {
       "globalMessage": "Message Global"
     },
+    "friends": {
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "Il n'y a actuellement aucun groupe actif.",
       "yourParty": "Votre groupe",
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
-      "offlineMemberSuffix": " (Hors-ligne)",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "En ligne - {COUNT}",
       "offlineCount": "Hors ligne - {COUNT}",
       "actions": {
@@ -653,6 +687,16 @@
       "players": {
         "playerBlocked": "{PLAYER} a été bloqué(e).",
         "playerUnblocked": "{PLAYER} a été débloqué(e)."
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} est maintenant en-ligne.",
+        "playerOffline": "{PLAYER} est maintenant hors-ligne."
       },
       "parties": {
         "create": "{PARTY} a été créé.",

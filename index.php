@@ -294,7 +294,11 @@
               <div id="playersHeader" class="tabHeader">
                 <div id="playersTabs" class="subTabs">
                   <div id="playersTabMap" class="playersTab subTab active">
-                    <small class="chatTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.map">Map</small>
+                    <small class="playersTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.map">Map</small>
+                    <div class="subTabBg"></div>
+                  </div>
+                  <div id="playersTabFriends" class="playersTab friendsSubTab subTab">
+                    <small class="playersTabLabel subTabLabel infoLabel unselectable" data-i18n="[html]chatbox.players.tab.friends">Friends</small>
                     <div class="subTabBg"></div>
                   </div>
                   <div id="playersTabParty" class="playersTab partySubTab subTab">
@@ -305,6 +309,7 @@
                 <div id="playersButtons" class="tabButtons"></div>
               </div>
               <div id="playerList" class="playerList chatboxTabContent scrollableContainer"></div>
+              <div id="friendsPlayerList" class="playerList chatboxTabContent scrollableContainer"></div>
               <div id="partyPlayerList" class="playerList chatboxTabContent scrollableContainer"></div>
             </div>
             <div id="parties" class="chatboxTabSection hidden">

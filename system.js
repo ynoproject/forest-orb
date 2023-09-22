@@ -218,7 +218,7 @@ function setSystemName(name) {
     playerData.systemName = name;
     globalPlayerData[playerData.uuid].systemName = name;
   }
-  if (connStatus === 1)
+  if (connStatus == 1 || connStatus == 3)
     addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
 }
 
@@ -551,11 +551,11 @@ let applyThemeStyles;
     for (let cls of el.classList) {
       if (cls.startsWith('theme_')) {
         if (cls === themeStylesId)
-          return;
-        el.classList.remove('cls');
+          continue;
+        el.classList.remove(cls);
       }
-      el.classList.add(themeStylesId);
     }
+    el.classList.add(themeStylesId);
   };
 }
 

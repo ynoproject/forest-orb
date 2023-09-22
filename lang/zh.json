@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "当前地图",
+          "friends": "Friends",
           "party": "我的队伍"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "拉黑",
               "playerUnblocked": "解除拉黑"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "无名子",
       "muted": "禁言中",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "请出队伍",
         "transferPartyOwner": "转让领队"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "提及 {PLAYER}"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "拉黑 {PLAYER}",
@@ -585,12 +608,23 @@
     "chat": {
       "globalMessage": "公屏消息"
     },
+    "friends": {
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "当前暂无活动中的队伍。",
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
-      "offlineMemberSuffix": "（离线）",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "在线 - {COUNT} 人",
       "offlineCount": "离线 - {COUNT} 人",
       "actions": {
@@ -653,6 +687,16 @@
       "players": {
         "playerBlocked": "已拉黑 {PLAYER}",
         "playerUnblocked": "已解除拉黑 {PLAYER}"
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER} 已上线。",
+        "playerOffline": "{PLAYER} 已下线。"
       },
       "parties": {
         "create": "{PARTY} 队伍创建成功。",

@@ -53,6 +53,7 @@
       "players": {
         "tab": {
           "map": "ﾏｯﾌﾟ",
+          "friends": "Friends",
           "party": "ﾊﾟｰﾃｨｰ"
         }
       }
@@ -222,6 +223,19 @@
             "fields": {
               "playerBlocked": "プレイヤーのブロック",
               "playerUnblocked": "プレイヤーのブロック解除"
+            }
+          },
+          "friends": {
+            "label": "Friends",
+            "fields": {
+              "add": "Friend Added",
+              "remove": "Friend Removed",
+              "accept": "Friend Request Accepted",
+              "reject": "Friend Request Rejected",
+              "cancel": "Friend Request Cancelled",
+              "incoming": "Incoming Friend Request",
+              "playerOnline": "Friend Online",
+              "playerOffline": "Friend Offline"
             }
           },
           "parties": {
@@ -501,6 +515,9 @@
       "unnamed": "無名プレイヤー",
       "muted": "ミュート済",
       "actions": {
+        "approveFriend": "Accept Friend Request",
+        "rejectFriend": "Reject Friend Request",
+        "cancelFriend": "Cancel Friend Request",
         "partyKick": "パーティーから追い出す",
         "transferPartyOwner": "パーティーリーダーに昇格する"
       }
@@ -516,6 +533,12 @@
      "context": {
       "ping": {
         "label": "{PLAYER}にメンション"
+      },
+      "addFriend": {
+        "label": "Friend {PLAYER}"
+      },
+      "removeFriend": {
+        "label": "Unfriend {PLAYER}"
       },
       "block": {
         "label": "{PLAYER}をブロック",
@@ -585,12 +608,23 @@
     "chat": {
       "globalMessage": "グローバルメッセージ"
     },
+    "friends": {
+      "categories": {
+        "incoming": "Incoming",
+        "outgoing": "Outgoing",
+        "online": "Online",
+        "offline": "Offline"
+      }
+    },
     "parties": {
       "emptyMessage": "現在、 活動中の パーティーは ありません。",
       "yourParty": "自分の パーティー",
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
-      "offlineMemberSuffix": "（オフライン）",
+      "categories": {
+        "online": "Online",
+        "offline": "Offline"
+      },
       "onlineCount": "オンライン - {COUNT}",
       "offlineCount": "オフライン - {COUNT}",
       "actions": {
@@ -653,6 +687,16 @@
       "players": {
         "playerBlocked": "{PLAYER}をブロックしました。",
         "playerUnblocked": "{PLAYER}をブロック解除しました。"
+      },
+      "friends": {
+        "add": "You have sent a friend request to {PLAYER}.",
+        "remove": "You have removed {PLAYER} from your friends.",
+        "accept": "{PLAYER}'s friend request was accepted.",
+        "reject": "{PLAYER}'s friend request was rejected.",
+        "cancel": "Your friend request to {PLAYER} was cancelled.",
+        "incoming": "You have a new friend request from {PLAYER}.",
+        "playerOnline": "{PLAYER}が オンラインに なりました。",
+        "playerOffline": "{PLAYER}が オフラインに なりました。"
       },
       "parties": {
         "create": "{PARTY}が 作成されました。",
