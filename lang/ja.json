@@ -609,6 +609,7 @@
       "globalMessage": "グローバルメッセージ"
     },
     "friends": {
+      "friend": "フレンド",
       "categories": {
         "incoming": "受信中",
         "outgoing": "申請中",
