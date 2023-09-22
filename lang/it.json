@@ -609,6 +609,7 @@
       "globalMessage": "Messaggi Globali"
     },
     "friends": {
+      "friend": "Friend",
       "categories": {
         "incoming": "Incoming",
         "outgoing": "Outgoing",

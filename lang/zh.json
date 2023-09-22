@@ -609,6 +609,7 @@
       "globalMessage": "公屏消息"
     },
     "friends": {
+      "friend": "Friend",
       "categories": {
         "incoming": "Incoming",
         "outgoing": "Outgoing",

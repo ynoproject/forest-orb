@@ -3040,6 +3040,10 @@ form .uiTheme {
   font-size: 16px;
 }
 
+.tippy-content .tooltipContent > .playerAction > .nameTextContainer {
+  display: inline;
+}
+
 .tippy-content .tooltipFooter {
   display: block;
   text-align: center;
