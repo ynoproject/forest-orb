@@ -15,6 +15,7 @@ function updatePlayerFriends(skipNextUpdate) {
 
 function onUpdatePlayerFriends(playerFriends) {
   const friendsPlayerList = document.getElementById('friendsPlayerList');
+  const friendsPlayerListScrollTop = friendsPlayerList.scrollTop;
 
   const oldPlayerUuids = Array.from(friendsPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
   const removedPlayerUuids = oldPlayerUuids.filter(uuid => !playerFriends.find(m => m.uuid === uuid));
@@ -75,6 +76,8 @@ function onUpdatePlayerFriends(playerFriends) {
   sortPlayerListEntries(friendsPlayerList);
 
   [ 'incoming', 'outgoing', 'online', 'offline' ].forEach(c => updatePlayerListEntryHeader(friendsPlayerList, 'friends', c));
+
+  friendsPlayerList.scrollTop = friendsPlayerListScrollTop;
 
   if (!playerFriendsCache.length)
     document.getElementById('incomingFriendRequestCountContainer').classList.add('hidden');
