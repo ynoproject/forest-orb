@@ -401,7 +401,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   if (playerList.id === 'friendsPlayerList') {
     const playerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
     if (showMedals)
-      showMedals = playerFriend.accepted;
+      showMedals = playerFriend?.accepted;
     if (playerFriend && !playerFriend.accepted) {
       if (playerFriend.incoming) {
         acceptFriendAction = document.createElement('a');
