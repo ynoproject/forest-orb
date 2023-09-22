@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT}",
+        "outgoing": "Outgoing - {COUNT}",
+        "online": "Connessi - {COUNT}",
+        "offline": "Disconnessi - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "Gruppo di {OWNER}",
       "partyOwner": "Amministratore del Gruppo",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "Connessi - {COUNT}",
+        "offline": "Disconnessi - {COUNT}"
       },
-      "onlineCount": "Connessi - {COUNT}",
-      "offlineCount": "Disconnessi - {COUNT}",
       "actions": {
         "viewPartyDetails": "Vedi dettagli Gruppo",
         "joinParty": "Unisciti al Gruppo",

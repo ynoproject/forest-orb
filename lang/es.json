@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT}",
+        "outgoing": "Outgoing - {COUNT}",
+        "online": "Conectados - {COUNT}",
+        "offline": "Desconectados - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "Equipo de {OWNER}",
       "partyOwner": "Líder de Equipo",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "Conectados - {COUNT}",
+        "offline": "Desconectados - {COUNT}"
       },
-      "onlineCount": "Conectados - {COUNT}",
-      "offlineCount": "Desconectados - {COUNT}",
       "actions": {
         "viewPartyDetails": "Ver Detalles de Equipo",
         "joinParty": "Unirse al Equipo",

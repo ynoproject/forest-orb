@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT}",
+        "outgoing": "Outgoing - {COUNT}",
+        "online": "Online - {COUNT}",
+        "offline": "Offline - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Líder da Party",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "Online - {COUNT}",
+        "offline": "Offline - {COUNT}"
       },
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
       "actions": {
         "viewPartyDetails": "Ver detalhes da Party ",
         "joinParty": "Se Juntar a Party",

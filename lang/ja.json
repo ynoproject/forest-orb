@@ -611,10 +611,10 @@
     "friends": {
       "friend": "フレンド",
       "categories": {
-        "incoming": "受信中",
-        "outgoing": "申請中",
-        "online": "オンライン",
-        "offline": "オフライン"
+        "incoming": "受信中 - {COUNT}",
+        "outgoing": "申請中 - {COUNT}",
+        "online": "オンライン - {COUNT}",
+        "offline": "オフライン - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
       "categories": {
-        "online": "オンライン",
-        "offline": "オフライン"
+        "online": "オンライン - {COUNT}",
+        "offline": "オフライン - {COUNT}"
       },
-      "onlineCount": "オンライン - {COUNT}",
-      "offlineCount": "オフライン - {COUNT}",
       "actions": {
         "viewPartyDetails": "パーティーの詳細を見る",
         "joinParty": "パーティーに参加する",

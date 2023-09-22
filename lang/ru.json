@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT}",
+        "outgoing": "Outgoing - {COUNT}",
+        "online": "В сети - {COUNT}",
+        "offline": "Вне сети - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "Группа {OWNER}",
       "partyOwner": "Глава группы",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "В сети - {COUNT}",
+        "offline": "Вне сети - {COUNT}"
       },
-      "onlineCount": "В сети - {COUNT}",
-      "offlineCount": "Вне сети - {COUNT}",
       "actions": {
         "viewPartyDetails": "Просмотреть данные о группе",
         "joinParty": "Присоединиться к группе",

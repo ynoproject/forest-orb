@@ -1099,6 +1099,8 @@ function onClickChatboxTab() {
     activeChatboxTabSection = this.dataset.tabSection;
     if (activeChatboxTabSection === 'chat')
       document.getElementById("unreadMessageCountContainer").classList.add('hidden');
+    else if (activeChatboxTabSection === 'players')
+      document.getElementById("incomingFriendRequestCountContainer").classList.add('hidden');
     else if (activeChatboxTabSection === 'parties') {
       updatePartyList();
       if (updatePartyListTimer)

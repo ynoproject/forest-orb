@@ -57,7 +57,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       nameTextContainer.appendChild(rankIcon);
     }
 
-    if (playerFriendsCache.find(pf => pf.accepted && isPlayerObj ? pf.uuid === player.uuid : pf.name === playerName)) {
+    if (playerFriendsCache.find(pf => pf.accepted && (isPlayerObj ? pf.uuid === player.uuid : pf.name === playerName))) {
       friendIcon = getSvgIcon('friend', true);
       friendIcon.classList.add('friendIcon');
       addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
@@ -559,15 +559,15 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, member, entry) {
 }
 
 function updatePlayerListEntryHeader(playerList, key, categoryId) {
-  const firstElement = playerList.querySelector(`.listEntry[data-category-id='${categoryId}']`);
-  if (!firstElement)
+  const elements = playerList.querySelectorAll(`.listEntry[data-category-id='${categoryId}']`);
+  if (!elements.length)
     return;
 
   const header = document.createElement('span');
   header.classList.add('infoText', 'listEntryCategoryHeader');
-  header.innerHTML = getMassagedLabel(localizedMessages[key].categories[categoryId], true);
+  header.innerHTML = getMassagedLabel(localizedMessages[key].categories[categoryId].replace('{COUNT}', elements.length), true);
 
-  playerList.insertBefore(header, firstElement);
+  playerList.insertBefore(header, elements[0]);
 }
 
 function sortPlayerListEntries(playerList) {

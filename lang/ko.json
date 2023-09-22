@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT}",
+        "outgoing": "Outgoing - {COUNT}",
+        "online": "온라인 - {COUNT}",
+        "offline": "오프라인 - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "{OWNER}님의 파티",
       "partyOwner": "파티 리더",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "온라인 - {COUNT}",
+        "offline": "오프라인 - {COUNT}"
       },
-      "onlineCount": "온라인 - {COUNT}",
-      "offlineCount": "오프라인 - {COUNT}",
       "actions": {
         "viewPartyDetails": "파티 자세히 보기",
         "joinParty": "파티 참가",
