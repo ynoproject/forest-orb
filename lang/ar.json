@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "{COUNT} - Incoming",
+        "outgoing": "{COUNT} - Outgoing",
+        "online": "{COUNT} - متصل",
+        "offline": "{COUNT} - غير متصل"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "{OWNER} حفلة",
       "partyOwner": "قائد الحفلة",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "{COUNT} - متصل",
+        "offline": "{COUNT} - غير متصل"
       },
-      "onlineCount": "{COUNT} - متصل",
-      "offlineCount": "{COUNT} - غير متصل}",
       "actions": {
         "viewPartyDetails": "عرض تفاصيل الحفلة",
         "joinParty": "الإنضمام إلى الحفلة",
