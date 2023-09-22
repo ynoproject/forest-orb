@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "Carte",
-          "friends": "Friends",
+          "friends": "Amis",
           "party": "Groupe"
         }
       }
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Amis",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Ami ajouté",
+              "remove": "Ami retiré",
+              "accept": "Demande d'ami acceptée",
+              "reject": "Demande d'ami rejetée",
+              "cancel": "Demande d'ami annulée",
+              "incoming": "Demande d'ami en attente",
+              "playerOnline": "Ami en-ligne",
+              "playerOffline": "Ami hors-ligne"
             }
           },
           "parties": {
@@ -515,9 +515,9 @@
       "unnamed": "Joueur Sans Nom",
       "muted": "Muet",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Accepter la demande d'ami",
+        "rejectFriend": "Rejeter la demande d'ami",
+        "cancelFriend": "Annuler la demande d'ami",
         "partyKick": "Expulser du Groupe",
         "transferPartyOwner": "Changer le chef du Groupe"
       }
@@ -535,10 +535,10 @@
         "label": "Mentionner {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Ajouter en ami {PLAYER}"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Retirer {PLAYER} des amis"
       },
       "block": {
         "label": "Bloquer {PLAYER}",
@@ -609,12 +609,12 @@
       "globalMessage": "Message Global"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Ami",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "En attente",
+        "outgoing": "Envoyé",
+        "online": "En ligne",
+        "offline": "Hors ligne"
       }
     },
     "parties": {
@@ -623,8 +623,8 @@
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "En ligne",
+        "offline": "Hors ligne"
       },
       "onlineCount": "En ligne - {COUNT}",
       "offlineCount": "Hors ligne - {COUNT}",
@@ -690,12 +690,12 @@
         "playerUnblocked": "{PLAYER} a été débloqué(e)."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "Vous avez envoyé une demande d'ami à {PLAYER}.",
+        "remove": "Vous avez retiré {PLAYER} de vos amis.",
+        "accept": "La demande d'ami de {PLAYER} a été acceptée.",
+        "reject": "La demande d'ami de {PLAYER} a été rejetée.",
+        "cancel": "Votre demande d'ami à {PLAYER} a été annulée.",
+        "incoming": "Vous avez reçu une demande d'ami de {PLAYER}.",
         "playerOnline": "{PLAYER} est maintenant en-ligne.",
         "playerOffline": "{PLAYER} est maintenant hors-ligne."
       },
