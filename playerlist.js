@@ -522,7 +522,8 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, member, entry) {
   playerLocation.classList.toggle('hidden', !locationVisible || !member.online);
 
   if (locationVisible && member.online && member.mapId) {
-    playerLocation.dataset.systemOverride = member.systemName ? member.systemName.replace(/'/g, '').replace(/ /g, '_') : null;
+    const parsedSystemName = member.systemName ? (gameUiThemes.indexOf(member.systemName) > -1 ? member.systemName : getDefaultUiTheme()).replace(/ /g, '_') : null;
+    playerLocation.dataset.systemOverride = parsedSystemName || null;
     if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
       const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
       set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);
@@ -599,7 +600,6 @@ function removePlayerListEntry(playerList, uuid) {
 }
 
 function clearPlayerList(playerList) {
-  console.trace(playerList.id);
   if (!playerList)
     playerList = document.getElementById('playerList');
 
