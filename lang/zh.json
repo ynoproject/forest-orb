@@ -53,13 +53,13 @@
       "players": {
         "tab": {
           "map": "当前地图",
-          "friends": "Friends",
+          "friends": "好友",
           "party": "我的队伍"
         }
       }
     },
     "instruction": {
-      "translation": "欢迎加入我们的界面语言翻译工程！",
+      "translation": "欢迎为界面语言翻译做贡献！",
       "noGameLoc": "※暂无游戏语言翻译"
     },
     "2kki": {
@@ -67,8 +67,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "确认",
+        "cancel": "取消"
       },
       "login": {
         "title": "登录",
@@ -118,7 +118,7 @@
           "togglePlayerSounds": "同步玩家音效",
           "toggleEnableExplorer": {
             "label": "梦2记导航窗",
-            "helpText": "整合梦2记导航，可以直观地查看当前位置的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前先尝试探索游戏的大部分内容。您必须登录才能使用梦2记导航窗。"
+            "helpText": "梦2记导航组件，可以直观地查看当前位置的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前探索游戏的大部分内容。您必须登录才能使用梦2记导航窗。"
           },
           "toggleImmersionMode": {
             "label": "沉浸模式",
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "好友",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "添加好友",
+              "remove": "移除好友",
+              "accept": "接受好友请求",
+              "reject": "拒绝好友请求",
+              "cancel": "取消好友请求",
+              "incoming": "收到好友请求",
+              "playerOnline": "好友上线",
+              "playerOffline": "好友下线"
             }
           },
           "parties": {
@@ -515,9 +515,9 @@
       "unnamed": "无名子",
       "muted": "禁言中",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "接受好友申请",
+        "rejectFriend": "拒绝好友申请",
+        "cancelFriend": "取消好友申请",
         "partyKick": "请出队伍",
         "transferPartyOwner": "转让领队"
       }
@@ -528,17 +528,17 @@
     },
     "timestamp": {
       "time": "{TIME}",
-      "timeAndWeekday": "{TIME} ({WEEKDAY})"
+      "timeAndWeekday": "({WEEKDAY}) {TIME}"
     },
      "context": {
       "ping": {
         "label": "提及 {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "向 {PLAYER} 发送好友请求"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "将 {PLAYER} 从好友中移除"
       },
       "block": {
         "label": "拉黑 {PLAYER}",
@@ -611,8 +611,8 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming - {COUNT} 人",
-        "outgoing": "Outgoing - {COUNT} 人",
+        "incoming": "已收到 - {COUNT} 人",
+        "outgoing": "已发送 - {COUNT} 人",
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"
       }
@@ -688,12 +688,12 @@
         "playerUnblocked": "已解除拉黑 {PLAYER}"
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "已向 {PLAYER} 发送好友请求",
+        "remove": "已将 {PLAYER} 从好友中移除",
+        "accept": "接受了 {PLAYER} 的好友申请",
+        "reject": "拒绝了 {PLAYER} 的好友申请",
+        "cancel": "取消了向 {PLAYER} 发送的好友申请",
+        "incoming": "收到了来自 {PLAYER} 的好友申请",
         "playerOnline": "{PLAYER} 已上线。",
         "playerOffline": "{PLAYER} 已下线。"
       },
