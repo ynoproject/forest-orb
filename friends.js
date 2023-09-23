@@ -15,9 +15,12 @@ function updatePlayerFriends(skipNextUpdate) {
 
 function onUpdatePlayerFriends(playerFriends) {
   const friendsPlayerList = document.getElementById('friendsPlayerList');
+  const friendsPlayerListScrollTop = friendsPlayerList.scrollTop;
 
   const oldPlayerUuids = Array.from(friendsPlayerList.querySelectorAll('.listEntry')).map(e => e.dataset.uuid);
   const removedPlayerUuids = oldPlayerUuids.filter(uuid => !playerFriends.find(m => m.uuid === uuid));
+
+  let newIncomingCount = 0;
 
   for (let playerUuid of removedPlayerUuids)
     removePlayerListEntry(friendsPlayerList, playerUuid);
@@ -43,8 +46,10 @@ function onUpdatePlayerFriends(playerFriends) {
           pendingOfflineFriendUuids.splice(pendingOfflineFriendIndex, 1);
         }
       }
-    } else if (!playerFriend.accepted && playerFriend.incoming)
+    } else if (!playerFriend.accepted && playerFriend.incoming) {
       showFriendsToastMessage('incoming', 'friend', playerFriend, true);
+      newIncomingCount++;
+    }
 
     if (playerFriend.badge === 'null')
       playerFriend.badge = null;
@@ -57,18 +62,38 @@ function onUpdatePlayerFriends(playerFriends) {
       badge: playerFriend.badge || null,
       medals: playerFriend.medals
     };
+  }
 
+  playerFriendsCache = playerFriends || [];
+
+  for (let playerFriend of playerFriends) {
     const entry = addOrUpdatePlayerListEntry(friendsPlayerList, playerFriend.systemName, playerFriend.name, playerFriend.uuid, true);
     entry.classList.toggle('offline', playerFriend.accepted && !playerFriend.online);
     entry.dataset.categoryId = playerFriend.accepted ? playerFriend.online ? 'online' : 'offline' : playerFriend.incoming ? 'incoming' : 'outgoing';
     addOrUpdatePlayerListEntryLocation(true, playerFriend, entry);
   }
 
-  playerFriendsCache = playerFriends || [];
-
   sortPlayerListEntries(friendsPlayerList);
 
   [ 'incoming', 'outgoing', 'online', 'offline' ].forEach(c => updatePlayerListEntryHeader(friendsPlayerList, 'friends', c));
+
+  friendsPlayerList.scrollTop = friendsPlayerListScrollTop;
+
+  if (!playerFriendsCache.length)
+    document.getElementById('incomingFriendRequestCountContainer').classList.add('hidden');
+
+  const playersTabFriends = document.getElementById('playersTabFriends');
+  const incomingFriendRequestCountContainer = document.getElementById('incomingFriendRequestCountContainer');
+  const incomingFriendRequestCountLabel = incomingFriendRequestCountContainer.querySelector('.notificationCountLabel');
+  if (incomingFriendRequestCountContainer.classList.contains('hidden'))
+    incomingFriendRequestCountLabel.textContent = '0';
+  let incomingCount = parseInt(incomingFriendRequestCountLabel.textContent) + newIncomingCount;
+  if (incomingCount) {
+    incomingFriendRequestCountContainer.classList.toggle('hidden', !incomingCount);
+    if (newIncomingCount)
+      playersTabFriends.classList.toggle('unread', !!incomingCount);
+    incomingFriendRequestCountLabel.textContent = incomingCount < 9 ? incomingCount : `${incomingCount}+`;
+  }
 }
 
 function showFriendsToastMessage(key, icon, player, persist) {

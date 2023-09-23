@@ -42,6 +42,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   if (!system) {
     let rankIcon;
+    let friendIcon;
     let chatTypeIcon;
 
     const msgHeader = document.createElement("div");
@@ -121,6 +122,13 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       rankIcon.classList.add("rankIcon");
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, true);
       message.appendChild(rankIcon);
+    }
+
+    if (playerFriendsCache.find(pf => pf.accepted && pf.uuid === uuid)) {
+      friendIcon = getSvgIcon('friend', true);
+      friendIcon.classList.add('friendIcon');
+      addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
+      message.appendChild(friendIcon);
     }
 
     if (party) {
@@ -276,7 +284,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       document.getElementById("chatTabParty").classList.add("unread");
     else if (!system && !document.querySelector(".chatboxTab.active[data-tab-section='chat']")) {
       const unreadMessageCountContainer = document.getElementById("unreadMessageCountContainer");
-      const unreadMessageCountLabel = document.getElementById("unreadMessageCountLabel");
+      const unreadMessageCountLabel = unreadMessageCountContainer.querySelector(".notificationCountLabel");
       if (unreadMessageCountContainer.classList.contains("hidden")) {
         unreadMessageCountLabel.textContent = "0";
         unreadMessageCountContainer.classList.remove("hidden");

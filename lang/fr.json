@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Ami",
       "categories": {
-        "incoming": "En attente",
-        "outgoing": "Envoyé",
-        "online": "En ligne",
-        "offline": "Hors ligne"
+        "incoming": "En attente - {COUNT}",
+        "outgoing": "Envoyé - {COUNT}",
+        "online": "En ligne - {COUNT}",
+        "offline": "Hors ligne - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
       "categories": {
-        "online": "En ligne",
-        "offline": "Hors ligne"
+        "online": "En ligne - {COUNT}",
+        "offline": "Hors ligne - {COUNT}"
       },
-      "onlineCount": "En ligne - {COUNT}",
-      "offlineCount": "Hors ligne - {COUNT}",
       "actions": {
         "viewPartyDetails": "Voir les détails du groupe",
         "joinParty": "Rejoindre le groupe",

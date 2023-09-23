@@ -611,10 +611,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Incoming - {COUNT} 人",
+        "outgoing": "Outgoing - {COUNT} 人",
+        "online": "在线 - {COUNT} 人",
+        "offline": "离线 - {COUNT} 人"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "在线 - {COUNT} 人",
+        "offline": "离线 - {COUNT} 人"
       },
-      "onlineCount": "在线 - {COUNT} 人",
-      "offlineCount": "离线 - {COUNT} 人",
       "actions": {
         "viewPartyDetails": "查看队伍详情",
         "joinParty": "加入队伍",

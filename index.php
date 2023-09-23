@@ -232,14 +232,19 @@
             <div id="chatboxTabs">
               <div id="chatboxTabChat" class="chatboxTab active" data-tab-section="chat">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.chat">Chat</label>
-                <div id="unreadMessageCountContainer" class="hidden">
-                  <div id="unreadMessageCount">
-                    <label id="unreadMessageCountLabel">0</label>
+                <div id="unreadMessageCountContainer" class="notificationCountContainer hidden">
+                  <div class="notificationCount">
+                    <label class="notificationCountLabel">0</label>
                   </div>
                 </div>
               </div>
               <div id="chatboxTabPlayers" class="chatboxTab" data-tab-section="players">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.players">Players</label>
+                <div id="incomingFriendRequestCountContainer" class="notificationCountContainer hidden">
+                  <div class="notificationCount">
+                    <label class="notificationCountLabel">0</label>
+                  </div>
+                </div>
               </div>
               <div id="chatboxTabParties" class="chatboxTab" data-tab-section="parties">
                 <label class="chatboxTabLabel unselectable" data-i18n="[html]chatbox.tab.parties">Parties</label>

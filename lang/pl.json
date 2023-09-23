@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "Mapa",
-          "friends": "Friends",
+          "friends": "Znajomi",
           "party": "Grupa"
         }
       }
@@ -100,7 +100,7 @@
             "label": "Widoczność lokalizacji",
             "values": {
               "private": "Prywatna",
-              "friends": "Tylko dla przyjaciół",
+              "friends": "Tylko dla znajomych",
               "public": "Publiczna"
             }
           },
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Znajomi",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Wysłano zaproszenie do znajomych",
+              "remove": "Usunięto ze znajomych",
+              "accept": "Zaakceptowane zaproszenie do znajomych",
+              "reject": "Odrzucone zaproszenie do znajomych",
+              "cancel": "Anulowane zaproszenie do znajomych",
+              "incoming": "Przychodzące zaproszenie do znajomych",
+              "playerOnline": "Znajomy/a online",
+              "playerOffline": "Znajomy/a offline"
             }
           },
           "parties": {
@@ -407,7 +407,7 @@
           "sortOrder": {
             "values": {
               "recent": "Najnowsze",
-              "likes": "Najwięcej polubiane"
+              "likes": "Najbardziej polubiane"
             }
           },
           "interval": {
@@ -515,9 +515,9 @@
       "unnamed": "Gracz bez nazwy",
       "muted": "Wyciszony",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Akceptuj zaproszenie do znajomych",
+        "rejectFriend": "Odrzuć zaproszenie do znajomych",
+        "cancelFriend": "Anuluj zaproszenie do znajomych",
         "partyKick": "Wyrzuć z grupy",
         "transferPartyOwner": "Promuj na lidera grupy"
       }
@@ -535,10 +535,10 @@
         "label": "Pinguj {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Dodaj {PLAYER} do znajomych"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Usuń {PLAYER} ze znajomych"
       },
       "block": {
         "label": "Zablokuj {PLAYER}",
@@ -609,12 +609,12 @@
       "globalMessage": "Globalna wiadomość"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Znajomy/a",
       "categories": {
-        "incoming": "Incoming",
-        "outgoing": "Outgoing",
-        "online": "Online",
-        "offline": "Offline"
+        "incoming": "Przychodzące - {COUNT}",
+        "outgoing": "Wysłane - {COUNT}",
+        "online": "Online - {COUNT}",
+        "offline": "Offline - {COUNT}"
       }
     },
     "parties": {
@@ -623,11 +623,9 @@
       "defaultPartyName": "Grupa {OWNER}",
       "partyOwner": "Lider grupy",
       "categories": {
-        "online": "Online",
-        "offline": "Offline"
+        "online": "Online - {COUNT}",
+        "offline": "Offline - {COUNT}"
       },
-      "onlineCount": "Online - {COUNT}",
-      "offlineCount": "Offline - {COUNT}",
       "actions": {
         "viewPartyDetails": "Sprawdź detale grupy",
         "joinParty": "Dołącz do grupy",
@@ -682,7 +680,7 @@
       },
       "account": {
         "loggedIn": "Zalogowano się jako {USER}.",
-        "loggedOut": "Zostałęś/aś wylogowany/a.",
+        "loggedOut": "Zostałeś/aś wylogowany/a.",
         "passwordUpdated": "Twoje hasło zostało zaktualizowane pomyślnie."
       },
       "players": {
@@ -690,12 +688,12 @@
         "playerUnblocked": "Gracz {PLAYER} został odblokowany."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "Wysłano zaproszenie do znajomych do {PLAYER}.",
+        "remove": "Usunięto {PLAYER} ze znajomych.",
+        "accept": "Zaproszenie do znajomych od {PLAYER} zostało zaakceptowane.",
+        "reject": "Zaproszenie do znajomych od {PLAYER} zostało odrzucone.",
+        "cancel": "Twoje zaproszenie do znajomych dla {PLAYER} zostało anulowane.",
+        "incoming": "Masz nowe zaproszenie do znajomych od {PLAYER}.",
         "playerOnline": "{PLAYER} jest teraz online.",
         "playerOffline": "{PLAYER} jest teraz offline."
       },
@@ -738,7 +736,7 @@
       "exp": "{POINTS} ExP",
       "expRank": "Ranga: {RANK}",
       "period": "Sezon {ORDINAL}",
-      "periodEnds": "Kończy się {DATE}",
+      "periodEnds": "Kończy się dnia {DATE}",
       "current": "Aktualne",
       "shortcut": "Dostępne przez odblokowywalny skrót",
       "availableUntilDate": "Dostępne do\n{DATE}",
