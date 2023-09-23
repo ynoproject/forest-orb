@@ -437,10 +437,10 @@
     "tooltips": {
       "togglePrivateMode": "Włącz tryb prywatny",
       "save": "Zarządzaj zapisami",
-      "uiTheme": "Motyw",
+      "uiTheme": "Ustaw motyw",
       "toggleChat": "Pokaż/ukryj czat",
       "toggleExplorer": "Pokaż/ukryj Yume 2kki Navigator",
-      "screenshot": "Zrzut ekranu",
+      "screenshot": "Wykonaj zrzut ekranu",
       "myScreenshots": "Moje zrzuty ekranu",
       "settings": "Ustawienia",
       "toggleMute": "Wycisz",
@@ -496,7 +496,7 @@
       "2kki": {
         "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "Gra w {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
@@ -646,7 +646,7 @@
         "clearChat": "Jeżeli wciśnisz przycisk wyczyszczenia czatu w innej zakładce niż 'Wszystko', usunięte zostaną tylko wiadomości w tej zakładce.",
         "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz zauważyć spadek w szybkości strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu by nie musieć ciągle własnoręcznie czyścić czatu.",
         "parties": "Grupy są świetnym sposobem na trzymanie się razem z innymi na wycieczkach. Możesz zobaczyć lokalizację członków swojej grupy oraz rozmawiać z nimi w osobnym czacie.",
-        "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od socjalnego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych graczy jest bardziej interesujące.",
+        "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od społecznego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych graczy jest bardziej interesujące.",
         "openSource": "Kod źródłowy YNOProject jest dostępny na https://github.com/ynoproject/"
       }
     },
