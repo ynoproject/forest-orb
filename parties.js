@@ -727,8 +727,8 @@ function initOrUpdatePartyModal(partyId) {
   const onlineCountLabel = document.getElementById('partyModalOnlineCount');
   const offlineCountLabel = document.getElementById('partyModalOfflineCount');
   
-  onlineCountLabel.innerText = localizedMessages.parties.onlineCount.replace('{COUNT}', onlineCount);
-  offlineCountLabel.innerText = localizedMessages.parties.offlineCount.replace('{COUNT}', offlineCount);
+  onlineCountLabel.innerText = localizedMessages.parties.categories.online.replace('{COUNT}', onlineCount);
+  offlineCountLabel.innerText = localizedMessages.parties.categories.offline.replace('{COUNT}', offlineCount);
 
   onlineCountLabel.classList.toggle('hidden', !onlineCount);
   offlineCountLabel.classList.toggle('hidden', !offlineCount);
