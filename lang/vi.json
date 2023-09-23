@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "Map",
-          "friends": "Friends",
+          "friends": "Bạn bè",
           "party": "Nhóm"
         }
       }
@@ -68,7 +68,7 @@
     "modal": {
       "confirm": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "Hủy"
       },
       "login": {
         "title": "Đăng Nhập",
@@ -151,7 +151,7 @@
             "party": "Overlay chat nhóm"
           },
           "toggleTabToChat": "Nhấn Tab để chat",
-          "togglePlayMentionSound": "Phát âm thanh gắn thẻ",
+          "togglePlayMentionSound": "Phát âm báo gắn thẻ",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Bạn bè",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Đã kết bạn",
+              "remove": "Đã hủy kết bạn",
+              "accept": "Đã chấp nhận lời mời kết bạn",
+              "reject": "Đã xóa lời mời kết bạn",
+              "cancel": "Đã hủy lời mời kết bạn",
+              "incoming": "Có lời mời kết bạn",
+              "playerOnline": "Bạn đang online",
+              "playerOffline": "Bạn đã offline"
             }
           },
           "parties": {
@@ -388,35 +388,35 @@
       "screenshot": {
         "title": "Your Screenshot",
         "download": "Tải xuống",
-        "save": "Save to My Screenshots"
+        "save": "Lưu vào Ảnh của tôi"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Ảnh của tôi",
+        "empty": "Bạn chưa lưu ảnh chụp màn hình nào."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "Ảnh của cộng đồng",
+        "scrollToRefresh": "Lướt về đầu để tải lại",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Trò chơi:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Tất cả"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "Mới nhất",
+              "likes": "Được thích nhiều nhất"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Hôm nay",
+              "week": "Tuần này",
+              "month": "Tháng này",
+              "year": "Năm nay",
+              "all": "Từ trước đến nay"
             }
           }
         }
@@ -435,13 +435,13 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "Bật Chế độ Riêng tư",
       "save": "Quản lý Dữ liệu lưu",
       "uiTheme": "Phông nền",
       "toggleChat": "Bật/Tắt Chat",
       "toggleExplorer": "Bật/Tắt Yume 2kki Navigator",
       "screenshot": "Chụp ảnh màn hình",
-      "myScreenshots": "My Screenshots",
+      "myScreenshots": "Ảnh của tôi",
       "settings": "Cài đặt",
       "toggleMute": "Bật/Tắt tiếng",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
@@ -456,7 +456,7 @@
         "disbandParty": "Giải tán nhóm"
       },
       "events": "Tham Quan",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
       "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá"
@@ -487,7 +487,7 @@
       "0": "Không có kết nối",
       "1": "Đã kết nối",
       "2": "Đang kết nối...",
-      "3": "Private Mode"
+      "3": "Riêng tư"
     },
 	  "location": {	
       "template": "{LOCATION}",	
@@ -515,15 +515,15 @@
       "unnamed": "Không tên",
       "muted": "Muted",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Chấp nhận lời mời",
+        "rejectFriend": "Xóa lời mời",
+        "cancelFriend": "Hủy lời mời",
         "partyKick": "Xóa khỏi nhóm",
         "transferPartyOwner": "Chỉ định làm trưởng nhóm"
       }
     },
     "roles": {
-      "mod": "Quản trị viên",
+      "mod": "Người kiểm duyệt",
       "dev": "Lập trình viên"
     },
     "timestamp": {
@@ -532,13 +532,13 @@
     },
      "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "Gắn thẻ {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Kết bạn với {PLAYER}"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Hủy kết bạn với {PLAYER}"
       },
       "block": {
         "label": "Chặn {PLAYER}",
@@ -611,8 +611,8 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
+        "incoming": "Lời mời kết bạn - {COUNT}",
+        "outgoing": "Lời mời đã gửi - {COUNT}",
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
       }
@@ -688,12 +688,12 @@
         "playerUnblocked": "Đã bỏ chặn {PLAYER}."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "Bạn đã gửi lời mời kết bạn đến {PLAYER}.",
+        "remove": "Bạn đã hủy kết bạn với {PLAYER}.",
+        "accept": "Đã chấp nhận lời mời kết bạn của {PLAYER}.",
+        "reject": "Đã xóa lời mời kết bạn của {PLAYER}.",
+        "cancel": "Đã hủy lời mời kết bạn đến {PLAYER}.",
+        "incoming": "Bạn có lời mời kết bạn từ {PLAYER}.",
         "playerOnline": "{PLAYER} đang online.",
         "playerOffline": "{PLAYER} đã offline."
       },
@@ -840,30 +840,30 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "Ảnh của {USER}",
+      "limit": "Đã dùng {COUNT}/{LIMIT} slot",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Đặt ảnh công khai",
+          "off": "Đặt ảnh riêng tư"
         }
       },
       "spoiler": {
         "label": "Spoiler",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Đánh dấu là spoiler",
+          "off": "Bỏ spoiler"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "Thích",
+          "off": "Bỏ thích"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Xóa",
+        "confirm": "Bạn có chắc chắn muốn xóa ảnh này?"
       }
     },
     "2kki": {
