@@ -495,7 +495,8 @@
       "unknownLocation": "Ubicazione Sconosciuta",
       "2kki": {
         "template": "{LOCATION}"
-      }
+      },
+      "playing": "Playing {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",

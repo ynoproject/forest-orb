@@ -219,7 +219,7 @@ function setSystemName(name) {
     globalPlayerData[playerData.uuid].systemName = name;
   }
   if (connStatus == 1 || connStatus == 3)
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+    addOrUpdatePlayerListEntry(null, playerData, false, true);
 }
 
 // EXTERNAL
@@ -240,7 +240,7 @@ function onUpdateSystemGraphic(name) {
 }
 
 function getDefaultUiTheme(themeGameId) {
-  if (!themeGameId)
+  if (!themeGameId || !allGameUiThemes.hasOwnProperty(themeGameId))
     themeGameId = gameId;
   return allGameUiThemes[themeGameId][0];
 }

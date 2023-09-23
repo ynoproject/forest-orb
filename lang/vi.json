@@ -495,7 +495,8 @@
       "unknownLocation": "Không rõ Địa điểm",
       "2kki": {	
         "template": "{LOCATION}"	
-      }	
+      },
+      "playing": "Playing {GAME}"
     },	
     "locationDisplay": {	
       "template": "{LOCATION}",	

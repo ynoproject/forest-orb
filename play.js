@@ -110,7 +110,7 @@ function onUpdateConnectionStatus(status) {
   connStatus = status;
 
   if (status === 1 || status === 3) {
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+    addOrUpdatePlayerListEntry(null, playerData, false, true);
     updatePlayerFriends(true);
     updateJoinedParty();
     if (eventPeriodCache)
@@ -126,7 +126,7 @@ function onUpdateConnectionStatus(status) {
 function onRoomSwitch() {
   syncPrevLocation();
   clearPlayerList();
-  addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+  addOrUpdatePlayerListEntry(null, playerData, false, true);
   syncLocationChange();
   checkEventLocations();
   updatePlayerFriends(true);

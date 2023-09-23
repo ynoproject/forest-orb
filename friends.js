@@ -67,7 +67,7 @@ function onUpdatePlayerFriends(playerFriends) {
   playerFriendsCache = playerFriends || [];
 
   for (let playerFriend of playerFriends) {
-    const entry = addOrUpdatePlayerListEntry(friendsPlayerList, playerFriend.systemName, playerFriend.name, playerFriend.uuid, true);
+    const entry = addOrUpdatePlayerListEntry(friendsPlayerList, playerFriend, true);
     entry.classList.toggle('offline', playerFriend.accepted && !playerFriend.online);
     entry.dataset.categoryId = playerFriend.accepted ? playerFriend.online ? 'online' : 'offline' : playerFriend.incoming ? 'incoming' : 'outgoing';
     addOrUpdatePlayerListEntryLocation(true, playerFriend, entry);

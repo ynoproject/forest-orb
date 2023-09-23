@@ -495,7 +495,8 @@
       "unknownLocation": "場所不明",
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」"
-      }
+      },
+      "playing": "Playing {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",

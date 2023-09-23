@@ -419,7 +419,7 @@ function onUpdateJoinedParty(party) {
       medals: member.medals
     };
 
-    const entry = addOrUpdatePlayerListEntry(partyPlayerList, member.systemName, member.name, member.uuid, true);
+    const entry = addOrUpdatePlayerListEntry(partyPlayerList, member, true);
     entry.classList.toggle('offline', !member.online);
     entry.dataset.categoryId = member.online ? 'online' : 'offline';
     addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
@@ -716,7 +716,7 @@ function initOrUpdatePartyModal(partyId) {
     else
       offlineCount++;
     
-    const entry = addOrUpdatePlayerListEntry(playerList, member.systemName, member.name, member.uuid, true);
+    const entry = addOrUpdatePlayerListEntry(playerList, member, true);
     entry.classList.toggle('offline', !member.online);
     addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
   }

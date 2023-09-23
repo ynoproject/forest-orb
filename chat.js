@@ -446,7 +446,7 @@ function trySetChatName(name) {
       playerData.name = playerName;
       globalPlayerData[playerData.uuid].name = playerName;
     }
-    addOrUpdatePlayerListEntry(null, systemName, playerName, defaultUuid, false, true);
+    addOrUpdatePlayerListEntry(null, playerData, false, true);
     if (!loginToken)
       sendSessionCommand('name', [ playerName ]);
   }

@@ -156,7 +156,15 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
   return playerName;
 }
 
-function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLocation, sortEntries) {
+function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntries) {
+  const uuid = player.uuid === defaultUuid ? playerData?.uuid || defaultUuid : player.uuid;
+  const name = player.name;
+  let systemName = player.systemName;
+  let playerGameId = player.game || gameId;
+
+  if (!allGameUiThemes.hasOwnProperty(playerGameId))
+    playerGameId = gameId;
+
   if (!playerList)
     playerList = document.getElementById('playerList');
 
@@ -179,8 +187,6 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   let partyKickAction = playerListEntry ? playerListEntry.querySelector('.partyKickAction') : null;
   let transferPartyOwnerAction = playerListEntry ? playerListEntry.querySelector('.transferPartyOwnerAction') : null;
 
-  const player = uuid === defaultUuid ? playerData : globalPlayerData[uuid];
-
   if (!playerListEntry) {
     playerListEntry = document.createElement('div');
     playerListEntry.classList.add('playerListEntry', 'listEntry');
@@ -198,7 +204,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     nameText.classList.add('nameText');
 
-    if (!player?.account) {
+    if (!player.account) {
       const nameBeginMarker = document.createElement('span');
       nameBeginMarker.classList.add('nameMarker');
       nameBeginMarker.textContent = '<';
@@ -220,7 +226,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       playerListEntryMain.appendChild(nameTextContainer);
     }
 
-    if (!player?.account) {
+    if (!player.account) {
       const nameEndMarker = document.createElement('span');
       nameEndMarker.classList.add('nameMarker');
       nameEndMarker.textContent = '>';
@@ -245,8 +251,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
     playerListEntryActionContainer.classList.add('playerListEntryActionContainer', 'listEntryActionContainer');
 
-    if (player)
-      addPlayerContextMenu(playerListEntry, player, uuid, playerList.id === 'playerList' ? MESSAGE_TYPE.MAP : playerList.id === 'partyPlayerList' ? MESSAGE_TYPE.PARTY : null);
+    addPlayerContextMenu(playerListEntry, player, uuid, playerList.id === 'playerList' ? MESSAGE_TYPE.MAP : playerList.id === 'partyPlayerList' ? MESSAGE_TYPE.PARTY : null);
 
     playerListEntry.appendChild(playerListEntryActionContainer);
 
@@ -258,21 +263,28 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
       playerList.scrollTop = playerList.scrollHeight;
   }
 
-  let playerSpriteCacheEntry = playerSpriteCache[uuid];
-  if (!playerSpriteCacheEntry && uuid !== defaultUuid)
-    playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
-  if (playerSpriteCacheEntry) {
-    getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx).then(spriteImg => {
+  if (player.hasOwnProperty('spriteName')) {
+    getSpriteProfileImg(player.spriteName, player.hasOwnProperty('spriteIndex') ? player.spriteIndex : 0, undefined, undefined, playerGameId).then(spriteImg => {
       if (spriteImg)
         playerListEntrySprite.src = spriteImg
     });
-    if (uuid === defaultUuid)
-      updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx);
+  } else {
+    let playerSpriteCacheEntry = playerSpriteCache[uuid];
+    if (!playerSpriteCacheEntry && uuid !== defaultUuid)
+      playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
+    if (playerSpriteCacheEntry) {
+      getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, undefined, undefined, playerGameId).then(spriteImg => {
+        if (spriteImg)
+          playerListEntrySprite.src = spriteImg
+      });
+      if (uuid === defaultUuid)
+        updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, playerGameId);
+    }
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
-    nameText.innerText = getPlayerName(name);
-    if (player?.account) {
+    nameText.innerText = getPlayerName(player);
+    if (player.account) {
       const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
       for (let nameMarker of nameMarkers)
         nameMarker.remove();
@@ -296,7 +308,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     if (rankIcon)
       rankIcon.remove();
 
-    if (player?.rank) {
+    if (player.rank) {
       const rank = Math.min(player.rank, 2);
       rankIcon = getSvgIcon(rank === 1 ? 'mod' : 'dev', true);
       rankIcon.classList.add('rankIcon');
@@ -307,7 +319,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     if (mutedIcon)
       mutedIcon.remove();
 
-    if (player?.muted) {
+    if (player.muted) {
       mutedIcon = getSvgIcon('muted', true);
       mutedIcon.classList.add('muted');
       addTooltip(mutedIcon, getMassagedLabel(localizedMessages.playerList.muted, true), true, true);
@@ -319,7 +331,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   playerListEntryMedals.innerHTML = '';
 
-  if (player?.medals) {
+  if (player.medals) {
     let medalCount = 0;
     for (let t = medalTypes.length - 1; t >= 0; t--) {
       const imgSrc = `images/medal_${medalTypes[t].toLowerCase()}.png`;
@@ -338,7 +350,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     playerListEntryMedals.style.minWidth = `${Math.max(medalCount << 3, 16)}px`;
   }
 
-  const showBadge = player?.account && player.badge && badgeCache;
+  const showBadge = player.account && player.badge && badgeCache;
   const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
   const showBadgeOverlay = showBadge && badge?.overlayType;
   const showBadgeOverlay2 = showBadgeOverlay && badge.overlayType & BadgeOverlayType.DUAL;
@@ -381,7 +393,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
     }
     if (player.name) {
       // Doesn't support x/y so location color badges may be incorrect for maps with multiple locations
-      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, (player.systemName || getDefaultUiTheme()).replace(/'/g, ''));
+      addOrUpdatePlayerBadgeGalleryTooltip(playerListEntryBadge, player.name, (player.systemName || getDefaultUiTheme(playerGameId)).replace(/'/g, ''));
       playerListEntryBadge.classList.toggle('badgeButton', player.name);
     }
   }
@@ -495,29 +507,30 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
 
   if (systemName) {
     systemName = systemName.replace(/'/g, '');
-    if (playerListEntry.dataset.unnamed || gameUiThemes.indexOf(systemName) === -1)
-      systemName = getDefaultUiTheme();
+    if (playerListEntry.dataset.unnamed || !allGameUiThemes.hasOwnProperty(playerGameId) || allGameUiThemes[playerGameId].indexOf(systemName) === -1)
+      systemName = getDefaultUiTheme(playerGameId);
     const parsedSystemName = systemName.replace(/ /g, '_');
-    initUiThemeContainerStyles(systemName, null, false, () => {
-      initUiThemeFontStyles(systemName, null, 0, false, () => {
+    initUiThemeContainerStyles(systemName, playerGameId, false, () => {
+      initUiThemeFontStyles(systemName, playerGameId, 0, false, () => {
+        const gameParsedSystemName = `${playerGameId !== gameId ? `${playerGameId}-` : ''}${parsedSystemName}`;
         if (showBadgeOverlay) {
           playerListEntryBadgeOverlay.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
-            ? `var(--base-gradient-${parsedSystemName})`
-            : `rgb(var(--base-color-${parsedSystemName}))`;
+            ? `var(--base-gradient-${gameParsedSystemName})`
+            : `rgb(var(--base-color-${gameParsedSystemName}))`;
           if (showBadgeOverlay2) {
-            if (getStylePropertyValue(`--base-color-${parsedSystemName}`) !== getStylePropertyValue(`--alt-color-${parsedSystemName}`)) {
+            if (getStylePropertyValue(`--base-color-${gameParsedSystemName}`) !== getStylePropertyValue(`--alt-color-${gameParsedSystemName}`)) {
               playerListEntryBadgeOverlay2.style.background = badge.overlayType & BadgeOverlayType.GRADIENT
-                ? `var(--alt-gradient-${parsedSystemName})`
-                : `rgb(var(--alt-color-${parsedSystemName}))`;
+                ? `var(--alt-gradient-${gameParsedSystemName})`
+                : `rgb(var(--alt-color-${gameParsedSystemName}))`;
             } else
-            playerListEntryBadgeOverlay2.style.background = `rgb(var(--base-bg-color-${parsedSystemName}))`;
+            playerListEntryBadgeOverlay2.style.background = `rgb(var(--base-bg-color-${gameParsedSystemName}))`;
           }
           if (badge.overlayType & BadgeOverlayType.LOCATION)
             handleBadgeOverlayLocationColorOverride(playerListEntryBadgeOverlay, playerListEntryBadgeOverlay2, null, player.name);
         }
       });
     });
-    applyThemeStyles(playerListEntry, parsedSystemName);
+    applyThemeStyles(playerListEntry, parsedSystemName, playerGameId);
   }
 
   updateThemedContainer(playerListEntry);
@@ -531,7 +544,7 @@ function addOrUpdatePlayerListEntry(playerList, systemName, name, uuid, showLoca
   return playerListEntry;
 }
 
-function addOrUpdatePlayerListEntryLocation(locationVisible, member, entry) {
+function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   
@@ -541,19 +554,29 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, member, entry) {
     entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 
-  playerLocation.classList.toggle('hidden', !locationVisible || !member.online);
+  playerLocation.classList.toggle('hidden', !locationVisible || !player.online);
 
-  if (locationVisible && member.online && member.mapId) {
-    const parsedSystemName = member.systemName ? (gameUiThemes.indexOf(member.systemName) > -1 ? member.systemName : getDefaultUiTheme()).replace(/ /g, '_') : null;
+  if (locationVisible && player.online && player.mapId) {
+    let playerGameId = player.game || gameId;
+    if (!allGameUiThemes.hasOwnProperty(playerGameId))
+      playerGameId = gameId;
+    const parsedSystemName = player.systemName ? (allGameUiThemes[playerGameId].indexOf(player.systemName) > -1 ? player.systemName : getDefaultUiTheme(playerGameId)).replace(/ /g, '_') : null;
     playerLocation.dataset.systemOverride = parsedSystemName || null;
-    if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(member.mapId))) {
-      const prevLocations = member.prevLocations && member.prevMapId !== '0000' ? decodeURIComponent(window.atob(member.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
-      set2kkiGlobalChatMessageLocation(playerLocation, member.mapId, member.prevMapId, prevLocations);
+    if (playerGameId === gameId) {
+      if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(player.mapId))) {
+        const prevLocations = player.prevLocations && player.prevMapId !== '0000' ? decodeURIComponent(window.atob(player.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
+        set2kkiGlobalChatMessageLocation(playerLocation, player.mapId, player.prevMapId, prevLocations);
+      } else {
+        const locationsHtml = getLocalizedMapLocationsHtml(gameId, player.mapId, player.prevMapId, player.x, player.y, getInfoLabel('&nbsp;|&nbsp;'));
+        playerLocation.innerHTML = locationsHtml;
+        if (playerLocation.dataset.systemOverride)
+          applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
+      }
     } else {
-      const locationsHtml = getLocalizedMapLocationsHtml(gameId, member.mapId, member.prevMapId, member.x, member.y, getInfoLabel('&nbsp;|&nbsp;'));
-      playerLocation.innerHTML = locationsHtml;
+      const template = getMassagedLabel(localizedMessages.location.template).replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>').replace('{LOCATION}', `<a href="../${playerGameId}/" target="_blank">${getMassagedLabel(localizedMessages.location.playing).replace('{GAME}', localizedMessages.games[playerGameId])}</a>`);
+      playerLocation.innerHTML = template;
       if (playerLocation.dataset.systemOverride)
-        applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
+        applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
   }
 }
@@ -772,7 +795,7 @@ function updateBlocklist(updateModal) {
           });
 
           if (updateModal) {
-            addOrUpdatePlayerListEntry(blocklistModalPlayerList, blockedPlayer.systemName, blockedPlayer.name, blockedPlayer.uuid);
+            addOrUpdatePlayerListEntry(blocklistModalPlayerList, blockedPlayer);
 
             updatePlayerListEntrySprite(blocklistModalPlayerList, blockedPlayer.spriteName, blockedPlayer.spriteIndex, blockedPlayer.uuid);
           }
@@ -791,8 +814,10 @@ function updateBlocklist(updateModal) {
   });
 }
 
-async function getSpriteProfileImg(sprite, idx, favicon, dir) {
+async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
+  if (!gameId)
+    gameId = ynoGameId;
   return new Promise(resolve => {
     const spriteData = favicon ? faviconCache : spriteCache;
     if (!spriteData[sprite])
@@ -807,7 +832,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
     const defaultIdx = defaultSpriteObj.idx;
     const getDefaultSpriteImg = new Promise(resolve => {
       if (sprite !== defaultSprite || idx !== defaultIdx)
-        getSpriteProfileImg(defaultSprite, defaultIdx, favicon).then(defaultSpriteImg => resolve(defaultSpriteImg));
+        getSpriteProfileImg(defaultSprite, defaultIdx, favicon, undefined, ynoGameId).then(defaultSpriteImg => resolve(defaultSpriteImg));
       else
         resolve(null);
     });
@@ -819,8 +844,8 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `../data/${ynoGameId}/CharSet/`;
-      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${ynoGameId}/`).then(url => resolve(url));
+      dir = `../data/${gameId}/CharSet/`;
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
@@ -832,8 +857,8 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir) {
   });
 }
 
-function updatePlayerSprite(sprite, idx) {
-  getSpriteProfileImg(sprite, idx, true).then(faviconImg => document.getElementById('favicon').href = faviconImg);
+function updatePlayerSprite(sprite, idx, gameId) {
+  getSpriteProfileImg(sprite, idx, true, undefined, gameId).then(faviconImg => document.getElementById('favicon').href = faviconImg);
   playerLoaderSprite = sprite;
   playerLoaderSpriteIdx = idx;
 }
@@ -908,7 +933,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
     if (systemName)
       globalPlayerData[uuid].systemName = systemName;
   }
-  addOrUpdatePlayerListEntry(null, systemName, name, uuid, false, true);
+  addOrUpdatePlayerListEntry(null, Object.assign({ uuid }, globalPlayerData[uuid]), false, true);
 }
 
 // EXTERNAL
