@@ -573,8 +573,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
           applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
       }
     } else {
-      const template = getMassagedLabel(localizedMessages.location.template).replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>').replace('{LOCATION}', `<a href="../${playerGameId}/" target="_blank">${getMassagedLabel(localizedMessages.location.playing).replace('{GAME}', localizedMessages.games[playerGameId])}</a>`);
-      playerLocation.innerHTML = template;
+      playerLocation.innerHTML = `<span class="infoLabel"><a href="../${playerGameId}/" target="_blank">${getMassagedLabel(localizedMessages.location.playing).replace('{GAME}', localizedMessages.games[playerGameId])}</a></span>`;
       if (playerLocation.dataset.systemOverride)
         applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
