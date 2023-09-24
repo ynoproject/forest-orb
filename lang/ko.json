@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "로컬",
-          "friends": "Friends",
+          "friends": "친구",
           "party": "파티 멤버"
         }
       }
@@ -67,8 +67,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "확인",
+        "cancel": "취소"
       },
       "login": {
         "title": "로그인",
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "친구",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "친구 추가됨",
+              "remove": "친구 삭제함",
+              "accept": "친구 신청 수락됨",
+              "reject": "친구 신청 거절됨",
+              "cancel": "친구 신청 취소됨",
+              "incoming": "친구 신청 수신",
+              "playerOnline": "온라인 친구",
+              "playerOffline": "오프라인 친구"
             }
           },
           "parties": {
@@ -435,7 +435,7 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "1인 모드 활성화",
       "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
@@ -487,7 +487,7 @@
       "0": "연결 끊김",
       "1": "연결됨",
       "2": "연결 중...",
-      "3": "Private Mode"
+      "3": "1인 모드"
     },
     "location": {
       "template": "{LOCATION} ({LOCATION_EN})",
@@ -516,9 +516,9 @@
       "unnamed": "익명의 플레이어",
       "muted": "채팅 금지됨",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "친구 신청 수락",
+        "rejectFriend": "친구 신청 거절",
+        "cancelFriend": "친구 신청 취소",
         "partyKick": "파티에서 강퇴하기",
         "transferPartyOwner": "파티 리더로 임명하기"
       }
@@ -536,10 +536,10 @@
         "label": "멘션 {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "{PLAYER} 친구 신청"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "{PLAYER} 친구 삭제"
       },
       "block": {
         "label": "{PLAYER} 차단",
@@ -610,10 +610,10 @@
       "globalMessage": "글로벌 메시지"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "친구",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
+        "incoming": "신청 수신함 - {COUNT}",
+        "outgoing": "신청 발신함 - {COUNT}",
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
       }
@@ -689,12 +689,12 @@
         "playerUnblocked": "{PLAYER} 님이 차단 해제되었습니다"
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "{PLAYER}님에게 친구 신청을 보냈습니다.",
+        "remove": "{PLAYER}님을 친구 목록에서 삭제했습니다.",
+        "accept": "{PLAYER}님의 친구 신청을 수락했습니다.",
+        "reject": "{PLAYER}님의 친구 신청을 거절했습니다.",
+        "cancel": "{PLAYER}님에게 보낸 친구 신청을 취소했습니다.",
+        "incoming": "{PLAYER}님이 보낸 친구 신청이 수신되었습니다.",
         "playerOnline": "{PLAYER}님이 온라인입니다",
         "playerOffline": "{PLAYER}님이 오프라인입니다"
       },
