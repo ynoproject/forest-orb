@@ -496,7 +496,7 @@
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」"
       },
-      "playing": "Playing {GAME}"
+      "playing": "{GAME}をプレイ中"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
