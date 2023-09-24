@@ -1071,7 +1071,7 @@
         <div id="screenshotModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
-            <h1 class="modalTitle" data-i18n="[html]modal.screenshotModal.title">Your Screenshot</h1>
+            <h1 class="modalTitle" data-i18n="[html]modal.screenshot.title">Your Screenshot</h1>
             <h1 class="playerScreenshotModalTitle hidden"></h1>
           </div>
           <div class="modalContent noScroll"></div>
