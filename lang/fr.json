@@ -496,7 +496,7 @@
       "2kki": {
         "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "Joue à {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
