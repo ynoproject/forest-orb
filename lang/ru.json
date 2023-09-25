@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "Карта",
-          "friends": "Friends",
+          "friends": "Друзья",
           "party": "Группа"
         }
       }
@@ -226,16 +226,16 @@
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Друзья",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Друг добавлен",
+              "remove": "Друг удалён",
+              "accept": "Запрос в Друзья Принят",
+              "reject": "Запрос в Друзья Отклонён",
+              "cancel": "Запрос в Друзья Отменён",
+              "incoming": "Входящий Запрос в Друзья",
+              "playerOnline": "Друг в сети",
+              "playerOffline": "Друг вне сети"
             }
           },
           "parties": {
@@ -487,7 +487,7 @@
       "0": "Вне сети",
       "1": "В сети",
       "2": "Соединение...",
-      "3": "Private Mode"
+      "3": "Приватный режим"
     },
     "location": {
       "template": "{LOCATION}",
@@ -496,7 +496,7 @@
       "2kki": {
         "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "Играет в {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
@@ -516,9 +516,9 @@
       "unnamed": "Безымянный игрок",
       "muted": "Без голоса",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Принять Запрос в Друзья",
+        "rejectFriend": "Отклонить Запрос в Друзья",
+        "cancelFriend": "Отменить Запрос в Друзья",
         "partyKick": "Выгнать из группы,",
         "transferPartyOwner": "Передать лидерство в группе"
       }
@@ -536,10 +536,10 @@
         "label": "Упомянуть {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Добавить {PLAYER} в Друзья"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Удалить {PLAYER} из друзей"
       },
       "block": {
         "label": "Заблокировать {PLAYER}",
@@ -610,10 +610,10 @@
       "globalMessage": "Из общего чата"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Друзья",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
+        "incoming": "Входящие - {COUNT}",
+        "outgoing": "Исходящие - {COUNT}",
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"
       }
@@ -689,12 +689,12 @@
         "playerUnblocked": "Игрок {PLAYER} больше не блокируется."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "Отправлен запрос дружбы к {PLAYER}.",
+        "remove": "Вы удалили {PLAYER} из списка друзей.",
+        "accept": "Вы приняли запрос в друзья от {PLAYER}.",
+        "reject": "Вы отклонили запрос в друзья от {PLAYER}.",
+        "cancel": "Запрос дружбы к {PLAYER} отменён.",
+        "incoming": "Игрок {PLAYER} хочет добавить вас в Друзья.",
         "playerOnline": "{PLAYER} в сети.",
         "playerOffline": "{PLAYER} вне сети."
       },
