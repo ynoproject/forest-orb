@@ -547,6 +547,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
 function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
+  const isValidMap = !!parseInt(player.mapId);
   
   if (initLocation) {
     playerLocation = document.createElement('small');
@@ -554,9 +555,9 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
     entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 
-  playerLocation.classList.toggle('hidden', !locationVisible || !player.online);
+  playerLocation.classList.toggle('hidden', !locationVisible || !player.online || !isValidMap);
 
-  if (locationVisible && player.online && player.mapId) {
+  if (locationVisible && player.online && isValidMap) {
     let playerGameId = player.game || gameId;
     if (!allGameUiThemes.hasOwnProperty(playerGameId))
       playerGameId = gameId;
