@@ -490,20 +490,20 @@
       "3": "Tryb prywatny"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "Ostatnio online\n{INTERVAL} temu",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "mniej niż 1 minutę",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} minutę",
+          "plural": "{VALUE} minut"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} godzinę",
+          "plural": "{VALUE} godzin"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} dzień",
+          "plural": "{VALUE} dni"
         }
       }
     },
