@@ -266,15 +266,24 @@ function updatePartyList(skipNextUpdate) {
         
         for (let party of data) {
           const isInParty = joinedPartyId && party.id === joinedPartyId;
-          if (isInParty && partyCache[party.id]) {
-            const memberUuids = party.members.map(m => m.uuid);
-            const oldMemberUuids = partyCache[party.id].members.map(m => m.uuid);
-            const newMemberUuids = memberUuids.filter(uuid => oldMemberUuids.indexOf(uuid) === -1 && uuid !== playerData.uuid);
-            const removedMemberUuids = oldMemberUuids.filter(uuid => memberUuids.indexOf(uuid) === -1 && uuid !== playerData.uuid);
-            for (let uuid of newMemberUuids)
-              showPartyToastMessage('playerJoin', 'join', party, uuid);
-            for (let uuid of removedMemberUuids)
-              showPartyToastMessage('playerLeave', 'leave', partyCache[party.id], uuid);
+          if (isInParty) {
+            if (partyCache[party.id]) {
+              const memberUuids = party.members.map(m => m.uuid);
+              const oldMemberUuids = partyCache[party.id].members.map(m => m.uuid);
+              const newMemberUuids = memberUuids.filter(uuid => oldMemberUuids.indexOf(uuid) === -1 && uuid !== playerData.uuid);
+              const removedMemberUuids = oldMemberUuids.filter(uuid => memberUuids.indexOf(uuid) === -1 && uuid !== playerData.uuid);
+              for (let uuid of newMemberUuids)
+                showPartyToastMessage('playerJoin', 'join', party, uuid);
+              for (let uuid of removedMemberUuids)
+                showPartyToastMessage('playerLeave', 'leave', partyCache[party.id], uuid);
+            }
+          } else {
+            party.members.forEach(m => {
+              m.mapId = '0000';
+              m.prevMapId = '0000';
+              m.prevLocations = '';
+              m.lastActive = null;
+            });
           }
           partyCache[party.id] = party
           addOrUpdatePartyListEntry(party);

@@ -548,7 +548,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   const isValidMap = !!parseInt(player.mapId);
-  const showLastOnline = player.hasOwnProperty('online') && !player.online && player.hasOwnProperty('lastActive');
+  const showLastOnline = player.hasOwnProperty('online') && !player.online && player.hasOwnProperty('lastActive') && player.lastActive;
   
   if (initLocation) {
     playerLocation = document.createElement('small');
