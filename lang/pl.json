@@ -495,11 +495,11 @@
         "short": "mniej niż 1 minutę",
         "minutes": {
           "singular": "{VALUE} minutę",
-          "plural": "{VALUE} minut"
+          "plural": "{VALUE} minut/y"
         },
         "hours": {
           "singular": "{VALUE} godzinę",
-          "plural": "{VALUE} godzin"
+          "plural": "{VALUE} godzin/y"
         },
         "days": {
           "singular": "{VALUE} dzień",
