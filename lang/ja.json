@@ -489,6 +489,24 @@
       "2": "接続中…",
       "3": "プライベートモード"
     },
+    "lastOnline": {
+      "template": "Last online\n{INTERVAL} ago",
+      "interval": {
+        "short": "less than 1 minute",
+        "minutes": {
+          "singular": "{VALUE} minute",
+          "plural": "{VALUE} minutes"
+        },
+        "hours": {
+          "singular": "{VALUE} hour",
+          "plural": "{VALUE} hours"
+        },
+        "days": {
+          "singular": "{VALUE} day",
+          "plural": "{VALUE} days"
+        }
+      }
+    },
     "location": {
       "template": "{LOCATION} 「{LOCATION_EN}」",
       "queryingLocation": "場所を取得中…",

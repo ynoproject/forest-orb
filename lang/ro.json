@@ -489,6 +489,24 @@
       "2": "Se conectează...",
       "3": "Private Mode"
     },
+    "lastOnline": {
+      "template": "Last online\n{INTERVAL} ago",
+      "interval": {
+        "short": "less than 1 minute",
+        "minutes": {
+          "singular": "{VALUE} minute",
+          "plural": "{VALUE} minutes"
+        },
+        "hours": {
+          "singular": "{VALUE} hour",
+          "plural": "{VALUE} hours"
+        },
+        "days": {
+          "singular": "{VALUE} day",
+          "plural": "{VALUE} days"
+        }
+      }
+    },
     "location": {
       "template": "{LOCATION}",
       "queryingLocation": "Se consultă locația...",

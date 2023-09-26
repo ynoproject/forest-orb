@@ -548,6 +548,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   const isValidMap = !!parseInt(player.mapId);
+  const showLastOnline = player.hasOwnProperty('online') && !player.online && player.hasOwnProperty('lastActive');
   
   if (initLocation) {
     playerLocation = document.createElement('small');
@@ -555,7 +556,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
     entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 
-  playerLocation.classList.toggle('hidden', !locationVisible || !player.online || !isValidMap);
+  playerLocation.classList.toggle('hidden', (!locationVisible || !isValidMap) && !showLastOnline);
 
   if (locationVisible && player.online && isValidMap) {
     let playerGameId = player.game || gameId;
@@ -578,6 +579,10 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
       if (playerLocation.dataset.systemOverride)
         applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
+  } else if (showLastOnline) {
+    playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', getLastOnlineInterval(new Date(player.lastActive)))}</span>`;
+    if (playerLocation.dataset.systemOverride)
+      applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
   }
 }
 
@@ -812,6 +817,21 @@ function updateBlocklist(updateModal) {
         resolve();
     });
   });
+}
+
+function getLastOnlineInterval(date) {
+  const localizedInterval = localizedMessages.lastOnline.interval;
+  const timeDiffSeconds = (new Date().getTime() - date.getTime()) / 1000;
+  if (timeDiffSeconds < 60)
+    return localizedInterval.short;
+  const timeDiffMinutes = Math.floor(timeDiffSeconds / 60);
+  if (timeDiffMinutes < 60)
+    return localizedInterval.minutes[timeDiffMinutes === 1 ? 'singular' : 'plural'].replace('{VALUE}', timeDiffMinutes);
+  const timeDiffHours = Math.floor(timeDiffMinutes / 60);
+  if (timeDiffHours < 24)
+    return localizedInterval.hours[timeDiffHours === 1 ? 'singular' : 'plural'].replace('{VALUE}', timeDiffHours);
+  const timeDiffDays = Math.floor(timeDiffHours / 24);
+  return localizedInterval.days[timeDiffDays === 1 ? 'singular' : 'plural'].replace('{VALUE}', timeDiffDays);
 }
 
 async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
