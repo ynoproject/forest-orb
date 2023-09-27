@@ -386,12 +386,12 @@
         "title": "랭킹"
       },
       "screenshot": {
-        "title": "내 스크린샷 목록",
+        "title": "나의 스크린샷",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },
       "myScreenshots": {
-        "title": "나의 스크린샷",
+        "title": "나의 스크린샷 목록",
         "empty": "아직 스크린샷을 저장하지 않았습니다"
       },
       "communityScreenshots": {
@@ -490,20 +490,20 @@
       "3": "1인 모드"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "마지막 접속\n{INTERVAL} 전",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "방금 전",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} 분",
+          "plural": "{VALUE} 분"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} 시간",
+          "plural": "{VALUE} 시간"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} 일",
+          "plural": "{VALUE} 일"
         }
       }
     },
