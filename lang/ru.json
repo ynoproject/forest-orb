@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "Ваш снимок",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Скачать",
         "save": "Сохранить в Ваши снимки"
       },

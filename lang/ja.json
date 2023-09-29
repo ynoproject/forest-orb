@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "スクリーンショット",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "ダウンロード",
         "save": "マイスクリーンショットに保存する"
       },

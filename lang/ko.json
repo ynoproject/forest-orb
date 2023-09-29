@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "내 스크린샷 목록",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },

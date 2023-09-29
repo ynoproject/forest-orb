@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "屏幕截图",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "下载",
         "save": "保存到我的截图"
       },
