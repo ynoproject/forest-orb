@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "スクリーンショット",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "ダウンロード",
         "save": "マイスクリーンショットに保存する"
       },
@@ -514,7 +515,7 @@
       "2kki": {
         "template": "{LOCATION_JP} 「{LOCATION}」"
       },
-      "playing": "Playing {GAME}"
+      "playing": "{GAME}をプレイ中"
     },
     "locationDisplay": {
       "template": "{LOCATION}",

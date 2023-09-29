@@ -7,6 +7,65 @@ let communityScreenshotsScrollTop = 0;
 let communityScreenshotsScrollTimer = null;
 let communityScreenshotsScrollWatch = null;
 
+const screenshotSlotBpLevels = [
+  {
+    bp: 100,
+    count: 10
+  },
+  {
+    bp: 250,
+    count: 15
+  },
+  {
+    bp: 500,
+    count: 20
+  },
+  {
+    bp: 1000,
+    count: 25
+  },
+  {
+    bp: 2500,
+    count: 30
+  },
+  {
+    bp: 5000,
+    count: 35
+  },
+  {
+    bp: 7500,
+    count: 40
+  },
+  {
+    bp: 10000,
+    count: 45
+  },
+  {
+    bp: 12500,
+    count: 50
+  },
+  {
+    bp: 15000,
+    count: 55
+  },
+  {
+    bp: 17500,
+    count: 60
+  },
+  {
+    bp: 20000,
+    count: 65
+  },
+  {
+    bp: 25000,
+    count: 70
+  },
+  {
+    bp: 0,
+    count: 75
+  }
+];
+
 function initScreenshotControls() {
   document.getElementById('autoDownloadScreenshotsButton').onclick = function () {
     this.classList.toggle('toggled');
@@ -255,6 +314,24 @@ function initScreenshotsModal(isCommunity) {
       communityScreenshotsScrollTimer = null;
       screenshotItemsList.onscroll = null;
     }
+  } else {
+    const totalBp = badgeCache.filter(b => b.unlocked && !b.hidden).reduce((sum, b) => sum + b.bp, 0);
+
+    let levelSlotBp = 0;
+    let prevLevelSlotBp = 0;
+    
+    for (let sl = 0; sl < screenshotSlotBpLevels.length; sl++) {
+      const slotBpLevel = screenshotSlotBpLevels[sl];
+      levelSlotBp = Math.max(slotBpLevel.bp - prevLevelSlotBp, 0);
+      if (totalBp < slotBpLevel.bp)
+        break;
+      prevLevelSlotBp = slotBpLevel.bp;
+    }
+
+    const rootStyle = document.documentElement.style;
+
+    rootStyle.setProperty('--screenshot-slot-level-total-bp', levelSlotBp);
+    rootStyle.setProperty('--screenshot-slot-level-bp', totalBp - prevLevelSlotBp);
   }
 
   let limitOffset = 0;

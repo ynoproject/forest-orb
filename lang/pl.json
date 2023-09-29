@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "Twój zrzut ekranu",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Pobierz",
         "save": "Zapisz do moich zrzutów ekranu"
       },

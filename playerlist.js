@@ -558,8 +558,9 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
 
   playerLocation.classList.toggle('hidden', (!locationVisible || !isValidMap) && !showLastOnline);
 
+  let playerGameId = player.game || gameId;
+
   if (locationVisible && player.online && isValidMap) {
-    let playerGameId = player.game || gameId;
     if (!allGameUiThemes.hasOwnProperty(playerGameId))
       playerGameId = gameId;
     const parsedSystemName = player.systemName ? (allGameUiThemes[playerGameId].indexOf(player.systemName) > -1 ? player.systemName : getDefaultUiTheme(playerGameId)).replace(/ /g, '_') : null;
@@ -724,9 +725,9 @@ function getPlayerListIdEntrySortFunc(playerListId) {
                 case 'incoming':
                   return 1;
                 case 'outgoing':
-                  return 2;
-                case 'online':
                   return 3;
+                case 'online':
+                  return 2;
                 case 'offline':
                   return 4;
               };
