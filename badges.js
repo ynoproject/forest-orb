@@ -340,10 +340,10 @@ function initBadgeGalleryModal() {
 
   rootStyle.setProperty('--row-level-total-bp', levelRowBp);
   rootStyle.setProperty('--row-level-bp', totalBp - prevLevelRowBp);
-  document.getElementById('totalBp').innerHTML = getMassagedLabel(localizedMessages.badgeGallery.bp.replace('{BP}', totalBp), true);
+  document.getElementById('badgeGalleryTotalBp').innerHTML = getMassagedLabel(localizedMessages.badgeGallery.bp.replace('{BP}', totalBp), true);
   rootStyle.setProperty('--col-level-total-bc', levelColBc);
   rootStyle.setProperty('--col-level-bc', totalBc - prevLevelColBc);
-  document.getElementById('totalBc').innerHTML = getMassagedLabel(localizedMessages.badgeGallery.count.replace('{COUNT}', totalBc), true);
+  document.getElementById('badgeGalleryTotalBc').innerHTML = getMassagedLabel(localizedMessages.badgeGallery.count.replace('{COUNT}', totalBc), true);
 
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
     for (let c = 1; c <= maxBadgeSlotCols; c++) {

@@ -387,6 +387,7 @@
       },
       "screenshot": {
         "title": "Your Screenshot",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Tải xuống",
         "save": "Lưu vào Ảnh của tôi"
       },

@@ -49,6 +49,8 @@
   --row-level-total-bp: 1000;
   --col-level-bc: 0;
   --col-level-total-bc: 50;
+  --screenshot-slot-level-bp: 0;
+  --screenshot-slot-level-total-bp: 100;
 
   --content-height: 0;
   --content-scroll: 0;
@@ -2622,6 +2624,11 @@ form .uiTheme {
   margin: 0;
 }
 
+.progressContainer {
+  text-align: left;
+  margin-top: 16px;
+}
+
 .progressBarHeading {
   margin-right: auto;
 }
@@ -2634,11 +2641,6 @@ form .uiTheme {
   border: 4px solid transparent;
   border-image: var(--border-image-url) 8 repeat !important;
   background-color: rgb(var(--base-bg-color));
-}
-
-.badgeGalleryProgressContainer {
-  text-align: left;
-  margin-top: 16px;
 }
 
 .progressBarLabel {
@@ -2864,6 +2866,20 @@ form .uiTheme {
     width: inherit;
     height: inherit;
   }
+}
+
+.screenshotSlotProgressContainer {
+  max-width: min(640px, calc(100% - 112px));
+  margin: auto;
+}
+
+#screenshotSlotProgressBarLabel::after {
+  counter-reset: screenshot-slot-level-bp var(--screenshot-slot-level-bp) screenshot-slot-level-total-bp var(--screenshot-slot-level-total-bp);
+  content: counter(screenshot-slot-level-bp) '/' counter(screenshot-slot-level-total-bp);
+}
+
+#screenshotSlotProgressBar {
+  width: calc(min((var(--screenshot-slot-level-bp) / var(--screenshot-slot-level-total-bp)) * 100%, 100%));
 }
 
 #layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
