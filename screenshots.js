@@ -388,6 +388,38 @@ function initScreenshotsModal(isCommunity) {
       screenshotItem.append(screenshotThumbnailContainer);
       screenshotItem.append(screenshotControls);
 
+      if (parseInt(screenshot.mapId)) {
+        const screenshotLocation = document.createElement('span');
+        screenshotLocation.classList.add('screenshotLocation', 'infoText');
+
+        screenshotItem.append(screenshotLocation);
+
+        let locationContent;
+        const setScreenshotLocation = () => {
+          if (gameLocalizedMapLocations[screenshot.game] && gameLocalizedMapLocations[screenshot.game].hasOwnProperty(screenshot.mapId))
+            locationContent = getLocalizedMapLocationsHtml(screenshot.game, screenshot.mapId, '0000', screenshot.mapX, screenshot.mapY, getInfoLabel('&nbsp;|&nbsp;'));
+          else if (gameId === '2kki') {
+            locationContent = getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation));
+            getOrQuery2kkiLocationsHtml(screenshot.mapId, locationsHtml => {
+              locationContent = locationsHtml;
+              screenshotLocation.innerHTML = locationsHtml;
+            });
+          } else
+            locationContent = getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
+          screenshotLocation.innerHTML = locationContent;
+        };
+        if (gameLocalizedMapLocations.hasOwnProperty(screenshot.game))
+          setScreenshotLocation();
+        else {
+          locationContent = getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation));
+          if (gameLocalizedMapLocations.hasOwnProperty(screenshot.game))
+            setScreenshotLocation();
+          else
+            fetchAndInitLocations(globalConfig.lang, screenshot.game).then(() => setScreenshotLocation());
+          screenshotLocation.innerHTML = locationContent;
+        }
+      }
+
       if (isCommunity) {
         screenshotControls.insertAdjacentHTML('afterend', getPlayerName({ name: screenshot.owner.name, systemName: screenshotSystemName, rank: screenshot.owner.rank, account: true, badge: screenshot.owner.badge || 'null' }, false, true, true));
 
