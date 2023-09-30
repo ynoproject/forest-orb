@@ -448,7 +448,7 @@ body {
 
 .screenshotItem {
   width: 176px;
-  height: 176px;
+  margin-bottom: 0 !important;
   opacity: 1;
   transition: opacity 0.325s ease-in-out, transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5) !important;
 }
@@ -473,7 +473,7 @@ body {
 
 .screenshotItem.spoiler .screenshotThumbnail {
   filter: blur(8px);
-  transition: filter 0.25s ease-in-out;
+  transition: filter 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
 }
 
 .screenshotItem.spoiler:hover .screenshotThumbnail {
@@ -542,7 +542,36 @@ body {
   font-size: x-large;
 }
 
-.screenshotItem > .nameTextContainer {
+.screenshotItem > .screenshotLocation {
+  display: block;
+  margin: auto;
+  width: fit-content;
+}
+
+.screenshotItem.spoiler > .screenshotLocation {
+  border: 1px solid rgb(var(--base-color));
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.screenshotItem.spoiler > .screenshotLocation {
+  background: transparent !important;
+  transition: background-color 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+.screenshotItem.spoiler:not(:hover) > .screenshotLocation {
+  background: rgb(var(--shadow-color)) !important;
+}
+
+.screenshotItem.spoiler > .screenshotLocation > * {
+  transition: opacity 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+}
+
+.screenshotItem.spoiler:not(:hover) > .screenshotLocation > * {
+  opacity: 0;
+}
+
+.screenshotItem > .nameTextContainer, .screenshotItem > .screenshotControls + .screenshotLocation {
   padding-top: 4px;
 }
 
