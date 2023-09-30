@@ -1608,6 +1608,10 @@ body.fullBg #background {
   margin: 0 2px;
 }
 
+.confirmMessage .nameTextContainer, .toastMessage .nameTextContainer {
+  display: inline;
+}
+
 .nameText {
   image-rendering: auto;
 }
@@ -2997,10 +3001,6 @@ form .uiTheme {
 }
 
 .toastMessage {
-  display: inline;
-}
-
-.toastMessage .nameTextContainer {
   display: inline;
 }
 

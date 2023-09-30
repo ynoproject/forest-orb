@@ -1080,7 +1080,7 @@
             <button class="saveScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.save">Save to My Screenshots</button>
           </div>
         </div>
-        <div id="myScreenshotsModal" class="modal wideModal hidden">
+        <div id="myScreenshotsModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.myScreenshots.title">My Screenshots</h1>
