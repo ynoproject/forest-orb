@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "Ваш снимок",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Скачать",
         "save": "Сохранить в Ваши снимки"
       },
       "myScreenshots": {
         "title": "Ваши снимки",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "empty": "Вы ещё не сохранили ни одного снимка."
       },
       "communityScreenshots": {

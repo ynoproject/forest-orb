@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "屏幕截图",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "下载",
         "save": "保存到我的截图"
       },
       "myScreenshots": {
         "title": "我的截图",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "empty": "您尚未保存任何截图。"
       },
       "communityScreenshots": {

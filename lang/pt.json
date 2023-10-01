@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "Suas Capturas de Tela",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Download",
         "save": "Salvar em Minhas capturas de tela"
       },
       "myScreenshots": {
         "title": "Minhas Capturas de Tela",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "empty": "Você ainda não salvou nenhuma captura de tela."
       },
       "communityScreenshots": {

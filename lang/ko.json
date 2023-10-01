@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "나의 스크린샷",
-        "screenshotSlotProgress": "다음 슬롯 확장 (BP)",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },
       "myScreenshots": {
         "title": "나의 스크린샷 목록",
+        "screenshotSlotProgress": "다음 슬롯 확장 (BP)",
         "empty": "아직 스크린샷을 저장하지 않았습니다"
       },
       "communityScreenshots": {

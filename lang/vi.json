@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "Your Screenshot",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "Tải xuống",
         "save": "Lưu vào Ảnh của tôi"
       },
       "myScreenshots": {
         "title": "Ảnh của tôi",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "empty": "Bạn chưa lưu ảnh chụp màn hình nào."
       },
       "communityScreenshots": {

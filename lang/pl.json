@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "Twój zrzut ekranu",
-        "screenshotSlotProgress": "Następne zwiększenie limitu (BP)",
         "download": "Pobierz",
         "save": "Zapisz do moich zrzutów ekranu"
       },
       "myScreenshots": {
         "title": "Moje zrzuty ekranu",
+        "screenshotSlotProgress": "Następne zwiększenie limitu (BP)",
         "empty": "Nie zapisano żadnych zrzutów ekranu."
       },
       "communityScreenshots": {

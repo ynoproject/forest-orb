@@ -387,12 +387,12 @@
       },
       "screenshot": {
         "title": "スクリーンショット",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "download": "ダウンロード",
         "save": "マイスクリーンショットに保存する"
       },
       "myScreenshots": {
         "title": "マイスクリーンショット",
+        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
         "empty": "まだスクリーンショットを保存していません。"
       },
       "communityScreenshots": {
