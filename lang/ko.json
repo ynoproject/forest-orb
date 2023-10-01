@@ -386,13 +386,13 @@
         "title": "랭킹"
       },
       "screenshot": {
-        "title": "내 스크린샷 목록",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
+        "title": "나의 스크린샷",
+        "screenshotSlotProgress": "다음 슬롯 확장 (BP)",
         "download": "다운로드",
         "save": "나의 스크린샷에 저장"
       },
       "myScreenshots": {
-        "title": "나의 스크린샷",
+        "title": "나의 스크린샷 목록",
         "empty": "아직 스크린샷을 저장하지 않았습니다"
       },
       "communityScreenshots": {
@@ -436,7 +436,7 @@
       }
     },
     "tooltips": {
-      "togglePrivateMode": "1인 모드 활성화",
+      "togglePrivateMode": "비공개 모드 활성화",
       "save": "세이브 데이터 관리",
       "uiTheme": "UI 테마",
       "toggleChat": "채팅 표시",
@@ -488,23 +488,23 @@
       "0": "연결 끊김",
       "1": "연결됨",
       "2": "연결 중...",
-      "3": "1인 모드"
+      "3": "비공개 모드"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "마지막 접속\n{INTERVAL} 전",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "방금",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} 분",
+          "plural": "{VALUE} 분"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} 시간",
+          "plural": "{VALUE} 시간"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} 일",
+          "plural": "{VALUE} 일"
         }
       }
     },
@@ -631,8 +631,8 @@
     "friends": {
       "friend": "친구",
       "categories": {
-        "incoming": "신청 수신함 - {COUNT}",
-        "outgoing": "신청 발신함 - {COUNT}",
+        "incoming": "받은 친구 신청 - {COUNT}",
+        "outgoing": "보낸 친구 신청 - {COUNT}",
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
       }
@@ -878,7 +878,7 @@
       "like": {
         "tooltip": {
           "on": "좋아요",
-          "off": "싫어요"
+          "off": "좋아요 취소"
         }
       },
       "delete": {
