@@ -491,20 +491,20 @@
       "3": "Приватный режим"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "Был(а) в сети:\n{INTERVAL} назад",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "Менее минуты",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} Минуту",
+          "plural": "{VALUE} Минут"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} Час",
+          "plural": "{VALUE} Часов"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} День",
+          "plural": "{VALUE} Дней"
         }
       }
     },
@@ -558,7 +558,7 @@
         "label": "Добавить {PLAYER} в Друзья"
       },
       "removeFriend": {
-        "label": "Удалить {PLAYER} из друзей"
+        "label": "Удалить {PLAYER} из Друзей"
       },
       "block": {
         "label": "Заблокировать {PLAYER}",
@@ -626,7 +626,7 @@
       }
     },
     "chat": {
-      "globalMessage": "Из общего чата"
+      "globalMessage": "Общий чат"
     },
     "friends": {
       "friend": "Друзья",
