@@ -491,20 +491,20 @@
       "3": "Mode privé"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "Dernière fois vu il y a\n{INTERVAL}",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "moins d'une minute",
         "minutes": {
           "singular": "{VALUE} minute",
           "plural": "{VALUE} minutes"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} heure",
+          "plural": "{VALUE} heures"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} jour",
+          "plural": "{VALUE} jours"
         }
       }
     },
