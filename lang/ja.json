@@ -491,20 +491,20 @@
       "3": "プライベートモード"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "最後のプレイ\n{INTERVAL}",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "1分以内",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE}分前",
+          "plural": "{VALUE}分前"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE}時間前",
+          "plural": "{VALUE}時間前"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE}日前",
+          "plural": "{VALUE}日前"
         }
       }
     },
