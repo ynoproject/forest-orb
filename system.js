@@ -58,6 +58,8 @@ const allGameUiThemes = {
     'Kong_Gothic window_system',
     'takikomi_syst1',
     'maptsukiSystem',
+    'yumehako-sys2',
+
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',
