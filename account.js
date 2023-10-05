@@ -20,17 +20,16 @@ function initAccountControls() {
 
   document.getElementById('loginForm').onsubmit = function () {
     const form = this;
-    closeModal();
     apiPost('login', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
       .then(response => {
         if (!response.ok) {
           response.text().then(_ => {
             document.getElementById('loginError').innerHTML = getMassagedLabel(localizedMessages.account.login.errors.invalidLogin, true);
             document.getElementById('loginErrorRow').classList.remove('hidden');
-            openModal('loginModal');
           });
           return;
         }
+        closeModal();
         return response.text();
       }).then(sId => {
         if (sId) {
@@ -49,14 +48,12 @@ function initAccountControls() {
       document.getElementById('registerErrorRow').classList.remove('hidden');
       return false;
     }
-    closeModal();
     apiPost('register', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {
             document.getElementById('registerError').innerHTML = getMassagedLabel(localizedMessages.account.register.errors[error.replace('\n', '') === 'user exists' ? 'usernameTaken' : 'invalidCredentials'], true);
             document.getElementById('registerErrorRow').classList.remove('hidden');
-            openModal('registerModal');
           });
           return;
         }
