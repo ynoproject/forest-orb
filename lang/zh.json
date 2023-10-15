@@ -392,7 +392,7 @@
       },
       "myScreenshots": {
         "title": "我的截图",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
+        "screenshotSlotProgress": "下一次槽位解锁进度 (BP)",
         "empty": "您尚未保存任何截图。"
       },
       "communityScreenshots": {
@@ -491,20 +491,20 @@
       "3": "私密模式"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "最近一次在线\n{INTERVAL}前",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "不到1分钟",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE}分钟",
+          "plural": "{VALUE}分钟"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE}小时",
+          "plural": "{VALUE}小时"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE}天",
+          "plural": "{VALUE}天"
         }
       }
     },
@@ -515,7 +515,7 @@
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）"
       },
-      "playing": "Playing {GAME}"
+      "playing": "正在游玩 {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}（{LOCATION_EN}）",
