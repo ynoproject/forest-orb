@@ -629,7 +629,7 @@
       "globalMessage": "公屏消息"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "好友",
       "categories": {
         "incoming": "已收到 - {COUNT} 人",
         "outgoing": "已发送 - {COUNT} 人",
