@@ -32,6 +32,9 @@
     case "prayers":
       $gameName = "Answered Prayers";
       break;
+    case "sheawaits":
+      $gameName = "She Awaits";
+      break;
     case "someday":
       $gameName = "Someday";
       break;

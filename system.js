@@ -142,6 +142,9 @@ const allGameUiThemes = {
     'chartreuse',
     'customsystem'
   ],
+  'sheawaits': [
+    'system_sa1'
+  ],
   'someday': [
     'green',
     '8bit',
@@ -192,6 +195,7 @@ const allGameFullBgUiThemes = {
   'mikan': [],
   'muma': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
+  'sheawaits': [],
   'someday': [],
   'ultraviolet': [ 'ss-システムsilver' ],
   'unevendream': [],
