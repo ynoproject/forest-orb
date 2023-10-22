@@ -480,7 +480,8 @@
       "muma": "Muma|Rope",
       "genie": "梦鬼",
       "mikan": "未完梦像",
-      "ultraviolet": "Ultra Violet"
+      "ultraviolet": "Ultra Violet",
+      "sheawaits": "She Awaits"
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "logout": "确定要登出吗？",
@@ -491,20 +492,20 @@
       "3": "私密模式"
     },
     "lastOnline": {
-      "template": "最近一次在线\n{INTERVAL}前",
+      "template": "最后一次在线\n{INTERVAL}前",
       "interval": {
-        "short": "不到1分钟",
+        "short": "不到 1 分钟",
         "minutes": {
-          "singular": "{VALUE}分钟",
-          "plural": "{VALUE}分钟"
+          "singular": "{VALUE} 分钟",
+          "plural": "{VALUE} 分钟"
         },
         "hours": {
-          "singular": "{VALUE}小时",
-          "plural": "{VALUE}小时"
+          "singular": "{VALUE} 小时",
+          "plural": "{VALUE} 小时"
         },
         "days": {
-          "singular": "{VALUE}天",
-          "plural": "{VALUE}天"
+          "singular": "{VALUE} 天",
+          "plural": "{VALUE} 天"
         }
       }
     },
