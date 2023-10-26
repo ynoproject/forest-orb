@@ -598,7 +598,7 @@
         "revokeBadge": {
           "label": "Révoquer un Badge",
           "prompt": "Entrez l'ID du badge à révoquer pour {PLAYER}.",
-          "success": "{BADGE} a été révoqué avec succès de {PLAYER}.",
+          "success": "{BADGE} a été révoqué avec succès pour {PLAYER}.",
           "fail": "Aucun badge n'a été trouvé pour l'ID de badge fourni."
         }
       }
