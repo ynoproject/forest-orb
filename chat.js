@@ -55,9 +55,6 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       msgContainer.dataset.msgId = msgId;
       msgContainer.dataset.senderUuid = uuid;
 
-      if (blockedPlayerUuids.indexOf(uuid) > -1)
-        msgContainer.classList.add('blockedHidden');
-
       if (showLocation) {
         const playerLocation = document.createElement("small");
 
@@ -86,6 +83,9 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       message.appendChild(chatTypeIcon);
     } else
       msgHeader.appendChild(document.createElement('span'));
+
+    if (blockedPlayerUuids.indexOf(uuid) > -1)
+      msgContainer.classList.add('blockedHidden');
 
     const defaultDate = !timestamp;
     if (defaultDate)
