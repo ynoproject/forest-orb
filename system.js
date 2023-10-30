@@ -219,7 +219,7 @@ const gameLogoBlendModeOverrides = {
 const contrastRatioThreshold = 2.02;
 
 function setSystemName(name) {
-  systemName = name.replace(/'/g, '');
+  systemName = name.replace(/'|\s$/g, '');
   if (playerData) {
     playerData.systemName = name;
     globalPlayerData[playerData.uuid].systemName = name;
@@ -230,7 +230,7 @@ function setSystemName(name) {
 
 // EXTERNAL
 function onUpdateSystemGraphic(name) {
-  if (gameUiThemes.indexOf(name.replace(/'/g, '')) > -1) {
+  if (gameUiThemes.indexOf(name.replace(/'|\s$/g, '')) > -1) {
     setSystemName(name);
     const lastAutoButton = document.querySelector('.uiThemeItem.auto');
     if (lastAutoButton)
