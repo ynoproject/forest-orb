@@ -750,7 +750,7 @@
         "saveDownloading": "Aktualizowanie zapisu {SLOT}...",
         "saveDownloaded": "Zapis {SLOT} został zakualizowany.",
         "saveUpToDate": "Masz już aktualny zapis.",
-        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to na plików pobranych na twoich urządzeniach."
+        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach."
       }
     },
     "events": {
@@ -903,7 +903,7 @@
         },
         "changeUsername": {
           "label": "Zmień czyjąś nazwę",
-          "playerPrompt": "Podaj nazwę gracza dla którego chcesz zmienić nazwę",
+          "playerPrompt": "Podaj nazwę gracza którego nazwę chcesz zmienić",
           "namePrompt": "Podaj nową nazwę dla {PLAYER}",
           "success": "Nazwa gracza {PLAYER} została zmieniona na {NAME}",
           "error": "Nie udało się zmienić nazwy gracza {PLAYER}; ta nazwa może już być w użyciu"
