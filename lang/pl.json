@@ -659,7 +659,7 @@
       "tips": {
         "backupReminder": "Polecamy częste pobieranie swoich zapisów. W ten sposób, jeżeli wyczyścisz dane przegładarki, nie stracisz swoich danych.",
         "menuTheme": "Kolor twojej nazwy i styl tła na liście graczy zależy od wybranego w grze motywu.",
-        "playersInMap": "Możesz zmienić to, czy widzisz ile osób jest online, czy ile osób jest w tej samej mapie co ty klikając na tekst obok liczby.",
+        "playersInMap": "Możesz zmienić to, czy widzisz ile osób jest online, czy ile osób jest w tej samej mapie co ty, klikając tekst obok liczby.",
         "markdownSupport": "Czat wspiera formatowanie tekstu za pomocą różnych znaków. Aktualnie wspierane są: **pogrubienie** (\\*\\*tekst\\*\\*), *kursywa* (\\*tekst\\*, \\_tekst\\_), __podkreślenie__ (\\_\\_tekst\\_\\_), ~~przekreślenie~~ (\\~\\~tekst\\~\\~), i ||spoiler|| (\\|\\|tekst\\|\\|).",
         "tabToChat": "Jeżeli grasz na komputerze, możesz użyć klawisza Tab by przełączyć się między czatem a grą. Ta funkcja może być wyłączona w ustawieniach czatu, zmieniając opcję 'Wciśnij Tab by czatować'.",
         "chatTabNotifications": "Jeżeli jesteś w innej zakładce niż 'Razem', gdy pojawi się wiadomość w innej zakładce, nazwa tej zakładki zostanie pogrubiona.",
