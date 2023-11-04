@@ -156,7 +156,7 @@ function fetchAndUpdatePlayerInfo() {
         updateBlocklist(false);
         const updateParty = () => {
           if (document.querySelector('#chatboxTabParties.active'))
-            updatePartyList(true);
+            updatePartyList();
           else
             fetchAndUpdateJoinedPartyId();
         };
@@ -1103,18 +1103,6 @@ function onClickChatboxTab() {
       document.getElementById("incomingFriendRequestCountContainer").classList.add('hidden');
     else if (activeChatboxTabSection === 'parties') {
       updatePartyList();
-      if (updatePartyListTimer)
-        clearInterval(updatePartyListTimer);
-      updatePartyListTimer = setInterval(() => {
-        if (skipPartyListUpdate)
-          skipPartyListUpdate = false;
-        else if (document.getElementById('chatboxTabParties').classList.contains('active'))
-          updatePartyList();
-        else {
-          clearInterval(updatePartyListTimer);
-          updatePartyListTimer = null;
-        }
-      }, 10000);
     }
     for (let tab of document.getElementsByClassName('chatboxTab'))
       tab.classList.toggle('active', tab === this);

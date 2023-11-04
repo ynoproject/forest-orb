@@ -1,7 +1,5 @@
 let joinedPartyId = null;
 let joinedPartyUiTheme = null;
-let updatePartyListTimer = null;
-let skipPartyListUpdate = false;
 let partyCache = {};
 let partyDescriptionCache = {};
 let joinedPartyCache = null;
@@ -66,7 +64,7 @@ function initPartyControls() {
           showPartyToastMessage('create', 'partyCreate', formData.get('name'));
           setJoinedPartyId(parseInt(partyId));
         }
-        updatePartyList(true);
+        updatePartyList();
       }).catch(err => console.error(err));
     return false;
   };
@@ -78,7 +76,7 @@ function initPartyControls() {
           throw new Error(response.statusText);
         showPartyToastMessage('disband', 'partyDisband', joinedPartyCache?.name);
         setJoinedPartyId(null);
-        updatePartyList(true);
+        updatePartyList();
       }).catch(err => console.error(err));
   };
   
@@ -104,7 +102,7 @@ function initPartyControls() {
         showPartyToastMessage('join', 'party', partyCache[partyId]?.name);
         setJoinedPartyId(partyId, true);
         document.getElementById('content').classList.add('inParty');
-        updatePartyList(true);
+        updatePartyList();
       }).catch(err => console.error(err));
     return false;
   };
@@ -211,7 +209,7 @@ function kickPlayerFromJoinedParty(playerUuid) {
           throw new Error(response.statusText);
         showPartyToastMessage('kick', 'leave', joinedPartyCache, playerUuid);
         updateJoinedParty();
-        updatePartyList(true);
+        updatePartyList();
       }).catch(err => console.error(err));
   }
 }
@@ -224,7 +222,7 @@ function transferJoinedPartyOwner(playerUuid) {
           throw new Error(response.statusText);
         showPartyToastMessage('transferPartyOwner', 'transferPartyOwner', joinedPartyCache, playerUuid);
         updateJoinedParty();
-        updatePartyList(true);
+        updatePartyList();
       }).catch(err => console.error(err));
   }
 }
@@ -240,7 +238,7 @@ function fetchAndUpdateJoinedPartyId() {
     .catch(err => console.error(err));
 }
 
-function updatePartyList(skipNextUpdate) {
+function updatePartyList() {
   apiFetch(`party?command=list`)
     .then(response => {
       if (!response.ok)
@@ -353,9 +351,6 @@ function updatePartyList(skipNextUpdate) {
       if (activePartyModal)
         initOrUpdatePartyModal(activePartyModal.dataset.partyId);
     }).catch(err => console.error(err));
-
-  if (skipNextUpdate)
-    skipPartyListUpdate = true;
 }
 
 function updateJoinedParty(callback) {
@@ -521,7 +516,7 @@ function addOrUpdatePartyListEntry(party) {
               showPartyToastMessage('leave', 'leave', party);
               setJoinedPartyId(null);
               document.getElementById('content').classList.remove('inParty');
-              updatePartyList(true);
+              updatePartyList();
             }).catch(err => console.error(err));
         }
       : party.public || playerData?.rank
@@ -533,7 +528,7 @@ function addOrUpdatePartyListEntry(party) {
               showPartyToastMessage('join', 'join', party);
               setJoinedPartyId(party.id);
               document.getElementById('content').classList.add('inParty');
-              updatePartyList(true);
+              updatePartyList();
             }).catch(err => console.error(err));
           }
         : function () {
