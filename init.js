@@ -392,7 +392,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
             showFriendsToastMessage('add', 'friendAdd', player);
           } else
             showFriendsToastMessage('accept', 'approve', player);
-          updatePlayerFriends(true);
+          updatePlayerFriends();
         })
         .catch(err => console.error(err));
     };
@@ -415,7 +415,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
               showFriendsToastMessage(cachedPlayerFriend.incoming ? 'reject' : 'cancel', 'deny', cachedPlayerFriend);
             playerFriendsCache.splice(playerFriendsCache.indexOf(cachedPlayerFriend), 1);
           }
-          updatePlayerFriends(true);
+          updatePlayerFriends();
         })
         .catch(err => console.error(err));
     };

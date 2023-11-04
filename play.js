@@ -111,7 +111,7 @@ function onUpdateConnectionStatus(status) {
 
   if (status === 1 || status === 3) {
     addOrUpdatePlayerListEntry(null, playerData, false, true);
-    updatePlayerFriends(true);
+    updatePlayerFriends();
     updateJoinedParty();
     if (eventPeriodCache)
       updateEvents();
@@ -129,7 +129,7 @@ function onRoomSwitch() {
   addOrUpdatePlayerListEntry(null, playerData, false, true);
   syncLocationChange();
   checkEventLocations();
-  updatePlayerFriends(true);
+  updatePlayerFriends();
   updateJoinedParty();
 }
 
@@ -164,7 +164,7 @@ function fetchAndUpdatePlayerInfo() {
           initSessionWs()
             .then(() => {
               trySetChatName(playerName);
-              updatePlayerFriends(true);
+              updatePlayerFriends();
               updateParty();
               showAccountToastMessage('loggedIn', 'join', getPlayerName(playerData, true, false, true));
               updateBadges(() => {
@@ -182,7 +182,7 @@ function fetchAndUpdatePlayerInfo() {
           initSessionWs()
             .then(() => {
               trySetChatName('');
-              updatePlayerFriends(true);
+              updatePlayerFriends();
               updateParty();
               if (isLogout) {
                 showAccountToastMessage('loggedOut', 'leave');

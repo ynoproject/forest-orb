@@ -432,7 +432,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
                 cachedPlayerFriend.accepted = true;
                 showFriendsToastMessage('accept', 'approve', cachedPlayerFriend);
               }
-              updatePlayerFriends(true);
+              updatePlayerFriends();
             })
             .catch(err => console.error(err));
         };
@@ -457,7 +457,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
               playerFriendsCache.splice(playerFriendsCache.indexOf(cachedPlayerFriend), 1);
               showFriendsToastMessage(playerFriend.incoming ? 'reject' : 'cancel', 'deny', cachedPlayerFriend);
             }
-            updatePlayerFriends(true);
+            updatePlayerFriends();
           })
           .catch(err => console.error(err));
       };

@@ -1,16 +1,11 @@
-let updatePlayerFriendsTimer = null;
-let skipPlayerFriendsUpdate = false;
 let playerFriendsCache = [];
 let pendingOfflineFriendUuids = [];
 
-function updatePlayerFriends(skipNextUpdate) {
+function updatePlayerFriends() {
   if (loginToken)
     sendSessionCommand('pf');
   else
     onUpdatePlayerFriends([]);
-
-  if (skipNextUpdate)
-    skipPlayerFriendsUpdate = true;
 }
 
 function onUpdatePlayerFriends(playerFriends) {
@@ -107,14 +102,4 @@ function showFriendsToastMessage(key, icon, player, persist) {
 
 (function () {
   addSessionCommandHandler('pf', args => onUpdatePlayerFriends(JSON.parse(args[0]) || []));
-
-  updatePlayerFriendsTimer = setInterval(() => {
-    if (loginToken) {
-      if (!skipPlayerFriendsUpdate)
-        updatePlayerFriends();
-      else
-        skipPlayerFriendsUpdate = false;
-    } else
-      updatePlayerFriends();
-  }, 10000);
 })();
