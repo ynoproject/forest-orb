@@ -210,7 +210,7 @@ function checkMaintenanceStatus() {
       return response.text();
     })
     .then(data => {
-      let maintenanceMessage = document.getElementById('maintenanceMessage');
+      const maintenanceMessage = document.getElementById('maintenanceMessage');
       maintenanceSection.style.display = "flex";
       if (data !== "") {
         maintenanceMessage.textContent = data;
