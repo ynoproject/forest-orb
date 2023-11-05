@@ -418,9 +418,7 @@ function chatInputActionFired() {
     chatTab.click();
   if (!chatInput.dataset.global || partyChat) {
     if (!joinedPartyId || !partyChat) {
-      const msgPtr = Module.allocate(Module.intArrayFromString(chatInput.value.trim()), Module.ALLOC_NORMAL);
-      Module._SendChatMessageToServer(msgPtr);
-      Module._free(msgPtr);
+      sendSessionCommand("say", [ chatInput.value.trim() ]);
     } else
       sendSessionCommand("psay", [ chatInput.value.trim() ]);
   } else if (!trySendGlobalMessage(chatInput.value.trim()))
@@ -738,12 +736,13 @@ function showRules() {
 
 document.getElementById('chatInput').addEventListener('click', showRules);
 
-// EXTERNAL
-function onChatMessageReceived(msg, id) {
-  chatboxAddMessage(msg, MESSAGE_TYPE.MAP, playerUuids[id]);
-}
-
 (function () {
+  addSessionCommandHandler('say', args => {
+    const uuid = args[0];
+    const msg = args[1];
+    chatboxAddMessage(msg, MESSAGE_TYPE.MAP, uuid)
+  });
+
   addSessionCommandHandler('gsay', args => {
     const uuid = args[0];
     const mapId = args[1];
