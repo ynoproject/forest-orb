@@ -201,7 +201,7 @@ function fetchAndUpdatePlayerInfo() {
 
 function checkMaintenanceStatus() {
   const maintenanceSection = document.getElementById('maintenance');
-  fetch('//connect.ynoproject.net/maintenance')
+  fetch('https://connect.ynoproject.net/maintenance')
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
