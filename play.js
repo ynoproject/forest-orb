@@ -199,6 +199,30 @@ function fetchAndUpdatePlayerInfo() {
     .catch(err => console.error(err));
 }
 
+function checkMaintenanceStatus() {
+  const maintenanceSection = document.getElementById('maintenance');
+  fetch('https://connect.ynoproject.net/maintenance')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+        return;
+      }
+      return response.text();
+    })
+    .then(data => {
+      const maintenanceMessage = document.getElementById('maintenanceMessage');
+      maintenanceSection.style.display = "flex";
+      if (data !== "") {
+        maintenanceMessage.textContent = data;
+        return;
+      }
+      maintenanceMessage.textContent = "";
+      maintenanceSection.style.display = "none";
+    })
+    .catch(error => console.error(error))
+  ;
+}
+
 function checkLogin() {
   if (loginToken && loginToken === getCookie(sessionIdKey)) {
     apiFetch('info')

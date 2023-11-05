@@ -87,6 +87,8 @@ async function injectScripts() {
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
           fetchAndUpdatePlayerInfo();
+          checkMaintenanceStatus();
+          setInterval(checkMaintenanceStatus, 300000);
           setInterval(checkLogin, 60000);
           preloadFilesFromMapId('title');
           setTimeout(() => {

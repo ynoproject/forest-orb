@@ -756,6 +756,42 @@ body.fullBg #background {
   max-width: 1036px;
 }
 
+#maintenance {
+    display: none;
+    max-width: 980px;
+    position: relative;
+    margin: 0 auto;
+    padding: 12px 0px 10px 10px;
+    border-image: var(--border-image-url) 10 repeat !important;
+    border: 24px solid transparent;
+    background-color: #e4e41f;
+}
+
+#maintenanceIconLeft, #maintenanceIconRight {
+    width: 10%;
+}
+
+#maintenanceIconLeft img, #maintenanceIconRight img {
+    width: 100%;
+}
+
+#maintenanceMessage {
+    width: 80%;
+    height: 100%;
+    max-height: max-content;
+}
+
+#maintenanceMessage span {
+    margin: 0 auto;
+    color: #000;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 25px;
+}
+
 #header, .container, .modal {
   background-size: 70px;
   background-position-y: -16px;
