@@ -739,6 +739,8 @@ document.getElementById('privateModeButton').onclick = function () {
 
   if (connStatus == 1 || connStatus == 3)
     onUpdateConnectionStatus(config.privateMode ? 3 : 1);
+
+  Module._SessionReady();
 };
 
 let reconnectCooldownTimer;
