@@ -203,10 +203,8 @@ function checkMaintenanceStatus() {
   const maintenanceSection = document.getElementById('maintenance');
   fetch('https://connect.ynoproject.net/maintenance')
     .then(response => {
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(response.statusText);
-        return;
-      }
       return response.text();
     })
     .then(data => {
