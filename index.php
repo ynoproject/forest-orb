@@ -79,15 +79,6 @@
   <div id="backgroundOverlay"></div>
   <div id="content">
     <div id="top"></div>
-    <div id="maintenance">
-      <div id="maintenanceIconLeft">
-        <img src="https://ynoproject.net/2kki/images/ynomoji/2kkiSign.png">
-      </div>
-      <span id="maintenanceMessage"></span>
-      <div id="maintenanceIconRight">
-        <img src="https://ynoproject.net/2kki/images/ynomoji/2kkiSign.png">
-      </div>
-    </div>
     <div id="header">
       <div id="headerLogoContainer">
         <button id="nexusButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.nexus">
