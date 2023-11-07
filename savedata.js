@@ -371,7 +371,7 @@ function uploadSaveSyncData(saveData) {
     if (!loginToken || !saveSyncConfig.enabled)
       resolve(false);
     showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
-    apiPost('saveSync?command=push', saveData.contents)
+    apiPost('savesync?command=push', saveData.contents)
       .then(_ => {
         showSaveSyncToastMessage('saveUploaded', 'save', saveSyncConfig.slotId);
         resolve(true);
@@ -449,7 +449,7 @@ function clearSaveSyncData() {
   return new Promise(resolve => {
     if (!loginToken)
       resolve(false);
-    apiFetch(`saveSync?command=clear`)
+    apiFetch(`savesync?command=clear`)
       .then(_ => {
         showSaveSyncToastMessage('saveCleared', 'save');
         resolve(true);
