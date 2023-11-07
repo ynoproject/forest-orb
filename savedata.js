@@ -30,7 +30,7 @@ function initSaveSyncControls() {
       };
       hasSaveDataForSync().then(hasSaveData => {
         if (hasSaveData) {
-          apiFetch('saveSync?command=timestamp')
+          apiFetch('savesync?command=timestamp')
             .then(response => {
               if (!response.ok)
                 return getSaveSyncData(null);
@@ -52,7 +52,7 @@ function initSaveSyncControls() {
   };
 
   if (getCookie(sessionIdKey)) {
-    apiFetch('saveSync?command=timestamp')
+    apiFetch('savesync?command=timestamp')
       .then(response => {
         if (!response.ok)
           throw new Error('Failed to retrieve timestamp for save sync data');
@@ -320,7 +320,7 @@ function setSaveSyncEnabled(enabled, isInit) {
   };
   if (!isInit && !saveSyncButton.classList.contains('toggled')) {
     showConfirmModal(localizedMessages.saveSync.confirmEnable, () => {
-      apiFetch('saveSync?command=timestamp')
+      apiFetch('savesync?command=timestamp')
         .then(response => {
           if (!response.ok)
             throw new Error('Failed to retrieve timestamp for save sync data');
@@ -391,7 +391,7 @@ function getAndUploadSaveSyncData() {
 
 function trySyncSave() {
   return new Promise(resolve => {
-    apiFetch('saveSync?command=timestamp')
+    apiFetch('savesync?command=timestamp')
       .then(response => {
         if (!response.ok)
           throw new Error('Failed to retrieve timestamp for save sync data');
@@ -400,7 +400,7 @@ function trySyncSave() {
       .then(timestamp => {
         getSaveDataForSync().then(saveData => {
           if (timestamp && (timestamp = new Date(timestamp)) && (!saveData || saveData.timestamp < timestamp)) {
-            apiFetch('saveSync?command=get').then(response => {
+            apiFetch('savesync?command=get').then(response => {
               if (!response.ok)
                 throw new Error('Failed to get save sync data');
               return response.arrayBuffer();
