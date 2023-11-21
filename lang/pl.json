@@ -657,17 +657,17 @@
     "chatTips": {
       "template": "PORADA: {CONTENT}",
       "tips": {
-        "backupReminder": "Rekomendujemy częste pobieranie swoich zapisów. W ten sposób, jeżeli wyczyścisz dane przegładarki nie stracisz swoich danych.",
-        "menuTheme": "Kolor twojej nazwy i styl na liście graczy zależy od wybranego w grze motywu.",
-        "playersInMap": "Możesz zmienić to, czy widzisz ile osób jest online czy ile osób jest w tej samej mapie co ty klikając na tekst obok liczby.",
-        "markdownSupport": "Czat wspiera formatowanie tekstu za pomocą różnych znaków. Aktualnie wspierane są: **pogrubienie** (\\*\\*text\\*\\*), *kursywa* (\\*text\\*, \\_text\\_), __podkreślenie__ (\\_\\_text\\_\\_), ~~przekreślenie~~ (\\~\\~text\\~\\~), i ||spoiler|| (\\|\\|text\\|\\|).",
-        "tabToChat": "Jeżeli grasz na komputerze, możesz użyć klawisza Tab by przełączyć się między czatem a grą. Ta funkcja może być wyłączona w ustawieniach czatu jako 'Wciśnij Tab by czatować'.",
-        "chatTabNotifications": "Jeżeli jesteś w innej zakładce niż 'Wszystko', gdy pojawi się wiadomość w innej zakładce, nazwa tej zakładki zostanie pogrubiona.",
-        "clearChat": "Jeżeli wciśnisz przycisk wyczyszczenia czatu w innej zakładce niż 'Wszystko', usunięte zostaną tylko wiadomości w tej zakładce.",
-        "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz doświadczyć spowolnień strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu by nie musieć ciągle własnoręcznie czyścić czatu.",
+        "backupReminder": "Polecamy częste pobieranie swoich zapisów. W ten sposób, jeżeli wyczyścisz dane przegładarki, nie stracisz swoich danych.",
+        "menuTheme": "Kolor twojej nazwy i styl tła na liście graczy zależy od wybranego w grze motywu.",
+        "playersInMap": "Możesz zmienić to, czy widzisz ile osób jest online, czy ile osób jest w tej samej mapie co ty, klikając tekst obok liczby.",
+        "markdownSupport": "Czat wspiera formatowanie tekstu za pomocą różnych znaków. Aktualnie wspierane są: **pogrubienie** (\\*\\*tekst\\*\\*), *kursywa* (\\*tekst\\*, \\_tekst\\_), __podkreślenie__ (\\_\\_tekst\\_\\_), ~~przekreślenie~~ (\\~\\~tekst\\~\\~), i ||spoiler|| (\\|\\|tekst\\|\\|).",
+        "tabToChat": "Jeżeli grasz na komputerze, możesz użyć klawisza Tab by przełączyć się między czatem a grą. Ta funkcja może być wyłączona w ustawieniach czatu, zmieniając opcję 'Wciśnij Tab by czatować'.",
+        "chatTabNotifications": "Jeżeli jesteś w innej zakładce niż 'Razem', gdy pojawi się wiadomość w innej zakładce, nazwa tej zakładki zostanie pogrubiona.",
+        "clearChat": "Jeżeli wciśnisz przycisk wyczyszczenia czatu w innej zakładce niż 'Razem', usunięte zostaną tylko wiadomości w tej zakładce.",
+        "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz doświadczyć spowolnień strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu, by nie musieć ciągle własnoręcznie czyścić czatu.",
         "parties": "Grupy są świetnym sposobem na trzymanie się razem z innymi na wycieczkach. Możesz zobaczyć lokalizację członków swojej grupy oraz rozmawiać z nimi w osobnym czacie.",
         "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od społecznego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych osób jest bardziej interesujące.",
-        "openSource": "Kod źródłowy YNOProject jest dostępny na https://github.com/ynoproject/"
+        "openSource": "Kod źródłowy YNOProject jest dostępny na stronie https://github.com/ynoproject/"
       }
     },
     "save": {
@@ -750,7 +750,7 @@
         "saveDownloading": "Aktualizowanie zapisu {SLOT}...",
         "saveDownloaded": "Zapis {SLOT} został zakualizowany.",
         "saveUpToDate": "Masz już aktualny zapis.",
-        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to na plików pobranych na twoich urządzeniach."
+        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach."
       }
     },
     "events": {
@@ -903,7 +903,7 @@
         },
         "changeUsername": {
           "label": "Zmień czyjąś nazwę",
-          "playerPrompt": "Podaj nazwę gracza dla którego chcesz zmienić nazwę",
+          "playerPrompt": "Podaj nazwę gracza którego nazwę chcesz zmienić",
           "namePrompt": "Podaj nową nazwę dla {PLAYER}",
           "success": "Nazwa gracza {PLAYER} została zmieniona na {NAME}",
           "error": "Nie udało się zmienić nazwy gracza {PLAYER}; ta nazwa może już być w użyciu"
