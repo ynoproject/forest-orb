@@ -1585,7 +1585,7 @@
         </svg>
       </a>
       <a href="https://tumblr.com/ynoproject" target="_blank" class="icon fillIcon" title="Tumblr">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.2 159.3" width="32" height="32">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 180" width="32" height="32">
           <path d="M63.6,159.3c-24,0-41.8-12.3-41.8-41.8V70.3H0V44.7C24,38.5,34,17.9,35.1,0H60v40.6h29v29.7H60v41.1  c0,12.3,6.2,16.6,16.1,16.6h14.1v31.3H63.6z"/>
         </svg>
       </a>
