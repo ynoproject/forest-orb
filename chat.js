@@ -243,7 +243,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   if (playerName && new RegExp(`(^|[^a-z\d])@${playerName}($|[^a-z\d])`, 'i').test(msg)) {
     msgContainer.classList.add("highlight");
-    if (globalConfig.playMentionSound)
+    if (globalConfig.playMentionSound && blockedPlayerUuids.indexOf(uuid) === -1)
       mentionSe.play();
   }
   
