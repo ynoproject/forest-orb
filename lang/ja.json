@@ -392,7 +392,7 @@
       },
       "myScreenshots": {
         "title": "マイスクリーンショット",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
+        "screenshotSlotProgress": "次のスロット追加まで(BP)",
         "empty": "まだスクリーンショットを保存していません。"
       },
       "communityScreenshots": {
