@@ -476,9 +476,7 @@ function initChat() {
         return;
       switch (gameChatModeIndex) {
         case 0:
-          const msgPtr = Module.allocate(Module.intArrayFromString(chatMessageContent), Module.ALLOC_NORMAL);
-          Module._SendChatMessageToServer(msgPtr);
-          Module._free(msgPtr);
+          sendSessionCommand('say', [ chatMessageContent ]);
           break;
         case 1:
           if (!trySendGlobalMessage(chatMessageContent))
