@@ -858,7 +858,8 @@
         "nasu": "NASU",
         "rby": "Rouge Bleu Jaune (Mini-jeu B)",
         "rby_ex": "Rouge Bleu Jaune (Mini-jeu B) - Version EX",
-        "fuji_ex": "FUJI EX"
+        "fuji_ex": "FUJI EX",
+        "panerabbit": "PANErabbit"
       }
     },
     "screenshots": {
