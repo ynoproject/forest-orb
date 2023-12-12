@@ -661,6 +661,10 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'partyChatHistoryLimit':
                     document.getElementById('partyChatHistoryLimit').value = value;
                     break;
+                  case 'mobileControls':
+                    if (!value)
+                      document.getElementById('mobileControlsButton').click();
+                    break;
                   case 'locationDisplay':
                     if (value)
                       document.getElementById('locationDisplayButton').click();

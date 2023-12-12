@@ -124,6 +124,7 @@
             "label": "Immersion Mode",
             "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",
           "togglePreloads": {

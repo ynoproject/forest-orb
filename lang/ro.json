@@ -124,6 +124,7 @@
             "label": "Modul Imersie",
             "helpText": "Dezactivează numărul de jucători, chat-ul global și hărțile pentru a-ți oferi o experiență mai captivantă."
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Afișare Locație",
           "toggleRankings": "Ranking-uri",
           "togglePreloads": {

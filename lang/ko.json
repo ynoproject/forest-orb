@@ -124,6 +124,7 @@
             "label": "몰입 모드",
             "helpText": "보다 몰입감 높은 경험을 제공하기 위해 플레이어 수, 글로벌 채팅 및 맵을 표시하지 않습니다."
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "togglePreloads": {

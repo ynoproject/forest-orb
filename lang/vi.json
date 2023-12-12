@@ -124,6 +124,7 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "togglePreloads": {

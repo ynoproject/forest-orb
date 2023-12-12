@@ -36,6 +36,7 @@ let globalConfig = {
   mapChatHistoryLimit: 100,
   globalChatHistoryLimit: 100,
   partyChatHistoryLimit: 250,
+  mobileControls: true,
   playMentionSound: true,
   locationDisplay: false,
   hideRankings: false,
@@ -947,6 +948,15 @@ document.getElementById('immersionModeButton').onclick = function () {
     onResize();
   config.immersionMode = toggled;
   updateConfig(config);
+};
+
+document.getElementById('mobileControlsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = !this.classList.contains('toggled');
+  globalConfig.mobileControls = toggled;
+  for (const elem of document.querySelectorAll('#dpad, #apad'))
+    elem.classList.toggle('hidden', !toggled);
+  updateConfig(globalConfig, true);
 };
 
 document.getElementById('locationDisplayButton').onclick = function () {

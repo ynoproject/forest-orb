@@ -3111,6 +3111,12 @@ form .uiTheme {
   }
 }
 
+@media not (hover: none) { 
+  .mobileOnly {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 1051px) and (min-height: 595px) {
   #layout {
     max-height: 667px;

@@ -124,6 +124,7 @@
             "label": "Modo Inmersivo",
             "helpText": "Desactiva el contador de jugadores, el chat global y el indicador de mapas con el objetivo de entregar una experiencia inmersiva"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Mostrar Ubicación",
           "toggleRankings": "Clasificaciones",
           "togglePreloads": {

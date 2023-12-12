@@ -124,6 +124,7 @@
             "label": "沉浸模式",
             "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "togglePreloads": {

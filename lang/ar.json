@@ -124,6 +124,7 @@
             "label": "نمط الانغمار",
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",
           "togglePreloads": {

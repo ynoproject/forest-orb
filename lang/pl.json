@@ -124,6 +124,7 @@
             "label": "Tryb immersji",
             "helpText": "Wyłącza licznik ilości graczy, czat globalny i mapy dla immersyjnego doświadczenia"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
           "toggleRankings": "Rankingi",
           "togglePreloads": {

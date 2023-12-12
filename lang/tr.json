@@ -124,6 +124,7 @@
             "label": "İmersiyon Modu",
             "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Konum Göstergesi",
           "toggleRankings": "Sıralama",
           "togglePreloads": {

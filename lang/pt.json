@@ -124,6 +124,7 @@
             "label": "Modo de Imersão",
             "helpText": "Desativa a contagem de jogadores, o bate-papo global e os mapas para proporcionar uma experiência mais imersiva."
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
           "togglePreloads": {

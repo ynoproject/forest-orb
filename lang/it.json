@@ -124,6 +124,7 @@
             "label": "Modalità Immersiva",
             "helpText": "Disattiva il numero di giocatori, chat globale, e le mappe per darti un'esperienza più immersiva"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Visualizza Ubicazione",
           "toggleRankings": "Classifica",
           "togglePreloads": {

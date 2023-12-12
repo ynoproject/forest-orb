@@ -124,6 +124,7 @@
             "label": "Mode Immersion",
             "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "togglePreloads": {

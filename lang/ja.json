@@ -124,6 +124,7 @@
             "label": "没入モード",
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "togglePreloads": {

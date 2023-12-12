@@ -124,6 +124,7 @@
             "label": "Режим Погружения",
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
+          "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
           "togglePreloads": {
