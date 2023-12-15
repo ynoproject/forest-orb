@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "Czy czesz włączyć synchronizację zapisów? Dane z synchronizowanego zapisu zostaną przesłane do odebrania przez jakąkolwiek przeglądarkę lub urządzenie które włączy tą funkcję. Przy włączonej funkcji, zapis będzie automatycznie uaktualniony po odświeżeniu strony.",
-      "confirmEnableWithData": "Dane synchronizacji zapisów zostały znalezione dla tego konta. Dane synchronizowanego zapisu zostaną zastąpione prze jakikolwiek nowszy zapis w tym samym miejscu. Stanie się to tylko po odświeżeniu strony. Czy na pewno chcesz włączyć synchronizację zapisów?"
+      "confirmEnableWithData": "Dane synchronizacji zapisów zostały znalezione dla tego konta. Dane synchronizowanego zapisu zostaną zastąpione prze jakikolwiek nowszy zapis w tym samym miejscu. Stanie się to tylko po odświeżeniu strony. Czy na pewno chcesz włączyć synchronizację zapisów?",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {

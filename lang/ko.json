@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "세이브 동기화를 사용하시겠습니까? 해당 옵션을 활성화하면 귀하의 컴퓨터 로컬 스토리지가 아닌 서버 내부 계정 자체에 세이브 데이터가 저장이 되며 이 계정에 엑세스할 수 있는 모든 장치와 기기들이 동기화된 세이브 데이터를 이용할 수 있어 세이브 백업에 용이합니다. 이 기능을 활성화한 후 페이지를 로드하면 자동으로 동기화가 진행됩니다.",
-      "confirmEnableWithData": "이 계정에 이전 세이브 동기화 데이터가 발견되었습니다. 동기화 슬롯에 저장된 세이브 데이터는 동일한 슬롯에 데이터가 있는 경우 계정의 세이브 데이터로 덮어씁니다. 이 기능이 활성화된 상태에서 페이지를 다시 로드하는 경우에만 적용됩니다. 세이브 동기화를 사용하시겠습니까?"
+      "confirmEnableWithData": "이 계정에 이전 세이브 동기화 데이터가 발견되었습니다. 동기화 슬롯에 저장된 세이브 데이터는 동일한 슬롯에 데이터가 있는 경우 계정의 세이브 데이터로 덮어씁니다. 이 기능이 활성화된 상태에서 페이지를 다시 로드하는 경우에만 적용됩니다. 세이브 동기화를 사용하시겠습니까?",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {

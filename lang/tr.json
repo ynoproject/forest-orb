@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "Kayıt senkronizasyonunu etkinleştirmek istediğinden emin misin? Kayıt senkronizasyonu slotundaki kaydın yüklenecek ve bu özellik açık olan herhangi bir cihazdan veya tarayıcıda bu hesaptan erişebileceksin. Etkinleştirildiğinde, bahsi geçen kayıt senkronizasyonu slotunun verisi sayfa yüklendiğinde otomatik olarak güncellenecek.",
-      "confirmEnableWithData": "Bu hesap için bir önceki kayıt senkronizasyonu bulundu. Eğer aynı slotta yeni bir tanesi bulunursa kayıt senkronizasyonu slotundaki bir kayıt, kayıt senkronizasyonu verisiyle değiştirilecek. Lütfen bunun sadece bu özellikle sayfa yenilendiğinde etkiye gireceğini not edin. Kayıt senkronizasyonunu etkinleştirmek istediğinden emin misin?"
+      "confirmEnableWithData": "Bu hesap için bir önceki kayıt senkronizasyonu bulundu. Eğer aynı slotta yeni bir tanesi bulunursa kayıt senkronizasyonu slotundaki bir kayıt, kayıt senkronizasyonu verisiyle değiştirilecek. Lütfen bunun sadece bu özellikle sayfa yenilendiğinde etkiye gireceğini not edin. Kayıt senkronizasyonunu etkinleştirmek istediğinden emin misin?",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {

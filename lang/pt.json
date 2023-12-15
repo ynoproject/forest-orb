@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "Deseja ativar Save em Nuvem? Seus dados do Save da Nuvem serão carregados e você poderá acessá-los desta conta em qualquer dispositivo ou navegador que tenha esse recurso ativado. Enquanto estiver ativado, os dados do slot de sincronização de salvamento especificado serão atualizados automaticamente ao carregar a página.",
-      "confirmEnableWithData": "Foram encontrados dados de saves anteriores para esta conta. Um salvamento armazenado no slot de sincronização de salvamento será substituído pelos dados de sincronização de salvamento se houver um mais novo no mesmo slot. Observe que isso só terá efeito ao recarregar a página com esse recurso ativado. Tem certeza de que deseja ativar Save na Nuvem?"
+      "confirmEnableWithData": "Foram encontrados dados de saves anteriores para esta conta. Um salvamento armazenado no slot de sincronização de salvamento será substituído pelos dados de sincronização de salvamento se houver um mais novo no mesmo slot. Observe que isso só terá efeito ao recarregar a página com esse recurso ativado. Tem certeza de que deseja ativar Save na Nuvem?",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {

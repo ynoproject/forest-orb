@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
-      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?"
+      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {

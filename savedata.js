@@ -44,11 +44,13 @@ function initSaveSyncControls() {
   };
 
   document.getElementById('clearSaveSyncButton').onclick = function () {
-    const button = this;
-    clearSaveSyncData().then(success => {
-      if (success)
-        button.setAttribute('disabled', true);
-    })
+    showConfirmModal(localizedMessages.saveSync.confirmClearSaveSync, () => {
+      const button = this;
+      clearSaveSyncData().then(success => {
+        if (success)
+          button.setAttribute('disabled', true);
+      })
+    });
   };
 
   if (getCookie(sessionIdKey)) {

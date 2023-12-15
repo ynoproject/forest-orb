@@ -693,7 +693,8 @@
     },
     "saveSync": {
       "confirmEnable": "您想启用存档云同步功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
-      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档。在已有数据的存档槽进行同步将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？"
+      "confirmEnableWithData": "检测到当前设备上存在旧的本地存档。在已有数据的存档槽进行同步将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？",
+      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
       "system": {
