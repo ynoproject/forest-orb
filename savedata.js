@@ -244,9 +244,14 @@ function downloadSaveFile(saveSlot) {
         }
 
         const blob = new Blob([record.contents], {type: 'text/json'});
+        const date = record.timestamp;
         const link = document.createElement('a');
+
+        const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
+        const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
+ 
         link.href = window.URL.createObjectURL(blob);
-        link.download = `Save${saveSlot}.lsd`;
+        link.download = `${ynoGameId}_Save${saveSlot}_${formattedDate}.lsd`;
         link.click();
         link.remove();
         resolve(true);

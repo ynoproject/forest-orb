@@ -207,8 +207,9 @@ function downloadScreenshot(url, date, gameId, resized) {
 
   const a = document.createElement('a');
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
+  const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
   a.href = url;
-  a.download = `ynoproject_${gameId || ynoGameId}_screenshot_${year}-${month + 1}-${day}-${hour}-${minute}-${second}`;
+  a.download = `ynoproject_${gameId || ynoGameId}_screenshot_${formattedDate}`;
   a.click();
 }
 
