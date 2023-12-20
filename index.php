@@ -192,19 +192,21 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="ShiftLeft" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "braingirl" || $gameId == "ultraviolet"): ?>
+            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
                 <?php if ($gameId == "cu"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="Digit0" data-key-code="48"></div>
                 <?php endif ?>
-                <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="Digit1" data-key-code="49"></div>
-                <?php if ($gameId == "cu" || $gameId == "braingirl"): ?>
+                <?php if ($gameId != "prayers"): ?>
+                  <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="Digit1" data-key-code="49"></div>
+                <?php endif ?>
+                <?php if ($gameId == "cu" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
                   <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="Digit2" data-key-code="50"></div>
                 <?php endif ?>
-                <?php if ($gameId != "cu"): ?>
+                <?php if ($gameId == "someday"): ?>
                   <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="Digit3" data-key-code="51"></div>
                 <?php endif ?>
-                <?php if ($gameId != "cu" && $gameId != "braingirl"): ?>
+                <?php if ($gameId == "yume"): ?>
                   <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="Digit5" data-key-code="53"></div>
                 <?php endif ?>
                 <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="Digit9" data-key-code="57"></div>
