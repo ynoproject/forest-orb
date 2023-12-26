@@ -429,7 +429,8 @@
         "rule2": "禁止色情、血腥等限制级话题。",
         "rule3": "不谈政治。",
         "rule4": "禁止侮辱性称呼（如各类种族蔑称）。",
-        "rule5": "不要在游戏中作弊。"
+        "rule5": "不要在游戏中作弊。",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "未探索地点",
@@ -644,6 +645,7 @@
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"

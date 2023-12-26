@@ -429,7 +429,8 @@
         "rule2": "Fără discuții 18+ (NSFW, gore, etc.).",
         "rule3": "Fără politică.",
         "rule4": "Fără remarci incendiare (inclusiv jigniri).",
-        "rule5": "Fără trișat în orice fel, din oricare motiv."
+        "rule5": "Fără trișat în orice fel, din oricare motiv.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
@@ -644,6 +645,7 @@
       "yourParty": "Grupul Tău",
       "defaultPartyName": "Grupul lui {OWNER}",
       "partyOwner": "Lider de Grup",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

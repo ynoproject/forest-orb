@@ -429,7 +429,8 @@
         "rule2": "لا مناقشة +18 (NSFW ، دموية ، اباحية)",
         "rule3": "لا مناقشات سياسية",
         "rule4": "عدم استخدام التعليقات القابلة للاشتعال (بما في ذلك الإهانات)",
-        "rule5": "لا غش من أي نوع ولأي سبب"
+        "rule5": "لا غش من أي نوع ولأي سبب",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
@@ -644,6 +645,7 @@
       "yourParty": "حفلتك",
       "defaultPartyName": "{OWNER} حفلة",
       "partyOwner": "قائد الحفلة",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "{COUNT} - متصل",
         "offline": "{COUNT} - غير متصل"

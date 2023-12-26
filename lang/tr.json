@@ -429,7 +429,8 @@
         "rule2": "18+ konuşma yasak(NSFW, gore, vb.).",
         "rule3": "Siyaset yasak.",
         "rule4": "Kışkırtıcı sözler yasak (küfürler dahil).",
-        "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak."
+        "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
@@ -644,6 +645,7 @@
       "yourParty": "Senin Partin",
       "defaultPartyName": "{OWNER}'in Partisi",
       "partyOwner": "Parti Lideri",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

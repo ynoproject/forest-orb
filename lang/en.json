@@ -429,7 +429,8 @@
         "rule2": "No 18+ discussion (NSFW, gore, etc.).",
         "rule3": "No politics.",
         "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason."
+        "rule5": "No cheating of any kind for any reason.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
@@ -644,6 +645,7 @@
       "yourParty": "Your Party",
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Party Leader",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

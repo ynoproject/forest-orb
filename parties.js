@@ -70,14 +70,16 @@ function initPartyControls() {
   };
   
   document.getElementById('disbandPartyButton').onclick = () => {
-    apiFetch(`party?command=disband`)
-      .then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
-        showPartyToastMessage('disband', 'partyDisband', joinedPartyCache?.name);
-        setJoinedPartyId(null);
-        updatePartyList();
-      }).catch(err => console.error(err));
+    showConfirmModal(localizedMessages.parties.confirmDisband, () => {
+      apiFetch(`party?command=disband`)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          showPartyToastMessage('disband', 'partyDisband', joinedPartyCache?.name);
+          setJoinedPartyId(null);
+          updatePartyList();
+        }).catch(err => console.error(err));
+    });
   };
   
   document.getElementById('showHidePrivatePartyPasswordLink').onclick = function () {

@@ -429,7 +429,8 @@
         "rule2": "Zakaz dyskusji 18+ (NSFW, gore, itp.).",
         "rule3": "Zakaz polityki.",
         "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
-        "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu."
+        "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Nieodkryte lokalizacje",
@@ -644,6 +645,7 @@
       "yourParty": "Twoja grupa",
       "defaultPartyName": "Grupa {OWNER}",
       "partyOwner": "Lider grupy",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

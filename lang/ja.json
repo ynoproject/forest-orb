@@ -429,7 +429,8 @@
         "rule2": "18禁の会話は禁止です(NSFW、ゴアなど)。",
         "rule3": "政治的な会話は禁止です。",
         "rule4": "扇動的な発言(中傷を含む)は禁止です。",
-        "rule5": "いかなる理由であれ、不正行為は禁止です。"
+        "rule5": "いかなる理由であれ、不正行為は禁止です。",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "未発見の場所",
@@ -644,6 +645,7 @@
       "yourParty": "自分の パーティー",
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"

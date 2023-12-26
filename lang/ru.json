@@ -429,7 +429,8 @@
         "rule2": "Запрещены дискуссии на 18+ темы (Расчленёнка, NSFW И т. д.).",
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
-        "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом."
+        "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "Неисследованная локация",
@@ -644,6 +645,7 @@
       "yourParty": "Ваша группа",
       "defaultPartyName": "Группа {OWNER}",
       "partyOwner": "Глава группы",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"

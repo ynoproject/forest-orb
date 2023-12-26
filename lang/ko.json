@@ -429,7 +429,8 @@
         "rule2": "19금 대화는 금지입니다 (후방주의물, 고어, 기타 등등).",
         "rule3": "정치적 발언은 금지입니다.",
         "rule4": "선동적인 언행은 금지입니다 (비난 포함).",
-        "rule5": "어느 경우더라도 치트는 사용하지 마십시오."
+        "rule5": "어느 경우더라도 치트는 사용하지 마십시오.",
+        "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
         "title": "미발견 장소",
@@ -644,6 +645,7 @@
       "yourParty": "현재 가입된 파티",
       "defaultPartyName": "{OWNER}님의 파티",
       "partyOwner": "파티 리더",
+      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "categories": {
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
