@@ -430,7 +430,7 @@
         "rule3": "Pas de politiques.",
         "rule4": "Pas de remarques provocatrices (insultes comprises).",
         "rule5": "Pas de triche de toute sorte, qu'importe la raison.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Si il y a des problèmes, veuillez en informer les modérateurs."
       },
       "explorerUndiscoveredLocations": {
         "title": "Lieux non découverts",
@@ -645,7 +645,7 @@
       "yourParty": "Votre groupe",
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
       "categories": {
         "online": "En ligne - {COUNT}",
         "offline": "Hors ligne - {COUNT}"
