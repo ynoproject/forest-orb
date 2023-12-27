@@ -430,7 +430,7 @@
         "rule3": "Sem política.",
         "rule4": "Sem comentários provocantes (incluindo insultos).",
         "rule5": "Sem trapaças de qualquer tipo por qualquer motivo.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Se houver problemas, favor informar os moderadores."
       },
       "explorerUndiscoveredLocations": {
         "title": "Locais ainda Não Descobertos",
@@ -645,7 +645,7 @@
       "yourParty": "Sua Party",
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Líder da Party",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmDisband": "Tem certeza de que deseja desfazer sua Party? Isto não poderá ser desfeito.",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
