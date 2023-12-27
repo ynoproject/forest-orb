@@ -1482,6 +1482,7 @@ body.fullBg #background {
 }
 
 .messageContents .spoiler:not(.show) {
+  color: rgb(var(--shadow-color));
   background-color: rgb(var(--shadow-color));
   cursor: pointer;
   -webkit-touch-callout: none;
