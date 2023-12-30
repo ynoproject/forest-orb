@@ -124,7 +124,7 @@
             "label": "没入モード",
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "モバイルコントローラーを表示",
           "toggleLocationDisplay": "場所 表示",
           "toggleRankings": "ランキング",
           "togglePreloads": {
@@ -430,7 +430,7 @@
         "rule3": "政治的な会話は禁止です。",
         "rule4": "扇動的な発言(中傷を含む)は禁止です。",
         "rule5": "いかなる理由であれ、不正行為は禁止です。",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "トラブルが発生した場合は、モデレーターにお知らせください。"
       },
       "explorerUndiscoveredLocations": {
         "title": "未発見の場所",
@@ -645,7 +645,7 @@
       "yourParty": "自分の パーティー",
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmDisband": "本当にこのパーティを解散しますか？この操作は取り消せません。",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"
@@ -696,7 +696,7 @@
     "saveSync": {
       "confirmEnable": "セーブデータ同期を有効にしますか？同期させるとセーブデータがサーバー側でセーブデータが保存されるようになり、この機能を有効にしているデバイスやブラウザで、アカウントデータとしてサーバー側に保存されているセーブデータにアクセスできるようになります。有効になっている間は、指定したセーブデータスロットのセーブデータは、ページの読み込み時に自動的に更新されます。",
       "confirmEnableWithData": "このアカウントには既にセーブデータが保存されています。同じスロットに別のセーブデータが保存されている場合、サーバー側に保存されているセーブデータで上書きされます。この機能を有効にした状態でページを再読み込みした場合にのみ反映されますのでご注意ください。本当にセーブデータ同期を有効にしますか？",
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "本当にこのゲームのセーブデータ同期を削除しますか？ セーブデータをローカル保存していない場合、元に戻すことはできません。"
     },
     "toast": {
       "system": {
@@ -864,7 +864,7 @@
         "fuji_ex": "FUJI EX",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
+        "ta_be_hardcore": "TA_BE_ - ハードモード",
         "panerabbit": "PANErabbit"
       }
     },
