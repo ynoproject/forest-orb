@@ -203,7 +203,7 @@
                 <?php if ($gameId == "cu" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
                   <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="Digit2" data-key-code="50"></div>
                 <?php endif ?>
-                <?php if ($gameId == "someday"): ?>
+                <?php if ($gameId == "yume" || $gameId == "someday"): ?>
                   <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="Digit3" data-key-code="51"></div>
                 <?php endif ?>
                 <?php if ($gameId == "yume"): ?>
