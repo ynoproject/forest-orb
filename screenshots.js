@@ -230,7 +230,7 @@ function takeScreenshot(retryCount) {
     
     const mapId = cachedMapId;
 
-    const coords = easyrpgPlayer._GetPlayerCoords();
+    const coords = easyrpgPlayer.api.getPlayerCoords();
 
     const mapX = easyrpgPlayer.getValue(coords, 'int*');
     const mapY = easyrpgPlayer.getValue(coords + 4, 'int*');

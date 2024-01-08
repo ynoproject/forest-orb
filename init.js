@@ -82,9 +82,9 @@ async function injectScripts() {
   
         easyrpgPlayerLoadFuncs.push(() => {
           easyrpgPlayer.initialized = true;
-          easyrpgPlayer._SetNametagMode(config.nametagMode);
-          easyrpgPlayer._SetSoundVolume(globalConfig.soundVolume);
-          easyrpgPlayer._SetMusicVolume(globalConfig.musicVolume);
+          easyrpgPlayer.api.setNametagMode(config.nametagMode);
+          easyrpgPlayer.api.setSoundVolume(globalConfig.soundVolume);
+          easyrpgPlayer.api.setMusicVolume(globalConfig.musicVolume);
           const loadingOverlay = document.getElementById('loadingOverlay');
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));

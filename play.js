@@ -141,7 +141,7 @@ function fetchAndUpdatePlayerInfo() {
   if (isLogin || isLogout) {
     loginToken = isLogin ? cookieSessionId : null;
     const ptr = easyrpgPlayer.allocate(easyrpgPlayer.intArrayFromString(isLogin ? loginToken : ''), easyrpgPlayer.ALLOC_NORMAL);
-    easyrpgPlayer._SetSessionToken(ptr);
+    easyrpgPlayer.api.setSessionToken(ptr);
     easyrpgPlayer._free(ptr);
   }
   apiFetch('info')
@@ -480,8 +480,8 @@ function onReceiveInputFeedback(inputId) {
         config[configKey] = toggled;
       updateConfig(isGlobal ? globalConfig : config, isGlobal);
       if (configKey === 'mute') {
-        easyrpgPlayer._SetSoundVolume(toggled ? 0 : globalConfig.soundVolume);
-        easyrpgPlayer._SetMusicVolume(toggled ? 0 : globalConfig.musicVolume);
+        easyrpgPlayer.api.setSoundVolume(toggled ? 0 : globalConfig.soundVolume);
+        easyrpgPlayer.api.setMusicVolume(toggled ? 0 : globalConfig.musicVolume);
       }
     }
   }
@@ -741,7 +741,7 @@ document.getElementById('privateModeButton').onclick = function () {
   if (connStatus == 1 || connStatus == 3)
     onUpdateConnectionStatus(config.privateMode ? 3 : 1);
 
-  easyrpgPlayer._SessionReady();
+  easyrpgPlayer.api.sessionReady();
 };
 
 let reconnectCooldownTimer;
@@ -878,7 +878,7 @@ document.getElementById('settingsButton').onclick = () => openModal('settingsMod
 
 document.getElementById('muteButton').onclick = function () {
   if (easyrpgPlayer.INITIALIZED)
-    easyrpgPlayer._ToggleMute();
+    easyrpgPlayer.api.toggleMute();
 };
 
 document.getElementById('soundVolume').oninput = function () {
@@ -903,12 +903,12 @@ document.getElementById('lang').onchange = function () {
 
 document.getElementById('nametagMode').onchange = function () {
   if (easyrpgPlayer.INITIALIZED)
-    easyrpgPlayer._SetNametagMode(this.value);
+    easyrpgPlayer.api.setNametagMode(this.value);
 };
 
 document.getElementById('playerSoundsButton').onclick = () => {
   if (easyrpgPlayer.INITIALIZED)
-    easyrpgPlayer._TogglePlayerSounds();
+    easyrpgPlayer.api.togglePlayerSounds();
 };
 
 if (gameId === '2kki') {
@@ -1464,7 +1464,7 @@ function setSoundVolume(value, isInit) {
   if (isNaN(value))
     return;
   if (easyrpgPlayer.INITIALIZED && !config.mute)
-    easyrpgPlayer._SetSoundVolume(value);
+    easyrpgPlayer.api.setSoundVolume(value);
   globalConfig.soundVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -1474,7 +1474,7 @@ function setMusicVolume(value, isInit) {
   if (isNaN(value))
     return;
   if (easyrpgPlayer.INITIALIZED && !config.mute)
-    easyrpgPlayer._SetMusicVolume(value);
+    easyrpgPlayer.api.setMusicVolume(value);
   globalConfig.musicVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);

@@ -32,7 +32,7 @@ function initSessionWs(attempt) {
           return;
         setTimeout(() => initSessionWs(1), 5000);
       };
-      easyrpgPlayer._SessionReady();
+      easyrpgPlayer.api.sessionReady();
       if (config.privateMode)
         sendSessionCommand('pr', [ 1 ]);
       if (!hasConnected) {
