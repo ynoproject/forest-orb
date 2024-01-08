@@ -5,9 +5,24 @@ const canvas = document.getElementById('canvas');
 const gameContainer = document.getElementById('gameContainer');
 let lastTouchedId;
 
+// Launch the Player and configure it
+window.addEventListener('load', (event) => {
+  createEasyRpgPlayer(easyrpgPlayer)
+  .then(function(Module) {
+    // Module is ready
+    easyrpgPlayer = Module;
+    easyrpgPlayer.initApi();
+
+    for (let loadFunc of easyrpgPlayerLoadFuncs)
+      loadFunc();
+  
+    canvas.focus();
+  });
+});
+
 // Make EasyRPG player embeddable
-gameContainer.addEventListener('mouseenter', () => canvas.focus());
-gameContainer.addEventListener('click', () => canvas.focus());
+canvas.addEventListener('mouseenter', () => canvas.focus());
+canvas.addEventListener('click', () => canvas.focus());
 
 // Handle clicking on the fullscreen button
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {

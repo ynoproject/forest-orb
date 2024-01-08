@@ -230,12 +230,12 @@ function takeScreenshot(retryCount) {
     
     const mapId = cachedMapId;
 
-    const coords = Module._GetPlayerCoords();
+    const coords = easyrpgPlayer._GetPlayerCoords();
 
-    const mapX = Module.getValue(coords, 'int*');
-    const mapY = Module.getValue(coords + 4, 'int*');
+    const mapX = easyrpgPlayer.getValue(coords, 'int*');
+    const mapY = easyrpgPlayer.getValue(coords + 4, 'int*');
   
-    Module._free(coords);
+    easyrpgPlayer._free(coords);
 
     if (notificationConfig.all && notificationConfig.screenshots.all && notificationConfig.screenshots.screenshotTaken) {
       const toast = showScreenshotToastMessage('screenshotTaken', 'image', true, null, true);

@@ -34,17 +34,19 @@ const tippyConfig = {
   allowHTML: true
 };
 
+let easyrpgPlayer = {
+  initialized: false,
+  game: ynoGameId,
+  saveFs: undefined,
+  wsUrl: 'wss://connect.ynoproject.net/' + ynoGameId + '/'
+};
+let easyrpgPlayerLoadFuncs = [];
+
 const sessionIdKey = 'ynoproject_sessionId';
 const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
-
-Module = {
-  INITIALIZED: false,
-  EASYRPG_GAME: ynoGameId,
-  EASYRPG_WS_URL: 'wss://connect.ynoproject.net/' + ynoGameId + '/'
-};
 
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
@@ -78,11 +80,11 @@ async function injectScripts() {
         if (globalConfig.preloads)
           initPreloads();
   
-        Module.postRun.push(() => {
-          Module.INITIALIZED = true;
-          Module._SetNametagMode(config.nametagMode);
-          Module._SetSoundVolume(globalConfig.soundVolume);
-          Module._SetMusicVolume(globalConfig.musicVolume);
+        easyrpgPlayerLoadFuncs.push(() => {
+          easyrpgPlayer.initialized = true;
+          easyrpgPlayer._SetNametagMode(config.nametagMode);
+          easyrpgPlayer._SetSoundVolume(globalConfig.soundVolume);
+          easyrpgPlayer._SetMusicVolume(globalConfig.musicVolume);
           const loadingOverlay = document.getElementById('loadingOverlay');
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
@@ -98,7 +100,7 @@ async function injectScripts() {
           };
         });
         if (typeof onResize !== 'undefined')
-          Module.postRun.push(onResize);
+          easyrpgPlayerLoadFuncs.push(onResize);
       };
 
     const scriptTag = document.createElement('script');

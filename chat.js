@@ -1,4 +1,4 @@
-Module["onRuntimeInitialized"] = initChat;
+easyrpgPlayer["onRuntimeInitialized"] = initChat;
 if (typeof ENV === "undefined")
   initChat();
 
