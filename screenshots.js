@@ -216,19 +216,21 @@ function downloadScreenshot(url, date, gameId, resized) {
 function takeScreenshot() {
   // Use requestAnimationFrame to wait for the next repaint
   requestAnimationFrame(function () {
-    // Capture the image as a data URL
-    const url = canvas.toDataURL('image/png');
+    const screenshotCanvas = document.createElement('canvas');
+    const screenshotContext = screenshotCanvas.getContext('2d');
+
+    screenshotCanvas.width = 320;
+    screenshotCanvas.height = 240;
+  
+    screenshotContext.drawImage(canvas, 0, 0, 320, 240);
+  
+    const url = screenshotCanvas.toDataURL();
 
     const dateTaken = new Date();
     
     const mapId = cachedMapId;
 
-    const coords = easyrpgPlayer.api.getPlayerCoords();
-
-    const mapX = easyrpgPlayer.getValue(coords, 'int*');
-    const mapY = easyrpgPlayer.getValue(coords + 4, 'int*');
-  
-    easyrpgPlayer._free(coords);
+    const [ mapX, mapY ] = easyrpgPlayer.api.getPlayerCoords();
 
     if (notificationConfig.all && notificationConfig.screenshots.all && notificationConfig.screenshots.screenshotTaken) {
       const toast = showScreenshotToastMessage('screenshotTaken', 'image', true, null, true);
