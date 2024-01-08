@@ -140,9 +140,7 @@ function fetchAndUpdatePlayerInfo() {
   const isLogout = !cookieSessionId && loginToken && cookieSessionId !== loginToken;
   if (isLogin || isLogout) {
     loginToken = isLogin ? cookieSessionId : null;
-    const ptr = easyrpgPlayer.allocate(easyrpgPlayer.intArrayFromString(isLogin ? loginToken : ''), easyrpgPlayer.ALLOC_NORMAL);
-    easyrpgPlayer.api.setSessionToken(ptr);
-    easyrpgPlayer._free(ptr);
+    easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
   }
   apiFetch('info')
     .then(response => response.json())
