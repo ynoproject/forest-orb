@@ -101,6 +101,18 @@ async function injectScripts() {
         });
         if (typeof onResize !== 'undefined')
           easyrpgPlayerLoadFuncs.push(onResize);
+
+        createEasyRpgPlayer(easyrpgPlayer)
+        .then(function(Module) {
+          // Module is ready
+          easyrpgPlayer = Module;
+          easyrpgPlayer.initApi();
+
+          for (let loadFunc of easyrpgPlayerLoadFuncs)
+            loadFunc();
+        
+          canvas.focus();
+        });
       };
 
     const scriptTag = document.createElement('script');
