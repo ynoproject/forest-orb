@@ -5,11 +5,6 @@ const canvas = document.getElementById('canvas');
 const gameContainer = document.getElementById('gameContainer');
 let lastTouchedId;
 
-// Launch the Player and configure it
-window.addEventListener('load', (event) => {
-
-});
-
 // Make EasyRPG player embeddable
 canvas.addEventListener('mouseenter', () => canvas.focus());
 canvas.addEventListener('click', () => canvas.focus());
