@@ -875,7 +875,7 @@ document.getElementById('clearChatButton').onclick = function () {
 document.getElementById('settingsButton').onclick = () => openModal('settingsModal');
 
 document.getElementById('muteButton').onclick = function () {
-  if (easyrpgPlayer.INITIALIZED)
+  if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.toggleMute();
 };
 
@@ -900,12 +900,12 @@ document.getElementById('lang').onchange = function () {
 };
 
 document.getElementById('nametagMode').onchange = function () {
-  if (easyrpgPlayer.INITIALIZED)
+  if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.setNametagMode(this.value);
 };
 
 document.getElementById('playerSoundsButton').onclick = () => {
-  if (easyrpgPlayer.INITIALIZED)
+  if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.togglePlayerSounds();
 };
 
@@ -1461,7 +1461,7 @@ function setName(name, isInit) {
 function setSoundVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.INITIALIZED && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute)
     easyrpgPlayer.api.setSoundVolume(value);
   globalConfig.soundVolume = value;
   if (!isInit)
@@ -1471,7 +1471,7 @@ function setSoundVolume(value, isInit) {
 function setMusicVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.INITIALIZED && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute)
     easyrpgPlayer.api.setMusicVolume(value);
   globalConfig.musicVolume = value;
   if (!isInit)
