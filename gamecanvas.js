@@ -7,17 +7,7 @@ let lastTouchedId;
 
 // Launch the Player and configure it
 window.addEventListener('load', (event) => {
-  createEasyRpgPlayer(easyrpgPlayer)
-  .then(function(Module) {
-    // Module is ready
-    easyrpgPlayer = Module;
-    easyrpgPlayer.initApi();
 
-    for (let loadFunc of easyrpgPlayerLoadFuncs)
-      loadFunc();
-  
-    canvas.focus();
-  });
 });
 
 // Make EasyRPG player embeddable
