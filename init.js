@@ -77,8 +77,8 @@ async function injectScripts() {
           gameVersion = document.querySelector('meta[name="2kkiVersion"]')?.content?.replace(' Patch ', 'p');
           //init2kkiFileVersionAppend();
         }
-        if (globalConfig.preloads)
-          initPreloads();
+        /*if (globalConfig.preloads)
+          initPreloads();*/
   
         easyrpgPlayerLoadFuncs.push(() => {
           easyrpgPlayer.initialized = true;
