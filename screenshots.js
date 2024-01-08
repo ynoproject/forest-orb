@@ -79,7 +79,7 @@ function initScreenshotControls() {
     updateConfig(globalConfig, true);
   };
 
-  document.getElementById('screenshotButton').onclick = () => takeScreenshot(0);
+  document.getElementById('screenshotButton').onclick = () => takeScreenshot();
   document.getElementById('myScreenshotsButton').onclick = () => {
     initScreenshotsModal(false);
     openModal('myScreenshotsModal');
@@ -213,19 +213,12 @@ function downloadScreenshot(url, date, gameId, resized) {
   a.click();
 }
 
-function takeScreenshot(retryCount) {
-  const screenshotCanvas = document.createElement('canvas');
-  const screenshotContext = screenshotCanvas.getContext('2d');
+function takeScreenshot() {
+  // Use requestAnimationFrame to wait for the next repaint
+  requestAnimationFrame(function () {
+    // Capture the image as a data URL
+    const url = canvas.toDataURL('image/png');
 
-  screenshotCanvas.width = 320;
-  screenshotCanvas.height = 240;
-
-  screenshotContext.drawImage(canvas, 0, 0, 320, 240);
-
-  const url = screenshotCanvas.toDataURL();
-  const isValid = checkScreenshot(screenshotCanvas);
-
-  if (isValid) {
     const dateTaken = new Date();
     
     const mapId = cachedMapId;
@@ -252,10 +245,7 @@ function takeScreenshot(retryCount) {
     }
 
     downloadScreenshot(url, dateTaken);
-  } else if (retryCount < 8)
-    setTimeout(() => takeScreenshot(retryCount + 1), 0);
-
-  screenshotCanvas.remove();
+  });
 }
 
 function uploadScreenshot(url, mapId, mapX, mapY) {
