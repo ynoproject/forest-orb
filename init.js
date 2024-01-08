@@ -75,7 +75,7 @@ async function injectScripts() {
         
         if (gameId === '2kki') {
           gameVersion = document.querySelector('meta[name="2kkiVersion"]')?.content?.replace(' Patch ', 'p');
-          init2kkiFileVersionAppend();
+          //init2kkiFileVersionAppend();
         }
         if (globalConfig.preloads)
           initPreloads();
