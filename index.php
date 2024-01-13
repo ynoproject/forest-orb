@@ -1,4 +1,5 @@
 <?php
+  include 'version.php';
   $gameId = substr($_SERVER['REQUEST_URI'], 1, strrpos($_SERVER['REQUEST_URI'], '/', 1) - 1);
   $enableBadgeTools = isset($_GET['badge_tools']) && $_GET['badge_tools'] == 'true';
   switch ($gameId) {
@@ -61,7 +62,7 @@
   <meta name="description" content="Play <?php echo $gameName; ?> in multiplayer with your friends, no account or downloads required.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <?php if ($gameId == "2kki"): ?>
-    <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
+    <meta name="2kkiVersion" content="<?php echo $gameVersion2kki; ?>"> <!-- eg. 0.117g Patch 4 -->
   <?php endif ?>
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
