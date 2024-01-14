@@ -29,6 +29,9 @@
     case "muma":
       $gameName = "Muma Rope";
       break;
+    case "oversomnia":
+      $gameName = "Oversomnia";
+      break;
     case "prayers":
       $gameName = "Answered Prayers";
       break;
