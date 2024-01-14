@@ -103,7 +103,7 @@
       <div id="headerIconContainer" class="itemContainer smallItemContainer">
         <div id="badgeButton" class="badgeItem item accountRequired unselectable"></div>
         <button id="communityScreenshotsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.communityScreenshots">
-          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 3.5h18v11.5h-1.5v-10h-16.5zm18 11.5v1.5h-18v-11.5h1.5v10zm-15.5-1v-1.5l2.75-3 2.25 1.5 3.75-3.75 4.25 3.25v3.5zm0-6.75a0.75 0.75 90 0 0 3 0 0.75 0.75 90 0 0-3 0z" /></svg>
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0.75 5.5h14.5v9.25h-1.25v-8h-13.25zm14.5 9.25v1.25h-14.5v-9.25h1.25v8zm-12.5-0.75v-1.25l2.25-2.5 1.75 1.25 3-3 3.5 2.5v3zm0-5.5a0.5 0.5 90 0 0 2.5 0 0.5 0.5 90 0 0-2.5 0zm0-4.25h13.75v9.75h-1v-8.75h-12.75v-1m2-1.25h13v9h-1v-8h-12v-1" /></svg>
         </button>
         <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
