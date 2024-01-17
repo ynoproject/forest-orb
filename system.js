@@ -137,6 +137,19 @@ const allGameUiThemes = {
   'muma': [
     'SYSTEM'
   ],
+  'oversomnia': [
+    'window-a',
+    'window-b',
+    'window-c',
+    'window-d',
+    'window-e',
+    'window-f',
+    'window-g',
+    'window-h',
+    'window-i',
+    'window-j',
+    'window-temp1'
+  ],
   'prayers': [
     'grey-and-chartreuse',
     'chartreuse',
@@ -194,6 +207,7 @@ const allGameFullBgUiThemes = {
   'genie': [],
   'mikan': [],
   'muma': [],
+  'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],
   'someday': [],
