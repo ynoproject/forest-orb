@@ -1,4 +1,4 @@
-const maxBadgeSlotRows = 7;
+const maxBadgeSlotRows = 8;
 const maxBadgeSlotCols = 7;
 let badgeSlotRows = 1;
 let badgeSlotCols = 3;
