@@ -160,13 +160,18 @@ const allGameUiThemes = {
   ],
   'someday': [
     'green',
-    '8bit',
     'blue',
+    'turquoise',
     'clock',
+    'threeoneone',
+    '8bit',
     'edible',
     'rainbow',
-    'threeoneone',
-    'turquoise'
+    'gold',
+    'swaltz',
+    'zapnef',
+    'monochrome_mk2',
+    'monochrome'
   ],
   'ultraviolet': [
     'ss-システムviolet',
