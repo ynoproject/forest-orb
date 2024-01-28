@@ -647,6 +647,7 @@
       "defaultPartyName": "{OWNER}님의 파티",
       "partyOwner": "파티 리더",
       "confirmDisband": "정말 파티를 해산하시겠습니까? 이 결정은 되돌릴 수 없습니다.",
+      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "categories": {
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"

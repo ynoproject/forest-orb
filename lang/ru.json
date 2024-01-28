@@ -647,6 +647,7 @@
       "defaultPartyName": "Группа {OWNER}",
       "partyOwner": "Глава группы",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"

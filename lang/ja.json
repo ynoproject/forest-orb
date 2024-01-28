@@ -647,6 +647,7 @@
       "defaultPartyName": "{OWNER}のパーティー",
       "partyOwner": "パーティーリーダー",
       "confirmDisband": "本当にこのパーティを解散しますか？この操作は取り消せません。",
+      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"

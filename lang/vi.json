@@ -647,6 +647,7 @@
       "defaultPartyName": "Nhóm của {OWNER}",
       "partyOwner": "Trưởng Nhóm",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

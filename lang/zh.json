@@ -647,6 +647,7 @@
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
+      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "categories": {
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"

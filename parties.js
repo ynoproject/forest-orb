@@ -217,15 +217,18 @@ function kickPlayerFromJoinedParty(playerUuid) {
 }
 
 function transferJoinedPartyOwner(playerUuid) {
+  let targetPlayerName = getPartyMemberName(joinedPartyCache, playerUuid, true, true);
   if (joinedPartyCache && joinedPartyCache.ownerUuid === playerData?.uuid) {
-    apiFetch(`party?command=transfer&player=${playerUuid}`)
-      .then(response => {
-        if (!response.ok)
+    showConfirmModal(localizedMessages.parties.confirmTransferPartyOwner.replace('{PLAYER}', targetPlayerName), () => {
+      apiFetch(`party?command=transfer&player=${playerUuid}`)
+        .then(response => {
+          if (!response.ok)
           throw new Error(response.statusText);
         showPartyToastMessage('transferPartyOwner', 'transferPartyOwner', joinedPartyCache, playerUuid);
         updateJoinedParty();
         updatePartyList();
       }).catch(err => console.error(err));
+    });
   }
 }
 
