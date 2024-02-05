@@ -1,5 +1,4 @@
-{
-  "translationComplete": "1",
+"translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versione {VERSION}",
@@ -109,8 +108,8 @@
             "values": {
               "none": "Normali",
               "classic": "Classici",
-              "compact": "Compatto",
-              "slim": "Sottile"
+              "compact": "Compatti",
+              "slim": "Sottili"
             }
           },
           "soundVolume": "Volume Effetti Sonori",
@@ -288,6 +287,7 @@
               "saveCleared": "Salvataggio Eliminato"
             }
           }
+
         }
       },
       "accountSettings": {
@@ -446,7 +446,7 @@
       "screenshot": "Cattura Schermata",
       "myScreenshots": "My Screenshots",
       "settings": "Opzioni",
-      "toggleMute": "Mettiti in Modalità Muta",
+      "toggleMute": "Muta",
       "toggleGlobalMessage": "Attiva Chat Globale",
       "chat": {
         "toggleGlobalMessageLocations": "Mostra/Nascondi Luoghi dei Messaggi nella Chat",
@@ -548,7 +548,7 @@
     },
     "roles": {
       "mod": "Moderatore",
-      "dev": "Sviluppatore"
+      "dev": "sviluppatore"
     },
     "timestamp": {
       "time": "{TIME}",
@@ -665,7 +665,7 @@
         "backupReminder": "È consigliato scaricare frequentemente un backup dei salvataggi per evitare di perdere il progresso nel gioco nel caso in cui i dati nel tuo browser vengano perduti.",
         "menuTheme": "Il colore del tuo nome e il suo stile nella lista dei giocatori cambia a seconda del menù che selezioni all'interno del gioco.",
         "playersInMap": "Puoi filtrare la quantità dei giocatori connessi e la quantità dei giocatori nella mappa corrente premendo il testo corrispondente nell'angolo in alto a destra dello schermo.",
-        "markdownSupport": " La chat supporta un formato di testo che usa certi caratteri speciali, questi sono: **negretto** (\\*\\*testo\\*\\*), *corsivo* (\\*testo\\*, \\_testo\\_), __sottolineato__ (\\_\\_testo\\_\\_), ~~barrato~~ (\\~\\~testo\\~\\~) y ||spoiler|| (\\|\\|testo\\|\\|).",
+        "markdownSupport": " La chat supporta un formato di testo che usa certi caratteri speciali, questi sono: **negretto** (\\*\\*testo\\*\\*), *corsivo* (\\*testo\\*, \\_testo\\_), __sottolineato__ (\\_\\_testo\\_\\_), ~~barrato~~ (\\~\\~testo\\~\\~) e ||spoiler|| (\\|\\|testo\\|\\|).",
         "tabToChat": " Se stai giocando da PC, puoi premere il tasto tab per alternare fra il gioco e l'input per la chat. Questa funzione può essere disattivata nelle Impostazioni Chat sotto Premi Tab per Chattare'.",
         "chatTabNotifications": "Quando sei in una stanza chat diversa da 'Tutti', se un nuovo messaggio viene ricevuto in un'altra stanza, il titolo verrà messo in grassetto per notificarti.",
         "clearChat": "Quando premi il pulsante per svuotare la chat in alto a destra della chat box, se non sei correntemente nella stanza 'Tutti', verranno rimossi solamente i messaggi della tab in cui sei al momento.",
@@ -726,6 +726,7 @@
       },
       "parties": {
         "create": "{PARTY} è stato creato.",
+
         "update": "{PARTY} è stato aggiornato.",
         "join": "Si è unito a {PARTY}.",
         "leave": "Ha abbandonato {PARTY}.",
@@ -806,8 +807,8 @@
     "badgeGallery": {
       "label": "Vetrina di {PLAYER}",
       "loading": "Caricamento...",
-      "bp": "{BP} PM",
-      "count": "{COUNT} Medaglie"
+      "bp": "{BP} BP",
+      "count": "{COUNT} Badges"
     },
     "rankings": {
       "categories": {
