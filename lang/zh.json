@@ -124,7 +124,7 @@
             "label": "沉浸模式",
             "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "显示移动端按键",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "togglePreloads": {
@@ -430,7 +430,7 @@
         "rule3": "不谈政治。",
         "rule4": "禁止侮辱性称呼（如各类种族蔑称）。",
         "rule5": "不要在游戏中作弊。",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "如遇到问题，请联系管理员。"
       },
       "explorerUndiscoveredLocations": {
         "title": "未探索地点",
@@ -646,8 +646,8 @@
       "yourParty": "您的队伍",
       "defaultPartyName": "{OWNER} 的队伍",
       "partyOwner": "领队",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmDisband": "确定要解散队伍吗？该操作无法撤销。",
+      "confirmTransferPartyOwner": "确定要将队伍转让给 {PLAYER} 吗？",
       "categories": {
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"
@@ -698,7 +698,7 @@
     "saveSync": {
       "confirmEnable": "您想启用存档云同步功能吗？启用后您的联机存档将被存储到云端，并可以从任何登录了该账号的设备或浏览器上读取。选定的存档数据将在页面载入后实时更新。",
       "confirmEnableWithData": "检测到当前设备上存在旧的本地存档。在已有数据的存档槽进行同步将覆盖掉原有的本地存档（将在启用同步功能并刷新页面之后生效）。您确定要在本设备上启用云端同步吗？",
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "确定要清除您在这个游戏中的所有云端存档吗？该操作无法撤销，除非您在本地保存了存档副本。"
     },
     "toast": {
       "system": {
