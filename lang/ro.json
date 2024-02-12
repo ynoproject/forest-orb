@@ -672,6 +672,8 @@
         "chatHistoryLimit": "Dacă istoricul chat-ului se face prea lung, poți avea probleme cu performanța. În Setările pentru Chat, poți limita istoricul pentru a te feri de problemele astea fără să ștergi chat-ul.",
         "parties": "Grupurile sunt un mod perfect de a sta împreună cu ceilalți într-o aventură. Poți vedea locațiile membrilor din grup și să vorbești cu ei în privat.",
         "immersionMode": "Dacă preferi o experiență mai imersivă decât una socială, încearcă modul Imersie. Scoate chat-ul global, lista de jucători și numărul jucătorilor ca să fie mai interesand când găsești un alt jucător în timp ce explorezi.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject este open source și codul este valabil la https://github.com/ynoproject/"
       }
     },

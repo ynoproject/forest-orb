@@ -672,6 +672,8 @@
         "chatHistoryLimit": "过长的聊天记录可能导致卡顿。您可以在聊天设置中为聊天记录数量设限。",
         "parties": "使用组队功能可以和伙伴们在旅途中保持联系。您可以在玩家列表的“我的队伍”标签下看到其他队员的所在位置，并可以在“队伍”聊天频道下与队员私聊。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
     },
