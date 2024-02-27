@@ -294,13 +294,6 @@
         "title": "Configuración de Cuenta",
         "fields": {
           "badge": "Medallas",
-          "toggleSaveSync": "Sincronización de Savefiles (Experimental)",
-          "saveSyncSlotId": {
-            "label": "Ranura de Savefile a Sincronizar",
-            "values": {
-              "0": "Ninguno"
-            }
-          },
           "changePassword": "Cambiar Contraseña",
           "clearSaveSync": "Limpiar Datos Sincronizados"
         }
@@ -697,8 +690,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "¿Desea activar la sincronización de savefile? El savefile que se encuentre en la ranura sincronizada será guardado en nuestros servidores, permitiendo que sea accedido desde cualquier dispositivo o navegador en donde esta funcionalidad esté activada. Mientras esté activado, el savefile que esté en la ranura indicada será automáticamente cargado al abrir la página.",
-      "confirmEnableWithData": "Se encontró un savefile sincronizado relacionado a esta cuenta. El savefile que se encuentre en la ranura sincronizada será sobreescrito con la información encontrada en nuestros servidores. Esto solo tendrá efecto al actualizar la página teniendo esta funcionalidad activada. ¿Está seguro que desea activar la sincronización de savefile?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

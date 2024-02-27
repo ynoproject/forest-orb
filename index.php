@@ -775,20 +775,6 @@
                   <div id="accountBadgeButton" class="badgeItem item unselectable"></div>
                 </div>
               </li>
-              <li class="formControlRow">
-                <label for="saveSyncButton" class="unselectable" data-i18n="[html]modal.accountSettings.fields.toggleSaveSync">Save Sync</label>
-                <div>
-                  <button id="saveSyncButton" class="checkboxButton unselectable"><span></span></button>
-                </div>
-              </li>
-              <li id="saveSyncSlotIdRow" class="formControlRow hidden">
-                <label for="saveSyncSlotId" class="unselectable" data-i18n="[html]modal.accountSettings.fields.saveSyncSlotId.label">Save Sync Slot ID</label>
-                <div>
-                  <select id="saveSyncSlotId">
-                    <option value="0" data-i18n="[html]modal.accountSettings.fields.saveSyncSlotId.values.0">None</option>
-                  </select>
-                </div>
-              </li>
               <li id="saveSyncSlotIdRow" class="formControlRow buttonRow">
                 <button id="clearSaveSyncButton" class="unselectable" type="button" data-i18n="[html]modal.accountSettings.fields.clearSaveSync">Clear Save Sync Data</button>
               </li>

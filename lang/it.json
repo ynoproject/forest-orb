@@ -294,13 +294,6 @@
         "title": "Impostazioni Profilo",
         "fields": {
           "badge": "Medaglie",
-          "toggleSaveSync": "Sincronizzazione Salvataggi (In via di sviluppo)",
-          "saveSyncSlotId": {
-            "label": "Sincronizzazione Backup Salvataggi",
-            "values": {
-              "0": "Nessuno"
-            }
-          },
           "changePassword": "Cambia Password",
           "clearSaveSync": "Elimina Dati di Salvataggio Sincronizzati"
         }
@@ -697,8 +690,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Vuoi attivare la sincronizzazione dei dati di saltavarrio? Il dato di salvataggio che si trova nello slot sincronizzato verrà salvato sui nostri server, consentendo l'accesso da qualsiasi dispositivo o browser in cui questa funzionalità è attivata. Mentre è attivato, il savefile nello slot indicato verrà automaticamente caricato all'apertura della pagina.",
-      "confirmEnableWithData": "È stato trovato un dato di salvataggio sincronizzato a questo account. Il dato di salvataggio che si trova nello slot sincronizzato verrà sovrascritto con le informazioni trovate sui nostri server. Questo avrà effetto solo quando aggiorni la pagina con questa funzionalità attivata. Sei sicuro di voler attivare la sincronizzazione del dato di salvataggio?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

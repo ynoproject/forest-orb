@@ -1,48 +1,6 @@
-let saveSyncConfig = {
-  enabled: false,
-  slotId: 0
-};
+const saveSyncSlotId = 1;
 
 function initSaveSyncControls() {
-  document.getElementById('saveSyncButton').onclick = function () {
-    setSaveSyncEnabled(!this.classList.contains('toggled'));
-  };
-
-  const saveSyncSlotSelect = document.getElementById('saveSyncSlotId');
-  for (let s = 1; s <= 15; s++) {
-    const slotOption = document.createElement('option');
-    slotOption.innerText = s;
-    saveSyncSlotSelect.appendChild(slotOption);
-  }
-
-  document.getElementById('saveSyncSlotId').onchange = function () {
-    saveSyncConfig.slotId = this.value;
-    updateConfig(saveSyncConfig, false, 'saveSyncConfig');
-    if (this.value) {
-      const getSaveSyncData = timestamp => {
-        getSaveDataForSync().then(saveData => {
-          if (saveData && (!timestamp || saveData.timestamp > new Date(timestamp)))
-            uploadSaveSyncData(saveData).then(success => {
-              if (success)
-                document.getElementById('clearSaveSyncButton').removeAttribute('disabled');
-            });
-        });
-      };
-      hasSaveDataForSync().then(hasSaveData => {
-        if (hasSaveData) {
-          apiFetch('savesync?command=timestamp')
-            .then(response => {
-              if (!response.ok)
-                return getSaveSyncData(null);
-              return response.text();
-            })
-            .then(timestamp => getSaveSyncData(timestamp))
-            .catch(err => console.error(err));
-        }
-      });
-    }
-  };
-
   document.getElementById('clearSaveSyncButton').onclick = function () {
     showConfirmModal(localizedMessages.saveSync.confirmClearSaveSync, () => {
       const button = this;
@@ -313,55 +271,21 @@ function formatSaveSlotId(saveSlotId) {
   return saveSlotId < 10 ? `0${saveSlotId}` : saveSlotId.toString();
 }
 
-function setSaveSyncEnabled(enabled, isInit) {
-  const saveSyncButton = document.getElementById('saveSyncButton');
-  const toggle = function () {
-    saveSyncButton.classList.toggle('toggled', enabled);
-    document.getElementById('saveSyncSlotIdRow').classList.toggle('hidden', !enabled);
-    if (enabled)
-      document.getElementById('saveSyncSlotId').value = 0;
-    if (!isInit) {
-      saveSyncConfig.enabled = enabled;
-      updateConfig(saveSyncConfig, false, 'saveSyncConfig');
-    }
-  };
-  if (!isInit && !saveSyncButton.classList.contains('toggled')) {
-    showConfirmModal(localizedMessages.saveSync.confirmEnable, () => {
-      apiFetch('savesync?command=timestamp')
-        .then(response => {
-          if (!response.ok)
-            throw new Error('Failed to retrieve timestamp for save sync data');
-          return response.text();
-        })
-        .then(timestamp => {
-          if (!timestamp)
-            toggle();
-          else
-            showConfirmModal(localizedMessages.saveSync.confirmEnableWithData, toggle);
-        })
-        .catch(err => console.error(err));
-    });
-  } else
-    toggle();
-}
-
 // EXTERNAL
 function onSaveSlotUpdated(slotId) {
-  if (loginToken && saveSyncConfig.enabled && slotId == saveSyncConfig.slotId)
+  if (loginToken && slotId == saveSyncSlotId)
     getAndUploadSaveSyncData();
 }
 
 function hasSaveDataForSync() {
   return new Promise(resolve => {
-    if (!saveSyncConfig.slotId)
-      resolve(false);
     const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSyncConfig.slotId}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSyncSlotId}.lsd`);
 
       objectStoreRequest.onsuccess = () => resolve(true);
       objectStoreRequest.onerror = () => resolve(false);
@@ -370,17 +294,17 @@ function hasSaveDataForSync() {
 }
 
 function getSaveDataForSync() {
-  return getSaveSlotData(saveSyncConfig.slotId);
+  return getSaveSlotData(saveSyncSlotId);
 }
 
 function uploadSaveSyncData(saveData) {
   return new Promise(resolve => {
-    if (!loginToken || !saveSyncConfig.enabled)
+    if (!loginToken)
       resolve(false);
-    showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncConfig.slotId);
+    showSaveSyncToastMessage('saveUploading', 'saveUpload', saveSyncSlotId);
     apiPost('savesync?command=push', saveData.contents)
       .then(_ => {
-        showSaveSyncToastMessage('saveUploaded', 'save', saveSyncConfig.slotId);
+        showSaveSyncToastMessage('saveUploaded', 'save', saveSyncSlotId);
         resolve(true);
       })
       .catch(_err => resolve(false));
@@ -389,9 +313,6 @@ function uploadSaveSyncData(saveData) {
 
 function getAndUploadSaveSyncData() {
   return new Promise(resolve => {
-    if (!saveSyncConfig.slotId)
-      resolve(false);
-
     getSaveDataForSync().then(saveData => uploadSaveSyncData(saveData).then(success => resolve(success)));
   });
 }
@@ -419,14 +340,14 @@ function trySyncSave() {
                 const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
 
                 request.onsuccess = function (_e) {
-                  const slotId = saveSyncConfig.slotId < 10 ? `0${saveSyncConfig.slotId}` : saveSyncConfig.slotId.toString();
+                  const slotId = saveSyncSlotId < 10 ? `0${saveSyncSlotId}` : saveSyncSlotId.toString();
 
                   const db = request.result; 
                   const transaction = db.transaction(['FILE_DATA'], 'readwrite');
                   const objectStorePutRequest = transaction.objectStore('FILE_DATA').put({ timestamp: timestamp, mode: 33206, contents: new Uint8Array(saveSyncData) }, `/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
 
                   objectStorePutRequest.onsuccess = _e => {
-                    showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncConfig.slotId);
+                    showSaveSyncToastMessage('saveDownloaded', 'save', saveSyncSlotId);
                     resolve(true);
                   };
                   objectStorePutRequest.onerror = _err => resolve(false);
@@ -440,7 +361,7 @@ function trySyncSave() {
               resolve(false);
             })
           } else {
-            showSaveSyncToastMessage('saveUpToDate', 'save', saveSyncConfig.slotId);
+            showSaveSyncToastMessage('saveUpToDate', 'save', saveSyncSlotId);
             resolve(false);
           }
         });
