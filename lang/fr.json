@@ -294,13 +294,6 @@
         "title": "Paramètres du compte",
         "fields": {
           "badge": "Badge",
-          "toggleSaveSync": "Synchronisation de la sauvegarde (Expérimental)",
-          "saveSyncSlotId": {
-            "label": "Emplacement de la sauvegarde synchronisée",
-            "values": {
-              "0": "Aucun"
-            }
-          },
           "changePassword": "Changer de mot de passe",
           "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
         }
@@ -484,7 +477,8 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
-      "oversomnia": "Oversomnia"
+      "oversomnia": "Oversomnia",
+      "tsushin": "Yume Tsushin"
     },
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "logout": "Êtes-vous sûr de vouloir vous déconnecter ?",
@@ -698,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
-      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?",
       "confirmClearSaveSync": "Êtes-vous sûr de vouloir supprimer vos données de sauvegarde synchronisée pour ce jeu ? Cette action ne peut pas être annulée à moins que vous ne possédiez une copie locale de vos données de sauvegarde."
     },
     "toast": {

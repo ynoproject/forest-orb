@@ -294,13 +294,6 @@
         "title": "Account Settings",
         "fields": {
           "badge": "Badge",
-          "toggleSaveSync": "Save Sync (Experimental)",
-          "saveSyncSlotId": {
-            "label": "Save Sync Slot ID",
-            "values": {
-              "0": "None"
-            }
-          },
           "changePassword": "Change Password",
           "clearSaveSync": "Clear Save Sync Data"
         }
@@ -484,7 +477,8 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
-      "oversomnia": "Oversomnia"
+      "oversomnia": "Oversomnia",
+      "tsushin": "Yume Tsushin"
     },
     "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
     "logout": "Are you sure you want to log out?",
@@ -698,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Do you want to enable Save Sync? Your data from the Save Sync Slot will be uploaded and you will be able to access it from this account on any device or browser that has this feature enabled. While enabled, the specified Save Sync Slot's data will be updated automatically upon loading the page.",
-      "confirmEnableWithData": "Previous Save Sync data was found for this account. A save stored in the Save Sync Slot will be overwritten with Save Sync data if a newer one exists in the same slot. Please note that this will only take affect upon reloading the page with this feature enabled. Are you sure you want to enable Save Sync?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

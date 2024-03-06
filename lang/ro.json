@@ -294,13 +294,6 @@
         "title": "Setări Cont",
         "fields": {
           "badge": "Insignă",
-          "toggleSaveSync": "Save Sync (Experimental)",
-          "saveSyncSlotId": {
-            "label": "ID-ul slot-ului Save Sync",
-            "values": {
-              "0": "Nimic"
-            }
-          },
           "changePassword": "Schimbă Parola",
           "clearSaveSync": "Șterge Datele Save Sync"
         }
@@ -484,7 +477,8 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
-      "oversomnia": "Oversomnia"
+      "oversomnia": "Oversomnia",
+      "tsushin": "Yume Tsushin"
     },
     "leavePage": "Ești sigur că dorești să părăsești pagina? Orice progres nesalvat în joc va fi pierdut.",
     "logout": "Are you sure you want to log out?",
@@ -698,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Vrei să pornești Save Sync? Datele din slot-ul Save Sync vor fi postate și poți să le accesezi din acest cont pe oricare dispozitiv sau browser care are acest lucru pornit. Când e pornit, slot-ul specificat va fi actualizat automat când se încarcă pagina.",
-      "confirmEnableWithData": "Date Save Sync anterioare au fost găsite pentru acest cont. Un save stocat în slot-ul Save Sync va fi schimbat cu date noi dacă există un fișier nou în același slot. Ține minte că va avea efect când reîncarci pagina cu acest lucru pornit. Ești sigur că vrei să pornești Save Sync?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

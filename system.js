@@ -173,6 +173,10 @@ const allGameUiThemes = {
     'monochrome_mk2',
     'monochrome'
   ],
+  'tsushin': [
+    'SystemM',
+    'System'
+  ],
   'ultraviolet': [
     'ss-システムviolet',
     'ss-システムmonochrome',
@@ -216,6 +220,7 @@ const allGameFullBgUiThemes = {
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],
   'someday': [],
+  'tsushin': [],
   'ultraviolet': [ 'ss-システムsilver' ],
   'unevendream': [],
   'yume': [ '0000000000010' ]

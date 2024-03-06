@@ -294,13 +294,6 @@
         "title": "Cài Đặt Tài Khoản",
         "fields": {
           "badge": "Huy hiệu",
-          "toggleSaveSync": "Đồng bộ Tiến trình (Thử nghiệm)",
-          "saveSyncSlotId": {
-            "label": "ID Vị trí lưu",
-            "values": {
-              "0": "Không"
-            }
-          },
           "changePassword": "Đổi mật khẩu",
           "clearSaveSync": "Xóa dữ liệu đồng bộ"
         }
@@ -484,7 +477,8 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
-      "oversomnia": "Oversomnia"
+      "oversomnia": "Oversomnia",
+      "tsushin": "Yume Tsushin"
     },
     "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
@@ -698,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Bạn có muốn bật tính năng Đồng bộ Tiến trình? Dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được tải lên và bạn có thể sử dụng nó bằng tài khoản này trên bất cứ thiết bị hoặc trình duyệt nào có bật tính năng. Khi được bật, dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được cập nhật tự động khi trang được tải.",
-      "confirmEnableWithData": "Đã dò được Dữ liệu Đồng bộ Tiến trình cũ từ tài khoản. Bản lưu trong Vị trí Đồng bộ Tiến trình sẽ bị ghi đè nếu có phiên bản mới hơn ở cùng vị trí. Lưu ý điều này chỉ có hiệu lực khi tải lại trang với tính năng này được bật. Bạn có chắc bạn muốn bật Đồng bộ Tiến trình?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {
