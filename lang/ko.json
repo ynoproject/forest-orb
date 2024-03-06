@@ -666,6 +666,8 @@
         "chatHistoryLimit": "채팅 내역이 너무 길다면 게임 플레이 시, 성능 상의 문제가 발생할 수 있습니다. 설정의 '채팅'에서 '채팅 내역 한도' 옵션을 이용한다면 수동으로 채팅 내역을 삭제할 필요 없이, 제한된 숫자 이상의 과거 채팅 이력이 자동적으로 삭제가 됩니다.",
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가입하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경 쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
       }
     },

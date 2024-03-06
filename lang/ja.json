@@ -666,6 +666,8 @@
         "chatHistoryLimit": "チャット欄に表示されているチャットが多くなると、ゲームが重くなることがあります。チャット設定で、チャット表示の上限を設定することで、手動でチャットを消去することなく、このような問題を回避することができます。",
         "parties": "パーティー機能は、他のプレイヤーと一緒に行動するのに最適です。パーティーメンバーの位置が確認でき、パーティーチャットで会話することも可能です。",
         "immersionMode": "多人数プレイよりも、没入感のあるプレイがお好みなら、没入モードをお試しください。ゲーム画面左上にある目のアイコンを押すと、没入モードのon/offができ、没入モードをonにするとグローバルチャット、プレイヤーリスト、接続数ラベルが見えなくなるので、探索中に他のプレイヤーを見つけるとより面白くなります。",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOprojectはオープンソースであり、コードリポジトリは以下の場所で公開されています。 https://github.com/ynoproject/"
       }
     },

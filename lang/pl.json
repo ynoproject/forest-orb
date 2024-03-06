@@ -666,6 +666,8 @@
         "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz doświadczyć spowolnień strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu, by nie musieć ciągle własnoręcznie czyścić czatu.",
         "parties": "Grupy są świetnym sposobem na trzymanie się razem z innymi na wycieczkach. Możesz zobaczyć lokalizację członków swojej grupy oraz rozmawiać z nimi w osobnym czacie.",
         "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od społecznego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych osób jest bardziej interesujące.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "Kod źródłowy YNOProject jest dostępny na stronie https://github.com/ynoproject/"
       }
     },

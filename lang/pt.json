@@ -666,6 +666,8 @@
         "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },
