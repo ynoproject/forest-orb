@@ -294,13 +294,6 @@
         "title": "Setări Cont",
         "fields": {
           "badge": "Insignă",
-          "toggleSaveSync": "Save Sync (Experimental)",
-          "saveSyncSlotId": {
-            "label": "ID-ul slot-ului Save Sync",
-            "values": {
-              "0": "Nimic"
-            }
-          },
           "changePassword": "Schimbă Parola",
           "clearSaveSync": "Șterge Datele Save Sync"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Dacă istoricul chat-ului se face prea lung, poți avea probleme cu performanța. În Setările pentru Chat, poți limita istoricul pentru a te feri de problemele astea fără să ștergi chat-ul.",
         "parties": "Grupurile sunt un mod perfect de a sta împreună cu ceilalți într-o aventură. Poți vedea locațiile membrilor din grup și să vorbești cu ei în privat.",
         "immersionMode": "Dacă preferi o experiență mai imersivă decât una socială, încearcă modul Imersie. Scoate chat-ul global, lista de jucători și numărul jucătorilor ca să fie mai interesand când găsești un alt jucător în timp ce explorezi.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject este open source și codul este valabil la https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Vrei să pornești Save Sync? Datele din slot-ul Save Sync vor fi postate și poți să le accesezi din acest cont pe oricare dispozitiv sau browser care are acest lucru pornit. Când e pornit, slot-ul specificat va fi actualizat automat când se încarcă pagina.",
-      "confirmEnableWithData": "Date Save Sync anterioare au fost găsite pentru acest cont. Un save stocat în slot-ul Save Sync va fi schimbat cu date noi dacă există un fișier nou în același slot. Ține minte că va avea efect când reîncarci pagina cu acest lucru pornit. Ești sigur că vrei să pornești Save Sync?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

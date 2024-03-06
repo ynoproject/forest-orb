@@ -294,13 +294,6 @@
         "title": "Impostazioni Profilo",
         "fields": {
           "badge": "Medaglie",
-          "toggleSaveSync": "Sincronizzazione Salvataggi (In via di sviluppo)",
-          "saveSyncSlotId": {
-            "label": "Sincronizzazione Backup Salvataggi",
-            "values": {
-              "0": "Nessuno"
-            }
-          },
           "changePassword": "Cambia Password",
           "clearSaveSync": "Elimina Dati di Salvataggio Sincronizzati"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Se la cronologia della tua chat diventa troppo lunga, potresti incontrare dei problemi di prestazione. Nelle Impostazioni Chat, puoi limitare la tua cronologia a tuo piacimento per evitare questi problemi senza dover svuotare manualmente la tua chat.",
         "parties": " I gruppi sono un ottimo modo per stare assieme ad altri giocatori durante un'avventura. Puoi vedere l'ubicazione dei membri del tuo gruppo e contattarli in chat private.",
         "immersionMode": "Se preferisci un'esperienza più immersiva invece che una sociale, prova la Modalità Immersiva. Questa disattiva la chat globale, la lista dei giocatori ed il conta giocatori, rendendo trovare un altro giocatore durante le tue esplorazioni ancora più interessante.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject è open source e irepository di codice sono disponibili su: https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Vuoi attivare la sincronizzazione dei dati di saltavarrio? Il dato di salvataggio che si trova nello slot sincronizzato verrà salvato sui nostri server, consentendo l'accesso da qualsiasi dispositivo o browser in cui questa funzionalità è attivata. Mentre è attivato, il savefile nello slot indicato verrà automaticamente caricato all'apertura della pagina.",
-      "confirmEnableWithData": "È stato trovato un dato di salvataggio sincronizzato a questo account. Il dato di salvataggio che si trova nello slot sincronizzato verrà sovrascritto con le informazioni trovate sui nostri server. Questo avrà effetto solo quando aggiorni la pagina con questa funzionalità attivata. Sei sicuro di voler attivare la sincronizzazione del dato di salvataggio?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

@@ -817,17 +817,6 @@ function loadOrInitConfig(configObj, global, configName) {
                   break;
               }
               break;
-            case 'saveSyncConfig':
-              switch (key) {
-                case 'enabled':
-                  if (value)
-                    setSaveSyncEnabled(true, true);
-                  break;
-                case 'slotId':
-                  document.getElementById('saveSyncSlotId').value = value;
-                  break;
-              }
-              break;
           }
           configObj[key] = value;
         }
@@ -870,7 +859,6 @@ function getCookie(cName) {
   loadOrInitConfig(notificationConfig, true, 'notificationConfig');
 
   initSaveSyncControls();
-  loadOrInitConfig(saveSyncConfig, false, 'saveSyncConfig');
 
   window.addEventListener('error', event => {
     if (event.error.message.includes("side-effect in debug-evaluate") && event.defaultPrevented)
@@ -878,7 +866,7 @@ function getCookie(cName) {
     showSystemToastMessage('error', 'important');
   });
 
-  if (!getCookie(sessionIdKey) || !saveSyncConfig.enabled || !saveSyncConfig.slotId)
+  if (!getCookie(sessionIdKey))
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());

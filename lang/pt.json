@@ -294,13 +294,6 @@
         "title": "Configurações da Conta",
         "fields": {
           "badge": "Emblema",
-          "toggleSaveSync": "Save na Nuvem (Experimental)",
-          "saveSyncSlotId": {
-            "label": "Slot do Save da Nuvem",
-            "values": {
-              "0": "None"
-            }
-          },
           "changePassword": "Mudar Senha",
           "clearSaveSync": "Limpar dados do Save na Nuvem"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Deseja ativar Save em Nuvem? Seus dados do Save da Nuvem serão carregados e você poderá acessá-los desta conta em qualquer dispositivo ou navegador que tenha esse recurso ativado. Enquanto estiver ativado, os dados do slot de sincronização de salvamento especificado serão atualizados automaticamente ao carregar a página.",
-      "confirmEnableWithData": "Foram encontrados dados de saves anteriores para esta conta. Um salvamento armazenado no slot de sincronização de salvamento será substituído pelos dados de sincronização de salvamento se houver um mais novo no mesmo slot. Observe que isso só terá efeito ao recarregar a página com esse recurso ativado. Tem certeza de que deseja ativar Save na Nuvem?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

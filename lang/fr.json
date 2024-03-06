@@ -294,13 +294,6 @@
         "title": "Paramètres du compte",
         "fields": {
           "badge": "Badge",
-          "toggleSaveSync": "Synchronisation de la sauvegarde (Expérimental)",
-          "saveSyncSlotId": {
-            "label": "Emplacement de la sauvegarde synchronisée",
-            "values": {
-              "0": "Aucun"
-            }
-          },
           "changePassword": "Changer de mot de passe",
           "clearSaveSync": "Effacer les données de la sauvegarde synchronisée"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Si votre historique de chat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Chat, vous pouvez limiter votre historique de chat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre chat.",
         "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
+        "friendsMenu": "En faisant un clic droit sur PC, ou en maintenant votre touche sur mobile sur l'icône d'un joueur en dehors du Classement, une boîte de dialogue s'ouvrira, vous permettant d'envoyer une demande d'ami, mentionner ledit joueur ou le bloquer.",
+        "easySettingsMenu": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche F1 en jouant pour ouvrir le menu des paramètres, vous permettant de configurer vos touches ainsi qu'ajuster certains paramètres.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/."
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Voulez-vous activer la sauvegarde synchronisée ? Vos données de l'emplacement de la sauvegarde synchronisée seront téléchargées et vous pourrez y accéder à partir de ce compte sur n'importe quel appareil ou navigateur sur lequel cette fonctionnalité est activée. Lorsqu'elle est activée, les données de l'emplacement de synchronisation de sauvegarde spécifié seront mises à jour automatiquement lors du chargement de la page.",
-      "confirmEnableWithData": "Des données de synchronisation de sauvegarde précédentes ont été trouvées pour ce compte. Une sauvegarde stockée dans l'emplacement de synchronisation de sauvegarde sera écrasée par les données de synchronisation de sauvegarde si une sauvegarde plus récente existe dans le même emplacement. Veuillez noter que cela ne sera effectif que lors du rechargement de la page avec cette fonction activée. Êtes-vous sûr de vouloir activer la fonction de synchronisation de sauvegarde ?",
       "confirmClearSaveSync": "Êtes-vous sûr de vouloir supprimer vos données de sauvegarde synchronisée pour ce jeu ? Cette action ne peut pas être annulée à moins que vous ne possédiez une copie locale de vos données de sauvegarde."
     },
     "toast": {

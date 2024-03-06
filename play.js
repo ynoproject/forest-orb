@@ -1044,6 +1044,7 @@ document.getElementById('blocklistButton').onclick = function () {
 };
 
 initAccountControls();
+initSaveSyncControls();
 initBadgeControls();
 initSaveDataControls();
 initPartyControls();

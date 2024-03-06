@@ -294,13 +294,6 @@
         "title": "Cài Đặt Tài Khoản",
         "fields": {
           "badge": "Huy hiệu",
-          "toggleSaveSync": "Đồng bộ Tiến trình (Thử nghiệm)",
-          "saveSyncSlotId": {
-            "label": "ID Vị trí lưu",
-            "values": {
-              "0": "Không"
-            }
-          },
           "changePassword": "Đổi mật khẩu",
           "clearSaveSync": "Xóa dữ liệu đồng bộ"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Nếu lịch sử chat của bạn quá dài, hiệu suất có thể bị ảnh hưởng. Trong mục Cài đặt Chat, bạn có thể giới hạn số tin nhắn để tránh vấn đề này mà không phải xóa chat thủ công.",
         "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Bạn có muốn bật tính năng Đồng bộ Tiến trình? Dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được tải lên và bạn có thể sử dụng nó bằng tài khoản này trên bất cứ thiết bị hoặc trình duyệt nào có bật tính năng. Khi được bật, dữ liệu từ Vị trí Đồng bộ Tiến trình sẽ được cập nhật tự động khi trang được tải.",
-      "confirmEnableWithData": "Đã dò được Dữ liệu Đồng bộ Tiến trình cũ từ tài khoản. Bản lưu trong Vị trí Đồng bộ Tiến trình sẽ bị ghi đè nếu có phiên bản mới hơn ở cùng vị trí. Lưu ý điều này chỉ có hiệu lực khi tải lại trang với tính năng này được bật. Bạn có chắc bạn muốn bật Đồng bộ Tiến trình?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

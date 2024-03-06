@@ -294,13 +294,6 @@
         "title": "Configuración de Cuenta",
         "fields": {
           "badge": "Medallas",
-          "toggleSaveSync": "Sincronización de Savefiles (Experimental)",
-          "saveSyncSlotId": {
-            "label": "Ranura de Savefile a Sincronizar",
-            "values": {
-              "0": "Ninguno"
-            }
-          },
           "changePassword": "Cambiar Contraseña",
           "clearSaveSync": "Limpiar Datos Sincronizados"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Si tu historial de chat es demasiado largo, podrías comenzar a experimental problemas de rendimiento. En 'Opciones de Chat' puedes limitar la cantidad de mensajes que almacenará el historial de chat para evitar hacerlo manualmente.",
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefiere una experiencia inmersiva sobre una social, intente el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "¿Desea activar la sincronización de savefile? El savefile que se encuentre en la ranura sincronizada será guardado en nuestros servidores, permitiendo que sea accedido desde cualquier dispositivo o navegador en donde esta funcionalidad esté activada. Mientras esté activado, el savefile que esté en la ranura indicada será automáticamente cargado al abrir la página.",
-      "confirmEnableWithData": "Se encontró un savefile sincronizado relacionado a esta cuenta. El savefile que se encuentre en la ranura sincronizada será sobreescrito con la información encontrada en nuestros servidores. Esto solo tendrá efecto al actualizar la página teniendo esta funcionalidad activada. ¿Está seguro que desea activar la sincronización de savefile?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

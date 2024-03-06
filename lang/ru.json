@@ -294,13 +294,6 @@
         "title": "Настройки аккаунта",
         "fields": {
           "badge": "Значок",
-          "toggleSaveSync": "Облачное сохранение(экспериментальное)",
-          "saveSyncSlotId": {
-            "label": "ID Слота для синхронизации",
-            "values": {
-              "0": "Нет"
-            }
-          },
           "changePassword": "Изменить пароль",
           "clearSaveSync": "Очистить данные облачного сохранения"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "Если история чата становится слишком длинной, это может привести к проблемам с производительностью. В Настройках чата вы можете изменить лимит истории чата.",
         "parties": "Группы - хороший способ путешествовать вместе с другими людьми. Вы можете видеть местонахождение других участников группы и общаться с ними в отдельном канале чата.",
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте Режим Погружения. В нём скрывается общий чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "Включить облачное сохранение? Ваши данные из выбранного слота сохранения будут выгружены в облако. Таким образом, вы сможете получить доступ к выбранному слоту на любом устройстве или из любого браузера, где вы включили эту опцию. Пока функция включена, слот, указанный как облачный, будет автоматически обновляться при каждой загрузке страницы.",
-      "confirmEnableWithData": "Обнаружены данные другого облачного сохранения в аккаунте. Если есть сохранение из облака новее, сохранение в слоту, что указан как облачный, будет перезаписано. Учтите, что для применения изменений будет необходимо перезагрузить страницу, имея опцию облачного сохранения включённой. Вы уверены, что хотите включить облачное сохранение?",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

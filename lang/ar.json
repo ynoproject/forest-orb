@@ -294,13 +294,6 @@
         "title": "إعدادت الحساب",
         "fields": {
           "badge": "شارة",
-          "toggleSaveSync": "(تجريبي) مزامنة ملف الحفظ",
-          "saveSyncSlotId": {
-            "label": "موضع مزامنة ملف الحفظ",
-            "values": {
-              "0": "لا يوجد"
-            }
-          },
           "changePassword": "تغيير كلمة السر",
           "clearSaveSync": "مسح بيانات مزامنة ملف الحفظ"
         }
@@ -485,7 +478,6 @@
       "ultraviolet": "Ultra Violet (الترا فايلوت)",
       "sheawaits": "She Awaits",
       "oversomnia": "Oversomnia",
-      "tsushin": "Yume Tsushin",
       "tsushin": "Yume Tsushin"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
@@ -674,6 +666,8 @@
         "chatHistoryLimit": ".إذا كان سجل حديثك طويلًا جدًا ، فقد تواجه مشكلات في الأداء على الموقع. في إعدادات الحديث ، يمكنك تحديد سجل المحادثات الخاص بك وفقًا لذلك لتجنب هذه المشكلات دون الحاجة إلى مسح حديثك يدويًا",
         "parties": ".تعتبر الحفلات طريقة رائعة للبقاء مع الأشخاص في أي مغامرة. يمكنك رؤية مواقع أعضاء مجموعتك والتحدث معهم في محادثة خاصة",
         "immersionMode": "!إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "https://github.com/ynoproject/ مفتوح المصدر ومستودعات الكود متاحة على YNOproject"
       }
     },
@@ -698,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": ".هل تريد تشغيل مزامنة حفظ الملفات؟ سيتم تحميل بياناتك من موضع مزامنة ملف الحفظ وستتمكن من الوصول إليها من هذا الحساب على أي جهاز أو متصفح تم تشغيل هذه الميزة به. أثناء التشغيل ، سيتم تحديث بيانات موضع مزامنة ملف الحفظ المحددة تلقائيًا عند تحميل الصفحة",
-      "confirmEnableWithData": "تم العثور على بيانات مزامنة ملف الحفظ السابقة لهذا الحساب. سيتم استبدال الحفظ المخزن في موضع مزامنة ملف الحفظ  ببيانات ملف الحفظ الجديدة في حالة وجود نسخة أحدث في نفس الموضع. يرجى ملاحظة أن هذا لن يسري إلا عند إعادة تحميل الصفحة مع تاكيد تشغيل هذه الميزة. هل أنت متأكد أنك تريد تشغيله؟",
       "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
     },
     "toast": {

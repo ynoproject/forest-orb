@@ -294,13 +294,6 @@
         "title": "계정 설정",
         "fields": {
           "badge": "배지",
-          "toggleSaveSync": "세이브 동기화 (개발 중)",
-          "saveSyncSlotId": {
-            "label": "세이브 동기화 번호",
-            "values": {
-              "0": "없음"
-            }
-          },
           "changePassword": "비밀번호 변경",
           "clearSaveSync": "동기화된 세이브 삭제하기"
         }
@@ -673,6 +666,8 @@
         "chatHistoryLimit": "채팅 내역이 너무 길다면 게임 플레이 시, 성능 상의 문제가 발생할 수 있습니다. 설정의 '채팅'에서 '채팅 내역 한도' 옵션을 이용한다면 수동으로 채팅 내역을 삭제할 필요 없이, 제한된 숫자 이상의 과거 채팅 이력이 자동적으로 삭제가 됩니다.",
         "parties": "파티는 모험을 하는데에 있어 여러 사람들과 무리를 짓기 가장 좋은 방법입니다. 파티에 가입하면 멤버들의 위치를 확인하고 파티 내부 개인 채팅으로 대화할 수 있습니다.",
         "immersionMode": "사람들이 모여 있는 장소가 표시되어서 신경 쓰이나요? 몰입 모드를 사용해보세요! 해당 모드는 글로벌 채팅, 플레이어 리스트, 플레이어 수 옵션을 제한하여 사람들을 찾는 데에 더 몰입감을 준답니다!",
+        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
+        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에 있습니다."
       }
     },
@@ -697,8 +692,6 @@
       }
     },
     "saveSync": {
-      "confirmEnable": "세이브 동기화를 사용하시겠습니까? 해당 옵션을 활성화하면 귀하의 컴퓨터 로컬 스토리지가 아닌 서버 내부 계정 자체에 세이브 데이터가 저장이 되며 이 계정에 엑세스할 수 있는 모든 장치와 기기들이 동기화된 세이브 데이터를 이용할 수 있어 세이브 백업에 용이합니다. 이 기능을 활성화한 후 페이지를 로드하면 자동으로 동기화가 진행됩니다.",
-      "confirmEnableWithData": "이 계정에 이전 세이브 동기화 데이터가 발견되었습니다. 동기화 슬롯에 저장된 세이브 데이터는 동일한 슬롯에 데이터가 있는 경우 계정의 세이브 데이터로 덮어씁니다. 이 기능이 활성화된 상태에서 페이지를 다시 로드하는 경우에만 적용됩니다. 세이브 동기화를 사용하시겠습니까?",
       "confirmClearSaveSync": "정말 이 게임의 세이브 동기화 데이터를 지우시겠습니까? 세이브 데이터의 로컬 복사본이 없다면 이 결정은 되돌릴 수 없습니다."
     },
     "toast": {
