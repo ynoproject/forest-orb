@@ -469,6 +469,7 @@ body {
 
 .screenshotItem .screenshotThumbnailContainer {
   display: inline-block;
+  height: 120px;
 }
 
 .screenshotItem.spoiler .screenshotThumbnail {

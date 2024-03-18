@@ -218,7 +218,6 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
       nameTextContainer.appendChild(nameText);
 
       detailsContainer.appendChild(nameTextContainer);
-      detailsContainer.appendChild(getSvgIcon('playerLocation'));
 
       playerListEntryMain.appendChild(detailsContainer);
     } else {
