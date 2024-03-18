@@ -532,7 +532,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
           });
           if (badgeGame) {
             const badgeName = localizedBadges[badgeGame][badgeId].name;
-            apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&uuid=${uuid}&id=${badgeId}`)
+            apiFetch(`${isGrant ? 'grant' : 'revoke'}badge&uuid=${uuid}&id=${badgeId}`, true)
               .then(response => {
                 if (!response.ok)
                   throw new Error(response.statusText);

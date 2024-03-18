@@ -156,7 +156,7 @@ function updateModControls() {
       const playerName = prompt(playerPromptMessage);
       if (!playerName)
         return;
-      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}`, !action.startsWith('admin?'))
+      apiFetch(`${action}${action.indexOf('?') > -1 ? '&' : '?'}user=${playerName}`, true)
         .then(response => {
           if (!response.ok)
             throw new Error(response.statusText);
@@ -167,7 +167,7 @@ function updateModControls() {
     };
 
     addModControlsButton(localizedMessages.modSettings.actions.resetPassword.label,
-      () => adminPlayerAction('admin?command=resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actions.resetPassword.success, true).replace('{PASSWORD}', newPassword), 'info'));
+      () => adminPlayerAction('resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actions.resetPassword.success, true).replace('{PASSWORD}', newPassword), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.changeUsername.label,
       () => {
         const playerName = prompt(localizedMessages.modSettings.actions.changeUsername.playerPrompt);
@@ -208,7 +208,7 @@ function updateModControls() {
         });
         if (badgeGame) {
           const badgeName = localizedBadges[badgeGame][badgeId].name;
-          apiFetch(`admin?command=${isGrant ? 'grant' : 'revoke'}badge&user=${playerName}&id=${badgeId}`)
+          apiFetch(`${isGrant ? 'grant' : 'revoke'}badge&user=${playerName}&id=${badgeId}`, true)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
