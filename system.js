@@ -60,7 +60,7 @@ const allGameUiThemes = {
     'maptsukiSystem',
     'yumehako-sys2',
     'autumn_sys_rose',
-    'miau_systrm_diamond',
+    'miau_system_diamond',
 
     'system_E_eye',
     'System_kuraud',
