@@ -208,7 +208,7 @@ function updateModControls() {
         });
         if (badgeGame) {
           const badgeName = localizedBadges[badgeGame][badgeId].name;
-          apiFetch(`${isGrant ? 'grant' : 'revoke'}badge&user=${playerName}&id=${badgeId}`, true)
+          apiFetch(`${isGrant ? 'grant' : 'revoke'}badge?user=${playerName}&id=${badgeId}`, true)
             .then(response => {
               if (!response.ok)
                 throw new Error(response.statusText);
