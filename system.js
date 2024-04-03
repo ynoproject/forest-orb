@@ -61,6 +61,9 @@ const allGameUiThemes = {
     'yumehako-sys2',
     'autumn_sys_rose',
     'miau_system_diamond',
+    'Stheven_JIVV_Rainbow_Plateau',
+    'System_del_1',
+    'System_del_2',
 
     'system_E_eye',
     'System_kuraud',
