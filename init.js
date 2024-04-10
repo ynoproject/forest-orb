@@ -837,8 +837,10 @@ function updateConfig(configObj, global, configName) {
   }
 }
 
-function setCookie(cName, cValue) {
-  document.cookie = `${cName}=${cValue};SameSite=Strict;path=/`;
+export function setCookie(cName, cValue) {
+  const expiration = new Date();
+  expiration.setTime(new Date().getTime() + 3600000 * 24 * 7);
+  document.cookie = `${cName}=${cValue};SameSite=Strict;path=/;expires=${expiration.toUTCString()}`;
 }
 
 function getCookie(cName) {
