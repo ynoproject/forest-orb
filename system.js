@@ -64,6 +64,7 @@ const allGameUiThemes = {
     'Stheven_JIVV_Rainbow_Plateau',
     'System_del_1',
     'System_del_2',
+    'PGR_SYS_01',
 
     'system_E_eye',
     'System_kuraud',
