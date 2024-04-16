@@ -68,7 +68,7 @@
     "modal": {
       "confirm": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "Cancelar"
       },
       "login": {
         "title": "Entrar",
@@ -272,9 +272,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "Capturas de tela",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Captura de tela tirada"
             }
           },
           "saveSync": {
@@ -486,23 +486,23 @@
       "0": "Desconectado",
       "1": "Conectado",
       "2": "Conectando...",
-      "3": "Private Mode"
+      "3": "Modo Privado"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "última vez online\n{INTERVAL} atrás",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "menos de 1 minuto",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} minuto",
+          "plural": "{VALUE} minutos"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} hora",
+          "plural": "{VALUE} horas"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} dia",
+          "plural": "{VALUE} dias"
         }
       }
     },
@@ -513,7 +513,7 @@
       "2kki": {
         "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "Jogando {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
@@ -641,7 +641,7 @@
       "defaultPartyName": "{OWNER}'s Party",
       "partyOwner": "Líder da Party",
       "confirmDisband": "Tem certeza de que deseja desfazer sua Party? Isto não poderá ser desfeito.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmTransferPartyOwner": "Tem certeza de que quer transferir a posse da Party para {PLAYER}?",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -666,8 +666,8 @@
         "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "As Parties são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "friendsMenu": "Usando o clique direito em um computador, ou segurando a tela em um celular no ícone de um jogador fora de Placares, uma caixa de diálogo vai abrir, te permitindo enviar um pedido de amizade, mencionar esse jogador, ou bloqueia-lo.",
+        "easySettingsMenu": "Se você está jogando em um computador, você pode apertar a tecla F1 enquanto joga para abrir o menu de configurações, te permitindo remapear suas teclas e ajustar algumas configurações.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },
@@ -742,7 +742,7 @@
         "badgeUnlocked": "Você desbloqueou um novo emblema!"
       },
      "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Sua captura de tela foi tirada."
       },
       "saveSync": {
         "saveUploading": "Carregando dados do Save no slot {SLOT}...",
