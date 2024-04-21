@@ -65,6 +65,7 @@ const allGameUiThemes = {
     'System_del_1',
     'System_del_2',
     'PGR_SYS_01',
+    'sweet_medical_utopia_menu_theme',
 
     'system_E_eye',
     'System_kuraud',
