@@ -145,6 +145,14 @@ const allGameUiThemes = {
   'muma': [
     'SYSTEM'
   ],
+  'nostalgic': [
+    '001',
+    '006',
+    'colorful',
+    'cute',
+    'imgbb4a4979529eec5',
+    'mono'
+  ],
   'oversomnia': [
     'window-a',
     'window-b',
@@ -224,6 +232,7 @@ const allGameFullBgUiThemes = {
   'genie': [],
   'mikan': [],
   'muma': [],
+  'nostalgic': [],
   'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],
