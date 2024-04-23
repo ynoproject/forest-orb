@@ -1446,7 +1446,7 @@ document.onmousemove = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  if (isInit && gameIds.indexOf(gameId) > -1)
+  if (isInit && gameIds.indexOf(gameId) > -1 && gameId !== 'tsushin') // skip language argument for Yume Tsushin to prevent a crash for non-English users
     easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
   initLocalization(isInit);
   if (!isInit)
@@ -1549,7 +1549,7 @@ function initLocalization(isInitial) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
             fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
-              if (!response.ok && response.status === 404) {
+              if (!response.ok && response.status === 404 && gameId !== 'tsushin') { // don't display that the game is not localized for Yume Tsushin since it uses a conlang
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;
                 if (lang === globalConfig.lang)
