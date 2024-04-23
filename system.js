@@ -147,12 +147,12 @@ const allGameUiThemes = {
     'SYSTEM'
   ],
   'nostalgic': [
-    '001',
-    '006',
-    'colorful',
-    'cute',
     'imgbb4a4979529eec5',
-    'mono'
+    'cute',
+    'mono',
+    'colorful',
+    '001',
+    '006'
   ],
   'oversomnia': [
     'window-a',
