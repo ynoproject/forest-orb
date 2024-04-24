@@ -53,7 +53,7 @@ const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
 async function injectScripts() {
-  const supportsSimd = true;
+  const supportsSimd = await wasmFeatureDetect.simd();
 
   let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
 
