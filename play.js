@@ -1446,8 +1446,11 @@ document.onmousemove = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  if (isInit && gameIds.indexOf(gameId) > -1 && gameId !== 'tsushin') // skip language argument for Yume Tsushin to prevent a crash for non-English users
+  fetchNewest(`../data/${gameId}/Language/`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
+  if (!response.ok && response.status !== 404 && isInit && gameIds.indexOf(gameId) > -1) {
     easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
+    }
+  });
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
