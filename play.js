@@ -1552,7 +1552,7 @@ function initLocalization(isInitial) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
             fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
-              if (!response.ok && response.status === 404 && gameId !== 'tsushin') { // don't display that the game is not localized for Yume Tsushin since it uses a conlang
+              if (!response.ok && response.status === 404 && gameId !== 'tsushin') { // Don't display that the game is not localized for Yume Tsushin since it uses a conlang
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;
                 if (lang === globalConfig.lang)
