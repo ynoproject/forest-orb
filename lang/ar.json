@@ -2,9 +2,9 @@
   "translationComplete": "0",
   "version": {
     "2kki": {
-      "label": "{VERSION} يومي تووكي) نسخة) Yume 2kki",
+      "label": "{VERSION} يومي 2ووكي) نسخة) Yume 2kki",
       "substitutes": {
-        " Patch ": " تصحيح ",
+        " Patch ": " تصليح ",
         "?": "؟"
       }
     }
@@ -67,8 +67,8 @@
     },
     "modal": {
       "confirm": {
-        "ok": "OK",
-        "cancel": "Cancel"
+        "ok": "موافق",
+        "cancel": "الغاء"
       },
       "login": {
         "title": "تسجيل الدخول",
@@ -107,14 +107,14 @@
           "nametagMode": {
             "label": "أسماء اللاعبين",
             "values": {
-              "none": "لا أسماء",
-              "classic": "كلاسيك",
-              "compact": "معتدل",
+              "none": "بلا أسماء",
+              "classic": "تقليدي",
+              "compact": "مكثف",
               "slim": "رفيع"
             }
           },
-          "soundVolume": "صوت المؤثرات الصوتية",
-          "musicVolume": "صوت الموسيقا",
+          "soundVolume": "المؤثرات الصوتية",
+          "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
           "toggleEnableExplorer": {
             "label": "ملاح يومي تووكي",
@@ -208,22 +208,22 @@
             "label": "نظام",
             "fields": {
               "siteUpdates": "تم تحديث الموقع",
-              "error": "حدث خطأ"
+              "error": "يوجد خلل"
             }
           },
           "account": {
             "label": "الحساب",
             "fields": {
-              "loggedIn": "مسجل الدخول",
-              "loggedOut": "مسجل الخروج",
+              "loggedIn": "تسجيل الدخول",
+              "loggedOut": "تسجيل الخروج",
               "passwordUpdate": "تم تحديث كلمة السر"
             }
           },
           "players": {
             "label": "Players",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "اللاعب محسوم",
+              "playerUnblocked": "الغاء حسم اللاعب"
             }
           },
           "friends": {
@@ -322,7 +322,7 @@
           "sortOrder": {
             "label": "&nbsp;:ترتيب",
             "values": {
-              "default": "المعتاد"
+              "default": "افتراضي"
             }
           },
           "search": "&nbsp;:البحث"
@@ -335,11 +335,11 @@
       },
       "save": {
         "title": "إدارة حفظ البيانات",
-        "reload": "حفظ التغييرات وإعادة التحميل"
+        "reload": "اعادة التحميل"
       },
       "uiTheme": {
         "title": "تصميم واجهة المستخدم",
-        "auto": "تلقاءي"
+        "auto": "تلقائي"
       },
       "createParty": {
         "title": {
@@ -353,9 +353,9 @@
           "password": "كلمة السر",
           "theme": "التصميم"
         },
-        "showPassword": "كشف كلمة السر",
+        "showPassword": "اظهار كلمة السر",
         "hidePassword": "اخفاء كلمة السر",
-        "submit": "إرسال"
+        "submit": "ارسل"
       },
       "joinPrivateParty": {
         "title": "الانضمام إلى الحفلة الخاصة",
@@ -380,38 +380,38 @@
         "title": "المراتب"
       },
       "screenshot": {
-        "title": "Your Screenshot",
-        "download": "Download",
-        "save": "Save to My Screenshots"
+        "title": "صور الشاشة",
+        "download": "تحميل",
+        "save": "حفظ الصورة"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
+        "title": "مجموعة الصور",
         "screenshotSlotProgress": "Next Slot Upgrade (BP)",
-        "empty": "You haven't saved any screenshots yet."
+        "empty": "لم تقم بحفظ اي صور حتى الان."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
+        "title": "معرض الصور العام",
         "scrollToRefresh": "Scroll to Top to Refresh",
         "fields": {
           "game": {
             "label": "Game:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "الكل"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "الجديد",
+              "likes": "الاكثر اعجابا"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "اليوم",
+              "week": "هذا الاسبوع",
+              "month": "هذا الشهر",
+              "year": "السنة الحالية",
+              "all": "الكل"
             }
           }
         }
@@ -426,8 +426,8 @@
         "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "اماكن غير مكتشفة",
+        "complete": "لقد قمت باكتشاف جميع الاماكن المتاحة :)"
       }
     },
     "tooltips": {
@@ -454,8 +454,8 @@
       "events": "الرحلات الاستكشافية",
       "communityScreenshots": "Community Screenshots",
       "rankings": "المراتب",
-      "nexus": "(Nexus) الرجوع إلى النكسس",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "nexus": "الرجوع إلى النكسس",
+      "explorerUndiscoveredLocations": "اظهار الاماكن الغير مكتشفة"
     },
     "reviewRules": "مراجعة القواعد"
   },
@@ -675,8 +675,8 @@
       "slot": {
         "title": "File {SLOT_ID}",
         "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "emptyLabel": "فارغ",
+        "errorLabel": "يوجد خلل"
       },
       "upload": {
         "tooltip": "وضع ملف الحفظ",
@@ -687,7 +687,7 @@
         "emptySlot": "Oops! The save file for the slot appears to be empty."
       },
       "delete": {
-        "tooltip": "Delete Save File",
+        "tooltip": "حذف الملف",
         "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
