@@ -1446,8 +1446,8 @@ document.onmousemove = function () {
 
 function setLang(lang, isInit) {
   globalConfig.lang = lang;
-  fetchNewest(`../data/${gameId}/Language/`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
-  if (!response.ok && response.status !== 404 && isInit && gameIds.indexOf(gameId) > -1) {
+  fetchNewest(`../data/${gameId}/Language/${globalConfig.lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
+  if (response.status !== 404 && isInit && gameIds.indexOf(gameId) > -1) {
     easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
     }
   });
