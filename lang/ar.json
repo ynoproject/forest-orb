@@ -220,7 +220,7 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "اللاعبين",
             "fields": {
               "playerBlocked": "اللاعب محسوم",
               "playerUnblocked": "الغاء حسم اللاعب"
