@@ -70,7 +70,8 @@
 
 @font-face {
   font-family: 'Verdana-Cyrillic';
-  src: local('Verdana');
+  src: local('Verdana'),
+       local('Roboto');
   size-adjust: 84%;
   unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
 }
