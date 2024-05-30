@@ -724,9 +724,9 @@ function wrapMessageEmojis(node, force) {
 }
 
 if (!globalConfig.rulesReviewed) {
+	openModal('rulesModal');
 	globalConfig.rulesReviewed = true;
 	updateConfig(globalConfig, true);
-	openModal('rulesModal');
 }
 
 (function () {
