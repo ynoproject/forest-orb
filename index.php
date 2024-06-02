@@ -521,7 +521,7 @@
                       <option value="60">60 minutes</option>
                       <option value="90">90 minutes</option>
                       <option value="120">120 minutes</option>
-                      <option value="none">Never</option>
+                      <option value="99999">Never</option>
                     </select>
                 </div>
               </li>
