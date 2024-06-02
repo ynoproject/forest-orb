@@ -229,6 +229,7 @@ function updateModControls() {
   }
 }
 
+let saveTimer = document.getElementById('SaveN').value * 60000;
 setInterval(showToastMessage('saveReminder', 'save'), saveTimer);
 
 function showAccountToastMessage(key, icon, username) {
