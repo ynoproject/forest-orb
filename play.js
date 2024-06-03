@@ -744,6 +744,31 @@ document.getElementById('privateModeButton').onclick = function () {
 
 let reconnectCooldownTimer;
 
+document.getElementById('reconnectButton').ondblclick = function () {
+  if (reconnectCooldownTimer || connectionStatus != 2) {
+    return;
+  }
+
+  this.classList.add('active', 'disabled');
+
+  const reconnectButton = this;
+  let reconnected;
+
+  closeSessionWs();
+  initSessionWs().then(() => {
+    reconnected = true;
+    reconnectButton.classList.remove('active');
+    if (!reconnectCooldownTimer)
+      reconnectButton.classList.remove('disabled');
+  });
+
+  reconnectCooldownTimer = setTimeout(() => {
+    reconnectCooldownTimer = null;
+    if (!reconnectButton.classList.contains('active'))
+      reconnectButton.classList.remove('disabled');
+  }, 5000);
+}
+
 document.getElementById('reconnectButton').onclick = function () {
   if (reconnectCooldownTimer || connStatus == 2)
     return;
