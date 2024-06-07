@@ -58,7 +58,8 @@ const notificationTypes = {
     'saveDownloading',
     'saveDownloaded',
     'saveUpToDate',
-    'saveCleared'
+    'saveCleared',
+    'saveReminder'
   ]
 };
 
