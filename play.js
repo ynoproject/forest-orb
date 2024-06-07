@@ -754,7 +754,6 @@ document.getElementById('reconnectButton').ondblclick = function () {
   const reconnectButton = this;
   let reconnected;
 
-  closeSessionWs();
   initSessionWs().then(() => {
     reconnected = true;
     reconnectButton.classList.remove('active');
