@@ -118,7 +118,7 @@
           "togglePlayerSounds": "Oyuncu Sesleri",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Gezginini",
-            "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Gezgini entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."
+            "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Kaşifi entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."
           },
           "toggleImmersionMode": {
             "label": "Sürükleyicilik Modu",
@@ -751,7 +751,8 @@
         "saveDownloading": "Kayıt verileri slot {SLOT} için güncelleniyor...",
         "saveDownloaded": "Kayıt slotu {SLOT} başarıyla güncellendi.",
         "saveUpToDate": "Kayıt verileri güncel.",
-        "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek."
+        "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek.",
+        "saveReminder": "İlerlemenizi kaybetmemek için sık sık kaydetmeyi ve kayıt dosyalarınızı yedeklemeyi unutmayın."
       }
     },
     "events": {
@@ -894,8 +895,8 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Yume 2kki Gezgininde Gör",
-        "multi": "{LOCATION}'i Yume 2kki Gezgininde Göster"
+        "generic": "Yume 2kki Kaşifinde Gör",
+        "multi": "{LOCATION}'i Yume 2kki Kaşifinde Göster"
       }
     },
     "modSettings": {
