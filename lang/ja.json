@@ -751,7 +751,8 @@
         "saveDownloading": "スロット{SLOT}のセーブデータを更新中...",
         "saveDownloaded": "スロット{SLOT}のセーブデータが更新されました。",
         "saveUpToDate": "セーブデータは最新です。",
-        "saveCleared": "セーブデータ同期が消去されました。なお、端末内に保存されているセーブデータには影響ありません。"
+        "saveCleared": "セーブデータ同期が消去されました。なお、端末内に保存されているセーブデータには影響ありません。",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

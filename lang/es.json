@@ -751,7 +751,8 @@
         "saveDownloading": "Actualizando savefile en la ranura {SLOT}...",
         "saveDownloaded": "El savefile en la ranura {SLOT} ha sido actualizado exitosamente.",
         "saveUpToDate": "La ranura sincronizada se encuentra actualizada.",
-        "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos."
+        "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

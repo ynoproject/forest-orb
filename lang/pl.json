@@ -751,7 +751,8 @@
         "saveDownloading": "Aktualizowanie zapisu {SLOT}...",
         "saveDownloaded": "Zapis {SLOT} został zakualizowany.",
         "saveUpToDate": "Masz już aktualny zapis.",
-        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach."
+        "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

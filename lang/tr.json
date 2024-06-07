@@ -751,7 +751,8 @@
         "saveDownloading": "Kayıt verileri slot {SLOT} için güncelleniyor...",
         "saveDownloaded": "Kayıt slotu {SLOT} başarıyla güncellendi.",
         "saveUpToDate": "Kayıt verileri güncel.",
-        "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek."
+        "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

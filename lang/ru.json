@@ -751,7 +751,8 @@
         "saveDownloading": "Обновляем данные из слота {SLOT}...",
         "saveDownloaded": "Слот {SLOT} успешно обновлён.",
         "saveUpToDate": "Данные слота актуальны.",
-        "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах."
+        "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
