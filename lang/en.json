@@ -755,7 +755,8 @@
         "saveDownloading": "Updating save data for file {SLOT}...",
         "saveDownloaded": "Save slot {SLOT} was updated successfully.",
         "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices."
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
