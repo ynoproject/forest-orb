@@ -423,7 +423,7 @@
         "rule3": "Zakaz polityki.",
         "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
         "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów.."
       },
       "explorerUndiscoveredLocations": {
         "title": "Nieodkryte lokalizacje",
@@ -641,8 +641,8 @@
       "yourParty": "Twoja grupa",
       "defaultPartyName": "Grupa {OWNER}",
       "partyOwner": "Lider grupy",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmDisband": "Czy napewno chcerz rozłożyć swoją grupę? To nie może być cofnięte.",
+      "confirmTransferPartyOwner": "Czy napewno chcerz oddać rolę właściciela grupy graczowi {PLAYER}?",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -667,8 +667,8 @@
         "chatHistoryLimit": "Jeżeli historia czatu zrobi się zbyt długa, możesz doświadczyć spowolnień strony. W ustawieniach czatu możesz zmniejszyć limit historii czatu, by nie musieć ciągle własnoręcznie czyścić czatu.",
         "parties": "Grupy są świetnym sposobem na trzymanie się razem z innymi na wycieczkach. Możesz zobaczyć lokalizację członków swojej grupy oraz rozmawiać z nimi w osobnym czacie.",
         "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od społecznego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych osób jest bardziej interesujące.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "friendsMenu": "Klikając prawym przyciskiem myszy na komputerze, albo poprzez trzymanie na ikonie gracza poza rankingami na telefonie, otworzy się okno dialogowe, pozwalające ci wysłać zaproszenie do grona znajomych, wspomnieć ich lub zablokować ich.",
+        "easySettingsMenu": "Jeżeli grasz na komputerze, możesz nacisnąć F1 podczas gry aby zmienić sterowanie oraz kilka ustawień.",
         "openSource": "Kod źródłowy YNOProject jest dostępny na stronie https://github.com/ynoproject/"
       }
     },
@@ -693,7 +693,7 @@
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "Czy napewno chcerz wyczyścić dane synchronizacji zapisu dla tej gry? To nie może być cofnięte jeżeli nie posiada się lokalnej kopii zapisu gry."
     },
     "toast": {
       "system": {
