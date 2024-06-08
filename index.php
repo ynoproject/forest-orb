@@ -11,7 +11,7 @@
     case "braingirl":
       $gameName = "Braingirl";
       break;
-    case "cu":
+    case "unconscious":
       $gameName = "Collective Unconscious";
       break;
     case "deepdreams":
@@ -201,15 +201,15 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="ShiftLeft" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "cu" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin"): ?>
+            <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
-                <?php if ($gameId == "cu" || $gameId == "tsushin"): ?>
+                <?php if ($gameId == "unconscious" || $gameId == "tsushin"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="Digit0" data-key-code="48"></div>
                 <?php endif ?>
                 <?php if ($gameId != "prayers"): ?>
                   <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="Digit1" data-key-code="49"></div>
                 <?php endif ?>
-                <?php if ($gameId == "cu" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
+                <?php if ($gameId == "unconscious" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
                   <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="Digit2" data-key-code="50"></div>
                 <?php endif ?>
                 <?php if ($gameId == "yume" || $gameId == "unevendream" || $gameId == "someday" || $gameId == "tsushin"): ?>
@@ -903,7 +903,7 @@
                   <?php if ($gameId !== "deepdreams"): ?>
                     <option value="3" data-i18n="[html]fontStyle.values.style4">Style 4</option>
                   <?php endif ?>
-                  <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "cu" || $gameId == "flow" || $gameId == "mikan"): ?>
+                  <?php if ($gameId == "yume" || $gameId == "2kki" || $gameId == "unconscious" || $gameId == "flow" || $gameId == "mikan"): ?>
                     <option value="4" data-i18n="[html]fontStyle.values.style5">Style 5</option>
                     <?php if ($gameId != "mikan"): ?>
                       <option value="5" data-i18n="[html]fontStyle.values.style6">Style 6</option>
