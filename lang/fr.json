@@ -751,7 +751,8 @@
         "saveDownloading": "Mise à jour des données enregistrées dans l'emplacement {SLOT}...",
         "saveDownloaded": "L'emplacement de la sauvegarde {SLOT} a été mis à jour avec succès.",
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
-        "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils."
+        "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

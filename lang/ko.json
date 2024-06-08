@@ -751,7 +751,8 @@
         "saveDownloading": "{SLOT}번 슬롯의 세이브 데이터를 다운로드합니다...",
         "saveDownloaded": "{SLOT}번 슬롯의 세이브 데이터를 다운로드 했습니다.",
         "saveUpToDate": "세이브 데이터가 업데이트 되었습니다.",
-        "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다."
+        "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
