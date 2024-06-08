@@ -751,7 +751,8 @@
         "saveDownloading": "Atualizando dados do Save no slot {SLOT}...",
         "saveDownloaded": "Save do slot {SLOT} foi atualizado com sucesso.",
         "saveUpToDate": "Os dados do Save estão atualizados.",
-        "saveCleared": "Save da Nuvem foi apagado. Isso não afetará os salvamentos existentes em nenhum dos seus dispositivos."
+        "saveCleared": "Save da Nuvem foi apagado. Isso não afetará os salvamentos existentes em nenhum dos seus dispositivos.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

@@ -751,7 +751,8 @@
         "saveDownloading": "Đang cập nhật dữ liệu bản lưu vào vị trí {SLOT}...",
         "saveDownloaded": "Vị trí lưu {SLOT} đã được cập nhật.",
         "saveUpToDate": "Dữ liệu bản lưu đang ở phiên bản mới nhất.",
-        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn."
+        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {

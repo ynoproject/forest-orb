@@ -745,7 +745,7 @@ document.getElementById('privateModeButton').onclick = function () {
 let reconnectCooldownTimer;
 
 document.getElementById('reconnectButton').ondblclick = function () {
-  if (reconnectCooldownTimer || connectionStatus != 2) {
+  if (reconnectCooldownTimer || connStatus != 2) {
     return;
   }
 

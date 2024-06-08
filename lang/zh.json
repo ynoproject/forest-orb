@@ -751,7 +751,8 @@
         "saveDownloading": "正在下载编号为 {SLOT} 的存档数据……",
         "saveDownloaded": "{SLOT} 号存档同步成功。",
         "saveUpToDate": "已是最新存档。",
-        "saveCleared": "该账户的云端存档数据已被清除。保存在设备本地的存档数据不会受到影响。"
+        "saveCleared": "该账户的云端存档数据已被清除。保存在设备本地的存档数据不会受到影响。",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
