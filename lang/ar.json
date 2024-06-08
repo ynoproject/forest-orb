@@ -752,7 +752,7 @@
         "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
         "saveUpToDate": ".تم تحديث ملف الحفظ",
         "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": ".تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك"
       }
     },
     "events": {
