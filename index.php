@@ -512,9 +512,9 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="saveN" class="unselectable" data-i18n="[html]modal.settings.fields.saveN">Save Notification Interval</label>
+                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder">Save Notification Interval</label>
                 <div>
-                   <select id="saveN" size="4">
+                   <select id="saveReminder" size="4">
                       <option value="15">15 minutes</option>
                       <option value="30">30 minutes</option>
                       <option value="45">45 minutes</option>
