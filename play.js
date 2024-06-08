@@ -924,7 +924,7 @@ document.getElementById('lang').onchange = function () {
   setLang(this.value);
 };
 
-document.getElementById('saveReminder').oninput = function () {
+document.getElementById('saveReminder').onchange = function () {
   setSaveReminder(parseInt(this.value), true);
 };
 
