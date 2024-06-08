@@ -650,6 +650,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
                     break;
+                  case 'saveReminder':
+                    document.getElementById('saveReminder').value = value;
+                    setSaveReminder(value, true);
+                    break;
                   case 'gameChat':
                     if (value)
                       document.getElementById('gameChatButton').click();
