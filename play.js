@@ -45,7 +45,8 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
-  badgeToolsData: null
+  badgeToolsData: null,
+  saveN: 30
 };
 
 let config = {
