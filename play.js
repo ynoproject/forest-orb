@@ -1481,6 +1481,12 @@ function setLang(lang, isInit) {
     updateConfig(globalConfig, true);
 }
 
+function setSaveN(saveN, isInit) {
+  globalConfig.saveN = saveN;
+  if (!isInit)
+    updateConfig(config);
+}, 
+
 function setName(name, isInit) {
   globalConfig.name = name;
   if (!isInit)
