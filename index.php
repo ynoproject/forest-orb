@@ -203,22 +203,22 @@
             <?php endif ?>
             <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
-                <?php if ($gameId == "unconscious" || $gameId == "tsushin"): ?>
+                <?php if ($gameId == "tsushin"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="Digit0" data-key-code="48"></div>
                 <?php endif ?>
                 <?php if ($gameId != "prayers"): ?>
                   <div id="apad-1" class="baseColorBg apadSqBtn apadBtn" data-key="Digit1" data-key-code="49"></div>
                 <?php endif ?>
-                <?php if ($gameId == "unconscious" || $gameId == "unevendream" || $gameId == "braingirl"): ?>
+                <?php if ($gameId == "unevendream" || $gameId == "braingirl"): ?>
                   <div id="apad-2" class="baseColorBg apadSqBtn apadBtn" data-key="Digit2" data-key-code="50"></div>
                 <?php endif ?>
-                <?php if ($gameId == "yume" || $gameId == "unevendream" || $gameId == "someday" || $gameId == "tsushin"): ?>
+                <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "unevendream" || $gameId == "someday" || $gameId == "tsushin"): ?>
                   <div id="apad-3" class="baseColorBg apadSqBtn apadBtn" data-key="Digit3" data-key-code="51"></div>
                 <?php endif ?>
                 <?php if ($gameId == "unevendream"): ?>
                   <div id="apad-4" class="baseColorBg apadSqBtn apadBtn" data-key="Digit4" data-key-code="52"></div>
                 <?php endif ?>
-                <?php if ($gameId == "yume"): ?>
+                <?php if ($gameId == "yume" || $gameId == "unconscious"): ?>
                   <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="Digit5" data-key-code="53"></div>
                 <?php endif ?>
                 <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="Digit9" data-key-code="57"></div>
