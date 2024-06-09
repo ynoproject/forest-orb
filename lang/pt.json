@@ -124,6 +124,10 @@
             "label": "Modo de Imersão",
             "helpText": "Desativa a contagem de jogadores, o bate-papo global e os mapas para proporcionar uma experiência mais imersiva."
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
