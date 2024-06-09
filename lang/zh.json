@@ -667,8 +667,8 @@
         "chatHistoryLimit": "过长的聊天记录可能导致卡顿。您可以在聊天设置中为聊天记录数量设限。",
         "parties": "使用组队功能可以和伙伴们在旅途中保持联系。您可以在玩家列表的“我的队伍”标签下看到其他队员的所在位置，并可以在“队伍”聊天频道下与队员私聊。",
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "friendsMenu": "在排行榜以外的界面中，用PC端右键，或手机端长按玩家图标，可以弹出一个对话框，以便加其为好友、提及该玩家，或拉黑该玩家。",
+        "easySettingsMenu": "如果您在使用PC游玩，可以在游戏中按下F1键打开设置菜单，在此可以更改按键或调整一些设置。",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
     },
@@ -752,7 +752,7 @@
         "saveDownloaded": "{SLOT} 号存档同步成功。",
         "saveUpToDate": "已是最新存档。",
         "saveCleared": "该账户的云端存档数据已被清除。保存在设备本地的存档数据不会受到影响。",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": "记得经常存档和备份，防止您的进度意外丢失。"
       }
     },
     "events": {
