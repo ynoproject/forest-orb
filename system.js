@@ -106,7 +106,7 @@ const allGameUiThemes = {
     'Carpet',
     'Raspberry'
   ],
-  'cu': [
+  'unconscious': [
     'system',
     'system2',
     'maple-penmenu',
@@ -237,7 +237,7 @@ const allGameFullBgUiThemes = {
   '2kki': [],
   'amillusion': [ 'fleur' ],
   'braingirl': [],
-  'cu': [],
+  'unconscious': [],
   'deepdreams': [],
   'flow': [],
   'genie': [],
@@ -259,7 +259,7 @@ const gameFullBgUiThemes = allGameFullBgUiThemes[gameId];
 const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
   'braingirl': 'color',
-  'cu': 'color',
+  'unconscious': 'color',
   'deepdreams': 'soft-light',
   'genie': 'color',
   'mikan': 'soft-light',
