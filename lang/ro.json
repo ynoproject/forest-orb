@@ -124,6 +124,10 @@
             "label": "Modul Imersie",
             "helpText": "Dezactivează numărul de jucători, chat-ul global și hărțile pentru a-ți oferi o experiență mai captivantă."
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Afișare Locație",
           "toggleRankings": "Ranking-uri",
