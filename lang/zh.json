@@ -113,6 +113,7 @@
               "slim": "全名（小）"
             }
           },
+          "saveReminder": "Save Notification Interval",
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
