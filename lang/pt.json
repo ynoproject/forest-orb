@@ -113,6 +113,7 @@
               "slim": "Slim"
             }
           },
+          "saveReminder": "Save Notification Interval",
           "soundVolume": "Volume do Som",
           "musicVolume": "Volume da Música",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
