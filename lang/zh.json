@@ -124,6 +124,10 @@
             "label": "沉浸模式",
             "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "显示移动端按键",
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
