@@ -113,7 +113,7 @@
               "slim": "全名（小）"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "存档提醒间隔",
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
@@ -126,8 +126,8 @@
             "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "计时模式",
+            "helpText": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。"
           },
           "toggleMobileControls": "显示移动端按键",
           "toggleLocationDisplay": "位置弹窗提示",
