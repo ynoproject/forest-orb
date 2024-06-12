@@ -125,6 +125,10 @@
             "label": "Immersion Mode",
             "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Location Display",
           "toggleRankings": "Rankings",

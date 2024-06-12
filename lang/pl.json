@@ -125,6 +125,10 @@
             "label": "Tryb immersji",
             "helpText": "Wyłącza licznik ilości graczy, czat globalny i mapy dla immersyjnego doświadczenia"
           },
+          "timeTrialinfo": {
+            "label": "Time Triale",
+            "helpText": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
           "toggleRankings": "Rankingi",

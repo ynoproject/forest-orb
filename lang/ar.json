@@ -125,6 +125,10 @@
             "label": "نمط الانغمار",
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "عرض ضوابط الهاتف",
           "toggleLocationDisplay": "عرض الموقع",
           "toggleRankings": "المراكز",

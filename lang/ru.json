@@ -125,6 +125,10 @@
             "label": "Режим Погружения",
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Управление с экрана",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",

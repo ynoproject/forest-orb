@@ -125,6 +125,10 @@
             "label": "Modo Inmersivo",
             "helpText": "Desactiva el contador de jugadores, el chat global y el indicador de mapas con el objetivo de entregar una experiencia inmersiva"
           },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Mostrar Ubicación",
           "toggleRankings": "Clasificaciones",

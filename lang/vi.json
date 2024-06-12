@@ -125,6 +125,10 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
+	  "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
