@@ -113,6 +113,7 @@
               "slim": "Slim"
             }
           },
+          "saveReminder": "Save Notification Interval",
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Player Sounds",
