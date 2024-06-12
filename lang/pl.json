@@ -113,6 +113,7 @@
               "slim": "Pomniejszone"
             }
           },
+          "saveReminder": "Częstotliwość powiadomień o zapisie",
           "soundVolume": "Głośność dźwięków",
           "musicVolume": "Głośność muzyki",
           "togglePlayerSounds": "Dźwięki innych graczy",
@@ -427,7 +428,7 @@
         "rule3": "Zakaz polityki.",
         "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
         "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu.",
-        "rule6": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów.."
+        "rule6": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów."
       },
       "explorerUndiscoveredLocations": {
         "title": "Nieodkryte lokalizacje",
@@ -756,7 +757,7 @@
         "saveDownloaded": "Zapis {SLOT} został zakualizowany.",
         "saveUpToDate": "Masz już aktualny zapis.",
         "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach.",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": "Pamiętaj, aby często zapisywwać grę i tworzyć kopie zapasowe zapisów aby nie utracić postępów."
       }
     },
     "events": {

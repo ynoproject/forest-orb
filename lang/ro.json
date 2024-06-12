@@ -113,6 +113,7 @@
               "slim": "Slab"
             }
           },
+          "saveReminder": "Save Notification Interval",
           "soundVolume": "Volum Sunet",
           "musicVolume": "Volum Muzică",
           "togglePlayerSounds": "Sunete Jucători",
