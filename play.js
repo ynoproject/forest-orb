@@ -1489,7 +1489,7 @@ function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
     updateConfig(config);
-}, 
+}
 
 function setName(name, isInit) {
   globalConfig.name = name;
