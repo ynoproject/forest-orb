@@ -113,7 +113,7 @@
               "slim": "رفيع"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "إشعار للحفظ",
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
@@ -126,8 +126,8 @@
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "سباق الزمن",
+            "helpText": "لتفعيل وضع سباق الزمنو, اضغط مع الاستمرار على زر الشيفت و +  بعد بدء لعبة جديدة قبل ظهور أي شيء على الشاشة"
           },
           "toggleMobileControls": "عرض ضوابط الهاتف",
           "toggleLocationDisplay": "عرض الموقع",
@@ -483,7 +483,7 @@
       "ultraviolet": "Ultra Violet (الترا فايلوت)",
       "sheawaits": "She Awaits (هي تنتظر)",
       "oversomnia": "Oversomnia (الأرق)",
-      "tsushin": "Yume Tsushin (يومي توشين)"
+      "tsushin": "Yume Tsushin (يومي توشين)",
       "nostalgic": "nostAlgic (حنين)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
