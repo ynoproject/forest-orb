@@ -925,7 +925,7 @@ document.getElementById('lang').onchange = function () {
 };
 
 document.getElementById('saveReminder').onchange = function () {
-  setSaveReminder(parseInt(this.value), true);
+  setSaveReminder(parseInt(this.value));
 };
 
 document.getElementById('nametagMode').onchange = function () {
