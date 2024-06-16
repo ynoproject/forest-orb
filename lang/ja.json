@@ -113,7 +113,7 @@
               "slim": "スリム"
             }
           },
-          "saveReminder": "Save Reminder Interval",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
