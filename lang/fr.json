@@ -113,7 +113,7 @@
               "slim": "Mince"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "Save Reminder Notification Interval",
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
