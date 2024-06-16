@@ -229,7 +229,7 @@ function updateModControls() {
   }
 }
 
-setInterval(showSaveSyncToastMessage('saveReminder', 'save', 1), globalConfig.saveReminder * 60000);
+setInterval(showToastMessage(getMassagedLabel(localizedMessages.toast.saveSync['saveReminder'], true), 'save', true), (globalConfig.saveReminder * 60000));
 
 function showAccountToastMessage(key, icon, username) {
   if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
