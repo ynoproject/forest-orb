@@ -46,7 +46,7 @@ let globalConfig = {
   questionablePreloads: false,
   rulesReviewed: false,
   badgeToolsData: null,
-  saveReminder: 30
+  saveReminder: 15
 };
 
 let config = {
