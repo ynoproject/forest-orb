@@ -113,7 +113,7 @@
               "slim": "Kısa"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Ses Seviyesi",
           "musicVolume": "Müzik Seviyesi",
           "togglePlayerSounds": "Oyuncu Sesleri",

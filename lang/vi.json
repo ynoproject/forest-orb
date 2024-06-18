@@ -113,7 +113,7 @@
               "slim": "Phông nhỏ"
             }
           },
-	  "saveReminder": "Save Notification Interval",
+	  "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Âm lượng Âm thanh",
           "musicVolume": "Âm lượng Âm nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",

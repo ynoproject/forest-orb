@@ -113,7 +113,7 @@
               "slim": "슬림"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "소리 볼륨",
           "musicVolume": "음악 볼륨",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",

@@ -46,7 +46,7 @@ let globalConfig = {
   questionablePreloads: false,
   rulesReviewed: false,
   badgeToolsData: null,
-  saveReminder: 30
+  saveReminder: 15
 };
 
 let config = {
@@ -1488,7 +1488,7 @@ function setLang(lang, isInit) {
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
-    updateConfig(config);
+    updateConfig(globalConfig);
 }
 
 function setName(name, isInit) {

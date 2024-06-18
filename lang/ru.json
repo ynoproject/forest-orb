@@ -113,7 +113,7 @@
               "slim": "Тонкие"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Громкость звуков",
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",

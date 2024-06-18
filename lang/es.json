@@ -113,7 +113,7 @@
               "slim": "Delgado"
             }
           },
-          "saveReminder": "Save Notification Interval",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Volumen de Sonido",
           "musicVolume": "Volumen de Música",
           "togglePlayerSounds": "Sonidos de Jugadores",
