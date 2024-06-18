@@ -71,6 +71,8 @@ const allGameUiThemes = {
     'kamara_sys_68',
     'kamara_sys_69',
     'kamara_sys_70',
+    'mizkura_sys',
+    'uroyu_menu',
 
     'system_E_eye',
     'System_kuraud',
