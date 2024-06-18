@@ -293,12 +293,67 @@ function updateMyScreenshotsModalHeader(screenshotCount) {
   document.getElementById('myScreenshotsEmptyLabel').classList.toggle('hidden', !!screenshotCount);
 }
 
+// Filter Screenshots - Helper functions
+function elementExists(id) {
+  return document.getElementById(id) !== null;
+}
+
+function createInputElement(type, id, placeholder, checked = false) {
+  const input = document.createElement('input');
+  input.type = type;
+  input.id = id;
+  input.placeholder = placeholder;
+  input.checked = checked;
+  input.addEventListener('change', handleFilterInputs);
+  return input;
+}
+
+function createCheckbox(id, labelText, checked = false) {
+  const label = document.createElement('label');
+  const input = createInputElement('checkbox', id, null, checked);
+  label.appendChild(input);
+  label.appendChild(document.createTextNode(labelText));
+  return label;
+}
+
+// Filter Screenshots - When filter changes:
+function handleFilterInputs(event) {
+  setTimeout(function(){
+    initScreenshotsModal(true);
+  }, 250);
+  }
+
+// Filter Screenshots - Main Function
+function addFilterInputs() {
+  // Check if inputs already exist
+  if (elementExists('filterInput') && elementExists('usernameInput') && elementExists('mapnameInput')) return;
+
+  const container = document.getElementById('communityScreenshotsControls');
+
+  const filterInput = createInputElement('text', 'filterInput', 'Filter...');
+  filterInput.style = "margin-left:10px"
+  container.appendChild(filterInput);
+
+  const checkboxContainer = document.createElement('div');
+  checkboxContainer.style = "margin-top:5px";
+
+  checkboxContainer.appendChild(createCheckbox('usernameInput', ' User Name', true));
+  checkboxContainer.appendChild(document.createElement('br'));
+
+  checkboxContainer.appendChild(createCheckbox('mapnameInput', ' Map Name', true));
+
+  if (checkboxContainer.children.length > 0) {
+  container.appendChild(checkboxContainer);
+  }
+}
+
 function initScreenshotsModal(isCommunity) {
   const screenshotsModal = document.getElementById(isCommunity ? 'communityScreenshotsModal' : 'myScreenshotsModal');
   const scrollToRefreshIndicator = isCommunity ? screenshotsModal.querySelector('.infiniteScrollRefreshIndicator') : null;
   const screenshotItemsList = screenshotsModal.querySelector('.itemContainer');
   screenshotItemsList.innerHTML = '';
   if (isCommunity) {
+    addFilterInputs();
     scrollToRefreshIndicator.classList.add('transparent');
     screenshotItemsList.classList.remove('scrollToRefresh');
     screenshotItemsList.classList.remove('end');
@@ -436,8 +491,25 @@ function initScreenshotsModal(isCommunity) {
           }
         }
       }
-      
-      screenshotItemsList.append(screenshotItem);
+
+      // Filter Screenshots -  filter by text
+      let textFilter = document.getElementById('filterInput').value;
+
+      if (!isCommunity || textFilter == ""){ 
+        screenshotItemsList.append(screenshotItem); 
+      }else {  
+        textFilter = textFilter.toLowerCase();
+
+        // Filter Screenshots -  Check if location and filter matches
+        if (document.getElementById('mapnameInput').checked && (screenshotItem.getElementsByClassName("screenshotLocation")[0]?.innerText.toLowerCase().includes(textFilter))) {
+              screenshotItemsList.append(screenshotItem);
+        }
+
+        // Filter Screenshots -  Check if username and filter matches
+        if (document.getElementById('usernameInput').checked && (screenshotItem.getElementsByClassName("nameText")[0]?.innerText.toLowerCase().includes(textFilter))) {
+          screenshotItemsList.append(screenshotItem);
+        }  
+      }
 
       initUiThemeContainerStyles(screenshotSystemName, screenshot.game, false, () => {
         initUiThemeFontStyles(screenshotSystemName, screenshot.game, 0, false, () => setTimeout(() => screenshotItem.classList.remove('hideContents'), 0));
