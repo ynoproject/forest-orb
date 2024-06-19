@@ -513,7 +513,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Konum Sorgulanıyor",
       "unknownLocation": "Bilinmeyen Konum",
       "2kki": {
