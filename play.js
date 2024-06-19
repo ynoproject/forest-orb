@@ -1488,7 +1488,7 @@ function setLang(lang, isInit) {
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
-    updateConfig(globalConfig);
+    updateConfig(globalConfig, true);
 }
 
 function setName(name, isInit) {
