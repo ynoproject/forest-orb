@@ -86,6 +86,15 @@ let ynomojiConfig = {};
 
 let connStatus;
 
+// Fixes IoS crashing when tapping the viewport
+let crashFix = document.querySelector("#crashFix");
+if (hasTouchscreen) {
+  crashFix.style.cssText += "display: block; opacity: 0%;";
+  crashFix.style.width = document.querySelector("#canvas").style.width;
+  crashFix.style.height = document.querySelector("#canvas").style.height;
+}
+
+  
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
   if (status === 1 && config.privateMode)
