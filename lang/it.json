@@ -513,7 +513,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Ricerca Ubicazione...",
       "unknownLocation": "Ubicazione Sconosciuta",
       "2kki": {

@@ -522,7 +522,7 @@
       "playing": "正在游玩 {GAME}"
     },
     "locationDisplay": {
-      "template": "{LOCATION}（{LOCATION_EN}）",
+      "template": "{LOCATION}",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）"
       }
