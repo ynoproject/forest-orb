@@ -711,10 +711,6 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'questionablePreloads':
                     if (value && gameId === '2kki')
                       document.getElementById('toggleQuestionablePreloadsButton').click();
-                    break;
-                  case 'rulesReviewed':
-                    if (value)
-                      document.getElementById('chatInput').removeEventListener('click', showRules);
                 }
               } else {
                 switch (key) {
