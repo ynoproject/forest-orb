@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
@@ -127,9 +127,9 @@
           },
           "timeTrialinfo": {
             "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "helpText": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela."
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Mostrar Controles de Celular",
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
           "togglePreloads": {
