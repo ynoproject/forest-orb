@@ -113,6 +113,7 @@
               "slim": "Mince"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "Mode Immersion",
             "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
           "toggleMobileControls": "Afficher les touches pour téléphone",
           "toggleLocationDisplay": "Affichage du Lieu",

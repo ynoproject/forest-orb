@@ -45,7 +45,8 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
-  badgeToolsData: null
+  badgeToolsData: null,
+  saveReminder: 15
 };
 
 let config = {
@@ -923,6 +924,10 @@ document.getElementById('lang').onchange = function () {
   setLang(this.value);
 };
 
+document.getElementById('saveReminder').onchange = function () {
+  setSaveReminder(parseInt(this.value));
+};
+
 document.getElementById('nametagMode').onchange = function () {
   if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.setNametagMode(this.value);
@@ -1478,6 +1483,12 @@ function setLang(lang, isInit) {
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
+}
+
+function setSaveReminder(saveReminder, isInit) {
+  globalConfig.saveReminder = saveReminder;
+  if (!isInit)
+    updateConfig(globalConfig);
 }
 
 function setName(name, isInit) {

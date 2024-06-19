@@ -113,6 +113,7 @@
               "slim": "رفيع"
             }
           },
+          "saveReminder": "إشعار للحفظ",
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "نمط الانغمار",
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
+          },
+          "timeTrialinfo": {
+            "label": "سباق الزمن",
+            "helpText": "لتفعيل وضع سباق الزمنو, اضغط مع الاستمرار على زر الشيفت و +  بعد بدء لعبة جديدة قبل ظهور أي شيء على الشاشة"
           },
           "toggleMobileControls": "عرض ضوابط الهاتف",
           "toggleLocationDisplay": "عرض الموقع",
@@ -478,7 +483,7 @@
       "ultraviolet": "Ultra Violet (الترا فايلوت)",
       "sheawaits": "She Awaits (هي تنتظر)",
       "oversomnia": "Oversomnia (الأرق)",
-      "tsushin": "Yume Tsushin (يومي توشين)"
+      "tsushin": "Yume Tsushin (يومي توشين)",
       "nostalgic": "nostAlgic (حنين)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
@@ -752,7 +757,7 @@
         "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
         "saveUpToDate": ".تم تحديث ملف الحفظ",
         "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": ".تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك"
       }
     },
     "events": {

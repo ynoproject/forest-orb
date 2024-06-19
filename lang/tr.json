@@ -113,6 +113,7 @@
               "slim": "Kısa"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Ses Seviyesi",
           "musicVolume": "Müzik Seviyesi",
           "togglePlayerSounds": "Oyuncu Sesleri",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "İmersiyon Modu",
             "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Konum Göstergesi",

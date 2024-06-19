@@ -113,6 +113,7 @@
               "slim": "Sottile"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Volume Effetti Sonori",
           "musicVolume": "Volume Musica",
           "togglePlayerSounds": "Attiva Suoni degli altri Giocatori",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "Modalità Immersiva",
             "helpText": "Disattiva il numero di giocatori, chat globale, e le mappe per darti un'esperienza più immersiva"
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Visualizza Ubicazione",
