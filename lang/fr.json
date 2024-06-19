@@ -113,7 +113,7 @@
               "slim": "Mince"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": "Fréquence du Rappel des Sauvegardes",
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
@@ -126,8 +126,8 @@
             "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Contre-la-montre",
+            "helpText": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché."
           },
           "toggleMobileControls": "Afficher les touches pour téléphone",
           "toggleLocationDisplay": "Affichage du Lieu",
@@ -647,7 +647,7 @@
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
       "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmTransferPartyOwner": "Êtes-vous sûr de vouloir transférer la propriété du groupe à {PLAYER} ?",
       "categories": {
         "online": "En ligne - {COUNT}",
         "offline": "Hors ligne - {COUNT}"
