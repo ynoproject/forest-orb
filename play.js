@@ -90,8 +90,8 @@ let connStatus;
 let crashFix = document.querySelector("#crashFix");
 if (hasTouchscreen) {
   crashFix.style.cssText += "display: block; opacity: 0%;";
-  crashFix.style.width = document.querySelector("#canvas").style.width;
-  crashFix.style.height = document.querySelector("#canvas").style.height;
+  crashFix.style.width = window.getComputedStyle(document.querySelector("#canvas").width);
+  crashFix.style.height = window.getComputedStyle(document.querySelector("#canvas").height);
 }
 
   
