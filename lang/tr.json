@@ -290,7 +290,8 @@
               "saveDownloading": "Kayıt İndiriliyor",
               "saveDownloaded": "Kayıt İndirildi",
               "saveUpToDate": "Kayıt Güncel",
-              "saveCleared": "Kayıt Temizlendi"
+              "saveCleared": "Kayıt Temizlendi",
+              "saveReminder": "Save Reminder"
             }
           }
         }
