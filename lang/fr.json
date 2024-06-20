@@ -290,7 +290,8 @@
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
-              "saveCleared": "Sauvegarde effacée"
+              "saveCleared": "Sauvegarde effacée",
+              "saveReminder": "Save Reminder Frequency"
             }
           }
         }
