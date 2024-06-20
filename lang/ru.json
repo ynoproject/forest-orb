@@ -290,7 +290,8 @@
               "saveDownloading": "Загрузка сохранения",
               "saveDownloaded": "Загрузка завершена",
               "saveUpToDate": "Сохранение актуально",
-              "saveCleared": "Сохранение очищено"
+              "saveCleared": "Сохранение очищено",
+              "saveReminder": "Save Reminder"
             }
           }
         }
