@@ -290,7 +290,8 @@
               "saveDownloading": "Save-ul se Descarcă",
               "saveDownloaded": "Save Descărcat",
               "saveUpToDate": "Save Actualizat",
-              "saveCleared": "Save Șters"
+              "saveCleared": "Save Șters",
+              "saveReminder": "Save Reminder"
             }
           }
         }
