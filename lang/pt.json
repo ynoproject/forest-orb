@@ -290,7 +290,8 @@
               "saveDownloading": "Baixando o Save",
               "saveDownloaded": "Save Baixado",
               "saveUpToDate": "Save Atualizado",
-              "saveCleared": "Save Limpo"
+              "saveCleared": "Save Limpo",
+              "saveReminder": "Save Reminder"
             }
           }
         }
