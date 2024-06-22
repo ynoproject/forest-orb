@@ -28,6 +28,13 @@ document.querySelector('#controls-fullscreen').addEventListener('click', () => {
   onResize();
 });
 
+{
+  const layout = document.getElementById('layout');
+  if (!(layout.requestFullscreen || layout.webkitRequestFullscreen)) {
+    document.getElementById('controls-fullscreen').classList.add('hidden');
+  }
+}
+
 /**
  * Simulate a keyboard event on the emscripten canvas
  *
