@@ -290,7 +290,8 @@
               "saveDownloading": "تحميل ملف الحفظ",
               "saveDownloaded": "تم تحميل ملف الحفظ",
               "saveUpToDate": "تم تحديث ملف الحفظ",
-              "saveCleared": "تم مسح ملف الحفظ"
+              "saveCleared": "تم مسح ملف الحفظ",
+              "saveReminder": "إشعار للحفظ"
             }
           }
         }

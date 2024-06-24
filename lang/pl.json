@@ -290,7 +290,8 @@
               "saveDownloading": "Zapis pobierany",
               "saveDownloaded": "Zapis pobrany",
               "saveUpToDate": "Zapis aktualny",
-              "saveCleared": "Zapis usunięty"
+              "saveCleared": "Zapis usunięty",
+              "saveReminder": "Powiadomienia o zapisie"
             }
           }
         }

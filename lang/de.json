@@ -290,7 +290,8 @@
               "saveDownloading": "Save Downloading",
               "saveDownloaded": "Save Downloaded",
               "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveCleared": "Save Cleared",
+              "saveReminder": "Save Reminder"
             }
           }
         }

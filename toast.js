@@ -153,6 +153,12 @@ function initNotificationsConfigAndControls() {
     }
   }
 
+  // Adds setting for save reminder
+  let saveRemMenu = document.createElement("li");
+  saveRemMenu.setAttribute("class", "formControlRow");
+  saveRemMenu.innerHTML= "<label for='saveReminder' class='unselectable' data-i18n='[html]modal.settings.fields.saveReminder'>Save Notification Interval</label> <div> <select id='saveReminder' size='4'> <option value='10'>10 minutes</option> <option value='15'>15 minutes</option> <option value='20'>20 minutes</option> <option value='30'>30 minutes</option> <option value='45'>45 minutes</option> <option value='60'>60 minutes</option> </select> </div>";
+  document.appendChild("saveRemMenu");
+  
   document.getElementById('notificationsButton').onclick = function () {
     const toggled = !this.classList.contains('toggled');
     this.classList.toggle('toggled', toggled);

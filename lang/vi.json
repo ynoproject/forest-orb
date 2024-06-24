@@ -290,7 +290,8 @@
               "saveDownloading": "Đang tải xuống bản lưu",
               "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
-              "saveCleared": "Bản lưu đã được xóa"
+              "saveCleared": "Bản lưu đã được xóa",
+              "saveReminder": "Save Reminder"
             }
           }
         }
