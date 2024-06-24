@@ -648,6 +648,7 @@
       "partyOwner": "Leader du groupe",
       "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "En ligne - {COUNT}",
         "offline": "Hors ligne - {COUNT}"
