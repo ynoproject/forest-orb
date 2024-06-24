@@ -648,6 +648,7 @@
       "partyOwner": "Lider grupy",
       "confirmDisband": "Czy napewno chcerz rozłożyć swoją grupę? To nie może być cofnięte.",
       "confirmTransferPartyOwner": "Czy napewno chcerz oddać rolę właściciela grupy graczowi {PLAYER}?",
+      "offlineMemberSuffix": "Członek offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
