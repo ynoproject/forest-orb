@@ -580,7 +580,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
         applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
   } else if (showLastOnline) {
-    if (getLastOnlineInterval(new Date(player.lastActive)) < 5000) 
+    if (parseInt(getLastOnlineInterval(new Date(player.lastActive))) < 5000) 
       playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', getLastOnlineInterval(new Date(player.lastActive)))}</span>`;
     else
       playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.longTime)}</span>`;
