@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "最后一次在线\n{INTERVAL}前",
+      "longTime": "A long time ago",
       "interval": {
         "short": "不到 1 分钟",
         "minutes": {
