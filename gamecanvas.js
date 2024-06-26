@@ -28,6 +28,18 @@ document.querySelector('#controls-fullscreen').addEventListener('click', () => {
   onResize();
 });
 
+function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
 /**
  * Simulate a keyboard event on the emscripten canvas
  *
@@ -68,19 +80,19 @@ function simulateKeyboardInput(key, keyCode) {
  */
 function bindKey(node, key, keyCode) {
   keys.set(node.id, { key, keyCode });
+  if (!iOS()) {
+    node.addEventListener('touchstart', event => {
+      if (event.cancelable)
+        event.preventDefault();
+      simulateKeyboardEvent('keydown', key, keyCode);
+      keysDown.set(event.target.id, node.id);
+      node.classList.add('active');
+    });
 
-  node.addEventListener('touchstart', event => {
-    if (event.cancelable)
-      event.preventDefault();
-    simulateKeyboardEvent('keydown', key, keyCode);
-    keysDown.set(event.target.id, node.id);
-    node.classList.add('active');
-  });
-
-  node.addEventListener('touchend', event => {
-    if (event.cancelable)
-      event.preventDefault();
-
+    node.addEventListener('touchend', event => {
+      if (event.cancelable)
+        event.preventDefault();
+  }
     const pressedKey = keysDown.get(event.target.id);
     if (pressedKey && keys.has(pressedKey)) {
       const { key, keyCode } = keys.get(pressedKey);
@@ -96,27 +108,29 @@ function bindKey(node, key, keyCode) {
   });
 
   // Inspired by https://github.com/pulsejet/mkxp-web/blob/262a2254b684567311c9f0e135ee29f6e8c3613e/extra/js/dpad.js
-  node.addEventListener('touchmove', event => {
-    const { target, clientX, clientY } = event.changedTouches[0];
-    const origTargetId = keysDown.get(target.id);
-    const nextTargetId = document.elementFromPoint(clientX, clientY).id;
-    if (origTargetId === nextTargetId) return;
+  if (!iOS()) {
+    node.addEventListener('touchmove', event => {
+      const { target, clientX, clientY } = event.changedTouches[0];
+      const origTargetId = keysDown.get(target.id);
+      const nextTargetId = document.elementFromPoint(clientX, clientY).id;
+      if (origTargetId === nextTargetId) return;
 
-    if (origTargetId) {
-      const { key, keyCode } = keys.get(origTargetId);
-      simulateKeyboardEvent('keyup', key, keyCode);
-      keysDown.delete(target.id);
-      document.getElementById(origTargetId).classList.remove('active');
-    }
+      if (origTargetId) {
+        const { key, keyCode } = keys.get(origTargetId);
+        simulateKeyboardEvent('keyup', key, keyCode);
+        keysDown.delete(target.id);
+        document.getElementById(origTargetId).classList.remove('active');
+      }
 
-    if (keys.has(nextTargetId)) {
-      const { key, keyCode } = keys.get(nextTargetId);
-      simulateKeyboardEvent('keydown', key, keyCode);
-      keysDown.set(target.id, nextTargetId);
-      lastTouchedId = nextTargetId;
-      document.getElementById(nextTargetId).classList.add('active');
-    }
-  })
+      if (keys.has(nextTargetId)) {
+        const { key, keyCode } = keys.get(nextTargetId);
+        simulateKeyboardEvent('keydown', key, keyCode);
+        keysDown.set(target.id, nextTargetId);
+        lastTouchedId = nextTargetId;
+        document.getElementById(nextTargetId).classList.add('active');
+      }
+    })
+  }
 }
 
 /** @type {{[key: number]: Gamepad}} */
