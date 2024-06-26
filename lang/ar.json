@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "أخر ظهور\n{INTERVAL} منذ",
+      "longTime": "A long time ago",
       "interval": {
         "short": "أقل من دقيقة",
         "minutes": {

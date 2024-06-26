@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "最後のプレイ\n{INTERVAL}",
+      "longTime": "A long time ago",
       "interval": {
         "short": "1分以内",
         "minutes": {

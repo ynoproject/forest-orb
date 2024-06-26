@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "마지막 접속\n{INTERVAL} 전",
+      "longTime": "A long time ago",
       "interval": {
         "short": "방금",
         "minutes": {
