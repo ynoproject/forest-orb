@@ -80,19 +80,19 @@ function simulateKeyboardInput(key, keyCode) {
  */
 function bindKey(node, key, keyCode) {
   keys.set(node.id, { key, keyCode });
+  if (!iOS()) {
+    node.addEventListener('touchstart', event => {
+      if (event.cancelable)
+        event.preventDefault();
+      simulateKeyboardEvent('keydown', key, keyCode);
+      keysDown.set(event.target.id, node.id);
+      node.classList.add('active');
+    });
 
-  node.addEventListener('touchstart', event => {
-    if (event.cancelable)
-      event.preventDefault();
-    simulateKeyboardEvent('keydown', key, keyCode);
-    keysDown.set(event.target.id, node.id);
-    node.classList.add('active');
-  });
-
-  node.addEventListener('touchend', event => {
-    if (event.cancelable)
-      event.preventDefault();
-
+    node.addEventListener('touchend', event => {
+      if (event.cancelable)
+        event.preventDefault();
+  }
     const pressedKey = keysDown.get(event.target.id);
     if (pressedKey && keys.has(pressedKey)) {
       const { key, keyCode } = keys.get(pressedKey);
