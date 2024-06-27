@@ -1,12 +1,23 @@
+/**
+  Cross-check with badges.go in ynoserver
+  @typedef {Object} PlayerBadge
+  @property {string} badgeId
+  @property {string} game
+  @property {string} group
+*/
+
 const maxBadgeSlotRows = 8;
 const maxBadgeSlotCols = 7;
 let badgeSlotRows = 1;
 let badgeSlotCols = 3;
 
+/** @type {PlayerBadge[]?} */
 let badgeCache;
 let badgeSlotCache;
 let badgeFilterCache = [];
 let badgeCacheUpdateTimer = null;
+let badgeTabGame = gameId;
+let badgeTabGroup;
 
 let localizedBadgeGroups;
 let localizedBadges;
@@ -100,6 +111,8 @@ const BadgeOverlayType = {
 
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
+  const badgeGameTabs = document.getElementById('badgeGameTabs');
+  const badgeCategoryTabs = document.getElementById('badgeCategoryTabs');
 
   const sortOrder = document.getElementById('badgeSortOrder');
 
@@ -118,9 +131,6 @@ function initBadgeControls() {
     fetchPlayerBadges(playerBadges => {
       const sortOrderDesc = sortOrder.value.endsWith('_desc');
       const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
-      let lastGame = null;
-      let lastGroup = null;
-      let lastParsedSystemName = null;
       const badgeCompareFunc = (a, b) => {
         if (a.game !== b.game) {
           if (a.game === 'ynoproject')
@@ -144,35 +154,25 @@ function initBadgeControls() {
         return 0;
       };
       badgeFilterCache.splice(0, badgeFilterCache.length);
-      const badges = [{ badgeId: 'null', game: null}].concat(playerBadges.sort(badgeCompareFunc));
-      for (let badge of badges) {
-        if (badge.game !== lastGame) {
-          const gameHeader = document.createElement('h2');
-          gameHeader.classList.add('itemCategoryHeader');
-          gameHeader.dataset.game = badge.game;
-          gameHeader.innerHTML = getMassagedLabel(localizedMessages.games[badge.game]);
-          badgeModalContent.appendChild(gameHeader);
-          lastGame = badge.game;
-          lastGroup = null;
-          if (badge.game !== 'ynoproject') {
-            const defaultSystemName = getDefaultUiTheme(badge.game);
-            initUiThemeContainerStyles(defaultSystemName, badge.game, false, () => initUiThemeFontStyles(defaultSystemName, badge.game, 0));
-            applyThemeStyles(gameHeader, (lastParsedSystemName = defaultSystemName.replace(/ /g, '_')), badge.game)
-          } else
-            lastParsedSystemName = null;
+      playerBadges.sort(badgeCompareFunc);
+      /** @type {Record<string, Record<string, HTMLDivElement[]>>} */
+      const games = {};
+      const spacePattern = / /g;
+      for (const badge of playerBadges) {
+        let systemName;
+        if (badge.game !== 'ynoproject') { 
+          systemName = getDefaultUiTheme(badge.game).replace(spacePattern, '_');
         }
-        if (badge.group != lastGroup && localizedBadgeGroups.hasOwnProperty(lastGame) && localizedBadgeGroups[lastGame].hasOwnProperty(badge.group)) {
-          const groupHeader = document.createElement('h3');
-          groupHeader.classList.add('itemCategoryHeader');
-          groupHeader.dataset.game = badge.game;
-          groupHeader.dataset.group = badge.group;
-          groupHeader.innerHTML = getMassagedLabel(localizedBadgeGroups[lastGame][badge.group]);
-          badgeModalContent.appendChild(groupHeader);
-          lastGroup = badge.group;
-          if (lastParsedSystemName)
-            applyThemeStyles(groupHeader, lastParsedSystemName, lastGame);
+
+        if (!games[badge.game]) {
+          if (systemName) {
+            initUiThemeContainerStyles(systemName, badge.game, false, () => initUiThemeFontStyles(systemName, badge.game, 0));
+          }
+          games[badge.game] = {};
         }
-        const item = getBadgeItem(badge, true, true, true, true, true, lastParsedSystemName);
+        if (!games[badge.game][badge.group]) games[badge.game][badge.group] = [];
+        
+        const item = getBadgeItem(badge, true, true, true, true, true, systemName);
         if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
@@ -189,8 +189,88 @@ function initBadgeControls() {
               closeModal();
             });
         }
-        badgeModalContent.appendChild(item);
+        games[badge.game][badge.group].push(item);
       }
+
+      function updateBadges(game, group) {
+        const items = games[game]?.[group] || [];
+        badgeModalContent.replaceChildren(...items);
+        badgeTabGame = game;
+        badgeTabGroup = group;
+      }
+
+      const tabs = [];
+      for (const game in games) {
+        if (!badgeTabGame) {
+          badgeTabGame = game;
+        }
+        const tab = document.createElement('div');
+        tabs.push(tab);
+        tab.classList.add('badgeGameTab', 'modalTab');
+        tab.dataset.game = game;
+        if (game === badgeTabGame) {
+          tab.classList.add('active');
+        }
+
+        const tabLabel = document.createElement('label');
+        tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
+        tabLabel.innerHTML = getMassagedLabel(localizedMessages.games[game]);
+        tab.appendChild(tabLabel);
+        badgeGameTabs.appendChild(tab);
+
+        tab.onclick = () => {
+          if (tab.dataset.game === badgeTabGame) return;
+
+          badgeGameTabs.querySelector('.active')?.classList.remove('active');
+          tab.classList.add('active');
+
+          const subTabs = [];
+          badgeTabGroup = null;
+          for (const group in games[game]) {
+            if (!group) {
+              // Group name is empty, game's badges have no group subdivision.
+              badgeTabGroup = group;
+              break;
+            }
+            const subTab = document.createElement('div');
+            subTab.classList.add('subTab');
+            subTab.dataset.group = group;
+            subTab.dataset.game = game;
+
+            const subTabLabel = document.createElement('small');
+            subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
+            subTabLabel.innerHTML = getMassagedLabel(localizedBadgeGroups[game][group]);
+            if (!badgeTabGroup) {
+              badgeTabGroup = group;
+              subTab.classList.add('active');
+            }
+            subTabs.push(subTab);
+            subTab.appendChild(subTabLabel);
+
+            const subTabBg = document.createElement('div');
+            subTabBg.classList.add('subTabBg');
+            subTab.appendChild(subTabBg);
+
+            subTab.onclick = () => {
+              if (subTab.dataset.group === badgeTabGroup) return;
+
+              badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
+              subTab.classList.add('active');
+              
+              updateBadges(subTab.dataset.game, subTab.dataset.group);
+            };
+          }
+          badgeCategoryTabs.replaceChildren(...subTabs);
+          updateBadges(tab.dataset.game, badgeTabGroup);
+        }; // tab.onclick
+      }
+      badgeGameTabs.replaceChildren(...tabs);
+      let activeTab;
+      if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
+        badgeTabGame = null; // temporarily set to null to populate subtabs
+        activeTab.click();
+      }
+
       updateBadgeVisibility();
       removeLoader(document.getElementById('badgesModal'));
     });
@@ -381,6 +461,9 @@ function getBadgeUrl(badge, staticOnly) {
   return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
 }
 
+/**
+  @param {PlayerBadge} badge
+*/
 function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable, parsedSystemName) {
   const badgeId = badge.badgeId;
 
@@ -560,6 +643,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   return item;
 }
 
+/**
+  @param {(_: PlayerBadge[]) => any} [callback]
+*/
 function fetchPlayerBadges(callback) {
   apiFetch('badge?command=list')
     .then(response => {
