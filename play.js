@@ -596,6 +596,8 @@ function closeModal() {
   }
   const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal) {
+    const modalContent = activeModal.querySelector('.modalContent');
+    if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
     modalFadeOutContainer.appendChild(activeModal);
     activeModal.classList.add('fadeOut');
     setTimeout(() => {

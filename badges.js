@@ -225,7 +225,6 @@ function initBadgeControls() {
           tab.classList.add('active');
 
           const subTabs = [];
-          badgeTabGroup = null;
           for (const group in games[game]) {
             if (!group) {
               // Group name is empty, game's badges have no group subdivision.
@@ -240,10 +239,8 @@ function initBadgeControls() {
             const subTabLabel = document.createElement('small');
             subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
             subTabLabel.innerHTML = getMassagedLabel(localizedBadgeGroups[game][group]);
-            if (!badgeTabGroup) {
-              badgeTabGroup = group;
-              subTab.classList.add('active');
-            }
+            if (!badgeTabGroup) badgeTabGroup = group;
+            if (group === badgeTabGroup) subTab.classList.add('active');
             subTabs.push(subTab);
             subTab.appendChild(subTabLabel);
 
@@ -269,6 +266,8 @@ function initBadgeControls() {
       if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
         badgeTabGame = null; // temporarily set to null to populate subtabs
         activeTab.click();
+        if (badgeModalContent.dataset.lastScrollTop)
+          badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
       }
 
       updateBadgeVisibility();
