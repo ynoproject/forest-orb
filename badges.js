@@ -225,6 +225,7 @@ function initBadgeControls() {
           tab.classList.add('active');
 
           const subTabs = [];
+          if (badgeTabGame) badgeTabGroup = null;
           for (const group in games[game]) {
             if (!group) {
               // Group name is empty, game's badges have no group subdivision.
