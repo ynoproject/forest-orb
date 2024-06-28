@@ -128,7 +128,7 @@ function initBadgeControls() {
   }
 
   const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
-    fetchPlayerBadges(playerBadges => {
+    fetchPlayerBadges(async playerBadges => {
       const sortOrderDesc = sortOrder.value.endsWith('_desc');
       const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
       const badgeCompareFunc = (a, b) => {
@@ -267,11 +267,12 @@ function initBadgeControls() {
       if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
         badgeTabGame = null; // temporarily set to null to populate subtabs
         activeTab.click();
+        await updateBadgeVisibility();
+        activeTab.scrollIntoView();
         if (badgeModalContent.dataset.lastScrollTop)
           badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
-      }
-
-      updateBadgeVisibility();
+      } else
+        await updateBadgeVisibility();
       removeLoader(document.getElementById('badgesModal'));
     });
   };
@@ -321,6 +322,7 @@ function initBadgeControls() {
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
 
+    return new Promise(resolve => window.requestAnimationFrame(() => {
     for (let item of badgeFilterCache) {
       let visible = true;
       if (unlockStatus !== "")
@@ -344,6 +346,9 @@ function initBadgeControls() {
 
     for (let header of badgeModalContent.querySelectorAll('.itemCategoryHeader'))
       header.classList.toggle('hidden', !(header.dataset.group ? gameGroupVisibilities[header.dataset.game][header.dataset.group] : gameVisibilities[header.dataset.game]));
+    resolve();
+
+    }));
   };
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;

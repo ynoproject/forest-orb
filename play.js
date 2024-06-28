@@ -590,14 +590,14 @@ function closeModal() {
   if (modalFadeOutContainer.childElementCount)
     return;
   const modalContainer = document.getElementById('modalContainer');
+  const activeModal = document.querySelector('.modal:not(.hidden)');
+  const modalContent = activeModal?.querySelector('.modalContent');
+  if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
     setTimeout(() => modalContainer.classList.remove('fadeOut'), 245);
   }
-  const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal) {
-    const modalContent = activeModal.querySelector('.modalContent');
-    if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
     modalFadeOutContainer.appendChild(activeModal);
     activeModal.classList.add('fadeOut');
     setTimeout(() => {

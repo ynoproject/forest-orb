@@ -2456,6 +2456,7 @@ body.fullBg #background {
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 8px;
+  row-gap: 4px;
 }
 
 .modalTab {
