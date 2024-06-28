@@ -109,6 +109,10 @@ const BadgeOverlayType = {
   LOCATION: 16
 };
 
+function yieldImmediately() {
+  return new Promise(resolve => setTimeout(resolve, 0));
+}
+
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
   const badgeGameTabs = document.getElementById('badgeGameTabs');
@@ -158,7 +162,11 @@ function initBadgeControls() {
       /** @type {Record<string, Record<string, HTMLDivElement[]>>} */
       const games = {};
       const spacePattern = / /g;
+      let badgeCount = 0;
       for (const badge of playerBadges) {
+        // tippy takes a lot of time to create, so yield back to the game loop every so often
+        // badge modal takes a bit longer, but the overall effect is much smoother.
+        if (badgeCount++ % 40 === 0) await yieldImmediately();
         let systemName;
         if (badge.game !== 'ynoproject') { 
           systemName = getDefaultUiTheme(badge.game).replace(spacePattern, '_');
@@ -268,7 +276,6 @@ function initBadgeControls() {
         badgeTabGame = null; // temporarily set to null to populate subtabs
         activeTab.click();
         await updateBadgeVisibility();
-        activeTab.scrollIntoView();
         if (badgeModalContent.dataset.lastScrollTop)
           badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
       } else
