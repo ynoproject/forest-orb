@@ -45,7 +45,7 @@
         "nickname": {
           "header": "يجب عليك وضع اسم مستعار قبل ان تتمكن من المحادثة",
           "rule": {
-            "maxLength": "* الحد الأقصى 10 رمزا",
+            "maxLength": "* لا يطول عن 10 أحرف",
             "alphanumeric": "* يسمح فقط بالحروف الأبجدية والأرقام"
           }
         }
@@ -53,7 +53,7 @@
       "players": {
         "tab": {
           "map": "الخريطة",
-          "friends": "Friends",
+          "friends": "الأصدقاء",
           "party": "الحفلة"
         }
       }
@@ -227,8 +227,8 @@
           "players": {
             "label": "اللاعبين",
             "fields": {
-              "playerBlocked": "اللاعب محسوم",
-              "playerUnblocked": "الغاء حسم اللاعب"
+              "playerBlocked": "اللاعب محظور",
+              "playerUnblocked": "الغاء حظر اللاعب"
             }
           },
           "friends": {
@@ -399,7 +399,7 @@
         "scrollToRefresh": "انتقل إلى الأعلى للتحديث",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "لعبة:&nbsp;",
             "values": {
               "all": "الكل"
             }
@@ -711,8 +711,8 @@
         "passwordUpdated": "تم تحديث كلمة السر الخاصة بك بنجاح"
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} تم حظر",
+        "playerUnblocked": "{PLAYER} تم إلغاء حظر"
       },
       "friends": {
         "add": "لقد أرسلت طلب صداقة إلى {PLAYER}",
@@ -748,7 +748,7 @@
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
      "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "تم التقاط لقطة الشاشة الخاصة بك"
       },
       "saveSync": {
         "saveUploading": "...{SLOT} يتم تحميل ملف الحفظ من موضع",
