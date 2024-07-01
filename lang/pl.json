@@ -27,7 +27,7 @@
       }
     },
     "chatbox": {
-      "location": "Location:&nbsp;",
+      "location": "Lokalizacja:&nbsp;",
       "immersionMode": "Tryb immersji",
       "reconnect": "Połącz ponownie",
       "tab": {
@@ -129,7 +129,7 @@
             "label": "Time Triale",
             "helpText": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Pokaż sterowanie dotykowe",
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
           "toggleRankings": "Rankingi",
           "togglePreloads": {
