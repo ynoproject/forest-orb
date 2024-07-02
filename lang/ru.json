@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
+      "longTime": "A long time ago",
       "interval": {
         "short": "Менее минуты",
         "minutes": {
