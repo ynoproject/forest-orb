@@ -335,7 +335,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
   if (messageType)
     tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
