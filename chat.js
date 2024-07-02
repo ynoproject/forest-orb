@@ -725,6 +725,7 @@ function wrapMessageEmojis(node, force) {
 
 function showRules() {
   openModal('rulesModal');
+  document.getElementById('chatInput').blur();
   document.getElementById('chatInput').removeEventListener('click', showRules);
   if (!globalConfig.rulesReviewed) {
     globalConfig.rulesReviewed = true;
