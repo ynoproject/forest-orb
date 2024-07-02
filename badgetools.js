@@ -301,11 +301,10 @@ function initBadgeTools() {
           const groupOptions = this.groupOptions;
           if (groupOptions.length)
             this.group = groupOptions[2].key;
-        } else
-			if (newId === 'ynoproject' || newId === 'unconscious') {
-				const groupOptions = this.groupOptions;
-				if (groupOptions.length)
-					this.group = groupOptions[0].key;
+        } else if (newId === 'ynoproject' || newId === 'unconscious') {
+	  const groupOptions = this.groupOptions;
+	  if (groupOptions.length)
+	    this.group = groupOptions[0].key;
         } else
           this.group = null;
       },
