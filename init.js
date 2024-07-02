@@ -392,7 +392,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     };
   }
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
       let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
       if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
