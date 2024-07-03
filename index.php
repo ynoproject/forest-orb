@@ -851,6 +851,8 @@
               </div>
             </div>
           </div>
+          <div id="badgeGameTabs" class="modalTabsContainer"></div>
+          <div id="badgeCategoryTabs" class="subTabs"></div>
           <div class="modalContent itemContainer"></div>
           <div class="modalFooter">
             <button id="badgeGalleryButton" class="unselectable" type="button" data-i18n="[html]modal.badges.manageBadgeGallery">Manage Badge Gallery</button>
