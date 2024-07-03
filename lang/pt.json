@@ -497,6 +497,7 @@
     },
     "lastOnline": {
       "template": "última vez online\n{INTERVAL} atrás",
+      "longTime": "A long time ago",
       "interval": {
         "short": "menos de 1 minuto",
         "minutes": {
@@ -649,6 +650,7 @@
       "partyOwner": "Líder da Party",
       "confirmDisband": "Tem certeza de que deseja desfazer sua Party? Isto não poderá ser desfeito.",
       "confirmTransferPartyOwner": "Tem certeza de que quer transferir a posse da Party para {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"

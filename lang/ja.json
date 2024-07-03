@@ -497,6 +497,7 @@
     },
     "lastOnline": {
       "template": "最後のプレイ\n{INTERVAL}",
+      "longTime": "A long time ago",
       "interval": {
         "short": "1分以内",
         "minutes": {
@@ -649,6 +650,7 @@
       "partyOwner": "パーティーリーダー",
       "confirmDisband": "本当にこのパーティを解散しますか？この操作は取り消せません。",
       "confirmTransferPartyOwner": "パーティのリーダー権を{PLAYER}に譲渡してもよろしいですか？",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"

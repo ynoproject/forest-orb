@@ -497,6 +497,7 @@
     },
     "lastOnline": {
       "template": "أخر ظهور\n{INTERVAL} منذ",
+      "longTime": "A long time ago",
       "interval": {
         "short": "أقل من دقيقة",
         "minutes": {
@@ -649,6 +650,7 @@
       "partyOwner": "قائد الحفلة",
       "confirmDisband": "هل أنت متأكد أنك تريد حذف حفلاتتك؟ هذا لا يمكن التراجع عنه.",
       "confirmTransferPartyOwner": "هل أنت متأكد أنك تريد نقل ملكية الحفلة إلى {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "{COUNT} - متصل",
         "offline": "{COUNT} - غير متصل"

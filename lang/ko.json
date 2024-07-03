@@ -497,6 +497,7 @@
     },
     "lastOnline": {
       "template": "마지막 접속\n{INTERVAL} 전",
+      "longTime": "A long time ago",
       "interval": {
         "short": "방금",
         "minutes": {
@@ -649,6 +650,7 @@
       "partyOwner": "파티 리더",
       "confirmDisband": "정말 파티를 해산하시겠습니까? 이 결정은 되돌릴 수 없습니다.",
       "confirmTransferPartyOwner": "정말 {PLAYER} 님을 파티 리더로 임명하시겠습니까?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
