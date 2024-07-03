@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "最后一次在线\n{INTERVAL}前",
+      "longTime": "A long time ago",
       "interval": {
         "short": "不到 1 分钟",
         "minutes": {
@@ -648,6 +649,7 @@
       "partyOwner": "领队",
       "confirmDisband": "确定要解散队伍吗？该操作无法撤销。",
       "confirmTransferPartyOwner": "确定要将队伍转让给 {PLAYER} 吗？",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"

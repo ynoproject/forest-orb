@@ -2456,6 +2456,7 @@ body.fullBg #background {
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 8px;
+  row-gap: 4px;
 }
 
 .modalTab {
@@ -3659,4 +3660,22 @@ form .uiTheme {
   .badge:not(.scaledBadge):not(.overlayBadge) {
     image-rendering: auto;
   }
+}
+
+@media only screen and (max-aspect-ratio: 3/2) and (max-width: 768px) {
+  #badgeGameTabs, #badgeCategoryTabs {
+    flex-wrap: nowrap;
+    min-height: 38px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    white-space: nowrap;
+  }
+    
+  #badgeCategoryTabs {
+    min-height: 20px;
+  }
+}
+
+#badgeCategoryTabs:empty {
+  display: none;
 }
