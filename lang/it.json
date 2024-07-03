@@ -488,6 +488,7 @@
     },
     "leavePage": "Sei sicuro di abandonare la pagina? Tutti i progressi non salvati verranno perduti.",
     "logout": "Are you sure you want to log out?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!).",
     "connStatus": {
       "0": "Disconnesso",
       "1": "Connesso",
