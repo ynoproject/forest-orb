@@ -67,7 +67,7 @@ function addLoader(target, instant) {
           let loadText = document.createElement('div');
 	  loadText.innerHTML = localizedMessages.loadingInstruct;
 	  el.appendChild(loadText);
-          loadText.style.cssText = "text-align: center; color: white; font-size: 1.5vw; padding: 1%;";
+          loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
         }, 20000);
         let loadingCounter = 1;
       }
