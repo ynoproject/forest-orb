@@ -488,7 +488,7 @@
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "logout": "¿Está seguro que desea cerrar sesión?",
-    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5, clear your browser's cache (but not cookies!) or try a private tab.",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!).",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
