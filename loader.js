@@ -61,6 +61,17 @@ function addLoader(target, instant) {
       else
         setTimeout(() => el.classList.add('visible'), 0);
 
+      // Adds instructions after loading for a while
+      if (!loadingCounter) {
+        setTimeout(() => {
+          let loadText = document.createElement('div');
+			    loadText.innerHTML = localizedMessages['loadingInstruct'];
+			    el.appendChild(loadText);
+          loadText.style.cssText = "text-align: center; color: white; font-size: 1.5vw; padding: 1%;";
+        }, 20000);
+        let loadingCounter = 1;
+      }
+
       updateLoader(target);
 
       updateLoaderFrame();
