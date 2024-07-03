@@ -488,6 +488,7 @@
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "logout": "确定要登出吗？",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!).",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
