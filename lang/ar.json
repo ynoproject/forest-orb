@@ -488,6 +488,7 @@
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5, clear your browser's cache (but not cookies!) or try a private tab.",
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
