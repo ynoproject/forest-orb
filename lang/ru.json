@@ -496,6 +496,7 @@
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
+      "longTime": "A long time ago",
       "interval": {
         "short": "Менее минуты",
         "minutes": {
@@ -648,6 +649,7 @@
       "partyOwner": "Глава группы",
       "confirmDisband": "Вы уверенны, что хотите распустить группу? Роспуск нельзя отменить.",
       "confirmTransferPartyOwner": "Вы уверенны, что хотите передать лидерство в группе игроку {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"
