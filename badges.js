@@ -25,6 +25,11 @@ let localizedBadgesIgnoreUpdateTimer = null;
 
 let badgeGameIds = [];
 
+const assignTooltipCallbacks = new WeakMap;
+
+/** @type {IntersectionObserver?} */
+let observer;
+
 const badgeGalleryRowBpLevels = [
   {
     bp: 300,
@@ -163,10 +168,21 @@ function initBadgeControls() {
       const games = {};
       const spacePattern = / /g;
       let badgeCount = 0;
+      observer?.disconnect();
+      observer = new IntersectionObserver(observed => {
+        for (const {target} of observed) {
+          if (!target.parentElement) continue;
+          const assignTooltip = assignTooltipCallbacks.get(target);
+          if (assignTooltip) {
+            observer.unobserve(target);
+            assignTooltipCallbacks.delete(target);
+            window.requestAnimationFrame(() => assignTooltip());
+          }
+        }
+      }, { root: badgeModalContent });
       for (const badge of playerBadges) {
-        // tippy takes a lot of time to create, so yield back to the game loop every so often
-        // badge modal takes a bit longer, but the overall effect is much smoother.
-        if (badgeCount++ % 40 === 0) await yieldImmediately();
+        // yield back to the game loop to prevent audio cracking
+        if (badgeCount++ % 150 === 0) await yieldImmediately();
         let systemName;
         if (badge.game !== 'ynoproject') { 
           systemName = getDefaultUiTheme(badge.game).replace(spacePattern, '_');
@@ -180,7 +196,8 @@ function initBadgeControls() {
         }
         if (!games[badge.game][badge.group]) games[badge.game][badge.group] = [];
         
-        const item = getBadgeItem(badge, true, true, true, true, true, systemName);
+        const item = getBadgeItem(badge, 'lazy', true, true, true, true, systemName);
+        observer.observe(item);
         if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
@@ -208,23 +225,49 @@ function initBadgeControls() {
       }
 
       const tabs = [];
+      {
+        // Create 'All' tab
+        const tab = document.createElement('div');
+        tabs.push(tab);
+        tab.classList.add('badgeGameTab', 'modalTab');
+        if (badgeTabGame === 'all') tab.classList.add('active');
+
+        const tabLabel = document.createElement('label');
+        tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
+        tabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
+        tab.appendChild(tabLabel);
+
+        tab.onclick = () => {
+          if (badgeGameTabs === 'all') return;
+
+          badgeGameTabs.querySelector('.active')?.classList.remove('active');
+          tab.classList.add('active');
+          badgeCategoryTabs.replaceChildren();
+
+          window.requestAnimationFrame(() => {
+            badgeModalContent.replaceChildren();
+            for (const game in games)
+              for (const category in games[game])
+                badgeModalContent.append(...games[game][category]);
+            badgeTabGame = 'all';
+            badgeTabGroup = null;
+          });
+        }; // tab.onclick
+      }
+
       for (const game in games) {
-        if (!badgeTabGame) {
-          badgeTabGame = game;
-        }
+        if (!badgeTabGame) badgeTabGame = game;
+
         const tab = document.createElement('div');
         tabs.push(tab);
         tab.classList.add('badgeGameTab', 'modalTab');
         tab.dataset.game = game;
-        if (game === badgeTabGame) {
-          tab.classList.add('active');
-        }
+        if (game === badgeTabGame) tab.classList.add('active');
 
         const tabLabel = document.createElement('label');
         tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
         tabLabel.innerHTML = getMassagedLabel(localizedMessages.games[game]);
         tab.appendChild(tabLabel);
-        badgeGameTabs.appendChild(tab);
 
         tab.onclick = () => {
           if (tab.dataset.game === badgeTabGame) return;
@@ -233,23 +276,25 @@ function initBadgeControls() {
           tab.classList.add('active');
 
           const subTabs = [];
-          if (badgeTabGame) badgeTabGroup = null;
+          if (badgeTabGame || !badgeTabGroup) badgeTabGroup = 'all';
+          let hasGroups = true;
+
           for (const group in games[game]) {
             if (!group) {
               // Group name is empty, game's badges have no group subdivision.
               badgeTabGroup = group;
+              hasGroups = false;
               break;
             }
             const subTab = document.createElement('div');
             subTab.classList.add('subTab');
             subTab.dataset.group = group;
             subTab.dataset.game = game;
+            if (group === badgeTabGroup) subTab.classList.add('active');
 
             const subTabLabel = document.createElement('small');
             subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
             subTabLabel.innerHTML = getMassagedLabel(localizedBadgeGroups[game][group]);
-            if (!badgeTabGroup) badgeTabGroup = group;
-            if (group === badgeTabGroup) subTab.classList.add('active');
             subTabs.push(subTab);
             subTab.appendChild(subTabLabel);
 
@@ -266,8 +311,56 @@ function initBadgeControls() {
               updateBadges(subTab.dataset.game, subTab.dataset.group);
             };
           }
+
+          if (hasGroups) {
+            // Create 'All' subtab
+            const subTab = document.createElement('div');
+            subTabs.unshift(subTab);
+            subTab.classList.add('subTab');
+            subTab.dataset.game = game;
+            if ('all' === badgeTabGroup) subTab.classList.add('active');
+
+            const subTabLabel = document.createElement('small');
+            subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
+            subTabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
+            subTab.appendChild(subTabLabel);
+
+            const subTabBg = document.createElement('div');
+            subTabBg.classList.add('subTabBg');
+            subTab.appendChild(subTabBg);
+
+            subTab.onclick = () => {
+              if ('all' === badgeTabGroup) return;
+
+              window.requestAnimationFrame(() => {
+                badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
+                subTab.classList.add('active');
+                badgeModalContent.replaceChildren();
+                for (const group in games[game])
+                  badgeModalContent.append(...games[game][group]);
+                badgeTabGame = game;
+                badgeTabGroup = 'all';
+              });
+            };
+          }
+
           badgeCategoryTabs.replaceChildren(...subTabs);
-          updateBadges(tab.dataset.game, badgeTabGroup);
+          if (badgeCategoryTabs.querySelector('[data-i18n]')) {
+            // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
+            locI18next.init(i18next)('[data-i18n]', {document: badgeCategoryTabs});
+            for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
+              addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
+              elm.removeAttribute('title');
+            }
+          }
+
+          let activeSubTab;
+          if (activeSubTab = subTabs.find(tab => tab.classList.contains('active'))) {
+            badgeTabGroup = null;
+            activeSubTab.click();
+          } else {
+            updateBadges(game, badgeTabGroup);
+          }
         }; // tab.onclick
       }
       badgeGameTabs.replaceChildren(...tabs);
@@ -615,9 +708,16 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         const tooltipOptions = {};
 
         const assignTooltip = instance => {
-          const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
-          if (parsedSystemName)
-            applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName, badge.game);
+          const systemName = parsedSystemName;
+          const assignImmediately = () => { 
+            const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
+            if (systemName)
+              applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), systemName, badge.game);
+          };
+          if (includeTooltip === 'lazy')
+            assignTooltipCallbacks.set(item, assignImmediately);
+          else
+            assignImmediately();
         };
 
         if (badge.mapId) {
@@ -668,10 +768,7 @@ function fetchPlayerBadges(callback) {
     .then(badges => {
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
 
-      badges = badges.map(badge => {
-        delete badge.newUnlock;
-        return badge;
-      });
+      for (const badge of badges) badge.newUnlock = false;
 
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b].badgeId);
@@ -692,10 +789,8 @@ function updateBadges(callback) {
     .then(badges => {
       const newUnlockedBadges = badges.filter(b => b.newUnlock);
       
-      badgeCache = badges.map(badge => {
-        delete badge.newUnlock;
-        return badge;
-      });
+      for (const badge of badges) badge.newUnlock = false;
+      badgeCache = badges;
     
       for (let b = 0; b < newUnlockedBadges.length; b++)
         showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b].badgeId);

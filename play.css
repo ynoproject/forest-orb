@@ -1334,7 +1334,6 @@ body.fullBg #background {
 }
 
 .subTab.active {
-  pointer-events: none;
   cursor: default;
 }
 
@@ -1368,10 +1367,6 @@ body.fullBg #background {
 
 .subTab.active .subTabBg {
   opacity: 0.25;
-}
-
-.subTabLabel {
-  pointer-events: none;
 }
 
 .notificationCount {
