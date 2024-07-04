@@ -217,9 +217,29 @@ function initBadgeControls() {
         games[badge.game][badge.group].push(item);
       }
 
+      
+      const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, true, true, true, true);
+      if ('null' === (playerData?.badge || 'null'))
+        nullBadge.children[0].classList.add('selected');
+      if (!nullBadge.classList.contains('disabled')) {
+        nullBadge.onclick = slotRow && slotCol
+          ? () => updatePlayerBadgeSlot('null', slotRow, slotCol, () => {
+            updateBadgeSlots(() => {
+              initAccountSettingsModal();
+              initBadgeGalleryModal();
+              closeModal()
+            });
+          })
+          : () => updatePlayerBadge('null', () => {
+            initAccountSettingsModal();
+            closeModal();
+          });
+      }
+
+
       function updateBadges(game, group) {
         const items = games[game]?.[group] || [];
-        badgeModalContent.replaceChildren(...items);
+        badgeModalContent.replaceChildren(nullBadge, ...items);
         badgeTabGame = game;
         badgeTabGroup = group;
       }
@@ -245,7 +265,7 @@ function initBadgeControls() {
           badgeCategoryTabs.replaceChildren();
 
           window.requestAnimationFrame(() => {
-            badgeModalContent.replaceChildren();
+            badgeModalContent.replaceChildren(nullBadge);
             for (const game in games)
               for (const category in games[game])
                 badgeModalContent.append(...games[game][category]);
@@ -335,7 +355,7 @@ function initBadgeControls() {
               window.requestAnimationFrame(() => {
                 badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
                 subTab.classList.add('active');
-                badgeModalContent.replaceChildren();
+                badgeModalContent.replaceChildren(nullBadge);
                 for (const group in games[game])
                   badgeModalContent.append(...games[game][group]);
                 badgeTabGame = game;
