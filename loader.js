@@ -66,7 +66,7 @@ function addLoader(target, instant) {
         setTimeout(() => {
           let loadText = document.createElement('div');
 	  loadText.innerHTML = localizedMessages.loadingInstruct;
-	  el.appendChild(loadText);
+	  activeLoaders[target].element.appendChild(loadText);
           loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
         }, 20000);
         let loadingCounter = 1;
