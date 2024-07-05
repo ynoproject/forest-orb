@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Insigne",
-        "allCategory": "Toate",
         "manageBadgeGallery": "Gestionare Galerie de Insigne",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Fără Insignă",
+      "allCategory": "Toate",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Locație:&nbsp;",

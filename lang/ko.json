@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "배지",
-        "allCategory": "전체",
         "manageBadgeGallery": "배지 갤러리 편집",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "배지 없음",
+      "allCategory": "전체",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "장소 :&nbsp;",

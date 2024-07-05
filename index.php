@@ -580,6 +580,21 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder">
+                  Save Notification Interval
+                </label>
+                <div>
+                  <select id="saveReminder" size="4">
+                    <option value="10">10 minutes</option>
+                    <option value="15">15 minutes</option>
+                    <option value="20">20 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                  </select>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.togglePreloads.label">Preloads</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.togglePreloads.helpText">

@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Huy Hiệu",
-        "allCategory": "Tất cả",
         "manageBadgeGallery": "Quản lý Kho Huy hiệu",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Không có",
+      "allCategory": "Tất cả",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Địa điểm:&nbsp;",

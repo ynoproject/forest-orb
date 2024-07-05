@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Rozetler",
-        "allCategory": "Hepsi",
         "manageBadgeGallery": "Rozet Galerisini Yönet",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Başarım Yok",
+      "allCategory": "Hepsi",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Konum:&nbsp;",

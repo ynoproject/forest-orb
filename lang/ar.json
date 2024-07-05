@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "شارات",
-        "allCategory": "جميع",
         "manageBadgeGallery": "إدارة معرض الشارات",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "لا شارة",
+      "allCategory": "جميع",
       "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
