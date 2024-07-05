@@ -1334,7 +1334,6 @@ body.fullBg #background {
 }
 
 .subTab.active {
-  pointer-events: none;
   cursor: default;
 }
 
@@ -1368,10 +1367,6 @@ body.fullBg #background {
 
 .subTab.active .subTabBg {
   opacity: 0.25;
-}
-
-.subTabLabel {
-  pointer-events: none;
 }
 
 .notificationCount {
@@ -3678,4 +3673,9 @@ form .uiTheme {
 
 #badgeCategoryTabs:empty {
   display: none;
+}
+
+#badgeCategoryTabs {
+  border-bottom: 4px solid transparent;
+  border-image: var(--border-image-url) 8 repeat;
 }

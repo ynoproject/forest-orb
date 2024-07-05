@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "Значки",
+        "allCategory": "Все",
         "manageBadgeGallery": "Изменить галерею значков",
         "fields": {
           "unlockStatus": {
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Упомянуть {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Значок разблокирован!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Снимок игрового экрана успешно сделан."
       },
       "saveSync": {

@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "徽章",
+        "allCategory": "全部",
         "manageBadgeGallery": "管理徽章展柜",
         "fields": {
           "unlockStatus": {
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "({WEEKDAY}) {TIME}"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "提及 {PLAYER}"
       },

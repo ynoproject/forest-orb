@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "バッジ",
+        "allCategory": "全",
         "manageBadgeGallery": "バッジギャラリー管理",
         "fields": {
           "unlockStatus": {
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "{PLAYER}にメンション"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {

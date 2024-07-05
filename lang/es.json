@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "Medallas",
+        "allCategory": "Todos",
         "manageBadgeGallery": "Galería de Medallas",
         "fields": {
           "unlockStatus": {
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -948,4 +949,4 @@
       }
     }
   }
-}   
+}

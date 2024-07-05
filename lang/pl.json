@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "Odznaki",
+        "allCategory": "Wszystkie",
         "manageBadgeGallery": "Zarządzaj galerią odznak",
         "fields": {
           "unlockStatus": {

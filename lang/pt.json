@@ -314,6 +314,7 @@
       },
       "badges": {
         "title": "Emblemas",
+        "allCategory": "Todos",
         "manageBadgeGallery": "Gerenciar Galeria de Emblemas",
         "fields": {
           "unlockStatus": {
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Menciona o {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Você desbloqueou um novo emblema!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Sua captura de tela foi tirada."
       },
       "saveSync": {
