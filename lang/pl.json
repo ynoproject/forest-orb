@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Odznaki",
-        "allCategory": "Wszystkie",
         "manageBadgeGallery": "Zarządzaj galerią odznak",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Brak odznaki",
+      "allCategory": "Wszystkie",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Lokalizacja:&nbsp;",

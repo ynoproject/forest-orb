@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Badges",
-        "allCategory": "Tous",
         "manageBadgeGallery": "Gérer la galerie des badges",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Pas de badge",
+      "allCategory": "Tous",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
       "location": "Lieu :&nbsp;",

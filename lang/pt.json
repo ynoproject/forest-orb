@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Emblemas",
-        "allCategory": "Todos",
         "manageBadgeGallery": "Gerenciar Galeria de Emblemas",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "Sem Emblema",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} PE",
       "locked": "???",
       "location": "Localização:&nbsp;",

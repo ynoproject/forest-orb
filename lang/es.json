@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "Medallas",
-        "allCategory": "Todos",
         "manageBadgeGallery": "Galería de Medallas",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Ubicación:&nbsp;",

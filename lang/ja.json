@@ -315,7 +315,6 @@
       },
       "badges": {
         "title": "バッジ",
-        "allCategory": "全",
         "manageBadgeGallery": "バッジギャラリー管理",
         "fields": {
           "unlockStatus": {
@@ -791,6 +790,7 @@
     },
     "badges": {
       "null": "バッジなし",
+      "allCategory": "全",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",
