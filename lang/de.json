@@ -290,7 +290,8 @@
               "saveDownloading": "Save Downloading",
               "saveDownloaded": "Save Downloaded",
               "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveCleared": "Save Cleared",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "You have unlocked a new badge!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "No Badge",
+      "allCategory": "All",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Location:&nbsp;",

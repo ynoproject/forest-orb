@@ -290,7 +290,8 @@
               "saveDownloading": "セーブデータダウンロード開始通知",
               "saveDownloaded": "セーブデータダウンロード通知",
               "saveUpToDate": "セーブデータ更新通知",
-              "saveCleared": "セーブデータ消去通知"
+              "saveCleared": "セーブデータ消去通知",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "{PLAYER}にメンション"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "バッジなし",
+      "allCategory": "全",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",

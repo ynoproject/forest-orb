@@ -39,6 +39,12 @@ function iOS() {
   ].includes(navigator.platform)
   || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
+{
+  const layout = document.getElementById('layout');
+  if (!(layout.requestFullscreen || layout.webkitRequestFullscreen)) {
+    document.getElementById('controls-fullscreen').classList.add('hidden');
+  }
+}
 
 /**
  * Simulate a keyboard event on the emscripten canvas

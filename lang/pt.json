@@ -290,7 +290,8 @@
               "saveDownloading": "Baixando o Save",
               "saveDownloaded": "Save Baixado",
               "saveUpToDate": "Save Atualizado",
-              "saveCleared": "Save Limpo"
+              "saveCleared": "Save Limpo",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Menciona o {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Você desbloqueou um novo emblema!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Sua captura de tela foi tirada."
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "Sem Emblema",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} PE",
       "locked": "???",
       "location": "Localização:&nbsp;",
