@@ -713,8 +713,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
                   case 'rulesReviewed':
-                    if (value)
-                      document.getElementById('chatInput').removeEventListener('click', showRules);
+                    break;
                 }
               } else {
                 switch (key) {
