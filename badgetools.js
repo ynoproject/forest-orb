@@ -243,6 +243,13 @@ function initBadgeTools() {
             { key: '4_ch', label: 'Challenges' }
           ];
         }
+        if (this.gameId === 'unevendream') {
+          return [
+            { key: '2_kb', label: 'Kubotsuki' },
+            { key: '2_ts', label: 'Totsutsuki' },
+            { key: '2_zz', label: 'Misc' }
+          ];
+        }
         return [];
       },
       reqString() {
@@ -301,7 +308,7 @@ function initBadgeTools() {
           const groupOptions = this.groupOptions;
           if (groupOptions.length)
             this.group = groupOptions[2].key;
-        } else if (newId === 'ynoproject' || newId === 'unconscious') {
+        } else if (newId === 'ynoproject' || newId === 'unconscious' || newId === 'unevendream') {
 	  const groupOptions = this.groupOptions;
 	  if (groupOptions.length)
 	    this.group = groupOptions[0].key;
