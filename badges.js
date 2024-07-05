@@ -218,7 +218,7 @@ function initBadgeControls() {
       }
 
       
-      const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, true, true, true, true);
+      const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, false, true, true, true);
       if ('null' === (playerData?.badge || 'null'))
         nullBadge.children[0].classList.add('selected');
       if (!nullBadge.classList.contains('disabled')) {
@@ -239,6 +239,14 @@ function initBadgeControls() {
 
       function updateBadges(game, group) {
         const items = games[game]?.[group] || [];
+        if (game !== 'ynoproject') {
+          const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
+          applyThemeStyles(nullBadge, systemName, game);
+        } else {
+          for (const cls of nullBadge.classList)   
+            if (cls.startsWith('theme_'))
+              nullBadge.classList.remove(cls);
+        }
         badgeModalContent.replaceChildren(nullBadge, ...items);
         badgeTabGame = game;
         badgeTabGroup = group;
@@ -266,6 +274,9 @@ function initBadgeControls() {
 
           window.requestAnimationFrame(() => {
             badgeModalContent.replaceChildren(nullBadge);
+            for (const cls of nullBadge.classList)   
+              if (cls.startsWith('theme_'))
+                nullBadge.classList.remove(cls);
             for (const game in games)
               for (const category in games[game])
                 badgeModalContent.append(...games[game][category]);
@@ -355,6 +366,17 @@ function initBadgeControls() {
               window.requestAnimationFrame(() => {
                 badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
                 subTab.classList.add('active');
+
+                const game = tab.dataset.game;
+                if (game !== 'ynoproject') {
+                  const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
+                  applyThemeStyles(nullBadge, systemName, game);
+                } else {
+                  for (const cls of nullBadge.classList)   
+                    if (cls.startsWith('theme_'))
+                      nullBadge.classList.remove(cls);
+                }
+                
                 badgeModalContent.replaceChildren(nullBadge);
                 for (const group in games[game])
                   badgeModalContent.append(...games[game][group]);
