@@ -290,7 +290,8 @@
               "saveDownloading": "Scaricamento Salvataggio in corso",
               "saveDownloaded": "Scaricamento Completato",
               "saveUpToDate": "Aggiorna Salvataggio",
-              "saveCleared": "Salvataggio Eliminato"
+              "saveCleared": "Salvataggio Eliminato",
+              "saveReminder": "Save Reminder"
             }
           }
         }

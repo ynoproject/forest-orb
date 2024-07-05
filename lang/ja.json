@@ -290,7 +290,8 @@
               "saveDownloading": "セーブデータダウンロード開始通知",
               "saveDownloaded": "セーブデータダウンロード通知",
               "saveUpToDate": "セーブデータ更新通知",
-              "saveCleared": "セーブデータ消去通知"
+              "saveCleared": "セーブデータ消去通知",
+              "saveReminder": "Save Reminder"
             }
           }
         }
