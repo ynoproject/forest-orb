@@ -290,7 +290,8 @@
               "saveDownloading": "Save-ul se Descarcă",
               "saveDownloaded": "Save Descărcat",
               "saveUpToDate": "Save Actualizat",
-              "saveCleared": "Save Șters"
+              "saveCleared": "Save Șters",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Ai deblocat o nouă insignă!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "Fără Insignă",
+      "allCategory": "Toate",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Locație:&nbsp;",

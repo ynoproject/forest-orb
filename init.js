@@ -35,7 +35,8 @@ const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').mat
 const tippyConfig = {
   arrow: false,
   animation: 'scale',
-  allowHTML: true
+  allowHTML: true,
+  touch: ['hold', 400],
 };
 
 let easyrpgPlayer = {
@@ -713,8 +714,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
                   case 'rulesReviewed':
-                    if (value)
-                      document.getElementById('chatInput').removeEventListener('click', showRules);
+                    break;
                 }
               } else {
                 switch (key) {

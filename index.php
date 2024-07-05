@@ -512,20 +512,6 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder">Save Notification Interval</label>
-                <div>
-                   <select id="saveReminder" size="4">
-                      <option value="15">15 minutes</option>
-                      <option value="30">30 minutes</option>
-                      <option value="45">45 minutes</option>
-                      <option value="60">60 minutes</option>
-                      <option value="90">90 minutes</option>
-                      <option value="120">120 minutes</option>
-                      <option value="99999">Never</option>
-                    </select>
-                </div>
-              </li>
-              <li class="formControlRow">
                 <label for="soundVolume" class="unselectable" data-i18n="[html]modal.settings.fields.soundVolume">Sound Volume</label>
                 <div>
                   <input id="soundVolume" type="range" min="0" max="100" value="100" step="5" class="slider" />
@@ -591,6 +577,21 @@
                 <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleRankings">Rankings</label>
                 <div>
                   <button id="toggleRankingsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder">
+                  Save Notification Interval
+                </label>
+                <div>
+                  <select id="saveReminder" size="4">
+                    <option value="10">10 minutes</option>
+                    <option value="15">15 minutes</option>
+                    <option value="20">20 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                  </select>
                 </div>
               </li>
               <li class="formControlRow">
