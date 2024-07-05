@@ -3657,6 +3657,114 @@ form .uiTheme {
   }
 }
 
+
+@media only screen and (max-width: 768px) {
+  .fullscreenModal {
+    top: 16px;
+    left: 8px;
+    width: calc(100% - 70px);
+    height: calc(100%);
+  }
+
+  .itemContainer .item {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .screenshotItem {
+    width: 136px;
+    padding-bottom: 12px;
+  }
+
+  .badgeItem,
+  .uiThemeItem {
+    padding-bottom: 12px;
+  }
+
+  .screenshotItem .screenshotThumbnailContainer {
+    height: 90px;
+  }
+
+  .screenshotItem .spoilerLabel {
+    margin: -60px;
+  }
+
+  .modalTitle {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .screenshotControls {
+    width: 112px;
+  }
+
+  .screenshotThumbnail {
+    width: 120px;
+    height: 90px;
+  }
+
+  .itemContainer .item {
+    margin: 0;
+  }
+
+  .modalContent {
+    justify-content: space-evenly;
+    padding-top: 12px;
+  }
+
+  .modalInfoContainer {
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+  }
+
+  h3 {
+    margin: 8px;
+  }
+
+  .screenshotSlotProgressContainer {
+    padding-bottom: 12px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  h1,
+  h3 {
+    margin: 8px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #connStatusText {
+    display: none;
+  }
+
+  #layout:fullscreen #chatboxContainer {
+    height: calc(100% - 24px);
+  }
+
+  .fullscreenModal {
+    top: 16px;
+    height: 80%;
+    max-height: unset;
+  }
+
+  .itemContainer .item {
+    margin: 12px;
+  }
+}
+
+.infiniteScrollContainer {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+#uiThemesModal .itemContainer {
+  place-items: end;
+}
+
 @media only screen and (max-aspect-ratio: 3/2) and (max-width: 768px) {
   #badgeGameTabs, #badgeCategoryTabs {
     flex-wrap: nowrap;
