@@ -590,11 +590,13 @@ function closeModal() {
   if (modalFadeOutContainer.childElementCount)
     return;
   const modalContainer = document.getElementById('modalContainer');
+  const activeModal = document.querySelector('.modal:not(.hidden)');
+  const modalContent = activeModal?.querySelector('.modalContent');
+  if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
     setTimeout(() => modalContainer.classList.remove('fadeOut'), 245);
   }
-  const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal) {
     modalFadeOutContainer.appendChild(activeModal);
     activeModal.classList.add('fadeOut');
@@ -1488,7 +1490,7 @@ function setLang(lang, isInit) {
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
-    updateConfig(globalConfig);
+    updateConfig(globalConfig, true);
 }
 
 function setName(name, isInit) {
@@ -2210,4 +2212,10 @@ if (!loadedFontStyle)
 if (!loadedLang) {
   const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
   setLang(Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en', true);
+}
+
+if (!globalConfig.rulesReviewed) {
+	openModal('rulesModal');
+	globalConfig.rulesReviewed = true;
+	updateConfig(globalConfig, true);
 }

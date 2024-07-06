@@ -290,7 +290,8 @@
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
-              "saveCleared": "Sauvegarde effacée"
+              "saveCleared": "Sauvegarde effacée",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Dernière fois vu il y a\n{INTERVAL}",
+      "longTime": "A long time ago",
       "interval": {
         "short": "moins d'une minute",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mentionner {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "Leader du groupe",
       "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
       "confirmTransferPartyOwner": "Êtes-vous sûr de vouloir transférer la propriété du groupe à {PLAYER} ?",
+      "offlineMemberSuffix": "Membre hors ligne",
       "categories": {
         "online": "En ligne - {COUNT}",
         "offline": "Hors ligne - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Votre capture d'écran a été prise."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "Pas de badge",
+      "allCategory": "Tous",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
       "location": "Lieu :&nbsp;",

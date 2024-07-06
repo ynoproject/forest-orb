@@ -290,7 +290,8 @@
               "saveDownloading": "Save Downloading",
               "saveDownloaded": "Save Downloaded",
               "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared"
+              "saveCleared": "Save Cleared",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Last online\n{INTERVAL} ago",
+      "longTime": "A long time ago",
       "interval": {
         "short": "less than 1 minute",
         "minutes": {
@@ -648,6 +650,7 @@
       "partyOwner": "Party Leader",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "You have unlocked a new badge!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "No Badge",
+      "allCategory": "All",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Location:&nbsp;",

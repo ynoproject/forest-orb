@@ -35,7 +35,8 @@ const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').mat
 const tippyConfig = {
   arrow: false,
   animation: 'scale',
-  allowHTML: true
+  allowHTML: true,
+  touch: ['hold', 400],
 };
 
 let easyrpgPlayer = {
@@ -334,7 +335,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
   if (messageType)
     tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
@@ -392,7 +393,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     };
   }
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
       let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
       if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
@@ -713,8 +714,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
                   case 'rulesReviewed':
-                    if (value)
-                      document.getElementById('chatInput').removeEventListener('click', showRules);
+                    break;
                 }
               } else {
                 switch (key) {

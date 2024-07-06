@@ -290,7 +290,8 @@
               "saveDownloading": "Kayıt İndiriliyor",
               "saveDownloaded": "Kayıt İndirildi",
               "saveUpToDate": "Kayıt Güncel",
-              "saveCleared": "Kayıt Temizlendi"
+              "saveCleared": "Kayıt Temizlendi",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Last online\n{INTERVAL} ago",
+      "longTime": "A long time ago",
       "interval": {
         "short": "less than 1 minute",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "Parti Lideri",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Yeni bir başarım açtın!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "Başarım Yok",
+      "allCategory": "Hepsi",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Konum:&nbsp;",

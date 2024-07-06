@@ -290,7 +290,8 @@
               "saveDownloading": "Scaricamento Salvataggio in corso",
               "saveDownloaded": "Scaricamento Completato",
               "saveUpToDate": "Aggiorna Salvataggio",
-              "saveCleared": "Salvataggio Eliminato"
+              "saveCleared": "Salvataggio Eliminato",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Last online\n{INTERVAL} ago",
+      "longTime": "A long time ago",
       "interval": {
         "short": "less than 1 minute",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "Amministratore del Gruppo",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Connessi - {COUNT}",
         "offline": "Disconnessi - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Hai sbloccato una nuova medaglia!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Tutti",
       "badgeTitle": "{TITLE} - {BP} PM",
       "locked": "???",
       "location": "Luogo :&nbsp;",
@@ -946,4 +950,4 @@
       }
     }
   }
-}   
+}

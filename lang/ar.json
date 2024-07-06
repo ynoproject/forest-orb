@@ -290,7 +290,8 @@
               "saveDownloading": "تحميل ملف الحفظ",
               "saveDownloaded": "تم تحميل ملف الحفظ",
               "saveUpToDate": "تم تحديث ملف الحفظ",
-              "saveCleared": "تم مسح ملف الحفظ"
+              "saveCleared": "تم مسح ملف الحفظ",
+              "saveReminder": "إشعار للحفظ"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "أخر ظهور\n{INTERVAL} منذ",
+      "longTime": "A long time ago",
       "interval": {
         "short": "أقل من دقيقة",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "تنبيه {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "قائد الحفلة",
       "confirmDisband": "هل أنت متأكد أنك تريد حذف حفلاتتك؟ هذا لا يمكن التراجع عنه.",
       "confirmTransferPartyOwner": "هل أنت متأكد أنك تريد نقل ملكية الحفلة إلى {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "{COUNT} - متصل",
         "offline": "{COUNT} - غير متصل"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "لا شارة",
+      "allCategory": "جميع",
       "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
@@ -815,7 +819,7 @@
         "badgeCount": {
           "label": "شارات",
           "valueLabel": "من الشارات #",
-          "value": "{NUMBER}" 
+          "value": "{NUMBER}"
         },
         "bp": {
           "label": "(نقات الشارات)",

@@ -290,7 +290,8 @@
               "saveDownloading": "세이브 데이터 다운로드 중",
               "saveDownloaded": "세이브 데이터 다운로드 완료",
               "saveUpToDate": "세이브 데이터 업데이트",
-              "saveCleared": "세이브 데이터 삭제됨"
+              "saveCleared": "세이브 데이터 삭제됨",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "마지막 접속\n{INTERVAL} 전",
+      "longTime": "A long time ago",
       "interval": {
         "short": "방금",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "멘션 {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "파티 리더",
       "confirmDisband": "정말 파티를 해산하시겠습니까? 이 결정은 되돌릴 수 없습니다.",
       "confirmTransferPartyOwner": "정말 {PLAYER} 님을 파티 리더로 임명하시겠습니까?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "새로운 배지를 해금하였습니다!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "스크린샷이 촬영되었습니다"
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "배지 없음",
+      "allCategory": "전체",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "장소 :&nbsp;",

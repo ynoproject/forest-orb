@@ -290,7 +290,8 @@
               "saveDownloading": "Загрузка сохранения",
               "saveDownloaded": "Загрузка завершена",
               "saveUpToDate": "Сохранение актуально",
-              "saveCleared": "Сохранение очищено"
+              "saveCleared": "Сохранение очищено",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
+      "longTime": "A long time ago",
       "interval": {
         "short": "Менее минуты",
         "minutes": {
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Упомянуть {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "Глава группы",
       "confirmDisband": "Вы уверенны, что хотите распустить группу? Роспуск нельзя отменить.",
       "confirmTransferPartyOwner": "Вы уверенны, что хотите передать лидерство в группе игроку {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Значок разблокирован!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Снимок игрового экрана успешно сделан."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "Нет значка",
+      "allCategory": "Все",
       "badgeTitle": "{TITLE} - {BP} ОЗ",
       "locked": "???",
       "location": "Локация:&nbsp;",

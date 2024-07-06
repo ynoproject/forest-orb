@@ -113,7 +113,7 @@
               "slim": "Phông nhỏ"
             }
           },
-	  "saveReminder": "Save Reminder Frequency",
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Âm lượng Âm thanh",
           "musicVolume": "Âm lượng Âm nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",
@@ -125,7 +125,7 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
-	  "timeTrialinfo": {
+          "timeTrialinfo": {
             "label": "Time Trial",
             "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
@@ -290,7 +290,8 @@
               "saveDownloading": "Đang tải xuống bản lưu",
               "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
-              "saveCleared": "Bản lưu đã được xóa"
+              "saveCleared": "Bản lưu đã được xóa",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -496,6 +497,7 @@
     },
     "lastOnline": {
       "template": "Last online\n{INTERVAL} ago",
+      "longTime": "A long time ago",
       "interval": {
         "short": "less than 1 minute",
         "minutes": {
@@ -516,16 +518,16 @@
       "template": "{LOCATION} ({LOCATION_EN})",	
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
-      "2kki": {	
-        "template": "{LOCATION}"	
+      "2kki": {
+        "template": "{LOCATION}"
       },
       "playing": "Playing {GAME}"
-    },	
-    "locationDisplay": {	
-      "template": "{LOCATION}",	
-      "2kki": {	
-        "template": "{LOCATION}"	
-      }	
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
     },
     "playersOnline": {
       "singular": "{COUNT} Người chơi Online",
@@ -554,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Gắn thẻ {PLAYER}"
       },
@@ -648,6 +650,7 @@
       "partyOwner": "Trưởng Nhóm",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -747,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Đã chụp ảnh màn hình."
       },
       "saveSync": {
@@ -787,6 +790,7 @@
     },
     "badges": {
       "null": "Không có",
+      "allCategory": "Tất cả",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Địa điểm:&nbsp;",
