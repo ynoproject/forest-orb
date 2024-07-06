@@ -723,12 +723,6 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
-if (!globalConfig.rulesReviewed) {
-	openModal('rulesModal');
-	globalConfig.rulesReviewed = true;
-	updateConfig(globalConfig, true);
-}
-
 (function () {
   addSessionCommandHandler('say', args => {
     const uuid = args[0];
