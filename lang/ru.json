@@ -290,7 +290,8 @@
               "saveDownloading": "Загрузка сохранения",
               "saveDownloaded": "Загрузка завершена",
               "saveUpToDate": "Сохранение актуально",
-              "saveCleared": "Сохранение очищено"
+              "saveCleared": "Сохранение очищено",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -556,7 +557,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Упомянуть {PLAYER}"
       },
@@ -750,7 +751,7 @@
       "badges": {
         "badgeUnlocked": "Значок разблокирован!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Снимок игрового экрана успешно сделан."
       },
       "saveSync": {
@@ -790,6 +791,7 @@
     },
     "badges": {
       "null": "Нет значка",
+      "allCategory": "Все",
       "badgeTitle": "{TITLE} - {BP} ОЗ",
       "locked": "???",
       "location": "Локация:&nbsp;",

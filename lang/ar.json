@@ -290,7 +290,8 @@
               "saveDownloading": "تحميل ملف الحفظ",
               "saveDownloaded": "تم تحميل ملف الحفظ",
               "saveUpToDate": "تم تحديث ملف الحفظ",
-              "saveCleared": "تم مسح ملف الحفظ"
+              "saveCleared": "تم مسح ملف الحفظ",
+              "saveReminder": "إشعار للحفظ"
             }
           }
         }
@@ -556,7 +557,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "تنبيه {PLAYER}"
       },
@@ -750,7 +751,7 @@
       "badges": {
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -790,6 +791,7 @@
     },
     "badges": {
       "null": "لا شارة",
+      "allCategory": "جميع",
       "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
@@ -818,7 +820,7 @@
         "badgeCount": {
           "label": "شارات",
           "valueLabel": "من الشارات #",
-          "value": "{NUMBER}" 
+          "value": "{NUMBER}"
         },
         "bp": {
           "label": "(نقات الشارات)",

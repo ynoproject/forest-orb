@@ -1490,7 +1490,7 @@ function setLang(lang, isInit) {
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
-    updateConfig(globalConfig);
+    updateConfig(globalConfig, true);
 }
 
 function setName(name, isInit) {
@@ -2212,4 +2212,10 @@ if (!loadedFontStyle)
 if (!loadedLang) {
   const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
   setLang(Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en', true);
+}
+
+if (!globalConfig.rulesReviewed) {
+	openModal('rulesModal');
+	globalConfig.rulesReviewed = true;
+	updateConfig(globalConfig, true);
 }
