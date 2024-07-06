@@ -489,7 +489,7 @@
     },
     "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
     "logout": "Are you sure you want to log out?",
-    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!).",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Disconnected",
       "1": "Connected",
