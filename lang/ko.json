@@ -113,7 +113,13 @@
               "slim": "슬림"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "소리 볼륨",
           "musicVolume": "음악 볼륨",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",

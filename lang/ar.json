@@ -113,7 +113,13 @@
               "slim": "رفيع"
             }
           },
-          "saveReminder": "إشعار للحفظ",
+          "saveReminder":  {
+            "label": "إشعار للحفظ",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",

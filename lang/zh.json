@@ -113,7 +113,13 @@
               "slim": "全名（小）"
             }
           },
-          "saveReminder": "存档提醒间隔",
+          "saveReminder": {
+            "label": "存档提醒间隔",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",

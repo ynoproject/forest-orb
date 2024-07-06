@@ -113,7 +113,13 @@
               "slim": "Phông nhỏ"
             }
           },
-	  "saveReminder": "Tần suất nhắc lưu trò chơi",
+          "saveReminder": {
+            "saveReminder": "Tần suất nhắc lưu trò chơi",
+            "interval": {
+              "minutes": "Mỗi {{interval}} phút",
+              "never": "Đừng nhắc"
+            }
+          },
           "soundVolume": "Âm lượng âm thanh",
           "musicVolume": "Âm lượng nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",
@@ -125,7 +131,7 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
-	  "timeTrialinfo": {
+          "timeTrialinfo": {
             "label": "Thử thách Hẹn giờ",
             "helpText": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
           },
@@ -291,7 +297,7 @@
               "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
               "saveCleared": "Bản lưu đã được xóa",
-              "saveReminder": "Save Reminder"
+              "saveReminder": "Nhắc nhở lưu"
             }
           }
         }
@@ -521,19 +527,19 @@
       }
     },
     "location": {
-      "template": "{LOCATION} ({LOCATION_EN})",	
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
       "2kki": {
         "template": "{LOCATION}"
       },
       "playing": "Đang chơi {GAME}"
-    },	
-    "locationDisplay": {	
-      "template": "{LOCATION}",	
-      "2kki": {	
-        "template": "{LOCATION}"	
-      }	
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
     },
     "playersOnline": {
       "singular": "{COUNT} Người chơi Online",

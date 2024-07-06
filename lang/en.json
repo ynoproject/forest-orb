@@ -113,7 +113,13 @@
               "slim": "Slim"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Player Sounds",

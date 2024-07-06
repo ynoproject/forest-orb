@@ -1519,10 +1519,22 @@ function setLang(lang, isInit) {
     updateConfig(globalConfig, true);
 }
 
+let saveReminderHandle;
+function resetSaveReminder() {
+  if (saveReminderHandle) clearTimeout(saveReminderHandle);
+  saveReminderHandle = null;
+  if (!globalConfig.saveReminder) return;
+  saveReminderHandle = setTimeout(() => {
+    showSaveSyncToastMessage('saveReminder', 'save', 1)
+    resetSaveReminder();
+  }, globalConfig.saveReminder * 60000);
+}
+
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
     updateConfig(globalConfig, true);
+  resetSaveReminder();
 }
 
 function setName(name, isInit) {

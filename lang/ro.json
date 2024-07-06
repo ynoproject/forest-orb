@@ -113,7 +113,13 @@
               "slim": "Slab"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volum Sunet",
           "musicVolume": "Volum Muzică",
           "togglePlayerSounds": "Sunete Jucători",
