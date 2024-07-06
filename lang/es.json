@@ -290,7 +290,8 @@
               "saveDownloading": "Descargando Save",
               "saveDownloaded": "Save Descargado",
               "saveUpToDate": "Save Actualizado",
-              "saveCleared": "Limpiado de Datos Sincronizados"
+              "saveCleared": "Limpiado de Datos Sincronizados",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Ubicación:&nbsp;",
@@ -948,4 +950,4 @@
       }
     }
   }
-}   
+}

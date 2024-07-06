@@ -230,7 +230,7 @@ function updateModControls() {
 }
 
 setInterval(() => {
-  showToastMessage(getMassagedLabel(localizedMessages.toast.saveSync['saveReminder'], true), 'save', true)
+  showSaveSyncToastMessage('saveReminder', 'save', 1)
 }, (globalConfig.saveReminder * 60000));
 
 function showAccountToastMessage(key, icon, username) {

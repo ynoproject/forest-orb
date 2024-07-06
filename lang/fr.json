@@ -290,7 +290,8 @@
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
-              "saveCleared": "Sauvegarde effacée"
+              "saveCleared": "Sauvegarde effacée",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -555,7 +556,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mentionner {PLAYER}"
       },
@@ -749,7 +750,7 @@
       "badges": {
         "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Votre capture d'écran a été prise."
       },
       "saveSync": {
@@ -789,6 +790,7 @@
     },
     "badges": {
       "null": "Pas de badge",
+      "allCategory": "Tous",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
       "location": "Lieu :&nbsp;",
