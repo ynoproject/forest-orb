@@ -103,7 +103,7 @@ function removeLoader(target) {
       clearInterval(activeLoaders[target].timer);
     }
     delete activeLoaders[target];
-    clearTimeout(loadingTimer);
+    clearTimeout(loadingMessageTimer);
   }
 }
 
