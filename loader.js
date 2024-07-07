@@ -63,7 +63,7 @@ function addLoader(target, instant) {
 
       // Adds instructions after loading for a while
       if (!loadingCounter) {
-        setTimeout(() => {
+        const loadingMessageTimer = setTimeout(() => {
           let loadText = document.createElement('div');
 	  loadText.innerHTML = localizedMessages.loadingInstruct;
 	  activeLoaders[target].element.appendChild(loadText);
@@ -103,6 +103,7 @@ function removeLoader(target) {
       clearInterval(activeLoaders[target].timer);
     }
     delete activeLoaders[target];
+    clearTimeout(loadingTimer);
   }
 }
 
