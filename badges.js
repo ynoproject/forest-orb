@@ -767,9 +767,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
           const setTooltipLocation = instance => {
             if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel('&nbsp;|&nbsp;')));
-            else if (badge.gameId === '2kki') {
+            else if (badge.game === '2kki') {
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
-              tooltipOptions.onShow = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(baseTooltipContent.replace('{LOCATION}', locationsHtml)));
+              tooltipOptions.onCreate = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(baseTooltipContent.replace('{LOCATION}', locationsHtml)));
             } else
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
             assignTooltip(instance);
@@ -778,7 +778,8 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
             setTooltipLocation();
           else {
             tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
-            tooltipOptions.onShow = instance => {
+            tooltipOptions.onCreate = instance => {
+              includeTooltip = true;
               if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
                 setTooltipLocation(instance);
               else
