@@ -183,6 +183,10 @@ const allGameUiThemes = {
     '001',
     '006'
   ],
+  'oneshot': [
+    'system',
+    'system2'
+  ],
   'oversomnia': [
     'window-a',
     'window-b',
@@ -268,6 +272,7 @@ const allGameFullBgUiThemes = {
   'mikan': [],
   'muma': [],
   'nostalgic': [],
+  'oneshot': [],
   'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],

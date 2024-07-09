@@ -32,6 +32,9 @@
     case "nostalgic":
       $gameName = "nostAlgic";
       break;
+    case "oneshot":
+      $gameName = "OneShot";
+      break;
     case "oversomnia":
       $gameName = "Oversomnia";
       break;
