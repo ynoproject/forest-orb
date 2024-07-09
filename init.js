@@ -20,7 +20,7 @@ const gameDefaultSprite = {
   'mikan': 'syuzinkou_01',
   'muma': 'muma1',
   'nostalgic': 'syujinkou',
-  'oneshot': { sprite: 'niko1 ', idx: 4 },
+  'oneshot': { sprite: 'niko1', idx: 4 },
   'oversomnia': 'player-01',
   'prayers': 'Flourette',
   'sheawaits': 'sprite-noelia',
