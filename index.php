@@ -850,8 +850,16 @@
                 </select>
               </div>
               <div class="uiControl">
-                <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search">Search:&nbsp;</label>
-                <input id="badgeSearch" type="text" autocomplete="off" />
+                <label for="badgeSearch" class="unselectable" data-i18n="[html]modal.badges.fields.search.label">Search:&nbsp;</label>
+                <input id="badgeSearch" type="text" autocomplete="off">
+                <div class="dropdown hidden" id="badgeDropdown">
+                  <div class="dropdownItem" tabindex="0">
+                    <i data-i18n="[html]modal.badges.fields.search.name">Name:</i> <span id="searchName"></span>
+                  </div>
+                  <div class="dropdownItem" tabindex="0">
+                    <i data-i18n="[html]modal.badges.fields.search.location">Location:</i> <span id="searchLocation"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

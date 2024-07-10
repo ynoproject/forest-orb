@@ -1,3 +1,16 @@
+/**
+ * @typedef {Object} MapTitle
+ * @property {string} title 
+ * @property {string} [urlTitle]
+ * @property {number} [mapX]
+ */
+
+/** 
+ * @typedef {string | MapTitle | MapTitle[] | Record<'else' | (string & {}), MapTitle>} MapDescriptor
+ * The third form allows matching the correct world for map IDs shared between worlds:
+ * a mapping from the previous map ID Urotsuki was on to, to the matching map title.
+ */
+
 let localizedVersion;
 let localizedMessages;
 
@@ -6,7 +19,10 @@ let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
 
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameLocalizedMapLocations = {};
+
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};

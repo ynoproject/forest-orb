@@ -4,6 +4,8 @@
   @property {string} badgeId
   @property {string} game
   @property {string} group
+  @property {number} mapX
+  @property {number} mapY
 */
 
 const maxBadgeSlotRows = 8;
@@ -162,7 +164,7 @@ function initBadgeControls() {
         }
         return 0;
       };
-      badgeFilterCache.splice(0, badgeFilterCache.length);
+      badgeFilterCache.length = 0;
       playerBadges.sort(badgeCompareFunc);
       /** @type {Record<string, Record<string, HTMLDivElement[]>>} */
       const games = {};
@@ -457,7 +459,8 @@ function initBadgeControls() {
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
   document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton('accountSettingsModal');
 
-  const updateBadgeVisibility = () => {
+  const updateBadgeVisibility = (searchMode = 'name') => {
+    if (typeof searchMode !== 'string') searchMode = 'name';
     const unlockStatus = document.getElementById('badgeUnlockStatus').value;
     const searchTerm = document.getElementById('badgeSearch').value.toLowerCase();
 
@@ -469,8 +472,34 @@ function initBadgeControls() {
       let visible = true;
       if (unlockStatus !== "")
         visible &= item.el.classList.contains('locked') === !parseInt(unlockStatus);
-      if (searchTerm.trim().length)
-        visible &= item.title && item.title.indexOf(searchTerm) > -1;
+      if (searchTerm.trim().length) { 
+        switch (searchMode) {
+          case 'name':
+            visible &= item.title && item.title.indexOf(searchTerm) > -1;
+            break;
+          case 'location': { 
+            const localizedLocation = gameLocalizedMapLocations[item.game]?.[item.mapId];
+            if (Array.isArray(localizedLocation)) {
+              visible = false;
+              for (const loc of localizedLocation) {
+                visible |= loc.title.toLowerCase().indexOf(searchTerm) > -1;
+                if (visible) break;
+              }
+            } else if (typeof localizedLocation === 'object') {
+              visible = false;
+              for (let descriptor of Object.values(localizedLocation)) {
+                while (descriptor.title) descriptor = descriptor.title;
+                visible |= descriptor && descriptor.toLowerCase().indexOf(searchTerm) > -1;
+                if (visible) break;
+              }
+            } else {
+              const title = localizedLocation?.title || localizedLocation;
+              visible &= title && title.toLowerCase().indexOf(searchTerm) > -1;
+            }
+            break;
+          }
+        }
+      }
       if (!gameVisibilities.hasOwnProperty(item.game)) {
         gameVisibilities[item.game] = false;
         gameGroupVisibilities[item.game] = {};
@@ -496,20 +525,36 @@ function initBadgeControls() {
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
 
   let searchTimer = null;
-  document.getElementById('badgeSearch').oninput = function () {
-    const _this = this;
-    const value = this.value;
-    if (searchTimer) {
-      clearTimeout(searchTimer);
-      searchTimer = null;
-    } else
-      addLoader(badgeModalContent, true);
-    searchTimer = setTimeout(() => {
-      searchTimer = null;
-      if (_this.value === value)
-        updateBadgeVisibility();
-      removeLoader(badgeModalContent);
-    }, 500);
+  const badgeSearch = document.getElementById('badgeSearch');
+  const badgeDropdown = document.getElementById('badgeDropdown');
+  badgeSearch.oninput = function () {
+    badgeDropdown.classList.toggle('hidden', !this.value);
+    if (!this.value) {
+      updateBadgeVisibility();
+      return;
+    }
+
+    for (const span of badgeDropdown.querySelectorAll('.dropdownItem span'))
+      span.innerText = this.value;
+  };
+
+  badgeSearch.onblur = function () {
+    // if ((document.activeElement !== searchName) && (document.activeElement !== searchLocation))
+    //   badgeDropdown.classList.add('hidden');
+  };
+
+  const searchName = document.getElementById('searchName').parentElement;
+  searchName.onkeydown = searchName.onclick = function (ev) {
+    if (ev.key && ev.key !== 'Enter') return;
+    badgeDropdown.classList.add('hidden');
+    updateBadgeVisibility();
+  };
+
+  const searchLocation = document.getElementById('searchLocation').parentElement;
+  searchLocation.onkeydown = searchName.onclick = function (ev) {
+    if (ev.key && ev.key !== 'Enter') return;
+    badgeDropdown.classList.add('hidden');
+    updateBadgeVisibility('location');
   };
 
   document.getElementById('badgeGalleryButton').onclick = () => {
@@ -622,6 +667,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
     filterItem = {
       el: item,
       title: '',
+      mapId: '',
       game: badge.game,
       group: badge.group
     };
@@ -764,6 +810,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
 
         if (badge.mapId) {
           const mapId = badge.mapId.toString().padStart(4, '0');
+          if (filterItem) filterItem.mapId = mapId;
           const setTooltipLocation = instance => {
             if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel('&nbsp;|&nbsp;')));
