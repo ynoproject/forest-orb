@@ -2,6 +2,7 @@ let playerLoaderSprite = gameDefaultSprite.sprite || gameDefaultSprite;
 let playerLoaderSpriteIdx = gameDefaultSprite.idx || 0;
 let loaderSpriteCache = {};
 let activeLoaders = {};
+let loadingCounter = 0;
 
 function addLoader(target, instant) {
   if (activeLoaders.hasOwnProperty(target))
@@ -62,7 +63,7 @@ function addLoader(target, instant) {
         setTimeout(() => el.classList.add('visible'), 0);
 
       // Adds instructions after loading for a while
-      if (!loadingCounter) {
+      if (loadingCounter == 0) {
         const loadingMessageTimer = setTimeout(() => {
           let loadText = document.createElement('div');
 	  loadText.innerHTML = localizedMessages.loadingInstruct;
