@@ -61,6 +61,17 @@ function addLoader(target, instant) {
       else
         setTimeout(() => el.classList.add('visible'), 0);
 
+      // Adds instructions after loading for a while
+      if (!loadingCounter) {
+        const loadingMessageTimer = setTimeout(() => {
+          let loadText = document.createElement('div');
+	  loadText.innerHTML = localizedMessages.loadingInstruct;
+	  activeLoaders[target].element.appendChild(loadText);
+          loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
+        }, 30000);
+        let loadingCounter = 1;
+      }
+
       updateLoader(target);
 
       updateLoaderFrame();
@@ -92,6 +103,7 @@ function removeLoader(target) {
       clearInterval(activeLoaders[target].timer);
     }
     delete activeLoaders[target];
+    clearTimeout(loadingMessageTimer);
   }
 }
 
