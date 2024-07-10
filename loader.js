@@ -104,7 +104,8 @@ function removeLoader(target) {
       clearInterval(activeLoaders[target].timer);
     }
     delete activeLoaders[target];
-    clearTimeout(loadingMessageTimer);
+    if (typeof loadingMessageTimer !== 'undefined')
+      clearTimeout(loadingMessageTimer);
   }
 }
 
