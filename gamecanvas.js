@@ -98,7 +98,8 @@ function bindKey(node, key, keyCode) {
     node.addEventListener('touchend', event => {
       if (event.cancelable)
         event.preventDefault();
-  }
+    });
+
     const pressedKey = keysDown.get(event.target.id);
     if (pressedKey && keys.has(pressedKey)) {
       const { key, keyCode } = keys.get(pressedKey);
