@@ -523,7 +523,6 @@ function initBadgeControls() {
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
 
-  // let searchTimer = null;
   const badgeSearch = document.getElementById('badgeSearch');
   const badgeDropdown = document.getElementById('badgeDropdown');
   badgeSearch.oninput = function () {
@@ -535,6 +534,11 @@ function initBadgeControls() {
 
     for (const span of badgeDropdown.querySelectorAll('.dropdownItem span'))
       span.innerText = this.value;
+  };
+
+  badgeSearch.onkeydown = function (ev) {
+    if (ev.key !== 'Enter') return;
+    searchBadges('name');
   };
 
   function hideDropdown() {
