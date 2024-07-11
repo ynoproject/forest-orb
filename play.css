@@ -3813,6 +3813,22 @@ form .uiTheme {
   border-image: var(--border-image-url) 8 repeat;
 }
 
-.dropdownItem:focus {
+.dropdownItem:focus,
+.dropdownItem:hover {
   opacity: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  z-index: 11;
+  margin: 9px 0 0 8px;
+}
+
+#badgeSearch {
+  padding-right: 22px;
+}
+
+#badgeSearch.active {
+  padding-right: initial;
+  padding-left: 24px;
 }

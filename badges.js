@@ -462,7 +462,7 @@ function initBadgeControls() {
   const updateBadgeVisibility = (searchMode = 'name') => {
     if (typeof searchMode !== 'string') searchMode = 'name';
     const unlockStatus = document.getElementById('badgeUnlockStatus').value;
-    const searchTerm = document.getElementById('badgeSearch').value.toLowerCase();
+    const searchTerm = document.getElementById('badgeSearch').value.toLocaleLowerCase();
 
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
@@ -479,23 +479,18 @@ function initBadgeControls() {
             break;
           case 'location': { 
             const localizedLocation = gameLocalizedMapLocations[item.game]?.[item.mapId];
-            if (Array.isArray(localizedLocation)) {
-              visible = false;
-              for (const loc of localizedLocation) {
-                visible |= loc.title.toLowerCase().indexOf(searchTerm) > -1;
-                if (visible) break;
+            let title = determineTitle(localizedLocation, item.mapX, item.mapY);
+            // TODO: To remove the last condition and allow searching 2kki badges by location from all games,
+            // a 2kki-specific cache must be set up and populated from cache and/or queried
+            if (!title && item.game === '2kki' && gameId === '2kki') {
+              const cacheKey = `0000_${item.mapId}`;
+              const cache = locationCache[cacheKey];
+              if (Array.isArray(cache)) {
+                const [desc] = cache;
+                title = globalConfig.lang === 'ja' ? desc.titleJP : desc.title;
               }
-            } else if (typeof localizedLocation === 'object') {
-              visible = false;
-              for (let descriptor of Object.values(localizedLocation)) {
-                while (descriptor.title) descriptor = descriptor.title;
-                visible |= descriptor && descriptor.toLowerCase().indexOf(searchTerm) > -1;
-                if (visible) break;
-              }
-            } else {
-              const title = localizedLocation?.title || localizedLocation;
-              visible &= title && title.toLowerCase().indexOf(searchTerm) > -1;
             }
+            visible &= title && title.toLocaleLowerCase().indexOf(searchTerm) > -1;
             break;
           }
         }
@@ -524,13 +519,13 @@ function initBadgeControls() {
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
 
-  let searchTimer = null;
+  // let searchTimer = null;
   const badgeSearch = document.getElementById('badgeSearch');
   const badgeDropdown = document.getElementById('badgeDropdown');
   badgeSearch.oninput = function () {
     badgeDropdown.classList.toggle('hidden', !this.value);
     if (!this.value) {
-      updateBadgeVisibility();
+      searchBadges();
       return;
     }
 
@@ -538,24 +533,41 @@ function initBadgeControls() {
       span.innerText = this.value;
   };
 
-  badgeSearch.onblur = function () {
-    // if ((document.activeElement !== searchName) && (document.activeElement !== searchLocation))
-    //   badgeDropdown.classList.add('hidden');
+  function hideDropdown() {
+    setTimeout(() => {
+      if (!badgeSearch.parentElement.querySelector('.dropdownItem:focus'))
+        badgeDropdown.classList.add('hidden');
+    }, 60);
+  }
+  badgeSearch.onblur = hideDropdown;
+  for (const item of badgeSearch.parentElement.querySelectorAll('.dropdownItem'))
+    item.onblur = hideDropdown;
+
+  badgeSearch.onfocus = function () {
+    this.select();
+    if (this.value)
+      badgeDropdown.classList.remove('hidden');
   };
 
   const searchName = document.getElementById('searchName').parentElement;
   searchName.onkeydown = searchName.onclick = function (ev) {
     if (ev.key && ev.key !== 'Enter') return;
-    badgeDropdown.classList.add('hidden');
-    updateBadgeVisibility();
+    searchBadges('name');
   };
 
   const searchLocation = document.getElementById('searchLocation').parentElement;
-  searchLocation.onkeydown = searchName.onclick = function (ev) {
+  searchLocation.onkeydown = searchLocation.onclick = function (ev) {
     if (ev.key && ev.key !== 'Enter') return;
-    badgeDropdown.classList.add('hidden');
-    updateBadgeVisibility('location');
+    searchBadges('location');
   };
+
+  function searchBadges(mode) {
+    badgeDropdown.classList.add('hidden');
+    updateBadgeVisibility(mode);
+    for (const icon of badgeSearch.parentElement.querySelectorAll('svg.searchIcon'))
+      icon.classList.toggle('hidden', !mode || icon.dataset.kind !== mode);
+    badgeSearch.classList.toggle('active', !!mode);
+  }
 
   document.getElementById('badgeGalleryButton').onclick = () => {
     updateBadgeSlots(() => {
@@ -579,6 +591,35 @@ function initBadgeControls() {
     }
     badgeGalleryModalContent.appendChild(badgeSlotRow);
   }
+}
+
+/**
+ * Does not take into account the previous map ID.
+ *
+ * @param {MapDescriptor} descriptor 
+ * @returns {string?}
+ */
+function determineTitle(descriptor, x, y) {
+  if (!descriptor || typeof descriptor === 'string') return descriptor;
+  if (Array.isArray(descriptor)) {
+    const match = descriptor.find(loc => {
+      if (typeof loc === 'string') return true;
+      if (!loc.coords) return true;
+      let pass = true;
+      if (typeof x === 'number')
+        pass = pass 
+          && (loc.coords.x1 === -1 || loc.coords.x1 <= x)
+          && (loc.coords.x2 === -1 || loc.coords.x2 >= x);
+      if (typeof y === 'number')
+        pass = pass
+          && (loc.coords.y1 === -1 || loc.coords.y1 <= y)
+          && (loc.coords.y2 === -1 || loc.coords.y2 >= y);
+      return pass;
+    });
+    return match && determineTitle(match, x, y);
+  }
+  if ('else' in descriptor) return determineTitle(descriptor.else, x, y);
+  return descriptor.title;
 }
 
 function initBadgeGalleryModal() {
@@ -669,7 +710,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       title: '',
       mapId: '',
       game: badge.game,
-      group: badge.group
+      group: badge.group,
+      mapX: badge.mapX1 ?? badge.mapX,
+      mapY: badge.mapY1 ?? badge.mapY,
     };
     badgeFilterCache.push(filterItem);
   }
@@ -752,7 +795,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         if ((badge.unlocked || !badge.secret) && localizedTooltip.name)
           badgeTitle = getMassagedLabel(localizedTooltip.name);
         if (filterItem)
-          filterItem.title = badgeTitle.toLowerCase();
+          filterItem.title = badgeTitle.toLocaleLowerCase();
         if (badge.bp)
           badgeTitle = getMassagedLabel(localizedMessages.badges.badgeTitle).replace('{TITLE}', badgeTitle).replace('{BP}', badge.bp);
         tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${badgeTitle}</h3>`;
