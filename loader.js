@@ -1,13 +1,13 @@
 let playerLoaderSprite = gameDefaultSprite.sprite || gameDefaultSprite;
 let playerLoaderSpriteIdx = gameDefaultSprite.idx || 0;
 let loaderSpriteCache = {};
-let activeLoaders = {};
+let activeLoaders = new WeakMap;
 let loadingCounter = 0;
 
 function addLoader(target, instant) {
-  if (activeLoaders.hasOwnProperty(target))
+  if (activeLoaders.has(target))
     return;
-  activeLoaders[target] = true;
+  activeLoaders.set(target, true);
 
   const getLoaderSprites = [
     getLoaderSpriteImg(playerLoaderSprite, playerLoaderSpriteIdx, 0),
@@ -17,7 +17,7 @@ function addLoader(target, instant) {
   const frameIndexes = [ 1, 0, 1, 2 ];
   Promise.allSettled(getLoaderSprites)
     .then(() => {
-      if (!activeLoaders.hasOwnProperty(target) || activeLoaders[target] !== true)
+      if (!activeLoaders.has(target) || activeLoaders.get(target) !== true)
         return;
         
       const el = document.createElement('div');
@@ -44,7 +44,7 @@ function addLoader(target, instant) {
         timer: setInterval(updateLoaderFrame, 150),
         frame: 0
       };
-      activeLoaders[target] = loader;
+      activeLoaders.set(target, loader);
 
       const img = document.createElement('img');
 
@@ -64,11 +64,14 @@ function addLoader(target, instant) {
 
       // Adds instructions after loading for a while
       if (loadingCounter == 0) {
-        const loadingMessageTimer = setTimeout(() => {
-          let loadText = document.createElement('div');
-	  loadText.innerHTML = localizedMessages.loadingInstruct;
-	  activeLoaders[target].element.appendChild(loadText);
-          loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
+        loader.longTimer = setTimeout(() => {
+      	  const loader = activeLoaders.get(target);
+      	  if (loader?.element) {
+            let loadText = document.createElement('div');
+            loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
+        	  loadText.innerHTML = localizedMessages.loadingInstruct;
+            loader.element.appendChild(loadText);
+      	  }
         }, 30000);
         loadingCounter = 1;
       }
@@ -80,8 +83,8 @@ function addLoader(target, instant) {
 }
 
 function updateLoader(target) {
-  if (activeLoaders.hasOwnProperty(target)) {
-    const el = activeLoaders[target].element;
+  if (activeLoaders.has(target)) {
+    const el = activeLoaders.get(target).element;
     el.style.top = `${target.offsetTop}px`;
     el.style.left = `${target.offsetLeft}px`;
     el.style.width = `${target.offsetWidth}px`;
@@ -96,17 +99,16 @@ function updateLoader(target) {
 }
 
 function removeLoader(target) {
-  if (activeLoaders.hasOwnProperty(target)) {
-    if (activeLoaders[target] !== true) {
-      const el = activeLoaders[target].element;
-      el.classList.remove('visible');
-      setTimeout(() => el.remove(), 500);
-      clearInterval(activeLoaders[target].timer);
-    }
-    delete activeLoaders[target];
-    if (typeof loadingMessageTimer !== 'undefined')
-      clearTimeout(loadingMessageTimer);
+  if (activeLoaders.has(target) && activeLoaders.get(target) !== true) {
+    const { timer, longTimer, element: el } = activeLoaders.get(target);
+    el.classList.remove('visible');
+    setTimeout(() => el.remove(), 500);
+    clearInterval(timer);
+    clearTimeout(longTimer);
   }
+  activeLoaders.delete(target);
+  if (typeof loadingMessageTimer !== 'undefined')
+    clearTimeout(loadingMessageTimer);
 }
 
 async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
