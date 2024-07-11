@@ -459,8 +459,12 @@ function initBadgeControls() {
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
   document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton('accountSettingsModal');
 
+  let currentSearchMode = 'name';
   const updateBadgeVisibility = (searchMode = 'name') => {
-    if (typeof searchMode !== 'string') searchMode = 'name';
+    if (typeof searchMode !== 'string')
+      searchMode = currentSearchMode;
+    else
+      currentSearchMode = searchMode;
     const unlockStatus = document.getElementById('badgeUnlockStatus').value;
     const searchTerm = document.getElementById('badgeSearch').value.toLocaleLowerCase();
 
