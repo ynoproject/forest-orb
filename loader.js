@@ -106,9 +106,6 @@ function removeLoader(target) {
       clearInterval(activeLoaders[target].timer);
     }
     delete activeLoaders[target];
-    if (typeof loadingMessageTimer !== 'undefined')
-      clearTimeout(loadingMessageTimer);
-  }
 }
 
 async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
