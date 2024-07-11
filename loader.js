@@ -64,12 +64,14 @@ function addLoader(target, instant) {
 
       // Adds instructions after loading for a while
       if (loadingCounter == 0) {
-        const loadingMessageTimer = setTimeout(() => {
-          let loadText = document.createElement('div');
-	  loadText.innerHTML = localizedMessages.loadingInstruct;
-	  activeLoaders[target].element.appendChild(loadText);
-          loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
-        }, 30000);
+	if (typeof activeLoaders[target] !== 'undefined') {
+          const loadingMessageTimer = setTimeout(() => {
+            let loadText = document.createElement('div');
+	    loadText.innerHTML = localizedMessages.loadingInstruct;
+	    activeLoaders[target].element.appendChild(loadText);
+            loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%;";
+          }, 30000);
+	}
         loadingCounter = 1;
       }
 
