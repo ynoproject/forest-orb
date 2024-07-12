@@ -100,6 +100,12 @@ html {
   border-image: var(--border-image-url) 8 repeat !important;
 }
 
+#crashFix {
+  position: fixed;
+  z-index: 100;
+  display: none;
+}
+
 textarea {
   height: 38px;
   resize: none;
