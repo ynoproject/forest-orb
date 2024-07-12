@@ -331,7 +331,11 @@
               "default": "Domyślny"
             }
           },
-          "search": "Szukaj:&nbsp;"
+          "search": {
+            "label": "Szukaj:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {

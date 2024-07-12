@@ -331,7 +331,11 @@
               "default": "По-умолчанию"
             }
           },
-          "search": "Поиск:&nbsp;"
+          "search": {
+            "label": "Поиск:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {

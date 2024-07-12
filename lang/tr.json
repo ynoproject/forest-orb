@@ -331,7 +331,11 @@
               "default": "Temel"
             }
           },
-          "search": "Ara:&nbsp;"
+          "search": {
+            "label": "Ara:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {

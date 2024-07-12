@@ -331,7 +331,11 @@
               "default": "기본"
             }
           },
-          "search": "검색:&nbsp;"
+          "search": {
+            "label": "검색:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
