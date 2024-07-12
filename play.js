@@ -423,7 +423,7 @@ function hideLocationDisplay(fast) {
 }
 
 {
-  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n' ];
+  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
   document.addEventListener('keydown', e => {
     const keyLc = e.key;

@@ -490,6 +490,7 @@
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
