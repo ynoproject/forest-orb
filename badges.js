@@ -147,6 +147,7 @@ function initBadgeControls() {
   let gameBadges;
   let badgeCompareFunc;
   let didUpdateBadgeModal;
+  let lastLang;
   const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
     if (slotRow && slotCol)
       modifyingSlot = { slotRow, slotCol };
@@ -179,7 +180,8 @@ function initBadgeControls() {
     };
 
     // If we already have cache and it hasn't been invalidated, only update the modal.
-    if (gameBadges && badgeCache?.full) return updateBadgeModalOnly();
+    if (gameBadges && badgeCache?.full && lastLang === globalConfig.lang) return updateBadgeModalOnly();
+    lastLang = globalConfig.lang;
 
     fetchPlayerBadges(async playerBadges => {
       badgeFilterCache.length = 0;
