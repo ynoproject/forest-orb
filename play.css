@@ -3765,7 +3765,7 @@ form .uiTheme {
   place-items: end;
 }
 
-@media only screen and (max-aspect-ratio: 3/2) and (max-width: 768px) {
+@media only screen and (orientation: portrait), only screen and (height < 768px) {
   #badgeGameTabs, #badgeCategoryTabs {
     flex-wrap: nowrap;
     min-height: 38px;
