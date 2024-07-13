@@ -148,6 +148,10 @@ function initBadgeControls() {
   let badgeCompareFunc;
   let didUpdateBadgeModal;
   const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
+    if (slotRow && slotCol)
+      modifyingSlot = { slotRow, slotCol };
+    else
+      modifyingSlot = null;
     const sortOrderDesc = sortOrder.value.endsWith('_desc');
     const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
     badgeCompareFunc = (a, b) => {
@@ -217,18 +221,7 @@ function initBadgeControls() {
         if (badge.badgeId === (playerData?.badge || 'null'))
           item.children[0].classList.add('selected');
         if (!item.classList.contains('disabled')) {
-          item.onclick = slotRow && slotCol
-            ? () => updatePlayerBadgeSlot(badge.badgeId, slotRow, slotCol, () => {
-              updateBadgeSlots(() => {
-                initAccountSettingsModal();
-                initBadgeGalleryModal();
-                closeModal()
-              });
-            })
-            : () => updatePlayerBadge(badge.badgeId, () => {
-              initAccountSettingsModal();
-              closeModal();
-            });
+          item.onclick = () => onClickBadge(badge.badgeId);
         }
         gameBadges[badge.game][badge.group].push(item);
       }
@@ -238,20 +231,8 @@ function initBadgeControls() {
       if ('null' === (playerData?.badge || 'null'))
         nullBadge.children[0].classList.add('selected');
       if (!nullBadge.classList.contains('disabled')) {
-        nullBadge.onclick = slotRow && slotCol
-          ? () => updatePlayerBadgeSlot('null', slotRow, slotCol, () => {
-            updateBadgeSlots(() => {
-              initAccountSettingsModal();
-              initBadgeGalleryModal();
-              closeModal()
-            });
-          })
-          : () => updatePlayerBadge('null', () => {
-            initAccountSettingsModal();
-            closeModal();
-          });
+        nullBadge.onclick = () => onClickBadge('null');
       }
-
 
       function updateBadges(game, group) {
         const items = gameBadges[game]?.[group] || [];
@@ -450,6 +431,26 @@ function initBadgeControls() {
             badgeModalContent.append(...gameBadges[game][group]);
       await didUpdateBadgeModal?.();
     }, 0);
+  };
+
+  let modifyingSlot;
+  const onClickBadge = badgeId => {
+    if (modifyingSlot) {
+      const { slotRow, slotCol } = modifyingSlot;
+      updatePlayerBadgeSlot(badgeId, slotRow, slotCol, () => {
+        updateBadgeSlots(() => {
+          initAccountSettingsModal();
+          initBadgeGalleryModal();
+          closeModal()
+        });
+      });
+      return;
+    }
+
+    updatePlayerBadge(badgeId, () => {
+      initAccountSettingsModal();
+      closeModal();
+    });
   };
 
   const updateBadgesAndPopulateModal = (slotRow, slotCol) => {
