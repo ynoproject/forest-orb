@@ -331,7 +331,11 @@
               "default": "Mặc định"
             }
           },
-          "search": "Tìm kiếm:&nbsp;"
+          "search": {
+            "label": "Tìm kiếm:&nbsp;",
+            "name": "Tên:",
+            "location": "Địa điểm:"
+          }
         }
       },
       "badgeGallery": {

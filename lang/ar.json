@@ -331,7 +331,11 @@
               "default": "افتراضي"
             }
           },
-          "search": "&nbsp;:البحث"
+          "search": {
+            "label": "&nbsp;:البحث",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {

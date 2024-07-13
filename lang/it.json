@@ -331,7 +331,11 @@
               "default": "Predefiniti"
             }
           },
-          "search": "Cerca :&nbsp;"
+          "search": {
+            "label": "Cerca :&nbsp;",
+            "name": "Nome :",
+            "location": "Luogo :"
+          }
         }
       },
       "badgeGallery": {

@@ -331,7 +331,11 @@
               "default": "デフォルト"
             }
           },
-          "search": "検索："
+          "search": {
+            "label": "検索：",
+            "name": "名：",
+            "location": "場所："
+          }
         }
       },
       "badgeGallery": {

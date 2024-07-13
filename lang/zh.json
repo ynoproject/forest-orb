@@ -331,7 +331,11 @@
               "default": "默认"
             }
           },
-          "search": "搜索:&nbsp;"
+          "search": {
+            "label": "搜索:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {

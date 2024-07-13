@@ -331,7 +331,11 @@
               "default": "Implicită"
             }
           },
-          "search": "Caută:&nbsp;"
+          "search": {
+            "label": "Caută:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
