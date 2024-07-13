@@ -3770,12 +3770,18 @@ form .uiTheme {
     flex-wrap: nowrap;
     min-height: 38px;
     overflow-x: scroll;
-    scrollbar-width: none;
     white-space: nowrap;
   }
     
   #badgeCategoryTabs {
     min-height: 20px;
+  }
+
+  /* https://stackoverflow.com/questions/11387805/media-query-to-detect-if-device-is-touchscreen */
+  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer: coarse) {
+    #badgeGameTabs, #badgeCategoryTabs {
+      scrollbar-width: none;
+    }
   }
 }
 
