@@ -290,7 +290,8 @@
               "saveDownloading": "Descargando Save",
               "saveDownloaded": "Save Descargado",
               "saveUpToDate": "Save Actualizado",
-              "saveCleared": "Limpiado de Datos Sincronizados"
+              "saveCleared": "Limpiado de Datos Sincronizados",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "Predeterminado"
             }
           },
-          "search": "Buscar:&nbsp;"
+          "search": {
+            "label": "Buscar:&nbsp;",
+            "name": "Nombre:",
+            "location": "Ubicación:"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "logout": "¿Está seguro que desea cerrar sesión?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Ubicación:&nbsp;",
@@ -948,4 +956,4 @@
       }
     }
   }
-}   
+}

@@ -290,7 +290,8 @@
               "saveDownloading": "Zapis pobierany",
               "saveDownloaded": "Zapis pobrany",
               "saveUpToDate": "Zapis aktualny",
-              "saveCleared": "Zapis usunięty"
+              "saveCleared": "Zapis usunięty",
+              "saveReminder": "Powiadomienia o zapisie"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "Domyślny"
             }
           },
-          "search": "Szukaj:&nbsp;"
+          "search": {
+            "label": "Szukaj:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "Czy na pewno chcesz opuścić stronę? Niezapisane dane zostaną utracone.",
     "logout": "Czy na pewno chcesz się wylogować?",
+    "loadingInstruct": "Ta strona ładuje się dłużej niż normalne; Jeżeli problem nie minie można spróbować użyć CTRL+F5 lub wyczyścić cache przeglądarki (lecz nie ciasteczka!). Poprzez F12 można sprawdźić błędy w konsoli.",
     "connStatus": {
       "0": "Rozłączony",
       "1": "Połączony",
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "Brak odznaki",
+      "allCategory": "Wszystkie",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Lokalizacja:&nbsp;",

@@ -290,7 +290,8 @@
               "saveDownloading": "Đang tải xuống bản lưu",
               "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
-              "saveCleared": "Đã xóa bản lưu"
+              "saveCleared": "Bản lưu đã được xóa",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "Mặc định"
             }
           },
-          "search": "Tìm kiếm:&nbsp;"
+          "search": {
+            "label": "Tìm kiếm:&nbsp;",
+            "name": "Tên:",
+            "location": "Địa điểm:"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -513,12 +520,12 @@
         }
       }
     },
-	  "location": {	
-      "template": "{LOCATION}",	
+    "location": {
+      "template": "{LOCATION}",
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
-      "2kki": {	
-        "template": "{LOCATION}"	
+      "2kki": {
+        "template": "{LOCATION}"
       },
       "playing": "Đang chơi {GAME}"
     },	
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Gắn thẻ {PLAYER}"
       },
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Đã chụp ảnh màn hình."
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "Không có",
+      "allCategory": "Tất cả",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Địa điểm:&nbsp;",

@@ -113,7 +113,7 @@
               "slim": "スリム"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": "セーブリマインダーの頻度",
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
@@ -127,7 +127,7 @@
           },
           "timeTrialinfo": {
             "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "helpText": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
           },
           "toggleMobileControls": "モバイルコントローラーを表示",
           "toggleLocationDisplay": "場所 表示",
@@ -290,7 +290,8 @@
               "saveDownloading": "セーブデータダウンロード開始通知",
               "saveDownloaded": "セーブデータダウンロード通知",
               "saveUpToDate": "セーブデータ更新通知",
-              "saveCleared": "セーブデータ消去通知"
+              "saveCleared": "セーブデータ消去通知",
+              "saveReminder": "セーブリマインダー"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "デフォルト"
             }
           },
-          "search": "検索："
+          "search": {
+            "label": "検索：",
+            "name": "名：",
+            "location": "場所："
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "未完夢像",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "梦通信",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
@@ -496,7 +503,7 @@
     },
     "lastOnline": {
       "template": "最後のプレイ\n{INTERVAL}",
-      "longTime": "A long time ago",
+      "longTime": "かなり前",
       "interval": {
         "short": "1分以内",
         "minutes": {
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "{PLAYER}にメンション"
       },
@@ -649,7 +656,7 @@
       "partyOwner": "パーティーリーダー",
       "confirmDisband": "本当にこのパーティを解散しますか？この操作は取り消せません。",
       "confirmTransferPartyOwner": "パーティのリーダー権を{PLAYER}に譲渡してもよろしいですか？",
-      "offlineMemberSuffix": "Member offline",
+      "offlineMemberSuffix": "オフラインのメンバー",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "バッジなし",
+      "allCategory": "全",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",

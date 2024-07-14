@@ -1,3 +1,22 @@
+/**
+ * @typedef {Object} MapTitle
+ * @property {string} title 
+ * @property {string} [urlTitle]
+ * @property {Object} [coords]
+ * @property {number} coords.x1
+ * @property {number} coords.x2
+ * @property {number} coords.y1
+ * @property {number} coords.y2
+ */
+
+/** 
+ * @typedef {string | MapTitle | (string | MapTitle)[] | Record<'else' | (string & {}), MapTitle>} MapDescriptor
+ * In the array form, the last element is customarily the fallback title.
+ *
+ * The third object form allows matching the correct world for map IDs shared between worlds:
+ * a mapping from the previous map ID Urotsuki was on to, to the matching map title.
+ */
+
 let localizedVersion;
 let localizedMessages;
 
@@ -6,7 +25,10 @@ let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
 
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameLocalizedMapLocations = {};
+
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
@@ -423,7 +445,7 @@ function hideLocationDisplay(fast) {
 }
 
 {
-  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n' ];
+  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
   document.addEventListener('keydown', e => {
     const keyLc = e.key;
@@ -1490,7 +1512,7 @@ function setLang(lang, isInit) {
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
-    updateConfig(globalConfig);
+    updateConfig(globalConfig, true);
 }
 
 function setName(name, isInit) {
@@ -2212,4 +2234,10 @@ if (!loadedFontStyle)
 if (!loadedLang) {
   const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
   setLang(Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en', true);
+}
+
+if (!globalConfig.rulesReviewed) {
+	openModal('rulesModal');
+	globalConfig.rulesReviewed = true;
+	updateConfig(globalConfig, true);
 }

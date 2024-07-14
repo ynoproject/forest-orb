@@ -290,7 +290,8 @@
               "saveDownloading": "Scaricamento Salvataggio in corso",
               "saveDownloaded": "Scaricamento Completato",
               "saveUpToDate": "Aggiorna Salvataggio",
-              "saveCleared": "Salvataggio Eliminato"
+              "saveCleared": "Salvataggio Eliminato",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "Predefiniti"
             }
           },
-          "search": "Cerca :&nbsp;"
+          "search": {
+            "label": "Cerca :&nbsp;",
+            "name": "Nome :",
+            "location": "Luogo :"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "Sei sicuro di abandonare la pagina? Tutti i progressi non salvati verranno perduti.",
     "logout": "Are you sure you want to log out?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Disconnesso",
       "1": "Connesso",
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "Hai sbloccato una nuova medaglia!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Tutti",
       "badgeTitle": "{TITLE} - {BP} PM",
       "locked": "???",
       "location": "Luogo :&nbsp;",
@@ -948,4 +956,4 @@
       }
     }
   }
-}   
+}

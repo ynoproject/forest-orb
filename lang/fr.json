@@ -290,7 +290,8 @@
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
-              "saveCleared": "Sauvegarde effacée"
+              "saveCleared": "Sauvegarde effacée",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "Défaut"
             }
           },
-          "search": "Rechercher :&nbsp;"
+          "search": {
+            "label": "Rechercher :&nbsp;",
+            "name": "Nom :",
+            "location": "Lieu :"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "logout": "Êtes-vous sûr de vouloir vous déconnecter ?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mentionner {PLAYER}"
       },
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "Vous avez obtenu un nouveau badge !"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Votre capture d'écran a été prise."
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "Pas de badge",
+      "allCategory": "Tous",
       "badgeTitle": "{TITLE} - {BP} PB",
       "locked": "???",
       "location": "Lieu :&nbsp;",

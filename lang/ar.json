@@ -290,7 +290,8 @@
               "saveDownloading": "تحميل ملف الحفظ",
               "saveDownloaded": "تم تحميل ملف الحفظ",
               "saveUpToDate": "تم تحديث ملف الحفظ",
-              "saveCleared": "تم مسح ملف الحفظ"
+              "saveCleared": "تم مسح ملف الحفظ",
+              "saveReminder": "إشعار للحفظ"
             }
           }
         }
@@ -330,7 +331,11 @@
               "default": "افتراضي"
             }
           },
-          "search": "&nbsp;:البحث"
+          "search": {
+            "label": "&nbsp;:البحث",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
@@ -482,12 +487,14 @@
       "mikan": "Mikan Muzou (ميكان موزو)",
       "ultraviolet": "Ultra Violet (الترا فايلوت)",
       "sheawaits": "She Awaits (هي تنتظر)",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia (الأرق)",
       "tsushin": "Yume Tsushin (يومي توشين)",
       "nostalgic": "nostAlgic (حنين)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
@@ -555,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "تنبيه {PLAYER}"
       },
@@ -749,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -789,6 +796,7 @@
     },
     "badges": {
       "null": "لا شارة",
+      "allCategory": "جميع",
       "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
@@ -817,7 +825,7 @@
         "badgeCount": {
           "label": "شارات",
           "valueLabel": "من الشارات #",
-          "value": "{NUMBER}" 
+          "value": "{NUMBER}"
         },
         "bp": {
           "label": "(نقات الشارات)",

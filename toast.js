@@ -152,7 +152,7 @@ function initNotificationsConfigAndControls() {
       notificationSettingsControls.appendChild(typeRow);
     }
   }
-
+  
   document.getElementById('notificationsButton').onclick = function () {
     const toggled = !this.classList.contains('toggled');
     this.classList.toggle('toggled', toggled);

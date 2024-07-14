@@ -75,6 +75,8 @@ const allGameUiThemes = {
     'uroyu_menu',
     'PGR_SYS_02',
     'PGR_SYS_03',
+    'ROKU95_menu',
+    'yumehako-sys3',
 
     'system_E_eye',
     'System_kuraud',
@@ -183,6 +185,10 @@ const allGameUiThemes = {
     '001',
     '006'
   ],
+  'oneshot': [
+    'system',
+    'system2'
+  ],
   'oversomnia': [
     'window-a',
     'window-b',
@@ -268,6 +274,7 @@ const allGameFullBgUiThemes = {
   'mikan': [],
   'muma': [],
   'nostalgic': [],
+  'oneshot': [],
   'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],
