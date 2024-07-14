@@ -686,7 +686,7 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('partyChatHistoryLimit').value = value;
                     break;
                   case 'mobileControls':
-                    if (!value)
+                    if (!value && hasTouchscreen)
                       document.getElementById('mobileControlsButton').click();
                     break;
                   case 'locationDisplay':

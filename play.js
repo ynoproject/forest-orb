@@ -1112,6 +1112,9 @@ initScreenshotControls();
 initEventControls();
 initRankingControls();
 
+if (!hasTouchscreen)
+  document.querySelector('#mobileControls').classList.add('hidden');
+
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
 if (gameId === '2kki') {

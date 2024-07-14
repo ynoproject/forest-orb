@@ -565,7 +565,7 @@
                   <button id="immersionModeButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-              <li class="formControlRow mobileOnly">
+              <li class="formControlRow" id="mobileControls">
                 <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleMobileControls">Show Mobile Controls</label>
                 <div>
                   <button id="mobileControlsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
