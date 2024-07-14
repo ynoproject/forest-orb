@@ -108,11 +108,23 @@ let ynomojiConfig = {};
 
 let connStatus;
 
-if (hasTouchscreen) {
+if (hasTouchscreen && iOS()) {
   let crashFix = document.querySelector("#crashFix");
   crashFix.style.cssText += "display: block; opacity: 0%;";
   crashFix.style.width = window.getComputedStyle(document.querySelector("#canvas")).width;
   crashFix.style.height = window.getComputedStyle(document.querySelector("#canvas")).height;
+}
+
+function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
 // EXTERNAL
