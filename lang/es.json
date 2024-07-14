@@ -113,6 +113,7 @@
               "slim": "Delgado"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Volumen de Sonido",
           "musicVolume": "Volumen de Música",
           "togglePlayerSounds": "Sonidos de Jugadores",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "Modo Inmersivo",
             "helpText": "Desactiva el contador de jugadores, el chat global y el indicador de mapas con el objetivo de entregar una experiencia inmersiva"
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Mostrar Ubicación",
@@ -285,7 +290,8 @@
               "saveDownloading": "Descargando Save",
               "saveDownloaded": "Save Descargado",
               "saveUpToDate": "Save Actualizado",
-              "saveCleared": "Limpiado de Datos Sincronizados"
+              "saveCleared": "Limpiado de Datos Sincronizados",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "Predeterminado"
             }
           },
-          "search": "Buscar:&nbsp;"
+          "search": {
+            "label": "Buscar:&nbsp;",
+            "name": "Nombre:",
+            "location": "Ubicación:"
+          }
         }
       },
       "badgeGallery": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
-      "cu": "Collective Unconscious",
+      "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -477,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "logout": "¿Está seguro que desea cerrar sesión?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -491,6 +503,7 @@
     },
     "lastOnline": {
       "template": "Last online\n{INTERVAL} ago",
+      "longTime": "A long time ago",
       "interval": {
         "short": "less than 1 minute",
         "minutes": {
@@ -508,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Buscando Ubicación...",
       "unknownLocation": "Ubicación Desconocida",
       "2kki": {
@@ -549,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Mention {PLAYER}"
       },
@@ -643,6 +656,7 @@
       "partyOwner": "Líder de Equipo",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Conectados - {COUNT}",
         "offline": "Desconectados - {COUNT}"
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "¡Has desbloqueado una nueva medalla!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "Actualizando savefile en la ranura {SLOT}...",
         "saveDownloaded": "El savefile en la ranura {SLOT} ha sido actualizado exitosamente.",
         "saveUpToDate": "La ranura sincronizada se encuentra actualizada.",
-        "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos."
+        "saveCleared": "Se ha limpiado la información de sincronización de savefiles. Esto no afectará savefiles ya existentes en otros dispositivos.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "No Medalla",
+      "allCategory": "Todos",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Ubicación:&nbsp;",
@@ -940,4 +956,4 @@
       }
     }
   }
-}   
+}

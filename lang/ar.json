@@ -113,6 +113,7 @@
               "slim": "رفيع"
             }
           },
+          "saveReminder": "إشعار للحفظ",
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "نمط الانغمار",
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
+          },
+          "timeTrialinfo": {
+            "label": "سباق الزمن",
+            "helpText": "لتفعيل وضع سباق الزمنو, اضغط مع الاستمرار على زر الشيفت و +  بعد بدء لعبة جديدة قبل ظهور أي شيء على الشاشة"
           },
           "toggleMobileControls": "عرض ضوابط الهاتف",
           "toggleLocationDisplay": "عرض الموقع",
@@ -285,7 +290,8 @@
               "saveDownloading": "تحميل ملف الحفظ",
               "saveDownloaded": "تم تحميل ملف الحفظ",
               "saveUpToDate": "تم تحديث ملف الحفظ",
-              "saveCleared": "تم مسح ملف الحفظ"
+              "saveCleared": "تم مسح ملف الحفظ",
+              "saveReminder": "إشعار للحفظ"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "افتراضي"
             }
           },
-          "search": "&nbsp;:البحث"
+          "search": {
+            "label": "&nbsp;:البحث",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "Yume Nikki (يومي نيكي)",
       "2kki": "Yume 2kki (يومي تووكي)",
-      "cu": "Collective Unconscious (اللاوعي الجماعي)",
+      "unconscious": "Collective Unconscious (اللاوعي الجماعي)",
       "flow": ".flow (دوت فلو)",
       "prayers": "Answered Prayers (دعوات مستجابة)",
       "deepdreams": "Deep Dreams (احلام عميقة)",
@@ -477,12 +487,14 @@
       "mikan": "Mikan Muzou (ميكان موزو)",
       "ultraviolet": "Ultra Violet (الترا فايلوت)",
       "sheawaits": "She Awaits (هي تنتظر)",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia (الأرق)",
-      "tsushin": "Yume Tsushin (يومي توشين)"
+      "tsushin": "Yume Tsushin (يومي توشين)",
       "nostalgic": "nostAlgic (حنين)"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
@@ -491,6 +503,7 @@
     },
     "lastOnline": {
       "template": "أخر ظهور\n{INTERVAL} منذ",
+      "longTime": "A long time ago",
       "interval": {
         "short": "أقل من دقيقة",
         "minutes": {
@@ -508,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "({LOCATION_EN}) {LOCATION}",
       "queryingLocation": "...جاري الاستعلام عن الموقع",
       "unknownLocation": "موقع غير معروف",
       "2kki": {
@@ -549,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "تنبيه {PLAYER}"
       },
@@ -643,6 +656,7 @@
       "partyOwner": "قائد الحفلة",
       "confirmDisband": "هل أنت متأكد أنك تريد حذف حفلاتتك؟ هذا لا يمكن التراجع عنه.",
       "confirmTransferPartyOwner": "هل أنت متأكد أنك تريد نقل ملكية الحفلة إلى {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "{COUNT} - متصل",
         "offline": "{COUNT} - غير متصل"
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "!لقد حصلت على شارة جديدة"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "...{SLOT} يتم تحديث ملف الحفظ من موضع",
         "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
         "saveUpToDate": ".تم تحديث ملف الحفظ",
-        "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك"
+        "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك",
+        "saveReminder": ".تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك"
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "لا شارة",
+      "allCategory": "جميع",
       "badgeTitle": "{BP} نقات الشارات - {TITLE}",
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
@@ -809,7 +825,7 @@
         "badgeCount": {
           "label": "شارات",
           "valueLabel": "من الشارات #",
-          "value": "{NUMBER}" 
+          "value": "{NUMBER}"
         },
         "bp": {
           "label": "(نقات الشارات)",

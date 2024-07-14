@@ -71,6 +71,12 @@ const allGameUiThemes = {
     'kamara_sys_68',
     'kamara_sys_69',
     'kamara_sys_70',
+    'mizkura_sys',
+    'uroyu_menu',
+    'PGR_SYS_02',
+    'PGR_SYS_03',
+    'ROKU95_menu',
+    'yumehako-sys3',
 
     'system_E_eye',
     'System_kuraud',
@@ -106,7 +112,7 @@ const allGameUiThemes = {
     'Carpet',
     'Raspberry'
   ],
-  'cu': [
+  'unconscious': [
     'system',
     'system2',
     'maple-penmenu',
@@ -118,7 +124,27 @@ const allGameUiThemes = {
     'delly_system_blue',
     'delly_horrid',
     'nacre_system_ammolites',
-    'roninnozlo_Menu_FILM'
+    'roninnozlo_Menu_FILM',
+    'rollaby_system_mural',
+    'rollaby_system_mural_NEON',
+    'nacre_system_alter',
+    'orchidmantis_system_glowing',
+    'orchidmantis_system_sunset',
+    'orchidmantis_system_celestial',
+    'tcr_menu_sweet',
+    'voxlalien_system_c64',
+    'somnium_system_void',
+    'Mooncaller_system_gbc',
+    'delly_system_brickgem',
+    'dohus_system_golfer',
+    'delly_system_virtual',
+    'orchidmantis_system_orchid',
+    'orchidmantis_system_streetlight',
+    'orchidmantis_system_basalt',
+    'delly_system_metal',
+    'delly_system_redblack',
+    'MAMBACHROMATICSYSTEM',
+    'nacre_mossylab'
   ],
   'deepdreams': [
     'system_sterling',
@@ -158,6 +184,10 @@ const allGameUiThemes = {
     'colorful',
     '001',
     '006'
+  ],
+  'oneshot': [
+    'system',
+    'system2'
   ],
   'oversomnia': [
     'window-a',
@@ -237,13 +267,14 @@ const allGameFullBgUiThemes = {
   '2kki': [],
   'amillusion': [ 'fleur' ],
   'braingirl': [],
-  'cu': [],
+  'unconscious': [],
   'deepdreams': [],
   'flow': [],
   'genie': [],
   'mikan': [],
   'muma': [],
   'nostalgic': [],
+  'oneshot': [],
   'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
   'sheawaits': [],
@@ -259,7 +290,7 @@ const gameFullBgUiThemes = allGameFullBgUiThemes[gameId];
 const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
   'braingirl': 'color',
-  'cu': 'color',
+  'unconscious': 'color',
   'deepdreams': 'soft-light',
   'genie': 'color',
   'mikan': 'soft-light',

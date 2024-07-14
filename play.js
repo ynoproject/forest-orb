@@ -1,3 +1,22 @@
+/**
+ * @typedef {Object} MapTitle
+ * @property {string} title 
+ * @property {string} [urlTitle]
+ * @property {Object} [coords]
+ * @property {number} coords.x1
+ * @property {number} coords.x2
+ * @property {number} coords.y1
+ * @property {number} coords.y2
+ */
+
+/** 
+ * @typedef {string | MapTitle | (string | MapTitle)[] | Record<'else' | (string & {}), MapTitle>} MapDescriptor
+ * In the array form, the last element is customarily the fallback title.
+ *
+ * The third object form allows matching the correct world for map IDs shared between worlds:
+ * a mapping from the previous map ID Urotsuki was on to, to the matching map title.
+ */
+
 let localizedVersion;
 let localizedMessages;
 
@@ -6,7 +25,10 @@ let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
 
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameLocalizedMapLocations = {};
+
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
@@ -45,7 +67,8 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
-  badgeToolsData: null
+  badgeToolsData: null,
+  saveReminder: 15
 };
 
 let config = {
@@ -422,7 +445,7 @@ function hideLocationDisplay(fast) {
 }
 
 {
-  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n' ];
+  const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
   document.addEventListener('keydown', e => {
     const keyLc = e.key;
@@ -589,11 +612,13 @@ function closeModal() {
   if (modalFadeOutContainer.childElementCount)
     return;
   const modalContainer = document.getElementById('modalContainer');
+  const activeModal = document.querySelector('.modal:not(.hidden)');
+  const modalContent = activeModal?.querySelector('.modalContent');
+  if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
     setTimeout(() => modalContainer.classList.remove('fadeOut'), 245);
   }
-  const activeModal = document.querySelector('.modal:not(.hidden)');
   if (activeModal) {
     modalFadeOutContainer.appendChild(activeModal);
     activeModal.classList.add('fadeOut');
@@ -745,7 +770,7 @@ document.getElementById('privateModeButton').onclick = function () {
 let reconnectCooldownTimer;
 
 document.getElementById('reconnectButton').ondblclick = function () {
-  if (reconnectCooldownTimer || connectionStatus != 2) {
+  if (reconnectCooldownTimer || connStatus != 2) {
     return;
   }
 
@@ -754,7 +779,6 @@ document.getElementById('reconnectButton').ondblclick = function () {
   const reconnectButton = this;
   let reconnected;
 
-  closeSessionWs();
   initSessionWs().then(() => {
     reconnected = true;
     reconnectButton.classList.remove('active');
@@ -922,6 +946,10 @@ document.getElementById('musicVolume').onchange = function () {
 
 document.getElementById('lang').onchange = function () {
   setLang(this.value);
+};
+
+document.getElementById('saveReminder').onchange = function () {
+  setSaveReminder(parseInt(this.value));
 };
 
 document.getElementById('nametagMode').onchange = function () {
@@ -1477,6 +1505,12 @@ function setLang(lang, isInit) {
     }
   });
   initLocalization(isInit);
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setSaveReminder(saveReminder, isInit) {
+  globalConfig.saveReminder = saveReminder;
   if (!isInit)
     updateConfig(globalConfig, true);
 }
@@ -2200,4 +2234,10 @@ if (!loadedFontStyle)
 if (!loadedLang) {
   const browserLang = navigator.language.indexOf('-') === -1 ? navigator.language : navigator.language.slice(0, navigator.language.indexOf('-'));
   setLang(Array.from(document.getElementById('lang').children).map(e => e.value).indexOf(browserLang) > -1 ? browserLang : 'en', true);
+}
+
+if (!globalConfig.rulesReviewed) {
+	openModal('rulesModal');
+	globalConfig.rulesReviewed = true;
+	updateConfig(globalConfig, true);
 }

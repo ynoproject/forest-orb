@@ -63,7 +63,7 @@
       "noGameLoc": "* Không có bản dịch cho trò chơi này"
     },
     "2kki": {
-      "hostedWithPermission": "Đã được sự cho phép của các tác giả Yume 2kki"
+      "hostedWithPermission": "Đã được sự cho phép của đội ngũ tác giả Yume 2kki"
     },
     "modal": {
       "confirm": {
@@ -113,8 +113,9 @@
               "slim": "Phông nhỏ"
             }
           },
-          "soundVolume": "Âm lượng Âm thanh",
-          "musicVolume": "Âm lượng Âm nhạc",
+	  "saveReminder": "Tần suất nhắc lưu trò chơi",
+          "soundVolume": "Âm lượng âm thanh",
+          "musicVolume": "Âm lượng nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
@@ -124,14 +125,18 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
-          "toggleMobileControls": "Show Mobile Controls",
-          "toggleLocationDisplay": "Hiện Địa điểm trong cửa sổ",
+	  "timeTrialinfo": {
+            "label": "Thử thách Hẹn giờ",
+            "helpText": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
+          },
+          "toggleMobileControls": "Hiện điều khiển cho thiết bị di động",
+          "toggleLocationDisplay": "Hiện tên địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "togglePreloads": {
-            "label": "Preload",
+            "label": "Tải sẵn tài nguyên",
             "helpText": "Tải sẵn những tài nguyên được sử dụng thường xuyên để đảm bảo có thể sử dụng khi cần; yêu cầu tải lại trang"
           },
-          "toggleQuestionablePreloads": "Tải sẵn Hình nền PC"
+          "toggleQuestionablePreloads": "Tải sẵn hình nền PC"
         },
         "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",
@@ -235,8 +240,8 @@
               "reject": "Đã xóa lời mời kết bạn",
               "cancel": "Đã hủy lời mời kết bạn",
               "incoming": "Có lời mời kết bạn",
-              "playerOnline": "Bạn đang online",
-              "playerOffline": "Bạn đã offline"
+              "playerOnline": "Bạn bè đang online",
+              "playerOffline": "Bạn bè đã offline"
             }
           },
           "parties": {
@@ -250,8 +255,8 @@
               "disband": "Giải tán nhóm",
               "playerJoin": "Người chơi tham gia nhóm",
               "playerLeave": "Người chơi rời khỏi nhóm",
-              "playerOnline": "Người chơi online",
-              "playerOffline": "Người chơi offline",
+              "playerOnline": "Người chơi đang online",
+              "playerOffline": "Người chơi đã offline",
               "kickPlayer": "Xóa người chơi khỏi nhóm",
               "transferPartyOwner": "Chỉ định người chơi làm trưởng nhóm"
             }
@@ -268,7 +273,7 @@
           "badges": {
             "label": "Huy hiệu",
             "fields": {
-              "badgeUnlocked": "Mở khóa huy hiệu"
+              "badgeUnlocked": "Đã mở khóa huy hiệu"
             }
           },
           "screenshots": {
@@ -285,7 +290,8 @@
               "saveDownloading": "Đang tải xuống bản lưu",
               "saveDownloaded": "Đã tải xuống bản lưu",
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
-              "saveCleared": "Bản lưu đã được xóa"
+              "saveCleared": "Bản lưu đã được xóa",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "Mặc định"
             }
           },
-          "search": "Tìm kiếm:&nbsp;"
+          "search": {
+            "label": "Tìm kiếm:&nbsp;",
+            "name": "Tên:",
+            "location": "Địa điểm:"
+          }
         }
       },
       "badgeGallery": {
@@ -386,12 +396,12 @@
       },
       "myScreenshots": {
         "title": "Ảnh của tôi",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
+        "screenshotSlotProgress": "Cập nhật số chỗ tiếp theo (BP)",
         "empty": "Bạn chưa lưu ảnh chụp màn hình nào."
       },
       "communityScreenshots": {
         "title": "Ảnh của cộng đồng",
-        "scrollToRefresh": "Lướt về đầu để tải lại",
+        "scrollToRefresh": "Lướt về đầu trang để làm mới",
         "fields": {
           "game": {
             "label": "Trò chơi:&nbsp;",
@@ -423,7 +433,7 @@
         "rule3": "Không bàn về chính trị.",
         "rule4": "Không phát ngôn gây tranh cãi (bao gồm từ lóng).",
         "rule5": "Không gian lận bằng bất kỳ lý do nào.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Nếu gặp vấn đề, thông báo cho các kiểm duyệt viên."
       },
       "explorerUndiscoveredLocations": {
         "title": "Địa điểm chưa khám phá",
@@ -444,7 +454,7 @@
       "chat": {
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
         "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm của bạn trong tin nhắn",
-        "toggleMessageTimestamps": "Hiện/Ẩn Thời gian của tin nhắn",
+        "toggleMessageTimestamps": "Hiện/Ẩn Thời điểm gửi tin nhắn",
         "clearChat": "Xóa Chat"
       },
       "parties": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
-      "cu": "Collective Unconscious",
+      "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -477,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
-    "leavePage": "Bạn có muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
+    "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -490,31 +502,32 @@
       "3": "Riêng tư"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "Online lần cuối\n{INTERVAL} trước",
+      "longTime": "rất lâu về trước",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "ít hơn 1 phút",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} phút",
+          "plural": "{VALUE} phút"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} giờ",
+          "plural": "{VALUE} giờ"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} ngày",
+          "plural": "{VALUE} ngày"
         }
       }
     },
-	  "location": {	
-      "template": "{LOCATION}",	
+    "location": {
+      "template": "{LOCATION} ({LOCATION_EN})",	
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
-      "2kki": {	
-        "template": "{LOCATION}"	
+      "2kki": {
+        "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "Đang chơi {GAME}"
     },	
     "locationDisplay": {	
       "template": "{LOCATION}",	
@@ -542,14 +555,14 @@
       }
     },
     "roles": {
-      "mod": "Người kiểm duyệt",
+      "mod": "Kiểm duyệt viên",
       "dev": "Lập trình viên"
     },
     "timestamp": {
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Gắn thẻ {PLAYER}"
       },
@@ -628,7 +641,7 @@
       "globalMessage": "Tin nhắn Chung"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Bạn bè",
       "categories": {
         "incoming": "Lời mời kết bạn - {COUNT}",
         "outgoing": "Lời mời đã gửi - {COUNT}",
@@ -641,8 +654,9 @@
       "yourParty": "Nhóm của bạn",
       "defaultPartyName": "Nhóm của {OWNER}",
       "partyOwner": "Trưởng Nhóm",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmDisband": "Bạn có chắc chắn muốn giải tán nhóm? Hành động này không thể hoàn tác.",
+      "confirmTransferPartyOwner": "Bạn có chắc chắn muốn chỉ định {PLAYER} làm trưởng nhóm?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -667,8 +681,8 @@
         "chatHistoryLimit": "Nếu lịch sử chat của bạn quá dài, hiệu suất có thể bị ảnh hưởng. Trong mục Cài đặt Chat, bạn có thể giới hạn số tin nhắn để tránh vấn đề này mà không phải xóa chat thủ công.",
         "parties": "Nhóm là tính năng hữu ích để tránh lạc mất nhau trong khi thám hiểm. Bạn có thể thấy được địa điểm các thành viên khác đang ở và trò chuyện với họ trong chat kín.",
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "friendsMenu": "Khi ấn chuột phải trên máy tính, hoặc ấn giữ với thiết bị di động vào icon của một người chơi bên ngoài cửa sổ Bảng xếp hạng, một hộp thoại sẽ bật lên, cho phép bạn gửi lời mời kết bạn, gắn thẻ họ hoặc chặn họ.",
+        "easySettingsMenu": "Nếu bạn đang chơi trên máy tính, bạn có thể ấn phím F1 khi đang chơi để mở menu cài đặt, giúp bạn thay đổi cách gán phím và một số cài đặt khác.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
@@ -693,7 +707,7 @@
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "Bạn có chắc chắn muốn xóa dữ liệu lưu đồng bộ cho trò chơi này? Hành động này không thể hoàn tác trừ khi bạn có một bản dự phòng cho bản lưu."
     },
     "toast": {
       "system": {
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Đã chụp ảnh màn hình."
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "Đang cập nhật dữ liệu bản lưu vào vị trí {SLOT}...",
         "saveDownloaded": "Vị trí lưu {SLOT} đã được cập nhật.",
         "saveUpToDate": "Dữ liệu bản lưu đang ở phiên bản mới nhất.",
-        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn."
+        "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn.",
+        "saveReminder": "Đừng quên lưu trò chơi thường xuyên và sao lưu bản lưu của bạn để không mất tiến trình trò chơi."
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "Không có",
+      "allCategory": "Tất cả",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "Địa điểm:&nbsp;",
@@ -899,7 +915,7 @@
       }
     },
     "modSettings": {
-      "title": "Cài đặt cho Người kiểm duyệt",
+      "title": "Cài đặt cho Kiểm duyệt viên",
       "actions": {
         "resetPassword": {
           "label": "Đặt lại mật khẩu",

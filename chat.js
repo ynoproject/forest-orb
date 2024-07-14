@@ -723,17 +723,6 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
-function showRules() {
-  openModal('rulesModal');
-  document.getElementById('chatInput').removeEventListener('click', showRules);
-  if (!globalConfig.rulesReviewed) {
-    globalConfig.rulesReviewed = true;
-    updateConfig(globalConfig, true);
-  }
-}
-
-document.getElementById('chatInput').addEventListener('click', showRules);
-
 (function () {
   addSessionCommandHandler('say', args => {
     const uuid = args[0];

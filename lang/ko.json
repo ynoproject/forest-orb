@@ -113,6 +113,7 @@
               "slim": "슬림"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "소리 볼륨",
           "musicVolume": "음악 볼륨",
           "togglePlayerSounds": "다른 플레이어의 소리 듣기",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "몰입 모드",
             "helpText": "보다 몰입감 높은 경험을 제공하기 위해 플레이어 수, 글로벌 채팅 및 맵을 표시하지 않습니다."
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
           },
           "toggleMobileControls": "모바일 컨트롤러 표시",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
@@ -285,7 +290,8 @@
               "saveDownloading": "세이브 데이터 다운로드 중",
               "saveDownloaded": "세이브 데이터 다운로드 완료",
               "saveUpToDate": "세이브 데이터 업데이트",
-              "saveCleared": "세이브 데이터 삭제됨"
+              "saveCleared": "세이브 데이터 삭제됨",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "기본"
             }
           },
-          "search": "검색:&nbsp;"
+          "search": {
+            "label": "검색:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "ゆめにっき(유메닛키)",
       "2kki": "ゆめ２っき(유메2키)",
-      "cu": "Collective Unconscious",
+      "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "prayers": "Answered Prayers(이루어진 기도들)",
       "deepdreams": "Deep Dreams(딥 드림즈)",
@@ -477,12 +487,14 @@
       "mikan": "未完夢像(미완몽상)",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "저장하지 않은 게임 진행 상황이 손실됩니다. 정말 창을 닫으시겠습니까?",
     "logout": "정말 로그아웃 하시겠습니까?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "연결 끊김",
       "1": "연결됨",
@@ -491,6 +503,7 @@
     },
     "lastOnline": {
       "template": "마지막 접속\n{INTERVAL} 전",
+      "longTime": "A long time ago",
       "interval": {
         "short": "방금",
         "minutes": {
@@ -517,7 +530,7 @@
       "playing": "{GAME} 플레이 중"
     },
     "locationDisplay": {
-      "template": "{LOCATION}（{LOCATION_EN}）",
+      "template": "{LOCATION}",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）"
       }
@@ -549,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "멘션 {PLAYER}"
       },
@@ -643,6 +656,7 @@
       "partyOwner": "파티 리더",
       "confirmDisband": "정말 파티를 해산하시겠습니까? 이 결정은 되돌릴 수 없습니다.",
       "confirmTransferPartyOwner": "정말 {PLAYER} 님을 파티 리더로 임명하시겠습니까?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "온라인 - {COUNT}",
         "offline": "오프라인 - {COUNT}"
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "새로운 배지를 해금하였습니다!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "스크린샷이 촬영되었습니다"
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "{SLOT}번 슬롯의 세이브 데이터를 다운로드합니다...",
         "saveDownloaded": "{SLOT}번 슬롯의 세이브 데이터를 다운로드 했습니다.",
         "saveUpToDate": "세이브 데이터가 업데이트 되었습니다.",
-        "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다."
+        "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "배지 없음",
+      "allCategory": "전체",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
       "location": "장소 :&nbsp;",

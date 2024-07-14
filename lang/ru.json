@@ -113,6 +113,7 @@
               "slim": "Тонкие"
             }
           },
+          "saveReminder": "Save Reminder Frequency",
           "soundVolume": "Громкость звуков",
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
@@ -124,7 +125,11 @@
             "label": "Режим Погружения",
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+          },
+          "toggleMobileControls": "Управление с экрана",
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
           "togglePreloads": {
@@ -285,7 +290,8 @@
               "saveDownloading": "Загрузка сохранения",
               "saveDownloaded": "Загрузка завершена",
               "saveUpToDate": "Сохранение актуально",
-              "saveCleared": "Сохранение очищено"
+              "saveCleared": "Сохранение очищено",
+              "saveReminder": "Save Reminder"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "По-умолчанию"
             }
           },
-          "search": "Поиск:&nbsp;"
+          "search": {
+            "label": "Поиск:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
@@ -386,7 +396,7 @@
       },
       "myScreenshots": {
         "title": "Ваши снимки",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
+        "screenshotSlotProgress": "До следующего слота (ОЗ)",
         "empty": "Вы ещё не сохранили ни одного снимка."
       },
       "communityScreenshots": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
-      "cu": "Collective Unconscious",
+      "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -477,12 +487,14 @@
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "Вы уверены, что хотите покинуть страницу? Весь несохранённый прогресс будет утерян.",
     "logout": "Вы уверены, что хотите выйти из аккаунта?",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "Вне сети",
       "1": "В сети",
@@ -491,6 +503,7 @@
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
+      "longTime": "A long time ago",
       "interval": {
         "short": "Менее минуты",
         "minutes": {
@@ -508,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Вычисляем место...",
       "unknownLocation": "Неизвестно",
       "2kki": {
@@ -549,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME} ({WEEKDAY})"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "Упомянуть {PLAYER}"
       },
@@ -641,8 +654,9 @@
       "yourParty": "Ваша группа",
       "defaultPartyName": "Группа {OWNER}",
       "partyOwner": "Глава группы",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmDisband": "Вы уверенны, что хотите распустить группу? Роспуск нельзя отменить.",
+      "confirmTransferPartyOwner": "Вы уверенны, что хотите передать лидерство в группе игроку {PLAYER}?",
+      "offlineMemberSuffix": "Member offline",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"
@@ -667,8 +681,8 @@
         "chatHistoryLimit": "Если история чата становится слишком длинной, это может привести к проблемам с производительностью. В Настройках чата вы можете изменить лимит истории чата.",
         "parties": "Группы - хороший способ путешествовать вместе с другими людьми. Вы можете видеть местонахождение других участников группы и общаться с ними в отдельном канале чата.",
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте Режим Погружения. В нём скрывается общий чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "friendsMenu": "Если вы нажмёте правой клавишей мыши на ПК или будете удерживать нажатой пальцем иконку игрока вне Таблицы рекордов, то появится окошко, где вы сможете отправить игроку запрос в друзья, упомянуть в чате или заблокировать.",
+        "easySettingsMenu": "Если вы играете с ПК, то при нажатии клавиши F1 во время игры вы можете получить доступ к меню настроек, где вы можете переназначить управление, а так-же изменить некоторые другие настройки.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
@@ -693,7 +707,7 @@
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "Вы уверенны, что хотите удалить данные облачного сохранения для данной игры? Если у вас нет локальной копии сохранения, эти данные будут утеряны безвозвратно."
     },
     "toast": {
       "system": {
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "Значок разблокирован!"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "Снимок игрового экрана успешно сделан."
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "Обновляем данные из слота {SLOT}...",
         "saveDownloaded": "Слот {SLOT} успешно обновлён.",
         "saveUpToDate": "Данные слота актуальны.",
-        "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах."
+        "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах.",
+        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "Нет значка",
+      "allCategory": "Все",
       "badgeTitle": "{TITLE} - {BP} ОЗ",
       "locked": "???",
       "location": "Локация:&nbsp;",
@@ -861,8 +877,8 @@
         "fuji_ex": "FUJI EX",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
-        "panerabbit": "PANErabbit"
+        "ta_be_hardcore": "TA_BE_ - Хардкорный режим",
+        "panerabbit": "ПЛИТО-Кролик"
       }
     },
     "screenshots": {

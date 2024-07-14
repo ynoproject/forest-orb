@@ -113,6 +113,7 @@
               "slim": "スリム"
             }
           },
+          "saveReminder": "セーブリマインダーの頻度",
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
@@ -123,6 +124,10 @@
           "toggleImmersionMode": {
             "label": "没入モード",
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
+          },
+          "timeTrialinfo": {
+            "label": "Time Trial",
+            "helpText": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
           },
           "toggleMobileControls": "モバイルコントローラーを表示",
           "toggleLocationDisplay": "場所 表示",
@@ -285,7 +290,8 @@
               "saveDownloading": "セーブデータダウンロード開始通知",
               "saveDownloaded": "セーブデータダウンロード通知",
               "saveUpToDate": "セーブデータ更新通知",
-              "saveCleared": "セーブデータ消去通知"
+              "saveCleared": "セーブデータ消去通知",
+              "saveReminder": "セーブリマインダー"
             }
           }
         }
@@ -325,7 +331,11 @@
               "default": "デフォルト"
             }
           },
-          "search": "検索："
+          "search": {
+            "label": "検索：",
+            "name": "名：",
+            "location": "場所："
+          }
         }
       },
       "badgeGallery": {
@@ -464,7 +474,7 @@
       "ynoproject": "YNOproject",
       "yume": "ゆめにっき",
       "2kki": "ゆめ２っき",
-      "cu": "Collective Unconscious",
+      "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
@@ -477,12 +487,14 @@
       "mikan": "未完夢像",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "梦通信",
       "nostalgic": "nostAlgic"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
+    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
@@ -491,6 +503,7 @@
     },
     "lastOnline": {
       "template": "最後のプレイ\n{INTERVAL}",
+      "longTime": "かなり前",
       "interval": {
         "short": "1分以内",
         "minutes": {
@@ -549,7 +562,7 @@
       "time": "{TIME}",
       "timeAndWeekday": "{TIME}（{WEEKDAY}）"
     },
-     "context": {
+    "context": {
       "ping": {
         "label": "{PLAYER}にメンション"
       },
@@ -643,6 +656,7 @@
       "partyOwner": "パーティーリーダー",
       "confirmDisband": "本当にこのパーティを解散しますか？この操作は取り消せません。",
       "confirmTransferPartyOwner": "パーティのリーダー権を{PLAYER}に譲渡してもよろしいですか？",
+      "offlineMemberSuffix": "オフラインのメンバー",
       "categories": {
         "online": "オンライン - {COUNT}",
         "offline": "オフライン - {COUNT}"
@@ -742,7 +756,7 @@
       "badges": {
         "badgeUnlocked": "バッジを獲得しました！"
       },
-     "screenshots": {
+      "screenshots": {
         "screenshotTaken": "スクリーンショットが撮影されました。"
       },
       "saveSync": {
@@ -751,7 +765,8 @@
         "saveDownloading": "スロット{SLOT}のセーブデータを更新中...",
         "saveDownloaded": "スロット{SLOT}のセーブデータが更新されました。",
         "saveUpToDate": "セーブデータは最新です。",
-        "saveCleared": "セーブデータ同期が消去されました。なお、端末内に保存されているセーブデータには影響ありません。"
+        "saveCleared": "セーブデータ同期が消去されました。なお、端末内に保存されているセーブデータには影響ありません。",
+        "saveReminder": "進行状況を失わないように、こまめなセーブとセーブファイルのバックアップを忘れずに。"
       }
     },
     "events": {
@@ -781,6 +796,7 @@
     },
     "badges": {
       "null": "バッジなし",
+      "allCategory": "全",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "？？？",
       "location": "場所：",

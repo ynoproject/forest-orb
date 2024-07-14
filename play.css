@@ -1334,7 +1334,6 @@ body.fullBg #background {
 }
 
 .subTab.active {
-  pointer-events: none;
   cursor: default;
 }
 
@@ -1368,10 +1367,6 @@ body.fullBg #background {
 
 .subTab.active .subTabBg {
   opacity: 0.25;
-}
-
-.subTabLabel {
-  pointer-events: none;
 }
 
 .notificationCount {
@@ -2101,7 +2096,7 @@ body.fullBg #background {
   text-decoration: none;
 }
 
-.modal input, .modal textarea, .modal select, .modal .checkbox, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
+.modal input, .modal textarea, .modal select, .modal .checkbox, .modal .dropdown, .modal button.checkboxButton, .modal button[type="button"], .modal button[type="submit"] {
   color: rgb(var(--modal-base-color)) !important;
   border-image-source: var(--modal-border-image-url) !important;
   background-color: rgb(var(--modal-base-bg-color)) !important;
@@ -2456,6 +2451,7 @@ body.fullBg #background {
   flex-wrap: wrap;
   width: 100%;
   margin-bottom: 8px;
+  row-gap: 4px;
 }
 
 .modalTab {
@@ -3659,4 +3655,186 @@ form .uiTheme {
   .badge:not(.scaledBadge):not(.overlayBadge) {
     image-rendering: auto;
   }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .fullscreenModal {
+    top: 16px;
+    left: 8px;
+    width: calc(100% - 70px);
+    height: calc(100%);
+  }
+
+  .itemContainer .item {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .screenshotItem {
+    width: 136px;
+    padding-bottom: 12px;
+  }
+
+  .badgeItem,
+  .uiThemeItem {
+    padding-bottom: 12px;
+  }
+
+  .screenshotItem .screenshotThumbnailContainer {
+    height: 90px;
+  }
+
+  .screenshotItem .spoilerLabel {
+    margin: -60px;
+  }
+
+  .modalTitle {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .screenshotControls {
+    width: 112px;
+  }
+
+  .screenshotThumbnail {
+    width: 120px;
+    height: 90px;
+  }
+
+  .itemContainer .item {
+    margin: 0;
+  }
+
+  .modalContent {
+    justify-content: space-evenly;
+    padding-top: 12px;
+  }
+
+  .modalInfoContainer {
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+  }
+
+  h3 {
+    margin: 8px;
+  }
+
+  .screenshotSlotProgressContainer {
+    padding-bottom: 12px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  h1,
+  h3 {
+    margin: 8px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #connStatusText {
+    display: none;
+  }
+
+  #layout:fullscreen #chatboxContainer {
+    height: calc(100% - 24px);
+  }
+
+  .fullscreenModal {
+    top: 16px;
+    height: 80%;
+    max-height: unset;
+  }
+
+  .itemContainer .item {
+    margin: 12px;
+  }
+}
+
+.infiniteScrollContainer {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+#uiThemesModal .itemContainer {
+  place-items: end;
+}
+
+@media only screen and (orientation: portrait), only screen and (height < 768px) {
+  #badgeGameTabs, #badgeCategoryTabs {
+    flex-wrap: nowrap;
+    min-height: 38px;
+    overflow-x: scroll;
+    white-space: nowrap;
+  }
+    
+  #badgeCategoryTabs {
+    min-height: 20px;
+  }
+
+  /* https://stackoverflow.com/questions/11387805/media-query-to-detect-if-device-is-touchscreen */
+  @media (hover: none), (hover: on-demand), (-moz-touch-enabled: 1), (pointer: coarse) {
+    #badgeGameTabs, #badgeCategoryTabs {
+      scrollbar-width: none;
+    }
+  }
+}
+
+#badgeCategoryTabs:empty {
+  display: none;
+}
+
+#badgeCategoryTabs {
+  border-bottom: 4px solid transparent;
+  border-image: var(--border-image-url) 8 repeat;
+}
+
+.dropdown {
+  position: fixed;
+  margin-left: 60px;
+  width: 194px;
+  border: 12px solid transparent;
+  border-image: var(--border-image-url) 8 repeat;
+  border-top: none;
+  z-index: 10;
+  background: black;
+}
+
+.dropdownItem {
+  padding-left: 4px;
+  line-height: 1.3em;
+  text-align: initial;
+  opacity: 0.5;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dropdownItem:not(:last-child) {
+  border-bottom: 4px solid transparent;
+  border-image: var(--border-image-url) 8 repeat;
+}
+
+.dropdownItem:focus,
+.dropdownItem:hover {
+  opacity: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  z-index: 11;
+  margin: 9px 0 0 8px;
+}
+
+#badgeSearch {
+  padding-right: 22px;
+}
+
+#badgeSearch.active {
+  padding-right: initial;
+  padding-left: 24px;
 }
