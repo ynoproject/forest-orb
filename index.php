@@ -169,6 +169,7 @@
           </div>
 
           <div id="canvasContainer">
+            <div id="crashFix"> </div>
             <canvas id="canvas" tabindex="-1"></canvas>
           </div>
 

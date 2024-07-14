@@ -108,6 +108,13 @@ let ynomojiConfig = {};
 
 let connStatus;
 
+if (hasTouchscreen) {
+  let crashFix = document.querySelector("#crashFix");
+  crashFix.style.cssText += "display: block; opacity: 0%;";
+  crashFix.style.width = window.getComputedStyle(document.querySelector("#canvas").width);
+  crashFix.style.height = window.getComputedStyle(document.querySelector("#canvas").height);
+}
+
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
   if (status === 1 && config.privateMode)
