@@ -1030,8 +1030,9 @@ function checkNewBadgeUnlocks() {
     })
     .then(unlockedBadgeIds => {
       if (unlockedBadgeIds) {
-        for (let b = 0; b < unlockedBadgeIds.length; b++)
-          showBadgeToastMessage('badgeUnlocked', 'info', unlockedBadgeIds[b]);
+        badgeCache?.full = true;
+        for (const badgeId of unlockedBadgeIds)
+          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
       }
     })
     .catch(err => console.error(err));
