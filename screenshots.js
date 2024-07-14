@@ -67,14 +67,14 @@ const screenshotSlotBpLevels = [
 ];
 
 function initScreenshotControls() {
-  document.getElementById('autoDownloadScreenshotsButton').onclick = function () {
+  document.getElementById('autoDownloadScreenshotsButton').onclick = function() {
     this.classList.toggle('toggled');
     const toggled = this.classList.contains('toggled');
     globalConfig.autoDownloadScreenshots = toggled;
     updateConfig(globalConfig, true);
   };
 
-  document.getElementById('screenshotResolution').onchange = function () {
+  document.getElementById('screenshotResolution').onchange = function() {
     globalConfig.screenshotResolution = this.value;
     updateConfig(globalConfig, true);
   };
@@ -105,15 +105,15 @@ function initScreenshotControls() {
     }
   });
 
-  communityScreenshotsGameSelect.onchange = function () {
+  communityScreenshotsGameSelect.onchange = function() {
     communityScreenshotsGame = this.value;
     initScreenshotsModal(true);
   };
-  document.getElementById('communityScreenshotsSortOrder').onchange = function () {
+  document.getElementById('communityScreenshotsSortOrder').onchange = function() {
     communityScreenshotsSortOrder = this.value;
     initScreenshotsModal(true);
   };
-  document.getElementById('communityScreenshotsInterval').onchange = function () {
+  document.getElementById('communityScreenshotsInterval').onchange = function() {
     communityScreenshotsInterval = this.value;
     initScreenshotsModal(true);
   };
@@ -172,7 +172,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
     playerModalTitle.innerHTML = getMassagedLabel(localizedMessages.screenshots.playerScreenshot, true).replace('{USER}', screenshotData.owner.name);
     playerModalTitle.classList.remove('hidden');
   }
-  
+
   openModal('screenshotModal', null, lastModal);
 }
 
@@ -215,22 +215,22 @@ function downloadScreenshot(url, date, gameId, resized) {
 
 function takeScreenshot() {
   // Use requestAnimationFrame to wait for the next repaint
-  requestAnimationFrame(function () {
+  requestAnimationFrame(function() {
     const screenshotCanvas = document.createElement('canvas');
     const screenshotContext = screenshotCanvas.getContext('2d');
 
     screenshotCanvas.width = 320;
     screenshotCanvas.height = 240;
-  
+
     screenshotContext.drawImage(canvas, 0, 0, 320, 240);
-  
+
     const url = screenshotCanvas.toDataURL();
 
     const dateTaken = new Date();
-    
+
     const mapId = cachedMapId;
 
-    const [ mapX, mapY ] = easyrpgPlayer.api.getPlayerCoords();
+    const [mapX, mapY] = easyrpgPlayer.api.getPlayerCoords();
 
     if (notificationConfig.all && notificationConfig.screenshots.all && notificationConfig.screenshots.screenshotTaken) {
       const toast = showScreenshotToastMessage('screenshotTaken', 'image', true, null, true);
@@ -318,10 +318,10 @@ function createCheckbox(id, labelText, checked = false) {
 
 // Filter Screenshots - When filter changes:
 function handleFilterInputs(event) {
-  setTimeout(function(){
+  setTimeout(function() {
     initScreenshotsModal(true);
   }, 250);
-  }
+}
 
 // Filter Screenshots - Main Function
 function addFilterInputs() {
@@ -343,7 +343,7 @@ function addFilterInputs() {
   checkboxContainer.appendChild(createCheckbox('mapnameInput', ' Map Name', true));
 
   if (checkboxContainer.children.length > 0) {
-  container.appendChild(checkboxContainer);
+    container.appendChild(checkboxContainer);
   }
 }
 
@@ -367,7 +367,7 @@ function initScreenshotsModal(isCommunity) {
 
     let levelSlotBp = 0;
     let prevLevelSlotBp = 0;
-    
+
     for (let sl = 0; sl < screenshotSlotBpLevels.length; sl++) {
       const slotBpLevel = screenshotSlotBpLevels[sl];
       levelSlotBp = Math.max(slotBpLevel.bp - prevLevelSlotBp, 0);
@@ -493,22 +493,22 @@ function initScreenshotsModal(isCommunity) {
       }
 
       // Filter Screenshots -  filter by text
-      let textFilter = document.getElementById('filterInput').value;
+      let textFilter = document.getElementById('filterInput')?.value;
 
-      if (!isCommunity || textFilter == ""){ 
-        screenshotItemsList.append(screenshotItem); 
-      }else {  
+      if (!isCommunity || textFilter == "") {
+        screenshotItemsList.append(screenshotItem);
+      } else {
         textFilter = textFilter.toLowerCase();
 
         // Filter Screenshots -  Check if location and filter matches
         if (document.getElementById('mapnameInput').checked && (screenshotItem.getElementsByClassName("screenshotLocation")[0]?.innerText.toLowerCase().includes(textFilter))) {
-              screenshotItemsList.append(screenshotItem);
+          screenshotItemsList.append(screenshotItem);
         }
 
         // Filter Screenshots -  Check if username and filter matches
         if (document.getElementById('usernameInput').checked && (screenshotItem.getElementsByClassName("nameText")[0]?.innerText.toLowerCase().includes(textFilter))) {
           screenshotItemsList.append(screenshotItem);
-        }  
+        }
       }
 
       initUiThemeContainerStyles(screenshotSystemName, screenshot.game, false, () => {
@@ -621,7 +621,7 @@ function initScreenshotsModal(isCommunity) {
       addScreenshots(screenshots);
     });
   }
-  
+
   addLoader(screenshotsModal);
 }
 
@@ -635,7 +635,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
     publicButton.classList.add('iconButton', 'toggleButton', 'altToggleButton', 'publicToggle');
     if (screenshot.public)
       publicButton.classList.add('toggled');
-    publicButton.onclick = function () {
+    publicButton.onclick = function() {
       const toggled = !this.classList.contains('toggled');
       apiFetch(`screenshot?command=setPublic&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
         if (!response.ok)
@@ -659,7 +659,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
   likeButton.classList.add('iconButton', 'toggleButton', 'altToggleButton');
   if (screenshot.liked)
     likeButton.classList.add('toggled', 'fillIcon');
-  likeButton.onclick = function () {
+  likeButton.onclick = function() {
     const toggled = !this.classList.contains('toggled');
     apiFetch(`screenshot?command=setLike&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
       if (!response.ok)
@@ -690,7 +690,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
     spoilerButton.classList.add('iconButton', 'offToggleButton', 'spoilerToggle');
     if (screenshot.spoiler)
       spoilerButton.classList.add('toggled');
-    spoilerButton.onclick = function () {
+    spoilerButton.onclick = function() {
       const toggled = !this.classList.contains('toggled');
       apiFetch(`screenshot?command=setSpoiler&id=${screenshot.id}&value=${toggled ? 1 : 0}`).then(response => {
         if (!response.ok)
@@ -709,7 +709,7 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
 
     const spoilerButtonOffIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     spoilerButtonOffIndicator.setAttribute('d', 'm-2 16l22-14');
-    
+
     spoilerButton.querySelector('svg').appendChild(spoilerButtonOffIndicator);
 
     screenshotControls.append(spoilerButton);
