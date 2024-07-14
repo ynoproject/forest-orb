@@ -1030,7 +1030,10 @@ function checkNewBadgeUnlocks() {
     })
     .then(unlockedBadgeIds => {
       if (unlockedBadgeIds) {
-        badgeCache?.full = true;
+        if (badgeCache) {
+          badgeCache.full = true;
+        }
+        
         for (const badgeId of unlockedBadgeIds)
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
       }
