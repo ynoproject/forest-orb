@@ -421,6 +421,7 @@ function initBadgeControls() {
     });
   };
 
+  /** Updates badge elements based on a `cacheIndex` assigned to them in {@linkcode getBadgeItem} */
   const updateBadgeModalOnly = () => {
     const cacheIndexes = Array.from({ length: badgeFilterCache.length }, (_, i) => i);
     cacheIndexes.sort((a, z) => badgeCompareFunc(badgeFilterCache[a], badgeFilterCache[z]));
@@ -756,7 +757,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       mapX: badge.mapX,
       mapY: badge.mapY,
       bp: badge.bp,
-      percent: badge.percent < 1 ? badge.percent * 100 : badge.percent * 10,
+      percent: badge.percent,
     };
     item.dataset.cacheIndex = badgeFilterCache.push(filterItem) - 1;
   }
@@ -870,8 +871,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       if (!badge.secret && !badge.secretCondition && badge.goalsTotal > 1)
         tooltipContent += `${getMassagedLabel(localizedMessages.badges.goalProgress).replace('{CURRENT}', badge.goals).replace('{TOTAL}', badge.goalsTotal)}<br>`;
 
-      const percentMultiplier = badge.percent < 1 ? 100 : 10;
-      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * percentMultiplier) / percentMultiplier)}`;
+      // For displaying the percentage, we want to round it down to two digits if < 1, and one otherwise.
+      const roundingRatio = badge.percent < 1 ? 100 : 10;
+      tooltipContent += `${getMassagedLabel(localizedMessages.badges.percentUnlocked).replace('{PERCENT}', Math.floor(badge.percent * roundingRatio) / roundingRatio)}`;
 
       if ((badge.unlocked || !badge.secret) && badge.art)
         tooltipContent += `<small class="tooltipCornerText">${getMassagedLabel(localizedMessages.badges.artCredit).replace('{ARTIST}', badge.art)}</small>`
