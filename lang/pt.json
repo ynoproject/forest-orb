@@ -521,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Achando Localização...",
       "unknownLocation": "Localização Inválida",
       "2kki": {

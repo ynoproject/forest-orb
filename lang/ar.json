@@ -521,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "({LOCATION_EN}) {LOCATION}",
       "queryingLocation": "...جاري الاستعلام عن الموقع",
       "unknownLocation": "موقع غير معروف",
       "2kki": {

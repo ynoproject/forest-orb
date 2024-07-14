@@ -521,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",	
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
       "2kki": {

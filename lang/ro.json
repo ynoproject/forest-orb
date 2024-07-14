@@ -521,7 +521,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Se consultă locația...",
       "unknownLocation": "Locație Necunoscută",
       "2kki": {
