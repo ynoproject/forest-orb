@@ -1,4 +1,4 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cu', 'deepdreams', 'flow', 'genie', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'unconscious', 'deepdreams', 'flow', 'genie', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
@@ -13,13 +13,14 @@ const gameDefaultSprite = {
   '2kki': 'syujinkou1',
   'amillusion': { sprite: 'parapluie ', idx: 1 },
   'braingirl': 'mikan2',
-  'cu': 'protag_main_01',
+  'unconscious': 'protag_main_01',
   'deepdreams': 'main',
   'flow': 'sabituki',
   'genie': 'syujinkou1',
   'mikan': 'syuzinkou_01',
   'muma': 'muma1',
   'nostalgic': 'syujinkou',
+  'oneshot': { sprite: 'niko1', idx: 4 },
   'oversomnia': 'player-01',
   'prayers': 'Flourette',
   'sheawaits': 'sprite-noelia',
@@ -35,7 +36,8 @@ const hasTouchscreen = window.matchMedia('(hover: none), (pointer: coarse)').mat
 const tippyConfig = {
   arrow: false,
   animation: 'scale',
-  allowHTML: true
+  allowHTML: true,
+  touch: ['hold', 400],
 };
 
 let easyrpgPlayer = {
@@ -334,7 +336,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
   if (messageType)
     tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
@@ -392,7 +394,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     };
   }
 
-  if (loginToken) {
+  if (loginToken && player.account) {
     playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
       let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
       if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
@@ -650,6 +652,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
                     break;
+                  case 'saveReminder':
+                    document.getElementById('saveReminder').value = value;
+                    setSaveReminder(value, true);
+                    break;
                   case 'gameChat':
                     if (value)
                       document.getElementById('gameChatButton').click();
@@ -709,8 +715,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
                   case 'rulesReviewed':
-                    if (value)
-                      document.getElementById('chatInput').removeEventListener('click', showRules);
+                    break;
                 }
               } else {
                 switch (key) {
