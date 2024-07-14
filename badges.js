@@ -1031,7 +1031,7 @@ function checkNewBadgeUnlocks() {
     .then(unlockedBadgeIds => {
       if (unlockedBadgeIds) {
         if (badgeCache) {
-          badgeCache.full = true;
+          badgeCache.full = false;
         }
         
         for (const badgeId of unlockedBadgeIds)
