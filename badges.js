@@ -7,6 +7,7 @@
   @property {string} group
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
+  @property {boolean} newUnlock
 */
 
 /**
@@ -949,6 +950,9 @@ function fetchPlayerBadges(callback) {
       return response.json();
     })
     .then(badges => {
+      for (const { badgeId, newUnlock } of badges)
+        if (newUnlock)
+          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
       badgeCache = badges;
       badgeCache.full = true;
       callback?.(badgeCache);
@@ -964,12 +968,10 @@ function updateBadges(callback) {
       return response.json();
     })
     .then(badges => {
-      const newUnlockedBadges = badges.filter(b => b.newUnlock);
-
-      if (!badgeCache?.full) badgeCache = badges;
-
-      for (let b = 0; b < newUnlockedBadges.length; b++)
-        showBadgeToastMessage('badgeUnlocked', 'info', newUnlockedBadges[b].badgeId);
+      for (const { badgeId, newUnlock } of badges)
+        if (newUnlock)
+          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+      badgeCache = badges;
 
       if (badgeCacheUpdateTimer)
         clearInterval(badgeCacheUpdateTimer);
