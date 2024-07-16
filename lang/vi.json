@@ -113,7 +113,7 @@
               "slim": "Phông nhỏ"
             }
           },
-	  "saveReminder": "Tần suất nhắc lưu trò chơi",
+          "saveReminder": "Tần suất nhắc lưu trò chơi",
           "soundVolume": "Âm lượng âm thanh",
           "musicVolume": "Âm lượng nhạc",
           "togglePlayerSounds": "Âm thanh người chơi",
@@ -125,9 +125,8 @@
             "label": "Chế độ Đắm chìm",
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
-	  "timeTrialinfo": {
-            "label": "Thử thách Hẹn giờ",
-            "helpText": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
+          "timeTrialinfo": {
+            "label": "Thử thách Hẹn giờ"
           },
           "toggleMobileControls": "Hiện điều khiển cho thiết bị di động",
           "toggleLocationDisplay": "Hiện tên địa điểm trong cửa sổ",
@@ -341,7 +340,11 @@
       "badgeGallery": {
         "title": "Quản lý Kho Huy hiệu",
         "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
-        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
+        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)",
+        "removeMode": {
+          "activate": "Gỡ huy hiệu",
+          "deactivate": "Hoàn tất"
+        }
       },
       "save": {
         "title": "Quản lý Dữ liệu lưu",
@@ -465,7 +468,8 @@
       "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
-      "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá"
+      "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
+      "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
     },
     "reviewRules": "Xem Nội quy"
   },
@@ -521,19 +525,19 @@
       }
     },
     "location": {
-      "template": "{LOCATION} ({LOCATION_EN})",	
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Đang tìm địa điểm...",
       "unknownLocation": "Không rõ Địa điểm",
       "2kki": {
         "template": "{LOCATION}"
       },
       "playing": "Đang chơi {GAME}"
-    },	
-    "locationDisplay": {	
-      "template": "{LOCATION}",	
-      "2kki": {	
-        "template": "{LOCATION}"	
-      }	
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+        "template": "{LOCATION}"
+      }
     },
     "playersOnline": {
       "singular": "{COUNT} Người chơi Online",

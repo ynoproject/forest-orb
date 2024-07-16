@@ -126,8 +126,7 @@
             "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Mobil Kontrolleri Göster",
           "toggleLocationDisplay": "Konum Göstergesi",
@@ -341,7 +340,11 @@
       "badgeGallery": {
         "title": "Rozet Galerisini Yönet",
         "badgeGalleryRowProgress": "Sonraki Sıra Güçlendirmesi(BP)",
-        "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)"
+        "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Kayıt Verisini Yönet",
@@ -465,7 +468,8 @@
       "communityScreenshots": "Topluluk Ekran Görüntüleri",
       "rankings": "Sıralamalar",
       "nexus": "Bağlantı Noktası'na Geri Dön",
-      "explorerUndiscoveredLocations": "Keşfedilmeyen Konumları Görüntüle"
+      "explorerUndiscoveredLocations": "Keşfedilmeyen Konumları Görüntüle",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Kuralları Göster"
   },

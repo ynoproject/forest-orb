@@ -910,7 +910,7 @@
           </div>
           <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
           <div class="modalFooter">
-            <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeBadges">Remove Badges</button>
+            <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeMode.activate">Remove Badges</button>
           </div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">

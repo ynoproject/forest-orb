@@ -126,8 +126,7 @@
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
+            "label": "Time Trial"
           },
           "toggleMobileControls": "モバイルコントローラーを表示",
           "toggleLocationDisplay": "場所 表示",
@@ -341,7 +340,11 @@
       "badgeGallery": {
         "title": "バッジギャラリー設定",
         "badgeGalleryRowProgress": "次の行追加まで（BP）",
-        "badgeGalleryColProgress": "次の列追加まで（バッジ）"
+        "badgeGalleryColProgress": "次の列追加まで（バッジ）",
+        "removeMode": {
+          "activate": "バッジを削除する",
+          "deactivate": "戻る"
+        }
       },
       "save": {
         "title": "セーブデータ管理",
@@ -465,7 +468,8 @@
       "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
-      "explorerUndiscoveredLocations": "未発見の場所を見る"
+      "explorerUndiscoveredLocations": "未発見の場所を見る",
+      "timeTrial": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
     },
     "reviewRules": "ルールを見る"
   },

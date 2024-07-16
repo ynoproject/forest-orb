@@ -644,9 +644,9 @@ function initBadgeControls() {
     this.classList.remove('dropTarget');
     const { badgeId, row, col } = this.dataset;
     const { row: srcRow, col: srcCol, badgeId: srcBadgeId } = draggedBadge.dataset;
-    updatePlayerBadgeSlot(srcBadgeId, row, col, async () => {
+    updatePlayerBadgeSlot(srcBadgeId, +row, +col, async () => {
       if (srcBadgeId === 'null')
-        await new Promise(resolve => updatePlayerBadgeSlot(badgeId, srcRow, srcCol, resolve));
+        await new Promise(resolve => updatePlayerBadgeSlot(badgeId, +srcRow, +srcCol, resolve));
       // Don't call updateBadgeSlots here, just swap manually.
       badgeSlotCache[+srcRow - 1][+srcCol - 1] = badgeId;
       badgeSlotCache[+row - 1][+col - 1] = srcBadgeId;
@@ -702,7 +702,10 @@ function initBadgeControls() {
 
   document.getElementById('removeBadgesButton').onclick = function() {
     const removing = badgeGalleryModalContent.classList.toggle('removing');
-    this.innerText = removing ? 'Done' : 'Remove Badges';
+    if (removing)
+      this.innerHTML = getMassagedLabel(i18next.t('modal.badgeGallery.removeMode.deactivate', 'Done'));
+    else
+      this.innerHTML = getMassagedLabel(i18next.t('modal.badgeGallery.removeMode.activate', 'Remove Badges'));
   };
 }
 
@@ -1080,6 +1083,7 @@ function updatePlayerBadge(badgeId, callback) {
     .catch(err => console.error(err));
 }
 
+/** `slowRow` and `slotCol` are 1-based indexes. */
 function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
   apiFetch(`badge?command=slotSet&id=${badgeId}&row=${slotRow}&col=${slotCol}`)
     .then(response => {
