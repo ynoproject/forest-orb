@@ -3844,3 +3844,26 @@ form .uiTheme {
   padding-right: initial;
   padding-left: 24px;
 }
+
+[draggable="true"] {
+  -webkit-user-drag: element;
+}
+
+.dragging {
+  opacity: 0.25;
+}
+
+.dropTarget {
+  background: white;
+}
+
+.removing .item:not([data-badge-id="null"]),
+.item.removing {
+  background-color: #a00;
+}
+
+.dropTarget .badgeContainer,
+.item.removing .badgeContainer,
+.removing .item:not([data-badge-id="null"]) .badgeContainer {
+  opacity: 0.5;
+}

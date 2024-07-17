@@ -126,8 +126,7 @@
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Управление с экрана",
           "toggleLocationDisplay": "Отображение локации",
@@ -341,7 +340,11 @@
       "badgeGallery": {
         "title": "Галерея значков",
         "badgeGalleryRowProgress": "До следующей строки (ОЗ)",
-        "badgeGalleryColProgress": "До следующей колонки (значков)"
+        "badgeGalleryColProgress": "До следующей колонки (значков)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Управление данными сохранений",
@@ -465,7 +468,8 @@
       "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
-      "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации"
+      "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Просмотреть правила"
   },

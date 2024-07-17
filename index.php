@@ -909,6 +909,9 @@
             </div>
           </div>
           <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
+          <div class="modalFooter">
+            <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeMode.activate">Remove Badges</button>
+          </div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -1666,6 +1669,7 @@
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>
   <script type="text/javascript" src="account.js"></script>
+  <script type="text/javascript" src="vendor/DragDropTouch.js"></script>
 
   <?php if ($enableBadgeTools): ?>
   <script type="text/javascript" src="https://unpkg.com/vue@3"></script>
