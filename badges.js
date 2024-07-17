@@ -208,7 +208,7 @@ function initBadgeControls() {
       let systemName;
       for (const badge of playerBadges) {
         // yield back to the game loop to prevent audio cracking
-        if (badgeCount++ % 150 === 0) await yieldImmediately();
+        if (badgeCount++ % 40 === 0) await yieldImmediately();
 
         if (!gameBadges[badge.game]) {
           if (badge.game !== 'ynoproject') {
@@ -1107,7 +1107,7 @@ function checkNewBadgeUnlocks() {
         if (badgeCache) {
           badgeCache.full = false;
         }
-        
+
         for (const badgeId of unlockedBadgeIds)
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
       }
@@ -1354,3 +1354,44 @@ function showBadgeToastMessage(key, icon, badgeId) {
     }
   }
 }
+
+/** @param {Element} element The element on which two-finger panning should be applied. */
+function setUpTwoFingerPan(element, contentElement) {
+  if (!contentElement) contentElement = element;
+  if (!(element && contentElement)) return;
+
+  let lastTouches = [];
+
+  element.addEventListener('touchstart', (event) => {
+    if (event.touches.length >= 2) {
+      lastTouches = [...event.touches];
+    }
+  });
+  element.addEventListener('touchmove', event => {
+    if (event.touches.length >= 2) {
+      const dx1 = lastTouches[0].clientX - event.touches[0].clientX;
+      const dy1 = lastTouches[0].clientY - event.touches[0].clientY;
+      const dx2 = lastTouches[1].clientX - event.touches[1].clientX;
+      const dy2 = lastTouches[1].clientY - event.touches[1].clientY;
+
+      const dx = (dx1 + dx2) / 2;
+      const dy = (dy1 + dy2) / 2;
+
+      lastTouches = [...event.touches];
+      contentElement.scrollBy(dx, dy);
+    }
+  });
+
+  element.addEventListener('touchend', event => {
+    // This handler is fired for each finger that is released during a pan.
+    // If panning, we must preventDefault all touchend events, otherwise the polyfill
+    // wrongly considers it a click.
+    if (lastTouches.length && lastTouches.length-- > 0) event.preventDefault();
+  });
+
+  element.addEventListener('touchcancel', (event) => {
+    lastTouches.length = 0;
+  });
+}
+
+setUpTwoFingerPan(badgeGalleryModalContent);
