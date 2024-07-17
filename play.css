@@ -3684,7 +3684,7 @@ form .uiTheme {
 
   .badgeItem,
   .uiThemeItem {
-    padding-bottom: 12px;
+    margin-bottom: 12px;
   }
 
   .screenshotItem .screenshotThumbnailContainer {
