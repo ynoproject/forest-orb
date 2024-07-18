@@ -783,6 +783,8 @@ function initBadgeGalleryModal() {
         if (!badge)
           badge = { badgeId: 'null' };
         badgeSlotButton.classList.toggle('hidden', r > badgeSlotRows || c > badgeSlotCols);
+        badgeSlotButton.classList.remove('dropTarget', 'dragging');
+        badgeSlotButton.draggable = true;
         badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
         badgeSlotButton.dataset.badgeId = badge.badgeId;
         if (badge?.overlayType & BadgeOverlayType.LOCATION)
@@ -1365,10 +1367,14 @@ function setUpTwoFingerPan(element, contentElement) {
   element.addEventListener('touchstart', (event) => {
     if (event.touches.length >= 2) {
       lastTouches = [...event.touches];
+      event.preventDefault();
+    } else {
+      lastTouches.length = 0;
     }
   });
   element.addEventListener('touchmove', event => {
-    if (event.touches.length >= 2) {
+    if (event.touches.length >= 2 && lastTouches.length >= 2) {
+      event.preventDefault();
       const dx1 = lastTouches[0].clientX - event.touches[0].clientX;
       const dy1 = lastTouches[0].clientY - event.touches[0].clientY;
       const dx2 = lastTouches[1].clientX - event.touches[1].clientX;
@@ -1379,14 +1385,15 @@ function setUpTwoFingerPan(element, contentElement) {
 
       lastTouches = [...event.touches];
       contentElement.scrollBy(dx, dy);
-    }
+      // block further events until all fingers are released
+    } else if (lastTouches.length) event.preventDefault();
   });
 
   element.addEventListener('touchend', event => {
     // This handler is fired for each finger that is released during a pan.
     // If panning, we must preventDefault all touchend events, otherwise the polyfill
     // wrongly considers it a click.
-    if (lastTouches.length && lastTouches.length-- > 0) event.preventDefault();
+    if (lastTouches.length && lastTouches.length-- >= 0) event.preventDefault();
   });
 
   element.addEventListener('touchcancel', (event) => {
