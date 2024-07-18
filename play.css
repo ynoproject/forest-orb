@@ -3771,16 +3771,17 @@ form .uiTheme {
   place-items: end;
 }
 
+/* Collapse tabs into horizontal strip */
 @media only screen and (orientation: portrait), only screen and (height < 768px) {
   #badgeGameTabs, #badgeCategoryTabs {
     flex-wrap: nowrap;
-    min-height: 38px;
+    min-height: 3.1rem;
     overflow-x: scroll;
     white-space: nowrap;
   }
     
   #badgeCategoryTabs {
-    min-height: 20px;
+    min-height: 2.2rem;
   }
 
   /* https://stackoverflow.com/questions/11387805/media-query-to-detect-if-device-is-touchscreen */
