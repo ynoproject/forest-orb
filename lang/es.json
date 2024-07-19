@@ -113,7 +113,13 @@
               "slim": "Delgado"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volumen de Sonido",
           "musicVolume": "Volumen de Música",
           "togglePlayerSounds": "Sonidos de Jugadores",
@@ -126,8 +132,7 @@
             "helpText": "Desactiva el contador de jugadores, el chat global y el indicador de mapas con el objetivo de entregar una experiencia inmersiva"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Mostrar Ubicación",
@@ -331,13 +336,21 @@
               "default": "Predeterminado"
             }
           },
-          "search": "Buscar:&nbsp;"
+          "search": {
+            "label": "Buscar:&nbsp;",
+            "name": "Nombre:",
+            "location": "Ubicación:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Galería de Medallas",
         "badgeGalleryRowProgress": "Siguiente Mejora de Filas (BP)",
-        "badgeGalleryColProgress": "Siguiente Mejora de Columnas (Medallas)"
+        "badgeGalleryColProgress": "Siguiente Mejora de Columnas (Medallas)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gestionar Datos de Guardado",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Community Screenshots",
       "rankings": "Clasificaciones",
       "nexus": "Regresar al Nexo",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "View Undiscovered Locations",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Ver Reglas"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Buscando Ubicación...",
       "unknownLocation": "Ubicación Desconocida",
       "2kki": {

@@ -113,7 +113,13 @@
               "slim": "Slab"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volum Sunet",
           "musicVolume": "Volum Muzică",
           "togglePlayerSounds": "Sunete Jucători",
@@ -126,8 +132,7 @@
             "helpText": "Dezactivează numărul de jucători, chat-ul global și hărțile pentru a-ți oferi o experiență mai captivantă."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Afișare Locație",
@@ -331,13 +336,21 @@
               "default": "Implicită"
             }
           },
-          "search": "Caută:&nbsp;"
+          "search": {
+            "label": "Caută:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Gestionează Galerie de Insigne",
         "badgeGalleryRowProgress": "Următorul Rând (PI)",
-        "badgeGalleryColProgress": "Următoarea Coloană (Insigne)"
+        "badgeGalleryColProgress": "Următoarea Coloană (Insigne)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gestionează Datele Salvate",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Community Screenshots",
       "rankings": "Ranguri",
       "nexus": "Întoarce-te la Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "View Undiscovered Locations",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Revizionează Regulile"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Se consultă locația...",
       "unknownLocation": "Locație Necunoscută",
       "2kki": {

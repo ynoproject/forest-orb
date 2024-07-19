@@ -113,7 +113,13 @@
               "slim": "Mince"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Fréquence du Rappel des Sauvegardes",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
@@ -126,8 +132,7 @@
             "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Contre-la-montre"
           },
           "toggleMobileControls": "Afficher les touches pour téléphone",
           "toggleLocationDisplay": "Affichage du Lieu",
@@ -331,13 +336,21 @@
               "default": "Défaut"
             }
           },
-          "search": "Rechercher :&nbsp;"
+          "search": {
+            "label": "Rechercher :&nbsp;",
+            "name": "Nom :",
+            "location": "Lieu :"
+          }
         }
       },
       "badgeGallery": {
         "title": "Gérer la galerie des badges",
         "badgeGalleryRowProgress": "Prochaine amélioration de la rangée (PB)",
-        "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)"
+        "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Captures d'écran de la communauté",
       "rankings": "Classement",
       "nexus": "Retourner au Nexus",
-      "explorerUndiscoveredLocations": "Voir les lieux non découverts"
+      "explorerUndiscoveredLocations": "Voir les lieux non découverts",
+      "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché."
     },
     "reviewRules": "Relire les règles"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Récupération du Lieu...",
       "unknownLocation": "Lieu Inconnu",
       "2kki": {
@@ -651,8 +665,8 @@
       "defaultPartyName": "Groupe de {OWNER}",
       "partyOwner": "Leader du groupe",
       "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
-      "offlineMemberSuffix": "Member offline",
+      "confirmTransferPartyOwner": "Êtes-vous sûr de vouloir transférer la propriété du groupe à {PLAYER} ?",
+      "offlineMemberSuffix": "Membre hors ligne",
       "categories": {
         "online": "En ligne - {COUNT}",
         "offline": "Hors ligne - {COUNT}"

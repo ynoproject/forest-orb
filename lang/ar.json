@@ -113,7 +113,13 @@
               "slim": "رفيع"
             }
           },
-          "saveReminder": "إشعار للحفظ",
+          "saveReminder":  {
+            "label": "إشعار للحفظ",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
@@ -126,8 +132,7 @@
             "helpText": "يقوم بإيقاف تشغيل عدد اللاعبين والمحادثة العالمية والخرائط لمنحك تجربة غامرة أكثر"
           },
           "timeTrialinfo": {
-            "label": "سباق الزمن",
-            "helpText": "لتفعيل وضع سباق الزمنو, اضغط مع الاستمرار على زر الشيفت و +  بعد بدء لعبة جديدة قبل ظهور أي شيء على الشاشة"
+            "label": "سباق الزمن"
           },
           "toggleMobileControls": "عرض ضوابط الهاتف",
           "toggleLocationDisplay": "عرض الموقع",
@@ -331,13 +336,21 @@
               "default": "افتراضي"
             }
           },
-          "search": "&nbsp;:البحث"
+          "search": {
+            "label": "&nbsp;:البحث",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "إدارة معرض الشارات",
         "badgeGalleryRowProgress": " (نقات الشارات) ترقية الصف التالي",
-        "badgeGalleryColProgress": "ترقية العمود التالي (شارات)"
+        "badgeGalleryColProgress": "ترقية العمود التالي (شارات)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "إدارة حفظ البيانات",
@@ -461,7 +474,8 @@
       "communityScreenshots": "لقطات الشاشة للجميع",
       "rankings": "المراتب",
       "nexus": "الرجوع إلى النكسس",
-      "explorerUndiscoveredLocations": "اظهار الاماكن الغير مكتشفة"
+      "explorerUndiscoveredLocations": "اظهار الاماكن الغير مكتشفة",
+      "timeTrial": "لتفعيل وضع سباق الزمنو, اضغط مع الاستمرار على زر الشيفت و +  بعد بدء لعبة جديدة قبل ظهور أي شيء على الشاشة"
     },
     "reviewRules": "مراجعة القواعد"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "({LOCATION_EN}) {LOCATION}",
       "queryingLocation": "...جاري الاستعلام عن الموقع",
       "unknownLocation": "موقع غير معروف",
       "2kki": {

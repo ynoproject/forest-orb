@@ -1,3 +1,22 @@
+/**
+ * @typedef {Object} MapTitle
+ * @property {string} title 
+ * @property {string} [urlTitle]
+ * @property {Object} [coords]
+ * @property {number} coords.x1
+ * @property {number} coords.x2
+ * @property {number} coords.y1
+ * @property {number} coords.y2
+ */
+
+/** 
+ * @typedef {string | MapTitle | (string | MapTitle)[] | Record<'else' | (string & {}), MapTitle>} MapDescriptor
+ * In the array form, the last element is customarily the fallback title.
+ *
+ * The third object form allows matching the correct world for map IDs shared between worlds:
+ * a mapping from the previous map ID Urotsuki was on to, to the matching map title.
+ */
+
 let localizedVersion;
 let localizedMessages;
 
@@ -6,7 +25,10 @@ let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
 
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameLocalizedMapLocations = {};
+
+/** @type {Record<string, Record<string, MapDescriptor>>} */
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
@@ -85,6 +107,25 @@ let locationColorCache;
 let ynomojiConfig = {};
 
 let connStatus;
+
+if (hasTouchscreen && iOS()) {
+  let crashFix = document.querySelector("#crashFix");
+  crashFix.style.cssText += "display: block; opacity: 0%;";
+  crashFix.style.width = window.getComputedStyle(document.querySelector("#canvas")).width;
+  crashFix.style.height = window.getComputedStyle(document.querySelector("#canvas")).height;
+}
+
+function iOS() {
+  return [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+  || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
 
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
@@ -1083,6 +1124,9 @@ initScreenshotControls();
 initEventControls();
 initRankingControls();
 
+if (!hasTouchscreen)
+  document.querySelector('#mobileControls').classList.add('hidden');
+
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
 if (gameId === '2kki') {
@@ -1487,10 +1531,22 @@ function setLang(lang, isInit) {
     updateConfig(globalConfig, true);
 }
 
+let saveReminderHandle;
+function resetSaveReminder() {
+  if (saveReminderHandle) clearTimeout(saveReminderHandle);
+  saveReminderHandle = null;
+  if (!globalConfig.saveReminder) return;
+  saveReminderHandle = setTimeout(() => {
+    showSaveSyncToastMessage('saveReminder', 'save', 1)
+    resetSaveReminder();
+  }, globalConfig.saveReminder * 60000);
+}
+
 function setSaveReminder(saveReminder, isInit) {
   globalConfig.saveReminder = saveReminder;
   if (!isInit)
     updateConfig(globalConfig, true);
+  resetSaveReminder();
 }
 
 function setName(name, isInit) {

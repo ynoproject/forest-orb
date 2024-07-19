@@ -76,6 +76,7 @@ const allGameUiThemes = {
     'PGR_SYS_02',
     'PGR_SYS_03',
     'ROKU95_menu',
+    'yumehako-sys3',
 
     'system_E_eye',
     'System_kuraud',

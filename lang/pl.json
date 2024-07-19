@@ -27,7 +27,7 @@
       }
     },
     "chatbox": {
-      "location": "Location:&nbsp;",
+      "location": "Lokalizacja:&nbsp;",
       "immersionMode": "Tryb immersji",
       "reconnect": "Połącz ponownie",
       "tab": {
@@ -113,7 +113,13 @@
               "slim": "Pomniejszone"
             }
           },
-          "saveReminder": "Częstotliwość powiadomień o zapisie",
+          "saveReminder": {
+            "label": "Częstotliwość powiadomień o zapisie",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Głośność dźwięków",
           "musicVolume": "Głośność muzyki",
           "togglePlayerSounds": "Dźwięki innych graczy",
@@ -126,10 +132,9 @@
             "helpText": "Wyłącza licznik ilości graczy, czat globalny i mapy dla immersyjnego doświadczenia"
           },
           "timeTrialinfo": {
-            "label": "Time Triale",
-            "helpText": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
+            "label": "Time Triale"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Pokaż sterowanie dotykowe",
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
           "toggleRankings": "Rankingi",
           "togglePreloads": {
@@ -331,13 +336,21 @@
               "default": "Domyślny"
             }
           },
-          "search": "Szukaj:&nbsp;"
+          "search": {
+            "label": "Szukaj:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Zarządzaj galerią odznak",
         "badgeGalleryRowProgress": "Następne powiększenie poziomo (BP)",
-        "badgeGalleryColProgress": "Następne powiększenie pionowo (Odznaki)"
+        "badgeGalleryColProgress": "Następne powiększenie pionowo (Odznaki)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Zarządzaj zapisami",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Zrzuty ekranu społeczności",
       "rankings": "Rankingi",
       "nexus": "Powróć do Nexusu",
-      "explorerUndiscoveredLocations": "Pokaż nieodkryte lokalizacje"
+      "explorerUndiscoveredLocations": "Pokaż nieodkryte lokalizacje",
+      "timeTrial": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
     },
     "reviewRules": "Sprawdź zasady"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Sprawdzanie lokalizacji...",
       "unknownLocation": "Nieznana lokalizacja",
       "2kki": {

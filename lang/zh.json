@@ -113,7 +113,13 @@
               "slim": "全名（小）"
             }
           },
-          "saveReminder": "存档提醒间隔",
+          "saveReminder": {
+            "label": "存档提醒间隔",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
@@ -126,8 +132,7 @@
             "helpText": "关闭聊天框等外置组件，仅显示游戏主界面"
           },
           "timeTrialinfo": {
-            "label": "计时模式",
-            "helpText": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。"
+            "label": "计时模式"
           },
           "toggleMobileControls": "显示移动端按键",
           "toggleLocationDisplay": "位置弹窗提示",
@@ -331,13 +336,21 @@
               "default": "默认"
             }
           },
-          "search": "搜索:&nbsp;"
+          "search": {
+            "label": "搜索:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "徽章展柜",
         "badgeGalleryRowProgress": "下一行展柜解锁进度 (BP)",
-        "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)"
+        "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "存档",
@@ -461,7 +474,8 @@
       "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
-      "explorerUndiscoveredLocations": "显示未探索地点"
+      "explorerUndiscoveredLocations": "显示未探索地点",
+      "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。"
     },
     "reviewRules": "多人游戏守则"
   },
@@ -526,7 +540,7 @@
       "playing": "正在游玩 {GAME}"
     },
     "locationDisplay": {
-      "template": "{LOCATION}（{LOCATION_EN}）",
+      "template": "{LOCATION}",
       "2kki": {
         "template": "{LOCATION_JP}（{LOCATION}）"
       }

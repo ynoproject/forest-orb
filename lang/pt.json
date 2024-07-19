@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Versão {VERSION}",
@@ -113,7 +113,13 @@
               "slim": "Slim"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volume do Som",
           "musicVolume": "Volume da Música",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
@@ -126,10 +132,9 @@
             "helpText": "Desativa a contagem de jogadores, o bate-papo global e os mapas para proporcionar uma experiência mais imersiva."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Mostrar Controles de Celular",
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
           "togglePreloads": {
@@ -331,13 +336,21 @@
               "default": "Padrão"
             }
           },
-          "search": "Buscar:&nbsp;"
+          "search": {
+            "label": "Buscar:&nbsp;",
+            "name": "Nome:",
+            "location": "Localização:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Painel da Galeria de Emblemas",
         "badgeGalleryRowProgress": "Atualização da Próxima Linha (PE)",
-        "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)"
+        "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gerenciar Dados Salvos",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Capturas de Tela da Comunidade",
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
-      "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos"
+      "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos",
+      "timeTrial": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela."
     },
     "reviewRules": "Ver Regras"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Achando Localização...",
       "unknownLocation": "Localização Inválida",
       "2kki": {

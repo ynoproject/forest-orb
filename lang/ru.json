@@ -113,7 +113,13 @@
               "slim": "Тонкие"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Громкость звуков",
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
@@ -126,8 +132,7 @@
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Управление с экрана",
           "toggleLocationDisplay": "Отображение локации",
@@ -331,13 +336,21 @@
               "default": "По-умолчанию"
             }
           },
-          "search": "Поиск:&nbsp;"
+          "search": {
+            "label": "Поиск:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Галерея значков",
         "badgeGalleryRowProgress": "До следующей строки (ОЗ)",
-        "badgeGalleryColProgress": "До следующей колонки (значков)"
+        "badgeGalleryColProgress": "До следующей колонки (значков)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Управление данными сохранений",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
-      "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации"
+      "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Просмотреть правила"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Вычисляем место...",
       "unknownLocation": "Неизвестно",
       "2kki": {

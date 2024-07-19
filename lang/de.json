@@ -113,7 +113,13 @@
               "slim": "Slim"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Player Sounds",
@@ -126,8 +132,7 @@
             "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Location Display",
@@ -331,13 +336,21 @@
               "default": "Default"
             }
           },
-          "search": "Search:&nbsp;"
+          "search": {
+            "label": "Search:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Manage Badge Gallery",
         "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)"
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Manage Save Data",
@@ -461,7 +474,8 @@
       "communityScreenshots": "Community Screenshots",
       "rankings": "Rankings",
       "nexus": "Return to Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "View Undiscovered Locations",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Review Rules"
   },
@@ -517,7 +531,7 @@
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Fragt standort ab...",
       "unknownLocation": "Unbekannter Ort",
       "2kki": {

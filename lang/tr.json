@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Konum:&nbsp;",
-      "immersionMode": "İmersiyon Modu",
+      "immersionMode": "Sürükleyicilik Modu",
       "reconnect": "Yeniden Bağlan",
       "tab": {
         "chat": "Sohbet",
@@ -113,7 +113,13 @@
               "slim": "Kısa"
             }
           },
-          "saveReminder": "Save Reminder Frequency",
+          "saveReminder": {
+            "label": "Save Reminder Frequency",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Ses Seviyesi",
           "musicVolume": "Müzik Seviyesi",
           "togglePlayerSounds": "Oyuncu Sesleri",
@@ -122,31 +128,30 @@
             "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Kaşifi entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."
           },
           "toggleImmersionMode": {
-            "label": "İmersiyon Modu",
+            "label": "Sürükleyicilik Modu",
             "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Mobil Kontrolleri Göster",
           "toggleLocationDisplay": "Konum Göstergesi",
           "toggleRankings": "Sıralama",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Ön Yüklemeler",
+            "helpText": "İhtiyaç olduğunda hazır olduklarından emin olmak için sık kullanılan oyun ögelerini önceden yükle; sayfayı yenilemeniz gerekir"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",
-        "screenshotSettings": "Screenshots",
+        "screenshotSettings": "Ekran Görüntüleri",
         "notificationSettings": "Bildirim",
         "accountSettings": "Hesap"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "Engel Listesi",
+        "empty": "Engel listeniz şimdilik boş"
       },
       "chatSettings": {
         "title": "Sohbet Ayarları",
@@ -157,7 +162,7 @@
             "party": "Parti Sohbeti Bindirme"
           },
           "toggleTabToChat": "Sohbet için Tab'a basın",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "togglePlayMentionSound": "Bahsetme Sesini Oynat",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -182,11 +187,11 @@
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Ekran Görüntüsü Ayarları",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Ekran Görüntülerini Otomatik Olarak İndir",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "İndirilecek Ekran Görüntülerinin Çözünürlüğü",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -225,23 +230,23 @@
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Kullanıcılar",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Kullanıcı Engellendi",
+              "playerUnblocked": "Kullanıcının Engeli Kaldırıldı"
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Arkadaşlar",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Arkadaş Eklendi",
+              "remove": "Arkadaş Çıkarıldı",
+              "accept": "Arkadaşlık İsteği Kabul Edildi",
+              "reject": "Arkadaşlık İsteği Reddedildi",
+              "cancel": "Arkadaşlık İsteği İptal Edildi",
+              "incoming": "Gelen Arkadaşlık İsteği",
+              "playerOnline": "Arkadaş Çevrimiçi",
+              "playerOffline": "Arkadaş Çevrimdışı"
             }
           },
           "parties": {
@@ -252,20 +257,20 @@
               "join": "Partiye Girildi",
               "leave": "Partiden Çıkıldı",
               "remove": "Partiden Çıkarıldı",
-              "disband": "Parti Ayırıldı",
+              "disband": "Parti Dağıtıldı",
               "playerJoin": "Kullanıcı Partiye Katıldı",
               "playerLeave": "Kullanıcı Partiden Ayrıldı",
               "playerOnline": "Parti Üyesi Çevrimiçi",
               "playerOffline": "Parti Üyesi Çevrimdışı",
               "kickPlayer": "Kullanıcı Partiden Atıldı",
-              "transferPartyOwner": "Kullanıcı Parti Liderine Yükseltildi"
+              "transferPartyOwner": "Kullanıcı Parti Lideri Oldu"
             }
           },
           "events": {
             "label": "Seyahatler",
             "fields": {
               "complete": "Seyahat Tamamlandı",
-              "freeComplete": "Özgür Seyahat Tamamlandı",
+              "freeComplete": "Serbest Seyahat Tamamlandı",
               "vmComplete": "Otomat Bulundu",
               "listUpdated": "Seyahat Listesi Güncellendi"
             }
@@ -277,9 +282,9 @@
             }
           },
           "screenshots": {
-            "label": "Screenshots",
+            "label": "Ekran Görüntüleri",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Ekran Görüntüsü Alındı"
             }
           },
           "saveSync": {
@@ -301,7 +306,7 @@
         "fields": {
           "badge": "Rozet",
           "changePassword": "Şifre Değiştir",
-          "clearSaveSync": "Kayıt Senkronize Verilerini Temizle"
+          "clearSaveSync": "Senkronize Kayıt Verilerini Temizle"
         }
       },
       "password": {
@@ -331,13 +336,21 @@
               "default": "Temel"
             }
           },
-          "search": "Ara:&nbsp;"
+          "search": {
+            "label": "Ara:&nbsp;",
+            "name": "Name:",
+            "location": "Location:"
+          }
         }
       },
       "badgeGallery": {
         "title": "Rozet Galerisini Yönet",
         "badgeGalleryRowProgress": "Sonraki Sıra Güçlendirmesi(BP)",
-        "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)"
+        "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Kayıt Verisini Yönet",
@@ -386,38 +399,38 @@
         "title": "Sıralamalar"
       },
       "screenshot": {
-        "title": "Your Screenshot",
-        "download": "Download",
-        "save": "Save to My Screenshots"
+        "title": "Ekran Görüntünüz",
+        "download": "İndir",
+        "save": "Ekran Görüntülerime Kaydet"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Ekran Görüntülerim",
+        "screenshotSlotProgress": "Sonraki Slot Güçlendirmesi (BP)",
+        "empty": "Henüz herhangi bir ekran görüntüsü kaydetmediniz."
       },
       "communityScreenshots": {
-        "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "title": "Topluluk Ekran Görüntüleri",
+        "scrollToRefresh": "Yenilemek İçin En Üste Kaydırın",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Oyun:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Hepsi"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "En Yeni",
+              "likes": "En Çok Beğenilen"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Bugün",
+              "week": "Bu Hafta",
+              "month": "Bu Ay",
+              "year": "Bu Yıl",
+              "all": "Tüm Zamanlar"
             }
           }
         }
@@ -429,21 +442,21 @@
         "rule3": "Siyaset yasak.",
         "rule4": "Kışkırtıcı sözler yasak (küfürler dahil).",
         "rule5": "Herhangi bir sebepten ötürü hile kullanmak yasak.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Herhangi bir huzursuzluk varsa, bir moderatöre haber verin."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Keşfedilmeyen Konumlar",
+        "complete": "Mevcut her konumu keşfettiniz! Tebrikler!!"
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
+      "togglePrivateMode": "Gizli Modu Aç/Kapat",
       "save": "Kayıt Verisini Yönet",
       "uiTheme": "UI Teması",
       "toggleChat": "Sohbeti Aç",
       "toggleExplorer": "Yume 2kki Gezginini Aç",
-      "screenshot": "Ekran Alıntısı Al",
-      "myScreenshots": "My Screenshots",
+      "screenshot": "Ekran Görüntüsü Al",
+      "myScreenshots": "Ekran Görüntülerim",
       "settings": "Ayarlar",
       "toggleMute": "Susturmayı Değiştir",
       "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",
@@ -455,13 +468,14 @@
       },
       "parties": {
         "createParty": "Parti Oluştur",
-        "disbandParty": "Partiyi Ayır"
+        "disbandParty": "Partiyi Dağıt"
       },
       "events": "Seyahat",
-      "communityScreenshots": "Community Screenshots",
+      "communityScreenshots": "Topluluk Ekran Görüntüleri",
       "rankings": "Sıralamalar",
-      "nexus": "Bağ Noktasına Geri Dön",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "nexus": "Bağlantı Noktası'na Geri Dön",
+      "explorerUndiscoveredLocations": "Keşfedilmeyen Konumları Görüntüle",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Kuralları Göster"
   },
@@ -495,35 +509,35 @@
       "0": "Bağlantı Kesildi",
       "1": "Bağlı",
       "2": "Bağlanılıyor...",
-      "3": "Private Mode"
+      "3": "Gizli Mod"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
+      "template": "Son görülme\n{INTERVAL} önce",
       "longTime": "A long time ago",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "1 dakikadan az",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} dakika",
+          "plural": "{VALUE} dakika"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} saat",
+          "plural": "{VALUE} saat"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} gün",
+          "plural": "{VALUE} gün"
         }
       }
     },
     "location": {
-      "template": "{LOCATION}",
+      "template": "{LOCATION} ({LOCATION_EN})",
       "queryingLocation": "Konum Sorgulanıyor",
       "unknownLocation": "Bilinmeyen Konum",
       "2kki": {
         "template": "{LOCATION}"
       },
-      "playing": "Playing {GAME}"
+      "playing": "{GAME} oynuyor"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
@@ -543,11 +557,11 @@
       "unnamed": "İsimsiz Oyuncu",
       "muted": "Susturulmuş",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
+        "approveFriend": "Arkadaşlık İsteğini Kabul Et",
+        "rejectFriend": "Arkadaşlık İsteğini Reddet",
+        "cancelFriend": "Arkadaşlık İsteğini İptal Et",
         "partyKick": "Partiden At",
-        "transferPartyOwner": "Parti Liderine Yükselt"
+        "transferPartyOwner": "Parti Liderliğini Devret"
       }
     },
     "roles": {
@@ -560,37 +574,37 @@
     },
     "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "Bahset: {PLAYER}"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "Arkadaşlık İsteği Gönder: {PLAYER}"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "Arkadaşlıktan Çıkar: {PLAYER}"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "Engelle: {PLAYER}",
+        "confirm": "{PLAYER}'i engellemek istediğine emin misin:?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "Engeli Kaldır: {PLAYER}",
+        "confirm": "{PLAYER}'in engelini kaldırmak istediğine emin misin?"
       },
       "admin": {
         "ban": {
           "label": "{PLAYER}'i banla",
           "confirm": "{PLAYER}'i banlamak istediğinden emin misin?",
-          "success": "{PLAYER} banlanıldı."
+          "success": "{PLAYER} banlandı."
         },
         "unban": {
-          "label": "{PLAYER}'in Banını Kaldır",
-          "confirm": "{PLAYER}'in Banını Kaldırmak istediğinden emin misin?",
+          "label": "{PLAYER}'in banını kaldır",
+          "confirm": "{PLAYER}'in banını kaldırmak istediğinden emin misin?",
           "success": "{PLAYER}'in banı kaldırıldı."
         },
         "mute": {
           "label": "{PLAYER}'i sustur",
           "confirm": "{PLAYER}'i susturmak istediğinden emin misin?",
-          "success": "{PLAYER} Susturuldu."
+          "success": "{PLAYER} susturuldu."
         },
         "unmute": {
           "label": "{PLAYER}'in susturmasını kaldır",
@@ -605,7 +619,7 @@
         },
         "revokeBadge": {
           "label": "Rozet Kaldır",
-          "prompt": "{PLAYER}'dan almak için rozet IDsini girin.",
+          "prompt": "{PLAYER}'dan geri almak için rozet IDsini girin.",
           "success": "{BADGE}, başarıyla {PLAYER}'dan alındı.",
           "fail": "Bahsedilen rozet IDsinde bir rozet bulunamadı."
         }
@@ -621,7 +635,7 @@
         "errors": {
           "confirmPasswordMismatch": "Bahsedilen şifreler uyuşmuyor.",
           "invalidCredentials": "Bahsedilen kullanıcı adı ya da şifre boş ya da geçersiz karakter içeriyor.",
-          "emailTaken": "Bahsedilen Eposta zaten kayıtlı.",
+          "emailTaken": "Bahsedilen E-posta zaten kayıtlı.",
           "usernameTaken": "Bahsedilen kullanıcı adı zaten kullanılıyor."
         }
       },
@@ -639,10 +653,10 @@
     "friends": {
       "friend": "Friend",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
-        "online": "Online - {COUNT}",
-        "offline": "Offline - {COUNT}"
+        "incoming": "Gelen - {COUNT}",
+        "outgoing": "Giden - {COUNT}",
+        "online": "Çevrimiçi - {COUNT}",
+        "offline": "Çevrimdışı - {COUNT}"
       }
     },
     "parties": {
@@ -650,12 +664,12 @@
       "yourParty": "Senin Partin",
       "defaultPartyName": "{OWNER}'in Partisi",
       "partyOwner": "Parti Lideri",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
+      "confirmDisband": "Partiyi dağıtmak istediğine emin misin? Bunu geri alamazsın.",
+      "confirmTransferPartyOwner": "Parti liderliğini {PLAYER}'e devretmek istediğine emin misin?",
       "offlineMemberSuffix": "Member offline",
       "categories": {
-        "online": "Online - {COUNT}",
-        "offline": "Offline - {COUNT}"
+        "online": "Çevrimiçi - {COUNT}",
+        "offline": "Çevrimdışı - {COUNT}"
       },
       "actions": {
         "viewPartyDetails": "Parti Detaylarını Görüntüle",
@@ -676,9 +690,9 @@
         "clearChat": "Ekranın sağ üst köşesindeki sohbeti temizle butonuna bastığında, eğer 'Hepsi' sekmesinde değilsen, sadece olduğun sohbet sekmesindeki mesajları siler.",
         "chatHistoryLimit": "Eğer sohbet geçmişi çok uzarsa, performansını etkileyebilir. Sohbet ayarlarından sohbet geçmişini sınırlayıp bu sorunlardan manüel olarak mesajları silmeden kaçınabilirsin. ",
         "parties": "Partiler maceralarda insanlarda birlikte kalmak için çok iyi bir yoldur. Parti üyelerinin yerini görebilirsin ve onlarla gizli sohbetten konuşabilirsin.",
-        "immersionMode": "Eğer sosyalden çok sürükleyici bir deneyim tercih ediyorsanız, İmersiyon Modunu deneyin. Bu küresel sohbeti, oyuncu listesi, ve oyuncu sayısını kapatır. Böylece dolaşırken başka bir oyuncuyu görmek daha ilginç olur.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "immersionMode": "Eğer sosyalden çok sürükleyici bir deneyim tercih ediyorsanız, Sürükleyicilik Modunu deneyin. Bu küresel sohbeti, oyuncu listesi, ve oyuncu sayısını kapatır. Böylece dolaşırken başka bir oyuncuyu görmek daha ilginç olur.",
+        "friendsMenu": "Bilgisayarda sağ tıklayarak, veya mobildeysen Sıralamaların dışında bir oyuncunun icon'una basılı tutarak bir diyalog kutusu açabilirsin. Bu kutudan arkadaşlık isteği gönderebilirsin, onları engelleyebilirsin veya onlardan bahsedebilirsin.",
+        "easySettingsMenu": "Eğer bilgisayarda oynuyorsan, oynarken F1 tuşuna basarak ayarları açabilirsin, böylece bazı ayarları değiştirmenin yanı sıra tuş atamalarını da değiştirebilirsin.",
         "openSource": "YNOproject açık kaynaklıdır ve kod depoları şu sitede mevcuttur: https://github.com/ynoproject/"
       }
     },
@@ -703,7 +717,7 @@
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "Bu oyun için Senkronize Kaydını silmek ister misin? Eğer oyunun kaydının kendi cihazında ayrı bir kopyası yoksa bunu geri alamazsın."
     },
     "toast": {
       "system": {
@@ -716,16 +730,16 @@
         "passwordUpdated": "Şifren başarıyla güncellendi."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} engellendi.",
+        "playerUnblocked": "{PLAYER}'in engeli kaldırıldı."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
+        "add": "{PLAYER}'e arkadaşlık isteği gönderdin.",
+        "remove": "{PLAYER}'i arkadaşlıktan çıkardın.",
+        "accept": "{PLAYER}'in arkadaşlık isteğini kabul ettin.",
+        "reject": "{PLAYER}'in arkadaşlık isteğini reddettin.",
+        "cancel": "{PLAYER}'e yolladığın arkadaşlık isteği iptal edildi.",
+        "incoming": "{PLAYER}'den yeni bir arkadaşlık isteğin var.",
         "playerOnline": "{PLAYER} çevrimiçi oldu.",
         "playerOffline": "{PLAYER} çevrimdışı oldu."
       },
@@ -735,13 +749,13 @@
         "join": "{PARTY}'e katıldın.",
         "leave": "{PARTY}'i terk ettin.",
         "remove": "{PARTY}'dan atıldın.",
-        "disband": "{PARTY} Ayırıldı.",
+        "disband": "{PARTY} dağıtıldı.",
         "playerJoin": "{PLAYER} partiye katıldı.",
         "playerLeave": "{PLAYER} partiden ayrıldı.",
         "playerOnline": "{PLAYER} çevrimiçi oldu.",
         "playerOffline": "{PLAYER} çevrimdışı oldu.",
         "kickPlayer": "{PLAYER} partiden atıldı.",
-        "transferPartyOwner": "{PLAYER} parti liderine yükseltildi."
+        "transferPartyOwner": "{PLAYER} parti lideri oldu."
       },
       "events": {
         "complete": "Seyahat tamamlandı!\n{LOCATION}'i ziyaret ettiğin için {EXP} kazandın.",
@@ -753,7 +767,7 @@
         "badgeUnlocked": "Yeni bir başarım açtın!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Ekran görüntün alındı."
       },
       "saveSync": {
         "saveUploading": "Slot {SLOT} kayıt verileri yükleniyor...",
@@ -762,7 +776,7 @@
         "saveDownloaded": "Kayıt slotu {SLOT} başarıyla güncellendi.",
         "saveUpToDate": "Kayıt verileri güncel.",
         "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek.",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": "İlerlemenizi kaybetmemek için sık sık kaydetmeyi ve kayıt dosyalarınızı yedeklemeyi unutmayın."
       }
     },
     "events": {
@@ -774,7 +788,7 @@
       "shortcut": "Açılabilir bir kısayolla erişilebilir",
       "availableUntilDate": "şu tarihe kadar mevcut:\n{DATE} ",
       "types": {
-        "-1": "Özgür Seyahat",
+        "-1": "Serbest Seyahat",
         "0": "Günlük",
         "1": "Haftalık",
         "2": "Haftasonu",
@@ -839,7 +853,7 @@
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Özgür Seyahatler",
+          "label": "Serbest Seyahatler",
           "valueLabel": "# Seyahat",
           "value": "{NUMBER}"
         },
@@ -873,35 +887,35 @@
         "fuji_ex": "FUJI EX",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
+        "ta_be_hardcore": "TA_BE_ - Hardcore Mod",
         "panerabbit": "PANErabbit"
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "playerScreenshot": "{USER}'in Ekran Görüntüsü",
+      "limit": "{COUNT}/{LIMIT} Slot Kullanıldı",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Herkese Açık Yap",
+          "off": "Gizli Yap"
         }
       },
       "spoiler": {
         "label": "Spoiler",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Spoiler Olarak İşaretle",
+          "off": "Spoiler'ı Kaldır"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "Beğen",
+          "off": "Beğenini Çek"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Sil",
+        "confirm": "Bu ekran görüntüsünü silmek istediğine emin misin?"
       }
     },
     "2kki": {
@@ -916,7 +930,7 @@
         "resetPassword": {
           "label": "Bir Şifre Sıfırla",
           "playerPrompt": "Şifresini Sıfırlamak için hesabın adını girin",
-          "success": "{PLAYER} için şifre {PASSWORD} e değiştirildi"
+          "success": "{PLAYER} için şifre {PASSWORD}'e değiştirildi"
         },
         "changeUsername": {
           "label": "Bir Kullanıcı Adı Değiştir",
