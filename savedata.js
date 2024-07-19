@@ -305,6 +305,7 @@ function uploadSaveSyncData(saveData) {
     apiPost('savesync?command=push', saveData.contents)
       .then(_ => {
         showSaveSyncToastMessage('saveUploaded', 'save', saveSyncSlotId);
+        resetSaveReminder();
         resolve(true);
       })
       .catch(_err => resolve(false));

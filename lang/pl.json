@@ -113,7 +113,13 @@
               "slim": "Pomniejszone"
             }
           },
-          "saveReminder": "Częstotliwość powiadomień o zapisie",
+          "saveReminder": {
+            "label": "Częstotliwość powiadomień o zapisie",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Głośność dźwięków",
           "musicVolume": "Głośność muzyki",
           "togglePlayerSounds": "Dźwięki innych graczy",

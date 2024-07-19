@@ -113,7 +113,13 @@
               "slim": "Mince"
             }
           },
-          "saveReminder": "Fréquence du Rappel des Sauvegardes",
+          "saveReminder": {
+            "label": "Fréquence du Rappel des Sauvegardes",
+            "interval": {
+              "minutes": "{{interval}} minutes",
+              "never": "Never"
+            }
+          },
           "soundVolume": "Volume du Son",
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",

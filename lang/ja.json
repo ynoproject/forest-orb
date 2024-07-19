@@ -113,7 +113,13 @@
               "slim": "スリム"
             }
           },
-          "saveReminder": "セーブリマインダーの頻度",
+          "saveReminder": {
+            "label": "セーブリマインダーの頻度",
+            "interval": {
+              "minutes": "{{interval}}分ごとに",
+              "never": "なし"
+            }
+          },
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
