@@ -132,8 +132,7 @@
             "helpText": "Disattiva il numero di giocatori, chat globale, e le mappe per darti un'esperienza più immersiva"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Show Mobile Controls",
           "toggleLocationDisplay": "Visualizza Ubicazione",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "Vetrina delle Medaglie",
         "badgeGalleryRowProgress": "Prossimo Miglioramento Riga (PM)",
-        "badgeGalleryColProgress": "Prossimo MIglioramento Colonna (Medaglie)"
+        "badgeGalleryColProgress": "Prossimo MIglioramento Colonna (Medaglie)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gestisci Dati di Salvataggio",
@@ -471,7 +474,8 @@
       "communityScreenshots": "Community Screenshots",
       "rankings": "Classifiche",
       "nexus": "Ritorna al Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations"
+      "explorerUndiscoveredLocations": "View Undiscovered Locations",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "Riguarda le Regole"
   },

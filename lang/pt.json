@@ -132,8 +132,7 @@
             "helpText": "Desativa a contagem de jogadores, o bate-papo global e os mapas para proporcionar uma experiência mais imersiva."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "Mostrar Controles de Celular",
           "toggleLocationDisplay": "Exibição de localização",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "Painel da Galeria de Emblemas",
         "badgeGalleryRowProgress": "Atualização da Próxima Linha (PE)",
-        "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)"
+        "badgeGalleryColProgress": "Atualização da Próxima Coluna (Emblemas)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gerenciar Dados Salvos",
@@ -471,7 +474,8 @@
       "communityScreenshots": "Capturas de Tela da Comunidade",
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
-      "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos"
+      "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos",
+      "timeTrial": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela."
     },
     "reviewRules": "Ver Regras"
   },

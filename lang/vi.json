@@ -132,8 +132,7 @@
             "helpText": "Ẩn số người chơi, hộp chat chung và map để đem đến trải nghiệm đắm chìm"
           },
           "timeTrialinfo": {
-            "label": "Thử thách Hẹn giờ",
-            "helpText": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
+            "label": "Thử thách Hẹn giờ"
           },
           "toggleMobileControls": "Hiện điều khiển cho thiết bị di động",
           "toggleLocationDisplay": "Hiện tên địa điểm trong cửa sổ",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "Quản lý Kho Huy hiệu",
         "badgeGalleryRowProgress": "Cập nhật hàng tiếp theo (BP)",
-        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)"
+        "badgeGalleryColProgress": "Cập nhật cột tiếp theo (Huy hiệu)",
+        "removeMode": {
+          "activate": "Gỡ huy hiệu",
+          "deactivate": "Hoàn tất"
+        }
       },
       "save": {
         "title": "Quản lý Dữ liệu lưu",
@@ -471,7 +474,8 @@
       "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
-      "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá"
+      "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
+      "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
     },
     "reviewRules": "Xem Nội quy"
   },

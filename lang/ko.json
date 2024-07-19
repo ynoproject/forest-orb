@@ -132,8 +132,7 @@
             "helpText": "보다 몰입감 높은 경험을 제공하기 위해 플레이어 수, 글로벌 채팅 및 맵을 표시하지 않습니다."
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+            "label": "Time Trial"
           },
           "toggleMobileControls": "모바일 컨트롤러 표시",
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "배지 갤러리 편집",
         "badgeGalleryRowProgress": "다음 행 업그레이드 (BP)",
-        "badgeGalleryColProgress": "다음 열 업그레이드 (배지)"
+        "badgeGalleryColProgress": "다음 열 업그레이드 (배지)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "세이브 데이터 관리",
@@ -471,7 +474,8 @@
       "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
-      "explorerUndiscoveredLocations": "미발견 장소 보기"
+      "explorerUndiscoveredLocations": "미발견 장소 보기",
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
     },
     "reviewRules": "규칙 다시 보기"
   },

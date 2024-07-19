@@ -1,6 +1,4 @@
 /**
-  Either SimpleBadge or Badge
-  Cross-check with badges.go in ynoserver
   @typedef {Object} Badge
   @property {string} badgeId
   @property {string} game
@@ -8,6 +6,8 @@
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
   @property {boolean} newUnlock
+  Either SimpleBadge or Badge
+  Cross-check with badges.go in ynoserver
 */
 
 /**
@@ -21,6 +21,7 @@ let badgeSlotCols = 3;
 
 /** @type {BadgeCache?} */
 let badgeCache;
+/** @type {string[][]} row-major */
 let badgeSlotCache;
 let badgeFilterCache = [];
 let badgeCacheUpdateTimer = null;
@@ -34,6 +35,8 @@ let localizedBadgesIgnoreUpdateTimer = null;
 let badgeGameIds = [];
 
 const assignTooltipCallbacks = new WeakMap;
+
+const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
 
 /** @type {IntersectionObserver?} */
 let observer;
@@ -205,7 +208,7 @@ function initBadgeControls() {
       let systemName;
       for (const badge of playerBadges) {
         // yield back to the game loop to prevent audio cracking
-        if (badgeCount++ % 150 === 0) await yieldImmediately();
+        if (badgeCount++ % 40 === 0) await yieldImmediately();
 
         if (!gameBadges[badge.game]) {
           if (badge.game !== 'ynoproject') {
@@ -445,7 +448,7 @@ function initBadgeControls() {
         updateBadgeSlots(() => {
           initAccountSettingsModal();
           initBadgeGalleryModal();
-          closeModal()
+          closeModal();
         });
       });
       return;
@@ -620,7 +623,63 @@ function initBadgeControls() {
     });
   };
 
-  const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
+
+  let draggedBadge;
+  /** @param {DragEvent} ev */
+  function didDrag(ev) {
+    const dragging = ev.type === 'dragstart';
+    this.classList.toggle('dragging', dragging);
+    this.draggable = !dragging;
+    draggedBadge = dragging ? this : null;
+  }
+
+  /** @param {DragEvent} ev */
+  function mightDrop(ev) {
+    ev.preventDefault();
+    if (this.classList.contains('dragging')) return;
+    this.classList.toggle('dropTarget', ev.type === 'dragover');
+  }
+
+  function didDrop() {
+    this.classList.remove('dropTarget');
+    const { badgeId, row, col } = this.dataset;
+    const { row: srcRow, col: srcCol, badgeId: srcBadgeId } = draggedBadge.dataset;
+    updatePlayerBadgeSlot(srcBadgeId, +row, +col, async () => {
+      if (srcBadgeId === 'null')
+        await new Promise(resolve => updatePlayerBadgeSlot(badgeId, +srcRow, +srcCol, resolve));
+      // Don't call updateBadgeSlots here, just swap manually.
+      badgeSlotCache[+srcRow - 1][+srcCol - 1] = badgeId;
+      badgeSlotCache[+row - 1][+col - 1] = srcBadgeId;
+      initBadgeGalleryModal();
+    });
+  }
+
+  /** @param {MouseEvent} ev */
+  async function onClickBadgeSlot(ev) {
+    let { row, col } = this.dataset;
+    row = +row;
+    col = +col;
+    if (badgeGalleryModalContent.classList.contains('removing') || ev.shiftKey) {
+      this.classList.remove('removing');
+      await new Promise(resolve => updatePlayerBadgeSlot('null', row, col, resolve));
+      badgeSlotCache[row - 1][col - 1] = 'null';
+      initBadgeGalleryModal();
+      return;
+    }
+
+    return onClickBadgeButton('badgeGalleryModal', row, col);
+  }
+
+  /** @param {MouseEvent} ev */
+  function highlightRemove(ev) {
+    if (this.dataset.badgeId === 'null') {
+      this.classList.remove('removing');
+      return;
+    }
+    window.requestAnimationFrame(() =>
+      this.classList.toggle('removing', ev.shiftKey && ev.type !== 'mouseleave')
+    );
+  }
 
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
     const badgeSlotRow = document.createElement('div');
@@ -630,11 +689,24 @@ function initBadgeControls() {
       badgeSlotButton.classList.add('badgeSlotButton', 'badgeItem', 'item', 'unselectable');
       badgeSlotButton.dataset.row = r;
       badgeSlotButton.dataset.col = c;
-      badgeSlotButton.onclick = () => onClickBadgeButton('badgeGalleryModal', r, c);
+      badgeSlotButton.draggable = true;
+      badgeSlotButton.onclick = onClickBadgeSlot;
+      badgeSlotButton.ondragstart = badgeSlotButton.ondragend = didDrag;
+      badgeSlotButton.ondragover = badgeSlotButton.ondragleave = mightDrop;
+      badgeSlotButton.ondrop = didDrop;
+      badgeSlotButton.onmouseenter = badgeSlotButton.onmousemove = badgeSlotButton.onmouseleave = highlightRemove;
       badgeSlotRow.appendChild(badgeSlotButton);
     }
     badgeGalleryModalContent.appendChild(badgeSlotRow);
   }
+
+  document.getElementById('removeBadgesButton').onclick = function() {
+    const removing = badgeGalleryModalContent.classList.toggle('removing');
+    if (removing)
+      this.innerHTML = getMassagedLabel(i18next.t('modal.badgeGallery.removeMode.deactivate', 'Done'));
+    else
+      this.innerHTML = getMassagedLabel(i18next.t('modal.badgeGallery.removeMode.activate', 'Remove Badges'));
+  };
 }
 
 /**
@@ -705,13 +777,16 @@ function initBadgeGalleryModal() {
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
     for (let c = 1; c <= maxBadgeSlotCols; c++) {
       const badgeId = r <= badgeSlotCache.length && c <= badgeSlotCache[r - 1].length ? badgeSlotCache[r - 1][c - 1] : null;
-      const badgeSlotButton = document.querySelector(`.badgeSlotButton[data-row='${r}'][data-col='${c}']`);
+      const badgeSlotButton = badgeGalleryModalContent.querySelector(`.badgeSlotButton[data-row='${r}'][data-col='${c}']`);
       if (badgeSlotButton) {
         let badge = badgeId && badgeId !== 'null' ? badgeCache.find(b => b.badgeId === badgeId) : null;
         if (!badge)
           badge = { badgeId: 'null' };
         badgeSlotButton.classList.toggle('hidden', r > badgeSlotRows || c > badgeSlotCols);
+        badgeSlotButton.classList.remove('dropTarget', 'dragging');
+        badgeSlotButton.draggable = true;
         badgeSlotButton.innerHTML = getBadgeItem(badge).innerHTML;
+        badgeSlotButton.dataset.badgeId = badge.badgeId;
         if (badge?.overlayType & BadgeOverlayType.LOCATION)
           handleBadgeOverlayLocationColorOverride(badgeSlotButton.querySelector('.badgeOverlay'), badgeSlotButton.querySelector('.badgeOverlay2'), cachedLocations);
       }
@@ -1010,6 +1085,7 @@ function updatePlayerBadge(badgeId, callback) {
     .catch(err => console.error(err));
 }
 
+/** `slowRow` and `slotCol` are 1-based indexes. */
 function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
   apiFetch(`badge?command=slotSet&id=${badgeId}&row=${slotRow}&col=${slotCol}`)
     .then(response => {
@@ -1031,9 +1107,9 @@ function checkNewBadgeUnlocks() {
     .then(unlockedBadgeIds => {
       if (unlockedBadgeIds) {
         if (badgeCache) {
-          badgeCache.full = true;
+          badgeCache.full = false;
         }
-        
+
         for (const badgeId of unlockedBadgeIds)
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
       }
@@ -1280,3 +1356,49 @@ function showBadgeToastMessage(key, icon, badgeId) {
     }
   }
 }
+
+/** @param {Element} element The element on which two-finger panning should be applied. */
+function setUpTwoFingerPan(element, contentElement) {
+  if (!contentElement) contentElement = element;
+  if (!(element && contentElement)) return;
+
+  let lastTouches = [];
+
+  element.addEventListener('touchstart', (event) => {
+    if (event.touches.length >= 2) {
+      lastTouches = [...event.touches];
+      event.preventDefault();
+    } else {
+      lastTouches.length = 0;
+    }
+  });
+  element.addEventListener('touchmove', event => {
+    if (event.touches.length >= 2 && lastTouches.length >= 2) {
+      event.preventDefault();
+      const dx1 = lastTouches[0].clientX - event.touches[0].clientX;
+      const dy1 = lastTouches[0].clientY - event.touches[0].clientY;
+      const dx2 = lastTouches[1].clientX - event.touches[1].clientX;
+      const dy2 = lastTouches[1].clientY - event.touches[1].clientY;
+
+      const dx = (dx1 + dx2) / 2;
+      const dy = (dy1 + dy2) / 2;
+
+      lastTouches = [...event.touches];
+      contentElement.scrollBy(dx, dy);
+      // block further events until all fingers are released
+    } else if (lastTouches.length) event.preventDefault();
+  });
+
+  element.addEventListener('touchend', event => {
+    // This handler is fired for each finger that is released during a pan.
+    // If panning, we must preventDefault all touchend events, otherwise the polyfill
+    // wrongly considers it a click.
+    if (lastTouches.length && lastTouches.length-- >= 0) event.preventDefault();
+  });
+
+  element.addEventListener('touchcancel', (event) => {
+    lastTouches.length = 0;
+  });
+}
+
+setUpTwoFingerPan(badgeGalleryModalContent);

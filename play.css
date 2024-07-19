@@ -3684,7 +3684,7 @@ form .uiTheme {
 
   .badgeItem,
   .uiThemeItem {
-    padding-bottom: 12px;
+    margin-bottom: 12px;
   }
 
   .screenshotItem .screenshotThumbnailContainer {
@@ -3771,16 +3771,17 @@ form .uiTheme {
   place-items: end;
 }
 
+/* Collapse tabs into horizontal strip */
 @media only screen and (orientation: portrait), only screen and (height < 768px) {
   #badgeGameTabs, #badgeCategoryTabs {
     flex-wrap: nowrap;
-    min-height: 38px;
+    min-height: 3.1rem;
     overflow-x: scroll;
     white-space: nowrap;
   }
     
   #badgeCategoryTabs {
-    min-height: 20px;
+    min-height: 2.2rem;
   }
 
   /* https://stackoverflow.com/questions/11387805/media-query-to-detect-if-device-is-touchscreen */
@@ -3843,4 +3844,27 @@ form .uiTheme {
 #badgeSearch.active {
   padding-right: initial;
   padding-left: 24px;
+}
+
+[draggable="true"] {
+  -webkit-user-drag: element;
+}
+
+.dragging {
+  opacity: 0.25;
+}
+
+.dropTarget {
+  background: white;
+}
+
+.removing .item:not([data-badge-id="null"]),
+.item.removing {
+  background-color: #a00;
+}
+
+.dropTarget .badgeContainer,
+.item.removing .badgeContainer,
+.removing .item:not([data-badge-id="null"]) .badgeContainer {
+  opacity: 0.5;
 }

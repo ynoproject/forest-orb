@@ -132,8 +132,7 @@
             "helpText": "Wyłącza licznik ilości graczy, czat globalny i mapy dla immersyjnego doświadczenia"
           },
           "timeTrialinfo": {
-            "label": "Time Triale",
-            "helpText": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
+            "label": "Time Triale"
           },
           "toggleMobileControls": "Pokaż sterowanie dotykowe",
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "Zarządzaj galerią odznak",
         "badgeGalleryRowProgress": "Następne powiększenie poziomo (BP)",
-        "badgeGalleryColProgress": "Następne powiększenie pionowo (Odznaki)"
+        "badgeGalleryColProgress": "Następne powiększenie pionowo (Odznaki)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Zarządzaj zapisami",
@@ -471,7 +474,8 @@
       "communityScreenshots": "Zrzuty ekranu społeczności",
       "rankings": "Rankingi",
       "nexus": "Powróć do Nexusu",
-      "explorerUndiscoveredLocations": "Pokaż nieodkryte lokalizacje"
+      "explorerUndiscoveredLocations": "Pokaż nieodkryte lokalizacje",
+      "timeTrial": "Aby włączyć tryb Time Trial, przytrzymaj Shift + -> po rozpoczęciu nowej gry zanim cokolwiek pojawi się na ekranie."
     },
     "reviewRules": "Sprawdź zasady"
   },

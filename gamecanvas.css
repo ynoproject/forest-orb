@@ -27,7 +27,7 @@ html {
 #dpad, #apad {
   position: fixed;
   bottom: 1rem;
-  z-index: 3;
+  z-index: 101;
 }
 
 #dpad {

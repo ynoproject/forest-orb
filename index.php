@@ -64,6 +64,11 @@
       $gameName = "Yume 2kki";
       break;
   }
+
+  function isFirefoxMobile() {
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    return strpos($userAgent, 'Firefox') !== false && strpos($userAgent, 'Mobile') !== false;
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -71,7 +76,7 @@
   <title><?php echo $gameName; ?> Online - YNOproject</title>
   <meta charset="utf-8">
   <meta name="description" content="Play multiplayer <?php echo $gameName; ?> for free! Ad-free and no registration required.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 <?php if (isFirefoxMobile()): ?>, user-scalable=no<?php endif ?>">
   <?php if ($gameId == "2kki"): ?>
     <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
   <?php endif ?>
@@ -912,6 +917,9 @@
             </div>
           </div>
           <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
+          <div class="modalFooter">
+            <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeMode.activate">Remove Badges</button>
+          </div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -1669,6 +1677,7 @@
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>
   <script type="text/javascript" src="account.js"></script>
+  <script type="text/javascript" src="vendor/DragDropTouch.js"></script>
 
   <?php if ($enableBadgeTools): ?>
   <script type="text/javascript" src="https://unpkg.com/vue@3"></script>

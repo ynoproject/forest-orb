@@ -132,8 +132,7 @@
             "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "timeTrialinfo": {
-            "label": "Contre-la-montre",
-            "helpText": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché."
+            "label": "Contre-la-montre"
           },
           "toggleMobileControls": "Afficher les touches pour téléphone",
           "toggleLocationDisplay": "Affichage du Lieu",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "Gérer la galerie des badges",
         "badgeGalleryRowProgress": "Prochaine amélioration de la rangée (PB)",
-        "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)"
+        "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)",
+        "removeMode": {
+          "activate": "Remove Badges",
+          "deactivate": "Done"
+        }
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",
@@ -471,7 +474,8 @@
       "communityScreenshots": "Captures d'écran de la communauté",
       "rankings": "Classement",
       "nexus": "Retourner au Nexus",
-      "explorerUndiscoveredLocations": "Voir les lieux non découverts"
+      "explorerUndiscoveredLocations": "Voir les lieux non découverts",
+      "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché."
     },
     "reviewRules": "Relire les règles"
   },

@@ -132,8 +132,7 @@
             "helpText": "より 没入感のある 体験を 提供するために、 プレイヤー数、 グローバル チャット、マップを オフにします"
           },
           "timeTrialinfo": {
-            "label": "Time Trial",
-            "helpText": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
+            "label": "Time Trial"
           },
           "toggleMobileControls": "モバイルコントローラーを表示",
           "toggleLocationDisplay": "場所 表示",
@@ -347,7 +346,11 @@
       "badgeGallery": {
         "title": "バッジギャラリー設定",
         "badgeGalleryRowProgress": "次の行追加まで（BP）",
-        "badgeGalleryColProgress": "次の列追加まで（バッジ）"
+        "badgeGalleryColProgress": "次の列追加まで（バッジ）",
+        "removeMode": {
+          "activate": "バッジを削除する",
+          "deactivate": "戻る"
+        }
       },
       "save": {
         "title": "セーブデータ管理",
@@ -471,7 +474,8 @@
       "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
-      "explorerUndiscoveredLocations": "未発見の場所を見る"
+      "explorerUndiscoveredLocations": "未発見の場所を見る",
+      "timeTrial": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます"
     },
     "reviewRules": "ルールを見る"
   },
@@ -500,7 +504,7 @@
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
-    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
+    "loadingInstruct": "サイトの読み込みに時間がかかっているようです。この問題が解決しない場合、CTRL+F5を使用するか、ブラウザのキャッシュをクリアする必要があるかもしれません。(Cookieは削除しないでください！)F12でエラーを確認することができます。",
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
