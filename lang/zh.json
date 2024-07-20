@@ -321,7 +321,8 @@
             "values": {
               "all": "全部",
               "0": "未解锁",
-              "1": "已解锁"
+              "1": "已解锁",
+              "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {

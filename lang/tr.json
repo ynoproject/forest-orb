@@ -321,7 +321,8 @@
             "values": {
               "all": "Hepsi",
               "0": "Kilitli",
-              "1": "Açılmış"
+              "1": "Açılmış",
+              "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {

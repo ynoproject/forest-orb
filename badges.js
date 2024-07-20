@@ -41,6 +41,8 @@ const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .mod
 /** @type {IntersectionObserver?} */
 let observer;
 
+let newUnlockBadges = new Set;
+
 const badgeGalleryRowBpLevels = [
   {
     bp: 300,
@@ -513,7 +515,9 @@ function initBadgeControls() {
     return new Promise(resolve => window.requestAnimationFrame(() => {
       for (let item of badgeFilterCache) {
         let visible = true;
-        if (unlockStatus !== "")
+        if (unlockStatus === 'recentUnlock')
+          visible &= newUnlockBadges.has(item.badgeId);
+        else if (unlockStatus !== "")
           visible &= item.el.classList.contains('locked') === !parseInt(unlockStatus);
         if (searchTerm.trim().length) {
           switch (searchMode) {
@@ -834,6 +838,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       mapY: badge.mapY,
       bp: badge.bp,
       percent: badge.percent,
+      badgeId: badge.badgeId,
     };
     item.dataset.cacheIndex = badgeFilterCache.push(filterItem) - 1;
   }
@@ -1026,8 +1031,10 @@ function fetchPlayerBadges(callback) {
     })
     .then(badges => {
       for (const { badgeId, newUnlock } of badges)
-        if (newUnlock)
+        if (newUnlock) { 
+          newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+        }
       badgeCache = badges;
       badgeCache.full = true;
       callback?.(badgeCache);
@@ -1044,8 +1051,10 @@ function updateBadges(callback) {
     })
     .then(badges => {
       for (const { badgeId, newUnlock } of badges)
-        if (newUnlock)
+        if (newUnlock) { 
+          newUnlockBadges.add(newUnlock);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+        }
       badgeCache = badges;
 
       if (badgeCacheUpdateTimer)
@@ -1110,8 +1119,10 @@ function checkNewBadgeUnlocks() {
           badgeCache.full = false;
         }
 
-        for (const badgeId of unlockedBadgeIds)
+        for (const badgeId of unlockedBadgeIds) { 
+          newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+        }
       }
     })
     .catch(err => console.error(err));

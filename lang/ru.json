@@ -321,7 +321,8 @@
             "values": {
               "all": "Все",
               "0": "Закрытые",
-              "1": "Доступные"
+              "1": "Доступные",
+              "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {

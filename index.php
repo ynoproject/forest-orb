@@ -847,6 +847,7 @@
                   <option value="" data-i18n="[html]modal.badges.fields.unlockStatus.values.all">All</option>
                   <option value="0" data-i18n="[html]modal.badges.fields.unlockStatus.values.0">Locked</option>
                   <option value="1" data-i18n="[html]modal.badges.fields.unlockStatus.values.1">Unlocked</option>
+                  <option value="recentUnlock" data-i18n="[html]modal.badges.fields.unlockStatus.values.recentUnlock">Recently Unlocked</option>
                 </select>
               </div>
               <div class="uiControl">
