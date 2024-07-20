@@ -135,6 +135,12 @@
             "label": "Time Trial"
           },
           "toggleMobileControls": "Управление с экрана",
+          "mobileControlsType": {
+            "label": "Mobile Controls Type",
+            "default": "D-Pad",
+            "joystick": "Floating Joystick",
+            "dpad": "Floating D-Pad"
+          },
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
       "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации",
-      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen.",
+      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "Просмотреть правила"
   },

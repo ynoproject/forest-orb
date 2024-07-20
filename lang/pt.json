@@ -135,6 +135,12 @@
             "label": "Time Trial"
           },
           "toggleMobileControls": "Mostrar Controles de Celular",
+          "mobileControlsType": {
+            "label": "Mobile Controls Type",
+            "default": "D-Pad",
+            "joystick": "Floating Joystick",
+            "dpad": "Floating D-Pad"
+          },
           "toggleLocationDisplay": "Exibição de localização",
           "toggleRankings": "Placares",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
       "explorerUndiscoveredLocations": "Exibir Locais Não Descobertos",
-      "timeTrial": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela."
+      "timeTrial": "Para habilitar o modo Time Trial, segure Shift + -> após iniciar um novo jogo antes de qualquer coisa aparecer na tela.",
+      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "Ver Regras"
   },

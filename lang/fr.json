@@ -135,6 +135,12 @@
             "label": "Contre-la-montre"
           },
           "toggleMobileControls": "Afficher les touches pour téléphone",
+          "mobileControlsType": {
+            "label": "Mobile Controls Type",
+            "default": "D-Pad",
+            "joystick": "Floating Joystick",
+            "dpad": "Floating D-Pad"
+          },
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "Classement",
       "nexus": "Retourner au Nexus",
       "explorerUndiscoveredLocations": "Voir les lieux non découverts",
-      "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché."
+      "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché.",
+      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "Relire les règles"
   },
