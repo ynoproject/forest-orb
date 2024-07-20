@@ -689,6 +689,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value && hasTouchscreen)
                       document.getElementById('mobileControlsButton').click();
                     break;
+                  case 'mobileControlsType':
+                    document.getElementById('mobileControl').value = value;
+                    setMobileControlType(value, true);
+                    break;
                   case 'locationDisplay':
                     if (value)
                       document.getElementById('locationDisplayButton').click();
