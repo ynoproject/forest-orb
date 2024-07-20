@@ -86,6 +86,11 @@ let config = {
   lastEventLocations: null
 };
 
+const locI18nextOptions = {
+  optionsAttr: 'i18n-options',
+  useOptionsAttr: true,
+};
+
 if (gameId === '2kki') {
   config.last2kkiVersion = document.querySelector('meta[name="2kkiVersion"]').content;
   config.explorer = false;
@@ -1663,7 +1668,7 @@ function initLocalization(isInitial) {
       }, function (err) {
         if (err)
           console.error(err);
-        locI18next.init(i18next)('[data-i18n]');
+        locI18next.init(i18next, locI18nextOptions)('[data-i18n]');
         const tooltipElements = document.querySelectorAll('[title]');
         for (let el of tooltipElements) {
           addTooltip(el, el.title, true, !el.classList.contains('helpLink'));
