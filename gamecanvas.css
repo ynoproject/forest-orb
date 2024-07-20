@@ -124,12 +124,13 @@ html {
 #joystick {
   pointer-events: none;
   opacity: initial;
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity ease-in-out;
 }
 
 #joystick.fadeOut {
   opacity: 0;
   transition-delay: 2s;
+  transition-duration: 0.25s;
 }
 
 #joystick svg>circle,
