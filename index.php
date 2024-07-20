@@ -526,14 +526,14 @@
                 </label>
                 <div>
                   <select id="saveReminder" size="4">
-                    <option value="10" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':10}">10 minutes</option>
-                    <option value="15" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':15}">15 minutes</option>
-                    <option value="20" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':20}">20 minutes</option>
-                    <option value="30" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':30}">30 minutes</option>
-                    <option value="45" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':45}">45 minutes</option>
-                    <option value="60" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':60}">60 minutes</option>
-                    <option value="90" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':90}">90 minutes</option>
-                    <option value="120" data-i18n="modal.settings.fields.saveReminder.interval.minutes" data-i18n-options="{'interval':120}">120 minutes</option>
+                    <option value="10" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':10}">10 minutes</option>
+                    <option value="15" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':15}">15 minutes</option>
+                    <option value="20" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':20}">20 minutes</option>
+                    <option value="30" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':30}">30 minutes</option>
+                    <option value="45" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':45}">45 minutes</option>
+                    <option value="60" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':60}">60 minutes</option>
+                    <option value="90" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':90}">90 minutes</option>
+                    <option value="120" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':120}">120 minutes</option>
                     <option value="0" data-i18n="modal.settings.fields.saveReminder.interval.never">Never</option>
                   </select>
                 </div>
