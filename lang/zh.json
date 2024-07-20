@@ -116,8 +116,8 @@
           "saveReminder": {
             "label": "存档提醒间隔",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} 分钟",
+              "never": "不提醒"
             }
           },
           "soundVolume": "音效音量",
@@ -338,8 +338,8 @@
           },
           "search": {
             "label": "搜索:&nbsp;",
-            "name": "Name:",
-            "location": "Location:"
+            "name": "名称:",
+            "location": "地点:"
           }
         }
       },
@@ -348,8 +348,8 @@
         "badgeGalleryRowProgress": "下一行展柜解锁进度 (BP)",
         "badgeGalleryColProgress": "下一列展柜解锁进度 (徽章总数)",
         "removeMode": {
-          "activate": "Remove Badges",
-          "deactivate": "Done"
+          "activate": "移除徽章",
+          "deactivate": "完成"
         }
       },
       "save": {
@@ -504,7 +504,7 @@
     },
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "logout": "确定要登出吗？",
-    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
+    "loadingInstruct": "看起来网站已经加载了一段时间；如果这个问题没有解决，您可能需要使用 CTRL+F5 或清除浏览器缓存（但不要清除Cookie！）。您可以使用 F12 检查控制台是否有错误。",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
@@ -513,7 +513,7 @@
     },
     "lastOnline": {
       "template": "最后一次在线\n{INTERVAL}前",
-      "longTime": "A long time ago",
+      "longTime": "很久之前",
       "interval": {
         "short": "不到 1 分钟",
         "minutes": {
@@ -666,7 +666,7 @@
       "partyOwner": "领队",
       "confirmDisband": "确定要解散队伍吗？该操作无法撤销。",
       "confirmTransferPartyOwner": "确定要将队伍转让给 {PLAYER} 吗？",
-      "offlineMemberSuffix": "Member offline",
+      "offlineMemberSuffix": "离线成员",
       "categories": {
         "online": "在线 - {COUNT} 人",
         "offline": "离线 - {COUNT} 人"
