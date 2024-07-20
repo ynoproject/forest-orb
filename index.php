@@ -641,7 +641,7 @@
                   </a>
                 </label>
                 <div>
-                  <select id="mobileControl" size="4">
+                  <select id="mobileControl" size="3">
                     <option value="default" selected data-i18n="[html]modal.settings.fields.mobileControlsType.default">D-Pad</option>
                     <option value="joystick" data-i18n="[html]modal.settings.fields.mobileControlsType.joystick">Floating Joystick</option>
                     <option value="dpad" data-i18n="[html]modal.settings.fields.mobileControlsType.dpad">Floating D-Pad</option>

@@ -1134,9 +1134,6 @@ initScreenshotControls();
 initEventControls();
 initRankingControls();
 
-if (!hasTouchscreen)
-  document.querySelector('#mobileControls').classList.add('hidden');
-
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
 if (gameId === '2kki') {
@@ -1586,6 +1583,7 @@ function setMusicVolume(value, isInit) {
 }
 
 function setMobileControlType(value, isInit) {
+  if (!hasTouchscreen) return;
   globalConfig.mobileControlsType = value;
   if (!isInit)
     updateConfig(globalConfig, true);
