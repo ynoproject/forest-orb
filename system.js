@@ -325,7 +325,7 @@ function onUpdateSystemGraphic(name) {
     const autoUiThemeOption = getUiThemeOption('auto');
     autoUiThemeOption.onclick = onSelectUiTheme;
     uiThemeModalContent.prepend(autoUiThemeOption);
-    locI18next.init(i18next)('.uiThemeItem.auto label');
+    locI18next.init(i18next, { ...locI18nextOptions, document: uiThemeModalContent })('.uiThemeItem.auto label');
     if (config.uiTheme === 'auto')
       setUiTheme('auto');
   }

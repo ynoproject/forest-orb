@@ -392,7 +392,7 @@ function initBadgeControls() {
           badgeCategoryTabs.replaceChildren(...subTabs);
           if (badgeCategoryTabs.querySelector('[data-i18n]')) {
             // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
-            locI18next.init(i18next)('[data-i18n]', { document: badgeCategoryTabs });
+            locI18next.init(i18next, { ...locI18nextOptions, document: badgeCategoryTabs })('[data-i18n]');
             for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
               addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
               elm.removeAttribute('title');
