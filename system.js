@@ -77,6 +77,8 @@ const allGameUiThemes = {
     'PGR_SYS_03',
     'ROKU95_menu',
     'yumehako-sys3',
+    '2da_system_01',
+    'nadeko_cards',
 
     'system_E_eye',
     'System_kuraud',
@@ -85,7 +87,8 @@ const allGameUiThemes = {
     'aediorugap_sys',
     'Bean_sys1',
     'natl_sys2_NeonPink',
-    'natl_sys3_NeonBlue'
+    'natl_sys3_NeonBlue',
+    'awind_sus1'
   ],
   'amillusion': [
     'fleur-2',
