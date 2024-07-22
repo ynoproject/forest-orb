@@ -22,8 +22,11 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   const msgContainer = document.createElement("div");
   msgContainer.classList.add("messageContainer");
   
-  const message = document.createElement("span");
+  const message = document.createElement("div");
   message.classList.add("message");
+
+  const messageSender = document.createElement("div");
+  messageSender.classList.add("messageSender");
 
   const messageContents = document.createElement("span");
   messageContents.classList.add("messageContents");
@@ -56,7 +59,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       msgContainer.dataset.senderUuid = uuid;
 
       if (showLocation) {
-        const playerLocation = document.createElement("small");
+        const playerLocation = document.createElement("bdi");
 
         if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
@@ -80,7 +83,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
         if (joinedPartyCache)
           addTooltip(chatTypeIcon, getPartyName(joinedPartyCache, false, true), true, true);
       }
-      message.appendChild(chatTypeIcon);
+      messageSender.appendChild(chatTypeIcon);
     } else
       msgHeader.appendChild(document.createElement('span'));
 
@@ -91,7 +94,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     if (defaultDate)
       timestamp = new Date();
 
-    const msgTimestamp = document.createElement("small");
+    const msgTimestamp = document.createElement("bdi");
 
     msgTimestamp.classList.add('messageTimestamp', 'infoLabel');
     msgTimestamp.dataset.time = timestamp.getTime();
@@ -101,7 +104,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     msgHeader.appendChild(msgTimestamp);
     msgContainer.appendChild(msgHeader);
 
-    const name = document.createElement("span");
+    const name = document.createElement("bdi");
     name.classList.add("nameText");
 
     name.innerText = getPlayerName(player);
@@ -111,8 +114,8 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     const nameEndMarker = document.createElement("span");
     nameEndMarker.classList.add("nameMarker");
     nameEndMarker.textContent = player?.account ? "]" : ">";
-    message.appendChild(nameBeginMarker);
-    message.appendChild(name);
+    messageSender.appendChild(nameBeginMarker);
+    messageSender.appendChild(name);
 
     addPlayerContextMenu(name, player, uuid, global ? MESSAGE_TYPE.GLOBAL : party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.MAP);
 
@@ -121,14 +124,14 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       rankIcon = getSvgIcon(rank === 1 ? "mod" : "dev", true);
       rankIcon.classList.add("rankIcon");
       addTooltip(rankIcon, getMassagedLabel(localizedMessages.roles[Object.keys(localizedMessages.roles)[rank - 1]], true), true, true);
-      message.appendChild(rankIcon);
+      messageSender.appendChild(rankIcon);
     }
 
     if (playerFriendsCache.find(pf => pf.accepted && pf.uuid === uuid)) {
       friendIcon = getSvgIcon('friend', true);
       friendIcon.classList.add('friendIcon');
       addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
-      message.appendChild(friendIcon);
+      messageSender.appendChild(friendIcon);
     }
 
     if (party) {
@@ -136,7 +139,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       if (joinedPartyCache && player?.uuid === joinedPartyCache.ownerUuid) {
         partyOwnerIcon = getSvgIcon("partyOwner", true);
         addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
-        message.appendChild(partyOwnerIcon);
+        messageSender.appendChild(partyOwnerIcon);
       }
       if (joinedPartyCache?.systemName) {
         const parsedPartySystemName = joinedPartyCache.systemName.replace(" ", "_");
@@ -235,9 +238,10 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     }
 
     if (badgeEl)
-      message.appendChild(badgeEl);
+      messageSender.appendChild(badgeEl);
     
-    message.appendChild(nameEndMarker);
+    messageSender.appendChild(nameEndMarker);
+    message.appendChild(messageSender);
     message.appendChild(document.createTextNode(" "));
   }
 
@@ -261,8 +265,12 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
           lastMapMessage.classList.remove("hidden");
     }
   }
-  
-  message.appendChild(messageContents);
+
+  const messageContentsWrapper = document.createElement('div');
+  messageContentsWrapper.classList.add('messageContentsWrapper');
+  messageContentsWrapper.appendChild(messageContents);
+  messageContentsWrapper.dir = "auto";
+  message.appendChild(messageContentsWrapper);
   msgContainer.appendChild(message);
   messages.appendChild(msgContainer);
 
@@ -343,8 +351,7 @@ function addGameChatMessage(messageHtml, messageType, senderUuid) {
     messageContainer.classList.add('blockedHidden');
 
   const message = document.createElement('div');
-  message.classList.add('gameChatMessage');
-  message.classList.add('message');
+  message.classList.add('gameChatMessage', 'message');
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
