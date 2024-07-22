@@ -21,6 +21,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   const msgContainer = document.createElement("div");
   msgContainer.classList.add("messageContainer");
+  msgContainer.dir = "auto";
   
   const message = document.createElement("span");
   message.classList.add("message");
@@ -56,7 +57,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       msgContainer.dataset.senderUuid = uuid;
 
       if (showLocation) {
-        const playerLocation = document.createElement("small");
+        const playerLocation = document.createElement("bdi");
 
         if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
@@ -91,7 +92,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     if (defaultDate)
       timestamp = new Date();
 
-    const msgTimestamp = document.createElement("small");
+    const msgTimestamp = document.createElement("bdi");
 
     msgTimestamp.classList.add('messageTimestamp', 'infoLabel');
     msgTimestamp.dataset.time = timestamp.getTime();
@@ -101,7 +102,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     msgHeader.appendChild(msgTimestamp);
     msgContainer.appendChild(msgHeader);
 
-    const name = document.createElement("span");
+    const name = document.createElement("bdi");
     name.classList.add("nameText");
 
     name.innerText = getPlayerName(player);
@@ -329,6 +330,7 @@ function addGameChatMessage(messageHtml, messageType, senderUuid) {
 
   const messageContainer = document.createElement('div');
   messageContainer.classList.add('gameChatMessageContainer');
+  messageContainer.dir = "auto";
   if (messageType === 2) {
     if (!globalConfig.gameChatGlobal)
       messageContainer.classList.add('hidden');
