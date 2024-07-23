@@ -338,8 +338,8 @@
           },
           "search": {
             "label": "Szukaj:&nbsp;",
-            "name": "Name:",
-            "location": "Location:"
+            "name": "Nazwa:",
+            "location": "Lokalizacja:"
           }
         }
       },
