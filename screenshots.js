@@ -141,7 +141,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 
   const saveButton = screenshotModal.querySelector('.saveScreenshotButton');
 
-  screenshotModal.querySelector('.downloadScreenshotButton').onclick = () => downloadScreenshot(url, date, screenshotData?.game);
+  screenshotModal.querySelector('.downloadScreenshotButton').onclick = () => downloadScreenshot(url, date, screenshotData);
 
   saveButton.classList.toggle('hidden', isRemote);
   saveButton.disabled = screenshotCount >= screenshotLimit ? 'disabled' : undefined;
@@ -176,10 +176,10 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   openModal('screenshotModal', null, lastModal);
 }
 
-function downloadScreenshot(url, date, gameId, resized) {
+async function downloadScreenshot(url, date, screenshotData, resized) {
   if (url.startsWith(serverUrl)) {
     fetch(url).then(response => response.blob()).then(blob => {
-      downloadScreenshot(URL.createObjectURL(blob), date, gameId, true);
+      downloadScreenshot(URL.createObjectURL(blob), date, screenshotData, true);
     });
     return;
   }
@@ -199,7 +199,7 @@ function downloadScreenshot(url, date, gameId, resized) {
     const img = new Image(320, 240);
     img.onload = () => {
       scaleContext.drawImage(img, 0, 0, width, height);
-      downloadScreenshot(scaleCanvas.toDataURL(), date, gameId, true);
+      downloadScreenshot(scaleCanvas.toDataURL(), date, screenshotData, true);
     };
     img.src = url;
     return;
@@ -208,8 +208,18 @@ function downloadScreenshot(url, date, gameId, resized) {
   const a = document.createElement('a');
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
   const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
+  const game = screenshotData?.game || ynoGameId;
+  let mapName = gameLocalizedMapLocations[game][screenshotData?.mapId];
+  if (!mapName && game === '2kki' && screenshotData?.mapId)
+    if (screenshotData.game) // if game is set (non-local screenshot) it's incorrect to use the cached 2kki values.
+      mapName = await new Promise(resolve => getOrQuery2kkiLocations(screenshotData.mapId, null, null, resolve));
+    else
+      mapName = await new Promise(resolve => getOrQuery2kkiLocations(screenshotData.mapId, cachedPrevMapId, cachedPrev2kkiLocations, resolve));
+  if (mapName) mapName = determineTitle(mapName, screenshotData?.mapX, screenshotData?.mapY);
+  if (!mapName) mapName = localizedMessages.location.unknownLocation;
+
   a.href = url;
-  a.download = `ynoproject_${gameId || ynoGameId}_screenshot_${formattedDate}`;
+  a.download = `ynoproject_${game}_${mapName.replace(/\s+/g, '_')}_screenshot_${formattedDate}`;
   a.click();
 }
 
