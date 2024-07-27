@@ -510,6 +510,12 @@ function initBadgeControls() {
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
 
+    const mapIdToCacheKey = {};
+    for (const key of Object.keys(locationCache)) { 
+      const mapId = key.slice(5);
+      if (!mapIdToCacheKey[mapId]) mapIdToCacheKey[mapId] = key;
+    }
+
     return new Promise(resolve => window.requestAnimationFrame(() => {
       for (let item of badgeFilterCache) {
         let visible = true;
@@ -526,7 +532,8 @@ function initBadgeControls() {
               // TODO: To remove the last condition and allow searching 2kki badges by location from all games,
               // a 2kki-specific cache must be set up and populated from cache and/or queried
               if (!title && item.game === '2kki' && gameId === '2kki') {
-                const cacheKey = `0000_${item.mapId}`;
+                let cacheKey = `0000_${item.mapId}`;
+                if (!locationCache[cacheKey]) cacheKey = mapIdToCacheKey[item.mapId];
                 const cache = locationCache[cacheKey];
                 if (Array.isArray(cache)) {
                   const [desc] = cache;
