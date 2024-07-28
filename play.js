@@ -1519,8 +1519,8 @@ function setFullscreenControlsHideTimer() {
   }, 5000);
 }
 
-document.onmousemove = function () {
-  if (document.fullscreenElement) {
+document.onmousemove = function (ev) {
+  if (document.fullscreenElement && !ev.dataTransfer) {
     toggleControls(true);
     setFullscreenControlsHideTimer();
   }

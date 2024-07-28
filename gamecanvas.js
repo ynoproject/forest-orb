@@ -203,21 +203,25 @@ if (hasTouchscreen) {
   const joystick = document.getElementById('joystick');
   /** @type {SVGCircleElement} */
   const insetCircle = document.getElementById('insetCircle');
+  const joystickCircle = document.getElementById('joystickCircle');
+  const dpadCircle = document.getElementById('dpadCircle');
   const extent = 10;
+  const deadzone = 0.5;
   canvas.addEventListener('touchstart', ev => {
     if (ev.targetTouches.length !== 1 || !document.fullscreenElement) return;
     let radius;
     switch (globalConfig.mobileControlsType) {
-      case 'joystick': radius = 25; break;
-      case 'dpad': radius = 30; break;
+      case 'joystick': radius = joystickCircle.getBoundingClientRect().width / 2; break;
+      case 'dpad': radius = dpadCircle.getBoundingClientRect().width / 2; break;
       case 'default':
       default:
         return;
     }
     joystick.classList.remove('fadeOut');
     anchor = ev.targetTouches[0];
-    joystick.style.top = `${anchor.screenY - radius * 2}px`;
-    joystick.style.left = `${anchor.screenX - radius * 2}px`;
+
+    joystick.style.top = `${anchor.screenY - radius}px`;
+    joystick.style.left = `${anchor.screenX - radius}px`;
     requestAnimationFrame(function driveControls() {
       let direction;
       if (direction = directions[lastDirection])
@@ -241,7 +245,7 @@ if (hasTouchscreen) {
         } else if (deg >= 225 && deg < 315) {
           lastDirection = 3;
         }
-        if (direction = directions[lastDirection]) { 
+        if ((Math.abs(dx) >= deadzone || Math.abs(dy) >= deadzone) && (direction = directions[lastDirection])) { 
           simulateKeyboardEvent('keydown', direction.key, direction.code);
 
           // Process visual changes for the controls
@@ -260,8 +264,8 @@ if (hasTouchscreen) {
                 dx *= scale;
                 dy *= scale;
               }
-              insetCircle.setAttribute('cx', radius + dx);
-              insetCircle.setAttribute('cy', radius + dy);
+              insetCircle.setAttribute('cx', 20 + dx);
+              insetCircle.setAttribute('cy', 20 + dy);
               break;
             }
           }
