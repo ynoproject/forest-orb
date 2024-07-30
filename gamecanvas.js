@@ -264,8 +264,8 @@ if (hasTouchscreen) {
                 dx *= scale;
                 dy *= scale;
               }
-              insetCircle.setAttribute('cx', 20 + dx);
-              insetCircle.setAttribute('cy', 20 + dy);
+              insetCircle.setAttribute('cx', 25 + dx);
+              insetCircle.setAttribute('cy', 25 + dy);
               break;
             }
           }
