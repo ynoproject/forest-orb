@@ -332,8 +332,9 @@
             "label": "Trạng thái:&nbsp;",
             "values": {
               "all": "Tất cả",
-              "0": "Bị khóa",
-              "1": "Đã mở khóa"
+              "0": "Chưa thu thập",
+              "1": "Đã thu thập",
+              "recentUnlock": "Mới thu thập"
             }
           },
           "sortOrder": {

@@ -333,7 +333,8 @@
             "values": {
               "all": "جميع",
               "0": "مقفل",
-              "1": "مفتوح"
+              "1": "مفتوح",
+              "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {

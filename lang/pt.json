@@ -333,7 +333,8 @@
             "values": {
               "all": "Todos",
               "0": "Bloqueado",
-              "1": "Desbloqueado"
+              "1": "Desbloqueado",
+              "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {
