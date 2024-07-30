@@ -273,12 +273,12 @@
             }
           },
           "events": {
-            "label": "Tham Quan",
+            "label": "Thám hiểm",
             "fields": {
-              "complete": "Đã hoàn thành chuyến tham quan",
-              "freeComplete": "Đã hoàn thành tham quan tự do",
+              "complete": "Đã hoàn thành chuyến thám hiểm",
+              "freeComplete": "Đã hoàn thành thám hiểm tự do",
               "vmComplete": "Đã tìm thấy máy bán nước",
-              "listUpdated": "Đã cập nhật danh sách chuyến tham quan"
+              "listUpdated": "Đã cập nhật danh sách thám hiểm"
             }
           },
           "badges": {
@@ -394,19 +394,19 @@
         "submit": "Xong"
       },
       "events": {
-        "title": "Tham Quan",
+        "title": "Thám Hiểm",
         "rankExp": "Cấp Tiếp Theo",
         "weekExp": "ExP Tuần Này",
         "tabs": {
           "locations": "Địa Điểm",
-          "vms": "Săn Tìm Máy Bán Nước"
+          "vms": "Thám Hiểm Máy Bán Nước"
         }
       },
       "rankings": {
         "title": "Bảng Xếp Hạng"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "Ảnh chụp màn hình của bạn",
         "download": "Tải xuống",
         "save": "Lưu vào Ảnh của tôi"
       },
@@ -512,7 +512,7 @@
     },
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
-    "loadingInstruct": "It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
+    "loadingInstruct": "Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Console bằng phím F12.",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -766,10 +766,10 @@
         "transferPartyOwner": "{PLAYER} đã được chỉ định làm trưởng nhóm."
       },
       "events": {
-        "complete": "Đã hoàn thành chuyến tham quan!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
-        "freeComplete": "Đã hoàn thành chuyến tham quan! Bạn đã đến {LOCATION}.",
+        "complete": "Đã hoàn thành chuyến thám hiểm!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
+        "freeComplete": "Đã hoàn thành chuyến thám hiểm! Bạn đã đến {LOCATION}.",
         "vmComplete": "Đã tìm thấy máy bán nước!\nBạn nhận được {EXP}.",
-        "listUpdated": "Danh sách chuyến tham quan đã được cập nhật."
+        "listUpdated": "Danh sách chuyến thám hiểm đã được cập nhật."
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
@@ -789,7 +789,7 @@
     },
     "events": {
       "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
+      "expRank": "Hạng: {RANK}",
       "period": "Mùa {ORDINAL}",
       "periodEnds": "Kết thúc vào {DATE}",
       "current": "Hiện tại",
@@ -803,13 +803,13 @@
         "3": "Đặc biệt"
       },
       "expRanks": {
-        "0": "Nhập Môn",
-        "1": "Trung Cấp",
+        "0": "Nhập môn",
+        "1": "Trung",
         "2": "Đồng",
         "3": "Bạc",
         "4": "Vàng",
-        "5": "Bạch Kim",
-        "6": "Kim Cương"
+        "5": "Bạch kim",
+        "6": "Kim cương"
       }
     },
     "badges": {
@@ -856,28 +856,28 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Tham quan",
+          "label": "Thám hiểm",
           "valueLabel": "Số chuyến",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Tham quan Tự do",
+          "label": "Thám hiểm Tự do",
           "valueLabel": "Số chuyến",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Tỷ lệ hoàn thành Tham quan",
+          "label": "Tỷ lệ hoàn thành Thám hiểm",
           "valueLabel": "Tỷ lệ",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Săn Tìm Máy Bán Nước",
+          "label": "Thám Hiểm Máy Bán Nước",
           "valueLabel": "Số lượng",
           "value": "{NUMBER}"
         },
         "timeTrial": {
           "label": "Thử thách Hẹn giờ",
-          "valueLabel": "Thời gian Hoàn thành",
+          "valueLabel": "Thời gian hoàn thành",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
