@@ -116,8 +116,8 @@
           "saveReminder": {
             "label": "Częstotliwość powiadomień o zapisie",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} minut",
+              "never": "Nigdy"
             }
           },
           "soundVolume": "Głośność dźwięków",
@@ -345,8 +345,8 @@
           },
           "search": {
             "label": "Szukaj:&nbsp;",
-            "name": "Name:",
-            "location": "Location:"
+            "name": "Nazwa:",
+            "location": "Lokalizacja:"
           }
         }
       },
