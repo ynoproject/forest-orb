@@ -212,7 +212,7 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
   closeButton.classList.add('closeToast');
   closeButton.innerText = '✖';
   closeButton.href = 'javascript:void(0);';
-  closeButton.onclick = () => toast.remove();
+  closeButton.ontouchstart = closeButton.onclick = () => toast.remove();
 
   toast.appendChild(closeButton);
 
