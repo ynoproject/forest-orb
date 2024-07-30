@@ -1597,7 +1597,7 @@
             <li class="formControlRow">
               <label class="unselectable">Time Trial</label>
               <div>
-                <button class="checkboxButton unselectable" :class="{ toggled: varTrigger }" type="button" @click="varTrigger = !varTrigger"><span></span></button>
+                <button class="checkboxButton unselectable" :class="{ toggled: timeTrial }" type="button" @click="timeTrial = !timeTrial"><span></span></button>
               </div>
             </li>
             <li class="formControlRow">
