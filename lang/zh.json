@@ -135,6 +135,12 @@
             "label": "计时模式"
           },
           "toggleMobileControls": "显示移动端按键",
+          "mobileControlsType": {
+            "label": "Mobile Controls Type",
+            "default": "D-Pad",
+            "joystick": "Floating Joystick",
+            "dpad": "Floating D-Pad"
+          },
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地点",
-      "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。"
+      "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。",
+      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "多人游戏守则"
   },

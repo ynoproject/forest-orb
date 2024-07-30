@@ -3789,6 +3789,14 @@ form .uiTheme {
     #badgeGameTabs, #badgeCategoryTabs {
       scrollbar-width: none;
     }
+
+    #badgeGameTabs {
+      min-height: 2.5rem;
+    }
+
+    #badgeCategoryTabs {
+      min-height: 1.1rem;
+    }
   }
 }
 

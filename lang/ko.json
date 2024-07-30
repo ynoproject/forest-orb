@@ -135,6 +135,12 @@
             "label": "Time Trial"
           },
           "toggleMobileControls": "모바일 컨트롤러 표시",
+          "mobileControlsType": {
+            "label": "Mobile Controls Type",
+            "default": "D-Pad",
+            "joystick": "Floating Joystick",
+            "dpad": "Floating D-Pad"
+          },
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
       "explorerUndiscoveredLocations": "미발견 장소 보기",
-      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen."
+      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen.",
+      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "규칙 다시 보기"
   },

@@ -96,7 +96,7 @@ function bindKey(node, key, keyCode) {
 
     keysDown.delete(event.target.id);
     node.classList.remove('active');
-  
+
     if (lastTouchedId) {
       document.getElementById(lastTouchedId).classList.remove('active');
     }
@@ -185,6 +185,118 @@ function updateTouchControlsVisibility() {
 if (hasTouchscreen) {
   for (const button of document.querySelectorAll('[data-key]'))
     bindKey(button, button.dataset.key, button.dataset.keyCode);
+
+  // Setup for the floating controls
+  // These controls are only available in fullscreen mode.
+  /** @type {Touch} */
+  let anchor;
+  /** @type {Touch} */
+  let compass;
+  let lastDirection;
+
+  const directions = [
+    { key: 'ArrowUp', code: 38, button: document.getElementById('joystickUp') },
+    { key: 'ArrowRight', code: 39, button: document.getElementById('joystickRight') },
+    { key: 'ArrowDown', code: 40, button: document.getElementById('joystickDown') },
+    { key: 'ArrowLeft', code: 37, button: document.getElementById('joystickLeft') },
+  ];
+  const joystick = document.getElementById('joystick');
+  /** @type {SVGCircleElement} */
+  const insetCircle = document.getElementById('insetCircle');
+  const joystickCircle = document.getElementById('joystickCircle');
+  const dpadCircle = document.getElementById('dpadCircle');
+  const extent = 10;
+  const deadzone = 0.5;
+  canvas.addEventListener('touchstart', ev => {
+    if (ev.targetTouches.length !== 1 || !document.fullscreenElement) return;
+    let radius;
+    switch (globalConfig.mobileControlsType) {
+      case 'joystick': radius = joystickCircle.getBoundingClientRect().width / 2; break;
+      case 'dpad': radius = dpadCircle.getBoundingClientRect().width / 2; break;
+      case 'default':
+      default:
+        return;
+    }
+    joystick.classList.remove('fadeOut');
+    anchor = ev.targetTouches[0];
+
+    joystick.style.top = `${anchor.screenY - radius}px`;
+    joystick.style.left = `${anchor.screenX - radius}px`;
+    requestAnimationFrame(function driveControls() {
+      let direction;
+      if (direction = directions[lastDirection])
+        simulateKeyboardEvent('keyup', direction.key, direction.code);
+      
+      if (anchor && compass) {
+        let dx = compass.clientX - anchor.clientX;
+        let dy = compass.clientY - anchor.clientY;
+
+        const angle = Math.atan2(dy, dx);
+        let deg = angle * (180 / Math.PI);
+        // 90 degrees to counteract the top-left origin
+        deg = (deg + 360 + 90) % 360;
+
+        if (deg >= 315 || deg < 45) {
+          lastDirection = 0;
+        } else if (deg >= 45 && deg < 135) {
+          lastDirection = 1;
+        } else if (deg >= 135 && deg < 225) {
+          lastDirection = 2;
+        } else if (deg >= 225 && deg < 315) {
+          lastDirection = 3;
+        }
+        if ((Math.abs(dx) >= deadzone || Math.abs(dy) >= deadzone) && (direction = directions[lastDirection])) { 
+          simulateKeyboardEvent('keydown', direction.key, direction.code);
+
+          // Process visual changes for the controls
+          switch (globalConfig.mobileControlsType) {
+            case 'dpad':
+              for (const { button } of Object.values(directions))
+                button.classList.remove('active');
+              direction.button.classList.add('active');
+              break;
+            case 'joystick': {
+              dx = Math.max(Math.min(dx, extent), -extent);
+              dy = Math.max(Math.min(dy, extent), -extent);
+              const magnitude = Math.sqrt(dx * dx + dy * dy);
+              if (magnitude > extent) {
+                const scale = extent / magnitude;
+                dx *= scale;
+                dy *= scale;
+              }
+              insetCircle.setAttribute('cx', 20 + dx);
+              insetCircle.setAttribute('cy', 20 + dy);
+              break;
+            }
+          }
+        }
+      } else if (!anchor) return;
+      requestAnimationFrame(driveControls);
+    });
+  });
+
+  canvas.addEventListener('touchmove', ev => {
+    if (!anchor && ev.targetTouches.length) {
+      anchor = ev.targetTouches[0];
+      return;
+    }
+    compass = ev.targetTouches[0];
+  });
+
+  canvas.addEventListener('touchend', () => {
+    anchor = compass = undefined;
+    joystick.classList.add('fadeOut');
+    switch (globalConfig.mobileControlsType) {
+      case 'joystick':
+        insetCircle.setAttribute('cx', 25);
+        insetCircle.setAttribute('cy', 25);
+        break;
+      case 'dpad':
+        for (const { button } of Object.values(directions))
+          button.classList.remove('active');
+        break;
+    }
+  });
 } else {
   // Prevent scrolling when pressing specific keys
   canvas.addEventListener('keydown', event => {

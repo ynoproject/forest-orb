@@ -59,6 +59,7 @@ let globalConfig = {
   globalChatHistoryLimit: 100,
   partyChatHistoryLimit: 250,
   mobileControls: true,
+  mobileControlsType: 'default',
   playMentionSound: true,
   locationDisplay: false,
   hideRankings: false,
@@ -1034,6 +1035,10 @@ document.getElementById('mobileControlsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('mobileControl').oninput = function() {
+  setMobileControlType(this.value);
+};
+
 document.getElementById('locationDisplayButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.locationDisplay = this.classList.contains('toggled');
@@ -1128,9 +1133,6 @@ initPartyControls();
 initScreenshotControls();
 initEventControls();
 initRankingControls();
-
-if (!hasTouchscreen)
-  document.querySelector('#mobileControls').classList.add('hidden');
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 
@@ -1517,8 +1519,8 @@ function setFullscreenControlsHideTimer() {
   }, 5000);
 }
 
-document.onmousemove = function () {
-  if (document.fullscreenElement) {
+document.onmousemove = function (ev) {
+  if (document.fullscreenElement && !ev.dataTransfer) {
     toggleControls(true);
     setFullscreenControlsHideTimer();
   }
@@ -1578,6 +1580,24 @@ function setMusicVolume(value, isInit) {
   globalConfig.musicVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
+}
+
+function setMobileControlType(value, isInit) {
+  if (!hasTouchscreen) return;
+  globalConfig.mobileControlsType = value;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+
+  const dpad = document.getElementById('dpad');
+  const joystick = document.getElementById('joystick');
+
+  const hasJoystick = value === 'joystick' || value === 'dpad';
+  dpad.classList.toggle('hasJoystick', hasJoystick);
+  joystick.classList.toggle('hidden', !hasJoystick);
+
+  for (const control of joystick.querySelectorAll('[data-style]')) {
+    control.classList.toggle('hidden', control.dataset.style !== value);
+  }
 }
 
 function onSelectUiTheme(e) {

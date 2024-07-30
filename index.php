@@ -234,6 +234,41 @@
               </div>
             <?php endif ?>
           </div>
+          
+          <div id="joystick" class="unselectable hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" class="baseColorFill hidden" data-style="joystick">
+              <defs>
+                <mask id="joystickInset">
+                  <rect width="100%" height="100%" fill="white"></rect>
+                  <circle id="insetCircle" cx="25" cy="25" r="20" fill="black"></circle>
+                </mask>
+              </defs>
+              <circle id="joystickCircle" cx="25" cy="25" r="25" mask="url(#joystickInset)"></circle>
+            </svg>
+            <svg width="13.229166mm" height="13.229167mm" viewBox="0 0 13.229166 13.229167" version="1.1"
+              data-style="dpad" class="baseColorFill hidden" xmlns="http://www.w3.org/2000/svg"
+              xmlns:svg="http://www.w3.org/2000/svg">
+              <g id="dpadCircle" transform="translate(-11.225154,-3.5548219)">
+                <path
+                  d="m 17.839738,3.5548218 a 6.6145835,6.6145835 0 0 0 -6.614583,6.6145832 6.6145835,6.6145835 0 0 0 6.614583,6.614583 6.6145835,6.6145835 0 0 0 6.614583,-6.614583 6.6145835,6.6145835 0 0 0 -6.614583,-6.6145832 z M 16.436723,4.644161 h 2.806547 c 0.242771,0 0.438216,0.1954449 0.438216,0.4382161 v 3.24528 h 3.24528 c 0.242771,0 0.438216,0.1954449 0.438216,0.4382161 v 2.8070638 c 0,0.242772 -0.195445,0.438216 -0.438216,0.438216 h -3.24528 v 3.244763 c 0,0.242772 -0.195445,0.438216 -0.438216,0.438216 h -2.806547 c -0.242772,0 -0.438216,-0.195444 -0.438216,-0.438216 v -3.244763 h -3.24528 c -0.242772,0 -0.438216,-0.195444 -0.438216,-0.438216 V 8.7658732 c 0,-0.2427712 0.195444,-0.4382161 0.438216,-0.4382161 h 3.24528 v -3.24528 c 0,-0.2427712 0.195444,-0.4382161 0.438216,-0.4382161 z"
+                  class="joystickBase" />
+                <path
+                  d="M 15.998507,12.011153 V 8.3276571 h -3.24528 c -0.242772,0 -0.438216,0.1954449 -0.438216,0.4382161 v 2.8070638 c 0,0.242772 0.195444,0.438216 0.438216,0.438216 z"
+                  id="joystickLeft" class="joystickDpad" />
+                <path
+                  d="m 19.681486,12.011153 h -3.682979 v 3.244763 c 0,0.242772 0.195444,0.438216 0.438216,0.438216 h 2.806547 c 0.242771,0 0.438216,-0.195444 0.438216,-0.438216 z"
+                  id="joystickDown" class="joystickDpad" />
+                <path d="m 19.681486,8.3276571 h -3.682979 v 3.6834959 h 3.682979 z" class="joystickDpad" />
+                <path
+                  d="m 19.681486,8.3276571 v 3.6834959 h 3.24528 c 0.242771,0 0.438216,-0.195444 0.438216,-0.438216 V 8.7658732 c 0,-0.2427712 -0.195445,-0.4382161 -0.438216,-0.4382161 z"
+                  id="joystickRight" class="joystickDpad" />
+                <path
+                  d="m 16.436723,4.644161 c -0.242772,0 -0.438216,0.1954449 -0.438216,0.4382161 v 3.24528 h 3.682979 v -3.24528 c 0,-0.2427712 -0.195445,-0.4382161 -0.438216,-0.4382161 z"
+                  id="joystickUp" class="joystickDpad" />
+              </g>
+            </svg>
+          </div>
+
         </div>
       </div>
       <div id="chatboxContainer" class="container" style="display: none">
@@ -588,10 +623,29 @@
                   <button id="immersionModeButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
-              <li class="formControlRow" id="mobileControls">
+              <li class="formControlRow mobileOnly">
                 <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleMobileControls">Show Mobile Controls</label>
                 <div>
                   <button id="mobileControlsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow mobileOnly">
+                <label class="unselectable">
+                  <span data-i18n="[html]modal.settings.fields.mobileControlsType.label">Mobile Controls Type</span>
+                  <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]tooltips.mobileControlsType">
+                    <div class="helpIcon icon fillIcon invertFillIcon altIcon">
+                      <svg viewBox="0 0 18 18">
+                        <path d="m9 0a1 1 90 0 0 0 18 1 1 90 0 0 0-18m-1.25 10.25a1 1 90 0 0 2.5 0.5q0.25-1 1.25-1.5c0.75-0.5 2.5-1.5 2.5-3.75 0-4-7.75-5.5-9.5-0.5a0.25 0.25 90 0 0 2.75 0.5c0.25-1.75 4-2.25 3.75 0.5 0 1.5-3 2.25-3.25 4.25m1.25 6a0.25 0.25 90 0 0 0-3.25 0.25 0.25 90 0 0 0 3.25" />
+                      </svg>
+                    </div>
+                  </a>
+                </label>
+                <div>
+                  <select id="mobileControl" size="3">
+                    <option value="default" selected data-i18n="[html]modal.settings.fields.mobileControlsType.default">D-Pad</option>
+                    <option value="joystick" data-i18n="[html]modal.settings.fields.mobileControlsType.joystick">Floating Joystick</option>
+                    <option value="dpad" data-i18n="[html]modal.settings.fields.mobileControlsType.dpad">Floating D-Pad</option>
+                  </select>
                 </div>
               </li>
               <li class="formControlRow">

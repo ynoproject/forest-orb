@@ -24,7 +24,7 @@ html {
   height: 100%;
 }
 
-#dpad, #apad {
+#dpad, #apad, #joystick {
   position: fixed;
   bottom: 1rem;
   z-index: 101;
@@ -52,7 +52,7 @@ html {
   right: 1rem;
 }
 
-#dpad svg {
+#dpad svg, #joystick svg {
   width: calc(2 * var(--controls-size));
   height: calc(2 * var(--controls-size));
   fill: var(--color-gray);
@@ -119,4 +119,37 @@ html {
 
 #layout:fullscreen #dpad, #layout:fullscreen #apad {
   bottom: 6rem;
+}
+
+#joystick {
+  pointer-events: none;
+  opacity: initial;
+  transition: opacity ease-in-out;
+}
+
+#joystick.fadeOut {
+  opacity: 0;
+  transition-delay: 2s;
+  transition-duration: 0.25s;
+}
+
+#joystick svg>circle,
+.joystickBase {
+  opacity: 0.4;
+}
+
+.joystickDpad {
+  opacity: 0.2;
+}
+
+.joystickDpad.active {
+  opacity: initial;
+}
+
+#layout:fullscreen #dpad.hasJoystick {
+  display: none;
+}
+
+#layout:not(:fullscreen) #joystick {
+  display: none;
 }

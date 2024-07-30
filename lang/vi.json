@@ -135,6 +135,12 @@
             "label": "Thử thách Hẹn giờ"
           },
           "toggleMobileControls": "Hiện điều khiển cho thiết bị di động",
+          "mobileControlsType": {
+            "label": "Kiểu điều khiển cho thiết bị di động",
+            "default": "D-Pad",
+            "joystick": "Joystick nổi",
+            "dpad": "D-Pad nổi"
+          },
           "toggleLocationDisplay": "Hiện tên địa điểm trong cửa sổ",
           "toggleRankings": "Bảng xếp hạng",
           "togglePreloads": {
@@ -475,7 +481,8 @@
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
       "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
-      "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình."
+      "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình.",
+      "mobileControlsType": "Các kiểu điều khiển khác thay thế cho kiểu D-Pad mặc định.<br>Kiểu điều khiển nổi chỉ có tác dụng khi bật toàn màn hình trên điện thoại."
     },
     "reviewRules": "Xem Nội quy"
   },
