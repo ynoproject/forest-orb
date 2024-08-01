@@ -512,7 +512,7 @@
     },
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
-    "loadingInstruct": "Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Console bằng phím F12.",
+    "loadingInstruct": ". <br /> <br /> Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Console bằng phím F12.",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
