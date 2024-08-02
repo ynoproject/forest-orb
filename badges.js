@@ -11,7 +11,7 @@
 */
 
 /**
-  @typedef {Badge[] & {full?: true}} BadgeCache
+  @typedef {Badge[] & {full?: boolean}} BadgeCache
 */
 
 const maxBadgeSlotRows = 8;
@@ -154,7 +154,9 @@ function initBadgeControls() {
   let badgeCompareFunc;
   let didUpdateBadgeModal;
   let lastLang;
-  const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
+  const fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol) => {
+    await checkNewBadgeUnlocks();
+
     if (slotRow && slotCol)
       modifyingSlot = { slotRow, slotCol };
     else
@@ -1114,7 +1116,7 @@ function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
 }
 
 function checkNewBadgeUnlocks() {
-  apiFetch('badge?command=new')
+  return apiFetch('badge?command=new')
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
