@@ -482,7 +482,7 @@
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
       "explorerUndiscoveredLocations": "미발견 장소 보기",
-      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen.",
+      "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
       "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "규칙 다시 보기"
