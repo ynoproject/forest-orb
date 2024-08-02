@@ -482,7 +482,7 @@
       "rankings": "Рейтинги",
       "nexus": "Вернуться на главную страницу",
       "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации",
-      "timeTrial": "To enable Time Trial mode, hold Shift + -> after starting a new game before anything appears on-screen.",
+      "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
       "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
     },
     "reviewRules": "Просмотреть правила"
