@@ -2952,7 +2952,7 @@ form .uiTheme {
   position: fixed;
   display: flex;
   flex-direction: column;
-  width: min(320px, calc(100vw - 40px));
+  min-width: min(320px, calc(100vw - 40px));
   bottom: var(--toast-offset);
   left: 0;
   margin: 0 0 8px 8px;
@@ -2990,6 +2990,7 @@ form .uiTheme {
   background-image: var(--container-bg-image-url) !important;
   background-size: 35px;
   background-position-y: -8px;
+  justify-content: space-between;
 }
 
 .toast.fullBg {
@@ -3031,6 +3032,7 @@ form .uiTheme {
 
 .toastMessageContainer {
   width: 100%;
+  text-align: center;
 }
 
 .toastMessage {
@@ -3041,6 +3043,7 @@ form .uiTheme {
   right: 0;
   text-decoration: none;
   image-rendering: auto;
+  padding-inline-start: 8px;
 }
 
 .tippy-box {
