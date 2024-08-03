@@ -5,8 +5,8 @@
   @property {string} group
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
+  @property {string[]} [tags] available when full=true
   @property {boolean} newUnlock
-  @property {string[]} tags
   Either SimpleBadge or Badge
   Cross-check with badges.go in ynoserver
 */
@@ -948,6 +948,13 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
               const seconds = badge.seconds - minutes * 60;
               condition = condition.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
             }
+            if (localizedTooltip.checkbox && badge.tags?.length)
+              for (const needle in localizedTooltip.checkbox) {
+                const subcondition = localizedTooltip.checkbox[needle];
+                const subconditionAchieved = Array.isArray(subcondition) ? !!subcondition.find(cond => badge.tags.includes(cond)) : badge.tags.includes(subcondition);
+                if (subconditionAchieved)
+                  condition = condition.replace(needle, `<tag>${needle}</tag>`);
+              }
             tooltipContent += `<div class="tooltipContent">${condition}</div>`;
           } else
             tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
@@ -981,12 +988,6 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
             const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
             if (systemName)
               applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), systemName, badge.game);
-            for (const span of badgeTippy.popper.querySelectorAll('span[data-tag]'))
-              for (const tag of badge.tags)
-                if (span.dataset.tag.includes(tag)) { 
-                  span.classList.add('crossed');
-                  break;
-                }
           };
           if (includeTooltip === 'lazy')
             assignTooltipCallbacks.set(item, assignImmediately);

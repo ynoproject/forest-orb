@@ -3883,7 +3883,8 @@ form .uiTheme {
   opacity: 0.5;
 }
 
-.crossed {
-  opacity: 0.7;
+tag {
+  -webkit-text-fill-color: initial;
+  opacity: 0.6;
   text-decoration: line-through;
 }
