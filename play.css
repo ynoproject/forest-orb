@@ -2952,7 +2952,7 @@ form .uiTheme {
   position: fixed;
   display: flex;
   flex-direction: column;
-  min-width: min(320px, calc(100vw - 40px));
+  width: min(320px, calc(100vw - 40px));
   bottom: var(--toast-offset);
   left: 0;
   margin: 0 0 8px 8px;
@@ -3032,6 +3032,9 @@ form .uiTheme {
 
 .toastMessageContainer {
   width: 100%;
+}
+
+.screenshotToast .toastMessageContainer {
   text-align: center;
 }
 
