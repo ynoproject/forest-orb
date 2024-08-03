@@ -256,7 +256,7 @@ function takeScreenshot() {
         return;
     }
 
-    downloadScreenshot(url, dateTaken);
+    downloadScreenshot(url, dateTaken, { mapId, mapX, mapY });
   });
 }
 
