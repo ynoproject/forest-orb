@@ -3882,3 +3882,8 @@ form .uiTheme {
 .removing .item:not([data-badge-id="null"]) .badgeContainer {
   opacity: 0.5;
 }
+
+.crossed {
+  opacity: 0.7;
+  text-decoration: line-through;
+}

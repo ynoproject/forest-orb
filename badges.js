@@ -6,6 +6,7 @@
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
   @property {boolean} newUnlock
+  @property {string[]} tags
   Either SimpleBadge or Badge
   Cross-check with badges.go in ynoserver
 */
@@ -980,6 +981,12 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
             const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
             if (systemName)
               applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), systemName, badge.game);
+            for (const span of badgeTippy.popper.querySelectorAll('span[data-tag]'))
+              for (const tag of badge.tags)
+                if (span.dataset.tag.includes(tag)) { 
+                  span.classList.add('crossed');
+                  break;
+                }
           };
           if (includeTooltip === 'lazy')
             assignTooltipCallbacks.set(item, assignImmediately);
