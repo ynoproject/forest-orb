@@ -79,6 +79,8 @@ const allGameUiThemes = {
     'yumehako-sys3',
     '2da_system_01',
     'nadeko_cards',
+    'ob_sys1',
+    'talyis-City of Revival menu theme',
 
     'system_E_eye',
     'System_kuraud',
