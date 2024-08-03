@@ -1122,20 +1122,22 @@ function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
     .catch(err => console.error(err));
 }
 
+let lastBadgeCheck = '';
 function checkNewBadgeUnlocks() {
-  return apiFetch('badge?command=new')
+  return apiFetch(`badge?command=new&since=${lastBadgeCheck}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(unlockedBadgeIds => {
-      if (unlockedBadgeIds) {
+    .then(checkData => {
+      lastBadgeCheck = new Date().toISOString();
+      if (checkData.badgeIds.length || checkData.newTags) {
         if (badgeCache) {
           badgeCache.full = false;
         }
 
-        for (const badgeId of unlockedBadgeIds) { 
+        for (const badgeId of checkData.badgeIds) { 
           newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }
