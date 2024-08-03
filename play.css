@@ -3817,7 +3817,6 @@ form .uiTheme {
 
 .dropdown {
   position: fixed;
-  margin-left: 60px;
   width: 194px;
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat;
