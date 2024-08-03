@@ -136,10 +136,10 @@
           },
           "toggleMobileControls": "显示移动端按键",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
-            "default": "D-Pad",
-            "joystick": "Floating Joystick",
-            "dpad": "Floating D-Pad"
+            "label": "移动端按键类型",
+            "default": "方向键",
+            "joystick": "浮动摇杆",
+            "dpad": "浮动方向键"
           },
           "toggleLocationDisplay": "位置弹窗提示",
           "toggleRankings": "显示排行榜",
@@ -334,7 +334,7 @@
               "all": "全部",
               "0": "未解锁",
               "1": "已解锁",
-              "recentUnlock": "Recently Unlocked"
+              "recentUnlock": "最近解锁"
             }
           },
           "sortOrder": {
@@ -483,7 +483,7 @@
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地点",
       "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "mobileControlsType": "可替代默认的方向键操控模式。<br>浮动操控模式只有在移动端全屏模式下才可用。"
     },
     "reviewRules": "多人游戏守则"
   },
