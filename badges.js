@@ -949,9 +949,9 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
               condition = condition.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
             }
             if (localizedTooltip.checkbox && badge.tags?.length)
-              for (const needle in localizedTooltip.checkbox) {
-                const subcondition = localizedTooltip.checkbox[needle];
-                const subconditionAchieved = Array.isArray(subcondition) ? !!subcondition.find(cond => badge.tags.includes(cond)) : badge.tags.includes(subcondition);
+              for (const subcondition in localizedTooltip.checkbox) {
+                const needle = localizedTooltip.checkbox[subcondition];
+                const subconditionAchieved = !!badge.tags.find(tag => subcondition.includes(tag));
                 if (subconditionAchieved)
                   condition = condition.replace(needle, `<tag>${needle}</tag>`);
               }
