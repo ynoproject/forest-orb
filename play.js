@@ -42,7 +42,8 @@ const langLabelMassageFunctions = {
     if (isUI && value.indexOf(' ') > -1)
       return value.split(/ +/g).map(v => `<span class="nowrap">${v}</span>`).join('');
     return value;
-  }
+  },
+  ar: value => `\u{2067}${value}\u{2069}`,
 };
 
 let globalConfig = {
@@ -1405,7 +1406,7 @@ function onUpdateChatboxInfo() {
   if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && window.getComputedStyle(layout).flexWrap === 'wrap') {
     const lastTab = chatboxTabs[chatboxTabs.length - 1];
     const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
-    chatboxInfo.style.marginLeft = offsetLeft;
+    chatboxInfo.style.marginInlineStart = offsetLeft;
     chatboxInfo.style.marginBottom = '-32px';
     if (chatboxInfo.offsetHeight >= 72)
       chatboxInfo.setAttribute('style', '');
@@ -1526,7 +1527,12 @@ document.onmousemove = function (ev) {
   }
 };
 
+const rtlLangs = ['ar'];
 function setLang(lang, isInit) {
+  if (rtlLangs.includes(lang))
+    document.documentElement.setAttribute('dir', 'rtl');
+  else
+    document.documentElement.removeAttribute('dir');
   globalConfig.lang = lang;
   fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
   if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
