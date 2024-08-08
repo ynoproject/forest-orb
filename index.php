@@ -69,6 +69,11 @@
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     return strpos($userAgent, 'Firefox') !== false && strpos($userAgent, 'Mobile') !== false;
   }
+
+  function isFirefox() {
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    return strpos($userAgent, 'Firefox') !== false;
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -91,7 +96,7 @@
   <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/scrollwatch@2.0.1/dist/ScrollWatch-2.0.1.min.js"></script>
 </head>
-<body>
+<body <?php if (isFirefox()): ?>class="browserFirefox"<?php endif ?>>
   <div id="background"></div>
   <div id="backgroundOverlay"></div>
   <div id="content">
