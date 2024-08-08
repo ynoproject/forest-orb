@@ -3882,8 +3882,13 @@ form .uiTheme {
   opacity: 0.5;
 }
 
-tag {
-  -webkit-text-fill-color: initial;
+body.browserFirefox tag {
   opacity: 0.6;
   text-decoration: line-through;
+}
+
+body:not(.browserFirefox) tag {
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.4);
+  text-decoration: line-through;
+  filter: invert(1);
 }
