@@ -951,7 +951,11 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
             if (localizedTooltip.checkbox && badge.tags?.length)
               for (const subcondition in localizedTooltip.checkbox) {
                 const needle = localizedTooltip.checkbox[subcondition];
-                const subconditionAchieved = !!badge.tags.find(tag => subcondition.includes(tag));
+                let subconditionAchieved;
+                if (subcondition.includes('|'))
+                  subconditionAchieved = !!subcondition.split('|').find(tag => badge.tags.includes(tag));
+                else
+                  subconditionAchieved = badge.tags.includes(subcondition);
                 if (subconditionAchieved)
                   condition = condition.replace(needle, `<tag>${needle}</tag>`);
               }
