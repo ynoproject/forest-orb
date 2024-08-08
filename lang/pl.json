@@ -512,7 +512,7 @@
     },
     "leavePage": "Czy na pewno chcesz opuścić stronę? Niezapisane dane zostaną utracone.",
     "logout": "Czy na pewno chcesz się wylogować?",
-    "loadingInstruct": "Ta strona ładuje się dłużej niż normalne; Jeżeli problem nie minie można spróbować użyć CTRL+F5 lub wyczyścić cache przeglądarki (lecz nie ciasteczka!). Poprzez F12 można sprawdźić błędy w konsoli.",
+    "loadingInstruct": ". <br /> <br /> Ta strona ładuje się dłużej niż normalne; Jeżeli problem nie minie można spróbować użyć CTRL+F5 lub wyczyścić cache przeglądarki (lecz nie ciasteczka!). Poprzez F12 można sprawdźić błędy w konsoli.",
     "connStatus": {
       "0": "Rozłączony",
       "1": "Połączony",
