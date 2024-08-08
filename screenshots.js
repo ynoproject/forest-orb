@@ -248,6 +248,7 @@ function takeScreenshot() {
       thumb.classList.add('screenshotThumbnail');
       thumb.src = url;
       toast.querySelector('.toastMessage').prepend(thumb);
+      toast.classList.add('screenshotToast');
       document.documentElement.style.setProperty('--toast-offset', `-${toast.getBoundingClientRect().height + 8}px`);
 
       thumb.onclick = () => viewScreenshot(url, dateTaken, { mapId, mapX, mapY });
@@ -256,7 +257,7 @@ function takeScreenshot() {
         return;
     }
 
-    downloadScreenshot(url, dateTaken);
+    downloadScreenshot(url, dateTaken, { mapId, mapX, mapY });
   });
 }
 

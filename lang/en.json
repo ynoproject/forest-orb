@@ -775,7 +775,7 @@
         "badgeUnlocked": "You have unlocked a new badge!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Screenshot taken, click to save."
       },
       "saveSync": {
         "saveUploading": "Uploading save data from slot {SLOT}...",

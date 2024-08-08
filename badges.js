@@ -5,13 +5,14 @@
   @property {string} group
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
+  @property {string[]} [tags] available when full=true
   @property {boolean} newUnlock
   Either SimpleBadge or Badge
   Cross-check with badges.go in ynoserver
 */
 
 /**
-  @typedef {Badge[] & {full?: true}} BadgeCache
+  @typedef {Badge[] & {full?: boolean}} BadgeCache
 */
 
 const maxBadgeSlotRows = 8;
@@ -154,7 +155,9 @@ function initBadgeControls() {
   let badgeCompareFunc;
   let didUpdateBadgeModal;
   let lastLang;
-  const fetchAndUpdateBadgeModalBadges = (slotRow, slotCol) => {
+  const fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol) => {
+    await checkNewBadgeUnlocks();
+
     if (slotRow && slotCol)
       modifyingSlot = { slotRow, slotCol };
     else
@@ -945,6 +948,13 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
               const seconds = badge.seconds - minutes * 60;
               condition = condition.replace('{TIME}', localizedMessages.badges.time.replace('{MINUTES}', minutes.toString().padStart(2, '0')).replace('{SECONDS}', seconds.toString().padStart(2, '0')));
             }
+            if (localizedTooltip.checkbox && badge.tags?.length)
+              for (const subcondition in localizedTooltip.checkbox) {
+                const needle = localizedTooltip.checkbox[subcondition];
+                const subconditionAchieved = !!badge.tags.find(tag => subcondition.includes(tag));
+                if (subconditionAchieved)
+                  condition = condition.replace(needle, `<tag>${needle}</tag>`);
+              }
             tooltipContent += `<div class="tooltipContent">${condition}</div>`;
           } else
             tooltipContent += `<h3 class="tooltipTitle">${localizedMessages.badges.locked}</h3>`;
@@ -1113,20 +1123,22 @@ function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
     .catch(err => console.error(err));
 }
 
+let lastBadgeCheck = '';
 function checkNewBadgeUnlocks() {
-  apiFetch('badge?command=new')
+  return apiFetch(`badge?command=new&since=${lastBadgeCheck}`)
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.json();
     })
-    .then(unlockedBadgeIds => {
-      if (unlockedBadgeIds) {
+    .then(checkData => {
+      lastBadgeCheck = new Date().toISOString();
+      if (checkData.badgeIds.length || checkData.newTags) {
         if (badgeCache) {
           badgeCache.full = false;
         }
 
-        for (const badgeId of unlockedBadgeIds) { 
+        for (const badgeId of checkData.badgeIds) { 
           newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }

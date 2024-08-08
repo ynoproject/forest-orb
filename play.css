@@ -2990,6 +2990,7 @@ form .uiTheme {
   background-image: var(--container-bg-image-url) !important;
   background-size: 35px;
   background-position-y: -8px;
+  justify-content: space-between;
 }
 
 .toast.fullBg {
@@ -3033,6 +3034,10 @@ form .uiTheme {
   width: 100%;
 }
 
+.screenshotToast .toastMessageContainer {
+  text-align: center;
+}
+
 .toastMessage {
   display: inline;
 }
@@ -3041,6 +3046,7 @@ form .uiTheme {
   right: 0;
   text-decoration: none;
   image-rendering: auto;
+  padding-inline-start: 8px;
 }
 
 .tippy-box {
@@ -3811,7 +3817,6 @@ form .uiTheme {
 
 .dropdown {
   position: fixed;
-  margin-left: 60px;
   width: 194px;
   border: 12px solid transparent;
   border-image: var(--border-image-url) 8 repeat;
@@ -3875,4 +3880,10 @@ form .uiTheme {
 .item.removing .badgeContainer,
 .removing .item:not([data-badge-id="null"]) .badgeContainer {
   opacity: 0.5;
+}
+
+tag {
+  -webkit-text-fill-color: initial;
+  opacity: 0.6;
+  text-decoration: line-through;
 }
