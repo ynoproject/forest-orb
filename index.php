@@ -1380,6 +1380,7 @@
                   <option value="">None (Mod Granted)</option>
                   <option value="tag">Tag</option>
                   <option value="tags">Multiple Tags</option>
+                  <option value="tagArrays">Multiple Tags with Alternatives</option>
                   <option value="timeTrial">Time Trial</option>
                 </select>
               </li>
@@ -1387,9 +1388,10 @@
                 <label class="unselectable">Required Int</label>
                 <input v-model="reqInt" type="number" min="0" max="99999" autocomplete="off" />
               </li>
-              <li class="formControlRow fullWidth" v-if="reqType === 'tags'">
+              <li class="formControlRow fullWidth" v-if="reqType === 'tags' || reqType === 'tagArrays'">
                 <label class="unselectable">Tag Requirement Count</label>
-                <input v-model="reqCount" type="number" min="0" :max="reqStrings.length" autocomplete="off" />
+                <input v-model="reqCount" v-if="reqType === 'tags'" type="number" min="0" :max="reqStrings.length" autocomplete="off" />
+                <input v-model="reqCount" v-if="reqType === 'tagArrays'" type="number" min="0" :max="reqStringArrays.length" autocomplete="off" />
               </li>
               <li class="formControlRow fullWidth">
                 <label class="unselectable">Map ID</label>
@@ -1474,16 +1476,32 @@
               </li>
             </ul>
             <h3>Tag</h3>
-            <div class="modalTabsContainer" v-if="reqType === 'tags'">
+            <div class="modalTabsContainer" v-if="reqType === 'tags' || reqType === 'tagArrays'">
               <template :key="t" v-for="(tag, t) in tags">
-                <div class="modalTab" v-if="!tag.deleted" :class="{ active: t === tagIndex }" @click="tagIndex = t">
-                  <label class="modalTabLabel">{{tag.tagId}}</label>
+                <div class="modalTab" v-if="!tag.deleted && tag.siblingIndex < 0" :class="{ active: t === tagIndex }" @click="tagIndex = t">
+                  <label class="modalTabLabel">{{displayTag(tag)}}</label>
                 </div>
               </template>
               <div class="modalTab" @click="addTag();"><label class="modalTabLabel">+</label></div>
             </div>
-            <template :key="t" v-for="(tag, t) in tags">
-              <tag v-if="!tag.deleted" v-show="t === tagIndex" :index="t" />
+            <div class="subTabs badgeTagTabs" v-if="reqType === 'tagArrays' && currentTag">
+              <div v-show="currentTag.siblings?.length" class="subTab" :class="{ active: currentTag.index === tagIndex }" @click="tagIndex = currentTag.index">
+                <small class="subTabLabel infoLabel unselectable">{{currentTag.tagId}}</small>
+                <div class="subTabBg"></div>
+              </div>
+              <template :key="`subtab-${t}`" v-for="(sibling, t) in tags">
+                <div v-if="!sibling.deleted && sibling.siblingIndex === currentTag.index" class="subTab" :class="{ active: t === tagIndex }" @click="tagIndex = t">
+                  <small class="subTabLabel infoLabel unselectable">{{sibling.tagId || '&lt;unnamed>'}}</small>
+                  <div class="subTabBg"></div>
+                </div>
+              </template>
+              <div class="subTab" @click="addTag(currentTag.index);">
+                <small class="subTabLabel unselectable">+</small>
+                <div class="subTabBg"></div>
+              </div>
+            </div>
+            <template v-for="(tag, t) in tags" :key="t">
+              <tag v-if="!tag?.deleted" v-show="t === tagIndex" :index="t"></tag>
             </template>
           </div>
         </template>
@@ -1491,6 +1509,12 @@
           <ul class="formControls flexFormControls">
             <li class="formControlRow fullWidth">
               <label class="unselectable">Tag ID</label><input v-model="tagId" type="text" autocomplete="off" />
+            </li>
+            <li class="formControlRow fullWidth" v-if="$parent.reqType === 'tags' || $parent.reqType === 'tagArrays'">
+              <div class="textareaContainer">
+                <label class="unselectable">Subcondition (for multi-tag badges)</label>
+                <textarea v-model="description" class="autoExpand" :placeholder="$parent.currentTag.description"></textarea>
+              </div>
             </li>
             <li class="formControlRow">
               <label class="unselectable">Map ID</label>
@@ -1594,7 +1618,7 @@
               </li>
               <template v-else-if="varMode === 'vars'">
                 <li class="formControlRow fullWidth" v-for="(varId, v) in varIds">
-                <label class="unselectable">Variable {{v + 1}}</label>
+                  <label class="unselectable">Variable {{v + 1}}</label>
                   <div>
                     <label class="unselectable">ID</label>
                     <input v-model="varIds[v]" type="number" min="0" max="99999" autocomplete="off" />
