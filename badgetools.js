@@ -33,6 +33,7 @@ function initBadgeTools() {
         varTrigger: false,
         trigger: '',
         value: '',
+        values: [],
         timeTrial: false,
         description: '',
         siblingIndex: -1,
@@ -76,11 +77,18 @@ function initBadgeTools() {
         switch (this.trigger) {
           case 'prevMap':
           case 'picture':
-          case 'event':
-          case 'eventAction':
             return true;
         }
         return false;
+      },
+      hasTriggerValueList() {
+        switch (this.trigger) {
+          case 'event':
+          case 'eventAction':
+            return true;
+          default:
+            return false;
+        }
       },
       triggerValueName() {
         switch (this.trigger) {
@@ -113,6 +121,10 @@ function initBadgeTools() {
           this.varValues.push(0);
           this.varOps.push('=');
         }
+      },
+      addValue() {
+        if (!this.hasTriggerValueList) return;
+        this.values.push('');
       },
       deleteTag() {
         let index = this.index;
@@ -180,9 +192,28 @@ function initBadgeTools() {
             break;
         }
       },
-      trigger(newVal, _oldVal) {
+      trigger(newVal, oldVal) {
         this.value = '';
-        this.mapCoords = newVal === 'teleport' || newVal === 'coords';
+        switch (newVal) {
+          case 'teleport':
+          case 'coords':
+            this.mapCoords = true;
+            break;
+          case 'event':
+          case 'eventAction':
+            if (!this.values.length)
+              this.values = [''];
+          default:
+            this.mapCoords = false;
+            break;
+        }
+        switch (oldVal) {
+          case 'event':
+          case 'eventAction':
+            if (newVal !== 'event' && newVal !== 'eventAction')
+              this.values = [];
+            break;
+        }
       },
     },
     mounted() {
@@ -580,6 +611,7 @@ function initBadgeTools() {
                 'varTrigger',
                 'trigger',
                 'value',
+                'values',
                 'timeTrial'
               ];
 
@@ -613,8 +645,9 @@ function initBadgeTools() {
               for (let badge of badges) {
                 if (!badge.badgeId || !badge.name)
                   continue;
-                if (badge.deleted && localizedGameBadges[badge.gameId]) {
-                  delete localizedGameBadges[badge.gameId][badge.badgeId];
+                if (badge.deleted) {
+                  if (localizedGameBadges[badge.gameId])
+                    delete localizedGameBadges[badge.gameId][badge.badgeId];
                   continue;
                 }
 

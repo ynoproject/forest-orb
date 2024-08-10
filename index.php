@@ -1515,6 +1515,7 @@
                 <label class="unselectable">Subcondition (for multi-tag badges)</label>
                 <textarea v-model="description" class="autoExpand" :placeholder="$parent.currentTag.description"></textarea>
               </div>
+
             </li>
             <li class="formControlRow">
               <label class="unselectable">Map ID</label>
@@ -1662,6 +1663,17 @@
               <label class="unselectable">{{triggerValueName}}</label>
               <input v-model="value" type="text" autocomplete="off" />
             </li>
+            <template v-else-if="hasTriggerValueList">
+              <li class="formControlRow fullWidth" v-for="(value, v) in values">
+                <label class="unselectable">{{triggerValueName}} #{{v + 1}}</label>
+                <input v-model="values[v]" type="text" autocomplete="off">
+              </li>
+              <li class="formControlRow fullWidth">
+                <span></span>
+                <button type="button" @click="addValue()">+</button>
+              </li>
+            </template>
+
             <template v-if="trigger === 'teleport' || trigger === 'coords'">
               <li class="formControlRow">
                 <label class="unselectable">Map X1</label>
