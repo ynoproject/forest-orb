@@ -165,7 +165,9 @@ function initBadgeControls() {
     const sortOrderDesc = sortOrder.value.endsWith('_desc');
     const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
     badgeCompareFunc = (a, b) => {
-      // game > group > subcriteria
+      if (sortOrderType) {
+        return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
+      }
       if (a.game !== b.game) {
         if (a.game === 'ynoproject')
           return -1;
@@ -177,13 +179,10 @@ function initBadgeControls() {
           return 1;
         return (badgeGameIds || gameIds).indexOf(a.game) < (badgeGameIds || gameIds).indexOf(b.game) ? -1 : 1;
       }
-      if (sortOrderType) {
-        if (a.group !== b.group) {
-          if (a.group < b.group)
-            return -1;
-          return 1;
-        }
-        return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
+      if (a.group !== b.group) {
+        if (a.group < b.group)
+          return -1;
+        return 1;
       }
       return 0;
     };
