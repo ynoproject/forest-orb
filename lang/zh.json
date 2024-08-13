@@ -361,7 +361,8 @@
       },
       "save": {
         "title": "存档",
-        "reload": "保存更改"
+        "reload": "保存更改",
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
         "title": "界面风格",
