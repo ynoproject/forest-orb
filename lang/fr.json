@@ -361,7 +361,8 @@
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",
-        "reload": "Sauvegarder les changements et recharger la page"
+        "reload": "Sauvegarder les changements et recharger la page",
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
         "title": "Thème d'IU",
