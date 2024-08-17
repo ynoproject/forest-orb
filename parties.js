@@ -120,7 +120,7 @@ function getPartyName(party, includeLock, asHtml) {
 
   if (asHtml) {
     const html = document.createElement('div');
-    html.innerText = partyName;
+    html.innerHTML = `<bdi>${partyName}</bdi>`;
 
     if (includeLock && !party.public) {
       const partyLockIcon = getSvgIcon('locked', true);
