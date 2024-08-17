@@ -35,6 +35,8 @@ function initBadgeTools() {
         value: '',
         values: [],
         timeTrial: false,
+        description: '',
+        siblingIndex: -1,
 
         deleted: false
       };
@@ -75,11 +77,18 @@ function initBadgeTools() {
         switch (this.trigger) {
           case 'prevMap':
           case 'picture':
-          case 'event':
-          case 'eventAction':
             return true;
         }
         return false;
+      },
+      hasTriggerValueList() {
+        switch (this.trigger) {
+          case 'event':
+          case 'eventAction':
+            return true;
+          default:
+            return false;
+        }
       },
       triggerValueName() {
         switch (this.trigger) {
@@ -92,6 +101,11 @@ function initBadgeTools() {
             return 'Event ID';
         }
         return 'Value';
+      },
+      siblings() {
+        if (this.siblingIndex === -1)
+          return this.$parent.tags.filter(tag => !tag.deleted && tag.siblingIndex === this.index);
+        return this.$parent.tags.filter(tag => !tag.deleted && tag !== this && (tag.index === this.sibilngIndex || tag.siblingIndex === this.siblingIndex));
       }
     },
     methods: {
@@ -108,17 +122,26 @@ function initBadgeTools() {
           this.varOps.push('=');
         }
       },
+      addValue() {
+        if (!this.hasTriggerValueList) return;
+        this.values.push('');
+      },
       deleteTag() {
         let index = this.index;
         const tags = this.$parent.tags;
         tags[index].deleted = true;
+        if (this.siblingIndex === -1)
+          for (const sibling of this.siblings) {
+            if (tags[sibling.index])
+              tags[sibling.index].deleted = true;
+          }
         while (index < tags.length - 1 && tags[++index].deleted);
         if (tags[index].deleted) {
           index = this.index;
           while (index && tags[--index].deleted);
         }
         this.$parent.tagIndex = index;
-      }
+      },
     },
     watch: {
       mapCoords(newVal, _oldVal) {
@@ -136,6 +159,10 @@ function initBadgeTools() {
             break;
         }
         switch (oldMode) {
+          case 'switch':
+            this.switchId = 0;
+            this.switchValue = false;
+            break;
           case 'switches':
             this.switchIds = [];
             this.switchValues = [];
@@ -144,24 +171,56 @@ function initBadgeTools() {
       },
       varMode(newMode, oldMode) {
         switch (newMode) {
+          case 'var':
+            this.varOp = '=';
+            break;
           case 'vars':
             this.addVar();
             break;
         }
         switch (oldMode) {
+          case 'var':
+            this.varId = 0;
+            this.varOp = '';
+            this.varTrigger = false;
+            this.varValue = 0;
+            this.varValue2 = 0;
           case 'vars':
             this.varIds = [];
             this.varValues = [];
+            this.varOps = [];
             break;
         }
       },
-      trigger(newVal, _oldVal) {
-        if (newVal === 'teleport' || newVal === 'coords')
-          this.mapCoords = true;
-      }
+      trigger(newVal, oldVal) {
+        this.value = '';
+        switch (newVal) {
+          case 'teleport':
+          case 'coords':
+            this.mapCoords = true;
+            break;
+          case 'event':
+          case 'eventAction':
+            if (!this.values.length)
+              this.values = [''];
+          default:
+            this.mapCoords = false;
+            break;
+        }
+        switch (oldVal) {
+          case 'event':
+          case 'eventAction':
+            if (newVal !== 'event' && newVal !== 'eventAction')
+              this.values = [];
+            break;
+        }
+      },
     },
     mounted() {
       this.mapId = this.$parent.map;
+      const siblingIndex = this.$parent.tags[this.index]?.siblingIndex;
+      if (typeof siblingIndex !== 'undefined' && siblingIndex !== -1)
+        this.siblingIndex = siblingIndex;
       this.$parent.tags[this.index] = this;
     },
     updated() {
@@ -262,6 +321,19 @@ function initBadgeTools() {
           return null;
         return this.tags.filter(t => !t.deleted).map(t => t.tagId);
       },
+      reqStringArrays() {
+        if (this.reqType !== 'tagArrays')
+          return null;
+        const groupings = {};
+        for (const tag of this.tags) {
+          if (tag.deleted) continue;
+          const index = tag.siblingIndex !== -1 ? tag.siblingIndex : tag.index;
+          if (!groupings[index])
+            groupings[index] = [];
+          groupings[index].push(tag.tagId);
+        }
+        return Object.values(groupings);
+      },
       overlayType() {
         let ret = 0;
         if (this.overlay) {
@@ -278,29 +350,56 @@ function initBadgeTools() {
         }
 
         return ret;
-      }
+      },
+      currentTag() {
+        const tag = this.tags[this.tagIndex];
+        if (tag.siblingIndex > -1)
+          return this.tags[tag.siblingIndex];
+        return tag;
+      },
     },
     methods: {
-      addTag() {
+      addTag(sibling) {
         let newTag = null;
         switch (this.reqType) {
           case 'tag':
             newTag = { deleted: false };
             break;
           case 'tags':
+          case 'tagArrays':
             const tagIndex = this.tags.length;
             newTag = { deleted: false };
+            if (typeof sibling !== 'undefined')
+              newTag.siblingIndex = sibling;
             if (this.$root.initialized)
               this.tagIndex = tagIndex;
             break;
         }
-
         this.tags.push(newTag);
+      },
+      checkbox() {
+        const descriptor = {};
+        for (const tag of this.tags) {
+          if (tag.deleted || !tag.description) continue;
+          if (tag.siblingIndex === -1) {
+            const commonSiblings = tag.siblings.filter(t => !t.deleted && !t.description).map(t => t.tagId);
+            commonSiblings.unshift(tag.tagId);
+            descriptor[commonSiblings.join('|')] = tag.description;
+          } else {
+            descriptor[tag.tagId] = tag.description;
+          }
+        }
+
+        return Object.keys(descriptor).length ? descriptor : null;
       },
       deleteBadge() {
         while (this.$root.badgeIndex > 1 && this.$root.badges[--this.$root.badgeIndex].deleted);
         this.$root.badges[this.index].deleted = true;
-      }
+      },
+      displayTag(tag) {
+        if (!(tag && tag.siblings?.length)) return tag?.tagId || '';
+        return `${tag.tagId} (${tag.siblings.filter(t => !t.deleted).length + 1})`;
+      },
     },
     watch: {
       gameId(newId, _oldId) {
@@ -309,16 +408,21 @@ function initBadgeTools() {
           if (groupOptions.length)
             this.group = groupOptions[2].key;
         } else if (newId === 'ynoproject' || newId === 'unconscious' || newId === 'unevendream') {
-	  const groupOptions = this.groupOptions;
-	  if (groupOptions.length)
-	    this.group = groupOptions[0].key;
-        } else
-          this.group = null;
+      	  const groupOptions = this.groupOptions;
+      	  if (groupOptions.length)
+      	    this.group = groupOptions[0].key;
+        } else this.group = null;
       },
       reqType(newType, oldType) {
         this.tags = [];
-        if (oldType === 'tags')
-          this.tagIndex = 0;
+        switch (oldType) {
+          case 'tags':
+          case 'tagArrays':
+            this.tagIndex = 0;
+            this.siblingIndex = -1;
+            this.reqCount = 0;
+            break;
+        }
         if (newType)
           this.addTag();
       }
@@ -384,6 +488,9 @@ function initBadgeTools() {
                         case 'varOps':
                           merge(tag, tagObj, tagKey, ops => !ops.filter(op => op !== '='));
                           break;
+                        case 'siblingIndex':
+                          tagObj[tagKey] = tag[tagKey];
+                          break;
                         default:
                           merge(tag, tagObj, tagKey);
                           break;
@@ -432,6 +539,7 @@ function initBadgeTools() {
             continue;
 
           badge.bp = parseInt(badge.bp);
+          badge._checkbox = badge.checkbox();
 
           let badgeGameFolder;
           if (!badgesGameFolders.hasOwnProperty(badge.gameId))
@@ -449,6 +557,7 @@ function initBadgeTools() {
             'reqInt',
             'reqString',
             'reqStrings',
+            'reqStringArrays',
             'reqCount',
             'map',
             'secret',
@@ -536,11 +645,30 @@ function initBadgeTools() {
               for (let badge of badges) {
                 if (!badge.badgeId || !badge.name)
                   continue;
+                if (badge.deleted) {
+                  if (localizedGameBadges[badge.gameId])
+                    delete localizedGameBadges[badge.gameId][badge.badgeId];
+                  continue;
+                }
 
                 const localizedBadge = {};
+                if (localizedGameBadges[badge.gameId]?.[badge.badgeId]) { 
+                  merge(localizedGameBadges[badge.gameId][badge.badgeId], localizedBadge, 'checkbox');
+                }
                 merge(badge, localizedBadge, 'name');
                 merge(badge, localizedBadge, 'description');
                 merge(badge, localizedBadge, 'condition');
+
+                if (badge._checkbox) {
+                  localizedBadge.checkbox = localizedBadge.checkbox || {};
+                  for (const key in localizedBadge.checkbox)
+                    if (!(key in badge._checkbox))
+                      delete localizedBadge.checkbox[key];
+                  for (const subcondition in badge._checkbox) {
+                    merge(badge._checkbox, localizedBadge.checkbox, subcondition);
+                  }
+                }
+                
                 if (!localizedGameBadges[badge.gameId])
                   localizedGameBadges[badge.gameId] = {};
                 localizedGameBadges[badge.gameId][badge.badgeId] = localizedBadge;
@@ -579,7 +707,7 @@ function initBadgeTools() {
                   const tagData = tagsData[t];
                   const tagIndex = t;
                   if (t)
-                    badge.addTag();
+                    badge.addTag(tagData.siblingIndex);
 
                   Vue.nextTick(() => {
                     const tag = badge.tags[tagIndex];

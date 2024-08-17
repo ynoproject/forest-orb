@@ -1137,7 +1137,7 @@ function checkNewBadgeUnlocks() {
     })
     .then(checkData => {
       lastBadgeCheck = new Date().toISOString();
-      if (checkData.badgeIds.length || checkData.newTags) {
+      if (checkData.badgeIds?.length || checkData.newTags) {
         if (badgeCache) {
           badgeCache.full = false;
         }
