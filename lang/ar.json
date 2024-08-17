@@ -77,7 +77,7 @@
           "password": "كلمة السر"
         },
         "submit": "إرسال",
-        "registerPrompt": "&nbsp;لا تملك حسابا؟",
+        "registerPrompt": "لا تملك حسابا؟&nbsp;",
         "register": "تسجيل"
       },
       "register": {
@@ -89,7 +89,7 @@
           "confirmPassword": "تأكيد كلمة السر"
         },
         "submit": "إرسال",
-        "loginPrompt": "&nbsp;تملك حسابا بالفعل؟",
+        "loginPrompt": "تملك حسابا بالفعل؟&nbsp;",
         "login": "تسجيل الدخول"
       },
       "settings": {
@@ -167,7 +167,7 @@
             "global": "تراكب المحادثة العالمية",
             "party": "تراكب محادثة الحفلة"
           },
-          "toggleTabToChat": "للمحادثة Tab اضغط على",
+          "toggleTabToChat": "اضغط على Tab للمحادثة",
           "togglePlayMentionSound": "تشغيل صوت الإشارة",
           "chatHistoryLimit": {
             "values": {
@@ -329,7 +329,7 @@
         "manageBadgeGallery": "إدارة معرض الشارات",
         "fields": {
           "unlockStatus": {
-            "label": "&nbsp;:حالة الفتح",
+            "label": "حالة الفتح:&nbsp;",
             "values": {
               "all": "جميع",
               "0": "مقفل",
@@ -338,13 +338,13 @@
             }
           },
           "sortOrder": {
-            "label": "&nbsp;:ترتيب",
+            "label": "ترتيب:&nbsp;",
             "values": {
               "default": "افتراضي"
             }
           },
           "search": {
-            "label": "&nbsp;:البحث",
+            "label": "البحث:&nbsp;",
             "name": "Name:",
             "location": "Location:"
           }
@@ -556,11 +556,11 @@
     },
     "playersOnline": {
       "singular": "{COUNT} لاعب متصل",
-      "plural": "لاعبين متصلين {COUNT}"
+      "plural": "{COUNT} لاعبين متصلين"
     },
     "playersInMap": {
-      "singular": "لاعب في الخريطة {COUNT}",
-      "plural": "لاعبون في الخريطة {COUNT}"
+      "singular": "{COUNT} لاعب في الخريطة",
+      "plural": "{COUNT} لاعبون في الخريطة"
     },
     "playerList": {
       "unnamed": "لاعب غير مسمى",
@@ -589,63 +589,63 @@
         "label": "مصاحبة {PLAYER}"
       },
       "removeFriend": {
-        "label": " الغاء الصداقه {PLAYER}"
+        "label": "الغاء الصداقه {PLAYER}"
       },
       "block": {
         "label": "حظر {PLAYER}",
-        "confirm": "هل أنت متأكد أنك تريد حظر {PLAYER}?"
+        "confirm": "هل أنت متأكد أنك تريد حظر {PLAYER}؟"
       },
       "unblock": {
         "label": "إلغاء حظر {PLAYER}",
-        "confirm": "هل أنت متأكد أنك تريد إلغاء حظر {PLAYER}?"
+        "confirm": "هل أنت متأكد أنك تريد إلغاء حظر {PLAYER}؟"
       },
       "admin": {
         "ban": {
           "label": "{PLAYER} منع",
-          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد منع",
-          "success": ".{PLAYER} تم منع"
+          "confirm": "هل أنت متأكد أنك تريد منع {PLAYER}؟",
+          "success": "تم منع {PLAYER}."
         },
         "unban": {
           "label": "{PLAYER} ازالة منع",
-          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة منع",
-          "success": ".{PLAYER} تم ازالة منع"
+          "confirm": "هل أنت متأكد أنك تريد ازالة منع {PLAYER}؟",
+          "success": "تم ازالة منع {PLAYER}."
         },
         "mute": {
           "label": "{PLAYER} كتم",
-          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد كتم",
-          "success": ".{PLAYER} تم كتم"
+          "confirm": "هل أنت متأكد أنك تريد كتم {PLAYER}؟",
+          "success": "تم كتم {PLAYER}."
         },
         "unmute": {
           "label": "{PLAYER} ازالة كتم",
-          "confirm": "؟{PLAYER} هل أنت متأكد أنك تريد ازالة كتم",
-          "success": ".{PLAYER} تم ازالة كتم"
+          "confirm": "هل أنت متأكد أنك تريد ازالة كتم {PLAYER}؟",
+          "success": "تم ازالة كتم {PLAYER}."
         },
         "grantBadge": {
           "label": "منح شارة",
-          "prompt": "{PLAYER} أدخل معرف الشارة لمنحها للاعب",
-          "success": ".{PLAYER} إلى الاعب {BADGE} تم منح شارة",
-          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
+          "prompt": "أدخل معرف الشارة لمنحها للاعب {PLAYER}",
+          "success": "تم منح شارة {BADGE} إلى الاعب {PLAYER}.",
+          "fail": "لم يوجد شارة للمعرف الذي ادخلته."
         },
         "revokeBadge": {
           "label": "ازالة شارة",
-          "prompt": "{PLAYER} أدخل معرف الشارة لإزالتها للاعب",
-          "success": ".{PLAYER} إلى الاعب {BADGE} تم ازالة شارة",
-          "fail": ".لم يوجد شارة للمعرف الذي ادخلته"
+          "prompt": "أدخل معرف الشارة لإزالتها للاعب {PLAYER}",
+          "success": "تم ازالة شارة {BADGE} إلى الاعب {PLAYER}.",
+          "fail": "لم يوجد شارة للمعرف الذي ادخلته."
         }
       }
     },
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": ".اسم المستخدم أو كلمة السر غير صحيحة"
+          "invalidLogin": "اسم المستخدم أو كلمة السر غير صحيحة."
         }
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": ".كلمات السر المحددة لا تتطابق",
-          "invalidCredentials": ".اسم المستخدم أو كلمة المرور المحددة فارغة أو تحتوي على أحرف غير صالحة",
-          "emailTaken": ".عنوان البريد الإلكتروني المحدد قيد الاستخدام بالفعل",
-          "usernameTaken": ".اسم المستخدم المحدد قيد الاستخدام بالفعل"
+          "confirmPasswordMismatch": "كلمات السر المحددة لا تتطابق.",
+          "invalidCredentials": "اسم المستخدم أو كلمة المرور المحددة فارغة أو تحتوي على أحرف غير صالحة.",
+          "emailTaken": "عنوان البريد الإلكتروني المحدد قيد الاستخدام بالفعل.",
+          "usernameTaken": "اسم المستخدم المحدد قيد الاستخدام بالفعل."
         }
       },
       "password": {
@@ -669,16 +669,16 @@
       }
     },
     "parties": {
-      "emptyMessage": ".لا يوجد حاليا أي حفلات نشطة",
+      "emptyMessage": "لا يوجد حاليا أي حفلات نشطة.",
       "yourParty": "حفلتك",
       "defaultPartyName": "{OWNER} حفلة",
       "partyOwner": "قائد الحفلة",
       "confirmDisband": "هل أنت متأكد أنك تريد حذف حفلاتتك؟ هذا لا يمكن التراجع عنه.",
-      "confirmTransferPartyOwner": "هل أنت متأكد أنك تريد نقل ملكية الحفلة إلى {PLAYER}?",
+      "confirmTransferPartyOwner": "هل أنت متأكد أنك تريد نقل ملكية الحفلة إلى {PLAYER}؟",
       "offlineMemberSuffix": "Member offline",
       "categories": {
-        "online": "{COUNT} - متصل",
-        "offline": "{COUNT} - غير متصل"
+        "online": "متصل - {COUNT}",
+        "offline": "غير متصل - {COUNT}"
       },
       "actions": {
         "viewPartyDetails": "عرض تفاصيل الحفلة",
@@ -688,13 +688,13 @@
       }
     },
     "chatTips": {
-      "template": "{CONTENT} :نصيحة",
+      "template": "نصيحة: {CONTENT}",
       "tips": {
         "backupReminder": "يقترح بالاحتفاظ بنسخة احتياطية محلية من تقدمك عن طريق تنزيل ملف الحفظ بانتظام. بهذه الطريقة ، إذا تم مسح بيانات متصفحك ، فلن تفقد تقدمك",
         "menuTheme": "يعتمد لون اسمك ونمط قائمة اللاعبين على نمط القائمة داخل اللعبة",
         "playersInMap": "يمكنك التبديل بين عدد اللاعبين المتصلين وعدد اللاعبين في خريطتك بالنقر فوق المربع",
-        "markdownSupport": ". **bold** (\\*\\*text\\*\\*) و ، *italic* (\\*text\\*, \\_text\\_)، __underline__ (\\_\\_text\\_\\_)، ~~strikethrough~~ (\\~\\~text\\~\\~)، ||spoiler|| (\\|\\|text\\|\\|) :يدعم الحديث تنسيق النص عن طريق التفاف النص في رموز معينة. المدعومة حاليًا هي",
-        "tabToChat": ".(للتحدث Tab للتبديل بين اللعبة والمحادثة. يمكن تعطيل هذه الميزة في إعدادات الحديث ضمن (اضغط على Tab إذا كنت تلعب على جهاز كمبيوتر ، فيمكنك الضغط على مفتاح",
+        "markdownSupport": "يدعم الحديث تنسيق النص عن طريق التفاف النص في رموز معينة. المدعومة حاليًا هي: **bold** (\\*\\*text\\*\\*) و ، *italic* (\\*text\\*, \\_text\\_)، __underline__ (\\_\\_text\\_\\_)، ~~strikethrough~~ (\\~\\~text\\~\\~)، ||spoiler|| (\\|\\|text\\|\\|).",
+        "tabToChat": "إذا كنت تلعب على جهاز كمبيوتر ، فيمكنك الضغط على مفتاح Tab للتبديل بين اللعبة والمحادثة. يمكن تعطيل هذه الميزة في إعدادات الحديث ضمن (اضغط على Tab للتحدث).",
         "chatTabNotifications": "عندما تكون في فئة نقاش غير (الكل) ، إذا تم إرسال رسالة جديدة في الفئة المصفاة الأخرى ، فسيتم إضافة خط غامق إلى تصنيف الفئة لإعلامك",
         "clearChat": "عند النقر فوق زر مسح الحديث في الجزء العلوي الأيمن من مربع الحديث ، إذا لم تكن حاليًا في فئة (الكل) ، فسيؤدي ذلك فقط إلى إزالة الرسائل الخاصة بفئة الحديث الحالية التي أنت فيها",
         "chatHistoryLimit": "إذا كان سجل حديثك طويلًا جدًا ، فقد تواجه مشكلات في الأداء على الموقع. في إعدادات الحديث ، يمكنك تحديد سجل المحادثات الخاص بك وفقًا لذلك لتجنب هذه المشكلات دون الحاجة إلى مسح حديثك يدويًا",
@@ -702,7 +702,7 @@
         "immersionMode": "إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
         "friendsMenu": "من خلال النقر بزر الماوس الأيمن على جهاز الكمبيوتر، أو من خلال النقر باستمرار على الهاتف المحمول على أيقونة اللاعب خارج التصنيف، سيتم فتح مربع حوار يسمح بإرسال طلب صداقة إليه أو الإشارة إلى اللاعب المذكور أو حظره",
         "easySettingsMenu": "إذا كنت تلعب على جهاز كمبيوتر، فيمكنك الضغط على المفتاح F1 أثناء اللعب لفتح قائمة الإعدادات، مما يسمح لك بإعادة تعيين مفاتيحك بالإضافة إلى ضبط بعض الإعدادات",
-        "openSource": "https://github.com/ynoproject/ مفتوح المصدر ومستودعات الكود متاحة على YNOproject"
+        "openSource": "YNOproject مفتوح المصدر ومستودعات الكود متاحة على https://github.com/ynoproject/"
       }
     },
     "save": {
@@ -714,7 +714,7 @@
       },
       "upload": {
         "tooltip": "وضع ملف الحفظ",
-        "invalidSaveFile": "(.lsd الرجاء تحديد ملف حفظ صحيح (نمط"
+        "invalidSaveFile": "الرجاء تحديد ملف حفظ صحيح (نمط .lsd)"
       },
       "download": {
         "tooltip": "تحميل ملف الحفظ",
@@ -722,7 +722,7 @@
       },
       "delete": {
         "tooltip": "حذف الملف",
-        "confirmDelete": "هل أنت متأكد أنك تريد حذف البيانات المحفوظة للملف {SLOT_ID}?"
+        "confirmDelete": "هل أنت متأكد أنك تريد حذف البيانات المحفوظة للملف {SLOT_ID}؟"
       }
     },
     "saveSync": {
@@ -730,12 +730,12 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": ".تم تحديث الموقع، أعد تحميل الصفحة للحصول على أحدث التغييرات",
-        "error": ".Inspect اوانقر بزر الماوس الأيمن ثم اضغط على F12 عفوًا! يبدو أنه حدث خطأ ما. راجع وحدة تحكم المتصفح للحصول على التفاصيل. لفتح وحدة التحكم ، اضغط على"
+        "siteUpdates": "تم تحديث الموقع، أعد تحميل الصفحة للحصول على أحدث التغييرات.",
+        "error": "عفوًا! يبدو أنه حدث خطأ ما. راجع وحدة تحكم المتصفح للحصول على التفاصيل. لفتح وحدة التحكم ، اضغط على F12 اوانقر بزر الماوس الأيمن ثم اضغط على Inspect."
       },
       "account": {
-        "loggedIn": ".{USER} لقد قمت بتسجيل الدخول باعتبارك",
-        "loggedOut": ".لقد قمت بتسجيل الخروج",
+        "loggedIn": "لقد قمت بتسجيل الدخول باعتبارك {USER}.",
+        "loggedOut": "لقد قمت بتسجيل الخروج.",
         "passwordUpdated": "تم تحديث كلمة السر الخاصة بك بنجاح"
       },
       "players": {
@@ -745,54 +745,54 @@
       "friends": {
         "add": "لقد أرسلت طلب صداقة إلى {PLAYER}",
         "remove": "لقد قمت بإزالة {PLAYER} من أصدقائك",
-        "accept": "{PLAYER} تم قبول طلب صداقة",
-        "reject": "{PLAYER} تم رفض طلب صداقة",
-        "cancel": "{PLAYER} تم إلغاء طلب الصداقة الذي قدمته إلى",
-        "incoming": "{PLAYER} لديك طلب صداقة جديد من",
-        "playerOnline": ".متصل {PLAYER} عضو الحفلة",
-        "playerOffline": ".غير متصل {PLAYER} عضو الحفلة"
+        "accept": "تم قبول طلب صداقة {PLAYER}",
+        "reject": "تم رفض طلب صداقة {PLAYER}",
+        "cancel": "تم إلغاء طلب الصداقة الذي قدمته إلى {PLAYER}",
+        "incoming": "لديك طلب صداقة جديد من {PLAYER}",
+        "playerOnline": "عضو الحفلة {PLAYER} متصل.",
+        "playerOffline": "عضو الحفلة {PLAYER} غير متصل."
       },
       "parties": {
-        "create": ".{PARTY} تم إنشاء الحفلة",
-        "update": ".{PARTY} تم تحديث الحفلة",
-        "join": ".{PARTY} تم الانضمام إلى الحفلة",
-        "leave": ".{PARTY} تم الخروج من الحفلة",
-        "remove": ".{PARTY} تم حذفك من الحفلة",
-        "disband": ".{PARTY} تم تفكيك الحفلة",
-        "playerJoin": ".إلى الحفلة {PLAYER} إنضم اللاعب",
-        "playerLeave": ".من الحفلة {PLAYER} خرج اللاعب",
-        "playerOnline": ".متصل {PLAYER} عضو الحفلة",
-        "playerOffline": ".غير متصل {PLAYER} عضو الحفلة",
-        "kickPlayer": ".من الحفلة {PLAYER} تم الحذف اللاعب",
-        "transferPartyOwner": ".إلى قائد الحفلة {PLAYER} تم ترقية اللاعب"
+        "create": "تم إنشاء الحفلة {PARTY}.",
+        "update": "تم تحديث الحفلة {PARTY}.",
+        "join": "تم الانضمام إلى الحفلة {PARTY}.",
+        "leave": "تم الخروج من الحفلة {PARTY}.",
+        "remove": "تم حذفك من الحفلة {PARTY}.",
+        "disband": "تم تفكيك الحفلة {PARTY}.",
+        "playerJoin": "إنضم اللاعب {PLAYER} إلى الحفلة.",
+        "playerLeave": "خرج اللاعب {PLAYER} من الحفلة.",
+        "playerOnline": "عضو الحفلة {PLAYER} متصل.",
+        "playerOffline": "عضو الحفلة {PLAYER} غير متصل.",
+        "kickPlayer": "تم الحذف اللاعب {PLAYER} من الحفلة.",
+        "transferPartyOwner": "تم ترقية اللاعب {PLAYER} إلى قائد الحفلة."
       },
       "events": {
-        "complete": "!اكتملت الرحلة الاستكشافية\n .{EXP} تم منحك ،{LOCATION} لزيارة ",
-        "freeComplete": ".{LOCATION} اكتملت الرحلة الاستكشافية! لقد زرت",
-        "vmComplete": "!تم العثور على آلة البيع \n.{EXP} لقد حصلت على",
-        "listUpdated": ".تم تحديث قائمة الرحلات الاستكشافية"
+        "complete": "اكتملت الرحلة الاستكشافية!\nلزيارة {LOCATION}, تم منحك {EXP}.",
+        "freeComplete": "اكتملت الرحلة الاستكشافية! لقد زرت {LOCATION}.",
+        "vmComplete": "تم العثور على آلة البيع!\nلقد حصلت على {EXP}.",
+        "listUpdated": "تم تحديث قائمة الرحلات الاستكشافية."
       },
       "badges": {
-        "badgeUnlocked": "!لقد حصلت على شارة جديدة"
+        "badgeUnlocked": "لقد حصلت على شارة جديدة!"
       },
       "screenshots": {
         "screenshotTaken": "Your screenshot has been taken."
       },
       "saveSync": {
-        "saveUploading": "...{SLOT} يتم تحميل ملف الحفظ من موضع",
-        "saveUploaded": ".بنجاح {SLOT} تم تحميل ملف الحفظ من موضع",
-        "saveDownloading": "...{SLOT} يتم تحديث ملف الحفظ من موضع",
-        "saveDownloaded": ".بنجاح {SLOT} تم تحديث ملف الحفظ من موضع",
-        "saveUpToDate": ".تم تحديث ملف الحفظ",
-        "saveCleared": ".تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك",
-        "saveReminder": ".تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك"
+        "saveUploading": "يتم تحميل ملف الحفظ من موضع {SLOT}...",
+        "saveUploaded": "تم تحميل ملف الحفظ من موضع {SLOT} بنجاح.",
+        "saveDownloading": "يتم تحديث ملف الحفظ من موضع {SLOT}...",
+        "saveDownloaded": "تم تحديث ملف الحفظ من موضع {SLOT} بنجاح.",
+        "saveUpToDate": "تم تحديث ملف الحفظ.",
+        "saveCleared": "تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك.",
+        "saveReminder": "تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك."
       }
     },
     "events": {
-      "exp": "{POINTS} :نقاط الرحلات الاستكشافية&nbsp;",
-      "expRank": "&nbsp;{RANK}:المرتبة",
-      "period": "{ORDINAL} :موسم",
-      "periodEnds": "{DATE} :ينتهي",
+      "exp": "نقاط الرحلات الاستكشافية: {POINTS}&nbsp;",
+      "expRank": "المرتبة: {RANK}&nbsp;",
+      "period": "موسم: {ORDINAL}",
+      "periodEnds": "ينتهي: {DATE}",
       "current": "الحالي",
       "shortcut": "يمكن الوصول إليها عبر طريق مختصر قابل للفتح",
       "availableUntilDate": "متاح حتى\n{DATE}",
@@ -816,9 +816,9 @@
     "badges": {
       "null": "لا شارة",
       "allCategory": "جميع",
-      "badgeTitle": "{BP} نقات الشارات - {TITLE}",
+      "badgeTitle": "<bdi>{TITLE}</bdi> - {BP} نقات الشارات",
       "locked": "؟؟؟",
-      "location": "&nbsp;:الموقع",
+      "location": "الموقع:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% من اللاعبين لديهم هذه الشارة",
       "time": "{MINUTES}:{SECONDS}",
@@ -835,9 +835,9 @@
     },
     "badgeGallery": {
       "label": "{PLAYER} معرض شارات",
-      "loading": "...جاري التحميل",
-      "bp": "نقات الشارات {BP}",
-      "count": "شارات {COUNT}"
+      "loading": "جاري التحميل...",
+      "bp": "{BP} نقات الشارات",
+      "count": "{COUNT} شارات"
     },
     "rankings": {
       "categories": {
@@ -902,8 +902,8 @@
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER} لقطات الشاشة الخاصة ب",
-      "limit": "{COUNT}/{LIMIT} الفتحات المستخدمة",
+      "playerScreenshot": "لقطات الشاشة الخاصة ب {USER}",
+      "limit": "الفتحات المستخدمة {COUNT}/{LIMIT}",
       "public": {
         "tooltip": {
           "on": "عام",
@@ -930,8 +930,8 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Yume 2kki عرض في مستكشف",
-        "multi": "Yume 2kki في مستكشف {LOCATION} عرض"
+        "generic": "عرض في مستكشف Yume 2kki",
+        "multi": "عرض {LOCATION} في مستكشف Yume 2kki"
       }
     },
     "modSettings": {
