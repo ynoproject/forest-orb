@@ -2,7 +2,7 @@
   "translationComplete": "0",
   "version": {
     "2kki": {
-      "label": "{VERSION} يومي تووكي) نسخة) Yume 2kki",
+      "label": "Yume 2kki (يومي تووكي) نسخة {VERSION}",
       "substitutes": {
         " Patch ": " تصليح ",
         "?": "؟"
@@ -27,7 +27,7 @@
       }
     },
     "chatbox": {
-      "location": "&nbsp;:الموقع",
+      "location": "الموقع:&nbsp",
       "immersionMode": "نمط الانغمار",
       "reconnect": "أعد الاتصال",
       "tab": {
@@ -63,7 +63,7 @@
       "noGameLoc": "* ترجمة اللعبة غير مدعومة"
     },
     "2kki": {
-      "hostedWithPermission": "Yume 2kki استضافت بإذن من مطورين"
+      "hostedWithPermission": "استضافت بإذن من مطورين Yume 2kki"
     },
     "modal": {
       "confirm": {
@@ -352,7 +352,7 @@
       },
       "badgeGallery": {
         "title": "إدارة معرض الشارات",
-        "badgeGalleryRowProgress": " (نقات الشارات) ترقية الصف التالي",
+        "badgeGalleryRowProgress": "ترقية الصف التالي (نقات الشارات)",
         "badgeGalleryColProgress": "ترقية العمود التالي (شارات)",
         "removeMode": {
           "activate": "Remove Badges",
@@ -461,7 +461,7 @@
       "save": "إدارة حفظ البيانات",
       "uiTheme": "تصميم واجهة المستخدم",
       "toggleChat": "وضع المحادثة",
-      "toggleExplorer": "تفعيل Yume 2kki ملاح",
+      "toggleExplorer": "ملاح Yume 2kki تفعيل",
       "screenshot": "اخذ صورة للشاشة",
       "myScreenshots": "لقطات الشاشة الخاصة بي",
       "settings": "إعدادات",
@@ -516,11 +516,11 @@
     "connStatus": {
       "0": "غير متصل",
       "1": "متصل",
-      "2": "...محاولة الاتصال",
+      "2": "محاولة الاتصال...",
       "3": "وضع الخاص"
     },
     "lastOnline": {
-      "template": "أخر ظهور\n{INTERVAL} منذ",
+      "template": "أخر ظهور\n منذ {INTERVAL}",
       "longTime": "A long time ago",
       "interval": {
         "short": "أقل من دقيقة",
@@ -540,7 +540,7 @@
     },
     "location": {
       "template": "({LOCATION_EN}) {LOCATION}",
-      "queryingLocation": "...جاري الاستعلام عن الموقع",
+      "queryingLocation": "جاري الاستعلام عن الموقع...",
       "unknownLocation": "موقع غير معروف",
       "2kki": {
         "template": "{LOCATION}"
@@ -554,7 +554,7 @@
       }
     },
     "playersOnline": {
-      "singular": "لاعب متصل {COUNT}",
+      "singular": "{COUNT} لاعب متصل",
       "plural": "لاعبين متصلين {COUNT}"
     },
     "playersInMap": {
@@ -819,7 +819,7 @@
       "locked": "؟؟؟",
       "location": "&nbsp;:الموقع",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "من اللاعبين لديهم هذه الشارة {PERCENT}%",
+      "percentUnlocked": "{PERCENT}% من اللاعبين لديهم هذه الشارة",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "{ARTIST} رسم الفنان/ة",
       "sortOrder": {

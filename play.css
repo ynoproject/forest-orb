@@ -300,7 +300,7 @@ body {
 .infiniteScrollRefreshIndicator {
   position: sticky;
   background-color: rgba(var(--modal-shadow-color), 0.5);
-  margin-right: 16px;
+  margin-inline-end: 16px;
   margin-bottom: -32px;
   padding: 8px;
   opacity: 1;
@@ -540,7 +540,7 @@ body {
 }
 
 .screenshotControls .likeContainer > .likeCount {
-  margin-left: 8px;
+  margin-inline-start: 8px;
   font-size: large;
   font-weight: bold;
 }
@@ -802,11 +802,11 @@ body.fullBg #background {
 }
 
 #content:not(.downscale) #nexusButton {
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 #content.downscale #nexusButton {
-  margin-left: -6px;
+  margin-inline-start: -6px;
 }
 
 #content.downscale #nexusButton svg:first-child, #content.downscale #nexusButton svg:nth-child(2), #content:not(.downscale) #nexusButton svg:last-child {
@@ -830,7 +830,7 @@ body.fullBg #background {
   display: inline-flex;
   flex-direction: column;
   margin: auto 0;
-  padding-left: 8px;
+  padding-inline-start: 8px;
 }
 
 #gameLogo {
@@ -861,13 +861,13 @@ body.fullBg #background {
 }
 
 #headerIconContainer .iconButton {
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 #footerIconContainer {
   justify-content: center;
   margin-top: 16px;
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 #footerIconContainer .icon {
@@ -980,7 +980,7 @@ body.fullBg #background {
 }
 
 #leftControls button, #rightControls > div > button {
-  margin-right: 8px;
+  margin-inline-end: 8px;
   margin-bottom: 8px;
 }
 
@@ -1000,7 +1000,7 @@ body.fullBg #background {
 }
 
 #controls button {
-  padding-right: 1px;
+  padding-inline-end: 1px;
 }
 
 #controls svg {
@@ -1123,7 +1123,7 @@ body.fullBg #background {
 }
 
 #gameChatModeIcon {
-  margin-right: 6px;
+  margin-inline-end: 6px;
 }
 
 #locationDisplayContainer {
@@ -1170,7 +1170,7 @@ body.fullBg #background {
 #locationDisplayLabelOverlay {
   display: block;
   margin-top: -36px !important;
-  margin-left: 12px;
+  margin-inline-start: 12px;
   -webkit-background-clip: unset;
   background-clip: unset;
   background-image: none !important;
@@ -1188,8 +1188,8 @@ body.fullBg #background {
 
 #chatboxContainer {
   min-height: 240px;
-  border-left: none;
-  padding-left: 8px;
+  border-inline-start: none;
+  padding-inline-start: 8px;
   z-index: 1;
 }
 
@@ -1232,7 +1232,7 @@ body.fullBg #background {
 }
 
 #connStatusText {
-  margin-right: 2px;
+  margin-inline-end: 2px;
 }
 
 #reconnectButton {
@@ -1264,11 +1264,11 @@ body.fullBg #background {
 
 #locationLabel {
   height: fit-content;
-  padding-left: 22px;
+  padding-inline-start: 22px;
 }
 
 #locationText {
-  text-align: right;
+  text-align: end;
 }
 
 #chatboxContent {
@@ -1286,7 +1286,7 @@ body.fullBg #background {
   height: 22px;
   padding: 4px;
   padding-bottom: 0;
-  margin-right: 4px;
+  margin-inline-end: 4px;
   border-bottom-width: 8px;
   pointer-events: all;
   cursor: pointer;
@@ -1514,7 +1514,8 @@ body.fullBg #background {
 .messageHeader {
   display: flex;
   justify-content: space-between;
-  padding-right: 2px;
+  padding-inline-end: 2px;
+  direction: ltr;
 }
 
 .playerLocation {
@@ -1572,7 +1573,7 @@ body.fullBg #background {
 
 .medal {
   height: 16px;
-  margin-left: -8px;
+  margin-inline-start: -8px;
 }
 
 .listEntry {
@@ -1602,7 +1603,7 @@ body.fullBg #background {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .playerListEntryBadge {
@@ -1613,7 +1614,7 @@ body.fullBg #background {
 }
 
 .listEntrySprite {
-  margin-right: 8px;
+  margin-inline-end: 8px;
   min-width: 40px;
   min-height: 32px;
 }
@@ -1666,7 +1667,7 @@ body.fullBg #background {
 
 .listEntry .partyListEntryMemberCount {
   display: flex;
-  padding-right: 8px;
+  padding-inline-end: 8px;
   float: right;
 }
 
@@ -1683,7 +1684,7 @@ body.fullBg #background {
 .listEntry .partyMemberSpritesContainer img {
   min-width: 20px;
   min-height: 16px;
-  margin-right: 4px;
+  margin-inline-end: 4px;
 }
 
 .listEntryActionContainer {
@@ -1697,14 +1698,14 @@ body.fullBg #background {
 }
 
 .listEntryActionContainer .icon:first-child {
-  padding-left: 8px;
+  padding-inline-start: 8px;
 }
 
 .notificationCountContainer {
   width: 0;
   height: 0;
   margin-top: -16px;
-  margin-left: -8px;
+  margin-inline-start: -8px;
   z-index: 3;
 }
 
@@ -1735,14 +1736,14 @@ body.fullBg #background {
 
 #chatInputContainer form {
   width: 100%;
-  margin-left: -6px;
-  margin-right: -38px;
-  padding-left: 6px;
-  padding-right: 6px;
+  margin-inline-start: -6px;
+  margin-inline-end: -38px;
+  padding-inline-start: 6px;
+  padding-inline-end: 6px;
 }
 
 #chatbox.allChat #chatInputContainer.globalCooldown form {
-  margin-right: -56px;
+  margin-inline-end: -56px;
 }
 
 #chatInput, #nameInput {
@@ -1753,13 +1754,18 @@ body.fullBg #background {
   width: calc(100% - 38px);
   height: 22px;
   right: 8px;
-  padding-right: 28px;
+  padding-inline-end: 28px;
   border-image: none !important;
+}
+
+html[dir="rtl"] #chatInput {
+  right: unset;
+  left: 8px;
 }
 
 #chatbox.mapChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.globalChat #chatInputContainer:not(.globalCooldown) #chatInput, #chatbox.partyChat #chatInputContainer:not(.globalCooldown) #chatInput {
   width: calc(100% - 13px);
-  padding-right: 2px;
+  padding-inline-end: 2px;
 }
 
 #chatInput:disabled {
@@ -1768,7 +1774,7 @@ body.fullBg #background {
 
 #chatbox.allChat #chatInputContainer.globalCooldown #chatInput {
   width: calc(100% - 62px);
-  padding-right: 52px;
+  padding-inline-end: 52px;
 }
 
 .globalCooldownIcon {
@@ -1813,7 +1819,7 @@ body.fullBg #background {
 }
 
 #gameChatInputContainer.globalCooldown #gameChatInput {
-  margin-left: 12px;
+  margin-inline-start: 12px;
 }
 
 #chatbox:not(.allChat) .globalCooldownIcon {
@@ -1825,6 +1831,11 @@ body.fullBg #background {
   top: 1px;
   left: 4px;
   pointer-events: all;
+}
+
+html[dir="rtl"] #globalMessageButton {
+  left: unset;
+  right: 4px;
 }
 
 #chatbox:not(.allChat) #globalMessageButton {
@@ -1855,6 +1866,11 @@ body.fullBg #background {
   right: 8px;
   height: 50%;
   top: -100%;
+}
+
+html[dir="rtl"] #chatBorder {
+  right: unset;
+  left: 8px;
 }
 
 #chatInput[data-global] + #globalChatInputOverlay + #chatBorder {
@@ -2408,7 +2424,7 @@ body.fullBg #background {
 }
 
 .formControlRow.indent {
-  padding-left: 40px;
+  padding-inline-start: 40px;
 }
 
 .formControlRow > div:first-child {
@@ -2432,11 +2448,11 @@ body.fullBg #background {
 }
 
 .formControlRow label {
-  padding-right: 8px;
+  padding-inline-end: 8px;
 }
 
 .formControlRow > label:not(:first-child), .formControlRow > div:not(:first-child) > label {
-  margin-left: 16px;
+  margin-inline-start: 16px;
 }
 
 .formControlRow div {
@@ -2467,7 +2483,7 @@ body.fullBg #background {
   flex-wrap: wrap;
   text-align: center;
   padding: 4px;
-  margin-right: 4px;
+  margin-inline-end: 4px;
   pointer-events: all;
   cursor: pointer;
   opacity: 0.625;
@@ -2533,7 +2549,7 @@ form .uiTheme {
   float: left;
   width: 18px;
   height: 100%;
-  margin-right: 4px;
+  margin-inline-end: 4px;
 }
 
 #partyModalDescription {
@@ -2559,7 +2575,7 @@ form .uiTheme {
   width: 214px;
   height: 64px;
   flex-direction: column;
-  align-items: baseline;
+  align-items: flex-start;
   padding: 8px;
 }
 
@@ -2576,7 +2592,7 @@ form .uiTheme {
 #saveSlotList .saveSlotListEntry .saveSlotListEntryContent .saveSlotButtonsContainer .saveSlotButton {
   width: 18px;
   height: 18px;
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 #eventPeriodInfoContainer {
@@ -2612,6 +2628,7 @@ form .uiTheme {
 .badgeSlotRowsContainer {
   max-width: 315px;
   display: block;
+  direction: ltr;
 }
 
 .badgeSlotRow {
@@ -2645,7 +2662,7 @@ form .uiTheme {
 }
 
 #expRankBadge {
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 #rankExpContainer {
@@ -2662,12 +2679,12 @@ form .uiTheme {
 }
 
 .progressContainer {
-  text-align: left;
+  text-align: start;
   margin-top: 16px;
 }
 
 .progressBarHeading {
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .progressBarContainer {
@@ -2775,7 +2792,7 @@ form .uiTheme {
   display: flex;
   flex-direction: column;
   width: 40%;
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 
 .eventList .eventListEntry .eventEndDateContainer > div {
@@ -2783,7 +2800,7 @@ form .uiTheme {
 }
 
 .eventList .eventListEntry .eventPoints {
-  padding-right: 16px;
+  padding-inline-end: 16px;
   text-align: right;
   white-space: nowrap;
 }
@@ -2792,7 +2809,7 @@ form .uiTheme {
   display: flex;
   flex-direction: column;
   width: 140px;
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 
 .eventList .eventVmListEntry .vmContainer .gameLink {
@@ -2860,7 +2877,7 @@ form .uiTheme {
 #rankingsTable th:nth-child(2), #rankingsTable td:nth-child(2) {
   display: flex;
   width: 100%;
-  padding-left: 4px;
+  padding-inline-start: 4px;
 }
 
 #rankingsTable td:nth-child(2) {
@@ -2873,7 +2890,7 @@ form .uiTheme {
 
 #rankingsTable tr td .medalsContainer {
   justify-content: right;
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 
 #rankingsPagination {
@@ -2887,7 +2904,7 @@ form .uiTheme {
 
 .rankingPageSkipLink {
   letter-spacing: -0.15em;
-  padding-right: 0.15em;
+  padding-inline-end: 0.15em;
 }
 
 #screenshotModal .screenshot {
@@ -2970,8 +2987,8 @@ form .uiTheme {
 #toastContainer.right {
   left: unset;
   right: 0;
-  margin-left: 0;
-  margin-right: 8px;
+  margin-inline-start: 0;
+  margin-inline-end: 8px;
 }
 
 #toastContainer.anim {
@@ -3005,7 +3022,7 @@ form .uiTheme {
 }
 
 #toastContainer.right .toast {
-  margin-left: -8px;
+  margin-inline-start: -8px;
 }
 
 .toast.fade {
@@ -3018,11 +3035,12 @@ form .uiTheme {
   height: 24px;
   min-width: 24px;
   min-height: 24px;
-  margin: 4px 8px 4px 0;
+  margin: 4px 0 4px 0;
+  margin-inline-end: 8px;
 }
 
 .toast > .badgeContainer {
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 
 .toast > .badgeContainer > .badge {
@@ -3207,8 +3225,8 @@ form .uiTheme {
     height: calc(100vh - 594px);
     min-height: 188px;
     max-height: 328px;
-    padding-left: 0;
-    border-left: 24px solid transparent;
+    padding-inline-start: 0;
+    border-inline-start: 24px solid transparent;
   }
 
   #chatbox {
@@ -3273,7 +3291,7 @@ form .uiTheme {
 
   #content:not(.downscale) #layout:not(:fullscreen) #explorerContainer {
     margin-top: 28px;
-    margin-left: 8px;
+    margin-inline-start: 8px;
     width: calc(100vh - 644px) !important;
     height: calc(100vh - 644px) !important;
     min-width: 164px;
@@ -3329,7 +3347,7 @@ form .uiTheme {
   }
 
   #connStatus {
-    margin-right: 4px;
+    margin-inline-end: 4px;
   }
 
   .chatboxTabSection {
@@ -3400,7 +3418,7 @@ form .uiTheme {
 }
 
 #layout.overflow .infoContainer {
-  margin-right: 4px;
+  margin-inline-end: 4px;
 }
 
 #layout.overflow #connStatusText, #layout.overflow #locationLabel {
@@ -3416,8 +3434,8 @@ form .uiTheme {
   height: calc(100vh - 638px);
   min-height: 188px;
   max-height: 328px;
-  padding-left: 0;
-  border-left: 24px solid transparent;
+  padding-inline-start: 0;
+  border-inline-start: 24px solid transparent;
 }
 
 #content.loggedIn #layout:not(:fullscreen).overflow.hideChat.explorer #chatboxContainer {
@@ -3562,11 +3580,12 @@ form .uiTheme {
 }
 
 #layout:fullscreen #controls button {
-  margin: 8px 8px 0 0;
+  margin: 8px 0 0 0;
+  margin-inline-end: 8px;
 }
 
 #layout:fullscreen #leftControls {
-  margin-left: 8px;
+  margin-inline-start: 8px;
 }
 
 #layout:fullscreen #chatboxContainer {
@@ -3617,27 +3636,27 @@ form .uiTheme {
 
   .chatboxTabContent {
     border-top-color: unset !important;
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     border-bottom: 0;
   }
 
   .messageContainer {
     border-top: 0;
-    border-left: 0;
-    border-right: 0;
+    border-inline-start: 0;
+    border-inline-end: 0;
     border-bottom-color: unset !important;
   }
 
   #rankingsTable th, #rankingsTable td {
     border-top-color: unset !important;
-    border-right: 0;
+    border-inline-end: 0;
     border-bottom: 0;
     border-left-color: unset !important;
   }
   
   #rankingsTable th:first-child, #rankingsTable td:first-child {
-    border-left: 0;
+    border-inline-start: 0;
   }
   
   #rankingsTable th {
@@ -3679,8 +3698,8 @@ form .uiTheme {
   }
 
   .itemContainer .item {
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-inline-start: 4px;
+    margin-inline-end: 4px;
   }
 
   .screenshotItem {
@@ -3826,7 +3845,7 @@ form .uiTheme {
 }
 
 .dropdownItem {
-  padding-left: 4px;
+  padding-inline-start: 4px;
   line-height: 1.3em;
   text-align: initial;
   opacity: 0.5;
@@ -3847,16 +3866,17 @@ form .uiTheme {
 .searchIcon {
   position: absolute;
   z-index: 11;
-  margin: 9px 0 0 8px;
+  margin: 9px 0 0 0;
+  margin-inline-start: 8px;
 }
 
 #badgeSearch {
-  padding-right: 22px;
+  padding-inline-end: 22px;
 }
 
 #badgeSearch.active {
-  padding-right: initial;
-  padding-left: 24px;
+  padding-inline-end: initial;
+  padding-inline-start: 24px;
 }
 
 [draggable="true"] {
@@ -3891,4 +3911,14 @@ body:not(.browserFirefox) tag {
   -webkit-text-fill-color: rgba(0, 0, 0, 0.4);
   text-decoration: line-through;
   filter: invert(1);
+}
+
+.messageSender {
+  float: inline-start;
+  height: 1lh;
+  padding-inline-end: 4px;
+}
+
+#gameChatContainer .messageContentsWrapper {
+  display: inline;
 }

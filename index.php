@@ -103,7 +103,7 @@
     <div id="top"></div>
     <div id="header">
       <div id="headerLogoContainer">
-        <button id="nexusButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.nexus">
+        <button id="nexusButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.nexus" dir="ltr">
           <svg height="48" viewBox="0 0 64 28" xmlns="http://www.w3.org/2000/svg">
             <path d="m0 0h6v10h16v-10h6v16h-11v12.5h-6v-12.5h-11v-15.5m34-0.5h22v6h-16v22.5h-6v-28.5m22 6h6v22.5h-6v-22.5"></path>
           </svg>
@@ -141,7 +141,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
               <defs id="svgDefs"></defs>
             </svg>
-            <div id="leftControls">
+            <div id="leftControls" dir="ltr">
               <button id="privateModeButton" class="iconButton toggleButton altToggleButton transparentToggleButton unselectable" data-i18n="[title]tooltips.togglePrivateMode">
                 <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m5 0a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7 0.375 0 0.5 0 1.25 0.125-0.25 1.625 1.25 3.125 2.5 3.125q0.125 0.25 0.125 0.5c-1.75 0-3.625 1-3.875 4.125q-2.375 0-4-0.875m12-13a1 1 90 0 1 0 5 1 1 90 0 1 0-5m4 13c0-5-1-7-4-7-0.375 0-0.5 0-1.25 0.125 0.25 1.625-1.25 3.125-2.5 3.125q-0.125 0.25-0.125 0.5c1.75 0 3.625 1 3.875 4.125q2.375 0 4-0.875" /><path d="m9 4a1 1 90 0 0 0 5 1 1 90 0 0 0-5m-4 13c0-5 1-7 4-7s4 2 4 7q-4 2-8 0" /></svg>
               </button><button id="saveButton" class="iconButton unselectable" data-i18n="[title]tooltips.save">
@@ -978,7 +978,7 @@
               </div>
             </div>
           </div>
-          <div class="modalContent itemContainer itemRowContainer smallItemContainer"></div>
+          <div class="modalContent itemContainer itemRowContainer smallItemContainer" dir="ltr"></div>
           <div class="modalFooter">
             <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeMode.activate">Remove Badges</button>
           </div>
