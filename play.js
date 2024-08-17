@@ -1474,11 +1474,10 @@ function updateCanvasFullscreenSize() {
   } else {
     canvasElement.style.transform = null;
     document.documentElement.style.setProperty('--canvas-scale', 1);
-    canvasContainer.style.paddingRight = null;
     leftControlsMaxHeight = `${canvasElement.offsetHeight}px`;
   }
 
-  canvasContainerElement.style.paddingRight = canvasContainerPaddingRight;
+  canvasContainerElement.style.paddingInlineEnd = canvasContainerPaddingRight;
   canvasContainerElement.style.marginTop = canvasContainerMarginTop;
   chatboxContainerElement.style.marginTop = chatboxContainerMarginTop;
   layoutElement.classList.toggle('chatboxOverlap', chatboxOverlap);

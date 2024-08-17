@@ -1857,6 +1857,11 @@ html[dir="rtl"] #globalMessageButton {
   mix-blend-mode: color;
 }
 
+html[dir="rtl"] #globalChatInputOverlay {
+  right: unset;
+  left: 4px;
+}
+
 #chatInput:not([data-global]) + #globalChatInputOverlay {
   display: none;
 }
@@ -3595,6 +3600,11 @@ form .uiTheme {
   border-image: none !important;
   background-image: none !important;
   z-index: 2;
+}
+
+html[dir="rtl"] #layout:fullscreen #chatboxContainer {
+  right: unset;
+  left: 0;
 }
 
 #layout.chatboxOverlap:fullscreen #chatboxContainer {
