@@ -362,7 +362,7 @@
       "save": {
         "title": "Quản lý Dữ liệu lưu",
         "reload": "Lưu thay đổi và tải lại",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "Đối với việc nhập bản lưu, nếu lần lưu cuối là trên một bản dịch trò chơi sử dụng RPG_RT, trò chơi sẽ hiện lỗi đến khi bạn lưu trò chơi trên EasyRPG mà không dùng bản dịch nào."
       },
       "uiTheme": {
         "title": "Phông Nền",
@@ -400,7 +400,7 @@
         "weekExp": "ExP Tuần Này",
         "tabs": {
           "locations": "Địa Điểm",
-          "vms": "Thám Hiểm Máy Bán Nước"
+          "vms": "Thám Hiểm Máy Bán Hàng"
         }
       },
       "rankings": {
@@ -731,7 +731,7 @@
     "toast": {
       "system": {
         "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
-        "error": "Oops! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'."
+        "error": "Úi chà! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'."
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
@@ -769,14 +769,14 @@
       "events": {
         "complete": "Đã hoàn thành chuyến thám hiểm!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
         "freeComplete": "Đã hoàn thành chuyến thám hiểm! Bạn đã đến {LOCATION}.",
-        "vmComplete": "Đã tìm thấy máy bán nước!\nBạn nhận được {EXP}.",
+        "vmComplete": "Đã tìm thấy máy bán hàng!\nBạn nhận được {EXP}.",
         "listUpdated": "Danh sách chuyến thám hiểm đã được cập nhật."
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
       },
       "screenshots": {
-        "screenshotTaken": "Đã chụp ảnh màn hình."
+        "screenshotTaken": "Đã chụp ảnh màn hình. Nhấn để lưu."
       },
       "saveSync": {
         "saveUploading": "Đang tải dữ liệu bản lưu từ vị trí {SLOT}...",
@@ -872,7 +872,7 @@
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Thám Hiểm Máy Bán Nước",
+          "label": "Thám Hiểm Máy Bán Hàng",
           "valueLabel": "Số lượng",
           "value": "{NUMBER}"
         },
