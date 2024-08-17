@@ -361,7 +361,8 @@
       },
       "save": {
         "title": "Zarządzaj zapisami",
-        "reload": "Zapisz zmiany i zrestartuj"
+        "reload": "Zapisz zmiany i zrestartuj",
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
         "title": "Motyw",

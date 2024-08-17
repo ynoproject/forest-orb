@@ -361,7 +361,8 @@
       },
       "save": {
         "title": "Gestionează Datele Salvate",
-        "reload": "Salvează și Reîncarcă"
+        "reload": "Salvează și Reîncarcă",
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
         "title": "Tema UI",

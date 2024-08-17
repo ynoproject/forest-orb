@@ -361,7 +361,8 @@
       },
       "save": {
         "title": "세이브 데이터 관리",
-        "reload": "변경 사항을 저장 후 새로고침"
+        "reload": "변경 사항을 저장 후 새로고침",
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
         "title": "UI 테마",
