@@ -1141,10 +1141,11 @@ function checkNewBadgeUnlocks() {
           badgeCache.full = false;
         }
 
-        for (const badgeId of checkData.badgeIds) { 
-          newUnlockBadges.add(badgeId);
-          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
-        }
+        if (checkData.badgeIds)
+          for (const badgeId of checkData.badgeIds) { 
+            newUnlockBadges.add(badgeId);
+            showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+          }
       }
     })
     .catch(err => console.error(err));
