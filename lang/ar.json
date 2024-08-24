@@ -113,7 +113,7 @@
               "slim": "رفيع"
             }
           },
-          "saveReminder":  {
+          "saveReminder": {
             "label": "إشعار للحفظ",
             "interval": {
               "minutes": "{{interval}} minutes",
@@ -849,12 +849,12 @@
         "bp": {
           "label": "(نقات الشارات)",
           "valueLabel": "نقات الشارات",
-          "value": "نقات الشارات {NUMBER}"
+          "value": "{NUMBER} نقات الشارات"
         },
         "exp": {
           "label": "نقاط الرحلات الاستكشافية",
           "valueLabel": "نقاط الرحلات الاستكشافية",
-          "value": "نقاط الرحلات الاستكشافية {NUMBER}"
+          "value": "{NUMBER} نقاط الرحلات الاستكشافية"
         },
         "eventLocationCount": {
           "label": "الرحلاات الاستكشافية",
