@@ -333,8 +333,8 @@
             "values": {
               "all": "전체",
               "0": "잠김",
-              "1": "열림",
-              "recentUnlock": "최근 열림"
+              "1": "해금",
+              "recentUnlock": "최근에 해금"
             }
           },
           "sortOrder": {
