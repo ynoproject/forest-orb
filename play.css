@@ -3928,9 +3928,13 @@ body:not(.browserFirefox) tag {
 }
 
 .messageSender {
-  float: inline-start;
+  float: left;
   height: 1lh;
   padding-inline-end: 4px;
+}
+
+html[dir="rtl"] .messageSender {
+  float: right;
 }
 
 #gameChatContainer .messageContentsWrapper {
