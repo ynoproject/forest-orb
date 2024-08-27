@@ -583,37 +583,37 @@ function initBadgeTools() {
               conditionsGameFolders[badge.gameId] = conditionsFolder.folder(badge.gameId);
             tagsGameFolder = conditionsGameFolders[badge.gameId];
 
+            const tagMergeProps = [
+              'map',
+              'mapX1',
+              'mapY1',
+              'mapX2',
+              'mapY2',
+              'switchId',
+              'switchValue',
+              'switchIds',
+              'switchValues',
+              'switchDelay',
+              'varId',
+              'varValue',
+              'varValue2',
+              'varOp',
+              'varIds',
+              'varValues',
+              'varOps',
+              'varDelay',
+              'varTrigger',
+              'trigger',
+              'value',
+              'values',
+              'timeTrial'
+            ];
+
             for (let tag of badge.tags) {
               if (!tag.tagId || tag.deleted)
                 continue;
 
               const tagObj = {};
-
-              const tagMergeProps = [
-                'map',
-                'mapX1',
-                'mapY1',
-                'mapX2',
-                'mapY2',
-                'switchId',
-                'switchValue',
-                'switchIds',
-                'switchValues',
-                'switchDelay',
-                'varId',
-                'varValue',
-                'varValue2',
-                'varOp',
-                'varIds',
-                'varValues',
-                'varOps',
-                'varDelay',
-                'varTrigger',
-                'trigger',
-                'value',
-                'values',
-                'timeTrial'
-              ];
 
               for (let prop of tagMergeProps) {
                 switch (prop) {
@@ -622,6 +622,12 @@ function initBadgeTools() {
                     break;
                   case 'varOps':
                     merge(tag, tagObj, prop, ops => !ops.filter(op => op !== '='));
+                    break;
+                  case 'values':
+                    if (tag.values.length === 1 && tag.values[0])
+                      tagObj.value = tag.values[0];
+                    else
+                      merge(tag, tagObj, prop);
                     break;
                   default:
                     merge(tag, tagObj, prop);
