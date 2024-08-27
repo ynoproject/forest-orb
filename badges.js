@@ -163,7 +163,7 @@ function initBadgeControls() {
     else
       modifyingSlot = null;
     const sortOrderDesc = sortOrder.value.endsWith('_desc');
-    const sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
+    let sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
     badgeCompareFunc = (a, b) => {
       if (sortOrderType) {
         return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
@@ -193,7 +193,17 @@ function initBadgeControls() {
 
     fetchPlayerBadges(async playerBadges => {
       badgeFilterCache.length = 0;
+
+      let userSelectedSortOrder;
+      if (sortOrderType) {
+        // the badges need to be sorted per game, so save this for later.
+        userSelectedSortOrder = sortOrderType;
+        sortOrderType = undefined;
+      }
       playerBadges.sort(badgeCompareFunc);
+      if (userSelectedSortOrder) {
+        sortOrderType = userSelectedSortOrder;
+      }
       gameBadges = {};
       const spacePattern = / /g;
       let badgeCount = 0;
@@ -425,7 +435,10 @@ function initBadgeControls() {
           await updateBadgeVisibility();
         removeLoader(document.getElementById('badgesModal'));
       };
-      await didUpdateBadgeModal();
+      if (userSelectedSortOrder)
+        updateBadgeModalOnly();
+      else
+        await didUpdateBadgeModal();
     });
   };
 
@@ -1141,10 +1154,11 @@ function checkNewBadgeUnlocks() {
           badgeCache.full = false;
         }
 
-        for (const badgeId of checkData.badgeIds) { 
-          newUnlockBadges.add(badgeId);
-          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
-        }
+        if (checkData.badgeIds)
+          for (const badgeId of checkData.badgeIds) { 
+            newUnlockBadges.add(badgeId);
+            showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+          }
       }
     })
     .catch(err => console.error(err));

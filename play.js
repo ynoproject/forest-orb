@@ -472,11 +472,15 @@ function hideLocationDisplay(fast) {
 {
   const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
-  document.addEventListener('keydown', e => {
-    const keyLc = e.key;
+  document.addEventListener('keyup', e => {
+    const keyLc = e.key.toLowerCase();
     if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(keyLc)) {
       locationDisplayQueue.splice(0, locationDisplayQueue.length);
       hideLocationDisplay(true);
+    }
+
+    if (keyLc === 'enter' && e.altKey) {
+      document.getElementById('controls-fullscreen')?.click();
     }
   });
 }

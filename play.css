@@ -925,8 +925,8 @@ body.fullBg #background {
 }
 
 #content.noSideBorders #header, #content.noSideBorders #mainContainer {
-  border-left-width: 0;
-  border-right-width: 0;
+  border-inline-start-width: 0;
+  border-inline-end-width: 0;
   width: 100%;
 }
 
@@ -935,16 +935,16 @@ body.fullBg #background {
 }
 
 #content.noSideBorders #layout:not(:fullscreen) #chatboxContainer {
-  border-left-width: 0;
-  border-right-width: 0;
+  border-inline-start-width: 0;
+  border-inline-end-width: 0;
   width: 100%;
 }
 
 /* Ignore :fullscreen on iOS since it's not supported */
 @supports (-webkit-touch-callout: none) {
   #content.noSideBorders #chatboxContainer {
-    border-left-width: 0;
-    border-right-width: 0;
+    border-inline-start-width: 0;
+    border-inline-end-width: 0;
     width: 100%;
   }
 }
@@ -1516,6 +1516,7 @@ body.fullBg #background {
   justify-content: space-between;
   padding-inline-end: 2px;
   direction: ltr;
+  font-size: 14px;
 }
 
 .playerLocation {
@@ -1547,7 +1548,8 @@ body.fullBg #background {
   display: inline-block;
   width: 18.5px;
   height: 18.5px;
-  margin: -4px 0 0 2px;
+  margin-top: -4px;
+  margin-inline-start: 2px;
   background-size: contain;
   vertical-align: middle;
 }
@@ -1609,7 +1611,8 @@ body.fullBg #background {
 .playerListEntryBadge {
   min-width: 37px;
   height: 37px;
-  margin: -5px -4px -5px 0;
+  margin: -5px 0 -5px;
+  margin-inline-end: 4px;
   background-size: cover;
 }
 
@@ -2851,7 +2854,7 @@ form .uiTheme {
 
 #rankingsTable th, #rankingsTable td {
   border: 8px solid transparent;
-  border-right-width: 0;
+  border-inline-end-width: 0;
   border-bottom-width: 0;
   border-image: var(--border-image-url) 8 repeat !important;
 }
@@ -2867,7 +2870,7 @@ form .uiTheme {
 }
 
 #rankingsTable th:first-child, #rankingsTable td:first-child {
-  border-left-width: 0;
+  border-inline-start-width: 0;
 }
 
 #rankingsTable td:first-child, #rankingsTable td:last-child {
@@ -2977,7 +2980,8 @@ form .uiTheme {
   width: min(320px, calc(100vw - 40px));
   bottom: var(--toast-offset);
   left: 0;
-  margin: 0 0 8px 8px;
+  margin: 0 0 8px;
+  margin-inline-start: 8px;
   z-index: 20;
 }
 
@@ -3662,7 +3666,7 @@ html[dir="rtl"] #layout:fullscreen #chatboxContainer {
     border-top-color: unset !important;
     border-inline-end: 0;
     border-bottom: 0;
-    border-left-color: unset !important;
+    border-inline-start-color: unset !important;
   }
   
   #rankingsTable th:first-child, #rankingsTable td:first-child {
@@ -3924,9 +3928,13 @@ body:not(.browserFirefox) tag {
 }
 
 .messageSender {
-  float: inline-start;
+  float: left;
   height: 1lh;
   padding-inline-end: 4px;
+}
+
+html[dir="rtl"] .messageSender {
+  float: right;
 }
 
 #gameChatContainer .messageContentsWrapper {
