@@ -136,10 +136,10 @@
           },
           "toggleMobileControls": "Pokaż sterowanie dotykowe",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
+            "label": "Typ sterowania dotykowego",
             "default": "D-Pad",
-            "joystick": "Floating Joystick",
-            "dpad": "Floating D-Pad"
+            "joystick": "Gładki Joystick",
+            "dpad": "Gładki D-Pad"
           },
           "toggleLocationDisplay": "Wyświetlacz lokalizacji",
           "toggleRankings": "Rankingi",
@@ -362,7 +362,7 @@
       "save": {
         "title": "Zarządzaj zapisami",
         "reload": "Zapisz zmiany i zrestartuj",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "Dla importowania zapisów, jeśli ostatnio grało się używając tłumaczenia na RPG_RT, gra będzie pokazywać błędy dopóki nie zapiszę się na EasyRPG bez tłumaczeń."
       },
       "uiTheme": {
         "title": "Motyw",
