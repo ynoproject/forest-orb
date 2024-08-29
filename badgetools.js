@@ -380,9 +380,9 @@ function initBadgeTools() {
       checkbox() {
         const descriptor = {};
         for (const tag of this.tags) {
-          if (tag.deleted || !tag.description) continue;
+          if (tag.deleted || !tag.description || !tag.tagId) continue;
           if (tag.siblingIndex === -1) {
-            const commonSiblings = tag.siblings.filter(t => !t.deleted && !t.description).map(t => t.tagId);
+            const commonSiblings = tag.siblings.filter(t => !t.deleted && !t.description && t.tagId).map(t => t.tagId);
             commonSiblings.unshift(tag.tagId);
             descriptor[commonSiblings.join('|')] = tag.description;
           } else {

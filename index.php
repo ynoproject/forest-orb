@@ -85,6 +85,7 @@
   <?php if ($gameId == "2kki"): ?>
     <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
   <?php endif ?>
+  <link rel="manifest" href="/manifest.json"/>
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/animations/scale.css" />
