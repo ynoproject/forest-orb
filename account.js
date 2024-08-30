@@ -233,5 +233,5 @@ function showAccountToastMessage(key, icon, username) {
   if (!notificationConfig.account.all || (notificationConfig.account.hasOwnProperty(key) && !notificationConfig.account[key]))
     return;
   let message = getMassagedLabel(localizedMessages.toast.account[key], true).replace('{USER}', username);
-  showToastMessage(message, icon, true);
+  showToastMessage(message, icon);
 }
