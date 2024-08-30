@@ -473,7 +473,7 @@ function hideLocationDisplay(fast) {
   const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
   document.addEventListener('keyup', e => {
-    const keyLc = e.key.toLowerCase();
+    const keyLc = e.key?.toLowerCase();
     if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(keyLc)) {
       locationDisplayQueue.splice(0, locationDisplayQueue.length);
       hideLocationDisplay(true);
