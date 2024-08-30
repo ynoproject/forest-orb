@@ -153,6 +153,7 @@
         "chatSettings": "Chat",
         "screenshotSettings": "Screenshots",
         "notificationSettings": "Notificaciones",
+        "cacheSettings": "Cache",
         "accountSettings": "Cuenta"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Save Reminder"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {

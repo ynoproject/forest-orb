@@ -153,6 +153,7 @@
         "chatSettings": "聊天",
         "screenshotSettings": "截屏",
         "notificationSettings": "弹框通知",
+        "cacheSettings": "Cache",
         "accountSettings": "账号"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "存档提醒"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {

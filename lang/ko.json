@@ -153,6 +153,7 @@
         "chatSettings": "채팅",
         "screenshotSettings": "스크린샷",
         "notificationSettings": "알람",
+        "cacheSettings": "Cache",
         "accountSettings": "계정"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "세이브 리마인더"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {

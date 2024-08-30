@@ -153,6 +153,7 @@
         "chatSettings": "Chat",
         "screenshotSettings": "Chụp màn hình",
         "notificationSettings": "Thông báo",
+        "cacheSettings": "Cache",
         "accountSettings": "Tài khoản"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Nhắc nhở lưu"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cài Đặt Cache",
+        "clear": "Xóa",
+        "fields": {
+          "locationCache": "Cache địa điểm",
+          "mapCache": "Cache bản đồ",
+          "locationColorCache": "Cache màu địa điểm"
         }
       },
       "accountSettings": {

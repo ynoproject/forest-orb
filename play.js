@@ -2282,6 +2282,18 @@ function setCacheValue(cacheType, key, value) {
   cache[cacheType][key] = { time: new Date().getTime(), value: value };
 }
 
+/** @param {HTMLElement?} el */
+function clearCache(cacheType, el) {
+  if (el) el.setAttribute('disabled');
+  cache[cacheType] = {};
+  updateCache(cacheType);
+  switch (cacheType) {
+    case CACHE_TYPE.location: locationCache = {}; break;
+    case CACHE_TYPE.locationColor: locationColorCache = {}; break;
+    case CACHE_TYPE.map: mapCache = {}; break;
+  }
+}
+
 onResize();
 
 loadOrInitConfig(globalConfig, true);

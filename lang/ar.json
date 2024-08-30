@@ -153,6 +153,7 @@
         "chatSettings": "المحادثة",
         "screenshotSettings": "لقطات الشاشة",
         "notificationSettings": "التنبيهات",
+        "cacheSettings": "Cache",
         "accountSettings": "الحساب"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "إشعار للحفظ"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {
