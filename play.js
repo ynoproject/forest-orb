@@ -2296,6 +2296,12 @@ function clearCache(cacheType, el) {
   }
 }
 
+function openCacheSettingsModal(prevModal) {
+  for (const button of document.getElementById('cacheSettingsModal').querySelectorAll('button'))
+    button.removeAttribute('disabled');
+  openModal('cacheSettingsModal', null, prevModal);
+}
+
 onResize();
 
 loadOrInitConfig(globalConfig, true);

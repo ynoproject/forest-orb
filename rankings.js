@@ -363,9 +363,3 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
       });
   });
 }
-
-function openCacheSettingsModal(prevModal) {
-  for (const button of document.getElementById('cacheSettingsModal').querySelectorAll('button'))
-    button.removeAttribute('disabled');
-  openModal('cacheSettingsModal', null, prevModal);
-}
