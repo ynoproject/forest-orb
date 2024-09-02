@@ -712,6 +712,11 @@
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "friendsMenu": "在排行榜以外的界面中，用PC端右键，或手机端长按玩家图标，可以弹出一个对话框，以便加其为好友、提及该玩家，或拉黑该玩家。",
         "easySettingsMenu": "如果您在使用PC游玩，可以在游戏中按下F1键打开设置菜单，在此可以更改按键或调整一些设置。",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
     },

@@ -712,6 +712,11 @@
         "immersionMode": "إذا كنت تفضل تجربة غامرة أكثر من تجربة اجتماعية ، فجرّب وضع الغمر. يقوم بإيقاف تشغيل الدردشة العامة وقائمة اللاعبين وعدد اللاعبين ، لذا يكون الأمر أكثر إثارة عندما تجد لاعبًا آخر أثناء الاستكشاف",
         "friendsMenu": "من خلال النقر بزر الماوس الأيمن على جهاز الكمبيوتر، أو من خلال النقر باستمرار على الهاتف المحمول على أيقونة اللاعب خارج التصنيف، سيتم فتح مربع حوار يسمح بإرسال طلب صداقة إليه أو الإشارة إلى اللاعب المذكور أو حظره",
         "easySettingsMenu": "إذا كنت تلعب على جهاز كمبيوتر، فيمكنك الضغط على المفتاح F1 أثناء اللعب لفتح قائمة الإعدادات، مما يسمح لك بإعادة تعيين مفاتيحك بالإضافة إلى ضبط بعض الإعدادات",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject مفتوح المصدر ومستودعات الكود متاحة على https://github.com/ynoproject/"
       }
     },
