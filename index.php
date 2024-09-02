@@ -525,7 +525,7 @@
                       <option value="zh">中文</option>
                       <option value="ko">한국어</option>
                       <option value="es">Español</option>
-					  <option value="eo">Esperanto</option>
+                      <option value="eo">Esperanto</option>
                       <option value="pt">Português</option>
                       <option value="fr">Français</option>
                       <option value="de">Deutsch</option>
