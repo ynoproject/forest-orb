@@ -71,7 +71,7 @@ let globalConfig = {
   questionablePreloads: false,
   rulesReviewed: false,
   badgeToolsData: null,
-  saveReminder: 15
+  saveReminder: 60,
 };
 
 let config = {
@@ -2286,7 +2286,7 @@ function setCacheValue(cacheType, key, value) {
 
 /** @param {HTMLElement?} el */
 function clearCache(cacheType, el) {
-  if (el) el.setAttribute('disabled');
+  if (el) el.setAttribute('disabled', '');
   cache[cacheType] = {};
   updateCache(cacheType);
   switch (cacheType) {
