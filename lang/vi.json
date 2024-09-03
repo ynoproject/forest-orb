@@ -4,7 +4,7 @@
     "2kki": {
       "label": "Yume 2kki phiên bản {VERSION}",
       "substitutes": {
-        " Patch ": " bản vá số ",
+        " Patch ": " patch ",
         "?": "?"
       }
     }
@@ -153,6 +153,7 @@
         "chatSettings": "Chat",
         "screenshotSettings": "Chụp màn hình",
         "notificationSettings": "Thông báo",
+        "cacheSettings": "Cache",
         "accountSettings": "Tài khoản"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Nhắc nhở lưu"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cài Đặt Cache",
+        "clear": "Xóa",
+        "fields": {
+          "locationCache": "Cache địa điểm",
+          "mapCache": "Cache bản đồ",
+          "locationColorCache": "Cache màu địa điểm"
         }
       },
       "accountSettings": {
@@ -702,6 +712,11 @@
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "friendsMenu": "Khi ấn chuột phải trên máy tính, hoặc ấn giữ với thiết bị di động vào icon của một người chơi bên ngoài cửa sổ Bảng xếp hạng, một hộp thoại sẽ bật lên, cho phép bạn gửi lời mời kết bạn, gắn thẻ họ hoặc chặn họ.",
         "easySettingsMenu": "Nếu bạn đang chơi trên máy tính, bạn có thể ấn phím F1 khi đang chơi để mở menu cài đặt, giúp bạn thay đổi cách gán phím và một số cài đặt khác.",
+        "floatingControls": "Nếu bạn chơi trên điện thoại hoặc máy tính bảng và bạn không thích phím chữ thập mặc định, bạn có thể thay đổi kiểu điều khiển thành các kiểu nổi ở trong Cài đặt.",
+        "recentBadges": "Bạn có thể chọn 'Mới thu thập' cho Trạng thái trong danh sách huy hiệu để xem lại tất cả các huy hiệu bạn đã thu thập trong lần chơi này.",
+        "desktopHotkeys": "Nếu bạn chơi trên máy tính, Alt+Enter sẽ bật tắt chế độ toàn màn hình, F7 mặc định sẽ chụp hình trong game, và phím T sẽ mở hộp chat trong game.",
+        "badgeControls": "Trong Kho Huy hiệu, bạn có thể kéo thả huy hiệu để thay đổi vị trí của chúng, hoặc nhấn 'Gỡ huy hiệu' để gỡ cùng lúc nhiều huy hiệu.",
+        "cacheSettings": "Nếu bạn gặp khó khăn hoàn thành các kì Tham quan hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },

@@ -434,6 +434,24 @@ function chatInputActionFired() {
   document.getElementById("ynomojiContainer").classList.add("hidden");
 }
 
+/** @param {number} length */
+function constrainByteLength(length) {
+  const buf = new Uint8Array(length + 1);
+  const enc = new TextEncoder();
+  const dec = new TextDecoder(undefined, { fatal: false });
+  return event => {
+    const target = event?.target;
+    if (!target) return;
+    if (enc.encodeInto(target.value, buf).read <= length) return;
+    let recovered = dec.decode(buf.slice(0, length));
+    const invalid = recovered.indexOf('�');
+    if (invalid > -1) recovered = recovered.slice(0, invalid);
+    target.value = recovered;
+  };
+}
+
+document.getElementById('chatInput').addEventListener('input', constrainByteLength(150));
+
 function chatNameCheck() {
   trySetChatName(document.getElementById("nameInput").value);
 }

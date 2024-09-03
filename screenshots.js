@@ -216,10 +216,11 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
     else
       mapName = await new Promise(resolve => getOrQuery2kkiLocations(screenshotData.mapId, cachedPrevMapId, cachedPrev2kkiLocations, resolve));
   if (mapName) mapName = determineTitle(mapName, screenshotData?.mapX, screenshotData?.mapY);
-  if (!mapName) mapName = localizedMessages.location.unknownLocation;
+  if (!mapName || mapName === localizedMessages.location.queryingLocation)
+    mapName = localizedMessages.location.unknownLocation;
 
   a.href = url;
-  a.download = `ynoproject_${game}_${mapName.replace(/\s+/g, '_')}_screenshot_${formattedDate}`;
+  a.download = `ynoproject_${game}_${mapName.replace(/[\s.]+/g, '_')}_screenshot_${formattedDate}`;
   a.click();
 }
 

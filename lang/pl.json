@@ -153,6 +153,7 @@
         "chatSettings": "Czat",
         "screenshotSettings": "Zrzuty ekranu",
         "notificationSettings": "Powiadomienia",
+        "cacheSettings": "Cache",
         "accountSettings": "Konto"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Powiadomienia o zapisie"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {
@@ -702,6 +712,11 @@
         "immersionMode": "Jeżeli wolisz immersyjne doświadczenie od społecznego, możesz włączyć tryb immersji. Wyłącza on czat globalny, listę graczy i ilość graczy, przez co znajdywanie innych osób jest bardziej interesujące.",
         "friendsMenu": "Klikając prawym przyciskiem myszy na komputerze, albo poprzez trzymanie na ikonie gracza poza rankingami na telefonie, otworzy się okno dialogowe, pozwalające ci wysłać zaproszenie do grona znajomych, wspomnieć ich lub zablokować ich.",
         "easySettingsMenu": "Jeżeli grasz na komputerze, możesz nacisnąć F1 podczas gry aby zmienić sterowanie oraz kilka ustawień.",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "Kod źródłowy YNOProject jest dostępny na stronie https://github.com/ynoproject/"
       }
     },

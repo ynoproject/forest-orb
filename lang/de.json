@@ -153,6 +153,7 @@
         "chatSettings": "Chat",
         "screenshotSettings": "Screenshots",
         "notificationSettings": "Notifications",
+        "cacheSettings": "Cache",
         "accountSettings": "Account"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Save Reminder"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {
@@ -702,6 +712,11 @@
         "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
         "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
       }
     },

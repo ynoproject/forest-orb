@@ -153,6 +153,7 @@
         "chatSettings": "Чат",
         "screenshotSettings": "Снимки",
         "notificationSettings": "Уведомления",
+        "cacheSettings": "Cache",
         "accountSettings": "Аккаунт"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Save Reminder"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {
@@ -702,6 +712,11 @@
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте Режим Погружения. В нём скрывается общий чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
         "friendsMenu": "Если вы нажмёте правой клавишей мыши на ПК или будете удерживать нажатой пальцем иконку игрока вне Таблицы рекордов, то появится окошко, где вы сможете отправить игроку запрос в друзья, упомянуть в чате или заблокировать.",
         "easySettingsMenu": "Если вы играете с ПК, то при нажатии клавиши F1 во время игры вы можете получить доступ к меню настроек, где вы можете переназначить управление, а так-же изменить некоторые другие настройки.",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },

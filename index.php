@@ -696,6 +696,7 @@
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat</button>
                 <button id="screenshotSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.screenshotSettings" onclick="openModal('screenshotSettingsModal', null, 'settingsModal')">Screenshots</button>
                 <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notifications</button>
+                <button id="cacheSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.cacheSettings" onclick="openCacheSettingsModal('settingsModal')">Cache</button>
                 <button id="accountSettingsButton" class="unselectable accountRequired" type="button" data-i18n="[html]modal.settings.accountSettings">Account</button>
               </li>
             </ul>
@@ -847,6 +848,34 @@
                     <option value="topLeft" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.topLeft">Top Left</option>
                     <option value="topRight" data-i18n="[html]modal.notificationSettings.fields.screenPosition.values.topRight">Top Right</option>
                   </select>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id="cacheSettingsModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.cacheSettings.title">Cache Settings</h1>
+          </div>
+          <div class="modalContent">
+            <ul class="formControls">
+              <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.cacheSettings.fields.locationCache">Location Cache</label>
+                <div>
+                  <button id="clearLocationCacheButton" class="unselectable" data-i18n="[html].modal.cacheSettings.clear" onclick="clearCache(CACHE_TYPE.location, this)">Clear</button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.cacheSettings.fields.mapCache">Map Cache</label>
+                <div>
+                  <button id="clearMapCacheButton" class="unselectable" data-i18n="[html].modal.cacheSettings.clear" onclick="clearCache(CACHE_TYPE.map, this)">Clear</button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.cacheSettings.fields.locationColorCache">Location Color Cache</label>
+                <div>
+                  <button id="clearLocationColorCacheButton" class="unselectable" data-i18n="[html].modal.cacheSettings.clear" onclick="clearCache(CACHE_TYPE.locationColor, this)">Clear</button>
                 </div>
               </li>
             </ul>

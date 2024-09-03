@@ -153,6 +153,7 @@
         "chatSettings": "Bate-Papo",
         "screenshotSettings": "Captura de Tela",
         "notificationSettings": "Notificação",
+        "cacheSettings": "Cache",
         "accountSettings": "Conta"
       },
       "blocklist": {
@@ -305,6 +306,15 @@
               "saveReminder": "Save Reminder"
             }
           }
+        }
+      },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
         }
       },
       "accountSettings": {
@@ -702,6 +712,11 @@
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
         "friendsMenu": "Usando o clique direito em um computador, ou segurando a tela em um celular no ícone de um jogador fora de Placares, uma caixa de diálogo vai abrir, te permitindo enviar um pedido de amizade, mencionar esse jogador, ou bloqueia-lo.",
         "easySettingsMenu": "Se você está jogando em um computador, você pode apertar a tecla F1 enquanto joga para abrir o menu de configurações, te permitindo remapear suas teclas e ajustar algumas configurações.",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/"
       }
     },

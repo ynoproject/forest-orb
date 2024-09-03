@@ -37,6 +37,8 @@ let gameLocationsMap = {};
 
 let yumeWikiSupported;
 
+const modalTransitionDuration = 230;
+
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
     if (isUI && value.indexOf(' ') > -1)
@@ -473,7 +475,7 @@ function hideLocationDisplay(fast) {
   const cancelKeyCodes = [ 'escape', 'x', 'c', 'v', 'b', 'n', 'numpad0', 'backspace' ];
 
   document.addEventListener('keyup', e => {
-    const keyLc = e.key.toLowerCase();
+    const keyLc = e.key?.toLowerCase();
     if (globalConfig.locationDisplay && (locationDisplayTimer || locationDisplayQueue.length) && cancelKeyCodes.includes(keyLc)) {
       locationDisplayQueue.splice(0, locationDisplayQueue.length);
       hideLocationDisplay(true);
@@ -610,7 +612,7 @@ function openModal(modalId, theme, lastModalId, modalData) {
       activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
-    }, 245);
+    }, modalTransitionDuration);
   }
 
   setModalUiTheme(modalId, theme || (config.uiTheme === 'auto' ? systemName : config.uiTheme));
@@ -633,7 +635,7 @@ function openModal(modalId, theme, lastModalId, modalData) {
   setTimeout(() => {
     modalContainer.classList.remove('fadeIn');
     modal.classList.remove('fadeIn');
-  }, 245);
+  }, modalTransitionDuration);
 }
 
 function closeModal() {
@@ -646,7 +648,7 @@ function closeModal() {
   if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
-    setTimeout(() => modalContainer.classList.remove('fadeOut'), 245);
+    setTimeout(() => modalContainer.classList.remove('fadeOut'), modalTransitionDuration);
   }
   if (activeModal) {
     modalFadeOutContainer.appendChild(activeModal);
@@ -655,7 +657,7 @@ function closeModal() {
       activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
-    }, 245);
+    }, modalTransitionDuration);
   }
 
   setModalUiTheme('confirmModal', config.uiTheme === 'auto' ? systemName : config.uiTheme);
@@ -684,7 +686,7 @@ function showConfirmModal(message, okCallback, cancelCallback) {
   const modal = document.getElementById('confirmModal');
   
   if (!modal.classList.contains('hidden')) {
-    setTimeout(() => showConfirmModal(message, okCallback, cancelCallback), 245);
+    setTimeout(() => showConfirmModal(message, okCallback, cancelCallback), modalTransitionDuration);
     return;
   }
 
@@ -705,7 +707,7 @@ function showConfirmModal(message, okCallback, cancelCallback) {
   setTimeout(() => {
     modalContainer.classList.remove('fadeIn');
     modal.classList.remove('fadeIn');
-  }, 245);
+  }, modalTransitionDuration);
 }
 
 function closeConfirmModal(callback) {
@@ -720,7 +722,7 @@ function closeConfirmModal(callback) {
     modal.classList.remove('fadeOut');
     modalContainer.classList.add('hidden');
     modalContainer.classList.remove('fadeOut');
-  }, 245);
+  }, modalTransitionDuration);
 
   if (callback)
     callback();
@@ -2280,6 +2282,24 @@ function setCacheValue(cacheType, key, value) {
     return;
 
   cache[cacheType][key] = { time: new Date().getTime(), value: value };
+}
+
+/** @param {HTMLElement?} el */
+function clearCache(cacheType, el) {
+  if (el) el.setAttribute('disabled');
+  cache[cacheType] = {};
+  updateCache(cacheType);
+  switch (cacheType) {
+    case CACHE_TYPE.location: locationCache = {}; break;
+    case CACHE_TYPE.locationColor: locationColorCache = {}; break;
+    case CACHE_TYPE.map: mapCache = {}; break;
+  }
+}
+
+function openCacheSettingsModal(prevModal) {
+  for (const button of document.getElementById('cacheSettingsModal').querySelectorAll('button'))
+    button.removeAttribute('disabled');
+  openModal('cacheSettingsModal', null, prevModal);
 }
 
 onResize();
