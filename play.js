@@ -71,7 +71,7 @@ let globalConfig = {
   questionablePreloads: false,
   rulesReviewed: false,
   badgeToolsData: null,
-  saveReminder: 15
+  saveReminder: 60,
 };
 
 let config = {
