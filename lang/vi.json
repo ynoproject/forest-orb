@@ -523,7 +523,7 @@
     },
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
-    "loadingInstruct": ". <br /> <br /> Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Console bằng phím F12.",
+    "loadingInstruct": ". <br /> <br /> Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Bảng điều khiển (Console) bằng phím F12.",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -701,10 +701,10 @@
       "template": "MẸO: {CONTENT}",
       "tips": {
         "backupReminder": "Bạn nên giữ một bản lưu trong máy bằng cách thường xuyên tải bản lưu xuống. Như vậy, nếu dữ liệu trình duyệt bị xóa, tiến trình của bạn sẽ không bị mất.",
-        "menuTheme": "Màu của tên bạn và phông nền trong danh sách người chơi được dựa trên menu theme trong game của bạn.",
-        "playersInMap": "Bạn có thể chuyển giữa số người chơi online và số người chơi trong map bằng cách nhấn vào dòng chữ.",
+        "menuTheme": "Màu của tên bạn và phông nền trong danh sách người chơi được dựa trên kiểu menu trong trò chơi của bạn.",
+        "playersInMap": "Bạn có thể chuyển giữa việc xem số người chơi online và số người chơi trong map bằng cách bấm vào dòng chữ.",
         "markdownSupport": "Bạn có thể định dạng tin nhắn bằng cách cho tin nhắn vào giữa những ký tự nhất định. Những định dạng hiện có: **in đậm** (\\*\\*chữ\\*\\*), *in nghiêng* (\\*chữ\\*, \\_chữ\\_), __gạch dưới__ (\\_\\_chữ\\_\\_), ~~gạch bỏ~~ (\\~\\~chữ\\~\\~), và ||bôi đen|| (\\|\\|chữ\\|\\|).",
-        "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và game. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
+        "tabToChat": "Nếu bạn đang chơi trên máy tính, bạn có thể nhấn phím Tab để chuyển đổi nhập liệu giữa khung chat và trò chơi. Tính năng này có thể tắt được trong cài đặt 'Nhấn Tab để chat'.",
         "chatTabNotifications": "Khi bạn ở trong khung chat khác ngoài khung 'Tất cả', nếu có tin nhắn mới từ các thẻ khác, tiêu đề thẻ sẽ được in đậm để thông báo cho bạn.",
         "clearChat": "Khi bạn ấn Xóa Chat ở góc trên bên phải của khung, nếu bạn không trong thẻ 'Tất cả', chỉ tin nhắn trong thẻ bạn đã chọn sẽ bị xóa.",
         "chatHistoryLimit": "Nếu lịch sử chat của bạn quá dài, hiệu suất có thể bị ảnh hưởng. Trong mục Cài đặt Chat, bạn có thể giới hạn số tin nhắn để tránh vấn đề này mà không phải xóa chat thủ công.",
@@ -712,11 +712,11 @@
         "immersionMode": "Nếu bạn thích được đắm chìm trong trò chơi hơn là xã giao, hãy thử Chế độ Đắm chìm. Tính năng sẽ tắt chat chung, danh sách người chơi và số người chơi, như vậy sẽ thú vị hơn khi bạn vô tình tìm được người khác khi đang khám phá.",
         "friendsMenu": "Khi ấn chuột phải trên máy tính, hoặc ấn giữ với thiết bị di động vào icon của một người chơi bên ngoài cửa sổ Bảng xếp hạng, một hộp thoại sẽ bật lên, cho phép bạn gửi lời mời kết bạn, gắn thẻ họ hoặc chặn họ.",
         "easySettingsMenu": "Nếu bạn đang chơi trên máy tính, bạn có thể ấn phím F1 khi đang chơi để mở menu cài đặt, giúp bạn thay đổi cách gán phím và một số cài đặt khác.",
-        "floatingControls": "Nếu bạn chơi trên điện thoại hoặc máy tính bảng và bạn không thích phím chữ thập mặc định, bạn có thể thay đổi kiểu điều khiển thành các kiểu nổi ở trong Cài đặt.",
-        "recentBadges": "Bạn có thể chọn 'Mới thu thập' cho Trạng thái trong danh sách huy hiệu để xem lại tất cả các huy hiệu bạn đã thu thập trong lần chơi này.",
-        "desktopHotkeys": "Nếu bạn chơi trên máy tính, Alt+Enter sẽ bật tắt chế độ toàn màn hình, F7 mặc định sẽ chụp hình trong game, và phím T sẽ mở hộp chat trong game.",
+        "floatingControls": "Nếu bạn chơi trên thiết bị di động và bạn không thích phím chữ thập mặc định, bạn có thể thay đổi kiểu điều khiển thành các kiểu nổi ở trong Cài đặt.",
+        "recentBadges": "Bạn có thể chọn 'Mới thu thập' cho Trạng thái trong danh sách huy hiệu để xem lại tất cả các huy hiệu bạn đã thu thập trong phiên hiện tại.",
+        "desktopHotkeys": "Nếu bạn chơi trên máy tính, Alt+Enter sẽ bật tắt chế độ toàn màn hình, F7 mặc định sẽ chụp màn hình trò chơi, và phím T sẽ mở hộp chat trong trò chơi.",
         "badgeControls": "Trong Kho Huy hiệu, bạn có thể kéo thả huy hiệu để thay đổi vị trí của chúng, hoặc nhấn 'Gỡ huy hiệu' để gỡ cùng lúc nhiều huy hiệu.",
-        "cacheSettings": "Nếu bạn gặp khó khăn hoàn thành các kì Tham quan hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
+        "cacheSettings": "Nếu bạn gặp khó khăn hoàn thành các kì Thám hiểm hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
@@ -746,7 +746,7 @@
     "toast": {
       "system": {
         "siteUpdates": "Trang đã được cập nhật. Tải lại trang để áp dụng thay đổi mới nhất.",
-        "error": "Úi chà! Hình như có gì đó sai sai. Xem phần Console của trình duyệt để biết thêm chi tiết. Để mở Console, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'."
+        "error": "Úi chà! Hình như có gì đó sai sai. Xem Bảng điều khiển (Console) của trình duyệt để biết thêm chi tiết. Để mở Bảng điều khiển, nhấn F12 hoặc nhấn chuột phải rồi chọn 'Kiểm tra'."
       },
       "account": {
         "loggedIn": "Bạn đã đăng nhập với tư cách {USER}.",
