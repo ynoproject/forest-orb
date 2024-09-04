@@ -114,7 +114,7 @@
             }
           },
           "saveReminder": {
-            "saveReminder": "Tần suất nhắc lưu trò chơi",
+            "label": "Tần suất nhắc lưu trò chơi",
             "interval": {
               "minutes": "Mỗi {{interval}} phút",
               "never": "Đừng nhắc"
