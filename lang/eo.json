@@ -132,8 +132,8 @@
             "helpText": "Forigas ludantajn nombrilojn, tutmondan babilejon, kaj mapojn por doni al vi pli absorban ludadon"
           },
           "timeTrialinfo": {
-            "label": "Tempoprovo"
-          "toggleMobileControls": "Montri Regilon de Poŝtelefono",
+            "label": "Tempoprovo",
+            "toggleMobileControls": "Montri Regilon de Poŝtelefono"
           },
           "mobileControlsType": {
             "label": "Speco de Regilo de Poŝtelefono",
