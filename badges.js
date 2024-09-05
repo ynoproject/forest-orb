@@ -189,258 +189,267 @@ function initBadgeControls() {
     };
 
     // If we already have cache and it hasn't been invalidated, only update the modal.
-    if (gameBadges && badgeCache?.full && lastLang === globalConfig.lang) return updateBadgeModalOnly();
+    if (gameBadges && badgeCache?.full && lastLang === globalConfig.lang)
+      return updateBadgeModalOnly();
     lastLang = globalConfig.lang;
 
-    fetchPlayerBadges(async playerBadges => {
-      badgeFilterCache.length = 0;
+    const playerBadges = await fetchPlayerBadges();
+    
+    badgeFilterCache.length = 0;
 
-      let userSelectedSortOrder;
-      if (sortOrderType) {
-        // the badges need to be sorted per game, so save this for later.
-        userSelectedSortOrder = sortOrderType;
-        sortOrderType = undefined;
-      }
-      playerBadges.sort(badgeCompareFunc);
-      if (userSelectedSortOrder) {
-        sortOrderType = userSelectedSortOrder;
-      }
-      gameBadges = {};
-      const spacePattern = / /g;
-      let badgeCount = 0;
-      observer?.disconnect();
-      observer = new IntersectionObserver(observed => {
-        for (const { target } of observed) {
-          if (!target.parentElement) continue;
-          const assignTooltip = assignTooltipCallbacks.get(target);
-          if (assignTooltip) {
-            observer.unobserve(target);
-            assignTooltipCallbacks.delete(target);
-            window.requestAnimationFrame(() => assignTooltip());
-          }
+    let userSelectedSortOrder;
+    if (sortOrderType) {
+      // the badges need to be sorted per game, so save this for later.
+      userSelectedSortOrder = sortOrderType;
+      sortOrderType = undefined;
+    }
+    playerBadges.sort(badgeCompareFunc);
+    if (userSelectedSortOrder)
+      sortOrderType = userSelectedSortOrder;
+    gameBadges = {};
+    const spacePattern = / /g;
+    let badgeCount = 0;
+    observer?.disconnect();
+    observer = new IntersectionObserver(observed => {
+      for (const { target } of observed) {
+        if (!target.parentElement)
+          continue;
+        const assignTooltip = assignTooltipCallbacks.get(target);
+        if (assignTooltip) {
+          observer.unobserve(target);
+          assignTooltipCallbacks.delete(target);
+          window.requestAnimationFrame(() => assignTooltip());
         }
-      }, { root: badgeModalContent });
-      let systemName;
-      for (const badge of playerBadges) {
-        // yield back to the game loop to prevent audio cracking
-        if (badgeCount++ % 40 === 0) await yieldImmediately();
-
-        if (!gameBadges[badge.game]) {
-          if (badge.game !== 'ynoproject') {
-            systemName = getDefaultUiTheme(badge.game).replace(spacePattern, '_');
-          }
-          if (systemName) {
-            const parsedSystemName = systemName;
-            initUiThemeContainerStyles(parsedSystemName, badge.game, false, () => initUiThemeFontStyles(parsedSystemName, badge.game, 0));
-          }
-          gameBadges[badge.game] = {};
-        }
-        if (!gameBadges[badge.game][badge.group]) gameBadges[badge.game][badge.group] = [];
-
-        const item = getBadgeItem(badge, 'lazy', true, true, true, true, systemName);
-        observer.observe(item);
-        if (badge.badgeId === (playerData?.badge || 'null'))
-          item.children[0].classList.add('selected');
-        if (!item.classList.contains('disabled')) {
-          item.onclick = () => onClickBadge(badge.badgeId);
-        }
-        gameBadges[badge.game][badge.group].push(item);
       }
+    }, { root: badgeModalContent });
+    let systemName;
+    for (const badge of playerBadges) {
+      // yield back to the game loop to prevent audio cracking
+      if (badgeCount++ % 40 === 0) await yieldImmediately();
 
-      const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, false, true, true, true);
-      nullBadge.classList.add('nullBadgeItem');
-      if ('null' === (playerData?.badge || 'null'))
-        nullBadge.children[0].classList.add('selected');
-      if (!nullBadge.classList.contains('disabled')) {
-        nullBadge.onclick = () => onClickBadge('null');
+      if (!gameBadges[badge.game]) {
+        if (badge.game !== 'ynoproject') {
+          systemName = getDefaultUiTheme(badge.game).replace(spacePattern, '_');
+        }
+        if (systemName) {
+          const parsedSystemName = systemName;
+          initUiThemeContainerStyles(parsedSystemName, badge.game, false, () => initUiThemeFontStyles(parsedSystemName, badge.game, 0));
+        }
+        gameBadges[badge.game] = {};
       }
+      if (!gameBadges[badge.game][badge.group])
+        gameBadges[badge.game][badge.group] = [];
 
-      function updateBadges(game, group) {
-        const items = gameBadges[game]?.[group] || [];
-        if (game !== 'ynoproject') {
-          const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
-          applyThemeStyles(nullBadge, systemName, game);
-        } else {
+      const item = getBadgeItem(badge, 'lazy', true, true, true, true, systemName);
+      observer.observe(item);
+      if (badge.badgeId === (playerData?.badge || 'null'))
+        item.children[0].classList.add('selected');
+      if (!item.classList.contains('disabled')) {
+        item.onclick = () => onClickBadge(badge.badgeId);
+      }
+      gameBadges[badge.game][badge.group].push(item);
+    }
+
+    const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, false, true, true, true);
+    nullBadge.classList.add('nullBadgeItem');
+    if ('null' === (playerData?.badge || 'null'))
+      nullBadge.children[0].classList.add('selected');
+    if (!nullBadge.classList.contains('disabled'))
+      nullBadge.onclick = () => onClickBadge('null');
+
+    function updateBadges(game, group) {
+      const items = gameBadges[game]?.[group] || [];
+      if (game !== 'ynoproject') {
+        const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
+        applyThemeStyles(nullBadge, systemName, game);
+      } else {
+        for (const cls of nullBadge.classList)
+          if (cls.startsWith('theme_'))
+            nullBadge.classList.remove(cls);
+      }
+      badgeModalContent.replaceChildren(nullBadge, ...items);
+      badgeTabGame = game;
+      badgeTabGroup = group;
+    }
+
+    const tabs = [];
+    {
+      // Create 'All' tab
+      const tab = document.createElement('div');
+      tabs.push(tab);
+      tab.classList.add('badgeGameTab', 'modalTab');
+      if (badgeTabGame === 'all')
+        tab.classList.add('active');
+
+      const tabLabel = document.createElement('label');
+      tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
+      tabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
+      tab.appendChild(tabLabel);
+
+      tab.onclick = () => {
+        if (badgeGameTabs === 'all') return;
+
+        badgeGameTabs.querySelector('.active')?.classList.remove('active');
+        tab.classList.add('active');
+        badgeCategoryTabs.replaceChildren();
+
+        window.requestAnimationFrame(() => {
+          badgeModalContent.replaceChildren(nullBadge);
           for (const cls of nullBadge.classList)
             if (cls.startsWith('theme_'))
               nullBadge.classList.remove(cls);
-        }
-        badgeModalContent.replaceChildren(nullBadge, ...items);
+          for (const game in gameBadges)
+            for (const category in gameBadges[game])
+              badgeModalContent.append(...gameBadges[game][category]);
+          badgeTabGame = 'all';
+          badgeTabGroup = null;
+        });
+      }; // tab.onclick
+    }
+
+    for (const game in gameBadges) {
+      if (!badgeTabGame)
         badgeTabGame = game;
-        badgeTabGroup = group;
-      }
 
-      const tabs = [];
-      {
-        // Create 'All' tab
-        const tab = document.createElement('div');
-        tabs.push(tab);
-        tab.classList.add('badgeGameTab', 'modalTab');
-        if (badgeTabGame === 'all') tab.classList.add('active');
+      const tab = document.createElement('div');
+      tabs.push(tab);
+      tab.classList.add('badgeGameTab', 'modalTab');
+      tab.dataset.game = game;
+      if (game === badgeTabGame)
+        tab.classList.add('active');
 
-        const tabLabel = document.createElement('label');
-        tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
-        tabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
-        tab.appendChild(tabLabel);
+      const tabLabel = document.createElement('label');
+      tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
+      tabLabel.innerHTML = getMassagedLabel(localizedMessages.games[game]);
+      tab.appendChild(tabLabel);
 
-        tab.onclick = () => {
-          if (badgeGameTabs === 'all') return;
+      tab.onclick = () => {
+        if (tab.dataset.game === badgeTabGame)
+          return;
 
-          badgeGameTabs.querySelector('.active')?.classList.remove('active');
-          tab.classList.add('active');
-          badgeCategoryTabs.replaceChildren();
+        badgeGameTabs.querySelector('.active')?.classList.remove('active');
+        tab.classList.add('active');
 
-          window.requestAnimationFrame(() => {
-            badgeModalContent.replaceChildren(nullBadge);
-            for (const cls of nullBadge.classList)
-              if (cls.startsWith('theme_'))
-                nullBadge.classList.remove(cls);
-            for (const game in gameBadges)
-              for (const category in gameBadges[game])
-                badgeModalContent.append(...gameBadges[game][category]);
-            badgeTabGame = 'all';
-            badgeTabGroup = null;
-          });
-        }; // tab.onclick
-      }
+        const subTabs = [];
+        if (badgeTabGame || !badgeTabGroup)
+          badgeTabGroup = 'all';
+        let hasGroups = true;
 
-      for (const game in gameBadges) {
-        if (!badgeTabGame) badgeTabGame = game;
+        for (const group in gameBadges[game]) {
+          if (!group) {
+            // Group name is empty, game's badges have no group subdivision.
+            badgeTabGroup = group;
+            hasGroups = false;
+            break;
+          }
+          const subTab = document.createElement('div');
+          subTab.classList.add('subTab');
+          subTab.dataset.group = group;
+          subTab.dataset.game = game;
+          if (group === badgeTabGroup)
+            subTab.classList.add('active');
 
-        const tab = document.createElement('div');
-        tabs.push(tab);
-        tab.classList.add('badgeGameTab', 'modalTab');
-        tab.dataset.game = game;
-        if (game === badgeTabGame) tab.classList.add('active');
+          const subTabLabel = document.createElement('small');
+          subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
+          subTabLabel.innerHTML = getMassagedLabel(localizedBadgeGroups[game][group]);
+          subTabs.push(subTab);
+          subTab.appendChild(subTabLabel);
 
-        const tabLabel = document.createElement('label');
-        tabLabel.classList.add('badgeGameTabLabel', 'modalTabLabel', 'unselectable');
-        tabLabel.innerHTML = getMassagedLabel(localizedMessages.games[game]);
-        tab.appendChild(tabLabel);
+          const subTabBg = document.createElement('div');
+          subTabBg.classList.add('subTabBg');
+          subTab.appendChild(subTabBg);
 
-        tab.onclick = () => {
-          if (tab.dataset.game === badgeTabGame) return;
+          subTab.onclick = () => {
+            if (subTab.dataset.group === badgeTabGroup) return;
 
-          badgeGameTabs.querySelector('.active')?.classList.remove('active');
-          tab.classList.add('active');
+            badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
+            subTab.classList.add('active');
 
-          const subTabs = [];
-          if (badgeTabGame || !badgeTabGroup) badgeTabGroup = 'all';
-          let hasGroups = true;
+            updateBadges(subTab.dataset.game, subTab.dataset.group);
+          };
+        }
 
-          for (const group in gameBadges[game]) {
-            if (!group) {
-              // Group name is empty, game's badges have no group subdivision.
-              badgeTabGroup = group;
-              hasGroups = false;
-              break;
-            }
-            const subTab = document.createElement('div');
-            subTab.classList.add('subTab');
-            subTab.dataset.group = group;
-            subTab.dataset.game = game;
-            if (group === badgeTabGroup) subTab.classList.add('active');
+        if (hasGroups) {
+          // Create 'All' subtab
+          const subTab = document.createElement('div');
+          subTabs.unshift(subTab);
+          subTab.classList.add('subTab');
+          subTab.dataset.game = game;
+          if ('all' === badgeTabGroup)
+            subTab.classList.add('active');
 
-            const subTabLabel = document.createElement('small');
-            subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
-            subTabLabel.innerHTML = getMassagedLabel(localizedBadgeGroups[game][group]);
-            subTabs.push(subTab);
-            subTab.appendChild(subTabLabel);
+          const subTabLabel = document.createElement('small');
+          subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
+          subTabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
+          subTab.appendChild(subTabLabel);
 
-            const subTabBg = document.createElement('div');
-            subTabBg.classList.add('subTabBg');
-            subTab.appendChild(subTabBg);
+          const subTabBg = document.createElement('div');
+          subTabBg.classList.add('subTabBg');
+          subTab.appendChild(subTabBg);
 
-            subTab.onclick = () => {
-              if (subTab.dataset.group === badgeTabGroup) return;
+          subTab.onclick = () => {
+            if ('all' === badgeTabGroup)
+              return;
 
+            window.requestAnimationFrame(() => {
               badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
               subTab.classList.add('active');
 
-              updateBadges(subTab.dataset.game, subTab.dataset.group);
-            };
+              const game = tab.dataset.game;
+              if (game !== 'ynoproject') {
+                const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
+                applyThemeStyles(nullBadge, systemName, game);
+              } else {
+                for (const cls of nullBadge.classList)
+                  if (cls.startsWith('theme_'))
+                    nullBadge.classList.remove(cls);
+              }
+
+              badgeModalContent.replaceChildren(nullBadge);
+              for (const group in gameBadges[game])
+                badgeModalContent.append(...gameBadges[game][group]);
+              badgeTabGame = game;
+              badgeTabGroup = 'all';
+            });
+          };
+        }
+
+        badgeCategoryTabs.replaceChildren(...subTabs);
+        if (badgeCategoryTabs.querySelector('[data-i18n]')) {
+          // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
+          locI18next.init(i18next, { ...locI18nextOptions, document: badgeCategoryTabs })('[data-i18n]');
+          for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
+            addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
+            elm.removeAttribute('title');
           }
+        }
 
-          if (hasGroups) {
-            // Create 'All' subtab
-            const subTab = document.createElement('div');
-            subTabs.unshift(subTab);
-            subTab.classList.add('subTab');
-            subTab.dataset.game = game;
-            if ('all' === badgeTabGroup) subTab.classList.add('active');
-
-            const subTabLabel = document.createElement('small');
-            subTabLabel.classList.add('badgeCategoryTabLabel', 'subTabLabel', 'infoLabel', 'unselectable');
-            subTabLabel.innerHTML = getMassagedLabel(localizedMessages.badges.allCategory);
-            subTab.appendChild(subTabLabel);
-
-            const subTabBg = document.createElement('div');
-            subTabBg.classList.add('subTabBg');
-            subTab.appendChild(subTabBg);
-
-            subTab.onclick = () => {
-              if ('all' === badgeTabGroup) return;
-
-              window.requestAnimationFrame(() => {
-                badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
-                subTab.classList.add('active');
-
-                const game = tab.dataset.game;
-                if (game !== 'ynoproject') {
-                  const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
-                  applyThemeStyles(nullBadge, systemName, game);
-                } else {
-                  for (const cls of nullBadge.classList)
-                    if (cls.startsWith('theme_'))
-                      nullBadge.classList.remove(cls);
-                }
-
-                badgeModalContent.replaceChildren(nullBadge);
-                for (const group in gameBadges[game])
-                  badgeModalContent.append(...gameBadges[game][group]);
-                badgeTabGame = game;
-                badgeTabGroup = 'all';
-              });
-            };
-          }
-
-          badgeCategoryTabs.replaceChildren(...subTabs);
-          if (badgeCategoryTabs.querySelector('[data-i18n]')) {
-            // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
-            locI18next.init(i18next, { ...locI18nextOptions, document: badgeCategoryTabs })('[data-i18n]');
-            for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
-              addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
-              elm.removeAttribute('title');
-            }
-          }
-
-          let activeSubTab;
-          if (activeSubTab = subTabs.find(tab => tab.classList.contains('active'))) {
-            badgeTabGroup = null;
-            activeSubTab.click();
-          } else {
-            updateBadges(game, badgeTabGroup);
-          }
-        }; // tab.onclick
-      }
-      badgeGameTabs.replaceChildren(...tabs);
-      didUpdateBadgeModal = async () => {
-        let activeTab;
-        if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
-          badgeTabGame = null; // temporarily set to null to populate subtabs
-          activeTab.click();
-          await updateBadgeVisibility();
-          if (badgeModalContent.dataset.lastScrollTop)
-            badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
-        } else
-          await updateBadgeVisibility();
-        removeLoader(document.getElementById('badgesModal'));
-      };
-      if (userSelectedSortOrder)
-        updateBadgeModalOnly();
-      else
-        await didUpdateBadgeModal();
-    });
+        let activeSubTab;
+        if (activeSubTab = subTabs.find(tab => tab.classList.contains('active'))) {
+          badgeTabGroup = null;
+          activeSubTab.click();
+        } else {
+          updateBadges(game, badgeTabGroup);
+        }
+      }; // tab.onclick
+    }
+    badgeGameTabs.replaceChildren(...tabs);
+    didUpdateBadgeModal = async () => {
+      let activeTab;
+      if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
+        badgeTabGame = null; // temporarily set to null to populate subtabs
+        activeTab.click();
+        await updateBadgeVisibility();
+        if (badgeModalContent.dataset.lastScrollTop)
+          badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
+      } else
+        await updateBadgeVisibility();
+      removeLoader(document.getElementById('badgesModal'));
+    };
+    if (userSelectedSortOrder)
+      updateBadgeModalOnly();
+    else
+      await didUpdateBadgeModal();
   };
 
   /** Updates badge elements based on a `cacheIndex` assigned to them in {@linkcode getBadgeItem} */
@@ -620,7 +629,8 @@ function initBadgeControls() {
   };
 
   badgeSearch.onkeydown = function(ev) {
-    if (ev.key !== 'Enter') return;
+    if (ev.key !== 'Enter')
+      return;
     searchBadges('name');
   };
 
@@ -674,7 +684,6 @@ function initBadgeControls() {
       openModal('badgeGalleryModal');
     });
   };
-
 
   let draggedBadge;
   /** @param {DragEvent} ev */
@@ -759,6 +768,28 @@ function initBadgeControls() {
     else
       this.innerHTML = getMassagedLabel(i18next.t('modal.badgeGallery.removeMode.activate', 'Remove Badges'));
   };
+}
+
+async function viewBadgeInModal(badgeId, badgeGame) {
+  const badgeSearch = document.getElementById('badgeSearch');
+  badgeSearch.value = `=${localizedBadges[badgeGame][badgeId].name}`;
+  badgeSearch.classList.add('active');
+  const badgeUnlockStatus = document.getElementById('badgeUnlockStatus');
+  badgeUnlockStatus.value = '';
+  badgeUnlockStatus.dispatchEvent(new Event('change'));
+  document.getElementById('badgeSearchClearLink').classList.remove('hidden');
+  Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
+  openModal('badgesModal');
+  addLoader(document.getElementById('badgesModal'), true);
+  await fetchAndUpdateBadgeModalBadges();
+  console.log(document.getElementById('badgeGameTabs').querySelector('.badgeGameTab'))
+  const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
+  console.log(badgeGame);
+  if (activeBadgeTab) {
+    if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== badgeGame)
+      document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${badgeGame}"]`).click();
+  }
+  document.getElementById('badgeCategoryTabs').querySelector('.subTab:first-child')?.click();
 }
 
 /**
@@ -1075,30 +1106,33 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
 }
 
 /**
-  @param {(_: BadgeCache) => any} [callback]
+  @param {(_: BadgeCache) => any}
 */
-function fetchPlayerBadges(callback) {
-  if (badgeCache?.full) {
-    callback?.(badgeCache);
-    return;
-  }
-  apiFetch('badge?command=list')
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      return response.json();
-    })
-    .then(badges => {
-      for (const { badgeId, newUnlock } of badges)
-        if (newUnlock) { 
-          newUnlockBadges.add(badgeId);
-          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+async function fetchPlayerBadges() {
+  return new Promise(resolve => {
+    if (badgeCache?.full) {
+      resolve(badgeCache);
+      return;
+    }
+    apiFetch('badge?command=list')
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        return response.json();
+      })
+      .then(badges => {
+        for (const { badgeId, newUnlock } of badges) {
+          if (newUnlock) { 
+            newUnlockBadges.add(badgeId);
+            showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
+          }
         }
-      badgeCache = badges;
-      badgeCache.full = true;
-      callback?.(badgeCache);
-    })
-    .catch(err => console.error(err));
+        badgeCache = badges;
+        badgeCache.full = true;
+        resolve(badgeCache);
+      })
+      .catch(err => console.error(err));
+  });
 }
 
 function updateBadges(callback) {
@@ -1391,20 +1425,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                     badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
                   badge.onclick = async () => {
                     badgeTippy.hide();
-                    const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
-                    if (activeBadgeTab) {
-                      if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== badgeGame)
-                        document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${badgeGame}"]`).click();
-                    }
-                    document.getElementById('badgeCategoryTabs').querySelector('.subTab:first-child')?.click();
-                    const badgeSearch = document.getElementById('badgeSearch');
-                    badgeSearch.value = `=${localizedBadges[badgeGame][badgeId].name}`;
-                    badgeSearch.classList.add('active');
-                    document.getElementById('badgeSearchClearLink').classList.remove('hidden');
-                    Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
-                    openModal('badgesModal');
-                    addLoader(document.getElementById('badgesModal'), true);
-                    await fetchAndUpdateBadgeModalBadges();
+                    await viewBadgeInModal(badgeId, badgeGame);
                   }
                 }
               }
