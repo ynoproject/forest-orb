@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% of players have this badge",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

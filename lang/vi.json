@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% người chơi có huy hiệu này",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Được vẽ bởi {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

@@ -838,6 +838,12 @@
       "percentUnlocked": "Oyuncuların {PERCENT}% si Bu Rozete Sahip",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Resim {ARTIST} Tarafından",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

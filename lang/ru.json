@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% Игроков имеют этот значок",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Картинка от {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

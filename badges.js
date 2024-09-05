@@ -132,6 +132,8 @@ function yieldImmediately() {
   return new Promise(resolve => setTimeout(resolve, 0));
 }
 
+async function fetchAndUpdateBadgeModalBadges(slotRow, slotCol) { }
+
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
   const badgeGameTabs = document.getElementById('badgeGameTabs');
@@ -155,7 +157,7 @@ function initBadgeControls() {
   let badgeCompareFunc;
   let didUpdateBadgeModal;
   let lastLang;
-  const fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol) => {
+  fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol) => {
     await checkNewBadgeUnlocks();
 
     if (slotRow && slotCol)
@@ -165,9 +167,8 @@ function initBadgeControls() {
     const sortOrderDesc = sortOrder.value.endsWith('_desc');
     let sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
     badgeCompareFunc = (a, b) => {
-      if (sortOrderType) {
+      if (sortOrderType)
         return badgeSortOrderTypes[sortOrderType](a, b, sortOrderDesc);
-      }
       if (a.game !== b.game) {
         if (a.game === 'ynoproject')
           return -1;
@@ -246,8 +247,8 @@ function initBadgeControls() {
         gameBadges[badge.game][badge.group].push(item);
       }
 
-
       const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, false, true, true, true);
+      nullBadge.classList.add('nullBadgeItem');
       if ('null' === (playerData?.badge || 'null'))
         nullBadge.children[0].classList.add('selected');
       if (!nullBadge.classList.contains('disabled')) {
@@ -523,6 +524,12 @@ function initBadgeControls() {
       currentSearchMode = searchMode;
     const unlockStatus = document.getElementById('badgeUnlockStatus').value;
     const searchTerm = document.getElementById('badgeSearch').value.toLocaleLowerCase();
+    let parsedSearchTerm = searchTerm.trim();
+    let exactMatch = false;
+    if (parsedSearchTerm.startsWith('=')) {
+      parsedSearchTerm = parsedSearchTerm.slice(1);
+      exactMatch = true;
+    }
 
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
@@ -530,10 +537,12 @@ function initBadgeControls() {
     const mapIdToCacheKey = {};
     for (const key of Object.keys(locationCache)) { 
       const mapId = key.slice(5);
-      if (!mapIdToCacheKey[mapId]) mapIdToCacheKey[mapId] = key;
+      if (!mapIdToCacheKey[mapId])
+        mapIdToCacheKey[mapId] = key;
     }
 
     return new Promise(resolve => window.requestAnimationFrame(() => {
+      badgeModalContent.querySelector('.nullBadgeItem')?.classList.toggle('hidden', exactMatch);
       for (let item of badgeFilterCache) {
         let visible = true;
         if (unlockStatus === 'recentUnlock')
@@ -543,7 +552,7 @@ function initBadgeControls() {
         if (searchTerm.trim().length) {
           switch (searchMode) {
             case 'name':
-              visible &= item.title && item.title.indexOf(searchTerm) > -1;
+              visible &= item.title && (exactMatch ? item.title === parsedSearchTerm : item.title.indexOf(parsedSearchTerm) > -1);
               break;
             case 'location': {
               const localizedLocation = gameLocalizedMapLocations[item.game]?.[item.mapId];
@@ -559,7 +568,7 @@ function initBadgeControls() {
                   title = globalConfig.lang === 'ja' ? desc.titleJP : desc.title;
                 }
               }
-              visible &= title && title.toLocaleLowerCase().indexOf(searchTerm) > -1;
+              visible &= title && (exactMatch ? title.toLocaleLowerCase() === parsedSearchTerm : title.toLocaleLowerCase().indexOf(parsedSearchTerm) > -1);
               break;
             }
           }
@@ -582,7 +591,6 @@ function initBadgeControls() {
       for (let header of badgeModalContent.querySelectorAll('.itemCategoryHeader'))
         header.classList.toggle('hidden', !(header.dataset.group ? gameGroupVisibilities[header.dataset.game][header.dataset.group] : gameVisibilities[header.dataset.game]));
       resolve();
-
     }));
   };
 
@@ -597,8 +605,18 @@ function initBadgeControls() {
       return;
     }
 
-    for (const span of badgeDropdown.querySelectorAll('.dropdownItem span'))
-      span.innerText = this.value;
+    for (const span of badgeDropdown.querySelectorAll('.dropdownItem span')) {
+      let parsedValue = this.value;
+      let modifier = null;
+      if (parsedValue.startsWith('=')) {
+        parsedValue = parsedValue.slice(1);
+        modifier = 'exactMatch';
+      }
+      let value = parsedValue;
+      if (modifier)
+        value += localizedMessages.badges.search.modifier.template.replace('{MODIFIER}', localizedMessages.badges.search.modifier[modifier]);
+      span.innerHTML = value;
+    }
   };
 
   badgeSearch.onkeydown = function(ev) {
@@ -624,13 +642,15 @@ function initBadgeControls() {
 
   const searchName = document.getElementById('searchName').parentElement;
   searchName.onkeydown = searchName.onclick = function(ev) {
-    if (ev.key && ev.key !== 'Enter') return;
+    if (ev.key && ev.key !== 'Enter')
+      return;
     searchBadges('name');
   };
 
   const searchLocation = document.getElementById('searchLocation').parentElement;
-  searchLocation.onkeydown = searchLocation.onclick = function(ev) {
-    if (ev.key && ev.key !== 'Enter') return;
+  searchLocation.onkeydown = searchLocation.onclick = function (ev) {
+    if (ev.key && ev.key !== 'Enter')
+      return;
     searchBadges('location');
   };
 
@@ -640,6 +660,12 @@ function initBadgeControls() {
     for (const icon of badgeSearch.parentElement.querySelectorAll('svg.searchIcon'))
       icon.classList.toggle('hidden', !mode || icon.dataset.kind !== mode);
     badgeSearch.classList.toggle('active', !!mode);
+    document.getElementById('badgeSearchClearLink').classList.toggle('hidden', !!mode);
+  }
+
+  document.getElementById('badgeSearchClearLink').onclick = () => {
+    badgeSearch.value = '';
+    searchBadges();
   }
 
   document.getElementById('badgeGalleryButton').onclick = () => {
@@ -1363,6 +1389,22 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                   applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName);
                   if (badgeCache.find(b => b.badgeId === badgeId)?.hidden)
                     badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
+                  badge.onclick = async () => {
+                    badgeTippy.hide();
+                    const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
+                    if (activeBadgeTab) {
+                      if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== badgeGame)
+                        document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${badgeGame}"]`).click();
+                    }
+                    document.getElementById('badgeCategoryTabs').querySelector('.subTab:first-child')?.click();
+                    const badgeSearch = document.getElementById('badgeSearch');
+                    badgeSearch.value = `=${localizedBadges[badgeGame][badgeId].name}`;
+                    badgeSearch.classList.add('active');
+                    Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
+                    openModal('badgesModal');
+                    addLoader(document.getElementById('badgesModal'), true);
+                    await fetchAndUpdateBadgeModalBadges();
+                  }
                 }
               }
             }

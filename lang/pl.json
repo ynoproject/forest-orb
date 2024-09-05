@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% graczy ma tą odznakę",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Narysowane przez {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

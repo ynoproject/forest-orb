@@ -973,6 +973,7 @@
                     </div>
                   </div>
                 </div>
+                <a id="badgeSearchClearLink" href="javascript:void(0);" class="unselectable hidden">✖</a>
               </div>
             </div>
           </div>

@@ -823,6 +823,12 @@
       "percentUnlocked": "{PERCENT}% el ludantoj havas ĉi tiun insignon",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Arto de {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

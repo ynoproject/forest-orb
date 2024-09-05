@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% de jucători au insigna asta",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Desen de {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

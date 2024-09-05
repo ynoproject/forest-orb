@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% dos jogadores têm este emblema",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Arte de {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

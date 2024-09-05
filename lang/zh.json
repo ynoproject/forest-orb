@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "由 {ARTIST} 绘制",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

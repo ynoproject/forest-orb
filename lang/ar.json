@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% من اللاعبين لديهم هذه الشارة",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "{ARTIST} رسم الفنان/ة",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

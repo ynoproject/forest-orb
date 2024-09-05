@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}%의 플레이어들이 이 배지를 가지고 있습니다",
       "time": "{MINUTES}분 {SECONDS}초",
       "artCredit": "배지 디자인 : {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {

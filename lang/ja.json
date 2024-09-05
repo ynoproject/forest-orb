@@ -838,6 +838,12 @@
       "percentUnlocked": "このバッジを持っているプレイヤーの割合：{PERCENT}%",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Art by {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE}（{ORDER}）",
         "types": {

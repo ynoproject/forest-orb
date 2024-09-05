@@ -838,6 +838,12 @@
       "percentUnlocked": "{PERCENT}% di giocatori con questa medaglia",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Disegnato da {ARTIST}",
+      "search": {
+        "modifier": {
+          "template": "&nbsp;({MODIFIER})",
+          "exactMatch": "Exact Match"
+        }
+      },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {
