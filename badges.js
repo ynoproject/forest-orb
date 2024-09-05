@@ -641,7 +641,7 @@ function initBadgeControls() {
   };
 
   const searchName = document.getElementById('searchName').parentElement;
-  searchName.onkeydown = searchName.onclick = function(ev) {
+  searchName.onkeydown = searchName.onclick = function (ev) {
     if (ev.key && ev.key !== 'Enter')
       return;
     searchBadges('name');
@@ -660,7 +660,7 @@ function initBadgeControls() {
     for (const icon of badgeSearch.parentElement.querySelectorAll('svg.searchIcon'))
       icon.classList.toggle('hidden', !mode || icon.dataset.kind !== mode);
     badgeSearch.classList.toggle('active', !!mode);
-    document.getElementById('badgeSearchClearLink').classList.toggle('hidden', !!mode);
+    document.getElementById('badgeSearchClearLink').classList.toggle('hidden', !mode);
   }
 
   document.getElementById('badgeSearchClearLink').onclick = () => {
@@ -1400,6 +1400,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                     const badgeSearch = document.getElementById('badgeSearch');
                     badgeSearch.value = `=${localizedBadges[badgeGame][badgeId].name}`;
                     badgeSearch.classList.add('active');
+                    document.getElementById('badgeSearchClearLink').classList.remove('hidden');
                     Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
                     openModal('badgesModal');
                     addLoader(document.getElementById('badgesModal'), true);
