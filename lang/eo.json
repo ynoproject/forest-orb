@@ -132,9 +132,9 @@
             "helpText": "Forigas ludantajn nombrilojn, tutmondan babilejon, kaj mapojn por doni al vi pli absorban ludadon"
           },
           "timeTrialinfo": {
-            "label": "Tempoprovo",
-            "toggleMobileControls": "Montri Regilon de Poŝtelefono"
+            "label": "Tempoprovo"
           },
+          "toggleMobileControls": "Montri Regilon de Poŝtelefono",
           "mobileControlsType": {
             "label": "Speco de Regilo de Poŝtelefono",
             "default": "D-Pad",
@@ -307,6 +307,15 @@
           }
         }
       },
+      "cacheSettings": {
+        "title": "Cache Settings",
+        "clear": "Clear",
+        "fields": {
+          "locationCache": "Location Cache",
+          "mapCache": "Map Cache",
+          "locationColorCache": "Location Color Cache"
+        }
+      },
       "accountSettings": {
         "title": "Agordoj de Konto",
         "fields": {
@@ -362,7 +371,7 @@
       "save": {
         "title": "Administri Konservdatumojn",
         "reload": "Konservi Ŝanĝojn kaj Reŝargi",
-		"info": "Por importado de konservoj, se vi lastafoje konservis dum uzante tradukon per RPG_RT, la ludo montros erarojn ĝis vi konservos denove per EasyRPG sen aktiva traduko."
+        "info": "Por importado de konservoj, se vi lastafoje konservis dum uzante tradukon per RPG_RT, la ludo montros erarojn ĝis vi konservos denove per EasyRPG sen aktiva traduko."
       },
       "uiTheme": {
         "title": "Fasada Etoso",
@@ -702,6 +711,11 @@
         "immersionMode": "Se vi preferas pli absorbiĝan ludadon anstataŭ socian, provu Absorbiĝan Reĝimon. Ĝi forigos tutmondan babilejon, la ludantoliston kaj ludantajn nombrilojn por pliinteresigi la ludon, kiam vi trovos alian ludanton dum esplorado.",
         "friendsMenu": "Dekstre alklakante per komputilo, aŭ tuŝadante per poŝtelefono la nomon de ludanto ekster la rangolisto, aperos dialogujo, ebligante vin sendi amikiĝpeton, mencii aŭ bloki la ludanton.",
         "easySettingsMenu": "Se vi ludas per komputilo, vi povas premi la F1 klavon dum ludado por malfermi la menuon de agordoj, ebligante vin ŝanĝi klavkomandojn kaj aliajn agordojn.",
+        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
+        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
+        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
+        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
+        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject estas malfermitkoda kaj la kodaj deponejoj estas haveblaj en https://github.com/ynoproject/"
       }
     },
