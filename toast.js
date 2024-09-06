@@ -225,7 +225,7 @@ function showToastMessage(message, icon, iconFill, systemName, persist) {
     toastContainer.classList.remove('anim');
   }
 
-  const rootStyle = document.documentElement.style;
+  const rootStyle = toastContainer.style;
 
   rootStyle.setProperty('--toast-offset', `-${toast.getBoundingClientRect().height + 8}px`);
   setTimeout(() => {
