@@ -117,7 +117,7 @@
             "label": "Fréquence du Rappel des Sauvegardes",
             "interval": {
               "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "never": "Jamais"
             }
           },
           "soundVolume": "Volume du Son",
@@ -134,12 +134,12 @@
           "timeTrialinfo": {
             "label": "Contre-la-montre"
           },
-          "toggleMobileControls": "Afficher les touches pour téléphone",
+          "toggleMobileControls": "Afficher les commandes pour mobile",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
-            "default": "D-Pad",
-            "joystick": "Floating Joystick",
-            "dpad": "Floating D-Pad"
+            "label": "Type des commandes sur mobile",
+            "default": "Croix directionnelle",
+            "joystick": "Stick flottant",
+            "dpad": "Croix directionnelle flottante"
           },
           "toggleLocationDisplay": "Affichage du Lieu",
           "toggleRankings": "Classement",
@@ -303,18 +303,18 @@
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
               "saveCleared": "Sauvegarde effacée",
-              "saveReminder": "Save Reminder"
+              "saveReminder": "Rappel des Sauvegardes"
             }
           }
         }
       },
       "cacheSettings": {
-        "title": "Cache Settings",
-        "clear": "Clear",
+        "title": "Paramètres du cache",
+        "clear": "Effacer",
         "fields": {
-          "locationCache": "Location Cache",
-          "mapCache": "Map Cache",
-          "locationColorCache": "Location Color Cache"
+          "locationCache": "Cache des lieux",
+          "mapCache": "Cache des cartes",
+          "locationColorCache": "Cache de couleur des lieux"
         }
       },
       "accountSettings": {
@@ -344,7 +344,7 @@
               "all": "Tous",
               "0": "Bloqués",
               "1": "Débloqués",
-              "recentUnlock": "Recently Unlocked"
+              "recentUnlock": "Récemment débloqués"
             }
           },
           "sortOrder": {
@@ -365,14 +365,14 @@
         "badgeGalleryRowProgress": "Prochaine amélioration de la rangée (PB)",
         "badgeGalleryColProgress": "Prochaine amélioration de la colonne (Badges)",
         "removeMode": {
-          "activate": "Remove Badges",
-          "deactivate": "Done"
+          "activate": "Retirer des badges",
+          "deactivate": "Terminé"
         }
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",
         "reload": "Sauvegarder les changements et recharger la page",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "Lors de l'export d'une sauvegarde, si la dernière fois que cette sauvegarde a eu lieu était en utilisant une traduction sur YNOproject ou avec EasyRPG, l'utilisation de la sauvegarde sur la version exécutable du jeu affichera une erreur vous empêchant d'utiliser cette sauvegarde tant que la dernière sauvegarde n'est pas effectuée sans traduction active."
       },
       "uiTheme": {
         "title": "Thème d'IU",
@@ -494,7 +494,7 @@
       "nexus": "Retourner au Nexus",
       "explorerUndiscoveredLocations": "Voir les lieux non découverts",
       "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché.",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "mobileControlsType": "Alternatifs au type de commande de croix directionnelle par défaut.<br>Les types de commande flottants ne sont disponibles qu'en plein écran sur mobile."
     },
     "reviewRules": "Relire les règles"
   },
@@ -523,7 +523,7 @@
     },
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "logout": "Êtes-vous sûr de vouloir vous déconnecter ?",
-    "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
+    "loadingInstruct": ". <br /> <br /> Il semblerait que le site charge depuis longtemps ; Si ce problème persiste, vous devrez peut-être faire CTRL+F5 ou effacer le cache de votre navigateur (mais pas ses cookies !). Vous pouvez vérifier la console en appuyant sur F12 pour voir si il n'y a pas d'erreurs.",
     "connStatus": {
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
@@ -532,7 +532,7 @@
     },
     "lastOnline": {
       "template": "Dernière fois vu il y a\n{INTERVAL}",
-      "longTime": "A long time ago",
+      "longTime": "longtemps",
       "interval": {
         "short": "moins d'une minute",
         "minutes": {
@@ -712,11 +712,11 @@
         "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "friendsMenu": "En faisant un clic droit sur PC, ou en maintenant votre touche sur mobile sur l'icône d'un joueur en dehors du Classement, une boîte de dialogue s'ouvrira, vous permettant d'envoyer une demande d'ami, mentionner ledit joueur ou le bloquer.",
         "easySettingsMenu": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche F1 en jouant pour ouvrir le menu des paramètres, vous permettant de configurer vos touches ainsi qu'ajuster certains paramètres.",
-        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
-        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
-        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
-        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
-        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
+        "floatingControls": "Si vous jouez sur un appareil avec un écran tactile et que vous n'aimez pas les commandes par défaut, vous pouvez essayer les styles de commande flottantes disponibles dans le Type des commandes sur mobile dans les Paramètres.",
+        "recentBadges": "Vous avez supprimé une notification de déblocage de badge par accident ? Vous pouvez toujours revoir les badges que vous avez débloqués durant la session en cours en sélectionnant Récemment débloqués dans la liste des Badges.",
+        "desktopHotkeys": "Si vous jouez sur un PC, Alt + Entrée peut aussi activer le mode plein écran, F7 par défaut prend une capture d'écran du jeu, et la touche T ouvre le menu d'entrée du chat de jeu.",
+        "badgeControls": "Dans le menu de la Galerie des Badges, vous pouvez attraper et faire glisser des badges pour les réarranger, ou rapidement retirer plusieurs badges d'un seul coup en utilisant le mode Retirer des badges.",
+        "cacheSettings": "Vous avez un problème avec la complétion des lieux ou avez des cartes obsolètes ? Le menu du Cache vous permet d'effacer le cache obsolète en question et de recharger les dernières données.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/."
       }
     },
@@ -800,7 +800,7 @@
         "saveDownloaded": "L'emplacement de la sauvegarde {SLOT} a été mis à jour avec succès.",
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
         "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils.",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": "N'oubliez pas de sauvegarder souvent et de faire des copies de vos données de jeu de sorte à ce que vous ne puissiez pas perdre votre progression si un pépin vous arrive."
       }
     },
     "events": {
@@ -841,7 +841,7 @@
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "Correspondance exacte"
         }
       },
       "sortOrder": {
