@@ -81,6 +81,7 @@ const allGameUiThemes = {
     'nadeko_cards',
     'ob_sys1',
     'talyis-City of Revival menu theme',
+    'kamara_sys_81',
 
     'system_E_eye',
     'System_kuraud',
