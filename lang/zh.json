@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "当前位置：",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "沉浸模式已开启",
       "reconnect": "重新连接",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "本季度将于 {DATE} 结束",
       "current": "当前",
       "shortcut": "有可解锁的捷径",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",

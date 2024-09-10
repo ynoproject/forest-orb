@@ -782,9 +782,7 @@ async function viewBadgeInModal(badgeId, badgeGame) {
   openModal('badgesModal');
   addLoader(document.getElementById('badgesModal'), true);
   await fetchAndUpdateBadgeModalBadges();
-  console.log(document.getElementById('badgeGameTabs').querySelector('.badgeGameTab'))
   const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
-  console.log(badgeGame);
   if (activeBadgeTab) {
     if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== badgeGame)
       document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${badgeGame}"]`).click();

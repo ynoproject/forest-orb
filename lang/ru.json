@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Локация:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Режим погружения",
       "reconnect": "Переподключиться",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "Заканчивается: {DATE}",
       "current": "Доступно",
       "shortcut": "Можно добраться разблокируемым коротким путём.",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Доступен до:\n{DATE}",
       "types": {
         "-1": "Свободные",

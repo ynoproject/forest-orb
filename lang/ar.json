@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "الموقع:&nbsp",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "نمط الانغمار",
       "reconnect": "أعد الاتصال",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "ينتهي: {DATE}",
       "current": "الحالي",
       "shortcut": "يمكن الوصول إليها عبر طريق مختصر قابل للفتح",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "متاح حتى\n{DATE}",
       "types": {
         "-1": "رحلة استكشافية مجانية",

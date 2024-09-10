@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Loko:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Absorbiĝa Reĝimo",
       "reconnect": "Rekonektiĝi",
       "tab": {
@@ -811,6 +811,7 @@
       "periodEnds": "Finiĝos je {DATE}",
       "current": "Nuna",
       "shortcut": "Atingeblas tra malŝlosebla ŝparvojo",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Disponebla Ĝis\n{DATE}",
       "types": {
         "-1": "Libera Ekspedicio",

@@ -86,7 +86,7 @@ let config = {
   globalMessage: false,
   hideGlobalMessageLocations: false,
   hideOwnGlobalMessageLocation: false,
-  lastEventLocations: null
+  trackedLocationId: null
 };
 
 const locI18nextOptions = {
@@ -361,6 +361,7 @@ function checkUpdateLocation(mapId, mapChanged) {
       document.getElementById('location').classList.remove('hidden');
 
     document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(gameId, mapId, cachedMapId, tpX, tpY, '<br>');
+    document.documentElement.style.setProperty('--location-width', `${document.querySelector('#locationText > *').offsetWidth}px`);
     onUpdateChatboxInfo();
 
     if (is2kki) {
@@ -849,7 +850,7 @@ document.getElementById('reconnectButton').onclick = function () {
 };
 
 document.getElementById('toggleNextLocationButton').onclick = function () {
-  document.getElementById('nextLocation').classList.toggle('hideContents');
+  document.getElementById('nextLocationContainer').classList.toggle('hideContents');
 };
 
 document.getElementById('chatButton').onclick = function () {

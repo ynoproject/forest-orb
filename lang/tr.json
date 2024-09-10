@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Konum:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Sürükleyicilik Modu",
       "reconnect": "Yeniden Bağlan",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "Bitiş {DATE}",
       "current": "Mevcut",
       "shortcut": "Açılabilir bir kısayolla erişilebilir",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "şu tarihe kadar mevcut:\n{DATE} ",
       "types": {
         "-1": "Serbest Seyahat",

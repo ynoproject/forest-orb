@@ -294,11 +294,13 @@
             <div id="location" class="info hidden">
               <span id="locationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.location">Location:&nbsp;</span><span id="locationText" class="infoText nofilter"></span>
             </div>
-            <div id="nextLocation" class="info hidden">
-              <button id="toggleNextLocationButton" class="icon iconButton" data-i18n="[title]tooltips.chat.toggleNextLocation">
-                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3"></path></svg>
+            <div id="nextLocationContainer" class="info hidden">
+              <button id="toggleNextLocationButton" class="icon fillIcon iconButton" data-i18n="[title]tooltips.chat.toggleNextLocation">
+                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18m0 2a1 1 0 0 1 0 14 1 1 0 0 1 0-14m4 11-2-6-6-2 2 6 6 2m-4-5a1 1 0 0 1 0 2 1 1 0 0 1 0-2"></path></svg>
               </button>
-              <span id="nextLocationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.nextLocation">Next Location:&nbsp;</span><span id="nextLocationText" class="infoText nofilter"></span>
+              <div id="nextLocation" class="info hidden">
+                <span id="nextLocationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.nextLocation">Next Loc:&nbsp;</span><span id="nextLocationText" class="infoText nofilter"></span>
+              </div>
             </div>
           </div>
           <div id="chatboxContent">

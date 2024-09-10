@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Lokalizacja:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Tryb immersji",
       "reconnect": "Połącz ponownie",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "Kończy się dnia {DATE}",
       "current": "Aktualne",
       "shortcut": "Dostępne przez odblokowywalny skrót",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Dostępne do\n{DATE}",
       "types": {
         "-1": "Darmowa ekspedycja",

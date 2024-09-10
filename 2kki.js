@@ -171,6 +171,7 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
 
 function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
   document.getElementById('locationText').innerHTML = getLocalized2kkiLocationsHtml(locations, '<br>');
+  document.documentElement.style.setProperty('--location-width', `${document.querySelector('#locationText > *').offsetWidth}px`);
   onUpdateChatboxInfo();
   preloadFilesFromMapId(mapId);
   if (cacheLocation) {
@@ -473,41 +474,53 @@ function checkShow2kkiVersionUpdate() {
   });
 }
 
+function reloadExplorer(trackedLocationNames) {
+  if (!config.enableExplorer)
+    return;
+  const explorerFrame = document.getElementById('explorerFrame');
+  if (!cachedLocations) {
+    explorerFrame.src = '';
+    return;
+  }
+  const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
+  if (explorerFrame && locationNames && loginToken) {
+    addLoader(explorerFrame, true);
+    explorerFrame.onload = () => removeLoader(explorerFrame);
+    apiFetch(`explorer?trackedLocations=${trackedLocationNames.join('|')}`).then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.text();
+    })
+    .then(url => {
+      const newUrl = url ? `${url}&lang=${globalConfig.lang}` : '';
+      if (explorerFrame.src !== newUrl) {
+        explorerFrame.src = newUrl;
+        apiFetch('explorercompletion')
+          .then(response => response.text())
+          .then(textResponse => {
+            const completionPercent = parseInt(textResponse);
+            document.getElementById('explorerUndiscoveredLocationsLink').classList.toggle('hidden', !completionPercent || completionPercent < 95);
+          });
+      } else
+        removeLoader(explorerFrame);
+    })
+    .catch(err => console.error(err));
+  }
+}
+
 (function () {
   if (!is2kki)
     return;
 
-  addSessionCommandHandler('l', () => {
-    if (!config.enableExplorer)
-      return;
-    const explorerFrame = document.getElementById('explorerFrame');
-    if (!cachedLocations) {
-      explorerFrame.src = '';
-      return;
-    }
-    const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
-    if (explorerFrame && locationNames && loginToken) {
-      addLoader(explorerFrame, true);
-      explorerFrame.onload = () => removeLoader(explorerFrame);
-      apiFetch('explorer').then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
-        return response.text();
-      })
-      .then(url => {
-        const newUrl = url ? `${url}&lang=${globalConfig.lang}` : '';
-        if (explorerFrame.src !== newUrl) {
-          explorerFrame.src = newUrl;
-          apiFetch('explorercompletion')
-            .then(response => response.text())
-            .then(textResponse => {
-              const completionPercent = parseInt(textResponse);
-              document.getElementById('explorerUndiscoveredLocationsLink').classList.toggle('hidden', !completionPercent || completionPercent < 95);
-            });
-        } else
-          removeLoader(explorerFrame);
-      })
-      .catch(err => console.error(err));
-    }
+  addSessionCommandHandler('l', locationIds => {
+    if (config.trackedLocationId) {
+      if (locationIds.includes(config.trackedLocationId)) {
+        config.trackedLocationId = null;
+        document.getElementById('nextLocationContainer').classList.add('hidden');
+        updateConfig(config);
+      }
+      sendSessionCommand('nl', [ config.trackedLocationId ], params => reloadExplorer(params));
+    } else
+      reloadExplorer();
   });
 })();

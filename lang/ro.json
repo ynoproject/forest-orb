@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Locație:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Modul Imersie",
       "reconnect": "Reconectare",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "Se termină pe {DATE}",
       "current": "Actual",
       "shortcut": "Poate fi accesat printr-o scurtătură deblocabilă",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Valabil până pe\n{DATE}",
       "types": {
         "-1": "Expediție Gratis",

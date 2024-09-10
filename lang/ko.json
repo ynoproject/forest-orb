@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "현위치",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "몰입 모드",
       "reconnect": "재연결",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "종료일: {DATE}",
       "current": "현재 목표",
       "shortcut": "잠금 해제 가능한 지름길을 통해 도달할 수 있습니다",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
       "types": {
         "-1": "자유 탐험",

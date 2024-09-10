@@ -52,6 +52,8 @@
   --screenshot-slot-level-bp: 0;
   --screenshot-slot-level-total-bp: 100;
 
+  --location-width: 0;
+
   --content-height: 0;
   --content-scroll: 0;
 
@@ -1264,6 +1266,9 @@ body.fullBg #background {
 
 #locationLabel, #nextLocationLabel {
   height: fit-content;
+}
+
+#locationLabel {
   padding-inline-start: 22px;
 }
 
@@ -1271,25 +1276,33 @@ body.fullBg #background {
   text-align: end;
 }
 
-#nextLocation {
-  overflow: hidden;
-  transition: height 0.325s ease-in-out, padding 0.325s ease-in-out;
-  height: 17px;
+#nextLocationContainer {
+  display: flex;
+  height: min-content;
 }
 
-#nextLocation.hideContents {
-  height: 0;
+#nextLocation {
+  overflow: hidden;
+  transition: max-height 0.325s ease-in-out, padding 0.325s ease-in-out;
+  max-height: 128px;
+  transform-origin: top;
+  width: -webkit-fill-available;
+  width: fill-available;
+}
+
+#nextLocationContainer.hideContents #nextLocation {
+  max-height: 0;
   padding-bottom: 0;
 }
 
 #toggleNextLocationButton {
-  transition: margin-top 0.325s ease-in-out, padding 0.325s ease-in-out;
-  position: absolute;
+  transition: margin-top 0.5s ease-in-out, padding 0.5s ease-in-out;
+  align-self: baseline;
   padding: 0 4px 0 0;
   z-index: 1;
 }
 
-#nextLocation.hideContents #toggleNextLocationButton {
+#nextLocationContainer.hideContents #toggleNextLocationButton {
   margin-top: -22px;
 }
 
@@ -3320,8 +3333,9 @@ form .uiTheme {
     display: none;
   }
 
-  #layout:not(:fullscreen) #nextLocation {
+  #layout:not(:fullscreen) #nextLocationContainer {
     align-self: flex-end;
+    min-width: var(--location-width);
   }
 
   #layout:not(:fullscreen) #toggleNextLocationButton {

@@ -812,6 +812,7 @@
       "periodEnds": "{DATE}まで",
       "current": "現在",
       "shortcut": "ショートカットを開通させていると短縮可能",
+      "toggleTracked": "場所の追跡のオン／オフ",
       "availableUntilDate": "{DATE} \n まで 利用可能",
       "types": {
         "-1": "エンドレスラリー",

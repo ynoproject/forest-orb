@@ -207,6 +207,34 @@ function onUpdateEvents(events, ignoreLocationCheck) {
         }
         
         eventListEntry.appendChild(detailsContainer);
+
+        if (gameId === eventGameId && eventGameId === '2kki') {
+          const trackContainer = document.createElement('div');
+
+          trackContainer.classList.add('eventLocationTrackContainer');
+
+          const trackButton = document.createElement('button');
+          trackButton.classList.add('eventLocationTrackButton', 'icon', 'iconButton', 'fillIcon', 'altToggleButton');
+          trackButton.innerHTML = '<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18m0 2a1 1 0 0 1 0 14 1 1 0 0 1 0-14m4 11-2-6-6-2 2 6 6 2m-4-5a1 1 0 0 1 0 2 1 1 0 0 1 0-2"></path></svg>';
+
+          trackButton.onclick = function () {
+            const toggled = config.trackedLocationId !== event.locationId;
+            if (toggled)
+              Array.from(document.querySelectorAll('.eventLocationTrackButton.toggled')).map(t => t.classList.remove('toggled'));
+            this.classList.toggle('toggled', toggled);
+            config.trackedLocationId = this.classList.contains('toggled') ? event.locationId : null;
+            document.getElementById('nextLocationContainer').classList.toggle('hidden', !toggled);
+            if (toggled)
+              sendSessionCommand('nl', [ event.locationId ]);
+            updateConfig(config);
+          };
+
+          addTooltip(trackButton, getMassagedLabel(localizedMessages.events.toggleTracked, true), true, true);
+
+          trackContainer.appendChild(trackButton);
+
+          eventListEntry.appendChild(trackContainer);
+        }
       } else if (eventType === 'vms') {
         const vmContainer = document.createElement('div');
         vmContainer.classList.add('vmContainer');
@@ -275,6 +303,10 @@ function onUpdateEvents(events, ignoreLocationCheck) {
   }
 
   updatePlayerExp();
+}
+
+function updateNextLocations(locations) {
+  document.getElementById('nextLocationText').innerHTML = getLocalized2kkiLocationsHtml(locations.map(l => { return { title: l } }), '<br>');
 }
 
 function updatePlayerExp() {
@@ -385,4 +417,6 @@ function showEventsToastMessage(key, icon, location, exp) {
   addSessionCommandHandler('eexp', args => onUpdatePlayerExp(JSON.parse(args[0])));
   addSessionCommandHandler('eec');
   addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
+  if (gameId === '2kki')
+    addSessionCommandHandler('nl', args => updateNextLocations([...new Set(args)]));
 })();

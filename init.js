@@ -784,6 +784,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('messageTimestampsButton').click();
                     break;
+                  case 'trackedLocationId':
+                    if (value)
+                      document.getElementById('nextLocationContainer').classList.remove('hidden');
+                    break;
                   case 'uiTheme':
                     if (gameUiThemes.indexOf(value) > -1) {
                       document.querySelector('.uiTheme').value = value;

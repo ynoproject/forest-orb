@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Địa điểm:&nbsp;",
-      "nextLocation": "Next Location:&nbsp;",
+      "nextLocation": "Next Loc:&nbsp;",
       "immersionMode": "Chế độ Đắm chìm",
       "reconnect": "Kết nối lại",
       "tab": {
@@ -812,6 +812,7 @@
       "periodEnds": "Kết thúc vào {DATE}",
       "current": "Hiện tại",
       "shortcut": "Có thể đến được qua lối tắt có thể mở",
+      "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
         "-1": "Tham quan Tự do",
