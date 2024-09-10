@@ -68,7 +68,7 @@ function addLoader(target, instant) {
       	  const loader = activeLoaders.get(target);
       	  if (loader?.element) {
             let loadText = document.createElement('div');
-            loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%; position: absolute; bottom: 5%; font-family: 'JF-Dot-Shinonome12';";
+            loadText.style.cssText = "text-align: center; color: white; font-size: 1vw; padding: 1%; position: absolute; bottom: 10%; font-family: 'JF-Dot-Shinonome12';";
         	  loadText.innerHTML = localizedMessages.loadingInstruct;
             loader.element.appendChild(loadText);
       	  }
