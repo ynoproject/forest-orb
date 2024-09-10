@@ -1287,12 +1287,17 @@ body.fullBg #background {
   max-height: 128px;
   transform-origin: top;
   width: -webkit-fill-available;
+  width: -moz-available;
   width: fill-available;
 }
 
 #nextLocationContainer.hideContents #nextLocation {
   max-height: 0;
   padding-bottom: 0;
+}
+
+#nextLocationLabel {
+  padding-inline-start: 4px;
 }
 
 #toggleNextLocationButton {
@@ -2952,8 +2957,10 @@ form .uiTheme {
 
 #screenshotModal .screenshot {
   width: -webkit-fill-available;
+  width: -moz-available;
   width: fill-available;
   height: -webkit-fill-available;
+  height: -moz-available;
   height: fill-available;
   object-fit: contain;
 }

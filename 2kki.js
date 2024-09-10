@@ -514,7 +514,7 @@ function reloadExplorer(trackedLocationNames) {
 
   addSessionCommandHandler('l', locationIds => {
     if (config.trackedLocationId) {
-      if (locationIds.includes(config.trackedLocationId)) {
+      if (locationIds.map(l => parseInt(l)).includes(config.trackedLocationId)) {
         config.trackedLocationId = null;
         document.getElementById('nextLocationContainer').classList.add('hidden');
         updateConfig(config);

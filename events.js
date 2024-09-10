@@ -208,7 +208,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
         
         eventListEntry.appendChild(detailsContainer);
 
-        if (gameId === eventGameId && eventGameId === '2kki') {
+        if (gameId === eventGameId && eventGameId === '2kki' && !event.complete) {
           const trackContainer = document.createElement('div');
 
           trackContainer.classList.add('eventLocationTrackContainer');
@@ -228,6 +228,9 @@ function onUpdateEvents(events, ignoreLocationCheck) {
               sendSessionCommand('nl', [ event.locationId ]);
             updateConfig(config);
           };
+
+          if (config.trackedLocationId === event.locationId)
+            trackButton.classList.add('toggled');
 
           addTooltip(trackButton, getMassagedLabel(localizedMessages.events.toggleTracked, true), true, true);
 
