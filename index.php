@@ -298,7 +298,7 @@
               <button id="toggleNextLocationButton" class="icon fillIcon iconButton" data-i18n="[title]tooltips.chat.toggleNextLocation">
                 <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18m0 2a1 1 0 0 1 0 14 1 1 0 0 1 0-14m4 11-2-6-6-2 2 6 6 2m-4-5a1 1 0 0 1 0 2 1 1 0 0 1 0-2"></path></svg>
               </button>
-              <div id="nextLocation" class="info hidden">
+              <div id="nextLocation" class="info">
                 <span id="nextLocationLabel" class="infoLabel nowrap" data-i18n="[html]chatbox.nextLocation">Next Loc:&nbsp;</span><span id="nextLocationText" class="infoText nofilter"></span>
               </div>
             </div>
