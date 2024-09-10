@@ -1262,13 +1262,35 @@ body.fullBg #background {
   }
 }
 
-#locationLabel {
+#locationLabel, #nextLocationLabel {
   height: fit-content;
   padding-inline-start: 22px;
 }
 
-#locationText {
+#locationText, #nextLocationText {
   text-align: end;
+}
+
+#nextLocation {
+  overflow: hidden;
+  transition: height 0.325s ease-in-out, padding 0.325s ease-in-out;
+  height: 17px;
+}
+
+#nextLocation.hideContents {
+  height: 0;
+  padding-bottom: 0;
+}
+
+#toggleNextLocationButton {
+  transition: margin-top 0.325s ease-in-out, padding 0.325s ease-in-out;
+  position: absolute;
+  padding: 0 4px 0 0;
+  z-index: 1;
+}
+
+#nextLocation.hideContents #toggleNextLocationButton {
+  margin-top: -22px;
 }
 
 #chatboxContent {
@@ -3294,8 +3316,16 @@ form .uiTheme {
     justify-content: right;
   }
 
-  #layout:not(:fullscreen) #connStatusText, #layout:not(:fullscreen) #locationLabel {
+  #layout:not(:fullscreen) #connStatusText, #layout:not(:fullscreen) #locationLabel, #layout:not(:fullscreen) #nextLocationLabel {
     display: none;
+  }
+
+  #layout:not(:fullscreen) #nextLocation {
+    align-self: flex-end;
+  }
+
+  #layout:not(:fullscreen) #toggleNextLocationButton {
+    margin-left: -18px;
   }
 
   #content:not(.downscale) #layout:not(:fullscreen) #explorerContainer {

@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Locație:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Modul Imersie",
       "reconnect": "Reconectare",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Comută Mute-ul",
       "toggleGlobalMessage": "Comută Vorbitul pe Chat Global",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Arată/Ascunde Locația în Mesaje",
         "toggleOwnGlobalMessageLocation": "Arată/Ascunde-ți Locația în Chat",
         "toggleMessageTimestamps": "Arată/Ascunde Marcajele de Timp în Chat",

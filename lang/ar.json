@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "الموقع:&nbsp",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "نمط الانغمار",
       "reconnect": "أعد الاتصال",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "تفعيل كتم الصوت",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",
         "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في رسائل المحادثة",
         "toggleMessageTimestamps": "إظهار / إخفاء الطوابع الزمنية لرسالة المحادثة",

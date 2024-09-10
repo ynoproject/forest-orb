@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "当前位置：",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "沉浸模式已开启",
       "reconnect": "重新连接",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
         "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",

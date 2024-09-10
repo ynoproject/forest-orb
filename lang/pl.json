@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Lokalizacja:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Tryb immersji",
       "reconnect": "Połącz ponownie",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Wycisz",
       "toggleGlobalMessage": "Czatuj globalnie/lokalnie",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Pokaż/ukryj lokalizacje w czacie",
         "toggleOwnGlobalMessageLocation": "Pokaż/ukryj swoją lokalizację w czacie",
         "toggleMessageTimestamps": "Pokaż/ukryj czas wysłania wiadomości",

@@ -848,6 +848,10 @@ document.getElementById('reconnectButton').onclick = function () {
   }, 5000);
 };
 
+document.getElementById('toggleNextLocationButton').onclick = function () {
+  document.getElementById('nextLocation').classList.toggle('hideContents');
+};
+
 document.getElementById('chatButton').onclick = function () {
   this.classList.toggle('toggled');
   document.getElementById('layout').classList.toggle('hideChat');

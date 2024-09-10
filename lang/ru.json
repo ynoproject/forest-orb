@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Локация:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Режим погружения",
       "reconnect": "Переподключиться",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Переключить звук",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
         "toggleOwnGlobalMessageLocation": "Переключить отображение Вашей локации в сообщениях",
         "toggleMessageTimestamps": "Переключить отображение Меток времени у сообщений",

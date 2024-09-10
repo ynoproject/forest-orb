@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Địa điểm:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Chế độ Đắm chìm",
       "reconnect": "Kết nối lại",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Bật/Tắt tiếng",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
         "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm của bạn trong tin nhắn",
         "toggleMessageTimestamps": "Hiện/Ẩn Thời điểm gửi tin nhắn",

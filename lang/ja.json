@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "場所：",
+      "nextLocation": "次の場所：",
       "immersionMode": "没入モード",
       "reconnect": "再接続",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "消音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
+        "toggleNextLocation": "次のラーリの場所表示のオン／オフ",
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
         "toggleOwnGlobalMessageLocation": "チャットの場所の共有のオン／オフ",
         "toggleMessageTimestamps": "チャットのタイムスタンプ表示のオン／オフ",

@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "현위치",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "몰입 모드",
       "reconnect": "재연결",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "음소거",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "채팅 메시지 장소 보이기/숨기기",
         "toggleOwnGlobalMessageLocation": "본인의 채팅 메시지 장소 보이기/숨기기",
         "toggleMessageTimestamps": "채팅 메시지 타임 스탬프 보이기/숨기기",

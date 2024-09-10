@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Konum:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Sürükleyicilik Modu",
       "reconnect": "Yeniden Bağlan",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Susturmayı Değiştir",
       "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": " Sohbet Mesaj Konumlarını Göster/Gizle",
         "toggleOwnGlobalMessageLocation": "Sohbette Kendi Konumunu Göster/Gizle",
         "toggleMessageTimestamps": "Sohbet Mesaj Zamanlarını Göster/Gizle",

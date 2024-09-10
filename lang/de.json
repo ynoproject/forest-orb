@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Ort:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Immersion Mode",
       "reconnect": "Reconnect",
       "tab": {
@@ -479,6 +480,7 @@
       "toggleMute": "Toggle Mute",
       "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
         "toggleOwnGlobalMessageLocation": "Share/Hide Your Location in Chat Messages",
         "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",

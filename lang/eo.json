@@ -28,6 +28,7 @@
     },
     "chatbox": {
       "location": "Loko:&nbsp;",
+      "nextLocation": "Next Location:&nbsp;",
       "immersionMode": "Absorbiĝa Reĝimo",
       "reconnect": "Rekonektiĝi",
       "tab": {
@@ -478,6 +479,7 @@
       "toggleMute": "Baskuligi Silenton",
       "toggleGlobalMessage": "Baskuligi Tutmondan Babiladon",
       "chat": {
+        "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Montri/Kaŝi Lokojn de Babilmesaĝoj",
         "toggleOwnGlobalMessageLocation": "Montri/Kaŝi Vian Lokon en Babilmesaĝoj",
         "toggleMessageTimestamps": "Montri/Kaŝi Tempindikojn de Babilmesaĝoj",
