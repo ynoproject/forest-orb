@@ -486,7 +486,7 @@ function reloadExplorer(trackedLocationNames) {
   if (explorerFrame && locationNames && loginToken) {
     addLoader(explorerFrame, true);
     explorerFrame.onload = () => removeLoader(explorerFrame);
-    apiFetch(`explorer?trackedLocations=${trackedLocationNames.join('|')}`).then(response => {
+    apiFetch(`explorer${trackedLocationNames ? `?trackedLocations=${trackedLocationNames.join('|')}` : ''}`).then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.text();
