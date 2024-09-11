@@ -558,6 +558,21 @@
       "2kki": {
         "template": "{LOCATION}"
       },
+      "connType": {
+        "1": "One-Way",
+        "2": "No Entry",
+        "4": "Unlock",
+        "8": "Locked",
+        "16": "Dead End",
+        "32": "Isolated",
+        "64": "Requires Effect ({PARAMS})",
+        "128": "{PARAMS}% Chance",
+        "256": "{PARAMS}",
+        "512": "Shortcut",
+        "1024": "Exit Point",
+        "2048": "Seasonal ({PARAMS})"
+      },
+      "depth": " ({DEPTH})",
       "playing": "Joue à {GAME}"
     },
     "locationDisplay": {

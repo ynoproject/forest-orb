@@ -207,18 +207,35 @@ function getLocalized2kkiLocations(locations, separator, forDisplay) {
     : getMassagedLabel(localizedMessages.location.unknownLocation);
 }
 
-function get2kkiLocationHtml(location) {
+function get2kkiLocationHtml(location, showDepth) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf('：') > -1 ? location.titleJP.slice(0, location.titleJP.indexOf('：')) : location.titleJP);
-  const locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  let locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  if (location.connType) {
+    const connTypes = Object.values(ConnType).map(ct => parseInt(ct));
+    for (let ct of connTypes) {
+      if (location.connType & ct) {
+        const connTypeParams = location.typeParams ? location.typeParams[ct] : null;
+        if (connTypeParams && ct === ConnType.EFFECT) {
+          connTypeParams.params = connTypeParams.params.replace(/,/g, ', ');
+          // TODO: support Japanese effect names
+          // connTypeParams.paramsJP = connTypeParams.paramsJP.split(',').map(e => effectsJP[e]).join('」か「');
+        }
+        const localizedTooltip = localizedMessages.location.connType[ct].replace('{PARAMS}', connTypeParams?.params || '').replace('{PARAMS_JP}', connTypeParams?.paramsJP || connTypeParams?.params || '');
+        locationHtml += ` <span class="connTypeIcon emoji unselectable" data-tooltip="${localizedTooltip}">${getConnTypeChar(ct, connTypeParams)}</span>`;
+      }
+    }
+  }
+  if (showDepth && location.hasOwnProperty('depth'))
+    locationHtml += localizedMessages.location.depth.replace('{DEPTH}', `<span class="locationDepth colorText" style="-webkit-text-fill-color: rgba(${getDepthRgba(location.depth, 10)})">${location.depth}</span>`);
   const locationHtmlJP = urlTitleJP ? `<a href="${gameLocalizedLocationUrlRoots['2kki'] || localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
   return locationHtmlJP ? getLocalized2kkiLocation(locationHtml, locationHtmlJP, true) : locationHtml;
 }
 
-function getLocalized2kkiLocationsHtml(locations, separator) {
+function getLocalized2kkiLocationsHtml(locations, separator, showDepth) {
   return locations && locations.length
     ? Array.isArray(locations)
-    ? locations.map(l => get2kkiLocationHtml(l)).join(separator)
+    ? locations.map(l => get2kkiLocationHtml(l, showDepth)).join(separator)
       : getInfoLabel(locations)
     : getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
 }
@@ -390,6 +407,88 @@ function get2kkiWikiLocationName(location) {
         locationName = locationName.slice(0, colonIndex);
     }
     return locationName;
+}
+
+const ConnType = {
+  ONE_WAY: 1,
+  NO_ENTRY: 2,
+  UNLOCK: 4,
+  LOCKED: 8,
+  DEAD_END: 16,
+  ISOLATED: 32,
+  EFFECT: 64,
+  CHANCE: 128,
+  LOCKED_CONDITION: 256,
+  SHORTCUT: 512,
+  EXIT_POINT: 1024,
+  SEASONAL: 2048
+};
+
+function getConnTypeChar(connType, typeParams) {
+  let char;
+  switch (connType) {
+      case ConnType.ONE_WAY:
+          char = "➜";
+          break;
+      case ConnType.NO_ENTRY:
+          char = "⛔";
+          break;
+      case ConnType.UNLOCK:
+          char = "🔑";
+          break;
+      case ConnType.LOCKED:
+          char = "🔒";
+          break;
+      case ConnType.DEAD_END:
+          char = "🚩";
+          break;
+      case ConnType.ISOLATED:
+          char = "↩️";
+          break;
+      case ConnType.EFFECT:
+          char = "✨";
+          break;
+      case ConnType.CHANCE:
+          char = "🍀";
+          break;
+      case ConnType.LOCKED_CONDITION:
+          char = "🔐";
+          break;
+      case ConnType.SHORTCUT:
+          char = "📞";
+          break;
+      case ConnType.EXIT_POINT:
+          char = "☎️";
+          break;
+      case ConnType.SEASONAL:
+          const seasonParam = typeParams ? typeParams.params : null;
+          switch (seasonParam || "Summer") {
+              case "Spring":
+                  char = "🌸";
+                  break;
+              case "Summer":
+                  char = "☀️";
+                  break;
+              case "Fall":
+                  char = "🍂";
+                  break;
+              case "Winter":
+                  char = "❄️";
+                  break;
+          }
+          break;
+  }
+  return char;
+}
+
+function getDepthRgba(depth, maxDepth) {
+  const depthColors = [];
+  const depthHueIncrement = (1 / maxDepth) * 0.6666;
+
+  for (let d = 0; d <= maxDepth; d++)
+    depthColors.push(hueToRGBA(0.6666 - depthHueIncrement * d, 1));
+
+  return depthColors[depth];
 }
 
 function init2kkiFileVersionAppend() {

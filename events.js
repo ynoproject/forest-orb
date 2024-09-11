@@ -309,7 +309,10 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 }
 
 function updateNextLocations(locations) {
-  document.getElementById('nextLocationText').innerHTML = getLocalized2kkiLocationsHtml(locations.map(l => { return { title: l } }), '<br>');
+  const nextLocationText = document.getElementById('nextLocationText');
+  nextLocationText.innerHTML = getLocalized2kkiLocationsHtml(locations, '<br>', true);
+  Array.from(nextLocationText.querySelectorAll('.connTypeIcon'))
+    .map(i => addTooltip(i, i.dataset.tooltip, true, true));
 }
 
 function updatePlayerExp() {
@@ -421,5 +424,14 @@ function showEventsToastMessage(key, icon, location, exp) {
   addSessionCommandHandler('eec');
   addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
   if (gameId === '2kki')
-    addSessionCommandHandler('nl', args => updateNextLocations([...new Set(args)]));
+    addSessionCommandHandler('nl', args => {
+      const locationNames = [];
+      const locations = args.filter(l => {
+        if (locationNames.includes(l.title))
+          return false;
+        locationNames.push(l.title);
+        return true;
+      });
+      updateNextLocations(locations);
+    })
 })();
