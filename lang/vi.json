@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Địa điểm:&nbsp;",
-      "nextLocation": "Next Loc:&nbsp;",
+      "nextLocation": "Đ. điểm kế tiếp:&nbsp;",
       "immersionMode": "Chế độ Đắm chìm",
       "reconnect": "Kết nối lại",
       "tab": {
@@ -279,7 +279,7 @@
             "fields": {
               "complete": "Đã hoàn thành chuyến thám hiểm",
               "freeComplete": "Đã hoàn thành thám hiểm tự do",
-              "vmComplete": "Đã tìm thấy máy bán nước",
+              "vmComplete": "Đã tìm thấy máy bán hàng",
               "listUpdated": "Đã cập nhật danh sách thám hiểm"
             }
           },
@@ -480,7 +480,7 @@
       "toggleMute": "Bật/Tắt tiếng",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
+        "toggleNextLocation": "Hiện/Ẩn Địa điểm kế tiếp trong Thám hiểm",
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
         "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm của bạn trong tin nhắn",
         "toggleMessageTimestamps": "Hiện/Ẩn Thời điểm gửi tin nhắn",
@@ -490,7 +490,7 @@
         "createParty": "Tạo nhóm",
         "disbandParty": "Giải tán nhóm"
       },
-      "events": "Tham Quan",
+      "events": "Thám Hiểm",
       "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng Xếp hạng",
       "nexus": "Quay về Nexus",
@@ -559,18 +559,18 @@
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS}% Chance",
+        "1": "Một chiều",
+        "2": "Không quay lại được",
+        "4": "Mở khóa",
+        "8": "Cần mở khóa",
+        "16": "Đường cụt",
+        "32": "Khu cô lập",
+        "64": "Cần hiệu ứng ({PARAMS})",
+        "128": "Xác suất {PARAMS}%",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "Đường tắt",
+        "1024": "Đường ra",
+        "2048": "Theo mùa ({PARAMS})"
       },
       "depth": " ({DEPTH})",
       "playing": "Đang chơi {GAME}"
@@ -827,7 +827,7 @@
       "periodEnds": "Kết thúc vào {DATE}",
       "current": "Hiện tại",
       "shortcut": "Có thể đến được qua lối tắt có thể mở",
-      "toggleTracked": "Toggle Location Tracking",
+      "toggleTracked": "Bật/Tắt Chỉ đường",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
         "-1": "Tham quan Tự do",
