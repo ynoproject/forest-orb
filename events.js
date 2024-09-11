@@ -426,7 +426,7 @@ function showEventsToastMessage(key, icon, location, exp) {
   if (gameId === '2kki')
     addSessionCommandHandler('nl', args => {
       const locationNames = [];
-      const locations = args.filter(l => {
+      const locations = JSON.parse(args).filter(l => {
         if (locationNames.includes(l.title))
           return false;
         locationNames.push(l.title);
