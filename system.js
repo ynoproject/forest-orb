@@ -193,7 +193,8 @@ const allGameUiThemes = {
   ],
   'oneshot': [
     'system',
-    'system2'
+    'system2',
+    'System3'
   ],
   'oversomnia': [
     'window-a',
