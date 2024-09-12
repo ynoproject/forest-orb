@@ -18,6 +18,7 @@ const allGameUiThemes = {
     'system-r',
     'system-hw',
     'system_Ca0',
+    'system_Ca0_old',
     'Yeris_System_Rainbow',
     'system_Suzume_choco',
     'menu 20',
