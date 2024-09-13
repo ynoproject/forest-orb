@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "梦２记 当前版本： {VERSION}",
@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "当前位置：",
-      "nextLocation": "Next Loc:&nbsp;",
+      "nextLocation": "下一位置：&nbsp;",
       "immersionMode": "沉浸模式已开启",
       "reconnect": "重新连接",
       "tab": {
@@ -60,11 +60,11 @@
       }
     },
     "instruction": {
-      "translation": "欢迎为界面语言翻译做贡献！",
+      "translation": "请帮我们补全UI翻译！",
       "noGameLoc": "※暂无游戏语言翻译"
     },
     "2kki": {
-      "hostedWithPermission": "本站所引用的游戏资源均已取得梦2记制作团队授权，严禁擅自盗用"
+      "hostedWithPermission": "本站游戏由梦２记开发组官方授权提供"
     },
     "modal": {
       "confirm": {
@@ -125,8 +125,8 @@
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
           "toggleEnableExplorer": {
-            "label": "梦2记导航窗",
-            "helpText": "梦2记导航组件，可以直观地查看当前位置的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前探索游戏的大部分内容。您必须登录才能使用梦2记导航窗。"
+            "label": "梦２记导航窗",
+            "helpText": "梦２记导航组件，可以直观地查看当前区域的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前探索游戏的大部分内容。您必须登录才能使用梦２记导航窗。"
           },
           "toggleImmersionMode": {
             "label": "沉浸模式",
@@ -152,9 +152,9 @@
         },
         "blocklist": "黑名单",
         "chatSettings": "聊天",
-        "screenshotSettings": "截屏",
-        "notificationSettings": "弹框通知",
-        "cacheSettings": "Cache",
+        "screenshotSettings": "截图",
+        "notificationSettings": "通知",
+        "cacheSettings": "缓存",
         "accountSettings": "账号"
       },
       "blocklist": {
@@ -195,9 +195,9 @@
         }
       },
       "screenshotSettings": {
-        "title": "截屏设置",
+        "title": "截图设置",
         "fields": {
-          "autoDownloadScreenshots": "自动下载屏幕截图",
+          "autoDownloadScreenshots": "自动下载截图",
           "screenshotResolution": {
             "label": "截图分辨率",
             "values": {
@@ -290,7 +290,7 @@
             }
           },
           "screenshots": {
-            "label": "截屏",
+            "label": "截图",
             "fields": {
               "screenshotTaken": "拍摄屏幕截图"
             }
@@ -310,12 +310,12 @@
         }
       },
       "cacheSettings": {
-        "title": "Cache Settings",
-        "clear": "Clear",
+        "title": "缓存设置",
+        "clear": "清除缓存",
         "fields": {
-          "locationCache": "Location Cache",
-          "mapCache": "Map Cache",
-          "locationColorCache": "Location Color Cache"
+          "locationCache": "位置缓存",
+          "mapCache": "地图缓存",
+          "locationColorCache": "地区颜色缓存"
         }
       },
       "accountSettings": {
@@ -357,7 +357,7 @@
           "search": {
             "label": "搜索:&nbsp;",
             "name": "名称:",
-            "location": "地点:"
+            "location": "取得位置:"
           }
         }
       },
@@ -373,10 +373,10 @@
       "save": {
         "title": "存档",
         "reload": "保存更改",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "在导入存档时，如果最近一次存档是于 RPG_RT 上保存且使用了游戏翻译，则游戏会报错。请在 EasyRPG 上解除翻译后再次保存。"
       },
       "uiTheme": {
-        "title": "界面风格",
+        "title": "界面样式",
         "auto": "自动"
       },
       "createParty": {
@@ -389,7 +389,7 @@
           "description": "队伍简介",
           "public": "是否公开？",
           "password": "设置密码",
-          "theme": "界面风格"
+          "theme": "界面样式"
         },
         "showPassword": "显示密码",
         "hidePassword": "隐藏密码",
@@ -459,28 +459,28 @@
         "rule1": "尊重他人，友好往来。",
         "rule2": "禁止色情、血腥等限制级话题。",
         "rule3": "不谈政治。",
-        "rule4": "禁止侮辱性称呼（如各类种族蔑称）。",
+        "rule4": "禁止侮辱性称呼（如各类种族歧视称呼）。",
         "rule5": "不要在游戏中作弊。",
         "rule6": "如遇到问题，请联系管理员。"
       },
       "explorerUndiscoveredLocations": {
-        "title": "未探索地点",
-        "complete": "您已经探索完所有可以到达的地方！恭喜！！"
+        "title": "未探索地域",
+        "complete": "您已探索完所有可到达的地域！恭喜！"
       }
     },
     "tooltips": {
-      "togglePrivateMode": "公开/私密模式切换",
+      "togglePrivateMode": "多人/单人模式切换",
       "save": "存档数据管理",
-      "uiTheme": "界面风格",
+      "uiTheme": "界面样式",
       "toggleChat": "显示/隐藏聊天栏",
       "toggleExplorer": "显示/隐藏梦2记导航窗",
-      "screenshot": "截屏",
+      "screenshot": "截图",
       "myScreenshots": "我的截图",
       "settings": "设置",
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
+        "toggleNextLocation": "显示/隐藏 下一远征目的地",
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
         "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",
@@ -494,7 +494,7 @@
       "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
-      "explorerUndiscoveredLocations": "显示未探索地点",
+      "explorerUndiscoveredLocations": "显示未探索地域",
       "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。",
       "mobileControlsType": "可替代默认的方向键操控模式。<br>浮动操控模式只有在移动端全屏模式下才可用。"
     },
@@ -530,11 +530,11 @@
       "0": "已断开",
       "1": "已连接",
       "2": "连接中",
-      "3": "私密模式"
+      "3": "单人模式"
     },
     "lastOnline": {
-      "template": "最后一次在线\n{INTERVAL}前",
-      "longTime": "很久之前",
+      "template": "最近登陆\n{INTERVAL}前",
+      "longTime": "很久以前",
       "interval": {
         "short": "不到 1 分钟",
         "minutes": {
@@ -559,18 +559,18 @@
         "template": "{LOCATION_JP}（{LOCATION}）"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS}% Chance",
+        "1": "单向通行",
+        "2": "不可通行",
+        "4": "解锁",
+        "8": "需解锁",
+        "16": "死路",
+        "32": "被隔断的区域",
+        "64": "需要效果 ({PARAMS})",
+        "128": "有 {PARAMS}% 概率放行",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "捷径点",
+        "1024": "折返点",
+        "2048": "时令条件 ({PARAMS})"
       },
       "depth": " ({DEPTH})",
       "playing": "正在游玩 {GAME}"
@@ -586,8 +586,8 @@
       "plural": "当前有 {COUNT} 位玩家在线"
     },
     "playersInMap": {
-      "singular": "当前地图有 {COUNT} 位玩家游览",
-      "plural": "当前地图有 {COUNT} 位玩家游览"
+      "singular": "当前地图有 {COUNT} 位玩家",
+      "plural": "当前地图有 {COUNT} 位玩家"
     },
     "playerList": {
       "unnamed": "无名子",
@@ -619,12 +619,12 @@
         "label": "将 {PLAYER} 从好友中移除"
       },
       "block": {
-        "label": "拉黑 {PLAYER}",
-        "confirm": "确定要拉黑 {PLAYER} 吗？"
+        "label": "屏蔽 {PLAYER}",
+        "confirm": "确定要屏蔽 {PLAYER} 吗？"
       },
       "unblock": {
-        "label": "解除拉黑 {PLAYER}",
-        "confirm": "确定要解除拉黑 {PLAYER} 吗？"
+        "label": "解除屏蔽 {PLAYER}",
+        "confirm": "确定要解除屏蔽 {PLAYER} 吗？"
       },
       "admin": {
         "ban": {
@@ -729,12 +729,12 @@
         "immersionMode": "如果您想安安静静地体验游戏，可以点击左上角功能区的“沉浸模式”按钮以屏蔽聊天栏、玩家列表和人数显示。在沉浸模式下路遇他人会有别样的体验哦！",
         "friendsMenu": "在排行榜以外的界面中，用PC端右键，或手机端长按玩家图标，可以弹出一个对话框，以便加其为好友、提及该玩家，或拉黑该玩家。",
         "easySettingsMenu": "如果您在使用PC游玩，可以在游戏中按下F1键打开设置菜单，在此可以更改按键或调整一些设置。",
-        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
-        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
-        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
-        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
-        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
-        "openSource": "YNOproject是开源的项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
+        "floatingControls": "如果您不喜欢触屏设备上的操作，可以试试浮动摇杆！你可以通过设置->“移动端按键类型”来开启它。",
+        "recentBadges": "不小心关闭了徽章解锁通知？在徽章列表中的“解锁状态”下选择“最近解锁”，可以随时查看当前会话下解锁过的徽章。",
+        "desktopHotkeys": "如果您在 PC 端游玩，可以用 Alt+Enter 切换全屏模式，F7 默认为截图键，T 键则会打开游戏内聊天输入。",
+        "badgeControls": "在徽章展柜管理菜单中，您可以拖动徽章来重新排序，或使用“移除徽章”模式一次性删除多个徽章。",
+        "cacheSettings": "在抵达目的地时未能触发判定？地图过期？“缓存”菜单允许您清除相关缓存并获取最新数据。",
+        "openSource": "YNOproject是开源项目，您可在：https://github.com/ynoproject/ 查阅源代码。"
       }
     },
     "save": {
@@ -746,7 +746,7 @@
       },
       "upload": {
         "tooltip": "上传存档文件",
-        "invalidSaveFile": "駄目！请选择正确的存档文件（文件格式为.lsd）。"
+        "invalidSaveFile": "请选择正确的存档文件（文件格式为.lsd）。"
       },
       "download": {
         "tooltip": "下载存档文件",
@@ -771,8 +771,8 @@
         "passwordUpdated": "账号密码修改成功。"
       },
       "players": {
-        "playerBlocked": "已拉黑 {PLAYER}",
-        "playerUnblocked": "已解除拉黑 {PLAYER}"
+        "playerBlocked": "已屏蔽 {PLAYER}",
+        "playerUnblocked": "已解除屏蔽 {PLAYER}"
       },
       "friends": {
         "add": "已向 {PLAYER} 发送好友请求",
@@ -800,7 +800,7 @@
       },
       "events": {
         "complete": "成功抵达 {LOCATION} 。\n远征告捷！您已获得 {EXP} 。",
-        "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止！",
+        "freeComplete": "顺利造访了 {LOCATION} 。狂梦未散，流浪不止。",
         "vmComplete": "发现自贩机！\n您已获得 {EXP}。",
         "listUpdated": "远征目的地已更新！"
       },
@@ -808,7 +808,7 @@
         "badgeUnlocked": "您解锁了新的徽章！"
       },
       "screenshots": {
-        "screenshotTaken": "已拍摄屏幕截图。"
+        "screenshotTaken": "已拍摄截图。"
       },
       "saveSync": {
         "saveUploading": "正在上传编号为 {SLOT} 的存档数据……",
@@ -827,7 +827,7 @@
       "periodEnds": "本季度将于 {DATE} 结束",
       "current": "当前",
       "shortcut": "有可解锁的捷径",
-      "toggleTracked": "Toggle Location Tracking",
+      "toggleTracked": "开关位置追踪",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",
@@ -851,7 +851,7 @@
       "allCategory": "全部",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
-      "location": "取得位置:&nbsp;",
+      "location": "取得地点:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
       "percentUnlocked": "{PERCENT}% 的玩家取得了该徽章",
       "time": "{MINUTES}:{SECONDS}",
@@ -859,7 +859,7 @@
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "全文匹配"
         }
       },
       "sortOrder": {
