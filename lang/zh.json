@@ -142,7 +142,7 @@
             "joystick": "浮动摇杆",
             "dpad": "浮动方向键"
           },
-          "toggleLocationDisplay": "位置弹窗提示",
+          "toggleLocationDisplay": "地名弹窗",
           "toggleRankings": "显示排行榜",
           "togglePreloads": {
             "label": "预加载",
@@ -480,7 +480,7 @@
       "toggleMute": "静音",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
-        "toggleNextLocation": "显示/隐藏 下一远征目的地",
+        "toggleNextLocation": "显示/隐藏 远征导航",
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
         "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",
@@ -827,7 +827,7 @@
       "periodEnds": "本季度将于 {DATE} 结束",
       "current": "当前",
       "shortcut": "有可解锁的捷径",
-      "toggleTracked": "开关位置追踪",
+      "toggleTracked": "设为导航目的地",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
         "-1": "无尽流浪",
