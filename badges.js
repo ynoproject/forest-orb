@@ -132,7 +132,7 @@ function yieldImmediately() {
   return new Promise(resolve => setTimeout(resolve, 0));
 }
 
-async function fetchAndUpdateBadgeModalBadges(slotRow, slotCol) { }
+async function fetchAndUpdateBadgeModalBadges(slotRow, slotCol, searchMode) { }
 
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
@@ -157,13 +157,15 @@ function initBadgeControls() {
   let badgeCompareFunc;
   let didUpdateBadgeModal;
   let lastLang;
-  fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol) => {
+  fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol, searchMode) => {
     await checkNewBadgeUnlocks();
 
     if (slotRow && slotCol)
       modifyingSlot = { slotRow, slotCol };
     else
       modifyingSlot = null;
+    if (searchMode)
+      currentSearchMode = searchMode;
     const sortOrderDesc = sortOrder.value.endsWith('_desc');
     let sortOrderType = sortOrderDesc ? sortOrder.value.slice(0, -5) : sortOrder.value;
     badgeCompareFunc = (a, b) => {
@@ -781,7 +783,7 @@ async function viewBadgeInModal(badgeId, badgeGame) {
   Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
   openModal('badgesModal');
   addLoader(document.getElementById('badgesModal'), true);
-  await fetchAndUpdateBadgeModalBadges();
+  await fetchAndUpdateBadgeModalBadges(undefined, undefined, 'name');
   const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
   if (activeBadgeTab) {
     if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== badgeGame)
