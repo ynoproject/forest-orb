@@ -555,11 +555,11 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
     entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 
-  playerLocation.classList.toggle('hidden', (!locationVisible || !isValidMap) && !showLastOnline);
-
   let playerGameId = player.game || gameId;
+  const shouldDisplayLocation = isValidMap || playerGameId !== gameId;
+  playerLocation.classList.toggle('hidden', (!locationVisible || !shouldDisplayLocation) && !showLastOnline);
 
-  if (locationVisible && player.online && isValidMap) {
+  if (locationVisible && player.online && shouldDisplayLocation) {
     if (!allGameUiThemes.hasOwnProperty(playerGameId))
       playerGameId = gameId;
     const parsedSystemName = player.systemName ? (allGameUiThemes[playerGameId].indexOf(player.systemName) > -1 ? player.systemName : getDefaultUiTheme(playerGameId)).replace(/ /g, '_') : null;
