@@ -488,7 +488,7 @@ function getDepthRgba(depth, maxDepth) {
   for (let d = 0; d <= maxDepth; d++)
     depthColors.push(hueToRGBA(0.6666 - depthHueIncrement * d, 1));
 
-  return depthColors[depth];
+  return depthColors[Math.min(depth, maxDepth)];
 }
 
 function init2kkiFileVersionAppend() {
