@@ -83,6 +83,7 @@ const allGameUiThemes = {
     'ob_sys1',
     'talyis-City of Revival menu theme',
     'kamara_sys_81',
+    '1247-system82',
 
     'system_E_eye',
     'System_kuraud',
