@@ -5,9 +5,24 @@ const canvas = document.getElementById('canvas');
 const gameContainer = document.getElementById('gameContainer');
 let lastTouchedId;
 
+function resetCanvas() {
+  return easyrpgPlayer.api.resetCanvas();
+}
+
 // Make EasyRPG player embeddable
 canvas.addEventListener('mouseenter', () => canvas.focus());
 canvas.addEventListener('click', () => canvas.focus());
+canvas.addEventListener('webglcontextrestored', async () => {
+  for (let tries = 0; tries < 5; tries++) {
+    try {
+      if (resetCanvas()) return;
+    } catch (err) {
+      console.warn(err);
+    }
+    await new Promise(resolve => setTimeout(resolve, Math.pow(2, tries) * 200));
+  }
+  alert('Failed to restore WebGL context after 5 attempts. The page needs to be refreshed.');
+});
 
 // Handle clicking on the fullscreen button
 document.querySelector('#controls-fullscreen').addEventListener('click', () => {
