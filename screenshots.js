@@ -246,7 +246,7 @@ function takeScreenshot() {
     if (notificationConfig.all && notificationConfig.screenshots.all && notificationConfig.screenshots.screenshotTaken) {
       const toast = showScreenshotToastMessage('screenshotTaken', 'image', true, null, true);
       const thumb = document.createElement('img');
-      thumb.classList.add('screenshotThumbnail');
+      thumb.classList.add('screenshotThumbnail', 'imageThumbnail');
       thumb.src = url;
       toast.querySelector('.toastMessage').prepend(thumb);
       toast.classList.add('screenshotToast');
@@ -417,15 +417,15 @@ function initScreenshotsModal(isCommunity) {
       const parsedSystemName = screenshotSystemName.replace(/ /g, '_');
 
       const screenshotItem = document.createElement('div');
-      screenshotItem.classList.add('screenshotItem', 'item', 'hideContents');
+      screenshotItem.classList.add('screenshotItem', 'imageItem', 'item', 'hideContents');
       if (screenshot.spoiler)
         screenshotItem.classList.add('spoiler');
 
       const screenshotThumbnailContainer = document.createElement('div');
-      screenshotThumbnailContainer.classList.add('screenshotThumbnailContainer');
+      screenshotThumbnailContainer.classList.add('screenshotThumbnailContainer', 'imageThumbnailContainer');
 
       const screenshotThumbnail = document.createElement('img');
-      screenshotThumbnail.classList.add('screenshotThumbnail', 'unselectable');
+      screenshotThumbnail.classList.add('screenshotThumbnail', 'imageThumbnail', 'unselectable');
       screenshotThumbnail.src = `${serverUrl}/screenshots/${uuid}/${screenshot.id}.png`;
       screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), screenshot, screenshotsModal.id);
 
@@ -450,7 +450,7 @@ function initScreenshotsModal(isCommunity) {
 
       if (parseInt(screenshot.mapId)) {
         const screenshotLocation = document.createElement('span');
-        screenshotLocation.classList.add('screenshotLocation', 'infoText');
+        screenshotLocation.classList.add('screenshotLocation', 'imageItemLocation', 'infoText');
 
         screenshotItem.append(screenshotLocation);
 
@@ -639,7 +639,7 @@ function initScreenshotsModal(isCommunity) {
 
 function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
   const screenshotControls = document.createElement('div');
-  screenshotControls.classList.add('screenshotControls');
+  screenshotControls.classList.add('screenshotControls', 'imageControls');
   screenshotControls.dataset.screenshotId = screenshot.id;
 
   if (!isCommunity) {

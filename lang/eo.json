@@ -565,7 +565,7 @@
         "16": "Dead End",
         "32": "Isolated",
         "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS}% Chance",
+        "128": "{PARAMS} Chance",
         "256": "{PARAMS}",
         "512": "Shortcut",
         "1024": "Exit Point",
@@ -937,6 +937,14 @@
         "ta_be": "TA_BE_",
         "ta_be_hardcore": "TA_BE_ - Malfacila Reĝimo",
         "panerabbit": "PANErabbit"
+      }
+    },
+    "locations": {
+     "track": {
+        "tooltip": {
+          "on": "Track Location",
+          "off": "Untrack Location"
+        }
       }
     },
     "screenshots": {

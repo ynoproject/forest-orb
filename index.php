@@ -125,6 +125,9 @@
       </div>
       <div id="headerIconContainer" class="itemContainer smallItemContainer">
         <div id="badgeButton" class="badgeItem item accountRequired unselectable"></div>
+        <button id="locationsButton" class="iconButton fillIcon unselectable hidden" data-i18n="[title]tooltips.locations">
+          <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 14zv-2.5l3.75-4 3 2 5.25-5 6 4.5v5zm0-9.5a1.0313 1.0313 90 0 0 4 0 1.0313 1.0313 90 0 0-4 0z" /></svg>
+        </button>
         <button id="communityScreenshotsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.communityScreenshots">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0.75 5.5h14.5v9.25h-1.25v-8h-13.25zm14.5 9.25v1.25h-14.5v-9.25h1.25v8zm-12.5-0.75v-1.25l2.25-2.5 1.75 1.25 3-3 3.5 2.5v3zm0-5.5a0.5 0.5 90 0 0 2.5 0 0.5 0.5 90 0 0-2.5 0zm0-4.25h13.75v9.75h-1v-8.75h-12.75v-1m2-1.25h13v9h-1v-8h-12v-1" /></svg>
         </button>
@@ -1233,6 +1236,26 @@
               <tbody id="rankings"></tbody>
             </table>
             <div id="rankingsPagination"></div>
+          </div>
+        </div>
+        <div id="locationsModal" class="modal fullscreenModal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.locations.title">Locations</h1>
+            <div id="locationsControls" class="uiControls wrap">
+              <div class="uiControl">
+                <span></span>
+                <select id="locationsSortOrder">
+                  <option value="recent" data-i18n="[html]modal.locations.fields.sortOrder.values.recent">Newest</option>
+                  <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.likes">Alphabetical</option>
+                </select>
+              </div>
+            </div>
+            <div class="infiniteScrollRefreshIndicator transparent unselectable">
+              <label class="infoLabel" data-i18n="[html]modal.locations.scrollToRefresh">Scroll to Top to Refresh</label>
+            </div>
+          </div>
+          <div class="modalContent infiniteScrollContainer itemContainer">
           </div>
         </div>
         <div id="screenshotModal" class="modal fullscreenModal hidden">

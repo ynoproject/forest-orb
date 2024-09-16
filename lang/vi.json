@@ -566,7 +566,7 @@
         "16": "Đường cụt",
         "32": "Khu cô lập",
         "64": "Cần hiệu ứng ({PARAMS})",
-        "128": "Xác suất {PARAMS}%",
+        "128": "Xác suất {PARAMS}",
         "256": "{PARAMS}",
         "512": "Đường tắt",
         "1024": "Đường ra",
@@ -938,6 +938,14 @@
         "ta_be": "TA_BE_",
         "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
         "panerabbit": "PANErabbit"
+      }
+    },
+    "locations": {
+     "track": {
+        "tooltip": {
+          "on": "Track Location",
+          "off": "Untrack Location"
+        }
       }
     },
     "screenshots": {

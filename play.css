@@ -369,6 +369,7 @@ body {
   border: none;
   cursor: pointer;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 .iconButton path, .icon path, .icon circle {
@@ -443,30 +444,30 @@ body {
   width: unset;
 }
 
-.screenshotThumbnail {
+.imageThumbnail {
   width: 160px;
   height: 120px;
   cursor: pointer;
 }
 
-.toastMessage > .screenshotThumbnail {
+.toastMessage > .imageThumbnail {
   display: block;
   margin: 0 auto 8px auto;
 }
 
-.screenshotItem {
+.imageItem {
   width: 176px;
   margin-bottom: 0 !important;
   opacity: 1;
   transition: opacity 0.325s ease-in-out, transform 0.125s cubic-bezier(0.7, 0, 0.7, 1.5) !important;
 }
 
-.screenshotItem.hideContents {
+.imageItem.hideContents {
   opacity: 0;
   content-visibility: hidden;
 }
 
-.screenshotControls {
+.imageControls {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -475,42 +476,42 @@ body {
   padding: 8px 4px 4px 4px;
 }
 
-.screenshotItem .screenshotThumbnailContainer {
+.imageItem .imageThumbnailContainer {
   display: inline-block;
   height: 120px;
 }
 
-.screenshotItem.spoiler .screenshotThumbnail {
+.imageItem.spoiler .imageThumbnail {
   filter: blur(8px);
   transition: filter 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
 }
 
-.screenshotItem.spoiler:hover .screenshotThumbnail {
+.imageItem.spoiler:hover .imageThumbnail {
   filter: blur(2px);
 }
 
-.screenshotItem .spoilerLabel {
+.imageItem .spoilerLabel {
   display: block;
   margin: -69px 0 50px 0;
   pointer-events: none;
 }
 
-.screenshotItem:not(.spoiler) .spoilerLabel {
+.imageItem:not(.spoiler) .spoilerLabel {
   display: none;
   content-visibility: hidden;
 }
 
-.screenshotItem .screenshotThumbnailContainer, .screenshotItem > .screenshotControls {
+.imageItem .imageThumbnailContainer, .imageItem > .imageControls {
   border: 8px solid transparent !important;
   border-image: var(--border-image-url) 4 repeat !important;
 }
 
-.screenshotItem > .screenshotControls {
+.imageItem > .imageControls {
   background-color: rgb(var(--base-bg-color));
   border-top: none !important;
 }
 
-.screenshot + .screenshotControls {
+.screenshot + .imageControls {
   justify-content: space-around;
   width: 240px;
   padding: 0 32px;
@@ -518,69 +519,69 @@ body {
   margin-top: -64px;
 }
 
-.screenshotControls .iconButton {
+.imageControls .iconButton {
   width: 24px;
   margin: 2px 0 -2px 0;
 }
 
-.screenshot + .screenshotControls .iconButton {
+.screenshot + .imageControls .iconButton {
   width: 36px;
 }
 
-.screenshotControls .publicToggle:not(.toggled) {
+.imageControls .publicToggle:not(.toggled) {
   opacity: 0.5;
 }
 
-.screenshotControls .publicToggle:not(.toggled) + .likeContainer, .screenshotControls .publicToggle:not(.toggled) + .likeContainer + .spoilerToggle {
+.imageControls .publicToggle:not(.toggled) + .likeContainer, .imageControls .publicToggle:not(.toggled) + .likeContainer + .spoilerToggle {
   display: none;
   content-visibility: hidden;
 }
 
-.screenshotControls .likeContainer {
+.imageControls .likeContainer {
   display: flex;
   align-items: center;
 }
 
-.screenshotControls .likeContainer > .likeCount {
+.imageControls .likeContainer > .likeCount {
   margin-inline-start: 8px;
   font-size: large;
   font-weight: bold;
 }
 
-.screenshot + .screenshotControls .likeContainer > .likeCount {
+.screenshot + .imageControls .likeContainer > .likeCount {
   font-size: x-large;
 }
 
-.screenshotItem > .screenshotLocation {
+.imageItem > .imageItemLocation {
   display: block;
   margin: auto;
   width: fit-content;
 }
 
-.screenshotItem.spoiler > .screenshotLocation {
+.imageItem.spoiler > .imageLocation {
   border: 1px solid rgb(var(--base-color));
   pointer-events: all;
   cursor: pointer;
 }
 
-.screenshotItem.spoiler > .screenshotLocation {
+.imageItem.spoiler > .imageItemLocation {
   background: transparent !important;
   transition: background-color 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
 }
 
-.screenshotItem.spoiler:not(:hover) > .screenshotLocation {
+.imageItem.spoiler:not(:hover) > .imageItemLocation {
   background: rgb(var(--shadow-color)) !important;
 }
 
-.screenshotItem.spoiler > .screenshotLocation > * {
+.imageItem.spoiler > .imageItemLocation > * {
   transition: opacity 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
 }
 
-.screenshotItem.spoiler:not(:hover) > .screenshotLocation > * {
+.imageItem.spoiler:not(:hover) > .imageItemLocation > * {
   opacity: 0;
 }
 
-.screenshotItem > .nameTextContainer, .screenshotItem > .screenshotControls + .screenshotLocation {
+.imageItem > .nameTextContainer, .imageItem > .imageControls + .imageItemLocation {
   padding-top: 4px;
 }
 
@@ -2259,6 +2260,7 @@ html[dir="rtl"] #chatBorder {
 
 .itemContainer .item > div {
   -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 
@@ -2564,6 +2566,7 @@ html[dir="rtl"] #chatBorder {
   background-position-y: -16px;
   border: 24px solid transparent;
   -webkit-appearance: button;
+  appearance: button;
   cursor: pointer;
 }
 
@@ -2694,6 +2697,7 @@ form .uiTheme {
 .badgeButton {
   cursor: pointer;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 .badgeOverlay {
@@ -3767,7 +3771,7 @@ html[dir="rtl"] #layout:fullscreen #chatboxContainer {
     margin-inline-end: 4px;
   }
 
-  .screenshotItem {
+  .imageItem {
     width: 136px;
     padding-bottom: 12px;
   }
@@ -3777,11 +3781,11 @@ html[dir="rtl"] #layout:fullscreen #chatboxContainer {
     margin-bottom: 12px;
   }
 
-  .screenshotItem .screenshotThumbnailContainer {
+  .imageItem .imageThumbnailContainer {
     height: 90px;
   }
 
-  .screenshotItem .spoilerLabel {
+  .imageItem .spoilerLabel {
     margin: -60px;
   }
 
@@ -3790,11 +3794,11 @@ html[dir="rtl"] #layout:fullscreen #chatboxContainer {
     margin-bottom: 8px;
   }
 
-  .screenshotControls {
+  .imageControls {
     width: 112px;
   }
 
-  .screenshotThumbnail {
+  .imageThumbnail {
     width: 120px;
     height: 90px;
   }
