@@ -18,6 +18,7 @@
  */
 
 let localizedVersion;
+/** @type {import('./lang/en.json')['messages']} */
 let localizedMessages;
 
 let localizedMapLocations;
@@ -738,10 +739,19 @@ document.getElementById('enterNameForm').onsubmit = function () {
 };
 
 {
-  const chatInput = document.getElementById('chatInput');
-  chatInput.oninput = function () {
+  function oninputYnomoji() {
     const ynomojiPattern = /:([a-z0-9_\-]+(?::|$)|$)/gi;
     const ynomojiContainer = document.getElementById('ynomojiContainer');
+    const detachedYnomoji = ynomojiContainer.parentElement.removeChild(ynomojiContainer);
+    switch (this.id) {
+      case 'chatInput':
+        const enterNameContainer = document.getElementById('enterNameContainer');
+        enterNameContainer.parentElement.insertBefore(detachedYnomoji, enterNameContainer);
+        break;
+      case 'editScheduleDescription':
+        this.parentElement.appendChild(detachedYnomoji);
+        break;
+    }
     let currentMatch;
     let match;
     while (currentMatch = ynomojiPattern.exec(this.value.slice(0, this.selectionEnd)))
@@ -774,7 +784,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
       else {
         const currentInputValue = this.value;
         setTimeout(() => {
-          if (chatInput.value === currentInputValue)
+          if (this.value === currentInputValue)
             ynomojiContainer.classList.remove('hidden');
         }, 1000);
       }
@@ -782,8 +792,17 @@ document.getElementById('enterNameForm').onsubmit = function () {
       ynomojiContainer.classList.add('hidden');
   };
 
-  chatInput.onfocus = function () { this.oninput(); };
-  document.getElementById('chatboxContainer').onmouseleave = function () { document.getElementById('ynomojiContainer').classList.add('hidden'); };
+  function onfocusYnomoji() {
+    this.oninput();
+    ynomojiElement = this;
+  }
+
+  for (const inputElement of ['chatInput', 'editScheduleDescription']) {
+    const element = document.getElementById(inputElement);
+    element.oninput = oninputYnomoji;
+    element.onfocus = onfocusYnomoji;
+  }
+  document.getElementById('chatboxContainer').onmouseleave = document.getElementById('scheduleEditModal').onmouseleave = function () { document.getElementById('ynomojiContainer').classList.add('hidden'); };
 }
 
 document.getElementById('privateModeButton').onclick = function () {
@@ -1384,17 +1403,25 @@ function updateCanvasOverlays() {
   gameChatContainer.style.marginTop = `calc(${canvasElement.offsetHeight / 2}px * var(--canvas-scale))`;
 }
 
-function updateYnomojiContainerPos(isScrollUpdate) {
-  const chatInput = document.getElementById('chatInput');
+function updateYnomojiContainerPos(isScrollUpdate, chatInput) {
+  if (!chatInput) chatInput = document.getElementById('chatInput');
+  const expandDown = chatInput.dataset.ynomoji === 'expandDown';
   const chatboxContainer = document.getElementById('chatboxContainer');
   const ynomojiContainer = document.getElementById('ynomojiContainer');
   const isFullscreen = document.fullscreenElement;
   const isWrapped =  window.getComputedStyle(document.getElementById('layout')).flexWrap === 'wrap';
   const isDownscale2 = document.getElementById('content').classList.contains('downscale2');
   const isFullscreenSide = isFullscreen && (window.innerWidth > 1050 || window.innerHeight < 595);
-  ynomojiContainer.style.bottom = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
-    ? `calc((100% - ${chatInput.offsetTop}px) + max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - var(--content-scroll), 0px))`
-    : `calc(100% - ${chatInput.offsetTop}px)`;
+  if (expandDown) {
+    ynomojiContainer.style.removeProperty('bottom');
+    ynomojiContainer.style.top = `${chatInput.offsetTop + chatInput.offsetHeight + 2}px`;
+    // TODO hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide), only used for editScheduleDescription
+  } else {
+    ynomojiContainer.style.removeProperty('top');
+    ynomojiContainer.style.bottom = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
+      ? `calc((100% - ${chatInput.offsetTop}px) + max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - var(--content-scroll), 0px))`
+      : `calc(100% - ${chatInput.offsetTop}px)`;
+  }
   ynomojiContainer.style.maxHeight = hasTouchscreen && ((isWrapped && isDownscale2) || isFullscreenSide)
     ? `calc(${document.getElementById('messages').offsetHeight - 16}px - max(${isFullscreen ? 6 : 1}rem + 2 * var(--controls-size) - (100% - ${chatInput.offsetTop}px - ${isFullscreen && !isFullscreenSide ? `(${chatboxContainer.style.marginTop} - 24px)` : '0px'}) - var(--content-scroll), 0px))`
     : `${document.getElementById('messages').offsetHeight - 16}px`;
@@ -2226,8 +2253,11 @@ function fetchAndPopulateYnomojiConfig() {
     });
 }
 
+let ynomojiElement;
+
 function insertYnomoji(ynomojiId) {
-  const chatInput = document.getElementById('chatInput');
+  const chatInput = ynomojiElement;
+  if (!chatInput) return;
   const ynomojiMatch = /:([a-z0-9_\-]+)?$/i.exec(chatInput.value.slice(0, chatInput.selectionEnd));
   if (ynomojiMatch)
     chatInput.value = `${chatInput.value.slice(0, ynomojiMatch.index)}:${ynomojiId}:${chatInput.value.slice(chatInput.selectionEnd)}`;

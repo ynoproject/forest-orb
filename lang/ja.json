@@ -462,6 +462,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "イベント",
+        "ongoing": "進行中",
+        "party": "パーティー限定",
+        "future": "今後のイベント",
+        "noResults": "登録したイベントがありません。",
+        "doSchedule": "イベントを登録する"
+      },
+      "scheduleEdit": {
+        "title": "イベントの詳細",
+        "save": "セーブ",
+        "cancel": "キャンセル",
+        "fields": {
+          "name": "名前",
+          "description": "概要",
+          "datetime": "日付",
+          "recurring": "定期的なイベント",
+          "interval": {
+            "title": "繰り返す期間",
+            "days": "日間",
+            "months": "ヶ月間",
+            "years": "年間"
+          },
+          "restrictParty": "パーティー限定",
+          "platforms": {
+            "title": "配信URL",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "ニコニコ動画",
+            "openrec": "OPENREC",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "ルール",
         "rule1": "礼儀正しく、丁寧な対応を心がけてください。",
@@ -502,10 +537,14 @@
       "locations": "場所一覧",
       "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
+      "schedules": "イベント",
       "nexus": "扉部屋へ戻る",
       "explorerUndiscoveredLocations": "未発見の場所を見る",
       "timeTrial": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます",
       "mobileControlsType": "モバイルコントローラーをデフォルトの方向キーから切り替えられます。<br>浮動コントローラーはモバイルのフルスクリーンの時のみ有効です。"
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown記法が使用可能で、{{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
     },
     "reviewRules": "ルールを見る"
   },
@@ -993,6 +1032,18 @@
       "delete": {
         "tooltip": "削除",
         "confirm": "本当にこのスクリーンショットを削除してよろしいですか？"
+      }
+    },
+    "schedules": {
+      "organizer": "主催者：&nbsp;{NAME}",
+      "invalidPlatformLink": "配信サイトのURLを修正してください",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "ニコニコ動画",
+        "openrec": "OPENREC",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {

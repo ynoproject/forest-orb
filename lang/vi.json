@@ -462,6 +462,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "Events",
+        "ongoing": "Ongoing Events",
+        "party": "Party Events",
+        "future": "Future Events",
+        "noResults": "No events have been scheduled.",
+        "doSchedule": "Schedule an Event"
+      },
+      "scheduleEdit": {
+        "title": "Edit Event",
+        "save": "Save",
+        "cancel": "Cancel Event",
+        "fields": {
+          "name": "Event Name",
+          "description": "Description",
+          "datetime": "Event Date and Time",
+          "recurring": "Recurring Event",
+          "interval": {
+            "title": "Interval",
+            "days": "days",
+            "months": "months",
+            "years": "years"
+          },
+          "restrictParty": "Limit to Party",
+          "platforms": {
+            "title": "External Links",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "Nicovideo",
+            "openrec": "Openrec",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "Nội quy",
         "rule1": "Hãy cư xử lịch sự và tôn trọng người khác.",
@@ -502,10 +537,14 @@
       "locations": "Địa điểm",
       "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng xếp hạng",
+      "schedules": "Events",
       "nexus": "Quay về Nexus",
       "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
       "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình.",
       "mobileControlsType": "Các kiểu điều khiển khác thay thế cho kiểu D-Pad mặc định.<br>Kiểu điều khiển nổi chỉ có tác dụng khi bật toàn màn hình trên điện thoại."
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "Xem Nội quy"
   },
@@ -993,6 +1032,18 @@
       "delete": {
         "tooltip": "Xóa",
         "confirm": "Bạn có chắc chắn muốn xóa ảnh này?"
+      }
+    },
+    "schedules": {
+      "organizer": "Organized by&nbsp;{NAME}",
+      "invalidPlatformLink": "Platform must have a valid URL",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "Nicovideo",
+        "openrec": "Openrec",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {

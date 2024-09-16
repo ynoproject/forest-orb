@@ -134,6 +134,24 @@
         <button id="rankingsButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.rankings">
           <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" /></svg>
         </button>
+        <button id="schedulesButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.schedules">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            xml:space="preserve" width="32" height="32" viewBox="0 0 22 22">
+            <g>
+              <path d="M20,7.4v10.5c0,1.7-1.3,3-3,3H5.9c0,1.1,0.9,2,2,2H18c2.2,0,4-1.8,4-4V9.4C22,8.3,21.1,7.4,20,7.4z">
+              </path>
+              <g>
+                <path
+                  d="M5,1.1v2H4c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2h12.2c1.1,0,2-0.9,2-2v-12c0-1.1-0.9-2-2-2h-1v-2h-2v2H7v-2    C7,1.1,5,1.1,5,1.1z M4,8.1h12.2v9H4V8.1z">
+                </path>
+                <path
+                  d="M13.7,16.3l-2.4-1.4L9,16.3l0.6-2.7l-2.1-1.8l2.8-0.2L11.4,9l1.1,2.5l2.8,0.3l-2.1,1.8L13.7,16.3z">
+                </path>
+              </g>
+            </g>
+            <rect width="24" height="24" style="fill:none"></rect>
+          </svg>
+        </button>
         <button id="loginButton" type="button" class="unselectable" data-i18n="[html]account.login">Login</button>
         <button id="logoutButton" type="button" class="unselectable" data-i18n="[html]account.logout">Logout</button>
       </div>
@@ -413,7 +431,7 @@
           </div>
           <div id="chatInputContainer" style="display: none">
             <form action="javascript:chatInputActionFired()">
-              <input id="chatInput" type="text" autocomplete="off" maxlength="150" disabled="true" />
+              <input id="chatInput" data-ynomoji="true" type="text" autocomplete="off" maxlength="150" disabled="true" />
               <div id="globalChatInputOverlay"></div>
               <div id="chatBorder"></div>
             </form>
@@ -1371,6 +1389,176 @@
           </div>
           <div class="modalContent">
             <ul class="formControls"></ul>
+          </div>
+        </div>
+        <div id="schedulesModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.schedule.title">Events</h1>
+          </div>
+          <div class="modalContent">
+            <div style="width:100%">
+              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.ongoing">Ongoing Events</div>
+              <div id="ongoingSchedules" class="scheduleContainer"></div>
+            </div>
+            <div style="width:100%">
+              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.party">Party Events</div>
+              <div id="partySchedules" class="scheduleContainer"></div>
+            </div>
+            <div style="width:100%">
+              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.future">Future Events</div>
+              <div id="futureSchedules" class="scheduleContainer"></div>
+            </div>
+            <div id="emptySchedules" class="hidden" data-i18n="[html]modal.schedule.noResults">
+              No events have been scheduled.
+            </div>
+          </div>
+          <template id="scheduleTemplate">
+            <div class="listEntry schedule">
+              <div class="listEntryMain">
+                <strong class="nameMarker eventName" data-role="name">
+                  <svg width="16" height="16" class="icon fillIcon hidden" data-role="partyIcon">
+                    <path d="m9 4a1 1 90 0 0 0 5 1 1 90 0 0 0 -5m-4 13c0-5 1-7 4-7s4 2 4 7q-4 2-8 0m0-17a1 1 90 0 0 0 5 1 1 90 0 0 0 -5m-4 13c0-5 1-7 4-7 0.375 0 0.5 0 1.25 0.125-0.25 1.625 1.25 3.125 2.5 3.125q0.125 0.25 0.125 0.5c-1.75 0-3.625 1-3.875 4.125q-2.375 0-4-0.875m12-13a1 1 90 0 1 0 5 1 1 90 0 1 0 -5m4 13c0-5-1-7-4-7-0.375 0-0.5 0-1.25 0.125 0.25 1.625-1.25 3.125-2.5 3.125q-0.125 0.25-0.125 0.5c1.75 0 3.625 1 3.875 4.125q2.375 0 4-0.875"></path>
+                  </svg>
+                </strong>
+                <div class="themeText scheduleHeader">
+                  <button data-role="edit" class="icon iconButton fillIcon unselectable hidden" style="padding-inline-end: 12px;">
+                    <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m12.25 3h-8.25q-2 0-2 2v10q0 2 2 2h10q2 0 2-2v-7.75l-2 2.25v3.5c0 2 0 2-2 2h-6c-2 0-2 0-2-2v-6c0-2 0-2 2-2h4.5l1.75-2m3.75-2l-7 8-1 3 3-1 7-8q0-2-2-2m-0.875 1l2 2-0.8125 0.9375-2-2m-5.3125 6.0625l2 2m-2.75 0.25l0.5 0.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </button>
+                  <div data-role="cancel" class="deleteIcon icon iconButton hidden" style="padding-inline-end: 12px">
+                    <svg viewBox="0 0 18 18" width="24" height="24"><path d="m3.5 2h11q2 0 2 3h-15q0-3 2-3m4-2h2q2 0 2 2h-5q0-2 2-2m-5.5 5 1 13h10l1-13m-8.5 11-0.5-9m3 9v-9m2.5 9 0.5-9"></path></svg>
+                  </div>
+                  <div class="likeContainer" style=" display: flex; align-items: center;">
+                    <div class="likeIcon icon iconButton toggleButton altToggleButton" data-role="follow">
+                      <svg viewBox="0 0 18 18" width="24" height="24">
+                        <path
+                          d="m16.65 2c-1.875-2.025-4.875-1.95-6.825 0.075l-0.825 0.975-0.825-0.975c-1.95-2.025-4.95-2.1-6.75-0.075h-0.075c-1.8 1.95-1.8 5.25 0.15 7.275l4.05 4.425 3.45 3.675 3.3-3.6 4.2-4.5c1.95-2.025 1.95-5.325 0.15-7.275z">
+                        </path>
+                      </svg>
+                    </div>
+                    <span class="infoLabel likeCount unselectable" data-role="followerCount" style=" margin-inline-start: 8px; font-size: 1.2em; "></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scheduleDescription">
+                <span class="themeText" data-role="description">
+                </span>
+              </div>
+
+              <div style="padding-bottom: 4px; font-size: 0.9em;" data-role="links">
+              </div>
+
+              <div style="justify-content: space-between; width: 100%; font-size: 0.9em;" class="listEntryMain themeText">
+                <div data-role="organizer" style="display:inline-flex; white-space:nowrap"></div>
+                <div data-role="datetime">
+                </div>
+              </div>
+            </div>
+          </template>
+          <div class="modalFooter">
+            <button id="createSchedule" type="button" class="unselectable" onclick="openScheduleEditModal()" data-i18n="[html]modal.schedule.doSchedule">Schedule an Event</button>
+          </div>
+        </div>
+        <div id="scheduleEditModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.scheduleEdit.title">Edit Event</h1>
+          </div>
+          <div class="modalContent">
+            <ul class="formControls" style="width:100%">
+              <form id="scheduleForm" action="javascript:void(0)">
+                <li class="formControlRow fullWidth">
+                  <div class="textareaContainer">
+                    <label for="name" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.name">Event Name</label>
+                    <input type="text" name="name" class="autoExpand" maxlength="255" required>
+                  </div>
+                </li>
+                <li class="formControlRow fullWidth">
+                  <div class="textareaContainer">
+                    <label for="description" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.description">Description</label>
+                    <textarea id="editScheduleDescription" data-ynomoji="expandDown" name="description" type="text" class="autoExpand" maxlength="1000" data-i18n="[placeholder]placeholders.scheduleDescription" placeholder="Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"></textarea>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label for="datetime" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.datetime">Event Date and Time</label>
+                  <div>
+                    <input name="datetime" type="datetime-local" name="eventStart" required>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.recurring">Recurring Event</label>
+                  <div>
+                    <button id="eventRecurring" class="checkboxButton unselectable" type="button">
+                      <span></span>
+                    </button>
+                  </div>
+                </li>
+                <li id="eventInterval" class="formControlRow indent">
+                  <label for="interval" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.interval.title">Interval</label>
+                  <div><input name="interval" type="number" min="1" value="1">
+                    <select name="intervalType">
+                      <option value="days" data-i18n="[html]modal.scheduleEdit.fields.interval.days">days</option>
+                      <option value="months" data-i18n="[html]modal.scheduleEdit.fields.interval.months">months</option>
+                      <option value="years" data-i18n="[html]modal.scheduleEdit.fields.interval.years">years</option>
+                    </select>
+                  </div>
+                </li>
+                <li id="restrictPartyRow" class="formControlRow">
+                  <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.restrictParty">Limit to Party</label>
+                  <div>
+                    <button id="restrictParty" class="checkboxButton unselectable" type="button">
+                      <span></span>
+                    </button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.title">External Links</label>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="discord" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.discord">Discord</label>
+                  <div>
+                    <input name="discord" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="youtube" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.youtube">YouTube</label>
+                  <div>
+                    <input name="youtube" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="twitch" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.twitch">Twitch</label>
+                  <div>
+                    <input name="twitch" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="niconico" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.niconico">Nicovideo</label>
+                  <div>
+                    <input name="niconico" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="openrec" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.openrec">Openrec</label>
+                  <div>
+                    <input name="openrec" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow indent">
+                  <label for="bilibili" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.platforms.bilibili">Bilibili</label>
+                  <div>
+                    <input name="bilibili" type="text" data-platform>
+                  </div>
+                </li>
+                <li class="formControlRow buttonRow fullWidth">
+                  <button type="submit" data-i18n="[html]modal.scheduleEdit.save">Save</button>
+                  <button type="button" id="cancelSchedule" data-i18n="[html]modal.scheduleEdit.cancel">Cancel Event</button>
+                </li>
+              </form>
+            </ul>
           </div>
         </div>
         <?php if ($enableBadgeTools): ?>

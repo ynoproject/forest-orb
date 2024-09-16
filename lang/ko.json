@@ -462,6 +462,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "Events",
+        "ongoing": "Ongoing Events",
+        "party": "Party Events",
+        "future": "Future Events",
+        "noResults": "No events have been scheduled.",
+        "doSchedule": "Schedule an Event"
+      },
+      "scheduleEdit": {
+        "title": "Edit Event",
+        "save": "Save",
+        "cancel": "Cancel Event",
+        "fields": {
+          "name": "Event Name",
+          "description": "Description",
+          "datetime": "Event Date and Time",
+          "recurring": "Recurring Event",
+          "interval": {
+            "title": "Interval",
+            "days": "days",
+            "months": "months",
+            "years": "years"
+          },
+          "restrictParty": "Limit to Party",
+          "platforms": {
+            "title": "External Links",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "Nicovideo",
+            "openrec": "Openrec",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "규칙",
         "rule1": "상대방에게 공손하고 예의 바르게 행동해 주십시오.",
@@ -502,10 +537,14 @@
       "locations": "Locations",
       "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
+      "schedules": "Events",
       "nexus": "넥서스로 돌아가기",
       "explorerUndiscoveredLocations": "미발견 장소 보기",
       "timeTrial": "Time Trial Mode는 새 게임을 시작한 직후, 쉬프트와 오른쪽 방향키를 동시에 누르고 있으면 활성화됩니다.",
       "mobileControlsType": "컨트롤러 타입을 기본으로 변경합니다. <br>이외의 타입은 모바일 전체 화면에서만 이용할 수 있습니다."
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "규칙 다시 보기"
   },
@@ -993,6 +1032,18 @@
       "delete": {
         "tooltip": "스크린샷 삭제",
         "confirm": "정말 이 스크린샷을 삭제하시겠습니까?"
+      }
+    },
+    "schedules": {
+      "organizer": "Organized by&nbsp;{NAME}",
+      "invalidPlatformLink": "Platform must have a valid URL",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "Nicovideo",
+        "openrec": "Openrec",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {
