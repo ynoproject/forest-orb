@@ -940,6 +940,14 @@
         "panerabbit": "PANErabbit"
       }
     },
+    "locations": {
+     "track": {
+        "tooltip": {
+          "on": "Track Location",
+          "off": "Untrack Location"
+        }
+      }
+    },
     "screenshots": {
       "playerScreenshot": "{USER}のスクリーンショット",
       "limit": "{LIMIT}枚中{COUNT}枚のスロットを使用中",

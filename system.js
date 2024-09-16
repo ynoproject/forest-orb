@@ -579,7 +579,7 @@ let applyThemeStyles;
       background-image: var(--alt-gradient-b{THEME_PROP});
     }
     
-    .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div, .screenshotItem.theme{THEME} > .screenshotThumbnailContainer {
+    .itemContainer .badgeItem.theme{THEME} > .badgeContainer > div, .imageItem.theme{THEME} > .imageThumbnailContainer {
       border-image-source: var(--border-image-url{THEME_PROP}) !important;
     }
     

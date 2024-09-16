@@ -566,7 +566,7 @@
         "16": "死路",
         "32": "被隔断的区域",
         "64": "需要效果 ({PARAMS})",
-        "128": "有 {PARAMS}% 概率放行",
+        "128": "有 {PARAMS} 概率放行",
         "256": "{PARAMS}",
         "512": "捷径点",
         "1024": "折返点",
@@ -938,6 +938,14 @@
         "ta_be": "TA_BE_",
         "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
         "panerabbit": "PANErabbit"
+      }
+    },
+    "locations": {
+     "track": {
+        "tooltip": {
+          "on": "Track Location",
+          "off": "Untrack Location"
+        }
       }
     },
     "screenshots": {

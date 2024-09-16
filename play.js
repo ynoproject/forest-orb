@@ -1138,6 +1138,7 @@ document.getElementById('blocklistButton').onclick = function () {
 
 initAccountControls();
 initSaveSyncControls();
+initLocationControls();
 initBadgeControls();
 initSaveDataControls();
 initPartyControls();
