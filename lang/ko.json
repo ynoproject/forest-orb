@@ -491,6 +491,7 @@
         "disbandParty": "파티 해산"
       },
       "events": "탐험",
+      "locations": "Locations",
       "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
       "nexus": "넥서스로 돌아가기",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

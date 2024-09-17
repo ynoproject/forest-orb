@@ -305,67 +305,13 @@ function updateMyScreenshotsModalHeader(screenshotCount) {
   document.getElementById('myScreenshotsEmptyLabel').classList.toggle('hidden', !!screenshotCount);
 }
 
-// Filter Screenshots - Helper functions
-function elementExists(id) {
-  return document.getElementById(id) !== null;
-}
-
-function createInputElement(type, id, placeholder, checked = false) {
-  const input = document.createElement('input');
-  input.type = type;
-  input.id = id;
-  input.placeholder = placeholder;
-  input.checked = checked;
-  input.addEventListener('change', handleFilterInputs);
-  return input;
-}
-
-function createCheckbox(id, labelText, checked = false) {
-  const label = document.createElement('label');
-  const input = createInputElement('checkbox', id, null, checked);
-  label.appendChild(input);
-  label.appendChild(document.createTextNode(labelText));
-  return label;
-}
-
-// Filter Screenshots - When filter changes:
-function handleFilterInputs(event) {
-  setTimeout(function() {
-    initScreenshotsModal(true);
-  }, 250);
-}
-
-// Filter Screenshots - Main Function
-function addFilterInputs() {
-  // Check if inputs already exist
-  if (elementExists('filterInput') && elementExists('usernameInput') && elementExists('mapnameInput')) return;
-
-  const container = document.getElementById('communityScreenshotsControls');
-
-  const filterInput = createInputElement('text', 'filterInput', 'Filter...');
-  filterInput.style = "margin-left:10px"
-  container.appendChild(filterInput);
-
-  const checkboxContainer = document.createElement('div');
-  checkboxContainer.style = "margin-top:5px";
-
-  checkboxContainer.appendChild(createCheckbox('usernameInput', ' User Name', true));
-  checkboxContainer.appendChild(document.createElement('br'));
-
-  checkboxContainer.appendChild(createCheckbox('mapnameInput', ' Map Name', true));
-
-  if (checkboxContainer.children.length > 0) {
-    container.appendChild(checkboxContainer);
-  }
-}
-
 function initScreenshotsModal(isCommunity) {
   const screenshotsModal = document.getElementById(isCommunity ? 'communityScreenshotsModal' : 'myScreenshotsModal');
   const scrollToRefreshIndicator = isCommunity ? screenshotsModal.querySelector('.infiniteScrollRefreshIndicator') : null;
   const screenshotItemsList = screenshotsModal.querySelector('.itemContainer');
   screenshotItemsList.innerHTML = '';
   if (isCommunity) {
-    addFilterInputs();
+    addFilterInputs('communityScreenshots', () => initScreenshotsModal(true), { id: 'communityScreenshotsUsernameInput', label: 'User Name' }, { id: 'communityScreenshotsMapnameInput', label: 'Map Name' });
     scrollToRefreshIndicator.classList.add('transparent');
     screenshotItemsList.classList.remove('scrollToRefresh');
     screenshotItemsList.classList.remove('end');
@@ -505,22 +451,19 @@ function initScreenshotsModal(isCommunity) {
       }
 
       // Filter Screenshots -  filter by text
-      let textFilter = document.getElementById('filterInput')?.value;
+      let textFilter = document.getElementById('communityScreenshotsFilterInput')?.value;
 
-      if (!isCommunity || textFilter == "") {
+      if (!isCommunity || textFilter === '')
         screenshotItemsList.append(screenshotItem);
-      } else {
+      else {
         textFilter = textFilter.toLowerCase();
 
         // Filter Screenshots -  Check if location and filter matches
-        if (document.getElementById('mapnameInput').checked && (screenshotItem.getElementsByClassName("screenshotLocation")[0]?.innerText.toLowerCase().includes(textFilter))) {
+        if (document.getElementById('communityScreenshotsMapnameInput').checked && (screenshotItem.getElementsByClassName("screenshotLocation")[0]?.innerText.toLowerCase().includes(textFilter)))
           screenshotItemsList.append(screenshotItem);
-        }
-
         // Filter Screenshots -  Check if username and filter matches
-        if (document.getElementById('usernameInput').checked && (screenshotItem.getElementsByClassName("nameText")[0]?.innerText.toLowerCase().includes(textFilter))) {
+        else if (document.getElementById('communityScreenshotsUsernameInput').checked && (screenshotItem.getElementsByClassName("nameText")[0]?.innerText.toLowerCase().includes(textFilter)))
           screenshotItemsList.append(screenshotItem);
-        }
       }
 
       initUiThemeContainerStyles(screenshotSystemName, screenshot.game, false, () => {
@@ -559,12 +502,15 @@ function initScreenshotsModal(isCommunity) {
       infiniteScroll: true,
       infiniteOffset: 32,
       debounce: true,
-      scrollDebounce: 25,
-      resizeDebounce: 25,
+      scrollDebounce: 125,
+      resizeDebounce: 125,
       watchOffsetYTop: 250,
       watchOffsetYBottom: 250,
       onElementInView: e => e.el.classList.remove('hideContents'),
-      onElementOutOfView: e => e.el.classList.add('hideContents'),
+      onElementOutOfView: e => {
+        e.el.classList.add('hideContents');
+        e.el.style.containIntrinsicHeight = `${e.el.offsetHeight}px`;
+      },
       onInfiniteYInView: () => {
         const query = getFeedQuery(offset, chunkSize + limitOffset, offsetId);
         offset += chunkSize + limitOffset;

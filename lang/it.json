@@ -491,6 +491,7 @@
         "disbandParty": "Elimina Gruppo"
       },
       "events": "Spedizioni",
+      "locations": "Locations",
       "communityScreenshots": "Community Screenshots",
       "rankings": "Classifiche",
       "nexus": "Ritorna al Nexus",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
