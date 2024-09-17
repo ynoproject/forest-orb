@@ -115,8 +115,9 @@ function initLocationsModal() {
       if (author)
         author.innerHTML = getMassagedLabel(localizedMessages.locations.author.replace('{AUTHOR}', `<label class="unselectable">${location.primaryAuthor}</label>`));
 
-      const versionAdded = document.createElement('div');
-      versionAdded.innerHTML = getMassagedLabel(localizedMessages.locations.versionAdded.replace('{VERSION}', `<label class="unselectable">${getLocalizedVersion(location.versionAdded?.replace('patch', 'Patch'))}</label>`));
+      const versionAdded = location.versionAdded ? document.createElement('div') : null;
+      if (versionAdded)
+        versionAdded.innerHTML = getMassagedLabel(localizedMessages.locations.versionAdded.replace('{VERSION}', `<label class="unselectable">${getLocalizedVersion(location.versionAdded.replace('patch', 'Patch'))}</label>`));
 
       const versionUpdated = location.versionsUpdated?.length ? document.createElement('div') : null;
       if (versionUpdated) {
@@ -136,7 +137,8 @@ function initLocationsModal() {
       locationItem.append(locationName);
       if (author)
         locationItem.append(author);
-      locationItem.append(versionAdded);
+      if (versionAdded)
+        locationItem.append(versionAdded);
       if (versionUpdated)
         locationItem.append(versionUpdated);
 
