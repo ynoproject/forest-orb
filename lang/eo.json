@@ -949,6 +949,14 @@
           "on": "Track Location",
           "off": "Untrack Location"
         }
+      },
+      "sortOrder": {
+        "values": {
+          "newest": "Newest",
+          "oldest": "Oldest",
+          "alpha": "Alphabetical",
+          "players": "Player Count"
+        }
       }
     },
     "screenshots": {

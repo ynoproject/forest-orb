@@ -520,12 +520,12 @@ body {
   margin-top: -64px;
 }
 
-.imageControls .iconButton {
+.imageControls .icon {
   width: 24px;
   margin: 2px 0 -2px 0;
 }
 
-.screenshot + .imageControls .iconButton {
+.screenshot + .imageControls .icon {
   width: 36px;
 }
 
@@ -538,18 +538,22 @@ body {
   content-visibility: hidden;
 }
 
-.imageControls .likeContainer {
+.imageControls .likeContainer, .imageControls .playerCountContainer {
   display: flex;
   align-items: center;
 }
 
-.imageControls .likeContainer > .likeCount {
+.imageControls .likeContainer > .likeCount, .imageControls .playerCountContainer > .playerCount {
   margin-inline-start: 8px;
   font-size: large;
   font-weight: bold;
 }
 
-.screenshot + .imageControls .likeContainer > .likeCount {
+.imageControls .playerCountContainer > .playerCount {
+  margin-inline-start: 0;
+}
+
+.screenshot + .imageControls .likeContainer > .likeCount, .screenshot + .imageControls .playerCountContainer > .playerCount {
   font-size: x-large;
 }
 

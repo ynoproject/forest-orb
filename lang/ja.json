@@ -950,6 +950,14 @@
           "on": "場所を追跡する",
           "off": "場所の追跡を止める"
         }
+      },
+      "sortOrder": {
+        "values": {
+          "newest": "Newest",
+          "oldest": "Oldest",
+          "alpha": "Alphabetical",
+          "players": "Player Count"
+        }
       }
     },
     "screenshots": {

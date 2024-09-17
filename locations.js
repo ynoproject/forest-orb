@@ -61,7 +61,7 @@ function compareVersionNames(v1, v2) {
   return 0;
 }
 
-function getVersionSortFunction(getVersion, versionNames) {
+function getVersionSortFunction(getVersion, versionNames, reverse) {
   return function (o1, o2) {
     const v1 = getVersion(o1);
     const v2 = getVersion(o2);
@@ -72,7 +72,10 @@ function getVersionSortFunction(getVersion, versionNames) {
     if (v1Index === v2Index)
       return 0;
 
-    return v2Index > -1 ? v1Index > -1 ? v1Index < v2Index ? -1 : 1 : -1 : 1;
+    let ret = v2Index > -1 ? v1Index > -1 ? v1Index < v2Index ? -1 : 1 : -1 : 1;
+    if (reverse)
+      ret *= -1;
+    return ret;
   };
 }
 
@@ -91,6 +94,7 @@ function initLocationsModal() {
     for (let location of locations) {
       const locationItem = document.createElement('div');
       locationItem.classList.add('locationItem', 'imageItem', 'item', 'hideContents');
+      locationItem.dataset.locationId = location.id;
 
       const locationThumbnailContainer = document.createElement('div');
       locationThumbnailContainer.classList.add('locationThumbnailContainer', 'imageThumbnailContainer');
@@ -162,13 +166,72 @@ function initLocationsModal() {
   };
 
   const getLocationsChunk = (offset, limit) => {
-    const sortedLocations = locationsData
+    let locations = locationsData;
+    let sortFunction = () => 0;
+    switch (locationsSortOrder) {
+      case 'newest':
+      case 'oldest':
+        sortFunction = getVersionSortFunction(l => l.versionAdded, locationVersionNames, locationsSortOrder === 'oldest');
+        break;
+      case 'players':
+        sortFunction = getLocationsPlayerCountSortFunction(locationPlayerCounts, l => l.id);
+        break;
+    }
+    const sortedLocations = locations
       .filter(l => !l.secret || visitedLocationIds.includes(l.id))
-      .sort(locationsSortOrder === 'recent' ? getVersionSortFunction(l => l.versionAdded, locationVersionNames) : () => 0);
+      .sort(sortFunction);
     return sortedLocations.slice(offset, offset + limit);
   };
 
   let offset = 0;
+
+  const addNextItems = () => {
+    let contentWidth = window.innerWidth - 112 - 18;
+    let itemsPerRow = Math.floor(contentWidth / 220);
+    let chunkSize = itemsPerRow * Math.ceil(locationItemsList.offsetHeight / 224);
+
+    const locations = getLocationsChunk(offset, chunkSize);
+    offset += chunkSize;
+
+    removeLoader(locationsModal);
+    if (locations?.length) {
+      addLocations(locations);
+      locationsScrollWatch.refresh();
+    } else {
+      locationsScrollWatch.pauseInfiniteScroll();
+      locationItemsList.classList.add('end');
+    }
+  };
+
+  let locationPlayerCounts = null;
+  let locationPlayerCountsRecentlyUpdated = false;
+  let locationsPlayerCountTimer = null;
+
+  const fetchAndUpdateLocationPlayerCounts = firstLoad => {
+    const locationsModal = document.getElementById('locationsModal');
+    if (!firstLoad && locationsModal.classList.contains('hidden')) {
+      clearInterval(locationsPlayerCountTimer);
+      return;
+    }
+    sendSessionCommand('lp', [], args => {
+      locationPlayerCounts = args[0] ? JSON.parse(args[0]) : {};
+      if (firstLoad)
+        locationsPlayerCountTimer = setInterval(fetchAndUpdateLocationPlayerCounts, 30000);
+      updateLocationPlayerCounts(locationPlayerCounts);
+      if (locationsSortOrder === 'players') {
+        if (firstLoad)
+          addNextItems();
+        else {
+          const container = locationsModal.querySelector('.itemContainer');
+          const items = Array.from(container.children);
+          items.sort(getLocationsPlayerCountSortFunction(locationPlayerCounts, item => item.dataset.locationId));
+          items.forEach(item => container.appendChild(item));
+          locationsScrollWatch.refresh();
+        }
+      }
+    });
+  };
+  fetchAndUpdateLocationPlayerCounts(true);
 
   if (locationsScrollWatch)
     locationsScrollWatch.destroy();
@@ -180,29 +243,23 @@ function initLocationsModal() {
     infiniteOffset: 32,
     watchOffsetYTop: 250,
     watchOffsetYBottom: 250,
-    onElementInView: e => e.el.classList.remove('hideContents'),
+    onElementInView: e => {
+      e.el.classList.remove('hideContents');
+      if (locationPlayerCounts && !locationPlayerCountsRecentlyUpdated) {
+        locationPlayerCountsRecentlyUpdated = true;
+        setTimeout(() => {
+          updateLocationPlayerCounts(locationPlayerCounts);
+          locationPlayerCountsRecentlyUpdated = false;
+        }, 100);
+      }
+    },
     onElementOutOfView: e => {
       e.el.classList.add('hideContents');
       e.el.style.containIntrinsicHeight = `${e.el.offsetHeight}px`;
     },
     onInfiniteYInView: () => {
-      window.setTimeout(() => {
-        let contentWidth = window.innerWidth - 112 - 18;
-        let itemsPerRow = Math.floor(contentWidth / 220);
-        let chunkSize = itemsPerRow * Math.ceil(locationItemsList.offsetHeight / 224);
-
-        const locations = getLocationsChunk(offset, chunkSize);
-        offset += chunkSize;
-
-        removeLoader(locationsModal);
-        if (locations?.length) {
-          addLocations(locations);
-          locationsScrollWatch.refresh();
-        } else {
-          locationsScrollWatch.pauseInfiniteScroll();
-          locationItemsList.classList.add('end');
-        }
-      }, 10);
+      if (locationPlayerCounts || locationsSortOrder !== 'players')
+        window.setTimeout(addNextItems, 10);
     }
   });
 
@@ -241,7 +298,44 @@ function getLocationControls(location) {
     locationControls.append(trackButton);
   }
 
+  const playerCountContainer = document.createElement('div');
+  playerCountContainer.classList.add('playerCountContainer');
+
+  const playerCountIcon = getSvgIcon('player');
+
+  playerCountContainer.append(playerCountIcon);
+  locationControls.append(playerCountContainer);
+
+  playerCountIcon.insertAdjacentHTML('beforebegin', getInfoLabel(0));
+
+  const playerCountLabel = playerCountContainer.querySelector('.infoLabel');
+  playerCountLabel.classList.add('playerCount', 'unselectable');
+
   return locationControls;
+}
+
+function getLocationsPlayerCountSortFunction(locationPlayerCounts, getId) {
+  return function (o1, o2) {
+    const pc1 = locationPlayerCounts[getId(o1)] || 0;
+    const pc2 = locationPlayerCounts[getId(o2)] || 0;
+
+    if (pc1 < pc2)
+      return 1;
+    if (pc2 < pc1)
+      return -1;
+    return 0;
+  };
+}
+
+function updateLocationPlayerCounts(locationPlayerCounts) {
+  Array.from(document.querySelectorAll('.locationItem:not(.hideContents)')).map(item => updateLocationPlayerCount(item, locationPlayerCounts));
+}
+
+function updateLocationPlayerCount(locationItem, locationPlayerCounts) {
+  const locationId = locationItem.dataset.locationId;
+  locationItem.querySelector('.playerCount').innerText = locationPlayerCounts.hasOwnProperty(locationId)
+    ? locationPlayerCounts[locationId]
+    : 0;
 }
 
 (function () {
@@ -251,6 +345,7 @@ function getLocationControls(location) {
         visitedLocationIds.push(id);
     });
   });
+  addSessionCommandHandler('lp');
   if (gameId === '2kki')
     addSessionCommandHandler('nl', args => {
       const locationNames = [];

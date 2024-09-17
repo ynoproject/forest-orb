@@ -1243,8 +1243,10 @@
               <div class="uiControl">
                 <span></span>
                 <select id="locationsSortOrder">
-                  <option value="recent" data-i18n="[html]modal.locations.fields.sortOrder.values.recent">Newest</option>
-                  <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.likes">Alphabetical</option>
+                  <option value="newest" data-i18n="[html]modal.locations.fields.sortOrder.values.newest">Newest</option>
+                  <option value="oldest" data-i18n="[html]modal.locations.fields.sortOrder.values.oldest">Oldest</option>
+                  <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.alphabetical">Alphabetical</option>
+                  <option value="players" data-i18n="[html]modal.locations.fields.sortOrder.values.players">Player Count</option>
                 </select>
               </div>
             </div>
