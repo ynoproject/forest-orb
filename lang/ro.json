@@ -491,6 +491,7 @@
         "disbandParty": "Desființează Grupul"
       },
       "events": "Expediții",
+      "locations": "Locations",
       "communityScreenshots": "Community Screenshots",
       "rankings": "Ranguri",
       "nexus": "Întoarce-te la Nexus",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

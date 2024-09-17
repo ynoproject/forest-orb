@@ -491,6 +491,7 @@
         "disbandParty": "解散队伍"
       },
       "events": "梦远征",
+      "locations": "Locations",
       "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
       "nexus": "返回到门世界",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

@@ -491,6 +491,7 @@
         "disbandParty": "Desfazer Party"
       },
       "events": "Expedições",
+      "locations": "Locations",
       "communityScreenshots": "Capturas de Tela da Comunidade",
       "rankings": "Placares",
       "nexus": "Voltar para o Nexus",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

@@ -491,6 +491,7 @@
         "disbandParty": "تفكيك الحفلة"
       },
       "events": "الرحلات الاستكشافية",
+      "locations": "Locations",
       "communityScreenshots": "لقطات الشاشة للجميع",
       "rankings": "المراتب",
       "nexus": "الرجوع إلى النكسس",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

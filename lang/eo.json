@@ -490,6 +490,7 @@
         "disbandParty": "Disigi Grupon"
       },
       "events": "Ekspedicioj",
+      "locations": "Locations",
       "communityScreenshots": "Komunumaj Ekrankopioj",
       "rankings": "Rangolisto",
       "nexus": "Reen al la Pordejo",
@@ -940,7 +941,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

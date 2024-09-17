@@ -181,6 +181,7 @@ input.slider::-moz-range-thumb {
 button.checkboxButton, button[type="button"], button[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
+  appearance: button;
 }
 
 button[type="button"]:disabled {
@@ -381,7 +382,7 @@ body {
   stroke: var(--svg-alt-gradient);
 }
 
-.iconButton.transparentToggleButton.toggled path:first-child {
+.iconButton.transparentToggleButton.toggled path:first-child, .iconButton.fadeToggleButton:not(.toggled) path:first-child {
   opacity: 0.5;
 }
 
@@ -2247,6 +2248,11 @@ html[dir="rtl"] #chatBorder {
 .modalContent .itemCategoryHeader {
   width: 100%;
   text-align: center;
+}
+
+.modalHeader .filterInputCheckboxContainer {
+  margin-top: 5px;
+  text-align: left;
 }
 
 #header.fullBg, .modal.fullBg {

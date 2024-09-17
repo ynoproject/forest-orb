@@ -214,7 +214,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
           trackContainer.classList.add('eventLocationTrackContainer');
 
           const trackButton = document.createElement('button');
-          trackButton.classList.add('eventLocationTrackButton', 'icon', 'iconButton', 'fillIcon', 'altToggleButton');
+          trackButton.classList.add('eventLocationTrackButton', 'icon', 'iconButton', 'fillIcon', 'fadeToggleButton', 'altToggleButton');
           trackButton.innerHTML = '<svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="28" height="28"><path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18m0 2a1 1 0 0 1 0 14 1 1 0 0 1 0-14m4 11-2-6-6-2 2 6 6 2m-4-5a1 1 0 0 1 0 2 1 1 0 0 1 0-2"></path></svg>';
 
           trackButton.onclick = function () {
@@ -423,15 +423,4 @@ function showEventsToastMessage(key, icon, location, exp) {
   addSessionCommandHandler('eexp', args => onUpdatePlayerExp(JSON.parse(args[0])));
   addSessionCommandHandler('eec');
   addSessionCommandHandler('vm', args => onClaimEventVmPoints(parseInt(args[0])));
-  if (gameId === '2kki')
-    addSessionCommandHandler('nl', args => {
-      const locationNames = [];
-      const locations = JSON.parse(args).filter(l => {
-        if (locationNames.includes(l.title))
-          return false;
-        locationNames.push(l.title);
-        return true;
-      });
-      updateNextLocations(locations);
-    })
 })();

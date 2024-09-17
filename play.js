@@ -202,6 +202,7 @@ function fetchAndUpdatePlayerInfo() {
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         screenshotLimit = jsonResponse.screenshotLimit || 10;
+        visitedLocationIds = jsonResponse.locationIds;
         updateBlocklist(false);
         const updateParty = () => {
           if (document.querySelector('#chatboxTabParties.active'))
@@ -1635,7 +1636,7 @@ function initLocalization(isInitial) {
         const versionElement = document.querySelector('.version');
         const versionMeta = document.querySelector(`meta[name="${gameId}Version"]`);
         if (versionElement && versionMeta)
-          versionElement.innerHTML = getMassagedLabel(getLocalizedVersion(versionMeta.content));
+          versionElement.innerHTML = getMassagedLabel(localizedVersion.label.replace('{VERSION}', getLocalizedVersion(versionMeta.content)));
       }
 
       massageLabels(jsonResponse.ui);
@@ -1728,7 +1729,7 @@ function initLocalization(isInitial) {
 
 function getLocalizedVersion(versionText) {
   const substituteKeys = Object.keys(localizedVersion.substitutes);
-  let versionLabel = localizedVersion.label.replace('{VERSION}', versionText || '?');
+  let versionLabel = versionText || '?';
   for (let sk of substituteKeys)
     versionLabel = versionLabel.replace(sk, localizedVersion.substitutes[sk]);
   return versionLabel;
@@ -2223,6 +2224,57 @@ function insertYnomoji(ynomojiId) {
   else
     chatInput.value += `:${ynomojiId}:`;
   chatInput.oninput();
+}
+
+function createInputElement(type, id, placeholder, onUpdate, checked = false, ...classes) {
+  const input = document.createElement('input');
+  input.type = type;
+  input.id = id;
+  if (classes.length)
+    input.className = classes.join(' ');
+  input.placeholder = placeholder;
+  input.checked = checked;
+  input.addEventListener('change', () => handleFilterInputs(onUpdate));
+  return input;
+}
+
+function createCheckbox(id, labelText, onUpdate, checked = false, ...classes) {
+  const label = document.createElement('label');
+  const input = createInputElement('checkbox', id, null, onUpdate, checked, ...classes);
+  label.appendChild(input);
+  label.appendChild(document.createTextNode(labelText));
+  return label;
+}
+
+function handleFilterInputs(modalInitFunc) {
+  setTimeout(modalInitFunc, 250);
+}
+
+function addFilterInputs(modalPrefix, modalInitFunc, ...checkboxes) {
+  const modal = document.getElementById(`${modalPrefix}Modal`);
+
+  if (modal.querySelector('.filterInput'))
+    return;
+
+  const container = document.getElementById(`${modalPrefix}Controls`);
+
+  const filterInput = createInputElement('text', `${modalPrefix}FilterInput`, 'Filter...', modalInitFunc, undefined, 'filterInput');
+  filterInput.style = "margin-left: 10px";
+  container.appendChild(filterInput);
+
+  const checkboxContainer = document.createElement('div');
+  checkboxContainer.classList.add('filterInputCheckboxContainer');
+
+  for (let c = 0; c < checkboxes.length; c++) {
+    const checkboxInfo = checkboxes[c];
+
+    if (c)
+      checkboxContainer.appendChild(document.createElement('br'));
+    checkboxContainer.appendChild(createCheckbox(checkboxInfo.id, ` ${checkboxInfo.label}`, modalInitFunc, true, `filterInputCheck${c + 1}`));
+  }
+
+  if (checkboxContainer.children.length)
+    container.appendChild(checkboxContainer);
 }
 
 function checkShowVersionUpdate() {

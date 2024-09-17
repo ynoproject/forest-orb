@@ -491,6 +491,7 @@
         "disbandParty": "Partiyi Dağıt"
       },
       "events": "Seyahat",
+      "locations": "Locations",
       "communityScreenshots": "Topluluk Ekran Görüntüleri",
       "rankings": "Sıralamalar",
       "nexus": "Bağlantı Noktası'na Geri Dön",
@@ -941,7 +942,10 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "By {AUTHOR}",
+      "versionAdded": "Added {VERSION}",
+      "versionUpdated": "Updated {VERSION}",
+      "track": {
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"

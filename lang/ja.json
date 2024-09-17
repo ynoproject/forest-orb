@@ -491,6 +491,7 @@
         "disbandParty": "パーティーを解散する"
       },
       "events": "ドリームラリー",
+      "locations": "Locations",
       "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
@@ -941,10 +942,13 @@
       }
     },
     "locations": {
-     "track": {
+      "author": "作成者：{AUTHOR}氏",
+      "versionAdded": "最終追加：{VERSION}",
+      "versionUpdated": "更新：{VERSION}",
+      "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "場所を追跡する",
+          "off": "場所の追跡を止める"
         }
       }
     },

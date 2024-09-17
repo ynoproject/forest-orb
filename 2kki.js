@@ -409,6 +409,60 @@ function get2kkiWikiLocationName(location) {
     return locationName;
 }
 
+const _2kkiVersionPattern = /^(pre\-)?(\d+\.\d+)([a-z])?(?:[0-9])?(?: patch (\d+))?/;
+
+function compare2kkiVersionNames(v1, v2) {
+  if (v1 === v2)
+    return 0;
+
+  const match1 = v1.match(_2kkiVersionPattern);
+  const match2 = v2.match(_2kkiVersionPattern);
+
+  if (match1 != null && match2 != null) {
+    let verNum1 = parseFloat(match1[2]);
+    let verNum2 = parseFloat(match2[2]);
+
+    if (verNum1 === verNum2) {
+      let subVer1 = match1[3];
+      let subVer2 = match2[3];
+
+      if (subVer1 !== undefined && subVer2 !== undefined) {
+        subVer1 = subVer1.toLowerCase();
+        subVer2 = subVer2.toLowerCase();
+        if (subVer1 !== subVer2)
+          return subVer1 < subVer2 ? -1 : 1;
+      } else if (subVer2 != null)
+        return -1;
+      else if (subVer1 != null)
+        return 1;
+
+      let patchVer1 = match1[4];
+      let patchVer2 = match2[4];
+
+      if (patchVer1 !== undefined && patchVer2 !== undefined) {
+        patchVer1 = parseInt(patchVer1);
+        patchVer2 = parseInt(patchVer2);
+        if (patchVer1 !== patchVer2)
+          return patchVer1 < patchVer2 ? -1 : 1;
+      } else if (patchVer2 != null)
+        return -1;
+      else if (patchVer1 != null)
+        return 1;
+  } else
+    return verNum1 < verNum2 ? -1 : 1;
+  if (match1[1] !== undefined) {
+    if (match2[1] === undefined)
+      return -1;
+    } else if (match2[1] !== undefined)
+      return 1;
+  } else if (match2 != null)
+    return -1;
+  else if (match1 != null)
+    return 1;
+  
+  return 0;
+}
+
 const ConnType = {
   ONE_WAY: 1,
   NO_ENTRY: 2,
@@ -610,6 +664,8 @@ function reloadExplorer(trackedLocationNames) {
 (function () {
   if (!is2kki)
     return;
+
+  compareVersionNames = compare2kkiVersionNames;
 
   addSessionCommandHandler('l', locationIds => {
     if (config.trackedLocationId) {
