@@ -373,7 +373,7 @@
       "save": {
         "title": "セーブデータ管理",
         "reload": "変更を保存してリロード",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "セーブをアップロードする際、RPG_RT.exeから起動した翻訳版のゲームからセーブした場合、EasyRPGを使用して翻訳未使用のゲームでセーブし直さないと、エラーが表示されます"
       },
       "uiTheme": {
         "title": "メニュー タイプ",
@@ -480,7 +480,7 @@
       "toggleMute": "消音のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
-        "toggleNextLocation": "次のラーリの場所表示のオン／オフ",
+        "toggleNextLocation": "次のラリーの場所表示のオン／オフ",
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
         "toggleOwnGlobalMessageLocation": "チャットの場所の共有のオン／オフ",
         "toggleMessageTimestamps": "チャットのタイムスタンプ表示のオン／オフ",
@@ -491,13 +491,13 @@
         "disbandParty": "パーティーを解散する"
       },
       "events": "ドリームラリー",
-      "locations": "Locations",
+      "locations": "場所一覧",
       "communityScreenshots": "コミュニティのスクリーンショット",
       "rankings": "ランキング",
       "nexus": "扉部屋へ戻る",
       "explorerUndiscoveredLocations": "未発見の場所を見る",
       "timeTrial": "Time Trial Modeを有効にするには、はじめからを押す時にShiftキーと右キーを押し続けます",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "mobileControlsType": "モバイルコントローラーをデフォルトの方向キーから切り替えられます。<br>浮動コントローラーはモバイルのフルスクリーンの時のみ有効です。"
     },
     "reviewRules": "ルールを見る"
   },
@@ -923,7 +923,7 @@
         },
         "minigame": {
           "label": "ミニゲーム",
-          "valueLabel": "Score",
+          "valueLabel": "点数",
           "value": "{NUMBER}"
         }
       },
