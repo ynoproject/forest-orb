@@ -1728,8 +1728,10 @@ function initLocalization(isInitial) {
 }
 
 function getLocalizedVersion(versionText) {
-  const substituteKeys = Object.keys(localizedVersion.substitutes);
   let versionLabel = versionText || '?';
+  if (gameId !== '2kki')
+    return versionLabel;
+  const substituteKeys = Object.keys(localizedVersion.substitutes);
   for (let sk of substituteKeys)
     versionLabel = versionLabel.replace(sk, localizedVersion.substitutes[sk]);
   return versionLabel;
