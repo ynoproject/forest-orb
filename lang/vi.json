@@ -277,7 +277,7 @@
           "events": {
             "label": "Thám hiểm",
             "fields": {
-              "complete": "Đã hoàn thành chuyến thám hiểm",
+              "complete": "Đã hoàn thành thám hiểm",
               "freeComplete": "Đã hoàn thành thám hiểm tự do",
               "vmComplete": "Đã tìm thấy máy bán hàng",
               "listUpdated": "Đã cập nhật danh sách thám hiểm"
@@ -490,10 +490,10 @@
         "createParty": "Tạo nhóm",
         "disbandParty": "Giải tán nhóm"
       },
-      "events": "Thám Hiểm",
-      "locations": "Locations",
+      "events": "Thám hiểm",
+      "locations": "Địa điểm",
       "communityScreenshots": "Ảnh của cộng đồng",
-      "rankings": "Bảng Xếp hạng",
+      "rankings": "Bảng xếp hạng",
       "nexus": "Quay về Nexus",
       "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
       "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình.",
@@ -803,7 +803,7 @@
         "complete": "Đã hoàn thành chuyến thám hiểm!\nVì đã đến {LOCATION}, bạn nhận được {EXP}.",
         "freeComplete": "Đã hoàn thành chuyến thám hiểm! Bạn đã đến {LOCATION}.",
         "vmComplete": "Đã tìm thấy máy bán hàng!\nBạn nhận được {EXP}.",
-        "listUpdated": "Danh sách chuyến thám hiểm đã được cập nhật."
+        "listUpdated": "Danh sách thám hiểm đã được cập nhật."
       },
       "badges": {
         "badgeUnlocked": "Bạn đã mở khóa huy hiệu mới!"
@@ -831,7 +831,7 @@
       "toggleTracked": "Bật/Tắt Chỉ đường",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
-        "-1": "Tham quan Tự do",
+        "-1": "Tự do",
         "0": "Hàng ngày",
         "1": "Hàng tuần",
         "2": "Cuối tuần",
@@ -942,13 +942,13 @@
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "Tác giả: {AUTHOR}",
+      "versionAdded": "Được thêm vào {VERSION}",
+      "versionUpdated": "Cập nhật lần cuối vào {VERSION}",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "Chỉ đường",
+          "off": "Ngưng chỉ đường"
         }
       },
       "sortOrder": {
