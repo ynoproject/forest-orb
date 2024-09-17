@@ -153,10 +153,10 @@ function initLocationsModal() {
         locationItemsList.append(locationItem);
       else {
         textFilter = textFilter.toLowerCase();
-         // Filter Screenshots -  Check if location and filter matches
+         // Filter Locations -  Check if location and filter matches
         if (document.getElementById('locationsNameInput').checked && locationName.innerText.toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
-        // Filter Screenshots -  Check if author and filter matches
+        // Filter Locations -  Check if author and filter matches
         else if (document.getElementById('locationsAuthorInput').checked && author.innerText.toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
       }

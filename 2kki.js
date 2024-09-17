@@ -627,7 +627,7 @@ function checkShow2kkiVersionUpdate() {
   });
 }
 
-function reloadExplorer(trackedLocationNames) {
+function reloadExplorer(trackedLocations) {
   if (!config.enableExplorer)
     return;
   const explorerFrame = document.getElementById('explorerFrame');
@@ -639,7 +639,7 @@ function reloadExplorer(trackedLocationNames) {
   if (explorerFrame && locationNames && loginToken) {
     addLoader(explorerFrame, true);
     explorerFrame.onload = () => removeLoader(explorerFrame);
-    apiFetch(`explorer${trackedLocationNames ? `?trackedLocations=${trackedLocationNames.join('|')}` : ''}`).then(response => {
+    apiFetch(`explorer${trackedLocations ? `?trackedLocations=${trackedLocations.map(l => l.title).join('|')}` : ''}`).then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
       return response.text();
