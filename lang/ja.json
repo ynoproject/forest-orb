@@ -860,7 +860,7 @@
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "完全一致"
         }
       },
       "sortOrder": {
