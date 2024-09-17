@@ -953,10 +953,10 @@
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "新しい順",
+          "oldest": "古い順",
+          "alpha": "アルファベット順",
+          "players": "プレイヤー数順"
         }
       }
     },
