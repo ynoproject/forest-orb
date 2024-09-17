@@ -478,11 +478,11 @@
       "myScreenshots": "Moje zrzuty ekranu",
       "settings": "Ustawienia",
       "toggleMute": "Wycisz",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Czatuj globalnie/lokalnie",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Pokaż/ukryj lokalizacje w czacie",
-        "toggleOwnGlobalMessageLocation": "Pokaż/ukryj swoją lokalizację w czacie",
         "toggleMessageTimestamps": "Pokaż/ukryj czas wysłania wiadomości",
         "clearChat": "Wyczyść czat"
       },

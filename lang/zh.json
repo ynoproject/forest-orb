@@ -478,11 +478,11 @@
       "myScreenshots": "我的截图",
       "settings": "设置",
       "toggleMute": "静音",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
         "toggleNextLocation": "显示/隐藏 远征导航",
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
-        "toggleOwnGlobalMessageLocation": "分享/隐藏 您发送聊天信息的位置",
         "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",
         "clearChat": "清空记录"
       },

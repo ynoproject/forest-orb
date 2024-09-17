@@ -477,11 +477,11 @@
       "myScreenshots": "Miaj Ekrankopioj",
       "settings": "Agordoj",
       "toggleMute": "Baskuligi Silenton",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Baskuligi Tutmondan Babiladon",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Montri/Kaŝi Lokojn de Babilmesaĝoj",
-        "toggleOwnGlobalMessageLocation": "Montri/Kaŝi Vian Lokon en Babilmesaĝoj",
         "toggleMessageTimestamps": "Montri/Kaŝi Tempindikojn de Babilmesaĝoj",
         "clearChat": "Forigi Babilejon"
       },

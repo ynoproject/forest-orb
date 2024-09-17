@@ -478,11 +478,11 @@
       "myScreenshots": "マイスクリーンショット",
       "settings": "設定",
       "toggleMute": "消音のオン／オフ",
+      "toggleHideLocation": "場所の共有のオン／オフ",
       "toggleGlobalMessage": "グローバルメッセージのオン／オフ",
       "chat": {
         "toggleNextLocation": "次のラーリの場所表示のオン／オフ",
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
-        "toggleOwnGlobalMessageLocation": "チャットの場所の共有のオン／オフ",
         "toggleMessageTimestamps": "チャットのタイムスタンプ表示のオン／オフ",
         "clearChat": "チャットを消去"
       },

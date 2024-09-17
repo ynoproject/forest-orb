@@ -35,6 +35,8 @@ function initSessionWs(attempt) {
       easyrpgPlayer.api.sessionReady();
       if (config.privateMode)
         sendSessionCommand('pr', [ 1 ]);
+      if (config.hideLocation)
+        sendSessionCommand('hl', [ 1 ]);
       if (!hasConnected) {
         syncChatHistory()
           .catch(err => console.error(err))

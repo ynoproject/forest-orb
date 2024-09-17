@@ -2996,12 +2996,16 @@ form .uiTheme {
   width: calc(min((var(--screenshot-slot-level-bp) / var(--screenshot-slot-level-total-bp)) * 100%, 100%));
 }
 
-#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #ownGlobalMessageLocationButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
+#layout.immersionMode .playerCountLabel, #layout:not(.immersionMode) #immersionModeLabel, #layout.immersionMode #location, #layout.immersionMode #chatboxTabs, #layout.immersionMode .subTab, #layout.immersionMode #globalMessageLocationsButton, #layout.immersionMode #explorerButton, #layout.immersionMode #mapControls, #layout.immersionMode #explorerControls {
   display: none;
 }
 
 #layout.immersionMode .chatboxTabSection {
   margin-top: 0;
+}
+
+#layout.privateMode #hideLocationButton {
+  display: none;
 }
 
 #content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton, #content:not(.loggedIn) .accountRequired {

@@ -78,6 +78,7 @@ let config = {
   privateMode: false,
   disableChat: false,
   mute: false,
+  hideLocation: false,
   nametagMode: 1,
   disablePlayerSounds: false,
   immersionMode: false,
@@ -85,7 +86,6 @@ let config = {
   playersTabIndex: 0,
   globalMessage: false,
   hideGlobalMessageLocations: false,
-  hideOwnGlobalMessageLocation: false,
   trackedLocationId: null
 };
 
@@ -803,9 +803,8 @@ document.getElementById('privateModeButton').onclick = function () {
 let reconnectCooldownTimer;
 
 document.getElementById('reconnectButton').ondblclick = function () {
-  if (reconnectCooldownTimer || connStatus != 2) {
+  if (reconnectCooldownTimer || connStatus != 2)
     return;
-  }
 
   this.classList.add('active', 'disabled');
 
@@ -890,12 +889,6 @@ document.getElementById('globalMessageLocationsButton').onclick = function () {
   const toggled = this.classList.contains('toggled');
   document.getElementById('messages').classList.toggle('hideLocations', toggled);
   config.hideGlobalMessageLocations = toggled;
-  updateConfig(config);
-};
-
-document.getElementById('ownGlobalMessageLocationButton').onclick = function () {
-  this.classList.toggle('toggled');
-  config.hideOwnGlobalMessageLocation = this.classList.contains('toggled');
   updateConfig(config);
 };
 
@@ -997,6 +990,17 @@ document.getElementById('nametagMode').onchange = function () {
 document.getElementById('playerSoundsButton').onclick = () => {
   if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.togglePlayerSounds();
+};
+
+document.getElementById('hideLocationButton').onclick = function () {
+  if (!sessionWs)
+    return;
+
+  this.classList.toggle('toggled');
+  config.hideLocation = this.classList.contains('toggled');
+  updateConfig(config);
+
+  sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
 };
 
 if (gameId === '2kki') {

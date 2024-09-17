@@ -478,11 +478,11 @@
       "myScreenshots": "Minhas Capturas de Tela",
       "settings": "Configurações",
       "toggleMute": "Alternar o Modo Mudo",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Alternar Mensagens do Chat Global ",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Mostrar/Ocultar localizações em Mensagens de Bate-Papo",
-        "toggleOwnGlobalMessageLocation": "Compartilhar/Ocultar sua Localização em Mensagens de Bate-Papo",
         "toggleMessageTimestamps": "Mostrar/Ocultar a Hora em Mensagens de Bate-Papo",
         "clearChat": "Limpar o Chat"
       },

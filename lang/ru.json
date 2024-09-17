@@ -478,11 +478,11 @@
       "myScreenshots": "Мои снимки",
       "settings": "Настройки",
       "toggleMute": "Переключить звук",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
-        "toggleOwnGlobalMessageLocation": "Переключить отображение Вашей локации в сообщениях",
         "toggleMessageTimestamps": "Переключить отображение Меток времени у сообщений",
         "clearChat": "Очистить чат"
       },

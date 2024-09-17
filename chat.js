@@ -529,7 +529,7 @@ function trySendGlobalMessage(content) {
   if (!chatInputContainer.classList.contains("globalCooldown")) {
     const chatInputContainers = [ chatInputContainer, document.getElementById("gameChatInputContainer") ];
     const chatInputs = [ chatInput, document.getElementById('gameChatInput') ];
-    sendSessionCommand("gsay", [ content, !config.hideOwnGlobalMessageLocation ? 1 : 0 ]);
+    sendSessionCommand("gsay", [ content ]);
     chatInputs.forEach(el => el.dataset.blockGlobal = true);
     chatInputContainers.forEach(el => el.classList.add("globalCooldown"));
     window.setTimeout(function () {

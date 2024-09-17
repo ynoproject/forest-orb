@@ -742,6 +742,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       preToggle(document.getElementById('playerSoundsButton'));
                     break;
+                  case 'hideLocation':
+                    if (value)
+                      preToggle(document.getElementById('hideLocationButton'));
+                    break;
                   case 'enableExplorer':
                     if (value)
                       document.getElementById('enableExplorerButton').click();
@@ -775,10 +779,6 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'hideGlobalMessageLocations':
                     if (value)
                       document.getElementById('globalMessageLocationsButton').click();
-                    break;
-                  case 'hideOwnGlobalMessageLocation':
-                    if (value)
-                      preToggle(document.getElementById('ownGlobalMessageLocationButton'));
                     break;
                   case 'hideMessageTimestamps':
                     if (value)

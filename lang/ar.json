@@ -478,11 +478,11 @@
       "myScreenshots": "لقطات الشاشة الخاصة بي",
       "settings": "إعدادات",
       "toggleMute": "تفعيل كتم الصوت",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "وضع المحادثة العامة",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",
-        "toggleOwnGlobalMessageLocation": "إظهار / إخفاء موقعك في رسائل المحادثة",
         "toggleMessageTimestamps": "إظهار / إخفاء الطوابع الزمنية لرسالة المحادثة",
         "clearChat": "مسح تاريخ المحادثة"
       },

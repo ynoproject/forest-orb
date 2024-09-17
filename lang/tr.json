@@ -478,11 +478,11 @@
       "myScreenshots": "Ekran Görüntülerim",
       "settings": "Ayarlar",
       "toggleMute": "Susturmayı Değiştir",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": " Sohbet Mesaj Konumlarını Göster/Gizle",
-        "toggleOwnGlobalMessageLocation": "Sohbette Kendi Konumunu Göster/Gizle",
         "toggleMessageTimestamps": "Sohbet Mesaj Zamanlarını Göster/Gizle",
         "clearChat": "Sohbeti Temizle"
       },

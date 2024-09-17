@@ -478,11 +478,11 @@
       "myScreenshots": "My Screenshots",
       "settings": "Setări",
       "toggleMute": "Comută Mute-ul",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Comută Vorbitul pe Chat Global",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Arată/Ascunde Locația în Mesaje",
-        "toggleOwnGlobalMessageLocation": "Arată/Ascunde-ți Locația în Chat",
         "toggleMessageTimestamps": "Arată/Ascunde Marcajele de Timp în Chat",
         "clearChat": "Șterge Chat-ul"
       },

@@ -478,11 +478,11 @@
       "myScreenshots": "My Screenshots",
       "settings": "Opciones",
       "toggleMute": "Alternar Silencio",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Alternar Mensajes Globales",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Mostrar/Ocultar Ubicaciones en Mensajes de Chat",
-        "toggleOwnGlobalMessageLocation": "Mostrar/Ocultar Tu Ubicación en Mensajes de Chat",
         "toggleMessageTimestamps": "Mostrar/Ocultar Marcas de Tiempo en Mensajes de Chat",
         "clearChat": "Limpiar Chat"
       },

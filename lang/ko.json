@@ -478,11 +478,11 @@
       "myScreenshots": "나의 스크린샷",
       "settings": "옵션",
       "toggleMute": "음소거",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "글로벌 채팅 활성화",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "채팅 메시지 장소 보이기/숨기기",
-        "toggleOwnGlobalMessageLocation": "본인의 채팅 메시지 장소 보이기/숨기기",
         "toggleMessageTimestamps": "채팅 메시지 타임 스탬프 보이기/숨기기",
         "clearChat": "채팅 기록 삭제하기"
       },

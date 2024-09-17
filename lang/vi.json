@@ -478,11 +478,11 @@
       "myScreenshots": "Ảnh của tôi",
       "settings": "Cài đặt",
       "toggleMute": "Bật/Tắt tiếng",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
         "toggleNextLocation": "Hiện/Ẩn Địa điểm kế tiếp trong Thám hiểm",
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
-        "toggleOwnGlobalMessageLocation": "Hiện/Ẩn Địa điểm của bạn trong tin nhắn",
         "toggleMessageTimestamps": "Hiện/Ẩn Thời điểm gửi tin nhắn",
         "clearChat": "Xóa Chat"
       },

@@ -478,11 +478,11 @@
       "myScreenshots": "Mes captures décran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",
+      "toggleHideLocation": "Toggle Location Sharing",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
-        "toggleOwnGlobalMessageLocation": "Partager/Cacher votre Lieu dans les messages de Chat",
         "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
         "clearChat": "Effacer le Chat"
       },
