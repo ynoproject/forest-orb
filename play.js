@@ -202,7 +202,7 @@ function fetchAndUpdatePlayerInfo() {
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         screenshotLimit = jsonResponse.screenshotLimit || 10;
-        visitedLocationIds = jsonResponse.locationIds;
+        visitedLocationIds = jsonResponse.locationIds || [];
         updateBlocklist(false);
         const updateParty = () => {
           if (document.querySelector('#chatboxTabParties.active'))
