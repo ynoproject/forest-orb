@@ -133,7 +133,7 @@ function initLocationsModal() {
 
       locationThumbnailContainer.append(locationThumbnail);
 
-      const locationControls = gameId === '2kki' ? getLocationControls(location) : null;
+      const locationControls = getLocationControls(location);
 
       locationItem.append(locationThumbnailContainer);
       if (locationControls)
