@@ -115,11 +115,11 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Xem wiki trực tiếp trên trang",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Luôn luôn",
+              "fullscreen": "Chỉ khi toàn màn hình",
+              "never": "Không bao giờ"
             }
           },
           "saveReminder": {
@@ -486,7 +486,7 @@
       "myScreenshots": "Ảnh của tôi",
       "settings": "Cài đặt",
       "toggleMute": "Bật/Tắt tiếng",
-      "toggleHideLocation": "Toggle Location Sharing",
+      "toggleHideLocation": "Bật/Tắt Chia sẻ Địa điểm",
       "toggleGlobalMessage": "Bật/Tắt Chế độ Chat Chung",
       "chat": {
         "toggleNextLocation": "Hiện/Ẩn Địa điểm kế tiếp trong Thám hiểm",
@@ -961,10 +961,10 @@
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "Mới nhất",
+          "oldest": "Cũ nhất",
+          "alpha": "Thứ tự chữ cái",
+          "players": "Số người chơi"
         }
       }
     },
