@@ -651,6 +651,8 @@ function closeModal() {
   if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
+    if (activeModal?.id === 'wikiModal')
+      document.getElementById('wikiFrame').src = '';
     setTimeout(() => modalContainer.classList.remove('fadeOut'), modalTransitionDuration);
   }
   if (activeModal) {
