@@ -52,6 +52,8 @@ let globalConfig = {
   name: '',
   soundVolume: 100,
   musicVolume: 100,
+  wikiLinkMode: 1,
+  saveReminder: 60,
   chatTipIndex: -1,
   gameChat: true,
   gameChatGlobal: false,
@@ -70,8 +72,7 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
-  badgeToolsData: null,
-  saveReminder: 60,
+  badgeToolsData: null
 };
 
 let config = {
@@ -978,13 +979,18 @@ document.getElementById('lang').onchange = function () {
   setLang(this.value);
 };
 
-document.getElementById('saveReminder').onchange = function () {
-  setSaveReminder(parseInt(this.value));
-};
-
 document.getElementById('nametagMode').onchange = function () {
   if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.setNametagMode(this.value);
+};
+
+document.getElementById('wikiLinkMode').onchange = function () {
+  globalConfig.wikiLinkMode = parseInt(this.value);
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('saveReminder').onchange = function () {
+  setSaveReminder(parseInt(this.value));
 };
 
 document.getElementById('playerSoundsButton').onclick = () => {
@@ -1985,9 +1991,9 @@ function getLocalizedLocation(game, location, locationEn, asHtml, forDisplay) {
   if (asHtml) {
     template = template.replace(/}([^{]+)/g, '}<span class="infoLabel">$1</span>');
     if (gameLocalizedLocationUrlRoots[game] && location.urlTitle !== null)
-      locationValue = `<a href="${gameLocalizedLocationUrlRoots[game]}${location.urlTitle || location.title}" target="_blank">${location.title}</a>`;
+      locationValue = `<a href="${gameLocalizedLocationUrlRoots[game]}${location.urlTitle || location.title}" target="_blank" class="wikiLink">${location.title}</a>`;
     else if (gameLocationUrlRoots[game] && gameLocalizedLocationUrlRoots[game] !== null && locationEn.urlTitle !== null)
-      locationValue = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank">${location.title}</a>`;
+      locationValue = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank" class="wikiLink">${location.title}</a>`;
     else
       locationValue = getInfoLabel(location.title);
   } else
@@ -1999,7 +2005,7 @@ function getLocalizedLocation(game, location, locationEn, asHtml, forDisplay) {
     let locationValueEn;
     if (asHtml) {
       if (gameLocationUrlRoots[game] && locationEn.urlTitle !== null)
-        locationValueEn = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank">${locationEn.title}</a>`;
+        locationValueEn = `<a href="${gameLocationUrlRoots[game]}${locationEn.urlTitle || locationEn.title}" target="_blank" class="wikiLink">${locationEn.title}</a>`;
       else
         locationValueEn = getInfoLabel(locationEn.title);
     } else
@@ -2084,11 +2090,7 @@ function getMapButton(url, label) {
   const ret = document.createElement('button');
   ret.classList.add('mapButton', 'unselectable', 'iconButton');
   addTooltip(ret, label, true);
-  ret.onclick = () => {
-    const handle = window.open(url, '_blank', 'noreferrer');
-    if (handle)
-        handle.focus();
-  };
+  ret.onclick = () => openWikiLink(url);
   ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
   return ret;
 }
@@ -2283,6 +2285,26 @@ function addFilterInputs(modalPrefix, modalInitFunc, ...checkboxes) {
     container.appendChild(checkboxContainer);
 }
 
+function openWikiLink(url, useDefault) {
+  if (globalConfig.wikiLinkMode === 2 || (document.fullscreenElement && globalConfig.wikiLinkMode === 1)) {
+    openWikiModal(url);
+    return true;
+  }
+  
+  if (!useDefault) {
+    const handle = window.open(url, '_blank', 'noreferrer');
+    if (handle)
+      handle.focus();
+  }
+
+  return false;
+}
+
+function openWikiModal(url) {
+  document.getElementById('wikiFrame').src = url;
+  openModal('wikiModal');
+}
+
 function checkShowVersionUpdate() {
   return new Promise(resolve => {
     if (gameId !== '2kki')
@@ -2371,6 +2393,12 @@ onResize();
 loadOrInitConfig(globalConfig, true);
 loadOrInitConfig(config);
 loadOrInitCache();
+
+document.addEventListener('click', e => {    
+  const target = e.target.closest('a');
+  if (target && target.classList.contains('wikiLink') && openWikiLink(target.href, true))
+    e.preventDefault();
+});
 
 initDefaultSprites();
 updateBadges();

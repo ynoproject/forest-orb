@@ -114,6 +114,14 @@
               "slim": "슬림"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "세이브 리마인더 알람",
             "interval": {

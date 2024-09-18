@@ -652,6 +652,9 @@ function loadOrInitConfig(configObj, global, configName) {
                     document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
                     break;
+                  case 'wikiLinkMode':
+                    document.getElementById('wikiLinkMode').value = value;
+                    break;
                   case 'saveReminder':
                     document.getElementById('saveReminder').value = value;
                     setSaveReminder(value, true);

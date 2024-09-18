@@ -114,6 +114,14 @@
               "slim": "Mince"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "Fréquence du Rappel des Sauvegardes",
             "interval": {

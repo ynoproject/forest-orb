@@ -210,7 +210,7 @@ function getLocalized2kkiLocations(locations, separator, forDisplay) {
 function get2kkiLocationHtml(location, showDepth) {
   const urlTitle = location.urlTitle || location.title;
   const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf('：') > -1 ? location.titleJP.slice(0, location.titleJP.indexOf('：')) : location.titleJP);
-  let locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank">${location.title}</a>`;
+  let locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank" class="wikiLink">${location.title}</a>`;
   if (location.connType) {
     const connTypes = Object.values(ConnType).map(ct => parseInt(ct));
     for (let ct of connTypes) {
@@ -228,7 +228,7 @@ function get2kkiLocationHtml(location, showDepth) {
   }
   if (showDepth && location.hasOwnProperty('depth'))
     locationHtml += localizedMessages.location.depth.replace('{DEPTH}', `<span class="locationDepth colorText" style="-webkit-text-fill-color: rgba(${getDepthRgba(location.depth, 10)})">${location.depth}</span>`);
-  const locationHtmlJP = urlTitleJP ? `<a href="${gameLocalizedLocationUrlRoots['2kki'] || localizedLocationUrlRoot}${urlTitleJP}" target="_blank">${location.titleJP}</a>` : null;
+  const locationHtmlJP = urlTitleJP ? `<a href="${gameLocalizedLocationUrlRoots['2kki'] || localizedLocationUrlRoot}${urlTitleJP}" target="_blank" class="wikiLink">${location.titleJP}</a>` : null;
   return locationHtmlJP ? getLocalized2kkiLocation(locationHtml, locationHtmlJP, true) : locationHtml;
 }
 

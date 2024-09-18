@@ -114,6 +114,14 @@
               "slim": "Streta"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "Ofto de Atentiligo por Konservi",
             "interval": {

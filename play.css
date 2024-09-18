@@ -2054,6 +2054,14 @@ html[dir="rtl"] #chatBorder {
   padding: 2px 0;
 }
 
+#wikiFrame {
+  width: 100%;
+  height: -webkit-fill-available;
+  height: -moz-available;
+  height: fill-available;
+  border: none;
+}
+
 #footer {
   display: flex;
   width: 100%;

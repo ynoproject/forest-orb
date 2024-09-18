@@ -114,6 +114,14 @@
               "slim": "スリム"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "セーブリマインダーの頻度",
             "interval": {

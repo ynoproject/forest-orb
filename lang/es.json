@@ -114,6 +114,14 @@
               "slim": "Delgado"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "Save Reminder Frequency",
             "interval": {

@@ -114,6 +114,14 @@
               "slim": "Phông nhỏ"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "Tần suất nhắc lưu trò chơi",
             "interval": {

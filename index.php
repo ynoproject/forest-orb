@@ -571,9 +571,17 @@
                 </div>
               </li>
               <li class="formControlRow">
-                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder.label">
-                  Save Notification Interval
-                </label>
+                <label for="wikiLinkMode" class="unselectable" data-i18n="[html]modal.settings.fields.wikiLinkMode.label">Wiki Link Popup</label>
+                <div>
+                  <select id="wikiLinkMode" size="3">
+                    <option value="2" data-i18n="modal.settings.fields.wikiLinkMode.always">Always</option>
+                    <option value="1" data-i18n="modal.settings.fields.wikiLinkMode.fullscreen" selected>Fullscreen Only</option>
+                    <option value="0" data-i18n="modal.settings.fields.wikiLinkMode.never">Never</option>
+                  </select>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label for="saveReminder" class="unselectable" data-i18n="[html]modal.settings.fields.saveReminder.label">Save Notification Interval</label>
                 <div>
                   <select id="saveReminder" size="4">
                     <option value="10" data-i18n="modal.settings.fields.saveReminder.interval.minutes" i18n-options="{'interval':10}">10 minutes</option>
@@ -1320,6 +1328,12 @@
             </div>
           </div>
           <div class="modalContent infiniteScrollContainer itemContainer">
+          </div>
+        </div>
+        <div id="wikiModal" class="modal fullscreenModal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalContent noScroll">
+            <iframe id="wikiFrame" class="unselectable"></iframe>
           </div>
         </div>
         <div id="rulesModal" class="modal hidden">

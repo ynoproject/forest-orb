@@ -114,6 +114,14 @@
               "slim": "Pomniejszone"
             }
           },
+          "wikiLinkMode": {
+            "label": "Wiki Link Popup",
+            "values": {
+              "always": "Always",
+              "fullscreen": "Fullscreen Only",
+              "never": "Never"
+            }
+          },
           "saveReminder": {
             "label": "Częstotliwość powiadomień o zapisie",
             "interval": {
