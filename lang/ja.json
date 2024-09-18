@@ -115,11 +115,11 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Wikiページのポップアップ表示",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "常に",
+              "fullscreen": "全画面の時のみ",
+              "never": "設定しない"
             }
           },
           "saveReminder": {
