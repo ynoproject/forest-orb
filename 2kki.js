@@ -668,6 +668,10 @@ function reloadExplorer(trackedLocations) {
   compareVersionNames = compare2kkiVersionNames;
 
   addSessionCommandHandler('l', locationIds => {
+    locationIds.map(id => parseInt(id)).map(id => {
+      if (!visitedLocationIds.includes(id))
+        visitedLocationIds.push(id);
+    });
     if (config.trackedLocationId) {
       if (locationIds.map(l => parseInt(l)).includes(config.trackedLocationId)) {
         config.trackedLocationId = null;
