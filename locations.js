@@ -2,7 +2,7 @@ let locationsData = [];
 let locationVersionNames = [];
 
 let visitedLocationIds = [];
-let locationsSortOrder = 'recent';
+let locationsSortOrder = 'newest';
 let locationsScrollTop = 0;
 let locationsScrollWatch = null;
 
@@ -153,10 +153,10 @@ function initLocationsModal() {
         locationItemsList.append(locationItem);
       else {
         textFilter = textFilter.toLowerCase();
-         // Filter Locations -  Check if location and filter matches
+         // Filter Screenshots -  Check if location and filter matches
         if (document.getElementById('locationsNameInput').checked && locationName.innerText.toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
-        // Filter Locations -  Check if author and filter matches
+        // Filter Screenshots -  Check if author and filter matches
         else if (document.getElementById('locationsAuthorInput').checked && author.innerText.toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
       }
