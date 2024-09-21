@@ -157,7 +157,7 @@ function initLocationsModal() {
         if (document.getElementById('locationsNameInput').checked && locationName.innerText.toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
         // Filter Screenshots -  Check if author and filter matches
-        else if (document.getElementById('locationsAuthorInput').checked && author.innerText.toLowerCase().includes(textFilter))
+        else if (document.getElementById('locationsAuthorInput').checked && (author?.innerText || '').toLowerCase().includes(textFilter))
           locationItemsList.append(locationItem);
       }
 
