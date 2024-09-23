@@ -92,6 +92,9 @@ function initLocationsModal() {
       return;
 
     for (let location of locations) {
+      // Likely not a valid location
+      if (!location.locationImage)
+        continue;
       const locationItem = document.createElement('div');
       locationItem.classList.add('locationItem', 'imageItem', 'item', 'hideContents');
       locationItem.dataset.locationId = location.id;
