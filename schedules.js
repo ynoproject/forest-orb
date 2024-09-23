@@ -183,7 +183,7 @@ function addScheduleItem(schedule) {
 
   if (schedule.systemName && schedule.game) { 
     let theme = schedule.systemName;
-    if (schedule.game !== gameId)
+    if (!allGameUiThemes[schedule.game].includes(theme))
       theme = getDefaultUiTheme(schedule.game);
     initUiThemeContainerStyles(theme, schedule.game, false, () => {
       initUiThemeFontStyles(theme, schedule.game, 0, false);
