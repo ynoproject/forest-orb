@@ -228,7 +228,8 @@ function openSchedulesModal() {
 
 /** @param {Partial<Schedule>} schedule */
 function openScheduleEditModal(schedule = {}) {
-  if (schedule.ownerUuid && schedule.ownerUuid !== playerData?.uuid) return;
+  const isMod = playerData && playerData.rank > 0;
+  if (!isMod && schedule.ownerUuid && schedule.ownerUuid !== playerData?.uuid) return;
   editingScheduleId = schedule.id;
 
   /** @type {HTMLFormElement} */
