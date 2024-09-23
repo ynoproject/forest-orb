@@ -115,11 +115,11 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Wiki链接弹窗",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "始终",
+              "fullscreen": "仅全屏模式",
+              "never": "永不"
             }
           },
           "saveReminder": {
@@ -463,31 +463,31 @@
         }
       },
       "schedule": {
-        "title": "Events",
-        "ongoing": "Ongoing Events",
-        "party": "Party Events",
-        "future": "Future Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "title": "活动日程",
+        "ongoing": "进行中的活动",
+        "party": "队伍活动",
+        "future": "未来活动",
+        "noResults": "当前没有人策划活动。",
+        "doSchedule": "策划活动"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "编辑活动",
+        "save": "保存",
+        "cancel": "取消活动",
         "fields": {
-          "name": "Event Name",
-          "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "name": "活动名称",
+          "description": "活动简介",
+          "datetime": "活动日期与时间",
+          "recurring": "重复活动",
           "interval": {
-            "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "title": "间隔",
+            "days": "日",
+            "months": "月",
+            "years": "年"
           },
-          "restrictParty": "Limit to Party",
+          "restrictParty": "仅限队员",
           "platforms": {
-            "title": "External Links",
+            "title": "外部链接",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -521,7 +521,7 @@
       "myScreenshots": "我的截图",
       "settings": "设置",
       "toggleMute": "静音",
-      "toggleHideLocation": "Toggle Location Sharing",
+      "toggleHideLocation": "开启/关闭位置共享",
       "toggleGlobalMessage": "开启/关闭公屏聊天",
       "chat": {
         "toggleNextLocation": "显示/隐藏 远征导航",
@@ -534,17 +534,17 @@
         "disbandParty": "解散队伍"
       },
       "events": "梦远征",
-      "locations": "Locations",
+      "locations": "地点列表",
       "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
-      "schedules": "Events",
+      "schedules": "活动日程",
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地域",
       "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。",
       "mobileControlsType": "可替代默认的方向键操控模式。<br>浮动操控模式只有在移动端全屏模式下才可用。"
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "支持Markdown格式符。使用 {{l:世界名,可选链接名}} 可链接至yume.wiki词条页"
     },
     "reviewRules": "多人游戏守则"
   },
@@ -989,21 +989,21 @@
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "地图作者： {AUTHOR}",
+      "versionAdded": "添加于 {VERSION}",
+      "versionUpdated": "更新于 {VERSION}",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "导航至此",
+          "off": "取消导航"
         }
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "最新",
+          "oldest": "最早",
+          "alpha": "首字母顺序",
+          "players": "在线玩家数量"
         }
       }
     },
@@ -1035,8 +1035,8 @@
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
+      "organizer": "策划者：&nbsp;{NAME}",
+      "invalidPlatformLink": "平台链接不正确",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
