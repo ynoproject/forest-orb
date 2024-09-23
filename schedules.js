@@ -116,7 +116,7 @@ function addScheduleItem(schedule) {
         break;
       case 'description':
         const descriptionContents = document.createElement('span');
-        descriptionContents.classList.add('messageContents');
+        descriptionContents.classList.add('messageContents', 'themeText');
         let msg = parseMessageTextForMarkdown(escapeHtml(schedule.description));
         if (msg.includes('{{')) {
           // Special syntax: leads to yume.wiki
