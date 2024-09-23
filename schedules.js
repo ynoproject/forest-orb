@@ -180,8 +180,17 @@ function addScheduleItem(schedule) {
         break;
     }
   }
-  if (schedule.systemName && schedule.game)
-    applyThemeStyles(template, schedule.systemName, schedule.game);
+  if (schedule.systemName && schedule.game) { 
+    let theme = schedule.systemName;
+    if (schedule.game !== gameId) {
+      theme = getDefaultUiTheme(schedule.game);
+    }
+    initUiThemeContainerStyles(theme, schedule.game, false, () => {
+      initUiThemeFontStyles(theme, schedule.game, 0, false);
+    });
+    applyThemeStyles(template, theme, schedule.game);
+  }
+  updateThemedContainer(template);
 
   if (parsedDatetime && +parsedDatetime - +new Date <= ONGOING_SCHEDULES_THRESHOLD)
     document.getElementById('ongoingSchedules').appendChild(template);  
