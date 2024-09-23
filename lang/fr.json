@@ -462,6 +462,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "Events",
+        "ongoing": "Ongoing Events",
+        "party": "Party Events",
+        "future": "Future Events",
+        "noResults": "No events have been scheduled.",
+        "doSchedule": "Schedule an Event"
+      },
+      "scheduleEdit": {
+        "title": "Edit Event",
+        "save": "Save",
+        "cancel": "Cancel Event",
+        "fields": {
+          "name": "Event Name",
+          "description": "Description",
+          "datetime": "Event Date and Time",
+          "recurring": "Recurring Event",
+          "interval": {
+            "title": "Interval",
+            "days": "days",
+            "months": "months",
+            "years": "years"
+          },
+          "restrictParty": "Limit to Party",
+          "platforms": {
+            "title": "External Links",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "Nicovideo",
+            "openrec": "Openrec",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "Règles",
         "rule1": "Veuillez être respectueux et poli.",
@@ -502,10 +537,14 @@
       "locations": "Locations",
       "communityScreenshots": "Captures d'écran de la communauté",
       "rankings": "Classement",
+      "schedules": "Events",
       "nexus": "Retourner au Nexus",
       "explorerUndiscoveredLocations": "Voir les lieux non découverts",
       "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché.",
       "mobileControlsType": "Alternatifs au type de commande de croix directionnelle par défaut.<br>Les types de commande flottants ne sont disponibles qu'en plein écran sur mobile."
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "Relire les règles"
   },
@@ -993,6 +1032,18 @@
       "delete": {
         "tooltip": "Effacer",
         "confirm": "Êtes-vous sûr de vouloir effacer cette capture d'écran ?"
+      }
+    },
+    "schedules": {
+      "organizer": "Organized by&nbsp;{NAME}",
+      "invalidPlatformLink": "Platform must have a valid URL",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "Nicovideo",
+        "openrec": "Openrec",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {

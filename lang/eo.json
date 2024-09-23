@@ -461,6 +461,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "Events",
+        "ongoing": "Ongoing Events",
+        "party": "Party Events",
+        "future": "Future Events",
+        "noResults": "No events have been scheduled.",
+        "doSchedule": "Schedule an Event"
+      },
+      "scheduleEdit": {
+        "title": "Edit Event",
+        "save": "Save",
+        "cancel": "Cancel Event",
+        "fields": {
+          "name": "Event Name",
+          "description": "Description",
+          "datetime": "Event Date and Time",
+          "recurring": "Recurring Event",
+          "interval": {
+            "title": "Interval",
+            "days": "days",
+            "months": "months",
+            "years": "years"
+          },
+          "restrictParty": "Limit to Party",
+          "platforms": {
+            "title": "External Links",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "Nicovideo",
+            "openrec": "Openrec",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "Reguloj",
         "rule1": "Bonvolu esti respektema kaj ĝentila.",
@@ -501,10 +536,14 @@
       "locations": "Locations",
       "communityScreenshots": "Komunumaj Ekrankopioj",
       "rankings": "Rangolisto",
+      "schedules": "Events",
       "nexus": "Reen al la Pordejo",
       "explorerUndiscoveredLocations": "Vidigi Nemalkovritajn Lokojn",
       "timeTrial": "Por ŝalti Tempoprovo-reĝimon, premtenu la majuskligan klavon kaj la dekstran klavon post komenci novan ludon kaj antaŭ ol io aperos ekrane.",
       "mobileControlsType": "Alternativoj al la norma D-Pad speco de regilo.<br>Glitaj specoj de regilo nur estas disponebla per poŝtelefono en plenekrana reĝimo."
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "Montri Regulojn"
   },
@@ -992,6 +1031,18 @@
       "delete": {
         "tooltip": "Forigi",
         "confirm": "Ĉu vi certas, ke vi volas forigi ĉi tiun ekrankopion?"
+      }
+    },
+    "schedules": {
+      "organizer": "Organized by&nbsp;{NAME}",
+      "invalidPlatformLink": "Platform must have a valid URL",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "Nicovideo",
+        "openrec": "Openrec",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {

@@ -537,7 +537,7 @@ let applyThemeStyles;
       background-image: var(--alt-gradient{THEME_PROP}) !important;
     }
 
-    .nameText.theme{THEME}, .theme{THEME} .nameText, .theme{THEME} .partyListEntryMemberCountText {
+    .nameText.theme{THEME}, .theme{THEME} .nameText, .theme{THEME} .partyListEntryMemberCountText, .theme{THEME} .themeText {
       color: rgb(var(--base-color{THEME_PROP}));
       background-image: var(--base-gradient{THEME_PROP}) !important;
       filter: drop-shadow(1.5px 1.5px rgb(var(--shadow-color{THEME_PROP})));

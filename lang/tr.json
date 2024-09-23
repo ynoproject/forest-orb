@@ -462,6 +462,41 @@
           }
         }
       },
+      "schedule": {
+        "title": "Events",
+        "ongoing": "Ongoing Events",
+        "party": "Party Events",
+        "future": "Future Events",
+        "noResults": "No events have been scheduled.",
+        "doSchedule": "Schedule an Event"
+      },
+      "scheduleEdit": {
+        "title": "Edit Event",
+        "save": "Save",
+        "cancel": "Cancel Event",
+        "fields": {
+          "name": "Event Name",
+          "description": "Description",
+          "datetime": "Event Date and Time",
+          "recurring": "Recurring Event",
+          "interval": {
+            "title": "Interval",
+            "days": "days",
+            "months": "months",
+            "years": "years"
+          },
+          "restrictParty": "Limit to Party",
+          "platforms": {
+            "title": "External Links",
+            "discord": "Discord",
+            "youtube": "YouTube",
+            "twitch": "Twitch",
+            "niconico": "Nicovideo",
+            "openrec": "Openrec",
+            "bilibili": "Bilibili"
+          }
+        }
+      },
       "rules": {
         "title": "Kurallar",
         "rule1": "Lütfen saygılı ve nazik olun.",
@@ -502,10 +537,14 @@
       "locations": "Locations",
       "communityScreenshots": "Topluluk Ekran Görüntüleri",
       "rankings": "Sıralamalar",
+      "schedules": "Events",
       "nexus": "Bağlantı Noktası'na Geri Dön",
       "explorerUndiscoveredLocations": "Keşfedilmeyen Konumları Görüntüle",
       "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
       "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+    },
+    "placeholders": {
+      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "Kuralları Göster"
   },
@@ -993,6 +1032,18 @@
       "delete": {
         "tooltip": "Sil",
         "confirm": "Bu ekran görüntüsünü silmek istediğine emin misin?"
+      }
+    },
+    "schedules": {
+      "organizer": "Organized by&nbsp;{NAME}",
+      "invalidPlatformLink": "Platform must have a valid URL",
+      "platforms": {
+        "discord": "Discord",
+        "youtube": "YouTube",
+        "twitch": "Twitch",
+        "niconico": "Nicovideo",
+        "openrec": "Openrec",
+        "bilibili": "Bilibili"
       }
     },
     "2kki": {

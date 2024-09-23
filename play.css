@@ -251,6 +251,11 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
+.spoiler:not(.show) a {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .nofilter {
   filter: none !important;
 }
@@ -1975,7 +1980,7 @@ html[dir="rtl"] #chatBorder {
   margin-top: 8px;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
+#enterNameInstruction, .nameText, .nameMarker, .themeText, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -4014,4 +4019,38 @@ html[dir="rtl"] .messageSender {
 
 #gameChatContainer .messageContentsWrapper {
   display: inline;
+}
+
+.listEntry.schedule {
+  display: block;
+  padding: 2px 4px;
+}
+
+.schedule > .listEntryMain {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.schedule .eventName {
+  font-size: 1.2em;
+  width: unset;
+}
+
+.scheduleHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scheduleGroupHeader:has(+ .scheduleContainer:empty) {
+  display: none;
+}
+
+.scheduleDescription {
+  margin: 4px 4px 8px 4px;
+  max-height: 3lh;
+  overflow-y: auto;
+}
+
+.scheduleDescription > [data-role="description"]:empty {
+  display: none;
 }
