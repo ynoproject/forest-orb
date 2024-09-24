@@ -480,12 +480,12 @@
           "datetime": "Thời gian diễn ra",
           "recurring": "Sự kiện lặp lại",
           "interval": {
-            "title": "Interval",
+            "title": "Lặp lại mỗi",
             "days": "ngày",
             "months": "tháng",
             "years": "năm"
           },
-          "restrictParty": "Chỉ dành cho thành viên nhóm",
+          "restrictParty": "Chỉ dành cho Nhóm",
           "platforms": {
             "title": "Liên kết ngoài",
             "discord": "Discord",
@@ -750,7 +750,7 @@
       "partyOwner": "Trưởng Nhóm",
       "confirmDisband": "Bạn có chắc chắn muốn giải tán nhóm? Hành động này không thể hoàn tác.",
       "confirmTransferPartyOwner": "Bạn có chắc chắn muốn chỉ định {PLAYER} làm trưởng nhóm?",
-      "offlineMemberSuffix": "Member offline",
+      "offlineMemberSuffix": "Thành viên offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -1035,8 +1035,8 @@
       }
     },
     "schedules": {
-      "organizer": "Được tổ chức bởi&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
+      "organizer": "Được tổ chức bởi&nbsp;{NAME}", 
+      "invalidPlatformLink": "Nền tảng phải có URL hợp lệ",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
