@@ -1,19 +1,25 @@
 let locationsData = [];
 let locationVersionNames = [];
+let locationsMaxDepth = 0;
 
 let visitedLocationIds = [];
+let locationsVisited = '';
 let locationsSortOrder = 'newest';
 let locationsScrollTop = 0;
 let locationsScrollWatch = null;
 
 function initLocationControls() {
   document.getElementById('locationsButton').onclick = () => {
-    initLocationsModal(true);
+    initLocationsModal();
     openModal('locationsModal');
+  };
+  document.getElementById('locationsVisited').onchange = function() {
+    locationsVisited = this.value;
+    initLocationsModal();
   };
   document.getElementById('locationsSortOrder').onchange = function() {
     locationsSortOrder = this.value;
-    initLocationsModal(true);
+    initLocationsModal();
   };
 }
 
@@ -24,6 +30,7 @@ function updateGameLocations() {
     return response.json();
   }).then(locations => {
     locationsData = locations;
+    locationsMaxDepth = Math.max(...locations.map(l => l.depth));
     let versionNames = [];
     locationVersionNames = locations.filter(l => {
       if (versionNames.includes(l.versionAdded))
@@ -176,10 +183,16 @@ function initLocationsModal() {
       case 'oldest':
         sortFunction = getVersionSortFunction(l => l.versionAdded, locationVersionNames, locationsSortOrder === 'oldest');
         break;
+      case 'shallowest':
+      case 'deepest':
+        sortFunction = getLocationsDepthSortFunction(locationsSortOrder === 'shallowest');
+        break;
       case 'players':
         sortFunction = getLocationsPlayerCountSortFunction(locationPlayerCounts, l => l.id);
         break;
     }
+    if (locationsVisited)
+      locations = locations.filter(locationsVisited === 'visited' ? l => visitedLocationIds.includes(l.id) : l => !visitedLocationIds.includes(l.id))
     const sortedLocations = locations
       .filter(l => !l.secret || visitedLocationIds.includes(l.id))
       .sort(sortFunction);
@@ -277,7 +290,7 @@ function getLocationControls(location) {
   if (gameId === '2kki') {
     const tracked = config.trackedLocationId === location.id;
 
-    const trackButton = getSvgIcon('track');
+    const trackButton = getSvgIcon('track', true);
     trackButton.classList.add('iconButton', 'toggleButton', 'fadeToggleButton', 'altToggleButton', 'trackToggle');
     if (tracked)
       trackButton.classList.add('toggled');
@@ -301,20 +314,53 @@ function getLocationControls(location) {
     locationControls.append(trackButton);
   }
 
-  const playerCountContainer = document.createElement('div');
-  playerCountContainer.classList.add('playerCountContainer');
+  if (visitedLocationIds.includes(location.id)) {
+    const depthContainer = document.createElement('div');
+    depthContainer.classList.add('depthCountContainer', 'imageCountContainer');
 
-  const playerCountIcon = getSvgIcon('player');
+    const depthIcon = getSvgIcon('depth', true);
+
+    depthContainer.append(depthIcon);
+    locationControls.append(depthContainer);
+
+    const depthContent = `${location.depth}`;
+
+    depthIcon.insertAdjacentHTML('afterend', getInfoLabel(depthContent));
+
+    const depthLabel = depthContainer.querySelector('.infoLabel');
+    depthLabel.classList.add('imageCount', 'unselectable');
+    depthLabel.style.color = `rgba(${getDepthRgba(location.depth, locationsMaxDepth)})`;
+  }
+
+  const playerCountContainer = document.createElement('div');
+  playerCountContainer.classList.add('playerCountContainer', 'imageCountContainer');
+
+  const playerCountIcon = getSvgIcon('player', true);
 
   playerCountContainer.append(playerCountIcon);
   locationControls.append(playerCountContainer);
 
-  playerCountIcon.insertAdjacentHTML('beforebegin', getInfoLabel(0));
+  playerCountIcon.insertAdjacentHTML('afterend', getInfoLabel(0));
 
   const playerCountLabel = playerCountContainer.querySelector('.infoLabel');
-  playerCountLabel.classList.add('playerCount', 'unselectable');
+  playerCountLabel.classList.add('playerCount', 'imageCount', 'unselectable');
 
   return locationControls;
+}
+
+function getLocationsDepthSortFunction(reverse) {
+  return function (o1, o2) {
+    let ret = 0;
+    if (o1.depth < o2.depth)
+      ret = 1;
+    else if (o2.depth < o1.depth)
+      ret = -1;
+    else if (o1.minDepth < o2.minDepth)
+      ret = 1;
+    else if (o2.minDepth < o1.minDepth)
+      ret = -1;
+    return ret * (reverse ? -1 : 1);
+  };
 }
 
 function getLocationsPlayerCountSortFunction(locationPlayerCounts, getId) {

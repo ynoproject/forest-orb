@@ -998,12 +998,21 @@
           "off": "取消导航"
         }
       },
+      "visited": {
+        "values": {
+          "all": "All",
+          "visited": "Visited",
+          "unvisited": "Unvisited"
+        }
+      },
       "sortOrder": {
         "values": {
           "newest": "最新",
-          "oldest": "最早",
-          "alpha": "首字母顺序",
-          "players": "在线玩家数量"
+          "oldest": "最旧",
+          "shallowest": "最浅",
+          "deepest": "最深",
+          "alpha": "字母顺序",
+          "players": "在线玩家数"
         }
       }
     },

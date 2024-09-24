@@ -405,7 +405,7 @@ body {
   opacity: 0.5;
 }
 
-.iconButton.toggleButton:not(.transparentToggleButton) path:last-child {
+.iconButton.toggleButton:not(.transparentToggleButton):not(.fadeToggleButton) path:last-child {
   stroke-width: 1.5;
 }
 
@@ -543,12 +543,12 @@ body {
   content-visibility: hidden;
 }
 
-.imageControls .likeContainer, .imageControls .playerCountContainer {
+.imageControls .likeContainer, .imageControls .imageCountContainer {
   display: flex;
   align-items: center;
 }
 
-.imageControls .likeContainer > .likeCount, .imageControls .playerCountContainer > .playerCount {
+.imageControls .likeContainer > .likeCount, .imageControls .imageCountContainer > .imageCount {
   margin-inline-start: 8px;
   font-size: large;
   font-weight: bold;
@@ -558,7 +558,7 @@ body {
   margin-inline-start: 0;
 }
 
-.screenshot + .imageControls .likeContainer > .likeCount, .screenshot + .imageControls .playerCountContainer > .playerCount {
+.screenshot + .imageControls .likeContainer > .likeCount, .screenshot + .imageControls .imageCountContainer > .imageCount {
   font-size: x-large;
 }
 
