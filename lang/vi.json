@@ -998,10 +998,19 @@
           "off": "Ngưng chỉ đường"
         }
       },
+      "visited": {
+        "values": {
+          "all": "All",
+          "visited": "Visited",
+          "unvisited": "Unvisited"
+        }
+      },
       "sortOrder": {
         "values": {
           "newest": "Mới nhất",
           "oldest": "Cũ nhất",
+          "shallowest": "Shallowest",
+          "deepest": "Deepest",
           "alpha": "Thứ tự chữ cái",
           "players": "Số người chơi"
         }

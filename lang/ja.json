@@ -998,10 +998,19 @@
           "off": "場所の追跡を止める"
         }
       },
+      "visited": {
+        "values": {
+          "all": "All",
+          "visited": "Visited",
+          "unvisited": "Unvisited"
+        }
+      },
       "sortOrder": {
         "values": {
           "newest": "新しい順",
           "oldest": "古い順",
+          "shallowest": "Shallowest",
+          "deepest": "Deepest",
           "alpha": "アルファベット順",
           "players": "プレイヤー数順"
         }
