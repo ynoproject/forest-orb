@@ -548,6 +548,11 @@ body {
   align-items: center;
 }
 
+.imageControls .playerCountContainer:first-child {
+  width: 100%;
+    justify-content: right;
+}
+
 .imageControls .likeContainer > .likeCount, .imageControls .imageCountContainer > .imageCount {
   margin-inline-start: 8px;
   font-size: large;
