@@ -82,19 +82,21 @@ function onUpdateEvents(events, ignoreLocationCheck) {
 
   for (let eventType of eventTypes) {
     eventsCache[eventType] = events[eventType].map(l => {
-      if (eventType === 'locations' && l.game === '2kki') {
-        let adjustedDepth = Math.floor(l.depth / 3) * 2;
-        if (l.depth % 3 === 2)
-          adjustedDepth++;
-        l.depth = Math.min(adjustedDepth, 10);
-        if (l.minDepth) {
-          let adjustedMinDepth = Math.floor(l.minDepth / 3) * 2;
-          if (l.minDepth % 3 === 2)
-            adjustedMinDepth++;
-          l.minDepth = Math.min(adjustedMinDepth, 10);
+      if (typeof l.endDate === 'string') {
+        if (eventType === 'locations' && l.game === '2kki') {
+          let adjustedDepth = Math.floor(l.depth / 3) * 2;
+          if (l.depth % 3 === 2)
+            adjustedDepth++;
+          l.depth = Math.min(adjustedDepth, 10);
+          if (l.minDepth) {
+            let adjustedMinDepth = Math.floor(l.minDepth / 3) * 2;
+            if (l.minDepth % 3 === 2)
+              adjustedMinDepth++;
+            l.minDepth = Math.min(adjustedMinDepth, 10);
+          }
         }
+        l.endDate = new Date(l.endDate);
       }
-      l.endDate = new Date(l.endDate);
       return l;
     });
     for (let event of eventsCache[eventType]) {
