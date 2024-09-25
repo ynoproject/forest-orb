@@ -582,9 +582,9 @@
                 <label for="wikiLinkMode" class="unselectable" data-i18n="[html]modal.settings.fields.wikiLinkMode.label">Wiki Link Popup</label>
                 <div>
                   <select id="wikiLinkMode" size="3">
-                    <option value="2" data-i18n="modal.settings.fields.wikiLinkMode.always">Always</option>
-                    <option value="1" data-i18n="modal.settings.fields.wikiLinkMode.fullscreen" selected>Fullscreen Only</option>
-                    <option value="0" data-i18n="modal.settings.fields.wikiLinkMode.never">Never</option>
+                    <option value="2" data-i18n="modal.settings.fields.wikiLinkMode.values.always">Always</option>
+                    <option value="1" data-i18n="modal.settings.fields.wikiLinkMode.values.fullscreen" selected>Fullscreen Only</option>
+                    <option value="0" data-i18n="modal.settings.fields.wikiLinkMode.values.never">Never</option>
                   </select>
                 </div>
               </li>
