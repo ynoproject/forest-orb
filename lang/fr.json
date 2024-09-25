@@ -115,11 +115,11 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Fenêtre Interne du Lien du Wiki",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Toujours",
+              "fullscreen": "Plein écran seulement",
+              "never": "Jamais"
             }
           },
           "saveReminder": {
@@ -261,7 +261,7 @@
               "reject": "Demande d'ami rejetée",
               "cancel": "Demande d'ami annulée",
               "incoming": "Demande d'ami en attente",
-              "playerOnline": "Ami en-ligne",
+              "playerOnline": "Ami en ligne",
               "playerOffline": "Ami hors-ligne"
             }
           },
@@ -463,31 +463,31 @@
         }
       },
       "schedule": {
-        "title": "Events",
-        "ongoing": "Ongoing Events",
+        "title": "Événements",
+        "ongoing": "Événements en Cours",
         "party": "Party Events",
-        "future": "Future Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "future": "Événements Planifiés",
+        "noResults": "Aucun événement n'a été planifié.",
+        "doSchedule": "Planifier un Événement"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "Modifier l'Événement",
+        "save": "Sauvegarder",
+        "cancel": "Annuler l'Événement",
         "fields": {
-          "name": "Event Name",
+          "name": "Nom de l'Événement",
           "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "datetime": "Date et Heure de l'Événement",
+          "recurring": "Événement Récurrent",
           "interval": {
-            "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "title": "Intervalle",
+            "days": "jours",
+            "months": "mois",
+            "years": "années"
           },
-          "restrictParty": "Limit to Party",
+          "restrictParty": "Limiter l'Événement au Groupe",
           "platforms": {
-            "title": "External Links",
+            "title": "Liens Externes",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -544,7 +544,7 @@
       "mobileControlsType": "Alternatifs au type de commande de croix directionnelle par défaut.<br>Les types de commande flottants ne sont disponibles qu'en plein écran sur mobile."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "La syntaxe Markdown est acceptée, utilisez {{l:Monde,nom de lien optionnel}} pour insérer un lien vers yume.wiki"
     },
     "reviewRules": "Relire les règles"
   },
@@ -607,18 +607,18 @@
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS} Chance",
+        "1": "Sens Unique",
+        "2": "Pas d'Entrée",
+        "4": "Déverrouille",
+        "8": "Verrouillé",
+        "16": "Cul-de-sac",
+        "32": "Isolé",
+        "64": "Nécessite l'Effet ({PARAMS})",
+        "128": "{PARAMS} de Chance",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "Raccourci",
+        "1024": "Point de Sortie",
+        "2048": "Saisonnier ({PARAMS})"
       },
       "depth": " ({DEPTH})",
       "playing": "Joue à {GAME}"
@@ -875,7 +875,7 @@
       "periodEnds": "Termine le {DATE}",
       "current": "Actuel",
       "shortcut": "Peut être atteint via un raccourci à débloquer",
-      "toggleTracked": "Toggle Location Tracking",
+      "toggleTracked": "Activer le Suivi du Lieu",
       "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
         "-1": "Expédition libre",
@@ -989,13 +989,13 @@
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "Par {AUTHOR}",
+      "versionAdded": "Ajouté en {VERSION}",
+      "versionUpdated": "Mis à jour en {VERSION}",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "Suivre le lieu",
+          "off": "Arrêter de suivre le lieu"
         }
       },
       "visited": {
@@ -1007,12 +1007,12 @@
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
+          "newest": "Plus Récent",
+          "oldest": "Plus Vieux",
           "shallowest": "Shallowest",
           "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "alpha": "Alphabétique",
+          "players": "Nombre de Joueurs"
         }
       }
     },
@@ -1044,8 +1044,8 @@
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
+      "organizer": "Organisé par&nbsp;{NAME}",
+      "invalidPlatformLink": "La plateforme doit avoir une URL valide",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
