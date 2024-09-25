@@ -463,31 +463,31 @@
         }
       },
       "schedule": {
-        "title": "Events",
-        "ongoing": "Ongoing Events",
-        "party": "Party Events",
-        "future": "Future Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "title": "Sự Kiện",
+        "ongoing": "Đang diễn ra",
+        "party": "Sự kiện nhóm",
+        "future": "Sắp diễn ra",
+        "noResults": "Chưa có sự kiện nào được lên lịch.",
+        "doSchedule": "Lên lịch sự kiện mới"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "Chỉnh sửa Sự kiện",
+        "save": "Lưu",
+        "cancel": "Hủy sự kiện",
         "fields": {
-          "name": "Event Name",
-          "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "name": "Tên sự kiện",
+          "description": "Mô tả",
+          "datetime": "Thời gian diễn ra",
+          "recurring": "Sự kiện lặp lại",
           "interval": {
-            "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "title": "Lặp lại mỗi",
+            "days": "ngày",
+            "months": "tháng",
+            "years": "năm"
           },
-          "restrictParty": "Limit to Party",
+          "restrictParty": "Chỉ dành cho Nhóm",
           "platforms": {
-            "title": "External Links",
+            "title": "Liên kết ngoài",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -544,7 +544,7 @@
       "mobileControlsType": "Các kiểu điều khiển khác thay thế cho kiểu D-Pad mặc định.<br>Kiểu điều khiển nổi chỉ có tác dụng khi bật toàn màn hình trên điện thoại."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Có thể dùng ký hiệu định dạng văn bản. Bạn có thể dùng {{l:World,optional link name}} để chèn liên kết đến yume.wiki"
     },
     "reviewRules": "Xem Nội quy"
   },
@@ -750,7 +750,7 @@
       "partyOwner": "Trưởng Nhóm",
       "confirmDisband": "Bạn có chắc chắn muốn giải tán nhóm? Hành động này không thể hoàn tác.",
       "confirmTransferPartyOwner": "Bạn có chắc chắn muốn chỉ định {PLAYER} làm trưởng nhóm?",
-      "offlineMemberSuffix": "Member offline",
+      "offlineMemberSuffix": "Thành viên offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
@@ -781,7 +781,7 @@
         "recentBadges": "Bạn có thể chọn 'Mới thu thập' cho Trạng thái trong danh sách huy hiệu để xem lại tất cả các huy hiệu bạn đã thu thập trong phiên hiện tại.",
         "desktopHotkeys": "Nếu bạn chơi trên máy tính, Alt+Enter sẽ bật tắt chế độ toàn màn hình, F7 mặc định sẽ chụp màn hình trò chơi, và phím T sẽ mở hộp chat trong trò chơi.",
         "badgeControls": "Trong Kho Huy hiệu, bạn có thể kéo thả huy hiệu để thay đổi vị trí của chúng, hoặc nhấn 'Gỡ huy hiệu' để gỡ cùng lúc nhiều huy hiệu.",
-        "cacheSettings": "Nếu bạn gặp khó khăn hoàn thành các kì Thám hiểm hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
+        "cacheSettings": "Nếu bạn gặp khó khăn trong việc hoàn thành các kì Thám hiểm hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
         "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
       }
     },
@@ -1044,8 +1044,8 @@
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
+      "organizer": "Được tổ chức bởi&nbsp;{NAME}", 
+      "invalidPlatformLink": "Nền tảng phải có URL hợp lệ",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
