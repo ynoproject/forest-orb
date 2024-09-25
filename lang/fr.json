@@ -998,10 +998,19 @@
           "off": "Arrêter de suivre le lieu"
         }
       },
+      "visited": {
+        "values": {
+          "all": "All",
+          "visited": "Visited",
+          "unvisited": "Unvisited"
+        }
+      },
       "sortOrder": {
         "values": {
           "newest": "Plus Récent",
           "oldest": "Plus Vieux",
+          "shallowest": "Shallowest",
+          "deepest": "Deepest",
           "alpha": "Alphabétique",
           "players": "Nombre de Joueurs"
         }

@@ -567,16 +567,6 @@
                   <label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label>
                 </div>
               </li>
-              <!--<li class="formControlRow">
-                <label for="locationVisibility" class="unselectable" data-i18n="[html]modal.settings.fields.locationVisibility.label">In-Game Location Visibility</label>
-                <div>
-                  <select id="locationVisibility">
-                    <option value="0" data-i18n="modal.settings.fields.locationVisibility.values.private">Private</option>
-                    <option value="1" data-i18n="modal.settings.fields.locationVisibility.values.friends">Friends</option>
-                    <option value="2" data-i18n="modal.settings.fields.locationVisibility.values.public">Public</option>
-                  </select>
-                </div>
-              </li>-->
               <li class="formControlRow">
                 <label for="nametagMode" class="unselectable" data-i18n="[html]modal.settings.fields.nametagMode.label">Nametags</label>
                 <div>
@@ -1268,9 +1258,19 @@
             <div id="locationsControls" class="uiControls wrap">
               <div class="uiControl">
                 <span></span>
+                <select id="locationsVisited">
+                  <option value="" data-i18n="[html]modal.locations.fields.visited.values.all">All</option>
+                  <option value="visited" data-i18n="[html]modal.locations.fields.visited.values.visited">Visited</option>
+                  <option value="unvisted" data-i18n="[html]modal.locations.fields.visited.values.unvisited">Unvisited</option>
+                </select>
+              </div>
+              <div class="uiControl">
+                <span></span>
                 <select id="locationsSortOrder">
                   <option value="newest" data-i18n="[html]modal.locations.fields.sortOrder.values.newest">Newest</option>
                   <option value="oldest" data-i18n="[html]modal.locations.fields.sortOrder.values.oldest">Oldest</option>
+                  <option value="shallowest" data-i18n="[html]modal.locations.fields.sortOrder.values.shallowest">Shallowest</option>
+                  <option value="deepest" data-i18n="[html]modal.locations.fields.sortOrder.values.deepest">Deepest</option>
                   <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.alphabetical">Alphabetical</option>
                   <option value="players" data-i18n="[html]modal.locations.fields.sortOrder.values.players">Player Count</option>
                 </select>
