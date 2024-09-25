@@ -84,6 +84,8 @@ const allGameUiThemes = {
     'talyis-City of Revival menu theme',
     'kamara_sys_81',
     '1247-system82',
+    'Kong_Pizza_system',
+    'Kong_akai_hasami_system',
 
     'system_E_eye',
     'System_kuraud',
