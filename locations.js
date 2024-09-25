@@ -29,6 +29,12 @@ function updateGameLocations() {
       throw new Error(response.statusText);
     return response.json();
   }).then(locations => {
+    const originalLangJp = gameDefaultLangs[gameId] === 'ja';
+    locations.map(l => {
+      if (originalLangJp)
+        l.titleJP = l.originalTitle;
+      delete l.originalTitle;
+    });
     locationsData = locations;
     locationsMaxDepth = Math.max(...locations.map(l => l.depth));
     let versionNames = [];
