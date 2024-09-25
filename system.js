@@ -86,6 +86,9 @@ const allGameUiThemes = {
     '1247-system82',
     'Kong_Pizza_system',
     'Kong_akai_hasami_system',
+    'akalog_system-1',
+    'akalog_system-2',
+    'akalog_system-3',
 
     'system_E_eye',
     'System_kuraud',
