@@ -1072,7 +1072,7 @@
         "changeUsername": {
           "label": "Change a Username",
           "playerPrompt": "Enter the name of the account to change the username for",
-          "durationPrompt": "Enter the new username for {PLAYER}",
+          "namePrompt": "Enter the new username for {PLAYER}",
           "success": "Username for {PLAYER} has been changed to {NAME}",
           "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
         },
@@ -1083,7 +1083,7 @@
         "tempBan": {
           "label": "Temporarily ban a Player",
           "playerPrompt": "Enter the name of the account to ban",
-          "namePrompt": "Enter the duration to ban {PLAYER} for",
+          "durationPrompt": "Enter the duration to ban {PLAYER} for",
           "success": "{PLAYER} has been banned for {DURATION}",
           "error": "Failed to ban {PLAYER}"
         },
