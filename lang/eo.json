@@ -1079,6 +1079,13 @@
           "label": "Forbari Ludanton",
           "playerPrompt": "Entajpi la nomon de la konto por forbari"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "namePrompt": "Enter the duration to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "Malforbari Ludanton",
           "playerPrompt": "Entajpi la nomon de la konto por malforbari"
