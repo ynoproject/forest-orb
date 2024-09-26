@@ -162,7 +162,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   }
 
   const shareButton = screenshotModal.querySelector('.shareScreenshotButton');
-  shareButton.classList.toggle('hidden', isTemp || (screenshotData?.owner?.uuid && screenshotData.owner.uuid !== playerData.uuid) || (isRemote && !screenshotData.public));
+  shareButton.classList.toggle('hidden', isTemp || (screenshotData?.uuid && screenshotData.uuid !== playerData.uuid) || (isRemote && !screenshotData.public));
 
   const shareScreenshot = (id, isRemote) => {
     const chatInput = document.getElementById("chatInput");
