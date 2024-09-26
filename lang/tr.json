@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "Ekran Görüntünüz",
         "download": "İndir",
-        "save": "Ekran Görüntülerime Kaydet"
+        "save": "Ekran Görüntülerime Kaydet",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "Ekran Görüntülerim",

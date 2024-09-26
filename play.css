@@ -1567,6 +1567,13 @@ body.fullBg #background {
   pointer-events: none;
 }
 
+.messageContents .screenshotEmbed, #gameChatContainer .screenshotEmbed {
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
+  height: 120px;
+}
+
 .messageHeader {
   display: flex;
   justify-content: space-between;

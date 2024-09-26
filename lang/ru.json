@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "Ваш снимок",
         "download": "Скачать",
-        "save": "Сохранить в Ваши снимки"
+        "save": "Сохранить в Ваши снимки",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "Ваши снимки",

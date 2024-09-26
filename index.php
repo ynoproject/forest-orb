@@ -1293,6 +1293,7 @@
           <div class="modalFooter">
             <button class="downloadScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.download">Download</button>
             <button class="saveScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.save">Save to My Screenshots</button>
+            <button class="shareScreenshotButton unselectable" type="button" data-i18n="[html]modal.screenshot.share">Share Screenshot in Chat</button>
           </div>
         </div>
         <div id="myScreenshotsModal" class="modal fullscreenModal hidden">

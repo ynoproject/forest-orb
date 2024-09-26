@@ -427,7 +427,8 @@
       "screenshot": {
         "title": "Via Ekrankopio",
         "download": "Elŝuti",
-        "save": "Konservi al Miaj Ekrankopioj"
+        "save": "Konservi al Miaj Ekrankopioj",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "Miaj Ekrankopioj",
