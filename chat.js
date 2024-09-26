@@ -767,12 +767,12 @@ function tryEmbedScreenshot(node, uuid) {
           imageNode.classList.add('screenshotEmbed');
           imageNode.src = `${serverUrl}/screenshots/${isTemp ? 'temp/' : ''}${uuid}/${screenshotResult[2]}.png`;
           const date = new Date();
-          sendSessionCommand('psi', [ uuid, screenshotResult[2] ], args => {
-            const screenshotInfo = JSON.parse(args[0]);
-            imageNode.onclick = function () {
+          imageNode.onclick = function () {
+            sendSessionCommand('psi', [ uuid, screenshotResult[2] ], args => {
+              const screenshotInfo = JSON.parse(args[0]);
               viewScreenshot(imageNode.src, date, screenshotInfo);
-            };
-          });
+            });
+          };
           const beforeNode = screenshotResult.index ? document.createTextNode('') : null;
           if (beforeNode)
             beforeNode.textContent = childNode.textContent.slice(0, screenshotResult.index);
