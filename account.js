@@ -197,7 +197,7 @@ function updateModControls() {
         const duration = prompt(localizedMessages.modSettings.actions.tempBan.durationPrompt.replace('{PLAYER}', playerName));
         if (!duration)
           return;
-        apiFetch(`changeusername?user=${playerName}&duration=${duration}`, true)
+        apiFetch(`temporaryban?user=${playerName}&duration=${duration}`, true)
           .then(response => {
             if (!response.ok) {
               showToastMessage(getMassagedLabel(localizedMessages.modSettings.actions.tempBan.error, true).replace('{PLAYER}', playerName));
