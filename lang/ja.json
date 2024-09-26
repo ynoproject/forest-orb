@@ -1000,17 +1000,17 @@
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "全て",
+          "visited": "到達済み",
+          "unvisited": "未到達"
         }
       },
       "sortOrder": {
         "values": {
           "newest": "新しい順",
           "oldest": "古い順",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
+          "shallowest": "浅い順",
+          "deepest": "深い順",
           "alpha": "アルファベット順",
           "players": "プレイヤー数順"
         }
