@@ -189,6 +189,8 @@ function updateModControls() {
       });
     addModControlsButton(localizedMessages.modSettings.actions.ban.label,
       () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+    addModControlsButton(localizedMessages.modSettings.actions.tempban.label,
+      () => adminPlayerAction('tempban', localizedMessages.modSettings.actions.tempban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.tempban.success, true), 'ban'));
     addModControlsButton(localizedMessages.modSettings.actions.unban.label,
       () => adminPlayerAction('unban', localizedMessages.modSettings.actions.unban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.mute.label,
