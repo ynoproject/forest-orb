@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "Ảnh chụp màn hình của bạn",
         "download": "Tải xuống",
-        "save": "Lưu vào Ảnh của tôi"
+        "save": "Lưu vào Ảnh của tôi",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "Ảnh của tôi",

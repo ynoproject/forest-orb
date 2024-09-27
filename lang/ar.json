@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "صور الشاشة",
         "download": "تحميل",
-        "save": "حفظ الصورة"
+        "save": "حفظ الصورة",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "مجموعة الصور",

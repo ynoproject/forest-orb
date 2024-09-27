@@ -121,6 +121,7 @@ function initScreenshotControls() {
 
 function viewScreenshot(url, date, screenshotData, lastModal) {
   const isRemote = url.startsWith(serverUrl);
+  const isTemp = isRemote && url.includes('/temp/');
 
   const screenshot = document.createElement('img');
   screenshot.classList.add('screenshot', 'unselectable');
@@ -131,7 +132,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   screenshotModalContent.innerHTML = '';
   screenshotModalContent.append(screenshot);
 
-  if (screenshotData?.hasOwnProperty('id')) {
+  if (screenshotData?.hasOwnProperty('id') && !isTemp) {
     screenshotModalContent.append(getScreenshotControls(screenshotData.hasOwnProperty('owner'), screenshotData, () => {
       if (!screenshotData.owner)
         initScreenshotsModal(false);
@@ -159,6 +160,34 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
       });
     };
   }
+
+  const shareButton = screenshotModal.querySelector('.shareScreenshotButton');
+  shareButton.classList.toggle('hidden', isTemp || (screenshotData?.owner?.uuid && screenshotData.uuid !== playerData.uuid) || (isRemote && !screenshotData.public));
+
+  const shareScreenshot = (id, isRemote) => {
+    const chatInput = document.getElementById("chatInput");
+    const inputVal = chatInput.value.toLowerCase();
+    if (!inputVal.includes('[screenshot]'))
+      chatInput.value += `${chatInput.value.trim() ? ' ' : ''}[screenshot]`;
+    chatInput.dataset.screenshotId = id;
+    chatInput.dataset.screenshotTemp = !isRemote ? 'temp' : '';
+  }
+
+  shareButton.onclick = () => {
+    if (isRemote) {
+      shareScreenshot(screenshotData.id, true);
+      closeModal();
+    } else {
+      addLoader(screenshotModal, true);
+      uploadScreenshot(url, screenshotData?.mapId, screenshotData?.mapX, screenshotData?.mapY, true).then(id => {
+        removeLoader(screenshotModal);
+        if (id) {
+          closeModal();
+          shareScreenshot(id);
+        }
+      });
+    }
+  };
 
   const modalTitle = screenshotModal.querySelector('.modalTitle');
   const playerModalTitle = screenshotModal.querySelector('.playerScreenshotModalTitle');
@@ -262,16 +291,18 @@ function takeScreenshot() {
   });
 }
 
-function uploadScreenshot(url, mapId, mapX, mapY) {
+function uploadScreenshot(url, mapId, mapX, mapY, temp) {
   return new Promise(resolve => {
-    apiPost(`screenshot?command=upload&mapId=${mapId}&mapX=${mapX}&mapY=${mapY}`, getScreenshotBinary(url), 'application/png')
+    apiPost(`screenshot?command=upload&mapId=${mapId}&mapX=${mapX}&mapY=${mapY}&temp=${temp ? 1 : 0}`, getScreenshotBinary(url), 'application/png')
       .then(response => {
         if (!response.ok)
           throw new Error(response.statusText);
-        resolve(true);
-      }).catch(err => {
+        return response.text();
+      })
+      .then(id => resolve(id))
+      .catch(err => {
         console.error(err);
-        resolve(false);
+        resolve(null);
       });
   });
 }
@@ -702,3 +733,7 @@ function showScreenshotToastMessage(key, icon, iconFill, systemName, persist) {
   const message = getMassagedLabel(localizedMessages.toast.screenshots[key], true);
   return showToastMessage(message, icon, iconFill, systemName, persist);
 }
+
+(function () {
+  addSessionCommandHandler('psi');
+})();

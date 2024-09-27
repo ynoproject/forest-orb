@@ -378,8 +378,8 @@
           "deactivate": "Done"
         }
       },
+      "title": "Manage Save Data",
       "save": {
-        "title": "Manage Save Data",
         "reload": "Save Changes and Reload",
         "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "Your Screenshot",
         "download": "Download",
-        "save": "Save to My Screenshots"
+        "save": "Save to My Screenshots",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "My Screenshots",

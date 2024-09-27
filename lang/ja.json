@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "スクリーンショット",
         "download": "ダウンロード",
-        "save": "マイスクリーンショットに保存する"
+        "save": "マイスクリーンショットに保存する",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "マイスクリーンショット",

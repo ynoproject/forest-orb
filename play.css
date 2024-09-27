@@ -1548,6 +1548,10 @@ body.fullBg #background {
   user-select: none;
 }
 
+.messageContents .spoiler:not(.show) .screenshotEmbed, #gameChatContainer .spoiler:not(.show) .screenshotEmbed {
+  visibility: hidden;
+}
+
 .messageContents .ynomojiWrapper {
   display: inline-flex;
   justify-content: center;
@@ -1565,6 +1569,14 @@ body.fullBg #background {
 .messageContents .spoiler:not(.show) .ynomojiWrapper {
   opacity: 0;
   pointer-events: none;
+}
+
+.messageContents .screenshotEmbed, #gameChatContainer .screenshotEmbed {
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
+  max-width: fill-available;
+  height: 120px;
+  cursor: pointer;
 }
 
 .messageHeader {

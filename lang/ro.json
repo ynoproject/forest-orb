@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "Your Screenshot",
         "download": "Download",
-        "save": "Save to My Screenshots"
+        "save": "Save to My Screenshots",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "My Screenshots",

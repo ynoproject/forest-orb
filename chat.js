@@ -253,6 +253,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   
   populateMessageNodes(parseMessageTextForMarkdown(msg), messageContents, system);
   wrapMessageEmojis(messageContents);
+  tryEmbedScreenshot(messageContents, uuid);
 
   if (!messageContents.innerText.trim())
     messageContents.classList.add("notext");
@@ -423,12 +424,18 @@ function chatInputActionFired() {
   const chatTab = document.querySelector(".chatboxTab[data-tab-section='chat']");
   if (!chatTab.classList.contains("active"))
     chatTab.click();
+  let message = chatInput.value.trim();
+  if (message.includes('[screenshot]') && chatInput.dataset.screenshotId) {
+    message = message.replace('[screenshot]', `[${chatInput.dataset.screenshotTemp ? 't' : ''}${chatInput.dataset.screenshotId}]`);
+    delete chatInput.dataset.screenshotId;
+    delete chatInput.dataset.screenshotTemp;
+  }
   if (!chatInput.dataset.global || partyChat) {
     if (!joinedPartyId || !partyChat) {
-      sendSessionCommand("say", [ chatInput.value.trim() ]);
+      sendSessionCommand("say", [ message ]);
     } else
-      sendSessionCommand("psay", [ chatInput.value.trim() ]);
-  } else if (!trySendGlobalMessage(chatInput.value.trim()))
+      sendSessionCommand("psay", [ message ]);
+  } else if (!trySendGlobalMessage(message))
     return;
   chatInput.value = "";
   document.getElementById("ynomojiContainer").classList.add("hidden");
@@ -747,6 +754,53 @@ function wrapMessageEmojis(node, force) {
         node.innerHTML = `${node.innerHTML.slice(0, ynomojiMatch.index)}<span class="ynomojiWrapper"><img src="${ynomojiUrlPrefix}${ynomojiConfig[ynomojiId]}" class="ynomoji" title="${ynomojiId}" /></span>${node.innerHTML.slice(ynomojiMatch.index + ynomojiId.length + 2)}`;
     }
   }
+}
+
+function tryEmbedScreenshot(node, uuid) {
+  if (node.childNodes.length) {
+    for (let childNode of node.childNodes) {
+      if (childNode.nodeType === Node.TEXT_NODE) {
+        let screenshotResult;
+        if ((screenshotResult = /\[(t?)(\w{16})\]/.exec(childNode.textContent)) !== null) {
+          let isTemp = !!screenshotResult[1];
+          const imageNode = document.createElement('img');
+          imageNode.classList.add('screenshotEmbed');
+          imageNode.src = `${serverUrl}/screenshots/${isTemp ? 'temp/' : ''}${uuid}/${screenshotResult[2]}.png`;
+          const date = new Date();
+          imageNode.onclick = function () {
+            sendSessionCommand('psi', [ uuid, screenshotResult[2] ], args => {
+              const screenshotInfo = JSON.parse(args[0]);
+              viewScreenshot(imageNode.src, date, screenshotInfo);
+            });
+          };
+          const beforeNode = screenshotResult.index ? document.createTextNode('') : null;
+          if (beforeNode)
+            beforeNode.textContent = childNode.textContent.slice(0, screenshotResult.index);
+          const afterNode = childNode.textContent.length > screenshotResult.index + (isTemp ? 19 : 18) ? document.createTextNode('') : null;
+          if (afterNode)
+            afterNode.textContent = childNode.textContent.slice(screenshotResult.index + (isTemp ? 19 : 18));
+          node.replaceChild(imageNode, childNode);
+          if (beforeNode)
+            node.insertBefore(beforeNode, imageNode);
+          if (afterNode) {
+            if (childNode !== node.childNodes[node.childElementCount - 1])
+              node.insertBefore(afterNode, imageNode.nextSibling);
+            else
+              node.appendChild(afterNode);
+          }
+        
+          return true;
+        }
+      } else if (tryEmbedScreenshot(childNode, uuid))
+        return true;
+    }
+  } else if (node.nodeType === Node.TEXT_NODE && /\[t?\w{16}\]/.test(node.textContent)) {
+    const newParentNode = document.createElement('span');
+    newParentNode.appendChild(node);
+    tryEmbedScreenshot(newParentNode, uuid);
+  }
+
+  return false;
 }
 
 (function () {

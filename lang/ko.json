@@ -428,7 +428,8 @@
       "screenshot": {
         "title": "나의 스크린샷",
         "download": "다운로드",
-        "save": "나의 스크린샷에 저장"
+        "save": "나의 스크린샷에 저장",
+        "share": "Share in Chat"
       },
       "myScreenshots": {
         "title": "나의 스크린샷 목록",
