@@ -468,6 +468,7 @@
         "ongoing": "Ongoing Events",
         "party": "Party Events",
         "future": "Future Events",
+        "official": "Official Events",
         "noResults": "No events have been scheduled.",
         "doSchedule": "Schedule an Event"
       },
@@ -576,6 +577,7 @@
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "logout": "¿Está seguro que desea cerrar sesión?",
     "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -1048,6 +1050,7 @@
     "schedules": {
       "organizer": "Organized by&nbsp;{NAME}",
       "invalidPlatformLink": "Platform must have a valid URL",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
