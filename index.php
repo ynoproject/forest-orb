@@ -23,6 +23,9 @@
     case "genie":
       $gameName = "Dream Genie";
       break;
+    case "if":
+      $gameName = "If";
+      break;
     case "mikan":
       $gameName = "Mikan Muzou";
       break;

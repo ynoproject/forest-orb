@@ -182,6 +182,11 @@ const allGameUiThemes = {
     'system_Home',
     'system_Springs'
   ],
+  'if': [
+    'sys-p',
+    'sys-p2',
+    'sys-p3'
+  ],
   'mikan': [
     's_1',
     's_2',
@@ -285,6 +290,7 @@ const allGameFullBgUiThemes = {
   'deepdreams': [],
   'flow': [],
   'genie': [],
+  'if': [],
   'mikan': [],
   'muma': [],
   'nostalgic': [],
