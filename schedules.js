@@ -7,6 +7,7 @@
   @property {number} partyId
   @property {string} game
   @property {boolean} recurring
+  @property {boolean} official
   @property {number} interval
   @property {string} intervalType
   @property {string} datetime
@@ -29,16 +30,17 @@
 
 let escapeHtml;
 
-(function() {
+{ 
   const elm = document.createElement('div');
   escapeHtml = text => {
     elm.innerText = text;
     return elm.innerText;
   };
-})();
+}
 
 /** Events starting in 15 minutes or less are considered "ongoing". */
 const ONGOING_SCHEDULES_THRESHOLD = 15 * 60 * 1000;
+const YEAR = 366 * 24 * 60 * 60 * 1000;
 
 const platformAuthorities = Object.freeze({
   discord: 'discord.com',
@@ -106,12 +108,14 @@ function addScheduleItem(schedule) {
         if (!isMod && (!playerData?.uuid || playerData.uuid !== schedule.ownerUuid)) break;
         slot.classList.remove('hidden');
         slot.addEventListener('click', () => {
-          apiFetch(`schedule?command=cancel&scheduleId=${schedule.id}`)
-            .then(response => {
-              if (!response.ok)
-                throw new Error(response.statusText);
-              openSchedulesModal();
-            }, err => console.error(err));
+          showConfirmModal(localizedMessages.schedules.confirmCancel, () => {
+            apiFetch(`schedule?command=cancel&scheduleId=${schedule.id}`)
+              .then(response => {
+                if (!response.ok)
+                  throw new Error(response.statusText);
+                openSchedulesModal();
+              }, err => console.error(err));
+          });
         });
         break;
       case 'description':
@@ -169,8 +173,11 @@ function addScheduleItem(schedule) {
         slot.innerHTML = localizedMessages.schedules.organizer.replace('{NAME}', playerNameHtml);
         break;
       case 'datetime':
-        if (parsedDatetime)
-          slot.innerText = parsedDatetime.toLocaleString(globalConfig.lang === 'en' ? [] : globalConfig.lang, { "dateStyle": "short", "timeStyle": "short" });
+        if (parsedDatetime) {
+          const locale = globalConfig.lang === 'en' ? [] : globalConfig.lang;
+          slot.innerText = parsedDatetime.toLocaleString(locale, { "dateStyle": "short", "timeStyle": "short" });
+          addTooltip(slot, parsedDatetime.toLocaleString(locale, { weekday: 'long' }));
+        }
         break;
       case 'followerCount':
         slot.innerText = schedule.followerCount;
@@ -197,6 +204,8 @@ function addScheduleItem(schedule) {
     document.getElementById('ongoingSchedules').appendChild(template);  
   else if (schedule.partyId && schedule.partyId === joinedPartyId)
     document.getElementById('partySchedules').appendChild(template);
+  else if (schedule.official)
+    document.getElementById('officialSchedules').appendChild(template);
   else
     document.getElementById('futureSchedules').appendChild(template);
 }
@@ -204,9 +213,8 @@ function addScheduleItem(schedule) {
 function openSchedulesModal() {
   const schedulesModal = document.getElementById('schedulesModal');
   addLoader(schedulesModal);
-  document.getElementById('futureSchedules').replaceChildren();
-  document.getElementById('ongoingSchedules').replaceChildren();
-  document.getElementById('partySchedules').replaceChildren();
+  for (const elm of document.querySelectorAll('.scheduleContainer'))
+    elm.replaceChildren();
   document.getElementById('createSchedule').classList.toggle('hidden', !playerData?.account);
   openModal('schedulesModal');
   return apiFetch('schedule?command=list')
@@ -240,32 +248,53 @@ function openScheduleEditModal(schedule = {}) {
   const form = document.getElementById('scheduleForm');
   for (const input of form.querySelectorAll('[name]')) {
     input.value = formatScheduleFormValue(input.name, schedule[input.name] || '');
+    if (input.name === 'datetime') {
+      let min = new Date();
+      min.setHours(0, 0);
+      const max = new Date(min.valueOf() + YEAR);
+      input.setAttribute('min', min.toISOString());
+      input.setAttribute('max', max.toISOString());
+    }
   }
   document.getElementById('eventRecurring').classList.toggle('toggled', !!schedule.recurring);
+
+  document.getElementById('eventOfficial').classList.toggle('toggled', !!schedule.official);
+  document.getElementById('eventOfficialRow').classList.toggle('hidden', !isMod);
+
+  document.getElementById('resetOrganizer').classList.remove('toggled');
+  document.getElementById('resetOrganizerRow').classList.toggle('hidden', !isMod);
+
   form.interval.toggleAttribute('required', !!schedule.recurring);
   form.intervalType.toggleAttribute('required', !!schedule.recurring);
+
   document.getElementById('eventInterval').classList.toggle('hidden', !schedule.recurring);
   document.getElementById('restrictPartyRow').classList.toggle('hidden', !joinedPartyCache || joinedPartyCache.ownerUuid !== playerData?.uuid);
   document.getElementById('restrictParty').classList.toggle('toggled', !!schedule.partyId);
+
   openModal('scheduleEditModal', null, 'schedulesModal');
   updateYnomojiContainerPos(false, document.getElementById('editScheduleDescription'));
 }
 
 document.getElementById('schedulesButton').addEventListener('click', () => openSchedulesModal());
 
-document.getElementById('eventRecurring').addEventListener('click', function () {
-  const enabled = !this.classList.contains('toggled');
-  this.classList.toggle('toggled', enabled);
-  document.getElementById('eventInterval').classList.toggle('hidden', !enabled);
-  const form = document.getElementById('scheduleForm');
-  form.interval.toggleAttribute('required', enabled);
-  form.intervalType.toggleAttribute('required', enabled);
-});
+{
+  let toggleButton = elm => {
+    const enabled = !elm.classList.contains('toggled');
+    elm.classList.toggle('toggled', enabled);
+    return enabled;
+  };
 
-document.getElementById('restrictParty').addEventListener('click', function () {
-  const enabled = !this.classList.contains('toggled');
-  this.classList.toggle('toggled', enabled);
-});
+  document.getElementById('eventRecurring').addEventListener('click', function () {
+    const enabled = toggleButton(this);
+    document.getElementById('eventInterval').classList.toggle('hidden', !enabled);
+    const form = document.getElementById('scheduleForm');
+    form.interval.toggleAttribute('required', enabled);
+    form.intervalType.toggleAttribute('required', enabled);
+  });
+
+  for (const elmid of ['eventOfficial', 'restrictParty', 'resetOrganizer'])
+    document.getElementById(elmid).addEventListener('click', function () { toggleButton(this); });
+}
 
 document.getElementById('scheduleForm').addEventListener('submit', function editSchedule() {
   if (!playerData?.account) return;
@@ -275,9 +304,13 @@ document.getElementById('scheduleForm').addEventListener('submit', function edit
     schedule.id = editingScheduleId;
   schedule.recurring = document.getElementById('eventRecurring').classList.contains('toggled');
   schedule.datetime = new Date(schedule.datetime).toISOString();
-  schedule.ownerUuid = playerData.uuid;
   schedule.systemName = playerData.systemName;
   schedule.game = gameId;
+  schedule.official = document.getElementById('eventOfficial').classList.contains('toggled');
+
+  schedule.ownerUuid = playerData.uuid;
+  if (playerData.rank > 0 && !document.getElementById('resetOrganizer').classList.contains('toggled'))
+    schedule.ownerUuid = '';
 
   if (joinedPartyCache?.ownerUuid && joinedPartyCache.ownerUuid === playerData?.uuid) {
     const partyOnly = document.getElementById('restrictParty').classList.contains('toggled');
@@ -305,12 +338,14 @@ document.getElementById('cancelSchedule').addEventListener('click', function () 
     openSchedulesModal();
     return;
   }
-  apiFetch(`schedule?command=cancel&scheduleId=${editingScheduleId}`)
-    .then(response => {
-      if (!response.ok)
-        throw new Error(response.statusText);
-      openSchedulesModal();
-    }, err => console.error(err));
+  showConfirmModal(localizedMessages.schedules.confirmCancel, () => {
+    apiFetch(`schedule?command=cancel&scheduleId=${editingScheduleId}`)
+      .then(response => {
+        if (!response.ok)
+          throw new Error(response.statusText);
+        openSchedulesModal();
+      }, err => console.error(err));
+  });
 });
 
 for (const platformInput of document.querySelectorAll('input[data-platform]')) {

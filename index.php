@@ -139,20 +139,8 @@
         </button>
         <button id="schedulesButton" class="iconButton fillIcon unselectable" data-i18n="[title]tooltips.schedules">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            xml:space="preserve" width="32" height="32" viewBox="0 0 22 22">
-            <g>
-              <path d="M20,7.4v10.5c0,1.7-1.3,3-3,3H5.9c0,1.1,0.9,2,2,2H18c2.2,0,4-1.8,4-4V9.4C22,8.3,21.1,7.4,20,7.4z">
-              </path>
-              <g>
-                <path
-                  d="M5,1.1v2H4c-1.1,0-2,0.9-2,2v12c0,1.1,0.9,2,2,2h12.2c1.1,0,2-0.9,2-2v-12c0-1.1-0.9-2-2-2h-1v-2h-2v2H7v-2    C7,1.1,5,1.1,5,1.1z M4,8.1h12.2v9H4V8.1z">
-                </path>
-                <path
-                  d="M13.7,16.3l-2.4-1.4L9,16.3l0.6-2.7l-2.1-1.8l2.8-0.2L11.4,9l1.1,2.5l2.8,0.3l-2.1,1.8L13.7,16.3z">
-                </path>
-              </g>
-            </g>
-            <rect width="24" height="24" style="fill:none"></rect>
+            xml:space="preserve" width="32" height="32" viewBox="0 0 18 18">
+            <path d="M18 3V18H0V3H3V4.5a.5.5 90 003 0V3H7.5V4.5a.5.5 90 003 0V3H12V4.5a.5.5 90 003 0V3ZM3.5 4.5a.5.5 90 002 0V1a.5.5 90 00-2 0ZM8 4.5a.5.5 90 002 0V1A.5.5 90 008 1Zm4.5 0a.5.5 90 002 0V1a.5.5 90 00-2 0ZM8 7H1.5v4H8Zm2 0v4h6.5V7ZM1.5 16.5H8v-4H1.5Zm8.5-4v4h6.5v-4Z"/>
           </svg>
         </button>
         <button id="loginButton" type="button" class="unselectable" data-i18n="[html]account.login">Login</button>
@@ -1402,15 +1390,19 @@
           </div>
           <div class="modalContent">
             <div style="width:100%">
-              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.ongoing">Ongoing Events</div>
+              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.ongoing">Ongoing Events</div>
               <div id="ongoingSchedules" class="scheduleContainer"></div>
             </div>
             <div style="width:100%">
-              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.party">Party Events</div>
+              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.official">Official Events</div>
+              <div id="officialSchedules" class="scheduleContainer"></div>
+            </div>
+            <div style="width:100%">
+              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.party">Party Events</div>
               <div id="partySchedules" class="scheduleContainer"></div>
             </div>
             <div style="width:100%">
-              <div class="messageContainer themeText scheduleGroupHeader" style="margin-bottom: 8px;" data-i18n="[html]modal.schedule.future">Future Events</div>
+              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.future">Future Events</div>
               <div id="futureSchedules" class="scheduleContainer"></div>
             </div>
             <div id="emptySchedules" class="hidden" data-i18n="[html]modal.schedule.noResults">
@@ -1514,6 +1506,22 @@
                   <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.restrictParty">Limit to Party</label>
                   <div>
                     <button id="restrictParty" class="checkboxButton unselectable" type="button">
+                      <span></span>
+                    </button>
+                  </div>
+                </li>
+                <li id="eventOfficialRow" class="formControlRow hidden">
+                  <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.official">Official Event</label>
+                  <div>
+                    <button id="eventOfficial" class="checkboxButton unselectable" type="button">
+                      <span></span>
+                    </button>
+                  </div>
+                </li>
+                <li id="resetOrganizerRow" class="formControlRow hidden">
+                  <label class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.resetOrganizer">Reset Organizer</label>
+                  <div>
+                    <button id="resetOrganizer" class="checkboxButton unselectable" type="button">
                       <span></span>
                     </button>
                   </div>
