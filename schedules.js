@@ -262,7 +262,7 @@ function openScheduleEditModal(schedule = {}) {
   document.getElementById('eventOfficialRow').classList.toggle('hidden', !isMod);
 
   document.getElementById('resetOrganizer').classList.remove('toggled');
-  document.getElementById('resetOrganizerRow').classList.toggle('hidden', !isMod);
+  document.getElementById('resetOrganizerRow').classList.toggle('hidden', !isMod || !schedule.id);
 
   form.interval.toggleAttribute('required', !!schedule.recurring);
   form.intervalType.toggleAttribute('required', !!schedule.recurring);
@@ -309,7 +309,7 @@ document.getElementById('scheduleForm').addEventListener('submit', function edit
   schedule.official = document.getElementById('eventOfficial').classList.contains('toggled');
 
   schedule.ownerUuid = playerData.uuid;
-  if (playerData.rank > 0 && !document.getElementById('resetOrganizer').classList.contains('toggled'))
+  if (editingScheduleId && playerData.rank > 0 && !document.getElementById('resetOrganizer').classList.contains('toggled'))
     schedule.ownerUuid = '';
 
   if (joinedPartyCache?.ownerUuid && joinedPartyCache.ownerUuid === playerData?.uuid) {
