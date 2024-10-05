@@ -235,7 +235,7 @@
             "fields": {
               "siteUpdates": "サイト更新通知",
               "error": "エラー発生通知",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "デスクトップ通知"
             }
           },
           "account": {
@@ -317,9 +317,9 @@
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "イベント",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "今後のイベント"
             }
           }
         }
