@@ -1,10 +1,11 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'unconscious', 'deepdreams', 'flow', 'genie', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'unconscious', 'deepdreams', 'flow', 'genie', 'if', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
 const gameDefaultLangs = {
   '2kki': 'ja',
   'flow': 'ja',
+  'if': 'ja',
   'mikan': 'ja',
   'ultraviolet': 'ja',
   'nostalgic': 'ja'
@@ -16,6 +17,7 @@ const gameDefaultSprite = {
   'unconscious': 'protag_main_01',
   'deepdreams': 'main',
   'flow': 'sabituki',
+  'if': 'syujinkou',
   'genie': 'syujinkou1',
   'mikan': 'syuzinkou_01',
   'muma': 'muma1',
@@ -57,7 +59,7 @@ const ynomojiUrlPrefix = 'images/ynomoji/';
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
-  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
+  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', 'notifications.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
 
   dependencyFiles['play.css'] = null;
 

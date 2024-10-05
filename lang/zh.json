@@ -468,6 +468,7 @@
         "ongoing": "进行中的活动",
         "party": "队伍中的活动",
         "future": "招募中的活动",
+        "official": "YNO官方活动",
         "noResults": "当前没有活动。",
         "doSchedule": "策划活动"
       },
@@ -564,6 +565,7 @@
       "braingirl": "脑女",
       "muma": "Muma|Rope",
       "genie": "梦鬼",
+      "if": "If",
       "mikan": "未完梦像",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
@@ -575,6 +577,7 @@
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "logout": "确定要登出吗？",
     "loadingInstruct": ". <br /> <br /> 看起来网站已经加载了一段时间；如果这个问题没有解决，您可能需要使用 CTRL+F5 或清除浏览器缓存（但不要清除Cookie！）。您可以使用 F12 检查控制台是否有错误。",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
@@ -1047,6 +1050,7 @@
     "schedules": {
       "organizer": "策划：&nbsp;{NAME}",
       "invalidPlatformLink": "平台链接不正确",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

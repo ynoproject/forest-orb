@@ -467,6 +467,7 @@
         "ongoing": "Ongoing Events",
         "party": "Party Events",
         "future": "Future Events",
+        "official": "Official Events",
         "noResults": "No events have been scheduled.",
         "doSchedule": "Schedule an Event"
       },
@@ -563,6 +564,7 @@
       "braingirl": "Braingirl",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
+      "if": "If",
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
@@ -574,6 +576,7 @@
     "leavePage": "Ĉu vi certas, ke vi volas foriri ĉi-retejon? Vi perdos ĉiun nekonservitan progresadon.",
     "logout": "Ĉu vi certas, ke vi volas malkonektiĝi?",
     "loadingInstruct": "Ŝajnas, ke la retejon ŝargas delonge; se ĉi-problemo ne solviĝos, tiam vi premu CTRL+F5 aŭ forigu la kaŝmemoron de via retumilo (sed ne kuketojn!). Vi povas kontroli la konzolon per la F12 klavo por vidi erarojn.",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "Nekonektita",
       "1": "Konektita",
@@ -1046,6 +1049,7 @@
     "schedules": {
       "organizer": "Organized by&nbsp;{NAME}",
       "invalidPlatformLink": "Platform must have a valid URL",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

@@ -468,6 +468,7 @@
         "ongoing": "Événements en Cours",
         "party": "Party Events",
         "future": "Événements Planifiés",
+        "official": "Official Events",
         "noResults": "Aucun événement n'a été planifié.",
         "doSchedule": "Planifier un Événement"
       },
@@ -564,6 +565,7 @@
       "braingirl": "Braingirl",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
+      "if": "If",
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
@@ -575,6 +577,7 @@
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "logout": "Êtes-vous sûr de vouloir vous déconnecter ?",
     "loadingInstruct": ". <br /> <br /> Il semblerait que le site charge depuis longtemps ; Si ce problème persiste, vous devrez peut-être faire CTRL+F5 ou effacer le cache de votre navigateur (mais pas ses cookies !). Vous pouvez vérifier la console en appuyant sur F12 pour voir si il n'y a pas d'erreurs.",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
@@ -1047,6 +1050,7 @@
     "schedules": {
       "organizer": "Organisé par&nbsp;{NAME}",
       "invalidPlatformLink": "La plateforme doit avoir une URL valide",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

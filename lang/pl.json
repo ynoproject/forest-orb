@@ -468,6 +468,7 @@
         "ongoing": "Ongoing Events",
         "party": "Party Events",
         "future": "Future Events",
+        "official": "Official Events",
         "noResults": "No events have been scheduled.",
         "doSchedule": "Schedule an Event"
       },
@@ -564,6 +565,7 @@
       "braingirl": "Braingirl",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
+      "if": "If",
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
@@ -575,6 +577,7 @@
     "leavePage": "Czy na pewno chcesz opuścić stronę? Niezapisane dane zostaną utracone.",
     "logout": "Czy na pewno chcesz się wylogować?",
     "loadingInstruct": ". <br /> <br /> Ta strona ładuje się dłużej niż normalne; Jeżeli problem nie minie można spróbować użyć CTRL+F5 lub wyczyścić cache przeglądarki (lecz nie ciasteczka!). Poprzez F12 można sprawdźić błędy w konsoli.",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "Rozłączony",
       "1": "Połączony",
@@ -1047,6 +1050,7 @@
     "schedules": {
       "organizer": "Organized by&nbsp;{NAME}",
       "invalidPlatformLink": "Platform must have a valid URL",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

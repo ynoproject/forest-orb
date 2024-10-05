@@ -468,6 +468,7 @@
         "ongoing": "Đang diễn ra",
         "party": "Sự kiện nhóm",
         "future": "Sắp diễn ra",
+        "official": "Official Events",
         "noResults": "Chưa có sự kiện nào được lên lịch.",
         "doSchedule": "Lên lịch sự kiện mới"
       },
@@ -564,6 +565,7 @@
       "braingirl": "Braingirl",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
+      "if": "If",
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
@@ -575,6 +577,7 @@
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
     "loadingInstruct": ". <br /> <br /> Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Bảng điều khiển (Console) bằng phím F12.",
+    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -1045,8 +1048,9 @@
       }
     },
     "schedules": {
-      "organizer": "Được tổ chức bởi&nbsp;{NAME}", 
+      "organizer": "Được tổ chức bởi&nbsp;{NAME}",
       "invalidPlatformLink": "Nền tảng phải có URL hợp lệ",
+      "confirmCancel": "Are you sure you want to cancel this event?",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
