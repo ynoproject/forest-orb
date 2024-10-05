@@ -2,10 +2,11 @@ let toastAnimEndTimer;
 
 let fadeToastQueue = [];
 
-const notificationTypes = {
+const notificationTypes = /** @type {const} */ ({
   system: [
     'siteUpdates',
-    'error'
+    'error',
+    'pushNotifications',
   ],
   account: [
     'loggedIn',
@@ -60,9 +61,16 @@ const notificationTypes = {
     'saveUpToDate',
     'saveCleared',
     'saveReminder'
-  ]
-};
+  ],
+  schedules: [
+    'upcomingSchedules',
+  ],
+});
 
+/** @typedef {{ -readonly [T in keyof typeof notificationTypes]: {all: boolean} & { [U in (typeof notificationTypes)[T][number]]: boolean } }} GeneratedConfig */
+/** @typedef {{all: bool; screenPosition: string}} BaseConfig */
+
+/** @type {BaseConfig & GeneratedConfig} */
 let notificationConfig = {
   all: true,
   screenPosition: 'bottomLeft'
@@ -140,6 +148,7 @@ function initNotificationsConfigAndControls() {
         this.classList.toggle('toggled');
         notificationConfig[category][type] = !this.classList.contains('toggled');
         updateConfig(notificationConfig, true, 'notificationConfig');
+        didSetNotificationConfig(category, type, notificationConfig[category][type]);
       };
 
       typeButton.appendChild(document.createElement('span'));
@@ -172,6 +181,31 @@ function setNotificationScreenPosition(value) {
     document.getElementById('notificationScreenPosition').value = value;
     notificationConfig.screenPosition = value;
     updateConfig(notificationConfig, true, 'notificationConfig');
+  }
+}
+
+/** A hook to allow postprocessing of notification config. */
+function didSetNotificationConfig(category, type, value) {
+  if (category === 'system' && type === 'pushNotifications') {
+    navigator.serviceWorker.getRegistration('/').then(async registration => {
+      const subscription = await registration.pushManager.getSubscription();
+      if (subscription && !value) {
+        const endpoint = subscription.endpoint;
+        if (await subscription.unsubscribe?.()) {
+          apiJsonPost('unregisternotification', { endpoint })
+            .then(response => {
+              if (!response.ok)
+                console.error(response.statusText);
+            });
+        }
+      } else if (!subscription && value) {
+        apiFetch('vapidpublickey')
+          .then(r => r.text())
+          .then(applicationServerKey => registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey }))
+          .then(subscription => apiJsonPost('registernotification', subscription.toJSON()))
+          .catch(err => console.error(err));
+      }
+    });
   }
 }
 

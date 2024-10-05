@@ -219,30 +219,22 @@ function fetchNewest(path, important, req) {
 }
 
 function apiFetch(path, isAdmin) {
-  return new Promise((resolve, reject) => {
-    const sId = getCookie(sessionIdKey);
-    const headers = sId ? { 'Authorization': sId } : {};
-    fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers })
-      .then(response => resolve(response))
-      .catch(err => reject(err));
-  });
+  const sId = getCookie(sessionIdKey);
+  const headers = sId ? { 'Authorization': sId } : {};
+  return fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers });
 }
 
 function apiPost(path, data, contentType) {
   if (!contentType)
     contentType = 'application/json';
-  return new Promise((resolve, reject) => {
-    const headers = {
-      'Accept': contentType,
-      'Content-Type': contentType
-    };
-    const sId = getCookie(sessionIdKey);
-    if (sId)
-      headers['Authorization'] = sId;
-    fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: data })
-      .then(response => resolve(response))
-      .catch(err => reject(err));
-  });
+  const headers = {
+    'Accept': contentType,
+    'Content-Type': contentType
+  };
+  const sId = getCookie(sessionIdKey);
+  if (sId)
+    headers['Authorization'] = sId;
+  return fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: data });
 }
 
 function apiJsonPost(path, data) {

@@ -234,7 +234,8 @@
             "label": "システム",
             "fields": {
               "siteUpdates": "サイト更新通知",
-              "error": "エラー発生通知"
+              "error": "エラー発生通知",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "セーブデータ更新通知",
               "saveCleared": "セーブデータ消去通知",
               "saveReminder": "セーブリマインダー"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

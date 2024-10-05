@@ -234,7 +234,8 @@
             "label": "System",
             "fields": {
               "siteUpdates": "Site Updated",
-              "error": "Error Occurred"
+              "error": "Error Occurred",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Save Up to Date",
               "saveCleared": "Save Cleared",
               "saveReminder": "Save Reminder"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

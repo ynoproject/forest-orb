@@ -234,7 +234,8 @@
             "label": "Система",
             "fields": {
               "siteUpdates": "Обновление сайта",
-              "error": "Произошла ошибка"
+              "error": "Произошла ошибка",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Сохранение актуально",
               "saveCleared": "Сохранение очищено",
               "saveReminder": "Save Reminder"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

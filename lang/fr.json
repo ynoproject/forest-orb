@@ -234,7 +234,8 @@
             "label": "Système",
             "fields": {
               "siteUpdates": "Site mis à jour",
-              "error": "Erreur survenue"
+              "error": "Erreur survenue",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Sauvegarde à jour",
               "saveCleared": "Sauvegarde effacée",
               "saveReminder": "Rappel des Sauvegardes"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

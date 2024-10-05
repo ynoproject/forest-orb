@@ -234,7 +234,8 @@
             "label": "Hệ thống",
             "fields": {
               "siteUpdates": "Trang được cập nhật",
-              "error": "Đã xảy ra lỗi"
+              "error": "Đã xảy ra lỗi",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Bản lưu là phiên bản mới nhất",
               "saveCleared": "Bản lưu đã được xóa",
               "saveReminder": "Nhắc nhở lưu"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

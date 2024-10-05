@@ -21,7 +21,7 @@ navigator.serviceWorker.ready.then(async registration => {
   const applicationServerKey = await apiFetch('vapidpublickey').then(r => r.text());
   const permissions = await registration.pushManager.permissionState({ userVisibleOnly: true, applicationServerKey });
   const hasSubscription = await registration.pushManager.getSubscription();
-  if (permissions !== 'denied' && !hasSubscription) {
+  if (permissions !== 'denied' && !hasSubscription && !globalConfig.pushNotificationToastDismissed && notificationConfig.system.all && notificationConfig.system.pushNotifications) {
     const toast = showToastMessage(localizedMessages.requestNotifications, null, null, null, true);
     if (toast) {
       const approveIcon = getSvgIcon('approve', true);
@@ -36,6 +36,10 @@ navigator.serviceWorker.ready.then(async registration => {
       };
       const closeToast = toast.querySelector('.closeToast');
       toast.insertBefore(approveIcon, closeToast);
+      closeToast.addEventListener('click', () => {
+        globalConfig.pushNotificationToastDismissed = true;
+        updateConfig(globalConfig, true);
+      });
     }
   }
 });
@@ -44,7 +48,7 @@ navigator.serviceWorker.addEventListener('message', function serviceWorkerRelay(
   if (!data) return;
   switch (data._type) {
     case 'toast':
-      if (!Array.isArray(data.args)) break;
+      if (!Array.isArray(data.args) || !notificationConfig.system.all || !notificationConfig.system.pushNotifications) break;
       showToastMessage(...data.args);
       break;
     default:

@@ -234,7 +234,8 @@
             "label": "نظام",
             "fields": {
               "siteUpdates": "تم تحديث الموقع",
-              "error": "يوجد خلل"
+              "error": "يوجد خلل",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "تم تحديث ملف الحفظ",
               "saveCleared": "تم مسح ملف الحفظ",
               "saveReminder": "إشعار للحفظ"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }
