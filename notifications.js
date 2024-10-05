@@ -5,6 +5,15 @@ navigator.serviceWorker.register('../service-worker.js');
 
 navigator.serviceWorker.ready.then(async registration => {
   console.log('Service worker ready.');
+  await new Promise(resolve => {
+    const handle = setTimeout(() => {
+      if (localizedMessages) {
+        clearTimeout(handle);
+        resolve();
+      }
+    }, 1000);
+  });
+
   registration.active?.postMessage({
     sessionId: getCookie(sessionIdKey),
     game: gameId,
