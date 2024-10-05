@@ -234,7 +234,8 @@
             "label": "Sistem",
             "fields": {
               "siteUpdates": "Site Actualizat",
-              "error": "Eroare"
+              "error": "Eroare",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Save Actualizat",
               "saveCleared": "Save Șters",
               "saveReminder": "Save Reminder"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

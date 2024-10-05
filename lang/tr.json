@@ -234,7 +234,8 @@
             "label": "Sistem",
             "fields": {
               "siteUpdates": "Site Güncellendi",
-              "error": "Hata Oluştu"
+              "error": "Hata Oluştu",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Kayıt Güncel",
               "saveCleared": "Kayıt Temizlendi",
               "saveReminder": "Save Reminder"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

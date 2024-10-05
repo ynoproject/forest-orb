@@ -234,7 +234,8 @@
             "label": "System",
             "fields": {
               "siteUpdates": "Strona została zaktualizowana",
-              "error": "Wystąpił błąd"
+              "error": "Wystąpił błąd",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "Zapis aktualny",
               "saveCleared": "Zapis usunięty",
               "saveReminder": "Powiadomienia o zapisie"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

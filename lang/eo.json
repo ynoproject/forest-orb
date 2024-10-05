@@ -233,7 +233,8 @@
             "label": "Sistemo",
             "fields": {
               "siteUpdates": "Retejon Ĝisdatigis",
-              "error": "Eraro Okazis"
+              "error": "Eraro Okazis",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -312,6 +313,12 @@
               "saveUpToDate": "Konservdatumoj Estas Ĝisdataj",
               "saveCleared": "Konservdatumon Forigis",
               "saveReminder": "Atentiligo por Konservi"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }

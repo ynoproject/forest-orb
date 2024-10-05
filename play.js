@@ -73,7 +73,8 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
-  badgeToolsData: null
+  badgeToolsData: null,
+  pushNotificationToastDismissed: false,
 };
 
 let config = {

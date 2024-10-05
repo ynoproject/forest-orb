@@ -234,7 +234,8 @@
             "label": "시스템",
             "fields": {
               "siteUpdates": "사이트 업데이트",
-              "error": "에러 발생"
+              "error": "에러 발생",
+              "pushNotifications": "Desktop Notifications"
             }
           },
           "account": {
@@ -313,6 +314,12 @@
               "saveUpToDate": "세이브 데이터 업데이트",
               "saveCleared": "세이브 데이터 삭제됨",
               "saveReminder": "세이브 리마인더"
+            }
+          },
+          "schedules": {
+            "label": "Events",
+            "fields": {
+              "upcomingSchedules": "Upcoming Events"
             }
           }
         }
