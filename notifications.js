@@ -6,9 +6,9 @@ navigator.serviceWorker.register('../service-worker.js');
 navigator.serviceWorker.ready.then(async registration => {
   console.log('Service worker ready.');
   await new Promise(resolve => {
-    const handle = setTimeout(() => {
+    const handle = setInterval(() => {
       if (localizedMessages) {
-        clearTimeout(handle);
+        clearInterval(handle);
         resolve();
       }
     }, 1000);
