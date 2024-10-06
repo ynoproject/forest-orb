@@ -195,7 +195,7 @@ function fetchAndUpdatePlayerInfo() {
     loginToken = isLogin ? cookieSessionId : null;
     easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
   }
-  navigator.serviceWorker.getRegistration('/').then(registration => {
+  navigator.serviceWorker?.getRegistration('/').then(registration => {
     if (!registration)
       console.warn('updating player info but no service workers found');
     registration?.active?.postMessage({
