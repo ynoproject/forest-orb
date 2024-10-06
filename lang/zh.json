@@ -1050,7 +1050,7 @@
     "schedules": {
       "organizer": "策划：&nbsp;{NAME}",
       "invalidPlatformLink": "平台链接不正确",
-      "confirmCancel": "Are you sure you want to cancel this event?",
+      "confirmCancel": "确定要取消活动吗？",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
