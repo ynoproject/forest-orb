@@ -471,12 +471,12 @@
         }
       },
       "schedule": {
-        "title": "活动日程",
+        "title": "活动招募",
         "ongoing": "进行中的活动",
-        "party": "队伍活动",
-        "future": "未来活动",
-        "official": "Official Events",
-        "noResults": "当前没有人策划活动。",
+        "party": "队伍中的活动",
+        "future": "招募中的活动",
+        "official": "YNO官方活动",
+        "noResults": "当前没有活动。",
         "doSchedule": "策划活动"
       },
       "scheduleEdit": {
@@ -484,12 +484,12 @@
         "save": "保存",
         "cancel": "取消活动",
         "fields": {
-          "name": "活动名称",
-          "description": "活动简介",
+          "name": "招募名称",
+          "description": "活动介绍",
           "datetime": "活动日期与时间",
           "recurring": "重复活动",
           "interval": {
-            "title": "间隔",
+            "title": "每",
             "days": "日",
             "months": "月",
             "years": "年"
@@ -546,7 +546,7 @@
       "locations": "地点列表",
       "communityScreenshots": "社区截图",
       "rankings": "瞅一眼排行榜",
-      "schedules": "活动日程",
+      "schedules": "活动招募",
       "nexus": "返回到门世界",
       "explorerUndiscoveredLocations": "显示未探索地域",
       "timeTrial": "在开始新游戏后，屏幕有任何显示之前，长按 Shift + -> 开启计时模式。",
@@ -1055,9 +1055,9 @@
       }
     },
     "schedules": {
-      "organizer": "策划者：&nbsp;{NAME}",
+      "organizer": "策划：&nbsp;{NAME}",
       "invalidPlatformLink": "平台链接不正确",
-      "confirmCancel": "Are you sure you want to cancel this event?",
+      "confirmCancel": "确定要取消活动吗？",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
