@@ -475,7 +475,7 @@
         "ongoing": "進行中",
         "party": "パーティー限定",
         "future": "今後のイベント",
-        "official": "Official Events",
+        "official": "公式イベント",
         "noResults": "登録したイベントがありません。",
         "doSchedule": "イベントを登録する"
       },
@@ -584,7 +584,7 @@
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
     "loadingInstruct": ". <br /> <br /> サイトの読み込みに時間がかかっているようです。この問題が解決しない場合、CTRL+F5を使用するか、ブラウザのキャッシュをクリアする必要があるかもしれません。(Cookieは削除しないでください！)F12でエラーを確認することができます。",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "requestNotifications": "フォローしたイベントやラリーの更新の通知を受け取りますか？",
     "connStatus": {
       "0": "接続なし",
       "1": "接続済み",
@@ -1057,7 +1057,7 @@
     "schedules": {
       "organizer": "主催者：&nbsp;{NAME}",
       "invalidPlatformLink": "配信サイトのURLを修正してください",
-      "confirmCancel": "Are you sure you want to cancel this event?",
+      "confirmCancel": "このイベントをキャンセルしてよろしいですか？",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
