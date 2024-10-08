@@ -495,6 +495,8 @@
             "years": "years"
           },
           "restrictParty": "Limit to Party",
+          "official": "Official Event",
+          "resetOrganizer": "Reset Organizer",
           "platforms": {
             "title": "External Links",
             "discord": "Discord",

@@ -495,6 +495,8 @@
             "years": "năm"
           },
           "restrictParty": "Chỉ dành cho Nhóm",
+          "official": "Official Event",
+          "resetOrganizer": "Reset Organizer",
           "platforms": {
             "title": "Liên kết ngoài",
             "discord": "Discord",
