@@ -579,7 +579,7 @@ function checkShow2kkiVersionUpdate() {
     
     const versionPrefixText = versionText.slice(0, versionText.indexOf(currentVersion));
     const versionNewSuffixText = versionText.slice(versionPrefixText.length);
-    const versionOldSuffixText = getLocalizedVersion(config.last2kkiVersion).slice(versionPrefixText.length);
+    const versionOldSuffixText = getLocalizedVersion(config.last2kkiVersion);
 
     const versionPrefix = document.createElement('h1');
     versionPrefix.innerText = versionPrefixText.trim();
