@@ -252,8 +252,8 @@ function openScheduleEditModal(schedule = {}) {
       let min = new Date();
       min.setHours(0, 0);
       const max = new Date(min.valueOf() + YEAR);
-      input.setAttribute('min', min.toISOString());
-      input.setAttribute('max', max.toISOString());
+      input.setAttribute('min', min.toISOString().slice(0, 16));
+      input.setAttribute('max', max.toISOString().slice(0, 16));
     }
   }
   document.getElementById('eventRecurring').classList.toggle('toggled', !!schedule.recurring);
