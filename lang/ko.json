@@ -488,6 +488,7 @@
           "description": "Description",
           "datetime": "Event Date and Time",
           "recurring": "Recurring Event",
+          "theme": "메뉴 타입",
           "interval": {
             "title": "Interval",
             "days": "days",
@@ -1060,6 +1061,7 @@
       "organizer": "Organized by&nbsp;{NAME}",
       "invalidPlatformLink": "Platform must have a valid URL",
       "confirmCancel": "Are you sure you want to cancel this event?",
+      "wrongEditGame": "Cannot edit outside of {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

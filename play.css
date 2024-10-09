@@ -2310,11 +2310,17 @@ html[dir="rtl"] #chatBorder {
   margin-top: 2px;
 }
 
-.itemContainer .item > div, .modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected) {
+.itemContainer .item > div,
+.modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div:not(.partySelected),
+.modalContainer[data-last-modal-id$="scheduleEditModal"] .modalContent .item > div:not(.scheduleSelected)
+{
   border: 2px solid transparent;
 }
 
-.itemContainer .item > div.selected, .modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected {
+.itemContainer .item > div.selected,
+.modalContainer[data-last-modal-id$="createPartyModal"] .modalContent .item > div.partySelected,
+.modalContainer[data-last-modal-id$="scheduleEditModal"] .modalContent .item > div.scheduleSelected
+{
   border-color: white;
 }
 

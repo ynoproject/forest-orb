@@ -488,6 +488,7 @@
           "description": "Description",
           "datetime": "Date et Heure de l'Événement",
           "recurring": "Événement Récurrent",
+          "theme": "Thème",
           "interval": {
             "title": "Intervalle",
             "days": "jours",
@@ -1060,6 +1061,7 @@
       "organizer": "Organisé par&nbsp;{NAME}",
       "invalidPlatformLink": "La plateforme doit avoir une URL valide",
       "confirmCancel": "Are you sure you want to cancel this event?",
+      "wrongEditGame": "Cannot edit outside of {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

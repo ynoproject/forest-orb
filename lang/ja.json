@@ -488,6 +488,7 @@
           "description": "概要",
           "datetime": "日付",
           "recurring": "定期的なイベント",
+          "theme": "メニュー タイプ",
           "interval": {
             "title": "繰り返す期間",
             "days": "日間",
@@ -1060,6 +1061,7 @@
       "organizer": "主催者：&nbsp;{NAME}",
       "invalidPlatformLink": "配信サイトのURLを修正してください",
       "confirmCancel": "このイベントをキャンセルしてよろしいですか？",
+      "wrongEditGame": "{GAME}以外では編集できません",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

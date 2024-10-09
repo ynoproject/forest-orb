@@ -488,6 +488,7 @@
           "description": "活动介绍",
           "datetime": "活动日期与时间",
           "recurring": "重复活动",
+          "theme": "界面样式",
           "interval": {
             "title": "每",
             "days": "日",
@@ -1060,6 +1061,7 @@
       "organizer": "策划：&nbsp;{NAME}",
       "invalidPlatformLink": "平台链接不正确",
       "confirmCancel": "确定要取消活动吗？",
+      "wrongEditGame": "Cannot edit outside of {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
