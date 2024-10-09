@@ -224,6 +224,8 @@ if (hasTouchscreen) {
   const deadzone = 0.5;
   canvas.addEventListener('touchstart', ev => {
     if (ev.targetTouches.length !== 1 || !document.fullscreenElement) return;
+    canvas.focus();
+
     let radius;
     switch (globalConfig.mobileControlsType) {
       case 'joystick': radius = joystickCircle.getBoundingClientRect().width / 2; break;
