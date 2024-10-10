@@ -948,6 +948,11 @@ function syncPlayerData(uuid, rank, account, badge, medals, id) {
 }
 
 // EXTERNAL
+function shouldConnectPlayer(uuid) {
+  return blockedPlayerUuids.indexOf(uuid) === -1;
+}
+
+// EXTERNAL
 function onPlayerConnectedOrUpdated(systemName, name, id) {
   const uuid = playerUuids[id];
   if (uuid) {

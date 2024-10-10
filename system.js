@@ -401,6 +401,22 @@ function setPartyTheme(value) {
     newSelectedTheme.parentElement.classList.add('partySelected');
 }
 
+function setScheduleTheme(value) {
+  const scheduleThemeButton = document.getElementById('scheduleThemeButton');
+  scheduleThemeButton.innerHTML = getUiThemeOption(value).innerHTML;
+  scheduleThemeButton.nextElementSibling.value = value;
+
+  initUiThemeContainerStyles(value);
+  initUiThemeFontStyles(value, null, 0);
+
+  const lastSelectedThemeContainer = document.querySelector('.uiThemeContainer.scheduleSelected');
+  const newSelectedTheme = document.querySelector(`.uiTheme[data-ui-theme="${value}"]`);
+  if (lastSelectedThemeContainer)
+    lastSelectedThemeContainer.classList.remove('scheduleSelected');
+  if (newSelectedTheme)
+    newSelectedTheme.parentElement.classList.add('scheduleSelected');
+}
+
 function setFontStyle(fontStyle, isInit) {
   const isAuto = config.uiTheme == 'auto';
   const uiTheme = (isAuto ? systemName : config.uiTheme) || getDefaultUiTheme();

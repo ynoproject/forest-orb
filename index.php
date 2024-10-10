@@ -1418,9 +1418,10 @@
                   </svg>
                 </strong>
                 <div class="themeText scheduleHeader">
-                  <button data-role="edit" class="icon iconButton fillIcon unselectable hidden" style="padding-inline-end: 12px;">
+                  <button data-role="edit" class="icon iconButton fillIcon unselectable hidden toggleButton offToggleButton" style="padding-inline-end: 12px;">
                     <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="m12.25 3h-8.25q-2 0-2 2v10q0 2 2 2h10q2 0 2-2v-7.75l-2 2.25v3.5c0 2 0 2-2 2h-6c-2 0-2 0-2-2v-6c0-2 0-2 2-2h4.5l1.75-2m3.75-2l-7 8-1 3 3-1 7-8q0-2-2-2m-0.875 1l2 2-0.8125 0.9375-2-2m-5.3125 6.0625l2 2m-2.75 0.25l0.5 0.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="m-2 16l22-14"></path>
                     </svg>
                   </button>
                   <div data-role="cancel" class="deleteIcon icon iconButton hidden" style="padding-inline-end: 12px">
@@ -1524,6 +1525,13 @@
                     <button id="resetOrganizer" class="checkboxButton unselectable" type="button">
                       <span></span>
                     </button>
+                  </div>
+                </li>
+                <li class="formControlRow">
+                  <label for="scheduleThemeButton" class="unselectable" data-i18n="[html]modal.scheduleEdit.fields.theme">Theme</label>
+                  <div>
+                    <div id="scheduleThemeButton" class="uiThemeItem item unselectable"></div>
+                    <input id="scheduleTheme" type="hidden" name="theme" />
                   </div>
                 </li>
                 <li class="formControlRow">

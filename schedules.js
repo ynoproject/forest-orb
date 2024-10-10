@@ -102,7 +102,11 @@ function addScheduleItem(schedule) {
       case 'edit':
         if (!isMod && (!playerData?.uuid || playerData.uuid !== schedule.ownerUuid)) break;
         slot.classList.remove('hidden');
-        slot.addEventListener('click', () => openScheduleEditModal(schedule));
+        if (schedule.game !== gameId) {
+          slot.classList.add('toggled');
+          addTooltip(slot, localizedMessages.schedules.wrongEditGame.replace('{GAME}', localizedMessages.games[schedule.game]));
+        } else
+          slot.addEventListener('click', () => openScheduleEditModal(schedule));
         break;
       case 'cancel':
         if (!isMod && (!playerData?.uuid || playerData.uuid !== schedule.ownerUuid)) break;
@@ -252,8 +256,8 @@ function openScheduleEditModal(schedule = {}) {
       let min = new Date();
       min.setHours(0, 0);
       const max = new Date(min.valueOf() + YEAR);
-      input.setAttribute('min', min.toISOString());
-      input.setAttribute('max', max.toISOString());
+      input.setAttribute('min', min.toISOString().slice(0, 16));
+      input.setAttribute('max', max.toISOString().slice(0, 16));
     }
   }
   document.getElementById('eventRecurring').classList.toggle('toggled', !!schedule.recurring);
@@ -271,7 +275,11 @@ function openScheduleEditModal(schedule = {}) {
   document.getElementById('restrictPartyRow').classList.toggle('hidden', !joinedPartyCache || joinedPartyCache.ownerUuid !== playerData?.uuid);
   document.getElementById('restrictParty').classList.toggle('toggled', !!schedule.partyId);
 
-  openModal('scheduleEditModal', null, 'schedulesModal');
+  let scheduleSystemName = schedule.systemName;
+  if (!scheduleSystemName)
+    scheduleSystemName = config.uiTheme === 'auto' ? systemName : config.uiTheme;
+  setScheduleTheme(scheduleSystemName);
+  openModal('scheduleEditModal', scheduleSystemName, 'schedulesModal');
   updateYnomojiContainerPos(false, document.getElementById('editScheduleDescription'));
 }
 
@@ -304,7 +312,7 @@ document.getElementById('scheduleForm').addEventListener('submit', function edit
     schedule.id = editingScheduleId;
   schedule.recurring = document.getElementById('eventRecurring').classList.contains('toggled');
   schedule.datetime = new Date(schedule.datetime).toISOString();
-  schedule.systemName = playerData.systemName;
+  schedule.systemName = document.getElementById('scheduleThemeButton').nextElementSibling.value;
   schedule.game = gameId;
   schedule.official = document.getElementById('eventOfficial').classList.contains('toggled');
 
@@ -346,6 +354,10 @@ document.getElementById('cancelSchedule').addEventListener('click', function () 
         openSchedulesModal();
       }, err => console.error(err));
   });
+});
+
+document.getElementById('scheduleThemeButton').addEventListener('click', function () {
+  openModal('uiThemesModal', this.nextElementSibling.value, 'scheduleEditModal');
 });
 
 for (const platformInput of document.querySelectorAll('input[data-platform]')) {

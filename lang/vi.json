@@ -235,7 +235,7 @@
             "fields": {
               "siteUpdates": "Trang được cập nhật",
               "error": "Đã xảy ra lỗi",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "Thông báo trên desktop"
             }
           },
           "account": {
@@ -317,9 +317,9 @@
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "Sự kiện",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "Sự kiện sắp diễn ra"
             }
           }
         }
@@ -488,6 +488,7 @@
           "description": "Mô tả",
           "datetime": "Thời gian diễn ra",
           "recurring": "Sự kiện lặp lại",
+          "theme": "Nền",
           "interval": {
             "title": "Lặp lại mỗi",
             "days": "ngày",
@@ -495,6 +496,8 @@
             "years": "năm"
           },
           "restrictParty": "Chỉ dành cho Nhóm",
+          "official": "Sự kiện chính thức",
+          "resetOrganizer": "Chỉnh lại người tổ chức",
           "platforms": {
             "title": "Liên kết ngoài",
             "discord": "Discord",
@@ -546,7 +549,7 @@
       "locations": "Địa điểm",
       "communityScreenshots": "Ảnh của cộng đồng",
       "rankings": "Bảng xếp hạng",
-      "schedules": "Events",
+      "schedules": "Sự kiện",
       "nexus": "Quay về Nexus",
       "explorerUndiscoveredLocations": "Xem địa điểm chưa khám phá",
       "timeTrial": "Để bật chế độ Thử thách Hẹn giờ, ấn giữ Shift + -> ngay sau khi chọn Bắt đầu và trước khi có gì khác xuất hiện trên màn hình.",
@@ -584,7 +587,7 @@
     "leavePage": "Bạn có chắc muốn rời khỏi trang? Toàn bộ tiến trình không được lưu trong game sẽ bị mất.",
     "logout": "Bạn có chắc muốn đăng xuất?",
     "loadingInstruct": ". <br /> <br /> Dường như trang đang mất khá lâu để tải; nếu vấn đề tiếp diễn bạn có thể phải bấm CTRL+F5 hoặc xóa bộ đệm trình duyệt (nhưng đừng xóa cookies!). Bạn có thể kiểm tra lỗi trong Bảng điều khiển (Console) bằng phím F12.",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "requestNotifications": "Nhận thông báo về các sự kiện đã theo dõi và cập nhật chuyến Thám hiểm?",
     "connStatus": {
       "0": "Không có kết nối",
       "1": "Đã kết nối",
@@ -1057,7 +1060,8 @@
     "schedules": {
       "organizer": "Được tổ chức bởi&nbsp;{NAME}",
       "invalidPlatformLink": "Nền tảng phải có URL hợp lệ",
-      "confirmCancel": "Are you sure you want to cancel this event?",
+      "confirmCancel": "Bạn có chắc chắn muốn hủy bỏ sự kiện này không?",
+      "wrongEditGame": "Không thể chỉnh sửa ngoài {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",

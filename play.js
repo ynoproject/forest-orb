@@ -1667,10 +1667,12 @@ function setMobileControlType(value, isInit) {
 
 function onSelectUiTheme(e) {
   const modalContainer = document.getElementById('modalContainer');
-  if (!modalContainer.dataset.lastModalId?.endsWith('createPartyModal'))
-    setUiTheme(e.target.dataset.uiTheme);
-  else
+  if (modalContainer.dataset.lastModalId?.endsWith('createPartyModal'))
     setPartyTheme(e.target.dataset.uiTheme);
+  else if (modalContainer.dataset.lastModalId?.endsWith('scheduleEditModal'))
+    setScheduleTheme(e.target.dataset.uiTheme);
+  else
+    setUiTheme(e.target.dataset.uiTheme);
   setModalUiTheme(null, e.target.dataset.uiTheme === 'auto' ? systemName : e.target.dataset.uiTheme, true);
 }
 

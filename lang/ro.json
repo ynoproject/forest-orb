@@ -488,6 +488,7 @@
           "description": "Description",
           "datetime": "Event Date and Time",
           "recurring": "Recurring Event",
+          "theme": "Temă",
           "interval": {
             "title": "Interval",
             "days": "days",
@@ -495,6 +496,8 @@
             "years": "years"
           },
           "restrictParty": "Limit to Party",
+          "official": "Official Event",
+          "resetOrganizer": "Reset Organizer",
           "platforms": {
             "title": "External Links",
             "discord": "Discord",
@@ -1058,6 +1061,7 @@
       "organizer": "Organized by&nbsp;{NAME}",
       "invalidPlatformLink": "Platform must have a valid URL",
       "confirmCancel": "Are you sure you want to cancel this event?",
+      "wrongEditGame": "Cannot edit outside of {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
