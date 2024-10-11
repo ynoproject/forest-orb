@@ -460,6 +460,10 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
         return;
 
       showConfirmModal(localizedMessages.context.unblock.confirm.replace('{PLAYER}', playerName), () => {
+        // optimistically remove this player from the blocklist, so that we can receive the connect event properly.
+        const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
+        if (blockedPlayerUuidIndex > -1)
+          blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
         apiFetch(`unblockplayer?uuid=${uuid}`)
           .then(response => {
             if(!response.ok)
@@ -467,13 +471,14 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
             return response.text();
           })
           .then(_ => {
-            const blockedPlayerUuidIndex = blockedPlayerUuids.indexOf(uuid);
-            if (blockedPlayerUuidIndex > -1)
-              blockedPlayerUuids.splice(blockedPlayerUuidIndex, 1);
             showPlayerToastMessage('unblockPlayer', playerName, 'info', true, systemName);
             updateBlocklist(!document.getElementById('blocklistModal').classList.contains('hidden'));
           })
-          .catch(err => console.error(err));
+          .catch(err => {
+            // failed to unblock player, so they remain in blocklist.
+            blockedPlayerUuids.push(uuid);
+            console.error(err);
+          });
         });
     };
   }
