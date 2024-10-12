@@ -575,14 +575,14 @@
       "braingirl": "ブレインガール",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
-      "if": "If",
       "mikan": "未完夢像",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
       "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "梦通信",
-      "nostalgic": "nostAlgic"
+      "nostalgic": "nostAlgic",
+      "if": "If"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",

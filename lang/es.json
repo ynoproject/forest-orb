@@ -575,14 +575,14 @@
       "braingirl": "Braingirl",
       "muma": "Muma|Rope",
       "genie": "Dream Genie",
-      "if": "If",
       "mikan": "Mikan Muzou",
       "ultraviolet": "Ultra Violet",
       "sheawaits": "She Awaits",
       "oneshot": "OneShot",
       "oversomnia": "Oversomnia",
       "tsushin": "Yume Tsushin",
-      "nostalgic": "nostAlgic"
+      "nostalgic": "nostAlgic",
+      "if": "If"
     },
     "leavePage": "¿Está seguro de que desea abandonar la página? Todo progreso que no haya sido guardado se perderá.",
     "logout": "¿Está seguro que desea cerrar sesión?",
