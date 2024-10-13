@@ -235,7 +235,7 @@
             "fields": {
               "siteUpdates": "网站更新",
               "error": "发生错误",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "桌面通知"
             }
           },
           "account": {
@@ -317,9 +317,9 @@
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "活动招募",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "即将开始的活动"
             }
           }
         }
@@ -436,7 +436,7 @@
         "title": "屏幕截图",
         "download": "下载",
         "save": "保存到我的截图",
-        "share": "Share in Chat"
+        "share": "发送至聊天"
       },
       "myScreenshots": {
         "title": "我的截图",
@@ -496,8 +496,8 @@
             "years": "年"
           },
           "restrictParty": "仅限队员",
-          "official": "Official Event",
-          "resetOrganizer": "Reset Organizer",
+          "official": "官方活动",
+          "resetOrganizer": "重制策划者",
           "platforms": {
             "title": "外部链接",
             "discord": "Discord",
@@ -587,7 +587,7 @@
     "leavePage": "确定要离开此页面吗？所有未保存的游戏进度都将丢失。",
     "logout": "确定要登出吗？",
     "loadingInstruct": ". <br /> <br /> 看起来网站已经加载了一段时间；如果这个问题没有解决，您可能需要使用 CTRL+F5 或清除浏览器缓存（但不要清除Cookie！）。您可以使用 F12 检查控制台是否有错误。",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "requestNotifications": "想要在关注的活动与梦远征更新时获取通知吗？",
     "connStatus": {
       "0": "已断开",
       "1": "已连接",
@@ -1014,9 +1014,9 @@
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "全部",
+          "visited": "已造访",
+          "unvisited": "未造访"
         }
       },
       "sortOrder": {
@@ -1061,7 +1061,7 @@
       "organizer": "策划：&nbsp;{NAME}",
       "invalidPlatformLink": "平台链接不正确",
       "confirmCancel": "确定要取消活动吗？",
-      "wrongEditGame": "Cannot edit outside of {GAME}",
+      "wrongEditGame": "无法于 {GAME} 外进行编辑",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
