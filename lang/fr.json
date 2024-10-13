@@ -235,7 +235,7 @@
             "fields": {
               "siteUpdates": "Site mis à jour",
               "error": "Erreur survenue",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "Notifications sur le bureau"
             }
           },
           "account": {
@@ -280,7 +280,7 @@
               "playerOnline": "Membre du groupe en ligne",
               "playerOffline": "Membre du groupe hors ligne",
               "kickPlayer": "Expulser le joueur du groupe",
-              "transferPartyOwner": "Promu(e) chef du groupe"
+              "transferPartyOwner": "Promu(e) meneur/se du groupe"
             }
           },
           "events": {
@@ -317,9 +317,9 @@
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "Événements",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "Événements planifiés"
             }
           }
         }
@@ -436,7 +436,7 @@
         "title": "Votre capture d'écran",
         "download": "Télécharger",
         "save": "Sauvegarder dans Mes captures décran",
-        "share": "Share in Chat"
+        "share": "Partager avec le Chat"
       },
       "myScreenshots": {
         "title": "Mes captures décran",
@@ -473,9 +473,9 @@
       "schedule": {
         "title": "Événements",
         "ongoing": "Événements en Cours",
-        "party": "Party Events",
+        "party": "Événements du Groupe",
         "future": "Événements Planifiés",
-        "official": "Official Events",
+        "official": "Événements Officiels",
         "noResults": "Aucun événement n'a été planifié.",
         "doSchedule": "Planifier un Événement"
       },
@@ -496,8 +496,8 @@
             "years": "années"
           },
           "restrictParty": "Limiter l'Événement au Groupe",
-          "official": "Official Event",
-          "resetOrganizer": "Reset Organizer",
+          "official": "Événement Officiel",
+          "resetOrganizer": "Réinitialiser l'organisateur",
           "platforms": {
             "title": "Liens Externes",
             "discord": "Discord",
@@ -533,10 +533,10 @@
       "myScreenshots": "Mes captures décran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",
-      "toggleHideLocation": "Toggle Location Sharing",
+      "toggleHideLocation": "Activer le partage de la localisation",
       "toggleGlobalMessage": "Activer le Chat Global",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
+        "toggleNextLocation": "Montrer/Cacher le Lieu de la prochaine expédition",
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
         "clearChat": "Effacer le Chat"
@@ -549,7 +549,7 @@
       "locations": "Locations",
       "communityScreenshots": "Captures d'écran de la communauté",
       "rankings": "Classement",
-      "schedules": "Events",
+      "schedules": "Événements",
       "nexus": "Retourner au Nexus",
       "explorerUndiscoveredLocations": "Voir les lieux non découverts",
       "timeTrial": "Pour activer le mode Contre-la-montre, maintenez Maj et -> après avoir sélectionné Commencer sur l'écran titre avant que l'écran d'introduction ne soit affiché.",
@@ -659,7 +659,7 @@
         "rejectFriend": "Rejeter la demande d'ami",
         "cancelFriend": "Annuler la demande d'ami",
         "partyKick": "Expulser du Groupe",
-        "transferPartyOwner": "Changer le chef du Groupe"
+        "transferPartyOwner": "Changer le meneur du Groupe"
       }
     },
     "roles": {
@@ -761,7 +761,7 @@
       "emptyMessage": "Il n'y a actuellement aucun groupe actif.",
       "yourParty": "Votre groupe",
       "defaultPartyName": "Groupe de {OWNER}",
-      "partyOwner": "Leader du groupe",
+      "partyOwner": "Meneur du groupe",
       "confirmDisband": "Êtes-vous sûr de vouloir dissoudre votre groupe ? Cette action ne pourra pas être annulée.",
       "confirmTransferPartyOwner": "Êtes-vous sûr de vouloir transférer la propriété du groupe à {PLAYER} ?",
       "offlineMemberSuffix": "Membre hors ligne",
@@ -843,7 +843,7 @@
         "reject": "La demande d'ami de {PLAYER} a été rejetée.",
         "cancel": "Votre demande d'ami à {PLAYER} a été annulée.",
         "incoming": "Vous avez reçu une demande d'ami de {PLAYER}.",
-        "playerOnline": "{PLAYER} est maintenant en-ligne.",
+        "playerOnline": "{PLAYER} est maintenant en ligne.",
         "playerOffline": "{PLAYER} est maintenant hors-ligne."
       },
       "parties": {
@@ -855,10 +855,10 @@
         "disband": "{PARTY} a été dissous.",
         "playerJoin": "{PLAYER} a rejoint le groupe.",
         "playerLeave": "{PLAYER} a quitté le groupe.",
-        "playerOnline": "{PLAYER} est maintenant en-ligne.",
+        "playerOnline": "{PLAYER} est maintenant en ligne.",
         "playerOffline": "{PLAYER} est maintenant hors-ligne.",
         "kickPlayer": "{PLAYER} a été expulsé(e) du groupe.",
-        "transferPartyOwner": "{PLAYER} est maintenant le chef du groupe."
+        "transferPartyOwner": "{PLAYER} est maintenant le meneur du groupe."
       },
       "events": {
         "complete": "Expédition terminée !\nPour avoir visité {LOCATION}, vous avez gagné {EXP}.",
@@ -1014,17 +1014,17 @@
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "Tous",
+          "visited": "Visités",
+          "unvisited": "Non visités"
         }
       },
       "sortOrder": {
         "values": {
           "newest": "Plus Récent",
           "oldest": "Plus Vieux",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
+          "shallowest": "Moins profond",
+          "deepest": "Plus profond",
           "alpha": "Alphabétique",
           "players": "Nombre de Joueurs"
         }
@@ -1060,8 +1060,8 @@
     "schedules": {
       "organizer": "Organisé par&nbsp;{NAME}",
       "invalidPlatformLink": "La plateforme doit avoir une URL valide",
-      "confirmCancel": "Are you sure you want to cancel this event?",
-      "wrongEditGame": "Cannot edit outside of {GAME}",
+      "confirmCancel": "Êtes-vous sûr de vouloir annuler cet événement ?",
+      "wrongEditGame": "Ne peut pas être modifié en dehors de {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
