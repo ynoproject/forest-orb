@@ -302,6 +302,13 @@ function initBadgeTools() {
             { key: '4_ch', label: 'Challenges' }
           ];
         }
+        if (this.gameId === 'flow') {
+          return [
+            { key: '2_sb', label: 'Sabitsuki' },
+            { key: '2_sr', label: 'Rust' },
+            { key: '2_zz', label: 'Both' }
+          ];
+        }
         if (this.gameId === 'unevendream') {
           return [
             { key: '2_kb', label: 'Kubotsuki' },
