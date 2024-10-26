@@ -436,7 +436,7 @@
         "title": "Ảnh chụp màn hình của bạn",
         "download": "Tải xuống",
         "save": "Lưu vào Ảnh của tôi",
-        "share": "Share in Chat"
+        "share": "Chia sẻ vào chat"
       },
       "myScreenshots": {
         "title": "Ảnh của tôi",
@@ -475,7 +475,7 @@
         "ongoing": "Đang diễn ra",
         "party": "Sự kiện nhóm",
         "future": "Sắp diễn ra",
-        "official": "Official Events",
+        "official": "Sự kiện chính thức",
         "noResults": "Chưa có sự kiện nào được lên lịch.",
         "doSchedule": "Lên lịch sự kiện mới"
       },
@@ -497,7 +497,7 @@
           },
           "restrictParty": "Chỉ dành cho Nhóm",
           "official": "Sự kiện chính thức",
-          "resetOrganizer": "Chỉnh lại người tổ chức",
+          "resetOrganizer": "Đặt lại người tổ chức",
           "platforms": {
             "title": "Liên kết ngoài",
             "discord": "Discord",
@@ -626,7 +626,7 @@
         "4": "Mở khóa",
         "8": "Cần mở khóa",
         "16": "Đường cụt",
-        "32": "Khu cô lập",
+        "32": "Khu biệt lập",
         "64": "Cần hiệu ứng ({PARAMS})",
         "128": "Xác suất {PARAMS}",
         "256": "{PARAMS}",
@@ -888,7 +888,7 @@
       "period": "Mùa {ORDINAL}",
       "periodEnds": "Kết thúc vào {DATE}",
       "current": "Hiện tại",
-      "shortcut": "Có thể đến được qua lối tắt có thể mở",
+      "shortcut": "Có thể đến được qua lối tắt được mở khóa",
       "toggleTracked": "Bật/Tắt Chỉ đường",
       "availableUntilDate": "Khả dụng đến\n{DATE}",
       "types": {
@@ -1014,18 +1014,18 @@
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "Tất cả",
+          "visited": "Đã đến",
+          "unvisited": "Chưa đến"
         }
       },
       "sortOrder": {
         "values": {
           "newest": "Mới nhất",
           "oldest": "Cũ nhất",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Thứ tự chữ cái",
+          "shallowest": "Nông nhất",
+          "deepest": "Sâu nhất",
+          "alpha": "Thứ tự bảng chữ cái",
           "players": "Số người chơi"
         }
       }
@@ -1060,7 +1060,7 @@
     "schedules": {
       "organizer": "Được tổ chức bởi&nbsp;{NAME}",
       "invalidPlatformLink": "Nền tảng phải có URL hợp lệ",
-      "confirmCancel": "Bạn có chắc chắn muốn hủy bỏ sự kiện này không?",
+      "confirmCancel": "Bạn có chắc chắn muốn hủy bỏ sự kiện này?",
       "wrongEditGame": "Không thể chỉnh sửa ngoài {GAME}",
       "platforms": {
         "discord": "Discord",
