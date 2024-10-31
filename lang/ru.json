@@ -156,7 +156,8 @@
             "label": "Предзагрузки",
             "helpText": "Предзагрузить часто используемые ресурсы, чтобы они всегда были доступны при необходимости; Требует перезагрузки страницы."
           },
-          "toggleQuestionablePreloads": "Предзагрузить обои ПК"
+          "toggleQuestionablePreloads": "Предзагрузить обои ПК",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Лимит истории чата группы"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

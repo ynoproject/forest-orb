@@ -156,7 +156,8 @@
             "label": "プリロード",
             "helpText": "頻繁に使用されるゲームアセットをプリロードし、必要なときに利用できるようにします（ページの再読み込みが必要です）"
           },
-          "toggleQuestionablePreloads": "PCの壁紙をプリロードする"
+          "toggleQuestionablePreloads": "PCの壁紙をプリロードする",
+          "toggleSchedules": "イベント"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "パーティー チャット 履歴の 上限"
-          }
+          },
+          "blurScreenshotEmbeds": "チャットスクショを全部ネタバレにする"
         }
       },
       "screenshotSettings": {

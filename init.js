@@ -678,6 +678,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value)
                       document.getElementById('playMentionSoundButton').click();
                     break;
+                  case 'blurScreenshotEmbeds':
+                    if (!value)
+                      document.getElementById('blurScreenshotEmbedsButton').click();
+                    break;
                   case 'mapChatHistoryLimit':
                     document.getElementById('mapChatHistoryLimit').value = value;
                     break;
@@ -702,6 +706,10 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'hideRankings':
                     if (value)
                       document.getElementById('toggleRankingsButton').click();
+                    break;
+                  case 'hideSchedules':
+                    if (value)
+                      document.getElementById('toggleSchedulesButton').click();
                     break;
                   case 'autoDownloadScreenshots':
                     if (value)

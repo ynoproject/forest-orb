@@ -9,6 +9,10 @@ const MESSAGE_TYPE = {
   PARTY: 3
 };
 
+const SCREENSHOT_FLAGS = {
+  SPOILER: 1 << 0,
+};
+
 const mentionSe = new Audio('./audio/mention.wav');
 
 function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp) {
@@ -426,9 +430,11 @@ function chatInputActionFired() {
     chatTab.click();
   let message = chatInput.value.trim();
   if (message.includes('[screenshot]') && chatInput.dataset.screenshotId) {
-    message = message.replace('[screenshot]', `[${chatInput.dataset.screenshotTemp ? 't' : ''}${chatInput.dataset.screenshotId}]`);
+    const flags = +chatInput.dataset.screenshotFlags;
+    message = message.replace('[screenshot]', `[${chatInput.dataset.screenshotTemp ? 't' : ''}${chatInput.dataset.screenshotId}${flags ? `:${flags}` : ''}]`);
     delete chatInput.dataset.screenshotId;
     delete chatInput.dataset.screenshotTemp;
+    delete chatInput.dataset.screenshotFlags;
   }
   if (!chatInput.dataset.global || partyChat) {
     if (!joinedPartyId || !partyChat) {
@@ -756,15 +762,19 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
+/** Decodes the message constructed by {@linkcode chatInputActionFired} */
 function tryEmbedScreenshot(node, uuid) {
   if (node.childNodes.length) {
     for (let childNode of node.childNodes) {
       if (childNode.nodeType === Node.TEXT_NODE) {
         let screenshotResult;
-        if ((screenshotResult = /\[(t?)(\w{16})\]/.exec(childNode.textContent)) !== null) {
+        if ((screenshotResult = /\[(t?)(\w{16})(?::(\d+))?\]/.exec(childNode.textContent)) !== null) {
           let isTemp = !!screenshotResult[1];
+          const flags = +screenshotResult[3] || 0;
+
           const imageNode = document.createElement('img');
           imageNode.classList.add('screenshotEmbed');
+          imageNode.classList.toggle('screenshotBlur', globalConfig.blurScreenshotEmbeds || !!(flags & SCREENSHOT_FLAGS.SPOILER));
           imageNode.src = `${serverUrl}/screenshots/${isTemp ? 'temp/' : ''}${uuid}/${screenshotResult[2]}.png`;
           const date = new Date();
           imageNode.onclick = function () {
@@ -773,12 +783,16 @@ function tryEmbedScreenshot(node, uuid) {
               viewScreenshot(imageNode.src, date, screenshotInfo);
             });
           };
+          let offset = 18;
+          if (isTemp) offset++;
+          if (flags) offset += 1 + screenshotResult[3].length;
+          
           const beforeNode = screenshotResult.index ? document.createTextNode('') : null;
           if (beforeNode)
             beforeNode.textContent = childNode.textContent.slice(0, screenshotResult.index);
-          const afterNode = childNode.textContent.length > screenshotResult.index + (isTemp ? 19 : 18) ? document.createTextNode('') : null;
+          const afterNode = childNode.textContent.length > screenshotResult.index + offset ? document.createTextNode('') : null;
           if (afterNode)
-            afterNode.textContent = childNode.textContent.slice(screenshotResult.index + (isTemp ? 19 : 18));
+            afterNode.textContent = childNode.textContent.slice(screenshotResult.index + offset);
           node.replaceChild(imageNode, childNode);
           if (beforeNode)
             node.insertBefore(beforeNode, imageNode);

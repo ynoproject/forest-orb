@@ -156,7 +156,8 @@
             "label": "预加载",
             "helpText": "预先加载游戏资源，以便需要时取用；需要重新加载网页"
           },
-          "toggleQuestionablePreloads": "预加载电脑壁纸"
+          "toggleQuestionablePreloads": "预加载电脑壁纸",
+          "toggleSchedules": "Events"
         },
         "blocklist": "黑名单",
         "chatSettings": "聊天",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "小队聊天记录上限"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

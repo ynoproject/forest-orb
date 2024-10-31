@@ -156,7 +156,8 @@
             "label": "Preloads",
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers"
+          "toggleQuestionablePreloads": "Preload PC Wallpapers",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Limita Istoricului pe Grup"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

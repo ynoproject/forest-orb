@@ -156,7 +156,8 @@
             "label": "التحميل المسبق",
             "helpText": "قم بتحميل رسومات اللعبة المستخدمة بشكل متكرر مسبقًا للتأكد من توفرها عند الحاجة؛ يتطلب إعادة تحميل الصفحة"
           },
-          "toggleQuestionablePreloads": "التحميل المسبق لخلفيات الكمبيوتر"
+          "toggleQuestionablePreloads": "التحميل المسبق لخلفيات الكمبيوتر",
+          "toggleSchedules": "Events"
         },
         "blocklist": "قائمة الحظر",
         "chatSettings": "المحادثة",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "حد حفظ محادثة الحفلة"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

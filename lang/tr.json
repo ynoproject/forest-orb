@@ -156,7 +156,8 @@
             "label": "Ön Yüklemeler",
             "helpText": "İhtiyaç olduğunda hazır olduklarından emin olmak için sık kullanılan oyun ögelerini önceden yükle; sayfayı yenilemeniz gerekir"
           },
-          "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle"
+          "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Parti Sohbet Geçmiş Limiti"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {
