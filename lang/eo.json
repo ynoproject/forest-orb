@@ -156,7 +156,8 @@
             "label": "Antaŭŝargoj",
             "helpText": "Antaŭŝargi ofte uzitajn ludhavaĵojn por certigi, ke ili estos disponeblaj kiam necese; bezonas reŝargi retejon"
           },
-          "toggleQuestionablePreloads": "Antaŭŝargi Ekranfonojn de Komputilo"
+          "toggleQuestionablePreloads": "Antaŭŝargi Ekranfonojn de Komputilo",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Listo de Blokitoj",
         "chatSettings": "Babilejo",
@@ -198,7 +199,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Limo de Grupa Babileja Historio"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

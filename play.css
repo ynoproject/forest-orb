@@ -4082,3 +4082,13 @@ html[dir="rtl"] .messageSender {
 .scheduleDescription > [data-role="description"]:empty {
   display: none;
 }
+
+.screenshotBlur {
+  filter: blur(8px);
+  transition: filter 0.125s cubic-bezier(0.7, 0, 0.7, 1.5);
+  clip-path: inset(1px);
+}
+
+.screenshotBlur:hover {
+  filter: blur(2px);
+}

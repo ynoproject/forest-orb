@@ -66,8 +66,10 @@ let globalConfig = {
   mobileControls: true,
   mobileControlsType: 'default',
   playMentionSound: true,
+  blurScreenshotEmbeds: false,
   locationDisplay: false,
   hideRankings: false,
+  hideSchedules: false,
   autoDownloadScreenshots: false,
   screenshotResolution: 1,
   preloads: false,
@@ -1105,6 +1107,13 @@ document.getElementById('toggleRankingsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('toggleSchedulesButton').onclick = function () {
+  const toggled = this.classList.toggle('toggled');
+  document.getElementById('schedulesButton').classList.toggle('hidden', toggled);
+  globalConfig.hideSchedules = toggled;
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('togglePreloadsButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -1154,6 +1163,11 @@ document.getElementById('tabToChatButton').onclick = function () {
 document.getElementById('playMentionSoundButton').onclick = function () {
   this.classList.toggle('toggled');
   globalConfig.playMentionSound = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('blurScreenshotEmbedsButton').onclick = function () {
+  globalConfig.blurScreenshotEmbeds = !this.classList.toggle('toggled');
   updateConfig(globalConfig, true);
 };
 

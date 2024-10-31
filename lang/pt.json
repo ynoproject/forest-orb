@@ -156,7 +156,8 @@
             "label": "Pré-Carregamentos",
             "helpText": "Pré-carregue os recursos do jogo usados com frequência para garantir que estejam disponíveis quando necessário; requer recarregamento da página."
           },
-          "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC"
+          "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Limite do Histórico do Chat da Party"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

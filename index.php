@@ -683,6 +683,12 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleSchedules">Events</label>
+                <div>
+                  <button id="toggleSchedulesButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.togglePreloads.label">Preloads</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.togglePreloads.helpText">
@@ -765,6 +771,12 @@
                 <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.togglePlayMentionSound">Play Mention Sound</label>
                 <div>
                   <button id="playMentionSoundButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.blurScreenshotEmbeds">Blur All Screenshots</label>
+                <div>
+                  <button id="blurScreenshotEmbedsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">

@@ -156,7 +156,8 @@
             "label": "Wczesne ładowanie",
             "helpText": "Wcześnie załaduj pliki często używane w grze; wymaga ponownego załadowania strony"
           },
-          "toggleQuestionablePreloads": "Wczesne ładowanie tapet"
+          "toggleQuestionablePreloads": "Wczesne ładowanie tapet",
+          "toggleSchedules": "Events"
         },
         "blocklist": "Zablokowani użytkownicy",
         "chatSettings": "Czat",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Limit historii czasu grupy"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {

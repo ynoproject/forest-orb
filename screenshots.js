@@ -132,12 +132,16 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
   screenshotModalContent.innerHTML = '';
   screenshotModalContent.append(screenshot);
 
+  let isTransientSpoiler = false;
+
   if (screenshotData?.hasOwnProperty('id') && !isTemp) {
     screenshotModalContent.append(getScreenshotControls(screenshotData.hasOwnProperty('owner'), screenshotData, () => {
       if (!screenshotData.owner)
         initScreenshotsModal(false);
       closeModal('screenshotModal');
     }));
+  } else if (!isTemp) {
+    screenshotModalContent.append(getTransientScreenshotControls(spoiler => isTransientSpoiler = spoiler));
   }
 
   const saveButton = screenshotModal.querySelector('.saveScreenshotButton');
@@ -171,6 +175,9 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
       chatInput.value += `${chatInput.value.trim() ? ' ' : ''}[screenshot]`;
     chatInput.dataset.screenshotId = id;
     chatInput.dataset.screenshotTemp = !isRemote ? 'temp' : '';
+    const flags = +(isTransientSpoiler || !!screenshotData?.spoiler);
+    if (flags)
+      chatInput.dataset.screenshotFlags = flags;
   }
 
   shareButton.onclick = () => {
@@ -723,6 +730,28 @@ function getScreenshotControls(isCommunity, screenshot, deleteCallback) {
 
     screenshotControls.append(deleteButton);
   }
+
+  return screenshotControls;
+}
+
+function getTransientScreenshotControls(spoilerCallback) {
+  const screenshotControls = document.createElement('div');
+  screenshotControls.classList.add('screenshotControls', 'imageControls');
+
+  const spoilerButton = getSvgIcon('visible');
+  spoilerButton.classList.add('iconButton', 'offToggleButton', 'spoilerToggle');
+  spoilerButton.onclick = () => {
+    const toggled = spoilerButton.classList.toggle('toggled');
+    addTooltip(spoilerButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip[toggled ? 'off' : 'on'], true), true);
+    if (spoilerCallback)
+      spoilerCallback(toggled);
+  };
+  const spoilerButtonOffIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  spoilerButtonOffIndicator.setAttribute('d', 'm-2 16l22-14');
+
+  spoilerButton.querySelector('svg').appendChild(spoilerButtonOffIndicator);
+  screenshotControls.appendChild(spoilerButton);
+  addTooltip(spoilerButton, getMassagedLabel(localizedMessages.screenshots.spoiler.tooltip.on, true), true);
 
   return screenshotControls;
 }

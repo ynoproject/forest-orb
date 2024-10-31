@@ -156,7 +156,8 @@
             "label": "Tải sẵn tài nguyên",
             "helpText": "Tải sẵn những tài nguyên được sử dụng thường xuyên để đảm bảo có thể sử dụng khi cần; yêu cầu tải lại trang"
           },
-          "toggleQuestionablePreloads": "Tải sẵn hình nền PC"
+          "toggleQuestionablePreloads": "Tải sẵn hình nền PC",
+          "toggleSchedules": "Sự kiện"
         },
         "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",
@@ -199,7 +200,8 @@
           },
           "partyChatHistoryLimit": {
             "label": "Giới hạn Lịch sử chat nhóm"
-          }
+          },
+          "blurScreenshotEmbeds": "Blur All Screenshots"
         }
       },
       "screenshotSettings": {
