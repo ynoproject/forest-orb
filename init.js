@@ -528,7 +528,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
       badgeAction.onclick = function () {
         const isGrant = this.classList.contains('grantBadgeAction');
         const localizedContextRoot = localizedMessages.context.admin[isGrant ? 'grantBadge' : 'revokeBadge'];
-        const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
+        const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', getPlayerName(player)));
         if (badgeId) {
           const badgeGame = Object.keys(localizedBadges).find(game => {
             return Object.keys(localizedBadges[game]).find(b => b === badgeId);
@@ -556,7 +556,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
   }
 
   Array.from(playerTooltip.popper.querySelectorAll('.playerAction')).forEach(action => {
-    const actionOnClick = action.onclick;
+    const actionOnClick = action.onclick?.bind(action);
     action.onclick = () => {
       if (actionOnClick)
         actionOnClick();
