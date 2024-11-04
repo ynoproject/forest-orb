@@ -263,6 +263,21 @@ const allGameUiThemes = {
     'ss-システムeyes',
     'ss-システムviolet III'
   ],
+  'unaccomplished': [
+    'system_N',
+    'system_EEE',
+    'system_0',
+    'OLD_system_0',
+    'system_Down',
+    'system_BL',
+    'system_ComP_BW',
+    'system_PC',
+    'system_ComP',
+    'system_ComP_Red',
+    'system_ComP_Halloween',
+    'system_ComP_PT',
+    'system_icea'
+  ],
   'unevendream': [
     '1247-0',
     '1247-0t',
@@ -301,6 +316,7 @@ const allGameFullBgUiThemes = {
   'someday': [],
   'tsushin': [],
   'ultraviolet': [ 'ss-システムsilver' ],
+  'unaccomplished': [],
   'unevendream': [],
   'yume': [ '0000000000010' ]
 };
@@ -316,6 +332,7 @@ const gameLogoBlendModeOverrides = {
   'mikan': 'soft-light',
   'someday': 'hard-light',
   'ultraviolet': 'soft-light',
+  'unaccomplished': 'soft-light',
   'unevendream': 'color'
 };
 

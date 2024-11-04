@@ -56,6 +56,9 @@
     case "ultraviolet":
       $gameName = "Ultra Violet";
       break;
+    case "unaccomplished":
+      $gameName = "Unaccomplished";
+      break;
     case "unevendream":
       $gameName = "Uneven Dream";
       break;
@@ -230,7 +233,7 @@
             <?php if ($gameId != "yume"): ?>
               <div id="apad-shift" class="baseColorBg apadRectBtn apadBtn" data-key="ShiftLeft" data-key-code="16"></div>
             <?php endif ?>
-            <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin"|| $gameId == "oneshot"): ?>
+            <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "prayers" || $gameId == "someday" || $gameId == "unevendream" || $gameId == "braingirl" || $gameId == "tsushin" || $gameId == "oneshot" || $gameId == "unaccomplished"): ?>
               <div id="apad-numbers" class="apadBtnContainer">
                 <?php if ($gameId == "tsushin"): ?>
                   <div id="apad-0" class="baseColorBg apadSqBtn apadBtn" data-key="Digit0" data-key-code="48"></div>
@@ -247,7 +250,7 @@
                 <?php if ($gameId == "unevendream"): ?>
                   <div id="apad-4" class="baseColorBg apadSqBtn apadBtn" data-key="Digit4" data-key-code="52"></div>
                 <?php endif ?>
-                <?php if ($gameId == "yume" || $gameId == "unconscious"): ?>
+                <?php if ($gameId == "yume" || $gameId == "unconscious" || $gameId == "unaccomplished"): ?>
                   <div id="apad-5" class="baseColorBg apadSqBtn apadBtn" data-key="Digit5" data-key-code="53"></div>
                 <?php endif ?>
                 <div id="apad-9" class="baseColorBg apadSqBtn apadBtn" data-key="Digit9" data-key-code="57"></div>

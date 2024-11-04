@@ -1,4 +1,4 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'unconscious', 'deepdreams', 'flow', 'genie', 'if', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'unconscious', 'deepdreams', 'flow', 'genie', 'if', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unaccomplished', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
@@ -28,7 +28,8 @@ const gameDefaultSprite = {
   'sheawaits': 'sprite-noelia',
   'someday': 'itsuki1',
   'tsushin': 'actor',
-  "ultraviolet": 'ch-主人公1',
+  'ultraviolet': 'ch-主人公1',
+  'unaccomplished': 'YM_1',
   'unevendream': 'kubo',
   'yume': '0000000078'
 }[gameId];
