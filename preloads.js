@@ -1,5 +1,4 @@
 let preloadFiles;
-let preloadedFiles = {};
 let gameLoadedFiles = new Set();
 let preloadLocalizationFiles = {};
 
@@ -13,7 +12,7 @@ function initPreloadList() {
     .then(responseText => {
       if (!responseText)
         return;
-      preloadFiles = JSON.parse(responseText.replaceAll('\"*/', '\"/'));
+      preloadFiles = JSON.parse(responseText.replace(/\"\*\//g, '\"/'));
       if (preloadFiles) {
         const preloadFilesReplace = {};
         for (let preload of Object.entries(preloadFiles)) {
@@ -75,22 +74,32 @@ function initPreloadList() {
     }).catch(err => console.error(err));
 }
 
+const graphicPattern = /.(png|bmp|zyx)$/i;
+const keepExtensionPattern = /.po$/i;
+
 function preloadFileAndSave(link, languageLink, translatedFileName) {
-  link = languageLink + (translatedFileName ? translatedFileName : link);
+  // languageLink and translatedFileName is not used, since we depend on EasyRPG
+  // to automatically translate the paths to their translated counterparts.
+  if (preloadsGameLang === 'default') return;
+  if (link.startsWith('/'))
+    link = link.slice(1);
   if (gameLoadedFiles.has(link))
     return;
   gameLoadedFiles.add(link);
-  const request = new XMLHttpRequest();
-  request.onload = function () {
-    if (request.status >= 200 && request.status < 300)
-      preloadedFiles[link] = request.response;
-  };
-  request.responseType = "arraybuffer";
-  let versionAdd = "";
-  if (gameVersion)
-    versionAdd = `${link.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion}`;
-  request.open("GET", `/data/${gameId}${languageLink ? "/Language" : ""}${encodeURIComponent(link)}${versionAdd}`);
-  request.send();
+
+  let idx, file, dir;
+  if ((idx = link.lastIndexOf('/')) !== -1) {
+    file = link.slice(idx + 1);
+    dir = link.slice(0, idx)
+  } else {
+    file = link;
+    dir = '.';
+  }
+
+  const graphic = graphicPattern.test(file);
+  if (!keepExtensionPattern.test(file) && (idx = file.lastIndexOf('.')) !== -1)
+    file = file.slice(0, file.lastIndexOf('.'));
+  easyrpgPlayer.api.preloadFile(dir, file, graphic);
 }
 
 function preloadFilesFromMapId(mapId) {
@@ -171,69 +180,41 @@ function preloadFilesFromMapId(mapId) {
 }
 
 function getFilePathForPreloads(path) {
-  return path.replace(`/data/${gameId}`, "").replace("/Language", "");
+  return path.replace(`/data/${gameId}`, "").replace("Language/", "");
 }
 
 let preloadsGameLang = "default";
 let preloadsLangDetected = false;
 let prevLoadedFiles = [];
 
-function initPreloads() {
-  const ca = wasmImports.ca;
-  wasmImports.ca = function (url, file, request, param, arg, onload, onerror, onprogress) {
-    if (preloadFiles) {
-      const _url = UTF8ToString(url);
-              
-      const filePath = getFilePathForPreloads(decodeURIComponent(_url));
-      gameLoadedFiles.add(filePath);
+// EXTERNAL
+function onRequestFile(_url) {
+  if (!preloadFiles) return;
+          
+  const filePath = getFilePathForPreloads(decodeURIComponent(_url));
+  gameLoadedFiles.add(filePath);
 
-      // Game language detection
-      if (_url.indexOf("/Language") !== -1 && !filePath.endsWith("/meta.ini")) 
-        preloadsGameLang = filePath.substring(1, filePath.substring(1, filePath.length).indexOf("/") + 1);
-      if (filePath.indexOf("/Title") !== -1) {
-        gameLoadedFiles = new Set(Object.keys(preloadedFiles));
-        preloadsGameLang = "default";
-        for (let prevFile of prevLoadedFiles) {
-          if (prevFile.indexOf("/Language") !== -1) {
-            let folderFilePath = getFilePathForPreloads(decodeURIComponent(prevFile));
-            preloadsGameLang = folderFilePath.substring(1, folderFilePath.substring(1, folderFilePath.length).indexOf("/") + 1);
-            break
-          }
-        }
-        if (preloadsLangDetected)
-          preloadFilesFromMapId("title");
-        preloadsLangDetected = true;
-      }
-      prevLoadedFiles.push(_url);
-      if (prevLoadedFiles.length > 4)
-        prevLoadedFiles.shift(1);
-      if (filePath.endsWith(".lmu"))
-        preloadFilesFromMapId("event" + filePath.replace("/Map", "").replace(".lmu", ""));
-      if (preloadedFiles.hasOwnProperty(filePath)) {
-        runtimeKeepalivePush();
-        let _file = UTF8ToString(file);
-        _file = PATH_FS.resolve(_file);
-        const index = _file.lastIndexOf("/");
-        const http = new XMLHttpRequest();
-        const handle = wget.getNextWgetRequestHandle();
-        const destinationDirectory = PATH.dirname(_file);
-        try {
-          FS.unlink(_file);
-        } catch (e) {}
-        FS.mkdirTree(destinationDirectory);
-        FS.createDataFile(_file.substr(0, index), _file.substr(index + 1), new Uint8Array(preloadedFiles[filePath]), true, true, false);
-        if (onload) {
-          withStackSave((function() {
-            ((a1,a2,a3)=>dynCall_viii.apply(null, [onload, a1, a2, a3]))(handle, arg, stringToUTF8OnStack(_file));
-          }));
-        }
-        if (filePath !== "/CharSet/syujinkou_effect_action_01.png")
-          delete preloadedFiles[filePath];
-                    
-        wget.wgetRequests[handle] = http;
-        return handle;
+  // Game language detection
+  if (_url.indexOf("Language/") !== -1 && !filePath.endsWith("/meta.ini")) 
+    preloadsGameLang = filePath.substring(0, filePath.substring(1, filePath.length).indexOf("/") + 1);
+  if (filePath.indexOf("Title/") !== -1) {
+    gameLoadedFiles.clear();
+    preloadsGameLang = 'default';
+    for (let prevFile of prevLoadedFiles) {
+      if (prevFile.indexOf("Language/") !== -1) {
+        let folderFilePath = getFilePathForPreloads(decodeURIComponent(prevFile));
+        preloadsGameLang = folderFilePath.substring(0, folderFilePath.substring(1, folderFilePath.length).indexOf("/") + 1);
+        break
       }
     }
-    ca(url, file, request, param, arg, onload, onerror, onprogress);
-  };
+    if (preloadsLangDetected)
+      preloadFilesFromMapId("title");
+    preloadsLangDetected = true;
+  }
+  prevLoadedFiles.push(_url);
+  if (prevLoadedFiles.length > 4)
+    prevLoadedFiles.shift();
+  if (filePath.endsWith(".lmu")) { 
+    preloadFilesFromMapId("event" + filePath.replace("./Map", "").replace(".lmu", ""));
+  }
 }
