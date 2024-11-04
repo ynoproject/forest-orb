@@ -779,7 +779,7 @@
               <li class="formControlRow">
                 <label class="unselectable" data-i18n="[html]modal.chatSettings.fields.blurScreenshotEmbeds">Blur All Screenshots</label>
                 <div>
-                  <button id="blurScreenshotEmbedsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
+                  <button id="blurScreenshotEmbedsButton" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
               <li class="formControlRow">

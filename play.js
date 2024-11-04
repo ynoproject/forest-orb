@@ -1167,7 +1167,7 @@ document.getElementById('playMentionSoundButton').onclick = function () {
 };
 
 document.getElementById('blurScreenshotEmbedsButton').onclick = function () {
-  globalConfig.blurScreenshotEmbeds = !this.classList.toggle('toggled');
+  globalConfig.blurScreenshotEmbeds = this.classList.toggle('toggled');
   updateConfig(globalConfig, true);
 };
 
