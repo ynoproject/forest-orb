@@ -680,7 +680,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('playMentionSoundButton').click();
                     break;
                   case 'blurScreenshotEmbeds':
-                    if (!value)
+                    if (value)
                       document.getElementById('blurScreenshotEmbedsButton').click();
                     break;
                   case 'mapChatHistoryLimit':
