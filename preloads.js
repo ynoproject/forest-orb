@@ -80,7 +80,7 @@ const keepExtensionPattern = /.po$/i;
 function preloadFileAndSave(link, languageLink, translatedFileName) {
   // languageLink and translatedFileName is not used, since we depend on EasyRPG
   // to automatically translate the paths to their translated counterparts.
-  if (preloadsGameLang === 'default') return;
+  if (!easyrpgPlayer.initialized) return;
   if (link.startsWith('/'))
     link = link.slice(1);
   if (gameLoadedFiles.has(link))
@@ -191,7 +191,12 @@ let prevLoadedFiles = [];
 function onRequestFile(_url) {
   if (!preloadFiles) return;
           
-  const filePath = getFilePathForPreloads(decodeURIComponent(_url));
+  let filePath;
+  try {
+    filePath = getFilePathForPreloads(decodeURIComponent(_url));
+  } catch (err) {
+    return console.warn('not processing post-request for', _url);
+  }
   gameLoadedFiles.add(filePath);
 
   // Game language detection
