@@ -74,13 +74,12 @@ function initPreloadList() {
     }).catch(err => console.error(err));
 }
 
-const graphicPattern = /.(png|bmp|zyx)$/i;
-const keepExtensionPattern = /.po$/i;
+const graphicPattern = /.(png|bmp|xyz)$/i;
+const keepExtensionPattern = /.(po|lmu)$/i;
 
 function preloadFileAndSave(link, languageLink, translatedFileName) {
   // languageLink and translatedFileName is not used, since we depend on EasyRPG
   // to automatically translate the paths to their translated counterparts.
-  if (!easyrpgPlayer.initialized) return;
   if (link.startsWith('/'))
     link = link.slice(1);
   if (gameLoadedFiles.has(link))
@@ -136,10 +135,11 @@ function preloadFilesFromMapId(mapId) {
             translatedFileName = preloadLocalizationFiles[preloadsGameLang][preloadFileInside];
             langLink = "/" + preloadsGameLang;
             if (preloadFileInside.endsWith(".lmu")) {
+              translatedFileName = '/Language/' + preloadsGameLang + translatedFileName;
               if (preloadFile.slow)
-                setTimeout(preloadFileAndSave, currentTimeout, preloadFileInside, langLink, translatedFileName);
+                setTimeout(preloadFileAndSave, currentTimeout, translatedFileName, langLink, translatedFileName);
               else
-                preloadFileAndSave(preloadFileInside, langLink, translatedFileName);
+                preloadFileAndSave(translatedFileName, langLink, translatedFileName);
               current++;
               if (current % totalAtOnce === 0)
                 currentTimeout += delayAdd;
@@ -166,7 +166,7 @@ function preloadFilesFromMapId(mapId) {
         translatedFileName = preloadLocalizationFiles[preloadsGameLang][preloadFile];
         langLink = "/" + preloadsGameLang;
         if (preloadFile.endsWith(".lmu")) {
-          preloadFileAndSave(preloadFile, langLink, translatedFileName);
+          preloadFileAndSave('/Language/' + preloadsGameLang + translatedFileName, langLink, translatedFileName);
           translatedFileName = "";
           langLink = "";
         }
@@ -184,21 +184,14 @@ function getFilePathForPreloads(path) {
 }
 
 let preloadsGameLang = "default";
-let preloadsLangDetected = false;
 let prevLoadedFiles = [];
 
 // EXTERNAL
 function onRequestFile(_url) {
   if (!preloadFiles) return;
-          
-  let filePath;
-  try {
-    filePath = getFilePathForPreloads(decodeURIComponent(_url));
-  } catch (err) {
-    return console.warn('not processing post-request for', _url);
-  }
-  gameLoadedFiles.add(filePath);
 
+  const filePath = getFilePathForPreloads(decodeURIComponent(encodeURIComponent(_url)));
+  gameLoadedFiles.add(filePath);
   // Game language detection
   if (_url.indexOf("Language/") !== -1 && !filePath.endsWith("/meta.ini")) 
     preloadsGameLang = filePath.substring(0, filePath.substring(1, filePath.length).indexOf("/") + 1);
@@ -212,9 +205,7 @@ function onRequestFile(_url) {
         break
       }
     }
-    if (preloadsLangDetected)
-      preloadFilesFromMapId("title");
-    preloadsLangDetected = true;
+    preloadFilesFromMapId("title");
   }
   prevLoadedFiles.push(_url);
   if (prevLoadedFiles.length > 4)
