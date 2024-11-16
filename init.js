@@ -99,7 +99,6 @@ async function injectScripts() {
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
           fetchAndUpdatePlayerInfo();
           setInterval(checkLogin, 60000);
-          preloadFilesFromMapId('title');
           setTimeout(() => {
             checkDependenciesModified();
             setInterval(checkDependenciesModified, 300000);
