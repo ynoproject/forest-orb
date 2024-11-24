@@ -40,8 +40,19 @@ const tippyConfig = {
   arrow: false,
   animation: 'scale',
   allowHTML: true,
-  touch: ['hold', 400],
+  touch: /** @type {['hold', number]} */(['hold', 400]),
 };
+
+Object.defineProperty(Object.prototype, 'hasTitle', {
+  enumerable: false,
+  value() {
+    return typeof this === 'string' || 'title' in this;
+  }
+})
+
+Object.defineProperty(String.prototype, 'title', {
+  get() { return this; },
+})
 
 let easyrpgPlayer = {
   initialized: false,
@@ -84,10 +95,7 @@ async function injectScripts() {
         
         if (gameId === '2kki') {
           gameVersion = document.querySelector('meta[name="2kkiVersion"]')?.content?.replace(' Patch ', 'p');
-          //init2kkiFileVersionAppend();
         }
-        /*if (globalConfig.preloads)
-          initPreloads();*/
   
         easyrpgPlayerLoadFuncs.push(() => {
           easyrpgPlayer.initialized = true;
@@ -256,12 +264,13 @@ function wikiApiFetch(action, query) {
   });
 }
 
-function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOffset, hasYOffset, isBrave) {
+const extractCanvas = document.createElement('canvas');
+
+async function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOffset, hasYOffset, isBrave) {
   return new Promise(resolve => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 24;
-    canvas.height = 32;
-    const context = canvas.getContext('2d');
+    extractCanvas.width = 24;
+    extractCanvas.height = 32;
+    const context = extractCanvas.getContext('2d');
     const startX = (idx % 4) * 72 + 24 * frameIdx;
     const startY = (idx >> 2) * 128 + 64;
     context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
@@ -269,21 +278,19 @@ function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOf
     const data = imageData.data;
     const transPixel = data.slice(0, 3);
     let yOffset = hasYOffset ? -1 : 0;
-    const checkPixelTransparent = isBrave
-      ? o => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2])
-      : o => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2];
+    const checkPixelTransparent = isBrave ? transparencyChecker.brave : transparencyChecker.default;
     for (let i = 0; i < data.length; i += 4) {
-      if (checkPixelTransparent(i))
+      if (checkPixelTransparent(data, i, transPixel))
         data[i + 3] = 0;
       else if (yOffset === -1)
         yOffset = Math.max(Math.min(i >> 7, 15), 3);
     }
     if (yOffset === -1)
       yOffset = 0;
-    canvas.width = width;
-    canvas.height = height;
+    extractCanvas.width = width;
+    extractCanvas.height = height;
     context.putImageData(imageData, xOffset * -1, yOffset * -1, xOffset, 0, 24, 32);
-    canvas.toBlob(blob => {
+    extractCanvas.toBlob(blob => {
       const blobImg = document.createElement('img');
       const url = URL.createObjectURL(blob);
     
@@ -293,12 +300,19 @@ function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, height, xOf
         spriteData[sprite][idx][frameIdx] = url;
       else
         spriteData[sprite][idx] = url;
-      canvas.remove();
       resolve(url);
     });
   });
 }
 
+let transparencyChecker = {
+  default: (data, o, transPixel) => data[o] === transPixel[0] && data[o + 1] === transPixel[1] && data[o + 2] === transPixel[2],
+  brave: (data, o, transPixel) => (data[o] === transPixel[0] || data[o] - 1 === transPixel[0]) && (data[o + 1] === transPixel[1] || data[o + 1] - 1 === transPixel[1]) && (data[o + 2] === transPixel[2] || data[o + 2] - 1 === transPixel[2]),
+}
+
+/**
+ * @param {Element} target 
+ */
 function addTooltip(target, content, asTooltipContent, delayed, interactive, options) {
   if (!options)
     options = {};
@@ -306,12 +320,25 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
     options.interactive = true;
   if (delayed)
     options.delay = [750, 0];
-  options.content = asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content;
+  if (!asTooltipContent)
+    options.content = content;
+  else if (content instanceof Element) {
+    const tooltipContent = document.createElement('div');
+    tooltipContent.classList.add('tooltipContent');
+    tooltipContent.appendChild(content);
+    options.content = tooltipContent;
+  } else
+    options.content = `<div class="tooltipContent">${content}</div>`;
   options.appendTo = document.getElementById('layout');
   target._tippy?.destroy();
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
+const playerTooltipCache = new Map;
+
+/**
+ * @param {HTMLElement} target 
+ */
 function addPlayerContextMenu(target, player, uuid, messageType) {
   if (!player || uuid === playerData?.uuid || uuid === defaultUuid) {
     target.addEventListener('contextmenu', event => event.preventDefault());
@@ -321,10 +348,60 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
   if (player && !player.hasOwnProperty('uuid'))
     player = Object.assign({ uuid }, player);
 
+  target.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+
+    const cacheKey = `${uuid};${messageType}`;
+
+    let playerTooltip = playerTooltipCache.get(cacheKey);
+    if (!playerTooltip) {
+      playerTooltip = createPlayerTooltip(this, player, uuid, messageType);
+      playerTooltipCache.set(cacheKey, playerTooltip);
+    } 
+
+    const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
+
+    const addFriendAction = playerTooltip.popper.querySelector('.addPlayerFriendAction');
+    const removeFriendAction = playerTooltip.popper.querySelector('.removePlayerFriendAction');
+
+    if (addFriendAction)
+      addFriendAction.classList.toggle('hidden', isFriend);
+    if (removeFriendAction)
+      removeFriendAction.classList.toggle('hidden', !isFriend);
+
+    const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
+
+    const blockAction = playerTooltip.popper.querySelector('.blockPlayerAction');
+    const unblockAction = playerTooltip.popper.querySelector('.unblockPlayerAction');
+
+    if (blockAction)
+      blockAction.classList.toggle('hidden', isBlocked);
+    if (unblockAction)
+      unblockAction.classList.toggle('hidden', !isBlocked);
+  
+    playerTooltip.setProps({
+      getReferenceClientRect: () => ({
+        width: 0,
+        height: 0,
+        top: event.clientY,
+        bottom: event.clientY,
+        left: event.clientX,
+        right: event.clientX,
+      }),
+    });
+  
+    playerTooltip.show();
+  });
+}
+
+/**
+ * @param {Element} target 
+ */
+function createPlayerTooltip(target, player, uuid, messageType) {
   const isMod = playerData?.rank > player?.rank;
   const isBlockable = playerData?.rank >= player?.rank;
   const playerName = getPlayerName(player, true, false, true);
-  
+
   let tooltipHtml = '';
 
   if (messageType)
@@ -564,44 +641,12 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
     };
   });
 
-  target.addEventListener('contextmenu', event => {
-    event.preventDefault();
-
-    const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
-
-    const addFriendAction = playerTooltip.popper.querySelector('.addPlayerFriendAction');
-    const removeFriendAction = playerTooltip.popper.querySelector('.removePlayerFriendAction');
-
-    if (addFriendAction)
-      addFriendAction.classList.toggle('hidden', isFriend);
-    if (removeFriendAction)
-      removeFriendAction.classList.toggle('hidden', !isFriend);
-
-    const isBlocked = blockedPlayerUuids.indexOf(uuid) > -1;
-
-    const blockAction = playerTooltip.popper.querySelector('.blockPlayerAction');
-    const unblockAction = playerTooltip.popper.querySelector('.unblockPlayerAction');
-
-    if (blockAction)
-      blockAction.classList.toggle('hidden', isBlocked);
-    if (unblockAction)
-      unblockAction.classList.toggle('hidden', !isBlocked);
-  
-    playerTooltip.setProps({
-      getReferenceClientRect: () => ({
-        width: 0,
-        height: 0,
-        top: event.clientY,
-        bottom: event.clientY,
-        left: event.clientX,
-        right: event.clientX,
-      }),
-    });
-  
-    playerTooltip.show();
-  });
+  return playerTooltip;
 }
 
+/**
+ * @param {import('tippy.js').Instance} [instance] 
+ */
 function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interactive, options, instance) {
   if (!instance)
     return addTooltip(target, content, asTooltipContent, delayed, interactive, options);

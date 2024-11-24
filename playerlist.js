@@ -159,10 +159,11 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
 function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntries) {
   const uuid = player.uuid === defaultUuid ? playerData?.uuid || defaultUuid : player.uuid;
   const name = player.name;
+  /** @type {string} */
   let systemName = player.systemName;
   let playerGameId = player.game || gameId;
 
-  if (!allGameUiThemes.hasOwnProperty(playerGameId))
+  if (!(playerGameId in allGameUiThemes))
     playerGameId = gameId;
 
   if (!playerList)
@@ -170,6 +171,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
 
   let playerListEntry = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"]`);
 
+  /** @type {HTMLSpanElement} */
   const nameText = playerListEntry ? playerListEntry.querySelector('.nameText') : document.createElement('span');
   const playerListEntrySprite = playerListEntry ? playerListEntry.querySelector('.playerListEntrySprite') : document.createElement('img');
   const playerListEntryMedals = playerListEntry ? playerListEntry.querySelector('.playerListEntryMedals') : document.createElement('div');
@@ -262,9 +264,9 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
       playerList.scrollTop = playerList.scrollHeight;
   }
 
-  if (player.hasOwnProperty('spriteName')) {
-    getSpriteProfileImg(player.spriteName, player.hasOwnProperty('spriteIndex') ? player.spriteIndex : 0, undefined, undefined, playerGameId).then(spriteImg => {
-      if (spriteImg)
+  if ('spriteName' in player) {
+    getSpriteProfileImg(player.spriteName, player.spriteIndex || 0, undefined, undefined, playerGameId).then(spriteImg => {
+      if (spriteImg && playerListEntrySprite.src !== spriteImg)
         playerListEntrySprite.src = spriteImg
     });
   } else {
@@ -273,7 +275,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
       playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
     if (playerSpriteCacheEntry) {
       getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, undefined, undefined, playerGameId).then(spriteImg => {
-        if (spriteImg)
+        if (spriteImg && playerListEntrySprite.src !== spriteImg)
           playerListEntrySprite.src = spriteImg
       });
       if (uuid === defaultUuid)
@@ -282,7 +284,8 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
-    nameText.innerText = getPlayerName(player);
+    const playerNameText = getPlayerName(player);
+    fastdom.mutate(() => nameText.innerText = playerNameText);
     if (player.account) {
       const nameMarkers = nameText.parentElement.querySelectorAll('.nameMarker');
       for (let nameMarker of nameMarkers)
@@ -505,10 +508,10 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   playerListEntryMedals.classList.toggle('hidden', !showMedals);
 
   if (systemName) {
-    systemName = systemName.replace(/'/g, '');
-    if (playerListEntry.dataset.unnamed || !allGameUiThemes.hasOwnProperty(playerGameId) || allGameUiThemes[playerGameId].indexOf(systemName) === -1)
+    systemName = systemName.replaceAll("'", '');
+    if (playerListEntry.dataset.unnamed || !(playerGameId in allGameUiThemes) || allGameUiThemes[playerGameId].indexOf(systemName) === -1)
       systemName = getDefaultUiTheme(playerGameId);
-    const parsedSystemName = systemName.replace(/ /g, '_');
+    const parsedSystemName = systemName.replaceAll(' ', '_');
     initUiThemeContainerStyles(systemName, playerGameId, false, () => {
       initUiThemeFontStyles(systemName, playerGameId, 0, false, () => {
         const gameParsedSystemName = `${playerGameId !== gameId ? `${playerGameId}-` : ''}${parsedSystemName}`;
@@ -547,7 +550,7 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   let playerLocation = entry.querySelector('.playerLocation');
   const initLocation = !playerLocation;
   const isValidMap = !!parseInt(player.mapId);
-  const showLastOnline = player.hasOwnProperty('online') && !player.online && player.hasOwnProperty('lastActive') && player.lastActive;
+  const showLastOnline = !player.online && player.lastActive;
   
   if (initLocation) {
     playerLocation = document.createElement('small');
@@ -560,12 +563,12 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   playerLocation.classList.toggle('hidden', (!locationVisible || !shouldDisplayLocation) && !showLastOnline);
 
   if (locationVisible && player.online && shouldDisplayLocation) {
-    if (!allGameUiThemes.hasOwnProperty(playerGameId))
+    if (!(playerGameId in allGameUiThemes))
       playerGameId = gameId;
     const parsedSystemName = player.systemName ? (allGameUiThemes[playerGameId].indexOf(player.systemName) > -1 ? player.systemName : getDefaultUiTheme(playerGameId)).replace(/ /g, '_') : null;
     playerLocation.dataset.systemOverride = parsedSystemName || null;
     if (playerGameId === gameId) {
-      if (gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(player.mapId))) {
+      if (gameId === '2kki' && (!localizedMapLocations?.hasOwnProperty(player.mapId))) {
         const prevLocations = player.prevLocations && player.prevMapId !== '0000' ? decodeURIComponent(window.atob(player.prevLocations)).split('|').map(l => { return { title: l }; }) : null;
         set2kkiGlobalChatMessageLocation(playerLocation, player.mapId, player.prevMapId, prevLocations);
       } else {
@@ -580,10 +583,13 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
         applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
   } else if (showLastOnline) {
-    if (parseInt(getLastOnlineInterval(new Date(player.lastActive))) < 5000) 
-      playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', getLastOnlineInterval(new Date(player.lastActive)))}</span>`;
-    else
-      playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.longTime)}</span>`;
+    const lastActive = getLastOnlineInterval(new Date(player.lastActive));
+    fastdom.mutate(() => {
+      if (parseInt(lastActive) < 5000) 
+        playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', lastActive)}</span>`;
+      else
+        playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.longTime)}</span>`;
+    });
     if (playerLocation.dataset.systemOverride)
       applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
   }
@@ -616,9 +622,8 @@ function sortPlayerListEntries(playerList) {
       return a.innerText.localeCompare(b.innerText, { sensitivity: 'base' });
     });
 
-    entries.forEach(function (ple) {
-        playerList.appendChild(ple);
-    });
+    for (const ple of entries)
+      playerList.appendChild(ple);
   }
 }
 
@@ -961,7 +966,7 @@ function onPlayerConnectedOrUpdated(systemName, name, id) {
     if (systemName)
       globalPlayerData[uuid].systemName = systemName;
   }
-  addOrUpdatePlayerListEntry(null, Object.assign({ uuid }, globalPlayerData[uuid]), false, true);
+  setTimeout(() => addOrUpdatePlayerListEntry(null, Object.assign({ uuid }, globalPlayerData[uuid]), false, true));
 }
 
 // EXTERNAL

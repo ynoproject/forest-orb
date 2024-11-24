@@ -62,11 +62,6 @@ html {
   opacity: 0.4;
 }
 
-#apad > * {
-  width: var(--controls-size);
-  height: var(--controls-size);
-}
-
 #apad .apadBtn {
   width: var(--controls-size);
   height: var(--controls-size);

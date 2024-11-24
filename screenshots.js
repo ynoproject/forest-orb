@@ -286,7 +286,12 @@ function takeScreenshot() {
       thumb.src = url;
       toast.querySelector('.toastMessage').prepend(thumb);
       toast.classList.add('screenshotToast');
-      document.documentElement.style.setProperty('--toast-offset', `-${toast.getBoundingClientRect().height + 8}px`);
+      fastdom.measure(() => {
+        const height = toast.getBoundingClientRect().height + 8;
+        fastdom.mutate(() => {
+          document.getElementById('toastContainer').style.setProperty('--toast-offset', `-${height}px`);
+        });
+      });
 
       thumb.onclick = () => viewScreenshot(url, dateTaken, { mapId, mapX, mapY });
 
@@ -452,15 +457,11 @@ function initScreenshotsModal(isCommunity) {
             locationContent = getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation));
           screenshotLocation.innerHTML = locationContent;
         };
-        if (gameLocalizedMapLocations.hasOwnProperty(screenshot.game))
+        if (screenshot.game in gameLocalizedMapLocations)
           setScreenshotLocation();
         else {
-          locationContent = getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation));
-          if (gameLocalizedMapLocations.hasOwnProperty(screenshot.game))
-            setScreenshotLocation();
-          else
-            fetchAndInitLocations(globalConfig.lang, screenshot.game).then(() => setScreenshotLocation());
-          screenshotLocation.innerHTML = locationContent;
+          screenshotLocation.innerHTML = getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation));
+          fetchAndInitLocations(globalConfig.lang, screenshot.game).then(() => setScreenshotLocation());
         }
       }
 

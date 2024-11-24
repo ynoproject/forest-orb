@@ -443,7 +443,7 @@ function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;
   const partyList = document.getElementById('partyList');
   
-  let partyListEntry = document.querySelector(`.partyListEntry[data-id="${party.id}"]`);
+  let partyListEntry = partyList.querySelector(`.partyListEntry[data-id="${party.id}"]`);
 
   const partyListEntrySprite = partyListEntry ? partyListEntry.querySelector('.partyListEntrySprite') : document.createElement('img');
   const nameText = partyListEntry ? partyListEntry.querySelector('.nameText') : document.createElement('span');
@@ -633,9 +633,7 @@ function addOrUpdatePartyListEntry(party) {
 }
 
 function removePartyListEntry(id) {
-  const partyListEntry = document.querySelector(`.partyListEntry[data-id="${id}"]`);
-  if (partyListEntry)
-    partyListEntry.remove();
+  document.getElementById('partyList').querySelector(`.partyListEntry[data-id="${id}"]`)?.remove();
 }
 
 function clearPartyList() {

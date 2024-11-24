@@ -204,14 +204,16 @@ function addScheduleItem(schedule) {
   }
   updateThemedContainer(template);
 
-  if (parsedDatetime && +parsedDatetime - +new Date <= ONGOING_SCHEDULES_THRESHOLD)
-    document.getElementById('ongoingSchedules').appendChild(template);  
-  else if (schedule.partyId && schedule.partyId === joinedPartyId)
-    document.getElementById('partySchedules').appendChild(template);
-  else if (schedule.official)
-    document.getElementById('officialSchedules').appendChild(template);
-  else
-    document.getElementById('futureSchedules').appendChild(template);
+  fastdom.mutate(() => {
+    if (parsedDatetime && +parsedDatetime - +new Date <= ONGOING_SCHEDULES_THRESHOLD)
+      document.getElementById('ongoingSchedules').appendChild(template);  
+    else if (schedule.partyId && schedule.partyId === joinedPartyId)
+      document.getElementById('partySchedules').appendChild(template);
+    else if (schedule.official)
+      document.getElementById('officialSchedules').appendChild(template);
+    else
+      document.getElementById('futureSchedules').appendChild(template);
+  });
 }
 
 function openSchedulesModal() {
@@ -235,7 +237,7 @@ function openSchedulesModal() {
         schedules.sort((a, z) => a.datetime.localeCompare(z.datetime));
         for (const schedule of schedules)
           if (!schedule.partyId || schedule.partyId === joinedPartyId)
-            requestAnimationFrame(() => addScheduleItem(schedule));
+            addScheduleItem(schedule); 
         document.getElementById('emptySchedules').classList.toggle('hidden', !!schedules.length);
       },
       err => console.error(err)

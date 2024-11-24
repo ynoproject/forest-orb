@@ -8,6 +8,8 @@ function addLoader(target, instant) {
   if (activeLoaders.has(target))
     return;
   activeLoaders.set(target, true);
+  // TODO: optimize
+  const targetPosition = getComputedStyle(target).position;
 
   const getLoaderSprites = [
     getLoaderSpriteImg(playerLoaderSprite, playerLoaderSpriteIdx, 0),
@@ -23,7 +25,6 @@ function addLoader(target, instant) {
       const el = document.createElement('div');
       el.classList.add('loader');
 
-      const targetPosition = getComputedStyle(target).position;
       switch (targetPosition) {
         case 'fixed':
         case 'relative':
@@ -85,16 +86,19 @@ function addLoader(target, instant) {
 function updateLoader(target) {
   if (activeLoaders.has(target)) {
     const el = activeLoaders.get(target).element;
-    el.style.top = `${target.offsetTop}px`;
-    el.style.left = `${target.offsetLeft}px`;
-    el.style.width = `${target.offsetWidth}px`;
-    el.style.height = `${target.offsetHeight}px`;
-
-    const scaleX = Math.max(Math.min(Math.floor(target.offsetWidth / 48), 10), 1);
-    const scaleY = Math.max(Math.min(Math.floor(target.offsetHeight / 64), 10), 1);
-    const scale = Math.min(scaleX, scaleY);
-
-    el.children[0].style.transform = `scale(${scale})`;
+    fastdom.measure(() => {
+      const {offsetTop, offsetLeft, offsetWidth, offsetHeight} = target;
+      const scaleX = Math.max(Math.min(Math.floor(offsetWidth / 48), 10), 1);
+      const scaleY = Math.max(Math.min(Math.floor(offsetHeight / 64), 10), 1);
+      const scale = Math.min(scaleX, scaleY);
+      fastdom.mutate(() => {
+        el.style.top = `${offsetTop}px`;
+        el.style.left = `${offsetLeft}px`;
+        el.style.width = `${offsetWidth}px`;
+        el.style.height = `${offsetHeight}px`;
+        el.children[0].style.transform = `scale(${scale})`;
+      });
+    });
   }
 }
 
@@ -107,8 +111,6 @@ function removeLoader(target) {
     clearTimeout(longTimer);
   }
   activeLoaders.delete(target);
-  if (typeof loadingMessageTimer !== 'undefined')
-    clearTimeout(loadingMessageTimer);
 }
 
 async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {

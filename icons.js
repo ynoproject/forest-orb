@@ -43,7 +43,7 @@ const icons = {
 
 /** @param {keyof typeof icons} iconId */
 function getSvgIcon(iconId, fill) {
-  if (!icons.hasOwnProperty(iconId))
+  if (!(iconId in icons))
     return null;
   
   const icon = document.createElement('div');

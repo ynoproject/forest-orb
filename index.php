@@ -2068,6 +2068,8 @@
       <?php endif ?>
     </div>
   </div>
+  <script type="text/javascript" src="vendor/fastdom.js"></script>
+  <script type="text/javascript" src="vendor/fastdom-promised.js"></script>
   <script type="text/javascript" src="icons.js"></script>
   <script type="text/javascript" src="toast.js"></script>
   <script type="text/javascript" src="savedata.js"></script>

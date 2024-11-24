@@ -170,8 +170,14 @@ function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFun
 }
 
 function set2kkiClientLocation(mapId, prevMapId, locations, prevLocations, cacheLocation, saveLocation) {
-  document.getElementById('locationText').innerHTML = getLocalized2kkiLocationsHtml(locations, '<br>');
-  document.documentElement.style.setProperty('--location-width', `${document.querySelector('#locationText > *').offsetWidth}px`);
+  const localizedLocationsHtml = getLocalized2kkiLocationsHtml(locations, '<br>');
+  fastdom.mutate(() => document.getElementById('locationText').innerHTML = localizedLocationsHtml);
+
+  fastdom.measure(() => {
+    const width = `${document.querySelector('#locationText > *').offsetWidth}px`;
+    fastdom.mutate(() => document.getElementById('nextLocationContainer').style.setProperty('--location-width', width));
+  });
+
   onUpdateChatboxInfo();
   preloadFilesFromMapId(mapId);
   if (cacheLocation) {
@@ -543,18 +549,6 @@ function getDepthRgba(depth, maxDepth) {
     depthColors.push(hueToRGBA(0.6666 - depthHueIncrement * d, 1));
 
   return depthColors[Math.min(depth, maxDepth)];
-}
-
-function init2kkiFileVersionAppend() {
-  if (!gameVersion)
-    return;
-  const ca = wasmImports.ca;
-  wasmImports.ca = function (url, file, request, param, arg, onload, onerror, onprogress) {
-    let _url = UTF8ToString(url);
-    if (_url)
-      url = stringToNewUTF8(`${_url}${_url.indexOf('?') > -1 ? '&' : '?'}v=${gameVersion}`);
-    ca(url, file, request, param, arg, onload, onerror, onprogress);
-  };
 }
 
 function checkShow2kkiVersionUpdate() {
