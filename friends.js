@@ -8,7 +8,7 @@ function updatePlayerFriends() {
     onUpdatePlayerFriends([]);
 }
 
-function onUpdatePlayerFriends(playerFriends) {
+async function onUpdatePlayerFriends(playerFriends) {
   const friendsPlayerList = document.getElementById('friendsPlayerList');
   const friendsPlayerListScrollTop = friendsPlayerList.scrollTop;
 
@@ -20,7 +20,7 @@ function onUpdatePlayerFriends(playerFriends) {
   for (let playerUuid of removedPlayerUuids)
     removePlayerListEntry(friendsPlayerList, playerUuid);
 
-  Array.from(friendsPlayerList.querySelectorAll('.listEntryCategoryHeader')).map(h => h.remove());
+  Array.from(friendsPlayerList.querySelectorAll('.listEntryCategoryHeader')).forEach(h => h.remove());
 
   for (let playerFriend of playerFriends) {
     const uuid = playerFriend.uuid;
@@ -61,7 +61,10 @@ function onUpdatePlayerFriends(playerFriends) {
 
   playerFriendsCache = playerFriends || [];
 
+  let nfriends = 0;
   for (let playerFriend of playerFriends) {
+    // TODO: See impact on users with larger friend lists, potentially upwards of 100s
+    if (nfriends++ % 10 === 0) await yieldImmediately();
     const entry = addOrUpdatePlayerListEntry(friendsPlayerList, playerFriend, true);
     entry.classList.toggle('offline', playerFriend.accepted && !playerFriend.online);
     entry.dataset.categoryId = playerFriend.accepted ? playerFriend.online ? 'online' : 'offline' : playerFriend.incoming ? 'incoming' : 'outgoing';

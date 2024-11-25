@@ -9,7 +9,7 @@ let hasConnected;
 function initSessionWs(attempt) {
   return new Promise(resolve => {
     if (sessionWs)
-      closeSessionWs(sessionWs);
+      closeSessionWs();
     if (config.singlePlayer) {
       resolve();
       return;
@@ -50,7 +50,7 @@ function initSessionWs(attempt) {
     sessionWs.onmessage = event => {
       const args = event.data.split(wsDelim);
       const command = args[0];
-      if (sessionCommandHandlers.hasOwnProperty(command)) {
+      if (command in sessionCommandHandlers) {
         const params = args.slice(1);
         if (sessionCommandHandlers[command])
           sessionCommandHandlers[command](params);

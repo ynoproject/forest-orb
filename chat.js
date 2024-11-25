@@ -15,13 +15,11 @@ const SCREENSHOT_FLAGS = {
 
 const mentionSe = new Audio('./audio/mention.wav');
 
-function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp) {
+function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, prevLocationsStr, x, y, msgId, timestamp, shouldScroll = true) {
   const messages = document.getElementById("messages");
 
   if (msgId && messages.querySelector(`.messageContainer[data-msg-id="${msgId}"]`))
     return null;
-  
-  const shouldScroll = Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 20;
 
   const msgContainer = document.createElement("div");
   msgContainer.classList.add("messageContainer");
@@ -47,6 +45,8 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   const global = type === MESSAGE_TYPE.GLOBAL;
   const party = type === MESSAGE_TYPE.PARTY;
 
+  let systemThemeProm = Promise.resolve();
+
   if (!system) {
     let rankIcon;
     let friendIcon;
@@ -65,7 +65,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       if (showLocation) {
         const playerLocation = document.createElement("bdi");
 
-        if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
+        if (gameId === "2kki" && (!localizedMapLocations.hasOwnProperty(mapId))) {
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
         } else {
@@ -215,11 +215,13 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     }
 
     if (systemName) {
+      let completeSystemThemeProm;
+      systemThemeProm = new Promise(res => completeSystemThemeProm = res);
       systemName = systemName.replace(/'|\s$/g, "");
       const parsedSystemName = systemName.replace(/ /g, "_");
       initUiThemeContainerStyles(systemName, null, false, () => {
         initUiThemeFontStyles(systemName, null, 0, false, () => {
-          applyThemeStyles(name, parsedSystemName);
+          applyThemeStyles(name, parsedSystemName).finally(completeSystemThemeProm);
           if (rankIcon)
             applyThemeStyles(rankIcon, parsedSystemName);
           if (badgeOverlayEl) {
@@ -273,14 +275,23 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   const messageContentsWrapper = document.createElement('div');
   messageContentsWrapper.classList.add('messageContentsWrapper');
-  messageContentsWrapper.appendChild(messageContents);
-  messageContentsWrapper.dir = "auto";
-  message.appendChild(messageContentsWrapper);
-  msgContainer.appendChild(message);
-  messages.appendChild(msgContainer);
+  const didPopulateMessage = fastdom.mutate(() => {
+    messageContentsWrapper.appendChild(messageContents);
+    messageContentsWrapper.dir = "auto";
+    message.appendChild(messageContentsWrapper);
+    msgContainer.appendChild(message);
+    messages.appendChild(msgContainer);
+  });
+  Promise.allSettled([didPopulateMessage, systemThemeProm]).then(() => {
+    if (player)
+      addGameChatMessage(message.innerHTML, type, uuid);
+  });
 
-  if (player)
-    addGameChatMessage(message.innerHTML, type, uuid);
+  let task = Promise.resolve(shouldScroll);
+  
+  if (shouldScroll)
+    task = didPopulateMessage.then(() =>
+      fastdom.measure(() => Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 60));
 
   const chatbox = document.getElementById("chatbox");
 
@@ -318,21 +329,35 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     tabMessagesLimit = parseInt(globalConfig.mapChatHistoryLimit);
 
   if (tabMessagesLimit) {
-    let tabMessages;
-    if (global)
-      tabMessages = [...document.querySelectorAll('.messageContainer.global')];
-    else if (party)
-      tabMessages = [...document.querySelectorAll('.messageContainer.party')];
-    else
-      tabMessages = [...document.querySelectorAll('.messageContainer:not(.global):not(.party)')];
-    while (tabMessages.length > tabMessagesLimit)
-      tabMessages.shift().remove();
+    const oldTask = task;
+    task = fastdom.mutate(() => {
+      let tabMessages;
+      if (global)
+        tabMessages = [...document.querySelectorAll('.messageContainer.global')];
+      else if (party)
+        tabMessages = [...document.querySelectorAll('.messageContainer.party')];
+      else
+        tabMessages = [...document.querySelectorAll('.messageContainer:not(.global):not(.party)')];
+      while (tabMessages.length > tabMessagesLimit)
+        tabMessages.shift().remove();
+      return oldTask;
+    })
   }
 
-  if (shouldScroll)
-    messages.scrollTop = messages.scrollHeight;
+  task.then(shouldScroll => shouldScroll && scrollChatMessages());
 
   return msgContainer;
+}
+
+function scrollChatMessages() {
+  // force the scroll to work in the next task,
+  // avoiding a costly style invalidation on startup.
+  setTimeout(() => {
+    const messages = document.getElementById('messages');
+    fastdom.mutate(() => {
+      messages.scrollTop = Number.MAX_SAFE_INTEGER
+    });
+  });
 }
 
 let gameChatModeIndex = 0;
@@ -360,11 +385,14 @@ function addGameChatMessage(messageHtml, messageType, senderUuid) {
   message.innerHTML = messageHtml;
 
   messageContainer.appendChild(message);
-  gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.childElementCount - 1]);
 
-  const typeMessages = Array.from(gameChatContainer.children).filter(m => m.dataset.messageType == messageType);
-  if (typeMessages.length > 10)
-    typeMessages[0].remove();
+  fastdom.mutate(() => {
+    gameChatContainer.insertBefore(messageContainer, gameChatContainer.children[gameChatContainer.childElementCount - 1]);
+
+    const typeMessages = Array.from(gameChatContainer.children).filter(m => m.dataset.messageType == messageType);
+    if (typeMessages.length > 10)
+      typeMessages[0].remove();
+  });
 
   setTimeout(() => {
     messageContainer.classList.add('fade');
@@ -630,48 +658,45 @@ function updateChatMessageTimestamps() {
     timestamp.innerHTML = getChatMessageTimestampLabel(new Date(parseInt(timestamp.dataset.time)));
 }
 
-function syncChatHistory() {
-  return new Promise((resolve, reject) => {
-    const messages = document.getElementById("messages");
-    const idMessages = messages.querySelectorAll('.messageContainer[data-msg-id]');
-    const lastMessageId = idMessages.length ? idMessages[idMessages.length - 1].dataset.msgId : null;
+async function syncChatHistory() {
+  const messages = document.getElementById("messages");
+  const idMessages = messages.querySelectorAll('.messageContainer[data-msg-id]');
+  const lastMessageId = idMessages.length ? idMessages[idMessages.length - 1].dataset.msgId : null;
 
-    updateChatMessageTimestamps();
+  updateChatMessageTimestamps();
 
-    apiFetch(`chathistory?globalMsgLimit=${globalConfig.globalChatHistoryLimit}&partyMsgLimit=${globalConfig.partyChatHistoryLimit}${lastMessageId ? `&lastMsgId=${lastMessageId}` : ''}`)
-      .then(response => {
-        if (!response.ok)
-          reject(response.statusText);
-        return response.json();
-      })
-      .then(chatHistory => {
-        if (chatHistory.players) {
-          for (let player of chatHistory.players) {
-            let badge = player.badge;
-            
-            if (badge === 'null')
-              badge = null;
+  const chatHistory = await apiFetch(`chathistory?globalMsgLimit=${globalConfig.globalChatHistoryLimit}&partyMsgLimit=${globalConfig.partyChatHistoryLimit}${lastMessageId ? `&lastMsgId=${lastMessageId}` : ''}`)
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    });
+  if (chatHistory.players) {
+    for (let player of chatHistory.players) {
+      let badge = player.badge;
+      
+      if (badge === 'null')
+        badge = null;
 
-            globalPlayerData[player.uuid] = {
-              name: player.name,
-              systemName: player.systemName,
-              rank: player.rank,
-              account: player.account,
-              badge: badge,
-              medals: player.medals
-            };
-          }
-        }
+      globalPlayerData[player.uuid] = {
+        name: player.name,
+        systemName: player.systemName,
+        rank: player.rank,
+        account: player.account,
+        badge: badge,
+        medals: player.medals
+      };
+    }
+  }
 
-        if (chatHistory.messages) {
-          for (let message of chatHistory.messages)
-            chatboxAddMessage(message.contents, message.party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.GLOBAL, message.uuid, true, message.mapId, message.prevMapId, message.prevLocations, message.x, message.y, message.msgId, new Date(message.timestamp));
-        }
-
-        resolve();
-      })
-      .catch(err => reject(err));
-  });
+  if (chatHistory.messages) {
+    // don't yield to any other task here, since we may be loading at least
+    // a hundred of these and each yield will cause a decent amount of layout thrasing
+    for (let message of chatHistory.messages) {
+      chatboxAddMessage(message.contents, message.party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.GLOBAL, message.uuid, true, message.mapId, message.prevMapId, message.prevLocations, message.x, message.y, message.msgId, new Date(message.timestamp), false);
+    }
+    scrollChatMessages();
+  }
 }
 
 const markdownSyntax = [

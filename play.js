@@ -1,35 +1,47 @@
 /**
- * @typedef {Object} MapTitle
+ * @typedef {object} Coords
+ * @property {number} x1
+ * @property {number} x2
+ * @property {number} y1
+ * @property {number} y2
+ */
+
+/**
+ * @typedef {object} MapTitle
  * @property {string} title 
  * @property {string} [urlTitle]
- * @property {Object} [coords]
- * @property {number} coords.x1
- * @property {number} coords.x2
- * @property {number} coords.y1
- * @property {number} coords.y2
+ * @property {Coords} [coords]
+ * @property {boolean} [explorer]
  */
 
 /** 
- * @typedef {string | MapTitle | (string | MapTitle)[] | Record<'else' | (string & {}), MapTitle>} MapDescriptor
+ * @typedef {string | MapTitle | (string | MapTitle)[] | Record<'else' | number | `0${number}`, string | MapTitle | (string | MapTitle)[]>} MapDescriptor
  * In the array form, the last element is customarily the fallback title.
  *
  * The third object form allows matching the correct world for map IDs shared between worlds:
- * a mapping from the previous map ID Urotsuki was on to, to the matching map title.
+ * a mapping from the previous map ID the player came from, to the matching map title.
+ */
+
+/**
+ * @typedef {Record<string, Record<string, MapDescriptor>>} MapDescriptorRecord
+ * game -> map-id
  */
 
 let localizedVersion;
-/** @type {import('./lang/en.json')['messages']} */
+/** @type {import('./lang/en.json')['messages']?} */
 let localizedMessages;
 
+/** @type {Record<string, MapDescriptor>?} */
 let localizedMapLocations;
+/** @type {Record<string, MapDescriptor>?} */
 let mapLocations;
 let localizedLocationUrlRoot;
 let locationUrlRoot;
 
-/** @type {Record<string, Record<string, MapDescriptor>>} */
+/** @type {MapDescriptorRecord} */
 let gameLocalizedMapLocations = {};
 
-/** @type {Record<string, Record<string, MapDescriptor>>} */
+/** @type {MapDescriptorRecord} */
 let gameMapLocations = {};
 let gameLocalizedLocationUrlRoots = {};
 let gameLocationUrlRoots = {};
@@ -374,8 +386,13 @@ function checkUpdateLocation(mapId, mapChanged) {
     if (!cachedMapId)
       document.getElementById('location').classList.remove('hidden');
 
-    document.getElementById('locationText').innerHTML = getLocalizedMapLocationsHtml(gameId, mapId, cachedMapId, tpX, tpY, '<br>');
-    document.documentElement.style.setProperty('--location-width', `${document.querySelector('#locationText > *').offsetWidth}px`);
+    const localizedLocationHtml = getLocalizedMapLocationsHtml(gameId, mapId, cachedMapId, tpX, tpY, '<br>');
+    fastdom.mutate(() => document.getElementById('locationText').innerHTML = localizedLocationHtml).then(() => {
+      fastdom.measure(() => {
+        const width = `${document.querySelector('#locationText > *').offsetWidth}px`;
+        fastdom.mutate(() => document.getElementById('nextLocationContainer').style.setProperty('--location-width', width));
+      })
+    });
     onUpdateChatboxInfo();
 
     if (is2kki) {
@@ -586,9 +603,9 @@ function preToggle(buttonElement) {
 /**
  * Opens a modal.
  * @param {string} modalId The modal's ID.
- * @param {string} theme The theme for the modal to use. Player-selected or in-game menu theme is used if none is specified.
- * @param {string} lastModalId The previously-opened modal, used when opening sub-modals.
- * @param {Object} modalData Data to be passed to the modal.
+ * @param {string} [theme] The theme for the modal to use. Player-selected or in-game menu theme is used if none is specified.
+ * @param {string} [lastModalId] The previously-opened modal, used when opening sub-modals.
+ * @param {Object} [modalData] Data to be passed to the modal.
  */
 function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
@@ -1460,32 +1477,45 @@ function updateYnomojiContainerPos(isScrollUpdate, chatInput) {
 
 function onUpdateChatboxInfo() {
   const layout = document.getElementById('layout');
-
   const chatboxContainer = document.getElementById('chatboxContainer');
   const chatboxInfo = document.getElementById('chatboxInfo');
   const chatboxTabs = document.getElementsByClassName('chatboxTab');
-
-  const backgroundSize = chatboxContainer.classList.contains('fullBg') ? window.getComputedStyle(chatboxContainer).backgroundSize : null;
-
-  for (let tab of chatboxTabs) {
-    tab.style.backgroundSize = backgroundSize;
-    tab.style.backgroundPositionX = `${-8 + tab.parentElement.offsetLeft - tab.getBoundingClientRect().left}px`;
-    tab.style.backgroundPositionY = `${chatboxContainer.offsetTop - tab.parentElement.getBoundingClientRect().top}px`;
-  }
-
   const messages = document.getElementById('messages');
   const partyPlayerList = document.getElementById('partyPlayerList');
-  messages.style.backgroundPositionY = partyPlayerList.style.backgroundPositionY = `${chatboxContainer.offsetTop - partyPlayerList.getBoundingClientRect().top}px`;
 
-  if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && window.getComputedStyle(layout).flexWrap === 'wrap') {
+  fastdom.measure(() => {
+    const backgroundSize = chatboxContainer.classList.contains('fullBg') ? getComputedStyle(chatboxContainer).backgroundSize : null;
+    const backgroundPositionY = `${chatboxContainer.offsetTop - partyPlayerList.getBoundingClientRect().top}px`;
+    const hasFlexWrap = getComputedStyle(layout).flexWrap === 'wrap';
     const lastTab = chatboxTabs[chatboxTabs.length - 1];
-    const offsetLeft = `${(lastTab.offsetLeft + lastTab.offsetWidth) - 24}px`;
-    chatboxInfo.style.marginInlineStart = offsetLeft;
-    chatboxInfo.style.marginBottom = '-32px';
-    if (chatboxInfo.offsetHeight >= 72)
-      chatboxInfo.setAttribute('style', '');
-  } else
-    chatboxInfo.setAttribute('style', '');
+    const lastTabOffset = lastTab.offsetLeft + lastTab.offsetRight;
+
+    fastdom.mutate(() => {
+      for (let tab of chatboxTabs) {
+        tab.style.backgroundSize = backgroundSize;
+        fastdom.measure(() => {
+          const posx = `${-8 + tab.parentElement.offsetLeft - tab.getBoundingClientRect().left}px`;
+          const posy = `${chatboxContainer.offsetTop - tab.parentElement.getBoundingClientRect().top}px`;
+          fastdom.mutate(() => {
+            tab.style.backgroundPositionX = posx;
+            tab.style.backgroundPositionY = posy;
+          });
+        });
+      }
+
+      messages.style.backgroundPositionY = partyPlayerList.style.backgroundPositionY = backgroundPositionY;
+      if (!layout.classList.contains('immersionMode') && !document.fullscreenElement && hasFlexWrap) {
+        const offsetLeft = `${lastTabOffset - 24}px`;
+        chatboxInfo.style.marginInlineStart = offsetLeft;
+        chatboxInfo.style.marginBottom = '-32px';
+        fastdom.measure(() => {
+          if (chatboxInfo.offsetHeight >= 72)
+            fastdom.mutate(() => chatboxInfo.setAttribute('style', ''));
+        })
+      } else
+        chatboxInfo.setAttribute('style', '');
+    });
+  });
 }
 
 function isOverflow(scale) {
@@ -1902,11 +1932,11 @@ function initLocalizedLocations(game) {
     gameLocationsMap[game][mapLocation.title] = mapLocation;
   };
   
-  for (let mapId of Object.keys(gameMapLocations[game])) {
+  for (let mapId in gameMapLocations[game]) {
     const locations = gameMapLocations[game][mapId];
     if (!locations)
         continue;
-    if (locations.hasOwnProperty('title')) // Text location
+    if (locations.hasTitle()) // Text location
       trySetLocalizedLocation(locations, gameLocalizedMapLocations[game][mapId]);
     else if (Array.isArray(locations)) // Multiple locations
       locations.forEach((location, i) => trySetLocalizedLocation(location, gameLocalizedMapLocations[game][mapId][i]));
@@ -1915,7 +1945,7 @@ function initLocalizedLocations(game) {
         const locationsInner = gameMapLocations[game][mapId][key];
         if (!locationsInner)
             continue;
-        if (locationsInner.hasOwnProperty('title'))
+        if (locationsInner.hasTitle())
           trySetLocalizedLocation(locationsInner, gameLocalizedMapLocations[game][mapId][key]);
         else
           locationsInner.forEach((location, i) => trySetLocalizedLocation(location, gameLocalizedMapLocations[game][mapId][key][i]));
@@ -1924,29 +1954,36 @@ function initLocalizedLocations(game) {
   }
 }
 
+/**
+ * @param {Record<string, MapDescriptor>} mapLocations
+ * @return {MapTitle[]}
+ */
 function getMapLocationsArray(mapLocations, mapId, prevMapId, x, y) {
-  if (mapLocations.hasOwnProperty(mapId)) {
+  if (mapId in mapLocations) {
     const locations = mapLocations[mapId];
-    if (locations.hasOwnProperty('title')) // Text location
+    if (locations.hasTitle()) // Text location
       return [ locations ];
     if (Array.isArray(locations)) // Multiple locations
       return getMapLocationsFromArray(locations, x, y);
-    if (locations.hasOwnProperty(prevMapId)) {// Previous map ID matches a key
+    if (prevMapId in locations) {// Previous map ID matches a key
       if (Array.isArray(locations[prevMapId]))
         return getMapLocationsFromArray(locations[prevMapId], x, y);
       return [ locations[prevMapId] ];
     }
-    if (locations.hasOwnProperty('else')) { // Else case
-      if (locations.else.hasOwnProperty('title'))
+    if ('else' in locations) { // Else case
+      if (locations.else.hasTitle())
         return [ locations.else ];
-      if (Array.isArray(locations.else))
-        return getMapLocationsFromArray(locations.else, x, y);
+      return getMapLocationsFromArray(locations.else, x, y);
     }
   }
 }
 
+/**
+ * @param {MapTitle[]} locations
+ * @return {MapTitle[]}
+ */
 function getMapLocationsFromArray(locations, x, y) {
-  if (locations.length && locations[0].hasOwnProperty('coords') && x !== null && y !== null) {
+  if (Array.isArray(locations) && locations[0].hasOwnProperty('coords') && x !== null && y !== null) {
     const coordLocation = locations.find(l => l.hasOwnProperty('coords') && ((l.coords.x1 === -1 && l.coords.x2 === -1) || (l.coords.x1 <= x && l.coords.x2 >= x)) && ((l.coords.y1 === -1 && l.coords.y2 === -1) || (l.coords.y1 <= y && l.coords.y2 >= y)));
     if (coordLocation)
       return [ coordLocation ];
@@ -1958,47 +1995,50 @@ function getMapLocationsFromArray(locations, x, y) {
 }
 
 function getLocalizedMapLocations(game, mapId, prevMapId, x, y, separator, forDisplay) {
-  if (gameLocalizedMapLocations[game]?.hasOwnProperty(mapId)) {
-    const localizedLocations = gameLocalizedMapLocations[game][mapId];
+  const localizedLocations = gameLocalizedMapLocations[game]?.[mapId];
+  if (localizedLocations) {
+    // locations have the same type as localizedLocations
     const locations = gameMapLocations[game][mapId];
-    if (localizedLocations.hasOwnProperty('title')) // Text location
+    if (localizedLocations.hasTitle()) // Text location
       return getLocalizedLocation(game, localizedLocations, locations, false, forDisplay);
     if (Array.isArray(localizedLocations)) // Multiple locations
       return getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i], false, forDisplay)).join(separator);
-    if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
+    if (prevMapId in localizedLocations) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
         return getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], false, forDisplay)).join(separator);
       return getLocalizedLocation(game, localizedLocations[prevMapId], locations[prevMapId]);
     }
-    if (localizedLocations.hasOwnProperty('else')) { // Else case
-      if (localizedLocations.else.hasOwnProperty('title'))
+    if ('else' in localizedLocations) { // Else case
+      if (localizedLocations.else.hasTitle())
         return getLocalizedLocation(game, localizedLocations.else, locations.else, false, forDisplay);
-      if (Array.isArray(localizedLocations.else))
-        return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i], false, forDisplay)).join(separator);
+      return getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i], false, forDisplay)).join(separator);
     }
   }
   
   return localizedMessages.location.unknownLocation;
 }
 
+/**
+ * @param {number | `0${number}`} prevMapId 
+ */
 function getLocalizedMapLocationsHtml(game, mapId, prevMapId, x, y, separator) {
   if (gameLocalizedMapLocations[game]?.hasOwnProperty(mapId)) {
     const localizedLocations = gameLocalizedMapLocations[game][mapId];
     const locations = gameMapLocations[game][mapId];
     let locationsHtml;
-    if (localizedLocations.hasOwnProperty('title')) // Text location
+    if (localizedLocations.hasTitle()) // Text location
       locationsHtml = getLocalizedLocation(game, localizedLocations, locations, true);
     else if (Array.isArray(localizedLocations)) // Multiple locations
       locationsHtml = getMapLocationsFromArray(localizedLocations, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations, x, y)[i], true)).join(separator);
-    else if (localizedLocations.hasOwnProperty(prevMapId)) { // Previous map ID matches a key
+    else if (prevMapId in localizedLocations) { // Previous map ID matches a key
       if (Array.isArray(localizedLocations[prevMapId]))
         locationsHtml = getMapLocationsFromArray(localizedLocations[prevMapId], x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations[prevMapId], x, y)[i], true)).join(separator);
       else
         locationsHtml = getLocalizedLocation(game, localizedLocations[prevMapId], locations[prevMapId], true);
-    } else if (localizedLocations.hasOwnProperty('else')) {  // Else case
-      if (localizedLocations.else.hasOwnProperty('title'))
+    } else if ('else' in localizedLocations) {  // Else case
+      if (localizedLocations.else.hasTitle())
         locationsHtml = getLocalizedLocation(game, localizedLocations.else, locations.else, true);
-      else if (Array.isArray(localizedLocations.else))
+      else
         locationsHtml = getMapLocationsFromArray(localizedLocations.else, x, y).map((l, i) => getLocalizedLocation(game, l, getMapLocationsFromArray(locations.else, x, y)[i], true)).join(separator);
     }
 
@@ -2020,7 +2060,7 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
       }
     }
   } else {
-    if (mapLocations.hasOwnProperty('title')) {
+    if (mapLocations.hasTitle()) {
       if (locationUrlTitles?.hasOwnProperty(mapLocations.title))
         mapLocations.urlTitle = locationUrlTitles[mapLocations.title];
       return;
@@ -2037,6 +2077,10 @@ function massageMapLocations(mapLocations, locationUrlTitles) {
   }
 }
 
+/**
+ * @param {MapTitle} location 
+ * @param {MapTitle} locationEn 
+ */
 function getLocalizedLocation(game, location, locationEn, asHtml, forDisplay) {
   let template = getMassagedLabel(localizedMessages[forDisplay ? 'locationDisplay' : 'location'].template);
   let ret;
@@ -2095,7 +2139,7 @@ function massageLabels(data) {
 
 function getMassagedLabel(label, isUI) {
   if (label)
-    label = label.replace(/\n/g, '<br>');
+    label = label.replaceAll('\n', '<br>');
   if (langLabelMassageFunctions.hasOwnProperty(globalConfig.lang) && label)
     return langLabelMassageFunctions[globalConfig.lang](label, isUI);
   return label;
@@ -2151,9 +2195,9 @@ function getMapButton(url, label) {
 
 function getOrQueryLocationColors(locationName) {
   return new Promise((resolve, _reject) => {
-    if (Array.isArray(locationName) && locationName.length && locationName[0].hasOwnProperty('title'))
+    if (Array.isArray(locationName) && locationName.length && locationName[0].hasTitle())
       locationName = locationName[0].title;
-    else if (locationName?.hasOwnProperty('title'))
+    else if (locationName?.hasTitle())
       locationName = locationName.title;
     else if (!locationName) {
       resolve(['#FFFFFF', '#FFFFFF']);
@@ -2169,7 +2213,7 @@ function getOrQueryLocationColors(locationName) {
 
     if (gameId === '2kki') {
       const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${locationName}`;
-      const callback = response => {
+      send2kkiApiRequest(url, response => {
         let errCode = null;
 
         if (response && !response.err_code)
@@ -2181,8 +2225,7 @@ function getOrQueryLocationColors(locationName) {
           console.error({ error: response.error, errCode: errCode });
 
         resolve([response?.fgColor, response?.bgColor]);
-      };
-      send2kkiApiRequest(url, callback);
+      });
     } else {
       sendSessionCommand('lcol', [ locationName ], params => {
         if (params.length === 2) {

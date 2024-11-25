@@ -361,7 +361,7 @@ function onUpdatePlayerExp(exp) {
   rankBadge.src = rank.badge ? getBadgeUrl(rank.badge) : '';
   rankBadge.style.display = rank.badge ? 'unset' : 'none';
 
-  const rootStyle = document.documentElement.style;
+  const rootStyle = document.getElementById('eventsModal').style;
 
   rootStyle.setProperty('--rank-total-exp', rankExp);
   rootStyle.setProperty('--rank-exp', exp.totalExp - prevRankExp);

@@ -463,20 +463,24 @@ function initUiThemeContainerStyles(uiTheme, themeGameId, setTheme, callback) {
       const rootStyle = document.documentElement.style;
 
       if (!rootStyle.getPropertyValue(baseBgColorProp)) {
-        addSystemSvgDropShadow(uiTheme, themeGameId, shadow);
-        rootStyle.setProperty(baseBgColorProp, color);
-        rootStyle.setProperty(shadowColorProp, shadow);
-        rootStyle.setProperty(svgShadowProp, `url(#dropShadow_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
-        rootStyle.setProperty(containerBgImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/containerbg.png')`);
-        rootStyle.setProperty(borderImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/border.png')`);
+        fastdom.mutate(() => {
+          addSystemSvgDropShadow(uiTheme, themeGameId, shadow);
+          rootStyle.setProperty(baseBgColorProp, color);
+          rootStyle.setProperty(shadowColorProp, shadow);
+          rootStyle.setProperty(svgShadowProp, `url(#dropShadow_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
+          rootStyle.setProperty(containerBgImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/containerbg.png')`);
+          rootStyle.setProperty(borderImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/border.png')`);
+        });
       }
 
       if (setTheme && themeGameId === gameId) {
-        rootStyle.setProperty('--base-bg-color', `var(${baseBgColorProp})`);
-        rootStyle.setProperty('--shadow-color', `var(${shadowColorProp})`);
-        rootStyle.setProperty('--svg-shadow', `var(${svgShadowProp})`);
-        rootStyle.setProperty('--container-bg-image-url', `var(${containerBgImageUrlProp})`);
-        rootStyle.setProperty('--border-image-url', `var(${borderImageUrlProp})`);
+        fastdom.mutate(() => {
+          rootStyle.setProperty('--base-bg-color', `var(${baseBgColorProp})`);
+          rootStyle.setProperty('--shadow-color', `var(${shadowColorProp})`);
+          rootStyle.setProperty('--svg-shadow', `var(${svgShadowProp})`);
+          rootStyle.setProperty('--container-bg-image-url', `var(${containerBgImageUrlProp})`);
+          rootStyle.setProperty('--border-image-url', `var(${borderImageUrlProp})`);
+        });
       }
 
       if (callback)
@@ -526,27 +530,31 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
       if (!rootStyle.getPropertyValue(baseColorProp)) {
         addSystemSvgGradient(uiTheme, themeGameId, baseColors);
         addSystemSvgGradient(uiTheme, themeGameId, altColors, true);
-        rootStyle.setProperty(baseColorProp, getColorRgb(baseColors[8]));
-        rootStyle.setProperty(altColorProp, getColorRgb(altColors[8]));
-        rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
-        rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
-        rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
-        rootStyle.setProperty(altGradientBProp, `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
-        rootStyle.setProperty(svgBaseGradientProp, `url(#baseGradient_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
-        rootStyle.setProperty(svgAltGradientProp, `url(#altGradient_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
-        rootStyle.setProperty(baseColorImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/font${fontStyle + 1}.png')`);
+        fastdom.mutate(() => {
+          rootStyle.setProperty(baseColorProp, getColorRgb(baseColors[8]));
+          rootStyle.setProperty(altColorProp, getColorRgb(altColors[8]));
+          rootStyle.setProperty(baseGradientProp, `linear-gradient(to bottom, ${getGradientText(baseColors)})`);
+          rootStyle.setProperty(baseGradientBProp, `linear-gradient(to bottom, ${getGradientText(baseColors, true)})`);
+          rootStyle.setProperty(altGradientProp, `linear-gradient(to bottom, ${getGradientText(altColors)})`);
+          rootStyle.setProperty(altGradientBProp, `linear-gradient(to bottom, ${getGradientText(altColors, true)})`);
+          rootStyle.setProperty(svgBaseGradientProp, `url(#baseGradient_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
+          rootStyle.setProperty(svgAltGradientProp, `url(#altGradient_${themeGameId !== gameId ? `${themeGameId}_` : ''}${parsedUiTheme})`);
+          rootStyle.setProperty(baseColorImageUrlProp, `url('images/ui/${themeGameId}/${uiTheme}/font${fontStyle + 1}.png')`);
+        });
       }
 
       if (setTheme && themeGameId === gameId) {
-        rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
-        rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
-        rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
-        rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
-        rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
-        rootStyle.setProperty('--alt-gradient-b', `var(${altGradientBProp})`);
-        rootStyle.setProperty('--svg-base-gradient', `var(${svgBaseGradientProp})`);
-        rootStyle.setProperty('--svg-alt-gradient', `var(${svgAltGradientProp})`);
-        rootStyle.setProperty('--base-color-image-url', `var(${baseColorImageUrlProp})`);
+        fastdom.mutate(() => {
+          rootStyle.setProperty('--base-color', `var(${baseColorProp})`);
+          rootStyle.setProperty('--alt-color', `var(${altColorProp})`);
+          rootStyle.setProperty('--base-gradient', `var(${baseGradientProp})`);
+          rootStyle.setProperty('--base-gradient-b', `var(${baseGradientBProp})`);
+          rootStyle.setProperty('--alt-gradient', `var(${altGradientProp})`);
+          rootStyle.setProperty('--alt-gradient-b', `var(${altGradientBProp})`);
+          rootStyle.setProperty('--svg-base-gradient', `var(${svgBaseGradientProp})`);
+          rootStyle.setProperty('--svg-alt-gradient', `var(${svgAltGradientProp})`);
+          rootStyle.setProperty('--base-color-image-url', `var(${baseColorImageUrlProp})`);
+        });
       }
 
       if (callback)
@@ -563,6 +571,9 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
   });
 }
 
+/**
+ * @type {(el: Element, uiTheme?: string, themeGameId?: string) => Promise<void>}
+ */
 let applyThemeStyles;
 
 {
@@ -673,7 +684,7 @@ let applyThemeStyles;
 
   applyThemeStyles = (el, uiTheme, themeGameId) => {
     if (!el || !uiTheme)
-      return;
+      return Promise.resolve();
     if (!themeGameId)
       themeGameId = gameId;
 
@@ -681,23 +692,33 @@ let applyThemeStyles;
     const themeStylesId = `theme${themeSuffix}`;
 
     let themeStyles = document.getElementById(themeStylesId);
+    let task = Promise.resolve();
     if (!themeStyles) {
       const themePropSuffix = `-${themeGameId !== gameId ? `${themeGameId}-` : ''}${uiTheme}`;
 
       themeStyles = document.createElement('style');
       themeStyles.id = themeStylesId;
-      themeStyles.innerHTML = themeStyleTemplate.replace(/\{THEME\}/g, themeSuffix).replace(/\{THEME_PROP\}/g, themePropSuffix).replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
-      document.head.appendChild(themeStyles);
+      themeStyles.innerHTML = themeStyleTemplate
+        .replaceAll('{THEME}', themeSuffix)
+        .replaceAll('{THEME_PROP}', themePropSuffix)
+        .replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
+      task = fastdom.mutate(() => void(document.head.appendChild(themeStyles)));
     }
-
-    for (let cls of el.classList) {
-      if (cls.startsWith('theme_')) {
-        if (cls === themeStylesId)
-          continue;
-        el.classList.remove(cls);
+    const applyThemeClass = () => {
+      for (let cls of el.classList) {
+        if (cls.startsWith('theme_')) {
+          if (cls === themeStylesId)
+            continue;
+          el.classList.remove(cls);
+        }
       }
-    }
-    el.classList.add(themeStylesId);
+      el.classList.add(themeStylesId);
+    };
+    if (!el.parentElement) {
+      // detached element, modify immediately
+      applyThemeClass();
+      return task;
+    } else return Promise.allSettled([fastdom.mutate(applyThemeClass), task]);
   };
 }
 
@@ -731,15 +752,19 @@ function setPartyUiTheme(uiTheme) {
   const containerCallback = () => {
     const styleProps = [ 'base-bg-color', 'shadow-color', 'svg-shadow', 'container-bg-image-url', 'border-image-url' ];
     const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/ /g, '_')}` : '';
-    for (let prop of styleProps)
-      rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+    fastdom.mutate(() => {
+      for (let prop of styleProps)
+        rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+    });
     
   };
   const fontCallback = () => {
     const styleProps = [ 'base-color', 'alt-color', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
     const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/ /g, '_')}` : '';
-    for (let prop of styleProps)
-      rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+    fastdom.mutate(() => {
+      for (let prop of styleProps)
+        rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
+    });
   };
   if (uiTheme) {
     initUiThemeContainerStyles(uiTheme, null, false, containerCallback);
@@ -803,6 +828,9 @@ function getUiThemeOption(uiTheme) {
   return item;
 }
 
+/**
+ * @param {HTMLElement} themedContainer 
+ */
 function updateThemedContainer(themedContainer) {
   if (!themedContainer)
     return;
@@ -820,7 +848,7 @@ function updateThemedContainer(themedContainer) {
     }
   }
   
-  themedContainer.classList.toggle('fullBg', allGameFullBgUiThemes[themeGameId].indexOf(themeName) > -1)
+  fastdom.mutate(() => themedContainer.classList.toggle('fullBg', allGameFullBgUiThemes[themeGameId].indexOf(themeName) > -1));
 }
 
 let uiThemeBgColors = {};
@@ -838,44 +866,46 @@ function getFontColors(uiTheme, themeGameId, fontStyle, callback) {
   if (colors)
     return callback(colors);
   const img = new Image();
-  img.onload = function () {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    context.drawImage(img, 0, 0);
-    const data = context.getImageData(0, 0, 1, 16).data;
-    const colors = [];
-    for (let i = 0; i < data.length; i += 4)
-      colors.push([ data[i], data[i + 1], data[i + 2] ]);
-      
-    if (typeof tinycolor !== 'undefined') {
-      const shadowRgb = uiThemeFontShadows[themeGameId][uiTheme] || [0, 0, 0];
-      const shadowTc = getTinyColor(shadowRgb);
-      const shadowLum = shadowTc.getLuminance();
-      for (let rgbArray of colors) {
-        let tc = getTinyColor(rgbArray);
-        let lum = tc.getLuminance();
-        const lighten = lum >= shadowLum;
-        let lastContrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
-        if (lastContrastRatio < contrastRatioThreshold) {
-          let contrastRatio;
-          do {
-            lastContrastRatio = contrastRatio;
-            tc = lighten ? tc.lighten(5) : tc.darken(5);
-            lum = tc.getLuminance();
-            contrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
-          } while (contrastRatio < contrastRatioThreshold && contrastRatio !== lastContrastRatio);
-          const rgb = tc.toRgb();
-          rgbArray[0] = rgb.r;
-          rgbArray[1] = rgb.g;
-          rgbArray[2] = rgb.b;
-        }
+  img.onload = () => getFontColorsImgLoaded(img, themeGameId, uiTheme, fontStyle, callback);
+  img.src = `images/ui/${themeGameId}/${uiTheme}/font${(fontStyle + 1)}.png`;
+}
+
+async function getFontColorsImgLoaded(img, themeGameId, uiTheme, fontStyle, callback) {
+  await img.decode();
+  const context = extractCanvas.getContext('2d');
+  context.drawImage(img, 0, 0);
+  const data = context.getImageData(0, 0, 1, 16).data;
+  const colors = Array(data.length / 4);
+  for (let i = 0; i < data.length; i += 4)
+    colors[i / 4] = [data[i], data[i + 1], data[i + 2]];
+    
+  if (typeof tinycolor !== 'undefined') {
+    const shadowRgb = uiThemeFontShadows[themeGameId][uiTheme] || [0, 0, 0];
+    const shadowTc = getTinyColor(shadowRgb);
+    const shadowLum = shadowTc.getLuminance();
+    for (let rgbArray of colors) {
+      let tc = getTinyColor(rgbArray);
+      let lum = tc.getLuminance();
+      const lighten = lum >= shadowLum;
+      let lastContrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
+      if (lastContrastRatio < contrastRatioThreshold) {
+        let contrastRatio;
+        do {
+          lastContrastRatio = contrastRatio;
+          tc = lighten ? tc.lighten(5) : tc.darken(5);
+          lum = tc.getLuminance();
+          contrastRatio = getContrastRatio(lighten ? lum : shadowLum, lighten ? shadowLum : lum);
+        } while (contrastRatio < contrastRatioThreshold && contrastRatio !== lastContrastRatio);
+        const rgb = tc.toRgb();
+        rgbArray[0] = rgb.r;
+        rgbArray[1] = rgb.g;
+        rgbArray[2] = rgb.b;
       }
     }
-    uiThemeFontColors[themeGameId][uiTheme][fontStyle] = colors;
-    callback(colors);
-    canvas.remove();
-  };
-  img.src = `images/ui/${themeGameId}/${uiTheme}/font${(fontStyle + 1)}.png`;
+  }
+  uiThemeFontColors[themeGameId][uiTheme][fontStyle] = colors;
+  callback(colors);
+  // extractCanvas.remove();
 }
 
 function getFontShadow(uiTheme, themeGameId, callback) {
@@ -887,14 +917,14 @@ function getFontShadow(uiTheme, themeGameId, callback) {
   if (pixel)
     return callback(getColorRgb(pixel));
   const img = new Image();
-  img.onload = function () {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+  img.onload = async function () {
+    await img.decode();
+    const context = extractCanvas.getContext('2d', { willReadFrequently: true });
     context.drawImage(img, 0, 0);
     pixel = context.getImageData(0, 8, 1, 1).data;
     uiThemeFontShadows[themeGameId][uiTheme] = [ pixel[0], pixel[1], pixel[2] ];
     callback(getColorRgb(pixel));
-    canvas.remove();
+    // extractCanvas.remove();
   };
   img.src = `images/ui/${themeGameId}/${uiTheme}/fontshadow.png`;
 }
@@ -908,9 +938,10 @@ function getBaseBgColor(uiTheme, themeGameId, callback) {
   let pixel = uiThemeBgColors[themeGameId][uiTheme];
   if (pixel)
     return callback(getColorRgb(pixel));
-  img.onload = function () {
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+  img.onload = async function () {
+    await img.decode();
+    // const extractCanvas = document.createElement('canvas');
+    const context = extractCanvas.getContext('2d', { willReadFrequently: true });
     context.drawImage(img, 0, 0);
     pixel = context.getImageData(0, 0, 1, 1).data;
     const pixel2 = context.getImageData(4, 4, 1, 1).data;
@@ -920,7 +951,7 @@ function getBaseBgColor(uiTheme, themeGameId, callback) {
     const b = Math.round((pixel[2] + pixel2[2] + pixel3[2]) / 3);
     uiThemeBgColors[themeGameId][uiTheme] = [ r, g, b ];
     callback(`${r}, ${g}, ${b}`);
-    canvas.remove();
+    // extractCanvas.remove();
   };
   img.src = `images/ui/${themeGameId}/${uiTheme}/containerbg.png`;
 }
@@ -974,7 +1005,7 @@ function addSystemSvgGradient(systemName, systemGameId, colors, alt) {
     svgGradient.setAttribute('x2', '0%');
     svgGradient.setAttribute('y2', '100%');
     updateSvgGradient(svgGradient, colors);
-    svgDefs.appendChild(svgGradient);
+    fastdom.mutate(() => svgDefs.appendChild(svgGradient));
   }
 }
 
@@ -992,7 +1023,6 @@ function addSystemSvgDropShadow(systemName, systemGameId, color) {
     svgDropShadow.setAttribute('dy', '1');
     svgDropShadow.setAttribute('stdDeviation', '0.2');
     svgDropShadow.setAttribute('flood-color', `rgb(${color})`);
-
     svgDropShadowFilter.appendChild(svgDropShadow);
     svgDefs.appendChild(svgDropShadowFilter);
   }

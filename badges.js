@@ -1,12 +1,15 @@
 /**
   @typedef {Object} Badge
   @property {string} badgeId
-  @property {string} game
-  @property {string} group
+  @property {string} [game]
+  @property {string} [group]
   @property {number} [mapX] available when full=true
   @property {number} [mapY] available when full=true
   @property {string[]} [tags] available when full=true
-  @property {boolean} newUnlock
+  @property {boolean} [newUnlock]
+  @property {number} [overlayType]
+  @property {boolean} [unlocked]
+  @property {boolean} [secret]
   Either SimpleBadge or Badge
   Cross-check with badges.go in ynoserver
 */
@@ -30,17 +33,18 @@ let badgeTabGame = gameId;
 let badgeTabGroup;
 
 let localizedBadgeGroups;
+/** @type Record<string, Record<string, any>> */
 let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
 let badgeGameIds = [];
 
-const assignTooltipCallbacks = new WeakMap;
+const didObserveBadgeCallbacks = new WeakMap;
 
 const badgeGalleryModalContent = document.querySelector('#badgeGalleryModal .modalContent');
 
 /** @type {IntersectionObserver?} */
-let observer;
+let badgeObserver;
 
 let newUnlockBadges = new Set;
 
@@ -132,7 +136,7 @@ function yieldImmediately() {
   return new Promise(resolve => setTimeout(resolve, 0));
 }
 
-async function fetchAndUpdateBadgeModalBadges(slotRow, slotCol, searchMode) { }
+let fetchAndUpdateBadgeModalBadges = async (slotRow, slotCol, searchMode) => {};
 
 function initBadgeControls() {
   const badgeModalContent = document.querySelector('#badgesModal .modalContent');
@@ -211,23 +215,23 @@ function initBadgeControls() {
     gameBadges = {};
     const spacePattern = / /g;
     let badgeCount = 0;
-    observer?.disconnect();
-    observer = new IntersectionObserver(observed => {
+    badgeObserver?.disconnect();
+    badgeObserver = new IntersectionObserver(observed => {
       for (const { target } of observed) {
         if (!target.parentElement)
           continue;
-        const assignTooltip = assignTooltipCallbacks.get(target);
-        if (assignTooltip) {
-          observer.unobserve(target);
-          assignTooltipCallbacks.delete(target);
-          window.requestAnimationFrame(() => assignTooltip());
+        const didObserveBadge = didObserveBadgeCallbacks.get(target);
+        if (didObserveBadge) {
+          badgeObserver.unobserve(target);
+          didObserveBadgeCallbacks.delete(target);
+          didObserveBadge();
         }
       }
     }, { root: badgeModalContent });
     let systemName;
     for (const badge of playerBadges) {
       // yield back to the game loop to prevent audio cracking
-      if (badgeCount++ % 40 === 0) await yieldImmediately();
+      if (badgeCount++ % 350 === 0) await yieldImmediately();
 
       if (!gameBadges[badge.game]) {
         if (badge.game !== 'ynoproject') {
@@ -242,8 +246,8 @@ function initBadgeControls() {
       if (!gameBadges[badge.game][badge.group])
         gameBadges[badge.game][badge.group] = [];
 
-      const item = getBadgeItem(badge, 'lazy', true, true, true, true, systemName);
-      observer.observe(item);
+      const item = getBadgeItem(badge, true, true, true, true, true, systemName, true);
+      badgeObserver.observe(item);
       if (badge.badgeId === (playerData?.badge || 'null'))
         item.children[0].classList.add('selected');
       if (!item.classList.contains('disabled')) {
@@ -289,7 +293,7 @@ function initBadgeControls() {
       tab.appendChild(tabLabel);
 
       tab.onclick = () => {
-        if (badgeGameTabs === 'all') return;
+        if (badgeTabGame === 'all') return;
 
         badgeGameTabs.querySelector('.active')?.classList.remove('active');
         tab.classList.add('active');
@@ -393,57 +397,60 @@ function initBadgeControls() {
             if ('all' === badgeTabGroup)
               return;
 
-            window.requestAnimationFrame(() => {
+            fastdom.mutate(() => {
               badgeCategoryTabs.querySelector('.active')?.classList.remove('active');
               subTab.classList.add('active');
+            });
 
-              const game = tab.dataset.game;
-              if (game !== 'ynoproject') {
-                const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
-                applyThemeStyles(nullBadge, systemName, game);
-              } else {
-                for (const cls of nullBadge.classList)
-                  if (cls.startsWith('theme_'))
-                    nullBadge.classList.remove(cls);
-              }
+            const game = tab.dataset.game;
+            if (game !== 'ynoproject') {
+              const systemName = getDefaultUiTheme(game).replace(spacePattern, '_');
+              applyThemeStyles(nullBadge, systemName, game);
+            } else {
+              for (const cls of nullBadge.classList)
+                if (cls.startsWith('theme_'))
+                  nullBadge.classList.remove(cls);
+            }
 
+            fastdom.mutate(() => {
               badgeModalContent.replaceChildren(nullBadge);
               for (const group in gameBadges[game])
                 badgeModalContent.append(...gameBadges[game][group]);
-              badgeTabGame = game;
-              badgeTabGroup = 'all';
             });
+            badgeTabGame = game;
+            badgeTabGroup = 'all';
           };
         }
 
-        badgeCategoryTabs.replaceChildren(...subTabs);
-        if (badgeCategoryTabs.querySelector('[data-i18n]')) {
-          // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
-          locI18next.init(i18next, { ...locI18nextOptions, document: badgeCategoryTabs })('[data-i18n]');
-          for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
-            addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
-            elm.removeAttribute('title');
+        fastdom.mutate(() => badgeCategoryTabs.replaceChildren(...subTabs)).then(() => {
+          if (badgeCategoryTabs.querySelector('[data-i18n]')) {
+            // accommodates translated tooltips in the format of <element data-i18n='[title]...'/>
+            locI18next.init(i18next, { ...locI18nextOptions, document: badgeCategoryTabs })('[data-i18n]');
+            for (const elm of badgeCategoryTabs.querySelectorAll('[title]')) {
+              addTooltip(elm, elm.title, true, !elm.classList.contains('helpLink'));
+              elm.removeAttribute('title');
+            }
           }
-        }
-
-        let activeSubTab;
-        if (activeSubTab = subTabs.find(tab => tab.classList.contains('active'))) {
-          badgeTabGroup = null;
-          activeSubTab.click();
-        } else {
-          updateBadges(game, badgeTabGroup);
-        }
+          let activeSubTab;
+          if (activeSubTab = subTabs.find(tab => tab.classList.contains('active'))) {
+            badgeTabGroup = null;
+            activeSubTab.click();
+          } else {
+            updateBadges(game, badgeTabGroup);
+          }
+        });
       }; // tab.onclick
     }
-    badgeGameTabs.replaceChildren(...tabs);
-    didUpdateBadgeModal = async () => {
+    let task = fastdom.mutate(() => badgeGameTabs.replaceChildren(...tabs));
+    didUpdateBadgeModal = async (prom) => {
+      await prom;
       let activeTab;
       if (activeTab = tabs.find(tab => tab.classList.contains('active'))) {
         badgeTabGame = null; // temporarily set to null to populate subtabs
         activeTab.click();
         await updateBadgeVisibility();
         if (badgeModalContent.dataset.lastScrollTop)
-          badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop);
+          fastdom.mutate(() => badgeModalContent.scrollTo(0, +badgeModalContent.dataset.lastScrollTop));
       } else
         await updateBadgeVisibility();
       removeLoader(document.getElementById('badgesModal'));
@@ -451,7 +458,7 @@ function initBadgeControls() {
     if (userSelectedSortOrder)
       updateBadgeModalOnly();
     else
-      await didUpdateBadgeModal();
+      await didUpdateBadgeModal(task);
   };
 
   /** Updates badge elements based on a `cacheIndex` assigned to them in {@linkcode getBadgeItem} */
@@ -459,13 +466,15 @@ function initBadgeControls() {
     const cacheIndexes = Array.from({ length: badgeFilterCache.length }, (_, i) => i);
     cacheIndexes.sort((a, z) => badgeCompareFunc(badgeFilterCache[a], badgeFilterCache[z]));
     setTimeout(async () => {
-      for (let idx = 0; idx < cacheIndexes.length; idx++)
-        badgeFilterCache[cacheIndexes[idx]].el.style.order = idx;
-      if (!badgeModalContent.childElementCount)
-        for (const game in gameBadges)
-          for (const group in gameBadges[game])
-            badgeModalContent.append(...gameBadges[game][group]);
-      await didUpdateBadgeModal?.();
+      let task = fastdom.mutate(() => {
+        for (let idx = 0; idx < cacheIndexes.length; idx++)
+          badgeFilterCache[cacheIndexes[idx]].el.style.order = idx;
+        if (!badgeModalContent.childElementCount)
+          for (const game in gameBadges)
+            for (const group in gameBadges[game])
+              badgeModalContent.append(...gameBadges[game][group]);
+      });
+      await didUpdateBadgeModal?.(task);
     }, 0);
   };
 
@@ -518,7 +527,7 @@ function initBadgeControls() {
 
     openModal('badgesModal', null, prevModal || null);
     addLoader(document.getElementById('badgesModal'), true);
-    if (!badgeCache.filter(b => !localizedBadges.hasOwnProperty(b.game) || !localizedBadges[b.game].hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
+    if (!badgeCache.filter(b => localizedBadges?.[b.game]?.hasOwnProperty(b.badgeId)).length || localizedBadgesIgnoreUpdateTimer)
       updateBadgesAndPopulateModal(slotRow, slotCol);
     else
       updateLocalizedBadges(() => updateBadgesAndPopulateModal(slotRow, slotCol));
@@ -552,9 +561,9 @@ function initBadgeControls() {
         mapIdToCacheKey[mapId] = key;
     }
 
-    return new Promise(resolve => window.requestAnimationFrame(() => {
-      badgeModalContent.querySelector('.nullBadgeItem')?.classList.toggle('hidden', exactMatch);
-      for (let item of badgeFilterCache) {
+    badgeModalContent.querySelector('.nullBadgeItem')?.classList.toggle('hidden', exactMatch);
+    for (let item of badgeFilterCache) {
+      fastdom.measure(() => {
         let visible = true;
         if (unlockStatus === 'recentUnlock')
           visible &= newUnlockBadges.has(item.badgeId);
@@ -584,11 +593,11 @@ function initBadgeControls() {
             }
           }
         }
-        if (!gameVisibilities.hasOwnProperty(item.game)) {
+        if (!(item.game in gameVisibilities)) {
           gameVisibilities[item.game] = false;
           gameGroupVisibilities[item.game] = {};
         }
-        if (item.group && !gameGroupVisibilities[item.game].hasOwnProperty(item.group))
+        if (item.group && !(item.group in gameGroupVisibilities[item.game]))
           gameGroupVisibilities[item.game][item.group] = false;
         if (visible) {
           if (!gameVisibilities[item.game])
@@ -596,13 +605,14 @@ function initBadgeControls() {
           if (item.group && !gameGroupVisibilities[item.game][item.group])
             gameGroupVisibilities[item.game][item.group] = true;
         }
-        item.el.classList.toggle('hidden', !visible);
-      }
+        fastdom.mutate(() => item.el.classList.toggle('hidden', !visible));
+      });
+    }
 
+    fastdom.mutate(() => {
       for (let header of badgeModalContent.querySelectorAll('.itemCategoryHeader'))
         header.classList.toggle('hidden', !(header.dataset.group ? gameGroupVisibilities[header.dataset.game][header.dataset.group] : gameVisibilities[header.dataset.game]));
-      resolve();
-    }));
+    })
   };
 
   document.getElementById('badgeUnlockStatus').onchange = updateBadgeVisibility;
@@ -735,13 +745,13 @@ function initBadgeControls() {
 
   /** @param {MouseEvent} ev */
   function highlightRemove(ev) {
-    if (this.dataset.badgeId === 'null') {
-      this.classList.remove('removing');
-      return;
-    }
-    window.requestAnimationFrame(() =>
+    fastdom.mutate(() => {
+      if (this.dataset.badgeId === 'null') {
+        this.classList.remove('removing');
+        return;
+      }
       this.classList.toggle('removing', ev.shiftKey && ev.type !== 'mouseleave')
-    );
+    });
   }
 
   for (let r = 1; r <= maxBadgeSlotRows; r++) {
@@ -881,7 +891,8 @@ function updateBadgeButton() {
   const badgeId = playerData?.badge || 'null';
   const badge = playerData?.badge ? badgeCache.find(b => b.badgeId === badgeId) : null;
   const badgeButton = document.getElementById('badgeButton');
-  badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+  // badgeButton.innerHTML = getBadgeItem(badge || { badgeId: 'null' }, false, true).innerHTML;
+  badgeButton.replaceChildren(...getBadgeItem(badge || { badgeId: 'null' }, false, true).childNodes)
   if (badge?.overlayType & BadgeOverlayType.LOCATION)
     handleBadgeOverlayLocationColorOverride(badgeButton.querySelector('.badgeOverlay'), badgeButton.querySelector('.badgeOverlay2'), cachedLocations);
 }
@@ -899,7 +910,7 @@ function getBadgeUrl(badge, staticOnly) {
 /**
   @param {Badge} badge
 */
-function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable, parsedSystemName) {
+function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filterable, parsedSystemName, lazy) {
   const badgeId = badge.badgeId;
 
   const item = document.createElement('div');
@@ -930,46 +941,51 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   const badgeEl = (badge.unlocked || !badge.secret) && badgeId !== 'null' ? document.createElement('div') : null;
   const badgeUrl = badgeEl ? getBadgeUrl(badge, !badge.unlocked) : null;
 
+  let setBadgeBackgroundImage;
+  let assignTooltip;
+
   if (badgeEl) {
     badgeEl.classList.add('badge');
     if (scaled)
       badgeEl.classList.add('scaledBadge');
-    badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
+    setBadgeBackgroundImage = () => {
+      badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
-    if (badge.overlayType) {
-      badgeEl.classList.add('overlayBadge');
+      if (badge.overlayType) {
+        badgeEl.classList.add('overlayBadge');
 
-      const badgeOverlay = document.createElement('div');
-      badgeOverlay.classList.add('badgeOverlay');
-      if (badge.overlayType & BadgeOverlayType.MULTIPLY)
-        badgeOverlay.classList.add('badgeOverlayMultiply');
+        const badgeOverlay = document.createElement('div');
+        badgeOverlay.classList.add('badgeOverlay');
+        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+          badgeOverlay.classList.add('badgeOverlayMultiply');
 
-      badgeEl.appendChild(badgeOverlay);
+        badgeEl.appendChild(badgeOverlay);
 
-      const badgeMaskValue = badge.overlayType & BadgeOverlayType.MASK
-        ? `url('${badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')}')`
-        : badgeEl.style.backgroundImage;
-
-      badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeMaskValue}; mask-image: ${badgeMaskValue};`);
-
-      if (badge.overlayType & BadgeOverlayType.DUAL) {
-        const badgeMask2Value = badge.overlayType & BadgeOverlayType.MASK
-          ? `url(${badgeUrl.replace('.', '_mask_bg.')})`
+        const badgeMaskValue = badge.overlayType & BadgeOverlayType.MASK
+          ? `url('${badgeUrl.replace('.', badge.overlayType & BadgeOverlayType.DUAL ? '_mask_fg.' : '_mask.')}')`
           : badgeEl.style.backgroundImage;
 
-        badgeOverlay.classList.add('badgeOverlayBase');
+        badgeOverlay.setAttribute('style', `-webkit-mask-image: ${badgeMaskValue}; mask-image: ${badgeMaskValue};`);
 
-        const badgeOverlay2 = document.createElement('div');
-        badgeOverlay2.classList.add('badgeOverlay', 'badgeOverlay2');
-        if (badge.overlayType & BadgeOverlayType.MULTIPLY)
-          badgeOverlay2.classList.add('badgeOverlayMultiply');
-        badgeOverlay2.classList.add(getStylePropertyValue('--base-color') !== getStylePropertyValue('--alt-color') ? 'badgeOverlayAlt' : 'badgeOverlayBg');
+        if (badge.overlayType & BadgeOverlayType.DUAL) {
+          const badgeMask2Value = badge.overlayType & BadgeOverlayType.MASK
+            ? `url(${badgeUrl.replace('.', '_mask_bg.')})`
+            : badgeEl.style.backgroundImage;
 
-        badgeEl.appendChild(badgeOverlay2);
+          badgeOverlay.classList.add('badgeOverlayBase');
 
-        badgeOverlay2.setAttribute('style', `-webkit-mask-image: ${badgeMask2Value}; mask-image: ${badgeMask2Value};`);
+          const badgeOverlay2 = document.createElement('div');
+          badgeOverlay2.classList.add('badgeOverlay', 'badgeOverlay2');
+          if (badge.overlayType & BadgeOverlayType.MULTIPLY)
+            badgeOverlay2.classList.add('badgeOverlayMultiply');
+          badgeOverlay2.classList.add(getStylePropertyValue('--base-color') !== getStylePropertyValue('--alt-color') ? 'badgeOverlayAlt' : 'badgeOverlayBg');
+
+          badgeEl.appendChild(badgeOverlay2);
+
+          badgeOverlay2.setAttribute('style', `-webkit-mask-image: ${badgeMask2Value}; mask-image: ${badgeMask2Value};`);
+        }
       }
-    }
+    };
 
     badgeContainer.appendChild(badgeEl);
     if (!badge.unlocked) {
@@ -994,7 +1010,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
     if (badgeId === 'null')
       tooltipContent = `<label>${localizedMessages.badges.null}</label>`;
     else {
-      if (localizedBadges.hasOwnProperty(badge.game) && localizedBadges[badge.game].hasOwnProperty(badgeId)) {
+      if (localizedBadges.hasOwnProperty(badge.game) && badgeId in localizedBadges[badge.game]) {
         let badgeTitle = localizedMessages.badges.locked;
         const localizedTooltip = localizedBadges[badge.game][badgeId];
         if ((badge.unlocked || !badge.secret) && localizedTooltip.name)
@@ -1055,15 +1071,15 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         const baseTooltipContent = tooltipContent;
         const tooltipOptions = {};
 
-        const assignTooltip = instance => {
+        const assignTooltipOrDefer = instance => {
           const systemName = parsedSystemName;
           const assignImmediately = () => {
             const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
             if (systemName)
               applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), systemName, badge.game);
-          };
-          if (includeTooltip === 'lazy')
-            assignTooltipCallbacks.set(item, assignImmediately);
+          }
+          if (lazy)
+            assignTooltip = assignImmediately;
           else
             assignImmediately();
         };
@@ -1072,32 +1088,43 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
           const mapId = badge.mapId.toString().padStart(4, '0');
           if (filterItem) filterItem.mapId = mapId;
           const setTooltipLocation = instance => {
-            if (gameLocalizedMapLocations[badge.game] && gameLocalizedMapLocations[badge.game].hasOwnProperty(mapId))
+            if (badge.game in gameLocalizedMapLocations && mapId in gameLocalizedMapLocations[badge.game])
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getLocalizedMapLocationsHtml(badge.game, mapId, '0000', badge.mapX, badge.mapY, getInfoLabel('&nbsp;|&nbsp;')));
             else if (badge.game === '2kki') {
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
               tooltipOptions.onCreate = instance => getOrQuery2kkiLocationsHtml(mapId, locationsHtml => instance.setContent(baseTooltipContent.replace('{LOCATION}', locationsHtml)));
             } else
               tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.unknownLocation)));
-            assignTooltip(instance);
+            assignTooltipOrDefer(instance);
           };
-          if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
+          if (badge.game in gameLocalizedMapLocations)
             setTooltipLocation();
           else {
             tooltipContent = baseTooltipContent.replace('{LOCATION}', getInfoLabel(getMassagedLabel(localizedMessages.location.queryingLocation)));
             tooltipOptions.onCreate = instance => {
               includeTooltip = true;
-              if (gameLocalizedMapLocations.hasOwnProperty(badge.game))
+              if (badge.game in gameLocalizedMapLocations)
                 setTooltipLocation(instance);
               else
                 fetchAndInitLocations(globalConfig.lang, badge.game).then(() => setTooltipLocation(instance));
             };
-            assignTooltip();
+            assignTooltipOrDefer();
           }
         } else
-          assignTooltip();
+          assignTooltipOrDefer();
       }
     }
+  }
+
+  if (lazy) {
+    didObserveBadgeCallbacks.set(item, () => {
+      if (setBadgeBackgroundImage)
+        fastdom.mutate(setBadgeBackgroundImage);
+      assignTooltip?.();
+    });
+  } else {
+    setBadgeBackgroundImage?.();
+    assignTooltip?.();
   }
 
   item.appendChild(badgeContainer);
@@ -1105,35 +1132,30 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   return item;
 }
 
-/**
-  @param {(_: BadgeCache) => any}
-*/
 async function fetchPlayerBadges() {
-  return new Promise(resolve => {
-    if (badgeCache?.full) {
-      resolve(badgeCache);
-      return;
-    }
-    apiFetch('badge?command=list')
-      .then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
-        return response.json();
-      })
-      .then(badges => {
-        for (const { badgeId, newUnlock } of badges) {
-          if (newUnlock) { 
-            newUnlockBadges.add(badgeId);
-            showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
-          }
+  if (badgeCache?.full)
+    return badgeCache;
+  return await apiFetch('badge?command=list')
+    .then(response => {
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return response.json();
+    })
+    .then(badges => {
+      for (const { badgeId, newUnlock } of badges) {
+        if (newUnlock) { 
+          newUnlockBadges.add(badgeId);
+          showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }
-        badgeCache = badges;
-        badgeCache.full = true;
-        resolve(badgeCache);
-      })
-      .catch(err => console.error(err));
-  });
-}
+      }
+      badgeCache = badges;
+      badgeCache.full = true;
+      return badgeCache;
+    }, err => {
+      console.error(err);
+      return badgeCache;
+    })
+};
 
 function updateBadges(callback) {
   apiFetch('badge?command=list&simple=true')
@@ -1255,7 +1277,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
   badgeElement.dataset.systemName = sysName;
 
   if (!badgeElement._badgeGalleryTippy) {
-    badgeElement._badgeGalleryTippy = tippy(badgeElement, Object.assign({
+    badgeElement._badgeGalleryTippy = tippy(badgeElement, {
       trigger: 'click',
       interactive: true,
       content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
@@ -1435,8 +1457,9 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
             console.error(err);
             instance.setContent('');
           });
-      }
-    }, tippyConfig));
+      },
+      ...tippyConfig,
+    });
   }
 
   return badgeElement._badgeGalleryTippy;
