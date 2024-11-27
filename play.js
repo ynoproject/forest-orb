@@ -1217,6 +1217,7 @@ initPartyControls();
 initScreenshotControls();
 initEventControls();
 initRankingControls();
+initReportControls();
 
 document.getElementById('nexusButton').onclick = () => window.location = '../';
 

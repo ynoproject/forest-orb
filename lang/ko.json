@@ -511,6 +511,24 @@
           }
         }
       },
+      "report": {
+        "title": "Report",
+        "submit": "Submit",
+        "fields": {
+          "reason": {
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
+            "1": "Slurs, harmful or inappropriate language",
+            "2": "Harassment, bullying, stalking",
+            "3": "Inappropriate names",
+            "4": "Ban evasion",
+            "5": "Cheating, abusing exploits",
+            "6": "Underage player",
+            "7": "Spam",
+            "other": "Other (specify)"
+          }
+        }
+      },
       "rules": {
         "title": "규칙",
         "rule1": "상대방에게 공손하고 예의 바르게 행동해 주십시오.",
@@ -690,6 +708,9 @@
       "unblock": {
         "label": "{PLAYER} 차단",
         "confirm": "정말로 {PLAYER} 님을 차단 해제하시겠습니까?"
+      },
+      "report": {
+        "label": "Report {PLAYER}"
       },
       "admin": {
         "ban": {

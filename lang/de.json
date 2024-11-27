@@ -511,6 +511,24 @@
           }
         }
       },
+      "report": {
+        "title": "Report",
+        "submit": "Submit",
+        "fields": {
+          "reason": {
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
+            "1": "Slurs, harmful or inappropriate language",
+            "2": "Harassment, bullying, stalking",
+            "3": "Inappropriate names",
+            "4": "Ban evasion",
+            "5": "Cheating, abusing exploits",
+            "6": "Underage player",
+            "7": "Spam",
+            "other": "Other (specify)"
+          }
+        }
+      },
       "rules": {
         "title": "Rules",
         "rule1": "Please be respectful and polite.",
@@ -690,6 +708,9 @@
       "unblock": {
         "label": "Unblock {PLAYER}",
         "confirm": "Are you sure you want to unblock {PLAYER}?"
+      },
+      "report": {
+        "label": "Report {PLAYER}"
       },
       "admin": {
         "ban": {

@@ -511,6 +511,24 @@
           }
         }
       },
+      "report": {
+        "title": "Report",
+        "submit": "Submit",
+        "fields": {
+          "reason": {
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
+            "1": "Slurs, harmful or inappropriate language",
+            "2": "Harassment, bullying, stalking",
+            "3": "Inappropriate names",
+            "4": "Ban evasion",
+            "5": "Cheating, abusing exploits",
+            "6": "Underage player",
+            "7": "Spam",
+            "other": "Other (specify)"
+          }
+        }
+      },
       "rules": {
         "title": "多人游戏守则",
         "rule1": "尊重他人，友好往来。",
@@ -690,6 +708,9 @@
       "unblock": {
         "label": "解除屏蔽 {PLAYER}",
         "confirm": "确定要解除屏蔽 {PLAYER} 吗？"
+      },
+      "report": {
+        "label": "Report {PLAYER}"
       },
       "admin": {
         "ban": {

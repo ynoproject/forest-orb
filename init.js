@@ -71,7 +71,7 @@ const ynomojiUrlPrefix = 'images/ynomoji/';
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
-  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', 'notifications.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
+  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', 'report.js', 'notifications.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
 
   dependencyFiles['play.css'] = null;
 
@@ -338,8 +338,9 @@ const playerTooltipCache = new Map;
 
 /**
  * @param {HTMLElement} target 
+ * @param {*} [msgProps]
  */
-function addPlayerContextMenu(target, player, uuid, messageType) {
+function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
   if (!player || uuid === playerData?.uuid || uuid === defaultUuid) {
     target.addEventListener('contextmenu', event => event.preventDefault());
     return;
@@ -355,7 +356,7 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
 
     let playerTooltip = playerTooltipCache.get(cacheKey);
     if (!playerTooltip) {
-      playerTooltip = createPlayerTooltip(this, player, uuid, messageType);
+      playerTooltip = createPlayerTooltip(this, player, uuid, messageType, msgProps);
       playerTooltipCache.set(cacheKey, playerTooltip);
     } 
 
@@ -395,9 +396,10 @@ function addPlayerContextMenu(target, player, uuid, messageType) {
 }
 
 /**
- * @param {Element} target 
+ * @param {Element} target
+ * @param {*} [msgProps]
  */
-function createPlayerTooltip(target, player, uuid, messageType) {
+function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
   const isMod = playerData?.rank > player?.rank;
   const isBlockable = playerData?.rank >= player?.rank;
   const playerName = getPlayerName(player, true, false, true);
@@ -419,6 +421,12 @@ function createPlayerTooltip(target, player, uuid, messageType) {
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="blockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.block.label, true).replace('{PLAYER}', playerName)}</a>
                     <a href="javascript:void(0);" class="unblockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
+  }
+
+  if (loginToken && player.account) {
+    if (tooltipHtml)
+      tooltipHtml += '<br>';
+    tooltipHtml += `<a href="javascript:void(0);" class="reportPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.report.label).replace('{PLAYER}', playerName)}</a>`;
   }
   
   if (isMod) {
@@ -509,6 +517,9 @@ function createPlayerTooltip(target, player, uuid, messageType) {
           updatePlayerFriends();
         })
         .catch(err => console.error(err));
+    };
+    playerTooltip.popper.querySelector('.reportPlayerAction').onclick = function () {
+      openReportForm({ ...(msgProps || {}), uuid });
     };
   }
 
