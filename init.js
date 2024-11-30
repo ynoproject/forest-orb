@@ -334,6 +334,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
+/** @type {Map<string, import('tippy.js').Instance>} */
 const playerTooltipCache = new Map;
 
 /**
@@ -358,7 +359,12 @@ function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
     if (!playerTooltip) {
       playerTooltip = createPlayerTooltip(this, player, uuid, messageType, msgProps);
       playerTooltipCache.set(cacheKey, playerTooltip);
-    } 
+    } else {
+      playerTooltip.popper.querySelector('.reportPlayerAction').onclick = function () {
+        playerTooltip.hide();
+        openReportForm({ ...(msgProps || {}), uuid });
+      };
+    }
 
     const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
 
