@@ -208,6 +208,7 @@ function fetchAndUpdatePlayerInfo() {
   if (isLogin || isLogout) {
     loginToken = isLogin ? cookieSessionId : null;
     easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
+    playerTooltipCache.clear();
   }
   navigator.serviceWorker?.getRegistration('/').then(registration => {
     if (!registration)
