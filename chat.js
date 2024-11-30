@@ -355,8 +355,9 @@ function scrollChatMessages() {
   // avoiding a costly style invalidation on startup.
   setTimeout(() => {
     const messages = document.getElementById('messages');
+    const scrollHeight = messages.scrollHeight;
     fastdom.mutate(() => {
-      messages.scrollTop = Number.MAX_SAFE_INTEGER
+      messages.scrollTop = scrollHeight;
     });
   });
 }
