@@ -511,6 +511,24 @@
           }
         }
       },
+      "report": {
+        "title": "Report",
+        "submit": "Submit",
+        "fields": {
+          "reason": {
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
+            "1": "Slurs, harmful or inappropriate language",
+            "2": "Harassment, bullying, stalking",
+            "3": "Inappropriate names",
+            "4": "Ban evasion",
+            "5": "Cheating, abusing exploits",
+            "6": "Underage player",
+            "7": "Spam",
+            "other": "Other (specify)"
+          }
+        }
+      },
       "rules": {
         "title": "Kurallar",
         "rule1": "Lütfen saygılı ve nazik olun.",
@@ -690,6 +708,9 @@
       "unblock": {
         "label": "Engeli Kaldır: {PLAYER}",
         "confirm": "{PLAYER}'in engelini kaldırmak istediğine emin misin?"
+      },
+      "report": {
+        "label": "Report {PLAYER}"
       },
       "admin": {
         "ban": {

@@ -121,7 +121,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     messageSender.appendChild(nameBeginMarker);
     messageSender.appendChild(name);
 
-    addPlayerContextMenu(name, player, uuid, global ? MESSAGE_TYPE.GLOBAL : party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.MAP);
+    addPlayerContextMenu(name, player, uuid, global ? MESSAGE_TYPE.GLOBAL : party ? MESSAGE_TYPE.PARTY : MESSAGE_TYPE.MAP, {msg, msgId});
 
     if (player?.rank) {
       const rank = Math.min(player.rank, 2);
@@ -275,11 +275,12 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
   const messageContentsWrapper = document.createElement('div');
   messageContentsWrapper.classList.add('messageContentsWrapper');
+  messageContentsWrapper.appendChild(messageContents);
+  messageContentsWrapper.dir = "auto";
+  message.appendChild(messageContentsWrapper);
+  msgContainer.appendChild(message);
+
   const didPopulateMessage = fastdom.mutate(() => {
-    messageContentsWrapper.appendChild(messageContents);
-    messageContentsWrapper.dir = "auto";
-    message.appendChild(messageContentsWrapper);
-    msgContainer.appendChild(message);
     messages.appendChild(msgContainer);
   });
   Promise.allSettled([didPopulateMessage, systemThemeProm]).then(() => {
