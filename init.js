@@ -334,6 +334,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
   return tippy(target, Object.assign(options, tippyConfig));
 }
 
+/** @type {Map<string, import('tippy.js').Instance>} */
 const playerTooltipCache = new Map;
 
 /**
@@ -358,7 +359,15 @@ function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
     if (!playerTooltip) {
       playerTooltip = createPlayerTooltip(this, player, uuid, messageType, msgProps);
       playerTooltipCache.set(cacheKey, playerTooltip);
-    } 
+    } else {
+      const reportAction = playerTooltip.popper.querySelector('.reportPlayerAction');
+      if (reportAction) {
+        reportAction.onclick = function () {
+          playerTooltip.hide();
+          openReportForm({ ...(msgProps || {}), uuid });
+        };
+      }
+    }
 
     const isFriend = !!playerFriendsCache.find(pf => pf.uuid === uuid);
 
@@ -379,6 +388,16 @@ function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
       blockAction.classList.toggle('hidden', isBlocked);
     if (unblockAction)
       unblockAction.classList.toggle('hidden', !isBlocked);
+
+    const targetPlayer = globalPlayerData[uuid] || player;
+    const isMod = playerData?.rank > targetPlayer?.rank;
+    playerTooltip.popper.querySelector('.banPlayerAction')?.classList.toggle('hidden', !isMod);
+    playerTooltip.popper.querySelector('.mutePlayerAction')?.classList.toggle('hidden', !isMod);
+    playerTooltip.popper.querySelector('.unmutePlayerAction')?.classList.toggle('hidden', !isMod);
+
+    const targetHasAccount = !!targetPlayer?.account;
+    playerTooltip.popper.querySelector('.grantBadgeAction')?.classList.toggle('hidden', !(isMod && targetHasAccount));
+    playerTooltip.popper.querySelector('.revokeBadgeAction')?.classList.toggle('hidden', !(isMod && targetHasAccount));
   
     playerTooltip.setProps({
       getReferenceClientRect: () => ({
@@ -423,7 +442,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
                     <a href="javascript:void(0);" class="unblockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
   }
 
-  if (loginToken && player.account) {
+  if (loginToken) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="reportPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.report.label).replace('{PLAYER}', playerName)}</a>`;
