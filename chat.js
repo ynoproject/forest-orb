@@ -280,19 +280,17 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
   message.appendChild(messageContentsWrapper);
   msgContainer.appendChild(message);
 
-  const didPopulateMessage = fastdom.mutate(() => {
+  let task = Promise.resolve(shouldScroll);
+  if (shouldScroll)
+    task = fastdom.measure(() => Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 60);
+
+  const didPopulateMessage = task.then(() => fastdom.mutate(() => {
     messages.appendChild(msgContainer);
-  });
+  }));
   Promise.allSettled([didPopulateMessage, systemThemeProm]).then(() => {
     if (player)
       addGameChatMessage(message.innerHTML, type, uuid);
   });
-
-  let task = Promise.resolve(shouldScroll);
-  
-  if (shouldScroll)
-    task = didPopulateMessage.then(() =>
-      fastdom.measure(() => Math.abs((messages.scrollHeight - messages.scrollTop) - messages.clientHeight) <= 60));
 
   const chatbox = document.getElementById("chatbox");
 
