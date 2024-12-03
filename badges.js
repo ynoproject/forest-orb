@@ -1276,11 +1276,15 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
   badgeElement.dataset.playerName = name;
   badgeElement.dataset.systemName = sysName;
 
+  const initialContent = document.createElement('div');
+  initialContent.classList.add('tooltipContent');
+  initialContent.append(getMassagedLabel(localizedMessages.badgeGallery.loading));
+
   if (!badgeElement._badgeGalleryTippy) {
     badgeElement._badgeGalleryTippy = tippy(badgeElement, {
       trigger: 'click',
       interactive: true,
-      content: `<div class="tooltipContent">${getMassagedLabel(localizedMessages.badgeGallery.loading, true)}</div>`,
+      content: initialContent,
       appendTo: document.getElementById('layout'),
       onShow: instance => {
         const playerName = instance.reference.dataset.playerName;

@@ -60,7 +60,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
     if (playerFriendsCache.find(pf => pf.accepted && (isPlayerObj ? pf.uuid === player.uuid : pf.name === playerName))) {
       friendIcon = getSvgIcon('friend', true);
       friendIcon.classList.add('friendIcon');
-      addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
+      addTooltip(friendIcon, document.createTextNode(getMassagedLabel(localizedMessages.friends.friend)), true, true);
       nameTextContainer.appendChild(friendIcon);
     }
 
@@ -303,7 +303,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
     if (playerFriendsCache.find(pf => pf.accepted && pf.uuid === uuid)) {
       friendIcon = getSvgIcon('friend', true);
       friendIcon.classList.add('friendIcon');
-      addTooltip(friendIcon, getMassagedLabel(localizedMessages.friends.friend, true), true, true);
+      addTooltip(friendIcon, document.createTextNode(getMassagedLabel(localizedMessages.friends.friend)), true, true);
       nameText.after(friendIcon);
     }
 
@@ -741,7 +741,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             };
             return getCategoryIndex(categoryA) < getCategoryIndex(categoryB) ? -1 : 1;
           }
-          return 0;
+
+          return a.dataset.name.localeCompare(b.dataset.name);
         };
         break;
       case 'partyModalOnlinePlayerList':

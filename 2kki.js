@@ -284,9 +284,11 @@ function getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, callback) {
 function set2kkiGlobalChatMessageLocation(globalMessageLocation, mapId, prevMapId, prevLocations) {
   getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, locations => {
     const locationsHtml = getLocalized2kkiLocationsHtml(locations, getInfoLabel('&nbsp;|&nbsp;'));
-    globalMessageLocation.innerHTML = locationsHtml;
-    if (globalMessageLocation.dataset.systemOverride)
-      applyThemeStyles(globalMessageLocation, globalMessageLocation.dataset.systemOverride);
+    fastdom.mutate(() => {
+      globalMessageLocation.innerHTML = locationsHtml;
+      if (globalMessageLocation.dataset.systemOverride)
+        applyThemeStyles(globalMessageLocation, globalMessageLocation.dataset.systemOverride);
+    });
   });
 }
 

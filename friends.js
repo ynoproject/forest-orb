@@ -61,13 +61,11 @@ async function onUpdatePlayerFriends(playerFriends) {
 
   playerFriendsCache = playerFriends || [];
 
-  let nfriends = 0;
   for (let playerFriend of playerFriends) {
-    // TODO: See impact on users with larger friend lists, potentially upwards of 100s
-    if (nfriends++ % 10 === 0) await yieldImmediately();
     const entry = addOrUpdatePlayerListEntry(friendsPlayerList, playerFriend, true);
     entry.classList.toggle('offline', playerFriend.accepted && !playerFriend.online);
     entry.dataset.categoryId = playerFriend.accepted ? playerFriend.online ? 'online' : 'offline' : playerFriend.incoming ? 'incoming' : 'outgoing';
+    entry.dataset.name = playerFriend.name;
     addOrUpdatePlayerListEntryLocation(true, playerFriend, entry);
   }
 

@@ -70,7 +70,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
           set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
         } else {
           const locationsHtml = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
-          playerLocation.innerHTML = locationsHtml;
+          fastdom.mutate(() => playerLocation.innerHTML = locationsHtml);
         }
 
         playerLocation.classList.add("playerLocation");
@@ -81,7 +81,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
       if (global) {
         chatTypeIcon = getSvgIcon("global", true);
-        addTooltip(chatTypeIcon, getMassagedLabel(localizedMessages.chat.globalMessage, true), true, true);
+        addTooltip(chatTypeIcon, document.createTextNode(getMassagedLabel(localizedMessages.chat.globalMessage)), true, true);
       } else {
         chatTypeIcon = getSvgIcon("party", true);
         if (joinedPartyCache)
@@ -103,7 +103,11 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     msgTimestamp.classList.add('messageTimestamp', 'infoLabel');
     msgTimestamp.dataset.time = timestamp.getTime();
 
-    msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp, defaultDate);
+    const timestampLabel = getChatMessageTimestampLabel(timestamp, defaultDate);
+    fastdom.mutate(() => {
+      msgTimestamp.innerHTML = timestampLabel;
+    });
+    // msgTimestamp.innerHTML = getChatMessageTimestampLabel(timestamp, defaultDate);
 
     msgHeader.appendChild(msgTimestamp);
     msgContainer.appendChild(msgHeader);
@@ -170,7 +174,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
           return Object.keys(localizedBadges[game]).find(b => b === player.badge);
         });
         if (badgeGame) {
-          const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true);
+          const badgeTippy = addTooltip(badgeEl, document.createTextNode(getMassagedLabel(localizedBadges[badgeGame][player.badge].name)), true, true);
           if (!badge || badge.hidden)
             badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
         }
@@ -328,17 +332,17 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
     tabMessagesLimit = parseInt(globalConfig.mapChatHistoryLimit);
 
   if (tabMessagesLimit) {
+    let tabMessages;
+    if (global)
+      tabMessages = [...messages.querySelectorAll('.messageContainer.global')];
+    else if (party)
+      tabMessages = [...messages.querySelectorAll('.messageContainer.party')];
+    else
+      tabMessages = [...messages.querySelectorAll('.messageContainer:not(.global):not(.party)')];
     const oldTask = task;
     task = fastdom.mutate(() => {
-      let tabMessages;
-      if (global)
-        tabMessages = [...document.querySelectorAll('.messageContainer.global')];
-      else if (party)
-        tabMessages = [...document.querySelectorAll('.messageContainer.party')];
-      else
-        tabMessages = [...document.querySelectorAll('.messageContainer:not(.global):not(.party)')];
       while (tabMessages.length > tabMessagesLimit)
-        tabMessages.shift().remove();
+        tabMessages.shift().replaceWith(tabMessages[0]);
       return oldTask;
     })
   }

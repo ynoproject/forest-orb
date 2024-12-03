@@ -270,7 +270,7 @@ async function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, heigh
   return new Promise(resolve => {
     extractCanvas.width = 24;
     extractCanvas.height = 32;
-    const context = extractCanvas.getContext('2d');
+    const context = extractCanvas.getContext('2d', { willReadFrequently: true });
     const startX = (idx % 4) * 72 + 24 * frameIdx;
     const startY = (idx >> 2) * 128 + 64;
     context.drawImage(img, startX, startY, 24, 32, 0, 0, 24, 32);
@@ -322,7 +322,7 @@ function addTooltip(target, content, asTooltipContent, delayed, interactive, opt
     options.delay = [750, 0];
   if (!asTooltipContent)
     options.content = content;
-  else if (content instanceof Element) {
+  else if (content instanceof Node) {
     const tooltipContent = document.createElement('div');
     tooltipContent.classList.add('tooltipContent');
     tooltipContent.appendChild(content);
