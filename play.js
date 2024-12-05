@@ -50,6 +50,9 @@ let gameLocationsMap = {};
 
 let yumeWikiSupported;
 
+/** @type {WeakRef<any>} */
+let gameMapHandle = new WeakRef({});
+
 const modalTransitionDuration = 230;
 
 const langLabelMassageFunctions = {
@@ -612,6 +615,8 @@ function openModal(modalId, theme, lastModalId, modalData) {
   const modalContainer = document.getElementById('modalContainer');
   modalContainer.classList.remove('fadeOut', 'hidden');
   modalContainer.classList.add('fadeIn');
+  // if (modalId !== 'wikiModal')
+  //   modalContainer.style.opacity = '';
 
   if (lastModalId) {
     if (modalContainer.dataset.lastModalId) {
@@ -681,8 +686,8 @@ function closeModal() {
   if (modalContent) modalContent.dataset.lastScrollTop = modalContent.scrollTop;
   if (!modalContainer.dataset.lastModalId) {
     modalContainer.classList.add('fadeOut', 'hidden');
-    if (activeModal?.id === 'wikiModal')
-      document.getElementById('wikiFrame').src = '';
+    // if (activeModal?.id === 'wikiModal')
+    //   document.getElementById('wikiFrame').src = '';
     setTimeout(() => modalContainer.classList.remove('fadeOut'), modalTransitionDuration);
   }
   if (activeModal) {
@@ -2176,6 +2181,11 @@ function setMaps(maps, locationNames, cacheMaps, saveMaps) {
   if (maps && maps.length) {
     for (let map of maps)
       mapControls.appendChild(getMapButton(map.url, map.label));
+    gameMapHandle = new WeakRef(mapControls.firstElementChild);
+    // if (!document.getElementById('wikiModal').classList.contains('hidden'))
+    //   mapControls.firstElementChild.onclick();
+  } else {
+    gameMapHandle = new WeakRef({});
   }
   if (cacheMaps && locationNames) {
     mapCache[locationNames.join(',')] = maps;
@@ -2190,10 +2200,32 @@ function getMapButton(url, label) {
   const ret = document.createElement('button');
   ret.classList.add('mapButton', 'unselectable', 'iconButton');
   addTooltip(ret, label, true);
-  ret.onclick = () => openWikiLink(url);
+  // this is abusing the onclick event, but basically if we call it directly we can differentiate
+  // an actual click vs. a synthetic event.
+  ret.onclick = (ev) => {
+    gameMapHandle = new WeakRef(ret);
+    const canvas = document.getElementById('canvas');
+    // canvas.addEventListener('keydown', () => {
+    //   document.getElementById('modalContainer').style.opacity = '0.42';
+    // }, { once: true });
+    // if (ev)
+    //   document.getElementById('modalContainer').style.opacity = '';
+    openWikiLink(url, false, true);
+    canvas.focus();
+  };
   ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
   return ret;
 }
+
+document.getElementById('canvas').addEventListener('keydown', function(ev) {
+  if (ev.key === 'f') {
+    ev.preventDefault();
+    if (document.getElementById('wikiModal').classList.contains('hidden'))
+      gameMapHandle.deref()?.click?.();
+    else
+      closeModal();
+  }
+});
 
 function getOrQueryLocationColors(locationName) {
   return new Promise((resolve, _reject) => {
@@ -2387,9 +2419,9 @@ function addFilterInputs(modalPrefix, modalInitFunc, ...checkboxes) {
     container.appendChild(checkboxContainer);
 }
 
-function openWikiLink(url, useDefault) {
+function openWikiLink(url, useDefault, asImage = false) {
   if (globalConfig.wikiLinkMode === 2 || (document.fullscreenElement && globalConfig.wikiLinkMode === 1)) {
-    openWikiModal(url);
+    openWikiModal(url, asImage);
     return true;
   }
   
@@ -2402,9 +2434,30 @@ function openWikiLink(url, useDefault) {
   return false;
 }
 
-function openWikiModal(url) {
-  document.getElementById('wikiFrame').src = url;
-  openModal('wikiModal');
+function openWikiModal(url, asImg) {
+  /** @type {HTMLIFrameElement} */
+  const wikiFrame = document.getElementById('wikiFrame');
+  const wikiModal = document.getElementById('wikiModal');
+  // if (wikiFrame.dataset.src !== url) {
+  //   wikiFrame.dataset.src = url;
+  //   if (asImg && URL.canParse(url)) {
+  //     wikiFrame.srcdoc = `<body style="margin:0"><img src="${url}" onclick="window.open(this.src,'_blank','noreferrer')" style="max-width:100vw;max-height:100vh;cursor:zoom-in"/></body>`;
+  //   } else {
+  //     wikiFrame.removeAttribute('srcdoc');
+  //     addLoader(wikiModal);
+  //     wikiFrame.addEventListener('load', () => removeLoader(wikiModal), { once: true });
+  //   }
+  //   wikiFrame.src = url;
+  // }
+  if (wikiFrame.src !== url) {
+    wikiFrame.src = url;
+    if (!asImg) {
+      addLoader(wikiModal);
+      wikiFrame.addEventListener('load', () => removeLoader(wikiModal), { once: true });
+    }
+  }
+  if (wikiModal.classList.contains('hidden'))
+    openModal('wikiModal');
 }
 
 function checkShowVersionUpdate() {
@@ -2498,8 +2551,10 @@ loadOrInitCache();
 
 document.addEventListener('click', e => {    
   const target = e.target.closest('a');
-  if (target && target.classList.contains('wikiLink') && openWikiLink(target.href, true))
+  if (target && target.classList.contains('wikiLink') && openWikiLink(target.href, true)) { 
+    // document.getElementById('modalContainer').style.opacity = '';
     e.preventDefault();
+  }
 });
 
 initDefaultSprites();

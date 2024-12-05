@@ -409,7 +409,7 @@ body {
   stroke-width: 1.5;
 }
 
-.iconButton.offToggleButton:not(.toggled):not(.preToggled) path:last-child, .iconButton.onToggleButton.toggled path:last-child, .iconButton.onToggleButton.preToggled path:last-child {
+.iconButton.offToggleButton:not(.toggled):not(.preToggled) path:last-child, .iconButton.onToggleButton.toggled path:last-child, .iconButton.onToggleButton.preToggled path:last-child, #globalMessageButton.toggled path:last-child {
   display: none;
 }
 

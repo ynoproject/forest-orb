@@ -438,6 +438,7 @@
             <button id="globalMessageButton" class="iconButton fadeToggle unselectable" data-i18n="[title]tooltips.toggleGlobalMessage">
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
                 <path d="m9 0a1 1 0 0 0 0 18 1 1 0 0 0 0-18v18q-10-9 0-18 10 9 0 18m-7.5-4q7.5-3 15 0m-15-10q7.5 2 15 0m-16.5 5h18" />
+                <path d="m-2 16l22-14" />
               </svg>
             </button>
           </div>
