@@ -431,7 +431,8 @@
         }
       },
       "rankings": {
-        "title": "Rangolisto"
+        "title": "Rangolisto",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Via Ekrankopio",

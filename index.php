@@ -1249,7 +1249,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Player</th>
+                  <th data-i18n="[html]modal.rankings.player">Player</th>
                   <th id="rankingValueHeader"></th>
                 </tr>
               </thead>

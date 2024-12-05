@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "Rankingi"
+        "title": "Rankingi",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Twój zrzut ekranu",

@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "المراتب"
+        "title": "المراتب",
+        "player": "Player"
       },
       "screenshot": {
         "title": "صور الشاشة",

@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "Рейтинги"
+        "title": "Рейтинги",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Ваш снимок",
