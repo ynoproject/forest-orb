@@ -742,6 +742,8 @@ function getPlayerListIdEntrySortFunc(playerListId) {
             return getCategoryIndex(categoryA) < getCategoryIndex(categoryB) ? -1 : 1;
           }
 
+          if (typeof a.dataset.name !== 'string')
+            return 0;
           return a.dataset.name.localeCompare(b.dataset.name);
         };
         break;
