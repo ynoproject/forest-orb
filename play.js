@@ -2456,8 +2456,10 @@ function openWikiModal(url, asImg) {
       wikiFrame.addEventListener('load', () => removeLoader(wikiModal), { once: true });
     }
   }
-  if (wikiModal.classList.contains('hidden'))
-    openModal('wikiModal');
+  if (wikiModal.classList.contains('hidden')) { 
+    const activeModal = document.querySelector('#modalContainer .modal:not(.hidden)');
+    openModal('wikiModal', undefined, activeModal?.id);
+  }
 }
 
 function checkShowVersionUpdate() {
