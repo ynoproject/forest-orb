@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "Ranguri"
+        "title": "Ranguri",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Your Screenshot",

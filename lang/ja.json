@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "ランキング"
+        "title": "ランキング",
+        "player": "Player"
       },
       "screenshot": {
         "title": "スクリーンショット",

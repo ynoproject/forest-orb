@@ -68,6 +68,8 @@ const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
+let initBlocker = Promise.resolve();
+
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
@@ -89,7 +91,7 @@ async function injectScripts() {
     const script = scripts[index];
     const loadFunc = index < scripts.length - 1
       ? () => injectScript(index + 1)
-      : () => { // Assumes last script is index.js
+      : async () => { // Assumes last script is index.js
         if (typeof ENV !== 'undefined')
           ENV.SDL_EMSCRIPTEN_KEYBOARD_ELEMENT = '#canvas';
         
@@ -117,6 +119,8 @@ async function injectScripts() {
         });
         if (typeof onResize !== 'undefined')
           easyrpgPlayerLoadFuncs.push(onResize);
+
+        await initBlocker;
 
         createEasyRpgPlayer(easyrpgPlayer)
           .then(function(Module) {

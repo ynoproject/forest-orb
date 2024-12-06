@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "Placares"
+        "title": "Placares",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Suas Capturas de Tela",

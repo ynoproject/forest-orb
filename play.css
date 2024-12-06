@@ -251,7 +251,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.spoiler:not(.show) a {
+.spoiler:not(.show):not(.screenshotItem:hover) a {
   opacity: 0;
   pointer-events: none;
 }

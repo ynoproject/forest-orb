@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "Bảng Xếp Hạng"
+        "title": "Bảng Xếp Hạng",
+        "player": "Player"
       },
       "screenshot": {
         "title": "Ảnh chụp màn hình của bạn",

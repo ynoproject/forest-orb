@@ -1637,6 +1637,17 @@ document.onmousemove = function (ev) {
   }
 };
 
+async function withTimeout(duration, prom) {
+  let handle;
+  const timeout = new Promise(resolve => handle = setTimeout(() => resolve('__timeout__'), duration));
+  const res = await Promise.race([timeout, prom]);
+  if (res === '__timeout__') {
+    console.warn(`timed out after ${duration} ms`, prom);
+  }
+  clearTimeout(handle);
+  return res;
+}
+
 const rtlLangs = ['ar'];
 function setLang(lang, isInit) {
   if (rtlLangs.includes(lang))
@@ -1644,11 +1655,13 @@ function setLang(lang, isInit) {
   else
     document.documentElement.removeAttribute('dir');
   globalConfig.lang = lang;
-  fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
-  if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
-    easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
-    }
-  });
+  initBlocker = initBlocker.then(() => withTimeout(500, // TODO Is this enough?
+    fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
+      if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
+        easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
+      }
+    })
+  ));
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -2456,8 +2469,10 @@ function openWikiModal(url, asImg) {
       wikiFrame.addEventListener('load', () => removeLoader(wikiModal), { once: true });
     }
   }
-  if (wikiModal.classList.contains('hidden'))
-    openModal('wikiModal');
+  if (wikiModal.classList.contains('hidden')) { 
+    const activeModal = document.querySelector('#modalContainer .modal:not(.hidden)');
+    openModal('wikiModal', undefined, activeModal?.id);
+  }
 }
 
 function checkShowVersionUpdate() {

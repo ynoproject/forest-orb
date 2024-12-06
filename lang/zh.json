@@ -432,7 +432,8 @@
         }
       },
       "rankings": {
-        "title": "排行榜"
+        "title": "排行榜",
+        "player": "Player"
       },
       "screenshot": {
         "title": "屏幕截图",
