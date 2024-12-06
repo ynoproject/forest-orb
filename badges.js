@@ -1074,7 +1074,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         const assignTooltipOrDefer = instance => {
           const systemName = parsedSystemName;
           const assignImmediately = () => {
-            const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, !!badge.mapId, tooltipOptions, instance);
+            const badgeTippy = addOrUpdateTooltip(item, tooltipContent, false, false, true, tooltipOptions, instance);
             if (systemName)
               applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), systemName, badge.game);
           }
