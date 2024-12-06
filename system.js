@@ -89,6 +89,7 @@ const allGameUiThemes = {
     'akalog_system-1',
     'akalog_system-2',
     'akalog_system-3',
+    'PGR_SYS_04',
 
     'system_E_eye',
     'System_kuraud',
