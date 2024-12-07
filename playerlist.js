@@ -71,7 +71,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       nameTextContainer.appendChild(mutedIcon);
     }
 
-    const badge = includeBadge && player.badge !== 'null' ? badgeCache.find(b => b.badgeId === player.badge) : null;
+    const badge = includeBadge && player.badge !== 'null' ? findBadge(player.badge) : null;
     let badgeEl = null;
     let badgeOverlayEl = null;
     let badgeOverlay2El = null;
@@ -83,7 +83,7 @@ function getPlayerName(player, includeMarkers, includeBadge, asHtml) {
       badgeOverlayEl = badge?.overlayType ? document.createElement('div') : null;
       badgeOverlay2El = badge?.overlayType & BadgeOverlayType.DUAL ? document.createElement('div') : null;
 
-      const badgeUrl = getBadgeUrl(player.badge, true);
+      const badgeUrl = getBadgeUrl(badge || player.badge, true);
       badgeEl.style.backgroundImage = `url('${badgeUrl}')`;
 
       if (badgeOverlayEl) {
@@ -180,7 +180,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   const playerListEntryBadgeOverlay2 = playerListEntry ? playerListEntryBadge.querySelector('.playerListEntryBadgeOverlay2') : document.createElement('div');
   const playerListEntryActionContainer = playerListEntry ? playerListEntry.querySelector('.playerListEntryActionContainer') : document.createElement('div');
 
-  let friendIcon = playerListEntry ? playerListEntry.querySelector('.friendIcon') : null;
+  let friendIcon = playerListEntry?._friendIcon; // playerListEntry ? playerListEntry.querySelector('.friendIcon') : null;
   let rankIcon = playerListEntry ? playerListEntry.querySelector('.rankIcon') : null;
   let mutedIcon = playerListEntry ? playerListEntry.querySelector('.mutedIcon') : null;
   let acceptFriendAction = playerListEntry ? playerListEntry.querySelector('.acceptFriendAction') : null;
@@ -193,6 +193,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
     playerListEntry = document.createElement('div');
     playerListEntry.classList.add('playerListEntry', 'listEntry');
     playerListEntry.dataset.uuid = uuid;
+    playerListEntry.dataset.name = player.name || '';
 
     const playerListEntryMain = document.createElement('div');
     playerListEntryMain.classList.add('listEntryMain');
@@ -267,7 +268,9 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   if ('spriteName' in player) {
     getSpriteProfileImg(player.spriteName, player.spriteIndex || 0, undefined, undefined, playerGameId).then(spriteImg => {
       if (spriteImg && playerListEntrySprite.src !== spriteImg)
-        playerListEntrySprite.src = spriteImg
+        fastdom.mutate(() => {
+          playerListEntrySprite.src = spriteImg
+        })
     });
   } else {
     let playerSpriteCacheEntry = playerSpriteCache[uuid];
@@ -276,7 +279,9 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
     if (playerSpriteCacheEntry) {
       getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, undefined, undefined, playerGameId).then(spriteImg => {
         if (spriteImg && playerListEntrySprite.src !== spriteImg)
-          playerListEntrySprite.src = spriteImg
+          fastdom.mutate(() => {
+            playerListEntrySprite.src = spriteImg
+          })
       });
       if (uuid === defaultUuid)
         updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, playerGameId);
@@ -297,14 +302,16 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
     else
       playerListEntry.dataset.unnamed = 'unnamed';
 
-    if (friendIcon)
-      friendIcon.remove();
-
-    if (playerFriendsCache.find(pf => pf.accepted && pf.uuid === uuid)) {
+    const isFriend = playerFriendsCache.findIndex(pf => pf.accepted && pf.uuid === uuid) !== -1;
+    if (isFriend && !friendIcon) {
       friendIcon = getSvgIcon('friend', true);
       friendIcon.classList.add('friendIcon');
       addTooltip(friendIcon, document.createTextNode(getMassagedLabel(localizedMessages.friends.friend)), true, true);
       nameText.after(friendIcon);
+      playerListEntry._friendIcon = friendIcon;
+    } else if (!isFriend) { 
+      friendIcon?.remove();
+      playerListEntry._friendIcon = undefined;
     }
 
     if (rankIcon)
@@ -340,8 +347,10 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
       for (let m = 0; m < player.medals[t]; m++) {
         const medalImg = document.createElement('img');
         medalImg.classList.add('playerListEntryMedal', 'medal');
-        medalImg.src = imgSrc;
         playerListEntryMedals.prepend(medalImg);
+        fastdom.mutate(() => {
+          medalImg.src = imgSrc;
+        })
         if (++medalCount >= 5)
           break;
       }
@@ -353,13 +362,17 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   }
 
   const showBadge = player.account && player.badge && badgeCache;
-  const badge = showBadge ? badgeCache.find(b => b.badgeId === player.badge) : null;
+  const badge = showBadge ? findBadge(player.badge) : null;
   const showBadgeOverlay = showBadge && badge?.overlayType;
   const showBadgeOverlay2 = showBadgeOverlay && badge.overlayType & BadgeOverlayType.DUAL;
-  const badgeUrl = showBadge ? getBadgeUrl(player.badge) : '';
+  const badgeUrl = showBadge ? getBadgeUrl(badge || player.badge) : '';
 
   playerListEntryBadge.classList.toggle('hidden', !showBadge);
-  playerListEntryBadge.style.backgroundImage = showBadge ? `url('${badgeUrl}')` : '';
+  const backgroundImageLink = showBadge ? `url('${badgeUrl}')` : '';
+  if (playerListEntryBadge.style.backgroundImage !== backgroundImageLink)
+    fastdom.mutate(() => {
+      playerListEntryBadge.style.backgroundImage = backgroundImageLink;
+    });
 
   if (showBadgeOverlay) {
     const badgeMaskUrl = badge.overlayType & BadgeOverlayType.MASK
@@ -384,11 +397,16 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
 
   if (showBadge) {
     if (localizedBadges) {
-      const badgeGame = Object.keys(localizedBadges).find(game => {
-        return Object.keys(localizedBadges[game]).find(b => b === player.badge);
-      });
+      let badgeGame = badge?.game;
+      if (!badgeGame)
+        for (const game in localizedBadges) {
+          if (player.badge in localizedBadges[game]) {
+            badgeGame = game;
+            break;
+          }
+        }
       if (badgeGame) {
-        playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, getMassagedLabel(localizedBadges[badgeGame][player.badge].name, true), true, true, false, null, playerListEntryBadge._badgeTippy);
+        playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, document.createTextNode(getMassagedLabel(localizedBadges[badgeGame][player.badge].name)), true, true, false, null, playerListEntryBadge._badgeTippy);
         if (!badge || badge.hidden)
           playerListEntryBadge._badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
       }
@@ -555,7 +573,9 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   if (initLocation) {
     playerLocation = document.createElement('small');
     playerLocation.classList.add('playerLocation');
-    entry.querySelector('.detailsContainer').appendChild(playerLocation);
+    fastdom.mutate(() => {
+      entry.querySelector('.detailsContainer').appendChild(playerLocation);
+    });
   }
 
   let playerGameId = player.game || gameId;
@@ -573,22 +593,29 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
         set2kkiGlobalChatMessageLocation(playerLocation, player.mapId, player.prevMapId, prevLocations);
       } else {
         const locationsHtml = getLocalizedMapLocationsHtml(gameId, player.mapId, player.prevMapId, player.x, player.y, getInfoLabel('&nbsp;|&nbsp;'));
-        playerLocation.innerHTML = locationsHtml;
+        fastdom.mutate(() => {
+          playerLocation.innerHTML = locationsHtml;
+        });
         if (playerLocation.dataset.systemOverride)
           applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride);
       }
     } else {
-      playerLocation.innerHTML = `<span class="infoLabel"><a href="../${playerGameId}/" target="_blank">${getMassagedLabel(localizedMessages.location.playing).replace('{GAME}', localizedMessages.games[playerGameId])}</a></span>`;
+      fastdom.mutate(() => {
+        playerLocation.innerHTML = `<span class="infoLabel"><a href="../${playerGameId}/" target="_blank">${getMassagedLabel(localizedMessages.location.playing).replace('{GAME}', localizedMessages.games[playerGameId])}</a></span>`;
+      });
       if (playerLocation.dataset.systemOverride)
         applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
     }
   } else if (showLastOnline) {
     const lastActive = getLastOnlineInterval(new Date(player.lastActive));
     fastdom.mutate(() => {
-      if (parseInt(lastActive) < 5000) 
-        playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', lastActive)}</span>`;
+      const infoLabel = document.createElement('span');
+      infoLabel.classList.add('infoLabel');
+      if (parseInt(lastActive) < 5000)
+        infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', lastActive);
       else
-        playerLocation.innerHTML = `<span class="infoLabel">${getMassagedLabel(localizedMessages.lastOnline.longTime)}</span>`;
+        infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.longTime);
+      playerLocation.replaceChildren(infoLabel);
     });
     if (playerLocation.dataset.systemOverride)
       applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
@@ -678,11 +705,14 @@ function getPlayerListIdEntrySortFunc(playerListId) {
     switch (playerListId) {
       case 'playerList':
       case 'partyPlayerList':
+        const collator = new Intl.Collator(undefined, { sensitivity: 'base' });
         const baseFunc = (a, b) => {
           const playerA = globalPlayerData[a.dataset.uuid];
           const playerB = globalPlayerData[b.dataset.uuid];
           if (playerA?.rank !== playerB?.rank)
             return playerA?.rank < playerB?.rank ? 1 : -1;
+          if (a.dataset.name && b.dataset.name)
+            return collator.compare(a.dataset.name, b.dataset.name);
           if (a.dataset.unnamed) {
             if (b.dataset.unnamed)
               return a.dataset.uuid >= b.dataset.uuid ? 1 : -1;
@@ -832,7 +862,7 @@ function updateBlocklist(updateModal) {
 
 function getLastOnlineInterval(date) {
   const localizedInterval = localizedMessages.lastOnline.interval;
-  const timeDiffSeconds = (new Date().getTime() - date.getTime()) / 1000;
+  const timeDiffSeconds = (Date.now() - date.getTime()) / 1000;
   if (timeDiffSeconds < 60)
     return localizedInterval.short;
   const timeDiffMinutes = Math.floor(timeDiffSeconds / 60);
@@ -849,15 +879,15 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
   if (!gameId)
     gameId = ynoGameId;
-  return new Promise(resolve => {
-    const spriteData = favicon ? faviconCache : spriteCache;
-    if (!spriteData[sprite])
-      spriteData[sprite] = {};
-    if (!spriteData[sprite][idx])
-      spriteData[sprite][idx] = null;
-    const spriteUrl = spriteData[sprite][idx];
-    if (spriteUrl)
-      return resolve(spriteUrl);
+  const spriteData = favicon ? faviconCache : spriteCache;
+  if (!spriteData[sprite])
+    spriteData[sprite] = {};
+  if (!spriteData[sprite][idx])
+    spriteData[sprite][idx] = null;
+  const spriteUrl = spriteData[sprite][idx];
+  if (spriteUrl)
+    return spriteUrl;
+  return await new Promise(resolve => {
     const defaultSpriteObj = getDefaultSprite();
     const defaultSprite = defaultSpriteObj.sprite;
     const defaultIdx = defaultSpriteObj.idx;

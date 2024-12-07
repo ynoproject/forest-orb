@@ -685,7 +685,13 @@ function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interact
   if (!instance)
     return addTooltip(target, content, asTooltipContent, delayed, interactive, options);
 
-  instance.setContent(asTooltipContent ? `<div class="tooltipContent">${content}</div>` : content);
+  if (asTooltipContent) {
+    const tooltipContent = document.createElement('div');
+    tooltipContent.classList.add('tooltipContent');
+    tooltipContent.append(content);
+    content = tooltipContent;
+  }
+  instance.setContent(content);
   return instance;
 }
 

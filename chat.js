@@ -170,9 +170,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       badgeEl.classList.add('badge', 'nameBadge');
 
       if (localizedBadges) {
-        const badgeGame = Object.keys(localizedBadges).find(game => {
-          return Object.keys(localizedBadges[game]).find(b => b === player.badge);
-        });
+        const badgeGame = badge?.game;
         if (badgeGame) {
           const badgeTippy = addTooltip(badgeEl, document.createTextNode(getMassagedLabel(localizedBadges[badgeGame][player.badge].name)), true, true);
           if (!badge || badge.hidden)

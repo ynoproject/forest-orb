@@ -73,7 +73,9 @@ async function onUpdatePlayerFriends(playerFriends) {
 
   [ 'incoming', 'outgoing', 'online', 'offline' ].forEach(c => updatePlayerListEntryHeader(friendsPlayerList, 'friends', c));
 
-  friendsPlayerList.scrollTop = friendsPlayerListScrollTop;
+  setTimeout(() => {
+    friendsPlayerList.scrollTop = friendsPlayerListScrollTop;
+  });
 
   if (!playerFriendsCache.length)
     document.getElementById('incomingFriendRequestCountContainer').classList.add('hidden');

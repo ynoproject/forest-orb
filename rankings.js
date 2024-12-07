@@ -301,10 +301,8 @@ function fetchAndLoadRankingsPage(categoryId, subCategoryId, page) {
           if (ranking.badge && localizedBadges) {
             const badgeEl = playerCell.querySelector('.badge');
             if (badgeEl) {
-              const badge = badgeCache.find(b => b.badgeId === ranking.badge);
-              const badgeGame = Object.keys(localizedBadges).find(game => {
-                return Object.keys(localizedBadges[game]).find(b => b === ranking.badge);
-              });
+              const badge = findBadge(ranking.badge);
+              const badgeGame = badge?.game;
               if (badgeGame) {
                 const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][ranking.badge].name, true), true, true);
                 if (!badge || badge.hidden)

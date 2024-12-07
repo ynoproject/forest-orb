@@ -1,4 +1,6 @@
 /**
+  Either SimpleBadge or Badge
+  Cross-check with badges.go in ynoserver
   @typedef {Object} Badge
   @property {string} badgeId
   @property {string} [game]
@@ -10,12 +12,11 @@
   @property {number} [overlayType]
   @property {boolean} [unlocked]
   @property {boolean} [secret]
-  Either SimpleBadge or Badge
-  Cross-check with badges.go in ynoserver
+  @property {number} originalOrder
 */
 
 /**
-  @typedef {Badge[] & {full?: boolean}} BadgeCache
+  @typedef {Badge[] & {full?: boolean; byId?: Map<string, Badge>}} BadgeCache
 */
 
 const maxBadgeSlotRows = 8;
@@ -23,7 +24,7 @@ const maxBadgeSlotCols = 7;
 let badgeSlotRows = 1;
 let badgeSlotCols = 3;
 
-/** @type {BadgeCache?} */
+/** @type {BadgeCache?} sorted by badgeId */
 let badgeCache;
 /** @type {string[][]} row-major */
 let badgeSlotCache;
@@ -191,7 +192,7 @@ function initBadgeControls() {
           return -1;
         return 1;
       }
-      return 0;
+      return a.originalOrder - b.originalOrder;
     };
 
     // If we already have cache and it hasn't been invalidated, only update the modal.
@@ -199,7 +200,7 @@ function initBadgeControls() {
       return updateBadgeModalOnly();
     lastLang = globalConfig.lang;
 
-    const playerBadges = await fetchPlayerBadges();
+    let playerBadges = await fetchPlayerBadges();
     
     badgeFilterCache.length = 0;
 
@@ -209,7 +210,7 @@ function initBadgeControls() {
       userSelectedSortOrder = sortOrderType;
       sortOrderType = undefined;
     }
-    playerBadges.sort(badgeCompareFunc);
+    playerBadges = [...playerBadges].sort(badgeCompareFunc);
     if (userSelectedSortOrder)
       sortOrderType = userSelectedSortOrder;
     gameBadges = {};
@@ -255,6 +256,7 @@ function initBadgeControls() {
       }
       gameBadges[badge.game][badge.group].push(item);
     }
+    playerBadges.length = 0;
 
     const nullBadge = getBadgeItem({ badgeId: 'null', game: null }, false, true, true, true);
     nullBadge.classList.add('nullBadgeItem');
@@ -831,6 +833,25 @@ function determineTitle(descriptor, x, y) {
   return descriptor.title;
 }
 
+function findBadge(badgeId) {
+  if (!badgeId || badgeId === 'null') return;
+  let left = 0;
+  let right = badgeCache.length - 1;
+  const coll = new Intl.Collator;
+  while (left <= right) {
+    const mid = (left + right) >> 1;
+    const badge = badgeCache[mid];
+    switch (coll.compare(badge.badgeId, badgeId)) {
+    case 0:
+      return badge;
+    case -1:
+      left = mid + 1; break;
+    default:
+      right = mid - 1;
+    }
+  }
+}
+
 function initBadgeGalleryModal() {
   const unlockedBadges = badgeCache.filter(b => b.unlocked && !b.hidden);
   const totalBp = unlockedBadges.reduce((sum, b) => sum + b.bp, 0);
@@ -901,7 +922,7 @@ function getBadgeUrl(badge, staticOnly) {
   let badgeId;
   if (typeof badge === 'string') {
     badgeId = badge;
-    badge = badgeId ? badgeCache.find(b => b.badgeId === badgeId) : null;
+    badge = badgeId ? findBadge(badgeId) : null;
   } else
     badgeId = badge.badgeId;
   return badgeId ? `images/badge/${badgeId}${!staticOnly && badge?.animated ? '.gif' : '.png'}` : '';
@@ -1132,10 +1153,10 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
   return item;
 }
 
-async function fetchPlayerBadges() {
+function fetchPlayerBadges() {
   if (badgeCache?.full)
     return badgeCache;
-  return await apiFetch('badge?command=list')
+  return apiFetch('badge?command=list')
     .then(response => {
       if (!response.ok)
         throw new Error(response.statusText);
@@ -1149,6 +1170,9 @@ async function fetchPlayerBadges() {
         }
       }
       badgeCache = badges;
+      for (let i = 0; i < badgeCache.length; ++i)
+        badgeCache[i].originalOrder = i;
+      badgeCache.sort((a, z) => a.badgeId.localeCompare(z.badgeId));
       badgeCache.full = true;
       return badgeCache;
     }, err => {
@@ -1171,6 +1195,9 @@ function updateBadges(callback) {
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }
       badgeCache = badges;
+      for (let i = 0; i << badgeCache.length; ++i)
+        badgeCache[i].originalOrder = i;
+      badgeCache.sort((a, z) => a.badgeId.localeCompare(z.badgeId));
 
       if (badgeCacheUpdateTimer)
         clearInterval(badgeCacheUpdateTimer);
@@ -1353,11 +1380,10 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 badgeSlot.dataset.colIndex = c;
 
                 if (badgeId !== 'null') {
-                  const badgeUrl = getBadgeUrl(badgeId);
+                  const badge = findBadge(badgeId);
+                  const badgeUrl = getBadgeUrl(badge || badgeId);
 
                   badgeSlot.style.backgroundImage = `url('${badgeUrl}')`;
-
-                  const badge = badgeCache.find(b => b.badgeId === badgeId);
 
                   if (badge?.overlayType) {
                     const badgeSlotOverlay = document.createElement('div');
@@ -1441,17 +1467,17 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 const badgeId = badgeSlots[badge.dataset.rowIndex][badge.dataset.colIndex];
                 if (badgeId === 'null')
                   continue;
-                const badgeGame = Object.keys(localizedBadges).find(game => {
-                  return Object.keys(localizedBadges[game]).find(b => b === badgeId);
-                });
+                const badgeObj = findBadge(badgeId);
+                const badgeGame = badgeObj?.game;
                 if (badgeGame) {
                   const badgeTippy = addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
                   applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName);
-                  if (badgeCache.find(b => b.badgeId === badgeId)?.hidden)
+                  if (badgeObj?.hidden)
                     badgeTippy.popper.querySelector('.tooltipContent').classList.add('altText');
-                  badge.onclick = async () => {
+                  badge.onclick = function () {
+                    instance.hide();
                     badgeTippy.hide();
-                    await viewBadgeInModal(badgeId, badgeGame);
+                    viewBadgeInModal(badgeId, badgeGame);
                   }
                 }
               }

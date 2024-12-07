@@ -471,10 +471,8 @@ function initScreenshotsModal(isCommunity) {
         const playerName = screenshotItem.querySelector('.nameTextContainer');
         const badgeEl = playerName.querySelector('.badge');
         if (badgeEl) {
-          const badge = badgeCache.find(b => b.badgeId === screenshot.owner.badge);
-          const badgeGame = Object.keys(localizedBadges).find(game => {
-            return Object.keys(localizedBadges[game]).find(b => b === screenshot.owner.badge);
-          });
+          const badge = findBadge(screenshot.owner.badge);
+          const badgeGame = badge?.game;
           if (badgeGame) {
             const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][screenshot.owner.badge].name, true), true, true);
             if (!badge || badge.hidden)
