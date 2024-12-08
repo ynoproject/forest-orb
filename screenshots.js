@@ -214,8 +214,10 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 
 async function downloadScreenshot(url, date, screenshotData, resized) {
   if (url.startsWith(serverUrl)) {
-    fetch(url).then(response => response.blob()).then(blob => {
-      downloadScreenshot(URL.createObjectURL(blob), date, screenshotData, true);
+    fetch(url).then(response => response.blob()).then(async blob => {
+      const blobUrl = URL.createObjectURL(blob);
+      await downloadScreenshot(blobUrl, date, screenshotData, true);
+      URL.revokeObjectURL(blobUrl);
     });
     return;
   }
@@ -233,11 +235,16 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
     scaleContext.imageSmoothingEnabled = false;
 
     const img = new Image(320, 240);
-    img.onload = () => {
+    img.onload = async () => {
       scaleContext.drawImage(img, 0, 0, width, height);
-      downloadScreenshot(scaleCanvas.toDataURL(), date, screenshotData, true);
+      scaleCanvas.toBlob(async blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        await downloadScreenshot(blobUrl, date, screenshotData, true);
+        URL.revokeObjectURL(blobUrl);
+      });
     };
     img.src = url;
+    await img.decode();
     return;
   }
 
@@ -286,12 +293,9 @@ function takeScreenshot() {
       thumb.src = url;
       toast.querySelector('.toastMessage').prepend(thumb);
       toast.classList.add('screenshotToast');
-      fastdom.measure(() => {
-        const height = toast.getBoundingClientRect().height + 8;
-        fastdom.mutate(() => {
-          document.getElementById('toastContainer').style.setProperty('--toast-offset', `-${height}px`);
-        });
-      });
+      // force the toast to appear from the bottom
+      const height = toast.getBoundingClientRect().height + 8;
+      document.getElementById('toastContainer').style.setProperty('--toast-offset', `-${height}px`);
 
       thumb.onclick = () => viewScreenshot(url, dateTaken, { mapId, mapX, mapY });
 
@@ -333,6 +337,7 @@ function checkScreenshot(canvas) {
   return false;
 }
 
+/** {@link url} must be a data URL. */
 function getScreenshotBinary(url) {
   const arr = url.split(',');
   const bstr = atob(arr[1]);
@@ -470,9 +475,9 @@ function initScreenshotsModal(isCommunity) {
 
         const playerName = screenshotItem.querySelector('.nameTextContainer');
         const badgeEl = playerName.querySelector('.badge');
-        if (badgeEl) {
+        if (badgeEl && localizedBadges) {
           const badge = findBadge(screenshot.owner.badge);
-          const badgeGame = badge?.game;
+          const badgeGame = localizedBadges[badge?.game]?.[screenshot.owner.badge] && badge.game;
           if (badgeGame) {
             const badgeTippy = addTooltip(badgeEl, getMassagedLabel(localizedBadges[badgeGame][screenshot.owner.badge].name, true), true, true);
             if (!badge || badge.hidden)

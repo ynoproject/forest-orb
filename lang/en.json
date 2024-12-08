@@ -164,7 +164,8 @@
         "screenshotSettings": "Screenshots",
         "notificationSettings": "Notifications",
         "cacheSettings": "Cache",
-        "accountSettings": "Account"
+        "accountSettings": "Account",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Blocklist",

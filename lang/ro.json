@@ -164,7 +164,8 @@
         "screenshotSettings": "Screenshots",
         "notificationSettings": "Notificări",
         "cacheSettings": "Cache",
-        "accountSettings": "Cont"
+        "accountSettings": "Cont",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Blocklist",

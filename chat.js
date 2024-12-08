@@ -170,7 +170,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       badgeEl.classList.add('badge', 'nameBadge');
 
       if (localizedBadges) {
-        const badgeGame = badge?.game;
+        const badgeGame = localizedBadges[badge?.game]?.[player.badge] && badge.game;
         if (badgeGame) {
           const badgeTippy = addTooltip(badgeEl, document.createTextNode(getMassagedLabel(localizedBadges[badgeGame][player.badge].name)), true, true);
           if (!badge || badge.hidden)
@@ -789,13 +789,14 @@ function wrapMessageEmojis(node, force) {
   }
 }
 
+const screenshotPattern = /\[(t?)(\w{16})(?::(\d+))?\]/;
 /** Decodes the message constructed by {@linkcode chatInputActionFired} */
 function tryEmbedScreenshot(node, uuid) {
   if (node.childNodes.length) {
     for (let childNode of node.childNodes) {
       if (childNode.nodeType === Node.TEXT_NODE) {
         let screenshotResult;
-        if ((screenshotResult = /\[(t?)(\w{16})(?::(\d+))?\]/.exec(childNode.textContent)) !== null) {
+        if ((screenshotResult = screenshotPattern.exec(childNode.textContent)) !== null) {
           let isTemp = !!screenshotResult[1];
           const flags = +screenshotResult[3] || 0;
 

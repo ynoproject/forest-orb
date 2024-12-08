@@ -1549,9 +1549,9 @@ function updateCanvasFullscreenSize() {
     const showExplorer = gameId === '2kki' && contentElement.classList.contains('loggedIn') && layoutElement.classList.contains('explorer');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
-    const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
-    scaleX -= scaleX % scaleFraction;
-    scaleY -= scaleY % scaleFraction;
+    // const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
+    // scaleX -= scaleX % scaleFraction;
+    // scaleY -= scaleY % scaleFraction;
     const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
     canvasElement.style.transform = `scale(${scale})`;
     document.documentElement.style.setProperty('--canvas-scale', scale);
@@ -1655,7 +1655,7 @@ function setLang(lang, isInit) {
   else
     document.documentElement.removeAttribute('dir');
   globalConfig.lang = lang;
-  initBlocker = initBlocker.then(() => withTimeout(500, // TODO Is this enough?
+  initBlocker = initBlocker.then(() => withTimeout(800, 
     fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
       if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
         easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
@@ -1717,17 +1717,29 @@ function setMobileControlType(value, isInit) {
   if (!isInit)
     updateConfig(globalConfig, true);
 
+  updateMobileControlType();
+}
+
+let availableControlType = 'default';
+function updateMobileControlType() {
+  if (!hasTouchscreen) return;
+  const isHorizontal = !((screen.orientation.angle - 90) % 180);
+
   const dpad = document.getElementById('dpad');
   const joystick = document.getElementById('joystick');
 
-  const hasJoystick = value === 'joystick' || value === 'dpad';
+  availableControlType = isHorizontal ? globalConfig.mobileControlsType : 'default';
+  const hasJoystick = availableControlType === 'joystick' || availableControlType === 'dpad';
   dpad.classList.toggle('hasJoystick', hasJoystick);
   joystick.classList.toggle('hidden', !hasJoystick);
 
   for (const control of joystick.querySelectorAll('[data-style]')) {
-    control.classList.toggle('hidden', control.dataset.style !== value);
+    control.classList.toggle('hidden', control.dataset.style !== availableControlType);
   }
 }
+
+if (hasTouchscreen)
+  screen.orientation.addEventListener('change', updateMobileControlType);
 
 function onSelectUiTheme(e) {
   const modalContainer = document.getElementById('modalContainer');

@@ -16,7 +16,7 @@
 */
 
 /**
-  @typedef {Badge[] & {full?: boolean; byId?: Map<string, Badge>}} BadgeCache
+  @typedef {Badge[] & {full?: boolean}} BadgeCache
 */
 
 const maxBadgeSlotRows = 8;
@@ -1468,7 +1468,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
                 if (badgeId === 'null')
                   continue;
                 const badgeObj = findBadge(badgeId);
-                const badgeGame = badgeObj?.game;
+                const badgeGame = localizedBadges[badgeObj?.game]?.[badgeId] && badgeObj.game;
                 if (badgeGame) {
                   const badgeTippy = addTooltip(badge, getMassagedLabel(localizedBadges[badgeGame][badgeId].name, true), true, false, true);
                   applyThemeStyles(badgeTippy.popper.querySelector('.tippy-box'), parsedSystemName);
@@ -1523,6 +1523,7 @@ function showBadgeToastMessage(key, icon, badgeId) {
 
 /** @param {Element} element The element on which two-finger panning should be applied. */
 function setUpTwoFingerPan(element, contentElement) {
+  if (!hasTouchscreen) return;
   if (!contentElement) contentElement = element;
   if (!(element && contentElement)) return;
 

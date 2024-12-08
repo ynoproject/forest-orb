@@ -397,14 +397,7 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
 
   if (showBadge) {
     if (localizedBadges) {
-      let badgeGame = badge?.game;
-      if (!badgeGame)
-        for (const game in localizedBadges) {
-          if (player.badge in localizedBadges[game]) {
-            badgeGame = game;
-            break;
-          }
-        }
+      const badgeGame = localizedBadges[badge?.game]?.[player.badge] && badge.game;
       if (badgeGame) {
         playerListEntryBadge._badgeTippy = addOrUpdateTooltip(playerListEntryBadge, document.createTextNode(getMassagedLabel(localizedBadges[badgeGame][player.badge].name)), true, true, false, null, playerListEntryBadge._badgeTippy);
         if (!badge || badge.hidden)

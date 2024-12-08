@@ -204,7 +204,7 @@ function updateModControls() {
       const badgeId = prompt(localizedContextRoot.prompt.replace('{PLAYER}', playerName));
       if (badgeId) {
         const badgeGame = Object.keys(localizedBadges).find(game => {
-          return Object.keys(localizedBadges[game]).find(b => b === badgeId);
+          return badgeId in localizedBadges[game];
         });
         if (badgeGame) {
           const badgeName = localizedBadges[badgeGame][badgeId].name;

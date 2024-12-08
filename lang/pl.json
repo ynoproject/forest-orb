@@ -164,7 +164,8 @@
         "screenshotSettings": "Zrzuty ekranu",
         "notificationSettings": "Powiadomienia",
         "cacheSettings": "Cache",
-        "accountSettings": "Konto"
+        "accountSettings": "Konto",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Zablokowani użytkownicy",

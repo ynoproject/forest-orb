@@ -164,7 +164,8 @@
         "screenshotSettings": "Ekran Görüntüleri",
         "notificationSettings": "Bildirim",
         "cacheSettings": "Cache",
-        "accountSettings": "Hesap"
+        "accountSettings": "Hesap",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Engel Listesi",

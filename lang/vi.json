@@ -164,7 +164,8 @@
         "screenshotSettings": "Chụp màn hình",
         "notificationSettings": "Thông báo",
         "cacheSettings": "Cache",
-        "accountSettings": "Tài khoản"
+        "accountSettings": "Tài khoản",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Danh sách chặn",

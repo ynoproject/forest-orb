@@ -163,7 +163,8 @@
         "chatSettings": "Babilejo",
         "screenshotSettings": "Ekrankopioj",
         "notificationSettings": "Sciigoj",
-        "accountSettings": "Konto"
+        "accountSettings": "Konto",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Listo de Blokitoj",

@@ -164,7 +164,8 @@
         "screenshotSettings": "Captura de Tela",
         "notificationSettings": "Notificação",
         "cacheSettings": "Cache",
-        "accountSettings": "Conta"
+        "accountSettings": "Conta",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Blocklist",

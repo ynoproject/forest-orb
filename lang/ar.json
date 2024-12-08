@@ -164,7 +164,8 @@
         "screenshotSettings": "لقطات الشاشة",
         "notificationSettings": "التنبيهات",
         "cacheSettings": "Cache",
-        "accountSettings": "الحساب"
+        "accountSettings": "الحساب",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "قائمة الحظر",

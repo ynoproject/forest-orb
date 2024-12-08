@@ -164,7 +164,8 @@
         "screenshotSettings": "截图",
         "notificationSettings": "通知",
         "cacheSettings": "缓存",
-        "accountSettings": "账号"
+        "accountSettings": "账号",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "黑名单",

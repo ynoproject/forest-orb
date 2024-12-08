@@ -25,7 +25,7 @@ canvas.addEventListener('webglcontextrestored', async () => {
 });
 
 // Handle clicking on the fullscreen button
-document.querySelector('#controls-fullscreen').addEventListener('click', () => {
+document.getElementById('controls-fullscreen').addEventListener('click', () => {
   const layout = document.getElementById('layout');
   if (layout.requestFullscreen) {
     if (!document.fullscreenElement) {
@@ -39,6 +39,13 @@ document.querySelector('#controls-fullscreen').addEventListener('click', () => {
       setFullscreenControlsHideTimer();
     } else
       document.webkitExitFullscreen();
+  }
+  if (screen.orientation && hasTouchscreen) {
+    // force landscape orientation but don't lock, in case user opens a wiki link
+    if (document.fullscreenElement || document.webkitFullscreenElement)
+      screen.orientation.lock?.('landscape').then(() => screen.orientation.unlock(), () => {});
+    else
+      screen.orientation.unlock();
   }
   onResize();
 });
@@ -202,7 +209,7 @@ if (hasTouchscreen) {
     bindKey(button, button.dataset.key, button.dataset.keyCode);
 
   // Setup for the floating controls
-  // These controls are only available in fullscreen mode.
+  // These controls are only available in landscape fullscreen mode.
   /** @type {Touch} */
   let anchor;
   /** @type {Touch} */
@@ -220,14 +227,15 @@ if (hasTouchscreen) {
   const insetCircle = document.getElementById('insetCircle');
   const joystickCircle = document.getElementById('joystickCircle');
   const dpadCircle = document.getElementById('dpadCircle');
+  const canvasContainer = document.getElementById('canvasContainer');
   const extent = 10;
   const deadzone = 0.5;
-  canvas.addEventListener('touchstart', ev => {
+  canvasContainer.addEventListener('touchstart', ev => {
     if (ev.targetTouches.length !== 1 || !document.fullscreenElement) return;
     canvas.focus();
 
     let radius;
-    switch (globalConfig.mobileControlsType) {
+    switch (availableControlType) {
       case 'joystick': radius = joystickCircle.getBoundingClientRect().width / 2; break;
       case 'dpad': radius = dpadCircle.getBoundingClientRect().width / 2; break;
       case 'default':
@@ -237,8 +245,8 @@ if (hasTouchscreen) {
     joystick.classList.remove('fadeOut');
     anchor = ev.targetTouches[0];
 
-    joystick.style.top = `${anchor.screenY - radius}px`;
-    joystick.style.left = `${anchor.screenX - radius}px`;
+    joystick.style.top = `${anchor.clientY - radius}px`;
+    joystick.style.left = `${anchor.clientX - radius}px`;
     requestAnimationFrame(function driveControls() {
       let direction;
       if (direction = directions[lastDirection])
@@ -262,11 +270,11 @@ if (hasTouchscreen) {
         } else if (deg >= 225 && deg < 315) {
           lastDirection = 3;
         }
-        if ((Math.abs(dx) >= deadzone || Math.abs(dy) >= deadzone) && (direction = directions[lastDirection])) { 
+        if (Math.sqrt(dx * dx + dy * dy) >= deadzone && (direction = directions[lastDirection])) { 
           simulateKeyboardEvent('keydown', direction.key, direction.code);
 
           // Process visual changes for the controls
-          switch (globalConfig.mobileControlsType) {
+          switch (availableControlType) {
             case 'dpad':
               for (const { button } of Object.values(directions))
                 button.classList.remove('active');
@@ -292,7 +300,7 @@ if (hasTouchscreen) {
     });
   });
 
-  canvas.addEventListener('touchmove', ev => {
+  canvasContainer.addEventListener('touchmove', ev => {
     if (!anchor && ev.targetTouches.length) {
       anchor = ev.targetTouches[0];
       return;
@@ -300,10 +308,10 @@ if (hasTouchscreen) {
     compass = ev.targetTouches[0];
   });
 
-  canvas.addEventListener('touchend', () => {
+  canvasContainer.addEventListener('touchend', () => {
     anchor = compass = undefined;
     joystick.classList.add('fadeOut');
-    switch (globalConfig.mobileControlsType) {
+    switch (availableControlType) {
       case 'joystick':
         insetCircle.setAttribute('cx', 25);
         insetCircle.setAttribute('cy', 25);

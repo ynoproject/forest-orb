@@ -164,7 +164,8 @@
         "screenshotSettings": "Снимки",
         "notificationSettings": "Уведомления",
         "cacheSettings": "Cache",
-        "accountSettings": "Аккаунт"
+        "accountSettings": "Аккаунт",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Заблокированные",

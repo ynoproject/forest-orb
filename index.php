@@ -71,15 +71,9 @@
       break;
   }
 
-  function isFirefoxMobile() {
-    $userAgent = $_SERVER['HTTP_USER_AGENT'];
-    return strpos($userAgent, 'Firefox') !== false && strpos($userAgent, 'Mobile') !== false;
-  }
-
-  function isFirefox() {
-    $userAgent = $_SERVER['HTTP_USER_AGENT'];
-    return strpos($userAgent, 'Firefox') !== false;
-  }
+  $userAgent = $_SERVER['HTTP_USER_AGENT'];
+  $isMobile = strpos($userAgent, 'Mobile') !== false;
+  $isFirefox = strpos($userAgent, 'Firefox') !== false;
 ?>
 <!doctype html>
 <html lang="en">
@@ -87,7 +81,7 @@
   <title><?php echo $gameName; ?> Online - YNOproject</title>
   <meta charset="utf-8">
   <meta name="description" content="Play multiplayer <?php echo $gameName; ?> for free! Ad-free and no registration required.">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 <?php if (isFirefoxMobile()): ?>, user-scalable=no<?php endif ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 <?php if ($isFirefox && $isMobile): ?>, user-scalable=no<?php endif ?>">
   <?php if ($gameId == "2kki"): ?>
     <meta name="2kkiVersion" content=""> <!-- eg. 0.117g Patch 4 -->
   <?php endif ?>
@@ -103,7 +97,7 @@
   <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/scrollwatch@2.0.1/dist/ScrollWatch-2.0.1.min.js"></script>
 </head>
-<body <?php if (isFirefox()): ?>class="browserFirefox"<?php endif ?>>
+<body <?php if ($isFirefox): ?>class="browserFirefox"<?php endif ?>>
   <div id="background"></div>
   <div id="backgroundOverlay"></div>
   <div id="content">
@@ -724,6 +718,9 @@
                 <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notifications</button>
                 <button id="cacheSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.cacheSettings" onclick="openCacheSettingsModal('settingsModal')">Cache</button>
                 <button id="accountSettingsButton" class="unselectable accountRequired" type="button" data-i18n="[html]modal.settings.accountSettings">Account</button>
+                <?php if ($isMobile): ?>
+                  <button class="unselectable" type="button" data-i18n="[html]modal.settings.engineSettings" onclick="closeModal();simulateKeyboardInput('F1',112)">Engine (F1)</button>
+                <?php endif ?>
               </li>
             </ul>
           </div>

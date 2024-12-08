@@ -164,7 +164,8 @@
         "screenshotSettings": "스크린샷",
         "notificationSettings": "알람",
         "cacheSettings": "Cache",
-        "accountSettings": "계정"
+        "accountSettings": "계정",
+        "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "차단 목록",
