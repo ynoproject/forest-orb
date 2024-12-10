@@ -1549,9 +1549,10 @@ function updateCanvasFullscreenSize() {
     const showExplorer = gameId === '2kki' && contentElement.classList.contains('loggedIn') && layoutElement.classList.contains('explorer');
     let scaleX = window.innerWidth / canvasElement.offsetWidth;
     let scaleY = window.innerHeight / canvasElement.offsetHeight;
-    // const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
-    // scaleX -= scaleX % scaleFraction;
-    // scaleY -= scaleY % scaleFraction;
+    // not all clients have good scaling abilities, so choose something that will be amenable to good quality.
+    const scaleFraction = contentElement.classList.contains('downscale') ? 0.25 : 0.5;
+    scaleX -= scaleX % scaleFraction;
+    scaleY -= scaleY % scaleFraction;
     const scale = Math.max(Math.min(scaleX, scaleY), 0.5);
     canvasElement.style.transform = `scale(${scale})`;
     document.documentElement.style.setProperty('--canvas-scale', scale);
@@ -1559,9 +1560,12 @@ function updateCanvasFullscreenSize() {
     if (window.innerWidth > 1050 || window.innerHeight < 595) {
       const chatboxContainerWidth = chatboxContainerElement.offsetWidth - 24;
       chatboxContainerMarginTop = '24px';
-      if (chatboxContainerWidth + 48 <= window.innerWidth - (canvasElement.offsetWidth * scale)) {
+      const freeWidth = window.innerWidth - (canvasElement.offsetWidth * scale) - chatboxContainerWidth
+      if (freeWidth >= 16) {
         if (showChat) {
-          canvasContainerPaddingRight = `${chatboxContainerWidth}px`;
+          // if we haven't much width left, use all we have so that the chatbox is not so close
+          const flushedWidth = freeWidth <= 48 ? freeWidth : 0;
+          canvasContainerPaddingRight = `${chatboxContainerWidth + flushedWidth}px`;
           leftControlsMaxHeight = `${canvasElement.offsetHeight * scale}px`;
         }
       } else

@@ -40,13 +40,6 @@ document.getElementById('controls-fullscreen').addEventListener('click', () => {
     } else
       document.webkitExitFullscreen();
   }
-  if (screen.orientation && hasTouchscreen) {
-    // force landscape orientation but don't lock, in case user opens a wiki link
-    if (document.fullscreenElement || document.webkitFullscreenElement)
-      screen.orientation.lock?.('landscape').then(() => screen.orientation.unlock(), () => {});
-    else
-      screen.orientation.unlock();
-  }
   onResize();
 });
 

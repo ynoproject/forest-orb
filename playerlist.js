@@ -566,9 +566,6 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
   if (initLocation) {
     playerLocation = document.createElement('small');
     playerLocation.classList.add('playerLocation');
-    fastdom.mutate(() => {
-      entry.querySelector('.detailsContainer').appendChild(playerLocation);
-    });
   }
 
   let playerGameId = player.game || gameId;
@@ -601,17 +598,21 @@ function addOrUpdatePlayerListEntryLocation(locationVisible, player, entry) {
     }
   } else if (showLastOnline) {
     const lastActive = getLastOnlineInterval(new Date(player.lastActive));
+    const infoLabel = document.createElement('span');
+    infoLabel.classList.add('infoLabel');
+    if (parseInt(lastActive) < 5000)
+      infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', lastActive);
+    else
+      infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.longTime);
     fastdom.mutate(() => {
-      const infoLabel = document.createElement('span');
-      infoLabel.classList.add('infoLabel');
-      if (parseInt(lastActive) < 5000)
-        infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.template).replace('{INTERVAL}', lastActive);
-      else
-        infoLabel.innerHTML = getMassagedLabel(localizedMessages.lastOnline.longTime);
       playerLocation.replaceChildren(infoLabel);
     });
     if (playerLocation.dataset.systemOverride)
       applyThemeStyles(playerLocation, playerLocation.dataset.systemOverride, playerGameId);
+  }
+
+  if (initLocation) {
+    entry.querySelector('.detailsContainer').appendChild(playerLocation);
   }
 }
 
