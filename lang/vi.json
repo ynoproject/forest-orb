@@ -202,7 +202,7 @@
           "partyChatHistoryLimit": {
             "label": "Giới hạn Lịch sử chat nhóm"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Làm mờ mọi ảnh chụp màn hình"
         }
       },
       "screenshotSettings": {
@@ -434,7 +434,7 @@
       },
       "rankings": {
         "title": "Bảng Xếp Hạng",
-        "player": "Player"
+        "player": "Người chơi"
       },
       "screenshot": {
         "title": "Ảnh chụp màn hình của bạn",
@@ -514,20 +514,20 @@
         }
       },
       "report": {
-        "title": "Report",
-        "submit": "Submit",
+        "title": "Báo cáo",
+        "submit": "Gửi",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
-            "1": "Slurs, harmful or inappropriate language",
-            "2": "Harassment, bullying, stalking",
-            "3": "Inappropriate names",
-            "4": "Ban evasion",
-            "5": "Cheating, abusing exploits",
-            "6": "Underage player",
+            "title": "Lý do",
+            "placeholder": "Lý do khác (tối đa 50 ký tự)",
+            "1": "Dùng ngôn từ miệt thị, độc hại hoặc không phù hợp",
+            "2": "Quấy rối, bắt nạt, rình rập",
+            "3": "Dùng tên không phù hợp",
+            "4": "Trốn lệnh cấm (ban evasion)",
+            "5": "Gian lận, lợi dụng lỗ hổng trò chơi",
+            "6": "Người chơi dưới độ tuổi quy định",
             "7": "Spam",
-            "other": "Other (specify)"
+            "other": "Khác (nêu rõ)"
           }
         }
       },
@@ -712,7 +712,7 @@
         "confirm": "Bạn có chắc chắn muốn bỏ chặn {PLAYER}?"
       },
       "report": {
-        "label": "Report {PLAYER}"
+        "label": "Báo cáo {PLAYER}"
       },
       "admin": {
         "ban": {
@@ -838,7 +838,7 @@
       },
       "download": {
         "tooltip": "Tải bản lưu xuống",
-        "emptySlot": "Oops! Vị trí đã chọn không có bản lưu nào."
+        "emptySlot": "Úi! Vị trí đã chọn không có bản lưu nào."
       },
       "delete": {
         "tooltip": "Xóa bản lưu",
