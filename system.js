@@ -247,7 +247,14 @@ const allGameUiThemes = {
   ],
   'tsushin': [
     'SystemM',
-    'System'
+    'System',
+    'SystemB',
+    'SystemC',
+    'SystemD',
+    'SystemF',
+    'SystemP',
+    'SystemS',
+    'SystemW'
   ],
   'ultraviolet': [
     'ss-システムviolet',
