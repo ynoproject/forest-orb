@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Локация:&nbsp;",
-      "nextLocation": "Next Loc:&nbsp;",
+      "nextLocation": "Далее:&nbsp;",
       "immersionMode": "Режим погружения",
       "reconnect": "Переподключиться",
       "tab": {
@@ -115,18 +115,18 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Всплывающая ссылка на Вики",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Всегда",
+              "fullscreen": "Только в полноэкранном",
+              "never": "Никогда"
             }
           },
           "saveReminder": {
-            "label": "Save Reminder Frequency",
+            "label": "Частота напоминания о сохранениях",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} мин.",
+              "never": "Никогда"
             }
           },
           "soundVolume": "Громкость звуков",
@@ -141,14 +141,14 @@
             "helpText": "Отключает счётчик игроков, глобальный чат и подписи карт, дабы вы могли испытать большее погружение в игру."
           },
           "timeTrialinfo": {
-            "label": "Time Trial"
+            "label": "Испытание на время"
           },
           "toggleMobileControls": "Управление с экрана",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
-            "default": "D-Pad",
-            "joystick": "Floating Joystick",
-            "dpad": "Floating D-Pad"
+            "label": "Управление на мобильном",
+            "default": "Крестовина",
+            "joystick": "Плавающий стик",
+            "dpad": "Плавающая крестовина"
           },
           "toggleLocationDisplay": "Отображение локации",
           "toggleRankings": "Рейтинги",
@@ -157,15 +157,15 @@
             "helpText": "Предзагрузить часто используемые ресурсы, чтобы они всегда были доступны при необходимости; Требует перезагрузки страницы."
           },
           "toggleQuestionablePreloads": "Предзагрузить обои ПК",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "События"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
         "screenshotSettings": "Снимки",
         "notificationSettings": "Уведомления",
-        "cacheSettings": "Cache",
+        "cacheSettings": "Кэш",
         "accountSettings": "Аккаунт",
-        "engineSettings": "Engine (F1)"
+        "engineSettings": "Движок (F1)"
       },
       "blocklist": {
         "title": "Заблокированные",
@@ -202,7 +202,7 @@
           "partyChatHistoryLimit": {
             "label": "Лимит истории чата группы"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Размыть все снимки"
         }
       },
       "screenshotSettings": {
@@ -238,7 +238,7 @@
             "fields": {
               "siteUpdates": "Обновление сайта",
               "error": "Произошла ошибка",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "Для рабочего стола"
             }
           },
           "account": {
@@ -316,24 +316,24 @@
               "saveDownloaded": "Загрузка завершена",
               "saveUpToDate": "Сохранение актуально",
               "saveCleared": "Сохранение очищено",
-              "saveReminder": "Save Reminder"
+              "saveReminder": "Напоминания о сохранении"
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "События",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "Грядущие события"
             }
           }
         }
       },
       "cacheSettings": {
-        "title": "Cache Settings",
-        "clear": "Clear",
+        "title": "Настройки кэша",
+        "clear": "Очистить",
         "fields": {
-          "locationCache": "Location Cache",
-          "mapCache": "Map Cache",
-          "locationColorCache": "Location Color Cache"
+          "locationCache": "Локации",
+          "mapCache": "Карты",
+          "locationColorCache": "Цвета локаций"
         }
       },
       "accountSettings": {
@@ -363,7 +363,7 @@
               "all": "Все",
               "0": "Закрытые",
               "1": "Доступные",
-              "recentUnlock": "Recently Unlocked"
+              "recentUnlock": "Недавно разблокированные"
             }
           },
           "sortOrder": {
@@ -374,8 +374,8 @@
           },
           "search": {
             "label": "Поиск:&nbsp;",
-            "name": "Name:",
-            "location": "Location:"
+            "name": "Название:",
+            "location": "Локация:"
           }
         }
       },
@@ -384,14 +384,14 @@
         "badgeGalleryRowProgress": "До следующей строки (ОЗ)",
         "badgeGalleryColProgress": "До следующей колонки (значков)",
         "removeMode": {
-          "activate": "Remove Badges",
-          "deactivate": "Done"
+          "activate": "Убрать значки",
+          "deactivate": "Готово"
         }
       },
       "save": {
         "title": "Управление данными сохранений",
         "reload": "Сохранить изменения и перезагрузить",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "Если при сохранении вы играли на переведённой версии RPG_RT, в игре могут возникать ошибки до тех пор, пока вы снова не сохранитесь в EasyRPG без включённых переводов."
       },
       "uiTheme": {
         "title": "Стиль интерфейса",
@@ -434,13 +434,13 @@
       },
       "rankings": {
         "title": "Рейтинги",
-        "player": "Player"
+        "player": "Игрок"
       },
       "screenshot": {
         "title": "Ваш снимок",
         "download": "Скачать",
         "save": "Сохранить в Ваши снимки",
-        "share": "Share in Chat"
+        "share": "Отправить в чат"
       },
       "myScreenshots": {
         "title": "Ваши снимки",
@@ -475,35 +475,35 @@
         }
       },
       "schedule": {
-        "title": "Events",
-        "ongoing": "Ongoing Events",
-        "party": "Party Events",
-        "future": "Future Events",
-        "official": "Official Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "title": "События",
+        "ongoing": "События в процессе",
+        "party": "События группы",
+        "future": "Грядущие события",
+        "official": "Официальные события",
+        "noResults": "Нет запланированных событий.",
+        "doSchedule": "Запланировать событие"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "Редактировать событие",
+        "save": "Сохранить",
+        "cancel": "Отменить событие",
         "fields": {
-          "name": "Event Name",
-          "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "name": "Название",
+          "description": "Описание",
+          "datetime": "Дата и время",
+          "recurring": "Повторяющееся?",
           "theme": "Стиль оформления",
           "interval": {
-            "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "title": "Интервал",
+            "days": "дней",
+            "months": "месяцев",
+            "years": "лет"
           },
-          "restrictParty": "Limit to Party",
-          "official": "Official Event",
-          "resetOrganizer": "Reset Organizer",
+          "restrictParty": "Только для группы",
+          "official": "Официальное событие",
+          "resetOrganizer": "Сбросить организатора",
           "platforms": {
-            "title": "External Links",
+            "title": "Внешние ссылки",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -514,20 +514,20 @@
         }
       },
       "report": {
-        "title": "Report",
-        "submit": "Submit",
+        "title": "Жалоба",
+        "submit": "Подать",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
-            "1": "Slurs, harmful or inappropriate language",
-            "2": "Harassment, bullying, stalking",
-            "3": "Inappropriate names",
-            "4": "Ban evasion",
-            "5": "Cheating, abusing exploits",
-            "6": "Underage player",
-            "7": "Spam",
-            "other": "Other (specify)"
+            "title": "Причина",
+            "placeholder": "Своя причина (до 50 символов)",
+            "1": "Оскорбления, агрессивная или неприемлемая лексика",
+            "2": "Издевательство, травля, преследование",
+            "3": "Неприемлемое имя",
+            "4": "Обход бана",
+            "5": "Читерство, абьюз эксплойтов",
+            "6": "Игрок младше 13 лет",
+            "7": "Спам",
+            "other": "Другое (укажите)"
           }
         }
       },
@@ -538,7 +538,7 @@
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "При возникновении проблем, пожалуйста, свяжитесь с модераторами."
       },
       "explorerUndiscoveredLocations": {
         "title": "Неисследованная локация",
@@ -555,10 +555,10 @@
       "myScreenshots": "Мои снимки",
       "settings": "Настройки",
       "toggleMute": "Переключить звук",
-      "toggleHideLocation": "Toggle Location Sharing",
+      "toggleHideLocation": "Переключить сокрытие локации",
       "toggleGlobalMessage": "Переключить отправку в общий чат",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
+        "toggleNextLocation": "Показать/Скрыть локацию следующей экспедиции",
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
         "toggleMessageTimestamps": "Переключить отображение Меток времени у сообщений",
         "clearChat": "Очистить чат"
@@ -568,17 +568,17 @@
         "disbandParty": "Распустить группу"
       },
       "events": "Походы",
-      "locations": "Locations",
+      "locations": "Локации",
       "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
-      "schedules": "Events",
+      "schedules": "События",
       "nexus": "Вернуться на главную страницу",
       "explorerUndiscoveredLocations": "Просмотреть Неисследованные локации",
-      "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "timeTrial": "Чтобы включить режим Испытания на время, удерживайте Shift и Вправо после начала новой игры до того, как на экране что-либо появится.",
+      "mobileControlsType": "Альтернативы обычной крестовине для мобильного.<br>Плавающие варианты работают только в полноэкранном режиме."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Доступен Markdown, используйте {{l:World,имя ссылки (опционально)}} чтобы вставить ссылку на yume.wiki"
     },
     "reviewRules": "Просмотреть правила"
   },
@@ -609,8 +609,8 @@
     },
     "leavePage": "Вы уверены, что хотите покинуть страницу? Весь несохранённый прогресс будет утерян.",
     "logout": "Вы уверены, что хотите выйти из аккаунта?",
-    "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "loadingInstruct": ". <br /> <br /> Похоже, сайт грузится слишком долго; если проблема не исчезает, попробуйте CTRL+F5 или очистить кэш браузера (не куки!). Так-же вы можете проверить консоль (F12) на ошибки.",
+    "requestNotifications": "Получать уведомления о событиях и обновлениях экспедиций?",
     "connStatus": {
       "0": "Вне сети",
       "1": "В сети",
@@ -619,7 +619,7 @@
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
-      "longTime": "A long time ago",
+      "longTime": "Давно",
       "interval": {
         "short": "Менее минуты",
         "minutes": {
@@ -644,18 +644,18 @@
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS} Chance",
+        "1": "Одностороннее",
+        "2": "Без входа",
+        "4": "Разблокирует",
+        "8": "Заблокированно",
+        "16": "Тупиковое",
+        "32": "Изолированное",
+        "64": "Нужен эффект: ({PARAMS})",
+        "128": "Шанс {PARAMS}",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "Обходное",
+        "1024": "Конец обхода",
+        "2048": "Время года ({PARAMS})"
       },
       "depth": " ({DEPTH})",
       "playing": "Играет в {GAME}"
@@ -712,7 +712,7 @@
         "confirm": "Вы уверены, что хотите разблокировать {PLAYER}?"
       },
       "report": {
-        "label": "Report {PLAYER}"
+        "label": "Пожаловаться на {PLAYER}"
       },
       "admin": {
         "ban": {
@@ -790,7 +790,7 @@
       "partyOwner": "Глава группы",
       "confirmDisband": "Вы уверенны, что хотите распустить группу? Роспуск нельзя отменить.",
       "confirmTransferPartyOwner": "Вы уверенны, что хотите передать лидерство в группе игроку {PLAYER}?",
-      "offlineMemberSuffix": "Member offline",
+      "offlineMemberSuffix": "Не в сети",
       "categories": {
         "online": "В сети - {COUNT}",
         "offline": "Вне сети - {COUNT}"
@@ -817,11 +817,11 @@
         "immersionMode": "Если вам больше по душе опыт исследовательский, нежели социальный, попробуйте Режим Погружения. В нём скрывается общий чат, список и количество игроков, таким образом делая столкновения с другими игроками во время исследования более неожиданными.",
         "friendsMenu": "Если вы нажмёте правой клавишей мыши на ПК или будете удерживать нажатой пальцем иконку игрока вне Таблицы рекордов, то появится окошко, где вы сможете отправить игроку запрос в друзья, упомянуть в чате или заблокировать.",
         "easySettingsMenu": "Если вы играете с ПК, то при нажатии клавиши F1 во время игры вы можете получить доступ к меню настроек, где вы можете переназначить управление, а так-же изменить некоторые другие настройки.",
-        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
-        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
-        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
-        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
-        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
+        "floatingControls": "Если вы играете на сенсорном устройстве и вас не устраивает управление по-умолчанию, попробуйте плавающие стили управления, доступные в Настройках под пунктом .",
+        "recentBadges": "Случайно убрали уведомление о получении значка? Вы всегда можете проверить полученные в нынешней сессии значки, выбрав категорию Недавно разблокированных в Списке значков.",
+        "desktopHotkeys": "Если вы играете на ПК, то можете переключить полноэкранный режим на Alt+Enter, F7 будет стандартной клавишей для снимка игры, а клавиша Е (Английская T) будет открывать окно ввода чата.",
+        "badgeControls": "В меню Галлереи значков, вы можете перетаскивать значки, чтобы поменять их местами, либо удалить много значков разом в режиме Уборки значков.",
+        "cacheSettings": "Проблемы со старыми локациями или устаревшими картами? Настройки позволяют очистить кэш карт и локаций, чтобы вы могли получить последние данные.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/"
       }
     },
@@ -905,7 +905,7 @@
         "saveDownloaded": "Слот {SLOT} успешно обновлён.",
         "saveUpToDate": "Данные слота актуальны.",
         "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах.",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveReminder": "Не забывайте почаще сохраняться и выгружать ваши сохранения, чтобы не потерять свой прогресс в игре."
       }
     },
     "events": {
@@ -915,7 +915,7 @@
       "periodEnds": "Заканчивается: {DATE}",
       "current": "Доступно",
       "shortcut": "Можно добраться разблокируемым коротким путём.",
-      "toggleTracked": "Toggle Location Tracking",
+      "toggleTracked": "Переключить отслеживание локации",
       "availableUntilDate": "Доступен до:\n{DATE}",
       "types": {
         "-1": "Свободные",
@@ -947,7 +947,7 @@
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "Точное совпадение"
         }
       },
       "sortOrder": {
@@ -1029,30 +1029,30 @@
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "От {AUTHOR}",
+      "versionAdded": "Добавлено в {VERSION}",
+      "versionUpdated": "Обновлено в {VERSION}",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "Отслеживать",
+          "off": "Не отслеживать"
         }
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "Все",
+          "visited": "Посещённые",
+          "unvisited": "Не посещённые"
         }
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "Новейшие",
+          "oldest": "Старейшие",
+          "shallowest": "Поверхностные",
+          "deepest": "Глубочайшие",
+          "alpha": "По алфавиту",
+          "players": "Кол-во игроков"
         }
       }
     },
@@ -1084,10 +1084,10 @@
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
-      "confirmCancel": "Are you sure you want to cancel this event?",
-      "wrongEditGame": "Cannot edit outside of {GAME}",
+      "organizer": "Устроено&nbsp;{NAME}",
+      "invalidPlatformLink": "Недействительный URL платформы",
+      "confirmCancel": "Вы уверены что хотите отменить событие?",
+      "wrongEditGame": "Нельзя редактировать вне {GAME}",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
