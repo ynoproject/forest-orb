@@ -90,6 +90,11 @@ const allGameUiThemes = {
     'akalog_system-2',
     'akalog_system-3',
     'PGR_SYS_04',
+    '710_sys_hal',
+    'fumosystem_neonhighway',
+    'fumosystem_diceruler',
+    'fumosystem_shrimp',
+    'fumosystem_comfort',
 
     'system_E_eye',
     'System_kuraud',
