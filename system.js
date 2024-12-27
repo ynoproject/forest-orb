@@ -95,6 +95,7 @@ const allGameUiThemes = {
     'fumosystem_diceruler',
     'fumosystem_shrimp',
     'fumosystem_comfort',
+    'System_del_3',
 
     'system_E_eye',
     'System_kuraud',
