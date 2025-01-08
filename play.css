@@ -775,6 +775,10 @@ body.fullBg #background {
   margin: 0 -8px;
 }
 
+html[webview] #bottom {
+  display: none;
+}
+
 #header, #layout {
   display: flex;
   margin: 0 auto;
@@ -937,6 +941,10 @@ body.fullBg #background {
   z-index: 2;
 }
 
+html[webview] #mainContainer {
+  min-height: 28px;
+}
+
 /* Fix for a fullscreen bug that shifts the game canvas when focus is changed */
 #layout:fullscreen #mainContainer {
   padding-top: 0px;
@@ -1030,6 +1038,10 @@ body.fullBg #background {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+html[webview] #canvasContainer {
+  display: none;
 }
 
 #canvas {
@@ -3329,15 +3341,29 @@ form .uiTheme {
     border-inline-start: 24px solid transparent;
   }
 
+  html[webview] #chatboxContainer {
+    height: calc(100vh - 370px);
+    max-height: unset;
+  }
+
   #chatbox {
     height: calc(100vh - 590px);
     min-height: 200px;
     max-height: 340px;
   }
 
+  html[webview] #chatbox {
+    height: calc(100vh - 362px);
+    max-height: unset;
+  }
+
   #content.downscale #chatboxContainer {
     width: 100%;
     height: calc(100vh - 474px);
+  }
+
+  html[webview] #content.downscale #chatboxContainer {
+    height: unset;
   }
 
   #content.loggedIn.downscale #layout.explorer:not(:fullscreen) #chatboxContainer {
@@ -3359,7 +3385,7 @@ form .uiTheme {
     height: unset;
   }
 
-  #content.downscale #chatbox {
+  html:not[webview] #content.downscale #chatbox {
     height: calc(100vh - 470px);
   }
 

@@ -43,6 +43,10 @@ const tippyConfig = {
   touch: /** @type {['hold', number]} */(['hold', 400]),
 };
 
+const inWebview = '__webview__' in window;
+if (inWebview)
+  document.documentElement.setAttribute('webview', '');
+
 Object.defineProperty(Object.prototype, 'hasTitle', {
   enumerable: false,
   value() {
@@ -73,7 +77,9 @@ let initBlocker = Promise.resolve();
 async function injectScripts() {
   const supportsSimd = await wasmFeatureDetect.simd();
 
-  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', 'report.js', 'notifications.js', '2kki.js', 'play.js', 'gamecanvas.js', `ynoengine${supportsSimd ? '-simd' : ''}.js` ];
+  let scripts = [ 'chat.js', 'playerlist.js', 'friends.js', 'parties.js', 'system.js', 'preloads.js', 'locations.js', 'schedules.js', 'report.js', 'notifications.js', '2kki.js', 'play.js', 'gamecanvas.js' ];
+  if (!inWebview)
+    scripts.push(`ynoengine${supportsSimd ? '-simd' : ''}.js`);
 
   dependencyFiles['play.css'] = null;
 
@@ -98,12 +104,18 @@ async function injectScripts() {
         if (gameId === '2kki') {
           gameVersion = document.querySelector('meta[name="2kkiVersion"]')?.content?.replace(' Patch ', 'p');
         }
+
+        if (inWebview && !getCookie(sessionIdKey)) { 
+          setCookie(sessionIdKey, await webviewSessionToken());
+        }
   
         easyrpgPlayerLoadFuncs.push(() => {
-          easyrpgPlayer.initialized = true;
-          easyrpgPlayer.api.setNametagMode(config.nametagMode);
-          easyrpgPlayer.api.setSoundVolume(globalConfig.soundVolume);
-          easyrpgPlayer.api.setMusicVolume(globalConfig.musicVolume);
+          if (!inWebview) {
+            easyrpgPlayer.initialized = true;
+            easyrpgPlayer.api.setNametagMode(config.nametagMode);
+            easyrpgPlayer.api.setSoundVolume(globalConfig.soundVolume);
+            easyrpgPlayer.api.setMusicVolume(globalConfig.musicVolume);
+          }
           const loadingOverlay = document.getElementById('loadingOverlay');
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
@@ -114,7 +126,8 @@ async function injectScripts() {
             setInterval(checkDependenciesModified, 300000);
           }, 10000);
           window.onbeforeunload = function () {
-            return localizedMessages.leavePage;
+            if (!inWebview)
+              return localizedMessages.leavePage;
           };
         });
         if (typeof onResize !== 'undefined')
@@ -122,6 +135,10 @@ async function injectScripts() {
 
         await initBlocker;
 
+        if (inWebview)
+          for (let loadFunc of easyrpgPlayerLoadFuncs)
+            loadFunc();
+        else
         createEasyRpgPlayer(easyrpgPlayer)
           .then(function(Module) {
             // Module is ready
@@ -816,7 +833,7 @@ function loadOrInitConfig(configObj, global, configName) {
                   case 'rulesReviewed':
                     break;
                 }
-              } else {
+              } else { // !global
                 switch (key) {
                   case 'privateMode':
                     if (value)
