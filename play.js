@@ -210,7 +210,8 @@ function fetchAndUpdatePlayerInfo() {
   const isLogout = !cookieSessionId && loginToken && cookieSessionId !== loginToken;
   if (isLogin || isLogout) {
     loginToken = isLogin ? cookieSessionId : null;
-    easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
+    if (!inWebview)
+      easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
     playerTooltipCache.clear();
   }
   navigator.serviceWorker?.getRegistration('/').then(registration => {
@@ -533,6 +534,8 @@ function syncLocationChange() {
   const locationNames = cachedLocations ? cachedLocations.map(l => get2kkiWikiLocationName(l)) : [];
 
   sendSessionCommand('l', locationNames);
+  if (window.webviewSetLocation)
+    window.webviewSetLocation(locationNames.join(' | '));
 }
 
 // EXTERNAL
