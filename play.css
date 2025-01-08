@@ -1533,10 +1533,7 @@ body.fullBg #background {
   border: 1px solid rgb(var(--base-color));
   pointer-events: all;
   cursor: pointer;
-}
-
-.messageContents.notext .spoiler {
-  padding: 5px 0 9px 0;
+  display: inline-block;
 }
 
 .messageContents .spoiler:not(.show) {
