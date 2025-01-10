@@ -256,7 +256,7 @@ body {
   pointer-events: none;
 }
 
-.nofilter {
+.nofilter, .spoiler.show {
   filter: none !important;
 }
 
@@ -1994,7 +1994,7 @@ html[dir="rtl"] #chatBorder {
   margin-top: 8px;
 }
 
-#enterNameInstruction, .nameText, .nameMarker, .themeText, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th {
+#enterNameInstruction, .nameText, .nameMarker, .themeText, .partyListEntryMemberCountText, .chatboxTabLabel, .notice, .instruction, .infoLabel, .infoText, .messageContents, .toast .toastMessage, h1, h2, h3, h4, a:not(.listEntryAction), label, th, .spoiler.show {
   background-image: var(--base-gradient) !important;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
