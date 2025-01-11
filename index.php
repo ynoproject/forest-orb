@@ -2064,10 +2064,20 @@
     </div>
     <div id="layoutEnd"></div>
     <div>
+      <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
+      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished" ] ?>
       <?php if ($gameId == "2kki"): ?>
       <br>
       <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
       <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
+      <?php endif ?>
+      <?php if (in_array($gameId, $gameIdsWithDisclaimer)): ?>
+      <br>
+      <div class="notice" data-i18n="[html]disclaimer.hostedWithPermission">Hosted with permission from the developer(s)</div>
+      <?php endif ?>
+      <?php if ($gameId == "unconscious"): ?>
+      <br>
+      <div class="notice" data-i18n="[html]disclaimer.originalCreation">Original creation by the YNOproject community</div>
       <?php endif ?>
       <br>
       <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]reviewRules">Review Rules</a>

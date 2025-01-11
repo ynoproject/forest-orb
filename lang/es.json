@@ -66,6 +66,10 @@
     "2kki": {
       "hostedWithPermission": "Alojado con la autorización de los desarrolladores de Yume 2kki"
     },
+    "disclaimer": {
+      "hostedWithPermission": "Hosted with permission from the developer(s)",
+      "originalCreation": "Original creation by the YNOproject community"
+    },
     "modal": {
       "confirm": {
         "ok": "OK",

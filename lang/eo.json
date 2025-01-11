@@ -66,6 +66,10 @@
     "2kki": {
       "hostedWithPermission": "Gastigante kun permeso de la programistoj de Yume 2kki"
     },
+    "disclaimer": {
+      "hostedWithPermission": "Hosted with permission from the developer(s)",
+      "originalCreation": "Original creation by the YNOproject community"
+    },
     "modal": {
       "confirm": {
         "ok": "Konfirmi",
