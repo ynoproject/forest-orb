@@ -2065,7 +2065,7 @@
     <div id="layoutEnd"></div>
     <div>
       <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
-      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished" ] ?>
+      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished" ]; ?>
       <?php if ($gameId == "2kki"): ?>
       <br>
       <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
