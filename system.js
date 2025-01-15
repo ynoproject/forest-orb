@@ -96,13 +96,14 @@ const allGameUiThemes = {
     'fumosystem_shrimp',
     'fumosystem_comfort',
     'System_del_3',
+    'Bean_sys1',
+    'Bean_sys2',
 
     'system_E_eye',
     'System_kuraud',
     'Kong_SystemFC',
     'natl_sys_PinkRibbon',
     'aediorugap_sys',
-    'Bean_sys1',
     'natl_sys2_NeonPink',
     'natl_sys3_NeonBlue',
     'awind_sus1'
