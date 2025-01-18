@@ -67,8 +67,8 @@
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
     },
     "disclaimer": {
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community"
+      "hostedWithPermission": "Hébergé avec la permission du/des développeur(s)",
+      "originalCreation": "Création originale de la communauté YNOproject"
     },
     "modal": {
       "confirm": {
@@ -81,7 +81,7 @@
           "username": "Identifiant",
           "password": "Mot de passe"
         },
-        "submit": "Soumettre",
+        "submit": "Envoyer",
         "registerPrompt": "Pas encore de compte&nbsp;?&nbsp;",
         "register": "S'inscrire"
       },
@@ -93,7 +93,7 @@
           "password": "Mot de passe",
           "confirmPassword": "Confirmer le mot de passe"
         },
-        "submit": "Soumettre",
+        "submit": "Envoyer",
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
         "login": "Se Connecter"
       },
@@ -169,7 +169,7 @@
         "notificationSettings": "Notifications",
         "cacheSettings": "Cache",
         "accountSettings": "Compte",
-        "engineSettings": "Engine (F1)"
+        "engineSettings": "Paramètres du moteur de jeu (F1)"
       },
       "blocklist": {
         "title": "Liste de blocage",
@@ -206,7 +206,7 @@
           "partyChatHistoryLimit": {
             "label": "Limite de l'historique du Chat de Groupe"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Flouter toutes les captures d'écran"
         }
       },
       "screenshotSettings": {
@@ -355,7 +355,7 @@
           "newPassword": "Nouveau mot de passe",
           "newConfirmPassword": "Confirmer le nouveau mot de passe"
         },
-        "submit": "Soumettre"
+        "submit": "Envoyer"
       },
       "badges": {
         "title": "Badges",
@@ -415,7 +415,7 @@
         },
         "showPassword": "Montrer le mot de passe",
         "hidePassword": "Masquer le mot de passe",
-        "submit": "Soumettre"
+        "submit": "Envoyer"
       },
       "joinPrivateParty": {
         "title": "Rejoindre un groupe privé",
@@ -425,7 +425,7 @@
         "showPassword": "Montrer le mot de passe",
         "hidePassword": "Masquer le mot de passe",
         "incorrectPassword": "Mot de passe incorrect : veuillez réessayer.",
-        "submit": "Soumettre"
+        "submit": "Envoyer"
       },
       "events": {
         "title": "Expéditions",
@@ -438,7 +438,7 @@
       },
       "rankings": {
         "title": "Classement",
-        "player": "Player"
+        "player": "Joueur"
       },
       "screenshot": {
         "title": "Votre capture d'écran",
@@ -518,20 +518,20 @@
         }
       },
       "report": {
-        "title": "Report",
-        "submit": "Submit",
+        "title": "Signaler",
+        "submit": "Envoyer",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
-            "1": "Slurs, harmful or inappropriate language",
-            "2": "Harassment, bullying, stalking",
-            "3": "Inappropriate names",
-            "4": "Ban evasion",
-            "5": "Cheating, abusing exploits",
-            "6": "Underage player",
+            "title": "Raison",
+            "placeholder": "Raison personnalisée (maximum 50 caractères)",
+            "1": "Insultes, langage inapproprié ou nuisible",
+            "2": "Brimades, harcèlement, stalking",
+            "3": "Nom inapproprié",
+            "4": "Esquive de bannissement",
+            "5": "Triche, abus d'exploits",
+            "6": "Joueur trop jeune",
             "7": "Spam",
-            "other": "Other (specify)"
+            "other": "Autre (spécifier)"
           }
         }
       },
@@ -614,7 +614,7 @@
     "leavePage": "Êtes-vous sûr de vouloir quitter la page ? Toutes les données non sauvegardées seront perdues.",
     "logout": "Êtes-vous sûr de vouloir vous déconnecter ?",
     "loadingInstruct": ". <br /> <br /> Il semblerait que le site charge depuis longtemps ; Si ce problème persiste, vous devrez peut-être faire CTRL+F5 ou effacer le cache de votre navigateur (mais pas ses cookies !). Vous pouvez vérifier la console en appuyant sur F12 pour voir si il n'y a pas d'erreurs.",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "requestNotifications": "Recevoir des notifications pour les événements suivis et le renouvellement des expéditions ?",
     "connStatus": {
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
