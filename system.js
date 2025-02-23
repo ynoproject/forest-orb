@@ -98,6 +98,8 @@ const allGameUiThemes = {
     'System_del_3',
     'Bean_sys1',
     'Bean_sys2',
+    'awind_sus1',
+    'dizzy_spiral_menu_theme',
 
     'system_E_eye',
     'System_kuraud',
@@ -105,8 +107,7 @@ const allGameUiThemes = {
     'natl_sys_PinkRibbon',
     'aediorugap_sys',
     'natl_sys2_NeonPink',
-    'natl_sys3_NeonBlue',
-    'awind_sus1'
+    'natl_sys3_NeonBlue'
   ],
   'amillusion': [
     'fleur-2',
