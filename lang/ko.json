@@ -1126,6 +1126,13 @@
           "label": "플레이어 차단 설정",
           "playerPrompt": "차단할 플레이어의 닉네임을 입력해주세요"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "durationPrompt": "Enter the duration in minutes to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "플레이어 차단 해제",
           "playerPrompt": "차단 해제할 플레이어의 닉네임을 입력해주세요"

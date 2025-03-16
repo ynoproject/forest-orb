@@ -1126,6 +1126,13 @@
           "label": "プレイヤーのBAN",
           "playerPrompt": "BANするアカウントの名前を入力してください。"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "durationPrompt": "Enter the duration in minutes to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "プレイヤーのBAN解除",
           "playerPrompt": "BAN解除するアカウントの名前を入力してください。"

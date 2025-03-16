@@ -1126,6 +1126,13 @@
           "label": "Ban Người chơi",
           "playerPrompt": "Nhập tên người chơi để ban"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "durationPrompt": "Enter the duration in minutes to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "Bỏ ban Người chơi",
           "playerPrompt": "Nhập tên người chơi để bỏ ban"
