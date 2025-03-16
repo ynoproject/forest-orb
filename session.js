@@ -7,6 +7,10 @@ let sessionCommandCallbackQueue = {};
 let hasConnected;
 
 function initSessionWs(attempt) {
+  if (inWebview) {
+    postInitSession();
+    return Promise.resolve();
+  }
   return new Promise(resolve => {
     if (sessionWs)
       closeSessionWs();
@@ -33,32 +37,44 @@ function initSessionWs(attempt) {
         setTimeout(() => initSessionWs(1), 5000);
       };
       easyrpgPlayer.api.sessionReady();
-      if (config.privateMode)
-        sendSessionCommand('pr', [ 1 ]);
-      if (config.hideLocation)
-        sendSessionCommand('hl', [ 1 ]);
-      if (!hasConnected) {
-        syncChatHistory()
-          .catch(err => console.error(err))
-          .finally(addChatTip);
-        hasConnected = true;
-      } else
-        syncChatHistory()
-          .catch(err => console.error(err));
+      postInitSession();
       resolve();
     };
     sessionWs.onmessage = event => {
       const args = event.data.split(wsDelim);
       const command = args[0];
-      if (command in sessionCommandHandlers) {
-        const params = args.slice(1);
-        if (sessionCommandHandlers[command])
-          sessionCommandHandlers[command](params);
-        while (sessionCommandCallbackQueue[command].length)
-          sessionCommandCallbackQueue[command].shift()(params);
-      }
+      receiveSessionMessage(command, args);
     };
   });
+}
+
+function postInitSession() {
+  if (config.privateMode)
+    sendSessionCommand('pr', [ 1 ]);
+  if (config.hideLocation)
+    sendSessionCommand('hl', [ 1 ]);
+  if (!hasConnected) {
+    syncChatHistory()
+      .catch(err => console.error(err))
+      .finally(addChatTip);
+    hasConnected = true;
+  } else
+    syncChatHistory()
+      .catch(err => console.error(err));
+}
+
+function receiveSessionMessage(command, args) {
+  if (command in sessionCommandHandlers) {
+    let params;
+    if (!Array.isArray(args))
+      params = args.split(wsDelim);
+    else
+      params = args.slice(1);
+    if (sessionCommandHandlers[command])
+      sessionCommandHandlers[command](params);
+    while (sessionCommandCallbackQueue[command].length)
+      sessionCommandCallbackQueue[command].shift()(params);
+  }
 }
 
 function closeSessionWs() {
@@ -75,7 +91,7 @@ function addSessionCommandHandler(command, handler) {
 }
 
 function sendSessionCommand(command, commandParams, callbackFunc, callbackCommand) {
-  if (!sessionWs)
+  if (!sessionWs && !inWebview)
     return;
 
   let args = [ command ];
@@ -88,6 +104,8 @@ function sendSessionCommand(command, commandParams, callbackFunc, callbackComman
     if (sessionCommandCallbackQueue.hasOwnProperty(callbackCommand))
       sessionCommandCallbackQueue[callbackCommand].push(callbackFunc);
   }
-
-  sessionWs.send(args.join(wsDelim));
+  if (inWebview)
+    webviewSendSession(args.join(wsDelim));
+  else
+    sessionWs.send(args.join(wsDelim));
 }
