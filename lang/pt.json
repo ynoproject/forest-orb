@@ -119,18 +119,18 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Popup de Pagina da Wiki",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Sempre",
+              "fullscreen": "Só em Tela Cheia",
+              "never": "Nunca"
             }
           },
           "saveReminder": {
-            "label": "Save Reminder Frequency",
+            "label": "Frequencia do Lembrete de Salvar",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} minutos",
+              "never": "Nunca"
             }
           },
           "soundVolume": "Volume do Som",
@@ -161,7 +161,7 @@
             "helpText": "Pré-carregue os recursos do jogo usados com frequência para garantir que estejam disponíveis quando necessário; requer recarregamento da página."
           },
           "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Eventos"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",
