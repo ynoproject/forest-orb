@@ -189,6 +189,25 @@ function updateModControls() {
       });
     addModControlsButton(localizedMessages.modSettings.actions.ban.label,
       () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+    addModControlsButton(localizedMessages.modSettings.actions.tempBan.label,
+      () => {
+        const playerName = prompt(localizedMessages.modSettings.actions.tempBan.playerPrompt);
+        if (!playerName)
+          return;
+        const duration = prompt(localizedMessages.modSettings.actions.tempBan.durationPrompt.replace('{PLAYER}', playerName));
+        if (!duration)
+          return;
+        apiFetch(`temporaryban?user=${playerName}&duration=${duration}`, true)
+          .then(response => {
+            if (!response.ok) {
+              showToastMessage(getMassagedLabel(localizedMessages.modSettings.actions.tempBan.error, true).replace('{PLAYER}', playerName));
+              throw new Error(response.statusText);
+            }
+            return response.text();
+          })
+          .then(_ => showToastMessage(getMassagedLabel(localizedMessages.modSettings.actions.tempBan.success, true).replace('{PLAYER}', playerName).replace('{DURATION}', duration), 'info', true, null, true))
+          .catch(err => console.error(err));
+      });
     addModControlsButton(localizedMessages.modSettings.actions.unban.label,
       () => adminPlayerAction('unban', localizedMessages.modSettings.actions.unban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.mute.label,

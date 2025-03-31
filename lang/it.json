@@ -1126,6 +1126,13 @@
           "label": "Banna un Giocatore",
           "playerPrompt": "Inserisci il nome dell'account che vuoi bannare"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "durationPrompt": "Enter the duration in minutes to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "Unbanna un Giocatore",
           "playerPrompt": "Inserisci il nome dell'account che vuoi unbannare"

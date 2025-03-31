@@ -1126,6 +1126,13 @@
           "label": "Bir Kullanıcı Banla",
           "playerPrompt": "Banlamak için hesabın adını girin"
         },
+        "tempBan": {
+          "label": "Temporarily ban a Player",
+          "playerPrompt": "Enter the name of the account to ban",
+          "durationPrompt": "Enter the duration in minutes to ban {PLAYER} for",
+          "success": "{PLAYER} has been banned for {DURATION}",
+          "error": "Failed to ban {PLAYER}"
+        },
         "unban": {
           "label": "Bir Kullanıcı Banı Kaldır",
           "playerPrompt": "Ban kaldırmak için hesabın adını girin"
