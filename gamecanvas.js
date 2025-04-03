@@ -45,7 +45,7 @@ document.getElementById('controls-fullscreen').addEventListener('click', () => {
 
 {
   const layout = document.getElementById('layout');
-  if (!(layout.requestFullscreen || layout.webkitRequestFullscreen)) {
+  if (!(layout.requestFullscreen || layout.webkitRequestFullscreen) || inWebview) {
     document.getElementById('controls-fullscreen').classList.add('hidden');
   }
 }
