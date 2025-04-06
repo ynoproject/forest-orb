@@ -100,6 +100,9 @@ const allGameUiThemes = {
     'Bean_sys2',
     'awind_sus1',
     'dizzy_spiral_menu_theme',
+    'Colby_LushSys',
+    'Colby_GlitchedSys',
+    'Colby_RadiantSys',
 
     'system_E_eye',
     'System_kuraud',
@@ -204,6 +207,11 @@ const allGameUiThemes = {
     'system sugar',
     'system rust',
     'system smile'
+  ],
+  'fog': [
+    'FOG_System',
+    'FOG_System_0001',
+    'FOG_System_0002'
   ],
   'genie': [
     'system_Negtive',
@@ -339,6 +347,7 @@ const allGameFullBgUiThemes = {
   'unconscious': [],
   'deepdreams': [],
   'flow': [],
+  'fog': [],
   'genie': [],
   'if': [],
   'mikan': [],
@@ -363,6 +372,7 @@ const gameLogoBlendModeOverrides = {
   'braingirl': 'color',
   'unconscious': 'color',
   'deepdreams': 'soft-light',
+  'fog': 'color',
   'genie': 'color',
   'mikan': 'soft-light',
   'someday': 'hard-light',
