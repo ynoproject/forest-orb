@@ -38,3 +38,7 @@ declare class FastdomPromised {
 }
 
 declare const fastdom: FastdomPromised;
+
+/** only available with `isWebview` */
+declare function webviewSendSession(data: string): void;
+declare function webviewSessionToken(): Promise<string>;

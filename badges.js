@@ -1191,7 +1191,7 @@ function updateBadges(callback) {
     .then(badges => {
       for (const { badgeId, newUnlock } of badges)
         if (newUnlock) { 
-          newUnlockBadges.add(newUnlock);
+          newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }
       badgeCache = badges;
