@@ -24,6 +24,8 @@ interface String {
 // TODO: Automate this
 interface YnoElements {
     scheduleTemplate: 'template'
+    badgePresetSelection: 'select'
+    badgePresetModal: 'div'
 }
 
 interface Document {

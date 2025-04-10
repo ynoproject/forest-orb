@@ -1044,6 +1044,28 @@
           <div class="modalContent itemContainer itemRowContainer smallItemContainer" dir="ltr"></div>
           <div class="modalFooter">
             <button id="removeBadgesButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.removeMode.activate">Remove Badges</button>
+            <button id="badgePresetButton" class="unselectable" type="button" data-i18n="[html]modal.badgeGallery.manageBadgePreset">Manage Presets</button>
+          </div>
+        </div>
+        <div id="badgePresetModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.badgePreset.title">Manage Badge Presets</h1>
+            <div class="formControls" style="width:100%">
+              <div class="formControlRow">
+                <label for="badgePresetSelection" data-i18n="[html]modal.badgePreset.selectPreset">Select Preset</label>
+                <select id="badgePresetSelection">
+                  <option value="0" data-i18n="[html]modal.badgePreset.presetName" i18n-options="{'index':1}">Preset 1</option>
+                  <option value="1" data-i18n="[html]modal.badgePreset.presetName" i18n-options="{'index':2}">Preset 2</option>
+                  <option value="2" data-i18n="[html]modal.badgePreset.presetName" i18n-options="{'index':3}">Preset 3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modalContent"></div>
+          <div class="modalFooter">
+            <button id="badgePresetSave" class="unselectable" type="button" data-i18n="[html]modal.common.save">Save</button>
+            <button id="badgePresetLoad" class="unselectable" type="button" data-i18n="[html]modal.common.apply">Apply</button>
           </div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
