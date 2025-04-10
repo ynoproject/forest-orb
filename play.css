@@ -4041,12 +4041,16 @@ html[dir="rtl"] .messageSender {
   display: inline;
 }
 
-.listEntry.schedule {
+.listEntry.schedule,
+.listEntry.badgePreset
+{
   display: block;
   padding: 2px 4px;
 }
 
-.schedule > .listEntryMain {
+.schedule > .listEntryMain,
+.badgePreset > .listEntryMain
+{
   justify-content: space-between;
   width: 100%;
 }
@@ -4088,4 +4092,14 @@ html[dir="rtl"] .messageSender {
 
 .screenshotBlur:hover {
   filter: blur(2px);
+}
+
+#badgePresetList .iconButton {
+  width: 18px;
+  height: 18px;
+  margin-inline-end: 8px;
+}
+
+.badgePresetActions {
+  display: flex
 }

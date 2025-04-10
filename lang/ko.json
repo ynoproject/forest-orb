@@ -71,6 +71,10 @@
       "originalCreation": "Original creation by the YNOproject community"
     },
     "modal": {
+      "common": {
+        "save": "Save",
+        "apply": "Apply"
+      },
       "confirm": {
         "ok": "확인",
         "cancel": "취소"
@@ -390,7 +394,13 @@
         "removeMode": {
           "activate": "배지 삭제하기",
           "deactivate": "완료"
-        }
+        },
+        "manageBadgePreset": "Manage Presets"
+      },
+      "badgePreset": {
+        "title": "Manage Badge Presets",
+        "selectPreset": "Select Preset",
+        "presetName": "Preset {{index}}"
       },
       "save": {
         "title": "세이브 데이터 관리",

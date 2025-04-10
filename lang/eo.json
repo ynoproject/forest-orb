@@ -71,6 +71,10 @@
       "originalCreation": "Original creation by the YNOproject community"
     },
     "modal": {
+      "common": {
+        "save": "Save",
+        "apply": "Apply"
+      },
       "confirm": {
         "ok": "Konfirmi",
         "cancel": "Nuligi"
@@ -389,7 +393,13 @@
         "removeMode": {
           "activate": "Forigi Insignojn",
           "deactivate": "Fini"
-        }
+        },
+        "manageBadgePreset": "Manage Presets"
+      },
+      "badgePreset": {
+        "title": "Manage Badge Presets",
+        "selectPreset": "Select Preset",
+        "presetName": "Preset {{index}}"
       },
       "save": {
         "title": "Administri Konservdatumojn",

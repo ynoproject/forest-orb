@@ -71,6 +71,10 @@
       "originalCreation": "YNOprojectのコミュニティによるオリジナルの作品"
     },
     "modal": {
+      "common": {
+        "save": "セーブ",
+        "apply": "適用"
+      },
       "confirm": {
         "ok": "はい",
         "cancel": "キャンセル"
@@ -390,7 +394,13 @@
         "removeMode": {
           "activate": "バッジを削除する",
           "deactivate": "戻る"
-        }
+        },
+        "manageBadgePreset": "プリセット"
+      },
+      "badgePreset": {
+        "title": "バッジプリセット",
+        "selectPreset": "プリセット選択",
+        "presetName": "プリセット{{index}}"
       },
       "save": {
         "title": "セーブデータ管理",

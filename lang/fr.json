@@ -71,6 +71,10 @@
       "originalCreation": "Création originale de la communauté YNOproject"
     },
     "modal": {
+      "common": {
+        "save": "Save",
+        "apply": "Apply"
+      },
       "confirm": {
         "ok": "Confirmer",
         "cancel": "Annuler"
@@ -390,7 +394,13 @@
         "removeMode": {
           "activate": "Retirer des badges",
           "deactivate": "Terminé"
-        }
+        },
+        "manageBadgePreset": "Manage Presets"
+      },
+      "badgePreset": {
+        "title": "Manage Badge Presets",
+        "selectPreset": "Select Preset",
+        "presetName": "Preset {{index}}"
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",

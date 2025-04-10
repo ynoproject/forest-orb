@@ -71,6 +71,10 @@
       "originalCreation": "Original creation by the YNOproject community"
     },
     "modal": {
+      "common": {
+        "save": "Lưu",
+        "apply": "Áp dụng"
+      },
       "confirm": {
         "ok": "OK",
         "cancel": "Hủy"
@@ -390,7 +394,13 @@
         "removeMode": {
           "activate": "Gỡ huy hiệu",
           "deactivate": "Hoàn tất"
-        }
+        },
+        "manageBadgePreset": "Khuôn mẫu"
+      },
+      "badgePreset": {
+        "title": "Khuôn mẫu huy hiệu",
+        "selectPreset": "Chọn khuôn mẫu",
+        "presetName": "Mẫu {{index}}"
       },
       "save": {
         "title": "Quản lý Dữ liệu lưu",
