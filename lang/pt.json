@@ -453,7 +453,7 @@
       "screenshot": {
         "title": "Suas Capturas de Tela",
         "download": "Download",
-        "save": "Salvar em Minhas capturas de tela",
+        "save": "Salvar em Minhas capturas de Tela",
         "share": "Compartilhar no Chat"
       },
       "myScreenshots": {
@@ -483,19 +483,19 @@
               "week": "Esta Semana",
               "month": "Este Mês",
               "year": "Este Ano",
-              "all": "Todo o Tempo"
+              "all": "Desde Sempre"
             }
           }
         }
       },
       "schedule": {
         "title": "Eventos",
-        "ongoing": "Eventos Ocorrendo",
+        "ongoing": "Eventos em Andamento",
         "party": "Eventos de Grupo",
-        "future": "Eventos Futuros",
+        "future": "Futuros Eventos",
         "official": "Eventos Oficiais",
-        "noResults": "Nenhum evento foi marcado.",
-        "doSchedule": "Marque um Evento"
+        "noResults": "Nenhum evento foi agendado",
+        "doSchedule": "Planeje um Evento"
       },
       "scheduleEdit": {
         "title": "Editar Evento",
@@ -511,7 +511,7 @@
             "title": "Intervalo de Tempo",
             "days": "dias",
             "months": "meses",
-            "years": "years"
+            "years": "anos"
           },
           "restrictParty": "Limitar ao grupo",
           "official": "Evento Oficial",
@@ -529,7 +529,7 @@
       },
       "report": {
         "title": "Reportar",
-        "submit": "Submiter",
+        "submit": "Enviar",
         "fields": {
           "reason": {
             "title": "Motivo",
@@ -625,7 +625,7 @@
     "leavePage": "Tem certeza de que deseja sair da página? Qualquer progresso não salvo no jogo será perdido.",
     "logout": "Tem certeza de que deseja deslogar?",
     "loadingInstruct": ". <br /> <br /> Parece que o site está carregando a um tempo, se o problema persistir você talvez tenha que usar CTRL+F5 ou limpar o cache de seu navegador (mas não os cookies!). Você pode verificar o console usando F12 para ver os erros.",
-    "requestNotifications": "Receber notificações para eventos seguidos e atualização de expedições?",
+    "requestNotifications": "Receber notificações para eventos seguidos e para quando as expedições atualizam?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -825,8 +825,8 @@
         "playersInMap": "Você pode alternar entre o número de jogadores online e o número de jogadores em seu mapa clicando no rótulo..",
         "markdownSupport": "O chat suporta formatação de texto por envolver o texto em certos caracteres. Os atualmente suportados são: **negrito** (\\*\\*texto\\*\\*), *itálico* (\\*texto\\*, \\_texto\\_), __sublinhado__ (\\_\\_texto\\_\\_), ~~tachado~~ (\\~\\~texto\\~\\~), e ||spoiler|| (\\|\\|texto\\|\\|).",
         "tabToChat": "Se você estiver jogando em um PC, você pode pressionar a tecla Tab para alternar entre o jogo e a entrada de Bate-Papo. Essa função pode ser desativada nas Configurações de Bate-Papo em 'Atalho Tab para Chat'.",
-        "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todas', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
-        "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todas', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
+        "chatTabNotifications": "Quando você estiver em outra guia de chat que não seja 'Todos', se uma nova mensagem é enviada na outra guia filtrada, ela ficará em negrito na etiqueta da guia para lhe notificar.",
+        "clearChat": "Quando você clica no botão de limpar o chat no canto superior direito na caixa do chat, se você não estiver na guia 'Todos', ele só irá remover as mensagens da guia do chat atual em que você estiver.",
         "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "Os Grupos são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
@@ -1053,7 +1053,7 @@
       "track": {
         "tooltip": {
           "on": "Rastrear localização",
-          "off": "Não Rastrear localização"
+          "off": "Parar de Rastrear localização"
         }
       },
       "visited": {
@@ -1070,17 +1070,17 @@
           "shallowest": "Mais Raso",
           "deepest": "Mais Profundo",
           "alpha": "Ordem Alfabética",
-          "players": "Contagem de Jogadores"
+          "players": "Número de Jogadores"
         }
       }
     },
     "screenshots": {
       "playerScreenshot": "Captura de Tela de {USER}",
-      "limit": "{COUNT}/{LIMIT} de Espaços Usados",
+      "limit": "{COUNT}/{LIMIT} Espaços Usados",
       "public": {
         "tooltip": {
-          "on": "Definir Público",
-          "off": "Definir Privado"
+          "on": "Tornar Público",
+          "off": "Tornar Privado"
         }
       },
       "spoiler": {
@@ -1097,8 +1097,8 @@
         }
       },
       "delete": {
-        "tooltip": "Excluir",
-        "confirm": "Tem certeza de que deseja excluir essa captura de tela?"
+        "tooltip": "Apagar",
+        "confirm": "Tem certeza de que deseja apagar essa captura de tela?"
       }
     },
     "schedules": {
