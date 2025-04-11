@@ -981,6 +981,9 @@
       "bp": "{BP} BP",
       "count": "{COUNT} Rozet"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

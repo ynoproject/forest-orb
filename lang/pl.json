@@ -981,6 +981,9 @@
       "bp": "{BP} BP",
       "count": "{COUNT} odznak"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

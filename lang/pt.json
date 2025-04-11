@@ -981,6 +981,9 @@
       "bp": "{BP} PE",
       "count": "{COUNT} Emblema"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

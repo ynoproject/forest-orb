@@ -981,6 +981,9 @@
       "bp": "{BP} ОЗ",
       "count": "{COUNT} значков"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

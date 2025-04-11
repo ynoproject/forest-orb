@@ -981,6 +981,9 @@
       "bp": "{BP} PI",
       "count": "{COUNT} Insigne"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

@@ -981,6 +981,9 @@
       "bp": "{BP} BP",
       "count": "{COUNT} Huy hiệu"
     },
+    "badgePreset": {
+      "empty": "Khuôn mẫu trống"
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

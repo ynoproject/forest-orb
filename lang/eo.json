@@ -980,6 +980,9 @@
       "bp": "{BP} IP",
       "count": "{COUNT} Insignoj"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

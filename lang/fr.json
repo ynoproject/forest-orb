@@ -981,6 +981,9 @@
       "bp": "{BP} PB",
       "count": "{COUNT} Badges"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {

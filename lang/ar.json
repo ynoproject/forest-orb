@@ -980,6 +980,9 @@
       "bp": "{BP} نقات الشارات",
       "count": "{COUNT} شارات"
     },
+    "badgePreset": {
+      "empty": "This preset is empty."
+    },
     "rankings": {
       "categories": {
         "badgeCount": {
