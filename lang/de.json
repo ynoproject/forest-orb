@@ -11,37 +11,37 @@
   },
   "ui": {
     "account": {
-      "login": "Log In",
-      "logout": "Log Out"
+      "login": "Anmelden",
+      "logout": "Abmelden"
     },
     "fontStyle": {
-      "label": "Font Stil:",
+      "label": "Schriftart:",
       "values": {
-        "style1": "Stil 1",
-        "style2": "Stil 2",
-        "style3": "Stil 3",
-        "style4": "Stil 4",
-        "style5": "Stil 5",
-        "style6": "Stil 6",
-        "style7": "Stil 7"
+        "style1": "Schriftart 1",
+        "style2": "Schriftart 2",
+        "style3": "Schriftart 3",
+        "style4": "Schriftart 4",
+        "style5": "Schriftart 5",
+        "style6": "Schriftart 6",
+        "style7": "Schriftart 7"
       }
     },
     "chatbox": {
       "location": "Ort:&nbsp;",
-      "nextLocation": "Next Loc:&nbsp;",
-      "immersionMode": "Immersion Mode",
-      "reconnect": "Reconnect",
+      "nextLocation": "Nächster Ort:&nbsp;",
+      "immersionMode": "Immersionsmodus",
+      "reconnect": "Verbindung wiederherstellen",
       "tab": {
         "chat": "Chat",
-        "players": "Players",
-        "parties": "Parties"
+        "players": "Spieler",
+        "parties": "Gruppen"
       },
       "chat": {
         "tab": {
-          "all": "All",
-          "map": "Map",
+          "all": "Alle",
+          "map": "Karte",
           "global": "Global",
-          "party": "Party"
+          "party": "Gruppe"
         },
         "nickname": {
           "header": "Du musst einen Chat-Namen angeben um zu chatten.",
@@ -53,142 +53,142 @@
       },
       "players": {
         "tab": {
-          "map": "Map",
-          "friends": "Friends",
-          "party": "Party"
+          "map": "Karte",
+          "friends": "Freunde",
+          "party": "Gruppe"
         }
       }
     },
     "instruction": {
       "translation": "Erforderliche Übersetzungsarbeit",
-      "noGameLoc": "* Game Localization Unsupported"
+      "noGameLoc": "* Spielübersetzung ist nicht unterstützt"
     },
     "2kki": {
       "hostedWithPermission": "Mit der Erlaubnis der Yume 2kki Entwickler gehostet"
     },
     "disclaimer": {
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community"
+      "hostedWithPermission": "Mit der Erlaubnis der Yume 2kki Entwickler gehostet",
+      "originalCreation": "Originales Projekt der YNOproject Community"
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Speichern",
+        "apply": "Übernehmen"
       },
       "confirm": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "Abbrechen"
       },
       "login": {
-        "title": "Log In",
+        "title": "Anmelden",
         "fields": {
-          "username": "Username",
-          "password": "Password"
+          "username": "Benutzername",
+          "password": "Passwort"
         },
-        "submit": "Submit",
-        "registerPrompt": "Don't have an account?&nbsp;",
-        "register": "Register"
+        "submit": "Übergeben",
+        "registerPrompt": "Noch keinen Account?&nbsp;",
+        "register": "Registrieren"
       },
       "register": {
-        "title": "Register",
+        "title": "Registrieren",
         "fields": {
           "email": "Email",
-          "username": "Username",
-          "password": "Password",
-          "confirmPassword": "Confirm Password"
+          "username": "Benutzername",
+          "password": "Passwort",
+          "confirmPassword": "Passwort bestätigen"
         },
-        "submit": "Submit",
-        "loginPrompt": "Already have an account?&nbsp;",
-        "login": "Log In"
+        "submit": "Übergeben",
+        "loginPrompt": "Bereits einen Account?&nbsp;",
+        "login": "Anmelden"
       },
       "settings": {
-        "title": "Settings",
+        "title": "Einstellungen",
         "fields": {
           "lang": "Sprache",
           "locationVisibility": {
-            "label": "In-Game Location Visibility",
+            "label": "Übertragen des Spiel-Standortes",
             "values": {
-              "private": "Private",
-              "friends": "Friends",
-              "public": "Public"
+              "private": "Privat",
+              "friends": "Freunde",
+              "public": "Öffentlich"
             }
           },
           "nametagMode": {
-            "label": "Nametags",
+            "label": "Namensschilder",
             "values": {
-              "none": "None",
-              "classic": "Classic",
-              "compact": "Compact",
-              "slim": "Slim"
+              "none": "Keine",
+              "classic": "Klassisch",
+              "compact": "Kompakt",
+              "slim": "Schlank"
             }
           },
           "wikiLinkMode": {
             "label": "Wiki Link Popup",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Immer",
+              "fullscreen": "Nur im Vollbildmodus",
+              "never": "Nie"
             }
           },
           "saveReminder": {
-            "label": "Save Reminder Frequency",
+            "label": "Speicher Erinnerung",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} Minuten",
+              "never": "Nie"
             }
           },
-          "soundVolume": "Sound Volume",
-          "musicVolume": "Music Volume",
-          "togglePlayerSounds": "Player Sounds",
+          "soundVolume": "Sound Lautstärke",
+          "musicVolume": "Musiklautstärke",
+          "togglePlayerSounds": "Spielerlautstärke",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "helpText": "Der Yume 2kki Navigator ist eine Integration des Yume 2kki Explorers, welche es Dir erlaubt Verbindungen deines Standortes auf einem Blick zu haben. Dieses Feature kann drastisch dein Spielerlebniss beeinflussen und es wird empfohlen das Spiel vorerst blind zu erkunden. Du musst angemeldet sein um den Yume 2kki Navigator zu benutzen."
           },
           "toggleImmersionMode": {
-            "label": "Immersion Mode",
-            "helpText": "Turns off player counts, global chat, and maps to give you a more immersive experience"
+            "label": "Immersionsmodus",
+            "helpText": "Deaktiviert Spielerzahlen, globalen Chat und Karten um Dir ein immersives Erlebniss zu bereiten."
           },
           "timeTrialinfo": {
-            "label": "Time Trial"
+            "label": "Zeitkampf"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Touch Screen Steuerung anzeigen",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
+            "label": "Touch Screen Steuerungstyp",
             "default": "D-Pad",
             "joystick": "Floating Joystick",
             "dpad": "Floating D-Pad"
           },
-          "toggleLocationDisplay": "Location Display",
-          "toggleRankings": "Rankings",
+          "toggleLocationDisplay": "Standortanzeige",
+          "toggleRankings": "Ränge",
           "togglePreloads": {
-            "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "label": "Vorladen",
+            "helpText": "Lade oft benutzte Spielelemente vor um sicherzustellen, dass diese bei Bedarf verfügbar sind; benötigt ein neu laden der Seite"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers",
+          "toggleQuestionablePreloads": "PC Hintergründe vorladen",
           "toggleSchedules": "Events"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "Blockliste",
         "chatSettings": "Chat",
         "screenshotSettings": "Screenshots",
-        "notificationSettings": "Notifications",
+        "notificationSettings": "Benachrichtigungen",
         "cacheSettings": "Cache",
         "accountSettings": "Account",
         "engineSettings": "Engine (F1)"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "title": "Blockliste",
+        "empty": "Deine Blockliste ist momentan leer"
       },
       "chatSettings": {
-        "title": "Chat Settings",
+        "title": "Chat Einstellungen",
         "fields": {
           "toggleGameChat": {
             "label": "In-Game Chat Overlay",
-            "global": "Global Chat Overlay",
-            "party": "Party Chat Overlay"
+            "global": "Globaler Chat Overlay",
+            "party": "Gruppen Chat Overlay"
           },
-          "toggleTabToChat": "Press Tab to Chat",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "toggleTabToChat": "Tab drücken um zu chatten",
+          "togglePlayMentionSound": "Erwähnungssound abspielen",
           "chatHistoryLimit": {
             "values": {
               "25": "25",
@@ -198,27 +198,27 @@
               "500": "500",
               "1000": "1000",
               "2500": "2500",
-              "0": "Unlimited"
+              "0": "Unbegrenzt"
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Karten Chat Verlaufslimit"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Globaler Chat Verlaufslimit"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Gruppenchat Verlaufslimit"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Alle Screenshots verwischen"
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Screenshot Einstellungen",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Automatisch Screenshots downloaden",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Screenshot Download Auflösung",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -229,183 +229,183 @@
         }
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "Benachrichtigungseinstellungen",
         "fields": {
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "Benachrichtigungen",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "Bildschirmposition",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "Unten links",
+              "bottomRight": "Unten rechts",
+              "topLeft": "Oben links",
+              "topRight": "Oben rechts"
             }
           },
           "system": {
             "label": "System",
             "fields": {
-              "siteUpdates": "Site Updated",
-              "error": "Error Occurred",
-              "pushNotifications": "Desktop Notifications"
+              "siteUpdates": "Seite aktualisiert",
+              "error": "Ein Fehler ist aufgetreten ",
+              "pushNotifications": "Desktopbenachrichtigungen"
             }
           },
           "account": {
             "label": "Account",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out",
-              "passwordUpdate": "Password Updated"
+              "loggedIn": "Eingeloggt",
+              "loggedOut": "Ausgeloggt",
+              "passwordUpdate": "Passwort aktualisiert"
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Spieler",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Spieler blockiert",
+              "playerUnblocked": "Spieler unblockiert"
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Freunde",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Freund hinzugefügt",
+              "remove": "Freund entfernt",
+              "accept": "Freundschaftsanfrage angenommen",
+              "reject": "Freundschaftsanfrage abgelehnt",
+              "cancel": "Freundschaftsanfrage abgebrochen",
+              "incoming": "Einkommende Freundschaftsanfrage",
+              "playerOnline": "Freund Online",
+              "playerOffline": "Freund Offline"
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "Gruppen",
             "fields": {
-              "create": "Created Party",
-              "update": "Updated Party",
-              "join": "Joined Party",
-              "leave": "Left Party",
-              "remove": "Removed from Party",
+              "create": "Gruppe erstellt",
+              "update": "Gruppe aktualisiert",
+              "join": "Gruppe beigetreten",
+              "leave": "Gruppe verlassen",
+              "remove": "Entfernt von der Gruppe",
               "disband": "Disbanded Party",
-              "playerJoin": "Player Joined Party",
-              "playerLeave": "Player Left Party",
-              "playerOnline": "Party Member Online",
-              "playerOffline": "Party Member Offline",
-              "kickPlayer": "Kicked Player from Party",
-              "transferPartyOwner": "Promoted Player to Party Leader"
+              "playerJoin": "Spieler hat die Gruppe beigetreten",
+              "playerLeave": "Spieler hat die Gruppe verlassen",
+              "playerOnline": "Gruppenmitglieder Online",
+              "playerOffline": "Gruppenmitglieder Offline",
+              "kickPlayer": "Spieler von der Gruppe gekickt",
+              "transferPartyOwner": "Spieler zum Gruppenleiter gemacht"
             }
           },
           "events": {
-            "label": "Expeditions",
+            "label": "Expeditionen",
             "fields": {
-              "complete": "Expedition Complete",
-              "freeComplete": "Free Expedition Complete",
-              "vmComplete": "Vending Machine Found",
-              "listUpdated": "Expedition List Updated"
+              "complete": "Expedition abgeschlossen",
+              "freeComplete": "Freie Expedition abgeschlossen",
+              "vmComplete": "Automaten gefunden",
+              "listUpdated": "Expeditionsliste aktualisiert"
             }
           },
           "badges": {
-            "label": "Badges",
+            "label": "Abzeichen",
             "fields": {
-              "badgeUnlocked": "Badge Unlocked"
+              "badgeUnlocked": "Abzeichen freigeschaltet"
             }
           },
           "screenshots": {
             "label": "Screenshots",
             "fields": {
-              "screenshotTaken": "Screenshot Taken"
+              "screenshotTaken": "Screenshot erstellt"
             }
           },
           "saveSync": {
-            "label": "Save Sync",
+            "label": "Spielstand-Sync",
             "fields": {
-              "saveUploading": "Save Uploading",
-              "saveUploaded": "Save Uploaded",
-              "saveDownloading": "Save Downloading",
-              "saveDownloaded": "Save Downloaded",
-              "saveUpToDate": "Save Up to Date",
-              "saveCleared": "Save Cleared",
-              "saveReminder": "Save Reminder"
+              "saveUploading": "Spielstand wird hochgeladen",
+              "saveUploaded": "Spielstand hochgeladen",
+              "saveDownloading": "Spielstand wird heruntergeladen",
+              "saveDownloaded": "Spielstand heruntergeladen",
+              "saveUpToDate": "Spielstand auf neustem Stand",
+              "saveCleared": "Spielstand gelöscht",
+              "saveReminder": "Speicher Errinerung"
             }
           },
           "schedules": {
             "label": "Events",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "Anstehende Events"
             }
           }
         }
       },
       "cacheSettings": {
-        "title": "Cache Settings",
-        "clear": "Clear",
+        "title": "Cache Einstellungen",
+        "clear": "Leeren",
         "fields": {
-          "locationCache": "Location Cache",
-          "mapCache": "Map Cache",
-          "locationColorCache": "Location Color Cache"
+          "locationCache": "Standort Cache",
+          "mapCache": "Karten Cache",
+          "locationColorCache": "Standortsfarben Cache"
         }
       },
       "accountSettings": {
-        "title": "Account Settings",
+        "title": "Account Einstellungen",
         "fields": {
-          "badge": "Badge",
-          "changePassword": "Change Password",
-          "clearSaveSync": "Clear Save Sync Data"
+          "badge": "Abzeichen",
+          "changePassword": "Passwort ändern",
+          "clearSaveSync": "Spielstand-Sync Daten löschen"
         }
       },
       "password": {
-        "title": "Change Password",
+        "title": "Passwort ändern",
         "fields": {
-          "oldPassword": "Old Password",
-          "newPassword": "New Password",
-          "newConfirmPassword": "Confirm New Password"
+          "oldPassword": "Altes Passwort",
+          "newPassword": "Neues Passwort",
+          "newConfirmPassword": "Neues Passwort bestätigen"
         },
-        "submit": "Submit"
+        "submit": "Übergeben"
       },
       "badges": {
-        "title": "Badges",
-        "manageBadgeGallery": "Manage Badge Gallery",
+        "title": "Abzeichen",
+        "manageBadgeGallery": "Abzeichengallerie",
         "fields": {
           "unlockStatus": {
-            "label": "Unlock Status:&nbsp;",
+            "label": "Status:&nbsp;",
             "values": {
-              "all": "All",
-              "0": "Locked",
-              "1": "Unlocked",
-              "recentUnlock": "Recently Unlocked"
+              "all": "Alle",
+              "0": "Gesperrte",
+              "1": "Freigeschaltene",
+              "recentUnlock": "Zuletzt freigeschalten"
             }
           },
           "sortOrder": {
-            "label": "Sort Order:&nbsp;",
+            "label": "Sortieren nach:&nbsp;",
             "values": {
-              "default": "Default"
+              "default": "Standard"
             }
           },
           "search": {
-            "label": "Search:&nbsp;",
+            "label": "Suchen nach:&nbsp;",
             "name": "Name:",
-            "location": "Location:"
+            "location": "Standort:"
           }
         }
       },
       "badgeGallery": {
-        "title": "Manage Badge Gallery",
-        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
-        "badgeGalleryColProgress": "Next Column Upgrade (Badges)",
+        "title": "Abzeichengallerie",
+        "badgeGalleryRowProgress": "Nächster Reihen Upgrade (BP)",
+        "badgeGalleryColProgress": "Nächster Splaten Upgrade (Abzeichen)",
         "removeMode": {
-          "activate": "Remove Badges",
-          "deactivate": "Done"
+          "activate": "Abzeichen entfernen",
+          "deactivate": "Fertig"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Abzeichen verwalten"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
+        "title": "Abzeichen Presets verwalten",
+        "selectPreset": "Presets auswählen",
         "presetName": "Preset {{index}}"
       },
       "save": {
-        "title": "Manage Save Data",
-        "reload": "Save Changes and Reload",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "title": "Spielstand verwalten",
+        "reload": "Änderungen speichern und neu laden",
+        "info": "Beim importieren von Spielständen, falls du das letzt Mal eine Übersetzung auf RPG_RT benutzt hast, wird das Spiel Fehler anzeigen bis Du wieder mit EasyRPG ohne aktive Übersetztung, speicherst."
       },
       "uiTheme": {
         "title": "UI Stil",
@@ -413,111 +413,111 @@
       },
       "createParty": {
         "title": {
-          "create": "Create Party",
-          "update": "Edit Party"
+          "create": "Gruppe erstellen",
+          "update": "Gruppe bearbeiten"
         },
         "fields": {
-          "partyName": "Party Name",
-          "description": "Description",
-          "public": "Public",
-          "password": "Password",
+          "partyName": "Gruppenname",
+          "description": "Beschreibung",
+          "public": "Öffentlich",
+          "password": "Passwort",
           "theme": "Theme"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "submit": "Submit"
+        "showPassword": "Passwort anzeigen",
+        "hidePassword": "Passwort ausblenden",
+        "submit": "Übergeben"
       },
       "joinPrivateParty": {
-        "title": "Join Private Party",
+        "title": "Private Gruppe beitreten",
         "fields": {
-          "password": "Password"
+          "password": "Passwort"
         },
-        "showPassword": "Show Password",
-        "hidePassword": "Hide Password",
-        "incorrectPassword": "Incorrect Password: Please try again.",
-        "submit": "Submit"
+        "showPassword": "Passwort anzeigen",
+        "hidePassword": "Passwort ausblenden",
+        "incorrectPassword": "Falsches Passwort: Bitte versuche es nochmal.",
+        "submit": "Übergeben"
       },
       "events": {
-        "title": "Expeditions",
-        "rankExp": "Next Rank",
-        "weekExp": "ExP This Week",
+        "title": "Expeditionen",
+        "rankExp": "Nächster Rang",
+        "weekExp": "ExP diese Woche",
         "tabs": {
-          "locations": "Locations",
-          "vms": "Vending Machine Finder"
+          "locations": "Standorte",
+          "vms": "Automatenfinder"
         }
       },
       "rankings": {
         "title": "Rankings",
-        "player": "Player"
+        "player": "Spieler"
       },
       "screenshot": {
-        "title": "Your Screenshot",
+        "title": "Dein Screenshot",
         "download": "Download",
-        "save": "Save to My Screenshots",
-        "share": "Share in Chat"
+        "save": "In meinen Screenshots sichern",
+        "share": "Im Chat sharen"
       },
       "myScreenshots": {
-        "title": "My Screenshots",
-        "screenshotSlotProgress": "Next Slot Upgrade (BP)",
-        "empty": "You haven't saved any screenshots yet."
+        "title": "Meine Screenshots",
+        "screenshotSlotProgress": "Nächster Slot Upgrade (BP)",
+        "empty": "Du hast noch keine Screenshots gesichert."
       },
       "communityScreenshots": {
         "title": "Community Screenshots",
-        "scrollToRefresh": "Scroll to Top to Refresh",
+        "scrollToRefresh": "Nach oben scrollen um zu refreshen",
         "fields": {
           "game": {
-            "label": "Game:&nbsp;",
+            "label": "Spiel:&nbsp;",
             "values": {
-              "all": "All"
+              "all": "Alle"
             }
           },
           "sortOrder": {
             "values": {
-              "recent": "Newest",
-              "likes": "Most Liked"
+              "recent": "Neuste",
+              "likes": "Meist geliked"
             }
           },
           "interval": {
             "values": {
-              "day": "Today",
-              "week": "This Week",
-              "month": "This Month",
-              "year": "This Year",
-              "all": "All Time"
+              "day": "Heute",
+              "week": "Diese Woche",
+              "month": "Diesen Monat",
+              "year": "Dieses Jahr",
+              "all": "Aller Zeiten"
             }
           }
         }
       },
       "schedule": {
         "title": "Events",
-        "ongoing": "Ongoing Events",
-        "party": "Party Events",
-        "future": "Future Events",
-        "official": "Official Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "ongoing": "Laufende Events",
+        "party": "Gruppen Events",
+        "future": "Anstehende Events",
+        "official": "Offizielle Events",
+        "noResults": "Es gibt keine anstehende Events.",
+        "doSchedule": "Event veranstalten"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "Event bearbeiten",
+        "save": "Speichern",
+        "cancel": "Event abbrechen",
         "fields": {
-          "name": "Event Name",
-          "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "name": "Eventname",
+          "description": "Beschreibung",
+          "datetime": "Eventdatum and Uhrzeit",
+          "recurring": "Wiederkehredes Event",
           "theme": "Theme",
           "interval": {
             "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "days": "Tage",
+            "months": "Monate",
+            "years": "Jahre"
           },
-          "restrictParty": "Limit to Party",
-          "official": "Official Event",
-          "resetOrganizer": "Reset Organizer",
+          "restrictParty": "Auf Gruppe limitieren",
+          "official": "Offizielles Event",
+          "resetOrganizer": "Organisator zurrücksetzen",
           "platforms": {
-            "title": "External Links",
+            "title": "Externe Links",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -528,73 +528,73 @@
         }
       },
       "report": {
-        "title": "Report",
-        "submit": "Submit",
+        "title": "Melden",
+        "submit": "Übergeben",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
-            "1": "Slurs, harmful or inappropriate language",
-            "2": "Harassment, bullying, stalking",
-            "3": "Inappropriate names",
-            "4": "Ban evasion",
-            "5": "Cheating, abusing exploits",
-            "6": "Underage player",
+            "title": "Grund",
+            "placeholder": "Sonstiger Grund (maximal 50 Zeichen)",
+            "1": "Beleidigungen oder gewaltsame Formulierungen",
+            "2": "Missbrauch, belästigung, stalking",
+            "3": "Unangemessener Name",
+            "4": "Ban ausgewichen",
+            "5": "Cheaten, benutzen von Exploits",
+            "6": "Minderjähriger Spieler",
             "7": "Spam",
-            "other": "Other (specify)"
+            "other": "Sonstiges (begründen)"
           }
         }
       },
       "rules": {
-        "title": "Rules",
-        "rule1": "Please be respectful and polite.",
-        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
-        "rule3": "No politics.",
-        "rule4": "No inflammatory remarks (including slurs).",
-        "rule5": "No cheating of any kind for any reason.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "title": "Regeln",
+        "rule1": "Bitte sei respektvoll und hölflich.",
+        "rule2": "Keine 18+ diskussionen (NSFW, gore, etc.).",
+        "rule3": "Keine Politik.",
+        "rule4": "Keine beleidigende Ausdrücke.",
+        "rule5": "Kein cheaten jeglicher Art.",
+        "rule6": "Sollte es Probleme geben, kontaktiere die Moderatoren."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Undiscovered Locations",
-        "complete": "You've discovered every available location! Congrats!!"
+        "title": "Unentdeckte Standorte",
+        "complete": "Du hast jeden verfügbaren Standort gefunden! Gut gemacht!"
       }
     },
     "tooltips": {
-      "togglePrivateMode": "Toggle Private Mode",
-      "save": "Manage Save Data",
+      "togglePrivateMode": "Privatmodus togglen",
+      "save": "Spielstand verwalten",
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
-      "toggleExplorer": "Toggle Yume 2kki Navigator",
-      "screenshot": "Take Screenshot",
-      "myScreenshots": "My Screenshots",
-      "settings": "Settings",
-      "toggleMute": "Toggle Mute",
-      "toggleHideLocation": "Toggle Location Sharing",
-      "toggleGlobalMessage": "Toggle Global Chat Messaging",
+      "toggleExplorer": "Yume 2kki Navigator togglen",
+      "screenshot": "Screenshot machen",
+      "myScreenshots": "Meine Screenshots",
+      "settings": "Einstellungen",
+      "toggleMute": "Stummschaltung togglen",
+      "toggleHideLocation": "Standortübermittlung togglen",
+      "toggleGlobalMessage": "Globaler Chat Nachrichten",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
-        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
-        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
-        "clearChat": "Clear Chat"
+        "toggleNextLocation": "Nächsten Expeditionsstandort anzeigen/ausblenden",
+        "toggleGlobalMessageLocations": "Chatnachrichten Standorte anzeigen/ausblenden",
+        "toggleMessageTimestamps": "Chatnachrichten Zeitstempel anzeigen/ausblenden",
+        "clearChat": "Chat leeren"
       },
       "parties": {
-        "createParty": "Create Party",
-        "disbandParty": "Disband Party"
+        "createParty": "Gruppe erstellen",
+        "disbandParty": "Gruppe löschen"
       },
-      "events": "Expeditions",
-      "locations": "Locations",
+      "events": "Expeditionen",
+      "locations": "Orte",
       "communityScreenshots": "Community Screenshots",
       "rankings": "Rankings",
       "schedules": "Events",
-      "nexus": "Return to Nexus",
-      "explorerUndiscoveredLocations": "View Undiscovered Locations",
-      "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "nexus": "Zum Nexus zurrückkehren",
+      "explorerUndiscoveredLocations": "Unentdeckte Standorte anzeigen",
+      "timeTrial": "Um den Zeitkampf Modus zu aktiveren, halte Shift und die rechte Pfeiltaste beim starten eines neuen Spieles, bevor etwas auf dem Bildschirm aufkommt.",
+      "mobileControlsType": "Alternativen zu dem standard D-Pad-Steuerungstyp.<br>Floating-Steuerungstypen sind nur im mobilen Vollbildmodus verfügbar."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Markdown Syntax wird akzeptiert, benutze {{l:Welt,optionaler Linkname}} um einen Link zu yume.wiki einzufügen."
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Regeln nochmal anzeigen"
   },
   "messages": {
     "games": {
@@ -623,57 +623,57 @@
       "unaccomplished": "Unaccomplished"
     },
     "leavePage": "Bist du dir sicher, dass du diese Seite verlassen möchtest? Nicht gespeicherte Fortschritte werden verloren gehen.",
-    "logout": "Are you sure you want to log out?",
-    "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "logout": "Bist du dir sicher, dass du dich abmelden willst?",
+    "loadingInstruct": ". <br /> <br /> Sieht so aus als ob die Seite schon für eine weile lädt; sollte das Problem nicht verschwinden, kann es sein das du STRG-F5 drücken musst um den Browser-Cache (aber nicht Cookies!) zu leeren. Du kannst die Konsole auf Fehler mit F12 prüfen.",
+    "requestNotifications": "Benachrichtigungen für gefollowte Events- und Expeditions-Refreshes?",
     "connStatus": {
       "0": "Verbindung unterbrochen",
       "1": "Verbunden",
       "2": "Connecting...",
-      "3": "Private Mode"
+      "3": "Privater Modus"
     },
     "lastOnline": {
-      "template": "Last online\n{INTERVAL} ago",
-      "longTime": "A long time ago",
+      "template": "Zuletzt Online\n vor {INTERVAL}",
+      "longTime": "Einer langen Zeit",
       "interval": {
-        "short": "less than 1 minute",
+        "short": "weniger als 1 Minute",
         "minutes": {
-          "singular": "{VALUE} minute",
-          "plural": "{VALUE} minutes"
+          "singular": "{VALUE} Minute",
+          "plural": "{VALUE} Minuten"
         },
         "hours": {
-          "singular": "{VALUE} hour",
-          "plural": "{VALUE} hours"
+          "singular": "{VALUE} Stunde",
+          "plural": "{VALUE} Stunden"
         },
         "days": {
-          "singular": "{VALUE} day",
-          "plural": "{VALUE} days"
+          "singular": "{VALUE} Tag",
+          "plural": "{VALUE} Tage"
         }
       }
     },
     "location": {
       "template": "{LOCATION} ({LOCATION_EN})",
-      "queryingLocation": "Fragt standort ab...",
+      "queryingLocation": "Fragt Standort ab...",
       "unknownLocation": "Unbekannter Ort",
       "2kki": {
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
+        "1": "Einweg",
+        "2": "Kein Zutritt",
+        "4": "Freischalten",
+        "8": "Geschlossen",
+        "16": "Sackgasse",
+        "32": "Isoliert",
+        "64": "Benötigt Effekt ({PARAMS})",
         "128": "{PARAMS} Chance",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "Abkürzung",
+        "1024": "Ausstiegspunkt",
+        "2048": "Saisonal ({PARAMS})"
       },
       "depth": " ({DEPTH})",
-      "playing": "Playing {GAME}"
+      "playing": "Spielt {GAME}"
     },
     "locationDisplay": {
       "template": "{LOCATION}",
@@ -682,27 +682,27 @@
       }
     },
     "playersOnline": {
-      "singular": "{COUNT} Player Online",
-      "plural": "{COUNT} Players Online"
+      "singular": "{COUNT} Spieler Online",
+      "plural": "{COUNT} Spieler Online"
     },
     "playersInMap": {
-      "singular": "{COUNT} Player in Map",
-      "plural": "{COUNT} Players in Map"
+      "singular": "{COUNT} Spieler im Standort",
+      "plural": "{COUNT} Spieler im Standort"
     },
     "playerList": {
-      "unnamed": "Unnamed Player",
-      "muted": "Muted",
+      "unnamed": "Unbenannter Spieler",
+      "muted": "Stummgeschalten",
       "actions": {
-        "approveFriend": "Accept Friend Request",
-        "rejectFriend": "Reject Friend Request",
-        "cancelFriend": "Cancel Friend Request",
-        "partyKick": "Kick from Party",
-        "transferPartyOwner": "Promote to Party Leader"
+        "approveFriend": "Freundschaftsanfrage annehmen",
+        "rejectFriend": "Freundschaftsanfrage ablehnen",
+        "cancelFriend": "Freundschaftsanfrage abbrechen",
+        "partyKick": "Von der Gruppe kicken",
+        "transferPartyOwner": "Zum Gruppenleiter befördern"
       }
     },
     "roles": {
       "mod": "Moderator",
-      "dev": "Developer"
+      "dev": "Entwickler"
     },
     "timestamp": {
       "time": "{TIME}",
@@ -710,115 +710,115 @@
     },
     "context": {
       "ping": {
-        "label": "Mention {PLAYER}"
+        "label": "{PLAYER} erwähnen"
       },
       "addFriend": {
-        "label": "Friend {PLAYER}"
+        "label": "{PLAYER} als Freund hinzufügen"
       },
       "removeFriend": {
-        "label": "Unfriend {PLAYER}"
+        "label": "{PLAYER} von Freunden entfernen"
       },
       "block": {
-        "label": "Block {PLAYER}",
-        "confirm": "Are you sure you want to block {PLAYER}?"
+        "label": "{PLAYER} blockieren",
+        "confirm": "Willst du wirklich {PLAYER} blockieren?"
       },
       "unblock": {
-        "label": "Unblock {PLAYER}",
-        "confirm": "Are you sure you want to unblock {PLAYER}?"
+        "label": "{PLAYER} unblockieren",
+        "confirm": "Willst du wirklich {PLAYER} unblockieren?"
       },
       "report": {
-        "label": "Report {PLAYER}"
+        "label": "{PLAYER} melden"
       },
       "admin": {
         "ban": {
-          "label": "Ban {PLAYER}",
-          "confirm": "Are you sure you want to ban {PLAYER}?",
-          "success": "{PLAYER} has been banned."
+          "label": "{PLAYER} bannen",
+          "confirm": "Willst du wirklich {PLAYER} bannen?",
+          "success": "{PLAYER} wurde gebannt."
         },
         "unban": {
-          "label": "Unban {PLAYER}",
-          "confirm": "Are you sure you want to unban {PLAYER}?",
-          "success": "{PLAYER} has been unbanned."
+          "label": "{PLAYER} unbannen",
+          "confirm": "Willst du wirklich {PLAYER} unbannen?",
+          "success": "{PLAYER} wurde ungebannt."
         },
         "mute": {
-          "label": "Mute {PLAYER}",
-          "confirm": "Are you sure you want to mute {PLAYER}?",
-          "success": "{PLAYER} has been muted."
+          "label": "{PLAYER} muten",
+          "confirm": "Willst du wirklich {PLAYER} muten?",
+          "success": "{PLAYER} wurde gemuted."
         },
         "unmute": {
-          "label": "Unmute {PLAYER}",
-          "confirm": "Are you sure you want to unmute {PLAYER}?",
-          "success": "{PLAYER} has been unmuted."
+          "label": "{PLAYER} unmuten",
+          "confirm": "Willst du wirklich {PLAYER} unmuten?",
+          "success": "{PLAYER} wurde unmuted."
         },
         "grantBadge": {
-          "label": "Grant Badge",
-          "prompt": "Enter the badge ID to grant {PLAYER}.",
-          "success": "{BADGE} was successfully granted to {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Abzeichen vergeben",
+          "prompt": "Gebe die zu vergebene Abzeichen-ID für {PLAYER} ein.",
+          "success": "{BADGE} wurde erfolgreich {PLAYER} vergeben.",
+          "fail": "Kein Abzeichen mit dieser ID gefunden."
         },
         "revokeBadge": {
-          "label": "Revoke Badge",
-          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
-          "success": "{BADGE} was successfully revoked from {PLAYER}.",
-          "fail": "No badge was found for the provided badge ID."
+          "label": "Abzeichen widerrufen",
+          "prompt": "Geben die zu widerrufende Abzeichen-ID für {PLAYER} ein.",
+          "success": "{BADGE} wurde erfolgreich {PLAYER} widerrufen.",
+          "fail": "Kein Abzeichen mit dieser ID gefunden."
         }
       }
     },
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": "Username or password is incorrect."
+          "invalidLogin": "Benutzername oder Passwort ist nicht richtig."
         }
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "The specified passwords do not match.",
-          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
-          "emailTaken": "The specified email address is already in use.",
-          "usernameTaken": "The specified username is already in use."
+          "confirmPasswordMismatch": "Die gegebenen Passwörter stimmen nicht überein.",
+          "invalidCredentials": "Gegebener Benutzername oder Passwort ist leer oder enthält unerlaubte Zeichen.",
+          "emailTaken": "Die gegebene Email wird bereits benutzt.",
+          "usernameTaken": "Der gegebene Benutzername wird bereits benutzt."
         }
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "The specified new passwords do not match.",
-          "badLogin": "Login password is incorrect.",
-          "internalServerError": "An error occurred: please try again later."
+          "confirmPasswordMismatch": "Die gegebenen neuen Passwörter stimmen nicht überein.",
+          "badLogin": "Login Passwort ist nicht richtig.",
+          "internalServerError": "Ein Fehler ist aufgetreten: versuche es bitte später nochmal."
         }
       }
     },
     "chat": {
-      "globalMessage": "Global Message"
+      "globalMessage": "Globale Nachricht"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Freunde",
       "categories": {
-        "incoming": "Incoming - {COUNT}",
-        "outgoing": "Outgoing - {COUNT}",
+        "incoming": "Eingehend - {COUNT}",
+        "outgoing": "Ausgehend - {COUNT}",
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
       }
     },
     "parties": {
-      "emptyMessage": "There are currently no active parties.",
-      "yourParty": "Your Party",
-      "defaultPartyName": "{OWNER}'s Party",
-      "partyOwner": "Party Leader",
-      "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
-      "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
-      "offlineMemberSuffix": "Member offline",
+      "emptyMessage": "Es gibt momentan keine aktiven Gruppen.",
+      "yourParty": "Deine Gruppe",
+      "defaultPartyName": "{OWNER}'s Gruppe",
+      "partyOwner": "Gruppenleiter",
+      "confirmDisband": "Willst du wirklich deine Gruppe auflösen? Dies kann nicht rückgängig gemacht werden.",
+      "confirmTransferPartyOwner": "Willst du wirklich die Gruppenleiterrolle {PLAYER} übergeben?",
+      "offlineMemberSuffix": "Mitglied offline",
       "categories": {
         "online": "Online - {COUNT}",
         "offline": "Offline - {COUNT}"
       },
       "actions": {
-        "viewPartyDetails": "View Party Details",
-        "joinParty": "Join Party",
-        "joinPrivateParty": "Join Private Party",
-        "leaveParty": "Leave Party"
+        "viewPartyDetails": "Gruppendetails öffnen",
+        "joinParty": "Gruppe beitreten",
+        "joinPrivateParty": "Private Gruppe beitreten",
+        "leaveParty": "Gruppe verlassen"
       }
     },
     "chatTips": {
-      "template": "TIP: {CONTENT}",
+      "template": "TIPP: {CONTENT}",
       "tips": {
         "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
         "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
