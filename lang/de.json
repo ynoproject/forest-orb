@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "Erwähnungssound abspielen",
           "chatHistoryLimit": {
             "values": {
+              "0": "Unbegrenzt",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "Unbegrenzt"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "Status:&nbsp;",
             "values": {
-              "all": "Alle",
               "0": "Gesperrte",
               "1": "Freigeschaltete",
+              "all": "Alle",
               "recentUnlock": "Zuletzt freigeschaltet"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Übergeben",
         "fields": {
           "reason": {
-            "title": "Grund",
-            "placeholder": "Sonstiger Grund (maximal 50 Zeichen)",
             "1": "Beleidigungen oder gewaltsame Formulierungen",
             "2": "Missbrauch, Belästigung, Stalking",
             "3": "Unangemessener Name",
@@ -541,6 +539,8 @@
             "5": "Cheaten, benutzen von Exploits",
             "6": "Minderjähriger Spieler",
             "7": "Spam",
+            "title": "Grund",
+            "placeholder": "Sonstiger Grund (maximal 50 Zeichen)",
             "other": "Sonstiges (begründen)"
           }
         }
@@ -933,11 +933,11 @@
       "toggleTracked": "Standort-Tracking togglen",
       "availableUntilDate": "Verfügbar bis\n{DATE}",
       "types": {
-        "-1": "Freie Expedition",
         "0": "Täglich",
         "1": "Wöchendlich",
         "2": "Wochenende",
-        "3": "Spezial"
+        "3": "Spezial",
+        "-1": "Freie Expedition"
       },
       "expRanks": {
         "0": "Novize",
@@ -1033,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "Alle",
         "2": "Alle Effekte",
+        "all": "Alle",
         "nasu": "NASU",
         "rby": "Rot Blau Gelb (Mini Game B)",
         "rby_ex": "Rot Blau Gelb (Mini Game B) - EX Version",

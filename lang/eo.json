@@ -172,7 +172,8 @@
         "screenshotSettings": "Ekrankopioj",
         "notificationSettings": "Sciigoj",
         "accountSettings": "Konto",
-        "engineSettings": "Engine (F1)"
+        "engineSettings": "Engine (F1)",
+        "cacheSettings": "Cache"
       },
       "blocklist": {
         "title": "Listo de Blokitoj",
@@ -190,14 +191,14 @@
           "togglePlayMentionSound": "Ludi Sonon de Mencio",
           "chatHistoryLimit": {
             "values": {
+              "0": "Senlima",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "Senlima"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -367,9 +368,9 @@
           "unlockStatus": {
             "label": "Malŝlosa Stato:&nbsp;",
             "values": {
-              "all": "Ĉiuj",
               "0": "Ŝlosita(j)",
               "1": "Malŝlosita(j)",
+              "all": "Ĉiuj",
               "recentUnlock": "Lastatempe Malŝlosita(j)"
             }
           },
@@ -531,8 +532,6 @@
         "submit": "Submit",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
             "3": "Inappropriate names",
@@ -540,6 +539,8 @@
             "5": "Cheating, abusing exploits",
             "6": "Underage player",
             "7": "Spam",
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
         }
@@ -932,11 +933,11 @@
       "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "Disponebla Ĝis\n{DATE}",
       "types": {
-        "-1": "Libera Ekspedicio",
         "0": "Tage",
         "1": "Semajne",
         "2": "Semajnfine",
-        "3": "Speciala"
+        "3": "Speciala",
+        "-1": "Libera Ekspedicio"
       },
       "expRanks": {
         "0": "Novulo",
@@ -1032,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "Ĉiuj",
         "2": "Ĉiuj Efikoj",
+        "all": "Ĉiuj",
         "nasu": "NASU",
         "rby": "Ruĝa Blua Flava (Ludeto B)",
         "rby_ex": "Ruĝa Blua Flava (Ludeto B) - Versio EX",

@@ -1,0 +1,55 @@
+name: Validate JSON Syntax
+
+on:
+  push:
+    paths:
+      - '**.json'
+  pull_request:
+    paths:
+      - '**.json'
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine changed JSON files
+        id: changed
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            base="${{ github.event.pull_request.base.sha }}"
+            head="${{ github.event.pull_request.head.sha }}"
+          else
+            base="${{ github.event.before }}"
+            head="${{ github.event.after }}"
+            echo "Attempting to fetch github.event.before = ${{ github.event.before }}"
+            git fetch origin ${{ github.event.before }} || echo "::warning::Unable to fetch 'before' commit (likely due to force-push)"
+          fi
+
+          echo "Diff base: $base"
+          echo "Diff head: $head"
+
+          files=$(git diff --name-only "$base" "$head" -- '*.json' || true)
+
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Validate JSON files
+        if: steps.changed.outputs.files != ''
+        run: |
+          failed=0
+          while read -r file; do
+            [ -f "$file" ] || continue
+            jq empty "$file" 2>err.log
+            if [ $? -ne 0 ]; then
+              msg=$(<err.log)
+              echo "::error file=$file::${msg}"
+              failed=1
+            fi
+          done <<< "${{ steps.changed.outputs.files }}"
+          exit $failed

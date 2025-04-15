@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "Bahsetme Sesini Oynat",
           "chatHistoryLimit": {
             "values": {
+              "0": "Sınırsız",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "Sınırsız"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "Kilit Açılma Durumu:&nbsp;",
             "values": {
-              "all": "Hepsi",
               "0": "Kilitli",
               "1": "Açılmış",
+              "all": "Hepsi",
               "recentUnlock": "Recently Unlocked"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Submit",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
             "3": "Inappropriate names",
@@ -541,6 +539,8 @@
             "5": "Cheating, abusing exploits",
             "6": "Underage player",
             "7": "Spam",
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
         }
@@ -933,11 +933,11 @@
       "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "şu tarihe kadar mevcut:\n{DATE} ",
       "types": {
-        "-1": "Serbest Seyahat",
         "0": "Günlük",
         "1": "Haftalık",
         "2": "Haftasonu",
-        "3": "Özel"
+        "3": "Özel",
+        "-1": "Serbest Seyahat"
       },
       "expRanks": {
         "0": "Acemi",
@@ -1033,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "Tümü",
         "2": "Tüm Efektler",
+        "all": "Tümü",
         "nasu": "NASU",
         "rby": "Kırmızı Mavi Sarı (Mini Oyun B)",
         "rby_ex": "Kırmızı Mavi Sarı (Mini Oyun B) - EX Versiyonu",

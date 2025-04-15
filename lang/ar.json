@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "تشغيل صوت الإشارة",
           "chatHistoryLimit": {
             "values": {
+              "0": "غير محدود",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "غير محدود"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "حالة الفتح:&nbsp;",
             "values": {
-              "all": "جميع",
               "0": "مقفل",
               "1": "مفتوح",
+              "all": "جميع",
               "recentUnlock": "Recently Unlocked"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Submit",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
             "3": "Inappropriate names",
@@ -541,6 +539,8 @@
             "5": "Cheating, abusing exploits",
             "6": "Underage player",
             "7": "Spam",
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
         }
@@ -619,7 +619,8 @@
       "tsushin": "Yume Tsushin (يومي توشين)",
       "nostalgic": "nostAlgic (حنين)",
       "if": "If",
-      "unaccomplished": "Unaccomplished"
+      "unaccomplished": "Unaccomplished",
+      "fog": "FOG"
     },
     "leavePage": "هل أنت متأكد أنك تريد مغادرة الصفحة؟ سيتم فقد أي تقدم غير محفوظ في اللعبة",
     "logout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
@@ -932,11 +933,11 @@
       "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "متاح حتى\n{DATE}",
       "types": {
-        "-1": "رحلة استكشافية مجانية",
         "0": "يومي",
         "1": "أسبوعي",
         "2": "نهاية الاسبوع",
-        "3": "خاص"
+        "3": "خاص",
+        "-1": "رحلة استكشافية مجانية"
       },
       "expRanks": {
         "0": "مبتدئ",
@@ -1032,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "الكل",
         "2": "(all effects) جميع التأثيرات",
+        "all": "الكل",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
         "rby_ex": "Red Blue Yellow (Mini Game B) - EX نسخة",
