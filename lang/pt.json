@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "Tocar Som de Menção",
           "chatHistoryLimit": {
             "values": {
+              "0": "Ilimitado",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "Ilimitado"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "Status de desbloqueio:&nbsp;",
             "values": {
-              "all": "Todos",
               "0": "Bloqueado",
               "1": "Desbloqueado",
+              "all": "Todos",
               "recentUnlock": "Desbloqueado Recentemente"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Enviar",
         "fields": {
           "reason": {
-            "title": "Motivo",
-            "placeholder": "Motivo customizado (maximo de 50 Caracteres, em inglês)",
             "1": "Insultos, linguagem inapropriada ou ofensiva",
             "2": "Assédio, bullying, stalking",
             "3": "Nome inapropriado",
@@ -541,6 +539,8 @@
             "5": "Trapaçear, abusar de exploits",
             "6": "Jogador menor de idade",
             "7": "Spam",
+            "title": "Motivo",
+            "placeholder": "Motivo customizado (maximo de 50 Caracteres, em inglês)",
             "other": "Outro (especifique)"
           }
         }
@@ -933,11 +933,11 @@
       "toggleTracked": "Alternar Rastreamento de Localização",
       "availableUntilDate": "Disponível até\n{DATE}",
       "types": {
-        "-1": "Expedição Livre",
         "0": "Diária",
         "1": "Semanal",
         "2": "Do fim da Semana",
-        "3": "Especial"
+        "3": "Especial",
+        "-1": "Expedição Livre"
       },
       "expRanks": {
         "0": "Novato",
@@ -1033,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "Todos",
         "2": "Todos os Efeitos",
+        "all": "Todos",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
         "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",

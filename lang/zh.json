@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "被提及时播放提示音",
           "chatHistoryLimit": {
             "values": {
+              "0": "无限制",
               "25": "25",
               "50": "50",
               "100": "100",
               "250": "250",
               "500": "500",
               "1000": "1000",
-              "2500": "2500",
-              "0": "无限制"
+              "2500": "2500"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "解锁状态:&nbsp;",
             "values": {
-              "all": "全部",
               "0": "未解锁",
               "1": "已解锁",
+              "all": "全部",
               "recentUnlock": "最近解锁"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Submit",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
             "3": "Inappropriate names",
@@ -541,6 +539,8 @@
             "5": "Cheating, abusing exploits",
             "6": "Underage player",
             "7": "Spam",
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
         }
@@ -933,11 +933,11 @@
       "toggleTracked": "设为导航目的地",
       "availableUntilDate": "任务有效期至\n{DATE}",
       "types": {
-        "-1": "无尽流浪",
         "0": "每日任务",
         "1": "每周任务",
         "2": "周末限定",
-        "3": "特别任务"
+        "3": "特别任务",
+        "-1": "无尽流浪"
       },
       "expRanks": {
         "0": "萌新",
@@ -1033,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "全部",
         "2": "效果全集",
+        "all": "全部",
         "nasu": "NASU",
         "rby": "红蓝黄 (小游戏 B)",
         "rby_ex": "红蓝黄 (小游戏 B) - EX模式",

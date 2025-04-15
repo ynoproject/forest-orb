@@ -191,14 +191,14 @@
           "togglePlayMentionSound": "멘션 알람 켜기",
           "chatHistoryLimit": {
             "values": {
+              "0": "제한 없음",
               "25": "25개",
               "50": "50개",
               "100": "100개",
               "250": "250개",
               "500": "500개",
               "1000": "1000개",
-              "2500": "2500개",
-              "0": "제한 없음"
+              "2500": "2500개"
             }
           },
           "mapChatHistoryLimit": {
@@ -368,9 +368,9 @@
           "unlockStatus": {
             "label": "잠금 상태:&nbsp;",
             "values": {
-              "all": "전체",
               "0": "잠김",
               "1": "해금",
+              "all": "전체",
               "recentUnlock": "최근에 해금"
             }
           },
@@ -532,8 +532,6 @@
         "submit": "Submit",
         "fields": {
           "reason": {
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
             "3": "Inappropriate names",
@@ -541,6 +539,8 @@
             "5": "Cheating, abusing exploits",
             "6": "Underage player",
             "7": "Spam",
+            "title": "Reason",
+            "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
         }
@@ -933,11 +933,11 @@
       "toggleTracked": "Toggle Location Tracking",
       "availableUntilDate": "탐험 마감 기한\n{DATE}",
       "types": {
-        "-1": "자유 탐험",
         "0": "일일",
         "1": "주간",
         "2": "주말",
-        "3": "스페셜"
+        "3": "스페셜",
+        "-1": "자유 탐험"
       },
       "expRanks": {
         "0": "초보",
@@ -1033,8 +1033,8 @@
         }
       },
       "subCategories": {
-        "all": "전체",
         "2": "모든 이펙트 얻기",
+        "all": "전체",
         "nasu": "NASU",
         "rby": "빨강/파랑/노랑 (미니게임 B)",
         "rby_ex": "빨강/파랑/노랑 (미니게임 B) - EX 버전",
