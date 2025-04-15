@@ -389,8 +389,8 @@
       },
       "badgeGallery": {
         "title": "Abzeichensgalerie",
-        "badgeGalleryRowProgress": "Nächster Reihen Upgrade (AP)",
-        "badgeGalleryColProgress": "Nächster Spalten Upgrade (Abzeichen)",
+        "badgeGalleryRowProgress": "Nächstes Reihen Upgrade (AP)",
+        "badgeGalleryColProgress": "Nächstes Spalten Upgrade (Abzeichen)",
         "removeMode": {
           "activate": "Abzeichen entfernen",
           "deactivate": "Fertig"
@@ -458,7 +458,7 @@
       },
       "myScreenshots": {
         "title": "Meine Screenshots",
-        "screenshotSlotProgress": "Nächster Slot Upgrade (AP)",
+        "screenshotSlotProgress": "Nächstes Slot Upgrade (AP)",
         "empty": "Du hast noch keine Screenshots gesichert."
       },
       "communityScreenshots": {
@@ -823,7 +823,7 @@
         "backupReminder": "Es wird empfohlen regelmäßig deinen Save runterzuladen, damit du lokal deinen Save als Backup bereit hast. Somit verlierst du keinen Fortschritt, auch wenn dein Browser Cache geleert wurde.",
         "menuTheme": "Namensfarbe und Spielerlisten-Theme basieren auf deine in-game Menü Einstellungen.",
         "playersInMap": "Du kannst zwischen der Anzahl der Spieler die online sind und die die in deinem aktuellem Standort sind wechseln, indem du auf das Label clickst.",
-        "markdownSupport": "Du kannst Chat formatierung benutzen, indem du deinen Text mit Zeichen spezifischen umgibst. Dazu gehören: **fett** (\\*\\*Text\\*\\*), *kursiv* (\\*Text\\*, \\_Text\\_), __unterstrichen__ (\\_\\Text\\_\\_), ~~durchgestrichen~~ (\\~\\~Text\\~\\~), und ||Spoiler|| (\\|\\|Text\\|\\|).",
+        "markdownSupport": "Du kannst Chat Formatierung benutzen, indem du deinen Text mit Zeichen spezifischen umgibst. Dazu gehören: **fett** (\\*\\*Text\\*\\*), *kursiv* (\\*Text\\*, \\_Text\\_), __unterstrichen__ (\\_\\Text\\_\\_), ~~durchgestrichen~~ (\\~\\~Text\\~\\~), und ||Spoiler|| (\\|\\|Text\\|\\|).",
         "tabToChat": "Wenn du auf PC spielst, kannst du mit Tab zwischen dem Spiel und der Chateingabe wechseln. Dieses Feature kann unter 'Tab zum chatten benutzen' in den Chat Einstellungen geändert werden.",
         "chatTabNotifications": "In jedem Chat Tab außer 'Alle', falls eine neue Nachricht in einen anderen Tab einkommt, wird das Label dazu fett markiert, damit du es mitbekommst.",
         "clearChat": "Wenn du auf den 'Chat leeren' Button drückst im oberen rechten Bereich der Chatbox und du nicht im 'Alle' Tab bist, werden nur Nachrichten für den angewählten Tab entfernt.",
