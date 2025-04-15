@@ -363,7 +363,7 @@
       },
       "badges": {
         "title": "Abzeichen",
-        "manageBadgeGallery": "Abzeichengalerie",
+        "manageBadgeGallery": "Abzeichensgalerie",
         "fields": {
           "unlockStatus": {
             "label": "Status:&nbsp;",
@@ -388,7 +388,7 @@
         }
       },
       "badgeGallery": {
-        "title": "Abzeichengalerie",
+        "title": "Abzeichensgalerie",
         "badgeGalleryRowProgress": "Nächster Reihen Upgrade (AP)",
         "badgeGalleryColProgress": "Nächster Spalten Upgrade (Abzeichen)",
         "removeMode": {
@@ -833,9 +833,9 @@
         "friendsMenu": "Mit Rechtsklick auf PC oder Touch-Screen auf das Spielericon außerhalb der Rankings gedrückt halten, kommt eine Dialogbox auf, welche es dir ermöglicht den Spieler zu befreunden, erwähnen oder zu blockieren.",
         "easySettingsMenu": "Wenn du auf PC spielst, kannst du F1 während dem Spiel drücken um die Einstellungen zu öffnen. Hier kannst du deine Steuerung und Präferenzen ändern.",
         "floatingControls": "Wenn du mobil spielst und dir die Standardsteuerung nicht gefällt, probier die Floating-Steuerungstypen in den Einstellungen.",
-        "recentBadges": "Aus Versehen eine Auszeichnungsbenachrichtigung verworfen? Du kannst freigeschaltete Auszeichnungen der jetzigen Session ansehen, indem du nach 'Zuletzt Freigeschaltet' in deiner Auszeichnungsgalerie sortierst",
+        "recentBadges": "Aus Versehen eine Abzeichensbenachrichtigung verworfen? Du kannst freigeschaltete Abzeichen der jetzigen Session ansehen, indem du nach 'Zuletzt Freigeschaltet' in deiner Abzeichensgalerie sortierst",
         "desktopHotkeys": "Wenn du auf PC spielst kannst du mit ALT+Enter in den Vollbildmodus gehen, mit F7 Screenshoits machen und mit T die in-game Chateingabe öffnen.",
-        "badgeControls": "In der Abzeichnungsgallerie, kannst du Abzeichnungen drag and droppen um sie zu organisieren, oder mehrere Auszeichnungen auf einmal entfernen im Entfernungsmodus.",
+        "badgeControls": "In der Abzeichnungsgallerie, kannst du Abzeichnungen drag and droppen um sie zu organisieren, oder mehrere Abzeichen auf einmal entfernen im Entfernungsmodus.",
         "cacheSettings": "Probleme einen Ort komplett zu erkunden oder veraltete Karten? Im Cache Menü kannst du relevante Caches leeren und die neusten Daten runterladen.",
         "openSource": "YNOproject ist ein Open-Source-Projekt und das Repository ist unter https://github.com/ynoproject/ aufzufinden"
       }
@@ -908,7 +908,7 @@
         "listUpdated": "Die Expeditionsliste wurde aktualisiert."
       },
       "badges": {
-        "badgeUnlocked": "Neue Auszeichnung freigeschaltet!"
+        "badgeUnlocked": "Neues Abzeichen freigeschaltet!"
       },
       "screenshots": {
         "screenshotTaken": "Screenshot aufgenommen."
