@@ -15,15 +15,15 @@
       "logout": "Abmelden"
     },
     "fontStyle": {
-      "label": "Schriftart:",
+      "label": "Schriftstil:",
       "values": {
-        "style1": "Schriftart 1",
-        "style2": "Schriftart 2",
-        "style3": "Schriftart 3",
-        "style4": "Schriftart 4",
-        "style5": "Schriftart 5",
-        "style6": "Schriftart 6",
-        "style7": "Schriftart 7"
+        "style1": "Stil 1",
+        "style2": "Stil 2",
+        "style3": "Stil 3",
+        "style4": "Stil 4",
+        "style5": "Stil 5",
+        "style6": "Stil 6",
+        "style7": "Stil 7"
       }
     },
     "chatbox": {
@@ -39,7 +39,7 @@
       "chat": {
         "tab": {
           "all": "Alle",
-          "map": "Karte",
+          "map": "Standort",
           "global": "Global",
           "party": "Gruppe"
         },
@@ -53,7 +53,7 @@
       },
       "players": {
         "tab": {
-          "map": "Karte",
+          "map": "Standort",
           "friends": "Freunde",
           "party": "Gruppe"
         }
@@ -146,7 +146,7 @@
           },
           "toggleImmersionMode": {
             "label": "Immersionsmodus",
-            "helpText": "Deaktiviert Spielerzahlen, globalen Chat und Karten um Dir ein immersives Erlebniss zu bereiten."
+            "helpText": "Deaktiviert Spielerzahlen, globalen Chat und Karten um Dir ein immersives Erlebnis zu bereiten."
           },
           "timeTrialinfo": {
             "label": "Zeitkampf"
@@ -187,7 +187,7 @@
             "global": "Globaler Chat Overlay",
             "party": "Gruppen Chat Overlay"
           },
-          "toggleTabToChat": "Tab drücken um zu chatten",
+          "toggleTabToChat": "Tab zum chatten benutzen",
           "togglePlayMentionSound": "Erwähnungssound abspielen",
           "chatHistoryLimit": {
             "values": {
@@ -260,8 +260,8 @@
           "players": {
             "label": "Spieler",
             "fields": {
-              "playerBlocked": "Spieler blockiert",
-              "playerUnblocked": "Spieler unblockiert"
+              "playerBlocked": "Spieler blocked",
+              "playerUnblocked": "Spieler unblocked"
             }
           },
           "friends": {
@@ -272,7 +272,7 @@
               "accept": "Freundschaftsanfrage angenommen",
               "reject": "Freundschaftsanfrage abgelehnt",
               "cancel": "Freundschaftsanfrage abgebrochen",
-              "incoming": "Einkommende Freundschaftsanfrage",
+              "incoming": "Ankommende Freundschaftsanfrage",
               "playerOnline": "Freund Online",
               "playerOffline": "Freund Offline"
             }
@@ -312,19 +312,19 @@
           "screenshots": {
             "label": "Screenshots",
             "fields": {
-              "screenshotTaken": "Screenshot erstellt"
+              "screenshotTaken": "Screenshot aufgenommen"
             }
           },
           "saveSync": {
-            "label": "Spielstand-Sync",
+            "label": "Save-Sync",
             "fields": {
-              "saveUploading": "Spielstand wird hochgeladen",
-              "saveUploaded": "Spielstand hochgeladen",
-              "saveDownloading": "Spielstand wird heruntergeladen",
-              "saveDownloaded": "Spielstand heruntergeladen",
-              "saveUpToDate": "Spielstand auf neustem Stand",
-              "saveCleared": "Spielstand gelöscht",
-              "saveReminder": "Speicher Errinerung"
+              "saveUploading": "Save wird hochgeladen",
+              "saveUploaded": "Save hochgeladen",
+              "saveDownloading": "Save wird heruntergeladen",
+              "saveDownloaded": "Save heruntergeladen",
+              "saveUpToDate": "Save auf neustem Stand",
+              "saveCleared": "Save gelöscht",
+              "saveReminder": "Save Erinnerung"
             }
           },
           "schedules": {
@@ -339,7 +339,7 @@
         "title": "Cache Einstellungen",
         "clear": "Leeren",
         "fields": {
-          "locationCache": "Standort Cache",
+          "locationCache": "Orte Cache",
           "mapCache": "Karten Cache",
           "locationColorCache": "Standortsfarben Cache"
         }
@@ -349,7 +349,7 @@
         "fields": {
           "badge": "Abzeichen",
           "changePassword": "Passwort ändern",
-          "clearSaveSync": "Spielstand-Sync Daten löschen"
+          "clearSaveSync": "Save-Sync Daten löschen"
         }
       },
       "password": {
@@ -363,15 +363,15 @@
       },
       "badges": {
         "title": "Abzeichen",
-        "manageBadgeGallery": "Abzeichengallerie",
+        "manageBadgeGallery": "Abzeichengalerie",
         "fields": {
           "unlockStatus": {
             "label": "Status:&nbsp;",
             "values": {
               "all": "Alle",
               "0": "Gesperrte",
-              "1": "Freigeschaltene",
-              "recentUnlock": "Zuletzt freigeschalten"
+              "1": "Freigeschaltete",
+              "recentUnlock": "Zuletzt freigeschaltet"
             }
           },
           "sortOrder": {
@@ -383,14 +383,14 @@
           "search": {
             "label": "Suchen nach:&nbsp;",
             "name": "Name:",
-            "location": "Standort:"
+            "location": "Ort:"
           }
         }
       },
       "badgeGallery": {
-        "title": "Abzeichengallerie",
-        "badgeGalleryRowProgress": "Nächster Reihen Upgrade (BP)",
-        "badgeGalleryColProgress": "Nächster Splaten Upgrade (Abzeichen)",
+        "title": "Abzeichengalerie",
+        "badgeGalleryRowProgress": "Nächster Reihen Upgrade (AP)",
+        "badgeGalleryColProgress": "Nächster Spalten Upgrade (Abzeichen)",
         "removeMode": {
           "activate": "Abzeichen entfernen",
           "deactivate": "Fertig"
@@ -403,9 +403,9 @@
         "presetName": "Preset {{index}}"
       },
       "save": {
-        "title": "Spielstand verwalten",
+        "title": "Save verwalten",
         "reload": "Änderungen speichern und neu laden",
-        "info": "Beim importieren von Spielständen, falls du das letzt Mal eine Übersetzung auf RPG_RT benutzt hast, wird das Spiel Fehler anzeigen bis Du wieder mit EasyRPG ohne aktive Übersetztung, speicherst."
+        "info": "Beim importieren von Spielständen, falls du das letzte Mal eine Übersetzung auf RPG_RT benutzt hast, wird das Spiel Fehler anzeigen bis du wieder mit EasyRPG ohne aktive Übersetzung, speicherst."
       },
       "uiTheme": {
         "title": "UI Stil",
@@ -440,9 +440,9 @@
       "events": {
         "title": "Expeditionen",
         "rankExp": "Nächster Rang",
-        "weekExp": "ExP diese Woche",
+        "weekExp": "XP diese Woche",
         "tabs": {
-          "locations": "Standorte",
+          "locations": "Orte",
           "vms": "Automatenfinder"
         }
       },
@@ -458,7 +458,7 @@
       },
       "myScreenshots": {
         "title": "Meine Screenshots",
-        "screenshotSlotProgress": "Nächster Slot Upgrade (BP)",
+        "screenshotSlotProgress": "Nächster Slot Upgrade (AP)",
         "empty": "Du hast noch keine Screenshots gesichert."
       },
       "communityScreenshots": {
@@ -505,7 +505,7 @@
           "name": "Eventname",
           "description": "Beschreibung",
           "datetime": "Eventdatum and Uhrzeit",
-          "recurring": "Wiederkehredes Event",
+          "recurring": "Wiederkehrendes Event",
           "theme": "Theme",
           "interval": {
             "title": "Interval",
@@ -515,7 +515,7 @@
           },
           "restrictParty": "Auf Gruppe limitieren",
           "official": "Offizielles Event",
-          "resetOrganizer": "Organisator zurrücksetzen",
+          "resetOrganizer": "Organisator zurücksetzen",
           "platforms": {
             "title": "Externe Links",
             "discord": "Discord",
@@ -535,7 +535,7 @@
             "title": "Grund",
             "placeholder": "Sonstiger Grund (maximal 50 Zeichen)",
             "1": "Beleidigungen oder gewaltsame Formulierungen",
-            "2": "Missbrauch, belästigung, stalking",
+            "2": "Missbrauch, Belästigung, Stalking",
             "3": "Unangemessener Name",
             "4": "Ban ausgewichen",
             "5": "Cheaten, benutzen von Exploits",
@@ -547,33 +547,33 @@
       },
       "rules": {
         "title": "Regeln",
-        "rule1": "Bitte sei respektvoll und hölflich.",
-        "rule2": "Keine 18+ diskussionen (NSFW, gore, etc.).",
+        "rule1": "Bitte sei stets respektvoll und höflich.",
+        "rule2": "Keine 18+ Diskussionen (NSFW, gore, etc.).",
         "rule3": "Keine Politik.",
         "rule4": "Keine beleidigende Ausdrücke.",
         "rule5": "Kein cheaten jeglicher Art.",
         "rule6": "Sollte es Probleme geben, kontaktiere die Moderatoren."
       },
       "explorerUndiscoveredLocations": {
-        "title": "Unentdeckte Standorte",
+        "title": "Unentdeckte Orte",
         "complete": "Du hast jeden verfügbaren Standort gefunden! Gut gemacht!"
       }
     },
     "tooltips": {
       "togglePrivateMode": "Privatmodus togglen",
-      "save": "Spielstand verwalten",
+      "save": "Save verwalten",
       "uiTheme": "UI Stil",
       "toggleChat": "Chat an/aus",
       "toggleExplorer": "Yume 2kki Navigator togglen",
       "screenshot": "Screenshot machen",
       "myScreenshots": "Meine Screenshots",
       "settings": "Einstellungen",
-      "toggleMute": "Stummschaltung togglen",
+      "toggleMute": "Mute togglen",
       "toggleHideLocation": "Standortübermittlung togglen",
       "toggleGlobalMessage": "Globaler Chat Nachrichten",
       "chat": {
         "toggleNextLocation": "Nächsten Expeditionsstandort anzeigen/ausblenden",
-        "toggleGlobalMessageLocations": "Chatnachrichten Standorte anzeigen/ausblenden",
+        "toggleGlobalMessageLocations": "Chatnachrichten Ort anzeigen/ausblenden",
         "toggleMessageTimestamps": "Chatnachrichten Zeitstempel anzeigen/ausblenden",
         "clearChat": "Chat leeren"
       },
@@ -586,13 +586,13 @@
       "communityScreenshots": "Community Screenshots",
       "rankings": "Rankings",
       "schedules": "Events",
-      "nexus": "Zum Nexus zurrückkehren",
-      "explorerUndiscoveredLocations": "Unentdeckte Standorte anzeigen",
+      "nexus": "Zum Nexus zurückkehren",
+      "explorerUndiscoveredLocations": "Unentdeckte Orte anzeigen",
       "timeTrial": "Um den Zeitkampf Modus zu aktiveren, halte Shift und die rechte Pfeiltaste beim starten eines neuen Spieles, bevor etwas auf dem Bildschirm aufkommt.",
       "mobileControlsType": "Alternativen zu dem standard D-Pad-Steuerungstyp.<br>Floating-Steuerungstypen sind nur im mobilen Vollbildmodus verfügbar."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown Syntax wird akzeptiert, benutze {{l:Welt,optionaler Linkname}} um einen Link zu yume.wiki einzufügen."
+      "scheduleDescription": "Markdown Syntax ist akzeptiert, benutze {{l:Welt,optionaler Linkname}} um einen Link auf yume.wiki einzufügen."
     },
     "reviewRules": "Regeln nochmal anzeigen"
   },
@@ -622,19 +622,19 @@
       "if": "If",
       "unaccomplished": "Unaccomplished"
     },
-    "leavePage": "Bist du dir sicher, dass du diese Seite verlassen möchtest? Nicht gespeicherte Fortschritte werden verloren gehen.",
+    "leavePage": "Willst du wirklich die Seite verlassen? Nicht gespeicherte Fortschritte gehen verloren.",
     "logout": "Bist du dir sicher, dass du dich abmelden willst?",
-    "loadingInstruct": ". <br /> <br /> Sieht so aus als ob die Seite schon für eine weile lädt; sollte das Problem nicht verschwinden, kann es sein das du STRG-F5 drücken musst um den Browser-Cache (aber nicht Cookies!) zu leeren. Du kannst die Konsole auf Fehler mit F12 prüfen.",
+    "loadingInstruct": ". <br /> <br /> Sieht so aus als ob die Seite schon für eine weile lädt; sollte das Problem nicht verschwinden, kann es sein das du STRG+F5 drücken musst um den Browser-Cache (aber nicht Cookies!) zu leeren. Du kannst die Konsole auf Fehler mit F12 prüfen.",
     "requestNotifications": "Benachrichtigungen für gefollowte Events- und Expeditions-Refreshes?",
     "connStatus": {
       "0": "Verbindung unterbrochen",
       "1": "Verbunden",
       "2": "Connecting...",
-      "3": "Privater Modus"
+      "3": "Privat"
     },
     "lastOnline": {
       "template": "Zuletzt Online\n vor {INTERVAL}",
-      "longTime": "Einer langen Zeit",
+      "longTime": "einer langen Zeit",
       "interval": {
         "short": "weniger als 1 Minute",
         "minutes": {
@@ -691,7 +691,7 @@
     },
     "playerList": {
       "unnamed": "Unbenannter Spieler",
-      "muted": "Stummgeschalten",
+      "muted": "Gemuted",
       "actions": {
         "approveFriend": "Freundschaftsanfrage annehmen",
         "rejectFriend": "Freundschaftsanfrage ablehnen",
@@ -723,8 +723,8 @@
         "confirm": "Willst du wirklich {PLAYER} blockieren?"
       },
       "unblock": {
-        "label": "{PLAYER} unblockieren",
-        "confirm": "Willst du wirklich {PLAYER} unblockieren?"
+        "label": "{PLAYER} unblocken",
+        "confirm": "Willst du wirklich {PLAYER} unblocken?"
       },
       "report": {
         "label": "{PLAYER} melden"
@@ -767,13 +767,13 @@
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": "Benutzername oder Passwort ist nicht richtig."
+          "invalidLogin": "Benutzername oder Passwort ist falsch."
         }
       },
       "register": {
         "errors": {
           "confirmPasswordMismatch": "Die gegebenen Passwörter stimmen nicht überein.",
-          "invalidCredentials": "Gegebener Benutzername oder Passwort ist leer oder enthält unerlaubte Zeichen.",
+          "invalidCredentials": "Benutzername oder Passwort ist leer oder enthält unerlaubte Zeichen.",
           "emailTaken": "Die gegebene Email wird bereits benutzt.",
           "usernameTaken": "Der gegebene Benutzername wird bereits benutzt."
         }
@@ -820,32 +820,32 @@
     "chatTips": {
       "template": "TIPP: {CONTENT}",
       "tips": {
-        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
-        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
-        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
-        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
-        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
-        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
-        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
-        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
-        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
-        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
-        "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
-        "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
-        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
-        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
-        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
-        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
-        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
-        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
+        "backupReminder": "Es wird empfohlen regelmäßig deinen Save runterzuladen, damit du lokal deinen Save als Backup bereit hast. Somit verlierst du keinen Fortschritt, auch wenn dein Browser Cache geleert wurde.",
+        "menuTheme": "Namensfarbe und Spielerlisten-Theme basieren auf deine in-game Menü Einstellungen.",
+        "playersInMap": "Du kannst zwischen der Anzahl der Spieler die online sind und die die in deinem aktuellem Standort sind wechseln, indem du auf das Label clickst.",
+        "markdownSupport": "Du kannst Chat formatierung benutzen, indem du deinen Text mit Zeichen spezifischen umgibst. Dazu gehören: **fett** (\\*\\*Text\\*\\*), *kursiv* (\\*Text\\*, \\_Text\\_), __unterstrichen__ (\\_\\Text\\_\\_), ~~durchgestrichen~~ (\\~\\~Text\\~\\~), und ||Spoiler|| (\\|\\|Text\\|\\|).",
+        "tabToChat": "Wenn du auf PC spielst, kannst du mit Tab zwischen dem Spiel und der Chateingabe wechseln. Dieses Feature kann unter 'Tab zum chatten benutzen' in den Chat Einstellungen geändert werden.",
+        "chatTabNotifications": "In jedem Chat Tab außer 'Alle', falls eine neue Nachricht in einen anderen Tab einkommt, wird das Label dazu fett markiert, damit du es mitbekommst.",
+        "clearChat": "Wenn du auf den 'Chat leeren' Button drückst im oberen rechten Bereich der Chatbox und du nicht im 'Alle' Tab bist, werden nur Nachrichten für den angewählten Tab entfernt.",
+        "chatHistoryLimit": "Wenn dein Chatverlauf zu lang wird, kann es zu Performanceproblemen kommen. In den Chat Einstellungen kannst du dem Verlauf ein Limit geben um diese Probleme zu vermeiden, ohne manuell den Verlauf zu leeren.",
+        "parties": "Gruppen sind ein guter Weg, um mit anderen Leuten auf Abenteuer zu gehen. Du kannst den Standort deiner Gruppenmitglieder sehen und mit ihnen in einem privaten Chat reden.",
+        "immersionMode": "Wenn du lieber ein immersives statt soziales Erlebnis haben willst, probier den Immersionsmodus aus. Er deaktiviert den globalen Chat, Spielerlisten und Spieleranzahl, somit ist es aufregender auf andere Spieler im Spiel zu treffen.",
+        "friendsMenu": "Mit Rechtsklick auf PC oder Touch-Screen auf das Spielericon außerhalb der Rankings gedrückt halten, kommt eine Dialogbox auf, welche es dir ermöglicht den Spieler zu befreunden, erwähnen oder zu blockieren.",
+        "easySettingsMenu": "Wenn du auf PC spielst, kannst du F1 während dem Spiel drücken um die Einstellungen zu öffnen. Hier kannst du deine Steuerung und Präferenzen ändern.",
+        "floatingControls": "Wenn du mobil spielst und dir die Standardsteuerung nicht gefällt, probier die Floating-Steuerungstypen in den Einstellungen.",
+        "recentBadges": "Aus Versehen eine Auszeichnungsbenachrichtigung verworfen? Du kannst freigeschaltete Auszeichnungen der jetzigen Session ansehen, indem du nach 'Zuletzt Freigeschaltet' in deiner Auszeichnungsgalerie sortierst",
+        "desktopHotkeys": "Wenn du auf PC spielst kannst du mit ALT+Enter in den Vollbildmodus gehen, mit F7 Screenshoits machen und mit T die in-game Chateingabe öffnen.",
+        "badgeControls": "In der Abzeichnungsgallerie, kannst du Abzeichnungen drag and droppen um sie zu organisieren, oder mehrere Auszeichnungen auf einmal entfernen im Entfernungsmodus.",
+        "cacheSettings": "Probleme einen Ort komplett zu erkunden oder veraltete Karten? Im Cache Menü kannst du relevante Caches leeren und die neusten Daten runterladen.",
+        "openSource": "YNOproject ist ein Open-Source-Projekt und das Repository ist unter https://github.com/ynoproject/ aufzufinden"
       }
     },
     "save": {
       "slot": {
-        "title": "File {SLOT_ID}",
-        "readingLabel": "Reading File Data...",
-        "emptyLabel": "Empty",
-        "errorLabel": "Error"
+        "title": "Save {SLOT_ID}",
+        "readingLabel": "Lese Save...",
+        "emptyLabel": "Leer",
+        "errorLabel": "Fehler"
       },
       "upload": {
         "tooltip": "Save hochladen",
@@ -853,177 +853,177 @@
       },
       "download": {
         "tooltip": "Save runterladen",
-        "emptySlot": "Oops! The save file for the slot appears to be empty."
+        "emptySlot": "Ups! Der Save an dieser Stelle scheint leer zu sein."
       },
       "delete": {
-        "tooltip": "Delete Save File",
-        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
+        "tooltip": "Save löschen",
+        "confirmDelete": "Willst du wirklich den Save an der Stelle {SLOT_ID} löschen?"
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "Are you sure you want to clear your Save Sync data for this game? This cannot be undone unless you have a local copy of your save data."
+      "confirmClearSaveSync": "Willst du wirklich die Save-Sync Daten für dieses Spiel löschen? Dies kann nicht rückgängig gemacht werden, außer du hast eine lokale Kopie deines Saves."
     },
     "toast": {
       "system": {
-        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
-        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'."
+        "siteUpdates": "Die Seite wurde aktualisiert. Lade die Seite neu für die neusten Änderungen.",
+        "error": "Ups! Sieht so aus als ob was schief gelaufen ist. Schau in die Browser-Konsole für mehr details. Um die Konsole zu öffnen drücke F12 oder Rechtsklick und dann 'Untersuchen' "
       },
       "account": {
-        "loggedIn": "You have logged in as {USER}.",
-        "loggedOut": "You have logged out.",
-        "passwordUpdated": "Your password was updated successfully."
+        "loggedIn": "Du bist als {USER} eingeloggt.",
+        "loggedOut": "Du bist ausgeloggt.",
+        "passwordUpdated": "Dein Password wurde erfolgreich aktualisiert."
       },
       "players": {
-        "playerBlocked": "{PLAYER} has been blocked.",
-        "playerUnblocked": "{PLAYER} has been unblocked."
+        "playerBlocked": "{PLAYER} wurde blocked.",
+        "playerUnblocked": "{PLAYER} wurde unblocked."
       },
       "friends": {
-        "add": "You have sent a friend request to {PLAYER}.",
-        "remove": "You have removed {PLAYER} from your friends.",
-        "accept": "{PLAYER}'s friend request was accepted.",
-        "reject": "{PLAYER}'s friend request was rejected.",
-        "cancel": "Your friend request to {PLAYER} was cancelled.",
-        "incoming": "You have a new friend request from {PLAYER}.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline."
+        "add": "Du hast eine Freundschaftsanfrage an {PLAYER} versendet.",
+        "remove": "Du hast {PLAYER} von deinen Freunden entfernt.",
+        "accept": "{PLAYER} hat deine Freundschaftsanfrage angenommen.",
+        "reject": "{PLAYER} hat deine Freundschaftsanfrage abgelehnt.",
+        "cancel": "Freundschaftsanfrage an {PLAYER} wurde widerrufen.",
+        "incoming": "Neue Freundschaftsanfrage von {PLAYER}.",
+        "playerOnline": "{PLAYER} ist jetzt online.",
+        "playerOffline": "{PLAYER} ist jetzt offline."
       },
       "parties": {
-        "create": "{PARTY} has been created.",
-        "update": "{PARTY} has been updated.",
-        "join": "You have joined {PARTY}.",
-        "leave": "You have left {PARTY}.",
-        "remove": "You have been removed from {PARTY}.",
-        "disband": "{PARTY} has been disbanded.",
-        "playerJoin": "{PLAYER} has joined the party.",
-        "playerLeave": "{PLAYER} has left the party.",
-        "playerOnline": "{PLAYER} is now online.",
-        "playerOffline": "{PLAYER} is now offline.",
-        "kickPlayer": "{PLAYER} has been kicked from the party.",
-        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
+        "create": "{PARTY} wurde erstellt.",
+        "update": "{PARTY} wurde aktualisiert.",
+        "join": "Du bist {PARTY} beigetreten.",
+        "leave": "Du hast {PARTY} verlassen.",
+        "remove": "Du wurdest von {PARTY} entfernt.",
+        "disband": "{PARTY} wurde aufgelöst.",
+        "playerJoin": "{PLAYER} hat die Gruppe beigetreten.",
+        "playerLeave": "{PLAYER} hat die Gruppe verlassen.",
+        "playerOnline": "{PLAYER} ist jetzt online.",
+        "playerOffline": "{PLAYER} ist jetzt offline.",
+        "kickPlayer": "{PLAYER} wurde von der Gruppe gekickt.",
+        "transferPartyOwner": "{PLAYER} wurde zum Gruppenleiter befördert."
       },
       "events": {
-        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
-        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
-        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
-        "listUpdated": "The expedition list has been updated."
+        "complete": "Expedition abgeschlossen!\nZum besuchen von {LOCATION} wurde dir {EXP} gegeben.",
+        "freeComplete": "Expedition abgeschlossen! Du hast {LOCATION} besucht.",
+        "vmComplete": "Automaten gefunden!\nDu hast {EXP} bekommen.",
+        "listUpdated": "Die Expeditionsliste wurde aktualisiert."
       },
       "badges": {
-        "badgeUnlocked": "You have unlocked a new badge!"
+        "badgeUnlocked": "Neue Auszeichnung freigeschaltet!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Screenshot aufgenommen."
       },
       "saveSync": {
-        "saveUploading": "Uploading save data from slot {SLOT}...",
-        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
-        "saveDownloading": "Updating save data for file {SLOT}...",
-        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
-        "saveUpToDate": "Save data is up to date.",
-        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices.",
-        "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+        "saveUploading": "Save an Stelle {SLOT} wird hochgeladen...",
+        "saveUploaded": "Save an Stelle {SLOT} wurde hochgeladen.",
+        "saveDownloading": "Akualisiere Save an Stelle {SLOT}...",
+        "saveDownloaded": "Save an Stelle {SLOT} wurde erfolgreich aktualisiert.",
+        "saveUpToDate": "Save ist up to date.",
+        "saveCleared": "Save-Sync Datem wurden geleert. Dies beeinflusst existierende Saves auf deinen Geräten nicht.",
+        "saveReminder": "Vergiss nicht oft zu speichern und deine Saves lokal als Backup herunterzuladen, um keinen Fortschritt zu verlieren."
       }
     },
     "events": {
-      "exp": "{POINTS} ExP",
-      "expRank": "Rank: {RANK}",
-      "period": "Season {ORDINAL}",
-      "periodEnds": "Ends {DATE}",
-      "current": "Current",
-      "shortcut": "Can be reached via an unlockable shortcut",
-      "toggleTracked": "Toggle Location Tracking",
-      "availableUntilDate": "Available Until\n{DATE}",
+      "exp": "{POINTS} XP",
+      "expRank": "Rang: {RANK}",
+      "period": "Saison {ORDINAL}",
+      "periodEnds": "Endet {DATE}",
+      "current": "Aktuell",
+      "shortcut": "Ist über eine freischaltbare Abkürzung erreichbar.",
+      "toggleTracked": "Standort-Tracking togglen",
+      "availableUntilDate": "Verfügbar bis\n{DATE}",
       "types": {
-        "-1": "Free Expedition",
-        "0": "Daily",
-        "1": "Weekly",
-        "2": "Weekend",
-        "3": "Special"
+        "-1": "Freie Expedition",
+        "0": "Täglich",
+        "1": "Wöchendlich",
+        "2": "Wochenende",
+        "3": "Spezial"
       },
       "expRanks": {
-        "0": "Novice",
-        "1": "Intermediate",
+        "0": "Novize",
+        "1": "Anfänger",
         "2": "Bronze",
-        "3": "Silver",
+        "3": "Silber",
         "4": "Gold",
         "5": "Platinum",
-        "6": "Diamond"
+        "6": "Diamant"
       }
     },
     "badges": {
-      "null": "No Badge",
-      "allCategory": "All",
-      "badgeTitle": "{TITLE} - {BP} BP",
+      "null": "Kein Abzeichen",
+      "allCategory": "Alle",
+      "badgeTitle": "{TITLE} - {BP} AP",
       "locked": "???",
-      "location": "Location:&nbsp;",
+      "location": "Ort:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% of players have this badge",
+      "percentUnlocked": "{PERCENT}% von Spieler haben dieses Abzeichen",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Art by {ARTIST}",
+      "artCredit": "Artwork von {ARTIST}",
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "Ganze Wörter"
         }
       },
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {
-          "bp": "BP",
-          "percent": "Percent Unlocked"
+          "bp": "AP",
+          "percent": "Prozent freigeschalten"
         },
-        "asc": "Ascending",
-        "desc": "Descending"
+        "asc": "Aufsteigend",
+        "desc": "Absteigend"
       }
     },
     "badgeGallery": {
-      "label": "{PLAYER}'s Badge Gallery",
-      "loading": "Loading...",
-      "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "label": "{PLAYER}'s Abzeichnungsgallerie",
+      "loading": "Lädt...",
+      "bp": "{BP} AP",
+      "count": "{COUNT} Abzeichen"
     },
     "badgePreset": {
-      "empty": "This preset is empty."
+      "empty": "Dieser Prest ist leer."
     },
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "badges",
-          "valueLabel": "# of Badges",
+          "label": "Abzeichen",
+          "valueLabel": "# von Abzeichen",
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "BP (Badge Points)",
-          "valueLabel": "BP",
-          "value": "{NUMBER} BP"
+          "label": "AP (Abzeichenspunke)",
+          "valueLabel": "AP",
+          "value": "{NUMBER} AP"
         },
         "exp": {
-          "label": "ExP",
-          "valueLabel": "ExP",
-          "value": "{NUMBER} ExP"
+          "label": "XP",
+          "valueLabel": "XP",
+          "value": "{NUMBER} XP"
         },
         "eventLocationCount": {
-          "label": "Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Expeditionen",
+          "valueLabel": "# von Expeditionen",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Free Expeditions",
-          "valueLabel": "# of Expeditions",
+          "label": "Freie Expeditionen",
+          "valueLabel": "# von Expeditionen",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Expedition Completion",
-          "valueLabel": "Completion",
+          "label": "Expeditionsfortschritt",
+          "valueLabel": "Fortschritt",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Vending Machine Finder",
-          "valueLabel": "# of Vending Machines",
+          "label": "Automatenfinder",
+          "valueLabel": "# von Automaten",
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trials",
-          "valueLabel": "Completion Time",
+          "label": "Zeitkämpfe",
+          "valueLabel": "Rennzeit",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
@@ -1033,79 +1033,79 @@
         }
       },
       "subCategories": {
-        "all": "All",
-        "2": "All Effects",
+        "all": "Alle",
+        "2": "Alle Effekte",
         "nasu": "NASU",
-        "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",
+        "rby": "Rot Blau Gelb (Mini Game B)",
+        "rby_ex": "Rot Blau Gelb (Mini Game B) - EX Version",
         "fuji_ex": "FUJI EX",
         "hozo": "HOZO",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
+        "ta_be_hardcore": "TA_BE_ - Hardcore Modus",
         "panerabbit": "PANErabbit"
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "Von {AUTHOR}",
+      "versionAdded": "Hinzugefügt in {VERSION}",
+      "versionUpdated": "Aktualisiert in {VERSION}",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "Ort vermerken",
+          "off": "Ort vergessen"
         }
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "Alle",
+          "visited": "Besucht",
+          "unvisited": "Unbesucht"
         }
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "Neuste",
+          "oldest": "Älteste",
+          "shallowest": "Flachste",
+          "deepest": "Tiefste",
+          "alpha": "Alphabetisch",
+          "players": "Spieleranzahl"
         }
       }
     },
     "screenshots": {
       "playerScreenshot": "{USER}'s Screenshot",
-      "limit": "{COUNT}/{LIMIT} Slots Used",
+      "limit": "{COUNT}/{LIMIT} Slots benutzt",
       "public": {
         "tooltip": {
-          "on": "Set Public",
-          "off": "Set Private"
+          "on": "Veröffentlichen",
+          "off": "Private machen"
         }
       },
       "spoiler": {
         "label": "Spoiler",
         "tooltip": {
-          "on": "Mark as Spoiler",
-          "off": "Remove Spoiler"
+          "on": "Als Spoiler markieren",
+          "off": "Spoiler entfernen"
         }
       },
       "like": {
         "tooltip": {
-          "on": "Like",
-          "off": "Unlike"
+          "on": "Liken",
+          "off": "Unliken"
         }
       },
       "delete": {
-        "tooltip": "Delete",
-        "confirm": "Are you sure you want to delete this screenshot?"
+        "tooltip": "Löschen",
+        "confirm": "Willst du diesen Screenshot wirklich löschen?"
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
-      "confirmCancel": "Are you sure you want to cancel this event?",
-      "wrongEditGame": "Cannot edit outside of {GAME}",
+      "organizer": "Organisiert von&nbsp;{NAME}",
+      "invalidPlatformLink": "Plattform muss eine valide URL haben",
+      "confirmCancel": "Willst du wirklich dieses Event absagen?",
+      "wrongEditGame": "Kann nicht außerhalb von {GAME} geändert werden",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
@@ -1122,43 +1122,43 @@
       }
     },
     "modSettings": {
-      "title": "Moderator Settings",
+      "title": "Moderator Einstellungen",
       "actions": {
         "resetPassword": {
-          "label": "Reset a Password",
-          "playerPrompt": "Enter the name of the account to reset the password for",
-          "success": "The new password for {PLAYER} is {PASSWORD}"
+          "label": "Passwort ändern",
+          "playerPrompt": "Gebe den Accountnamen des bezüglichen Users ein",
+          "success": "Das neue Passwort für {PLAYER} ist {PASSWORD}"
         },
         "changeUsername": {
-          "label": "Change a Username",
-          "playerPrompt": "Enter the name of the account to change the username for",
-          "namePrompt": "Enter the new username for {PLAYER}",
-          "success": "Username for {PLAYER} has been changed to {NAME}",
-          "error": "Failed to change username for {PLAYER}; the specified name may already be in use"
+          "label": "Benutzernamen ändern",
+          "playerPrompt": "Gebe den Accountnamen des bezüglichen Users ein",
+          "namePrompt": "Geben den neuen Benutzernamen für {PLAYER} ein",
+          "success": "Benutzername für {PLAYER} wurde auf {NAME} geändert",
+          "error": "Fehler beim ändern des Benutzernamens; der Name ist bereits in benutzung"
         },
         "ban": {
-          "label": "Ban a Player",
-          "playerPrompt": "Enter the name of the account to ban"
+          "label": "Spieler bannen",
+          "playerPrompt": "Gebe den Accountnamen des zu bannenden Users ein"
         },
         "unban": {
-          "label": "Unban a Player",
-          "playerPrompt": "Enter the name of the account to unban"
+          "label": "Spieler unbannen",
+          "playerPrompt": "Gebe den Accountnamen des Users ein der unbanned werden soll"
         },
         "mute": {
-          "label": "Mute a Player",
-          "playerPrompt": "Enter the name of the account to mute"
+          "label": "Spieler muten",
+          "playerPrompt": "Gebe den Accountnamen des zu mutenden Users ein"
         },
         "unmute": {
-          "label": "Unmute a Player",
-          "playerPrompt": "Enter the name of the account to unmute"
+          "label": "Spieler unmuten",
+          "playerPrompt": "Gebe den Accountnamen des zu unmutenden Users ein"
         },
         "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
+          "label": "Abzeichen vergeben",
+          "playerPrompt": "Gebe den Accountnamen des Users ein, der das Abzeichen erhalten soll"
         },
         "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
+          "label": "Abzeichen widerrufen",
+          "playerPrompt": "Gebe den Accountnamen des Users ein, dem das Abzeichen widerrufen werden soll"
         }
       }
     }
