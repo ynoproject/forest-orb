@@ -297,7 +297,23 @@ let playerCount;
 (function () {
   addSessionCommandHandler('pc', args => updatePlayerCount(parseInt(args[0])));
   addSessionCommandHandler('lcol');
+  addSessionCommandHandler('ttr', handleTimeTrialRecord);
 })();
+
+function handleTimeTrialRecord(args) { // used only 2kki
+  const mapId = parseInt(args[0]);
+  const timeSec = parseInt(args[1]);
+
+  const mins = Math.floor(timeSec / 60);
+  const sec = timeSec % 60;
+  const formattedTime = `${mins.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+  getOrQuery2kkiLocationsHtml(mapId, locationNameHtml => {
+    const message = localizedMessages.toast.timeTrial.timeTrialComplete
+      .replace('{TIME}', formattedTime)
+      .replace('{LOCATION}', locationNameHtml);
+    showToastMessage(message, '', true, null, true);
+  });
+}
 
 function updatePlayerCount(count) {
   if (isNaN(count))
