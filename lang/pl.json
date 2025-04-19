@@ -921,6 +921,9 @@
         "saveUpToDate": "Masz już aktualny zapis.",
         "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach.",
         "saveReminder": "Pamiętaj, aby często zapisywwać grę i tworzyć kopie zapasowe zapisów aby nie utracić postępów."
+      },
+      "timeTrial": {
+        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

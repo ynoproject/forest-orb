@@ -921,6 +921,9 @@
         "saveUpToDate": "Datele salvate sunt actualizate.",
         "saveCleared": "Datele din Save Sync au fost șterse. Asta nu va afecta save-urile existente de pe oricare dispozitiv.",
         "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+      },
+      "timeTrial": {
+        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

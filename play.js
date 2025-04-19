@@ -300,19 +300,27 @@ let playerCount;
   addSessionCommandHandler('ttr', handleTimeTrialRecord);
 })();
 
-function handleTimeTrialRecord(args) { // used only 2kki
-  const mapId = parseInt(args[0]);
+function handleTimeTrialRecord(args) {
+  const mapId = args[0].toString().padStart(4, '0');
   const timeSec = parseInt(args[1]);
 
   const mins = Math.floor(timeSec / 60);
   const sec = timeSec % 60;
   const formattedTime = `${mins.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-  getOrQuery2kkiLocationsHtml(mapId, locationNameHtml => {
-    const message = localizedMessages.toast.timeTrial.timeTrialComplete
-      .replace('{TIME}', formattedTime)
-      .replace('{LOCATION}', locationNameHtml);
-    showToastMessage(message, '', true, null, true);
-  });
+
+  let categoryNameHtml = '';
+
+  if (localizedMessages.rankings.subCategories?.hasOwnProperty(mapId)) {
+    categoryNameHtml = getMassagedLabel(localizedMessages.rankings.subCategories[mapId], true);
+  } else {
+    categoryNameHtml = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
+  }
+
+  const message = localizedMessages.toast.timeTrial.timeTrialComplete
+    .replace('{TIME}', formattedTime)
+    .replace('{CATEGORY}', categoryNameHtml);
+
+  showToastMessage(message, '', true, null, true);
 }
 
 function updatePlayerCount(count) {
@@ -2624,3 +2632,4 @@ if (!globalConfig.rulesReviewed) {
 	globalConfig.rulesReviewed = true;
 	updateConfig(globalConfig, true);
 }
+console.log('test3')

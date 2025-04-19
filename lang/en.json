@@ -923,7 +923,7 @@
         "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       },
       "timeTrial": {
-        "timeTrialComplete": "You reached {LOCATION} in {TIME}!"
+        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

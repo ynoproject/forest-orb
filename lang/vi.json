@@ -921,6 +921,9 @@
         "saveUpToDate": "Dữ liệu bản lưu đang ở phiên bản mới nhất.",
         "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn.",
         "saveReminder": "Đừng quên lưu trò chơi thường xuyên và sao lưu bản lưu của bạn để không mất tiến trình trò chơi."
+      },
+      "timeTrial": {
+        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

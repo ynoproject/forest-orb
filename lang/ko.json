@@ -921,6 +921,9 @@
         "saveUpToDate": "세이브 데이터가 업데이트 되었습니다.",
         "saveCleared": "계정에 동기화된 세이브가 삭제되었습니다. 이것은 디바이스 로컬 스토리지 세이브에는 영향을 끼치지 않습니다.",
         "saveReminder": "진행 상황이 손실되지 않도록 자주 저장하고 세이브 파일을 백업하는 것을 잊지 마세요."
+      },
+      "timeTrial": {
+        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
