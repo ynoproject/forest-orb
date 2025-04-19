@@ -308,17 +308,17 @@ function handleTimeTrialRecord(args) {
   const sec = timeSec % 60;
   const formattedTime = `${mins.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
 
-  let categoryNameHtml = '';
+  let categoryName = '';
 
   if (localizedMessages.rankings.subCategories?.hasOwnProperty(mapId)) {
-    categoryNameHtml = getMassagedLabel(localizedMessages.rankings.subCategories[mapId], true);
+    categoryName = getMassagedLabel(localizedMessages.rankings.subCategories[mapId], true);
   } else {
-    categoryNameHtml = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
+    categoryName = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
   }
 
   const message = localizedMessages.toast.timeTrial.timeTrialComplete
     .replace('{TIME}', formattedTime)
-    .replace('{CATEGORY}', categoryNameHtml);
+    .replace('{CATEGORY}', categoryName);
 
   showToastMessage(message, '', true, null, true);
 }
