@@ -166,6 +166,24 @@ function updateModControls() {
         .catch(err => console.error(err));
     };
 
+    const adminPlayerActionTemporal = (action, playerPromptMessage, timePromptMessage, successMessage, successIcon) => {
+      const user = prompt(playerPromptMessage);
+      if (!user)
+        return;
+      const expiry = prompt(timePromptMessage, new Date().toISOString());
+      if (!expiry)
+        return;
+      const q = new URLSearchParams({ user, expiry });
+      apiFetch(`${action}?${q}`, true)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(response => showToastMessage((typeof successMessage === 'function' ? successMessage(response) : successMessage).replace('{PLAYER}', playerName), successIcon, true, null, true))
+        .catch(err => console.error(err));
+    };
+
     addModControlsButton(localizedMessages.modSettings.actions.resetPassword.label,
       () => adminPlayerAction('resetpw', localizedMessages.modSettings.actions.resetPassword.playerPrompt, newPassword => getMassagedLabel(localizedMessages.modSettings.actions.resetPassword.success, true).replace('{PASSWORD}', newPassword), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.changeUsername.label,
@@ -189,10 +207,14 @@ function updateModControls() {
       });
     addModControlsButton(localizedMessages.modSettings.actions.ban.label,
       () => adminPlayerAction('ban', localizedMessages.modSettings.actions.ban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.ban.success, true), 'ban'));
+    addModControlsButton(localizedMessages.modSettings.actions.tempban.label,
+      () => adminPlayerActionTemporal('tempban', localizedMessages.modSettings.actions.tempban.playerPrompt, localizedMessages.modSettings.actions.tempban.timePrompt, getMassagedLabel(localizedMessages.context.admin.tempban.success, true), 'ban'));
     addModControlsButton(localizedMessages.modSettings.actions.unban.label,
       () => adminPlayerAction('unban', localizedMessages.modSettings.actions.unban.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unban.success, true), 'info'));
     addModControlsButton(localizedMessages.modSettings.actions.mute.label,
       () => adminPlayerAction('mute', localizedMessages.modSettings.actions.mute.playerPrompt, getMassagedLabel(localizedMessages.context.admin.mute.success, true), 'mute'));
+    addModControlsButton(localizedMessages.modSettings.actions.tempmute.label,
+      () => adminPlayerActionTemporal('tempmute', localizedMessages.modSettings.actions.tempmute.playerPrompt, localizedMessages.modSettings.actions.tempmute.timePrompt, getMassagedLabel(localizedMessages.context.admin.tempmute.success, true), 'mute'));
     addModControlsButton(localizedMessages.modSettings.actions.unmute.label,
       () => adminPlayerAction('unmute', localizedMessages.modSettings.actions.unmute.playerPrompt, getMassagedLabel(localizedMessages.context.admin.unmute.success, true), 'info'));
 

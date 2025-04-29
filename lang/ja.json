@@ -761,6 +761,16 @@
           "prompt": "{PLAYER}から剥奪するバッジIDを入力してください。",
           "success": "{PLAYER}から{BADGE}を剥奪しました。",
           "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1159,6 +1169,16 @@
         "revokeBadge": {
           "label": "権限バッジの剝奪",
           "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください。"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }
