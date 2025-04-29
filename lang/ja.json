@@ -763,14 +763,14 @@
           "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "{PLAYER}を一時的にBAN",
+          "prompt": "いつ{PLAYER}のBANを解除しますか？（グリニッジ標準時）",
+          "success": "{PLAYER}は一時的にBANされました。"
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "{PLAYER}を一時的にミュート",
+          "prompt": "いつ{PLAYER}のミュートを解除しますか？（グリニッジ標準時）",
+          "success": "{PLAYER}は一時的にミュートされました。"
         }
       }
     },
@@ -1171,14 +1171,14 @@
           "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください。"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "プレイヤーの一時BAN",
+          "playerPrompt": "一時的にBANするアカウントの名前を入力してください。",
+          "timePrompt": "BANの終了日時を入力してください。（グリニッジ標準時）"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "プレイヤーの一時ミュート",
+          "playerPrompt": "一時的にミュートするアカウントの名前を入力してください。",
+          "timePrompt": "ミュートの終了日時を入力してください。（グリニッジ標準時）"
         }
       }
     }
