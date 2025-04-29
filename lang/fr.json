@@ -761,6 +761,16 @@
           "prompt": "Entrez l'ID du badge à révoquer pour {PLAYER}.",
           "success": "{BADGE} a été révoqué avec succès pour {PLAYER}.",
           "fail": "Aucun badge n'a été trouvé pour l'ID de badge fourni."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1159,6 +1169,16 @@
         "revokeBadge": {
           "label": "Révoquer un Badge",
           "playerPrompt": "Entrez le nom du compte auquel un badge doit être révoqué"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

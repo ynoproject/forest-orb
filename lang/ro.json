@@ -761,6 +761,16 @@
           "prompt": "Intră ID-ul insignei de scos de la {PLAYER}.",
           "success": "{BADGE} a fost scoasă de la {PLAYER}.",
           "fail": "Nicio insignă a fost găsită pentru ID-ul pus."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1159,6 +1169,16 @@
         "revokeBadge": {
           "label": "Revoke a Badge",
           "playerPrompt": "Enter the name of the account to revoke the badge from"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

@@ -761,6 +761,16 @@
           "prompt": "Geben die zu widerrufende Abzeichen-ID für {PLAYER} ein.",
           "success": "{BADGE} wurde erfolgreich {PLAYER} widerrufen.",
           "fail": "Kein Abzeichen mit dieser ID gefunden."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1159,6 +1169,16 @@
         "revokeBadge": {
           "label": "Abzeichen widerrufen",
           "playerPrompt": "Gebe den Accountnamen des Users ein, dem das Abzeichen widerrufen werden soll"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }
