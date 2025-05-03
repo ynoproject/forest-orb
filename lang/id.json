@@ -162,10 +162,10 @@
           "toggleRankings": "Ranking",
           "togglePreloads": {
             "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "helpText": "Preload aset game yang dipakai berkali-kali agar tersedia saat dibutuhkan; butuh refresh page"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers",
-          "toggleSchedules": "Events"
+          "toggleQuestionablePreloads": "Preload Wallpaper PC",
+          "toggleSchedules": "Acara"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",
@@ -202,13 +202,13 @@
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Map Chat History Limit"
+            "label": "Limit Histori Chat Peta"
           },
           "globalChatHistoryLimit": {
-            "label": "Global Chat History Limit"
+            "label": "Limit Histori Chat Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Party Chat History Limit"
+            "label": "Limit Histori Chat Parti"
           },
           "blurScreenshotEmbeds": "Blur Semua Cuplikan Layar"
         }
@@ -216,9 +216,9 @@
       "screenshotSettings": {
         "title": "Setelan Cuplikan Layar",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Download Cuplikan Layar Automatis",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Resolusi Download Cuplikan Layar",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -229,56 +229,56 @@
         }
       },
       "notificationSettings": {
-        "title": "Notification Settings",
+        "title": "Setelan Notifikasi",
         "fields": {
-          "toggleNotifications": "Notifications",
+          "toggleNotifications": "Notifikasi",
           "screenPosition": {
-            "label": "Screen Position",
+            "label": "Posisi Layar",
             "values": {
-              "bottomLeft": "Bottom Left",
-              "bottomRight": "Bottom Right",
-              "topLeft": "Top Left",
-              "topRight": "Top Right"
+              "bottomLeft": "Bawah Kiri",
+              "bottomRight": "Bawah Kanan",
+              "topLeft": "Atas Kiri",
+              "topRight": "Atas Kanan"
             }
           },
           "system": {
-            "label": "System",
+            "label": "Sistem",
             "fields": {
-              "siteUpdates": "Site Updated",
-              "error": "Error Occurred",
-              "pushNotifications": "Desktop Notifications"
+              "siteUpdates": "Site telah diupdate",
+              "error": "Error terjadi",
+              "pushNotifications": "Notifikasi Desktop"
             }
           },
           "account": {
-            "label": "Account",
+            "label": "Akun",
             "fields": {
-              "loggedIn": "Logged In",
-              "loggedOut": "Logged Out",
-              "passwordUpdate": "Password Updated"
+              "loggedIn": "Telah masuk",
+              "loggedOut": "Telah keluar",
+              "passwordUpdate": "Password diperbarui"
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Pemain",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Pemain diblocked",
+              "playerUnblocked": "Pemain diunblocked"
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Teman",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Teman ditambah",
+              "remove": "Teman dihapus",
+              "accept": "Permintaan teman diterima",
+              "reject": "Permintaan teman direjeksi",
+              "cancel": "Permintaan teman dibatal",
+              "incoming": "Ada permintaan teman",
+              "playerOnline": "Teman Online",
+              "playerOffline": "Teman Offline"
             }
           },
           "parties": {
-            "label": "Parties",
+            "label": "Parti-parti",
             "fields": {
               "create": "Created Party",
               "update": "Updated Party",
