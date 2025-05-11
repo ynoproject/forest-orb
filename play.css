@@ -4078,10 +4078,26 @@ html[dir="rtl"] .messageSender {
   margin: 4px 4px 8px 4px;
   max-height: 3lh;
   overflow-y: auto;
+  cursor: zoom-in;
+}
+
+.scheduleDescription.expanded {
+  max-height: inherit;
+  cursor: zoom-out;
 }
 
 .scheduleDescription > [data-role="description"]:empty {
   display: none;
+}
+
+.scheduleDatetime svg {
+  width: 12px;
+  height: 12px;
+  margin-inline-start: 4px;
+}
+
+.scheduleDatetime .icon {
+  display: inline;
 }
 
 .screenshotBlur {

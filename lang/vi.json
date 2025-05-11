@@ -1132,6 +1132,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Mỗi ngày",
+        "days": "Mỗi {INTERVAL} ngày",
+        "perWeek": "{WEEKDAY} mỗi tuần",
+        "weeks": "Mỗi {INTERVAL} tuần",
+        "perMonth": "Mỗi tháng",
+        "months": "Mỗi {INTERVAL} tháng",
+        "perYear": "Mỗi năm",
+        "years": "Mỗi {INTERVAL} năm"
       }
     },
     "2kki": {

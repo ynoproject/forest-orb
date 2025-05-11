@@ -1489,7 +1489,7 @@
 
               <div style="justify-content: space-between; width: 100%; font-size: 0.9em;" class="listEntryMain themeText">
                 <div data-role="organizer" style="display:inline-flex; white-space:nowrap"></div>
-                <div data-role="datetime">
+                <div data-role="datetime" class="scheduleDatetime">
                 </div>
               </div>
             </div>

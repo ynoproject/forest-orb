@@ -1132,6 +1132,16 @@
         "niconico": "ニコニコ動画",
         "openrec": "OPENREC",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "毎日",
+        "days": "{INTERVAL}日おき",
+        "perWeek": "毎週{WEEKDAY}",
+        "weeks": "{INTERVAL}週間おき",
+        "perMonth": "毎月",
+        "months": "{INTERVAL}ヶ月おき",
+        "perYear": "毎年",
+        "years": "{INTERVAL}年おき"
       }
     },
     "2kki": {
