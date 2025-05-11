@@ -599,8 +599,19 @@ function onReceiveInputFeedback(inputId) {
         easyrpgPlayer.api.setSoundVolume(toggled ? 0 : globalConfig.soundVolume);
         easyrpgPlayer.api.setMusicVolume(toggled ? 0 : globalConfig.musicVolume);
       }
+      debounce(easyrpgPlayer.api.saveConfig);
     }
   }
+}
+
+const debounceTimeouts = new WeakMap;
+/** @param {Function} fn must not be an immediately constructed function. */
+function debounce(fn, timeout = 1000) {
+  clearTimeout(debounceTimeouts.get(fn));
+  debounceTimeouts.set(fn, setTimeout(() => {
+    fn();
+    debounceTimeouts.delete(fn);
+  }, timeout));
 }
 
 // EXTERNAL
@@ -1726,8 +1737,10 @@ function setName(name, isInit) {
 function setSoundVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.initialized && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute) {
     easyrpgPlayer.api.setSoundVolume(value);
+    debounce(easyrpgPlayer.api.saveConfig);
+  }
   globalConfig.soundVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -1736,8 +1749,10 @@ function setSoundVolume(value, isInit) {
 function setMusicVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.initialized && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute) {
     easyrpgPlayer.api.setMusicVolume(value);
+    debounce(easyrpgPlayer.api.saveConfig);
+  }
   globalConfig.musicVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
