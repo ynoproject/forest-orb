@@ -998,7 +998,8 @@
       "label": "{PLAYER}'in Rozet Galerisi",
       "loading": "Yükleniyor...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Rozet"
+      "count": "{COUNT} Rozet",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

@@ -998,7 +998,8 @@
       "label": "{PLAYER}님의 배지 갤러리",
       "loading": "로딩 중...",
       "bp": "{BP} BP",
-      "count": "{COUNT} 개의 배지 보유"
+      "count": "{COUNT} 개의 배지 보유",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

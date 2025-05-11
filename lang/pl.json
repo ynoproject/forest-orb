@@ -998,7 +998,8 @@
       "label": "Galeria odznak {PLAYER}",
       "loading": "Ładowanie...",
       "bp": "{BP} BP",
-      "count": "{COUNT} odznak"
+      "count": "{COUNT} odznak",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

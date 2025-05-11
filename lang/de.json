@@ -998,7 +998,8 @@
       "label": "{PLAYER}'s Abzeichnungsgallerie",
       "loading": "Lädt...",
       "bp": "{BP} AP",
-      "count": "{COUNT} Abzeichen"
+      "count": "{COUNT} Abzeichen",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "Dieser Prest ist leer."

@@ -998,7 +998,8 @@
       "label": "Galeria de Emblemas de {PLAYER}",
       "loading": "Carregando...",
       "bp": "{BP} PE",
-      "count": "{COUNT} Emblema"
+      "count": "{COUNT} Emblema",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

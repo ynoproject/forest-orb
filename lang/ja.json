@@ -998,7 +998,8 @@
       "label": "{PLAYER}のバッジギャラリー",
       "loading": "ロード中…",
       "bp": "{BP} BP",
-      "count": "{COUNT} バッジ"
+      "count": "{COUNT} バッジ",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "未設定プリセット"

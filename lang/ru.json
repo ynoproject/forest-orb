@@ -998,7 +998,8 @@
       "label": "Галерея значков {PLAYER}",
       "loading": "Загрузка...",
       "bp": "{BP} ОЗ",
-      "count": "{COUNT} значков"
+      "count": "{COUNT} значков",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

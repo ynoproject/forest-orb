@@ -998,7 +998,8 @@
       "label": "{PLAYER} معرض شارات",
       "loading": "جاري التحميل...",
       "bp": "{BP} نقات الشارات",
-      "count": "{COUNT} شارات"
+      "count": "{COUNT} شارات",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

@@ -998,7 +998,8 @@
       "label": "Galeria de Insigne a lui {PLAYER}",
       "loading": "Se încarcă...",
       "bp": "{BP} PI",
-      "count": "{COUNT} Insigne"
+      "count": "{COUNT} Insigne",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

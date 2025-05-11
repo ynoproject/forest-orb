@@ -998,7 +998,8 @@
       "label": "Insigna Galerio de {PLAYER}",
       "loading": "Ŝargas...",
       "bp": "{BP} IP",
-      "count": "{COUNT} Insignoj"
+      "count": "{COUNT} Insignoj",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

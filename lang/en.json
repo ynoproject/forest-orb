@@ -998,7 +998,8 @@
       "label": "{PLAYER}'s Badge Gallery",
       "loading": "Loading...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Badges"
+      "count": "{COUNT} Badges",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

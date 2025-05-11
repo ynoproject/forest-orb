@@ -998,7 +998,8 @@
       "label": "Vetrina di {PLAYER}",
       "loading": "Caricamento...",
       "bp": "{BP} PM",
-      "count": "{COUNT} Medaglie"
+      "count": "{COUNT} Medaglie",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."

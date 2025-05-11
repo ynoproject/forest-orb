@@ -998,7 +998,8 @@
       "label": "{PLAYER} 的徽章展柜",
       "loading": "加载中...",
       "bp": "{BP} BP",
-      "count": "{COUNT} 徽章"
+      "count": "{COUNT} 徽章",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
