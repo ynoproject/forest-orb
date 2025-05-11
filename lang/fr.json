@@ -165,7 +165,8 @@
             "helpText": "Précharge fréquemment les ressources utilisées par le jeu pour d'assurer qu'elles soient disponibles lorsque nécessaires. Nécessite un rechargement de la page pour s'appliquer."
           },
           "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC",
-          "toggleSchedules": "Événements"
+          "toggleSchedules": "Événements",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Liste de blocage",
         "chatSettings": "Chat",

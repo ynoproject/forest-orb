@@ -165,7 +165,8 @@
             "helpText": "頻繁に使用されるゲームアセットをプリロードし、必要なときに利用できるようにします（ページの再読み込みが必要です）"
           },
           "toggleQuestionablePreloads": "PCの壁紙をプリロードする",
-          "toggleSchedules": "イベント"
+          "toggleSchedules": "イベント",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",

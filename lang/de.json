@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
@@ -165,7 +165,8 @@
             "helpText": "Lade oft benutzte Spielelemente vor um sicherzustellen, dass diese bei Bedarf verfügbar sind; benötigt ein neu laden der Seite"
           },
           "toggleQuestionablePreloads": "PC Hintergründe vorladen",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Blockliste",
         "chatSettings": "Chat",

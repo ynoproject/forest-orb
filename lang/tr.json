@@ -165,7 +165,8 @@
             "helpText": "İhtiyaç olduğunda hazır olduklarından emin olmak için sık kullanılan oyun ögelerini önceden yükle; sayfayı yenilemeniz gerekir"
           },
           "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",

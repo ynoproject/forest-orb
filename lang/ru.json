@@ -165,7 +165,8 @@
             "helpText": "Предзагрузить часто используемые ресурсы, чтобы они всегда были доступны при необходимости; Требует перезагрузки страницы."
           },
           "toggleQuestionablePreloads": "Предзагрузить обои ПК",
-          "toggleSchedules": "События"
+          "toggleSchedules": "События",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",

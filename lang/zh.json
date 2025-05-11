@@ -165,7 +165,8 @@
             "helpText": "预先加载游戏资源，以便需要时取用；需要重新加载网页"
           },
           "toggleQuestionablePreloads": "预加载电脑壁纸",
-          "toggleSchedules": "显示活动招募"
+          "toggleSchedules": "显示活动招募",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "黑名单",
         "chatSettings": "聊天",

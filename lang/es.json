@@ -165,7 +165,8 @@
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
           },
           "toggleQuestionablePreloads": "Preload PC Wallpapers",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",

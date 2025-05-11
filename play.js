@@ -92,6 +92,7 @@ let globalConfig = {
   rulesReviewed: false,
   badgeToolsData: null,
   pushNotificationToastDismissed: false,
+  unicodeFont: false,
 };
 
 let config = {
@@ -1185,6 +1186,13 @@ document.getElementById('togglePreloadsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('toggleUnicodeFont').onclick = function() {
+  const toggled = this.classList.toggle('toggled');
+  globalConfig.unicodeFont = toggled;
+  setExtendedLatinFonts(globalConfig.lang);
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -1692,11 +1700,15 @@ async function withTimeout(duration, prom) {
 }
 
 const rtlLangs = ['ar'];
+const latinExLangs = ['vi'];
 function setLang(lang, isInit) {
   if (rtlLangs.includes(lang))
     document.documentElement.setAttribute('dir', 'rtl');
   else
     document.documentElement.removeAttribute('dir');
+
+  setExtendedLatinFonts(lang);
+
   globalConfig.lang = lang;
   initBlocker = initBlocker.then(() => withTimeout(800, 
     fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
@@ -1708,6 +1720,13 @@ function setLang(lang, isInit) {
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
+}
+
+function setExtendedLatinFonts(lang) {
+  if (latinExLangs.includes(lang) !== globalConfig.unicodeFont)
+    document.documentElement.style.setProperty('--font-override', '-apple-system, BlinkMacSystemFont, xlatin-sans, PGothic, JF-Dot-Shinonome, sans-serif');
+  else
+    document.documentElement.style.setProperty('--font-override', 'unset');
 }
 
 let saveReminderHandle;

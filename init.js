@@ -843,6 +843,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value && gameId === '2kki')
                       document.getElementById('toggleQuestionablePreloadsButton').click();
                     break;
+                  case 'unicodeFont':
+                    if (value)
+                      document.getElementById('toggleUnicodeFont').click();
+                    break;
                   case 'rulesReviewed':
                     break;
                 }

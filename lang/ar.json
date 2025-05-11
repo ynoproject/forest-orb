@@ -165,7 +165,8 @@
             "helpText": "قم بتحميل رسومات اللعبة المستخدمة بشكل متكرر مسبقًا للتأكد من توفرها عند الحاجة؛ يتطلب إعادة تحميل الصفحة"
           },
           "toggleQuestionablePreloads": "التحميل المسبق لخلفيات الكمبيوتر",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "قائمة الحظر",
         "chatSettings": "المحادثة",

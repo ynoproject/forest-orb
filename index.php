@@ -295,7 +295,7 @@
         <div id="chatbox" class="allChat">
           <div id="chatboxInfo">
             <div id="onlineInfo" class="info hidden">
-              <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon">●</span>
+              <span id="connStatus" class="infoContainer unselectable"><span id="connStatusIcon" class="punct">●</span>
               <label id="connStatusText" class="infoText">Disconnected</label>
               <a id="reconnectButton" href="javascript:void(0);" class="reconnectLink iconLink unselectable" data-i18n="[title]chatbox.reconnect">
                 <div class="reconnectIcon icon fillIcon altIcon">
@@ -715,6 +715,14 @@
                 </div>
               </li>
               <?php endif ?>
+              <li class="formControlRow">
+                <label class="unselectable">
+                  <span data-i18n="[html]modal.settings.fields.unicodeFont">Alternate Font</span>
+                </label>
+                <div>
+                  <button id="toggleUnicodeFont" class="checkboxButton unselectable"><span></span></button>
+                </div>
+              </li>
               <li class="formControlRow buttonRow">
                 <button id="blocklistButton" class="unselectable" type="button" data-i18n="[html]modal.settings.blocklist">Blocklist</button>
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat</button>
@@ -722,9 +730,7 @@
                 <button id="notificationSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.notificationSettings" onclick="openModal('notificationSettingsModal', null, 'settingsModal')">Notifications</button>
                 <button id="cacheSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.cacheSettings" onclick="openCacheSettingsModal('settingsModal')">Cache</button>
                 <button id="accountSettingsButton" class="unselectable accountRequired" type="button" data-i18n="[html]modal.settings.accountSettings">Account</button>
-                <?php if ($isMobile): ?>
-                  <button class="unselectable" type="button" data-i18n="[html]modal.settings.engineSettings" onclick="closeModal();simulateKeyboardInput('F1',112)">Engine (F1)</button>
-                <?php endif ?>
+                <button class="unselectable" type="button" data-i18n="[html]modal.settings.engineSettings" onclick="closeModal();simulateKeyboardInput('F1',112)">Engine (F1)</button>
               </li>
             </ul>
           </div>

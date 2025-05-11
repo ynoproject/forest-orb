@@ -165,7 +165,8 @@
             "helpText": "Pré-carregue os recursos do jogo usados com frequência para garantir que estejam disponíveis quando necessário; requer recarregamento da página."
           },
           "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC",
-          "toggleSchedules": "Eventos"
+          "toggleSchedules": "Eventos",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",

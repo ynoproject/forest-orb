@@ -165,7 +165,8 @@
             "helpText": "Antaŭŝargi ofte uzitajn ludhavaĵojn por certigi, ke ili estos disponeblaj kiam necese; bezonas reŝargi retejon"
           },
           "toggleQuestionablePreloads": "Antaŭŝargi Ekranfonojn de Komputilo",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Listo de Blokitoj",
         "chatSettings": "Babilejo",

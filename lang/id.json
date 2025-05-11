@@ -165,7 +165,8 @@
             "helpText": "Preload aset game yang dipakai berkali-kali agar tersedia saat dibutuhkan; butuh refresh page"
           },
           "toggleQuestionablePreloads": "Preload Wallpaper PC",
-          "toggleSchedules": "Acara"
+          "toggleSchedules": "Acara",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",
