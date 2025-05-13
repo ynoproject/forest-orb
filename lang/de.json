@@ -309,6 +309,12 @@
               "badgeUnlocked": "Abzeichen freigeschaltet"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Screenshots",
             "fields": {

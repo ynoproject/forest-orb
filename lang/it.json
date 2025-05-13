@@ -309,6 +309,12 @@
               "badgeUnlocked": "Medaglia Sbloccata"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Screenshots",
             "fields": {
@@ -922,8 +928,8 @@
         "saveCleared": "Le informazioni di sincronizzazione di questo dato di salvataggio sono state svuotate. Questo non influenzerà dati di salvataggio già esistenti su altri dispositivi.",
         "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
       },
-      "timeTrial": {
-        "timeTrialComplete": "You reached {LOCATION} in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "You reached {LOCATION} in {TIME}."
       }
     },
     "events": {

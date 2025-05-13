@@ -309,6 +309,12 @@
               "badgeUnlocked": "Đã mở khóa huy hiệu"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Chụp màn hình",
             "fields": {
@@ -922,8 +928,8 @@
         "saveCleared": "Dữ liệu Đồng bộ Tiến trình đã bị xóa. Điều này sẽ không ảnh hưởng đến bản lưu có sẵn trên bất cứ thiết bị nào của bạn.",
         "saveReminder": "Đừng quên lưu trò chơi thường xuyên và sao lưu bản lưu của bạn để không mất tiến trình trò chơi."
       },
-      "timeTrial": {
-        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

@@ -309,6 +309,12 @@
               "badgeUnlocked": "Rozet Açıldı"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Ekran Görüntüleri",
             "fields": {
@@ -922,8 +928,8 @@
         "saveCleared": "Kayıt senkronizasyonu verileri temizlendi. Bu herhangi bir cihazdaki bir kaydınızı etkilemeyecek.",
         "saveReminder": "İlerlemenizi kaybetmemek için sık sık kaydetmeyi ve kayıt dosyalarınızı yedeklemeyi unutmayın."
       },
-      "timeTrial": {
-        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

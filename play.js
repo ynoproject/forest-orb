@@ -297,10 +297,10 @@ let playerCount;
 (function () {
   addSessionCommandHandler('pc', args => updatePlayerCount(parseInt(args[0])));
   addSessionCommandHandler('lcol');
-  addSessionCommandHandler('ttr', handleTimeTrialRecord);
+  addSessionCommandHandler('ttr', handleTimeTrialsRecord);
 })();
 
-function handleTimeTrialRecord(args) {
+function handleTimeTrialsRecord(args) {
   const mapId = args[0].toString().padStart(4, '0');
   const timeSec = parseInt(args[1]);
 
@@ -316,7 +316,7 @@ function handleTimeTrialRecord(args) {
     categoryName = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
   }
 
-  const message = localizedMessages.toast.timeTrial.timeTrialComplete
+  const message = localizedMessages.toast.timeTrials.timeTrialsComplete
     .replace('{TIME}', formattedTime)
     .replace('{CATEGORY}', categoryName);
 

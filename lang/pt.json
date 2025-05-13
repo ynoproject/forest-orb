@@ -309,6 +309,12 @@
               "badgeUnlocked": "Emblema Desbloqueado"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Capturas de tela",
             "fields": {
@@ -922,8 +928,8 @@
         "saveCleared": "Save da Nuvem foi apagado. Isso não afetará os salvamentos existentes em nenhum dos seus dispositivos.",
         "saveReminder": "Lembre de salvar com frequencia e fazer um backup de seus saves para não perder seu progresso."
       },
-      "timeTrial": {
-        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

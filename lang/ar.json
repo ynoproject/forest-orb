@@ -309,6 +309,12 @@
               "badgeUnlocked": "تم الحصول على الشارة"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "لقطات الشاشة",
             "fields": {
@@ -922,8 +928,8 @@
         "saveCleared": "تم مسح بيانات مزامنة ملف الحفظ، لن يؤثر هذا على عمليات الحفظ الحالية على أي من أجهزتك.",
         "saveReminder": "تذكر أن تقوم بالحفظ بشكل متكرر وأن تقوم بعمل نسخة احتياطية من ملفات الحفظ الخاصة بك حتى لا تفقد تقدمك."
       },
-      "timeTrial": {
-        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
