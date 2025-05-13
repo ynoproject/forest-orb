@@ -494,7 +494,7 @@ function initUiThemeContainerStyles(uiTheme, themeGameId, setTheme, callback) {
   if (!themeGameId)
     themeGameId = gameId;
 
-  const parsedUiTheme = uiTheme.replace(/ /g, '_');
+  const parsedUiTheme = uiTheme.replace(/[ ()]/g, '_');
   const themeGamePropSuffix = themeGameId !== gameId ? `${themeGameId}-` : '';
   
   const baseBgColorProp = `--base-bg-color-${themeGamePropSuffix}${parsedUiTheme}`;
@@ -538,7 +538,7 @@ function initUiThemeFontStyles(uiTheme, themeGameId, fontStyle, setTheme, callba
   if (!themeGameId)
     themeGameId = gameId;
 
-  const parsedUiTheme = uiTheme.replace(/ /g, '_');
+  const parsedUiTheme = uiTheme.replace(/[ ()]/g, '_');
   const themeGamePropSuffix = themeGameId !== gameId ? `${themeGameId}-` : '';
 
   let baseColorProp = `--base-color-${themeGamePropSuffix}${parsedUiTheme}`;
@@ -770,7 +770,7 @@ let applyThemeStyles;
 function setModalUiTheme(modalId, uiTheme, setData) {
   const rootStyle = document.documentElement.style;
   const styleProps = [ 'base-color', 'alt-color', 'base-bg-color', 'shadow-color', 'base-gradient', 'alt-gradient', 'base-gradient-b', 'alt-gradient-b', 'svg-base-gradient', 'svg-alt-gradient', 'svg-shadow', 'base-color-image-url', 'container-bg-image-url', 'border-image-url' ];
-  const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/ /g, '_')}` : '';
+  const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/[ ()]/g, '_')}` : '';
   for (let prop of styleProps)
     rootStyle.setProperty(`--modal-${prop}`, `var(--${prop}${propThemeSuffix})`);
 
@@ -796,7 +796,7 @@ function setPartyUiTheme(uiTheme) {
   const rootStyle = document.documentElement.style;
   const containerCallback = () => {
     const styleProps = [ 'base-bg-color', 'shadow-color', 'svg-shadow', 'container-bg-image-url', 'border-image-url' ];
-    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/ /g, '_')}` : '';
+    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/[ ()]/g, '_')}` : '';
     fastdom.mutate(() => {
       for (let prop of styleProps)
         rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
@@ -805,7 +805,7 @@ function setPartyUiTheme(uiTheme) {
   };
   const fontCallback = () => {
     const styleProps = [ 'base-color', 'alt-color', 'base-gradient', 'alt-gradient', 'svg-base-gradient', 'svg-alt-gradient' ];
-    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/ /g, '_')}` : '';
+    const propThemeSuffix = uiTheme ? `-${uiTheme.replace(/[ ()]/g, '_')}` : '';
     fastdom.mutate(() => {
       for (let prop of styleProps)
         rootStyle.setProperty(`--party-${prop}`, `var(--${prop}${propThemeSuffix})`);
@@ -1040,7 +1040,7 @@ function getSvgGradientStop(color, offset) {
 function addSystemSvgGradient(systemName, systemGameId, colors, alt) {
   if (!systemGameId)
     systemGameId = gameId;
-  const gradientId = `${alt ? 'alt' : 'base'}Gradient_${systemGameId !== gameId ? `${systemGameId}_` : ''}${systemName.replace(/ /g, '_')}`;
+  const gradientId = `${alt ? 'alt' : 'base'}Gradient_${systemGameId !== gameId ? `${systemGameId}_` : ''}${systemName.replace(/[ ()]/g, '_')}`;
   if (!document.getElementById(gradientId)) {
     const svgDefs = document.getElementById('svgDefs');
     const svgGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
@@ -1057,7 +1057,7 @@ function addSystemSvgGradient(systemName, systemGameId, colors, alt) {
 function addSystemSvgDropShadow(systemName, systemGameId, color) {
   if (!systemGameId)
     systemGameId = gameId;
-  const dropShadowFilterId = `dropShadow_${systemGameId !== gameId ? `${systemGameId}_` : ''}${systemName.replace(/ /g, '_')}`;
+  const dropShadowFilterId = `dropShadow_${systemGameId !== gameId ? `${systemGameId}_` : ''}${systemName.replace(/[ ()]/g, '_')}`;
   if (!document.getElementById(dropShadowFilterId)) {
     const svgDefs = document.getElementById('svgDefs');
     const svgDropShadowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');

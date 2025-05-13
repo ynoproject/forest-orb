@@ -767,6 +767,16 @@
           "prompt": "Inserisci l'ID della medaglia che vuoi togliere a {PLAYER}.",
           "success": "{BADGE} è stata revocata da {PLAYER}.",
           "fail": "Non è stata trovata una medaglia con l'ID provveduto."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "Revoca una Medaglia",
           "playerPrompt": "Inserisci il nome dell'account a cui vuoi rimuovere la medaglia"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

@@ -457,7 +457,9 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
     if (tooltipHtml)
       tooltipHtml += '<br>'
     tooltipHtml += `<a href="javascript:void(0);" class="banPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.ban.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="tempbanPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.tempban.label, true).replace('{PLAYER}', playerName)}</a><br>
       <a href="javascript:void(0);" class="mutePlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.mute.label, true).replace('{PLAYER}', playerName)}</a><br>
+      <a href="javascript:void(0);" class="tempmutePlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.tempmute.label, true).replace('{PLAYER}', playerName)}</a><br>
       <a href="javascript:void(0);" class="unmutePlayerAction playerAction">${getMassagedLabel(localizedMessages.context.admin.unmute.label, true).replace('{PLAYER}', playerName)}</a>`;
     if (player.account)
       tooltipHtml += `<br>
@@ -596,6 +598,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
   }
 
   if (isMod) {
+    const playerNamePlain = getPlayerName(player, true, false, false);
     playerTooltip.popper.querySelector('.banPlayerAction').onclick = function () {
       showConfirmModal(localizedMessages.context.admin.ban.confirm.replace('{PLAYER}', playerName), () => {
         apiFetch(`ban?uuid=${uuid}`, true)
@@ -633,6 +636,32 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
           .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.unmute.success, true).replace('{PLAYER}', playerName), 'info', true, systemName))
           .catch(err => console.error(err));
         });
+    };
+
+    playerTooltip.popper.querySelector('.tempbanPlayerAction').onclick = function() {
+      const expiry = prompt(localizedMessages.context.admin.tempban.prompt.replace('{PLAYER}', playerNamePlain), new Date().toISOString());
+      if (!expiry) return;
+      apiFetch(`tempban?${new URLSearchParams({ expiry, uuid })}`, true)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.tempban.success, true).replace('{PLAYER}', playerName), 'ban', true, systemName))
+        .catch(err => console.error(err));
+    };
+
+    playerTooltip.popper.querySelector('.tempmutePlayerAction').onclick = function() {
+      const expiry = prompt(localizedMessages.context.admin.tempmute.prompt.replace('{PLAYER}', playerNamePlain), new Date().toISOString());
+      if (!expiry) return;
+      apiFetch(`tempmute?${new URLSearchParams({ expiry, uuid })}`, true)
+        .then(response => {
+          if (!response.ok)
+            throw new Error(response.statusText);
+          return response.text();
+        })
+        .then(_ => showToastMessage(getMassagedLabel(localizedMessages.context.admin.tempmute.success, true).replace('{PLAYER}', playerName), 'mute', true, systemName))
+        .catch(err => console.error(err));
     };
 
     const badgeActions = playerTooltip.popper.querySelectorAll('.adminBadgeAction');

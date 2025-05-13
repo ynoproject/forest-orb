@@ -767,6 +767,16 @@
           "prompt": "Entajpi la insignan identigilon por revoki el {PLAYER}.",
           "success": "{BADGE} sukcese revokis el {PLAYER}.",
           "fail": "Neniu insigno troviĝis kun la entajpita insigna identigilo."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "Revoki Insignon",
           "playerPrompt": "Entajpi la nomon de la konto por revoki la insignon el tiu konto"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

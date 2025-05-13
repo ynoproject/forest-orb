@@ -767,6 +767,16 @@
           "prompt": "{PLAYER}から剥奪するバッジIDを入力してください。",
           "success": "{PLAYER}から{BADGE}を剥奪しました。",
           "fail": "入力されたバッジIDに対応するバッジが見つかりませんでした。"
+        },
+        "tempban": {
+          "label": "{PLAYER}を一時的にBAN",
+          "prompt": "いつ{PLAYER}のBANを解除しますか？（グリニッジ標準時）",
+          "success": "{PLAYER}は一時的にBANされました。"
+        },
+        "tempmute": {
+          "label": "{PLAYER}を一時的にミュート",
+          "prompt": "いつ{PLAYER}のミュートを解除しますか？（グリニッジ標準時）",
+          "success": "{PLAYER}は一時的にミュートされました。"
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "権限バッジの剝奪",
           "playerPrompt": "権限バッジを剝奪するアカウントの名前を入力してください。"
+        },
+        "tempban": {
+          "label": "プレイヤーの一時BAN",
+          "playerPrompt": "一時的にBANするアカウントの名前を入力してください。",
+          "timePrompt": "BANの終了日時を入力してください。（グリニッジ標準時）"
+        },
+        "tempmute": {
+          "label": "プレイヤーの一時ミュート",
+          "playerPrompt": "一時的にミュートするアカウントの名前を入力してください。",
+          "timePrompt": "ミュートの終了日時を入力してください。（グリニッジ標準時）"
         }
       }
     }

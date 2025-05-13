@@ -1,8 +1,8 @@
 {
-  "translationComplete": "1",
+  "translationComplete": "0",
   "version": {
     "2kki": {
-      "label": "Yume 2kki Versiunea {VERSION}",
+      "label": "Yume 2kki Versi {VERSION}",
       "substitutes": {
         " Patch ": " Patch ",
         "?": "?"
@@ -11,187 +11,187 @@
   },
   "ui": {
     "account": {
-      "login": "Conectare",
-      "logout": "Deconectare"
+      "login": "Masuk",
+      "logout": "Keluar"
     },
     "fontStyle": {
-      "label": "Stil Font:",
+      "label": "Tema Font:",
       "values": {
-        "style1": "Stil 1",
-        "style2": "Stil 2",
-        "style3": "Stil 3",
-        "style4": "Stil 4",
-        "style5": "Stil 5",
-        "style6": "Stil 6",
-        "style7": "Stil 7"
+        "style1": "Tema 1",
+        "style2": "Tema 2",
+        "style3": "Tema 3",
+        "style4": "Tema 4",
+        "style5": "Tema 5",
+        "style6": "Tema 6",
+        "style7": "Tema 7"
       }
     },
     "chatbox": {
-      "location": "Locație:&nbsp;",
-      "nextLocation": "Next Loc:&nbsp;",
-      "immersionMode": "Modul Imersie",
-      "reconnect": "Reconectare",
+      "location": "Lokasi:&nbsp;",
+      "nextLocation": "Lokasi Berikut:&nbsp;",
+      "immersionMode": "Mode Immersion",
+      "reconnect": "Hubung kembali",
       "tab": {
         "chat": "Chat",
-        "players": "Jucători",
-        "parties": "Grupuri"
+        "players": "Pemain",
+        "parties": "Parti"
       },
       "chat": {
         "tab": {
-          "all": "Tot",
-          "map": "Hartă",
+          "all": "Semua",
+          "map": "Peta",
           "global": "Global",
-          "party": "Grup"
+          "party": "Parti"
         },
         "nickname": {
-          "header": "Trebuie să-ți pui un nume ca să poți vorbi.",
+          "header": "Kamu harus tuliskan nama untuk chat.",
           "rule": {
-            "maxLength": "* Maxim 10 caractere",
-            "alphanumeric": "* DOAR caractere alfanumerice"
+            "maxLength": "* Maksimal 10 huruf",
+            "alphanumeric": "* Hanya bisa huruf dan angka"
           }
         }
       },
       "players": {
         "tab": {
-          "map": "Hartă",
-          "friends": "Friends",
-          "party": "Grup"
+          "map": "Peta",
+          "friends": "Teman",
+          "party": "Parti"
         }
       }
     },
     "instruction": {
-      "translation": "Traducere necesară",
-      "noGameLoc": "* Localizare nesuportată"
+      "translation": "Butuh bantuan terjemahan",
+      "noGameLoc": "* Lokalisasi game tidak terdukung"
     },
     "2kki": {
-      "hostedWithPermission": "Găzduit cu permisiunea dezvoltatorilor Yume 2kki"
+      "hostedWithPermission": "Dihost dengan izin dari para pembuat Yume 2kki"
     },
     "disclaimer": {
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community"
+      "hostedWithPermission": "Dihost dengan izin dari para pembuat Yume 2kki",
+      "originalCreation": "Kreasi orisinal dari komunitas YNOproject"
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Simpan",
+        "apply": "Terapkan"
       },
       "confirm": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "Batal"
       },
       "login": {
-        "title": "Conectare",
+        "title": "Masuk",
         "fields": {
           "username": "Username",
-          "password": "Parolă"
+          "password": "Password"
         },
-        "submit": "Trimite",
-        "registerPrompt": "N-ai cont?&nbsp;",
-        "register": "Înregistrează-te"
+        "submit": "Kirim",
+        "registerPrompt": "Belom punya akun?&nbsp;",
+        "register": "Daftar"
       },
       "register": {
-        "title": "Înregistrare",
+        "title": "Daftar",
         "fields": {
-          "email": "Email",
+          "email": "Alamat Email",
           "username": "Username",
-          "password": "Parolă",
-          "confirmPassword": "Confirmă Parola"
+          "password": "Password",
+          "confirmPassword": "Konfirmasi Password"
         },
-        "submit": "Trimite",
-        "loginPrompt": "Ai deja cont?&nbsp;",
-        "login": "Conectare"
+        "submit": "Kirim",
+        "loginPrompt": "Sudah punya akun?&nbsp;",
+        "login": "Masuk"
       },
       "settings": {
-        "title": "Setări",
+        "title": "Setelan",
         "fields": {
-          "lang": "Limbă",
+          "lang": "Bahasa",
           "locationVisibility": {
-            "label": "Vizibilitatea Locației în Joc",
+            "label": "Visibilitas Lokasi dalam Game",
             "values": {
               "private": "Privat",
-              "friends": "La Prieteni",
-              "public": "Public"
+              "friends": "Teman",
+              "public": "Publik"
             }
           },
           "nametagMode": {
-            "label": "Nume",
+            "label": "Nametags",
             "values": {
-              "none": "Nimic",
-              "classic": "Clasic",
-              "compact": "Compact",
-              "slim": "Slab"
+              "none": "Tak ada",
+              "classic": "Klasik",
+              "compact": "Kompak",
+              "slim": "Ramping"
             }
           },
           "wikiLinkMode": {
-            "label": "Wiki Link Popup",
+            "label": "Popup Link Wiki",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Selalu",
+              "fullscreen": "Hanya Fullscreen",
+              "never": "Jangan lagi"
             }
           },
           "saveReminder": {
-            "label": "Save Reminder Frequency",
+            "label": "Pengingat untuk simpan save",
             "interval": {
-              "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "minutes": "{{interval}} menit",
+              "never": "Jangan lagi"
             }
           },
-          "soundVolume": "Volum Sunet",
-          "musicVolume": "Volum Muzică",
-          "togglePlayerSounds": "Sunete Jucători",
+          "soundVolume": "Volume Suara",
+          "musicVolume": "Volume Musik",
+          "togglePlayerSounds": "Suara Pemain",
           "toggleEnableExplorer": {
-            "label": "Yume 2kki Navigator",
-            "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."
+            "label": "Penjelajah Yume 2kki",
+            "helpText": "Penjelajah Yume 2kki ada integrasi Yume 2kki Explorer untuk melihat koneksi dari lokasimu dalam sekejap. Fitur ini bisa mengubah eksperiensmu secara besar, direkomendasikan untuk kamu menggunakan fitur ini setelah mengeksplor seporsi game ini. Kamu harus masuk akun sebelum menggunakan Penjelajah Yume 2kki."
           },
           "toggleImmersionMode": {
-            "label": "Modul Imersie",
-            "helpText": "Dezactivează numărul de jucători, chat-ul global și hărțile pentru a-ți oferi o experiență mai captivantă."
+            "label": "Mode Immersion",
+            "helpText": "Matikan angka pemain, chat global, and peta-peta untuk memberi eksperiens yang lebih immersif."
           },
           "timeTrialinfo": {
-            "label": "Time Trial"
+            "label": "Trial Waktu"
           },
-          "toggleMobileControls": "Show Mobile Controls",
+          "toggleMobileControls": "Nyalakan Tombol Mobile",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
+            "label": "Tipe controls Mobile",
             "default": "D-Pad",
             "joystick": "Floating Joystick",
             "dpad": "Floating D-Pad"
           },
-          "toggleLocationDisplay": "Afișare Locație",
-          "toggleRankings": "Ranking-uri",
+          "toggleLocationDisplay": "Display lokasi",
+          "toggleRankings": "Ranking",
           "togglePreloads": {
             "label": "Preloads",
-            "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
+            "helpText": "Preload aset game yang dipakai berkali-kali agar tersedia saat dibutuhkan; butuh refresh page"
           },
-          "toggleQuestionablePreloads": "Preload PC Wallpapers",
-          "toggleSchedules": "Events"
+          "toggleQuestionablePreloads": "Preload Wallpaper PC",
+          "toggleSchedules": "Acara"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",
-        "screenshotSettings": "Screenshots",
-        "notificationSettings": "Notificări",
+        "screenshotSettings": "Cuplikan layar",
+        "notificationSettings": "Notifikasi",
         "cacheSettings": "Cache",
-        "accountSettings": "Cont",
+        "accountSettings": "Akun",
         "engineSettings": "Engine (F1)"
       },
       "blocklist": {
         "title": "Blocklist",
-        "empty": "Your blocklist is currently empty"
+        "empty": "Blocklistmu masih kosong"
       },
       "chatSettings": {
-        "title": "Setări Chat",
+        "title": "Setelan chat",
         "fields": {
           "toggleGameChat": {
             "label": "In-Game Chat Overlay",
             "global": "Global Chat Overlay",
             "party": "Party Chat Overlay"
           },
-          "toggleTabToChat": "Apasă Tab pentru a vorbi",
-          "togglePlayMentionSound": "Play Mention Sound",
+          "toggleTabToChat": "Pencet Tab untuk Chat",
+          "togglePlayMentionSound": "Nyalakan Suara Mention",
           "chatHistoryLimit": {
             "values": {
-              "0": "Nelimitat",
+              "0": "Tak terbatas",
               "25": "25",
               "50": "50",
               "100": "100",
@@ -202,23 +202,23 @@
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Limita Istoricului pe Hartă"
+            "label": "Limit Histori Chat Peta"
           },
           "globalChatHistoryLimit": {
-            "label": "Limita Istoricului Global"
+            "label": "Limit Histori Chat Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Limita Istoricului pe Grup"
+            "label": "Limit Histori Chat Parti"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Blur Semua Cuplikan Layar"
         }
       },
       "screenshotSettings": {
-        "title": "Screenshot Settings",
+        "title": "Setelan Cuplikan Layar",
         "fields": {
-          "autoDownloadScreenshots": "Automatically Download Screenshots",
+          "autoDownloadScreenshots": "Download Cuplikan Layar Automatis",
           "screenshotResolution": {
-            "label": "Screenshot Download Resolution",
+            "label": "Resolusi Download Cuplikan Layar",
             "values": {
               "1": "1x - 320x240",
               "2": "2x - 640x480",
@@ -229,90 +229,85 @@
         }
       },
       "notificationSettings": {
-        "title": "Setări Notificări",
+        "title": "Setelan Notifikasi",
         "fields": {
-          "toggleNotifications": "Notificări",
+          "toggleNotifications": "Notifikasi",
           "screenPosition": {
-            "label": "Poziție pe Ecran",
+            "label": "Posisi Layar",
             "values": {
-              "bottomLeft": "Stânga Jos",
-              "bottomRight": "Dreapta Jos",
-              "topLeft": "Stânga Sus",
-              "topRight": "Dreapta Sus"
+              "bottomLeft": "Bawah Kiri",
+              "bottomRight": "Bawah Kanan",
+              "topLeft": "Atas Kiri",
+              "topRight": "Atas Kanan"
             }
           },
           "system": {
             "label": "Sistem",
             "fields": {
-              "siteUpdates": "Site Actualizat",
-              "error": "Eroare",
-              "pushNotifications": "Desktop Notifications"
+              "siteUpdates": "Site telah diupdate",
+              "error": "Error terjadi",
+              "pushNotifications": "Notifikasi Desktop"
             }
           },
           "account": {
-            "label": "Cont",
+            "label": "Akun",
             "fields": {
-              "loggedIn": "Conectat",
-              "loggedOut": "Deconectat",
-              "passwordUpdate": "Parolă Actualizată"
+              "loggedIn": "Telah masuk",
+              "loggedOut": "Telah keluar",
+              "passwordUpdate": "Password diperbarui"
             }
           },
           "players": {
-            "label": "Players",
+            "label": "Pemain",
             "fields": {
-              "playerBlocked": "Player Blocked",
-              "playerUnblocked": "Player Unblocked"
+              "playerBlocked": "Pemain diblocked",
+              "playerUnblocked": "Pemain diunblocked"
             }
           },
           "friends": {
-            "label": "Friends",
+            "label": "Teman",
             "fields": {
-              "add": "Friend Added",
-              "remove": "Friend Removed",
-              "accept": "Friend Request Accepted",
-              "reject": "Friend Request Rejected",
-              "cancel": "Friend Request Cancelled",
-              "incoming": "Incoming Friend Request",
-              "playerOnline": "Friend Online",
-              "playerOffline": "Friend Offline"
+              "add": "Teman ditambah",
+              "remove": "Teman dihapus",
+              "accept": "Permintaan teman diterima",
+              "reject": "Permintaan teman direjeksi",
+              "cancel": "Permintaan teman dibatal",
+              "incoming": "Ada permintaan teman",
+              "playerOnline": "Teman Online",
+              "playerOffline": "Teman Offline"
             }
           },
           "parties": {
-            "label": "Grupuri",
+            "label": "Parti-parti",
             "fields": {
-              "create": "Grup Creat",
-              "update": "Grup Actualizat",
-              "join": "Intrat în Grup",
-              "leave": "Ieșit în Grup",
-              "remove": "Scos din Grup",
-              "disband": "Grup Desființat",
-              "playerJoin": "Player a intrat în Grup",
-              "playerLeave": "Player a ieșit din Grup",
-              "playerOnline": "Membru din Grup Online",
-              "playerOffline": "Membru din Grup Offline",
-              "kickPlayer": "Player a fost scos din Grup",
-              "transferPartyOwner": "Player a for promovat la Lider"
+              "create": "Created Party",
+              "update": "Updated Party",
+              "join": "Joined Party",
+              "leave": "Left Party",
+              "remove": "Removed from Party",
+              "disband": "Disbanded Party",
+              "playerJoin": "Player Joined Party",
+              "playerLeave": "Player Left Party",
+              "playerOnline": "Party Member Online",
+              "playerOffline": "Party Member Offline",
+              "kickPlayer": "Kicked Player from Party",
+              "transferPartyOwner": "Promoted Player to Party Leader"
             }
           },
           "events": {
-            "label": "Expediții",
+            "label": "Expeditions",
             "fields": {
-              "complete": "Expediție Completă",
-              "freeComplete": "Expediție Gratis Completă",
-              "vmComplete": "Automat Găsit",
-              "listUpdated": "Lista Expedițiilor Actualizată"
+              "complete": "Expedition Complete",
+              "freeComplete": "Free Expedition Complete",
+              "vmComplete": "Vending Machine Found",
+              "listUpdated": "Expedition List Updated"
             }
           },
           "badges": {
-            "label": "Insigne",
+            "label": "Badges",
             "fields": {
-              "badgeUnlocked": "Insignă Deblocată"
+              "badgeUnlocked": "Badge Unlocked"
             }
-          },
-          "timeTrials": {
-            "label": "Time Trials",
-            "fields": {
-            "goalReached": "Goal Reached"
           },
           "screenshots": {
             "label": "Screenshots",
@@ -323,12 +318,12 @@
           "saveSync": {
             "label": "Save Sync",
             "fields": {
-              "saveUploading": "Save-ul se Postează",
-              "saveUploaded": "Save Postat",
-              "saveDownloading": "Save-ul se Descarcă",
-              "saveDownloaded": "Save Descărcat",
-              "saveUpToDate": "Save Actualizat",
-              "saveCleared": "Save Șters",
+              "saveUploading": "Save Uploading",
+              "saveUploaded": "Save Uploaded",
+              "saveDownloading": "Save Downloading",
+              "saveDownloaded": "Save Downloaded",
+              "saveUpToDate": "Save Up to Date",
+              "saveCleared": "Save Cleared",
               "saveReminder": "Save Reminder"
             }
           },
@@ -350,52 +345,52 @@
         }
       },
       "accountSettings": {
-        "title": "Setări Cont",
+        "title": "Account Settings",
         "fields": {
-          "badge": "Insignă",
-          "changePassword": "Schimbă Parola",
-          "clearSaveSync": "Șterge Datele Save Sync"
+          "badge": "Badge",
+          "changePassword": "Change Password",
+          "clearSaveSync": "Clear Save Sync Data"
         }
       },
       "password": {
-        "title": "Schimbă Parola",
+        "title": "Change Password",
         "fields": {
-          "oldPassword": "Parolă Veche",
-          "newPassword": "Parolă Nouă",
-          "newConfirmPassword": "Confirmă Parola Nouă"
+          "oldPassword": "Old Password",
+          "newPassword": "New Password",
+          "newConfirmPassword": "Confirm New Password"
         },
-        "submit": "Trimite"
+        "submit": "Submit"
       },
       "badges": {
-        "title": "Insigne",
-        "manageBadgeGallery": "Gestionare Galerie de Insigne",
+        "title": "Badges",
+        "manageBadgeGallery": "Manage Badge Gallery",
         "fields": {
           "unlockStatus": {
-            "label": "Status Deblocare:&nbsp;",
+            "label": "Unlock Status:&nbsp;",
             "values": {
-              "0": "Blocate",
-              "1": "Deblocate",
-              "all": "Toate",
+              "0": "Locked",
+              "1": "Unlocked",
+              "all": "All",
               "recentUnlock": "Recently Unlocked"
             }
           },
           "sortOrder": {
-            "label": "Ordine:&nbsp;",
+            "label": "Sort Order:&nbsp;",
             "values": {
-              "default": "Implicită"
+              "default": "Default"
             }
           },
           "search": {
-            "label": "Caută:&nbsp;",
+            "label": "Search:&nbsp;",
             "name": "Name:",
             "location": "Location:"
           }
         }
       },
       "badgeGallery": {
-        "title": "Gestionează Galerie de Insigne",
-        "badgeGalleryRowProgress": "Următorul Rând (PI)",
-        "badgeGalleryColProgress": "Următoarea Coloană (Insigne)",
+        "title": "Manage Badge Gallery",
+        "badgeGalleryRowProgress": "Next Row Upgrade (BP)",
+        "badgeGalleryColProgress": "Next Column Upgrade (Badges)",
         "removeMode": {
           "activate": "Remove Badges",
           "deactivate": "Done"
@@ -408,51 +403,51 @@
         "presetName": "Preset {{index}}"
       },
       "save": {
-        "title": "Gestionează Datele Salvate",
-        "reload": "Salvează și Reîncarcă",
+        "title": "Manage Save Data",
+        "reload": "Save Changes and Reload",
         "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
       },
       "uiTheme": {
-        "title": "Tema UI",
+        "title": "UI Theme",
         "auto": "AUTO"
       },
       "createParty": {
         "title": {
-          "create": "Crează un Grup",
-          "update": "Editează Grupul"
+          "create": "Create Party",
+          "update": "Edit Party"
         },
         "fields": {
-          "partyName": "Numele Grupului",
-          "description": "Descriere",
+          "partyName": "Party Name",
+          "description": "Description",
           "public": "Public",
-          "password": "Parolă",
-          "theme": "Temă"
+          "password": "Password",
+          "theme": "Theme"
         },
-        "showPassword": "Arată Parola",
-        "hidePassword": "Ascunde Parola",
-        "submit": "Trimite"
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "submit": "Submit"
       },
       "joinPrivateParty": {
-        "title": "Intră în Grup Privat",
+        "title": "Join Private Party",
         "fields": {
-          "password": "Parolă"
+          "password": "Password"
         },
-        "showPassword": "Arată Parola",
-        "hidePassword": "Ascunde Parola",
-        "incorrectPassword": "Parolă incorectăȘ Încearcă din nou.",
-        "submit": "Trimite"
+        "showPassword": "Show Password",
+        "hidePassword": "Hide Password",
+        "incorrectPassword": "Incorrect Password: Please try again.",
+        "submit": "Submit"
       },
       "events": {
-        "title": "Expediții",
-        "rankExp": "Următorul Rang",
-        "weekExp": "ExP Săptămâna Asta",
+        "title": "Expeditions",
+        "rankExp": "Next Rank",
+        "weekExp": "ExP This Week",
         "tabs": {
-          "locations": "Locații",
-          "vms": "Căutător de Automate"
+          "locations": "Locations",
+          "vms": "Vending Machine Finder"
         }
       },
       "rankings": {
-        "title": "Ranguri",
+        "title": "Rankings",
         "player": "Player"
       },
       "screenshot": {
@@ -511,7 +506,7 @@
           "description": "Description",
           "datetime": "Event Date and Time",
           "recurring": "Recurring Event",
-          "theme": "Temă",
+          "theme": "Theme",
           "interval": {
             "title": "Interval",
             "days": "days",
@@ -551,12 +546,12 @@
         }
       },
       "rules": {
-        "title": "Reguli",
-        "rule1": "Fii respectuos și politicos.",
-        "rule2": "Fără discuții 18+ (NSFW, gore, etc.).",
-        "rule3": "Fără politică.",
-        "rule4": "Fără remarci incendiare (inclusiv jigniri).",
-        "rule5": "Fără trișat în orice fel, din oricare motiv.",
+        "title": "Rules",
+        "rule1": "Please be respectful and polite.",
+        "rule2": "No 18+ discussion (NSFW, gore, etc.).",
+        "rule3": "No politics.",
+        "rule4": "No inflammatory remarks (including slurs).",
+        "rule5": "No cheating of any kind for any reason.",
         "rule6": "If there's trouble, please inform the moderators."
       },
       "explorerUndiscoveredLocations": {
@@ -566,32 +561,32 @@
     },
     "tooltips": {
       "togglePrivateMode": "Toggle Private Mode",
-      "save": "Gestionează Datele Salvate",
-      "uiTheme": "Tema UI",
-      "toggleChat": "Comută Chat-ul",
+      "save": "Manage Save Data",
+      "uiTheme": "UI Theme",
+      "toggleChat": "Toggle Chat",
       "toggleExplorer": "Toggle Yume 2kki Navigator",
-      "screenshot": "Fă Captură de Ecran",
+      "screenshot": "Take Screenshot",
       "myScreenshots": "My Screenshots",
-      "settings": "Setări",
-      "toggleMute": "Comută Mute-ul",
+      "settings": "Settings",
+      "toggleMute": "Toggle Mute",
       "toggleHideLocation": "Toggle Location Sharing",
-      "toggleGlobalMessage": "Comută Vorbitul pe Chat Global",
+      "toggleGlobalMessage": "Toggle Global Chat Messaging",
       "chat": {
         "toggleNextLocation": "Show/Hide Next Expedition Location",
-        "toggleGlobalMessageLocations": "Arată/Ascunde Locația în Mesaje",
-        "toggleMessageTimestamps": "Arată/Ascunde Marcajele de Timp în Chat",
-        "clearChat": "Șterge Chat-ul"
+        "toggleGlobalMessageLocations": "Show/Hide Chat Message Locations",
+        "toggleMessageTimestamps": "Show/Hide Chat Message Timestamps",
+        "clearChat": "Clear Chat"
       },
       "parties": {
-        "createParty": "Crează un Grup",
-        "disbandParty": "Desființează Grupul"
+        "createParty": "Create Party",
+        "disbandParty": "Disband Party"
       },
-      "events": "Expediții",
+      "events": "Expeditions",
       "locations": "Locations",
       "communityScreenshots": "Community Screenshots",
-      "rankings": "Ranguri",
+      "rankings": "Rankings",
       "schedules": "Events",
-      "nexus": "Întoarce-te la Nexus",
+      "nexus": "Return to Nexus",
       "explorerUndiscoveredLocations": "View Undiscovered Locations",
       "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
       "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
@@ -599,7 +594,7 @@
     "placeholders": {
       "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
     },
-    "reviewRules": "Revizionează Regulile"
+    "reviewRules": "Review Rules"
   },
   "messages": {
     "games": {
@@ -627,14 +622,14 @@
       "if": "If",
       "unaccomplished": "Unaccomplished"
     },
-    "leavePage": "Ești sigur că dorești să părăsești pagina? Orice progres nesalvat în joc va fi pierdut.",
+    "leavePage": "Are you sure you want to leave the page? Any unsaved in-game progress will be lost.",
     "logout": "Are you sure you want to log out?",
     "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
     "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
     "connStatus": {
-      "0": "Deconectat",
-      "1": "Conectat",
-      "2": "Se conectează...",
+      "0": "Disconnected",
+      "1": "Connected",
+      "2": "Connecting...",
       "3": "Private Mode"
     },
     "lastOnline": {
@@ -657,9 +652,9 @@
       }
     },
     "location": {
-      "template": "{LOCATION} ({LOCATION_EN})",
-      "queryingLocation": "Se consultă locația...",
-      "unknownLocation": "Locație Necunoscută",
+      "template": "{LOCATION}",
+      "queryingLocation": "Querying Location...",
+      "unknownLocation": "Unknown Location",
       "2kki": {
         "template": "{LOCATION}"
       },
@@ -687,27 +682,27 @@
       }
     },
     "playersOnline": {
-      "singular": "{COUNT} Jucător Online",
-      "plural": "{COUNT} Jucători Online"
+      "singular": "{COUNT} Player Online",
+      "plural": "{COUNT} Players Online"
     },
     "playersInMap": {
-      "singular": "{COUNT} Jucător în Hartă",
-      "plural": "{COUNT} Jucători în Hartă"
+      "singular": "{COUNT} Player in Map",
+      "plural": "{COUNT} Players in Map"
     },
     "playerList": {
-      "unnamed": "Jucător fără Nume",
-      "muted": "Amuțit",
+      "unnamed": "Unnamed Player",
+      "muted": "Muted",
       "actions": {
         "approveFriend": "Accept Friend Request",
         "rejectFriend": "Reject Friend Request",
         "cancelFriend": "Cancel Friend Request",
-        "partyKick": "Scoate din Grup",
-        "transferPartyOwner": "Promovează ca Lider"
+        "partyKick": "Kick from Party",
+        "transferPartyOwner": "Promote to Party Leader"
       }
     },
     "roles": {
       "mod": "Moderator",
-      "dev": "Dezvoltator"
+      "dev": "Developer"
     },
     "timestamp": {
       "time": "{TIME}",
@@ -736,36 +731,24 @@
       },
       "admin": {
         "ban": {
-          "label": "Dă ban lui {PLAYER}",
-          "confirm": "Sigur că vrei să dai ban lui {PLAYER}?",
-          "success": "I-ai dat ban lui {PLAYER}."
+          "label": "Ban {PLAYER}",
+          "confirm": "Are you sure you want to ban {PLAYER}?",
+          "success": "{PLAYER} has been banned."
         },
         "unban": {
-          "label": "Dă unban lui {PLAYER}",
-          "confirm": "Sigur că vrei să dai unban lui {PLAYER}?",
-          "success": "I-ai dat unban lui {PLAYER}."
+          "label": "Unban {PLAYER}",
+          "confirm": "Are you sure you want to unban {PLAYER}?",
+          "success": "{PLAYER} has been unbanned."
         },
         "mute": {
-          "label": "Amuțește pe {PLAYER}",
-          "confirm": "Sigur că vrei să amuțești pe {PLAYER}?",
-          "success": "{PLAYER} a fost amuțit."
+          "label": "Mute {PLAYER}",
+          "confirm": "Are you sure you want to mute {PLAYER}?",
+          "success": "{PLAYER} has been muted."
         },
         "unmute": {
-          "label": "Dă unmute lui {PLAYER}",
-          "confirm": "Sigur că vrei să dai unmute lui {PLAYER}?",
-          "success": "I-ai dat unmute lui {PLAYER}."
-        },
-        "grantBadge": {
-          "label": "Dă o Insignă",
-          "prompt": "Intră ID-ul insignei de dat lui {PLAYER}.",
-          "success": "{BADGE} a fost dat lui {PLAYER}.",
-          "fail": "Nicio insignă a fost găsită pentru ID-ul pus."
-        },
-        "revokeBadge": {
-          "label": "Scoate o Insignă",
-          "prompt": "Intră ID-ul insignei de scos de la {PLAYER}.",
-          "success": "{BADGE} a fost scoasă de la {PLAYER}.",
-          "fail": "Nicio insignă a fost găsită pentru ID-ul pus."
+          "label": "Unmute {PLAYER}",
+          "confirm": "Are you sure you want to unmute {PLAYER}?",
+          "success": "{PLAYER} has been unmuted."
         },
         "tempban": {
           "label": "Tempban {PLAYER}",
@@ -776,33 +759,45 @@
           "label": "Tempmute {PLAYER}",
           "prompt": "When to unmute {PLAYER}? (UTC time)",
           "success": "{PLAYER} has been tempmuted."
+        },
+        "grantBadge": {
+          "label": "Grant Badge",
+          "prompt": "Enter the badge ID to grant {PLAYER}.",
+          "success": "{BADGE} was successfully granted to {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
+        },
+        "revokeBadge": {
+          "label": "Revoke Badge",
+          "prompt": "Enter the badge ID to revoke from {PLAYER}.",
+          "success": "{BADGE} was successfully revoked from {PLAYER}.",
+          "fail": "No badge was found for the provided badge ID."
         }
       }
     },
     "account": {
       "login": {
         "errors": {
-          "invalidLogin": "Username sau parolă incorecte."
+          "invalidLogin": "Username or password is incorrect."
         }
       },
       "register": {
         "errors": {
-          "confirmPasswordMismatch": "Parolele specificate nu se potrivesc.",
-          "invalidCredentials": "Username/Parolă specificată este goală sau conține caractere invalide.",
-          "emailTaken": "Adresa de e-mail specificată este deja folosită.",
-          "usernameTaken": "Username-ul specificat este deja folosit."
+          "confirmPasswordMismatch": "The specified passwords do not match.",
+          "invalidCredentials": "Specified username or password is empty or contains invalid characters.",
+          "emailTaken": "The specified email address is already in use.",
+          "usernameTaken": "The specified username is already in use."
         }
       },
       "password": {
         "errors": {
-          "confirmPasswordMismatch": "Parolele noi specificate nu se potrivesc.",
-          "badLogin": "Parola este incorectă.",
-          "internalServerError": "S-a produs o eroare: încearcă mai târziu."
+          "confirmPasswordMismatch": "The specified new passwords do not match.",
+          "badLogin": "Login password is incorrect.",
+          "internalServerError": "An error occurred: please try again later."
         }
       }
     },
     "chat": {
-      "globalMessage": "Mesaj Global"
+      "globalMessage": "Global Message"
     },
     "friends": {
       "friend": "Friend",
@@ -814,10 +809,10 @@
       }
     },
     "parties": {
-      "emptyMessage": "Momentan nu există grupuri active.",
-      "yourParty": "Grupul Tău",
-      "defaultPartyName": "Grupul lui {OWNER}",
-      "partyOwner": "Lider de Grup",
+      "emptyMessage": "There are currently no active parties.",
+      "yourParty": "Your Party",
+      "defaultPartyName": "{OWNER}'s Party",
+      "partyOwner": "Party Leader",
       "confirmDisband": "Are you sure you want to disband your party? This cannot be undone.",
       "confirmTransferPartyOwner": "Are you sure you want to transfer party ownership to {PLAYER}?",
       "offlineMemberSuffix": "Member offline",
@@ -826,25 +821,25 @@
         "offline": "Offline - {COUNT}"
       },
       "actions": {
-        "viewPartyDetails": "Vezi Detaliile Grupului",
-        "joinParty": "Intră în Grup",
-        "joinPrivateParty": "Intră în Grup Privat",
-        "leaveParty": "Ieși din Grup"
+        "viewPartyDetails": "View Party Details",
+        "joinParty": "Join Party",
+        "joinPrivateParty": "Join Private Party",
+        "leaveParty": "Leave Party"
       }
     },
     "chatTips": {
-      "template": "SFAT: {CONTENT}",
+      "template": "TIP: {CONTENT}",
       "tips": {
-        "backupReminder": "E recomandat să ții un backup as progresului tău prin descărcarea save-ului. Astfel, dacă datele browser-ului sunt șterse, nu-ți pierzi progresul.",
-        "menuTheme": "Culoarea numelui tău și stilul din lista jucătorilor sunt bazate pe tematica meniului din joc.",
-        "playersInMap": "Poți comuta între nr. de jucători online și cei de pe hartă prin apăsarea text-ului.",
-        "markdownSupport": "Chat-ul are formatări de text markdown. În prezent se acceptă: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __subliniat__ (\\_\\_text\\_\\_), ~~tăiat~~ (\\~\\~text\\~\\~) și ||spoiler|| (\\|\\|text\\|\\|).",
-        "tabToChat": "Dacă te joci pe PC, poți apăsa pe tab pentru a comuta dintre joc și chat. Asta poate fi oprită în setări sub 'Apasă Tab pentru a vorbi'.",
-        "chatTabNotifications": "Dacă ești în alt chat decât 'Toate', dacă un nou mesaj e trimis în alt tab, o să adauge bold ca să te notifice.",
-        "clearChat": "Dacă apeși pe butonul Clear Chat, dacă nu ești pe tab-ul 'All', va șterge doar mesajele de pe tab-ul pe care ești în acel moment.",
-        "chatHistoryLimit": "Dacă istoricul chat-ului se face prea lung, poți avea probleme cu performanța. În Setările pentru Chat, poți limita istoricul pentru a te feri de problemele astea fără să ștergi chat-ul.",
-        "parties": "Grupurile sunt un mod perfect de a sta împreună cu ceilalți într-o aventură. Poți vedea locațiile membrilor din grup și să vorbești cu ei în privat.",
-        "immersionMode": "Dacă preferi o experiență mai imersivă decât una socială, încearcă modul Imersie. Scoate chat-ul global, lista de jucători și numărul jucătorilor ca să fie mai interesand când găsești un alt jucător în timp ce explorezi.",
+        "backupReminder": "It is recommended that you keep a local backup of your progress by regularly downloading your save. This way, if your browser data is cleared, you won't lose your progress.",
+        "menuTheme": "Your name color and player list entry style are based on your in-game menu theme.",
+        "playersInMap": "You can switch between the number of players online and the number of players in your map by clicking the label.",
+        "markdownSupport": "Chat supports text formatting by wrapping text in certain characters. Currently supported are: **bold** (\\*\\*text\\*\\*), *italic* (\\*text\\*, \\_text\\_), __underline__ (\\_\\_text\\_\\_), ~~strikethrough~~ (\\~\\~text\\~\\~), and ||spoiler|| (\\|\\|text\\|\\|).",
+        "tabToChat": "If you're playing on a PC, you can press the tab key to toggle between the game and the chat input. This feature can be disabled in the Chat Settings under 'Press Tab to Chat'.",
+        "chatTabNotifications": "When you are in a chat tab other than 'All', if a new message is sent in the other filtered tab, it will add bolding to the tab label to notify you.",
+        "clearChat": "When you click the clear chat button at the top right of the chat box, if you are not currently in the 'All' tab, it will only remove messages for the current chat tab you're on.",
+        "chatHistoryLimit": "If your chat history gets too long, you may experience performance issues. In the Chat Settings, you can limit your chat history accordingly to avoid these issues without having to manually clear your chat.",
+        "parties": "Parties are a great way to stick together with people on an adventure. You can see the locations of your party members and talk to them in a private chat.",
+        "immersionMode": "If you prefer a more immersive experience rather than a social one, try Immersion Mode. It turns off global chat, the player list, and player counts so it's more interesting when you find another player while exploring.",
         "friendsMenu": "By right clicking on PC, or by holding your tap on mobile on the icon of a player outside of the Rankings, a dialog box will open, allowing to send them a friend request, mention said player or block them.",
         "easySettingsMenu": "If you're playing on a PC, you can press the F1 key while playing to open the settings menu, allowing you to remap your keys as well as adjusting some settings.",
         "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
@@ -852,27 +847,27 @@
         "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
         "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
         "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
-        "openSource": "YNOproject este open source și codul este valabil la https://github.com/ynoproject/"
+        "openSource": "YNOproject is open source and the code repositories are available at https://github.com/ynoproject/"
       }
     },
     "save": {
       "slot": {
-        "title": "Fișierul {SLOT_ID}",
-        "readingLabel": "Se citesc datele fișierului...",
-        "emptyLabel": "Gol",
-        "errorLabel": "Eroare"
+        "title": "File {SLOT_ID}",
+        "readingLabel": "Reading File Data...",
+        "emptyLabel": "Empty",
+        "errorLabel": "Error"
       },
       "upload": {
-        "tooltip": "Postează Save-ul",
-        "invalidSaveFile": "Selectează un fișier valid (format .lsd)."
+        "tooltip": "Upload Save File",
+        "invalidSaveFile": "Please select a valid save file (.lsd format)."
       },
       "download": {
-        "tooltip": "Descarcă Save-ul",
-        "emptySlot": "Oops! Save-ul acesta pare a fi gol."
+        "tooltip": "Download Save File",
+        "emptySlot": "Oops! The save file for the slot appears to be empty."
       },
       "delete": {
-        "tooltip": "Șterge Save-ul",
-        "confirmDelete": "Sigur că vrei să ștergi datele de pe fișierul {SLOT_ID}?"
+        "tooltip": "Delete Save File",
+        "confirmDelete": "Are you sure you want to delete the save data for file {SLOT_ID}?"
       }
     },
     "saveSync": {
@@ -880,13 +875,13 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "Site-ul a fost actualizat. Reîncarcă pagina pentru a vedea actualizările.",
-        "error": "Oops! Se pare că ceva n-a mers bine. Verifică consola browser-ului pentru detalii. Pentru a vedea consola, apasă F12 sau dă clic dreapta, apoi dă clic pe 'Inspect'."
+        "siteUpdates": "The site has been updated. Reload the page to get the newest changes.",
+        "error": "Oops! Looks like something went wrong. See the browser console for details. To open the console, press F12 or right click then click 'Inspect'."
       },
       "account": {
-        "loggedIn": "Te-ai conectat ca {USER}.",
-        "loggedOut": "Te-ai deconectat.",
-        "passwordUpdated": "Ți-ai schimbat parola cu succes."
+        "loggedIn": "You have logged in as {USER}.",
+        "loggedOut": "You have logged out.",
+        "passwordUpdated": "Your password was updated successfully."
       },
       "players": {
         "playerBlocked": "{PLAYER} has been blocked.",
@@ -899,84 +894,81 @@
         "reject": "{PLAYER}'s friend request was rejected.",
         "cancel": "Your friend request to {PLAYER} was cancelled.",
         "incoming": "You have a new friend request from {PLAYER}.",
-        "playerOnline": "{PLAYER} este acum online.",
-        "playerOffline": "{PLAYER} este acum offline."
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline."
       },
       "parties": {
-        "create": "{PARTY} a fost creat/ă.",
-        "update": "{PARTY} a fost actualizat/ă.",
-        "join": "Ai intrat în {PARTY}.",
-        "leave": "Ai ieșit din {PARTY}.",
-        "remove": "Ai fost scos din {PARTY}.",
-        "disband": "{PARTY} a fost desființat/ă.",
-        "playerJoin": "{PLAYER} a intrat în grup.",
-        "playerLeave": "{PLAYER} a ieșit din grup.",
-        "playerOnline": "{PLAYER} este acum online.",
-        "playerOffline": "{PLAYER} este acum offline.",
-        "kickPlayer": "{PLAYER} a fost dat afară din grup.",
-        "transferPartyOwner": "{PLAYER} a fost promovat ca lider."
+        "create": "{PARTY} has been created.",
+        "update": "{PARTY} has been updated.",
+        "join": "You have joined {PARTY}.",
+        "leave": "You have left {PARTY}.",
+        "remove": "You have been removed from {PARTY}.",
+        "disband": "{PARTY} has been disbanded.",
+        "playerJoin": "{PLAYER} has joined the party.",
+        "playerLeave": "{PLAYER} has left the party.",
+        "playerOnline": "{PLAYER} is now online.",
+        "playerOffline": "{PLAYER} is now offline.",
+        "kickPlayer": "{PLAYER} has been kicked from the party.",
+        "transferPartyOwner": "{PLAYER} has been promoted to party leader."
       },
       "events": {
-        "complete": "Expediție Completă!\nPt. că ai vizitat {LOCATION}, ai primit {EXP}.",
-        "freeComplete": "Expediție Completă! Ai vizitat {LOCATION}.",
-        "vmComplete": "Automat Găsit!\nAi primit {EXP}.",
-        "listUpdated": "Lista de expediții a fost actualizată."
+        "complete": "Expedition Complete!\nFor visiting {LOCATION}, you have been awarded {EXP}.",
+        "freeComplete": "Expedition Complete! You visited {LOCATION}.",
+        "vmComplete": "Vending Machine Found!\nYou have been awarded {EXP}.",
+        "listUpdated": "The expedition list has been updated."
       },
       "badges": {
-        "badgeUnlocked": "Ai deblocat o nouă insignă!"
+        "badgeUnlocked": "You have unlocked a new badge!"
       },
       "screenshots": {
-        "screenshotTaken": "Your screenshot has been taken."
+        "screenshotTaken": "Screenshot taken, click to save."
       },
       "saveSync": {
-        "saveUploading": "Se postează datele din slotul {SLOT}...",
-        "saveUploaded": "Datele slotul {SLOT} au fost postate.",
-        "saveDownloading": "Se actualizează datele din slotul {SLOT}...",
-        "saveDownloaded": "Slotul {SLOT} a fost actualizat.",
-        "saveUpToDate": "Datele salvate sunt actualizate.",
-        "saveCleared": "Datele din Save Sync au fost șterse. Asta nu va afecta save-urile existente de pe oricare dispozitiv.",
+        "saveUploading": "Uploading save data from slot {SLOT}...",
+        "saveUploaded": "Your save data from slot {SLOT} has been uploaded.",
+        "saveDownloading": "Updating save data for file {SLOT}...",
+        "saveDownloaded": "Save slot {SLOT} was updated successfully.",
+        "saveUpToDate": "Save data is up to date.",
+        "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices.",
         "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
-      },
-      "timeTrials": {
-        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
       "exp": "{POINTS} ExP",
-      "expRank": "Rang: {RANK}",
-      "period": "Sezonul {ORDINAL}",
-      "periodEnds": "Se termină pe {DATE}",
-      "current": "Actual",
-      "shortcut": "Poate fi accesat printr-o scurtătură deblocabilă",
+      "expRank": "Rank: {RANK}",
+      "period": "Season {ORDINAL}",
+      "periodEnds": "Ends {DATE}",
+      "current": "Current",
+      "shortcut": "Can be reached via an unlockable shortcut",
       "toggleTracked": "Toggle Location Tracking",
-      "availableUntilDate": "Valabil până pe\n{DATE}",
+      "availableUntilDate": "Available Until\n{DATE}",
       "types": {
-        "0": "Zilnică",
-        "1": "Săptămânală",
-        "2": "De Weekend",
-        "3": "Specială",
-        "-1": "Expediție Gratis"
+        "0": "Daily",
+        "1": "Weekly",
+        "2": "Weekend",
+        "3": "Special",
+        "-1": "Free Expedition"
       },
       "expRanks": {
-        "0": "Începător",
-        "1": "Intermediar",
-        "2": "Bronz",
-        "3": "Argint",
-        "4": "Aur",
-        "5": "Platină",
-        "6": "Diamant"
+        "0": "Novice",
+        "1": "Intermediate",
+        "2": "Bronze",
+        "3": "Silver",
+        "4": "Gold",
+        "5": "Platinum",
+        "6": "Diamond"
       }
     },
     "badges": {
-      "null": "Fără Insignă",
-      "allCategory": "Toate",
+      "null": "No Badge",
+      "allCategory": "All",
       "badgeTitle": "{TITLE} - {BP} BP",
       "locked": "???",
-      "location": "Locație:&nbsp;",
+      "location": "Location:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% de jucători au insigna asta",
+      "percentUnlocked": "{PERCENT}% of players have this badge",
       "time": "{MINUTES}:{SECONDS}",
-      "artCredit": "Desen de {ARTIST}",
+      "artCredit": "Art by {ARTIST}",
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
@@ -986,18 +978,18 @@
       "sortOrder": {
         "template": "{TYPE} ({ORDER})",
         "types": {
-          "bp": "PI",
-          "percent": "Procentaj Deblocate"
+          "bp": "BP",
+          "percent": "Percent Unlocked"
         },
-        "asc": "Ascendent",
-        "desc": "Descendent"
+        "asc": "Ascending",
+        "desc": "Descending"
       }
     },
     "badgeGallery": {
-      "label": "Galeria de Insigne a lui {PLAYER}",
-      "loading": "Se încarcă...",
-      "bp": "{BP} PI",
-      "count": "{COUNT} Insigne"
+      "label": "{PLAYER}'s Badge Gallery",
+      "loading": "Loading...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} Badges"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1005,14 +997,14 @@
     "rankings": {
       "categories": {
         "badgeCount": {
-          "label": "Insigne",
-          "valueLabel": "# de Insigne",
+          "label": "Badges",
+          "valueLabel": "# of Badges",
           "value": "{NUMBER}"
         },
         "bp": {
-          "label": "PI (Puncte Insigne)",
-          "valueLabel": "PI",
-          "value": "{NUMBER} PI"
+          "label": "BP (Badge Points)",
+          "valueLabel": "BP",
+          "value": "{NUMBER} BP"
         },
         "exp": {
           "label": "ExP",
@@ -1020,42 +1012,42 @@
           "value": "{NUMBER} ExP"
         },
         "eventLocationCount": {
-          "label": "Expediții",
-          "valueLabel": "# de Expediții",
+          "label": "Expeditions",
+          "valueLabel": "# of Expeditions",
           "value": "{NUMBER}"
         },
         "freeEventLocationCount": {
-          "label": "Expediții Gratis",
-          "valueLabel": "# de Expediții",
+          "label": "Free Expeditions",
+          "valueLabel": "# of Expeditions",
           "value": "{NUMBER}"
         },
         "eventLocationCompletion": {
-          "label": "Completarea Expedițiilor",
-          "valueLabel": "Completare",
+          "label": "Expedition Completion",
+          "valueLabel": "Completion",
           "value": "{PERCENT}%"
         },
         "eventVmCount": {
-          "label": "Căutător de Automate",
-          "valueLabel": "# de Automate",
+          "label": "Vending Machine Finder",
+          "valueLabel": "# of Vending Machines",
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Time Trial-uri",
-          "valueLabel": "Timp de Completare",
+          "label": "Time Trials",
+          "valueLabel": "Completion Time",
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minijocuri",
-          "valueLabel": "Scor",
+          "label": "Minigames",
+          "valueLabel": "Score",
           "value": "{NUMBER}"
         }
       },
       "subCategories": {
-        "2": "Toate Efectele",
-        "all": "Toate",
+        "2": "All Effects",
+        "all": "All",
         "nasu": "NASU",
         "rby": "Red Blue Yellow (Mini Game B)",
-        "rby_ex": "Red Blue Yellow (Mini Game B) - Versiunea EX",
+        "rby_ex": "Red Blue Yellow (Mini Game B) - EX Version",
         "fuji_ex": "FUJI EX",
         "hozo": "HOZO",
         "cartoonboy": "Cartoon Boy",
@@ -1135,17 +1127,17 @@
     },
     "2kki": {
       "explorerLink": {
-        "generic": "Vizionează în Yume 2kki Explorer",
-        "multi": "Vizionează {LOCATION} în Yume 2kki Explorer"
+        "generic": "View in Yume 2kki Explorer",
+        "multi": "View {LOCATION} in Yume 2kki Explorer"
       }
     },
     "modSettings": {
-      "title": "Setări Moderator",
+      "title": "Moderator Settings",
       "actions": {
         "resetPassword": {
-          "label": "Resetează o Parolă",
-          "playerPrompt": "Scrie numele contului pentru a schimba parola lui",
-          "success": "Parola nouă a lui {PLAYER} este {PASSWORD}"
+          "label": "Reset a Password",
+          "playerPrompt": "Enter the name of the account to reset the password for",
+          "success": "The new password for {PLAYER} is {PASSWORD}"
         },
         "changeUsername": {
           "label": "Change a Username",
@@ -1170,14 +1162,6 @@
           "label": "Unmute a Player",
           "playerPrompt": "Enter the name of the account to unmute"
         },
-        "grantBadge": {
-          "label": "Grant a Badge",
-          "playerPrompt": "Enter the name of the account to grant the badge to"
-        },
-        "revokeBadge": {
-          "label": "Revoke a Badge",
-          "playerPrompt": "Enter the name of the account to revoke the badge from"
-        },
         "tempban": {
           "label": "Tempban a Player",
           "playerPrompt": "Enter the name of the account to tempban",
@@ -1187,6 +1171,14 @@
           "label": "Tempmute a Player",
           "playerPrompt": "Enter the name of the account to tempmute",
           "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+        },
+        "grantBadge": {
+          "label": "Grant a Badge",
+          "playerPrompt": "Enter the name of the account to grant the badge to"
+        },
+        "revokeBadge": {
+          "label": "Revoke a Badge",
+          "playerPrompt": "Enter the name of the account to revoke the badge from"
         }
       }
     }

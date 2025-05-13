@@ -767,6 +767,16 @@
           "prompt": "أدخل معرف الشارة لإزالتها للاعب {PLAYER}",
           "success": "تم ازالة شارة {BADGE} إلى الاعب {PLAYER}.",
           "fail": "لم يوجد شارة للمعرف الذي ادخلته."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "إبطال الشارة",
           "playerPrompt": "أدخل اسم الحساب لإلغاء الشارة منه"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

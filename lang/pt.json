@@ -401,12 +401,12 @@
           "activate": "Remover Emblemas",
           "deactivate": "Pronto"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Gerenciar Predefinições"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}"
+        "title": "Gerenciar Predefinições de Emblema",
+        "selectPreset": "Selecionar Predefinição",
+        "presetName": "Predefinição {{index}}"
       },
       "save": {
         "title": "Gerenciar Dados Salvos",
@@ -631,7 +631,7 @@
     "leavePage": "Tem certeza de que deseja sair da página? Qualquer progresso não salvo no jogo será perdido.",
     "logout": "Tem certeza de que deseja deslogar?",
     "loadingInstruct": ". <br /> <br /> Parece que o site está carregando a um tempo, se o problema persistir você talvez tenha que usar CTRL+F5 ou limpar o cache de seu navegador (mas não os cookies!). Você pode verificar o console usando F12 para ver os erros.",
-    "requestNotifications": "Receber notificações para eventos seguidos e para quando as expedições atualizam?",
+    "requestNotifications": "Receber notificações para eventos seguidos e para quando as expedições atualizarem?",
     "connStatus": {
       "0": "Desconectado",
       "1": "Conectado",
@@ -767,6 +767,16 @@
           "prompt": "Insira o ID do Emblema a ser revogado {PLAYER}.",
           "success": "{BADGE} o Emblema foi revogado com sucesso {PLAYER}.",
           "fail": "Nenhum Emblema foi encontrado para o ID do Emblema fornecido."
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "Revogar um Emblema",
           "playerPrompt": "Digite o nome da conta para revogar o emblema"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }

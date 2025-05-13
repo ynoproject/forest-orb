@@ -767,6 +767,16 @@
           "prompt": "{PLAYER} 님에게 배지를 회수하기 위해 배지 ID를 입력해주세요",
           "success": "{BADGE}를 {PLAYER} 님에게서 성공적으로 회수했습니다",
           "fail": "입력한 배지 ID와 일치하는 항목이 존재하지 않습니다"
+        },
+        "tempban": {
+          "label": "Tempban {PLAYER}",
+          "prompt": "When to unban {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempbanned."
+        },
+        "tempmute": {
+          "label": "Tempmute {PLAYER}",
+          "prompt": "When to unmute {PLAYER}? (UTC time)",
+          "success": "{PLAYER} has been tempmuted."
         }
       }
     },
@@ -1168,6 +1178,16 @@
         "revokeBadge": {
           "label": "배지 해제하기",
           "playerPrompt": "배지를 해제할 플레이어의 닉네임을 입력해주세요"
+        },
+        "tempban": {
+          "label": "Tempban a Player",
+          "playerPrompt": "Enter the name of the account to tempban",
+          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+        },
+        "tempmute": {
+          "label": "Tempmute a Player",
+          "playerPrompt": "Enter the name of the account to tempmute",
+          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
         }
       }
     }
