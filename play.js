@@ -314,8 +314,8 @@ function handleTimeTrialsRecord(args) {
 
   let categoryName = '';
 
-  if (localizedMessages.rankings.subCategories?.hasOwnProperty(mapId)) {
-    categoryName = getMassagedLabel(localizedMessages.rankings.subCategories[mapId], true);
+  if (localizedMessages.rankings.subCategories?.hasOwnProperty(args[0])) {
+    categoryName = getMassagedLabel(localizedMessages.rankings.subCategories[args[0]], true);
   } else {
     categoryName = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
   }
