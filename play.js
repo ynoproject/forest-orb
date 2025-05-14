@@ -301,6 +301,10 @@ let playerCount;
 })();
 
 function handleTimeTrialsRecord(args) {
+  if (!notificationConfig.timeTrials.all || !notificationConfig.timeTrials.goalReached) {
+    return;
+  }
+
   const mapId = args[0].toString().padStart(4, '0');
   const timeSec = parseInt(args[1]);
 
@@ -2632,4 +2636,3 @@ if (!globalConfig.rulesReviewed) {
 	globalConfig.rulesReviewed = true;
 	updateConfig(globalConfig, true);
 }
-console.log('test3')
