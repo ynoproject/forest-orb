@@ -938,8 +938,8 @@
         "saveCleared": "Save-Sync Datem wurden geleert. Dies beeinflusst existierende Saves auf deinen Geräten nicht.",
         "saveReminder": "Vergiss nicht oft zu speichern und deine Saves lokal als Backup herunterzuladen, um keinen Fortschritt zu verlieren."
       },
-      "timeTrial": {
-        "timeTrialComplete": "Goal! {CATEGORY} completed in {TIME}."
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
