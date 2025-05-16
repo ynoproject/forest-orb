@@ -41,14 +41,21 @@ jobs:
 
       - name: Validate JSON files
         if: steps.changed.outputs.files != ''
+        shell: "bash {0}"
         run: |
           failed=0
           while read -r file; do
-            [ -f "$file" ] || continue
+            test -f "$file" || continue
             jq empty "$file" 2>err.log
             if [ $? -ne 0 ]; then
               msg=$(<err.log)
-              echo "::error file=$file::${msg}"
+              # Extract line number from jq error if present
+              if grep -oE 'at line [0-9]+' err.log >/dev/null; then
+                lineno=$(grep -oE 'at line [0-9]+' err.log | head -1 | grep -oE '[0-9]+')
+                echo "::error file=$file,line=$lineno::$msg"
+              else
+                echo "::error file=$file::$msg"
+              fi
               failed=1
             fi
           done <<< "${{ steps.changed.outputs.files }}"

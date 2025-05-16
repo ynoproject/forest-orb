@@ -312,7 +312,8 @@
           "timeTrials": {
             "label": "Time Trials",
             "fields": {
-            "goalReached": "Goal Reached"
+              "goalReached": "Goal Reached"
+            }
           },
           "screenshots": {
             "label": "Screenshots",

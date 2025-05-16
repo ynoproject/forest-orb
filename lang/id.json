@@ -332,6 +332,12 @@
             "fields": {
               "upcomingSchedules": "Upcoming Events"
             }
+          },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
           }
         }
       },
@@ -931,6 +937,9 @@
         "saveUpToDate": "Save data is up to date.",
         "saveCleared": "Save Sync data has been cleared. This will not affect existing saves on any of your devices.",
         "saveReminder": "Remember to save often and to backup your save files in order not to lose your progress."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
