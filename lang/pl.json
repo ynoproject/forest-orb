@@ -309,6 +309,12 @@
               "badgeUnlocked": "Odznaka odblokowana"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Zrzuty ekranu",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "Masz już aktualny zapis.",
         "saveCleared": "Dane synchronizacji zapisów zostały oczyszczone. Nie usuwa to plików pobranych na twoich urządzeniach.",
         "saveReminder": "Pamiętaj, aby często zapisywwać grę i tworzyć kopie zapasowe zapisów aby nie utracić postępów."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

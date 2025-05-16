@@ -309,6 +309,12 @@
               "badgeUnlocked": "解锁徽章"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "截图",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "已是最新存档。",
         "saveCleared": "该账户的云端存档数据已被清除。保存在设备本地的存档数据不会受到影响。",
         "saveReminder": "记得经常存档和备份，防止您的进度意外丢失。"
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

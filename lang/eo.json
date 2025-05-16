@@ -309,6 +309,12 @@
               "badgeUnlocked": "Insigno Malŝlosis"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Ekrankopioj",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "Konservdatumoj estas ĝisdataj.",
         "saveCleared": "Sinkronigitajn Konservdatumojn forigis. Ĉi tiu ago ne influos konservojn en iuj aliaj aparatoj.",
         "saveReminder": "Memoru konservi ofte kaj faru lokan sekurkopion de viaj konservdosieroj por ne perdi vian progreson."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

@@ -297,7 +297,35 @@ let playerCount;
 (function () {
   addSessionCommandHandler('pc', args => updatePlayerCount(parseInt(args[0])));
   addSessionCommandHandler('lcol');
+  addSessionCommandHandler('ttr', handleTimeTrialsRecord);
 })();
+
+function handleTimeTrialsRecord(args) {
+  if (!notificationConfig.timeTrials.all || !notificationConfig.timeTrials.goalReached) {
+    return;
+  }
+
+  const mapId = args[0].toString().padStart(4, '0');
+  const timeSec = parseInt(args[1]);
+
+  const mins = Math.floor(timeSec / 60);
+  const sec = timeSec % 60;
+  const formattedTime = `${mins.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+
+  let categoryName = '';
+
+  if (localizedMessages.rankings.subCategories?.hasOwnProperty(args[0])) {
+    categoryName = getMassagedLabel(localizedMessages.rankings.subCategories[args[0]], true);
+  } else {
+    categoryName = getLocalizedMapLocations(gameId, mapId, '0000', 0, 0, "&nbsp;|&nbsp;");
+  }
+
+  const message = localizedMessages.toast.timeTrials.timeTrialsComplete
+    .replace('{TIME}', formattedTime)
+    .replace('{CATEGORY}', categoryName);
+
+  showToastMessage(message, '', true, null, true);
+}
 
 function updatePlayerCount(count) {
   if (isNaN(count))

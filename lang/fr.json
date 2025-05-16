@@ -309,6 +309,12 @@
               "badgeUnlocked": "Badge débloqué"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Captures d'écran",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
         "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils.",
         "saveReminder": "N'oubliez pas de sauvegarder souvent et de faire des copies de vos données de jeu de sorte à ce que vous ne puissiez pas perdre votre progression si un pépin vous arrive."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "You reached {LOCATION} in {TIME}."
       }
     },
     "events": {

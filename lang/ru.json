@@ -309,6 +309,12 @@
               "badgeUnlocked": "Значок открыт"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Снимки",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "Данные слота актуальны.",
         "saveCleared": "Данные облачного сохранения удалены. Это действие не затронет уже выгруженные сохранения на других устройствах.",
         "saveReminder": "Не забывайте почаще сохраняться и выгружать ваши сохранения, чтобы не потерять свой прогресс в игре."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {

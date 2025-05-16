@@ -50,6 +50,9 @@ const notificationTypes = /** @type {const} */ ({
   badges: [
     'badgeUnlocked'
   ],
+  timeTrials: [
+    'goalReached'
+  ],
   screenshots: [
     'screenshotTaken'
   ],
@@ -76,7 +79,7 @@ let notificationConfig = {
   screenPosition: 'bottomLeft'
 };
 
-const accountNotificationCategories = [ 'account', 'events', 'badges', 'saveSync' ];
+const accountNotificationCategories = [ 'account', 'events', 'badges', 'timeTrials', 'saveSync' ];
 
 function initNotificationsConfigAndControls() {
   const notificationSettingsControls = document.querySelector('#notificationSettingsModal .formControls');

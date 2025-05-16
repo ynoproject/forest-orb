@@ -309,6 +309,12 @@
               "badgeUnlocked": "バッジ獲得通知"
             }
           },
+          "timeTrials": {
+            "label": "スピードラン",
+            "fields": {
+              "goalReached": "ゴール記録通知"
+            }
+          },
           "screenshots": {
             "label": "スクリーンショット",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "セーブデータは最新です。",
         "saveCleared": "セーブデータ同期が消去されました。なお、端末内に保存されているセーブデータには影響ありません。",
         "saveReminder": "進行状況を失わないように、こまめなセーブとセーブファイルのバックアップを忘れずに。"
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "{CATEGORY} ゴール！\n記録： {TIME}"
       }
     },
     "events": {

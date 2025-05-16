@@ -309,6 +309,12 @@
               "badgeUnlocked": "Abzeichen freigeschaltet"
             }
           },
+          "timeTrials": {
+            "label": "Time Trials",
+            "fields": {
+              "goalReached": "Goal Reached"
+            }
+          },
           "screenshots": {
             "label": "Screenshots",
             "fields": {
@@ -931,6 +937,9 @@
         "saveUpToDate": "Save ist up to date.",
         "saveCleared": "Save-Sync Datem wurden geleert. Dies beeinflusst existierende Saves auf deinen Geräten nicht.",
         "saveReminder": "Vergiss nicht oft zu speichern und deine Saves lokal als Backup herunterzuladen, um keinen Fortschritt zu verlieren."
+      },
+      "timeTrials": {
+        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
       }
     },
     "events": {
