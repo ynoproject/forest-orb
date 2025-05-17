@@ -608,6 +608,7 @@ function onReceiveInputFeedback(inputId) {
 const debounceTimeouts = new WeakMap;
 /** @param {Function} fn must not be an immediately constructed function. */
 function debounce(fn, timeout = 1000) {
+  if (!fn) return;
   clearTimeout(debounceTimeouts.get(fn));
   debounceTimeouts.set(fn, setTimeout(() => {
     fn();
