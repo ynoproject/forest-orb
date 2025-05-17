@@ -25,11 +25,13 @@ var debug = 0 ? console.log.bind(console, '[fastdom]') : function() {};
  *
  * @type {Function}
  */
-var raf = win.requestAnimationFrame
+var rafBase = win.requestAnimationFrame
   || win.webkitRequestAnimationFrame
   || win.mozRequestAnimationFrame
   || win.msRequestAnimationFrame
   || function(cb) { return setTimeout(cb, 16); };
+
+const raf = task => document.hidden ? setTimeout(task, 16) : rafBase(task);
 
 /**
  * Initialize a `FastDom`.
@@ -57,7 +59,9 @@ FastDom.prototype = {
    */
   runTasks: function(tasks) {
     debug('run tasks');
-    var task; while (task = tasks.shift()) task();
+    for (let i = 0; i < tasks.length; ++i)
+      tasks[i]();
+    tasks.length = 0;
   },
 
   /**
