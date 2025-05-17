@@ -9,7 +9,7 @@
   @property {boolean} recurring
   @property {boolean} official
   @property {number} interval
-  @property {string} intervalType
+  @property {'days' | 'months' | 'years'} intervalType
   @property {string} datetime
   @property {string} systemName
   @property {number} followerCount
@@ -28,14 +28,23 @@
   @property {string} bilibili
 */
 
-let escapeHtml;
-
-{ 
+const escapeHtml = text => {
   const elm = document.createElement('div');
-  escapeHtml = text => {
-    elm.innerText = text;
-    return elm.innerText;
-  };
+  elm.innerText = text;
+  return elm.innerHTML;
+};
+
+const extendedMarkdown = [
+  { p: /\n{2,}/g, r: '<br><br>' },
+  { p: /\w{2,}\n/g, r: '<br>' },
+  { p: /\n/g, r: ' ' },
+];
+
+function parseFreeformMarkdown(msg) {
+  msg = parseMessageTextForMarkdown(msg);
+  for (const syntax of extendedMarkdown)
+    msg = msg.replace(syntax.p, syntax.r);
+  return msg;
 }
 
 /** Events starting in 15 minutes or less are considered "ongoing". */
@@ -125,7 +134,7 @@ function addScheduleItem(schedule) {
       case 'description':
         const descriptionContents = document.createElement('span');
         descriptionContents.classList.add('messageContents', 'themeText');
-        let msg = parseMessageTextForMarkdown(escapeHtml(schedule.description));
+        let msg = parseFreeformMarkdown(escapeHtml(schedule.description));
         if (msg.includes('{{')) {
           // Special syntax: leads to yume.wiki
           msg = msg.replace(/{{l:(.+?)}}/g, (_, descriptor) => {            
@@ -140,6 +149,7 @@ function addScheduleItem(schedule) {
         populateMessageNodes(msg, descriptionContents, true);
         wrapMessageEmojis(descriptionContents);
         slot.appendChild(descriptionContents);
+        slot.parentElement.addEventListener('mouseup', onclickDescription);
         break;
       case 'follow':
         if (!playerData?.uuid) break;
@@ -180,7 +190,28 @@ function addScheduleItem(schedule) {
         if (parsedDatetime) {
           const locale = globalConfig.lang === 'en' ? [] : globalConfig.lang;
           slot.innerText = parsedDatetime.toLocaleString(locale, { "dateStyle": "short", "timeStyle": "short" });
-          addTooltip(slot, parsedDatetime.toLocaleString(locale, { weekday: 'long' }));
+          if (schedule.recurring) {
+            slot.appendChild(getSvgIcon('reconnect', true));
+            if (schedule.interval === 1)
+              switch (schedule.intervalType) {
+                case 'days':
+                  addTooltip(slot, localizedMessages.schedules.intervals.perDay); break;
+                case 'months':
+                  addTooltip(slot, localizedMessages.schedules.intervals.perMonth); break;
+                case 'years':
+                  addTooltip(slot, localizedMessages.schedules.intervals.perYear); break;
+              }
+            else if (schedule.interval % 7 == 0 && schedule.intervalType === 'days') {
+              const weeks = schedule.interval / 7;
+              if (weeks == 1)
+                addTooltip(slot, localizedMessages.schedules.intervals.perWeek.replace('{WEEKDAY}', parsedDatetime.toLocaleString(locale, { weekday: 'long' })));
+              else
+                addTooltip(slot, localizedMessages.schedules.intervals.weeks.replace('{INTERVAL}', String(weeks)));
+            } else
+              addTooltip(slot, localizedMessages.schedules.intervals[schedule.intervalType].replace('{INTERVAL}', schedule.interval));
+          } else {
+            addTooltip(slot, parsedDatetime.toLocaleString(locale, { weekday: 'long' }));
+          }
         }
         break;
       case 'followerCount':
@@ -214,6 +245,14 @@ function addScheduleItem(schedule) {
     else
       document.getElementById('futureSchedules').appendChild(template);
   });
+}
+
+function onclickDescription(ev) {
+  let selection;
+  if (selection = getSelection()) {
+    if (!selection.isCollapsed && this.contains(selection.anchorNode)) return;
+  }
+  this.classList.toggle('expanded');
 }
 
 function openSchedulesModal() {

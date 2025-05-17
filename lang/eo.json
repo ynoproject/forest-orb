@@ -165,7 +165,8 @@
             "helpText": "Antaŭŝargi ofte uzitajn ludhavaĵojn por certigi, ke ili estos disponeblaj kiam necese; bezonas reŝargi retejon"
           },
           "toggleQuestionablePreloads": "Antaŭŝargi Ekranfonojn de Komputilo",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Listo de Blokitoj",
         "chatSettings": "Babilejo",
@@ -998,7 +999,8 @@
       "label": "Insigna Galerio de {PLAYER}",
       "loading": "Ŝargas...",
       "bp": "{BP} IP",
-      "count": "{COUNT} Insignoj"
+      "count": "{COUNT} Insignoj",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

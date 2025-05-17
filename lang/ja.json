@@ -165,7 +165,8 @@
             "helpText": "頻繁に使用されるゲームアセットをプリロードし、必要なときに利用できるようにします（ページの再読み込みが必要です）"
           },
           "toggleQuestionablePreloads": "PCの壁紙をプリロードする",
-          "toggleSchedules": "イベント"
+          "toggleSchedules": "イベント",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
@@ -998,7 +999,8 @@
       "label": "{PLAYER}のバッジギャラリー",
       "loading": "ロード中…",
       "bp": "{BP} BP",
-      "count": "{COUNT} バッジ"
+      "count": "{COUNT} バッジ",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "未設定プリセット"
@@ -1132,6 +1134,16 @@
         "niconico": "ニコニコ動画",
         "openrec": "OPENREC",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "毎日",
+        "days": "{INTERVAL}日おき",
+        "perWeek": "毎週{WEEKDAY}",
+        "weeks": "{INTERVAL}週間おき",
+        "perMonth": "毎月",
+        "months": "{INTERVAL}ヶ月おき",
+        "perYear": "毎年",
+        "years": "{INTERVAL}年おき"
       }
     },
     "2kki": {

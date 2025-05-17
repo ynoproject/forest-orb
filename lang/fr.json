@@ -165,7 +165,8 @@
             "helpText": "Précharge fréquemment les ressources utilisées par le jeu pour d'assurer qu'elles soient disponibles lorsque nécessaires. Nécessite un rechargement de la page pour s'appliquer."
           },
           "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC",
-          "toggleSchedules": "Événements"
+          "toggleSchedules": "Événements",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Liste de blocage",
         "chatSettings": "Chat",
@@ -998,7 +999,8 @@
       "label": "Galerie de {PLAYER}",
       "loading": "Chargement...",
       "bp": "{BP} PB",
-      "count": "{COUNT} Badges"
+      "count": "{COUNT} Badges",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

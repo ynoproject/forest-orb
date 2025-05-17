@@ -1,5 +1,5 @@
 {
-  "translationComplete": "0",
+  "translationComplete": "1",
   "version": {
     "2kki": {
       "label": "Yume 2kki phiên bản {VERSION}",
@@ -165,7 +165,8 @@
             "helpText": "Tải sẵn những tài nguyên được sử dụng thường xuyên để đảm bảo có thể sử dụng khi cần; yêu cầu tải lại trang"
           },
           "toggleQuestionablePreloads": "Tải sẵn hình nền PC",
-          "toggleSchedules": "Sự kiện"
+          "toggleSchedules": "Sự kiện",
+          "unicodeFont": "Đổi font giao diện"
         },
         "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",
@@ -998,7 +999,8 @@
       "label": "Kho Huy hiệu của {PLAYER}",
       "loading": "Đang tải...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Huy hiệu"
+      "count": "{COUNT} Huy hiệu",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "Khuôn mẫu trống"
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Mỗi ngày",
+        "days": "Mỗi {INTERVAL} ngày",
+        "perWeek": "{WEEKDAY} mỗi tuần",
+        "weeks": "Mỗi {INTERVAL} tuần",
+        "perMonth": "Mỗi tháng",
+        "months": "Mỗi {INTERVAL} tháng",
+        "perYear": "Mỗi năm",
+        "years": "Mỗi {INTERVAL} năm"
       }
     },
     "2kki": {

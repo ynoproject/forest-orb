@@ -165,7 +165,8 @@
             "helpText": "Предзагрузить часто используемые ресурсы, чтобы они всегда были доступны при необходимости; Требует перезагрузки страницы."
           },
           "toggleQuestionablePreloads": "Предзагрузить обои ПК",
-          "toggleSchedules": "События"
+          "toggleSchedules": "События",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
@@ -998,7 +999,8 @@
       "label": "Галерея значков {PLAYER}",
       "loading": "Загрузка...",
       "bp": "{BP} ОЗ",
-      "count": "{COUNT} значков"
+      "count": "{COUNT} значков",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

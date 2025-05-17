@@ -92,6 +92,7 @@ let globalConfig = {
   rulesReviewed: false,
   badgeToolsData: null,
   pushNotificationToastDismissed: false,
+  unicodeFont: false,
 };
 
 let config = {
@@ -599,8 +600,20 @@ function onReceiveInputFeedback(inputId) {
         easyrpgPlayer.api.setSoundVolume(toggled ? 0 : globalConfig.soundVolume);
         easyrpgPlayer.api.setMusicVolume(toggled ? 0 : globalConfig.musicVolume);
       }
+      debounce(easyrpgPlayer.api.saveConfig);
     }
   }
+}
+
+const debounceTimeouts = new WeakMap;
+/** @param {Function} fn must not be an immediately constructed function. */
+function debounce(fn, timeout = 1000) {
+  if (!fn) return;
+  clearTimeout(debounceTimeouts.get(fn));
+  debounceTimeouts.set(fn, setTimeout(() => {
+    fn();
+    debounceTimeouts.delete(fn);
+  }, timeout));
 }
 
 // EXTERNAL
@@ -1174,6 +1187,13 @@ document.getElementById('togglePreloadsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
+document.getElementById('toggleUnicodeFont').onclick = function() {
+  const toggled = this.classList.toggle('toggled');
+  globalConfig.unicodeFont = toggled;
+  setExtendedLatinFonts(globalConfig.lang);
+  updateConfig(globalConfig, true);
+};
+
 document.getElementById('gameChatButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
@@ -1681,11 +1701,15 @@ async function withTimeout(duration, prom) {
 }
 
 const rtlLangs = ['ar'];
+const latinExLangs = ['vi'];
 function setLang(lang, isInit) {
   if (rtlLangs.includes(lang))
     document.documentElement.setAttribute('dir', 'rtl');
   else
     document.documentElement.removeAttribute('dir');
+
+  setExtendedLatinFonts(lang);
+
   globalConfig.lang = lang;
   initBlocker = initBlocker.then(() => withTimeout(800, 
     fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
@@ -1697,6 +1721,13 @@ function setLang(lang, isInit) {
   initLocalization(isInit);
   if (!isInit)
     updateConfig(globalConfig, true);
+}
+
+function setExtendedLatinFonts(lang) {
+  if (latinExLangs.includes(lang) !== globalConfig.unicodeFont)
+    document.documentElement.style.setProperty('--font-override', '-apple-system, BlinkMacSystemFont, xlatin-sans, PGothic, JF-Dot-Shinonome, sans-serif');
+  else
+    document.documentElement.style.setProperty('--font-override', 'unset');
 }
 
 let saveReminderHandle;
@@ -1726,8 +1757,10 @@ function setName(name, isInit) {
 function setSoundVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.initialized && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute) {
     easyrpgPlayer.api.setSoundVolume(value);
+    debounce(easyrpgPlayer.api.saveConfig);
+  }
   globalConfig.soundVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);
@@ -1736,8 +1769,10 @@ function setSoundVolume(value, isInit) {
 function setMusicVolume(value, isInit) {
   if (isNaN(value))
     return;
-  if (easyrpgPlayer.initialized && !config.mute)
+  if (easyrpgPlayer.initialized && !config.mute) {
     easyrpgPlayer.api.setMusicVolume(value);
+    debounce(easyrpgPlayer.api.saveConfig);
+  }
   globalConfig.musicVolume = value;
   if (!isInit)
     updateConfig(globalConfig, true);

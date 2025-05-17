@@ -165,7 +165,8 @@
             "helpText": "빈번하게 사용되는 게임 애셋을 우선적으로 불러와 필요할 때 사용할 수 있도록 합니다. 체크 후 새로고침을 해야 적용됩니다."
           },
           "toggleQuestionablePreloads": "PC 배경화면을 프리로드 하기",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "차단 목록",
         "chatSettings": "채팅",
@@ -998,7 +999,8 @@
       "label": "{PLAYER}님의 배지 갤러리",
       "loading": "로딩 중...",
       "bp": "{BP} BP",
-      "count": "{COUNT} 개의 배지 보유"
+      "count": "{COUNT} 개의 배지 보유",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

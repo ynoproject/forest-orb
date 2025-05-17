@@ -165,7 +165,8 @@
             "helpText": "İhtiyaç olduğunda hazır olduklarından emin olmak için sık kullanılan oyun ögelerini önceden yükle; sayfayı yenilemeniz gerekir"
           },
           "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",
@@ -998,7 +999,8 @@
       "label": "{PLAYER}'in Rozet Galerisi",
       "loading": "Yükleniyor...",
       "bp": "{BP} BP",
-      "count": "{COUNT} Rozet"
+      "count": "{COUNT} Rozet",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

@@ -117,10 +117,10 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
 
     name.innerText = getPlayerName(player);
     const nameBeginMarker = document.createElement("span");
-    nameBeginMarker.classList.add("nameMarker");
+    nameBeginMarker.classList.add("nameMarker", "punct");
     nameBeginMarker.textContent = player?.account ? "[" : "<";
     const nameEndMarker = document.createElement("span");
-    nameEndMarker.classList.add("nameMarker");
+    nameEndMarker.classList.add("nameMarker", "punct");
     nameEndMarker.textContent = player?.account ? "]" : ">";
     messageSender.appendChild(nameBeginMarker);
     messageSender.appendChild(name);

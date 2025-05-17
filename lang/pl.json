@@ -165,7 +165,8 @@
             "helpText": "Wcześnie załaduj pliki często używane w grze; wymaga ponownego załadowania strony"
           },
           "toggleQuestionablePreloads": "Wczesne ładowanie tapet",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Zablokowani użytkownicy",
         "chatSettings": "Czat",
@@ -998,7 +999,8 @@
       "label": "Galeria odznak {PLAYER}",
       "loading": "Ładowanie...",
       "bp": "{BP} BP",
-      "count": "{COUNT} odznak"
+      "count": "{COUNT} odznak",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {

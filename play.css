@@ -60,6 +60,16 @@
   --canvas-scale: 1;
 
   --toast-offset: 0;
+  --font-override: unset;
+}
+
+@font-face {
+  font-family: 'xlatin-sans';
+  src: local('Microsoft Sans Serif'),
+       url('fonts/MicrosoftSansSerif.woff2') format('woff2'),
+       url('fonts/MicrosoftSansSerif.woff') format('woff');
+  size-adjust: 90%;
+  unicode-range: U+20-24F, U+2B0-2FF, U+370-4FF, U+1E00-1EFF, U+2000-20CF, U+2100-23FF, U+2500-26FF, U+E000-F8FF, U+FB00-FB4F;
 }
 
 @font-face {
@@ -83,11 +93,8 @@
 }
 
 html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
-  font-family: 'Verdana-Cyrillic', 'PGothic', 'sans-serif';
+  font-family: var(--font-override, 'Verdana-Cyrillic', 'PGothic', 'sans-serif');
   font-size: 16px;
-}
-
-html, input, textarea, select, .checkbox, button.checkboxButton, button[type="button"], button[type="submit"] {
   color: rgb(var(--base-color)) !important;
   background-color: black;
 }
@@ -268,6 +275,10 @@ body {
   color: rgb(var(--party-alt-color)) !important;
   filter: drop-shadow(1.5px 1.5px rgb(var(--party-shadow-color)));
   background-image: var(--party-alt-gradient) !important;
+}
+
+.punct {
+  font-family: 'PGothic';
 }
 
 .baseColorBg {
@@ -2020,7 +2031,6 @@ html[dir="rtl"] #chatBorder {
 
 #explorerContainer {
   display: inline-block;
-  width: 300px;
   height: 300px;
   text-align: center;
 }
@@ -3303,7 +3313,7 @@ form .uiTheme {
 
   @media only screen and (max-height: 999px) {
     #layout:not(:fullscreen) #explorerFrame {
-      width: max(min(calc(100vh - 468px), 284px), 150px);
+      width: max(min(calc(100vh - 468px), 270px), 150px);
       height: max(min(calc(100vh - 468px), 284px), 150px);
     }
   }
@@ -4078,10 +4088,26 @@ html[dir="rtl"] .messageSender {
   margin: 4px 4px 8px 4px;
   max-height: 3lh;
   overflow-y: auto;
+  cursor: zoom-in;
+}
+
+.scheduleDescription.expanded {
+  max-height: inherit;
+  cursor: zoom-out;
 }
 
 .scheduleDescription > [data-role="description"]:empty {
   display: none;
+}
+
+.scheduleDatetime svg {
+  width: 12px;
+  height: 12px;
+  margin-inline-start: 4px;
+}
+
+.scheduleDatetime .icon {
+  display: inline;
 }
 
 .screenshotBlur {

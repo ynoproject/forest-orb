@@ -1399,7 +1399,7 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
           })
           .then(badgeSlots => {
             if (!badgeSlots || !badgeSlots.flat().filter(b => b !== 'null').length) {
-              instance.hide();
+              instance.setContent(getMassagedLabel(localizedMessages.badgeGallery.empty, true));
               return;
             }
 

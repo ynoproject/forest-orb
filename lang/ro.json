@@ -165,7 +165,8 @@
             "helpText": "Preload frequently used game assets to ensure they are available when needed; requires page reload"
           },
           "toggleQuestionablePreloads": "Preload PC Wallpapers",
-          "toggleSchedules": "Events"
+          "toggleSchedules": "Events",
+          "unicodeFont": "Alternate Font"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Chat",
@@ -998,7 +999,8 @@
       "label": "Galeria de Insigne a lui {PLAYER}",
       "loading": "Se încarcă...",
       "bp": "{BP} PI",
-      "count": "{COUNT} Insigne"
+      "count": "{COUNT} Insigne",
+      "empty": "Badge gallery not set"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1132,6 +1134,16 @@
         "niconico": "Nicovideo",
         "openrec": "Openrec",
         "bilibili": "Bilibili"
+      },
+      "intervals": {
+        "perDay": "Every day",
+        "days": "Every {INTERVAL} days",
+        "perWeek": "Every {WEEKDAY}",
+        "weeks": "Every {INTERVAL} weeks",
+        "perMonth": "Every month",
+        "months": "Every {INTERVAL} months",
+        "perYear": "Every year",
+        "years": "Every {INTERVAL} years"
       }
     },
     "2kki": {
