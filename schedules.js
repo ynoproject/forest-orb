@@ -28,15 +28,11 @@
   @property {string} bilibili
 */
 
-let escapeHtml;
-
-{ 
+const escapeHtml = text => {
   const elm = document.createElement('div');
-  escapeHtml = text => {
-    elm.innerText = text;
-    return elm.innerText;
-  };
-}
+  elm.innerText = text;
+  return elm.innerHTML;
+};
 
 const extendedMarkdown = [
   { p: /\n{2,}/g, r: '<br><br>' },
@@ -138,7 +134,7 @@ function addScheduleItem(schedule) {
       case 'description':
         const descriptionContents = document.createElement('span');
         descriptionContents.classList.add('messageContents', 'themeText');
-        let msg = escapeHtml(parseFreeformMarkdown(schedule.description));
+        let msg = parseFreeformMarkdown(escapeHtml(schedule.description));
         if (msg.includes('{{')) {
           // Special syntax: leads to yume.wiki
           msg = msg.replace(/{{l:(.+?)}}/g, (_, descriptor) => {            
