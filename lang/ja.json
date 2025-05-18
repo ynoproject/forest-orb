@@ -166,7 +166,7 @@
           },
           "toggleQuestionablePreloads": "PCの壁紙をプリロードする",
           "toggleSchedules": "イベント",
-          "unicodeFont": "Alternate Font"
+          "unicodeFont": "代替フォント"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
@@ -1000,7 +1000,7 @@
       "loading": "ロード中…",
       "bp": "{BP} BP",
       "count": "{COUNT} バッジ",
-      "empty": "Badge gallery not set"
+      "empty": "バッジギャラリーが設定されていません"
     },
     "badgePreset": {
       "empty": "未設定プリセット"
