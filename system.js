@@ -103,6 +103,7 @@ const allGameUiThemes = {
     'Colby_LushSys',
     'Colby_GlitchedSys',
     'Colby_RadiantSys',
+    'PGR_SYS_05',
 
     'system_E_eye',
     'System_kuraud',
