@@ -1043,7 +1043,7 @@
           "value": "{NUMBER}"
         },
         "timeTrial": {
-          "label": "Испытания на аремя",
+          "label": "Испытания на время",
           "valueLabel": "Время прохождения",
           "value": "{MINUTES}:{SECONDS}"
         },
