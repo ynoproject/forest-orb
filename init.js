@@ -789,6 +789,14 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (!value)
                       document.getElementById('tabToChatButton').click();
                     break;
+                  case 'badgeHints':
+                    if (!value)
+                      document.getElementById('badgeHintsButton').click();
+                    break;
+                  case 'playBadgeHintSound':
+                    if (!value)
+                      document.getElementById('playBadgeHintSoundButton').click();
+                    break;
                   case 'playMentionSound':
                     if (!value)
                       document.getElementById('playMentionSoundButton').click();

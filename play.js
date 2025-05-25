@@ -70,6 +70,8 @@ let globalConfig = {
   musicVolume: 100,
   wikiLinkMode: 1,
   saveReminder: 60,
+  badgeHints: true,
+  playBadgeHintSound: true,
   chatTipIndex: -1,
   gameChat: true,
   gameChatGlobal: false,
@@ -461,6 +463,8 @@ function checkUpdateLocation(mapId, mapChanged) {
         else
           queryAndSetWikiMaps(locations);
       }
+
+      updateBadgeHint(locations.map(l => l.title));
     }
 
     cachedLocations = locations;
@@ -1092,6 +1096,18 @@ document.getElementById('saveReminder').onchange = function () {
 document.getElementById('playerSoundsButton').onclick = () => {
   if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.togglePlayerSounds();
+};
+
+document.getElementById('badgeHintsButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.badgeHints = this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
+};
+
+document.getElementById('playBadgeHintSoundButton').onclick = function () {
+  this.classList.toggle('toggled');
+  globalConfig.playBadgeHintSound = !this.classList.contains('toggled');
+  updateConfig(globalConfig, true);
 };
 
 document.getElementById('hideLocationButton').onclick = function () {
@@ -2305,7 +2321,59 @@ function getMapButton(url, label) {
     openWikiLink(url, false, true);
     canvas.focus();
   };
-  ret.innerHTML = '<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 0l4 2 4-2 4 2v10l-4-2-4 2-4-2v-10m4 2v10m4-12v10"></path></svg>';
+  ret.innerHTML = `<svg viewbox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="${icons.map}"></path></svg>`;
+  return ret;
+}
+
+const badgeHintSe = new Audio('./audio/badge_hint.wav');
+
+function updateBadgeHint(locationNames) {
+  const badgeHintControls = document.getElementById('badgeHintControls');
+  badgeHintControls.innerHTML = '';
+
+  if (!globalConfig.badgeHints || !badgeCache.find(b => b.badgeId == 'badge_amulet_2')?.unlocked)
+    return;
+
+  let matchedLocationName = null;
+  for (const b of badgeCache) {
+    if (b.unlocked && !b.hidden)
+      continue;
+    const localizedLocation = gameLocalizedMapLocations[gameId]?.[b.mapId];
+    let title = determineTitle(localizedLocation, b.mapX, b.mapY);
+    // TODO: To remove the last condition and allow searching 2kki badges by location from all games,
+    // a 2kki-specific cache must be set up and populated from cache and/or queried
+    if (!title && b.game === '2kki' && gameId === '2kki') {
+      let cacheKey = `0000_${b.mapId}`;
+      if (!locationCache[cacheKey]) cacheKey = getMapCacheKey(b.mapId);
+      const cache = locationCache[cacheKey];
+      if (Array.isArray(cache)) {
+        const [desc] = cache;
+        title = globalConfig.lang === 'ja' ? desc.titleJP : desc.title;
+      }
+    }
+    if (locationNames.includes(title)) {
+      matchedLocationName = title;
+      break;
+    }
+  }
+
+  if (matchedLocationName !== null) {
+    if (globalConfig.playBadgeHintSound)
+      badgeHintSe.play();
+    badgeHintControls.appendChild(getBadgeHintButton(matchedLocationName));
+  }
+}
+
+function getBadgeHintButton(locationName) {
+  const ret = document.createElement('button');
+  ret.classList.add('badgeHintButton', 'unselectable', 'iconButton');
+  //addTooltip(ret, label, true);
+  // this is abusing the onclick event, but basically if we call it directly we can differentiate
+  // an actual click vs. a synthetic event.
+  ret.onclick = (ev) => {
+    viewBadgeLocationInModal(locationName, gameId, '0');
+  };
+  ret.innerHTML = `<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="${icons.badgeHint}"></path></svg>`;
   return ret;
 }
 

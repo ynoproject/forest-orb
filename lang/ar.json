@@ -140,6 +140,11 @@
           "soundVolume": "المؤثرات الصوتية",
           "musicVolume": "صوت الموسيقى",
           "togglePlayerSounds": "أصوات اللاعبين",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "ملاح يومي تووكي",
             "helpText": "الملاح هو تكامل لمستكشف يومي تووكي الذي يسمح لك بمشاهدة اتصالات موقعك في لمحة. قد تؤثر هذه الميزة بشكل كبير على تجربتك ويوصى بشدة باستكشاف معظم اللعبة بشكل أعمى قبل تفعيل الميزة. يجب عليك تسجيل الدخول لاستخدام الملاح"

@@ -53,12 +53,14 @@ function onLoad2kkiMap(mapId) {
     if (!locationNames) {
       set2kkiExplorerLinks(null);
       setMaps([]);
+      updateBadgeHint([]);
     } else {
       set2kkiExplorerLinks(locationNames);
       if (mapCache.hasOwnProperty(locationNames.join(',')))
         setMaps(mapCache[locationNames.join(',')], locationNames);
       else
         queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
+      updateBadgeHint(locations.map(l => l.title));
     }
     if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
       updateBadgeButton();
@@ -73,6 +75,7 @@ function onLoad2kkiMap(mapId) {
           setMaps([], null, true, true);
           set2kkiExplorerLinks(null);
         }
+        updateBadgeHint(locations.map(l => l.title));
         syncLocationChange();
         checkEventLocations();
         if (playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)

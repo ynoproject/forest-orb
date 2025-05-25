@@ -140,6 +140,11 @@
           "soundVolume": "Sound Volume",
           "musicVolume": "Music Volume",
           "togglePlayerSounds": "Player Sounds",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
             "helpText": "The Yume 2kki Navigator is an integration of Yume 2kki Explorer that allows you to view the connections of your location at a glance. This feature may drastically affect your experience and it is strongly recommended that you explore most of the game blindly before enabling this. You must be logged in to use the Yume 2kki Navigator."

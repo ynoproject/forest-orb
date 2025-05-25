@@ -140,6 +140,11 @@
           "soundVolume": "SEの音量",
           "musicVolume": "BGMの音量",
           "togglePlayerSounds": "プレイヤー 効果音",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "ゆめ２っきナビゲーター",
             "helpText": "ゆめ２っきナビゲーターはゆめ２っきエクスプローラーを一体化したもので、現在地の接続を一目で見ることができます。この機能はあなたの体験に大きな影響を与える可能性があります。ですから、この機能を有効にする前に、ゲームの大部分を探索しておくことを強くお勧めします。ゆめ２っきナビゲーターを使用するにはログインする必要があります。"

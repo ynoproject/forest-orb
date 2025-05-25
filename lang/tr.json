@@ -140,6 +140,11 @@
           "soundVolume": "Ses Seviyesi",
           "musicVolume": "Müzik Seviyesi",
           "togglePlayerSounds": "Oyuncu Sesleri",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Gezginini",
             "helpText": "Yume 2kki Gezgini konumunuzun bağlantılarını tek bir yerde görmenize izin veren bir Yume 2kki Kaşifi entegrasyonudur. Bu özellik deneyiminizi derinlemesine etkiler ve bu özelliği etkinleştirmeden önce oyunun çoğu kısmını bilgisizce keşfetmeniz önerilir. Yume 2kki Gezginini kullanmak için hesabınıza giriş yapmanız gereklidir."

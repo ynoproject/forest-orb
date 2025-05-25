@@ -140,6 +140,11 @@
           "soundVolume": "Sona Laŭteco",
           "musicVolume": "Muzika Laŭteco",
           "togglePlayerSounds": "Sonoj de Ludantoj",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigilo",
             "helpText": "La Yume 2kki Navigilo integras la Yume 2kki Esplorilon kaj ebligas al vi vidi, kiujn lokojn konektas al via loko unuvide. Ĉi tiu funkcio treege influos vian sperton kun la ludo, kaj ni rekomendegas, ke vi esploru la plimulton de la ludo blinde antaŭ ol vi ŝaltos ĉi tiun funkcion. Vi devas esti ensalutinta por uzi la Yume 2kki Navigilon."

@@ -5,12 +5,15 @@
   @property {string} badgeId
   @property {string} [game]
   @property {string} [group]
-  @property {number} [mapX] available when full=true
-  @property {number} [mapY] available when full=true
+  @property {number} [mapId]
+  @property {number} [mapX]
+  @property {number} [mapY]
+  @property {string} [mapId]
   @property {string[]} [tags] available when full=true
   @property {boolean} [newUnlock]
   @property {number} [overlayType]
   @property {boolean} [unlocked]
+  @property {boolean} [hidden] available when full=true
   @property {boolean} [secret]
   @property {number} originalOrder
 */
@@ -40,6 +43,8 @@ let localizedBadges;
 let localizedBadgesIgnoreUpdateTimer = null;
 
 let badgeGameIds = [];
+
+let mapIdToCacheKey = null;
 
 const didObserveBadgeCallbacks = new WeakMap;
 
@@ -557,13 +562,6 @@ function initBadgeControls() {
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
 
-    const mapIdToCacheKey = {};
-    for (const key of Object.keys(locationCache)) {
-      const mapId = key.slice(5);
-      if (!mapIdToCacheKey[mapId])
-        mapIdToCacheKey[mapId] = key;
-    }
-
     badgeModalContent.querySelector('.nullBadgeItem')?.classList.toggle('hidden', exactMatch);
     for (let item of badgeFilterCache) {
       fastdom.measure(() => {
@@ -584,7 +582,7 @@ function initBadgeControls() {
               // a 2kki-specific cache must be set up and populated from cache and/or queried
               if (!title && item.game === '2kki' && gameId === '2kki') {
                 let cacheKey = `0000_${item.mapId}`;
-                if (!locationCache[cacheKey]) cacheKey = mapIdToCacheKey[item.mapId];
+                if (!locationCache[cacheKey]) cacheKey = getMapCacheKey(item.mapId);
                 const cache = locationCache[cacheKey];
                 if (Array.isArray(cache)) {
                   const [desc] = cache;
@@ -832,6 +830,38 @@ async function viewBadgeInModal(badgeId, badgeGame) {
       document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${badgeGame}"]`).click();
   }
   document.getElementById('badgeCategoryTabs').querySelector('.subTab:first-child')?.click();
+}
+
+async function viewBadgeLocationInModal(locationName, gameId, unlockStatus) {
+  const badgeSearch = document.getElementById('badgeSearch');
+  badgeSearch.value = `=${locationName}`;
+  badgeSearch.classList.add('active');
+  const badgeUnlockStatus = document.getElementById('badgeUnlockStatus');
+  badgeUnlockStatus.value = (unlockStatus || '');
+  badgeUnlockStatus.dispatchEvent(new Event('change'));
+  document.getElementById('badgeSearchClearLink').classList.remove('hidden');
+  Array.from(badgeSearch.parentElement.querySelectorAll('svg.searchIcon')).map(i => i.classList.toggle('hidden', i.dataset.kind !== 'name'));
+  openModal('badgesModal');
+  addLoader(document.getElementById('badgesModal'), true);
+  await fetchAndUpdateBadgeModalBadges(undefined, undefined, 'location');
+  const activeBadgeTab = document.getElementById('badgeGameTabs').querySelector('.badgeGameTab.active');
+  if (activeBadgeTab) {
+    if (activeBadgeTab.dataset.game && activeBadgeTab.dataset.game !== gameId)
+      document.getElementById('badgeGameTabs').querySelector(`.badgeGameTab[data-game="${gameId}"]`).click();
+  }
+  document.getElementById('badgeCategoryTabs').querySelector('.subTab:first-child')?.click();
+}
+
+function getMapCacheKey(mapId) {
+  if (!mapIdToCacheKey) {
+    mapIdToCacheKey = {};
+    for (const key of Object.keys(locationCache)) {
+      const mapId = key.slice(5);
+      if (!mapIdToCacheKey[mapId])
+        mapIdToCacheKey[mapId] = key;
+    }
+  }
+  return mapIdToCacheKey[mapId];
 }
 
 /**

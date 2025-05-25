@@ -140,6 +140,11 @@
           "soundVolume": "音效音量",
           "musicVolume": "音乐音量",
           "togglePlayerSounds": "同步玩家音效",
+          "toggleEnableBadgeHints": {
+            "label": "Badge Hints",
+            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+          },
+          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
           "toggleEnableExplorer": {
             "label": "梦２记导航窗",
             "helpText": "梦２记导航组件，可以直观地查看当前区域的所有连接地。此功能可能会严重影响您的体验，强烈建议您在启用此功能前探索游戏的大部分内容。您必须登录才能使用梦２记导航窗。"
