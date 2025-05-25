@@ -28,7 +28,7 @@
     },
     "chatbox": {
       "location": "Konum:&nbsp;",
-      "nextLocation": "Next Loc:&nbsp;",
+      "nextLocation": "Sonraki Konum:&nbsp;",
       "immersionMode": "Sürükleyicilik Modu",
       "reconnect": "Yeniden Bağlan",
       "tab": {
@@ -54,7 +54,7 @@
       "players": {
         "tab": {
           "map": "Harita",
-          "friends": "Friends",
+          "friends": "Arkadaşlar",
           "party": "Parti"
         }
       }
@@ -67,17 +67,17 @@
       "hostedWithPermission": "Yume 2kki geliştirici"
     },
     "disclaimer": {
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community"
+      "hostedWithPermission": "Yapımcı(lar) tarafından izin alınarak kullanılmıştır",
+      "originalCreation": "YNOproject komünitesi tarafından orijinal yapımdır"
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Kaydet",
+        "apply": "Uygula"
       },
       "confirm": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "İptal"
       },
       "login": {
         "title": "Giriş Yap",
@@ -125,16 +125,16 @@
           "wikiLinkMode": {
             "label": "Wiki Link Popup",
             "values": {
-              "always": "Always",
-              "fullscreen": "Fullscreen Only",
-              "never": "Never"
+              "always": "Her zaman",
+              "fullscreen": "Sadece tam ekrandayken",
+              "never": "Asla"
             }
           },
           "saveReminder": {
-            "label": "Save Reminder Frequency",
+            "label": "Kayıt hatırlatıcı sıklığı",
             "interval": {
               "minutes": "{{interval}} minutes",
-              "never": "Never"
+              "never": "Asla"
             }
           },
           "soundVolume": "Ses Seviyesi",
@@ -149,14 +149,14 @@
             "helpText": "Daha iyi bir deneyim için kullanıcı sayısını, küresel sohbeti ve haritaları kapatır"
           },
           "timeTrialinfo": {
-            "label": "Time Trial"
+            "label": "Zamana Karşı"
           },
           "toggleMobileControls": "Mobil Kontrolleri Göster",
           "mobileControlsType": {
-            "label": "Mobile Controls Type",
+            "label": "Mobil kontrol türü",
             "default": "D-Pad",
-            "joystick": "Floating Joystick",
-            "dpad": "Floating D-Pad"
+            "joystick": "Bağımsız Joystick",
+            "dpad": "Bağımsız D-Pad"
           },
           "toggleLocationDisplay": "Konum Göstergesi",
           "toggleRankings": "Sıralama",
@@ -165,14 +165,14 @@
             "helpText": "İhtiyaç olduğunda hazır olduklarından emin olmak için sık kullanılan oyun ögelerini önceden yükle; sayfayı yenilemeniz gerekir"
           },
           "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle",
-          "toggleSchedules": "Events",
-          "unicodeFont": "Alternate Font"
+          "toggleSchedules": "Etkinlikler",
+          "unicodeFont": "Alternatif Yazı Tipi"
         },
         "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",
         "screenshotSettings": "Ekran Görüntüleri",
         "notificationSettings": "Bildirim",
-        "cacheSettings": "Cache",
+        "cacheSettings": "Veri",
         "accountSettings": "Hesap",
         "engineSettings": "Engine (F1)"
       },
@@ -211,7 +211,7 @@
           "partyChatHistoryLimit": {
             "label": "Parti Sohbet Geçmiş Limiti"
           },
-          "blurScreenshotEmbeds": "Blur All Screenshots"
+          "blurScreenshotEmbeds": "Tüm Ekran Görüntülerini Bulanıklaştır"
         }
       },
       "screenshotSettings": {
@@ -247,7 +247,7 @@
             "fields": {
               "siteUpdates": "Site Güncellendi",
               "error": "Hata Oluştu",
-              "pushNotifications": "Desktop Notifications"
+              "pushNotifications": "Masaüstü Bildirimleri"
             }
           },
           "account": {
@@ -311,9 +311,9 @@
             }
           },
           "timeTrials": {
-            "label": "Time Trials",
+            "label": "Zaman Mücadeleleri",
             "fields": {
-              "goalReached": "Goal Reached"
+              "goalReached": "Hedefe Ulaşıldı"
             }
           },
           "screenshots": {
@@ -331,24 +331,24 @@
               "saveDownloaded": "Kayıt İndirildi",
               "saveUpToDate": "Kayıt Güncel",
               "saveCleared": "Kayıt Temizlendi",
-              "saveReminder": "Save Reminder"
+              "saveReminder": "Kayıt Hatırlatıcı"
             }
           },
           "schedules": {
-            "label": "Events",
+            "label": "Etkinlikler",
             "fields": {
-              "upcomingSchedules": "Upcoming Events"
+              "upcomingSchedules": "Yaklaşan Etkinlikler"
             }
           }
         }
       },
       "cacheSettings": {
-        "title": "Cache Settings",
-        "clear": "Clear",
+        "title": "Veri Ayarları",
+        "clear": "Temizle",
         "fields": {
-          "locationCache": "Location Cache",
-          "mapCache": "Map Cache",
-          "locationColorCache": "Location Color Cache"
+          "locationCache": "Lokasyon Verisi",
+          "mapCache": "Harita Verisi",
+          "locationColorCache": "Lokasyon Konum Verisi"
         }
       },
       "accountSettings": {
@@ -378,7 +378,7 @@
               "0": "Kilitli",
               "1": "Açılmış",
               "all": "Hepsi",
-              "recentUnlock": "Recently Unlocked"
+              "recentUnlock": "Yeni Açılmış"
             }
           },
           "sortOrder": {
@@ -389,8 +389,8 @@
           },
           "search": {
             "label": "Ara:&nbsp;",
-            "name": "Name:",
-            "location": "Location:"
+            "name": "İsim:",
+            "location": "Konum:"
           }
         }
       },
@@ -399,20 +399,20 @@
         "badgeGalleryRowProgress": "Sonraki Sıra Güçlendirmesi(BP)",
         "badgeGalleryColProgress": "Sonraki Sütun Güçlendirmesi(Başarımlar)",
         "removeMode": {
-          "activate": "Remove Badges",
-          "deactivate": "Done"
+          "activate": "Rozetleri Kaldır",
+          "deactivate": "Bitti"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Öntasarımları Ayarla"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}"
+        "title": "Rozet Öntasarımlarını Ayarla",
+        "selectPreset": "Öntasarım Seç",
+        "presetName": "Öntasarı {{index}}"
       },
       "save": {
         "title": "Kayıt Verisini Yönet",
         "reload": "Değişiklikleri Kaydet ve Yenile",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "Kayıf dosyası kaydederken, eğer RPG_RT'deki son kaydedişinde çeviri kullandıysan, oyun sen EasyRPGde çeviri olmadan kaydedene kadar hatalar gösterecek."
       },
       "uiTheme": {
         "title": "UI Teması",
@@ -455,13 +455,13 @@
       },
       "rankings": {
         "title": "Sıralamalar",
-        "player": "Player"
+        "player": "Oyuncu"
       },
       "screenshot": {
         "title": "Ekran Görüntünüz",
         "download": "İndir",
         "save": "Ekran Görüntülerime Kaydet",
-        "share": "Share in Chat"
+        "share": "Sohbette Paylaş"
       },
       "myScreenshots": {
         "title": "Ekran Görüntülerim",
@@ -496,35 +496,35 @@
         }
       },
       "schedule": {
-        "title": "Events",
-        "ongoing": "Ongoing Events",
-        "party": "Party Events",
-        "future": "Future Events",
-        "official": "Official Events",
-        "noResults": "No events have been scheduled.",
-        "doSchedule": "Schedule an Event"
+        "title": "Etkinlikler",
+        "ongoing": "Hâlâ Süren Etkinlikler",
+        "party": "Parti Etkinlikleri",
+        "future": "Gelecek Etkinlikler",
+        "official": "Orijinal Etkinlikler",
+        "noResults": "Herhangi Bir Etkinlik Ayarlanmamıştır.",
+        "doSchedule": "Etkinlik Ayarla"
       },
       "scheduleEdit": {
-        "title": "Edit Event",
-        "save": "Save",
-        "cancel": "Cancel Event",
+        "title": "Etkinliği Düzenle",
+        "save": "Kaydet",
+        "cancel": "Etkinliği İptal Et",
         "fields": {
-          "name": "Event Name",
-          "description": "Description",
-          "datetime": "Event Date and Time",
-          "recurring": "Recurring Event",
+          "name": "Etkinlik Adı",
+          "description": "Açıklama",
+          "datetime": "Etkinliğin Tarihi ve Zamanı",
+          "recurring": "Tekrarlı Etkinlik",
           "theme": "Tema",
           "interval": {
-            "title": "Interval",
-            "days": "days",
-            "months": "months",
-            "years": "years"
+            "title": "Tekrarlama Aralığı",
+            "days": "Gün",
+            "months": "Ay",
+            "years": "Yıl"
           },
-          "restrictParty": "Limit to Party",
-          "official": "Official Event",
+          "restrictParty": "Partiyle Sınırlandır",
+          "official": "Orijinal Etkinlik",
           "resetOrganizer": "Reset Organizer",
           "platforms": {
-            "title": "External Links",
+            "title": "Dış Bağlantılar",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -535,20 +535,20 @@
         }
       },
       "report": {
-        "title": "Report",
-        "submit": "Submit",
+        "title": "Raporla",
+        "submit": "Gönder",
         "fields": {
           "reason": {
             "1": "Slurs, harmful or inappropriate language",
             "2": "Harassment, bullying, stalking",
-            "3": "Inappropriate names",
-            "4": "Ban evasion",
-            "5": "Cheating, abusing exploits",
-            "6": "Underage player",
+            "3": "Uygunsuz Ad",
+            "4": "Bandan Kaçınma",
+            "5": "Hileler, Açıkları Kötüye Kullanma",
+            "6": "Yaşı Tutmayan Oyuncu",
             "7": "Spam",
-            "title": "Reason",
-            "placeholder": "Custom reason (max 50 characters)",
-            "other": "Other (specify)"
+            "title": "Sebep",
+            "placeholder": "Özel Sebep (en fazla 50 karakter)",
+            "other": "Başka (detaylandırın)"
           }
         }
       },
@@ -576,10 +576,10 @@
       "myScreenshots": "Ekran Görüntülerim",
       "settings": "Ayarlar",
       "toggleMute": "Susturmayı Değiştir",
-      "toggleHideLocation": "Toggle Location Sharing",
+      "toggleHideLocation": "Lokasyon Paylaşımını Aç/Kapa",
       "toggleGlobalMessage": "Küresel Sohbet Mesajlaşmasını Değiştir",
       "chat": {
-        "toggleNextLocation": "Show/Hide Next Expedition Location",
+        "toggleNextLocation": "Sonraki Seyahat Konumunu Göster/Sakla",
         "toggleGlobalMessageLocations": " Sohbet Mesaj Konumlarını Göster/Gizle",
         "toggleMessageTimestamps": "Sohbet Mesaj Zamanlarını Göster/Gizle",
         "clearChat": "Sohbeti Temizle"
@@ -589,17 +589,17 @@
         "disbandParty": "Partiyi Dağıt"
       },
       "events": "Seyahat",
-      "locations": "Locations",
+      "locations": "Konumlar",
       "communityScreenshots": "Topluluk Ekran Görüntüleri",
       "rankings": "Sıralamalar",
-      "schedules": "Events",
+      "schedules": "Etkinlikler",
       "nexus": "Bağlantı Noktası'na Geri Dön",
       "explorerUndiscoveredLocations": "Keşfedilmeyen Konumları Görüntüle",
-      "timeTrial": "To enable Time Trial mode, hold Shift and Right Arrow after starting a new game before anything appears on-screen.",
-      "mobileControlsType": "Alternatives to the default D-Pad control type.<br>Floating control types are only available in mobile fullscreen."
+      "timeTrial": "Zamana Karşı modunu açmak için, Yeni oyun başlatırken ekranda hiçbir şey çıkmadan Shift ve Sağ Yön tuşuna basılı tut.",
+      "mobileControlsType": "Orijinal D-Pad kontrol türü alternatifi.<br>Bağımsız Kontrol türleri sadece mobil tam ekranda mevcuttur."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Gömülü Bağlantılar desteklenir, yume.wiki'den bir link yapıştırmak için {{l:World,optional link name}} kullanabilirsin"
     },
     "reviewRules": "Kuralları Göster"
   },
@@ -631,8 +631,8 @@
     },
     "leavePage": "Sayfayı terk etmek istediğinden emin misin? Kaydedilmemiş herhangi bir bilgi kaybedilecek.",
     "logout": "Hesaptan çıkmak istediğinden emin misin?",
-    "loadingInstruct": ". <br /> <br /> It looks like the site has been loading for a while; if this problem doesn't go away you may need to use CTRL+F5 or clear your browser's cache (but not cookies!). You can check the console using F12 for errors.",
-    "requestNotifications": "Receive notifications for followed events and expedition refreshes?",
+    "loadingInstruct": ". <br /> <br /> Site uzun zamandır yükleniyor gibi duruyor, eğer problem çözülmezse CTRL+F5 kullanıp tarayıcının önbelliğini temizlemen iyi olabilir (Çerezleri değil!). Hatalar için F12 konsolunu kontrol edebilirsin.",
+    "requestNotifications": "Etkinlikler ve seyahat yenilemeleri için bildirim almak ister misin?",
     "connStatus": {
       "0": "Bağlantı Kesildi",
       "1": "Bağlı",
@@ -641,7 +641,7 @@
     },
     "lastOnline": {
       "template": "Son görülme\n{INTERVAL} önce",
-      "longTime": "A long time ago",
+      "longTime": "Uzun zaman önce",
       "interval": {
         "short": "1 dakikadan az",
         "minutes": {
@@ -666,18 +666,18 @@
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "One-Way",
-        "2": "No Entry",
-        "4": "Unlock",
-        "8": "Locked",
-        "16": "Dead End",
-        "32": "Isolated",
-        "64": "Requires Effect ({PARAMS})",
-        "128": "{PARAMS} Chance",
+        "1": "Tek Yön",
+        "2": "Giriş Yok",
+        "4": "Açılabilir",
+        "8": "Kilitli",
+        "16": "Çıkmaz Yol",
+        "32": "İzole Edilmiş",
+        "64": "({PARAMS}) Efekti Gerekir",
+        "128": "{PARAMS} İhtimalle",
         "256": "{PARAMS}",
-        "512": "Shortcut",
-        "1024": "Exit Point",
-        "2048": "Seasonal ({PARAMS})"
+        "512": "Kestirme",
+        "1024": "Çıkış Noktası",
+        "2048": "Mevsime Bağlı ({PARAMS})"
       },
       "depth": " ({DEPTH})",
       "playing": "{GAME} oynuyor"
@@ -734,50 +734,50 @@
         "confirm": "{PLAYER}'in engelini kaldırmak istediğine emin misin?"
       },
       "report": {
-        "label": "Report {PLAYER}"
+        "label": "{PLAYER} oyuncusunu raporla"
       },
       "admin": {
         "ban": {
-          "label": "{PLAYER}'i banla",
-          "confirm": "{PLAYER}'i banlamak istediğinden emin misin?",
+          "label": "{PLAYER} oyuncusunu banla",
+          "confirm": "{PLAYER} oyuncusunu banlamak istediğinden emin misin?",
           "success": "{PLAYER} banlandı."
         },
         "unban": {
-          "label": "{PLAYER}'in banını kaldır",
-          "confirm": "{PLAYER}'in banını kaldırmak istediğinden emin misin?",
-          "success": "{PLAYER}'in banı kaldırıldı."
+          "label": "{PLAYER} oyuncusunun banını kaldır",
+          "confirm": "{PLAYER} oyuncusunun banını kaldırmak istediğinden emin misin?",
+          "success": "{PLAYER} oyuncusunun banı kaldırıldı."
         },
         "mute": {
-          "label": "{PLAYER}'i sustur",
-          "confirm": "{PLAYER}'i susturmak istediğinden emin misin?",
+          "label": "{PLAYER} oyuncusunu sustur",
+          "confirm": "{PLAYER} oyuncusunu susturmak istediğinden emin misin?",
           "success": "{PLAYER} susturuldu."
         },
         "unmute": {
-          "label": "{PLAYER}'in susturmasını kaldır",
-          "confirm": "{PLAYER}'in susturmasını kaldırmak istediğinden emin misin?",
-          "success": "{PLAYER}'in susturması kaldırıldı."
+          "label": "{PLAYER} oyuncusunun susturmasını kaldır",
+          "confirm": "{PLAYER} oyuncusunun susturmasını kaldırmak istediğinden emin misin?",
+          "success": "{PLAYER} oyuncusunun susturması kaldırıldı."
         },
         "grantBadge": {
           "label": "Rozet Ver",
-          "prompt": "{PLAYER}'e rozet vermek için başarım IDsi girin.",
-          "success": "{BADGE}, başarıyla {PLAYER}'e verildi.",
+          "prompt": "{PLAYER} oyuncusuna rozet vermek için başarım IDsi girin.",
+          "success": "{BADGE}, başarıyla {PLAYER} oyuncusuna verildi.",
           "fail": "Bahsedilen rozet IDsinde bir başarım bulunamadı."
         },
         "revokeBadge": {
           "label": "Rozet Kaldır",
-          "prompt": "{PLAYER}'dan geri almak için rozet IDsini girin.",
-          "success": "{BADGE}, başarıyla {PLAYER}'dan alındı.",
+          "prompt": "{PLAYER} oyuncusundan geri almak için rozet IDsini girin.",
+          "success": "{BADGE}, başarıyla {PLAYER} oyuncusundan alındı.",
           "fail": "Bahsedilen rozet IDsinde bir rozet bulunamadı."
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "{PLAYER} oyuncusunu geçici olarak uzaklaştır",
+          "prompt": "{PLAYER} oyuncusunun uzaklaştırması ne zaman açılsın? (UTC time)",
+          "success": "{PLAYER} geçici olarak uzaklaştırıldı."
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "{PLAYER} oyuncusunu geçici olarak sustur",
+          "prompt": "{PLAYER} oyuncusunun susturması ne zaman açılsın? (UTC time)",
+          "success": "{PLAYER} geçici olarak susturuldu."
         }
       }
     },
@@ -807,7 +807,7 @@
       "globalMessage": "Küresel Mesaj"
     },
     "friends": {
-      "friend": "Friend",
+      "friend": "Arkadaş",
       "categories": {
         "incoming": "Gelen - {COUNT}",
         "outgoing": "Giden - {COUNT}",
@@ -818,11 +818,11 @@
     "parties": {
       "emptyMessage": "Şu anda aktif bir parti yok.",
       "yourParty": "Senin Partin",
-      "defaultPartyName": "{OWNER}'in Partisi",
+      "defaultPartyName": "{OWNER} oyuncusunun Partisi",
       "partyOwner": "Parti Lideri",
       "confirmDisband": "Partiyi dağıtmak istediğine emin misin? Bunu geri alamazsın.",
-      "confirmTransferPartyOwner": "Parti liderliğini {PLAYER}'e devretmek istediğine emin misin?",
-      "offlineMemberSuffix": "Member offline",
+      "confirmTransferPartyOwner": "Parti liderliğini {PLAYER} oyuncusuna devretmek istediğine emin misin?",
+      "offlineMemberSuffix": "Kullanıcı Çevrimdışı",
       "categories": {
         "online": "Çevrimiçi - {COUNT}",
         "offline": "Çevrimdışı - {COUNT}"
@@ -849,11 +849,11 @@
         "immersionMode": "Eğer sosyalden çok sürükleyici bir deneyim tercih ediyorsanız, Sürükleyicilik Modunu deneyin. Bu küresel sohbeti, oyuncu listesi, ve oyuncu sayısını kapatır. Böylece dolaşırken başka bir oyuncuyu görmek daha ilginç olur.",
         "friendsMenu": "Bilgisayarda sağ tıklayarak, veya mobildeysen Sıralamaların dışında bir oyuncunun icon'una basılı tutarak bir diyalog kutusu açabilirsin. Bu kutudan arkadaşlık isteği gönderebilirsin, onları engelleyebilirsin veya onlardan bahsedebilirsin.",
         "easySettingsMenu": "Eğer bilgisayarda oynuyorsan, oynarken F1 tuşuna basarak ayarları açabilirsin, böylece bazı ayarları değiştirmenin yanı sıra tuş atamalarını da değiştirebilirsin.",
-        "floatingControls": "If you're playing on a touchscreen device and don't like the default controls, try the floating styles of controls available from the Mobile Controls Type in Settings.",
-        "recentBadges": "Accidentally dismissed a badge unlock notification? You can always review badges unlocked in the current session by selecting Recently Unlocked in the Badges listing.",
-        "desktopHotkeys": "If you're playing on a PC, Alt+Enter can also toggle fullscreen mode, F7 by default takes a screenshot of the game, and the T key opens the in-game chat input.",
-        "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
-        "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
+        "floatingControls": "Eğer dokunmatik cihazda oynuyorsan ve orijinal kontollleri sevmediysen, ayarlardan mobil kontrol türünü bağımsız tarzlara değiştirip deneyebilirsin.",
+        "recentBadges": "Yanlışlıkla Rozet açılma bildirimini mi kaçırdın? Mevcut girişinde açtığın Rozetleri, Rozetler ekranından Yeni Açılmış'ı seçip görüntüleyebilirsin.",
+        "desktopHotkeys": "Bilgisayarda oynuyorsan, Alt+Enter ile Tam ekran modunu açıp kapatabilirsin, değişmemiş ayarlarda F7 oyunun bir ekran görüntüsünü alır, T tuşu da oyun içi sohbet girdisini açar.",
+        "badgeControls": "Rozetler menüsünde, tutup bırakarak rozetlerini düzenleyebilirsin, ya da Rozet Kaldırma modunda çabucak birden fazla rozeti kaldırabilirsin.",
+        "cacheSettings": "Lokasyon tamamlama ya da Eskimiş Yerlerle alakalı sıkıntı mı yaşıyorsun? Veri Menüsünden ilgili veriyi temizleyip en son verileri alabilirs.",
         "openSource": "YNOproject açık kaynaklıdır ve kod depoları şu sitede mevcuttur: https://github.com/ynoproject/"
       }
     },
@@ -940,7 +940,7 @@
         "saveReminder": "İlerlemenizi kaybetmemek için sık sık kaydetmeyi ve kayıt dosyalarınızı yedeklemeyi unutmayın."
       },
       "timeTrials": {
-        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
+        "timeTrialsComplete": "Başardın! {CATEGORY}, {TIME} içinde tamamlandı."
       }
     },
     "events": {
@@ -950,7 +950,7 @@
       "periodEnds": "Bitiş {DATE}",
       "current": "Mevcut",
       "shortcut": "Açılabilir bir kısayolla erişilebilir",
-      "toggleTracked": "Toggle Location Tracking",
+      "toggleTracked": "Lokasyon Takibini Aç/Kapa",
       "availableUntilDate": "şu tarihe kadar mevcut:\n{DATE} ",
       "types": {
         "0": "Günlük",
@@ -982,7 +982,7 @@
       "search": {
         "modifier": {
           "template": "&nbsp;({MODIFIER})",
-          "exactMatch": "Exact Match"
+          "exactMatch": "Tam Eşleşme"
         }
       },
       "sortOrder": {
@@ -1068,35 +1068,35 @@
       }
     },
     "locations": {
-      "author": "By {AUTHOR}",
-      "versionAdded": "Added {VERSION}",
-      "versionUpdated": "Updated {VERSION}",
+      "author": "{AUTHOR} tarafından",
+      "versionAdded": "{VERSION} versiyonunda eklendi",
+      "versionUpdated": "{VERSION} versiyonunda güncellendi",
       "track": {
         "tooltip": {
-          "on": "Track Location",
-          "off": "Untrack Location"
+          "on": "Lokasyonunu Takip Et",
+          "off": "Lokasyonun Takibi Bırak"
         }
       },
       "visited": {
         "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
+          "all": "Hepsi",
+          "visited": "Ziyaret Edilmiş",
+          "unvisited": "Ziyaret Edilmemiş"
         }
       },
       "sortOrder": {
         "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
+          "newest": "En Yeni",
+          "oldest": "En Eski",
+          "shallowest": "En Sığ",
+          "deepest": "En Derin",
+          "alpha": "Alfabetik",
+          "players": "Oyuncu Sayısı"
         }
       }
     },
     "screenshots": {
-      "playerScreenshot": "{USER}'in Ekran Görüntüsü",
+      "playerScreenshot": "{USER} Oyuncusunun Ekran Görüntüsü",
       "limit": "{COUNT}/{LIMIT} Slot Kullanıldı",
       "public": {
         "tooltip": {
@@ -1123,10 +1123,10 @@
       }
     },
     "schedules": {
-      "organizer": "Organized by&nbsp;{NAME}",
-      "invalidPlatformLink": "Platform must have a valid URL",
-      "confirmCancel": "Are you sure you want to cancel this event?",
-      "wrongEditGame": "Cannot edit outside of {GAME}",
+      "organizer": "Şu kullanıcı tarafından organize edildi&nbsp;{NAME}",
+      "invalidPlatformLink": "Platformun geçerli bir URL'ye sahip olması gerek",
+      "confirmCancel": "Etkinliği iptal etmek istediğine emin misin?",
+      "wrongEditGame": "{GAME} dışında editlenemez",
       "platforms": {
         "discord": "Discord",
         "youtube": "YouTube",
@@ -1136,14 +1136,14 @@
         "bilibili": "Bilibili"
       },
       "intervals": {
-        "perDay": "Every day",
-        "days": "Every {INTERVAL} days",
-        "perWeek": "Every {WEEKDAY}",
-        "weeks": "Every {INTERVAL} weeks",
-        "perMonth": "Every month",
-        "months": "Every {INTERVAL} months",
-        "perYear": "Every year",
-        "years": "Every {INTERVAL} years"
+        "perDay": "Her gün",
+        "days": "Her {INTERVAL} günde bir",
+        "perWeek": "Her {WEEKDAY}",
+        "weeks": "Her {INTERVAL} haftada bir",
+        "perMonth": "Her Ay",
+        "months": "Her {INTERVAL} ayda bir",
+        "perYear": "Her yıl",
+        "years": "Her {INTERVAL} yılda bir"
       }
     },
     "2kki": {
@@ -1158,14 +1158,14 @@
         "resetPassword": {
           "label": "Bir Şifre Sıfırla",
           "playerPrompt": "Şifresini Sıfırlamak için hesabın adını girin",
-          "success": "{PLAYER} için şifre {PASSWORD}'e değiştirildi"
+          "success": "{PLAYER} için şifre {PASSWORD} olarak değiştirildi"
         },
         "changeUsername": {
           "label": "Bir Kullanıcı Adı Değiştir",
           "playerPrompt": "Kullanıcı adını değiştirmek için hesabın adını girin",
           "namePrompt": "{PLAYER} için yeni kullanıcı adı girin",
-          "success": "{PLAYER}'in kullanıcı adı {NAME}'e değiştirildi",
-          "error": "{PLAYER}'in adı değiştirilemedi; bahsedilen isim zaten kullanılıyor olabilir"
+          "success": "{PLAYER} oyuncusunun kullanıcı adı {NAME}'e değiştirildi",
+          "error": "{PLAYER} oyuncusunun adı değiştirilemedi; bahsedilen isim zaten kullanılıyor olabilir"
         },
         "ban": {
           "label": "Bir Kullanıcı Banla",
@@ -1192,14 +1192,14 @@
           "playerPrompt": "Rozetini kaldırmak için hesabın adını girin"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "Kullanıcıyı Geçici Olarak Uzaklaştır",
+          "playerPrompt": "Geçici olarak uzaklaştırmak istediğin kullanıcının adını yaz",
+          "timePrompt": "Uzaklaştırmanın biteceği vakti giriniz (UTC time)"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "Kullanıcıyı Geçici Olarak Sustur",
+          "playerPrompt": "Geçici olarak susturmak istediğin kullanıcının adını yaz",
+          "timePrompt": "Susturmanın biteceği vakti giriniz (UTC time)"
         }
       }
     }
