@@ -2041,8 +2041,6 @@ function initLocalizedLocations(game) {
   gameLocationsMap[game] = {};
 
   const trySetLocalizedLocation = (mapLocation, localizedMapLocation) => {
-    if (mapLocation.title.indexOf(':') > -1)
-      return;
     gameLocalizedLocationsMap[game][mapLocation.title] = localizedMapLocation;
     gameLocationsMap[game][mapLocation.title] = mapLocation;
   };
@@ -2326,8 +2324,10 @@ function getMapButton(url, label) {
 }
 
 const badgeHintSe = new Audio('./audio/badge_hint.wav');
+let lastMatchedBadgeIdResults;
 
 function updateBadgeHint(locationNames) {
+  locationNames = locationNames.map(l => gameLocalizedLocationsMap[gameId][l]?.title || l)
   const badgeHintControls = document.getElementById('badgeHintControls');
   badgeHintControls.innerHTML = '';
 
@@ -2335,16 +2335,18 @@ function updateBadgeHint(locationNames) {
     return;
 
   let matchedLocationName = null;
+  let matchedBadgeIds = [];
   for (const b of badgeCache) {
-    if (b.unlocked && !b.hidden)
+    if (b.game !== gameId || (b.unlocked && !b.hidden))
       continue;
-    const localizedLocation = gameLocalizedMapLocations[gameId]?.[b.mapId];
+    const badgeMapId = String(b.mapId).padStart(4, '0');
+    const localizedLocation = gameLocalizedMapLocations[b.game]?.[badgeMapId];
     let title = determineTitle(localizedLocation, b.mapX, b.mapY);
     // TODO: To remove the last condition and allow searching 2kki badges by location from all games,
     // a 2kki-specific cache must be set up and populated from cache and/or queried
     if (!title && b.game === '2kki' && gameId === '2kki') {
-      let cacheKey = `0000_${b.mapId}`;
-      if (!locationCache[cacheKey]) cacheKey = getMapCacheKey(b.mapId);
+      let cacheKey = `0000_${badgeMapId}`;
+      if (!locationCache[cacheKey]) cacheKey = getMapCacheKey(badgeMapId);
       const cache = locationCache[cacheKey];
       if (Array.isArray(cache)) {
         const [desc] = cache;
@@ -2352,10 +2354,14 @@ function updateBadgeHint(locationNames) {
       }
     }
     if (locationNames.includes(title)) {
-      matchedLocationName = title;
-      break;
+      if (!matchedLocationName)
+        matchedLocationName = title;
+      matchedBadgeIds.push(b.badgeId);
     }
   }
+
+  if (JSON.stringify(matchedBadgeIds) === JSON.stringify(lastMatchedBadgeIdResults)) return;
+  lastMatchedBadgeIdResults = matchedBadgeIds;
 
   if (matchedLocationName !== null) {
     if (globalConfig.playBadgeHintSound)

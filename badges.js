@@ -1295,11 +1295,11 @@ function updateBadges(callback) {
     .then(badges => {
       for (const { badgeId, newUnlock } of badges)
         if (newUnlock) {
-          newUnlockBadges.add(newUnlock);
+          newUnlockBadges.add(badgeId);
           showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
         }
       badgeCache = badges;
-      for (let i = 0; i << badgeCache.length; ++i)
+      for (let i = 0; i < badgeCache.length; ++i)
         badgeCache[i].originalOrder = i;
       badgeCache.sort((a, z) => a.badgeId.localeCompare(z.badgeId));
 
@@ -1367,12 +1367,20 @@ function checkNewBadgeUnlocks() {
           badgeCache.full = false;
         }
 
-        if (checkData.badgeIds)
+        if (checkData.badgeIds) {
           for (const badgeId of checkData.badgeIds) {
             newUnlockBadges.add(badgeId);
             showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
           }
+        }
       }
+
+      // update badge unlock status to silence badge hints
+      for (const badge of badgeCache) {
+        if (newUnlockBadges.has(badge.badgeId)) 
+          badge.unlocked = true;
+      }
+      updateBadgeHint(cachedLocations.map(l => l.title));
     })
     .catch(err => console.error(err));
 }
