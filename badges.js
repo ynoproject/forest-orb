@@ -1362,6 +1362,7 @@ function checkNewBadgeUnlocks() {
     })
     .then(checkData => {
       lastBadgeCheck = new Date().toISOString();
+      let updateBadgeHints = false;
       if (checkData.badgeIds?.length || checkData.newTags) {
         if (badgeCache) {
           badgeCache.full = false;
@@ -1369,6 +1370,8 @@ function checkNewBadgeUnlocks() {
 
         if (checkData.badgeIds) {
           for (const badgeId of checkData.badgeIds) {
+            if (!newUnlockBadges.has(badgeId))
+              updateBadgeHints = true;
             newUnlockBadges.add(badgeId);
             showBadgeToastMessage('badgeUnlocked', 'info', badgeId);
           }
@@ -1380,7 +1383,8 @@ function checkNewBadgeUnlocks() {
         if (newUnlockBadges.has(badge.badgeId)) 
           badge.unlocked = true;
       }
-      updateBadgeHint(cachedLocations.map(l => l.title));
+      if (updateBadgeHints)
+        updateBadgeHint(cachedLocations.map(l => l.title));
     })
     .catch(err => console.error(err));
 }
