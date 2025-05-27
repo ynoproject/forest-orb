@@ -631,7 +631,7 @@
                   <button id="badgeHintsButton" class="checkboxButton inverseToggle unselectable"><span></span></button>
                 </div>
               </li>
-              <li class="formControlRow indent">
+              <li class="formControlRow indent badgeHintRow">
                 <label class="unselectable" data-i18n="[html]modal.settings.fields.togglePlayBadgeHintSound">Play Badge Hint Sound</label>
                 <div>
                   <button id="playBadgeHintSoundButton" class="checkboxButton inverseToggle unselectable"><span></span></button>

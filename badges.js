@@ -5,15 +5,15 @@
   @property {string} badgeId
   @property {string} [game]
   @property {string} [group]
-  @property {number} [mapId]
-  @property {number} [mapX]
-  @property {number} [mapY]
+  @property {number} mapId
+  @property {number} mapX
+  @property {number} mapY
   @property {string} [mapId]
   @property {string[]} [tags] available when full=true
   @property {boolean} [newUnlock]
   @property {number} [overlayType]
   @property {boolean} [unlocked]
-  @property {boolean} [hidden] available when full=true
+  @property {boolean} hidden
   @property {boolean} [secret]
   @property {number} originalOrder
 */

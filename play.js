@@ -1099,8 +1099,10 @@ document.getElementById('playerSoundsButton').onclick = () => {
 };
 
 document.getElementById('badgeHintsButton').onclick = function () {
-  this.classList.toggle('toggled');
-  globalConfig.badgeHints = this.classList.contains('toggled');
+  const enabled = !this.classList.toggle('toggled');
+  globalConfig.badgeHints = enabled;
+  for (const elm of document.getElementsByClassName('badgeHintRow'))
+    elm.classList.toggle('hidden', !enabled);
   updateConfig(globalConfig, true);
 };
 
@@ -2337,7 +2339,7 @@ function updateBadgeHint(locationNames) {
   let matchedLocationName = null;
   let matchedBadgeIds = [];
   for (const b of badgeCache) {
-    if (b.game !== gameId || (b.unlocked && !b.hidden))
+    if (b.game !== gameId || b.unlocked || b.hidden)
       continue;
     const badgeMapId = String(b.mapId).padStart(4, '0');
     const localizedLocation = gameLocalizedMapLocations[b.game]?.[badgeMapId];
