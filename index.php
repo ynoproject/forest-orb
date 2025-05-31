@@ -2133,6 +2133,10 @@
       <br>
       <div class="notice" data-i18n="[html]disclaimer.originalCreation">Original creation by the YNOproject community</div>
       <?php endif ?>
+      <?php if ($gameId == "yume"): ?>
+      <br>
+      <div class="notice" data-i18n="[html]disclaimer.pendingApproval">Pending approval from developer/publisher</div>
+      <?php endif ?>
       <br>
       <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]reviewRules">Review Rules</a>
     </div>

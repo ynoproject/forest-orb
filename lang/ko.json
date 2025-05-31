@@ -67,6 +67,7 @@
       "hostedWithPermission": "본 서버는 유메2키 개발진의 허가를 받아 운영됩니다."
     },
     "disclaimer": {
+      "pendingApproval": "Pending approval from developer/publisher",
       "hostedWithPermission": "Hosted with permission from the developer(s)",
       "originalCreation": "Original creation by the YNOproject community"
     },
