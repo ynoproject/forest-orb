@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "Tải sẵn hình nền PC",
           "toggleSchedules": "Sự kiện",
-          "unicodeFont": "Đổi font giao diện"
+          "unicodeFont": "Đổi font giao diện",
+          "toggleSingleplayerMode": {
+            "label": "Chế độ Một người",
+            "helpText": "Khi Chế độ Riêng tư kích hoạt, bạn sẽ không nhìn thấy bất kì ai bao gồm bạn bè và thành viên cùng nhóm. Khuyên dùng khi bạn muốn hoàn toàn tự lực khám phá."
+          }
         },
         "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",
@@ -643,7 +647,8 @@
       "0": "Không có kết nối",
       "1": "Đã kết nối",
       "2": "Đang kết nối...",
-      "3": "Riêng tư"
+      "3": "Riêng tư",
+      "4": "Một người"
     },
     "lastOnline": {
       "template": "Online lần cuối\n{INTERVAL} trước",

@@ -34,7 +34,7 @@ function initSessionWs(attempt) {
       };
       easyrpgPlayer.api.sessionReady();
       if (config.privateMode)
-        sendSessionCommand('pr', [ 1 ]);
+        sendSessionCommand('pr', [ config.singleplayerMode ? 2 : 1 ]);
       if (config.hideLocation)
         sendSessionCommand('hl', [ 1 ]);
       if (!hasConnected) {

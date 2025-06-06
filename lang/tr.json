@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "PC Arkaplanlarını Ön Yükle",
           "toggleSchedules": "Etkinlikler",
-          "unicodeFont": "Alternatif Yazı Tipi"
+          "unicodeFont": "Alternatif Yazı Tipi",
+          "toggleSingleplayerMode": {
+            "label": "Singleplayer Mode",
+            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+          }
         },
         "blocklist": "Engel Listesi",
         "chatSettings": "Sohbet",
@@ -643,7 +647,8 @@
       "0": "Bağlantı Kesildi",
       "1": "Bağlı",
       "2": "Bağlanılıyor...",
-      "3": "Gizli Mod"
+      "3": "Gizli Mod",
+      "4": "Singleplayer"
     },
     "lastOnline": {
       "template": "Son görülme\n{INTERVAL} önce",

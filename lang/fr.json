@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC",
           "toggleSchedules": "Événements",
-          "unicodeFont": "Alternate Font"
+          "unicodeFont": "Alternate Font",
+          "toggleSingleplayerMode": {
+            "label": "Singleplayer Mode",
+            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+          }
         },
         "blocklist": "Liste de blocage",
         "chatSettings": "Chat",
@@ -643,7 +647,8 @@
       "0": "Déconnecté(e)",
       "1": "Connecté(e)",
       "2": "Connexion...",
-      "3": "Mode privé"
+      "3": "Mode privé",
+      "4": "Singleplayer"
     },
     "lastOnline": {
       "template": "Dernière fois vu il y a\n{INTERVAL}",

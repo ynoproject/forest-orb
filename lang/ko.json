@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "PC 배경화면을 프리로드 하기",
           "toggleSchedules": "Events",
-          "unicodeFont": "Alternate Font"
+          "unicodeFont": "Alternate Font",
+          "toggleSingleplayerMode": {
+            "label": "Singleplayer Mode",
+            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+          }
         },
         "blocklist": "차단 목록",
         "chatSettings": "채팅",
@@ -643,7 +647,8 @@
       "0": "연결 끊김",
       "1": "연결됨",
       "2": "연결 중...",
-      "3": "비공개 모드"
+      "3": "비공개 모드",
+      "4": "Singleplayer"
     },
     "lastOnline": {
       "template": "마지막 접속\n{INTERVAL} 전",

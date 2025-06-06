@@ -99,6 +99,7 @@ let globalConfig = {
 
 let config = {
   privateMode: false,
+  singleplayerMode: false,
   disableChat: false,
   mute: false,
   hideLocation: false,
@@ -161,14 +162,14 @@ function iOS() {
 // EXTERNAL
 function onUpdateConnectionStatus(status) {
   if (status === 1 && config.privateMode)
-    status = 3;
+    status = config.singleplayerMode ? 4 : 3;
 
   const updateStatusText = function () {
     const connStatusIcon = document.getElementById('connStatusIcon');
     const connStatusText = document.getElementById('connStatusText');
     connStatusIcon.classList.toggle('connecting', status === 2);
     connStatusIcon.classList.toggle('connected', status === 1);
-    connStatusIcon.classList.toggle('privateMode', status === 3);
+    connStatusIcon.classList.toggle('privateMode', status === 3 || status === 4);
     if (localizedMessages)
       connStatusText.innerHTML = getMassagedLabel(localizedMessages.connStatus[status]);
     connStatusText.classList.toggle('altText', !status);
@@ -884,22 +885,32 @@ document.getElementById('enterNameForm').onsubmit = function () {
   document.getElementById('chatboxContainer').onmouseleave = document.getElementById('scheduleEditModal').onmouseleave = function () { document.getElementById('ynomojiContainer').classList.add('hidden'); };
 }
 
-document.getElementById('privateModeButton').onclick = function () {
-  if (!sessionWs)
-    return;
+{
+  function initPrivateMode(active) {
+    config.privateMode = active;
+    updateConfig(config);
 
-  this.classList.toggle('toggled');
-  document.getElementById('layout').classList.toggle('privateMode', this.classList.contains('toggled'));
-  config.privateMode = this.classList.contains('toggled');
-  updateConfig(config);
+    if (!sessionWs)
+      return;
 
-  sendSessionCommand('pr', [ config.privateMode ? 1 : 0 ]);
+    document.getElementById('layout').classList.toggle('privateMode', active);
+    sendSessionCommand('pr', [ config.privateMode ? config.singleplayerMode ? 2 : 1 : 0 ]);
 
-  if (connStatus == 1 || connStatus == 3)
-    onUpdateConnectionStatus(config.privateMode ? 3 : 1);
+    if (connStatus == 1 || connStatus == 3)
+      onUpdateConnectionStatus(config.privateMode ? 3 : 1);
 
-  easyrpgPlayer.api.sessionReady();
-};
+    easyrpgPlayer.api.sessionReady();
+  }
+
+  document.getElementById('privateModeButton').onclick = function () {
+    initPrivateMode(this.classList.toggle('toggled'));
+  };
+
+  document.getElementById('singleplayerModeButton').onclick = function () {
+    config.singleplayerMode = this.classList.toggle('toggled');
+    initPrivateMode(config.privateMode);
+  };
+}
 
 let reconnectCooldownTimer;
 

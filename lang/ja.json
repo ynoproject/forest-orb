@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "PCの壁紙をプリロードする",
           "toggleSchedules": "イベント",
-          "unicodeFont": "代替フォント"
+          "unicodeFont": "代替フォント",
+          "toggleSingleplayerMode": {
+            "label": "Singleplayer Mode",
+            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+          }
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",
@@ -643,7 +647,8 @@
       "0": "接続なし",
       "1": "接続済み",
       "2": "接続中…",
-      "3": "プライベートモード"
+      "3": "プライベートモード",
+      "4": "Singleplayer"
     },
     "lastOnline": {
       "template": "最後のプレイ\n{INTERVAL}",

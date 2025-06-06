@@ -188,7 +188,7 @@ function setJoinedPartyId(partyId) {
     partyId = null;
   if (config.privateMode && partyId !== joinedPartyId) {
     sendSessionCommand('pr', [ 0 ]);
-    sendSessionCommand('pr', [ 1 ]);
+    sendSessionCommand('pr', [ config.singleplayerMode ? 2 : 1 ]);
   }
   joinedPartyId = partyId;
   if (partyId)

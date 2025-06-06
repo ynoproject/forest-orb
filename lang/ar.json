@@ -172,7 +172,11 @@
           },
           "toggleQuestionablePreloads": "التحميل المسبق لخلفيات الكمبيوتر",
           "toggleSchedules": "Events",
-          "unicodeFont": "Alternate Font"
+          "unicodeFont": "Alternate Font",
+          "toggleSingleplayerMode": {
+            "label": "Singleplayer Mode",
+            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+          }
         },
         "blocklist": "قائمة الحظر",
         "chatSettings": "المحادثة",
@@ -643,7 +647,8 @@
       "0": "غير متصل",
       "1": "متصل",
       "2": "محاولة الاتصال...",
-      "3": "وضع الخاص"
+      "3": "وضع الخاص",
+      "4": "Singleplayer"
     },
     "lastOnline": {
       "template": "أخر ظهور\n منذ {INTERVAL}",
