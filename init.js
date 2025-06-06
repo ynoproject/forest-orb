@@ -864,6 +864,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       preToggle(document.getElementById('privateModeButton'));
                     break;
+                  case 'singleplayerMode':
+                    if (value)
+                      preToggle(document.getElementById('singleplayerModeButton'));
+                      break;
                   case 'disableChat':
                     if (value)
                       document.getElementById('chatButton').click();

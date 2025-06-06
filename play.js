@@ -887,6 +887,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
 {
   function initPrivateMode(active) {
+    document.getElementById('privateModeButton').classList.toggle('toggled', active);
     config.privateMode = active;
     updateConfig(config);
 
@@ -908,7 +909,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
   document.getElementById('singleplayerModeButton').onclick = function () {
     config.singleplayerMode = this.classList.toggle('toggled');
-    initPrivateMode(config.privateMode);
+    initPrivateMode(config.singleplayerMode || config.privateMode);
   };
 }
 
