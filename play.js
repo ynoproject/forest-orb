@@ -573,8 +573,7 @@ function syncLocationChange() {
 function onPlayerTeleported(mapId, x, y) {
   tpX = x;
   tpY = y;
-  if (cachedMapId && parseInt(cachedMapId) === mapId)
-    checkUpdateLocation(cachedMapId, false);
+  checkUpdateLocation(String(mapId).padStart(4, '0'), +cachedMapId === mapId);
 }
 
 // EXTERNAL

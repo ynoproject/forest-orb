@@ -4031,7 +4031,7 @@ body.browserFirefox tag {
   text-decoration: line-through;
 }
 
-body:not(.browserFirefox) tag, body:not(.browserFirefox) .messageContents > s {
+body:not(.browserFirefox) tag {
   -webkit-text-fill-color: rgba(0, 0, 0, 0.4);
   text-decoration: line-through;
   filter: invert(1);

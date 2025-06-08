@@ -273,7 +273,7 @@ function openSchedulesModal() {
       schedules => { 
         if (!schedules)
           schedules = [];
-        schedules.sort((a, z) => a.datetime.localeCompare(z.datetime));
+        schedules.sort((a, z) => +z.official - +a.official || a.datetime.localeCompare(z.datetime));
         for (const schedule of schedules)
           if (!schedule.partyId || schedule.partyId === joinedPartyId)
             addScheduleItem(schedule); 

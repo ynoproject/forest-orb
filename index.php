@@ -1472,12 +1472,12 @@
           </div>
           <div class="modalContent">
             <div style="width:100%">
-              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.ongoing">Ongoing Events</div>
-              <div id="ongoingSchedules" class="scheduleContainer"></div>
-            </div>
-            <div style="width:100%">
               <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.official">Official Events</div>
               <div id="officialSchedules" class="scheduleContainer"></div>
+            </div>
+            <div style="width:100%">
+              <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.ongoing">Ongoing Events</div>
+              <div id="ongoingSchedules" class="scheduleContainer"></div>
             </div>
             <div style="width:100%">
               <div class="messageContainer themeText scheduleGroupHeader" data-i18n="[html]modal.schedule.party">Party Events</div>

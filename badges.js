@@ -853,8 +853,8 @@ async function viewBadgeLocationInModal(locationName, gameId, unlockStatus) {
 }
 
 function getMapCacheKey(mapId) {
-  if (!mapIdToCacheKey) {
-    mapIdToCacheKey = {};
+  if (!mapIdToCacheKey) mapIdToCacheKey = {};
+  if (!mapIdToCacheKey[mapId]) {
     for (const key of Object.keys(locationCache)) {
       const mapId = key.slice(5);
       if (!mapIdToCacheKey[mapId])
