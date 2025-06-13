@@ -264,7 +264,16 @@ const allGameUiThemes = {
     'customsystem'
   ],
   'sheawaits': [
-    'system_sa1'
+    'system_sa1',
+    'system_stripedpink',
+    'system_rose',
+    'system_diamond',
+    'system_stripedviolet',
+    'system_garden',
+    'system_starrynight',
+    'system_stripedblue',
+    'system_sunset',
+    'system_heartglass'
   ],
   'someday': [
     'green',
