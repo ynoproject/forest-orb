@@ -1485,6 +1485,10 @@ html[lang="ja"] .subTab {
   display: none;
 }
 
+#chatbox #messages.mentionsOnly .messageContainer:not(.highlight) {
+  display: none;
+}
+
 #chatbox.mapChat .messageContainer.global, #chatbox.mapChat .messageContainer.party, #chatbox.globalChat .messageContainer:not(.global), #chatbox.partyChat .messageContainer:not(.party), #chatbox:not(.mapChat) .messageContainer.map, #chatbox:not(.friendsPlayers) #friendsPlayerList, #chatbox:not(.partyPlayers) #partyPlayerList, #chatbox.friendsPlayers #playerList, #chatbox.partyPlayers #playerList {
   display: none;
 }

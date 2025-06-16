@@ -925,6 +925,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     if (value)
                       document.getElementById('messageTimestampsButton').click();
                     break;
+                  case 'filterMentions':
+                    if (value)
+                      document.getElementById('mentionFilterButton').click();
+                    break;
                   case 'trackedLocationId':
                     if (value)
                       document.getElementById('nextLocationContainer').classList.remove('hidden');

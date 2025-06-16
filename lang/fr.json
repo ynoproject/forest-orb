@@ -592,6 +592,7 @@
         "toggleNextLocation": "Montrer/Cacher le Lieu de la prochaine expédition",
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Effacer le Chat"
       },
       "parties": {

@@ -592,6 +592,7 @@
         "toggleNextLocation": "显示/隐藏 远征导航",
         "toggleGlobalMessageLocations": "显示/隐藏 聊天信息的发送位置",
         "toggleMessageTimestamps": "显示/隐藏 聊天信息时间戳",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "清空记录"
       },
       "parties": {

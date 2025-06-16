@@ -110,6 +110,7 @@ let config = {
   playersTabIndex: 0,
   globalMessage: false,
   hideGlobalMessageLocations: false,
+  filterMentions: false,
   trackedLocationId: null
 };
 
@@ -1001,6 +1002,14 @@ document.getElementById('globalMessageLocationsButton').onclick = function () {
   const toggled = this.classList.contains('toggled');
   document.getElementById('messages').classList.toggle('hideLocations', toggled);
   config.hideGlobalMessageLocations = toggled;
+  updateConfig(config);
+};
+
+document.getElementById('mentionFilterButton').onclick = function () {
+  this.classList.toggle('toggled');
+  const toggled = this.classList.contains('toggled');
+  document.getElementById('messages').classList.toggle('mentionsOnly', toggled);
+  config.filterMentions = toggled;
   updateConfig(config);
 };
 

@@ -592,6 +592,7 @@
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Montri/Kaŝi Lokojn de Babilmesaĝoj",
         "toggleMessageTimestamps": "Montri/Kaŝi Tempindikojn de Babilmesaĝoj",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Forigi Babilejon"
       },
       "parties": {

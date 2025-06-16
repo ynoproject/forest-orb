@@ -592,6 +592,7 @@
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "채팅 메시지 장소 보이기/숨기기",
         "toggleMessageTimestamps": "채팅 메시지 타임 스탬프 보이기/숨기기",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "채팅 기록 삭제하기"
       },
       "parties": {

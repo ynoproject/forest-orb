@@ -592,6 +592,7 @@
         "toggleNextLocation": "次のラリーの場所表示のオン／オフ",
         "toggleGlobalMessageLocations": "チャットの場所表示のオン／オフ",
         "toggleMessageTimestamps": "チャットのタイムスタンプ表示のオン／オフ",
+        "filterMentions": "メンションのみ表示",
         "clearChat": "チャットを消去"
       },
       "parties": {
