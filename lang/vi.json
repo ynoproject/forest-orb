@@ -592,6 +592,7 @@
         "toggleNextLocation": "Hiện/Ẩn Địa điểm kế tiếp trong Thám hiểm",
         "toggleGlobalMessageLocations": "Hiện/Ẩn Địa điểm trong Chat",
         "toggleMessageTimestamps": "Hiện/Ẩn Thời điểm gửi tin nhắn",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Xóa Chat"
       },
       "parties": {

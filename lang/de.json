@@ -592,6 +592,7 @@
         "toggleNextLocation": "Nächsten Expeditionsstandort anzeigen/ausblenden",
         "toggleGlobalMessageLocations": "Chatnachrichten Ort anzeigen/ausblenden",
         "toggleMessageTimestamps": "Chatnachrichten Zeitstempel anzeigen/ausblenden",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Chat leeren"
       },
       "parties": {

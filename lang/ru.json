@@ -592,6 +592,7 @@
         "toggleNextLocation": "Показать/Скрыть локацию следующей экспедиции",
         "toggleGlobalMessageLocations": "Переключить отображение Локаций в чате",
         "toggleMessageTimestamps": "Переключить отображение Меток времени у сообщений",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Очистить чат"
       },
       "parties": {

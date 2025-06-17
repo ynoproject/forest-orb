@@ -592,6 +592,7 @@
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "إظهار / إخفاء مواقع رسائل المحادثة",
         "toggleMessageTimestamps": "إظهار / إخفاء الطوابع الزمنية لرسالة المحادثة",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "مسح تاريخ المحادثة"
       },
       "parties": {

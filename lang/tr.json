@@ -592,6 +592,7 @@
         "toggleNextLocation": "Sonraki Seyahat Konumunu Göster/Sakla",
         "toggleGlobalMessageLocations": " Sohbet Mesaj Konumlarını Göster/Gizle",
         "toggleMessageTimestamps": "Sohbet Mesaj Zamanlarını Göster/Gizle",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Sohbeti Temizle"
       },
       "parties": {

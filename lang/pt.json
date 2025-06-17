@@ -592,6 +592,7 @@
         "toggleNextLocation": "Mostrar/Ocultar Proxima Localização da Expedição",
         "toggleGlobalMessageLocations": "Mostrar/Ocultar localizações em Mensagens de Bate-Papo",
         "toggleMessageTimestamps": "Mostrar/Ocultar a Hora em Mensagens de Bate-Papo",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Limpar o Chat"
       },
       "parties": {

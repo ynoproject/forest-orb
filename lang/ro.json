@@ -592,6 +592,7 @@
         "toggleNextLocation": "Show/Hide Next Expedition Location",
         "toggleGlobalMessageLocations": "Arată/Ascunde Locația în Mesaje",
         "toggleMessageTimestamps": "Arată/Ascunde Marcajele de Timp în Chat",
+        "filterMentions": "Show Mentions Only",
         "clearChat": "Șterge Chat-ul"
       },
       "parties": {
