@@ -1008,9 +1008,16 @@ document.getElementById('globalMessageLocationsButton').onclick = function () {
 document.getElementById('mentionFilterButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
+  const messages = document.getElementById('messages');
+  if (toggled)
+    saveScrollPosition();
   document.getElementById('messages').classList.toggle('mentionsOnly', toggled);
   config.filterMentions = toggled;
   updateConfig(config);
+  if (toggled)
+    messages.scrollTop = messages.scrollHeight;
+  else
+    messages.scrollTop = savedChatScrollTop;
 };
 
 document.getElementById('messageTimestampsButton').onclick = function () {
