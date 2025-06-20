@@ -362,6 +362,13 @@ function scrollChatMessages() {
   });
 }
 
+let savedChatScrollTop = 0;
+
+function saveScrollPosition() {
+  const messages = document.getElementById('messages');
+  savedChatScrollTop = messages.scrollTop;
+}
+
 let gameChatModeIndex = 0;
 
 function addGameChatMessage(messageHtml, messageType, senderUuid) {
