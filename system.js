@@ -104,6 +104,7 @@ const allGameUiThemes = {
     'Colby_GlitchedSys',
     'Colby_RadiantSys',
     'PGR_SYS_05',
+    'takikomi_syst2',
 
     'system_E_eye',
     'System_kuraud',
