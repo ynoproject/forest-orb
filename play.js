@@ -1328,8 +1328,8 @@ if (gameId === '2kki') {
 
   document.getElementById('explorerUndiscoveredLocationsLink').onclick = async () => {
     const modal = document.getElementById('explorerUndiscoveredLocationsModal');
-    const container = document.getElementById('explorerUndiscoveredLocations');
-    container.innerHTML = '';
+    const undiscoveredLocations = document.getElementById('explorerUndiscoveredLocations');
+    undiscoveredLocations.innerHTML = '';
     openModal(modal.id);
     addLoader(modal);
 
@@ -1340,12 +1340,12 @@ if (gameId === '2kki') {
       removeLoader(modal);
 
       if (!Array.isArray(names) || names.length === 0) {
-        container.classList.add('hidden');
+        undiscoveredLocations.classList.add('hidden');
         document.getElementById('explorerUndiscoveredLocationsEmptyLabel')
                 .classList.remove('hidden');
         return;
       }
-      container.classList.remove('hidden');
+      undiscoveredLocations.classList.remove('hidden');
       document.getElementById('explorerUndiscoveredLocationsEmptyLabel')
               .classList.add('hidden');
 
@@ -1366,8 +1366,6 @@ if (gameId === '2kki') {
               }
             });
 
-            gameLocationsMap[gameId] = mapLocs;
-            gameLocalizedLocationsMap[gameId] = localizedLocs;
           } else {
             console.error('gamelocations API error:', respAll.statusText);
           }
@@ -1384,7 +1382,7 @@ if (gameId === '2kki') {
       return `<li>${getLocalizedLocation(gameId, localized, fallback, true)}</li>`;
     }).join('');
 
-    container.innerHTML = itemsHtml;
+    undiscoveredLocations.innerHTML = itemsHtml;
 
     } catch (err) {
       console.error(err);
