@@ -73,8 +73,8 @@
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Salvar",
+        "apply": "Aplicar"
       },
       "confirm": {
         "ok": "OK",
@@ -142,10 +142,10 @@
           "musicVolume": "Volume da Música",
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleEnableBadgeHints": {
-            "label": "Badge Hints",
-            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+            "label": "Dicas de Emblemas",
+            "helpText": "Dicas de emblemas ficam disponíveis após você desboquear o emblema 'Amuleto de Colecionador de Emblemas EX'. Quando habilitado, um ícone aparecerá no canto superior direito ao entrar em um local com pelo menos uma insígnia que você não desbloqueou."
           },
-          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
+          "togglePlayBadgeHintSound": "Reproduzir som de Dica de Emblema",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
             "helpText": "O Yume 2kki Navigator é uma integração do Yume 2kki Explorer que permite visualizar rapidamente as conexões da sua localização. Esse recurso pode afetar drasticamente sua experiência e é altamente recomendável que você explore a maior parte do jogo às cegas antes de ativá-lo. Você deve estar conectado para usar o Yume 2kki Navigator."
@@ -172,10 +172,10 @@
           },
           "toggleQuestionablePreloads": "Pré-Carregar Wallpapers do PC",
           "toggleSchedules": "Eventos",
-          "unicodeFont": "Alternate Font",
+          "unicodeFont": "Fonte Alternativa",
           "toggleSingleplayerMode": {
-            "label": "Singleplayer Mode",
-            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+            "label": "Modo de Um Jogador",
+            "helpText": "Transforma o Modo Privado em Modo de Um Jogador, ocultando todos os amigos e membros do grupo. Perfeito caso queira explorar tudo por conta própia."
           }
         },
         "blocklist": "Blocklist",
@@ -321,9 +321,9 @@
             }
           },
           "timeTrials": {
-            "label": "Time Trials",
+            "label": "Contrarrelógio",
             "fields": {
-              "goalReached": "Goal Reached"
+              "goalReached": "Meta alcançada"
             }
           },
           "screenshots": {
@@ -592,7 +592,7 @@
         "toggleNextLocation": "Mostrar/Ocultar Proxima Localização da Expedição",
         "toggleGlobalMessageLocations": "Mostrar/Ocultar localizações em Mensagens de Bate-Papo",
         "toggleMessageTimestamps": "Mostrar/Ocultar a Hora em Mensagens de Bate-Papo",
-        "filterMentions": "Show Mentions Only",
+        "filterMentions": "Mostrar Apenas Menções",
         "clearChat": "Limpar o Chat"
       },
       "parties": {
@@ -649,7 +649,7 @@
       "1": "Conectado",
       "2": "Conectando...",
       "3": "Modo Privado",
-      "4": "Singleplayer"
+      "4": "Modo de Um Jogador"
     },
     "lastOnline": {
       "template": "última vez online\n{INTERVAL} atrás",
@@ -782,14 +782,14 @@
           "fail": "Nenhum Emblema foi encontrado para o ID do Emblema fornecido."
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "Banir Temp. {PLAYER}",
+          "prompt": "Quando desbanir {PLAYER}? (UTC time)",
+          "success": "{PLAYER} foi banido temporariamente."
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "Silenciar Temp. {PLAYER}",
+          "prompt": "Quando desilenciar {PLAYER}? (UTC time)",
+          "success": "{PLAYER} foi mutado temporariamente."
         }
       }
     },
@@ -921,13 +921,13 @@
         "update": "{PARTY} foi atualizado.",
         "join": "Você se juntou ao {PARTY}.",
         "leave": "Você deixou ao {PARTY}.",
-        "remove": "Removeram você de {PARTY}.",
+        "remove": "Você foi removido de {PARTY}.",
         "disband": "{PARTY} foi dissolvido.",
         "playerJoin": "{PLAYER} juntou-se ao grupo.",
         "playerLeave": "{PLAYER} deixou o grupo.",
         "playerOnline": "{PLAYER} está online.",
         "playerOffline": "{PLAYER} está offline.",
-        "kickPlayer": "Expulsaram {PLAYER} do grupo.",
+        "kickPlayer": "{PLAYER} foi expulso do grupo.",
         "transferPartyOwner": "{PLAYER} agora comanda o grupo."
       },
       "events": {
@@ -949,7 +949,7 @@
         "saveDownloaded": "Save do arquivo {SLOT} foi atualizado com sucesso.",
         "saveUpToDate": "Os dados do Save estão atualizados.",
         "saveCleared": "Save da Nuvem foi apagado. Isso não afetará os salvamentos existentes em nenhum dos seus dispositivos.",
-        "saveReminder": "Lembre de salvar com frequencia e fazer um backup de seus saves para não perder seu progresso."
+        "saveReminder": "Lembre de salvar com frequência e fazer um backup de seus saves para não perder seu progresso."
       },
       "timeTrials": {
         "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
@@ -1012,10 +1012,10 @@
       "loading": "Carregando...",
       "bp": "{BP} PE",
       "count": "{COUNT} Emblema",
-      "empty": "Badge gallery not set"
+      "empty": "Galeria de emblemas não definida"
     },
     "badgePreset": {
-      "empty": "This preset is empty."
+      "empty": "Esta predefinição está vazia."
     },
     "rankings": {
       "categories": {
@@ -1204,14 +1204,14 @@
           "playerPrompt": "Digite o nome da conta para revogar o emblema"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "Banir Temp. um Jogador",
+          "playerPrompt": "Digite o nome da conta para banir temporariamente",
+          "timePrompt": "Insira a data e hora em que o banimento expira (horário UTC)"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "Silenciar Temp. um Jogador",
+          "playerPrompt": "Digite o nome da conta para silenciar temporariamente",
+          "timePrompt": "Insira a data e hora em que o silenciamento expira (horário UTC)"
         }
       }
     }
