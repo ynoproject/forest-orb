@@ -1326,36 +1326,71 @@ if (gameId === '2kki') {
   if (hasTouchscreen)
     document.getElementById('explorerControls').remove();
 
-  document.getElementById('explorerUndiscoveredLocationsLink').onclick = () => {
+  document.getElementById('explorerUndiscoveredLocationsLink').onclick = async () => {
     const modal = document.getElementById('explorerUndiscoveredLocationsModal');
     const undiscoveredLocations = document.getElementById('explorerUndiscoveredLocations');
     undiscoveredLocations.innerHTML = '';
     openModal(modal.id);
     addLoader(modal);
-    apiFetch('explorerlocations')
-      .then(response => {
-        if (!response.ok)
-          throw new Error(response.statusText);
-        return response.json();
-      }).then(jsonResponse => {
-        removeLoader(modal);
-        const hasUndiscoveredLocations = Array.isArray(jsonResponse) && jsonResponse.length;
-        undiscoveredLocations.classList.toggle('hidden', !hasUndiscoveredLocations);
-        document.getElementById('explorerUndiscoveredLocationsEmptyLabel').classList.toggle('hidden', hasUndiscoveredLocations);
-        if (!hasUndiscoveredLocations)
-          return;
 
-        // TODO: Localization
-        const sortedLocations = jsonResponse
-          .map(l => { return { title: l }; })
-          .sort((a, b) => a.title.localeCompare(b.title, { sensitivity: 'base' }));
+    try {
+      const respNames = await apiFetch('explorerlocations');
+      if (!respNames.ok) throw new Error(respNames.statusText);
+      const names = await respNames.json();
+      removeLoader(modal);
 
-        undiscoveredLocations.innerHTML = `<li>${getLocalized2kkiLocationsHtml(sortedLocations, '</li><li>')}</li>`;
-      }).catch(() => {
-        removeLoader(modal);
-        closeModal(modal);
-      });
+      if (!Array.isArray(names) || names.length === 0) {
+        undiscoveredLocations.classList.add('hidden');
+        document.getElementById('explorerUndiscoveredLocationsEmptyLabel')
+                .classList.remove('hidden');
+        return;
+      }
+      undiscoveredLocations.classList.remove('hidden');
+      document.getElementById('explorerUndiscoveredLocationsEmptyLabel')
+              .classList.add('hidden');
+
+      const mapLocs = gameLocationsMap[gameId] || {};
+      const localizedLocs = gameLocalizedLocationsMap[gameId] || {};
+
+      if (['ja', 'ko', 'zh'].includes(globalConfig.lang)) {
+        const missing = names.filter(en => !localizedLocs.hasOwnProperty(en));
+        if (missing.length > 0) {
+          const respAll = await apiFetch('gamelocations');
+          if (respAll.ok) {
+            const allLocs = await respAll.json();
+            allLocs.forEach(loc => {
+              if (missing.includes(loc.title)) {
+                mapLocs[loc.title] = { title: loc.title, urlTitle: loc.title };
+                const jpName = loc.originalTitle || loc.title;
+                localizedLocs[loc.title] = { title: jpName, urlTitle: jpName };
+              }
+            });
+
+          } else {
+            console.error('gamelocations API error:', respAll.statusText);
+          }
+        }
+      }
+
+    const sorted = names.slice().sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: 'base' })
+    );
+
+    const itemsHtml = sorted.map(enName => {
+      const fallback  = mapLocs[enName] || { title: enName, urlTitle: enName };
+      const localized = localizedLocs[enName] || fallback;
+      return `<li>${getLocalizedLocation(gameId, localized, fallback, true)}</li>`;
+    }).join('');
+
+    undiscoveredLocations.innerHTML = itemsHtml;
+
+    } catch (err) {
+      console.error(err);
+      removeLoader(modal);
+      closeModal(modal);
+    }
   };
+
 }
 
 Array.from(document.querySelectorAll('.playerCountLabel')).forEach(pc => {
