@@ -1781,7 +1781,7 @@ async function withTimeout(duration, prom) {
 }
 
 const rtlLangs = ['ar'];
-const latinExLangs = ['vi'];
+const latinExLangs = ['vi', 'ru'];
 function setLang(lang, isInit) {
   if (rtlLangs.includes(lang))
     document.documentElement.setAttribute('dir', 'rtl');
