@@ -1349,7 +1349,7 @@
                   <option value="oldest" data-i18n="[html]modal.locations.fields.sortOrder.values.oldest">Oldest</option>
                   <option value="shallowest" data-i18n="[html]modal.locations.fields.sortOrder.values.shallowest">Shallowest</option>
                   <option value="deepest" data-i18n="[html]modal.locations.fields.sortOrder.values.deepest">Deepest</option>
-                  <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.alphabetical">Alphabetical</option>
+                  <option value="alpha" data-i18n="[html]modal.locations.fields.sortOrder.values.alpha">Alphabetical</option>
                   <option value="players" data-i18n="[html]modal.locations.fields.sortOrder.values.players">Player Count</option>
                 </select>
               </div>

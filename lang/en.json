@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
         "complete": "You've discovered every available location! Congrats!!"
+      },
+      "locations": {
+        "title": "Locations",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "All",
+              "visited": "Visited",
+              "unvisited": "Unvisited"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Newest",
+              "oldest": "Oldest",
+              "shallowest": "Shallowest",
+              "deepest": "Deepest",
+              "alpha": "Alphabetical",
+              "players": "Player Count"
+            }
+          }
+        }
       }
     },
     "tooltips": {

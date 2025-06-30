@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "未発見の場所",
         "complete": "あなたは到達可能なすべての場所を発見しました！おめでとう！！"
+      },
+      "locations": {
+        "title": "場所一覧",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "全て",
+              "visited": "到達済み",
+              "unvisited": "未到達"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "新しい順",
+              "oldest": "古い順",
+              "shallowest": "浅い順",
+              "deepest": "深い順",
+              "alpha": "アルファベット順",
+              "players": "プレイヤー数順"
+            }
+          }
+        }
       }
     },
     "tooltips": {

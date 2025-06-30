@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Locais ainda Não Descobertos",
         "complete": "Você descobriu todos os locais disponíveis! Parabéns!!!"
+      },
+      "locations": {
+        "title": "Localizações",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "Tudo",
+              "visited": "Visitados",
+              "unvisited": "Não Visitados"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Mais Recente",
+              "oldest": "Mais Antigo",
+              "shallowest": "Mais Raso",
+              "deepest": "Mais Profundo",
+              "alpha": "Ordem Alfabética",
+              "players": "Número de Jogadores"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Rastrear localização",
           "off": "Parar de Rastrear localização"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "Tudo",
-          "visited": "Visitados",
-          "unvisited": "Não Visitados"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Mais Recente",
-          "oldest": "Mais Antigo",
-          "shallowest": "Mais Raso",
-          "deepest": "Mais Profundo",
-          "alpha": "Ordem Alfabética",
-          "players": "Número de Jogadores"
         }
       }
     },

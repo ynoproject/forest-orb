@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "未探索地域",
         "complete": "您已探索完所有可到达的地域！恭喜！"
+      },
+      "locations": {
+        "title": "地点列表",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "全部",
+              "visited": "已造访",
+              "unvisited": "未造访"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "最新",
+              "oldest": "最旧",
+              "shallowest": "最浅",
+              "deepest": "最深",
+              "alpha": "字母顺序",
+              "players": "在线玩家数"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "导航至此",
           "off": "取消导航"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "全部",
-          "visited": "已造访",
-          "unvisited": "未造访"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "最新",
-          "oldest": "最旧",
-          "shallowest": "最浅",
-          "deepest": "最深",
-          "alpha": "字母顺序",
-          "players": "在线玩家数"
         }
       }
     },

@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Nemalkovritaj Lokoj",
         "complete": "Vi malkovris ĉiujn disponeblajn lokojn! Gratulon!!"
+      },
+      "locations": {
+        "title": "Lokoj",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "All",
+              "visited": "Visited",
+              "unvisited": "Unvisited"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Newest",
+              "oldest": "Oldest",
+              "shallowest": "Shallowest",
+              "deepest": "Deepest",
+              "alpha": "Alphabetical",
+              "players": "Player Count"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -600,7 +622,7 @@
         "disbandParty": "Disigi Grupon"
       },
       "events": "Ekspedicioj",
-      "locations": "Locations",
+      "locations": "Lokoj",
       "communityScreenshots": "Komunumaj Ekrankopioj",
       "rankings": "Rangolisto",
       "schedules": "Events",
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
         }
       }
     },

@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Nieodkryte lokalizacje",
         "complete": "Odkryto wszystkie lokalizacje! Gratulacje!"
+      },
+      "locations": {
+        "title": "Miejsca",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "All",
+              "visited": "Visited",
+              "unvisited": "Unvisited"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Newest",
+              "oldest": "Oldest",
+              "shallowest": "Shallowest",
+              "deepest": "Deepest",
+              "alpha": "Alphabetical",
+              "players": "Player Count"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -600,7 +622,7 @@
         "disbandParty": "Usuń grupę"
       },
       "events": "Ekspedycje",
-      "locations": "Locations",
+      "locations": "Miejsca",
       "communityScreenshots": "Zrzuty ekranu społeczności",
       "rankings": "Rankingi",
       "schedules": "Events",
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
         }
       }
     },

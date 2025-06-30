@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
         "complete": "You've discovered every available location! Congrats!!"
+      },
+      "locations": {
+        "title": "Luoghi",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "All",
+              "visited": "Visited",
+              "unvisited": "Unvisited"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Newest",
+              "oldest": "Oldest",
+              "shallowest": "Shallowest",
+              "deepest": "Deepest",
+              "alpha": "Alphabetical",
+              "players": "Player Count"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -600,7 +622,7 @@
         "disbandParty": "Elimina Gruppo"
       },
       "events": "Spedizioni",
-      "locations": "Locations",
+      "locations": "Luoghi",
       "communityScreenshots": "Community Screenshots",
       "rankings": "Classifiche",
       "schedules": "Events",
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
         }
       }
     },

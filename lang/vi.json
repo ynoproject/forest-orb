@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Địa điểm chưa khám phá",
         "complete": "Bạn đã khám phá hết tất cả địa điểm! Chúc mừng!!"
+      },
+      "locations": {
+        "title": "Địa Điểm",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "Tất cả",
+              "visited": "Đã đến",
+              "unvisited": "Chưa đến"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Mới nhất",
+              "oldest": "Cũ nhất",
+              "shallowest": "Nông nhất",
+              "deepest": "Sâu nhất",
+              "alpha": "Thứ tự bảng chữ cái",
+              "players": "Số người chơi"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Chỉ đường",
           "off": "Ngưng chỉ đường"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "Tất cả",
-          "visited": "Đã đến",
-          "unvisited": "Chưa đến"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Mới nhất",
-          "oldest": "Cũ nhất",
-          "shallowest": "Nông nhất",
-          "deepest": "Sâu nhất",
-          "alpha": "Thứ tự bảng chữ cái",
-          "players": "Số người chơi"
         }
       }
     },
