@@ -561,6 +561,7 @@
                       <option value="vi">Tiếng Việt</option>
                       <option value="ar">العربية</option>
                       <option value="id">Bahasa Indonesia</option>
+                      <option value="uk">Українська</option>
                     </select>
                   </div>
                   <label id="noGameLocInstruction" class="hidden" data-i18n="[html]instruction.noGameLoc">* Game Localization Unsupported</label>

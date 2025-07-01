@@ -1,0 +1,1219 @@
+{
+  "translationComplete": "1",
+  "version": {
+  "2kki": {
+    "label": "Yume 2kki Версія {VERSION}",
+    "substitutes": {
+    " Patch ": " Патч ",
+    "?": "?"
+    }
+  }
+  },
+  "ui": {
+  "account": {
+    "login": "Увійти",
+    "logout": "Вийти"
+  },
+  "fontStyle": {
+    "label": "Стиль шрифту:",
+    "values": {
+    "style1": "Стиль 1",
+    "style2": "Стиль 2",
+    "style3": "Стиль 3",
+    "style4": "Стиль 4",
+    "style5": "Стиль 5",
+    "style6": "Стиль 6",
+    "style7": "Стиль 7"
+    }
+  },
+  "chatbox": {
+    "location": "Місце:&nbsp;",
+    "nextLocation": "Наступне місце:&nbsp;",
+    "immersionMode": "Режим занурення",
+    "reconnect": "Підключити знову",
+    "tab": {
+    "chat": "Чат",
+    "players": "Гравці",
+    "parties": "Групи"
+    },
+    "chat": {
+    "tab": {
+      "all": "Усі",
+      "map": "Карта",
+      "global": "Глобал",
+      "party": "Група"
+    },
+    "nickname": {
+      "header": "Щоб писати в чат, спершу встановіть нікнейм.",
+      "rule": {
+      "maxLength": "* Максимум 10 символів",
+      "alphanumeric": "* Лише літери та цифри"
+      }
+    }
+    },
+    "players": {
+    "tab": {
+      "map": "Карта",
+      "friends": "Друзі",
+      "party": "Група"
+    }
+    }
+  },
+  "instruction": {
+    "translation": "Потрібен переклад",
+    "noGameLoc": "* Локалізація гри не підтримується"
+  },
+  "2kki": {
+    "hostedWithPermission": "Сайт розміщено з дозволу розробників Yume 2kki"
+  },
+  "disclaimer": {
+    "pendingApproval": "Очікує на схвалення від розробника / видавця",
+    "hostedWithPermission": "Розміщено з дозволу розробників",
+    "originalCreation": "Оригінальна розробка спільноти YNOproject"
+  },
+  "modal": {
+    "common": {
+    "save": "Зберегти",
+    "apply": "Застосувати"
+    },
+    "confirm": {
+    "ok": "OK",
+    "cancel": "Скасувати"
+    },
+    "login": {
+    "title": "Увійти",
+    "fields": {
+      "username": "Ім’я користувача",
+      "password": "Пароль"
+    },
+    "submit": "Подати",
+    "registerPrompt": "Не маєте облікового запису?&nbsp;",
+    "register": "Зареєструватися"
+    },
+    "register": {
+    "title": "Зареєструватися",
+    "fields": {
+      "email": "Електронна пошта",
+      "username": "Ім’я користувача",
+      "password": "Пароль",
+      "confirmPassword": "Підтвердіть пароль"
+    },
+    "submit": "Подати",
+    "loginPrompt": "Вже маєте обліковий запис?&nbsp;",
+    "login": "Увійти"
+    },
+    "settings": {
+    "title": "Налаштування",
+    "fields": {
+      "lang": "Мова",
+      "locationVisibility": {
+      "label": "Видимість місцезнаходження в грі",
+      "values": {
+        "private": "Приватний",
+        "friends": "Друзі",
+        "public": "Публічний"
+      }
+      },
+      "nametagMode": {
+      "label": "Іменні мітки",
+      "values": {
+        "none": "Немає",
+        "classic": "Класичний",
+        "compact": "Компактний",
+        "slim": "Вузький"
+      }
+      },
+      "wikiLinkMode": {
+      "label": "Спливаюче вікно посилання на Вікі",
+      "values": {
+        "always": "Завжди",
+        "fullscreen": "Лише на весь екран",
+        "never": "Ніколи"
+      }
+      },
+      "saveReminder": {
+      "label": "Частота нагадування про збереження",
+      "interval": {
+        "minutes": "{{interval}} хвилин",
+        "never": "Ніколи"
+      }
+      },
+      "soundVolume": "Гучність звуку",
+      "musicVolume": "Гучність музики",
+      "togglePlayerSounds": "Звуки гравця",
+      "toggleEnableBadgeHints": {
+      "label": "Підказки значків",
+      "helpText": "Підказки значків стають доступними після розблокування значка «Badge Collector Amulet EX». Якщо увімкнено, під час входу в локацію, де є принаймні один нерозблокований значок, у верхньому правому куті з'явиться іконка."
+      },
+      "togglePlayBadgeHintSound": "Відтворити звук підказки значка",
+      "toggleEnableExplorer": {
+      "label": "Навігатор Yume 2kki",
+      "helpText": "Навігатор Yume 2kki - це розширення Yume 2kki Explorer, яке дозволяє миттєво переглядати з'єднання вашого місцезнаходження. Ця функція може суттєво вплинути на ваш досвід, тому наполегливо рекомендується спочатку дослідити більшість гри самостійно, не вмикаючи її. Щоб користуватися Навігатором Yume 2kki, потрібно увійти в обліковий запис."
+      },
+      "toggleImmersionMode": {
+      "label": "Режим занурення",
+      "helpText": "Вимикає лічильники гравців, глобальний чат і карти, щоб забезпечити більш занурений ігровий досвід."
+      },
+      "timeTrialinfo": {
+      "label": "Часове випробування"
+      },
+      "toggleMobileControls": "Показати мобільні елементи керування",
+      "mobileControlsType": {
+      "label": "Тип мобільного керування",
+      "default": "Хрестовина",
+      "joystick": "Плаваючий джойстик",
+      "dpad": "Плаваюча хрестовина"
+      },
+      "toggleLocationDisplay": "Відображення місцезнаходження",
+      "toggleRankings": "Рейтинги",
+      "togglePreloads": {
+      "label": "Попереднє завантаження",
+      "helpText": "Попередньо завантажує часто використовувані ресурси гри, щоб вони були доступні за потреби; вимагає перезавантаження сторінки."
+      },
+      "toggleQuestionablePreloads": "Попереднє завантаження шпалер для ПК",
+      "toggleSchedules": "Події",
+      "unicodeFont": "Альтернативний шрифт",
+      "toggleSingleplayerMode": {
+      "label": "Однокористувацький режим",
+      "helpText": "Перетворює приватний режим на однокористувацький, приховуючи всіх друзів і членів групи. Ідеально підходить для тих, хто хоче досліджувати світ повністю наодинці."
+      }
+    },
+    "blocklist": "Список блокування",
+    "chatSettings": "Чат",
+    "screenshotSettings": "Знімки екрана",
+    "notificationSettings": "Сповіщення",
+    "cacheSettings": "Кеш",
+    "accountSettings": "Обліковий запис",
+    "engineSettings": "Рушій (F1)"
+    },
+    "blocklist": {
+    "title": "Список блокування",
+    "empty": "Ваш список блокування наразі порожній"
+    },
+    "chatSettings": {
+    "title": "Налаштування чату",
+    "fields": {
+      "toggleGameChat": {
+      "label": "Оверлей чату в грі",
+      "global": "Оверлей глобального чату",
+      "party": "Оверлей групового чату"
+      },
+      "toggleTabToChat": "Натисніть Tab, щоб відкрити чат",
+      "togglePlayMentionSound": "Відтворити звук згадки",
+      "chatHistoryLimit": {
+      "values": {
+        "0": "Необмежений",
+        "25": "25",
+        "50": "50",
+        "100": "100",
+        "250": "250",
+        "500": "500",
+        "1000": "1000",
+        "2500": "2500"
+      }
+      },
+      "mapChatHistoryLimit": {
+      "label": "Обмеження історії чату на мапі"
+      },
+      "globalChatHistoryLimit": {
+      "label": "Обмеження історії глобального чату"
+      },
+      "partyChatHistoryLimit": {
+      "label": "Ліміт історії групового чату"
+      },
+      "blurScreenshotEmbeds": "Розмити всі знімки екрана"
+    }
+    },
+    "screenshotSettings": {
+    "title": "Налаштування знімків екрана",
+    "fields": {
+      "autoDownloadScreenshots": "Автоматично завантажувати знімки екрана",
+      "screenshotResolution": {
+      "label": "Роздільна здатність завантаження знімків екрана",
+      "values": {
+        "1": "1x - 320x240",
+        "2": "2x - 640x480",
+        "3": "3x - 960x720",
+        "4": "4x - 1280x960"
+      }
+      }
+    }
+    },
+    "notificationSettings": {
+    "title": "Налаштування сповіщень",
+    "fields": {
+      "toggleNotifications": "Сповіщення",
+      "screenPosition": {
+      "label": "Положення на екрані",
+      "values": {
+        "bottomLeft": "Нижній лівий кут",
+        "bottomRight": "Нижній правий кут",
+        "topLeft": "Верхній лівий кут",
+        "topRight": "Верхній правий кут"
+      }
+      },
+      "system": {
+      "label": "Система",
+      "fields": {
+        "siteUpdates": "Сайт оновлено",
+        "error": "Виникла помилка",
+        "pushNotifications": "Сповіщення на робочому столі"
+      }
+      },
+      "account": {
+      "label": "Обліковий запис",
+      "fields": {
+        "loggedIn": "Увійшли в систему",
+        "loggedOut": "Вийшли з системи",
+        "passwordUpdate": "Пароль оновлено"
+      }
+      },
+      "players": {
+      "label": "Гравці",
+      "fields": {
+        "playerBlocked": "Гравця заблоковано",
+        "playerUnblocked": "Гравця розблоковано"
+      }
+      },
+      "friends": {
+      "label": "Друзі",
+      "fields": {
+        "add": "Друга додано",
+        "remove": "Друга видалено",
+        "accept": "Запит на додавання в друзі прийнято",
+        "reject": "Запит на додавання в друзі відхилено",
+        "cancel": "Запит на додавання в друзі скасовано",
+        "incoming": "Вхідний запит у друзі",
+        "playerOnline": "Друг у мережі",
+        "playerOffline": "Друг не в мережі"
+      }
+      },
+      "parties": {
+      "label": "Групи",
+      "fields": {
+        "create": "Групу створено",
+        "update": "Групу створено",
+        "join": "Групу створено",
+        "leave": "Вийшов з групи",
+        "remove": "Видалено з групи",
+        "disband": "Групу розпущено",
+        "playerJoin": "Гравець приєднався до групи",
+        "playerLeave": "Гравець покинув групу",
+        "playerOnline": "Учасник групи онлайн",
+        "playerOffline": "Учасник групи офлайн",
+        "kickPlayer": "Гравця вигнано з групи",
+        "transferPartyOwner": "Гравця призначено лідером групи"
+      }
+      },
+      "events": {
+      "label": "Експедиції",
+      "fields": {
+        "complete": "Експедицію завершено",
+        "freeComplete": "Вільну експедицію завершено",
+        "vmComplete": "Знайдено торговий автомат",
+        "listUpdated": "Список експедицій оновлено"
+      }
+      },
+      "badges": {
+      "label": "Значки",
+      "fields": {
+        "badgeUnlocked": "Значок розблоковано"
+      }
+      },
+      "timeTrials": {
+      "label": "Часові випробування",
+      "fields": {
+        "goalReached": "Ціль досягнуто"
+      }
+      },
+      "screenshots": {
+      "label": "Скріншоти",
+      "fields": {
+        "screenshotTaken": "Скріншот зроблено"
+      }
+      },
+      "saveSync": {
+      "label": "Синхронізація збережень",
+      "fields": {
+        "saveUploading": "Збереження завантажується",
+        "saveUploaded": "Збереження завантажено",
+        "saveDownloading": "Збереження скачування",
+        "saveDownloaded": "Збереження сказано",
+        "saveUpToDate": "ження актуальне",
+        "saveCleared": "Збереження очищено",
+        "saveReminder": "Нагадування про збереження"
+      }
+      },
+      "schedules": {
+      "label": "Події",
+      "fields": {
+        "upcomingSchedules": "Майбутні події"
+      }
+      }
+    }
+    },
+    "cacheSettings": {
+    "title": "Налаштування кешу",
+    "clear": "Очистити",
+    "fields": {
+      "locationCache": "Кеш місцезнаходжень",
+      "mapCache": "Кеш карт",
+      "locationColorCache": "Кеш кольорів місцезнаходжень"
+    }
+    },
+    "accountSettings": {
+    "title": "Налаштування облікового запису",
+    "fields": {
+      "badge": "Значок",
+      "changePassword": "Змінити пароль",
+      "clearSaveSync": "Очистити дані синхронізації збережень"
+    }
+    },
+    "password": {
+    "title": "Зміна пароля",
+    "fields": {
+      "oldPassword": "Старий пароль",
+      "newPassword": "Новий пароль",
+      "newConfirmPassword": "Підтвердіть новий пароль"
+    },
+    "submit": "Подати"
+    },
+    "badges": {
+    "title": "Значки",
+    "manageBadgeGallery": "Керування галереєю значків",
+    "fields": {
+      "unlockStatus": {
+      "label": "Статус розблокування:&nbsp;",
+      "values": {
+        "0": "Заблоковано",
+        "1": "Розблоковано",
+        "all": "Усі",
+        "recentUnlock": "Нещодавно розблоковано"
+      }
+      },
+      "sortOrder": {
+      "label": "Порядок сортування:&nbsp;",
+      "values": {
+        "default": "За замовчуванням"
+      }
+      },
+      "search": {
+      "label": "Пошук:&nbsp;",
+      "name": "Назва:",
+      "location": "Місце:"
+      }
+    }
+    },
+    "badgeGallery": {
+    "title": "Керування галереєю значків",
+    "badgeGalleryRowProgress": "Наступне розширення рядка (BP)",
+    "badgeGalleryColProgress": "Наступне розширення стовпця (значки)",
+    "removeMode": {
+      "activate": "Видалити значки",
+      "deactivate": "Готово"
+    },
+    "manageBadgePreset": "Керування пресетами"
+    },
+    "badgePreset": {
+    "title": "Керування пресетами значків",
+    "selectPreset": "Вибрати пресет",
+    "presetName": "Пресет {{index}}"
+    },
+    "save": {
+    "title": "Керування даними збереження",
+    "reload": "Зберегти зміни й перезавантажити",
+    "info": "Для імпорту збережень, якщо останнє збереження було зроблено з використанням перекладу в RPG_RT, гра може видавати помилки, поки ви не збережетеся знову в EasyRPG без активних перекладів."
+    },
+    "uiTheme": {
+    "title": "Тема інтерфейсу",
+    "auto": "АВТО"
+    },
+    "createParty": {
+    "title": {
+      "create": "Створити групу",
+      "update": "EdiРедагувати групу"
+    },
+    "fields": {
+      "partyName": "Назва групи",
+      "description": "Опис",
+      "public": "Публічна",
+      "password": "Пароль",
+      "theme": "Тема"
+    },
+    "showPassword": "Показати пароль",
+    "hidePassword": "Приховати пароль",
+    "submit": "Подати"
+    },
+    "joinPrivateParty": {
+    "title": "Приєднатися до приватної групи",
+    "fields": {
+      "password": "Пароль"
+    },
+    "showPassword": "Показати пароль",
+    "hidePassword": "Приховати пароль",
+    "incorrectPassword": "Неправильний пароль: спробуйте ще раз.",
+    "submit": "Подати"
+    },
+    "events": {
+    "title": "Експедиції",
+    "rankExp": "Наступний ранг",
+    "weekExp": "Досвід за тиждень",
+    "tabs": {
+      "locations": "Місця",
+      "vms": "Пошук торгових автоматів"
+    }
+    },
+    "rankings": {
+    "title": "Рейтинги",
+    "player": "Гравець"
+    },
+    "screenshot": {
+    "title": "Ваш знімок екрана",
+    "download": "Завантажити",
+    "save": "Зберегти в мої знімки екрана",
+    "share": "Поділитися в чаті"
+    },
+    "myScreenshots": {
+    "title": "Мої знімки екрана",
+    "screenshotSlotProgress": "Наступне розширення слота (BP)",
+    "empty": "Ви ще не зберегли жодного знімка екрана."
+    },
+    "communityScreenshots": {
+    "title": "Скріншоти спільноти",
+    "scrollToRefresh": "Прокрутіть вгору, щоб оновити",
+    "fields": {
+      "game": {
+      "label": "Гра:&nbsp;",
+      "values": {
+        "all": "Усі"
+      }
+      },
+      "sortOrder": {
+      "values": {
+        "recent": "Найновіші",
+        "likes": "Найбільше вподобань"
+      }
+      },
+      "interval": {
+      "values": {
+        "day": "Сьогодні",
+        "week": "Цього тижня",
+        "month": "Цього місяця",
+        "year": "Цього року",
+        "all": "За весь час"
+      }
+      }
+    }
+    },
+    "schedule": {
+    "title": "Події",
+    "ongoing": "Поточні події",
+    "party": "Події групи",
+    "future": "Майбутні події",
+    "official": "Офіційні події",
+    "noResults": "Подій не заплановано.",
+    "doSchedule": "Запланувати подію"
+    },
+    "scheduleEdit": {
+    "title": "Редагувати подію",
+    "save": "Зберегти",
+    "cancel": "Скасувати подію",
+    "fields": {
+      "name": "Назва події",
+      "description": "Опис",
+      "datetime": "Дата і час події",
+      "recurring": "Повторювана подія",
+      "theme": "Тема",
+      "interval": {
+      "title": "Інтервал",
+      "days": "днів",
+      "months": "місяців",
+      "years": "років"
+      },
+      "restrictParty": "Обмежити групою",
+      "official": "Офіційні події",
+      "resetOrganizer": "Скинути організатора",
+      "platforms": {
+      "title": "Зовнішні посилання",
+      "discord": "Discord",
+      "youtube": "YouTube",
+      "twitch": "Twitch",
+      "niconico": "Nicovideo",
+      "openrec": "Openrec",
+      "bilibili": "Bilibili"
+      }
+    }
+    },
+    "report": {
+    "title": "Скарга",
+    "submit": "Подати",
+    "fields": {
+      "reason": {
+      "1": "Образи, шкідлива або неприйнятна мова",
+      "2": "Переслідування, булінг, сталкінг",
+      "3": "Неприйнятні імена",
+      "4": "Обхід бану",
+      "5": "Читінг, зловживання помилками гри",
+      "6": "Гравець неповнолітній",
+      "7": "Спам",
+      "title": "Причина",
+      "placeholder": "Своя причина (макс. 50 символів)",
+      "other": "Інше (вкажіть)"
+      }
+    }
+    },
+    "rules": {
+    "title": "Правила",
+    "rule1": "Будьте ввічливими та поважайте інших.",
+    "rule2": "Заборонені 18+ теми (NSFW, насильство тощо).",
+    "rule3": "Заборонено обговорення політики.",
+    "rule4": "Не допускаються образливі коментарі (зокрема образливі слова).",
+    "rule5": "Заборонено читінг у будь-якій формі та з будь-якої причини.",
+    "rule6": "У разі виникнення проблем повідомте модераторам."
+    },
+    "explorerUndiscoveredLocations": {
+    "title": "Невідкриті локації",
+    "complete": "Ви відкрили всі доступні локації! Вітаємо!"
+    },
+    "tooltips": {
+    "togglePrivateMode": "Перемкнути приватний режим",
+    "save": "Керування даними збереження",
+    "uiTheme": "Тема інтерфейсу",
+    "toggleChat": "Показати/сховати чат",
+    "toggleExplorer": "Перемкнути навігатор Yume 2kki",
+    "screenshot": "Зробити знімок екрана",
+    "myScreenshots": "Мої знімки екрана",
+    "settings": "Налаштування",
+    "toggleMute": "Увімкнути/вимкнути звук",
+    "toggleHideLocation": "Увімкнути/вимкнути передачу місцезнаходження",
+    "toggleGlobalMessage": "Увімкнути/вимкнути глобальні повідомлення",
+    "chat": {
+      "toggleNextLocation": "Показати/сховати наступну локацію експедиції",
+      "toggleGlobalMessageLocations": "Показати/сховати місця повідомлень у чаті",
+      "toggleMessageTimestamps": "Показати/сховати час повідомлень",
+      "filterMentions": "Показувати тільки згадки",
+      "clearChat": "Очистити чат"
+    },
+    "parties": {
+      "createParty": "Створити групу",
+      "disbandParty": "Розпустити групу"
+    },
+    "events": "Експедиції",
+    "locations": "Локації",
+    "communityScreenshots": "Скріншоти спільноти",
+    "rankings": "Рейтинги",
+    "schedules": "Події",
+    "nexus": "Повернутися до Нексусу",
+    "explorerUndiscoveredLocations": "Переглянути невідкриті локації",
+    "timeTrial": "Щоб увімкнути режим часового випробування, затисніть Shift і праву стрілку після початку нової гри, перш ніж щось з'явиться на екрані.",
+    "mobileControlsType": "Альтернативи до стандартного типу керування «хрестовина».<br>Плаваючі типи доступні лише в мобільному повноекранному режимі."
+    },
+    "placeholders": {
+    "scheduleDescription": "Підтримується синтаксис Markdown, використовуйте {{l:World,назва посилання (необов'язково)}} для вставки посилання на yume.wiki"
+    },
+    "reviewRules": "Переглянути правила"
+  }
+  },
+  "messages": {
+    "games": {
+      "ynoproject": "YNOproject",
+      "yume": "Yume Nikki",
+      "2kki": "Yume 2kki",
+      "unconscious": "Collective Unconscious",
+      "flow": ".flow",
+      "fog": "FOG",
+      "prayers": "Answered Prayers",
+      "deepdreams": "Deep Dreams",
+      "someday": "Someday",
+      "amillusion": "Amillusion",
+      "unevendream": "Uneven Dream",
+      "braingirl": "Braingirl",
+      "muma": "Muma|Rope",
+      "genie": "Dream Genie",
+      "mikan": "Mikan Muzou",
+      "ultraviolet": "Ultra Violet",
+      "sheawaits": "She Awaits",
+      "oneshot": "OneShot",
+      "oversomnia": "Oversomnia",
+      "tsushin": "Yume Tsushin",
+      "nostalgic": "nostAlgic",
+      "if": "If",
+      "unaccomplished": "Unaccomplished"
+    },
+    "leavePage": "и дійсно хочете покинути сторінку? Весь незбережений ігровий прогрес буде втрачено.",
+    "logout": "Ви дійсно хочете вийти з облікового запису?s",
+    "loadingInstruct": ". <br /> <br /> Здається, сайт завантажується досить довго; якщо проблема не зникне, спробуйте натиснути CTRL+F5 або очистити кеш браузера (але не куки!). Ви можете перевірити помилки в консолі, натиснувши F12.",
+    "requestNotifications": "Отримувати сповіщення про події, за якими ви стежите, та оновлення експедицій?",
+    "connStatus": {
+      "0": "Відключено",
+      "1": "Підключено",
+      "2": "Підключення...",
+      "3": "Приватний режим",
+      "4": "Однокористувацький режим"
+    },
+    "lastOnline": {
+      "template": "Останній раз у мережі\n{INTERVAL} тому",
+      "longTime": "Дуже давно",
+      "interval": {
+      "short": "менше 1 хвилини",
+      "minutes": {
+        "singular": "{VALUE} хвилина",
+        "plural": "{VALUE} хвилина"
+      },
+      "hours": {
+        "singular": "{VALUE} година",
+        "plural": "{VALUE} година"
+      },
+      "days": {
+        "singular": "{VALUE} день",
+        "plural": "{VALUE} день"
+      }
+      }
+    },
+    "location": {
+      "template": "{LOCATION}",
+      "queryingLocation": "Запит місцезнаходження...",
+      "unknownLocation": "Невідома локація",
+      "2kki": {
+      "template": "{LOCATION}"
+      },
+      "connType": {
+      "1": "В один бік",
+      "2": "Вхід заборонено",
+      "4": "Розблокувати",
+      "8": "Заблоковано",
+      "16": "Глухий кут",
+      "32": "Ізольовано",
+      "64": "Потрібен ефект ({PARAMS})",
+      "128": "Шанс {PARAMS}",
+      "256": "{PARAMS}",
+      "512": "Скорочений шлях",
+      "1024": "Точка виходу",
+      "2048": "Сезонна ({PARAMS})"
+      },
+      "depth": " ({DEPTH})",
+      "playing": "Зараз грає в {GAME}"
+    },
+    "locationDisplay": {
+      "template": "{LOCATION}",
+      "2kki": {
+      "template": "{LOCATION}"
+      }
+    },
+    "playersOnline": {
+      "singular": "{COUNT} гравець онлайн",
+      "plural": "{COUNT} гравців онлайн"
+    },
+    "playersInMap": {
+      "singular": "{COUNT} гравець на мапі",
+      "plural": "{COUNT} гравців на мапі"
+    },
+    "playerList": {
+      "unnamed": "Безіменний гравець",
+      "muted": "Звук вимкнено",
+      "actions": {
+      "approveFriend": "Прийняти запит у друзі",
+      "rejectFriend": "Відхилити запит у друзі",
+      "cancelFriend": "Скасувати запит у друзі",
+      "partyKick": "Виключити з групи",
+      "transferPartyOwner": "Передати лідерство в групі"
+      }
+    },
+    "roles": {
+      "mod": "Модератор",
+      "dev": "Розробник"
+    },
+    "timestamp": {
+      "time": "{TIME}",
+      "timeAndWeekday": "{TIME} ({WEEKDAY})"
+    },
+    "context": {
+      "ping": {
+      "label": "Згадати {PLAYER}"
+      },
+      "addFriend": {
+      "label": "Додати {PLAYER} у друзі"
+      },
+      "removeFriend": {
+      "label": "Видалити {PLAYER} з друзів"
+      },
+      "block": {
+      "label": "Заблокувати {PLAYER}",
+      "confirm": "Ви дійсно хочете заблокувати {PLAYER}?"
+      },
+      "unblock": {
+      "label": "Розблокувати {PLAYER}",
+      "confirm": "Ви дійсно хочете розблокувати {PLAYER}?"
+      },
+      "report": {
+      "label": "Поскаржитись на {PLAYER}"
+      },
+      "admin": {
+      "ban": {
+        "label": "Забанити {PLAYER}",
+        "confirm": "Ви дійсно хочете забанити {PLAYER}?",
+        "success": "{PLAYER} було забанено."
+      },
+      "unban": {
+        "label": "Розбанити {PLAYER}",
+        "confirm": "Ви дійсно хочете розбанити {PLAYER}?",
+        "success": "{PLAYER} було розбанено."
+      },
+      "mute": {
+        "label": "Вимкнути звук {PLAYER}",
+        "confirm": "Ви дійсно хочете вимкнути звук для {PLAYER}?",
+        "success": "Звук для {PLAYER} вимкнено."
+      },
+      "unmute": {
+        "label": "Увімкнути звук {PLAYER}",
+        "confirm": "Ви дійсно хочете увімкнути звук для {PLAYER}?",
+        "success": "Звук для {PLAYER} увімкнено."
+      },
+      "tempban": {
+        "label": "Тимчасово забанити {PLAYER}",
+        "prompt": "Коли розбанити {PLAYER}? (UTC час)",
+        "success": "{PLAYER} було тимчасово забанено."
+      },
+      "tempmute": {
+        "label": "Тимчасово вимкнути звук {PLAYER}",
+        "prompt": "Коли увімкнути звук для {PLAYER}? (UTC час)",
+        "success": "Звук для {PLAYER} тимчасово вимкнено."
+      },
+      "grantBadge": {
+        "label": "Видати значок",
+        "prompt": "Введіть ID значка, який слід видати {PLAYER}.",
+        "success": "{BADGE} успішно видано гравцю {PLAYER}.",
+        "fail": "Не знайдено значка за вказаним ID."
+      },
+      "revokeBadge": {
+        "label": "Відібрати значок",
+        "prompt": "Введіть ID значка, який слід відібрати у {PLAYER}.",
+        "success": "{BADGE} успішно відібрано у гравця {PLAYER}.",
+        "fail": "Не знайдено значка за вказаним ID."
+      }
+      }
+    },
+    "account": {
+      "login": {
+      "errors": {
+        "invalidLogin": "Неправильне ім’я користувача або пароль."
+      }
+      },
+      "register": {
+      "errors": {
+        "confirmPasswordMismatch": "Паролі не співпадають.",
+        "invalidCredentials": "Вказане ім’я користувача або пароль порожні або містять неприпустимі символи.",
+        "emailTaken": "Вказана адреса електронної пошти вже використовується.",
+        "usernameTaken": "Вказане ім’я користувача вже зайняте."
+      }
+      },
+      "password": {
+      "errors": {
+        "confirmPasswordMismatch": "Нові паролі не співпадають.",
+        "badLogin": "Неправильний пароль для входу.",
+        "internalServerError": "Виникла помилка: спробуйте пізніше."
+      }
+      }
+    },
+    "chat": {
+      "globalMessage": "Глобальне повідомлення"
+    },
+    "friends": {
+      "friend": "Друг",
+      "categories": {
+      "incoming": "Вхідні - {COUNT}",
+      "outgoing": "Вихідні - {COUNT}",
+      "online": "У мережі - {COUNT}",
+      "offline": "Не в мережі - {COUNT}"
+      }
+    },
+    "parties": {
+      "emptyMessage": "Зараз немає активних груп.",
+      "yourParty": "Ваша група",
+      "defaultPartyName": "Група гравця {OWNER}",
+      "partyOwner": "Лідер групи",
+      "confirmDisband": "Ви дійсно хочете розпустити свою групу? Цю дію не можна скасувати.",
+      "confirmTransferPartyOwner": "Ви дійсно хочете передати лідерство в групі гравцю {PLAYER}?",
+      "offlineMemberSuffix": "Учасник не в мережі",
+      "categories": {
+      "online": "У мережі - {COUNT}",
+      "offline": "Не в мережі - {COUNT}"
+      },
+      "actions": {
+      "viewPartyDetails": "Переглянути деталі групи",
+      "joinParty": "Приєднатися до групи",
+      "joinPrivateParty": "Приєднатися до приватної групи",
+      "leaveParty": "Покинути групу"
+      }
+    },
+    "chatTips": {
+      "template": "ПІДКАЗКА: {CONTENT}",
+      "tips": {
+      "backupReminder": "Рекомендується регулярно завантажувати локальні резервні копії вашого прогресу. Це дозволить уникнути втрати прогресу, якщо дані браузера будуть очищені.",
+      "menuTheme": "Колір вашого імені та стиль списку гравців залежать від вибраної вами внутрішньоігрової теми меню.",
+      "playersInMap": "Ви можете перемикатися між кількістю гравців у мережі та кількістю гравців на вашій мапі, натиснувши на відповідний напис.",
+      "markdownSupport": "Чат підтримує форматування тексту за допомогою спеціальних символів. Доступні: **жирний** (\\*\\*текст\\*\\*), *курсив* (\\*текст\\*, \\_текст\\_), __підкреслений__ (\\_\\_текст\\_\\_), ~~закреслений~~ (\\~\\~текст\\~\\~) і ||спойлер|| (\\|\\|текст\\|\\|).",
+      "tabToChat": "Якщо ви граєте на ПК, можете натиснути клавішу Tab, щоб перемикатися між грою та чатом. Цю функцію можна вимкнути в налаштуваннях чату під назвою «Натисніть Tab, щоб відкрити чат».",
+      "chatTabNotifications": "Якщо ви знаходитесь на вкладці чату, відмінній від «Усі», то при отриманні повідомлення в іншій вкладці її назва стане жирною, щоб привернути вашу увагу.",
+      "clearChat": "Якщо ви натискаєте кнопку очищення чату у верхньому правому куті чату, перебуваючи не на вкладці «Усі», то буде очищено лише повідомлення поточної вкладки.",
+      "chatHistoryLimit": "Якщо історія чату стає занадто довгою, це може впливати на продуктивність. У налаштуваннях чату можна обмежити кількість збережених повідомлень.",
+      "parties": "Групи — це чудовий спосіб подорожувати разом. Ви можете бачити місцезнаходження учасників групи та спілкуватися з ними у приватному чаті.",
+      "immersionMode": "Якщо ви хочете більш зануреного ігрового досвіду, а не соціального, спробуйте режим занурення. Він вимикає глобальний чат, список гравців та їхню кількість, роблячи випадкові зустрічі цікавішими.",
+      "friendsMenu": "Клікнувши правою кнопкою миші на ПК або утримавши дотик на мобільному пристрої на іконці гравця поза рейтингом, ви відкриєте діалогове вікно, де зможете надіслати запит у друзі, згадати гравця або заблокувати його.",
+      "easySettingsMenu": "Під час гри на ПК ви можете натиснути клавішу F1, щоб відкрити меню налаштувань, де можна переназначити клавіші та змінити деякі параметри.",
+      "floatingControls": "Якщо ви граєте на сенсорному пристрої і вам не подобається стандартне керування, спробуйте плаваючі типи елементів керування, доступні в налаштуваннях мобільного керування.",
+      "recentBadges": "Випадково закрили сповіщення про отримання значка? Ви завжди можете переглянути значки, отримані під час поточного сеансу, вибравши пункт «Нещодавно отримані».",
+      "desktopHotkeys": "На ПК комбінація Alt+Enter перемикає повноекранний режим, F7 робить знімок екрана, а клавіша T відкриває чат.",
+      "badgeControls": "У меню галереї значків ви можете перетягувати значки, змінюючи їх порядок, або швидко видаляти кілька значків за допомогою режиму видалення.",
+      "cacheSettings": "Маєте проблеми з виконанням локацій або застарілими картами? Меню кешу дозволяє очистити відповідний кеш та оновити дані.",
+      "openSource": "YNOproject має відкритий вихідний код. Репозиторії коду доступні на сторінці https://github.com/ynoproject/"
+      }
+    },
+    "save": {
+      "slot": {
+      "title": "Файл {SLOT_ID}",
+      "readingLabel": "Читання даних файлу...",
+      "emptyLabel": "Порожньо",
+      "errorLabel": "Помилка"
+      },
+      "upload": {
+      "tooltip": "Завантажити файл збереження",
+      "invalidSaveFile": "Виберіть коректний файл збереження (формат .lsd)."
+      },
+      "download": {
+      "tooltip": "Скачувати файл збереження",
+      "emptySlot": "Упс! Схоже, файл збереження в цьому слоті порожній."
+      },
+      "delete": {
+      "tooltip": "Видалити файл збереження",
+      "confirmDelete": "Ви дійсно хочете видалити дані збереження для файлу {SLOT_ID}?"
+      }
+    },
+    "saveSync": {
+      "confirmClearSaveSync": "Ви дійсно хочете очистити дані синхронізації збережень для цієї гри? Цю дію не можна буде скасувати, якщо у вас немає локальної копії збереження."
+    },
+    "toast": {
+      "system": {
+      "siteUpdates": "Сайт було оновлено. Перезавантажте сторінку, щоб отримати останні зміни.",
+      "error": "Упс! Щось пішло не так. Перегляньте консоль браузера для деталей. Щоб відкрити консоль, натисніть F12 або клацніть правою кнопкою миші і виберіть «Перевірити»."
+      },
+      "account": {
+      "loggedIn": "Ви увійшли як {USER}.",
+      "loggedOut": "Ви вийшли з системи.",
+      "passwordUpdated": "Ваш пароль успішно оновлено."
+      },
+      "players": {
+      "playerBlocked": "Гравця {PLAYER} заблоковано.",
+      "playerUnblocked": "Гравця {PLAYER} розблоковано."
+      },
+      "friends": {
+      "add": "Ви надіслали запит у друзі гравцю {PLAYER}.",
+      "remove": "Ви видалили гравця {PLAYER} з друзів.",
+      "accept": "Запит у друзі від {PLAYER} прийнято.",
+      "reject": "Запит у друзі від {PLAYER} відхилено.",
+      "cancel": "Ваш запит у друзі гравцю {PLAYER} скасовано.",
+      "incoming": "Ви отримали новий запит у друзі від {PLAYER}.",
+      "playerOnline": "Друг {PLAYER} зараз у мережі.",
+      "playerOffline": "Друг {PLAYER} вийшов з мережі."
+      },
+      "parties": {
+      "create": "Групу «{PARTY}» створено.",
+      "update": "Групу «{PARTY}» оновлено.",
+      "join": "Ви приєдналися до групи «{PARTY}».",
+      "leave": "Ви покинули групу «{PARTY}».",
+      "remove": "Вас було видалено з групи «{PARTY}».",
+      "disband": "Групу «{PARTY}» розпущено.",
+      "playerJoin": "{PLAYER} приєднався до групи.",
+      "playerLeave": "{PLAYER} покинув групу.",
+      "playerOnline": "{PLAYER} з групи зараз у мережі.",
+      "playerOffline": "{PLAYER} з групи вийшов з мережі.",
+      "kickPlayer": "{PLAYER} було виключено з групи.",
+      "transferPartyOwner": "{PLAYER} призначено новим лідером групи."
+      },
+      "events": {
+      "complete": "Експедицію завершено!\nЗа відвідування локації {LOCATION} ви отримали {EXP}.",
+      "freeComplete": "Експедицію завершено! Ви відвідали {LOCATION}.",
+      "vmComplete": "Знайдено автомат з продажу!\nВи отримали {EXP}.",
+      "listUpdated": "Список експедицій оновлено."
+      },
+      "badges": {
+      "badgeUnlocked": "Ви отримали новий значок!"
+      },
+      "screenshots": {
+      "screenshotTaken": "Знімок екрана зроблено, натисніть, щоб зберегти."
+      },
+      "saveSync": {
+      "saveUploading": "Завантаження даних збереження зі слота {SLOT}...",
+      "saveUploaded": "Дані збереження зі слота {SLOT} завантажено.",
+      "saveDownloading": "Оновлення даних збереження для файлу {SLOT}...",
+      "saveDownloaded": "Слот збереження {SLOT} успішно оновлено.",
+      "saveUpToDate": "Дані збереження актуальні.",
+      "saveCleared": "Дані синхронізації збережень очищено. Це не вплине на наявні збереження на жодному з ваших пристроїв.",
+      "saveReminder": "Не забувайте часто зберігатися і створювати резервні копії файлів, щоб не втратити свій прогрес."
+      },
+      "timeTrials": {
+      "timeTrialsComplete": "Ціль досягнуто! {CATEGORY} завершено за {TIME}."
+      }
+    },
+    "events": {
+      "exp": "{POINTS} ExP",
+      "expRank": "Ранг: {RANK}",
+      "period": "Сезон {ORDINAL}",
+      "periodEnds": "Закінчується {DATE}",
+      "current": "Поточний",
+      "shortcut": "Можна досягти через розблокований скорочений шлях",
+      "toggleTracked": "Перемкнути відстеження локації",
+      "availableUntilDate": "Доступно до\n{DATE}",
+      "types": {
+      "0": "Щоденна",
+      "1": "Щотижнева",
+      "2": "На вихідних",
+      "3": "Спеціальна",
+      "-1": "Вільна експедиція"
+      },
+      "expRanks": {
+      "0": "Новачок",
+      "1": "Середній",
+      "2": "Бронза",
+      "3": "Срібло",
+      "4": "Золото",
+      "5": "Платина",
+      "6": "Діамант"
+      }
+    },
+    "badges": {
+      "null": "Немає значка",
+      "allCategory": "Усі",
+      "badgeTitle": "{TITLE} - {BP} BP",
+      "locked": "???",
+      "location": "Локація:&nbsp;",
+      "goalProgress": "{CURRENT}/{TOTAL}",
+      "percentUnlocked": "{PERCENT}% гравців мають цей значок",
+      "time": "{MINUTES}:{SECONDS}",
+      "artCredit": "Художник: {ARTIST}",
+      "search": {
+      "modifier": {
+        "template": "&nbsp;({MODIFIER})",
+        "exactMatch": "Точна відповідність"
+      }
+      },
+      "sortOrder": {
+      "template": "{TYPE} ({ORDER})",
+      "types": {
+        "bp": "BP",
+        "percent": "Відсоток відкриття"
+      },
+      "asc": "За зростанням",
+      "desc": "За спаданням"
+      }
+    },
+    "badgeGallery": {
+      "label": "Галерея значків {PLAYER}",
+      "loading": "Завантаження...",
+      "bp": "{BP} BP",
+      "count": "{COUNT} значків",
+      "empty": "Галерея значків не налаштована"
+    },
+    "badgePreset": {
+      "empty": "Цей шаблон порожній."
+    },
+    "rankings": {
+      "categories": {
+      "badgeCount": {
+        "label": "Значки",
+        "valueLabel": "Кількість значків",
+        "value": "{NUMBER}"
+      },
+      "bp": {
+        "label": "BP (Очки значків)",
+        "valueLabel": "BP",
+        "value": "{NUMBER} BP"
+      },
+      "exp": {
+        "label": "ExP",
+        "valueLabel": "ExP",
+        "value": "{NUMBER} ExP"
+      },
+      "eventLocationCount": {
+        "label": "Експедиції",
+        "valueLabel": "Кількість експедицій",
+        "value": "{NUMBER}"
+      },
+      "freeEventLocationCount": {
+        "label": "Вільні експедиції",
+        "valueLabel": "Кількість експедицій",
+        "value": "{NUMBER}"
+      },
+      "eventLocationCompletion": {
+        "label": "Завершення експедицій",
+        "valueLabel": "Завершення",
+        "value": "{PERCENT}%"
+      },
+      "eventVmCount": {
+        "label": "Знаходження торгових автоматів",
+        "valueLabel": "Кількість автоматів",
+        "value": "{NUMBER}"
+      },
+      "timeTrial": {
+        "label": "Часові випробування",
+        "valueLabel": "Час проходження",
+        "value": "{MINUTES}:{SECONDS}"
+      },
+      "minigame": {
+        "label": "Мініігри",
+        "valueLabel": "Рахунок",
+        "value": "{NUMBER}"
+      }
+      },
+      "subCategories": {
+      "2": "Усі ефекти",
+      "all": "Усі",
+      "nasu": "NASU",
+      "rby": "Red Blue Yellow (Мінігра B)",
+      "rby_ex": "Red Blue Yellow (Мінігра B) - EX версія",
+      "fuji_ex": "FUJI EX",
+      "hozo": "HOZO",
+      "cartoonboy": "Cartoon Boy",
+      "ta_be": "TA_BE_",
+      "ta_be_hardcore": "TA_BE_ - Хардкор режим",
+      "panerabbit": "PANErabbit"
+      }
+    },
+    "locations": {
+      "author": "Автор: {AUTHOR}",
+      "versionAdded": "Додано у версії {VERSION}",
+      "versionUpdated": "Оновлено у версії {VERSION}",
+      "track": {
+      "tooltip": {
+        "on": "Відстежувати локацію",
+        "off": "Скасувати відстеження"
+      }
+      },
+      "visited": {
+      "values": {
+        "all": "Усі",
+        "visited": "Відвідано",
+        "unvisited": "Не відвідано"
+      }
+      },
+      "sortOrder": {
+      "values": {
+        "newest": "Найновіші",
+        "oldest": "Найстаріші",
+        "shallowest": "Найближчі",
+        "deepest": "Найглибші",
+        "alpha": "За алфавітом",
+        "players": "Кількість гравців"
+      }
+      }
+    },
+    "screenshots": {
+      "playerScreenshot": "Скріншот {USER}",
+      "limit": "{COUNT}/{LIMIT} слотів використано",
+      "public": {
+      "tooltip": {
+        "on": "Зробити публічним",
+        "off": "Зробити приватним"
+      }
+      },
+      "spoiler": {
+      "label": "Спойлер",
+      "tooltip": {
+        "on": "Позначити як спойлер",
+        "off": "Видалити спойлер"
+      }
+      },
+      "like": {
+      "tooltip": {
+        "on": "Подобається",
+        "off": "Скасувати вподобання"
+      }
+      },
+      "delete": {
+      "tooltip": "Видалити",
+      "confirm": "Ви впевнені, що хочете видалити цей скріншот?"
+      }
+    },
+    "schedules": {
+      "organizer": "Організатор: {NAME}",
+      "invalidPlatformLink": "Платформа повинна мати дійсне посилання",
+      "confirmCancel": "Ви впевнені, що хочете скасувати цю подію?",
+      "wrongEditGame": "Не можна редагувати поза грою {GAME}",
+      "intervals": {
+      "perDay": "Щодня",
+      "days": "Кожні {INTERVAL} днів",
+      "perWeek": "Щотижня {WEEKDAY}",
+      "weeks": "Кожні {INTERVAL} тижнів",
+      "perMonth": "Щомісяця",
+      "months": "Кожні {INTERVAL} місяців",
+      "perYear": "Щороку",
+      "years": "Кожні {INTERVAL} років"
+      },
+      "platforms": {
+      "discord": "Discord",
+      "youtube": "YouTube",
+      "twitch": "Twitch",
+      "niconico": "Nicovideo",
+      "openrec": "Openrec",
+      "bilibili": "Bilibili"
+      }
+    },
+    "2kki": {
+      "explorerLink": {
+      "generic": "Переглянути в Yume 2kki Explorer",
+      "multi": "Переглянути {LOCATION} в Yume 2kki Explorer"
+      }
+    },
+    "modSettings": {
+      "title": "Налаштування модератора",
+      "actions": {
+        "resetPassword": {
+          "label": "Скинути пароль",
+          "playerPrompt": "Введіть ім’я акаунту для скидання пароля",
+          "success": "Новий пароль для {PLAYER}: {PASSWORD}"
+        },
+        "changeUsername": {
+          "label": "Змінити ім’я користувача",
+          "playerPrompt": "Введіть ім’я акаунту для зміни",
+          "namePrompt": "Введіть нове ім’я користувача для {PLAYER}",
+          "success": "Ім’я користувача для {PLAYER} змінено на {NAME}",
+          "error": "Не вдалося змінити ім’я для {PLAYER}; можливо, воно вже зайняте"
+        },
+        "ban": {
+          "label": "Забанити гравця",
+          "playerPrompt": "Введіть ім’я акаунту для бана"
+        },
+        "unban": {
+          "label": "Розбанити гравця",
+          "playerPrompt": "Введіть ім’я акаунту для розбана"
+        },
+        "mute": {
+          "label": "Заглушити гравця",
+          "playerPrompt": "Введіть ім’я акаунту для заглушення"
+        },
+        "unmute": {
+          "label": "Зняти заглушення",
+          "playerPrompt": "Введіть ім’я акаунту для зняття заглушення"
+        },
+        "tempban": {
+          "label": "Тимчасовий бан",
+          "playerPrompt": "Введіть ім’я акаунту для тимчасового бана",
+          "timePrompt": "Введіть дату/час закінчення бана (UTC)"
+        },
+        "tempmute": {
+          "label": "Тимчасове заглушення",
+          "playerPrompt": "Введіть ім’я акаунту для тимчасового заглушення",
+          "timePrompt": "Введіть дату/час закінчення заглушення (UTC)"
+        },
+        "grantBadge": {
+          "label": "Видати значок",
+          "playerPrompt": "Введіть ім’я акаунту для видачі значка"
+        },
+        "revokeBadge": {
+          "label": "Відібрати значок",
+          "playerPrompt": "Введіть ім’я акаунту для відібрання значка"
+        }
+      }
+    }
+  }
+}
