@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Keşfedilmeyen Konumlar",
         "complete": "Mevcut her konumu keşfettiniz! Tebrikler!!"
+      },
+      "locations": {
+        "title": "Konumlar",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "Hepsi",
+              "visited": "Ziyaret Edilmiş",
+              "unvisited": "Ziyaret Edilmemiş"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "En Yeni",
+              "oldest": "En Eski",
+              "shallowest": "En Sığ",
+              "deepest": "En Derin",
+              "alpha": "Alfabetik",
+              "players": "Oyuncu Sayısı"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Lokasyonunu Takip Et",
           "off": "Lokasyonun Takibi Bırak"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "Hepsi",
-          "visited": "Ziyaret Edilmiş",
-          "unvisited": "Ziyaret Edilmemiş"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "En Yeni",
-          "oldest": "En Eski",
-          "shallowest": "En Sığ",
-          "deepest": "En Derin",
-          "alpha": "Alfabetik",
-          "players": "Oyuncu Sayısı"
         }
       }
     },

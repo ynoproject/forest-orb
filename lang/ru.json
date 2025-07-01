@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "Неисследованная локация",
         "complete": "Вы исследовали все доступные локации! Поздравляем!!!"
+      },
+      "locations": {
+        "title": "Локации",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "Все",
+              "visited": "Посещённые",
+              "unvisited": "Не посещённые"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Новейшие",
+              "oldest": "Старейшие",
+              "shallowest": "Поверхностные",
+              "deepest": "Глубочайшие",
+              "alpha": "По алфавиту",
+              "players": "Кол-во игроков"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Отслеживать",
           "off": "Не отслеживать"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "Все",
-          "visited": "Посещённые",
-          "unvisited": "Не посещённые"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Новейшие",
-          "oldest": "Старейшие",
-          "shallowest": "Поверхностные",
-          "deepest": "Глубочайшие",
-          "alpha": "По алфавиту",
-          "players": "Кол-во игроков"
         }
       }
     },

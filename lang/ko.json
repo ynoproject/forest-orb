@@ -574,6 +574,28 @@
       "explorerUndiscoveredLocations": {
         "title": "미발견 장소",
         "complete": "축하합니다!! 방문할 수 있는 모든 장소를 발견하셨습니다!"
+      },
+      "locations": {
+        "title": "장소 찾기",
+        "fields": {
+          "visited": {
+            "values": {
+              "all": "All",
+              "visited": "Visited",
+              "unvisited": "Unvisited"
+            }
+          },
+          "sortOrder": {
+            "values": {
+              "newest": "Newest",
+              "oldest": "Oldest",
+              "shallowest": "Shallowest",
+              "deepest": "Deepest",
+              "alpha": "Alphabetical",
+              "players": "Player Count"
+            }
+          }
+        }
       }
     },
     "tooltips": {
@@ -600,7 +622,7 @@
         "disbandParty": "파티 해산"
       },
       "events": "탐험",
-      "locations": "Locations",
+      "locations": "장소 찾기",
       "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
       "schedules": "Events",
@@ -1087,23 +1109,6 @@
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
         }
       }
     },
