@@ -4,7 +4,7 @@
     "2kki": {
       "label": "Yume 2kki Version {VERSION}",
       "substitutes": {
-        " Patch ": " Patch ",
+        " Patch ": " Патч ",
         "?": "?"
       }
     }
@@ -1109,23 +1109,6 @@
         "tooltip": {
           "on": "Track Location",
           "off": "Untrack Location"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "All",
-          "visited": "Visited",
-          "unvisited": "Unvisited"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "Newest",
-          "oldest": "Oldest",
-          "shallowest": "Shallowest",
-          "deepest": "Deepest",
-          "alpha": "Alphabetical",
-          "players": "Player Count"
         }
       }
     },
