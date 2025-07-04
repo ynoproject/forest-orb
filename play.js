@@ -57,6 +57,9 @@ const modalTransitionDuration = 230;
 
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
+    if (typeof value === 'string' && /<[^>]+>/.test(value)) {
+      return value;
+    }
     if (isUI && value.indexOf(' ') > -1)
       return value.split(/ +/g).map(v => `<span class="nowrap">${v}</span>`).join('');
     return value;
