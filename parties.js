@@ -29,22 +29,22 @@ function initPartyControls() {
 
     openModal('createPartyModal', document.getElementById('partyTheme').value);
   };
-  
+
   document.getElementById('publicPartyButton').onclick = function () {
     this.classList.toggle('toggled');
     this.closest('.formControlRow').nextElementSibling.classList.toggle('hidden', !this.classList.contains('toggled'));
     this.nextElementSibling.checked = !this.classList.contains('toggled');
   };
-  
+
   document.getElementById('showHidePartyPasswordLink').onclick = function () {
     this.classList.toggle('showPassword');
     document.getElementById('partyPassword').type = this.classList.contains('showPassword') ? 'text' : 'password';
   };
-  
+
   document.getElementById('partyThemeButton').onclick = function () {
     openModal('uiThemesModal', this.nextElementSibling.value, 'createPartyModal');
   };
-  
+
   document.getElementById('createPartyForm').onsubmit = function () {
     const form = this;
     const formData = new FormData(form);
@@ -68,7 +68,7 @@ function initPartyControls() {
       }).catch(err => console.error(err));
     return false;
   };
-  
+
   document.getElementById('disbandPartyButton').onclick = () => {
     showConfirmModal(localizedMessages.parties.confirmDisband, () => {
       apiFetch(`party?command=disband`)
@@ -81,7 +81,7 @@ function initPartyControls() {
         }).catch(err => console.error(err));
     });
   };
-  
+
   document.getElementById('showHidePrivatePartyPasswordLink').onclick = function () {
     this.classList.toggle('showPassword');
     document.getElementById('privatePartyPassword').type = this.classList.contains('showPassword') ? 'text' : 'password';
@@ -113,7 +113,7 @@ function initPartyControls() {
 function getPartyName(party, includeLock, asHtml) {
   if (!party)
     return null;
-    
+
   const isPartyObj = typeof party === 'object';
   const ownerName = isPartyObj ? getPartyMemberName(party, party.ownerUuid) : null;
   let partyName = ((isPartyObj ? party.name : party) || localizedMessages.parties.defaultPartyName.replace('{OWNER}', ownerName));
@@ -156,7 +156,7 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
 
       const partyOwnerIcon = getSvgIcon('partyOwner', true);
       addTooltip(partyOwnerIcon, getMassagedLabel(localizedMessages.parties.partyOwner, true), true, true);
-      
+
       if (party.systemName) {
         let partySystemName = party.systemName;
         if (gameUiThemes.indexOf(partySystemName) === -1)
@@ -164,11 +164,11 @@ function getPartyMemberName(party, partyMember, includeRoles, asHtml) {
         const parsedPartySystemName = partySystemName.replace(/ /g, '_');
         partyOwnerIcon.querySelector('path').setAttribute('style', `fill: var(--svg-base-gradient-${parsedPartySystemName}); filter: var(--svg-shadow-${parsedPartySystemName});`);
       }
-      
+
       html.children[0].appendChild(partyOwnerIcon);
       return html.innerHTML;
     }
-    
+
     return partyMemberName;
   }
 
@@ -263,10 +263,10 @@ function updatePartyList() {
       }
 
       const partyList = document.getElementById('partyList');
-      
+
       if (data.length) {
         setJoinedPartyId(data.find(p => p.members.map(m => m.uuid).indexOf(playerData?.uuid) > -1)?.id);
-        
+
         for (let party of data) {
           const isInParty = joinedPartyId && party.id === joinedPartyId;
           if (isInParty) {
@@ -361,7 +361,7 @@ function updatePartyList() {
 function updateJoinedParty(callback) {
   if (!joinedPartyId)
     return;
-  
+
   sendSessionCommand('pt', null, params => {
     const party = JSON.parse(params[0]);
     if (party) {
@@ -379,7 +379,7 @@ function onUpdateJoinedParty(party) {
     return;
   const oldMembers = joinedPartyCache ? joinedPartyCache.members : [];
   joinedPartyCache = party;
-  
+
   if (party.systemName !== joinedPartyUiTheme)
     setPartyUiTheme(party.systemName);
 
@@ -431,7 +431,7 @@ function onUpdateJoinedParty(party) {
     const entry = addOrUpdatePlayerListEntry(partyPlayerList, member, true);
     entry.classList.toggle('offline', !member.online);
     entry.dataset.categoryId = member.online ? 'online' : 'offline';
-    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
+    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId && !!member.mapId, member, entry);
   }
 
   sortPlayerListEntries(partyPlayerList);
@@ -442,7 +442,7 @@ function onUpdateJoinedParty(party) {
 function addOrUpdatePartyListEntry(party) {
   const isInParty = party.id === joinedPartyId;
   const partyList = document.getElementById('partyList');
-  
+
   let partyListEntry = partyList.querySelector(`.partyListEntry[data-id="${party.id}"]`);
 
   const partyListEntrySprite = partyListEntry ? partyListEntry.querySelector('.partyListEntrySprite') : document.createElement('img');
@@ -473,7 +473,7 @@ function addOrUpdatePartyListEntry(party) {
     memberCount.classList.add('partyListEntryMemberCount');
 
     memberCountText.classList.add('partyListEntryMemberCountText');
-    
+
     memberCount.appendChild(getSvgIcon('partyMember', true));
     memberCount.appendChild(memberCountText);
 
@@ -656,7 +656,7 @@ function initOrUpdatePartyModal(partyId) {
 
   const lastPartyId = partyModal.dataset.partyId;
   const modalTitle = partyModal.querySelector('.modalTitle');
-  
+
   modalTitle.innerText = getPartyName(party);
 
   if (!party.public)
@@ -722,10 +722,10 @@ function initOrUpdatePartyModal(partyId) {
       onlineCount++;
     else
       offlineCount++;
-    
+
     const entry = addOrUpdatePlayerListEntry(playerList, member, true);
     entry.classList.toggle('offline', !member.online);
-    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId, member, entry);
+    addOrUpdatePlayerListEntryLocation(party.id == joinedPartyId && !!member.mapId, member, entry);
   }
 
   sortPlayerListEntries(partyModalOnlinePlayerList);
@@ -733,7 +733,7 @@ function initOrUpdatePartyModal(partyId) {
 
   const onlineCountLabel = document.getElementById('partyModalOnlineCount');
   const offlineCountLabel = document.getElementById('partyModalOfflineCount');
-  
+
   onlineCountLabel.innerText = localizedMessages.parties.categories.online.replace('{COUNT}', onlineCount);
   offlineCountLabel.innerText = localizedMessages.parties.categories.offline.replace('{COUNT}', offlineCount);
 

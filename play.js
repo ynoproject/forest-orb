@@ -888,6 +888,13 @@ document.getElementById('enterNameForm').onsubmit = function () {
 {
   function initPrivateMode(active) {
     document.getElementById('privateModeButton').classList.toggle('toggled', active);
+    if (config.singleplayerMode && !config.privateMode) {
+      document.getElementById('layout').classList.add('singleplayerMode');
+    } else {
+      document.getElementById('layout').classList.remove('singleplayerMode');
+    }
+    document.getElementById('hideLocationButton').classList.toggle('toggled', config.singleplayerMode && config.hideLocation);
+    updateHideLocationButtonDisplay();
     config.privateMode = active;
     updateConfig(config);
 
@@ -895,7 +902,10 @@ document.getElementById('enterNameForm').onsubmit = function () {
       return;
 
     document.getElementById('layout').classList.toggle('privateMode', active);
+    updateHideLocationButtonDisplay();
     sendSessionCommand('pr', [ config.privateMode ? config.singleplayerMode ? 2 : 1 : 0 ]);
+    if (config.hideLocation)
+      sendSessionCommand('hl', [ config.singleplayerMode ? 1 : 0 ]);
 
     if (connStatus == 1 || connStatus == 3)
       onUpdateConnectionStatus(config.privateMode ? 3 : 1);
@@ -909,7 +919,15 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
   document.getElementById('singleplayerModeButton').onclick = function () {
     config.singleplayerMode = this.classList.toggle('toggled');
+    updateConfig(config);
+    if (config.singleplayerMode && !config.privateMode) {
+      document.getElementById('layout').classList.add('singleplayerMode');
+    } else {
+      document.getElementById('layout').classList.remove('singleplayerMode');
+    }
     initPrivateMode(config.singleplayerMode || config.privateMode);
+    document.getElementById('hideLocationButton').classList.toggle('toggled', config.singleplayerMode && config.hideLocation);
+    updateHideLocationButtonDisplay();
   };
 }
 
@@ -1140,14 +1158,12 @@ document.getElementById('playBadgeHintSoundButton').onclick = function () {
 };
 
 document.getElementById('hideLocationButton').onclick = function () {
-  if (!sessionWs)
-    return;
-
-  this.classList.toggle('toggled');
-  config.hideLocation = this.classList.contains('toggled');
+  config.hideLocation = !config.hideLocation;
+  this.classList.toggle('toggled', config.hideLocation);
   updateConfig(config);
 
-  sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
+  if (sessionWs && config.singleplayerMode)
+    sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
 };
 
 if (gameId === '2kki') {
@@ -1165,7 +1181,7 @@ if (gameId === '2kki') {
     config.enableExplorer = toggled;
     updateConfig(config);
   };
-  
+
   document.getElementById('toggleQuestionablePreloadsButton').onclick = function () {
     this.classList.toggle('toggled');
     globalConfig.questionablePreloads = this.classList.contains('toggled');
@@ -2808,4 +2824,14 @@ if (!globalConfig.rulesReviewed) {
 	openModal('rulesModal');
 	globalConfig.rulesReviewed = true;
 	updateConfig(globalConfig, true);
+}
+
+function updateHideLocationButtonDisplay() {
+  const layout = document.getElementById('layout');
+  const btn = document.getElementById('hideLocationButton');
+  if (layout.classList.contains('privateMode') && !layout.classList.contains('singleplayerMode')) {
+    btn.style.display = 'none';
+  } else {
+    btn.style.display = '';
+  }
 }

@@ -66,7 +66,7 @@ async function onUpdatePlayerFriends(playerFriends) {
     entry.classList.toggle('offline', playerFriend.accepted && !playerFriend.online);
     entry.dataset.categoryId = playerFriend.accepted ? playerFriend.online ? 'online' : 'offline' : playerFriend.incoming ? 'incoming' : 'outgoing';
     entry.dataset.name = playerFriend.name;
-    addOrUpdatePlayerListEntryLocation(true, playerFriend, entry);
+    addOrUpdatePlayerListEntryLocation(!!playerFriend.mapId, playerFriend, entry);
   }
 
   sortPlayerListEntries(friendsPlayerList);
