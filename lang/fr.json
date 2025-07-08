@@ -67,14 +67,14 @@
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
     },
     "disclaimer": {
-      "pendingApproval": "Pending approval from developer/publisher",
+      "pendingApproval": "En attente d'approuvement du développeur/éditeur",
       "hostedWithPermission": "Hébergé avec la permission du/des développeur(s)",
       "originalCreation": "Création originale de la communauté YNOproject"
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Sauvegarder",
+        "apply": "Appliquer"
       },
       "confirm": {
         "ok": "Confirmer",
@@ -142,10 +142,10 @@
           "musicVolume": "Volume de la Musique",
           "togglePlayerSounds": "Activer les Sons des Joueurs",
           "toggleEnableBadgeHints": {
-            "label": "Badge Hints",
-            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+            "label": "Radar à badges",
+            "helpText": "Les indices de badges seront disponibles après avoir obtenu le badge « Amulette EX du collectionneur de badges ». Lorsqu'activé, un icône apparaîtra en haut à droite lorsque vous entrerez dans un lieu avec au moins un badge à débloquer."
           },
-          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
+          "togglePlayBadgeHintSound": "Jouer un son lorsqu'un badge est présent",
           "toggleEnableExplorer": {
             "label": "Yume 2kki Navigator",
             "helpText": "Yume 2kki Navigator est une intégration de Yume 2kki Explorer permettant de voir les connexions du monde où vous vous situez en un clin d'œil. Cette fonctionnalité peut drastiquement affecter votre expérience et de ce fait, il est fortement recommandé d'explorer une bonne partie du jeu à l'aveugle avant d'activer cette fonctionnalité. Vous devez être connecté pour utiliser Yume 2kki Navigator."
@@ -172,10 +172,10 @@
           },
           "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC",
           "toggleSchedules": "Événements",
-          "unicodeFont": "Alternate Font",
+          "unicodeFont": "Police alternative",
           "toggleSingleplayerMode": {
-            "label": "Singleplayer Mode",
-            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+            "label": "Mode solo",
+            "helpText": "Transforme le mode privé en mode solo, cachant tous les amis et membres du groupe de votre champ de vision. Parfait si vous souhaitez jouer au jeu par vous-même."
           }
         },
         "blocklist": "Liste de blocage",
@@ -321,9 +321,9 @@
             }
           },
           "timeTrials": {
-            "label": "Time Trials",
+            "label": "Courses contre-la-montre",
             "fields": {
-              "goalReached": "Goal Reached"
+              "goalReached": "Objectif atteint"
             }
           },
           "screenshots": {
@@ -412,12 +412,12 @@
           "activate": "Retirer des badges",
           "deactivate": "Terminé"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Gérer les préréglages"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}"
+        "title": "Gérer les préréglages de badges",
+        "selectPreset": "Choisir un préréglage",
+        "presetName": "Préréglage {{index}}"
       },
       "save": {
         "title": "Gérer les Données de Sauvegarde",
@@ -614,7 +614,7 @@
         "toggleNextLocation": "Montrer/Cacher le Lieu de la prochaine expédition",
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
-        "filterMentions": "Show Mentions Only",
+        "filterMentions": "Montrer uniquement les mentions",
         "clearChat": "Effacer le Chat"
       },
       "parties": {
@@ -671,7 +671,7 @@
       "1": "Connecté(e)",
       "2": "Connexion...",
       "3": "Mode privé",
-      "4": "Singleplayer"
+      "4": "Solo"
     },
     "lastOnline": {
       "template": "Dernière fois vu il y a\n{INTERVAL}",
@@ -768,7 +768,7 @@
         "confirm": "Êtes-vous sûr(e) de vouloir débloquer {PLAYER} ?"
       },
       "report": {
-        "label": "Report {PLAYER}"
+        "label": "Signaler {PLAYER}"
       },
       "admin": {
         "ban": {
@@ -804,14 +804,14 @@
           "fail": "Aucun badge n'a été trouvé pour l'ID de badge fourni."
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "Bannir temporairement {PLAYER}",
+          "prompt": "Quand voulez-vous débannir {PLAYER} ? (temps UTC)",
+          "success": "{PLAYER} a été temporairement banni(e)."
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "Rendre muet temporairement {PLAYER}",
+          "prompt": "Quand voulez-vous démuter {PLAYER} ? (temps UTC)",
+          "success": "{PLAYER} a été temporairement muté(e)."
         }
       }
     },
@@ -974,7 +974,7 @@
         "saveReminder": "N'oubliez pas de sauvegarder souvent et de faire des copies de vos données de jeu de sorte à ce que vous ne puissiez pas perdre votre progression si un pépin vous arrive."
       },
       "timeTrials": {
-        "timeTrialsComplete": "You reached {LOCATION} in {TIME}."
+        "timeTrialsComplete": "Vous avez atteint {LOCATION} en {TIME}."
       }
     },
     "events": {
@@ -1034,10 +1034,10 @@
       "loading": "Chargement...",
       "bp": "{BP} PB",
       "count": "{COUNT} Badges",
-      "empty": "Badge gallery not set"
+      "empty": "Galerie de badges non définie"
     },
     "badgePreset": {
-      "empty": "This preset is empty."
+      "empty": "Ce préréglage est vide."
     },
     "rankings": {
       "categories": {
@@ -1153,14 +1153,14 @@
         "bilibili": "Bilibili"
       },
       "intervals": {
-        "perDay": "Every day",
-        "days": "Every {INTERVAL} days",
-        "perWeek": "Every {WEEKDAY}",
-        "weeks": "Every {INTERVAL} weeks",
-        "perMonth": "Every month",
-        "months": "Every {INTERVAL} months",
-        "perYear": "Every year",
-        "years": "Every {INTERVAL} years"
+        "perDay": "Tous les jours",
+        "days": "Tous les {INTERVAL} jours",
+        "perWeek": "Chaque {WEEKDAY}",
+        "weeks": "Toutes les {INTERVAL} semaines",
+        "perMonth": "Chaque mois",
+        "months": "Tous les {INTERVAL} mois",
+        "perYear": "Chaque année",
+        "years": "Toutes les {INTERVAL} années"
       }
     },
     "2kki": {
@@ -1209,14 +1209,14 @@
           "playerPrompt": "Entrez le nom du compte auquel un badge doit être révoqué"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "Bannir temporairement un Joueur",
+          "playerPrompt": "Entrez le nom du compte à bannir temporairement",
+          "timePrompt": "Entrez l'heure de la date où le ban expirera (temps UTC)"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "Rendre muet temporairement un Joueur",
+          "playerPrompt": "Entrez le nom du compte à rendre muet temporairement",
+          "timePrompt": "Entrez l'heure de la date où le compte ne sera plus muet (temps UTC)"
         }
       }
     }
