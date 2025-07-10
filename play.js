@@ -890,15 +890,26 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
 {
   function initPrivateMode(active) {
+    const layout = document.getElementById('layout');
     document.getElementById('privateModeButton').classList.toggle('toggled', active);
+    layout.classList.toggle('privateMode', active);
+
+    if (config.singleplayerMode) {
+      layout.classList.add('singleplayerMode');
+    } else {
+      layout.classList.remove('singleplayerMode');
+    }
+
     config.privateMode = active;
     updateConfig(config);
 
     if (!sessionWs)
       return;
 
-    document.getElementById('layout').classList.toggle('privateMode', active);
     sendSessionCommand('pr', [ config.privateMode ? config.singleplayerMode ? 2 : 1 : 0 ]);
+    if (config.hideLocation) {
+      sendSessionCommand('hl', [config.singleplayerMode ? 1 : 0 ]);
+    }
 
     if (connStatus == 1 || connStatus == 3)
       onUpdateConnectionStatus(config.privateMode ? 3 : 1);
@@ -912,7 +923,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
   document.getElementById('singleplayerModeButton').onclick = function () {
     config.singleplayerMode = this.classList.toggle('toggled');
-    initPrivateMode(config.singleplayerMode || config.privateMode);
+    initPrivateMode(config.privateMode);
   };
 }
 
@@ -1143,14 +1154,12 @@ document.getElementById('playBadgeHintSoundButton').onclick = function () {
 };
 
 document.getElementById('hideLocationButton').onclick = function () {
-  if (!sessionWs)
-    return;
-
-  this.classList.toggle('toggled');
-  config.hideLocation = this.classList.contains('toggled');
+  config.hideLocation = !config.hideLocation;
+  this.classList.toggle('toggled', config.hideLocation);
   updateConfig(config);
 
-  sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
+  if (sessionWs && config.singleplayerMode)
+    sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
 };
 
 if (gameId === '2kki') {
@@ -1168,7 +1177,7 @@ if (gameId === '2kki') {
     config.enableExplorer = toggled;
     updateConfig(config);
   };
-  
+
   document.getElementById('toggleQuestionablePreloadsButton').onclick = function () {
     this.classList.toggle('toggled');
     globalConfig.questionablePreloads = this.classList.contains('toggled');

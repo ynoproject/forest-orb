@@ -3058,8 +3058,13 @@ form .uiTheme {
   margin-top: 0;
 }
 
-#layout.privateMode #hideLocationButton {
+#layout.privateMode:not(.singleplayerMode) #hideLocationButton {
   display: none;
+}
+
+#layout.singleplayerMode.privateMode #hideLocationButton path:first-child {
+  stroke: var(--svg-alt-gradient);
+  opacity: 0.625;
 }
 
 #content.loggedIn #loginButton, #content:not(.loggedIn) #logoutButton, #content:not(.loggedIn) .accountRequired {
