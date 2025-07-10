@@ -679,7 +679,7 @@ function initOrUpdatePartyModal(partyId) {
         if (publicPartyButton.classList.contains('toggled') === party.public)
           publicPartyButton.click();
 
-        partyPassword.value = party.pass;
+        partyPassword.value = '';
 
         setPartyTheme(party.systemName);
 
