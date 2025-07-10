@@ -884,7 +884,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       preToggle(document.getElementById('playerSoundsButton'));
                     break;
                   case 'hideLocation':
-                    if (value)
+                    if (value && savedConfig.singleplayerMode)
                       preToggle(document.getElementById('hideLocationButton'));
                     break;
                   case 'enableExplorer':
