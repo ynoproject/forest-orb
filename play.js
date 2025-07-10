@@ -887,25 +887,26 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
 {
   function initPrivateMode(active) {
+    const layout = document.getElementById('layout');
     document.getElementById('privateModeButton').classList.toggle('toggled', active);
-    if (config.singleplayerMode && !config.privateMode) {
-      document.getElementById('layout').classList.add('singleplayerMode');
+    layout.classList.toggle('privateMode', active);
+
+    if (config.singleplayerMode) {
+      layout.classList.add('singleplayerMode');
     } else {
-      document.getElementById('layout').classList.remove('singleplayerMode');
+      layout.classList.remove('singleplayerMode');
     }
-    document.getElementById('hideLocationButton').classList.toggle('toggled', config.singleplayerMode && config.hideLocation);
-    updateHideLocationButtonDisplay();
+
     config.privateMode = active;
     updateConfig(config);
 
     if (!sessionWs)
       return;
 
-    document.getElementById('layout').classList.toggle('privateMode', active);
-    updateHideLocationButtonDisplay();
     sendSessionCommand('pr', [ config.privateMode ? config.singleplayerMode ? 2 : 1 : 0 ]);
-    if (config.hideLocation)
-      sendSessionCommand('hl', [ config.singleplayerMode ? 1 : 0 ]);
+    if (config.hideLocation) {
+      sendSessionCommand('hl', [config.singleplayerMode ? 1 : 0 ]);
+    }
 
     if (connStatus == 1 || connStatus == 3)
       onUpdateConnectionStatus(config.privateMode ? 3 : 1);
@@ -919,15 +920,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
   document.getElementById('singleplayerModeButton').onclick = function () {
     config.singleplayerMode = this.classList.toggle('toggled');
-    updateConfig(config);
-    if (config.singleplayerMode && !config.privateMode) {
-      document.getElementById('layout').classList.add('singleplayerMode');
-    } else {
-      document.getElementById('layout').classList.remove('singleplayerMode');
-    }
     initPrivateMode(config.singleplayerMode || config.privateMode);
-    document.getElementById('hideLocationButton').classList.toggle('toggled', config.singleplayerMode && config.hideLocation);
-    updateHideLocationButtonDisplay();
   };
 }
 
@@ -2824,14 +2817,4 @@ if (!globalConfig.rulesReviewed) {
 	openModal('rulesModal');
 	globalConfig.rulesReviewed = true;
 	updateConfig(globalConfig, true);
-}
-
-function updateHideLocationButtonDisplay() {
-  const layout = document.getElementById('layout');
-  const btn = document.getElementById('hideLocationButton');
-  if (layout.classList.contains('privateMode') && !layout.classList.contains('singleplayerMode')) {
-    btn.style.display = 'none';
-  } else {
-    btn.style.display = '';
-  }
 }

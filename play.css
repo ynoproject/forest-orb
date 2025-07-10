@@ -3062,7 +3062,7 @@ form .uiTheme {
   display: none;
 }
 
-#layout.singleplayerMode #hideLocationButton path:first-child{
+#layout.singleplayerMode.privateMode #hideLocationButton path:first-child {
   stroke: var(--svg-alt-gradient);
   opacity: 0.625;
 }
