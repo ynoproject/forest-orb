@@ -920,7 +920,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
   document.getElementById('singleplayerModeButton').onclick = function () {
     config.singleplayerMode = this.classList.toggle('toggled');
-    initPrivateMode(config.singleplayerMode || config.privateMode);
+    initPrivateMode(config.privateMode);
   };
 }
 
