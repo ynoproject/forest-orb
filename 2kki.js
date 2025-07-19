@@ -16,10 +16,13 @@ function send2kkiApiRequest(url, callback) {
     req.send();
 
     let onReqEnd = _e => {
-      for (let cb of pendingRequests[url])
-        // response is null if request was not successful
-        cb(req.response);
+      const callbacks = pendingRequests[url];
+      if (Array.isArray(callbacks)) {
+        for (let cb of callbacks)
+          cb(req.response);
+      }
       delete pendingRequests[url];
+      req.onloadend = req.ontimeout = null;
     };
     req.onloadend = req.ontimeout = onReqEnd;
   }
