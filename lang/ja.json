@@ -632,7 +632,7 @@
       "mobileControlsType": "モバイルコントローラーをデフォルトの方向キーから切り替えられます。<br>浮動コントローラーはモバイルのフルスクリーンの時のみ有効です。"
     },
     "placeholders": {
-      "scheduleDescription": "Markdown記法が使用可能で、{{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
+      "scheduleDescription": "Markdown記法が使用可能で、{\\{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
     },
     "reviewRules": "ルールを見る"
   },

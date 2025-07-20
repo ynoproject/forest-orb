@@ -632,7 +632,7 @@
       "mobileControlsType": "Alternativen zu dem standard D-Pad-Steuerungstyp.<br>Floating-Steuerungstypen sind nur im mobilen Vollbildmodus verfügbar."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown Syntax ist akzeptiert, benutze {{l:Welt,optionaler Linkname}} um einen Link auf yume.wiki einzufügen."
+      "scheduleDescription": "Markdown Syntax ist akzeptiert, benutze {\\{l:Welt,optionaler Linkname}} um einen Link auf yume.wiki einzufügen."
     },
     "reviewRules": "Regeln nochmal anzeigen"
   },

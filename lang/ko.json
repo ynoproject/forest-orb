@@ -632,7 +632,7 @@
       "mobileControlsType": "컨트롤러 타입을 기본으로 변경합니다. <br>이외의 타입은 모바일 전체 화면에서만 이용할 수 있습니다."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Markdown syntax is accepted, use {\\{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "규칙 다시 보기"
   },

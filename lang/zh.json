@@ -632,7 +632,7 @@
       "mobileControlsType": "可替代默认的方向键操控模式。<br>浮动操控模式只有在移动端全屏模式下才可用。"
     },
     "placeholders": {
-      "scheduleDescription": "支持Markdown格式符。使用 {{l:世界名,可选链接名}} 可链接至yume.wiki词条页"
+      "scheduleDescription": "支持Markdown格式符。使用 {\\{l:世界名,可选链接名}} 可链接至yume.wiki词条页"
     },
     "reviewRules": "多人游戏守则"
   },

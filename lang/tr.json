@@ -632,7 +632,7 @@
       "mobileControlsType": "Orijinal D-Pad kontrol türü alternatifi.<br>Bağımsız Kontrol türleri sadece mobil tam ekranda mevcuttur."
     },
     "placeholders": {
-      "scheduleDescription": "Gömülü Bağlantılar desteklenir, yume.wiki'den bir link yapıştırmak için {{l:World,optional link name}} kullanabilirsin"
+      "scheduleDescription": "Gömülü Bağlantılar desteklenir, yume.wiki'den bir link yapıştırmak için {\\{l:World,optional link name}} kullanabilirsin"
     },
     "reviewRules": "Kuralları Göster"
   },

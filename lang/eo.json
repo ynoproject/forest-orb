@@ -632,7 +632,7 @@
       "mobileControlsType": "Alternativoj al la norma D-Pad speco de regilo.<br>Glitaj specoj de regilo nur estas disponebla per poŝtelefono en plenekrana reĝimo."
     },
     "placeholders": {
-      "scheduleDescription": "Markdown syntax is accepted, use {{l:World,optional link name}} to insert a link to yume.wiki"
+      "scheduleDescription": "Markdown syntax is accepted, use {\\{l:World,optional link name}} to insert a link to yume.wiki"
     },
     "reviewRules": "Montri Regulojn"
   },

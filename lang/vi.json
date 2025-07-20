@@ -632,7 +632,7 @@
       "mobileControlsType": "Các kiểu điều khiển khác thay thế cho kiểu D-Pad mặc định.<br>Kiểu điều khiển nổi chỉ có tác dụng khi bật toàn màn hình trên điện thoại."
     },
     "placeholders": {
-      "scheduleDescription": "Có thể dùng ký hiệu định dạng văn bản. Bạn có thể dùng {{l:World,tên tùy chọn cho liên kết}} để chèn liên kết đến yume.wiki"
+      "scheduleDescription": "Có thể dùng ký hiệu định dạng văn bản. Bạn có thể dùng {\\{l:World,tên tùy chọn cho liên kết}} để chèn liên kết đến yume.wiki"
     },
     "reviewRules": "Xem Nội quy"
   },
