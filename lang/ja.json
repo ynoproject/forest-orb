@@ -632,7 +632,7 @@
       "mobileControlsType": "モバイルコントローラーをデフォルトの方向キーから切り替えられます。<br>浮動コントローラーはモバイルのフルスクリーンの時のみ有効です。"
     },
     "placeholders": {
-      "scheduleDescription": "Markdown記法が使用可能で、{{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
+      "scheduleDescription": "Markdown記法が使用可能で、{\\{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
     },
     "reviewRules": "ルールを見る"
   },
@@ -1109,23 +1109,6 @@
         "tooltip": {
           "on": "場所を追跡する",
           "off": "場所の追跡を止める"
-        }
-      },
-      "visited": {
-        "values": {
-          "all": "全て",
-          "visited": "到達済み",
-          "unvisited": "未到達"
-        }
-      },
-      "sortOrder": {
-        "values": {
-          "newest": "新しい順",
-          "oldest": "古い順",
-          "shallowest": "浅い順",
-          "deepest": "深い順",
-          "alpha": "アルファベット順",
-          "players": "プレイヤー数順"
         }
       }
     },

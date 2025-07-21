@@ -632,7 +632,7 @@
       "mobileControlsType": "Alternatifs au type de commande de croix directionnelle par défaut.<br>Les types de commande flottants ne sont disponibles qu'en plein écran sur mobile."
     },
     "placeholders": {
-      "scheduleDescription": "La syntaxe Markdown est acceptée, utilisez {{l:Monde,nom de lien optionnel}} pour insérer un lien vers yume.wiki"
+      "scheduleDescription": "La syntaxe Markdown est acceptée, utilisez {\\{l:Monde,nom de lien optionnel}} pour insérer un lien vers yume.wiki"
     },
     "reviewRules": "Relire les règles"
   },

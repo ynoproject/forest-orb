@@ -632,7 +632,7 @@
       "mobileControlsType": "Alternativas para o tipo padrão de controle (D-Pad).<br>Tipos de controle livre só estão disponivel no mobile em tela cheia."
     },
     "placeholders": {
-      "scheduleDescription": "Syntax Markdown é aceito, use {{l:World,optional link name}} para inserir um link a yume.wiki"
+      "scheduleDescription": "Syntax Markdown é aceito, use {\\{l:World,optional link name}} para inserir um link a yume.wiki"
     },
     "reviewRules": "Ver Regras"
   },
