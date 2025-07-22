@@ -2488,7 +2488,7 @@ function getOrQueryLocationColors(locationName) {
     }
 
     if (gameId === '2kki') {
-      const url = `${apiUrl}/2kki?action=getLocationColors&locationName=${locationName}`;
+      const url = `https://explorer.yume.wiki/?action=getLocationColors&locationName=${locationName}`;
       send2kkiApiRequest(url, response => {
         let errCode = null;
 
