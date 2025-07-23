@@ -86,7 +86,7 @@ function onLoad2kkiMap(mapId) {
 
 function queryAndSet2kkiLocation(mapId, prevMapId, prevLocations, setLocationFunc, forClient) {
   return new Promise((resolve, reject) => {
-    let url = `${apiUrl}/2kki?action=getMapLocationNames&mapId=${mapId}`;
+    let url = `https://explorer.yume.wiki/getMapLocationNames?mapId=${mapId}`;
     if (prevMapId) {
         url += `&prevMapId=${prevMapId}`;
         if (prevLocations && prevLocations.length)
@@ -328,7 +328,7 @@ function getOrQuery2kkiLocationsHtml(mapId, callback) {
 
 function queryConnected2kkiLocationNames(locationName, connLocationNames) {
   return new Promise((resolve, _reject) => {
-    const url = `${apiUrl}/2kki?action=getConnectedLocations&locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
+    const url = `https://explorer.yume.wiki/getConnectedLocations?locationName=${locationName}&connLocationNames=${connLocationNames.join('&connLocationNames=')}`;
     const callback = response => {
       let ret = [];
       let errCode = null;
@@ -355,7 +355,7 @@ function queryAndSet2kkiMaps(locationNames) {
         locationName = locationName.slice(0, colonIndex);
       return locationName;
     });
-    const url = `${apiUrl}/2kki?action=getLocationMaps&locationNames=${massagedLocationNames.join('&locationNames=')}`;
+    const url = `https://explorer.yume.wiki/getLocationMaps?locationNames=${massagedLocationNames.join('&locationNames=')}`;
     const callback = response => {
       let errCode = null;
 
@@ -393,7 +393,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   addTooltip(ret, getMassagedLabel(!isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi, true).replace('{LOCATION}', locationName), true, true);
   ret.classList.add('unselectable', 'iconButton');
 
-  const url = `https://2kki.app/?location=${locationName}&lang=${globalConfig.lang}`;
+  const url = `https:///?location=${locationName}&lang=${globalConfig.lang}`;
 
   ret.onclick = () => {
     const handle = window.open(url, '_blank');
