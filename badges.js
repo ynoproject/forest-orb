@@ -55,6 +55,10 @@ let badgeObserver;
 
 let newUnlockBadges = new Set;
 
+let isBadgeCheckPending = false;
+let isCheckBadge = false;
+let lastBadgeCheckTime = 0;
+
 const badgeGalleryRowBpLevels = [
   {
     bp: 300,
@@ -1354,6 +1358,13 @@ function updatePlayerBadgeSlot(badgeId, slotRow, slotCol, callback) {
 
 let lastBadgeCheck = '';
 function checkNewBadgeUnlocks() {
+  const now = Date.now();
+  if (isBadgeCheckPending || now - lastBadgeCheckTime < 1000)
+    return Promise.resolve();
+
+  isBadgeCheckPending = true;
+  lastBadgeCheckTime = now;
+
   return apiFetch(`badge?command=new&since=${lastBadgeCheck}`)
     .then(response => {
       if (!response.ok)
@@ -1380,13 +1391,17 @@ function checkNewBadgeUnlocks() {
 
       // update badge unlock status to silence badge hints
       for (const badge of badgeCache) {
-        if (newUnlockBadges.has(badge.badgeId)) 
+        if (newUnlockBadges.has(badge.badgeId))
           badge.unlocked = true;
       }
       if (updateBadgeHints)
         updateBadgeHint(cachedLocations.map(l => l.title));
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error(err))
+    .finally(() => {
+      isBadgeCheckPending = false;
+      lastBadgeCheckTime = Date.now();
+    });
 }
 
 function updateLocalizedBadgeGroups(callback) {
@@ -1622,9 +1637,15 @@ function formatBadgeContainer(badgeSlots) {
 }
 
 // EXTERNAL
-function onBadgeUpdateRequested() {
-  if (loginToken)
-    checkNewBadgeUnlocks();
+async function onBadgeUpdateRequested() {
+  if (loginToken && !isCheckBadge) {
+    isCheckBadge = true;
+    try {
+      await checkNewBadgeUnlocks();
+    } finally {
+      isCheckBadge = false;
+    }
+  }
 }
 
 function showBadgeToastMessage(key, icon, badgeId) {
