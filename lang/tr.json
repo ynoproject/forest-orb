@@ -400,7 +400,8 @@
           "search": {
             "label": "Ara:&nbsp;",
             "name": "İsim:",
-            "location": "Konum:"
+            "location": "Konum:",
+            "artist": "Artist:"
           }
         }
       },

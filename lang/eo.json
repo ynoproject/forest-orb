@@ -400,7 +400,8 @@
           "search": {
             "label": "Serĉi:&nbsp;",
             "name": "Nomo:",
-            "location": "Loko:"
+            "location": "Loko:",
+            "artist": "Artist:"
           }
         }
       },

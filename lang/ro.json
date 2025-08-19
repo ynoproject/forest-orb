@@ -400,7 +400,8 @@
           "search": {
             "label": "Caută:&nbsp;",
             "name": "Nume:",
-            "location": "Locație:"
+            "location": "Locație:",
+            "artist": "Artist:"
           }
         }
       },
