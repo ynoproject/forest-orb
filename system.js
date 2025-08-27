@@ -105,6 +105,7 @@ const allGameUiThemes = {
     'Colby_RadiantSys',
     'PGR_SYS_05',
     'takikomi_syst2',
+    'fluxide_sysblava',
 
     'system_E_eye',
     'System_kuraud',
