@@ -396,7 +396,7 @@ function get2kkiExplorerButton(locationName, isMulti) {
   addTooltip(ret, getMassagedLabel(!isMulti ? localizedExplorerLinks.generic : localizedExplorerLinks.multi, true).replace('{LOCATION}', locationName), true, true);
   ret.classList.add('unselectable', 'iconButton');
 
-  const url = `https:///?location=${locationName}&lang=${globalConfig.lang}`;
+  const url = `https://explorer.yume.wiki/?location=${locationName}&lang=${globalConfig.lang}`;
 
   ret.onclick = () => {
     const handle = window.open(url, '_blank');
