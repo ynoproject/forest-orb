@@ -63,7 +63,7 @@ let easyrpgPlayer = {
 };
 let easyrpgPlayerLoadFuncs = [];
 
-const sessionIdKey = 'ynoproject_sessionId';
+const sessionIdKey = 'auth';
 const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
@@ -232,9 +232,7 @@ function fetchNewest(path, important, req) {
 }
 
 function apiFetch(path, isAdmin) {
-  const sId = getCookie(sessionIdKey);
-  const headers = sId ? { 'Authorization': sId } : {};
-  return fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers });
+  return fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { credentials: "include" });
 }
 
 function apiPost(path, data, contentType) {
@@ -244,10 +242,7 @@ function apiPost(path, data, contentType) {
     'Accept': contentType,
     'Content-Type': contentType
   };
-  const sId = getCookie(sessionIdKey);
-  if (sId)
-    headers['Authorization'] = sId;
-  return fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: data });
+  return fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, credentials: "include", body: data });
 }
 
 function apiJsonPost(path, data) {
