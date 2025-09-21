@@ -108,7 +108,7 @@ async function injectScripts() {
           const loadingOverlay = document.getElementById('loadingOverlay');
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
-          fetchAndUpdatePlayerInfo();
+          fetchAndUpdatePlayerInfo(getCookie(loggedInKey) ? true : undefined);
           setInterval(checkLogin, 60000);
           setTimeout(() => {
             checkDependenciesModified();
