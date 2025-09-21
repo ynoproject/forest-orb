@@ -11,6 +11,7 @@ function initAccountControls() {
         .then(response => {
           if (!response.ok)
             console.error(response.statusText);
+          setCookie(loggedInKey, '');
           closeSessionWs();
           fetchAndUpdatePlayerInfo(false);
         }).catch(err => console.error(err));

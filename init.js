@@ -63,6 +63,7 @@ let easyrpgPlayer = {
 };
 let easyrpgPlayerLoadFuncs = [];
 
+const loggedInKey = 'ynoproject_loggedIn';
 const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
@@ -991,6 +992,25 @@ function updateConfig(configObj, global, configName) {
   }
 }
 
+function setCookie(cName, cValue) {
+  const expiration = new Date();
+  expiration.setTime(new Date().getTime() + 3600000 * 24 * 30);
+  document.cookie = `${cName}=${cValue};SameSite=Strict;path=/;expires=${expiration.toUTCString()}`;
+}
+
+function getCookie(cName) {
+  const name = `${cName}=`;
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ')
+      c = c.substring(1);
+    if (c.indexOf(name) === 0)
+      return c.substring(name.length, c.length);
+  }
+  return "";
+}
+
 (function() {
   initNotificationsConfigAndControls();
   loadOrInitConfig(notificationConfig, true, 'notificationConfig');
@@ -1003,7 +1023,7 @@ function updateConfig(configObj, global, configName) {
     showSystemToastMessage('error', 'important');
   });
 
-  if (!loggedIn)
+  if (!getCookie(loggedInKey))
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());

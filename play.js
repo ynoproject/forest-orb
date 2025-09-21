@@ -230,7 +230,8 @@ function fetchAndUpdatePlayerInfo(forLogin) {
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.uuid) {
-        loggedIn = jsonResponse.registered;
+        loggedIn = !isLogout && jsonResponse.registered;
+        setCookie(loggedInKey, loggedIn ? 'true' : '');
         if (jsonResponse.name)
           playerName = jsonResponse.name;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, jsonResponse.registered, jsonResponse.badge, jsonResponse.medals, -1);
@@ -290,6 +291,7 @@ function checkLogin() {
     .then(jsonResponse => {
       if (!jsonResponse.registered) {
         apiFetch('logout').then(() => {
+          setCookie(loggedInKey, '');
           fetchAndUpdatePlayerInfo(false);
         });
       }
