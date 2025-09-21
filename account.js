@@ -1,4 +1,4 @@
-let loginToken = null;
+let loggedIn = false;
 
 function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
@@ -12,8 +12,7 @@ function initAccountControls() {
           if (!response.ok)
             console.error(response.statusText);
           closeSessionWs();
-          setCookie(sessionIdKey, '');
-          fetchAndUpdatePlayerInfo();
+          fetchAndUpdatePlayerInfo(false);
         }).catch(err => console.error(err));
     });
   };
@@ -29,14 +28,10 @@ function initAccountControls() {
           });
           return;
         }
+        closeSessionWs();
+        fetchAndUpdatePlayerInfo(true);
         closeModal();
-        return response.text();
-      }).then(sId => {
-        if (sId) {
-          closeSessionWs();
-          setCookie(sessionIdKey, sId);
-          fetchAndUpdatePlayerInfo();
-        }
+        return;
       }).catch(err => console.error(err));
     return false;
   };

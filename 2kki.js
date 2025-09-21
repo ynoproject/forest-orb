@@ -638,7 +638,7 @@ function reloadExplorer(trackedLocations) {
     return;
   }
   const locationNames = cachedLocations.map(l => get2kkiWikiLocationName(l));
-  if (explorerFrame && locationNames && loginToken) {
+  if (explorerFrame && locationNames && loggedIn) {
     addLoader(explorerFrame, true);
     explorerFrame.onload = () => removeLoader(explorerFrame);
     apiFetch(`explorer${trackedLocations ? `?trackedLocations=${trackedLocations.map(l => l.title).join('|')}` : ''}`).then(response => {

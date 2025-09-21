@@ -63,7 +63,6 @@ let easyrpgPlayer = {
 };
 let easyrpgPlayerLoadFuncs = [];
 
-const sessionIdKey = 'auth';
 const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
@@ -428,7 +427,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
   if (messageType)
     tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
 
-  if (loginToken && player.account) {
+  if (loggedIn && player.account) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
@@ -442,7 +441,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
                     <a href="javascript:void(0);" class="unblockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
   }
 
-  if (loginToken) {
+  if (loggedIn) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="reportPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.report.label).replace('{PLAYER}', playerName)}</a>`;
@@ -494,7 +493,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
     };
   }
 
-  if (loginToken && player.account) {
+  if (loggedIn && player.account) {
     playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
       let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
       if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
@@ -992,25 +991,6 @@ function updateConfig(configObj, global, configName) {
   }
 }
 
-function setCookie(cName, cValue) {
-  const expiration = new Date();
-  expiration.setTime(new Date().getTime() + 3600000 * 24 * 30);
-  document.cookie = `${cName}=${cValue};SameSite=Strict;path=/;expires=${expiration.toUTCString()}`;
-}
-
-function getCookie(cName) {
-  const name = `${cName}=`;
-  const ca = document.cookie.split(';');
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ')
-      c = c.substring(1);
-    if (c.indexOf(name) === 0)
-      return c.substring(name.length, c.length);
-  }
-  return "";
-}
-
 (function() {
   initNotificationsConfigAndControls();
   loadOrInitConfig(notificationConfig, true, 'notificationConfig');
@@ -1023,7 +1003,7 @@ function getCookie(cName) {
     showSystemToastMessage('error', 'important');
   });
 
-  if (!getCookie(sessionIdKey))
+  if (!loggedIn)
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());

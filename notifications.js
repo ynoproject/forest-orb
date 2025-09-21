@@ -16,7 +16,6 @@ if ('serviceWorker' in navigator) {
     });
 
     registration.active?.postMessage({
-      sessionId: getCookie(sessionIdKey),
       game: gameId,
     });
     const applicationServerKey = await apiFetch('vapidpublickey').then(r => r.text());
