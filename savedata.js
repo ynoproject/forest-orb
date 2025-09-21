@@ -11,21 +11,19 @@ function initSaveSyncControls() {
     });
   };
 
-  if (loggedIn) {
-    apiFetch('savesync?command=timestamp')
-      .then(response => {
-        if (!response.ok)
-          throw new Error('Failed to retrieve timestamp for save sync data');
-        return response.text();
-      })
-      .then(timestamp => {
-        const clearSaveSyncButton = document.getElementById('clearSaveSyncButton');
-        if (timestamp)
-          clearSaveSyncButton.removeAttribute('disabled');
-        else
-          clearSaveSyncButton.setAttribute('disabled', true);
-      });
-  }
+  apiFetch('savesync?command=timestamp')
+    .then(response => {
+      if (!response.ok)
+        throw new Error('Failed to retrieve timestamp for save sync data');
+      return response.text();
+    })
+    .then(timestamp => {
+      const clearSaveSyncButton = document.getElementById('clearSaveSyncButton');
+      if (timestamp)
+        clearSaveSyncButton.removeAttribute('disabled');
+      else
+        clearSaveSyncButton.setAttribute('disabled', true);
+    });
 }
 
 function initSaveDataControls() {
