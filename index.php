@@ -99,6 +99,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/scrollwatch@2.0.1/dist/ScrollWatch-2.0.1.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body <?php if ($isFirefox): ?>class="browserFirefox"<?php endif ?>>
   <div id="background"></div>
@@ -493,6 +494,7 @@
                   <label id="loginError"></label>
                 </li>
               </ul>
+              <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
               <button type="submit" data-i18n="[html]modal.login.submit">Submit</button>
             </form>
           </div>
@@ -524,6 +526,7 @@
                   <label id="registerError"></label>
                 </li>
               </ul>
+              <div class="cf-turnstile" data-sitekey="<YOUR-SITE-KEY>"></div>
               <button type="submit" data-i18n="[html]modal.register.submit">Submit</button>
             </form>
           </div>

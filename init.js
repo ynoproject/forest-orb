@@ -63,7 +63,7 @@ let easyrpgPlayer = {
 };
 let easyrpgPlayerLoadFuncs = [];
 
-const sessionIdKey = 'ynoproject_sessionId';
+const loggedInKey = 'ynoproject_loggedIn';
 const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
@@ -108,7 +108,7 @@ async function injectScripts() {
           const loadingOverlay = document.getElementById('loadingOverlay');
           removeLoader(loadingOverlay);
           checkShowVersionUpdate().then(() => loadingOverlay.classList.add('loaded'));
-          fetchAndUpdatePlayerInfo();
+          fetchAndUpdatePlayerInfo(getCookie(loggedInKey) ? true : undefined);
           setInterval(checkLogin, 60000);
           setTimeout(() => {
             checkDependenciesModified();
@@ -232,9 +232,7 @@ function fetchNewest(path, important, req) {
 }
 
 function apiFetch(path, isAdmin) {
-  const sId = getCookie(sessionIdKey);
-  const headers = sId ? { 'Authorization': sId } : {};
-  return fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { headers: headers });
+  return fetch(`${isAdmin ? adminApiUrl : apiUrl}/${path}`, { credentials: "include" });
 }
 
 function apiPost(path, data, contentType) {
@@ -244,10 +242,7 @@ function apiPost(path, data, contentType) {
     'Accept': contentType,
     'Content-Type': contentType
   };
-  const sId = getCookie(sessionIdKey);
-  if (sId)
-    headers['Authorization'] = sId;
-  return fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, body: data });
+  return fetch(`${apiUrl}/${path}`, { method: 'POST', headers: headers, credentials: "include", body: data });
 }
 
 function apiJsonPost(path, data) {
@@ -433,7 +428,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
   if (messageType)
     tooltipHtml += `<a href="javascript:void(0);" class="pingPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.ping.label, true).replace('{PLAYER}', playerName)}</a>`;
 
-  if (loginToken && player.account) {
+  if (loggedIn && player.account) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="addPlayerFriendAction playerAction">${getMassagedLabel(localizedMessages.context.addFriend.label, true).replace('{PLAYER}', playerName)}</a>
@@ -447,7 +442,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
                     <a href="javascript:void(0);" class="unblockPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.unblock.label, true).replace('{PLAYER}', playerName)}</a>`;
   }
 
-  if (loginToken) {
+  if (loggedIn) {
     if (tooltipHtml)
       tooltipHtml += '<br>';
     tooltipHtml += `<a href="javascript:void(0);" class="reportPlayerAction playerAction">${getMassagedLabel(localizedMessages.context.report.label).replace('{PLAYER}', playerName)}</a>`;
@@ -499,7 +494,7 @@ function createPlayerTooltip(target, player, uuid, messageType, msgProps) {
     };
   }
 
-  if (loginToken && player.account) {
+  if (loggedIn && player.account) {
     playerTooltip.popper.querySelector('.addPlayerFriendAction').onclick = function () {
       let cachedPlayerFriend = playerFriendsCache.find(pf => pf.uuid === uuid);
       if (cachedPlayerFriend && (cachedPlayerFriend.accepted || !cachedPlayerFriend.incoming))
@@ -1028,7 +1023,7 @@ function getCookie(cName) {
     showSystemToastMessage('error', 'important');
   });
 
-  if (!getCookie(sessionIdKey))
+  if (!getCookie(loggedInKey))
     injectScripts();
   else
     trySyncSave().then(_ => injectScripts());

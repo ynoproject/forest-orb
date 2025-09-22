@@ -212,20 +212,17 @@ function onRoomSwitch() {
   updateJoinedParty();
 }
 
-function fetchAndUpdatePlayerInfo() {
-  const cookieSessionId = getCookie(sessionIdKey);
-  const isLogin = cookieSessionId && cookieSessionId !== loginToken;
-  const isLogout = !cookieSessionId && loginToken && cookieSessionId !== loginToken;
+function fetchAndUpdatePlayerInfo(forLogin) {
+  const isLogin = forLogin !== undefined && forLogin;
+  const isLogout = forLogin !== undefined && !forLogin;
+
   if (isLogin || isLogout) {
-    loginToken = isLogin ? cookieSessionId : null;
-    easyrpgPlayer.api.setSessionToken(isLogin ? loginToken : '');
     playerTooltipCache.clear();
   }
   navigator.serviceWorker?.getRegistration('/').then(registration => {
     if (!registration)
       console.warn('updating player info but no service workers found');
     registration?.active?.postMessage({
-      sessionId: cookieSessionId,
       game: gameId,
     });
   });
@@ -233,9 +230,11 @@ function fetchAndUpdatePlayerInfo() {
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.uuid) {
+        loggedIn = !isLogout && jsonResponse.registered;
+        setCookie(loggedInKey, loggedIn ? 'true' : '');
         if (jsonResponse.name)
           playerName = jsonResponse.name;
-        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, !!loginToken, jsonResponse.badge, jsonResponse.medals, -1);
+        syncPlayerData(jsonResponse.uuid, jsonResponse.rank, jsonResponse.registered, jsonResponse.badge, jsonResponse.medals, -1);
         badgeSlotRows = jsonResponse.badgeSlotRows || 1;
         badgeSlotCols = jsonResponse.badgeSlotCols || 3;
         screenshotLimit = jsonResponse.screenshotLimit || 10;
@@ -279,25 +278,25 @@ function fetchAndUpdatePlayerInfo() {
             });
         }
       } else if (isLogin) {
-        setCookie(sessionIdKey, '');
-        fetchAndUpdatePlayerInfo();
+        apiFetch('logout');
+        fetchAndUpdatePlayerInfo(true);
       }
     })
     .catch(err => console.error(err));
 }
 
 function checkLogin() {
-  if (loginToken && loginToken === getCookie(sessionIdKey)) {
-    apiFetch('info')
-      .then(response => response.json())
-      .then(jsonResponse => {
-        if (!jsonResponse.uuid) {
-          setCookie(sessionIdKey, '');
-          fetchAndUpdatePlayerInfo();
-        }
-      })
-      .catch(err => console.error(err));
-  }
+  apiFetch('info')
+    .then(response => response.json())
+    .then(jsonResponse => {
+      if (!jsonResponse.registered) {
+        apiFetch('logout').then(() => {
+          setCookie(loggedInKey, '');
+          fetchAndUpdatePlayerInfo(false);
+        });
+      }
+    })
+    .catch(err => console.error(err));
 }
 
 let playerCount;
