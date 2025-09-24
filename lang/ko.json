@@ -589,8 +589,8 @@
             "values": {
               "newest": "신규 순",
               "oldest": "오래된 순",
-              "shallowest": "깊이 기준 오름차순",
-              "deepest": "깊이 기준 내림차순",
+              "shallowest": "얕은 순",
+              "deepest": "깊은 순",
               "alpha": "알파벳 순",
               "players": "플레이어 수"
             }
