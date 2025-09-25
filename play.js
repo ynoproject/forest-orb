@@ -278,7 +278,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
             });
         }
       } else if (isLogin) {
-        apiFetch('logout');
+        authApiFetch('logout');
         fetchAndUpdatePlayerInfo(true);
       }
     })
@@ -290,7 +290,7 @@ function checkLogin() {
     .then(response => response.json())
     .then(jsonResponse => {
       if (!jsonResponse.registered) {
-        apiFetch('logout').then(() => {
+        authApiFetch('logout').then(() => {
           setCookie(loggedInKey, '');
           fetchAndUpdatePlayerInfo(false);
         });
