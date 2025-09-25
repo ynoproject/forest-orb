@@ -451,8 +451,10 @@ function checkUpdateLocation(mapId, mapChanged) {
         markMapUpdateInChat();
       addChatMapLocation(locations);
 
+      let locationNames;
+
       if (is2kki) {
-        const locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
+        locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
         set2kkiExplorerLinks(locationNames);
         if (locationNames.length)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
@@ -461,14 +463,14 @@ function checkUpdateLocation(mapId, mapChanged) {
           set2kkiExplorerLinks(null);
         }
       } else if (yumeWikiSupported) {
-        const locationNames = locations.map(l => l.title);
+        locationNames = locations.map(l => l.title);
         if (mapCache.hasOwnProperty(locationNames.join(',')))
           setMaps(mapCache[locationNames.join(',')], locationNames);
         else
           queryAndSetWikiMaps(locations);
       }
 
-      updateBadgeHint(locations.map(l => l.title));
+      updateBadgeHint(locationNames);
     }
 
     cachedLocations = locations;
@@ -576,7 +578,18 @@ function syncLocationChange() {
 function onPlayerTeleported(mapId, x, y) {
   tpX = x;
   tpY = y;
-  checkUpdateLocation(String(mapId).padStart(4, '0'), +cachedMapId === mapId);
+
+  const mapIdStr = String(mapId).padStart(4, '0');
+
+  if (ignoredMapIds.indexOf(mapIdStr) > -1)
+    return;
+
+  const mapChanged = +cachedMapId !== mapId;
+
+  if (mapChanged && gameId === '2kki' && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapIdStr)))
+    onLoad2kkiMap(mapIdStr);
+  else
+    checkUpdateLocation(mapIdStr, mapChanged);
 }
 
 // EXTERNAL
