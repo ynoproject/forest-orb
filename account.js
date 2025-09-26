@@ -40,7 +40,7 @@ function initAccountControls() {
   };
 
   document.getElementById('loginRegisterLink').onclick = () => {
-    openModal('register');
+    openModal('registerModal');
     turnstile.reset();
   };
 
