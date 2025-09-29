@@ -160,9 +160,9 @@
           "toggleMobileControls": "모바일 컨트롤러 표시",
           "mobileControlsType": {
             "label": "모바일 컨트롤러 타입",
-            "default": "다이나믹 패드 (기본)",
+            "default": "십자키 (기본)",
             "joystick": "플로팅 타입 조이스틱",
-            "dpad": "플로팅 타입 다이나믹 패드"
+            "dpad": "플로팅 타입 십자키"
           },
           "toggleLocationDisplay": "맵 타이틀 팝업 표시",
           "toggleRankings": "랭킹",
