@@ -499,7 +499,7 @@
             </form>
           </div>
           <div class="modalFooter">
-            <span class="infoLabel" data-i18n="[html]modal.login.registerPrompt">Don't have an account?&nbsp;</span><a href="javascript:void(0);" onclick="openModal('registerModal')" data-i18n="[html]modal.login.register">Register</a>
+            <span class="infoLabel" data-i18n="[html]modal.login.registerPrompt">Don't have an account?&nbsp;</span><a id="loginRegisterLink" href="javascript:void(0);" data-i18n="[html]modal.login.register">Register</a>
           </div>
         </div>
         <div id="registerModal" class="modal hidden">

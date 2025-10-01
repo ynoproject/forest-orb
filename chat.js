@@ -797,8 +797,10 @@ function wrapMessageEmojis(node, force) {
 }
 
 const screenshotPattern = /\[(t?)(\w{16})(?::(\d+))?\]/;
-/** Decodes the message constructed by {@linkcode chatInputActionFired} */
+/** Decodes the message constructed by {@linkcode chatInputActionFired}
+	Currently disabled. */
 function tryEmbedScreenshot(node, uuid) {
+	return false;
   if (node.childNodes.length) {
     for (let childNode of node.childNodes) {
       if (childNode.nodeType === Node.TEXT_NODE) {

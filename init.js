@@ -64,8 +64,10 @@ let easyrpgPlayer = {
 let easyrpgPlayerLoadFuncs = [];
 
 const loggedInKey = 'ynoproject_loggedIn';
-const serverUrl = `https://connect.ynoproject.net/${ynoGameId}`;
+const serverUrlBase = 'https://connect.ynoproject.net';
+const serverUrl = `${serverUrlBase}/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
+const authApiUrl = `${serverUrlBase}/seiko`;
 const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
@@ -247,6 +249,20 @@ function apiPost(path, data, contentType) {
 
 function apiJsonPost(path, data) {
   return apiPost(path, JSON.stringify(data));
+}
+
+function authApiFetch(path) {
+  return fetch(`${authApiUrl}/${path}`, { credentials: "include" });
+}
+
+function authApiPost(path, data, contentType) {
+  if (!contentType)
+    contentType = 'application/json';
+  const headers = {
+    'Accept': contentType,
+    'Content-Type': contentType
+  };
+  return fetch(`${authApiUrl}/${path}`, { method: 'POST', headers: headers, credentials: "include", body: data });
 }
 
 function wikiApiFetch(action, query) {

@@ -461,6 +461,10 @@ body {
   width: unset;
 }
 
+.formControls + .cf-turnstile {
+  padding-bottom: 16px;
+}
+
 .imageThumbnail {
   width: 160px;
   height: 120px;

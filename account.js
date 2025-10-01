@@ -4,10 +4,11 @@ function initAccountControls() {
   document.getElementById('loginButton').onclick = () => {
     document.getElementById('loginErrorRow').classList.add('hidden');
     openModal('loginModal');
+    turnstile.reset();
   };
   document.getElementById('logoutButton').onclick = () => {
     showConfirmModal(localizedMessages.logout, () => {
-      apiFetch('logout')
+      authApiFetch('logout')
         .then(response => {
           if (!response.ok)
             console.error(response.statusText);
@@ -20,13 +21,14 @@ function initAccountControls() {
 
   document.getElementById('loginForm').onsubmit = function () {
     const form = this;
-    apiPost('login', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
+    authApiPost('login', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
       .then(response => {
         if (!response.ok) {
           response.text().then(_ => {
             document.getElementById('loginError').innerHTML = getMassagedLabel(localizedMessages.account.login.errors.invalidLogin, true);
             document.getElementById('loginErrorRow').classList.remove('hidden');
           });
+          turnstile.reset();
           return;
         }
         closeSessionWs();
@@ -37,6 +39,11 @@ function initAccountControls() {
     return false;
   };
 
+  document.getElementById('loginRegisterLink').onclick = () => {
+    openModal('registerModal');
+    turnstile.reset();
+  };
+
   document.getElementById('registerForm').onsubmit = function () {
     const form = this;
     if (document.getElementById('registerPassword').value !== document.getElementById('registerConfirmPassword').value) {
@@ -44,17 +51,19 @@ function initAccountControls() {
       document.getElementById('registerErrorRow').classList.remove('hidden');
       return false;
     }
-    apiPost('register', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
+    authApiPost('register', new URLSearchParams(new FormData(form)), 'application/x-www-form-urlencoded')
       .then(response => {
         if (!response.ok) {
           response.text().then(error => {
             document.getElementById('registerError').innerHTML = getMassagedLabel(localizedMessages.account.register.errors[error.replace('\n', '') === 'user exists' ? 'usernameTaken' : 'invalidCredentials'], true);
             document.getElementById('registerErrorRow').classList.remove('hidden');
           });
+          turnstile.reset();
           return;
         }
         document.getElementById('loginErrorRow').classList.add('hidden');
         openModal('loginModal');
+        turnstile.reset();
       })
       .catch(err => console.error(err));
     return false;
