@@ -342,7 +342,10 @@ const allGameUiThemes = {
     '1247-03',
     '1247-04',
     '1247-pc98',
-    'EBroxas_menu_1'
+    'EBroxas_menu_1',
+    'sekiranun_menutype01',
+    'lapis_menu_1',
+    'lysenthe_system'
   ],
   'yume': [
     '0000000000009',
