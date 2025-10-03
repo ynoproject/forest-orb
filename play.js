@@ -444,7 +444,7 @@ function checkUpdateLocation(mapId, mapChanged) {
   cachedMapId = mapId;
 
   if (localizedMapLocations) {
-    const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY);
+    const locations = getMapLocationsArray(mapLocations, cachedMapId, cachedPrevMapId, tpX, tpY) || [];
     const locationsUpdated = !locations !== !cachedLocations || JSON.stringify(locations) !== JSON.stringify(cachedLocations);
     if (locationsUpdated) {
       if (!mapChanged)
@@ -454,7 +454,7 @@ function checkUpdateLocation(mapId, mapChanged) {
       let locationNames;
 
       if (is2kki) {
-        locationNames = locations ? locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title) : [];
+        locationNames = locations.filter(l => !l.hasOwnProperty('explorer') || l.explorer).map(l => l.title);
         set2kkiExplorerLinks(locationNames);
         if (locationNames.length)
           queryAndSet2kkiMaps(locationNames).catch(err => console.error(err));
@@ -468,7 +468,8 @@ function checkUpdateLocation(mapId, mapChanged) {
           setMaps(mapCache[locationNames.join(',')], locationNames);
         else
           queryAndSetWikiMaps(locations);
-      }
+      } else
+        locationNames = [];
 
       updateBadgeHint(locationNames);
     }
