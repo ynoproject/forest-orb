@@ -475,7 +475,7 @@
       },
       "myScreenshots": {
         "title": "Mis Capturas de Pantalla",
-        "screenshotSlotProgress": "Siguiente Mejora de Ranuras (BP)",
+        "screenshotSlotProgress": "Siguiente Mejora de Ranuras (PI)",
         "empty": "Aún no has guardado ninguna Captura de Pantalla."
       },
       "communityScreenshots": {
@@ -1006,7 +1006,7 @@
     "badges": {
       "null": "Sin Insignia",
       "allCategory": "Todos",
-      "badgeTitle": "{TITLE} - {BP} BP",
+      "badgeTitle": "{TITLE} - {BP} PI",
       "locked": "???",
       "location": "Ubicación:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
@@ -1032,7 +1032,7 @@
     "badgeGallery": {
       "label": "Galería de {PLAYER}",
       "loading": "Cargando...",
-      "bp": "{BP} BP",
+      "bp": "{BP} PI",
       "count": "{COUNT} Insignias",
       "empty": "Galería de Insignias no Establecida"
     },
