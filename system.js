@@ -106,6 +106,7 @@ const allGameUiThemes = {
     'PGR_SYS_05',
     'takikomi_syst2',
     'fluxide_sysblava',
+    'Holdery_Sys_Garden_Festival',
 
     'system_E_eye',
     'System_kuraud',
