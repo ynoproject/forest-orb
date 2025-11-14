@@ -889,3 +889,27 @@ function tryEmbedScreenshot(node, uuid) {
     }
   });
 })();
+
+(function() {
+  async function sleep(milliseconds) {
+    return await new Promise(r => setTimeout(r, milliseconds));
+  }
+
+  (async () => {
+    for (; !window.fastdom; await sleep(100));
+
+    function isWindowInactive() {
+      return document.hidden || (document.hasFocus && !document.hasFocus());
+    }
+
+    fastdom.constructor.prototype.raf = callback => {
+      return isWindowInactive() ? setTimeout(callback, 0) : requestAnimationFrame(callback);
+    };
+
+    const seen = new Set();
+    for (let fd = window.fastdom; fd && !seen.has(fd); fd = fd.fastdom) {
+      seen.add(fd);
+      if (Object.prototype.hasOwnProperty.call(fd, 'raf')) delete fd.raf;
+    }
+  })();
+})();
