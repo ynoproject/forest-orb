@@ -3716,6 +3716,14 @@ form .uiTheme {
   right: 0;
 }
 
+#controls .fsOnlyControl {
+  display: none;
+}
+
+#layout:fullscreen #controls .fsOnlyControl {
+  display: inline-flex;
+}
+
 #layout:fullscreen #controls button {
   margin: 8px 0 0 0;
   margin-inline-end: 8px;

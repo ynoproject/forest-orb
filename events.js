@@ -32,7 +32,8 @@ let eventPeriodCache;
 let eventsCache = {};
 
 function initEventControls() {
-  document.getElementById('eventsButton').onclick = () => openModal('eventsModal');
+  const openEvents = () => openModal('eventsModal');
+  document.getElementById('eventsButton').onclick = openEvents;
   for (let tab of document.getElementsByClassName('eventTab'))
     tab.onclick = onClickEventTab;
 }

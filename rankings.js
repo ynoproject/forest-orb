@@ -12,7 +12,7 @@ let rankingPage;
 })();
 
 function initRankingControls() {
-  document.getElementById('rankingsButton').onclick = () => {
+  const openRankings = () => {
     if (!rankingCategoryCache.length)
       return;
 
@@ -21,6 +21,8 @@ function initRankingControls() {
 
     fetchAndLoadRankings(rankingCategoryId, rankingSubCategoryId);
   };
+  document.getElementById('rankingsButton').onclick = openRankings;
+  document.getElementById('fsRankingsButton')?.addEventListener('click', openRankings);
 }
 
 function rankingsApiFetch(path) {
