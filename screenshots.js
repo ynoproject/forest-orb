@@ -80,14 +80,17 @@ function initScreenshotControls() {
   };
 
   document.getElementById('screenshotButton').onclick = () => takeScreenshot();
-  document.getElementById('myScreenshotsButton').onclick = () => {
+  const openMyScreenshots = () => {
     initScreenshotsModal(false);
     openModal('myScreenshotsModal');
   };
-  document.getElementById('communityScreenshotsButton').onclick = () => {
+  const openCommunityScreenshots = () => {
     initScreenshotsModal(true);
     openModal('communityScreenshotsModal');
   };
+  document.getElementById('myScreenshotsButton').onclick = openMyScreenshots;
+  document.getElementById('communityScreenshotsButton').onclick = openCommunityScreenshots;
+  document.getElementById('fsCommunityScreenshotsButton')?.addEventListener('click', openCommunityScreenshots);
 
   const communityScreenshotsGameSelect = document.getElementById('communityScreenshotsGame');
 

@@ -546,6 +546,7 @@ function initBadgeControls() {
   };
 
   document.getElementById('badgeButton').onclick = () => onClickBadgeButton();
+  document.getElementById('fsBadgesButton')?.addEventListener('click', () => onClickBadgeButton());
   document.getElementById('accountBadgeButton').onclick = () => onClickBadgeButton('accountSettingsModal');
 
   let currentSearchMode = 'name';
