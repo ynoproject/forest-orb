@@ -312,10 +312,10 @@ async function getSpriteImg(img, spriteData, sprite, idx, frameIdx, width, heigh
     
       blobImg.onload = () => URL.revokeObjectURL(url);
     
-      if (Array.isArray(spriteData[sprite][idx]))
-        spriteData[sprite][idx][frameIdx] = url;
+      if (Array.isArray(spriteData[idx]))
+        spriteData[idx][frameIdx] = url;
       else
-        spriteData[sprite][idx] = url;
+        spriteData[idx] = url;
       resolve(url);
     });
   });
