@@ -904,7 +904,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`, gameId).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
