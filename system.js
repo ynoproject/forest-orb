@@ -762,7 +762,7 @@ let applyThemeStyles;
       themeStyles.innerHTML = themeStyleTemplate
         .replaceAll('{THEME}', themeSuffix)
         .replaceAll('{THEME_PROP}', themePropSuffix)
-        .replace(/\{FULL_BG\|(.*?)\}/, allGameFullBgUiThemes[themeGameId].indexOf(uiTheme) > -1 ? '$1' : '');
+        .replace(/\{FULL_BG\|(.*?)\}/, (allGameFullBgUiThemes[themeGameId] || []).indexOf(uiTheme) > -1 ? '$1' : '');
       task = fastdom.mutate(() => void(document.head.appendChild(themeStyles)));
     }
     const applyThemeClass = () => {
@@ -908,8 +908,8 @@ function updateThemedContainer(themedContainer) {
       break;
     }
   }
-  
-  fastdom.mutate(() => themedContainer.classList.toggle('fullBg', allGameFullBgUiThemes[themeGameId].indexOf(themeName) > -1));
+
+  fastdom.mutate(() => themedContainer.classList.toggle('fullBg', (allGameFullBgUiThemes[themeGameId] || []).indexOf(themeName) > -1));
 }
 
 let uiThemeBgColors = {};

@@ -163,8 +163,32 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
   let systemName = player.systemName;
   let playerGameId = player.game || gameId;
 
-  if (!(playerGameId in allGameUiThemes))
-    playerGameId = gameId;
+  let spriteName = player.spriteName ? player.spriteName : (typeof gameDefaultSprite === 'object' && gameDefaultSprite[playerGameId] ? gameDefaultSprite[playerGameId].sprite : gameDefaultSprite[playerGameId] || '');
+  let spriteIndex = (typeof player.spriteIndex === 'number' && player.spriteIndex >= 0) ? player.spriteIndex : (typeof gameDefaultSprite === 'object' && gameDefaultSprite[playerGameId] && typeof gameDefaultSprite[playerGameId].idx === 'number' ? gameDefaultSprite[playerGameId].idx : 0);
+
+  if (spriteName) {
+    getSpriteProfileImg(spriteName, spriteIndex, undefined, undefined, playerGameId).then(spriteImg => {
+      if (spriteImg && playerListEntrySprite.src !== spriteImg)
+        fastdom.mutate(() => {
+          playerListEntrySprite.src = spriteImg
+        })
+    });
+  } else {
+    let playerSpriteCacheEntry = playerSpriteCache[playerGameId + ':' + uuid];
+    if (!playerSpriteCacheEntry && uuid !== defaultUuid)
+      playerSpriteCacheEntry = playerSpriteCache[playerGameId + ':' + defaultUuid];
+    if (playerSpriteCacheEntry) {
+      const entry = playerSpriteCacheEntry;
+      getSpriteProfileImg(entry.sprite, entry.idx, undefined, undefined, playerGameId).then(spriteImg => {
+        if (spriteImg && playerListEntrySprite.src !== spriteImg)
+          fastdom.mutate(() => {
+            playerListEntrySprite.src = spriteImg
+          })
+      });
+      if (uuid === defaultUuid)
+        updatePlayerSprite(entry.sprite, entry.idx, playerGameId);
+    }
+  }
 
   if (!playerList)
     playerList = document.getElementById('playerList');
@@ -263,29 +287,6 @@ function addOrUpdatePlayerListEntry(playerList, player, showLocation, sortEntrie
 
     if (shouldScroll)
       playerList.scrollTop = playerList.scrollHeight;
-  }
-
-  if ('spriteName' in player) {
-    getSpriteProfileImg(player.spriteName, player.spriteIndex || 0, undefined, undefined, playerGameId).then(spriteImg => {
-      if (spriteImg && playerListEntrySprite.src !== spriteImg)
-        fastdom.mutate(() => {
-          playerListEntrySprite.src = spriteImg
-        })
-    });
-  } else {
-    let playerSpriteCacheEntry = playerSpriteCache[uuid];
-    if (!playerSpriteCacheEntry && uuid !== defaultUuid)
-      playerSpriteCacheEntry = playerSpriteCache[defaultUuid];
-    if (playerSpriteCacheEntry) {
-      getSpriteProfileImg(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, undefined, undefined, playerGameId).then(spriteImg => {
-        if (spriteImg && playerListEntrySprite.src !== spriteImg)
-          fastdom.mutate(() => {
-            playerListEntrySprite.src = spriteImg
-          })
-      });
-      if (uuid === defaultUuid)
-        updatePlayerSprite(playerSpriteCacheEntry.sprite, playerSpriteCacheEntry.idx, playerGameId);
-    }
   }
 
   if (name || !nameText.innerText || playerList.id !== 'playerList') {
@@ -648,23 +649,25 @@ function sortPlayerListEntries(playerList) {
   }
 }
 
-function updatePlayerListEntrySprite(playerList, sprite, idx, uuid) {
-  if (playerSpriteCache.hasOwnProperty(uuid) && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
+function updatePlayerListEntrySprite(playerList, sprite, idx, uuid, gameId) {
+  const cacheKey = (gameId ? gameId : gameId) + ':' + uuid;
+  const entry = playerSpriteCache[cacheKey];
+  if (playerSpriteCache.hasOwnProperty(cacheKey) && entry && typeof entry === 'object' && 'sprite' in entry && 'idx' in entry && entry.sprite === sprite && entry.idx === idx)
     return;
 
   if (!playerList)
     playerList = document.getElementById('playerList');
-  
+
   const playerListEntrySprite = playerList.querySelector(`.playerListEntry[data-uuid="${uuid}"] img.playerListEntrySprite`);
 
-  playerSpriteCache[uuid] = { sprite: sprite, idx: idx };
-  getSpriteProfileImg(sprite, idx).then(spriteImg => {
-    if (spriteImg !== null && playerListEntrySprite && playerSpriteCache[uuid].sprite === sprite && playerSpriteCache[uuid].idx === idx)
+  playerSpriteCache[cacheKey] = { sprite: sprite, idx: idx };
+  getSpriteProfileImg(sprite, idx, undefined, undefined, gameId).then(spriteImg => {
+    if (spriteImg !== null && playerListEntrySprite && playerSpriteCache[cacheKey].sprite === sprite && playerSpriteCache[cacheKey].idx === idx)
       playerListEntrySprite.src = spriteImg;
   });
 
   if (uuid === defaultUuid)
-    updatePlayerSprite(sprite, idx);
+    updatePlayerSprite(sprite, idx, gameId);
 }
 
 function removePlayerListEntry(playerList, uuid) {
@@ -873,12 +876,13 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
   const isBrave = ((navigator.brave && await navigator.brave.isBrave()) || false);
   if (!gameId)
     gameId = ynoGameId;
-  const spriteData = favicon ? faviconCache : spriteCache;
-  if (!spriteData[sprite])
-    spriteData[sprite] = {};
-  if (!spriteData[sprite][idx])
-    spriteData[sprite][idx] = null;
-  const spriteUrl = spriteData[sprite][idx];
+  let spriteData = favicon ? faviconCache : spriteCache;
+  let cacheKey = gameId + ':' + sprite;
+  if (!spriteData[cacheKey])
+    spriteData[cacheKey] = {};
+  if (!spriteData[cacheKey][idx])
+    spriteData[cacheKey][idx] = null;
+  const spriteUrl = spriteData[cacheKey][idx];
   if (spriteUrl)
     return spriteUrl;
   return await new Promise(resolve => {
@@ -895,12 +899,12 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
       return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
     img.onload = function () {
-      getSpriteImg(img, spriteData, sprite, idx, 1, favicon ? 16 : 20, 16, favicon ? 4 : 2, true, isBrave)
+      getSpriteImg(img, spriteData[cacheKey], sprite, idx, 1, favicon ? 16 : 20, 16, favicon ? 4 : 2, true, isBrave)
         .then(url => resolve(url));
     };
     if (!dir) {
       dir = `../data/${gameId}/CharSet/`;
-      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`).then(url => resolve(url));
+      img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`, gameId).then(url => resolve(url));
     } else {
       img.onerror = () => {
         console.error(`Charset '${sprite}' not found`);
