@@ -189,34 +189,6 @@
                   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m0 9l6.5-1.5-1.5-2.5 2.5 1.5 1.5-6.5 1.5 6.5 2.5-1.5-1.5 2.5 6.5 1.5-6.5 1.5 1.5 2.5-2.5-1.5-1.5 6.5-1.5-6.5-2.5 1.5 1.5-2.5-6.5-1.5m7.75-6q-4.75 0-4.75 4.75m7.25-4.75q4.75 0 4.75 4.75m-7.25 7.25q-4.75 0-4.75-4.75m7.2656 4.75q4.7344 0 4.7344-4.75m-6-2.75a1 1 90 0 0 0 3 1 1 90 0 0 0 -3" /></svg>
                 </button>
               </div>
-
-              <!-- Fullscreen-only controls -->
-              <button id="fsBadgesButton" class="iconButton fillIcon unselectable fsOnlyControl accountRequired" data-i18n="[title]tooltips.badges">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                  <path d="m9 0 2 2.5 3.5-1v3.5l3.5 1-1.5 3 1.5 3-3.5 1v3.5l-3.5-1-2 2.5-2-2.5-3.5 1v-3.5l-3.5-1 1.5-3-1.5-3 3.5-1v-3.5l3.5 1 2-2.5m0-3v7" />
-                </svg>
-              </button>
-              <button id="fsLocationsButton" class="iconButton fillIcon unselectable fsOnlyControl" data-i18n="[title]tooltips.locations">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                  <path d="m0 14zv-2.5l3.75-4 3 2 5.25-5 6 4.5v5zm0-9.5a1.0313 1.0313 90 0 0 4 0 1.0313 1.0313 90 0 0-4 0z" />
-                </svg>
-              </button>
-              <button id="fsCommunityScreenshotsButton" class="iconButton fillIcon unselectable fsOnlyControl" data-i18n="[title]tooltips.communityScreenshots">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                  <path d="m0.75 5.5h14.5v9.25h-1.25v-8h-13.25zm14.5 9.25v1.25h-14.5v-9.25h1.25v8zm-12.5-0.75v-1.25l2.25-2.5 1.75 1.25 3-3 3.5 2.5v3zm0-5.5a0.5 0.5 90 0 0 2.5 0 0.5 0.5 90 0 0-2.5 0zm0-4.25h13.75v9.75h-1v-8.75h-12.75v-1m2-1.25h13v9h-1v-8h-12v-1" />
-                </svg>
-              </button>
-              <button id="fsRankingsButton" class="iconButton fillIcon unselectable fsOnlyControl" data-i18n="[title]tooltips.rankings">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                  <path d="m0 18v-11h5.75v11m0.5 0v-16h5.5v16m0.5-6h5.75v6h-5.75v-6" />
-                </svg>
-              </button>
-              <button id="fsSchedulesButton" class="iconButton fillIcon unselectable fsOnlyControl" data-i18n="[title]tooltips.schedules">
-                <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                  <path d="M18 3V18H0V3H3V4.5a.5.5 90 003 0V3H7.5V4.5a.5.5 90 003 0V3H12V4.5a.5.5 90 003 0V3ZM3.5 4.5a.5.5 90 002 0V1a.5.5 90 00-2 0ZM8 4.5a.5.5 90 002 0V1A.5.5 90 008 1Zm4.5 0a.5.5 90 002 0V1a.5.5 90 00-2 0ZM8 7H1.5v4H8Zm2 0v4h6.5V7ZM1.5 16.5H8v-4H1.5Zm8.5-4v4h6.5v-4Z"/>
-                </svg>
-              </button>
-
               <button id="controls-fullscreen" class="iconButton unselectable">
                 <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M13.5 13.5H10m3.5 0V10m0 3.5l-4-4m.5-8h3.5m0 0V5m0-3.5l-4 4M5 1.5H1.5m0 0V5m0-3.5l4 4m-4 4.5v3.5m0 0H5m-3.5 0l4-4"></path></svg>
               </button>

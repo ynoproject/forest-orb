@@ -232,9 +232,6 @@ function fetchAndUpdatePlayerInfo(forLogin) {
       if (jsonResponse.uuid) {
         loggedIn = !isLogout && jsonResponse.registered;
         setCookie(loggedInKey, loggedIn ? 'true' : '');
-        const fsBadgesButton = document.getElementById('fsBadgesButton');
-        if (fsBadgesButton)
-          fsBadgesButton.classList.toggle('hidden', !loggedIn);
         if (jsonResponse.name)
           playerName = jsonResponse.name;
         syncPlayerData(jsonResponse.uuid, jsonResponse.rank, jsonResponse.registered, jsonResponse.badge, jsonResponse.medals, -1);
@@ -1240,7 +1237,6 @@ document.getElementById('toggleRankingsButton').onclick = function () {
   this.classList.toggle('toggled');
   const toggled = this.classList.contains('toggled');
   document.getElementById('rankingsButton').classList.toggle('hidden', toggled);
-  document.getElementById('fsRankingsButton')?.classList.toggle('hidden', toggled);
   globalConfig.hideRankings = toggled;
   updateConfig(globalConfig, true);
 };
@@ -1248,7 +1244,6 @@ document.getElementById('toggleRankingsButton').onclick = function () {
 document.getElementById('toggleSchedulesButton').onclick = function () {
   const toggled = this.classList.toggle('toggled');
   document.getElementById('schedulesButton').classList.toggle('hidden', toggled);
-  document.getElementById('fsSchedulesButton')?.classList.toggle('hidden', toggled);
   globalConfig.hideSchedules = toggled;
   updateConfig(globalConfig, true);
 };

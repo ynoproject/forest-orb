@@ -325,7 +325,6 @@ function openScheduleEditModal(schedule = {}) {
 }
 
 document.getElementById('schedulesButton').addEventListener('click', () => openSchedulesModal());
-document.getElementById('fsSchedulesButton')?.addEventListener('click', () => openSchedulesModal());
 
 {
   let toggleButton = elm => {

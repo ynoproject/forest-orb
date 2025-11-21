@@ -9,12 +9,10 @@ let locationsScrollTop = 0;
 let locationsScrollWatch = null;
 
 function initLocationControls() {
-  const openLocations = () => {
+  document.getElementById('locationsButton').onclick = () => {
     initLocationsModal();
     openModal('locationsModal');
   };
-  document.getElementById('locationsButton').onclick = openLocations;
-  document.getElementById('fsLocationsButton')?.addEventListener('click', openLocations);
   document.getElementById('locationsVisited').onchange = function() {
     locationsVisited = this.value;
     initLocationsModal();
