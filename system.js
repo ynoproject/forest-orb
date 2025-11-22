@@ -204,7 +204,8 @@ const allGameUiThemes = {
     'redo_sysBeloved',
     'MorrySonando_Dudetastic_Visera_Menu theme',
     'MorrySonando_Tender_Carnis_Menu theme',
-    'pats_system_unicorn'
+    'pats_system_unicorn',
+    'folly_system_lovely'
   ],
   'deepdreams': [
     'system_sterling',
