@@ -192,7 +192,19 @@ const allGameUiThemes = {
     'eviled_system_neone',
     'maple-shamblingmenu',
     'rollaby_system_chess',
-    'witblos_hlamenutheme'
+    'witblos_hlamenutheme',
+    'delly_system_green',
+    'rollaby_system_bleeding',
+    'rollaby_system_heart',
+    'messier_system_roots',
+    'angler_suncarved',
+    'erichtho_system_entrails',
+    'folly_system_tabitha',
+    'raptarr_system_vending',
+    'redo_sysBeloved',
+    'MorrySonando_Dudetastic_Visera_Menu theme',
+    'MorrySonando_Tender_Carnis_Menu theme',
+    'pats_system_unicorn'
   ],
   'deepdreams': [
     'system_sterling',
