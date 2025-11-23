@@ -2013,6 +2013,10 @@ function initLocalization(isInitial) {
         };
       }
 
+      if (!isInitial && typeof playerTooltipCache !== 'undefined') {
+        playerTooltipCache.clear();
+      }
+
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
       i18next.init({
