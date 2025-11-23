@@ -370,7 +370,6 @@ function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
     event.preventDefault();
 
     const cacheKey = `${uuid};${messageType}`;
-
     let playerTooltip = playerTooltipCache.get(cacheKey);
     if (!playerTooltip) {
       playerTooltip = createPlayerTooltip(this, player, uuid, messageType, msgProps);
@@ -408,7 +407,9 @@ function addPlayerContextMenu(target, player, uuid, messageType, msgProps) {
     const targetPlayer = globalPlayerData[uuid] || player;
     const isMod = playerData?.rank > targetPlayer?.rank;
     playerTooltip.popper.querySelector('.banPlayerAction')?.classList.toggle('hidden', !isMod);
+    playerTooltip.popper.querySelector('.tempbanPlayerAction')?.classList.toggle('hidden', !isMod);
     playerTooltip.popper.querySelector('.mutePlayerAction')?.classList.toggle('hidden', !isMod);
+    playerTooltip.popper.querySelector('.tempmutePlayerAction')?.classList.toggle('hidden', !isMod);
     playerTooltip.popper.querySelector('.unmutePlayerAction')?.classList.toggle('hidden', !isMod);
 
     const targetHasAccount = !!targetPlayer?.account;

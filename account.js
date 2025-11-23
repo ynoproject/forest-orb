@@ -128,34 +128,51 @@ function initPasswordModal() {
   document.getElementById('passwordErrorRow').classList.add('hidden');
 }
 
-function updateModControls() {
-  const modSettingsControls = document.getElementById('modSettingsModal').querySelector('.formControls');
+function updateModControls(forceRecreate = false) {
+  const modSettingsModal = document.getElementById('modSettingsModal');
+  if (!modSettingsModal) return;
+  const modSettingsControls = modSettingsModal.querySelector('.formControls');
+  const modSettingsTitle = modSettingsModal.querySelector('.modalTitle');
   let modSettingsButton = document.getElementById('modSettingsButton');
-  if (playerData.rank >= 1) {
-    if (modSettingsButton)
+  if (playerData && playerData.rank >= 1) {
+    if (typeof localizedMessages === 'undefined' || !localizedMessages.modSettings) {
       return;
-    modSettingsButton = document.createElement('button');
-    modSettingsButton.id = 'modSettingsButton';
-    modSettingsButton.classList.add('unselectable', 'iconButton');
-    addTooltip(modSettingsButton, getMassagedLabel(localizedMessages.modSettings.title, true), true, true);
-    modSettingsButton.onclick = () => openModal('modSettingsModal');
-    modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';
-    document.getElementById('leftControls').appendChild(modSettingsButton);
-    
-    const addModControlsButton = (label, onClick) => {
-      const row = document.createElement('li');
-      row.classList.add('formControlRow');
+    }
+    if (modSettingsTitle) {
+      modSettingsTitle.textContent = getMassagedLabel(localizedMessages.modSettings.title, true);
+    }
+    if (modSettingsButton && !forceRecreate)
+      return;
+    if (!modSettingsButton) {
+      modSettingsButton = document.createElement('button');
+      modSettingsButton.id = 'modSettingsButton';
+      modSettingsButton.classList.add('unselectable', 'iconButton');
+      addTooltip(modSettingsButton, getMassagedLabel(localizedMessages.modSettings.title, true), true, true);
+      modSettingsButton.onclick = () => openModal('modSettingsModal');
+      modSettingsButton.innerHTML = '<svg viewbox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="m2 2q5 0 7-2 2 2 7 2 0 9-7 16-7-7-7-16m2 2q3 0 5-2 2 2 5 2-1 7-5 12-4-5-5-12"></path></svg>';
+      document.getElementById('leftControls').appendChild(modSettingsButton);
+    } else {
+      addTooltip(modSettingsButton, getMassagedLabel(localizedMessages.modSettings.title, true), true, true);
+      if (forceRecreate) {
+        modSettingsControls.innerHTML = '';
+      }
+    }
 
-      const button = document.createElement('button');
-      button.classList.add('unselectable');
-      button.type = 'button';
-      button.innerHTML = label;
-      button.onclick = onClick;
+    if (forceRecreate || !modSettingsControls.children.length) {
+      const addModControlsButton = (label, onClick) => {
+        const row = document.createElement('li');
+        row.classList.add('formControlRow');
 
-      row.appendChild(button);
+        const button = document.createElement('button');
+        button.classList.add('unselectable');
+        button.type = 'button';
+        button.innerHTML = label;
+        button.onclick = onClick;
 
-      modSettingsControls.appendChild(row);
-    };
+        row.appendChild(button);
+
+        modSettingsControls.appendChild(row);
+      };
 
     const adminPlayerAction = (action, playerPromptMessage, successMessage, successIcon) => {
       const playerName = prompt(playerPromptMessage);
@@ -248,8 +265,9 @@ function updateModControls() {
       }
     };
 
-    addModControlsButton(localizedMessages.modSettings.actions.grantBadge.label, () => grantRevokeBadgeAction(true));
-    addModControlsButton(localizedMessages.modSettings.actions.revokeBadge.label, () => grantRevokeBadgeAction(false));
+      addModControlsButton(localizedMessages.modSettings.actions.grantBadge.label, () => grantRevokeBadgeAction(true));
+      addModControlsButton(localizedMessages.modSettings.actions.revokeBadge.label, () => grantRevokeBadgeAction(false));
+    }
   } else if (modSettingsButton) {
     modSettingsButton.remove();
     modSettingsControls.innerHTML = '';

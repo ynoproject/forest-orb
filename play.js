@@ -2060,6 +2060,10 @@ function initLocalization(isInitial) {
         playerTooltipCache.clear();
       }
 
+      if (!isInitial && typeof updateModControls === 'function') {
+        updateModControls(true);
+      }
+
       const resourcesJson = {};
       resourcesJson[globalConfig.lang] = { translation: jsonResponse.ui };
       i18next.init({
