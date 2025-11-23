@@ -65,6 +65,13 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
       if (showLocation) {
         const playerLocation = document.createElement("bdi");
 
+        // Store location data for langs change updates
+        msgContainer.dataset.mapId = mapId || "0000";
+        msgContainer.dataset.prevMapId = prevMapId || "0000";
+        if (x !== undefined) msgContainer.dataset.x = x;
+        if (y !== undefined) msgContainer.dataset.y = y;
+        if (prevLocationsStr) msgContainer.dataset.prevLocationsStr = prevLocationsStr;
+
         if (gameId === "2kki" && (!localizedMapLocations.hasOwnProperty(mapId))) {
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
@@ -598,7 +605,11 @@ function addChatTip() {
   if (++globalConfig.chatTipIndex >= Object.keys(tips).length)
     globalConfig.chatTipIndex = 0;
   const tipIndex = globalConfig.chatTipIndex;
-  chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[Object.keys(tips)[tipIndex]])), null, null, true);
+  const tipKey = Object.keys(tips)[tipIndex];
+  const msgContainer = chatboxAddMessage(getMassagedLabel(localizedMessages.chatTips.template.replace("{CONTENT}", tips[tipKey])), null, null, true);
+  if (msgContainer) {
+    msgContainer.dataset.chatTip = tipKey;
+  }
   updateConfig(globalConfig, true);
 }
 

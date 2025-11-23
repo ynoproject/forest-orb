@@ -1971,6 +1971,49 @@ function initLocalization(isInitial) {
             onUpdateEventPeriod(eventPeriodCache);
             updateEvents();
           }
+
+        if (!isInitial) {
+          // Update chat tips
+          const chatTipMessages = document.querySelectorAll('.messageContainer[data-chat-tip]');
+          chatTipMessages.forEach(msgContainer => {
+            const tipKey = msgContainer.dataset.chatTip;
+            if (localizedMessages.chatTips?.tips?.[tipKey]) {
+              const tipContent = getMassagedLabel(
+                localizedMessages.chatTips.template.replace(
+                  "{CONTENT}",
+                  localizedMessages.chatTips.tips[tipKey]
+                )
+              );
+              const messageContents = msgContainer.querySelector('.messageContents');
+              if (messageContents) {
+                messageContents.innerHTML = tipContent;
+              }
+            }
+          });
+
+          // Update location displays in chat msg
+          const locationMessages = document.querySelectorAll('.messageContainer.global .playerLocation, .messageContainer.party .playerLocation');
+          locationMessages.forEach(playerLocation => {
+            const msgContainer = playerLocation.closest('.messageContainer');
+            if (!msgContainer) return;
+
+            const mapId = msgContainer.dataset.mapId || "0000";
+            const prevMapId = msgContainer.dataset.prevMapId || "0000";
+            const x = msgContainer.dataset.x ? parseInt(msgContainer.dataset.x) : undefined;
+            const y = msgContainer.dataset.y ? parseInt(msgContainer.dataset.y) : undefined;
+            const prevLocationsStr = msgContainer.dataset.prevLocationsStr;
+
+            if (gameId === "2kki" && (!localizedMapLocations?.hasOwnProperty(mapId))) {
+              const prevLocations = prevLocationsStr && prevMapId !== "0000"
+                ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; })
+                : null;
+              set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
+            } else {
+              const locationsHtml = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
+              fastdom.mutate(() => playerLocation.innerHTML = locationsHtml);
+            }
+          });
+        }
       };
 
       if (isInitial)
