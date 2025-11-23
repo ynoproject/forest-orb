@@ -1449,6 +1449,11 @@ function addOrUpdatePlayerBadgeGalleryTooltip(badgeElement, name, sysName, mapId
         const playerName = instance.reference.dataset.playerName;
         const systemName = instance.reference.dataset.systemName;
 
+        const loadingContent = document.createElement('div');
+        loadingContent.classList.add('tooltipContent');
+        loadingContent.append(getMassagedLabel(localizedMessages.badgeGallery.loading));
+        instance.setContent(loadingContent);
+
         apiFetch(`badge?command=playerSlotList&player=${playerName}`)
           .then(response => {
             if (!response.ok)
