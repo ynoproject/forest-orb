@@ -1967,8 +1967,10 @@ function initLocalization(isInitial) {
 
       const initLocationsCallback = () => {
         fetchAndPopulateRankingCategories();
-          if (eventPeriodCache)
+          if (eventPeriodCache) {
+            onUpdateEventPeriod(eventPeriodCache);
             updateEvents();
+          }
       };
 
       if (isInitial)
