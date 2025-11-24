@@ -2013,6 +2013,46 @@ function initLocalization(isInitial) {
               fastdom.mutate(() => playerLocation.innerHTML = locationsHtml);
             }
           });
+
+          // Update location separator msg
+          const locMessages = document.querySelectorAll('.messageContainer.locMessage');
+          locMessages.forEach(locMessage => {
+            const mapId = locMessage.dataset.mapId || "0000";
+            const prevMapId = locMessage.dataset.prevMapId || "0000";
+            const x = locMessage.dataset.x ? parseInt(locMessage.dataset.x) : undefined;
+            const y = locMessage.dataset.y ? parseInt(locMessage.dataset.y) : undefined;
+            const messageContents = locMessage.querySelector('.messageContents');
+            if (!messageContents) return;
+            if (gameId === "2kki" && (!localizedMapLocations?.hasOwnProperty(mapId))) {
+              const prevLocationsStr = locMessage.dataset.prevLocationsStr;
+              const prevLocations = prevLocationsStr && prevMapId !== "0000"
+                ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; })
+                : null;
+              const locationKey = `${prevMapId}_${mapId}`;
+              if (typeof locationCache !== 'undefined' && locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey])) {
+                const locations = locationCache[locationKey];
+                const locationsText = getLocalized2kkiLocations(locations, "&nbsp;|&nbsp;");
+                fastdom.mutate(() => {
+                  messageContents.textContent = '';
+                  populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+                });
+              } else {
+                getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, locations => {
+                  const locationsText = getLocalized2kkiLocations(locations, "&nbsp;|&nbsp;");
+                  fastdom.mutate(() => {
+                    messageContents.textContent = '';
+                    populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+                  });
+                });
+              }
+            } else {
+              const locationsText = getLocalizedMapLocations(gameId, mapId, prevMapId, x, y, "&nbsp;|&nbsp;");
+              fastdom.mutate(() => {
+                messageContents.textContent = '';
+                populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+              });
+            }
+          });
         }
       };
 
@@ -2020,6 +2060,8 @@ function initLocalization(isInitial) {
         fetchAndInitLocations(globalConfig.lang, gameId).then(initLocationsCallback);
       else if (localizedMapLocations)
         fetchAndInitLocalizedMapLocations(globalConfig.lang, gameId).then(initLocationsCallback);
+      else
+        initLocationsCallback();
 
       updateChatMessageTimestamps();
 

@@ -637,9 +637,24 @@ function addChatMapLocation(locations) {
   if (lastLocMessage && new DOMParser().parseFromString(locationHtml, "text/html").documentElement.textContent === lastLocMessage.innerText)
     return;
 
-  const locMessage = chatboxAddMessage(locationHtml, null, null, true);
+  const mapId = cachedMapId || "0000";
+  const prevMapId = cachedPrevMapId || "0000";
+  const x = tpX !== -1 ? tpX : undefined;
+  const y = tpY !== -1 ? tpY : undefined;
+  const prevLocationsStr = (gameId === "2kki" && typeof cachedPrev2kkiLocations !== 'undefined' && cachedPrev2kkiLocations?.length)
+    ? window.btoa(encodeURIComponent(cachedPrev2kkiLocations.map(l => l.title).join('|')))
+    : null;
+  const locMessage = chatboxAddMessage(locationHtml, null, null, true, mapId, prevMapId, prevLocationsStr, x, y);
   if (locMessage) {
     locMessage.classList.add("locMessage", "map", "hidden");
+    locMessage.dataset.mapId = mapId;
+    locMessage.dataset.prevMapId = prevMapId;
+    if (x !== undefined) locMessage.dataset.x = String(x);
+    if (y !== undefined) locMessage.dataset.y = String(y);
+    if (prevLocationsStr) locMessage.dataset.prevLocationsStr = prevLocationsStr;
+    if (gameId === "2kki") {
+      locMessage.dataset.is2kki = "true";
+    }
   }
 }
 
