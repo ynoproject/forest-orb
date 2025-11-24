@@ -1967,14 +1967,101 @@ function initLocalization(isInitial) {
 
       const initLocationsCallback = () => {
         fetchAndPopulateRankingCategories();
-          if (eventPeriodCache)
+          if (eventPeriodCache) {
+            onUpdateEventPeriod(eventPeriodCache);
             updateEvents();
+          }
+
+        if (!isInitial) {
+          // Update chat tips
+          const chatTipMessages = document.querySelectorAll('.messageContainer[data-chat-tip]');
+          chatTipMessages.forEach(msgContainer => {
+            const tipKey = msgContainer.dataset.chatTip;
+            if (localizedMessages.chatTips?.tips?.[tipKey]) {
+              const tipContent = getMassagedLabel(
+                localizedMessages.chatTips.template.replace(
+                  "{CONTENT}",
+                  localizedMessages.chatTips.tips[tipKey]
+                )
+              );
+              const messageContents = msgContainer.querySelector('.messageContents');
+              if (messageContents) {
+                messageContents.innerHTML = tipContent;
+              }
+            }
+          });
+
+          // Update location displays in chat msg
+          const locationMessages = document.querySelectorAll('.messageContainer.global .playerLocation, .messageContainer.party .playerLocation');
+          locationMessages.forEach(playerLocation => {
+            const msgContainer = playerLocation.closest('.messageContainer');
+            if (!msgContainer) return;
+
+            const mapId = msgContainer.dataset.mapId || "0000";
+            const prevMapId = msgContainer.dataset.prevMapId || "0000";
+            const x = msgContainer.dataset.x ? parseInt(msgContainer.dataset.x) : undefined;
+            const y = msgContainer.dataset.y ? parseInt(msgContainer.dataset.y) : undefined;
+            const prevLocationsStr = msgContainer.dataset.prevLocationsStr;
+
+            if (gameId === "2kki" && (!localizedMapLocations?.hasOwnProperty(mapId))) {
+              const prevLocations = prevLocationsStr && prevMapId !== "0000"
+                ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; })
+                : null;
+              set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
+            } else {
+              const locationsHtml = getLocalizedMapLocationsHtml(gameId, mapId, prevMapId, x, y, getInfoLabel("&nbsp;|&nbsp;"));
+              fastdom.mutate(() => playerLocation.innerHTML = locationsHtml);
+            }
+          });
+
+          // Update location separator msg
+          const locMessages = document.querySelectorAll('.messageContainer.locMessage');
+          locMessages.forEach(locMessage => {
+            const mapId = locMessage.dataset.mapId || "0000";
+            const prevMapId = locMessage.dataset.prevMapId || "0000";
+            const x = locMessage.dataset.x ? parseInt(locMessage.dataset.x) : undefined;
+            const y = locMessage.dataset.y ? parseInt(locMessage.dataset.y) : undefined;
+            const messageContents = locMessage.querySelector('.messageContents');
+            if (!messageContents) return;
+            if (gameId === "2kki" && (!localizedMapLocations?.hasOwnProperty(mapId))) {
+              const prevLocationsStr = locMessage.dataset.prevLocationsStr;
+              const prevLocations = prevLocationsStr && prevMapId !== "0000"
+                ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; })
+                : null;
+              const locationKey = `${prevMapId}_${mapId}`;
+              if (typeof locationCache !== 'undefined' && locationCache?.hasOwnProperty(locationKey) && Array.isArray(locationCache[locationKey])) {
+                const locations = locationCache[locationKey];
+                const locationsText = getLocalized2kkiLocations(locations, "&nbsp;|&nbsp;");
+                fastdom.mutate(() => {
+                  messageContents.textContent = '';
+                  populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+                });
+              } else {
+                getOrQuery2kkiLocations(mapId, prevMapId, prevLocations, locations => {
+                  const locationsText = getLocalized2kkiLocations(locations, "&nbsp;|&nbsp;");
+                  fastdom.mutate(() => {
+                    messageContents.textContent = '';
+                    populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+                  });
+                });
+              }
+            } else {
+              const locationsText = getLocalizedMapLocations(gameId, mapId, prevMapId, x, y, "&nbsp;|&nbsp;");
+              fastdom.mutate(() => {
+                messageContents.textContent = '';
+                populateMessageNodes(parseMessageTextForMarkdown(locationsText), messageContents, false);
+              });
+            }
+          });
+        }
       };
 
       if (isInitial)
         fetchAndInitLocations(globalConfig.lang, gameId).then(initLocationsCallback);
       else if (localizedMapLocations)
         fetchAndInitLocalizedMapLocations(globalConfig.lang, gameId).then(initLocationsCallback);
+      else
+        initLocationsCallback();
 
       updateChatMessageTimestamps();
 
@@ -2009,6 +2096,14 @@ function initLocalization(isInitial) {
         badgeTools.localizedMessages = {
           games: localizedMessages.games
         };
+      }
+
+      if (!isInitial && typeof playerTooltipCache !== 'undefined') {
+        playerTooltipCache.clear();
+      }
+
+      if (!isInitial && typeof updateModControls === 'function') {
+        updateModControls(true);
       }
 
       const resourcesJson = {};
