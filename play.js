@@ -1139,11 +1139,63 @@ document.getElementById('lang').onchange = function () {
   }
 };
 
-document.getElementById('nametagMode').onchange = function () {
-  if (easyrpgPlayer.initialized)
-    easyrpgPlayer.api.setNametagMode(this.value);
+const nametagModeSelect = document.getElementById('nametagMode');
+let lastAppliedNametagMode = parseInt(nametagModeSelect.value, 10);
 
+// Chrome fullscreen workaround
+let nametagModeCheckInterval = null;
+
+const checkNametagMode = () => {
+  if (!easyrpgPlayer.initialized) return;
+
+  // Get value using selectedIndex (most reliable in Chrome)
+  let value = null;
+  if (nametagModeSelect.selectedIndex >= 0 && nametagModeSelect.selectedIndex < nametagModeSelect.options.length) {
+    const option = nametagModeSelect.options[nametagModeSelect.selectedIndex];
+    if (option && option.value) {
+      value = parseInt(option.value, 10);
+    }
+  }
+
+  // Fallback to select.value if selectedIndex didn't work
+  if (value === null || isNaN(value)) {
+    value = parseInt(nametagModeSelect.value, 10);
+  }
+
+  // Apply if value is valid and different from last applied
+  if (value !== null && !isNaN(value) && value !== lastAppliedNametagMode) {
+    lastAppliedNametagMode = value;
+    easyrpgPlayer.api.setNametagMode(value);
+  }
 };
+
+// Start polling when in fullscreen (Chrome workaround)
+const startNametagModePolling = () => {
+  if (nametagModeCheckInterval) return;
+  nametagModeCheckInterval = setInterval(checkNametagMode, 2000);
+};
+
+const stopNametagModePolling = () => {
+  if (nametagModeCheckInterval) {
+    clearInterval(nametagModeCheckInterval);
+    nametagModeCheckInterval = null;
+  }
+};
+
+// Monitor fullscreen changes
+document.addEventListener('fullscreenchange', () => {
+  if (document.fullscreenElement) {
+    startNametagModePolling();
+  } else {
+    stopNametagModePolling();
+  }
+});
+
+nametagModeSelect.addEventListener('change', checkNametagMode);
+
+if (document.fullscreenElement) {
+  startNametagModePolling();
+}
 
 const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
 wikiLinkModeSelect.addEventListener('change', function () {
