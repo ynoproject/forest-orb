@@ -738,6 +738,7 @@ function openModal(modalId, theme, lastModalId, modalData) {
   setTimeout(() => {
     modalContainer.classList.remove('fadeIn');
     modal.classList.remove('fadeIn');
+    updateFullscreenPolling();
   }, modalTransitionDuration);
 }
 
@@ -762,7 +763,10 @@ function closeModal() {
       activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
+      updateFullscreenPolling();
     }, modalTransitionDuration);
+  } else {
+    updateFullscreenPolling();
   }
 
   setModalUiTheme('confirmModal', config.uiTheme === 'auto' ? systemName : config.uiTheme);
@@ -1186,19 +1190,46 @@ const checkNametagMode = () => {
 
 // Monitor fullscreen changes
 document.addEventListener('fullscreenchange', () => {
-  if (document.fullscreenElement) {
-    startFullscreenPolling();
-  } else {
-    stopFullscreenPolling();
-  }
+  updateFullscreenPolling();
 });
 
 nametagModeSelect.addEventListener('change', checkNametagMode);
 
-// Start polling if already in fullscreen
-if (document.fullscreenElement) {
-  startFullscreenPolling();
-}
+// Chromium fullscreen workaround
+let fullscreenCheckInterval = null;
+
+const checkAllSelects = () => {
+  checkLang();
+  checkNametagMode();
+  checkSaveReminder();
+};
+
+const updateFullscreenPolling = () => {
+  const isFullscreen = !!document.fullscreenElement;
+  const settingsModal = document.getElementById('settingsModal');
+  const isSettingsModalOpen = settingsModal && !settingsModal.classList.contains('hidden');
+  const shouldPoll = isFullscreen && isSettingsModalOpen;
+
+  if (fullscreenCheckInterval) {
+    clearInterval(fullscreenCheckInterval);
+    fullscreenCheckInterval = null;
+  }
+
+  if (shouldPoll) {
+    fullscreenCheckInterval = setInterval(checkAllSelects, 100);
+  }
+};
+
+const startFullscreenPolling = () => {
+  updateFullscreenPolling();
+};
+
+const stopFullscreenPolling = () => {
+  updateFullscreenPolling();
+};
+
+// Start polling if already in fullscreen and settings modal is open
+updateFullscreenPolling();
 
 const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
 wikiLinkModeSelect.addEventListener('change', function () {
@@ -1230,27 +1261,6 @@ const checkSaveReminder = () => {
 };
 
 saveReminderSelect.addEventListener('change', checkSaveReminder);
-
-// Chromium fullscreen workaround
-let fullscreenCheckInterval = null;
-
-const checkAllSelects = () => {
-  checkLang();
-  checkNametagMode();
-  checkSaveReminder();
-};
-
-const startFullscreenPolling = () => {
-  if (fullscreenCheckInterval) return;
-  fullscreenCheckInterval = setInterval(checkAllSelects, 2000);
-};
-
-const stopFullscreenPolling = () => {
-  if (fullscreenCheckInterval) {
-    clearInterval(fullscreenCheckInterval);
-    fullscreenCheckInterval = null;
-  }
-};
 
 document.getElementById('playerSoundsButton').onclick = () => {
   if (easyrpgPlayer.initialized)
