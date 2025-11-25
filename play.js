@@ -1134,17 +1134,23 @@ document.getElementById('musicVolume').onchange = function () {
 
 document.getElementById('lang').onchange = function () {
   setLang(this.value);
+  if (document.fullscreenElement) {
+    updateCanvasFullscreenSize();
+  }
 };
 
 document.getElementById('nametagMode').onchange = function () {
   if (easyrpgPlayer.initialized)
     easyrpgPlayer.api.setNametagMode(this.value);
+
 };
 
-document.getElementById('wikiLinkMode').onchange = function () {
-  globalConfig.wikiLinkMode = parseInt(this.value);
+const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
+wikiLinkModeSelect.addEventListener('change', function () {
+  const newValue = parseInt(this.value);
+  globalConfig.wikiLinkMode = newValue;
   updateConfig(globalConfig, true);
-};
+}, { capture: true });
 
 document.getElementById('saveReminder').onchange = function () {
   setSaveReminder(parseInt(this.value));
@@ -1829,8 +1835,12 @@ function setLang(lang, isInit) {
     })
   ));
   initLocalization(isInit);
-  if (!isInit)
+  if (!isInit) {
     updateConfig(globalConfig, true);
+    if (document.fullscreenElement) {
+      updateCanvasFullscreenSize();
+    }
+  }
 }
 
 function setExtendedLatinFonts(lang) {
@@ -2775,11 +2785,14 @@ function addFilterInputs(modalPrefix, modalInitFunc, ...checkboxes) {
 }
 
 function openWikiLink(url, useDefault, asImage = false) {
-  if (globalConfig.wikiLinkMode === 2 || (document.fullscreenElement && globalConfig.wikiLinkMode === 1)) {
+  const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
+  const currentMode = wikiLinkModeSelect ? parseInt(/** @type {HTMLSelectElement} */ (wikiLinkModeSelect).value) : globalConfig.wikiLinkMode;
+
+  if (currentMode === 2 || (document.fullscreenElement && currentMode === 1)) {
     openWikiModal(url, asImage);
     return true;
   }
-  
+
   if (!useDefault) {
     const handle = window.open(url, '_blank', 'noreferrer');
     if (handle)
