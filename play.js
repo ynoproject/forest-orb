@@ -776,6 +776,7 @@ function closeModal() {
       openModal(modalContainer.dataset.lastModalId.slice(lastModalIdSeparatorIndex + 1), modalContainer.dataset.lastModalTheme.slice(lastModalThemeSeparatorIndex + 1));
     }
   }
+
 }
 
 {
@@ -1132,23 +1133,39 @@ document.getElementById('musicVolume').onchange = function () {
   setMusicVolume(parseInt(this.value));
 };
 
-document.getElementById('lang').onchange = function () {
-  setLang(this.value);
-  if (document.fullscreenElement) {
-    updateCanvasFullscreenSize();
+const langSelect = document.getElementById('lang');
+let lastAppliedLang = langSelect.value;
+
+const checkLang = () => {
+  let value = null;
+  if (langSelect.selectedIndex >= 0 && langSelect.selectedIndex < langSelect.options.length) {
+    const option = langSelect.options[langSelect.selectedIndex];
+    if (option && option.value) {
+      value = option.value;
+    }
+  }
+
+  if (value === null) {
+    value = langSelect.value;
+  }
+
+  if (value && value !== lastAppliedLang) {
+    lastAppliedLang = value;
+    setLang(value);
+    if (document.fullscreenElement) {
+      updateCanvasFullscreenSize();
+    }
   }
 };
+
+langSelect.addEventListener('change', checkLang);
 
 const nametagModeSelect = document.getElementById('nametagMode');
 let lastAppliedNametagMode = parseInt(nametagModeSelect.value, 10);
 
-// Chrome fullscreen workaround
-let nametagModeCheckInterval = null;
-
 const checkNametagMode = () => {
   if (!easyrpgPlayer.initialized) return;
 
-  // Get value using selectedIndex (most reliable in Chrome)
   let value = null;
   if (nametagModeSelect.selectedIndex >= 0 && nametagModeSelect.selectedIndex < nametagModeSelect.options.length) {
     const option = nametagModeSelect.options[nametagModeSelect.selectedIndex];
@@ -1157,44 +1174,30 @@ const checkNametagMode = () => {
     }
   }
 
-  // Fallback to select.value if selectedIndex didn't work
   if (value === null || isNaN(value)) {
     value = parseInt(nametagModeSelect.value, 10);
   }
 
-  // Apply if value is valid and different from last applied
   if (value !== null && !isNaN(value) && value !== lastAppliedNametagMode) {
     lastAppliedNametagMode = value;
     easyrpgPlayer.api.setNametagMode(value);
   }
 };
 
-// Start polling when in fullscreen (Chrome workaround)
-const startNametagModePolling = () => {
-  if (nametagModeCheckInterval) return;
-  nametagModeCheckInterval = setInterval(checkNametagMode, 2000);
-};
-
-const stopNametagModePolling = () => {
-  if (nametagModeCheckInterval) {
-    clearInterval(nametagModeCheckInterval);
-    nametagModeCheckInterval = null;
-  }
-};
-
 // Monitor fullscreen changes
 document.addEventListener('fullscreenchange', () => {
   if (document.fullscreenElement) {
-    startNametagModePolling();
+    startFullscreenPolling();
   } else {
-    stopNametagModePolling();
+    stopFullscreenPolling();
   }
 });
 
 nametagModeSelect.addEventListener('change', checkNametagMode);
 
+// Start polling if already in fullscreen
 if (document.fullscreenElement) {
-  startNametagModePolling();
+  startFullscreenPolling();
 }
 
 const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
@@ -1204,8 +1207,49 @@ wikiLinkModeSelect.addEventListener('change', function () {
   updateConfig(globalConfig, true);
 }, { capture: true });
 
-document.getElementById('saveReminder').onchange = function () {
-  setSaveReminder(parseInt(this.value));
+const saveReminderSelect = document.getElementById('saveReminder');
+let lastAppliedSaveReminder = parseInt(saveReminderSelect.value, 10);
+
+const checkSaveReminder = () => {
+  let value = null;
+  if (saveReminderSelect.selectedIndex >= 0 && saveReminderSelect.selectedIndex < saveReminderSelect.options.length) {
+    const option = saveReminderSelect.options[saveReminderSelect.selectedIndex];
+    if (option && option.value) {
+      value = parseInt(option.value, 10);
+    }
+  }
+
+  if (value === null || isNaN(value)) {
+    value = parseInt(saveReminderSelect.value, 10);
+  }
+
+  if (value !== null && !isNaN(value) && value !== lastAppliedSaveReminder) {
+    lastAppliedSaveReminder = value;
+    setSaveReminder(value);
+  }
+};
+
+saveReminderSelect.addEventListener('change', checkSaveReminder);
+
+// Chromium fullscreen workaround
+let fullscreenCheckInterval = null;
+
+const checkAllSelects = () => {
+  checkLang();
+  checkNametagMode();
+  checkSaveReminder();
+};
+
+const startFullscreenPolling = () => {
+  if (fullscreenCheckInterval) return;
+  fullscreenCheckInterval = setInterval(checkAllSelects, 2000);
+};
+
+const stopFullscreenPolling = () => {
+  if (fullscreenCheckInterval) {
+    clearInterval(fullscreenCheckInterval);
+    fullscreenCheckInterval = null;
+  }
 };
 
 document.getElementById('playerSoundsButton').onclick = () => {
