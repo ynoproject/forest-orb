@@ -889,7 +889,8 @@
         "desktopHotkeys": "PC에서 접속 중이시라면, Alt+Enter 키를 눌러서 전체화면 모드 전환이 가능하며, F7 키로 스크린샷을 찍으실 수 있고, T 키를 눌러 마우스 조작 없이 인게임 채팅을 바로 입력하실 수 있습니다.",
         "badgeControls": "배지 갤러리 편집 화면에서 배지를 드래그하고 놓으면 손쉽게 재배치가 가능하며 배지 삭제하기 버튼을 눌러 한꺼번에 모든 배지를 갤러리에서 없앨 수 있습니다.",
         "cacheSettings": "장소 달성 오류나 구버전 맵의 충돌 등의 문제를 겪고 계신가요? 설정 속 캐시 메뉴를 이용하시면 오류가 유발되는 데이터들을 삭제하고 최신 데이터들을 문제없이 받으실 수 있습니다.",
-        "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에서 확인할 수 있습니다."
+        "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에서 확인할 수 있습니다.",
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
       }
     },
     "save": {

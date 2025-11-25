@@ -889,7 +889,8 @@
         "desktopHotkeys": "На ПК, клавіші Alt+Enter перемикають повноекранний режим, F7 робить знімок екрану, англійська T відкриває чат.",
         "badgeControls": "При редагуванні колекції значків, їх можна перетягувати з місця на місце, або швидко прибрати одразу декілька за допомогою функції «Прибрати значки».",
         "cacheSettings": "Налаштування кешу можуть допомогти у вирішенні проблем які інколи можуть виникнути з переліком відвіданих вами локацій або застарілими мапами.",
-        "openSource": "YNOproject має відкритий код. Репозиторії коду доступні на сторінці https://github.com/ynoproject/"
+        "openSource": "YNOproject має відкритий код. Репозиторії коду доступні на сторінці https://github.com/ynoproject/",
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
       }
     },
     "save": {

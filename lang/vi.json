@@ -889,7 +889,8 @@
         "desktopHotkeys": "Nếu bạn chơi trên máy tính, Alt+Enter sẽ bật tắt chế độ toàn màn hình, F7 mặc định sẽ chụp màn hình trò chơi, và phím T sẽ mở hộp chat trong trò chơi.",
         "badgeControls": "Trong Kho Huy hiệu, bạn có thể kéo thả huy hiệu để thay đổi vị trí của chúng, hoặc nhấn 'Gỡ huy hiệu' để gỡ cùng lúc nhiều huy hiệu.",
         "cacheSettings": "Nếu bạn gặp khó khăn trong việc hoàn thành các kì Thám hiểm hoặc bản đồ không cập nhật, trong menu Cache bạn có thể xóa cache thủ công để cập nhật dữ liệu mới nhất.",
-        "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/"
+        "openSource": "YNOproject là dự án mã nguồn mở và có thể truy cập kho lưu trữ tại https://github.com/ynoproject/",
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
       }
     },
     "save": {

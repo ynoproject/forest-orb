@@ -889,7 +889,8 @@
         "desktopHotkeys": "Bilgisayarda oynuyorsan, Alt+Enter ile Tam ekran modunu açıp kapatabilirsin, değişmemiş ayarlarda F7 oyunun bir ekran görüntüsünü alır, T tuşu da oyun içi sohbet girdisini açar.",
         "badgeControls": "Rozetler menüsünde, tutup bırakarak rozetlerini düzenleyebilirsin, ya da Rozet Kaldırma modunda çabucak birden fazla rozeti kaldırabilirsin.",
         "cacheSettings": "Lokasyon tamamlama ya da Eskimiş Yerlerle alakalı sıkıntı mı yaşıyorsun? Veri Menüsünden ilgili veriyi temizleyip en son verileri alabilirs.",
-        "openSource": "YNOproject açık kaynaklıdır ve kod depoları şu sitede mevcuttur: https://github.com/ynoproject/"
+        "openSource": "YNOproject açık kaynaklıdır ve kod depoları şu sitede mevcuttur: https://github.com/ynoproject/",
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
       }
     },
     "save": {
