@@ -889,7 +889,8 @@
         "desktopHotkeys": "Wenn du auf PC spielst kannst du mit ALT+Enter in den Vollbildmodus gehen, mit F7 Screenshoits machen und mit T die in-game Chateingabe öffnen.",
         "badgeControls": "In der Abzeichnungsgallerie, kannst du Abzeichnungen drag and droppen um sie zu organisieren, oder mehrere Abzeichen auf einmal entfernen im Entfernungsmodus.",
         "cacheSettings": "Probleme einen Ort komplett zu erkunden oder veraltete Karten? Im Cache Menü kannst du relevante Caches leeren und die neusten Daten runterladen.",
-        "openSource": "YNOproject ist ein Open-Source-Projekt und das Repository ist unter https://github.com/ynoproject/ aufzufinden"
+        "openSource": "YNOproject ist ein Open-Source-Projekt und das Repository ist unter https://github.com/ynoproject/ aufzufinden",
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
       }
     },
     "save": {
