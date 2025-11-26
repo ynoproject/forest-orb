@@ -738,6 +738,7 @@ function openModal(modalId, theme, lastModalId, modalData) {
   setTimeout(() => {
     modalContainer.classList.remove('fadeIn');
     modal.classList.remove('fadeIn');
+    updateFullscreenPolling();
   }, modalTransitionDuration);
 }
 
@@ -762,7 +763,10 @@ function closeModal() {
       activeModal.classList.add('hidden');
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
+      updateFullscreenPolling();
     }, modalTransitionDuration);
+  } else {
+    updateFullscreenPolling();
   }
 
   setModalUiTheme('confirmModal', config.uiTheme === 'auto' ? systemName : config.uiTheme);
@@ -776,6 +780,7 @@ function closeModal() {
       openModal(modalContainer.dataset.lastModalId.slice(lastModalIdSeparatorIndex + 1), modalContainer.dataset.lastModalTheme.slice(lastModalThemeSeparatorIndex + 1));
     }
   }
+
 }
 
 {
@@ -1132,23 +1137,130 @@ document.getElementById('musicVolume').onchange = function () {
   setMusicVolume(parseInt(this.value));
 };
 
-document.getElementById('lang').onchange = function () {
-  setLang(this.value);
+const langSelect = document.getElementById('lang');
+let lastAppliedLang = langSelect.value;
+
+const checkLang = () => {
+  let value = null;
+  if (langSelect.selectedIndex >= 0 && langSelect.selectedIndex < langSelect.options.length) {
+    const option = langSelect.options[langSelect.selectedIndex];
+    if (option && option.value) {
+      value = option.value;
+    }
+  }
+
+  if (value === null) {
+    value = langSelect.value;
+  }
+
+  if (value && value !== lastAppliedLang) {
+    lastAppliedLang = value;
+    setLang(value);
+    if (document.fullscreenElement) {
+      updateCanvasFullscreenSize();
+    }
+  }
 };
 
-document.getElementById('nametagMode').onchange = function () {
-  if (easyrpgPlayer.initialized)
-    easyrpgPlayer.api.setNametagMode(this.value);
+langSelect.addEventListener('change', checkLang);
+
+const nametagModeSelect = document.getElementById('nametagMode');
+let lastAppliedNametagMode = parseInt(nametagModeSelect.value, 10);
+
+const checkNametagMode = () => {
+  if (!easyrpgPlayer.initialized) return;
+
+  let value = null;
+  if (nametagModeSelect.selectedIndex >= 0 && nametagModeSelect.selectedIndex < nametagModeSelect.options.length) {
+    const option = nametagModeSelect.options[nametagModeSelect.selectedIndex];
+    if (option && option.value) {
+      value = parseInt(option.value, 10);
+    }
+  }
+
+  if (value === null || isNaN(value)) {
+    value = parseInt(nametagModeSelect.value, 10);
+  }
+
+  if (value !== null && !isNaN(value) && value !== lastAppliedNametagMode) {
+    lastAppliedNametagMode = value;
+    easyrpgPlayer.api.setNametagMode(value);
+  }
 };
 
-document.getElementById('wikiLinkMode').onchange = function () {
-  globalConfig.wikiLinkMode = parseInt(this.value);
+// Monitor fullscreen changes
+document.addEventListener('fullscreenchange', () => {
+  updateFullscreenPolling();
+});
+
+nametagModeSelect.addEventListener('change', checkNametagMode);
+
+// Chromium fullscreen workaround
+let fullscreenCheckInterval = null;
+
+const checkAllSelects = () => {
+  checkLang();
+  checkNametagMode();
+  checkSaveReminder();
+};
+
+const updateFullscreenPolling = () => {
+  const isFullscreen = !!document.fullscreenElement;
+  const settingsModal = document.getElementById('settingsModal');
+  const isSettingsModalOpen = settingsModal && !settingsModal.classList.contains('hidden');
+  const shouldPoll = isFullscreen && isSettingsModalOpen;
+
+  if (fullscreenCheckInterval) {
+    clearInterval(fullscreenCheckInterval);
+    fullscreenCheckInterval = null;
+  }
+
+  if (shouldPoll) {
+    fullscreenCheckInterval = setInterval(checkAllSelects, 100);
+  }
+};
+
+const startFullscreenPolling = () => {
+  updateFullscreenPolling();
+};
+
+const stopFullscreenPolling = () => {
+  updateFullscreenPolling();
+};
+
+// Start polling if already in fullscreen and settings modal is open
+updateFullscreenPolling();
+
+const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
+wikiLinkModeSelect.addEventListener('change', function () {
+  const newValue = parseInt(this.value);
+  globalConfig.wikiLinkMode = newValue;
   updateConfig(globalConfig, true);
+}, { capture: true });
+
+const saveReminderSelect = document.getElementById('saveReminder');
+let lastAppliedSaveReminder = parseInt(saveReminderSelect.value, 10);
+
+const checkSaveReminder = () => {
+  let value = null;
+  if (saveReminderSelect.selectedIndex >= 0 && saveReminderSelect.selectedIndex < saveReminderSelect.options.length) {
+    const option = saveReminderSelect.options[saveReminderSelect.selectedIndex];
+    if (option && option.value) {
+      value = parseInt(option.value, 10);
+    }
+  }
+
+  if (value === null || isNaN(value)) {
+    value = parseInt(saveReminderSelect.value, 10);
+  }
+
+  if (value !== null && !isNaN(value) && value !== lastAppliedSaveReminder) {
+    lastAppliedSaveReminder = value;
+    setSaveReminder(value);
+  }
 };
 
-document.getElementById('saveReminder').onchange = function () {
-  setSaveReminder(parseInt(this.value));
-};
+saveReminderSelect.addEventListener('change', checkSaveReminder);
 
 document.getElementById('playerSoundsButton').onclick = () => {
   if (easyrpgPlayer.initialized)
@@ -1829,8 +1941,12 @@ function setLang(lang, isInit) {
     })
   ));
   initLocalization(isInit);
-  if (!isInit)
+  if (!isInit) {
     updateConfig(globalConfig, true);
+    if (document.fullscreenElement) {
+      updateCanvasFullscreenSize();
+    }
+  }
 }
 
 function setExtendedLatinFonts(lang) {
@@ -2775,11 +2891,14 @@ function addFilterInputs(modalPrefix, modalInitFunc, ...checkboxes) {
 }
 
 function openWikiLink(url, useDefault, asImage = false) {
-  if (globalConfig.wikiLinkMode === 2 || (document.fullscreenElement && globalConfig.wikiLinkMode === 1)) {
+  const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
+  const currentMode = wikiLinkModeSelect ? parseInt(/** @type {HTMLSelectElement} */ (wikiLinkModeSelect).value) : globalConfig.wikiLinkMode;
+
+  if (currentMode === 2 || (document.fullscreenElement && currentMode === 1)) {
     openWikiModal(url, asImage);
     return true;
   }
-  
+
   if (!useDefault) {
     const handle = window.open(url, '_blank', 'noreferrer');
     if (handle)
