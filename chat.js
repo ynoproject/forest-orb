@@ -72,7 +72,7 @@ function chatboxAddMessage(msg, type, player, ignoreNotify, mapId, prevMapId, pr
         if (y !== undefined) msgContainer.dataset.y = y;
         if (prevLocationsStr) msgContainer.dataset.prevLocationsStr = prevLocationsStr;
 
-        if (gameId === "2kki" && (!localizedMapLocations.hasOwnProperty(mapId))) {
+        if (gameId === "2kki" && (!localizedMapLocations || !localizedMapLocations.hasOwnProperty(mapId))) {
           const prevLocations = prevLocationsStr && prevMapId !== "0000" ? decodeURIComponent(window.atob(prevLocationsStr)).split("|").map(l => { return { title: l }; }) : null;
           set2kkiGlobalChatMessageLocation(playerLocation, mapId, prevMapId, prevLocations);
         } else {
