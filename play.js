@@ -230,6 +230,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
     .then(response => response.json())
     .then(jsonResponse => {
       if (jsonResponse.uuid) {
+        const wasLoggedIn = loggedIn;
         loggedIn = !isLogout && jsonResponse.registered;
         setCookie(loggedInKey, loggedIn ? 'true' : '');
         const fsBadgesButton = document.getElementById('fsBadgesButton');
@@ -273,7 +274,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
               trySetChatName('');
               updatePlayerFriends();
               updateParty();
-              if (isLogout) {
+              if (isLogout && wasLoggedIn) {
                 showAccountToastMessage('loggedOut', 'leave');
                 document.getElementById('content').classList.remove('loggedIn');
                 onResize();
