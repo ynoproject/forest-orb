@@ -316,7 +316,7 @@ function onUpdateEvents(events, ignoreLocationCheck) {
       eventsList.appendChild(eventListEntry);
     }
 
-    if (eventType === 'locations' && !ignoreLocationCheck && connStatus === 1)
+    if (eventType === 'locations' && !ignoreLocationCheck && (connStatus === 1 || connStatus === 3 || connStatus === 4))
       checkEventLocations();
   }
 
