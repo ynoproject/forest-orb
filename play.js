@@ -188,7 +188,7 @@ function onUpdateConnectionStatus(status) {
 
   connStatus = status;
 
-  if (status === 1 || status === 3) {
+  if (status === 1 || status === 3 || status === 4) {
     addOrUpdatePlayerListEntry(null, playerData, false, true);
     updatePlayerFriends();
     updateJoinedParty();
@@ -932,8 +932,8 @@ document.getElementById('enterNameForm').onsubmit = function () {
       sendSessionCommand('hl', [config.singleplayerMode ? 1 : 0 ]);
     }
 
-    if (connStatus == 1 || connStatus == 3)
-      onUpdateConnectionStatus(config.privateMode ? 3 : 1);
+    if (connStatus == 1 || connStatus == 3 || connStatus == 4)
+      onUpdateConnectionStatus(config.privateMode ? (config.singleplayerMode ? 4 : 3) : 1);
 
     easyrpgPlayer.api.sessionReady();
   }
