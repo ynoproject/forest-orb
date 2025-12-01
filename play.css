@@ -3261,13 +3261,13 @@ form .uiTheme {
   font-size: x-small;
 }
 
-@media (hover: none) { 
+@media (hover: none), (pointer: coarse) {
   .desktopOnly {
     display: none;
   }
 }
 
-@media not (hover: none) { 
+@media (hover: hover) and (pointer: fine) {
   .mobileOnly {
     display: none;
   }
