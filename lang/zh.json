@@ -400,7 +400,8 @@
           "search": {
             "label": "搜索:&nbsp;",
             "name": "名称:",
-            "location": "取得位置:"
+            "location": "取得位置:",
+            "artist": "Artist:"
           }
         }
       },

@@ -400,7 +400,8 @@
           "search": {
             "label": "Tìm kiếm:&nbsp;",
             "name": "Tên:",
-            "location": "Địa điểm:"
+            "location": "Địa điểm:",
+            "artist": "Artist:"
           }
         }
       },

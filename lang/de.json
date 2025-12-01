@@ -400,7 +400,8 @@
           "search": {
             "label": "Suchen nach:&nbsp;",
             "name": "Name:",
-            "location": "Ort:"
+            "location": "Ort:",
+            "artist": "Artist:"
           }
         }
       },

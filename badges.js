@@ -597,6 +597,10 @@ function initBadgeControls() {
               visible &= title && (exactMatch ? title.toLocaleLowerCase() === parsedSearchTerm : title.toLocaleLowerCase().indexOf(parsedSearchTerm) > -1);
               break;
             }
+            case 'artist': {
+              visible &= item.art && (exactMatch ? item.art.split(/ & |, /).includes(parsedSearchTerm) : item.art.indexOf(parsedSearchTerm) > -1);
+              break;
+            }
           }
         }
         if (!(item.game in gameVisibilities)) {
@@ -668,19 +672,22 @@ function initBadgeControls() {
       badgeDropdown.classList.remove('hidden');
   };
 
+  function onDropdownActivate(item, callback) {
+    item.onkeydown = item.onclick = function (ev) {
+      if (ev.key && ev.key !== 'Enter')
+        return;
+      callback();
+    };
+  }
+
   const searchName = document.getElementById('searchName').parentElement;
-  searchName.onkeydown = searchName.onclick = function (ev) {
-    if (ev.key && ev.key !== 'Enter')
-      return;
-    searchBadges('name');
-  };
+  onDropdownActivate(searchName, () => searchBadges('name'));
 
   const searchLocation = document.getElementById('searchLocation').parentElement;
-  searchLocation.onkeydown = searchLocation.onclick = function (ev) {
-    if (ev.key && ev.key !== 'Enter')
-      return;
-    searchBadges('location');
-  };
+  onDropdownActivate(searchLocation, () => searchBadges('location'));
+
+  const searchArtist = document.getElementById('searchArtist').parentElement;
+  onDropdownActivate(searchArtist, () => searchBadges('artist'));
 
   function searchBadges(mode) {
     badgeDropdown.classList.add('hidden');
@@ -1059,6 +1066,7 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       bp: badge.bp,
       percent: badge.percent,
       badgeId: badge.badgeId,
+      art: '',
     };
     item.dataset.cacheIndex = badgeFilterCache.push(filterItem) - 1;
   }
@@ -1145,8 +1153,10 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
         const localizedTooltip = localizedBadges[badge.game][badgeId];
         if ((badge.unlocked || !badge.secret) && localizedTooltip.name)
           badgeTitle = getMassagedLabel(localizedTooltip.name);
-        if (filterItem)
+        if (filterItem) {
           filterItem.title = badgeTitle.toLocaleLowerCase();
+          filterItem.art = badge.art.toLocaleLowerCase();
+        }
         if (badge.bp)
           badgeTitle = getMassagedLabel(localizedMessages.badges.badgeTitle).replace('{TITLE}', badgeTitle).replace('{BP}', badge.bp);
         tooltipContent += `<h3 class="tooltipTitle${badge.hidden ? ' altText' : ''}">${badgeTitle}</h3>`;

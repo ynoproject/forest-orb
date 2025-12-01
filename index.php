@@ -1075,6 +1075,11 @@
                     <path
                       d="m3 5q1-5 6-5t6 5-6 11q-7-6-6-11m6-2a1 1 0 0 0 0 5 1 1 0 0 0 0 -5m-2 11c-1 0-3 1-3 2s2 2 5 2 5-1 5-2-2-2-3-2" />
                   </svg>
+                  <svg data-kind="artist" class="icon searchIcon hidden" viewBox="0 0 10 10" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" height="12">
+                    <path
+                      d="m10 4a1 1 90 000 5 1 1 90 000-5M5 17c0-5 1-7 5-7s5 2 5 7q-5 2-10 0" />
+                  </svg>
                   <input id="badgeSearch" type="text" autocomplete="off">
                   <div class="dropdown hidden" id="badgeDropdown">
                     <div class="dropdownItem" tabindex="0">
@@ -1082,6 +1087,9 @@
                     </div>
                     <div class="dropdownItem" tabindex="0">
                       <i data-i18n="[html]modal.badges.fields.search.location">Location:</i> <span id="searchLocation"></span>
+                    </div>
+                    <div class="dropdownItem" tabindex="0">
+                      <i data-i18n="[html]modal.badges.fields.search.artist">Artist:</i> <span id="searchArtist"></span>
                     </div>
                   </div>
                 </div>

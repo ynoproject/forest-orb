@@ -400,7 +400,8 @@
           "search": {
             "label": "검색:&nbsp;",
             "name": "이름:",
-            "location": "장소:"
+            "location": "장소:",
+            "artist": "Artist:"
           }
         }
       },
