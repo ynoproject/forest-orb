@@ -6,6 +6,8 @@ let communityScreenshotsInterval = 'day';
 let communityScreenshotsScrollTop = 0;
 let communityScreenshotsScrollTimer = null;
 let communityScreenshotsScrollWatch = null;
+let lastAppliedScreenshotResolution = document.getElementById('screenshotResolution').value;
+
 
 const screenshotSlotBpLevels = [
   {
@@ -66,8 +68,13 @@ const screenshotSlotBpLevels = [
   }
 ];
 
-const screenshotResolutionSelect = document.getElementById('screenshotResolution');
-let lastAppliedScreenshotResolution = screenshotResolutionSelect.value;
+function setScreenshotResolution(value, isInit) {
+  lastAppliedScreenshotResolution = value;
+  document.getElementById('screenshotResolution').value = value;
+  globalConfig.screenshotResolution = value;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
 
 function initScreenshotControls() {
   document.getElementById('autoDownloadScreenshotsButton').onclick = function() {
@@ -77,12 +84,10 @@ function initScreenshotControls() {
     updateConfig(globalConfig, true);
   };
 
-  screenshotResolutionSelect.addEventListener('change', () => {
-    const value = screenshotResolutionSelect.value;
+  document.getElementById('screenshotResolution').addEventListener('change', function() {
+    const value = this.value;
     if (value && value !== lastAppliedScreenshotResolution) {
-      lastAppliedScreenshotResolution = value;
-      globalConfig.screenshotResolution = value;
-      updateConfig(globalConfig, true);
+      setScreenshotResolution(value);
     }
   });
 
