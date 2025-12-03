@@ -3024,7 +3024,6 @@ onResize();
 
 loadOrInitConfig(globalConfig, true);
 loadOrInitConfig(config);
-configLoaded = true;
 loadOrInitCache();
 
 document.addEventListener('click', e => {    

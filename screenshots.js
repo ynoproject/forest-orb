@@ -66,20 +66,25 @@ const screenshotSlotBpLevels = [
   }
 ];
 
+const screenshotResolutionSelect = document.getElementById('screenshotResolution');
+let lastAppliedScreenshotResolution = screenshotResolutionSelect.value;
+
 function initScreenshotControls() {
   document.getElementById('autoDownloadScreenshotsButton').onclick = function() {
-    if (!configLoaded) return;
     this.classList.toggle('toggled');
     const toggled = this.classList.contains('toggled');
     globalConfig.autoDownloadScreenshots = toggled;
     updateConfig(globalConfig, true);
   };
 
-  document.getElementById('screenshotResolution').onchange = function() {
-    if (!configLoaded) return;
-    globalConfig.screenshotResolution = this.value;
-    updateConfig(globalConfig, true);
-  };
+  screenshotResolutionSelect.addEventListener('change', () => {
+    const value = screenshotResolutionSelect.value;
+    if (value && value !== lastAppliedScreenshotResolution) {
+      lastAppliedScreenshotResolution = value;
+      globalConfig.screenshotResolution = value;
+      updateConfig(globalConfig, true);
+    }
+  });
 
   document.getElementById('screenshotButton').onclick = () => takeScreenshot();
   const openMyScreenshots = () => {

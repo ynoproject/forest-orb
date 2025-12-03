@@ -740,7 +740,6 @@ function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interact
 let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
-let configLoaded = false;
 
 function loadOrInitConfig(configObj, global, configName) {
   if (!configName)
@@ -853,6 +852,7 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'screenshotResolution':
                     document.getElementById('screenshotResolution').value = value;
+                    lastAppliedScreenshotResolution = value;
                     break;
                   case 'preloads':
                     if (value) {
