@@ -68,6 +68,7 @@ const screenshotSlotBpLevels = [
 
 function initScreenshotControls() {
   document.getElementById('autoDownloadScreenshotsButton').onclick = function() {
+    if (!configLoaded) return;
     this.classList.toggle('toggled');
     const toggled = this.classList.contains('toggled');
     globalConfig.autoDownloadScreenshots = toggled;
@@ -75,6 +76,7 @@ function initScreenshotControls() {
   };
 
   document.getElementById('screenshotResolution').onchange = function() {
+    if (!configLoaded) return;
     globalConfig.screenshotResolution = this.value;
     updateConfig(globalConfig, true);
   };

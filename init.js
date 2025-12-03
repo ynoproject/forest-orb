@@ -740,6 +740,7 @@ function addOrUpdateTooltip(target, content, asTooltipContent, delayed, interact
 let loadedLang = false;
 let loadedUiTheme = false;
 let loadedFontStyle = false;
+let configLoaded = false;
 
 function loadOrInitConfig(configObj, global, configName) {
   if (!configName)
