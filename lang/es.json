@@ -356,9 +356,9 @@
         "title": "Configuración de Caché",
         "clear": "Limpiar",
         "fields": {
-          "locationCache": "Caché de Ubicaciones",
-          "mapCache": "Caché de Mapas",
-          "locationColorCache": "Caché de Color de Ubicaciones"
+          "locationCache": "Caché de las Ubicaciones",
+          "mapCache": "Caché de los Mapas",
+          "locationColorCache": "Caché del Color de las Ubicaciones"
         }
       },
       "accountSettings": {
@@ -401,7 +401,7 @@
             "label": "Buscar:&nbsp;",
             "name": "Nombre:",
             "location": "Ubicación:",
-            "artist": "Artist:"
+            "artist": "Artista:"
           }
         }
       },
@@ -442,7 +442,7 @@
           "theme": "Tema"
         },
         "showPassword": "Mostrar Contraseña",
-        "hidePassword": "Esconder Contraseña",
+        "hidePassword": "Ocultar Contraseña",
         "submit": "Crear Grupo"
       },
       "joinPrivateParty": {
@@ -451,7 +451,7 @@
           "password": "Contraseña"
         },
         "showPassword": "Mostrar Contraseña",
-        "hidePassword": "Esconder Contraseña",
+        "hidePassword": "Ocultar Contraseña",
         "incorrectPassword": "Contraseña Incorrecta: Intente Nuevamente.",
         "submit": "Unirse"
       },
@@ -566,8 +566,8 @@
       "rules": {
         "title": "Reglas",
         "rule1": "Por favor, sé respetuoso y cortés.",
-        "rule2": "No discusiones de temas +18 (NSFW, gore, etc.).",
-        "rule3": "No discusiones de temas políticos.",
+        "rule2": "No discusiones acerca de temas +18 (NSFW, gore, etc.).",
+        "rule3": "No discusiones acerca de temas políticos.",
         "rule4": "No comentarios que inciten al odio (incluyendo insultos).",
         "rule5": "No trampas de ningún tipo por ningún motivo.",
         "rule6": "Si hay problemas, por favor informa a los moderadores."
@@ -623,7 +623,7 @@
         "disbandParty": "Eliminar Grupo"
       },
       "events": "Expediciones",
-      "badges": "Badges",
+      "badges": "Insignias",
       "locations": "Ubicaciones",
       "communityScreenshots": "Capturas de Pantalla de la Comunidad",
       "rankings": "Clasificaciones",
@@ -794,16 +794,16 @@
           "success": "{PLAYER} puede usar el chat de nuevo."
         },
         "grantBadge": {
-          "label": "Dar Insignia",
-          "prompt": "Ingrese el ID de la Insignia que desea dar a {PLAYER}.",
-          "success": "{BADGE} ha sido dada a {PLAYER}.",
-          "fail": "No se encontró una Insignia con el ID seleccionado."
+          "label": "Otorgar Insignia",
+          "prompt": "Ingresa el ID de la Insignia que deseas otorgarle a {PLAYER}.",
+          "success": "{BADGE} ha sido otorgada a {PLAYER}.",
+          "fail": "No se encontró ninguna Insignia con el ID seleccionado."
         },
         "revokeBadge": {
           "label": "Quitar Insignia",
-          "prompt": "Ingrese el ID de la Insignia que deseas quitarle a {PLAYER}.",
+          "prompt": "Ingresa el ID de la Insignia que deseas quitarle a {PLAYER}.",
           "success": "{BADGE} le ha sido quitada a {PLAYER}.",
-          "fail": "No se encontró una Insignia con el ID seleccionado."
+          "fail": "No se encontró ninguna Insignia con el ID seleccionado."
         },
         "tempban": {
           "label": "Banear Temporalmente a {PLAYER}",
@@ -812,7 +812,7 @@
         },
         "tempmute": {
           "label": "Silenciar Temporalmente a {PLAYER}",
-          "prompt": "¿Cuándo Quitar el Silencio a {PLAYER}? (UTC time)",
+          "prompt": "¿Cuándo Quitarle el Silencio a {PLAYER}? (UTC time)",
           "success": "{PLAYER} ha sido temporalmente Silenciado."
         }
       }
@@ -856,8 +856,8 @@
       "yourParty": "Tu Grupo",
       "defaultPartyName": "Grupo de {OWNER}",
       "partyOwner": "Líder del Grupo",
-      "confirmDisband": "¿Estás seguro que quieres eliminar tu grupo? Esta acción no se puede deshacer.",
-      "confirmTransferPartyOwner": "¿Estás seguro que quieres transferirle el Liderazgo del Grupo a {PLAYER}?",
+      "confirmDisband": "¿Estás seguro de que quieres eliminar tu grupo? Esta acción no se puede deshacer.",
+      "confirmTransferPartyOwner": "¿Estás seguro de que quieres transferirle el Liderazgo del Grupo a {PLAYER}?",
       "offlineMemberSuffix": "Miembro Desconectado",
       "categories": {
         "online": "Conectados - {COUNT}",
@@ -873,25 +873,25 @@
     "chatTips": {
       "template": "CONSEJO: {CONTENT}",
       "tips": {
-        "backupReminder": "Se recomienda descargar frecuentemente los archivos de guardado para evitar perder el progreso en el juego en el caso de que la caché del navegador sea borrada.",
+        "backupReminder": "Se recomienda descargar frecuentemente los archivos de guardado para evitar perder el progreso en el juego en el caso de que el caché del navegador sea borrado.",
         "menuTheme": "Tu color de nombre y estilo en la lista de jugadores cambia dependiendo del menú que selecciones dentro del juego.",
-        "playersInMap": "Puede alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
-        "markdownSupport": "El chat soporta formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), y ||spoiler|| (\\|\\|texto\\|\\|).",
-        "tabToChat": "Si juegas en PC, puedes presionar la tecla Tab para alternar entre el juego y el chat. Esta opción puede desactivarse en 'Configuraciones de Chat', bajo la opción 'Presionar Tab para chatear'.",
-        "chatTabNotifications": "Cuando se encuentra en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando la recepción del mensaje.",
-        "clearChat": "Cuando presiona el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
-        "chatHistoryLimit": "Si tu historial de chat es demasiado largo, podrías comenzar a experimental problemas de rendimiento. En 'Opciones de Chat' puedes limitar la cantidad de mensajes que almacenará el historial de chat para evitar hacerlo manualmente.",
+        "playersInMap": "Puedes alternar entre la cantidad de jugadores conectados y la cantidad de jugadores en el mapa actual presionando el texto correspondiente en la esquina superior derecha de la pantalla.",
+        "markdownSupport": "El chat soporta el formateo de texto al usar ciertos caracteres especiales, los cuales son: **negrita** (\\*\\*texto\\*\\*), *cursiva* (\\*texto\\*, \\_texto\\_), __subrayado__ (\\_\\_texto\\_\\_), y ||spoiler|| (\\|\\|texto\\|\\|).",
+        "tabToChat": "Si juegas en PC, puedes presionar la tecla Tab para alternar entre el juego y el chat. Esta opción puede desactivarse en 'Configuraciones de Chat', con la opción 'Presionar Tab para chatear'.",
+        "chatTabNotifications": "Cuando te encuentres en una pestaña de chat diferente a 'Todos', si un nuevo mensaje es recibido en otra pestaña, el título se ennegrecerá, notificando que hay un nuevo mensaje.",
+        "clearChat": "Cuando presionas el botón para limpiar los mensajes del chat -encontrado en la esquina superior derecha del chat-, si no te encuentras en la pestaña de 'Todos', solo se borrarán los mensajes de la pestaña actualmente en uso.",
+        "chatHistoryLimit": "Si tu historial de chat es demasiado largo, podrías comenzar a experimentar problemas de rendimiento. En 'Opciones de Chat' puedes limitar la cantidad de mensajes que almacenará el historial de chat para evitar hacerlo manualmente.",
         "parties": "Los equipos son una gran manera de mantener contacto con otros jugadores, ya que permiten ver la ubicación de otros miembros del equipo y hablar con ellos de forma privada.",
         "immersionMode": "Si prefieres una experiencia inmersiva sobre una social, prueba el Modo Inmersivo. Este desactiva el chat global, lista de jugadores y el contador de jugadores, haciendo más interesante el encontrar jugadores al explorar.",
-        "friendsMenu": "Dando click derecho en PC, o manteniendo presionado en dispositivos móviles en el ícono de un jugador fuera de las Clasificaciones, una caja de diálogo se abrirá, permitiendote enviarle una solicitud de amistad, mencionar al susodicho o bloquearlo.",
-        "easySettingsMenu": "Si estás jugando desde tu PC, puedes presionar la tecla F1 mientras juegas para abrir el menú de configuración, permitiendote tanto ajustar tus teclas como seleccionar otros ajustes.",
+        "friendsMenu": "Dando click derecho en PC, o manteniendo presionado en dispositivos móviles en el ícono de un jugador fuera de las Clasificaciones, una caja de diálogo se abrirá, permitiéndote enviar una solicitud de amistad, mencionar al susodicho o bloquearlo.",
+        "easySettingsMenu": "Si estás jugando desde tu PC, puedes presionar la tecla F1 mientras juega para abrir el menú de configuración, permitiendote tanto ajustar tus teclas como seleccionar otros ajustes.",
         "floatingControls": "Si estás jugando en un dispositivo móvil y no te gustan los controles predeterminados, intenta usar el estilo Flotante de los Controles disponible desde Tipo de Controles para Móviles en Opciones.",
         "recentBadges": "¿Cerraste accidentalmente una notificación de Insignia? Puedes ver las Insignias Desbloqueadas Recientemente en tu actual sesion de juego seleccionando la opción Desbloqueadas Recientemente en el Estado de las Insignias.",
         "desktopHotkeys": "Si estás jugando desde tu PC, Alt+Enter también puede Alternar el Modo Pantalla Completa, F7 de manera predeterminada toma una Captura de Pantalla del Juego, y la Tecla T abre el chat.",
         "badgeControls": "En el Menú de la Galería de Insignias, puedes arrastrar y soltar insignias para acomodarlas, o en su defecto rápidamente quitar varias insignias a la vez utilizando el modo Quitar Insignias.",
         "cacheSettings": "¿Tienes problemas Desbloqueando Ubicaciones o con Ubicaciones Desactualizadas? El Menú de Caché te permite limpiar el caché relevante para conseguir los datos más actualizados.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "Cuando escribes dos puntos (:) en el chat, un menú de emojis de YNO aparecerá. Puedes seleccionar y dar click a un emoji desde ahí para ponerlo en el chat en el formato :nombre_del_emoji:."
       }
     },
     "save": {
@@ -903,7 +903,7 @@
       },
       "upload": {
         "tooltip": "Cargar archivo de guardado",
-        "invalidSaveFile": "Seleccione un archivo de guardado válido (formato .lsd)."
+        "invalidSaveFile": "Selecciona un archivo de guardado válido (formato .lsd)."
       },
       "download": {
         "tooltip": "Descargar archivo de guardado",
@@ -911,11 +911,11 @@
       },
       "delete": {
         "tooltip": "Descargar archivo de guardado",
-        "confirmDelete": "¿Está seguro que desea eliminar el archivo de guardado en la ranura {SLOT_ID}?"
+        "confirmDelete": "¿Estás seguro de que deseas eliminar el archivo de guardado en la ranura {SLOT_ID}?"
       }
     },
     "saveSync": {
-      "confirmClearSaveSync": "¿Estás seguro que quieres Borrar la Sincronización de Archivos de Guardado en este juego? Esta acción no puede deshacerse a menos que tengas una copia de tu archivo de guardado."
+      "confirmClearSaveSync": "¿Estás seguro de que quieres Borrar la Sincronización de Archivos de Guardado en este juego? Esta acción no puede deshacerse a menos que tengas una copia de tu archivo de guardado."
     },
     "toast": {
       "system": {
@@ -974,7 +974,7 @@
         "saveDownloaded": "El archivo de guardado en la ranura {SLOT} ha sido actualizado exitosamente.",
         "saveUpToDate": "La ranura sincronizada se encuentra actualizada.",
         "saveCleared": "Se ha borrado la información de sincronización de archivos de guardado. Esto no afectará archivos de guardado ya existentes en otros dispositivos.",
-        "saveReminder": "Recuerda guardar frecuentemente y hacer una copia de tus archivos de guardado para no perder tu progreso."
+        "saveReminder": "Recuerda guardar frecuentemente y hacer una copia de sus archivos de guardado para no perder su progreso."
       },
       "timeTrials": {
         "timeTrialsComplete": "Llegaste a {LOCATION} en {TIME}."
@@ -1139,7 +1139,7 @@
       },
       "delete": {
         "tooltip": "Borrar",
-        "confirm": "¿Estás seguro que quieres borrar esta captura de pantalla?"
+        "confirm": "¿Estás seguro de que quiere borrar esta captura de pantalla?"
       }
     },
     "schedules": {
@@ -1177,49 +1177,49 @@
       "actions": {
         "resetPassword": {
           "label": "Reestablecer Contraseña",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere reestablecerle la contraseña",
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres reestablecerle la contraseña",
           "success": "La nueva contraseña para {PLAYER} es {PASSWORD}"
         },
         "changeUsername": {
           "label": "Cambiar Nombre de Usuario",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere cambiar el nombre de usuario",
-          "namePrompt": "Ingrese el nuevo nombre de usuario para {PLAYER}",
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres cambiarle el nombre de usuario",
+          "namePrompt": "Ingresa el nuevo nombre de usuario para {PLAYER}",
           "success": "El nombre de usuario para {PLAYER} ha sido cambiado a {NAME}",
           "error": "No se ha podio cambiar el nombre de usuario para {PLAYER}; es posible que el nuevo nombre ya esté en uso"
         },
         "ban": {
           "label": "Banear Jugador",
-          "playerPrompt": "Ingrese el nombre de la cuenta que quiere banear"
+          "playerPrompt": "Ingresa el nombre de la cuenta que quieres banear"
         },
         "unban": {
           "label": "Desbanear Jugador",
-          "playerPrompt": "Ingrese el nombre de la cuenta que quiere desbanear"
+          "playerPrompt": "Ingresa el nombre de la cuenta que quieres desbanear"
         },
         "mute": {
           "label": "Silenciar Jugador",
-          "playerPrompt": "Ingrese el nombre de la cuenta que quiere silenciar"
+          "playerPrompt": "Ingresa el nombre de la cuenta que quieres silenciar"
         },
         "unmute": {
-          "label": "Quitar Silencio a Jugador",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere quitar el silencio"
+          "label": "Quitar Silenciamiento a Jugador",
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres quitarle el silenciamiento"
         },
         "grantBadge": {
           "label": "Otorgar Insignia",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere otorgar una Insignia"
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres otorgarle una Insignia"
         },
         "revokeBadge": {
           "label": "Quitar Insignia",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere quitar una Insignia"
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres quitarle una Insignia"
         },
         "tempban": {
           "label": "Banear Jugador Temporalmente",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere banear temporalmente",
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres banear temporalmente",
           "timePrompt": "Ingresa la fecha en la que el ban expirará (UTC time)"
         },
         "tempmute": {
           "label": "Silenciar Jugador Temporalmente",
-          "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere silenciar temporalmente",
-          "timePrompt": "Ingresa la fecha en la que el silencio expirará (UTC time)"
+          "playerPrompt": "Ingresa el nombre de la cuenta a la que quieres silenciar temporalmente",
+          "timePrompt": "Ingresa la fecha en la que el silenciamiento expirará (UTC time)"
         }
       }
     }
