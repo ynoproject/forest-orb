@@ -851,7 +851,7 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('autoDownloadScreenshotsButton').click();
                     break;
                   case 'screenshotResolution':
-                    document.getElementById('screenshotResolution').value = value;
+                    setScreenshotResolution(value, true);
                     break;
                   case 'preloads':
                     if (value) {
