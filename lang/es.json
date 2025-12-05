@@ -888,7 +888,7 @@
         "floatingControls": "Si estás jugando en un dispositivo móvil y no te gustan los controles predeterminados, intenta usar el estilo Flotante de los Controles disponible desde Tipo de Controles para Móviles en Opciones.",
         "recentBadges": "¿Cerraste accidentalmente una notificación de Insignia? Puedes ver las Insignias Desbloqueadas Recientemente en tu actual sesion de juego seleccionando la opción Desbloqueadas Recientemente en el Estado de las Insignias.",
         "desktopHotkeys": "Si estás jugando desde tu PC, Alt+Enter también puede Alternar el Modo Pantalla Completa, F7 de manera predeterminada toma una Captura de Pantalla del Juego, y la Tecla T abre el chat.",
-        "badgeControls": "En el Menú de la Galería de Insignias, puedes arrastrar y soltar medallas para acomodarlas, o en su defecto rápidamente quitar varias medallas a la vez utilizando el modo Quitar Medallas.",
+        "badgeControls": "En el Menú de la Galería de Insignias, puedes arrastrar y soltar insignias para acomodarlas, o en su defecto rápidamente quitar varias insignias a la vez utilizando el modo Quitar Insignias.",
         "cacheSettings": "¿Tienes problemas Desbloqueando Ubicaciones o con Ubicaciones Desactualizadas? El Menú de Caché te permite limpiar el caché relevante para conseguir los datos más actualizados.",
         "openSource": "YNOproject es de código abierto. Los repositorios de código están disponibles en: https://github.com/ynoproject/",
         "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
@@ -1013,7 +1013,7 @@
       "locked": "???",
       "location": "Ubicación:&nbsp;",
       "goalProgress": "{CURRENT}/{TOTAL}",
-      "percentUnlocked": "{PERCENT}% de jugadores tienen esta medalla",
+      "percentUnlocked": "{PERCENT}% de jugadores tienen esta insignia",
       "time": "{MINUTES}:{SECONDS}",
       "artCredit": "Arte por {ARTIST}",
       "search": {
@@ -1204,11 +1204,11 @@
           "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere quitar el silencio"
         },
         "grantBadge": {
-          "label": "Otorgar Medalla",
+          "label": "Otorgar Insignia",
           "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere otorgar una Insignia"
         },
         "revokeBadge": {
-          "label": "Quitar Medalla",
+          "label": "Quitar Insignia",
           "playerPrompt": "Ingrese el nombre de la cuenta a la que quiere quitar una Insignia"
         },
         "tempban": {
