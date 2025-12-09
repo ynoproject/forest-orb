@@ -930,7 +930,7 @@ document.getElementById('enterNameForm').onsubmit = function () {
 
     sendSessionCommand('pr', [ config.privateMode ? config.singleplayerMode ? 2 : 1 : 0 ]);
     if (config.hideLocation) {
-      sendSessionCommand('hl', [config.singleplayerMode ? 1 : 0 ]);
+      sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
     }
 
     if (connStatus == 1 || connStatus == 3 || connStatus == 4)
@@ -1287,7 +1287,7 @@ document.getElementById('hideLocationButton').onclick = function () {
   this.classList.toggle('toggled', config.hideLocation);
   updateConfig(config);
 
-  if (sessionWs && config.singleplayerMode)
+  if (sessionWs)
     sendSessionCommand('hl', [ config.hideLocation ? 1 : 0 ]);
 };
 
