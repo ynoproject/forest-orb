@@ -765,6 +765,12 @@
                 </div>
               </li>
               <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleHideUnnamedPlayers">Hide Unnamed Players</label>
+                <div>
+                  <button id="hideUnnamedPlayersButton" class="checkboxButton unselectable"><span></span></button>
+                </div>
+              </li>
+              <li class="formControlRow">
                 <label class="unselectable">
                   <span data-i18n="[html]modal.settings.fields.togglePreloads.label">Preloads</span>
                   <a href="javascript:void(0);" class="helpLink iconLink" data-i18n="[title]modal.settings.fields.togglePreloads.helpText">

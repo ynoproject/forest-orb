@@ -114,7 +114,8 @@ let config = {
   globalMessage: false,
   hideGlobalMessageLocations: false,
   filterMentions: false,
-  trackedLocationId: null
+  trackedLocationId: null,
+  hideUnnamedPlayers: false,
 };
 
 const locI18nextOptions = {
@@ -1364,6 +1365,16 @@ document.getElementById('toggleSchedulesButton').onclick = function () {
   document.getElementById('fsSchedulesButton')?.classList.toggle('hidden', toggled);
   globalConfig.hideSchedules = toggled;
   updateConfig(globalConfig, true);
+};
+
+document.getElementById('hideUnnamedPlayersButton').onclick = function () {
+  const toggled = this.classList.toggle('toggled');
+  config.hideUnnamedPlayers = toggled;
+  updateConfig(config);
+  if (sessionWs && toggled)
+    sendSessionCommand('hunp', [ 1 ]);
+  else if (sessionWs && !toggled)
+    sendSessionCommand('hunp', [ 0 ]);
 };
 
 document.getElementById('togglePreloadsButton').onclick = function () {

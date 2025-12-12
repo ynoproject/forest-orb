@@ -35,6 +35,8 @@ function initSessionWs(attempt) {
         sendSessionCommand('pr', [ config.singleplayerMode ? 2 : 1 ]);
       if (config.hideLocation)
         sendSessionCommand('hl', [ 1 ]);
+      if (config.hideUnnamedPlayers)
+        sendSessionCommand('hunp', [ config.hideUnnamedPlayers ? 1 : 0 ]);
       if (!hasConnected) {
         syncChatHistory()
           .catch(err => console.error(err))
