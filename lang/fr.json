@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Mode solo",
             "helpText": "Transforme le mode privé en mode solo, cachant tous les amis et membres du groupe de votre champ de vision. Parfait si vous souhaitez jouer au jeu par vous-même."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Liste de blocage",
         "chatSettings": "Chat",

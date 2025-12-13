@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Singleplayer Mode",
             "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Listo de Blokitoj",
         "chatSettings": "Babilejo",

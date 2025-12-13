@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "혼자하기 모드",
             "helpText": "비공개 모드를 혼자하기 모드로 전환합니다. 모든 친구/파티 목록에 속한 플레이어까지 시야에서 숨김처리 하여 완전히 혼자서 게임을 플레이하고 싶을 때 사용하기 적절합니다."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "차단 목록",
         "chatSettings": "채팅",
