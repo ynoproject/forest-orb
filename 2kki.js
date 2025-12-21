@@ -221,7 +221,18 @@ function getLocalized2kkiLocations(locations, separator, forDisplay) {
 
 function get2kkiLocationHtml(location, showDepth) {
   const urlTitle = location.urlTitle || location.title;
-  const urlTitleJP = location.urlTitleJP || (location.titleJP && location.titleJP.indexOf('：') > -1 ? location.titleJP.slice(0, location.titleJP.indexOf('：')) : location.titleJP);
+  let urlTitleJP = location.urlTitleJP;
+  if (!urlTitleJP && location.titleJP) {
+    const colonIndex = location.titleJP.indexOf('：');
+    const colonIndexHalf = location.titleJP.indexOf(':');
+    if (colonIndex > -1) {
+      urlTitleJP = location.titleJP.slice(0, colonIndex);
+    } else if (colonIndexHalf > -1) {
+      urlTitleJP = location.titleJP.slice(0, colonIndexHalf);
+    } else {
+      urlTitleJP = location.titleJP;
+    }
+  }
   let locationHtml = `<a href="${gameLocationUrlRoots['2kki'] || locationUrlRoot}${urlTitle}" target="_blank" class="wikiLink">${location.title}</a>`;
   if (location.connType) {
     const connTypes = Object.values(ConnType).map(ct => parseInt(ct));
