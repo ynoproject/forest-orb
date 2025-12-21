@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "シングルプレイヤーモード",
             "helpText": "プライベートモードをシングルプレイヤーモードに切り替え、フレンドやパーティメンバーを含めた全員を非表示にします。一人で探索したい場合に最適です。"
-          }
+          },
+          "toggleHideUnnamedPlayers": "無名プレイヤーを表示しない"
         },
         "blocklist": "ブロックリスト",
         "chatSettings": "チャット",

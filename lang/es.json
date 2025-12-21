@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Modo Solitario",
             "helpText": "Convierte el Modo Privado en el Modo Solitario, quitando de la vista a amigos y miembros del grupo. Perfecto si quieres explorar totalmente por ti mismo."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Lista de Bloqueos",
         "chatSettings": "Chat",

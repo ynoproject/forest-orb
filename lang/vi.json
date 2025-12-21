@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Chế độ Một người",
             "helpText": "Khi Chế độ Riêng tư kích hoạt, bạn sẽ không nhìn thấy bất kì ai bao gồm bạn bè và thành viên cùng nhóm. Khuyên dùng khi bạn muốn hoàn toàn tự lực khám phá."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Danh sách chặn",
         "chatSettings": "Chat",

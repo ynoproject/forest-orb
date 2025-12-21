@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Modo de Um Jogador",
             "helpText": "Transforma o Modo Privado em Modo de Um Jogador, ocultando todos os amigos e membros do grupo. Perfeito caso queira explorar tudo por conta própia."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Blocklist",
         "chatSettings": "Bate-Papo",

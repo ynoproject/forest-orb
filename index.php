@@ -797,6 +797,12 @@
                   <button id="toggleUnicodeFont" class="checkboxButton unselectable"><span></span></button>
                 </div>
               </li>
+              <li class="formControlRow">
+                <label class="unselectable" data-i18n="[html]modal.settings.fields.toggleHideUnnamedPlayers">Hide Unnamed Players</label>
+                <div>
+                  <button id="hideUnnamedPlayersButton" class="checkboxButton unselectable"><span></span></button>
+                </div>
+              </li>
               <li class="formControlRow buttonRow">
                 <button id="blocklistButton" class="unselectable" type="button" data-i18n="[html]modal.settings.blocklist">Blocklist</button>
                 <button id="chatSettingsButton" class="unselectable" type="button" data-i18n="[html]modal.settings.chatSettings" onclick="openModal('chatSettingsModal', null, 'settingsModal')">Chat</button>

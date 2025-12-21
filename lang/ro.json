@@ -176,7 +176,8 @@
           "toggleSingleplayerMode": {
             "label": "Mod Singleplayer",
             "helpText": "Schimbă Modul Privat în Modul Singleplayer, ascunzând toți prietenii și membrii de grup din vedere. Perfect când vrei să explorezi de unul singur."
-          }
+          },
+          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
         },
         "blocklist": "Listă Neagră",
         "chatSettings": "Chat",
