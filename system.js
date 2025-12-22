@@ -1180,24 +1180,26 @@ function displayGameEndDate() {
   }
 }
 
-if (typeof i18next !== 'undefined' && i18next.isInitialized) {
-  displayGameEndDate();
-} else {
-  document.addEventListener('DOMContentLoaded', function() {
-    let attempts = 0;
-    const maxAttempts = 50;
-    const checkI18next = setInterval(function() {
-      attempts++;
-      if (typeof i18next !== 'undefined' && i18next.isInitialized) {
-        clearInterval(checkI18next);
-        displayGameEndDate();
-      } else if (attempts >= maxAttempts) {
-        clearInterval(checkI18next);
-      }
-    }, 100);
-  });
-}
+if (gameEndDates[gameId]) {
+  if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+    displayGameEndDate();
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      let attempts = 0;
+      const maxAttempts = 50;
+      const checkI18next = setInterval(function() {
+        attempts++;
+        if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+          clearInterval(checkI18next);
+          displayGameEndDate();
+        } else if (attempts >= maxAttempts) {
+          clearInterval(checkI18next);
+        }
+      }, 100);
+    });
+  }
 
-if (typeof i18next !== 'undefined') {
-  i18next.on('languageChanged', displayGameEndDate);
+  if (typeof i18next !== 'undefined') {
+    i18next.on('languageChanged', displayGameEndDate);
+  }
 }
