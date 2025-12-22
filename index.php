@@ -2197,6 +2197,7 @@
       <div class="notice" data-i18n="[html]disclaimer.hostedWithPermission">Hosted with permission from the developer(s)</div>
       <?php endif ?>
       <?php if ($gameId == "unconscious"): ?>
+      <br>
       <div class="notice" data-i18n="[html]disclaimer.originalCreation">Original creation by the YNOproject community</div>
       <?php endif ?>
       <?php if ($gameId == "yume"): ?>
