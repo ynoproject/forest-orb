@@ -69,7 +69,8 @@
     "disclaimer": {
       "pendingApproval": "Se așteaptă aprobarea de la dezvoltator/editor",
       "hostedWithPermission": "Găzduit cu permisiunea dezvoltatorului/ilor",
-      "originalCreation": "Creație originală de comunitatea YNOProject"
+      "originalCreation": "Creație originală de comunitatea YNOProject",
+      "gameEndDate": "Available to play on YNOproject until {{date}}"
     },
     "modal": {
       "common": {

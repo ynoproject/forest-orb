@@ -69,7 +69,8 @@
     "disclaimer": {
       "pendingApproval": "개발자/배급사의 승인 대기 중에 있습니다.",
       "hostedWithPermission": "개발진들의 허가를 받아 운영하고 있습니다.",
-      "originalCreation": "YNOproject 커뮤니티에 의해 개발되었습니다."
+      "originalCreation": "YNOproject 커뮤니티에 의해 개발되었습니다.",
+      "gameEndDate": "Available to play on YNOproject until {{date}}"
     },
     "modal": {
       "common": {

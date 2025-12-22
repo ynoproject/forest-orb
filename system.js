@@ -410,6 +410,10 @@ const gameLogoBlendModeOverrides = {
   'unevendream': 'color'
 };
 
+const gameEndDates = {
+  'unconscious': Date.UTC(2025, 11, 28, 5, 0)
+};
+
 const contrastRatioThreshold = 2.02;
 
 function setSystemName(name) {
@@ -1141,4 +1145,61 @@ function hueToRGBA(h, a) {
       case 5: r = v, g = p, b = q; break;
   }
   return getColorRgba([Math.round(r * 255), Math.round(g * 255), Math.round(b * 255), a]);
+}
+
+function displayGameEndDate() {
+  try {
+    const endDateUTC = gameEndDates[gameId];
+    if (!endDateUTC) return;
+
+    const endDateElement = document.getElementById('gameEndDate');
+    if (!endDateElement) return;
+    const now = new Date();
+
+    if (now.getTime() >= endDateUTC) {
+      endDateElement.remove();
+      return;
+    }
+    const localDate = new Date(endDateUTC);
+    const year = localDate.getFullYear();
+    const month = String(localDate.getMonth() + 1).padStart(2, '0');
+    const date = String(localDate.getDate()).padStart(2, '0');
+    const hours = String(localDate.getHours()).padStart(2, '0');
+    const minutes = String(localDate.getMinutes()).padStart(2, '0');
+
+    const locale = i18next.language === 'ja' ? 'ja-JP' : 'en-US';
+    const weekday = localDate.toLocaleDateString(locale, { weekday: 'short' });
+
+    const dateStr = `${year}/${month}/${date} (${weekday}) ${hours}:${minutes}`;
+    const translatedText = i18next.t('disclaimer.gameEndDate', { date: dateStr });
+
+    endDateElement.innerHTML = translatedText;
+    endDateElement.style.display = 'block';
+  } catch (error) {
+    console.error('Error displaying game end date:', error);
+  }
+}
+
+if (gameEndDates[gameId]) {
+  if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+    displayGameEndDate();
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      let attempts = 0;
+      const maxAttempts = 50;
+      const checkI18next = setInterval(function() {
+        attempts++;
+        if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+          clearInterval(checkI18next);
+          displayGameEndDate();
+        } else if (attempts >= maxAttempts) {
+          clearInterval(checkI18next);
+        }
+      }, 100);
+    });
+  }
+
+  if (typeof i18next !== 'undefined') {
+    i18next.on('languageChanged', displayGameEndDate);
+  }
 }

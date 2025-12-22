@@ -69,7 +69,8 @@
     "disclaimer": {
       "pendingApproval": "開発者/配信元の承認待ち",
       "hostedWithPermission": "開発者の許可を得て掲載しています",
-      "originalCreation": "YNOprojectのコミュニティによるオリジナルの作品"
+      "originalCreation": "YNOprojectのコミュニティによるオリジナルの作品",
+      "gameEndDate": "この作品はYNOprojectで{{date}}までプレイ可能です"
     },
     "modal": {
       "common": {

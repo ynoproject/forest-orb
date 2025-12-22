@@ -2184,6 +2184,7 @@
     </div>
     <div id="layoutEnd"></div>
     <div>
+      <div id="gameEndDate" class="notice" style="display: none;"></div>
       <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
       "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog" ]; ?>
       <?php if ($gameId == "2kki"): ?>
