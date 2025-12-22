@@ -69,7 +69,8 @@
     "disclaimer": {
       "pendingApproval": "Pending approval from developer/publisher",
       "hostedWithPermission": "Dihost dengan izin dari para pembuat Yume 2kki",
-      "originalCreation": "Kreasi orisinal dari komunitas YNOproject"
+      "originalCreation": "Kreasi orisinal dari komunitas YNOproject",
+      "gameEndDate": "Available to play on YNOproject until {{date}}"
     },
     "modal": {
       "common": {

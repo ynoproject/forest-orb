@@ -69,7 +69,8 @@
     "disclaimer": {
       "pendingApproval": "En attente d'approuvement du développeur/éditeur",
       "hostedWithPermission": "Hébergé avec la permission du/des développeur(s)",
-      "originalCreation": "Création originale de la communauté YNOproject"
+      "originalCreation": "Création originale de la communauté YNOproject",
+      "gameEndDate": "Available to play on YNOproject until {{date}}"
     },
     "modal": {
       "common": {

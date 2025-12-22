@@ -2184,6 +2184,8 @@
     </div>
     <div id="layoutEnd"></div>
     <div>
+      <br>
+      <div id="gameEndDate" class="notice" style="display: none;"></div>
       <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
       "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog" ]; ?>
       <?php if ($gameId == "2kki"): ?>
@@ -2196,7 +2198,6 @@
       <div class="notice" data-i18n="[html]disclaimer.hostedWithPermission">Hosted with permission from the developer(s)</div>
       <?php endif ?>
       <?php if ($gameId == "unconscious"): ?>
-      <br>
       <div class="notice" data-i18n="[html]disclaimer.originalCreation">Original creation by the YNOproject community</div>
       <?php endif ?>
       <?php if ($gameId == "yume"): ?>
