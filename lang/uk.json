@@ -402,7 +402,8 @@
           "search": {
             "label": "Пошук:&nbsp;",
             "name": "Назва:",
-            "location": "Місце:"
+            "location": "Місце:",
+            "artist": "Artist:"
           }
         }
       },
