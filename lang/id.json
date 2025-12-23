@@ -402,7 +402,8 @@
           "search": {
             "label": "Search:&nbsp;",
             "name": "Name:",
-            "location": "Location:"
+            "location": "Location:",
+            "artist": "Artist:"
           }
         }
       },
