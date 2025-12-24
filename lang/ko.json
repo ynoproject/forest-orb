@@ -70,7 +70,7 @@
       "pendingApproval": "개발자/배급사의 승인 대기 중에 있습니다.",
       "hostedWithPermission": "개발진들의 허가를 받아 운영하고 있습니다.",
       "originalCreation": "YNOproject 커뮤니티에 의해 개발되었습니다.",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "gameEndDate": "해당 게임은 {{date}} 이후로 YNOproject에서의 호스팅 서비스를 종료합니다"
     },
     "modal": {
       "common": {
@@ -178,7 +178,7 @@
             "label": "혼자하기 모드",
             "helpText": "비공개 모드를 혼자하기 모드로 전환합니다. 모든 친구/파티 목록에 속한 플레이어까지 시야에서 숨김처리 하여 완전히 혼자서 게임을 플레이하고 싶을 때 사용하기 적절합니다."
           },
-          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
+          "toggleHideUnnamedPlayers": "익명의 플레이어 숨김 처리하기"
         },
         "blocklist": "차단 목록",
         "chatSettings": "채팅",
@@ -403,7 +403,7 @@
             "label": "검색:&nbsp;",
             "name": "이름:",
             "location": "장소:",
-            "artist": "Artist:"
+            "artist": "배지 디자이너:"
           }
         }
       },
@@ -625,7 +625,7 @@
         "disbandParty": "파티 해산"
       },
       "events": "탐험",
-      "badges": "Badges",
+      "badges": "배지 보기",
       "locations": "장소 찾기",
       "communityScreenshots": "커뮤니티 스크린샷",
       "rankings": "랭킹",
@@ -893,7 +893,7 @@
         "badgeControls": "배지 갤러리 편집 화면에서 배지를 드래그하고 놓으면 손쉽게 재배치가 가능하며 배지 삭제하기 버튼을 눌러 한꺼번에 모든 배지를 갤러리에서 없앨 수 있습니다.",
         "cacheSettings": "장소 달성 오류나 구버전 맵의 충돌 등의 문제를 겪고 계신가요? 설정 속 캐시 메뉴를 이용하시면 오류가 유발되는 데이터들을 삭제하고 최신 데이터들을 문제없이 받으실 수 있습니다.",
         "openSource": "YNOproject는 오픈소스를 기반으로 운영하고 있습니다. 소스코드는 https://github.com/ynoproject/ 에서 확인할 수 있습니다.",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "채팅창에 쌍점 부호 (:) 를 입력할 시, YNO에서 자체 제작한 이모티콘을 선택할 수 있는 창이 나타납니다. 해당 창에서 원하는 이모티콘을 직접 클릭하거나, 채팅창에 :이모티콘 영어 이름: 형식으로 직접 타이핑하여 이모티콘을 채팅에 적어넣으실 수 있습니다."
       }
     },
     "save": {
