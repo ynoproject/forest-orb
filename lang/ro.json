@@ -893,7 +893,7 @@
         "badgeControls": "În meniul pentru Galeria de Insigne, poți glisa și fixa insignele pentru a le rearanja sau poți elimina rapid mai multe insigne simultan utilizând modul Eliminare insigne.",
         "cacheSettings": "Ai probleme cu completarea locațiilor sau hărți vechi? Meniul Cache de lasă să ștergi memoria cache relevantă și să recuperezi cele mai recente date.",
         "openSource": "YNOproject este open source și codul este valabil la https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },
     "save": {

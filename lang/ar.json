@@ -893,7 +893,7 @@
         "badgeControls": "In the Badge Gallery menu, you can drag and drop badges to rearrange them, or quickly remove many badges at once using the Remove Badges mode.",
         "cacheSettings": "Having trouble with location completion or outdated maps? The Cache menu allows you to clear the relevant cache and retrieve the latest data.",
         "openSource": "YNOproject مفتوح المصدر ومستودعات الكود متاحة على https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },
     "save": {

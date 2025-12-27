@@ -893,7 +893,7 @@
         "badgeControls": "No menu de Galeria de Emblemas, você pode arrastar emblemas para organiza-los, ou rapidamente remover varios emblemas de uma vez usando o modo de Remover Emblemas.",
         "cacheSettings": "Tendo problemas completando locais ou com mapas desatualizados? O menu de cache permite que você limpe o cache irrelevante e recupere os dados mais recentes.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },
     "save": {

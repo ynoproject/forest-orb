@@ -893,7 +893,7 @@
         "badgeControls": "在徽章展柜管理菜单中，您可以拖动徽章来重新排序，或使用“移除徽章”模式一次性删除多个徽章。",
         "cacheSettings": "在抵达目的地时未能触发判定？地图过期？“缓存”菜单允许您清除相关缓存并获取最新数据。",
         "openSource": "YNOproject是开源项目，您可在：https://github.com/ynoproject/ 查阅源代码。",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },
     "save": {
