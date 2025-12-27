@@ -893,7 +893,7 @@
         "badgeControls": "Dans le menu de la Galerie des Badges, vous pouvez attraper et faire glisser des badges pour les réarranger, ou rapidement retirer plusieurs badges d'un seul coup en utilisant le mode Retirer des badges.",
         "cacheSettings": "Vous avez un problème avec la complétion des lieux ou avez des cartes obsolètes ? Le menu du Cache vous permet d'effacer le cache obsolète en question et de recharger les dernières données.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/.",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emoji_name:."
+        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
       }
     },
     "save": {
