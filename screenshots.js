@@ -231,7 +231,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
   if (url.startsWith(serverUrl)) {
     fetch(url).then(response => response.blob()).then(async blob => {
       const blobUrl = URL.createObjectURL(blob);
-      await downloadScreenshot(blobUrl, date, screenshotData, true);
+      await downloadScreenshot(blobUrl, date, screenshotData, resized);
       URL.revokeObjectURL(blobUrl);
     });
     return;
