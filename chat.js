@@ -482,9 +482,12 @@ function chatInputActionFired() {
   }
   if (!chatInput.dataset.global || partyChat) {
     if (!joinedPartyId || !partyChat) {
-      sendSessionCommand("say", [ message ]);
-    } else
-      sendSessionCommand("psay", [ message ]);
+      if (!trySendMapMessage(message))
+        return;
+    } else {
+      if (!trySendPartyMessage(message))
+        return;
+    }
   } else if (!trySendGlobalMessage(message))
     return;
   chatInput.value = "";
@@ -558,14 +561,16 @@ function initChat() {
         return;
       switch (gameChatModeIndex) {
         case 0:
-          sendSessionCommand('say', [ chatMessageContent ]);
+          if (!trySendMapMessage(chatMessageContent))
+            return;
           break;
         case 1:
           if (!trySendGlobalMessage(chatMessageContent))
             return;
           break;
         case 2:
-          sendSessionCommand('psay', [ chatMessageContent ]);
+          if (!trySendPartyMessage(chatMessageContent))
+            return;
           break;
       }
       e.target.innerHTML = '';
@@ -574,6 +579,38 @@ function initChat() {
       return;
     }
   };
+}
+
+function trySendMapMessage(content) {
+  const chatInputContainer = document.getElementById("chatInputContainer");
+  if (!chatInputContainer.classList.contains("globalCooldown")) {
+    const chatInputContainers = [ chatInputContainer, document.getElementById("gameChatInputContainer") ];
+    sendSessionCommand("say", [ content ]);
+    chatInputContainers.forEach(el => el.classList.add("globalCooldown"));
+    window.setTimeout(function () {
+      chatInputContainers.forEach(el => el.classList.remove("globalCooldown"));
+    }, 5000);
+
+    return true;
+  }
+
+  return false;
+}
+
+function trySendPartyMessage(content) {
+  const chatInputContainer = document.getElementById("chatInputContainer");
+  if (!chatInputContainer.classList.contains("globalCooldown")) {
+    const chatInputContainers = [ chatInputContainer, document.getElementById("gameChatInputContainer") ];
+    sendSessionCommand("psay", [ content ]);
+    chatInputContainers.forEach(el => el.classList.add("globalCooldown"));
+    window.setTimeout(function () {
+      chatInputContainers.forEach(el => el.classList.remove("globalCooldown"));
+    }, 5000);
+
+    return true;
+  }
+
+  return false;
 }
 
 function trySendGlobalMessage(content) {
