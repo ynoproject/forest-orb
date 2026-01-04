@@ -28,11 +28,11 @@
     },
     "chatbox": {
       "location": "Lieu :",
-      "nextLocation": "Next Loc:&nbsp;",
+      "nextLocation": "Lieu suivant :&nbsp;",
       "immersionMode": "Mode Immersion",
       "reconnect": "Se reconnecter",
       "tab": {
-        "chat": "Chat",
+        "chat": "Tchat",
         "players": "Joueurs",
         "parties": "Groupe"
       },
@@ -70,7 +70,7 @@
       "pendingApproval": "En attente d'approuvement du développeur/éditeur",
       "hostedWithPermission": "Hébergé avec la permission du/des développeur(s)",
       "originalCreation": "Création originale de la communauté YNOproject",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "gameEndDate": "Jouable sur YNOproject jusqu'à {{date}}"
     },
     "modal": {
       "common": {
@@ -153,7 +153,7 @@
           },
           "toggleImmersionMode": {
             "label": "Mode Immersion",
-            "helpText": "Retire le nombre de joueurs, le Chat global, et les cartes pour vous donner une expérience plus immersive"
+            "helpText": "Retire le nombre de joueurs, le Tchat global, et les cartes pour vous donner une expérience plus immersive"
           },
           "timeTrialinfo": {
             "label": "Contre-la-montre"
@@ -178,10 +178,10 @@
             "label": "Mode solo",
             "helpText": "Transforme le mode privé en mode solo, cachant tous les amis et membres du groupe de votre champ de vision. Parfait si vous souhaitez jouer au jeu par vous-même."
           },
-          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
+          "toggleHideUnnamedPlayers": "Cacher les joueurs sans noms"
         },
         "blocklist": "Liste de blocage",
-        "chatSettings": "Chat",
+        "chatSettings": "Tchat",
         "screenshotSettings": "Captures d'écran",
         "notificationSettings": "Notifications",
         "cacheSettings": "Cache",
@@ -193,12 +193,12 @@
         "empty": "Votre liste d'utilisateurs bloqués est actuellement vide"
       },
       "chatSettings": {
-        "title": "Paramètres du Chat",
+        "title": "Paramètres du Tchat",
         "fields": {
           "toggleGameChat": {
-            "label": "Surcouche du Chat en jeu",
-            "global": "Surcouche du Chat Global",
-            "party": "Surcouche du Chat de Groupe"
+            "label": "Surcouche du Tchat en jeu",
+            "global": "Surcouche du Tchat Global",
+            "party": "Surcouche du Tchat de Groupe"
           },
           "toggleTabToChat": "Appuyez sur Tab pour discuter",
           "togglePlayMentionSound": "Jouer un son lorsque mentionné(e)",
@@ -215,13 +215,13 @@
             }
           },
           "mapChatHistoryLimit": {
-            "label": "Limite de l'historique du Chat de Carte"
+            "label": "Limite de l'historique du Tchat de Carte"
           },
           "globalChatHistoryLimit": {
-            "label": "Limite de l'historique du Chat Global"
+            "label": "Limite de l'historique du Tchat Global"
           },
           "partyChatHistoryLimit": {
-            "label": "Limite de l'historique du Chat de Groupe"
+            "label": "Limite de l'historique du Tchat de Groupe"
           },
           "blurScreenshotEmbeds": "Flouter toutes les captures d'écran"
         }
@@ -403,7 +403,7 @@
             "label": "Rechercher :&nbsp;",
             "name": "Nom :",
             "location": "Lieu :",
-            "artist": "Artist:"
+            "artist": "Artiste :"
           }
         }
       },
@@ -474,7 +474,7 @@
         "title": "Votre capture d'écran",
         "download": "Télécharger",
         "save": "Sauvegarder dans Mes captures décran",
-        "share": "Partager avec le Chat"
+        "share": "Partager avec le Tchat"
       },
       "myScreenshots": {
         "title": "Mes captures décran",
@@ -605,20 +605,20 @@
       "togglePrivateMode": "Activer le mode privé",
       "save": "Gérer les Données de Sauvegarde",
       "uiTheme": "Thème IU",
-      "toggleChat": "Afficher le Chat",
+      "toggleChat": "Afficher le Tchat",
       "toggleExplorer": "Activer Yume 2kki Navigator",
       "screenshot": "Prendre une capture d'écran",
       "myScreenshots": "Mes captures décran",
       "settings": "Paramètres",
       "toggleMute": "Mettre en muet",
       "toggleHideLocation": "Activer le partage de la localisation",
-      "toggleGlobalMessage": "Activer le Chat Global",
+      "toggleGlobalMessage": "Activer le Tchat Global",
       "chat": {
         "toggleNextLocation": "Montrer/Cacher le Lieu de la prochaine expédition",
         "toggleGlobalMessageLocations": "Montrer/Cacher les Lieux dans les messages de Chat",
         "toggleMessageTimestamps": "Montrer/Cacher l'horodatage des messages de Chat",
         "filterMentions": "Montrer uniquement les mentions",
-        "clearChat": "Effacer le Chat"
+        "clearChat": "Effacer le Tchat"
       },
       "parties": {
         "createParty": "Créer un Groupe",
@@ -645,7 +645,7 @@
       "ynoproject": "YNOproject",
       "yume": "Yume Nikki",
       "2kki": "Yume 2kki",
-      "cold": "[COLD]",
+      "cold": "[FROID]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
       "fog": "FOG",
@@ -880,21 +880,21 @@
         "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
         "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la carte en cliquant sur le label.",
         "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
-        "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche tab pour basculer entre le jeu et la saisie dans le chat. Cette fonctionnalité peut être désactivée dans les Paramètres du Chat avec l'option 'Appuyez sur Tab pour discuter'.",
-        "chatTabNotifications": "Lorsque vous êtes dans un onglet de chat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
-        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le chat en haut à droite de la boîte de chat, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
-        "chatHistoryLimit": "Si votre historique de chat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Chat, vous pouvez limiter votre historique de chat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre chat.",
-        "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un chat privé.",
-        "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le chat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
+        "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche tab pour basculer entre le jeu et la saisie dans le tchat. Cette fonctionnalité peut être désactivée dans les Paramètres du Tchat avec l'option 'Appuyez sur Tab pour discuter'.",
+        "chatTabNotifications": "Lorsque vous êtes dans un onglet de tchat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
+        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le tchat en haut à droite de la boîte de tchat, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
+        "chatHistoryLimit": "Si votre historique de tchat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Tchat, vous pouvez limiter votre historique de tchat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre tchat.",
+        "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un tchat privé.",
+        "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le tchat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "friendsMenu": "En faisant un clic droit sur PC, ou en maintenant votre touche sur mobile sur l'icône d'un joueur en dehors du Classement, une boîte de dialogue s'ouvrira, vous permettant d'envoyer une demande d'ami, mentionner ledit joueur ou le bloquer.",
         "easySettingsMenu": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche F1 en jouant pour ouvrir le menu des paramètres, vous permettant de configurer vos touches ainsi qu'ajuster certains paramètres.",
         "floatingControls": "Si vous jouez sur un appareil avec un écran tactile et que vous n'aimez pas les commandes par défaut, vous pouvez essayer les styles de commande flottantes disponibles dans le Type des commandes sur mobile dans les Paramètres.",
         "recentBadges": "Vous avez supprimé une notification de déblocage de badge par accident ? Vous pouvez toujours revoir les badges que vous avez débloqués durant la session en cours en sélectionnant Récemment débloqués dans la liste des Badges.",
-        "desktopHotkeys": "Si vous jouez sur un PC, Alt + Entrée peut aussi activer le mode plein écran, F7 par défaut prend une capture d'écran du jeu, et la touche T ouvre le menu d'entrée du chat de jeu.",
+        "desktopHotkeys": "Si vous jouez sur un PC, Alt + Entrée peut aussi activer le mode plein écran, F7 par défaut prend une capture d'écran du jeu, et la touche T ouvre le menu d'entrée du tchat de jeu.",
         "badgeControls": "Dans le menu de la Galerie des Badges, vous pouvez attraper et faire glisser des badges pour les réarranger, ou rapidement retirer plusieurs badges d'un seul coup en utilisant le mode Retirer des badges.",
         "cacheSettings": "Vous avez un problème avec la complétion des lieux ou avez des cartes obsolètes ? Le menu du Cache vous permet d'effacer le cache obsolète en question et de recharger les dernières données.",
         "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/.",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
+        "useYnoEmoji": "Lorsque vous tapez les deux-points (:) dans un tchat, une liste d'émojis de YNOproject apparaît. Vous pouvez sélectionner et cliquer sur un émoji depuis cette liste pour l'écrire dans le tchat sous la forme :emojiName:."
       }
     },
     "save": {
