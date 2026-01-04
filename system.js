@@ -141,6 +141,14 @@ const allGameUiThemes = {
     'Carpet',
     'Raspberry'
   ],
+  'cold': [
+    'system_F_1',
+    'system_F',
+    'system_C',
+    'system_R',
+    'system_FC',
+    'system_FC_1'
+  ],
   'unconscious': [
     'system',
     'system2',
@@ -373,6 +381,7 @@ const allGameFullBgUiThemes = {
   '2kki': [],
   'amillusion': [ 'fleur' ],
   'braingirl': [],
+  'cold': [],
   'unconscious': [],
   'deepdreams': [],
   'flow': [],
@@ -399,6 +408,7 @@ const gameFullBgUiThemes = allGameFullBgUiThemes[gameId];
 const gameLogoBlendModeOverrides = {
   'amillusion': 'screen',
   'braingirl': 'color',
+  'cold': 'color',
   'unconscious': 'color',
   'deepdreams': 'soft-light',
   'fog': 'color',
