@@ -1506,9 +1506,9 @@
           </div>
           <div class="modalContent">
             <ul>
-              <li><span data-i18n="[html]modal.warnings.warnings1">Some games contain flashing lights sequences or patterns that may affect photosensitive viewers.</span></li>
-              <li><span data-i18n="[html]modal.warnings.warnings2">References to self-harm or suicide.</span></li>
-              <li><span data-i18n="[html]modal.warnings.warnings3">Disturbing imagery.</span></li>
+              <li><span data-i18n="[html]modal.warnings.warning1">Some games contain flashing lights sequences or patterns that may affect photosensitive viewers.</span></li>
+              <li><span data-i18n="[html]modal.warnings.warning2">References to self-harm or suicide.</span></li>
+              <li><span data-i18n="[html]modal.warnings.warning3">Disturbing imagery.</span></li>
             </ul>
           </div>
         </div>
@@ -2207,6 +2207,7 @@
       <?php if ($gameId == "2kki"): ?>
       <br>
       <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
+      <br>
       <div class="notice" data-i18n="[html]2kki.hostedWithPermission">Hosted with permission from the Yume 2kki developers</div>
       <?php endif ?>
       <?php if (in_array($gameId, $gameIdsWithDisclaimer)): ?>

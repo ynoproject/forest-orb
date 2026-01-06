@@ -3067,7 +3067,7 @@ if (!globalConfig.rulesReviewed) {
 		const warningsModal = document.getElementById('warningsModal');
 		if (warningsModal) {
 			const observer = new MutationObserver((mutations) => {
-				if (!warningsModal.classList.contains('hidden') && !globalConfig.warningsReviewed) {
+				if (!warningsModal.classList.contains('hidden') && !warningsModal.classList.contains('fadeIn') && !globalConfig.warningsReviewed) {
 					globalConfig.warningsReviewed = true;
 					updateConfig(globalConfig, true);
 					observer.disconnect();

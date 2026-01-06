@@ -870,6 +870,8 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'rulesReviewed':
                     break;
+                  case 'warningsReviewed':
+                    break;
                 }
               } else {
                 switch (key) {
