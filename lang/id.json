@@ -574,6 +574,13 @@
         "rule5": "No cheating of any kind for any reason.",
         "rule6": "If there's trouble, please inform the moderators."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "Undiscovered Locations",
         "complete": "You've discovered every available location! Congrats!!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Markdown syntax is accepted, use {\\{l:World,optional link name}} to insert a link to yume.wiki"
     },
-    "reviewRules": "Review Rules"
+    "reviewRules": "Review Rules",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

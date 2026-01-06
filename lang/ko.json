@@ -574,6 +574,13 @@
         "rule5": "어느 경우더라도 치트는 사용하지 마십시오.",
         "rule6": "문제가 있으면 운영진에게 알려 주십시오."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "미발견 장소",
         "complete": "축하합니다!! 방문할 수 있는 모든 장소를 발견하셨습니다!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "하이퍼 링크 삽입이 가능합니다. {\\{l:월드, 세부 맵 링크}}를 입력하여 yume wiki 속 링크를 삽입하실 수 있습니다."
     },
-    "reviewRules": "규칙 다시 보기"
+    "reviewRules": "규칙 다시 보기",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

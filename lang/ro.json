@@ -574,6 +574,13 @@
         "rule5": "Fără trișat în orice fel, din oricare motiv.",
         "rule6": "Dacă sunt probleme, te rugăm să informezi moderatorii."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "Locații Nedescoperite",
         "complete": "Ai descoperit toate locațiile valabile! Felicitări!!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Sintaxa Markdown este acceptată, folosește {\\{l:World,optional link name}} pentru a insera un link către yume.wiki"
     },
-    "reviewRules": "Revizionează Regulile"
+    "reviewRules": "Revizionează Regulile",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

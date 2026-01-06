@@ -574,6 +574,13 @@
         "rule5": "لا غش من أي نوع ولأي سبب",
         "rule6": "في حالة وجود مشكلة يرجى إبلاغ المشرفين"
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "اماكن غير مكتشفة",
         "complete": "لقد قمت باكتشاف جميع الاماكن المتاحة :)"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Markdown syntax is accepted, use {\\{l:World,optional link name}} to insert a link to yume.wiki"
     },
-    "reviewRules": "مراجعة القواعد"
+    "reviewRules": "مراجعة القواعد",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

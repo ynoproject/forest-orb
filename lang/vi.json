@@ -574,6 +574,13 @@
         "rule5": "Không gian lận bằng bất kỳ lý do nào.",
         "rule6": "Nếu gặp vấn đề, thông báo cho các kiểm duyệt viên."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "Địa điểm chưa khám phá",
         "complete": "Bạn đã khám phá hết tất cả địa điểm! Chúc mừng!!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Có thể dùng ký hiệu định dạng văn bản. Bạn có thể dùng {\\{l:World,tên tùy chọn cho liên kết}} để chèn liên kết đến yume.wiki"
     },
-    "reviewRules": "Xem Nội quy"
+    "reviewRules": "Xem Nội quy",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {
