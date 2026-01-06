@@ -95,6 +95,7 @@ let globalConfig = {
   preloads: false,
   questionablePreloads: false,
   rulesReviewed: false,
+  warningsReviewed: false,
   badgeToolsData: null,
   pushNotificationToastDismissed: false,
   unicodeFont: false,
@@ -3061,7 +3062,26 @@ if (!loadedLang) {
 }
 
 if (!globalConfig.rulesReviewed) {
-	openModal('rulesModal');
+	if (!globalConfig.warningsReviewed) {
+		openModal('rulesModal', undefined, 'warningsModal');
+		const warningsModal = document.getElementById('warningsModal');
+		if (warningsModal) {
+			const observer = new MutationObserver((mutations) => {
+				if (!warningsModal.classList.contains('hidden') && !warningsModal.classList.contains('fadeIn') && !globalConfig.warningsReviewed) {
+					globalConfig.warningsReviewed = true;
+					updateConfig(globalConfig, true);
+					observer.disconnect();
+				}
+			});
+			observer.observe(warningsModal, { attributes: true, attributeFilter: ['class'] });
+		}
+	} else {
+		openModal('rulesModal');
+	}
 	globalConfig.rulesReviewed = true;
+	updateConfig(globalConfig, true);
+} else if (!globalConfig.warningsReviewed) {
+	openModal('warningsModal');
+	globalConfig.warningsReviewed = true;
 	updateConfig(globalConfig, true);
 }

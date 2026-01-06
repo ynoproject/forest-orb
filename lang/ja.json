@@ -574,6 +574,13 @@
         "rule5": "いかなる理由であれ、不正行為は禁止です。",
         "rule6": "トラブルが発生した場合は、モデレーターにお知らせください。"
       },
+      "warnings": {
+        "title": "注意事項",
+        "subtitle": "一部の作品には、以下の内容が含まれる場合があります。\nご注意ください。",
+        "warning1": "激しい光の点滅を伴う場面が、光過敏症のある方に影響を与える可能性があります。",
+        "warning2": "自傷行為や自殺についての表現。",
+        "warning3": "不快に感じる表現。"
+      },
       "explorerUndiscoveredLocations": {
         "title": "未発見の場所",
         "complete": "あなたは到達可能なすべての場所を発見しました！おめでとう！！"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Markdown記法が使用可能で、{\\{l:英名,和名}}を使ってyume.wikiへのマップURLを記入する"
     },
-    "reviewRules": "ルールを見る"
+    "reviewRules": "ルールを見る",
+    "reviewWarnings": "注意事項を見る"
   },
   "messages": {
     "games": {

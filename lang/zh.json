@@ -574,6 +574,13 @@
         "rule5": "不要在游戏中作弊。",
         "rule6": "如遇到问题，请联系管理员。"
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "未探索地域",
         "complete": "您已探索完所有可到达的地域！恭喜！"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "支持Markdown格式符。使用 {\\{l:世界名,可选链接名}} 可链接至yume.wiki词条页"
     },
-    "reviewRules": "多人游戏守则"
+    "reviewRules": "多人游戏守则",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

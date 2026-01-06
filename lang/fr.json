@@ -574,6 +574,13 @@
         "rule5": "Pas de triche de toute sorte, qu'importe la raison.",
         "rule6": "Si il y a des problèmes, veuillez en informer les modérateurs."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "Lieux non découverts",
         "complete": "Vous avez découvert tous les lieux disponibles ! Félicitations !!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "La syntaxe Markdown est acceptée, utilisez {\\{l:Monde,nom de lien optionnel}} pour insérer un lien vers yume.wiki"
     },
-    "reviewRules": "Relire les règles"
+    "reviewRules": "Relire les règles",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {

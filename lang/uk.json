@@ -574,6 +574,13 @@
         "rule5": "Заборонено чити незалежно від форми та причини.",
         "rule6": "Якщо виникли проблеми, будьласка зв'яжіться з модератором."
       },
+      "warnings": {
+        "title": "Warnings",
+        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
+        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
+        "warning2": "References to self-harm or suicide.",
+        "warning3": "Disturbing imagery."
+      },
       "explorerUndiscoveredLocations": {
         "title": "Невідомі локації",
         "complete": "Ви відкрили всі доступні локації! Вітаємо!"
@@ -638,7 +645,8 @@
     "placeholders": {
       "scheduleDescription": "Підтримується синтаксис Markdown, використовуйте {{l:World,назва посилання (необов'язково)}} для вставки посилання на yume.wiki"
     },
-    "reviewRules": "Переглянути правила"
+    "reviewRules": "Переглянути правила",
+    "reviewWarnings": "Review Warnings"
   },
   "messages": {
     "games": {
