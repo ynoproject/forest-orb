@@ -3875,6 +3875,11 @@ html[dir="rtl"] #layout:fullscreen #chatboxContainer {
     margin-bottom: 8px;
   }
 
+  .modalSubtitle {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
   .imageControls {
     width: 112px;
   }
