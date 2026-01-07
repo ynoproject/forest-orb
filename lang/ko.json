@@ -575,11 +575,11 @@
         "rule6": "문제가 있으면 운영진에게 알려 주십시오."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery."
+        "title": "경고",
+        "subtitle": "일부 게임에는 다음과 같은 내용이 포함되어 있을 수 있습니다. 게임 플레이 시 주의하시길 바랍니다.",
+        "warning1": "광과민성 환자에게 영향을 끼칠 수 있는 번쩍거리는 빛의 연속적이거나 규칙적인 깜빡임",
+        "warning2": "자해 혹은 자살에 관련된 언급",
+        "warning3": "불편하거나 충격적인 이미지"
       },
       "explorerUndiscoveredLocations": {
         "title": "미발견 장소",
@@ -646,7 +646,7 @@
       "scheduleDescription": "하이퍼 링크 삽입이 가능합니다. {\\{l:월드, 세부 맵 링크}}를 입력하여 yume wiki 속 링크를 삽입하실 수 있습니다."
     },
     "reviewRules": "규칙 다시 보기",
-    "reviewWarnings": "Review Warnings"
+    "reviewWarnings": "경고 다시 보기"
   },
   "messages": {
     "games": {
