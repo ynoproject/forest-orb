@@ -2223,9 +2223,11 @@
       <div class="notice" data-i18n="[html]disclaimer.pendingApproval">Pending approval from developer/publisher</div>
       <?php endif ?>
       <br>
-      <a href="javascript:void(0);" class="notice" onclick="openModal('rulesModal')" data-i18n="[html]reviewRules">Review Rules</a>
-      <br>
-      <a href="javascript:void(0);" class="notice" onclick="openModal('warningsModal')" data-i18n="[html]reviewWarnings">Review Warnings</a>
+      <div class="notice">
+        <a href="javascript:void(0);" onclick="openModal('rulesModal')" data-i18n="[html]reviewRules">Review Rules</a>
+        &bull;
+        <a href="javascript:void(0);" onclick="openModal('warningsModal')" data-i18n="[html]reviewWarnings">Review Warnings</a>
+      </div>
     </div>
     <div id="footerIconContainer">
       <a href="https://ynoproject.net/discord" target="_blank" class="icon fillIcon" title="Discord">
