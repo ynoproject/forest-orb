@@ -107,6 +107,7 @@ const allGameUiThemes = {
     'takikomi_syst2',
     'fluxide_sysblava',
     'Holdery_Sys_Garden_Festival',
+    'eur_menusys',
 
     'system_E_eye',
     'System_kuraud',
