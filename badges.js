@@ -646,7 +646,19 @@ function initBadgeControls() {
       let value = parsedValue;
       if (modifier)
         value += localizedMessages.badges.search.modifier.template.replace('{MODIFIER}', localizedMessages.badges.search.modifier[modifier]);
-      span.innerHTML = value;
+
+      // mappings for user input sanitization
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        "/": '&#x2F;',
+      };
+
+      const reg = /[&<>"'/]/ig;
+      span.innerHTML = value.replace(reg, (match)=>(map[match]));
     }
   };
 
