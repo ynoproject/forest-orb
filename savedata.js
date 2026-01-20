@@ -149,7 +149,7 @@ function uploadSaveFile(file, saveSlot) {
       return resolve(false);
 
     if (!/\.lsd$/i.test(file.name)) {
-      alert(localizedMessages.io.upload.invalidSaveFile);
+      alert(localizedMessages.save.upload.invalidSaveFile);
       document.getElementById('uploadButton').click();
       return;
     }
@@ -197,7 +197,7 @@ function downloadSaveFile(saveSlot) {
         const record = objectStoreRequest.result;
 
         if (!record) {
-          alert(localizedMessages.io.download.emptySlot);
+          alert(localizedMessages.save.download.emptySlot);
           resolve(false);
         }
 
