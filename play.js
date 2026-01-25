@@ -252,7 +252,7 @@ function fetchAndUpdatePlayerInfo(forLogin) {
           else
             fetchAndUpdateJoinedPartyId();
         };
-        if (isLogin) {
+        if (isLogin && loggedIn) {
           initSessionWs()
             .then(() => {
               trySetChatName(playerName);
@@ -273,12 +273,19 @@ function fetchAndUpdatePlayerInfo(forLogin) {
         } else {
           initSessionWs()
             .then(() => {
-              trySetChatName('');
+              trySetChatName(loggedIn ? playerName : '');
               updatePlayerFriends();
               updateParty();
               if (isLogout && wasLoggedIn) {
                 showAccountToastMessage('loggedOut', 'leave');
-                document.getElementById('content').classList.remove('loggedIn');
+              }
+              // Always update the loggedIn class to match the current state
+              const contentElement = document.getElementById('content');
+              if (loggedIn && !contentElement.classList.contains('loggedIn')) {
+                contentElement.classList.add('loggedIn');
+                onResize();
+              } else if (!loggedIn && contentElement.classList.contains('loggedIn')) {
+                contentElement.classList.remove('loggedIn');
                 onResize();
               }
             });
