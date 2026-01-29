@@ -125,7 +125,9 @@ const allGameUiThemes = {
     'rosas menu',
     'system EPACSE',
     'MenuChance',
-    'tournesol'
+    'tournesol',
+    'MenuGlace',
+    'hack-menu'
   ],
   'braingirl': [
     'analog',
