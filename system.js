@@ -969,8 +969,10 @@ async function getFontColorsImgLoaded(img, themeGameId, uiTheme, fontStyle, call
   const colors = Array(data.length / 4);
   for (let i = 0; i < data.length; i += 4)
     colors[i / 4] = [data[i], data[i + 1], data[i + 2]];
-    
+
   if (typeof tinycolor !== 'undefined') {
+    if (!uiThemeFontShadows[themeGameId])
+      uiThemeFontShadows[themeGameId] = {};
     const shadowRgb = uiThemeFontShadows[themeGameId][uiTheme] || [0, 0, 0];
     const shadowTc = getTinyColor(shadowRgb);
     const shadowLum = shadowTc.getLuminance();
