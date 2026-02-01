@@ -399,7 +399,7 @@ function onClaimEventLocationPoints(location, free, result) {
 
 function checkEventLocations() {
   if (loggedIn && cachedLocations && eventsCache.locations?.length) {
-    const incompleteEventLocations = eventsCache.locations.filter(el => !el.complete);
+    const incompleteEventLocations = eventsCache.locations.filter(el => !el.complete && el.game === gameId);
     const incompleteEventLocationNames = incompleteEventLocations.map(el => el.title);
     const eventLocationMatch = cachedLocations.map(l => {
       let locationName = l.title;
