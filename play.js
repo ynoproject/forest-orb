@@ -2265,6 +2265,8 @@ function getLocalizedVersion(versionText) {
   let versionLabel = versionText || '?';
   if (gameId !== '2kki')
     return versionLabel;
+  if (!localizedVersion?.substitutes)
+    return versionLabel;
   const substituteKeys = Object.keys(localizedVersion.substitutes);
   for (let sk of substituteKeys)
     versionLabel = versionLabel.replace(sk, localizedVersion.substitutes[sk]);
