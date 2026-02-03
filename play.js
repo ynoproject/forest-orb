@@ -495,7 +495,7 @@ function checkUpdateLocation(mapId, mapChanged) {
         checkEventLocations();
       }
 
-      if (yumeWikiSupported && playerData?.badge && badgeCache.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
+      if (yumeWikiSupported && playerData?.badge && badgeCache?.find(b => b.badgeId === playerData.badge)?.overlayType & BadgeOverlayType.LOCATION)
         updateBadgeButton();
     }
   }
@@ -2652,7 +2652,9 @@ const badgeHintSe = new Audio('./audio/badge_hint.wav');
 let lastMatchedBadgeIdResults;
 
 function updateBadgeHint(locationNames) {
-  locationNames = locationNames.map(l => gameLocalizedLocationsMap[gameId][l]?.title || l)
+  if (!badgeCache || !Array.isArray(badgeCache))
+    return;
+  locationNames = locationNames.map(l => gameLocalizedLocationsMap[gameId]?.[l]?.title || l)
   const badgeHintControls = document.getElementById('badgeHintControls');
   badgeHintControls.innerHTML = '';
 
