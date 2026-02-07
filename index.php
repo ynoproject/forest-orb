@@ -2045,7 +2045,7 @@
                   <label class="unselectable">Switch {{s + 1}}</label>
                   <div>
                     <label class="unselectable">ID</label>
-                    <input v-model="switchIds[s]" type="text" autocomplete="off" />
+                    <input v-model="switchIds[s]" type="number" min="0" max="99999" autocomplete="off" />
                   </div>
                   <label class="unselectable">Value</label>
                   <div>
