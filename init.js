@@ -1,4 +1,4 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cold', 'unconscious', 'deepdreams', 'flow', 'fog', 'genie', 'if', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unaccomplished', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cold', 'unconscious', 'deepdreams', 'flow', 'fog', 'genie', 'if', 'loveyou', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unaccomplished', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
@@ -20,6 +20,7 @@ const gameDefaultSprite = {
   'flow': 'sabituki',
   'fog': 'FOG_leon',
   'if': 'syujinkou',
+  'loveyou': 'effects',
   'genie': 'syujinkou1',
   'mikan': 'syuzinkou_01',
   'muma': 'muma1',
@@ -960,8 +961,7 @@ function loadOrInitConfig(configObj, global, configName) {
                     }
                     break;
                   case 'fontStyle':
-                    const fontSelect = document.querySelector('.fontStyle');
-                    if (fontSelect && [...fontSelect.options].some(opt => opt.value == value)) {
+                    if (gameUiThemes.indexOf(value) > -1) {
                       document.querySelector('.fontStyle').value = value;
                       setFontStyle(value, true);
                       loadedFontStyle = true;

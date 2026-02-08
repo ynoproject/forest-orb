@@ -251,6 +251,19 @@ const allGameUiThemes = {
     'sys-p2',
     'sys-p3'
   ],
+  'loveyou': [
+    'defaultsystem',
+    'systemcursed',
+    'systemmeat',
+    'systemsoap',
+    'system95',
+    'systemdorfic2',
+    'systemnocturne',
+    'systemyellow',
+    'systemcopper',
+    'systemglass',
+    'systemshampoo'
+  ],
   'mikan': [
     's_1',
     's_2',

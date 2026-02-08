@@ -579,7 +579,8 @@
         "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
         "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
         "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery."
+        "warning3": "Disturbing imagery.",
+        "warning4": "Depictions of drug use."
       },
       "explorerUndiscoveredLocations": {
         "title": "Nemalkovritaj Lokoj",
@@ -656,7 +657,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "fog": "FOG",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
@@ -673,7 +673,9 @@
       "tsushin": "Yume Tsushin",
       "nostalgic": "nostAlgic",
       "if": "If",
-      "unaccomplished": "Unaccomplished"
+      "unaccomplished": "Unaccomplished",
+      "fog": "FOG",
+      "loveyou": "Love You"
     },
     "leavePage": "Ĉu vi certas, ke vi volas foriri ĉi-retejon? Vi perdos ĉiun nekonservitan progresadon.",
     "logout": "Ĉu vi certas, ke vi volas malkonektiĝi?",

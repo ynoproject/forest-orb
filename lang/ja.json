@@ -656,7 +656,6 @@
       "cold": "[COLD]",
       "unconscious": "Collective Unconscious",
       "flow": ".flow",
-      "fog": "FOG",
       "prayers": "Answered Prayers",
       "deepdreams": "Deep Dreams",
       "someday": "Someday",
@@ -673,7 +672,9 @@
       "tsushin": "梦通信",
       "nostalgic": "nostAlgic",
       "if": "If",
-      "unaccomplished": "Unaccomplished"
+      "unaccomplished": "Unaccomplished",
+      "fog": "FOG",
+      "loveyou": "Love You"
     },
     "leavePage": "本当にこのページから離脱するのですか？保存されていないゲーム内の進行状況はすべて失われます。",
     "logout": "ログアウトしてもよろしいですか？",
