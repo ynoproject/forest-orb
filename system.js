@@ -404,6 +404,7 @@ const allGameFullBgUiThemes = {
   'fog': [],
   'genie': [],
   'if': [],
+  'loveyou': [],
   'mikan': [],
   'muma': [],
   'nostalgic': [],
