@@ -127,7 +127,8 @@ const allGameUiThemes = {
     'MenuChance',
     'tournesol',
     'MenuGlace',
-    'hack-menu'
+    'hack-menu',
+    'jaisormenu'
   ],
   'braingirl': [
     'analog',
