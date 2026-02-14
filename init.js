@@ -782,6 +782,7 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'wikiLinkMode':
                     document.getElementById('wikiLinkMode').value = value;
+                    setWikiLinkMode(value, true);
                     break;
                   case 'saveReminder':
                     document.getElementById('saveReminder').value = value;

@@ -2024,6 +2024,12 @@ function setMusicVolume(value, isInit) {
     updateConfig(globalConfig, true);
 }
 
+function setWikiLinkMode(wikiLinkMode, isInit) {
+  globalConfig.wikiLinkMode = wikiLinkMode;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
 function setMobileControlType(value, isInit) {
   if (!hasTouchscreen) return;
   globalConfig.mobileControlsType = value;
