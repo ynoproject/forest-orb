@@ -764,29 +764,41 @@ function loadOrInitConfig(configObj, global, configName) {
               if (global) {
                 switch (key) {
                   case 'lang':
-                    document.getElementById('lang').value = value;
                     setLang(value, true);
+                    const langElement = document.getElementById('lang');
+                    if (langElement)
+                      langElement.value = value;
                     loadedLang = true;
                     break;
                   case 'name':
-                    document.getElementById('nameInput').value = value;
                     setName(value, true);
+                    const nameInputElement = document.getElementById('nameInput');
+                    if (nameInputElement)
+                      nameInputElement.value = value;
                     break;
                   case 'soundVolume':
-                    document.getElementById('soundVolume').value = value;
                     setSoundVolume(value, true);
+                    const soundVolumeElement = document.getElementById('soundVolume');
+                    if (soundVolumeElement)
+                      soundVolumeElement.value = value;
                     break;
                   case 'musicVolume':
-                    document.getElementById('musicVolume').value = value;
                     setMusicVolume(value, true);
+                    const musicVolumeElement = document.getElementById('musicVolume');
+                    if (musicVolumeElement)
+                      musicVolumeElement.value = value;
                     break;
                   case 'wikiLinkMode':
-                    document.getElementById('wikiLinkMode').value = value;
                     setWikiLinkMode(value, true);
+                    const wikiLinkModeElement = document.getElementById('wikiLinkMode');
+                    if (wikiLinkModeElement)
+                      wikiLinkModeElement.value = value;
                     break;
                   case 'saveReminder':
-                    document.getElementById('saveReminder').value = value;
                     setSaveReminder(value, true);
+                    const saveReminderElement = document.getElementById('saveReminder');
+                    if (saveReminderElement)
+                      saveReminderElement.value = value;
                     break;
                   case 'gameChat':
                     if (value)
@@ -821,21 +833,32 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('blurScreenshotEmbedsButton').click();
                     break;
                   case 'mapChatHistoryLimit':
-                    document.getElementById('mapChatHistoryLimit').value = value;
+                    setMapChatHistoryLimit(value, true);
+                    const mapChatHistoryLimitElement = document.getElementById('mapChatHistoryLimit');
+                    if (mapChatHistoryLimitElement)
+                      mapChatHistoryLimitElement.value = value;
                     break;
                   case 'globalChatHistoryLimit':
-                    document.getElementById('globalChatHistoryLimit').value = value;
+                    setGlobalChatHistoryLimit(value, true);
+                    const globalChatHistoryLimitElement = document.getElementById('globalChatHistoryLimit');
+                    if (globalChatHistoryLimitElement)
+                      globalChatHistoryLimitElement.value = value;
                     break;
                   case 'partyChatHistoryLimit':
-                    document.getElementById('partyChatHistoryLimit').value = value;
+                    setPartyChatHistoryLimit(value, true);
+                    const partyChatHistoryLimitElement = document.getElementById('partyChatHistoryLimit');
+                    if (partyChatHistoryLimitElement)
+                      partyChatHistoryLimitElement.value = value;
                     break;
                   case 'mobileControls':
                     if (!value && hasTouchscreen)
                       document.getElementById('mobileControlsButton').click();
                     break;
                   case 'mobileControlsType':
-                    document.getElementById('mobileControl').value = value;
                     setMobileControlType(value, true);
+                    const mobileControlElement = document.getElementById('mobileControl');
+                    if (mobileControlElement)
+                      mobileControlElement.value = value;
                     break;
                   case 'locationDisplay':
                     if (value)
@@ -855,6 +878,9 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'screenshotResolution':
                     setScreenshotResolution(value, true);
+                    const screenshotResolutionElement = document.getElementById('screenshotResolution');
+                    if (screenshotResolutionElement)
+                      screenshotResolutionElement.value = value;
                     break;
                   case 'preloads':
                     if (value) {
@@ -894,7 +920,10 @@ function loadOrInitConfig(configObj, global, configName) {
                       document.getElementById('explorerButton').click();
                     break;
                   case 'nametagMode':
-                    document.getElementById('nametagMode').value = value;
+                    onNametagModeUpdated(value, true);
+                    const nametagModeElement = document.getElementById('nametagMode');
+                    if (nametagModeElement)
+                      nametagModeElement.value = value;
                     break;
                   case 'disablePlayerSounds':
                     if (value)
@@ -956,15 +985,19 @@ function loadOrInitConfig(configObj, global, configName) {
                     break;
                   case 'uiTheme':
                     if (gameUiThemes.indexOf(value) > -1) {
-                      document.querySelector('.uiTheme').value = value;
                       setUiTheme(value, true);
+                      const uiThemeElement = document.querySelector('.uiTheme');
+                      if (uiThemeElement)
+                        uiThemeElement.value = value;
                       loadedUiTheme = true;
                     }
                     break;
                   case 'fontStyle':
                     if (gameUiThemes.indexOf(value) > -1) {
-                      document.querySelector('.fontStyle').value = value;
                       setFontStyle(value, true);
+                      const fontStyleElement = document.querySelector('.fontStyle');
+                      if (fontStyleElement)
+                        fontStyleElement.value = value;
                       loadedFontStyle = true;
                     }
                     break;

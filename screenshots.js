@@ -6,7 +6,7 @@ let communityScreenshotsInterval = 'day';
 let communityScreenshotsScrollTop = 0;
 let communityScreenshotsScrollTimer = null;
 let communityScreenshotsScrollWatch = null;
-let lastAppliedScreenshotResolution = document.getElementById('screenshotResolution').value;
+let lastAppliedScreenshotResolution = null;
 
 
 const screenshotSlotBpLevels = [
@@ -70,28 +70,40 @@ const screenshotSlotBpLevels = [
 
 function setScreenshotResolution(value, isInit) {
   lastAppliedScreenshotResolution = value;
-  document.getElementById('screenshotResolution').value = value;
   globalConfig.screenshotResolution = value;
   if (!isInit)
     updateConfig(globalConfig, true);
+  
+  const screenshotResolutionElement = document.getElementById('screenshotResolution');
+  if (screenshotResolutionElement)
+    screenshotResolutionElement.value = value;
 }
 
 function initScreenshotControls() {
-  document.getElementById('autoDownloadScreenshotsButton').onclick = function() {
-    this.classList.toggle('toggled');
-    const toggled = this.classList.contains('toggled');
-    globalConfig.autoDownloadScreenshots = toggled;
-    updateConfig(globalConfig, true);
-  };
+  const autoDownloadScreenshotsButton = document.getElementById('autoDownloadScreenshotsButton');
+  if (autoDownloadScreenshotsButton) {
+    autoDownloadScreenshotsButton.onclick = function() {
+      this.classList.toggle('toggled');
+      const toggled = this.classList.contains('toggled');
+      globalConfig.autoDownloadScreenshots = toggled;
+      updateConfig(globalConfig, true);
+    };
+  }
 
-  document.getElementById('screenshotResolution').addEventListener('change', function() {
-    const value = this.value;
-    if (value && value !== lastAppliedScreenshotResolution) {
-      setScreenshotResolution(value);
-    }
-  });
+  const screenshotResolutionElement = document.getElementById('screenshotResolution');
+  if (screenshotResolutionElement) {
+    screenshotResolutionElement.addEventListener('change', function() {
+      const value = this.value;
+      if (value && value !== lastAppliedScreenshotResolution) {
+        setScreenshotResolution(value);
+      }
+    });
+  }
 
-  document.getElementById('screenshotButton').onclick = () => takeScreenshot();
+  const screenshotButton = document.getElementById('screenshotButton');
+  if (screenshotButton) {
+    screenshotButton.onclick = () => takeScreenshot();
+  }
   const openMyScreenshots = () => {
     initScreenshotsModal(false);
     openModal('myScreenshotsModal');
