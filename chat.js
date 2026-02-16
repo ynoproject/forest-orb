@@ -494,23 +494,40 @@ function chatInputActionFired() {
   document.getElementById("ynomojiContainer").classList.add("hidden");
 }
 
-/** @param {number} length */
-function constrainByteLength(length) {
-  const buf = new Uint8Array(length + 1);
+/**
+ * @param {HTMLInputElement} inputElement
+ * @param {number} length
+ */
+function constrainByteLength(inputElement, length) {
+  const buf = new Uint8Array(length);
   const enc = new TextEncoder();
-  const dec = new TextDecoder(undefined, { fatal: false });
-  return event => {
+  const listener = event => {
     const target = event?.target;
     if (!target) return;
-    if (enc.encodeInto(target.value, buf).read <= length) return;
-    let recovered = dec.decode(buf.slice(0, length));
-    const invalid = recovered.indexOf('�');
-    if (invalid > -1) recovered = recovered.slice(0, invalid);
-    target.value = recovered;
+    // modifying input contents during composition would interrupt it
+    // and prevent the user from finishing
+    if (event.isComposing) return;
+
+    const sel = target.selectionStart;
+    const v = target.value;
+
+    // length is implicitly constrained by encodeInto
+    // encode the substring after the caret first so it doesn't get
+    // overwritten if the caret is in the middle of the string
+    const e2 = enc.encodeInto(v.substring(sel), buf);
+    // then do the one before the caret
+    const e1 = enc.encodeInto(v.substring(0, sel), buf.subarray(e2.written));
+    target.value = v.substring(0, e1.read) + v.substring(sel, sel+e2.read);
+    target.selectionEnd = e1.read;
   };
+
+  // some browsers send an input event with isComposing: false after composition
+  // finishes but it's not guaranteed to always fire (and doesn't on e.g. chromium)
+  // so we have to listen for compositionend as well
+  ['input', 'compositionend'].forEach(e => inputElement.addEventListener(e, listener));
 }
 
-document.getElementById('chatInput').addEventListener('input', constrainByteLength(150));
+constrainByteLength(document.getElementById('chatInput'), 150);
 
 function chatNameCheck() {
   trySetChatName(document.getElementById("nameInput").value);
