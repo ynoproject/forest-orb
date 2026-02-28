@@ -1204,7 +1204,8 @@ document.addEventListener('fullscreenchange', () => {
   updateFullscreenPolling();
 });
 
-nametagModeSelect.addEventListener('change', checkNametagMode);
+if (nametagModeSelect)
+  nametagModeSelect.addEventListener('change', checkNametagMode);
 
 // Chromium fullscreen workaround
 let fullscreenCheckInterval = null;
