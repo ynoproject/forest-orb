@@ -651,9 +651,10 @@ function debounce(fn, timeout = 1000) {
 }
 
 // EXTERNAL
-function onNametagModeUpdated(mode) {
+function onNametagModeUpdated(mode, isInit) {
   config.nametagMode = mode;
-  updateConfig(config);
+  if (!isInit)
+    updateConfig(config);
 }
 
 function preToggle(buttonElement) {
@@ -1175,7 +1176,7 @@ const checkLang = () => {
 langSelect.addEventListener('change', checkLang);
 
 const nametagModeSelect = document.getElementById('nametagMode');
-let lastAppliedNametagMode = parseInt(nametagModeSelect.value, 10);
+let lastAppliedNametagMode = nametagModeSelect ? parseInt(nametagModeSelect.value, 10) : 1;
 
 const checkNametagMode = () => {
   if (!easyrpgPlayer.initialized) return;
@@ -1203,7 +1204,8 @@ document.addEventListener('fullscreenchange', () => {
   updateFullscreenPolling();
 });
 
-nametagModeSelect.addEventListener('change', checkNametagMode);
+if (nametagModeSelect)
+  nametagModeSelect.addEventListener('change', checkNametagMode);
 
 // Chromium fullscreen workaround
 let fullscreenCheckInterval = null;
@@ -1211,6 +1213,7 @@ let fullscreenCheckInterval = null;
 const checkAllSelects = () => {
   checkLang();
   checkNametagMode();
+  checkWikiLinkMode();
   checkSaveReminder();
 };
 
@@ -1242,14 +1245,35 @@ const stopFullscreenPolling = () => {
 updateFullscreenPolling();
 
 const wikiLinkModeSelect = document.getElementById('wikiLinkMode');
-wikiLinkModeSelect.addEventListener('change', function () {
-  const newValue = parseInt(this.value);
-  globalConfig.wikiLinkMode = newValue;
-  updateConfig(globalConfig, true);
-}, { capture: true });
+let lastAppliedWikiLinkMode = wikiLinkModeSelect ? parseInt(wikiLinkModeSelect.value, 10) : 1;
+
+const checkWikiLinkMode = () => {
+  if (!wikiLinkModeSelect) return;
+
+  let value = null;
+  if (wikiLinkModeSelect.selectedIndex >= 0 && wikiLinkModeSelect.selectedIndex < wikiLinkModeSelect.options.length) {
+    const option = wikiLinkModeSelect.options[wikiLinkModeSelect.selectedIndex];
+    if (option && option.value) {
+      value = parseInt(option.value, 10);
+    }
+  }
+
+  if (value === null || isNaN(value)) {
+    value = parseInt(wikiLinkModeSelect.value, 10);
+  }
+
+  if (value !== null && !isNaN(value) && value !== lastAppliedWikiLinkMode) {
+    lastAppliedWikiLinkMode = value;
+    setWikiLinkMode(value);
+  }
+};
+
+if (wikiLinkModeSelect) {
+  wikiLinkModeSelect.addEventListener('change', checkWikiLinkMode);
+}
 
 const saveReminderSelect = document.getElementById('saveReminder');
-let lastAppliedSaveReminder = parseInt(saveReminderSelect.value, 10);
+let lastAppliedSaveReminder = saveReminderSelect ? parseInt(saveReminderSelect.value, 10) : 60;
 
 const checkSaveReminder = () => {
   let value = null;
@@ -1449,20 +1473,26 @@ document.getElementById('blurScreenshotEmbedsButton').onclick = function () {
   updateConfig(globalConfig, true);
 };
 
-document.getElementById('mapChatHistoryLimit').onchange = function () {
-  globalConfig.mapChatHistoryLimit = this.value;
-  updateConfig(globalConfig, true);
-};
+const mapChatHistoryLimitElement = document.getElementById('mapChatHistoryLimit');
+if (mapChatHistoryLimitElement) {
+  mapChatHistoryLimitElement.onchange = function () {
+    setMapChatHistoryLimit(this.value);
+  };
+}
 
-document.getElementById('globalChatHistoryLimit').onchange = function () {
-  globalConfig.globalChatHistoryLimit = this.value;
-  updateConfig(globalConfig, true);
-};
+const globalChatHistoryLimitElement = document.getElementById('globalChatHistoryLimit');
+if (globalChatHistoryLimitElement) {
+  globalChatHistoryLimitElement.onchange = function () {
+    setGlobalChatHistoryLimit(this.value);
+  };
+}
 
-document.getElementById('partyChatHistoryLimit').onchange = function () {
-  globalConfig.partyChatHistoryLimit = this.value;
-  updateConfig(globalConfig, true);
-};
+const partyChatHistoryLimitElement = document.getElementById('partyChatHistoryLimit');
+if (partyChatHistoryLimitElement) {
+  partyChatHistoryLimitElement.onchange = function () {
+    setPartyChatHistoryLimit(this.value);
+  };
+}
 
 document.getElementById('blocklistButton').onclick = function () {
     updateBlocklist(true);
@@ -2020,6 +2050,30 @@ function setMusicVolume(value, isInit) {
     debounce(easyrpgPlayer.api.saveConfig);
   }
   globalConfig.musicVolume = value;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setWikiLinkMode(wikiLinkMode, isInit) {
+  globalConfig.wikiLinkMode = wikiLinkMode;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setMapChatHistoryLimit(limit, isInit) {
+  globalConfig.mapChatHistoryLimit = limit;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setGlobalChatHistoryLimit(limit, isInit) {
+  globalConfig.globalChatHistoryLimit = limit;
+  if (!isInit)
+    updateConfig(globalConfig, true);
+}
+
+function setPartyChatHistoryLimit(limit, isInit) {
+  globalConfig.partyChatHistoryLimit = limit;
   if (!isInit)
     updateConfig(globalConfig, true);
 }
