@@ -758,7 +758,8 @@ function loadOrInitConfig(configObj, global, configName) {
       for (let k in savedConfigKeys) {
         const key = savedConfigKeys[k];
         if (configObj.hasOwnProperty(key)) {
-          let value = savedConfig[key];
+          try {
+            let value = savedConfig[key];
           switch (configName) {
             case 'config':
               if (global) {
@@ -1033,6 +1034,9 @@ function loadOrInitConfig(configObj, global, configName) {
               break;
           }
           configObj[key] = value;
+          } catch (error) {
+            console.error(error);
+          }
         }
       }
     }
