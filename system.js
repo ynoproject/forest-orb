@@ -108,6 +108,7 @@ const allGameUiThemes = {
     'fluxide_sysblava',
     'Holdery_Sys_Garden_Festival',
     'eur_menusys',
+    'PGR_SYS_06',
 
     'system_E_eye',
     'System_kuraud',
