@@ -877,10 +877,14 @@ function wrapMessageEmojis(node, force) {
 }
 
 const screenshotPattern = /\[(t?)(\w{16})(?::(\d+))?\]/;
-/** Decodes the message constructed by {@linkcode chatInputActionFired}
-	Currently disabled. */
+/** Decodes the message constructed by {@linkcode chatInputActionFired} */
 function tryEmbedScreenshot(node, uuid) {
-	return false;
+  const isLocal = uuid == playerData?.uuid;
+  const isFriend = playerFriendsCache?.find(friend => friend.uuid == uuid)?.accepted;
+  if (!isLocal && !isFriend) {
+      return false;
+  }
+
   if (node.childNodes.length) {
     for (let childNode of node.childNodes) {
       if (childNode.nodeType === Node.TEXT_NODE) {
