@@ -1034,10 +1034,18 @@ document.getElementById('globalMessageButton').onclick = function () {
   this.classList.toggle('toggled');
   const chatInput = document.getElementById('chatInput');
   const toggled = this.classList.contains('toggled');
-  if (toggled)
-    chatInput.dataset.global = true;
-  else
-    delete chatInput.dataset.global;
+
+  // Only let globe change message destination if all chat is actually
+  // selected, otherwise this only updates the visuals of the button, 
+  // since this function is over-used by the config loader for that.
+  const active = document.getElementById("chatTabAll").classList.contains("active");
+  if (active) {
+    if (toggled)
+      chatInput.dataset.global = true;
+    else
+      delete chatInput.dataset.global;
+  }
+
   chatInput.disabled = toggled && document.getElementById('chatInputContainer').classList.contains('globalCooldown');
   config.globalMessage = toggled;
   updateConfig(config);
