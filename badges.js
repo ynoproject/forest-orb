@@ -351,13 +351,15 @@ function initBadgeControls() {
         const subTabs = [];
         if (badgeTabGame || !badgeTabGroup)
           badgeTabGroup = 'all';
-        let hasGroups = true;
+        // Check for the presence of groups first just in case;
+        // there have been instances of just some badges missing groups (this should not usually happen)
+        // Assume no groups only if none of the badges have a group assigned.
+        const hasGroups = !!Object.keys(gameBadges[game]).find(g => !!g);
 
         for (const group in gameBadges[game]) {
-          if (!group) {
-            // Group name is empty, game's badges have no group subdivision.
+          if (!hasGroups) {
+            // Game's badges have no group subdivision; use current falsy value.
             badgeTabGroup = group;
-            hasGroups = false;
             break;
           }
           const subTab = document.createElement('div');
