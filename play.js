@@ -2767,7 +2767,7 @@ function getBadgeHintButton(locationName) {
 }
 
 document.getElementById('canvas').addEventListener('keydown', function(ev) {
-  if (ev.key === 'f') {
+  if (ev.key.toLowerCase() === 'f') {
     ev.preventDefault();
     if (document.getElementById('wikiModal').classList.contains('hidden'))
       gameMapHandle.deref()?.click?.();
