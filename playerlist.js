@@ -1002,7 +1002,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
       };
     }
 
-    img.src = !sprite?.startsWith('#') ? `${dir}${sprite}.png` : '';
+    img.src = `${dir}${sprite?.replace("#", "%23")}.png`;
   });
 }
 
