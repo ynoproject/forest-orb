@@ -1736,9 +1736,6 @@ function onResize() {
       : document.getElementById('chatboxContainer');
     if (explorerContainer.parentElement !== explorerParent)
       explorerParent.appendChild(explorerContainer);
-    const explorerFrame = document.getElementById('explorerFrame');
-    const explorerUndiscoveredLocationsLink = document.getElementById('explorerUndiscoveredLocationsLink');
-    explorerUndiscoveredLocationsLink.style.left = `${explorerFrame.offsetLeft}px`;
   }
 
   updateCanvasFullscreenSize();
