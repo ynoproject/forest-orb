@@ -279,7 +279,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
   const [month, day, year, hour, minute, second] = [date.getMonth(), date.getDate(), date.getFullYear(), date.getHours(), date.getMinutes(), date.getSeconds()];
   const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
   const game = screenshotData?.game || ynoGameId;
-  let mapName = gameLocalizedMapLocations[game][screenshotData?.mapId];
+  let mapName = (gameLocalizedMapLocations[game] ?? {})[screenshotData?.mapId];
   if (!mapName && game === '2kki' && screenshotData?.mapId)
     if (screenshotData.game) // if game is set (non-local screenshot) it's incorrect to use the cached 2kki values.
       mapName = await new Promise(resolve => getOrQuery2kkiLocations(screenshotData.mapId, null, null, resolve));
