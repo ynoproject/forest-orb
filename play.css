@@ -2766,6 +2766,7 @@ form .uiTheme {
 
 .badgeOverlay {
   height: 100%;
+  mask-mode: luminance;
 }
 
 .badgeOverlayMultiply {
