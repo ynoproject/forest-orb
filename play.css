@@ -2043,6 +2043,7 @@ html[dir="rtl"] #chatBorder {
 }
 
 #explorerContainer {
+  position: relative;
   display: inline-block;
   height: 300px;
   text-align: center;
@@ -2073,6 +2074,7 @@ html[dir="rtl"] #chatBorder {
 
 #explorerUndiscoveredLocationsLink {
   position: absolute;
+  left: 0px;
   padding: 12px;
 }
 
