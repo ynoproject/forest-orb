@@ -425,7 +425,8 @@
       "save": {
         "title": "Gérer les Données de Sauvegarde",
         "reload": "Sauvegarder les changements et recharger la page",
-        "info": "Lors de l'export d'une sauvegarde, si la dernière fois que cette sauvegarde a eu lieu était en utilisant une traduction sur YNOproject ou avec EasyRPG, l'utilisation de la sauvegarde sur la version exécutable du jeu affichera une erreur vous empêchant d'utiliser cette sauvegarde tant que la dernière sauvegarde n'est pas effectuée sans traduction active."
+        "info": "Lors de l'export d'une sauvegarde, si la dernière fois que cette sauvegarde a eu lieu était en utilisant une traduction sur YNOproject ou avec EasyRPG, l'utilisation de la sauvegarde sur la version exécutable du jeu affichera une erreur vous empêchant d'utiliser cette sauvegarde tant que la dernière sauvegarde n'est pas effectuée sans traduction active.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Thème d'IU",

@@ -425,7 +425,8 @@
       "save": {
         "title": "إدارة حفظ البيانات",
         "reload": "اعادة التحميل",
-        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation."
+        "info": "For importing saves, if the last time saved was while using a translation on RPG_RT, the game will display errors until you save once again on EasyRPG without any active translation.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "تصميم واجهة المستخدم",

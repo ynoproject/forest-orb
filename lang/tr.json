@@ -425,7 +425,8 @@
       "save": {
         "title": "Kayıt Verisini Yönet",
         "reload": "Değişiklikleri Kaydet ve Yenile",
-        "info": "Kayıf dosyası kaydederken, eğer RPG_RT'deki son kaydedişinde çeviri kullandıysan, oyun sen EasyRPGde çeviri olmadan kaydedene kadar hatalar gösterecek."
+        "info": "Kayıf dosyası kaydederken, eğer RPG_RT'deki son kaydedişinde çeviri kullandıysan, oyun sen EasyRPGde çeviri olmadan kaydedene kadar hatalar gösterecek.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "UI Teması",
