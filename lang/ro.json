@@ -425,7 +425,8 @@
       "save": {
         "title": "Gestionează Datele Salvate",
         "reload": "Salvează și Reîncarcă",
-        "info": "Pentru importarea datelor salvate, dacă ultima salvare a fost efectuată în timp ce se folosea o traducere a programului RPG_RT, jocul va afișa erori până când salvezi din nou pe EasyRPG fără nicio traducere activă."
+        "info": "Pentru importarea datelor salvate, dacă ultima salvare a fost efectuată în timp ce se folosea o traducere a programului RPG_RT, jocul va afișa erori până când salvezi din nou pe EasyRPG fără nicio traducere activă.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Tema UI",

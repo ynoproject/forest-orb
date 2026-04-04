@@ -425,7 +425,8 @@
       "save": {
         "title": "Save verwalten",
         "reload": "Änderungen speichern und neu laden",
-        "info": "Beim importieren von Spielständen, falls du das letzte Mal eine Übersetzung auf RPG_RT benutzt hast, wird das Spiel Fehler anzeigen bis du wieder mit EasyRPG ohne aktive Übersetzung, speicherst."
+        "info": "Beim importieren von Spielständen, falls du das letzte Mal eine Übersetzung auf RPG_RT benutzt hast, wird das Spiel Fehler anzeigen bis du wieder mit EasyRPG ohne aktive Übersetzung, speicherst.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "UI Stil",

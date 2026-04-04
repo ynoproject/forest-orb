@@ -425,7 +425,8 @@
       "save": {
         "title": "Zarządzaj zapisami",
         "reload": "Zapisz zmiany i zrestartuj",
-        "info": "Dla importowania zapisów, jeśli ostatnio grało się używając tłumaczenia na RPG_RT, gra będzie pokazywać błędy dopóki nie zapiszę się na EasyRPG bez tłumaczeń."
+        "info": "Dla importowania zapisów, jeśli ostatnio grało się używając tłumaczenia na RPG_RT, gra będzie pokazywać błędy dopóki nie zapiszę się na EasyRPG bez tłumaczeń.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Motyw",

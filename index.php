@@ -1215,6 +1215,9 @@
             </div>
           </div>
           <div class="modalFooter">
+            <button id="saveModalManageOtherButton" type="button" data-i18n="[html]modal.save.manageOther">Manage Different Game&hellip;</button>
+            <select id="saveDataGame" class="gameSelect hidden">
+            </select>
             <button id="saveModalReloadButton" class="unselectable hidden" type="button" data-i18n="[html]modal.save.reload">Save Changes and Reload</button>
           </div>
         </div>

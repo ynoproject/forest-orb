@@ -425,7 +425,8 @@
       "save": {
         "title": "Administri Konservdatumojn",
         "reload": "Konservi Ŝanĝojn kaj Reŝargi",
-        "info": "Por importado de konservoj, se vi lastafoje konservis dum uzante tradukon per RPG_RT, la ludo montros erarojn ĝis vi konservos denove per EasyRPG sen aktiva traduko."
+        "info": "Por importado de konservoj, se vi lastafoje konservis dum uzante tradukon per RPG_RT, la ludo montros erarojn ĝis vi konservos denove per EasyRPG sen aktiva traduko.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Fasada Etoso",

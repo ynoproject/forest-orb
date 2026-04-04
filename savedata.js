@@ -28,26 +28,51 @@ function initSaveSyncControls() {
     }
 }
 
+function getSaveDataGameIds() {
+ return indexedDB.databases()
+   .then(dbs => dbs.map(d => (/\/easyrpg\/([^/]+)\/Save$/.exec(d.name) || [])[1]).filter(d => d));
+}
+
 function initSaveDataControls() {
   document.getElementById('saveButton').onclick = () => {
     updateSaveSlotList();
 
     openModal('saveModal');
   };
-
   document.getElementById('saveModalReloadButton').onclick = () => window.location = window.location;
+  document.getElementById('saveModalManageOtherButton').onclick = ev => {
+    document.getElementById('saveModalManageOtherButton').classList.add('hidden');
+    document.getElementById('saveDataGame').classList.remove('hidden');
+  };
+
+  const gameSelect = document.getElementById('saveDataGame');
+  const mainOpt = document.createElement('option');
+  mainOpt.value = mainOpt.textContent = ynoGameId;
+  mainOpt.defaultSelected = true;
+  gameSelect.options.add(mainOpt);
+  getSaveDataGameIds().then(ids => ids.forEach(gameId => {
+    if ([...gameSelect.options].find(opt => opt.value === gameId))
+      return;
+
+    const opt = document.createElement('option');
+    opt.value = opt.textContent = gameId;
+    gameSelect.options.add(opt);
+  }));
+  gameSelect.addEventListener('change', () => updateSaveSlotList());
 }
 
 function updateSaveSlotList() {
+  const gameSelect = document.getElementById('saveDataGame');
+  const gameId = gameSelect.options[gameSelect.selectedIndex].value;
   const saveSlotList = document.getElementById('saveSlotList');
   saveSlotList.innerHTML = '';
 
   for (let s = 1; s <= 15; s++) {
-    saveSlotList.appendChild(getSaveSlotListEntry(s));
+    saveSlotList.appendChild(getSaveSlotListEntry(gameId, s));
   }
 }
 
-function getSaveSlotListEntry(slotId) {
+function getSaveSlotListEntry(gameId, slotId) {
   const slot = document.createElement('div');
   slot.classList.add('saveSlotListEntry', 'listEntry');
   slot.dataset.slotId = slotId;
@@ -82,13 +107,13 @@ function getSaveSlotListEntry(slotId) {
     saveFile.id = 'saveFile';
     saveFile.style.display = 'none';
     saveFile.addEventListener('change',
-      e => uploadSaveFile(e.target.files[0], formatSaveSlotId(slotId))
+      e => uploadSaveFile(gameId, e.target.files[0], formatSaveSlotId(slotId))
         .then(success => {
           const reloadButton = document.getElementById('saveModalReloadButton');
           if (success) {
-            if (reloadButton.classList.contains('hidden'))
+            if (reloadButton.classList.contains('hidden') && gameId === ynoGameId)
               setTimeout(() => reloadButton.classList.remove('hidden'), 100);
-            slot.insertAdjacentElement('afterend', getSaveSlotListEntry(slotId));
+            slot.insertAdjacentElement('afterend', getSaveSlotListEntry(gameId, slotId));
             slot.remove();
           }
         })
@@ -99,18 +124,18 @@ function getSaveSlotListEntry(slotId) {
 
   const downloadButton = getSvgIcon('saveDownload');
   downloadButton.classList.add('saveSlotDownloadButton', 'saveSlotButton', 'unselectable', 'iconButton', 'hidden');
-  downloadButton.onclick = () => downloadSaveFile(formatSaveSlotId(slotId));
+  downloadButton.onclick = () => downloadSaveFile(gameId, formatSaveSlotId(slotId));
   addTooltip(downloadButton, getMassagedLabel(localizedMessages.save.download.tooltip, true), true, true);
 
   const deleteButton = getSvgIcon('delete');
   deleteButton.classList.add('saveSlotDeleteButton', 'saveSlotButton', 'unselectable', 'iconButton', 'hidden');
-  deleteButton.onclick = () => deleteSaveFile(formatSaveSlotId(slotId))
+  deleteButton.onclick = () => deleteSaveFile(gameId, formatSaveSlotId(slotId))
     .then(success => {
       const reloadButton = document.getElementById('saveModalReloadButton');
       if (success) {
-        if (reloadButton.classList.contains('hidden'))
+        if (reloadButton.classList.contains('hidden') && gameId === ynoGameId)
           setTimeout(() => reloadButton.classList.remove('hidden'), 100);
-        slot.insertAdjacentElement('afterend', getSaveSlotListEntry(slotId));
+        slot.insertAdjacentElement('afterend', getSaveSlotListEntry(gameId, slotId));
         slot.remove();
       }
     });
@@ -123,7 +148,7 @@ function getSaveSlotListEntry(slotId) {
 
   slot.appendChild(content);
 
-  getSaveSlotData(slotId)
+  getSaveSlotData(gameId, slotId)
     .then(saveData => {
       contentLabel.innerHTML = saveData == null
         ? getMassagedLabel(localizedMessages.save.slot.emptyLabel, true)
@@ -143,7 +168,7 @@ function getSaveSlotListEntry(slotId) {
   return slot;
 }
 
-function uploadSaveFile(file, saveSlot) {
+function uploadSaveFile(gameId, file, saveSlot) {
   return new Promise(resolve => {
     if (!file || !saveSlot)
       return resolve(false);
@@ -154,7 +179,7 @@ function uploadSaveFile(file, saveSlot) {
       return;
     }
 
-    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
     request.onsuccess = function (_e) {
 
@@ -167,7 +192,7 @@ function uploadSaveFile(file, saveSlot) {
     
         const db = request.result; 
         const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-        const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
+        const objectStorePutRequest = transaction.objectStore('FILE_DATA').put(saveFile, `/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
         objectStorePutRequest.onsuccess = () => resolve(true);
         objectStorePutRequest.onerror = () => resolve(false);
@@ -180,18 +205,18 @@ function uploadSaveFile(file, saveSlot) {
   });
 }
 
-function downloadSaveFile(saveSlot) {
+function downloadSaveFile(gameId, saveSlot) {
   return new Promise(resolve => {
     if (!saveSlot)
         return resolve(false);
 
-    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
       objectStoreRequest.onsuccess = function (_e) {
         const record = objectStoreRequest.result;
@@ -209,7 +234,7 @@ function downloadSaveFile(saveSlot) {
         const formattedDate = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${hour.toString().padStart(2, '0')}h${minute.toString().padStart(2, '0')}m${second.toString().padStart(2, '0')}s`;
  
         link.href = window.URL.createObjectURL(blob);
-        link.download = `${ynoGameId}_Save${saveSlot}_${formattedDate}.lsd`;
+        link.download = `${gameId}_Save${saveSlot}_${formattedDate}.lsd`;
         link.click();
         link.remove();
         resolve(true);
@@ -221,18 +246,18 @@ function downloadSaveFile(saveSlot) {
  
 }
 
-function deleteSaveFile(saveSlot) {
+function deleteSaveFile(gameId, saveSlot) {
   return new Promise(resolve => {
     if (!saveSlot)
       return resolve(false);
 
     showConfirmModal(localizedMessages.save.delete.confirmDelete.replace('{SLOT_ID}', parseInt(saveSlot)), () => {
-      const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+      const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
       request.onsuccess = function (_e) {
         const db = request.result; 
         const transaction = db.transaction(['FILE_DATA'], 'readwrite');
-        const objectStoreDeleteRequest = transaction.objectStore('FILE_DATA').delete(`/easyrpg/${ynoGameId}/Save/Save${saveSlot}.lsd`);
+        const objectStoreDeleteRequest = transaction.objectStore('FILE_DATA').delete(`/easyrpg/${gameId}/Save/Save${saveSlot}.lsd`);
 
         objectStoreDeleteRequest.onsuccess = () => resolve(true);
         objectStoreDeleteRequest.onerror = () => resolve(false);
@@ -242,20 +267,20 @@ function deleteSaveFile(saveSlot) {
   });
 }
 
-function getSaveSlotData(saveSlotId) {
+function getSaveSlotData(gameId, saveSlotId) {
   return new Promise(resolve => {
     if (!saveSlotId)
       resolve(null);
 
     const slotId = saveSlotId < 10 ? `0${saveSlotId}` : saveSlotId.toString();
-    const request = indexedDB.open(`/easyrpg/${ynoGameId}/Save`);
+    const request = indexedDB.open(`/easyrpg/${gameId}/Save`);
 
     request.onupgradeneeded = e => e.target.result.createObjectStore('FILE_DATA');
     request.onsuccess = function (_e) {
       const db = request.result; 
       const transaction = db.transaction(['FILE_DATA'], 'readwrite');
       const objectStore = transaction.objectStore('FILE_DATA');
-      const objectStoreRequest = objectStore.get(`/easyrpg/${ynoGameId}/Save/Save${slotId}.lsd`);
+      const objectStoreRequest = objectStore.get(`/easyrpg/${gameId}/Save/Save${slotId}.lsd`);
 
       objectStoreRequest.onsuccess = () => resolve(objectStoreRequest.result);
       objectStoreRequest.onerror = () => resolve(null);
@@ -294,7 +319,7 @@ function hasSaveDataForSync() {
 }
 
 function getSaveDataForSync() {
-  return getSaveSlotData(saveSyncSlotId);
+  return getSaveSlotData(ynoGameId, saveSyncSlotId);
 }
 
 function uploadSaveSyncData(saveData) {
