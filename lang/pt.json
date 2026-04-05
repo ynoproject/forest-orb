@@ -425,7 +425,8 @@
       "save": {
         "title": "Gerenciar Dados Salvos",
         "reload": "Salvar Alterações e Recarregar",
-        "info": "Para saves importantes, se a ultima vez que salvou foi enquanto usava uma tradução no RPG_RT, o jogo ira demostrar erros até que você salve novamente no EasyRPG sem nenhuma tradução ativa."
+        "info": "Para saves importantes, se a ultima vez que salvou foi enquanto usava uma tradução no RPG_RT, o jogo ira demostrar erros até que você salve novamente no EasyRPG sem nenhuma tradução ativa.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Tema da Interface",

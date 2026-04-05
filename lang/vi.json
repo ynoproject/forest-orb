@@ -425,7 +425,8 @@
       "save": {
         "title": "Quản lý Dữ liệu lưu",
         "reload": "Lưu thay đổi và tải lại",
-        "info": "Khi nhập bản lưu, nếu lần lưu cuối là trên một bản dịch trò chơi sử dụng RPG_RT, trò chơi sẽ hiện lỗi đến khi bạn lưu trò chơi trên EasyRPG mà không dùng bản dịch nào."
+        "info": "Khi nhập bản lưu, nếu lần lưu cuối là trên một bản dịch trò chơi sử dụng RPG_RT, trò chơi sẽ hiện lỗi đến khi bạn lưu trò chơi trên EasyRPG mà không dùng bản dịch nào.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Phông Nền",

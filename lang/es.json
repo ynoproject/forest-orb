@@ -425,7 +425,8 @@
       "save": {
         "title": "Gestionar Datos de Guardado",
         "reload": "Guardar Cambios y Recargar",
-        "info": "Para importar archivos de guardado, si la última vez que guardaste fue usando una traducción en RPG_RT, el juego presentará errores hasta que vuelvas a guardar de nuevo en EasyRPG sin alguna traducción activa."
+        "info": "Para importar archivos de guardado, si la última vez que guardaste fue usando una traducción en RPG_RT, el juego presentará errores hasta que vuelvas a guardar de nuevo en EasyRPG sin alguna traducción activa.",
+        "manageOther": "Manage Different Game&hellip;"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
