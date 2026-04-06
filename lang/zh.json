@@ -74,8 +74,8 @@
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "保存",
+        "apply": "应用"
       },
       "confirm": {
         "ok": "确认",
@@ -426,7 +426,7 @@
         "title": "存档",
         "reload": "保存更改",
         "info": "在导入存档时，如果最近一次存档是于 RPG_RT 上保存且使用了游戏翻译，则游戏会报错。请在 EasyRPG 上解除翻译后再次保存。",
-        "manageOther": "Manage Different Game&hellip;"
+        "manageOther": "管理其他游戏&hellip;"
       },
       "uiTheme": {
         "title": "界面样式",
