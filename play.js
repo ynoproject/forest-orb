@@ -775,6 +775,7 @@ function closeModal() {
       activeModal.classList.remove('fadeOut');
       modalContainer.prepend(activeModal);
       updateFullscreenPolling();
+      activeModal.dispatchEvent(new CustomEvent('modalclose'));
     }, modalTransitionDuration);
   } else {
     updateFullscreenPolling();

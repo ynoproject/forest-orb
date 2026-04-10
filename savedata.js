@@ -40,11 +40,8 @@ function initSaveDataControls() {
     openModal('saveModal');
   };
   document.getElementById('saveModalReloadButton').onclick = () => window.location = window.location;
-  document.getElementById('saveModalManageOtherButton').onclick = ev => {
-    document.getElementById('saveModalManageOtherButton').classList.add('hidden');
-    document.getElementById('saveDataGame').classList.remove('hidden');
-  };
 
+  const manageOtherButton = document.getElementById('saveModalManageOtherButton');
   const gameSelect = document.getElementById('saveDataGame');
   const mainOpt = document.createElement('option');
   mainOpt.value = mainOpt.textContent = ynoGameId;
@@ -58,7 +55,17 @@ function initSaveDataControls() {
     opt.value = opt.textContent = gameId;
     gameSelect.options.add(opt);
   }));
+
   gameSelect.addEventListener('change', () => updateSaveSlotList());
+  manageOtherButton.onclick = () => {
+    manageOtherButton.classList.add('hidden');
+    gameSelect.classList.remove('hidden');
+  };
+  document.getElementById('saveModal').addEventListener('modalclose', () => {
+    gameSelect.selectedIndex = mainOpt.index;
+    manageOtherButton.classList.remove('hidden');
+    gameSelect.classList.add('hidden');
+  });
 }
 
 function updateSaveSlotList() {
