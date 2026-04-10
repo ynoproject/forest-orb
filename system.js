@@ -109,6 +109,8 @@ const allGameUiThemes = {
     'Holdery_Sys_Garden_Festival',
     'eur_menusys',
     'PGR_SYS_06',
+    'eur_menusys2',
+    'eur_menusys3',
 
     'system_E_eye',
     'System_kuraud',
