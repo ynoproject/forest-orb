@@ -66,10 +66,14 @@ let easyrpgPlayer = {
 let easyrpgPlayerLoadFuncs = [];
 
 const loggedInKey = 'ynoproject_loggedIn';
-const serverUrlBase = 'https://connect.ynoproject.net';
+const hostBase = 'ynoproject.net';
+const authApiUrl = `https://auth.${hostBase}`;
+const dataUrl = `https://cdn.${hostBase}`;
+const ugcUrl = `https://ugc.${hostBase}`;
+const rankUrl = `https://rank.${hostBase}`
+const serverUrlBase = `https://api.${hostBase}`;
 const serverUrl = `${serverUrlBase}/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
-const authApiUrl = `${serverUrlBase}/seiko`;
 const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
 
@@ -89,7 +93,7 @@ async function injectScripts() {
   }
   for (let script of scripts)
     dependencyFiles[script] = null;
-  dependencyFiles[`${window.location.origin}/data/${ynoGameId}/index.json`] = null;
+  dependencyFiles[`${dataUrl}/${ynoGameId}/index.json`] = null;
   dependencyFiles[`ynoengine${supportsSimd ? '-simd' : ''}.wasm`] = null;
 
   const injectScript = function (index) {

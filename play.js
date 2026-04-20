@@ -1990,7 +1990,7 @@ function setLang(lang, isInit) {
 
   globalConfig.lang = lang;
   initBlocker = initBlocker.then(() => withTimeout(800, 
-    fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
+    fetchNewest(`${dataUrl}/${gameId}/Language/${lang}/meta.ini`).then(response => { // Prevent a crash when the --language argument is used and the game doesn't have a Language folder
       if (response.ok && response.status < 400 && isInit && gameIds.indexOf(gameId) > -1) {
         easyrpgPlayer.language = (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en') ? lang : 'default';
       }
@@ -2272,7 +2272,7 @@ function initLocalization(isInitial) {
         for (let langOpt of languages) {
           const lang = langOpt.value;
           if (gameDefaultLangs.hasOwnProperty(gameId) ? gameDefaultLangs[gameId] !== lang : lang !== 'en')
-            fetchNewest(`../data/${gameId}/Language/${lang}/meta.ini`).then(response => {
+            fetchNewest(`${dataUrl}/${gameId}/Language/${lang}/meta.ini`).then(response => {
               if (!response.ok && response.status === 404 && gameId !== 'tsushin') { // Don't display that the game is not localized for Yume Tsushin since it uses a conlang
                 langOpt.innerText += '*';
                 langOpt.dataset.noGameLoc = true;

@@ -130,7 +130,7 @@ async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `../data/${ynoGameId}/CharSet/`;
+      dir = `${dataUrl}/${ynoGameId}/CharSet/`;
       img.onerror = () => getLoaderSpriteImg(sprite, idx, frameIdx, `images/charsets/${ynoGameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {

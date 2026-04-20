@@ -993,7 +993,7 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `../data/${gameId}/CharSet/`;
+      dir = `${dataUrl}/${gameId}/CharSet/`;
       img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`, gameId).then(url => resolve(url));
     } else {
       img.onerror = () => {
