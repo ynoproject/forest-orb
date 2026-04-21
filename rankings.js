@@ -1,5 +1,3 @@
-const rankingsUrl = `https://connect.ynoproject.net/rankings`;
-
 const perGameCategoryIds = [];
 
 let rankingCategoryCache = [];
@@ -27,7 +25,7 @@ function initRankingControls() {
 
 function rankingsApiFetch(path) {
   return new Promise((resolve, reject) => {
-    fetch(`${rankingsUrl}/${path}`, { credentials: "include" })
+    fetch(`${rankUrl}/${path}`, { credentials: "include" })
       .then(response => resolve(response))
       .catch(err => reject(err));
   });

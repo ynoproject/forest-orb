@@ -57,21 +57,25 @@ Object.defineProperty(String.prototype, 'title', {
   get() { return this; },
 })
 
+const loggedInKey = 'ynoproject_loggedIn';
+const hostBase = 'ynoproject.net';
+const serverUrlBase = `api.${hostBase}`;
+const serverUrl = `https://${serverUrlBase}/${ynoGameId}`;
+const authApiUrl = `https://auth.${hostBase}`;
+const cdnUrl = `https://cdn.${hostBase}`;
+const ugcUrl = `https://ugc.${hostBase}`;
+const rankUrl = `https://rank.${hostBase}`
+const apiUrl = `${serverUrl}/api`;
+const adminApiUrl = `${serverUrl}/admin`;
+const ynomojiUrlPrefix = 'images/ynomoji/';
+
 let easyrpgPlayer = {
   initialized: false,
   game: ynoGameId,
   saveFs: undefined,
-  wsUrl: 'wss://connect.ynoproject.net/' + ynoGameId + '/'
+  wsUrl: `wss://${serverUrlBase}/${ynoGameId}/`
 };
 let easyrpgPlayerLoadFuncs = [];
-
-const loggedInKey = 'ynoproject_loggedIn';
-const serverUrlBase = 'https://connect.ynoproject.net';
-const serverUrl = `${serverUrlBase}/${ynoGameId}`;
-const apiUrl = `${serverUrl}/api`;
-const authApiUrl = `${serverUrlBase}/seiko`;
-const adminApiUrl = `${serverUrl}/admin`;
-const ynomojiUrlPrefix = 'images/ynomoji/';
 
 let initBlocker = Promise.resolve();
 
@@ -89,7 +93,7 @@ async function injectScripts() {
   }
   for (let script of scripts)
     dependencyFiles[script] = null;
-  dependencyFiles[`${window.location.origin}/data/${ynoGameId}/index.json`] = null;
+  dependencyFiles[`${cdnUrl}/${ynoGameId}/index.json`] = null;
   dependencyFiles[`ynoengine${supportsSimd ? '-simd' : ''}.wasm`] = null;
 
   const injectScript = function (index) {

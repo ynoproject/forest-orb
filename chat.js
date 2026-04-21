@@ -896,7 +896,7 @@ function tryEmbedScreenshot(node, uuid) {
           const imageNode = document.createElement('img');
           imageNode.classList.add('screenshotEmbed');
           imageNode.classList.toggle('screenshotBlur', globalConfig.blurScreenshotEmbeds || !!(flags & SCREENSHOT_FLAGS.SPOILER));
-          imageNode.src = `${serverUrl}/screenshots/${isTemp ? 'temp/' : ''}${uuid}/${screenshotResult[2]}.png`;
+          imageNode.src = `${ugcUrl}/screenshots/${isTemp ? 'temp/' : ''}${uuid}/${screenshotResult[2]}.png`;
           const date = new Date();
           imageNode.onclick = function () {
             sendSessionCommand('psi', [ uuid, screenshotResult[2] ], args => {

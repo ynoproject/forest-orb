@@ -180,7 +180,7 @@ function preloadFilesFromMapId(mapId) {
 }
 
 function getFilePathForPreloads(path) {
-  return path.replace(`/data/${gameId}`, "").replace("Language/", "");
+  return path.replace(`${cdnUrl}/${gameId}`, "").replace("Language/", "");
 }
 
 let preloadsGameLang = "default";

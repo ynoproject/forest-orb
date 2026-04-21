@@ -262,6 +262,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
     scaleContext.imageSmoothingEnabled = false;
 
     const img = new Image(320, 240);
+    img.setAttribute('crossOrigin', 'anonymous');
     img.onload = async () => {
       scaleContext.drawImage(img, 0, 0, width, height);
       scaleCanvas.toBlob(async blob => {
@@ -447,7 +448,7 @@ function initScreenshotsModal(isCommunity) {
 
       const screenshotThumbnail = document.createElement('img');
       screenshotThumbnail.classList.add('screenshotThumbnail', 'imageThumbnail', 'unselectable');
-      screenshotThumbnail.src = `${serverUrl}/screenshots/${uuid}/${screenshot.id}.png`;
+      screenshotThumbnail.src = `${ugcUrl}/screenshots/${uuid}/${screenshot.id}.png`;
       screenshotThumbnail.onclick = () => viewScreenshot(screenshotThumbnail.src, new Date(screenshot.timestamp), screenshot, screenshotsModal.id);
 
       screenshotThumbnailContainer.append(screenshotThumbnail);
