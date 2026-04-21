@@ -57,25 +57,25 @@ Object.defineProperty(String.prototype, 'title', {
   get() { return this; },
 })
 
-let easyrpgPlayer = {
-  initialized: false,
-  game: ynoGameId,
-  saveFs: undefined,
-  wsUrl: 'wss://connect.ynoproject.net/' + ynoGameId + '/'
-};
-let easyrpgPlayerLoadFuncs = [];
-
 const loggedInKey = 'ynoproject_loggedIn';
 const hostBase = 'ynoproject.net';
+const serverUrlBase = `api.${hostBase}`;
+const serverUrl = `https://${serverUrlBase}/${ynoGameId}`;
 const authApiUrl = `https://auth.${hostBase}`;
 const cdnUrl = `https://cdn.${hostBase}`;
 const ugcUrl = `https://ugc.${hostBase}`;
 const rankUrl = `https://rank.${hostBase}`
-const serverUrlBase = `https://api.${hostBase}`;
-const serverUrl = `${serverUrlBase}/${ynoGameId}`;
 const apiUrl = `${serverUrl}/api`;
 const adminApiUrl = `${serverUrl}/admin`;
 const ynomojiUrlPrefix = 'images/ynomoji/';
+
+let easyrpgPlayer = {
+  initialized: false,
+  game: ynoGameId,
+  saveFs: undefined,
+  wsUrl: `wss://${serverUrlBase}/${ynoGameId}/`
+};
+let easyrpgPlayerLoadFuncs = [];
 
 let initBlocker = Promise.resolve();
 

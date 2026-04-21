@@ -14,7 +14,7 @@ function initSessionWs(attempt) {
       resolve();
       return;
     }
-    let url = `wss://connect.ynoproject.net/${ynoGameId}/session`;
+    let url = `wss://${serverUrlBase}/${ynoGameId}/session`;
     sessionWs = new WebSocket(url);
     sessionWs.onclose = e => {
       if (e.code === 1028)
