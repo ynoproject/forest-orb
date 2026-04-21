@@ -988,12 +988,13 @@ async function getSpriteProfileImg(sprite, idx, favicon, dir, gameId) {
     if (!sprite || idx === -1)
       return getDefaultSpriteImg.then(defaultSpriteImg => resolve(defaultSpriteImg));
     const img = new Image();
+    img.setAttribute('crossOrigin', 'anonymous');
     img.onload = function () {
       getSpriteImg(img, spriteData[cacheKey], sprite, idx, 1, favicon ? 16 : 20, 16, favicon ? 4 : 2, true, isBrave)
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `${dataUrl}/${gameId}/CharSet/`;
+      dir = `${cdnUrl}/${gameId}/CharSet/`;
       img.onerror = () => getSpriteProfileImg(sprite, idx, favicon, `images/charsets/${gameId}/`, gameId).then(url => resolve(url));
     } else {
       img.onerror = () => {

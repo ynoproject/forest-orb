@@ -262,6 +262,7 @@ async function downloadScreenshot(url, date, screenshotData, resized) {
     scaleContext.imageSmoothingEnabled = false;
 
     const img = new Image(320, 240);
+    img.setAttribute('crossOrigin', 'anonymous');
     img.onload = async () => {
       scaleContext.drawImage(img, 0, 0, width, height);
       scaleCanvas.toBlob(async blob => {

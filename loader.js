@@ -125,12 +125,13 @@ async function getLoaderSpriteImg(sprite, idx, frameIdx, dir) {
     if (spriteUrl)
       return resolve(spriteUrl);
     const img = new Image();
+    img.setAttribute('crossOrigin', 'anonymous');
     img.onload = function () {
       getSpriteImg(img, spriteData, sprite, idx, frameIdx, 24, 32, 0, false, isBrave)
         .then(url => resolve(url));
     };
     if (!dir) {
-      dir = `${dataUrl}/${ynoGameId}/CharSet/`;
+      dir = `${cdnUrl}/${ynoGameId}/CharSet/`;
       img.onerror = () => getLoaderSpriteImg(sprite, idx, frameIdx, `images/charsets/${ynoGameId}/`).then(url => resolve(url));
     } else {
       img.onerror = () => {
