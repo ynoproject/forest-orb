@@ -147,7 +147,7 @@ function initScreenshotControls() {
 }
 
 function viewScreenshot(url, date, screenshotData, lastModal) {
-  const isRemote = url.startsWith(serverUrl);
+  const isRemote = url.startsWith(ugcUrl);
   const isTemp = isRemote && url.includes('/temp/');
 
   const screenshot = document.createElement('img');
@@ -240,7 +240,7 @@ function viewScreenshot(url, date, screenshotData, lastModal) {
 }
 
 async function downloadScreenshot(url, date, screenshotData, resized) {
-  if (url.startsWith(serverUrl)) {
+  if (url.startsWith(ugcUrl)) {
     fetch(url).then(response => response.blob()).then(async blob => {
       const blobUrl = URL.createObjectURL(blob);
       await downloadScreenshot(blobUrl, date, screenshotData, resized);
