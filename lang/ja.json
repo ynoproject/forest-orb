@@ -573,7 +573,7 @@
         "rule3": "政治的な会話は禁止です。",
         "rule4": "扇動的な発言(中傷を含む)は禁止です。",
         "rule5": "いかなる理由であれ、不正行為は禁止です。",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "特にグローバルチャットでは、スパム行為や、自分たちや自分のグループのためにチャットを独占するような行為は控えてください。",
         "closingRule": "トラブルが発生した場合は、モデレーターにお知らせください。"
       },
       "warnings": {
