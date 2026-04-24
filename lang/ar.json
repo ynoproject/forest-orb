@@ -573,7 +573,8 @@
         "rule3": "لا مناقشات سياسية",
         "rule4": "عدم استخدام التعليقات القابلة للاشتعال (بما في ذلك الإهانات)",
         "rule5": "لا غش من أي نوع ولأي سبب",
-        "rule6": "في حالة وجود مشكلة يرجى إبلاغ المشرفين"
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "في حالة وجود مشكلة يرجى إبلاغ المشرفين"
       },
       "warnings": {
         "title": "Warnings",

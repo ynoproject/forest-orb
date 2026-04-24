@@ -573,7 +573,8 @@
         "rule3": "Niente discorsi sulla politica.",
         "rule4": "Niente espressioni provocatorie (fra cui insulti raziali o sessuali etc.).",
         "rule5": "Niente trucchi di nessun genere per nessun motivo.",
-        "rule6": "If there's trouble, please inform the moderators."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "If there's trouble, please inform the moderators."
       },
       "warnings": {
         "title": "Warnings",

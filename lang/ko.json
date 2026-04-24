@@ -573,7 +573,8 @@
         "rule3": "정치적 발언은 금지입니다.",
         "rule4": "선동적인 언행은 금지입니다(비난 포함).",
         "rule5": "어느 경우더라도 치트는 사용하지 마십시오.",
-        "rule6": "문제가 있으면 운영진에게 알려 주십시오."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "문제가 있으면 운영진에게 알려 주십시오."
       },
       "warnings": {
         "title": "경고",

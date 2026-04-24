@@ -573,7 +573,8 @@
         "rule3": "Zakaz polityki.",
         "rule4": "Zakaz używania obelg i zwracania niestosownych/wrogich uwag.",
         "rule5": "Zakaz używania cheatów z jakiegokolwiek powodu.",
-        "rule6": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "Jeżeli wystąpi zamieszanie w czacie, poinformuj moderatorów."
       },
       "warnings": {
         "title": "Warnings",

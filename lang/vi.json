@@ -573,7 +573,8 @@
         "rule3": "Không bàn về chính trị.",
         "rule4": "Không phát ngôn gây tranh cãi (bao gồm từ lóng).",
         "rule5": "Không gian lận bằng bất kỳ lý do nào.",
-        "rule6": "Nếu gặp vấn đề, thông báo cho các kiểm duyệt viên."
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "Nếu gặp vấn đề, thông báo cho các kiểm duyệt viên."
       },
       "warnings": {
         "title": "Cảnh báo",

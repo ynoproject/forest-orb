@@ -1500,7 +1500,8 @@
               <li><span data-i18n="[html]modal.rules.rule3">No politics.</span></li>
               <li><span data-i18n="[html]modal.rules.rule4">No inflammatory remarks (including slurs).</span></li>
               <li><span data-i18n="[html]modal.rules.rule5">No cheating of any kind for any reason.</span></li>
-              <li><span data-i18n="[html]modal.rules.rule6">If there's trouble, please inform the moderators.</span></li>
+              <li><span data-i18n="[html]modal.rules.rule6">Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.</span></li>
+              <li><span data-i18n="[html]modal.rules.closingRule">If there's trouble, please inform the moderators.</span></li>
             </ul>
           </div>
         </div>

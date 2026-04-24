@@ -573,7 +573,8 @@
         "rule3": "不谈政治。",
         "rule4": "禁止侮辱性称呼（如各类种族歧视称呼）。",
         "rule5": "不要在游戏中作弊。",
-        "rule6": "如遇到问题，请联系管理员。"
+        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "closingRule": "如遇到问题，请联系管理员。"
       },
       "warnings": {
         "title": "警告",
