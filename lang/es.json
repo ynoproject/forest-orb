@@ -67,10 +67,10 @@
       "hostedWithPermission": "Alojado con la autorización de los desarrolladores de Yume 2kki"
     },
     "disclaimer": {
-      "pendingApproval": "Aprovación pendiente del desarrollador/editor",
+      "pendingApproval": "Aprobación pendiente del desarrollador/editor",
       "hostedWithPermission": "Alojado con la autorización de su(s) desarrollador(es)",
       "originalCreation": "Creación original por la comunidad de YNOproject",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "gameEndDate": "Disponible para jugar en YNOproject hasta {{date}}"
     },
     "modal": {
       "common": {
@@ -426,7 +426,7 @@
         "title": "Gestionar Datos de Guardado",
         "reload": "Guardar Cambios y Recargar",
         "info": "Para importar archivos de guardado, si la última vez que guardaste fue usando una traducción en RPG_RT, el juego presentará errores hasta que vuelvas a guardar de nuevo en EasyRPG sin alguna traducción activa.",
-        "manageOther": "Manage Different Game&hellip;"
+        "manageOther": "Gestionar un Juego Diferente&hellip;"
       },
       "uiTheme": {
         "title": "Tema de Inferfaz",
@@ -513,8 +513,8 @@
         "title": "Eventos",
         "ongoing": "Eventos en Progreso",
         "party": "Eventos del Grupo",
-        "future": "Futuros Events",
-        "official": "Official Eventos",
+        "future": "Futuros Eventos",
+        "official": "Eventos Oficiales",
         "noResults": "No hay eventos programados.",
         "doSchedule": "Programa un Evento"
       },
@@ -573,16 +573,16 @@
         "rule3": "No discusiones acerca de temas políticos.",
         "rule4": "No comentarios que inciten al odio (incluyendo insultos).",
         "rule5": "No trampas de ningún tipo por ningún motivo.",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "Abstente de hacer spam o monopolizar el chat para ti mismo o para tus grupos sociales, particularmente en el chat global.",
         "closingRule": "Si hay problemas, por favor informa a los moderadores."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery.",
-        "warning4": "Depictions of drug use."
+        "title": "Advertencias",
+        "subtitle": "Algunos juegos pueden contener el siguiente contenido. Se recomienda la discreción del espectador.",
+        "warning1": "Secuencias de luces parpadeantes o patrones que podrían afectar a espectadores fotosensitivos.",
+        "warning2": "Referencias a autolesiones o suicidio.",
+        "warning3": "Imágenes perturbadoras.",
+        "warning4": "Representaciones del uso de drogas."
       },
       "explorerUndiscoveredLocations": {
         "title": "Ubicaciones sin Descubrir",
