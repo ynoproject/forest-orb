@@ -67,7 +67,7 @@
       "hostedWithPermission": "Hébergé avec la permission des développeurs de Yume 2kki"
     },
     "disclaimer": {
-      "pendingApproval": "En attente d'approuvement du développeur/éditeur",
+      "pendingApproval": "En attente d'approbation du développeur/éditeur",
       "hostedWithPermission": "Hébergé avec la permission du/des développeur(s)",
       "originalCreation": "Création originale de la communauté YNOproject",
       "gameEndDate": "Jouable sur YNOproject jusqu'à {{date}}"
@@ -82,7 +82,7 @@
         "cancel": "Annuler"
       },
       "login": {
-        "title": "Se Connecter",
+        "title": "Se connecter",
         "fields": {
           "username": "Identifiant",
           "password": "Mot de passe"
@@ -101,7 +101,7 @@
         },
         "submit": "Envoyer",
         "loginPrompt": "Déjà un compte&nbsp;?&nbsp;",
-        "login": "Se Connecter"
+        "login": "Se connecter"
       },
       "settings": {
         "title": "Paramètres",
@@ -125,7 +125,7 @@
             }
           },
           "wikiLinkMode": {
-            "label": "Fenêtre Interne du Lien du Wiki",
+            "label": "Fenêtre interne du lien du Wiki",
             "values": {
               "always": "Toujours",
               "fullscreen": "Plein écran seulement",
@@ -133,15 +133,15 @@
             }
           },
           "saveReminder": {
-            "label": "Fréquence du Rappel des Sauvegardes",
+            "label": "Fréquence du rappel des sauvegardes",
             "interval": {
               "minutes": "{{interval}} minutes",
               "never": "Jamais"
             }
           },
-          "soundVolume": "Volume du Son",
-          "musicVolume": "Volume de la Musique",
-          "togglePlayerSounds": "Activer les Sons des Joueurs",
+          "soundVolume": "Volume du son",
+          "musicVolume": "Volume de la musique",
+          "togglePlayerSounds": "Activer les sons des joueurs",
           "toggleEnableBadgeHints": {
             "label": "Radar à badges",
             "helpText": "Les indices de badges seront disponibles après avoir obtenu le badge « Amulette EX du collectionneur de badges ». Lorsqu'activé, un icône apparaîtra en haut à droite lorsque vous entrerez dans un lieu avec au moins un badge à débloquer."
@@ -152,8 +152,8 @@
             "helpText": "Yume 2kki Navigator est une intégration de Yume 2kki Explorer permettant de voir les connexions du monde où vous vous situez en un clin d'œil. Cette fonctionnalité peut drastiquement affecter votre expérience et de ce fait, il est fortement recommandé d'explorer une bonne partie du jeu à l'aveugle avant d'activer cette fonctionnalité. Vous devez être connecté pour utiliser Yume 2kki Navigator."
           },
           "toggleImmersionMode": {
-            "label": "Mode Immersion",
-            "helpText": "Retire le nombre de joueurs, le Tchat global, et les cartes pour vous donner une expérience plus immersive"
+            "label": "Mode immersif",
+            "helpText": "Retire le nombre de joueurs, le Tchat global, et les cartes pour vous donner une expérience plus immersive."
           },
           "timeTrialinfo": {
             "label": "Contre-la-montre"
@@ -169,7 +169,7 @@
           "toggleRankings": "Classement",
           "togglePreloads": {
             "label": "Préchargement",
-            "helpText": "Précharge fréquemment les ressources utilisées par le jeu pour d'assurer qu'elles soient disponibles lorsque nécessaires. Nécessite un rechargement de la page pour s'appliquer."
+            "helpText": "Précharge fréquemment les ressources utilisées par le jeu pour s'assurer qu'elles soient disponibles lorsque nécessaires. Nécessite un rechargement de la page pour s'appliquer."
           },
           "toggleQuestionablePreloads": "Précharger les fonds d'écran du PC",
           "toggleSchedules": "Événements",
@@ -178,7 +178,7 @@
             "label": "Mode solo",
             "helpText": "Transforme le mode privé en mode solo, cachant tous les amis et membres du groupe de votre champ de vision. Parfait si vous souhaitez jouer au jeu par vous-même."
           },
-          "toggleHideUnnamedPlayers": "Cacher les joueurs sans noms"
+          "toggleHideUnnamedPlayers": "Cacher les joueurs sans nom"
         },
         "blocklist": "Liste de blocage",
         "chatSettings": "Tchat",
@@ -190,7 +190,7 @@
       },
       "blocklist": {
         "title": "Liste de blocage",
-        "empty": "Votre liste d'utilisateurs bloqués est actuellement vide"
+        "empty": "Votre liste d'utilisateurs bloqués est actuellement vide."
       },
       "chatSettings": {
         "title": "Paramètres du Tchat",
@@ -200,7 +200,7 @@
             "global": "Surcouche du Tchat Global",
             "party": "Surcouche du Tchat de Groupe"
           },
-          "toggleTabToChat": "Appuyez sur Tab pour discuter",
+          "toggleTabToChat": "Appuyer sur Tab pour discuter",
           "togglePlayMentionSound": "Jouer un son lorsque mentionné(e)",
           "chatHistoryLimit": {
             "values": {
@@ -242,7 +242,7 @@
         }
       },
       "notificationSettings": {
-        "title": "Paramètres de notification",
+        "title": "Paramètres des notifications",
         "fields": {
           "toggleNotifications": "Notifications",
           "screenPosition": {
@@ -293,10 +293,10 @@
           "parties": {
             "label": "Groupes",
             "fields": {
-              "create": "Le Groupe a été créé",
+              "create": "Groupe créé",
               "update": "Groupe mis à jour",
-              "join": "Rejoindre le groupe",
-              "leave": "Quitter le groupe",
+              "join": "Groupe rejoint",
+              "leave": "Groupe quitté",
               "remove": "Retiré(e) du groupe",
               "disband": "Groupe dissout",
               "playerJoin": "Le joueur a rejoint le groupe",
@@ -338,12 +338,12 @@
             "label": "Synchronisation de la sauvegarde",
             "fields": {
               "saveUploading": "Sauvegarde en cours de téléversement",
-              "saveUploaded": "La sauvegarde a été téléversée",
+              "saveUploaded": "Sauvegarde téléversée",
               "saveDownloading": "Téléchargement de la sauvegarde",
               "saveDownloaded": "Sauvegarde téléchargée",
               "saveUpToDate": "Sauvegarde à jour",
               "saveCleared": "Sauvegarde effacée",
-              "saveReminder": "Rappel des Sauvegardes"
+              "saveReminder": "Rappel des sauvegardes"
             }
           },
           "schedules": {
@@ -358,9 +358,9 @@
         "title": "Paramètres du cache",
         "clear": "Effacer",
         "fields": {
-          "locationCache": "Cache des lieux",
+          "locationCache": "Cache des Lieux",
           "mapCache": "Cache des cartes",
-          "locationColorCache": "Cache de couleur des lieux"
+          "locationColorCache": "Cache de couleur des Lieux"
         }
       },
       "accountSettings": {
@@ -425,11 +425,11 @@
       "save": {
         "title": "Gérer les Données de Sauvegarde",
         "reload": "Sauvegarder les changements et recharger la page",
-        "info": "Lors de l'export d'une sauvegarde, si la dernière fois que cette sauvegarde a eu lieu était en utilisant une traduction sur YNOproject ou avec EasyRPG, l'utilisation de la sauvegarde sur la version exécutable du jeu affichera une erreur vous empêchant d'utiliser cette sauvegarde tant que la dernière sauvegarde n'est pas effectuée sans traduction active.",
-        "manageOther": "Manage Different Game&hellip;"
+        "info": "Lors de l'export d'une sauvegarde, si la dernière fois que la sauvegarde a eu lieue était en utilisant une traduction sur YNOproject ou sur EasyRPG, l'utilisation de la sauvegarde sur l'exécutable hors-ligne du jeu affichera une erreur vous empêchant d'utiliser cette sauvegarde tant que la dernière sauvegarde n'est pas effectuée sans traduction active.",
+        "manageOther": "Gérer les sauvegardes d'un autre jeu&hellip;"
       },
       "uiTheme": {
-        "title": "Thème d'IU",
+        "title": "Thème de l'IU",
         "auto": "AUTO"
       },
       "createParty": {
@@ -511,10 +511,10 @@
       },
       "schedule": {
         "title": "Événements",
-        "ongoing": "Événements en Cours",
+        "ongoing": "Événements en cours",
         "party": "Événements du Groupe",
-        "future": "Événements Planifiés",
-        "official": "Événements Officiels",
+        "future": "Événements planifiés",
+        "official": "Événements officiels",
         "noResults": "Aucun événement n'a été planifié.",
         "doSchedule": "Planifier un Événement"
       },
@@ -525,8 +525,8 @@
         "fields": {
           "name": "Nom de l'Événement",
           "description": "Description",
-          "datetime": "Date et Heure de l'Événement",
-          "recurring": "Événement Récurrent",
+          "datetime": "Date et heure de l'Événement",
+          "recurring": "Événement récurrent",
           "theme": "Thème",
           "interval": {
             "title": "Intervalle",
@@ -535,10 +535,10 @@
             "years": "années"
           },
           "restrictParty": "Limiter l'Événement au Groupe",
-          "official": "Événement Officiel",
+          "official": "Événement officiel",
           "resetOrganizer": "Réinitialiser l'organisateur",
           "platforms": {
-            "title": "Liens Externes",
+            "title": "Liens externes",
             "discord": "Discord",
             "youtube": "YouTube",
             "twitch": "Twitch",
@@ -569,20 +569,20 @@
       "rules": {
         "title": "Règles",
         "rule1": "Veuillez être respectueux et poli.",
-        "rule2": "Pas de discussion +18 (NSFW, gore, etc.).",
+        "rule2": "Pas de discussions +18 (NSFW, gore, etc.).",
         "rule3": "Pas de politiques.",
         "rule4": "Pas de remarques provocatrices (insultes comprises).",
         "rule5": "Pas de triche de toute sorte, qu'importe la raison.",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "Éviter de spammer ou de monopoliser le tchat pour vous-mêmes ou vos propres groupes, surtout dans le tchat global.",
         "closingRule": "Si il y a des problèmes, veuillez en informer les modérateurs."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery.",
-        "warning4": "Depictions of drug use."
+        "title": "Avertissements",
+        "subtitle": "Certains jeux peuvent contenir les éléments suivants. La discrétion du joueur est donc recommandée.",
+        "warning1": "Séries ou motifs d'images clignotantes pouvant impacter les joueurs photosensibles.",
+        "warning2": "Références à l'automutilation ou au suicide.",
+        "warning3": "Images perturbantes.",
+        "warning4": "Représentations de consommation de drogue."
       },
       "explorerUndiscoveredLocations": {
         "title": "Lieux non découverts",
@@ -600,8 +600,8 @@
           },
           "sortOrder": {
             "values": {
-              "newest": "Plus Récent",
-              "oldest": "Plus Vieux",
+              "newest": "Plus récent",
+              "oldest": "Plus vieux",
               "shallowest": "Moins profond",
               "deepest": "Plus profond",
               "alpha": "Alphabétique",
@@ -613,8 +613,8 @@
     },
     "tooltips": {
       "togglePrivateMode": "Activer le mode privé",
-      "save": "Gérer les Données de Sauvegarde",
-      "uiTheme": "Thème IU",
+      "save": "Gérer les données de sauvegarde",
+      "uiTheme": "Thème de l'IU",
       "toggleChat": "Afficher le Tchat",
       "toggleExplorer": "Activer Yume 2kki Navigator",
       "screenshot": "Prendre une capture d'écran",
@@ -649,7 +649,7 @@
       "scheduleDescription": "La syntaxe Markdown est acceptée, utilisez {\\{l:Monde,nom de lien optionnel}} pour insérer un lien vers yume.wiki"
     },
     "reviewRules": "Relire les règles",
-    "reviewWarnings": "Review Warnings"
+    "reviewWarnings": "Relire les avertissements"
   },
   "messages": {
     "games": {
@@ -716,17 +716,17 @@
         "template": "{LOCATION}"
       },
       "connType": {
-        "1": "Sens Unique",
-        "2": "Pas d'Entrée",
+        "1": "Sens unique",
+        "2": "Pas d'entrée",
         "4": "Déverrouille",
         "8": "Verrouillé",
         "16": "Cul-de-sac",
         "32": "Isolé",
         "64": "Nécessite l'Effet ({PARAMS})",
-        "128": "{PARAMS} de Chance",
+        "128": "{PARAMS} de chance",
         "256": "{PARAMS}",
         "512": "Raccourci",
-        "1024": "Point de Sortie",
+        "1024": "Point de sortie",
         "2048": "Saisonnier ({PARAMS})"
       },
       "depth": " ({DEPTH})",
@@ -739,12 +739,12 @@
       }
     },
     "playersOnline": {
-      "singular": "{COUNT} Joueur en Ligne",
-      "plural": "{COUNT} Joueurs en Ligne"
+      "singular": "{COUNT} Joueur en ligne",
+      "plural": "{COUNT} Joueurs en ligne"
     },
     "playersInMap": {
-      "singular": "{COUNT} Joueur sur la Carte",
-      "plural": "{COUNT} Joueurs sur la Carte"
+      "singular": "{COUNT} Joueur sur la carte",
+      "plural": "{COUNT} Joueurs sur la carte"
     },
     "playerList": {
       "unnamed": "Joueur Sans Nom",
@@ -890,13 +890,13 @@
         "backupReminder": "Il est recommandé de conserver une sauvegarde locale de votre progression en téléchargeant régulièrement votre sauvegarde. De cette façon, si les données de votre navigateur sont effacées, vous ne perdrez pas votre progression.",
         "menuTheme": "La couleur de votre nom et le style de votre encadré dans la liste des joueurs sont basés sur votre thème de menu dans le jeu.",
         "playersInMap": "Vous pouvez basculer entre le nombre de joueurs en ligne et le nombre de joueurs sur la carte en cliquant sur le label.",
-        "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont;: **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
-        "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche tab pour basculer entre le jeu et la saisie dans le tchat. Cette fonctionnalité peut être désactivée dans les Paramètres du Tchat avec l'option 'Appuyez sur Tab pour discuter'.",
-        "chatTabNotifications": "Lorsque vous êtes dans un onglet de tchat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
-        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le tchat en haut à droite de la boîte de tchat, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
-        "chatHistoryLimit": "Si votre historique de tchat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Tchat, vous pouvez limiter votre historique de tchat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre tchat.",
-        "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un tchat privé.",
-        "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersion. Il désactive le tchat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
+        "markdownSupport": "Il est possible de mettre en forme vos messages en les enveloppant de certains caractères spéciaux&nbsp. Les mises en forme supportées sont : **gras** (\\*\\*texte\\*\\*), *italique* (\\*texte\\*, \\_texte\\_), __souligné__ (\\_\\_texte\\_\\_), ~~barré~~ (\\~\\~texte\\~\\~), et ||spoiler|| (\\|\\|texte\\|\\|).",
+        "tabToChat": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche Tab pour basculer entre le jeu et la saisie dans le Tchat. Cette fonctionnalité peut être désactivée dans les Paramètres du Tchat avec l'option 'Appuyez sur Tab pour discuter'.",
+        "chatTabNotifications": "Lorsque vous êtes dans un onglet de Tchat autre que 'Tout', si un nouveau message est envoyé dans l'autre onglet filtré, le titre de l'onglet s'affichera en gras pour vous en informer.",
+        "clearChat": "Lorsque vous cliquez sur le bouton pour effacer le Tchat en haut à droite de la boîte de Tchat, si vous n'êtes pas sur l'onglet 'Tout', seuls les messages de l'onglet dans lequel vous vous trouvez seront effacés.",
+        "chatHistoryLimit": "Si votre historique de tchat devient trop long, vous risquez de rencontrer des problèmes de performance. Dans les Paramètres du Tchat, vous pouvez limiter votre historique de Tchat en conséquence pour éviter ces problèmes sans avoir à manuellement effacer votre Tchat.",
+        "parties": "Les groupes sont un excellent moyen de rester ensemble avec les gens dans une aventure. Vous pouvez voir les emplacements des membres de votre groupe et leur parler dans un Tchat privé.",
+        "immersionMode": "Si vous préférez une expérience plus immersive que sociale, essayez le Mode Immersif. Il désactive le Tchat global, la liste des joueurs et le nombre de joueurs, de sorte à rendre la découverte d'autres joueurs plus intéressante et inattendue lors de vos explorations.",
         "friendsMenu": "En faisant un clic droit sur PC, ou en maintenant votre touche sur mobile sur l'icône d'un joueur en dehors du Classement, une boîte de dialogue s'ouvrira, vous permettant d'envoyer une demande d'ami, mentionner ledit joueur ou le bloquer.",
         "easySettingsMenu": "Si vous jouez sur un PC, vous pouvez appuyez sur la touche F1 en jouant pour ouvrir le menu des paramètres, vous permettant de configurer vos touches ainsi qu'ajuster certains paramètres.",
         "floatingControls": "Si vous jouez sur un appareil avec un écran tactile et que vous n'aimez pas les commandes par défaut, vous pouvez essayer les styles de commande flottantes disponibles dans le Type des commandes sur mobile dans les Paramètres.",
@@ -904,7 +904,7 @@
         "desktopHotkeys": "Si vous jouez sur un PC, Alt + Entrée peut aussi activer le mode plein écran, F7 par défaut prend une capture d'écran du jeu, et la touche T ouvre le menu d'entrée du tchat de jeu.",
         "badgeControls": "Dans le menu de la Galerie des Badges, vous pouvez attraper et faire glisser des badges pour les réarranger, ou rapidement retirer plusieurs badges d'un seul coup en utilisant le mode Retirer des badges.",
         "cacheSettings": "Vous avez un problème avec la complétion des lieux ou avez des cartes obsolètes ? Le menu du Cache vous permet d'effacer le cache obsolète en question et de recharger les dernières données.",
-        "openSource": "YNOProject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/.",
+        "openSource": "YNOproject est un projet open source dont le code source est disponible sur https://github.com/ynoproject/.",
         "useYnoEmoji": "Lorsque vous tapez les deux-points (:) dans un tchat, une liste d'émojis de YNOproject apparaît. Vous pouvez sélectionner et cliquer sur un émoji depuis cette liste pour l'écrire dans le tchat sous la forme :emojiName:."
       }
     },
@@ -933,7 +933,7 @@
     },
     "toast": {
       "system": {
-        "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour les nouvelles fonctionnalités.",
+        "siteUpdates": "Le site a été mis a jour. Veuillez rafraîchir la page pour voir les changements.",
         "error": "Oups ! On dirait que quelque chose s'est mal passé. Consultez la console du navigateur pour plus de détails. Pour ouvrir la console, appuyez sur F12 ou faites un clic droit et cliquez ensuite sur 'Inspecter'."
       },
       "account": {
@@ -987,7 +987,7 @@
         "saveDownloading": "Mise à jour des données enregistrées dans l'emplacement {SLOT}...",
         "saveDownloaded": "L'emplacement de la sauvegarde {SLOT} a été mis à jour avec succès.",
         "saveUpToDate": "Les données de sauvegarde sont à jour.",
-        "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur aucun de vos appareils.",
+        "saveCleared": "Les données de synchronisation de sauvegardes ont été effacées. Cela n'affectera pas les sauvegardes existantes sur vos appareils.",
         "saveReminder": "N'oubliez pas de sauvegarder souvent et de faire des copies de vos données de jeu de sorte à ce que vous ne puissiez pas perdre votre progression si un pépin vous arrive."
       },
       "timeTrials": {
@@ -1001,7 +1001,7 @@
       "periodEnds": "Termine le {DATE}",
       "current": "Actuel",
       "shortcut": "Peut être atteint via un raccourci à débloquer",
-      "toggleTracked": "Activer le Suivi du Lieu",
+      "toggleTracked": "Activer le suivi du Lieu",
       "availableUntilDate": "Disponible jusqu'au\n{DATE}",
       "types": {
         "0": "Quotidien",
@@ -1051,7 +1051,7 @@
       "loading": "Chargement...",
       "bp": "{BP} PB",
       "count": "{COUNT} Badges",
-      "empty": "Galerie de badges non définie"
+      "empty": "Galerie de Badges non définie"
     },
     "badgePreset": {
       "empty": "Ce préréglage est vide."
@@ -1114,7 +1114,7 @@
         "hozo": "HOZO",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
+        "ta_be_hardcore": "TA_BE_ - Mode Hardcore",
         "panerabbit": "PANErabbit"
       }
     },
