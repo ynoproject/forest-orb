@@ -266,7 +266,8 @@ const allGameUiThemes = {
     'systemyellow',
     'systemcopper',
     'systemglass',
-    'systemshampoo'
+    'systemshampoo',
+    'systemmp3'
   ],
   'mikan': [
     's_1',
