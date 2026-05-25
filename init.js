@@ -998,11 +998,10 @@ function loadOrInitConfig(configObj, global, configName) {
                     }
                     break;
                   case 'fontStyle':
-                    if (gameUiThemes.indexOf(value) > -1) {
+                    const fontSelect = document.querySelector('.fontStyle');
+                    if (fontSelect && [...fontSelect.options].some(opt => opt.value == value)) {
+                      document.querySelector('.fontStyle').value = value;
                       setFontStyle(value, true);
-                      const fontStyleElement = document.querySelector('.fontStyle');
-                      if (fontStyleElement)
-                        fontStyleElement.value = value;
                       loadedFontStyle = true;
                     }
                     break;
