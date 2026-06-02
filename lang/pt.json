@@ -67,10 +67,10 @@
       "hostedWithPermission": "Hospedados com a permissão dos desenvolvedores de Yume 2kki"
     },
     "disclaimer": {
-      "pendingApproval": "Pending approval from developer/publisher",
+      "pendingApproval": "Aguardando aprovação do desenvolvedor/publicador",
       "hostedWithPermission": "Hospedados com a permissão do(s) desenvolvedor(es)",
       "originalCreation": "Criação original pela comunidade do YNOproject",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "gameEndDate": "Disponível para jogar no YNOproject até {{date}}"
     },
     "modal": {
       "common": {
@@ -94,7 +94,7 @@
       "register": {
         "title": "Registrar",
         "fields": {
-          "email": "Email",
+          "email": "E-mail",
           "username": "Nome de Usuário",
           "password": "Senha",
           "confirmPassword": "Confirmar Senha"
@@ -121,7 +121,7 @@
               "none": "Nenhum",
               "classic": "Clássico",
               "compact": "Compacto",
-              "slim": "Slim"
+              "slim": "Fino"
             }
           },
           "wikiLinkMode": {
@@ -144,7 +144,7 @@
           "togglePlayerSounds": "Escutar as ações dos jogadores",
           "toggleEnableBadgeHints": {
             "label": "Dicas de Emblemas",
-            "helpText": "Dicas de emblemas ficam disponíveis após você desboquear o emblema 'Amuleto de Colecionador de Emblemas EX'. Quando habilitado, um ícone aparecerá no canto superior direito ao entrar em um local com pelo menos uma insígnia que você não desbloqueou."
+            "helpText": "Dicas de emblemas ficam disponíveis após você desbloquear o emblema 'Amuleto de Colecionador de Emblemas EX'. Quando habilitado, um ícone aparecerá no canto superior direito ao entrar em um local com pelo menos uma insígnia que você não desbloqueou."
           },
           "togglePlayBadgeHintSound": "Reproduzir som de Dica de Emblema",
           "toggleEnableExplorer": {
@@ -161,7 +161,7 @@
           "toggleMobileControls": "Mostrar Controles de Celular",
           "mobileControlsType": {
             "label": "Tipo de Controle Mobile",
-            "default": "D-Pad",
+            "default": "Direcional",
             "joystick": "Analógico Livre",
             "dpad": "D-Pad Livre"
           },
@@ -178,9 +178,9 @@
             "label": "Modo de Um Jogador",
             "helpText": "Transforma o Modo Privado em Modo de Um Jogador, ocultando todos os amigos e membros do grupo. Perfeito caso queira explorar tudo por conta própia."
           },
-          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
+          "toggleHideUnnamedPlayers": "Ocultar Jogadores Sem Nome"
         },
-        "blocklist": "Blocklist",
+        "blocklist": "Lista de Bloqueio",
         "chatSettings": "Bate-Papo",
         "screenshotSettings": "Captura de Tela",
         "notificationSettings": "Notificação",
@@ -189,8 +189,8 @@
         "engineSettings": "Engine (F1)"
       },
       "blocklist": {
-        "title": "Blocklist",
-        "empty": "Sua Blocklist está vazia no momento"
+        "title": "Lista de Bloqueio",
+        "empty": "Sua lista de bloqueio está vazia no momento"
       },
       "chatSettings": {
         "title": "Configurações do Bate-papo",
@@ -403,7 +403,7 @@
             "label": "Buscar:&nbsp;",
             "name": "Nome:",
             "location": "Localização:",
-            "artist": "Artist:"
+            "artist": "Artista:"
           }
         }
       },
@@ -426,7 +426,7 @@
         "title": "Gerenciar Dados Salvos",
         "reload": "Salvar Alterações e Recarregar",
         "info": "Para saves importantes, se a ultima vez que salvou foi enquanto usava uma tradução no RPG_RT, o jogo ira demostrar erros até que você salve novamente no EasyRPG sem nenhuma tradução ativa.",
-        "manageOther": "Manage Different Game&hellip;"
+        "manageOther": "Gerenciar Outro Jogo&hellip;"
       },
       "uiTheme": {
         "title": "Tema da Interface",
@@ -473,7 +473,7 @@
       },
       "screenshot": {
         "title": "Suas Capturas de Tela",
-        "download": "Download",
+        "download": "Baixar",
         "save": "Salvar em Minhas capturas de Tela",
         "share": "Compartilhar no Chat"
       },
@@ -573,16 +573,16 @@
         "rule3": "Sem política.",
         "rule4": "Sem comentários provocantes (incluindo insultos).",
         "rule5": "Sem trapaças de qualquer tipo por qualquer motivo.",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "Evite enviar spam ou monopolizar o chat para você ou seus próprios grupos, especialmente no chat global.",
         "closingRule": "Se houver problemas, favor informar os moderadores."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery.",
-        "warning4": "Depictions of drug use."
+        "title": "Avisos",
+        "subtitle": "Alguns jogos podem conter o seguinte conteúdo. A cautela do espectador é recomendada.",
+        "warning1": "Sequências de luzes piscantes ou padrões que podem afetar espectadores fotossensíveis.",
+        "warning2": "Referências a automutilação ou suicídio.",
+        "warning3": "Imagens perturbadoras.",
+        "warning4": "Representações de uso de drogas."
       },
       "explorerUndiscoveredLocations": {
         "title": "Locais ainda Não Descobertos",
@@ -635,7 +635,7 @@
         "disbandParty": "Desfazer Grupo"
       },
       "events": "Expedições",
-      "badges": "Badges",
+      "badges": "Emblemas",
       "locations": "Localizações",
       "communityScreenshots": "Capturas de Tela da Comunidade",
       "rankings": "Placares",
@@ -649,7 +649,7 @@
       "scheduleDescription": "Syntax Markdown é aceito, use {\\{l:World,optional link name}} para inserir um link a yume.wiki"
     },
     "reviewRules": "Ver Regras",
-    "reviewWarnings": "Review Warnings"
+    "reviewWarnings": "Rever Avisos"
   },
   "messages": {
     "games": {
@@ -897,7 +897,7 @@
         "chatHistoryLimit": "Se o seu histórico de Bate-Papo ficar muito longo, você pode experenciar problemas de desempenho. Nas Configurações de Bate-Papo, você pode limitar seu histórico de Bate-Papo de acordo para evitar esses problemas sem precisar limpar manualmente o seu Bate-Papo.",
         "parties": "Os Grupos são uma ótima maneira de ficar junto com as pessoas em uma aventura. Você pode ver a localização dos membros do seu grupo e conversar com eles em um chat privado.",
         "immersionMode": "Se você preferir uma experiência mais imersiva em vez de uma social, experimente o Modo de Imersão. Ele desativa o bate-papo global, a lista de jogadores e a contagem de jogadores, então é mais interessante encontrar outro jogador enquanto explora.",
-        "friendsMenu": "Usando o clique direito em um computador, ou segurando a tela em um celular no ícone de um jogador fora de Placares, uma caixa de diálogo vai abrir, te permitindo enviar um pedido de amizade, mencionar esse jogador, ou bloqueia-lo.",
+        "friendsMenu": "Usando o clique direito em um computador, ou segurando a tela em um celular no ícone de um jogador fora de Placares, uma caixa de diálogo vai abrir, te permitindo enviar um pedido de amizade, mencionar esse jogador, ou bloqueá-lo.",
         "easySettingsMenu": "Se você está jogando em um computador, você pode apertar a tecla F1 enquanto joga para abrir o menu de configurações, te permitindo remapear suas teclas e ajustar algumas configurações.",
         "floatingControls": "Se você está jogando em um dispositivo com touchscreen e não gosta dos controles padrão, tente os estilos de controle livre disponivel no Tipo de Controle Mobile nas Configurações.",
         "recentBadges": "Acidentalmente dispensou uma notificação de desbloqueio de emblema? Você pode sempre rever emblemas desbloqueados na sessão atual selecionando Desbloqueados Recentemente no menu de Emblemas",
@@ -905,7 +905,7 @@
         "badgeControls": "No menu de Galeria de Emblemas, você pode arrastar emblemas para organiza-los, ou rapidamente remover varios emblemas de uma vez usando o modo de Remover Emblemas.",
         "cacheSettings": "Tendo problemas completando locais ou com mapas desatualizados? O menu de cache permite que você limpe o cache irrelevante e recupere os dados mais recentes.",
         "openSource": "YNOproject é código aberto e os repositórios do código estão disponíveis em https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
+        "useYnoEmoji": "Quando você digita dois pontos (:) no campo de chat, uma paleta de emojis YNO aparecerá. Você pode selecionar e clicar em um emoji de lá para inseri-lo no campo de chat no formato :nomeDoEmoji:."
       }
     },
     "save": {
@@ -991,7 +991,7 @@
         "saveReminder": "Lembre de salvar com frequência e fazer um backup de seus saves para não perder seu progresso."
       },
       "timeTrials": {
-        "timeTrialsComplete": "Goal! {CATEGORY} completed in {TIME}."
+        "timeTrialsComplete": "Fim! {CATEGORY} concluído em {TIME}."
       }
     },
     "events": {
@@ -1099,7 +1099,7 @@
           "value": "{MINUTES}:{SECONDS}"
         },
         "minigame": {
-          "label": "Minigames",
+          "label": "Minijogos",
           "valueLabel": "Pontuação",
           "value": "{NUMBER}"
         }
@@ -1114,7 +1114,7 @@
         "hozo": "HOZO",
         "cartoonboy": "Cartoon Boy",
         "ta_be": "TA_BE_",
-        "ta_be_hardcore": "TA_BE_ - Hardcore Mode",
+        "ta_be_hardcore": "TA_BE_ - Modo Hardcore",
         "panerabbit": "PANErabbit"
       }
     },
@@ -1170,14 +1170,14 @@
         "bilibili": "Bilibili"
       },
       "intervals": {
-        "perDay": "Every day",
-        "days": "Every {INTERVAL} days",
-        "perWeek": "Every {WEEKDAY}",
-        "weeks": "Every {INTERVAL} weeks",
-        "perMonth": "Every month",
-        "months": "Every {INTERVAL} months",
-        "perYear": "Every year",
-        "years": "Every {INTERVAL} years"
+        "perDay": "Todo dia",
+        "days": "A cada {INTERVAL} dias",
+        "perWeek": "Todo(a) {WEEKDAY}",
+        "weeks": "A cada {INTERVAL} semanas",
+        "perMonth": "Todo mês",
+        "months": "A cada {INTERVAL} meses",
+        "perYear": "Todo ano",
+        "years": "A cada {INTERVAL} anos"
       }
     },
     "2kki": {
