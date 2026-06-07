@@ -68,6 +68,22 @@ function parsePresetFile(rawText, maxRows, maxCols) {
   return badgeSlots;
 }
 
+function hasNonNullBadgeOutsideGrid(badgeSlots, rows, cols) {
+  for (let r = 0; r < badgeSlots.length; r++) {
+    const row = badgeSlots[r];
+    if (!Array.isArray(row))
+      continue;
+    for (let c = 0; c < row.length; c++) {
+      if (r >= rows || c >= cols) {
+        const badgeId = row[c];
+        if (badgeId != null && badgeId !== 'null')
+          return true;
+      }
+    }
+  }
+  return false;
+}
+
 function expandBadgeSlotsToGrid(badgeSlots, rows, cols) {
   const expanded = [];
   for (let r = 0; r < rows; r++) {
@@ -271,6 +287,9 @@ async function applyPresetToSlot(badgeSlots) {
 
     const playerRows = backupSlots.length;
     const playerCols = backupSlots[0]?.length || 0;
+    if (hasNonNullBadgeOutsideGrid(badgeSlots, playerRows, playerCols))
+      return false;
+
     const normalizedSlots = expandBadgeSlotsToGrid(badgeSlots, playerRows, playerCols);
     const changes = computeChanges(normalizedSlots, backupSlots, playerRows, playerCols);
     const clearResults = await clearChangedSlotsFromChanges(changes);
