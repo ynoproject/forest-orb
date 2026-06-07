@@ -4,22 +4,11 @@ const PRESET_FILE_MAX_BYTES = 64 * 1024;
 const BADGE_ID_PATTERN = /^[a-zA-Z0-9_]+$/;
 const SLOT_SET_CONCURRENCY = 8;
 
-function getPresetIoMessage(key, fallback, replacements) {
-  let message = fallback;
+function getPresetIoMessage(key, fallback) {
   const i18nextInstance = /** @type {any} */ (window).i18next;
   if (i18nextInstance)
-    message = i18nextInstance.t(`modal.badgePreset.io.${key}`, fallback);
-  if (replacements) {
-    for (const replacementKey of Object.keys(replacements))
-      message = message.replace(`{${replacementKey}}`, `${replacements[replacementKey]}`);
-  }
-  return message;
-}
-
-function getErrorMessage(error) {
-  if (error instanceof Error)
-    return error.message;
-  return `${error}`;
+    return i18nextInstance.t(`modal.badgePreset.io.${key}`, fallback);
+  return fallback;
 }
 
 function showPresetIoSuccess(message) {
@@ -39,31 +28,28 @@ function getCurrentGridDimensions(fallbackSlots) {
 
 function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
   if (!Array.isArray(badgeSlots))
-    throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
+    return false;
 
   if (maxRows && badgeSlots.length > maxRows)
-    throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
+    return false;
 
   for (const row of badgeSlots) {
     if (!Array.isArray(row))
-      throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
+      return false;
     if (maxCols && row.length > maxCols)
-      throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
+      return false;
 
     for (const badgeId of row) {
       if (badgeId === null || badgeId === 'null')
         continue;
       if (typeof badgeId !== 'string')
-        throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
-      if (!BADGE_ID_PATTERN.test(badgeId)) {
-        throw new Error(getPresetIoMessage(
-          'importInvalidBadgeId',
-          'Invalid badge ID in preset: {ID}',
-          { ID: badgeId }
-        ));
-      }
+        return false;
+      if (!BADGE_ID_PATTERN.test(badgeId))
+        return false;
     }
   }
+
+  return true;
 }
 
 function parsePresetFile(rawText, maxRows, maxCols) {
@@ -75,9 +61,11 @@ function parsePresetFile(rawText, maxRows, maxCols) {
   else if (parsed && Array.isArray(parsed.badgeSlots))
     badgeSlots = parsed.badgeSlots;
   else
-    throw new Error(getPresetIoMessage('importInvalidFormat', 'Invalid preset format'));
+    return null;
 
-  validateBadgeSlots(badgeSlots, maxRows, maxCols);
+  if (!validateBadgeSlots(badgeSlots, maxRows, maxCols))
+    return null;
+
   return badgeSlots;
 }
 
@@ -123,19 +111,8 @@ async function clearChangedSlotsFromChanges(changes) {
 
     tasks.push(
       fetchSlotSet('null', r + 1, c + 1)
-        .then(response => ({
-          ok: response.ok,
-          row: r + 1,
-          col: c + 1,
-          id: 'null'
-        }))
-        .catch(error => ({
-          ok: false,
-          row: r + 1,
-          col: c + 1,
-          id: 'null',
-          error: error?.message || `${error}`
-        }))
+        .then(response => ({ ok: response.ok }))
+        .catch(() => ({ ok: false }))
     );
   }
 
@@ -148,20 +125,9 @@ async function placeNonNullSlotsConcurrent(changes, concurrency) {
     .map(({ r, c, targetId }) => async () => {
       try {
         const response = await fetchSlotSet(targetId, r + 1, c + 1);
-        return {
-          ok: response.ok,
-          row: r + 1,
-          col: c + 1,
-          id: targetId
-        };
-      } catch (error) {
-        return {
-          ok: false,
-          row: r + 1,
-          col: c + 1,
-          id: targetId,
-          error: getErrorMessage(error)
-        };
+        return { ok: response.ok };
+      } catch {
+        return { ok: false };
       }
     });
 
@@ -190,7 +156,7 @@ async function rollbackSlots(backupSlots) {
 async function getPresetData(presetId) {
   const response = await apiFetch(`badge?command=presetGet&preset=${presetId}`);
   if (!response.ok)
-    throw new Error(getPresetIoMessage('exportFetchFailed', 'Failed to fetch preset from server'));
+    return null;
   return response.json();
 }
 
@@ -221,15 +187,22 @@ function downloadJSON(data, filename) {
 }
 
 async function handleExport() {
-  try {
-    const presetSelection = document.getElementById('badgePresetSelection');
-    if (!presetSelection)
-      throw new Error(getPresetIoMessage('importRequiredElementsNotFound', 'Required elements not found'));
+  const presetSelection = document.getElementById('badgePresetSelection');
+  if (!presetSelection) {
+    alert(getPresetIoMessage('exportFailed', 'Export failed.'));
+    return;
+  }
 
+  try {
     const presetId = presetSelection.value;
     const presetSlots = await getPresetData(presetId);
+    if (!presetSlots) {
+      alert(getPresetIoMessage('exportFailed', 'Export failed.'));
+      return;
+    }
+
     if (isEmptyBadgeSlots(presetSlots)) {
-      alert(getPresetIoMessage('exportEmpty', 'The badge preset to export is empty.'));
+      alert(getPresetIoMessage('empty', 'This preset is empty.'));
       return;
     }
 
@@ -238,7 +211,8 @@ async function handleExport() {
     downloadJSON({ badgeSlots: fullGridSlots }, formatExportFilename(presetId));
     showPresetIoSuccess(getPresetIoMessage('exportSuccess', 'Badge preset exported successfully.'));
   } catch (error) {
-    alert(`${getPresetIoMessage('exportFailed', 'Export failed: ')}${getErrorMessage(error)}`);
+    console.error('Export failed:', error);
+    alert(getPresetIoMessage('exportFailed', 'Export failed.'));
   }
 }
 
@@ -247,10 +221,11 @@ async function applyPresetToSlot(badgeSlots) {
   const presetSelection = document.getElementById('badgePresetSelection');
 
   if (!presetSelection || typeof apiFetch !== 'function')
-    throw new Error(getPresetIoMessage('importRequiredElementsNotFound', 'Required elements not found'));
+    return false;
 
   let backupSlots = null;
   let changedServerSlots = false;
+  let success = false;
 
   try {
     if (presetModal && typeof addLoader === 'function')
@@ -258,36 +233,32 @@ async function applyPresetToSlot(badgeSlots) {
 
     const backupResponse = await apiFetch('badge?command=slotList');
     if (!backupResponse.ok)
-      throw new Error(getPresetIoMessage('importFetchSlotsFailed', 'Failed to fetch current slots'));
+      return false;
     backupSlots = await backupResponse.json();
 
     const playerRows = backupSlots.length;
     const playerCols = backupSlots[0]?.length || 0;
-    validateBadgeSlots(badgeSlots, playerRows, playerCols);
-    const normalizedSlots = expandBadgeSlotsToGrid(badgeSlots, playerRows, playerCols);
+    if (!validateBadgeSlots(badgeSlots, playerRows, playerCols))
+      return false;
 
+    const normalizedSlots = expandBadgeSlotsToGrid(badgeSlots, playerRows, playerCols);
     const changes = computeChanges(normalizedSlots, backupSlots, playerRows, playerCols);
     const clearResults = await clearChangedSlotsFromChanges(changes);
     const placeResults = await placeNonNullSlotsConcurrent(changes, SLOT_SET_CONCURRENCY);
     changedServerSlots = clearResults.length > 0 || placeResults.length > 0;
 
     const allResults = [...clearResults, ...placeResults];
-    const failures = allResults.filter(result => !result.ok);
-    if (failures.length > 0) {
-      throw new Error(getPresetIoMessage(
-        'importSetSlotsFailed',
-        'Failed to set slots ({FAIL}/{TOTAL}).',
-        { FAIL: failures.length, TOTAL: allResults.length }
-      ));
-    }
+    if (allResults.some(result => !result.ok))
+      return false;
 
     const saveResponse = await apiFetch(`badge?command=presetSave&preset=${presetSelection.value}`);
     if (!saveResponse.ok)
-      throw new Error(getPresetIoMessage('importSaveFailed', 'Failed to save the preset.'));
+      return false;
 
     if (typeof initBadgePresetModal === 'function')
       initBadgePresetModal();
-    showPresetIoSuccess(getPresetIoMessage('importSuccess', 'Badge preset imported successfully.'));
+    success = true;
+    return true;
   } finally {
     try {
       if (changedServerSlots && backupSlots)
@@ -296,6 +267,8 @@ async function applyPresetToSlot(badgeSlots) {
       if (presetModal && typeof removeLoader === 'function')
         removeLoader(presetModal);
     }
+    if (success)
+      showPresetIoSuccess(getPresetIoMessage('importSuccess', 'Badge preset imported successfully.'));
   }
 }
 
@@ -310,7 +283,7 @@ function handleImport() {
       return;
 
     if (file.size > PRESET_FILE_MAX_BYTES) {
-      alert(getPresetIoMessage('importFileTooLarge', 'File is too large.'));
+      alert(getPresetIoMessage('invalidFile', 'Invalid preset file.'));
       return;
     }
 
@@ -322,18 +295,26 @@ function handleImport() {
         const maxCols = typeof maxBadgeSlotCols === 'number' ? maxBadgeSlotCols : 7;
         const badgeSlots = parsePresetFile(rawText, maxRows, maxCols);
 
-        if (isEmptyBadgeSlots(badgeSlots)) {
-          alert(getPresetIoMessage('importEmpty', 'The badge preset to import is empty.'));
+        if (!badgeSlots) {
+          alert(getPresetIoMessage('invalidFile', 'Invalid preset file.'));
           return;
         }
 
-        await applyPresetToSlot(badgeSlots);
+        if (isEmptyBadgeSlots(badgeSlots)) {
+          alert(getPresetIoMessage('empty', 'This preset is empty.'));
+          return;
+        }
+
+        const imported = await applyPresetToSlot(badgeSlots);
+        if (!imported)
+          alert(getPresetIoMessage('importFailed', 'Import failed.'));
       } catch (error) {
-        alert(`${getPresetIoMessage('importPresetFailed', 'Failed to import the badge preset: ')}${getErrorMessage(error)}`);
+        console.error('Import failed:', error);
+        alert(getPresetIoMessage('importFailed', 'Import failed.'));
       }
     };
     reader.onerror = () => {
-      alert(getPresetIoMessage('importFileReadFailed', 'Failed to read the file.'));
+      alert(getPresetIoMessage('invalidFile', 'Invalid preset file.'));
     };
     reader.readAsText(file);
   };
