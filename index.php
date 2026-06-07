@@ -1164,7 +1164,7 @@
             </div>
           </div>
           <div class="modalContent"></div>
-          <div class="modalFooter">
+          <div class="modalFooter badgePresetActions">
             <button id="badgePresetSave" class="unselectable" type="button" data-i18n="[html]modal.common.save">Save</button>
             <button id="badgePresetLoad" class="unselectable" type="button" data-i18n="[html]modal.common.apply">Apply</button>
             <button id="badgePresetExport" class="unselectable" type="button" data-i18n="[html]modal.badgePreset.export">Export</button>
