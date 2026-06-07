@@ -428,8 +428,8 @@
           "importSuccess": "バッジプリセットの読み込みに成功しました。",
           "empty": "このプリセットは空です。",
           "invalidFile": "無効なプリセットファイルです。",
-          "exportFailed": "書き出しに失敗しました。",
-          "importFailed": "読み込みに失敗しました。"
+          "exportFailed": "バッジプリセットの書き出しに失敗しました。",
+          "importFailed": "バッジプリセットの読み込みに失敗しました。"
         }
       },
       "save": {

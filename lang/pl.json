@@ -420,7 +420,17 @@
       "badgePreset": {
         "title": "Manage Badge Presets",
         "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}"
+        "presetName": "Preset {{index}}",
+        "export": "Export",
+        "import": "Import",
+        "io": {
+          "exportSuccess": "Badge preset exported successfully.",
+          "importSuccess": "Badge preset imported successfully.",
+          "empty": "This preset is empty.",
+          "invalidFile": "Invalid preset file.",
+          "exportFailed": "Export failed.",
+          "importFailed": "Import failed."
+        }
       },
       "save": {
         "title": "Zarządzaj zapisami",
