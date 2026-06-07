@@ -1,14 +1,13 @@
-const PRESET_FILE_EXT = '.badge-preset';
-const PRESET_FILE_ACCEPT = '.badge-preset,.json';
+const PRESET_FILE_EXT = '.badgepreset';
+const PRESET_FILE_ACCEPT = '.badgepreset,.json';
 const PRESET_FILE_MAX_BYTES = 64 * 1024;
-const BADGE_ID_PATTERN = /^[a-zA-Z0-9_]+$/;
+const PRESET_FILE_MAX_ROWS = 10; // max badge slot based on server
+const PRESET_FILE_MAX_COLS = 7;
+const BADGE_ID_PATTERN = /^[a-zA-Z0-9_ ]+$/;
 const SLOT_SET_CONCURRENCY = 8;
 
 function getPresetIoMessage(key, fallback) {
-  const i18nextInstance = /** @type {any} */ (window).i18next;
-  if (i18nextInstance)
-    return i18nextInstance.t(`modal.badgePreset.io.${key}`, fallback);
-  return fallback;
+  return i18next.t(`modal.badgePreset.io.${key}`, fallback);
 }
 
 function showPresetIoSuccess(message) {
@@ -75,7 +74,7 @@ function expandBadgeSlotsToGrid(badgeSlots, rows, cols) {
     const expandedRow = [];
     for (let c = 0; c < cols; c++) {
       const badgeId = badgeSlots?.[r]?.[c];
-      if (badgeId === null || badgeId === 'null' || typeof badgeId === 'undefined')
+      if (badgeId == null || badgeId === 'null')
         expandedRow.push('null');
       else
         expandedRow.push(badgeId);
@@ -125,7 +124,13 @@ async function placeNonNullSlotsConcurrent(changes, concurrency) {
     .map(({ r, c, targetId }) => async () => {
       try {
         const response = await fetchSlotSet(targetId, r + 1, c + 1);
-        return { ok: response.ok };
+        if (response.ok)
+          return { ok: true };
+        const message = await response.text();
+        return {
+          ok: message.includes('unknown badge')
+            || message.includes('specified badge is locked')
+        };
       } catch {
         return { ok: false };
       }
@@ -169,9 +174,14 @@ function formatExportFilename(presetIndex) {
   const minute = `${now.getMinutes()}`.padStart(2, '0');
   const second = `${now.getSeconds()}`.padStart(2, '0');
   const formattedDate = `${year}-${month}-${day}-${hour}h${minute}m${second}s`;
-  const presetNumber = `${(Number.parseInt(presetIndex, 10) || 0) + 1}`.padStart(2, '0');
+  const presetNumber = `${(parseInt(presetIndex, 10) || 0) + 1}`.padStart(2, '0');
   return `badge_preset_${presetNumber}-${formattedDate}${PRESET_FILE_EXT}`;
 }
+
+const PRESET_FILE_SAVE_TYPES = [{
+  description: 'Badge Preset',
+  accept: { 'application/json': ['.badgepreset', '.json'] }
+}];
 
 function downloadJSON(data, filename) {
   const json = JSON.stringify(data, null, 2);
@@ -195,6 +205,22 @@ async function handleExport() {
 
   try {
     const presetId = presetSelection.value;
+    const filename = formatExportFilename(presetId);
+    let fileHandle;
+
+    if (typeof showSaveFilePicker === 'function') {
+      try {
+        fileHandle = await showSaveFilePicker({
+          suggestedName: filename,
+          types: PRESET_FILE_SAVE_TYPES
+        });
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError')
+          return;
+        throw error;
+      }
+    }
+
     const presetSlots = await getPresetData(presetId);
     if (!presetSlots) {
       alert(getPresetIoMessage('exportFailed', 'Export failed.'));
@@ -208,7 +234,14 @@ async function handleExport() {
 
     const { rows, cols } = getCurrentGridDimensions(presetSlots);
     const fullGridSlots = expandBadgeSlotsToGrid(presetSlots, rows, cols);
-    downloadJSON({ badgeSlots: fullGridSlots }, formatExportFilename(presetId));
+    const exportData = { badgeSlots: fullGridSlots };
+    if (fileHandle) {
+      const writable = await fileHandle.createWritable();
+      await writable.write(JSON.stringify(exportData, null, 2));
+      await writable.close();
+    } else {
+      downloadJSON(exportData, filename);
+    }
     showPresetIoSuccess(getPresetIoMessage('exportSuccess', 'Badge preset exported successfully.'));
   } catch (error) {
     console.error('Export failed:', error);
@@ -238,14 +271,12 @@ async function applyPresetToSlot(badgeSlots) {
 
     const playerRows = backupSlots.length;
     const playerCols = backupSlots[0]?.length || 0;
-    if (!validateBadgeSlots(badgeSlots, playerRows, playerCols))
-      return false;
-
     const normalizedSlots = expandBadgeSlotsToGrid(badgeSlots, playerRows, playerCols);
     const changes = computeChanges(normalizedSlots, backupSlots, playerRows, playerCols);
     const clearResults = await clearChangedSlotsFromChanges(changes);
+    // if invalid badge id, skip place
     const placeResults = await placeNonNullSlotsConcurrent(changes, SLOT_SET_CONCURRENCY);
-    changedServerSlots = clearResults.length > 0 || placeResults.length > 0;
+    changedServerSlots = true;
 
     const allResults = [...clearResults, ...placeResults];
     if (allResults.some(result => !result.ok))
@@ -263,6 +294,8 @@ async function applyPresetToSlot(badgeSlots) {
     try {
       if (changedServerSlots && backupSlots)
         await rollbackSlots(backupSlots);
+    } catch (error) {
+      console.error('Badge preset import rollback failed:', error);
     } finally {
       if (presetModal && typeof removeLoader === 'function')
         removeLoader(presetModal);
@@ -277,8 +310,7 @@ function handleImport() {
   input.type = 'file';
   input.accept = PRESET_FILE_ACCEPT;
   input.onchange = (event) => {
-    const fileInput = /** @type {HTMLInputElement} */ (event.target);
-    const file = fileInput?.files?.[0];
+    const file = event.target.files[0];
     if (!file)
       return;
 
@@ -290,10 +322,7 @@ function handleImport() {
     const reader = new FileReader();
     reader.onload = async (loadEvent) => {
       try {
-        const rawText = `${loadEvent.target?.result || ''}`;
-        const maxRows = typeof maxBadgeSlotRows === 'number' ? maxBadgeSlotRows : 8;
-        const maxCols = typeof maxBadgeSlotCols === 'number' ? maxBadgeSlotCols : 7;
-        const badgeSlots = parsePresetFile(rawText, maxRows, maxCols);
+        const badgeSlots = parsePresetFile(loadEvent.target.result, PRESET_FILE_MAX_ROWS, PRESET_FILE_MAX_COLS);
 
         if (!badgeSlots) {
           alert(getPresetIoMessage('invalidFile', 'Invalid preset file.'));
@@ -333,5 +362,3 @@ function initBadgePresetIO() {
   importButton.onclick = handleImport;
   exportButton.dataset.initialized = 'true';
 }
-
-window.initBadgePresetIO = initBadgePresetIO;
