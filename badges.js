@@ -997,6 +997,9 @@ function initBadgeGalleryModal() {
 }
 
 function initBadgePresetModal() {
+  if (typeof initBadgePresetIO === 'function')
+    initBadgePresetIO();
+
   addLoader(document.getElementById('badgePresetModal'));
 
   apiFetch(`badge?command=presetGet&preset=${document.getElementById('badgePresetSelection').value}`)
