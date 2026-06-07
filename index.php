@@ -1167,6 +1167,8 @@
           <div class="modalFooter">
             <button id="badgePresetSave" class="unselectable" type="button" data-i18n="[html]modal.common.save">Save</button>
             <button id="badgePresetLoad" class="unselectable" type="button" data-i18n="[html]modal.common.apply">Apply</button>
+            <button id="badgePresetExport" class="unselectable" type="button" data-i18n="[html]modal.badgePreset.export">Export</button>
+            <button id="badgePresetImport" class="unselectable" type="button" data-i18n="[html]modal.badgePreset.import">Import</button>
           </div>
         </div>
         <div id="uiThemesModal" class="modal fullscreenModal hidden">
@@ -2279,6 +2281,7 @@
   <script type="text/javascript" src="events.js"></script>
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>
+  <script type="text/javascript" src="badgepresetio.js"></script>
   <script type="text/javascript" src="account.js"></script>
   <script type="text/javascript" src="vendor/DragDropTouch.js"></script>
 
