@@ -730,6 +730,8 @@ function initBadgeControls() {
   };
 
   document.getElementById('badgePresetSelection').onchange = initBadgePresetModal;
+  if (typeof initBadgePresetIO === 'function')
+    initBadgePresetIO();
 
   document.getElementById('badgePresetSave').onclick = () => {
     apiFetch(`badge?command=presetSave&preset=${document.getElementById('badgePresetSelection').value}`)
