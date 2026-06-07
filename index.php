@@ -2281,7 +2281,6 @@
   <script type="text/javascript" src="events.js"></script>
   <script type="text/javascript" src="rankings.js"></script>
   <script type="text/javascript" src="badges.js"></script>
-  <script type="text/javascript" src="badgepresetio.js"></script>
   <script type="text/javascript" src="account.js"></script>
   <script type="text/javascript" src="vendor/DragDropTouch.js"></script>
 
