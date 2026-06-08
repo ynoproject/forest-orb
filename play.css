@@ -4161,5 +4161,8 @@ html[dir="rtl"] .messageSender {
 }
 
 .badgePresetActions {
-  display: flex
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }

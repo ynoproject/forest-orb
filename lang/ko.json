@@ -420,7 +420,17 @@
       "badgePreset": {
         "title": "배지 프리셋 설정",
         "selectPreset": "프리셋 선택",
-        "presetName": "프리셋 {{index}}"
+        "presetName": "프리셋 {{index}}",
+        "export": "Export",
+        "import": "Import",
+        "io": {
+          "exportSuccess": "Badge preset exported successfully.",
+          "importSuccess": "Badge preset imported successfully.",
+          "empty": "This preset is empty.",
+          "invalidFile": "Invalid preset file.",
+          "exportFailed": "Export failed.",
+          "importFailed": "Import failed."
+        }
       },
       "save": {
         "title": "세이브 데이터 관리",
@@ -581,7 +591,8 @@
         "subtitle": "일부 게임에는 다음과 같은 내용이 포함되어 있을 수 있습니다. 게임 플레이 시 주의하시길 바랍니다.",
         "warning1": "광과민성 환자에게 영향을 끼칠 수 있는 번쩍거리는 빛의 연속적이거나 규칙적인 깜빡임",
         "warning2": "자해 혹은 자살에 관련된 언급",
-        "warning3": "불편하거나 충격적인 이미지"
+        "warning3": "불편하거나 충격적인 이미지",
+        "warning4": "Depictions of drug use."
       },
       "explorerUndiscoveredLocations": {
         "title": "미발견 장소",

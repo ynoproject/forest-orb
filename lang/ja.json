@@ -420,7 +420,17 @@
       "badgePreset": {
         "title": "バッジプリセット",
         "selectPreset": "プリセット選択",
-        "presetName": "プリセット{{index}}"
+        "presetName": "プリセット{{index}}",
+        "export": "書き出し",
+        "import": "読み込み",
+        "io": {
+          "exportSuccess": "バッジプリセットの書き出しに成功しました。",
+          "importSuccess": "バッジプリセットの読み込みに成功しました。",
+          "empty": "このプリセットは空です。",
+          "invalidFile": "無効なプリセットファイルです。",
+          "exportFailed": "バッジプリセットの書き出しに失敗しました。",
+          "importFailed": "バッジプリセットの読み込みに失敗しました。"
+        }
       },
       "save": {
         "title": "セーブデータ管理",

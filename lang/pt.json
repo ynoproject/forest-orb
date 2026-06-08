@@ -420,7 +420,17 @@
       "badgePreset": {
         "title": "Gerenciar Predefinições de Emblema",
         "selectPreset": "Selecionar Predefinição",
-        "presetName": "Predefinição {{index}}"
+        "presetName": "Predefinição {{index}}",
+        "export": "Export",
+        "import": "Import",
+        "io": {
+          "exportSuccess": "Badge preset exported successfully.",
+          "importSuccess": "Badge preset imported successfully.",
+          "empty": "This preset is empty.",
+          "invalidFile": "Invalid preset file.",
+          "exportFailed": "Export failed.",
+          "importFailed": "Import failed."
+        }
       },
       "save": {
         "title": "Gerenciar Dados Salvos",
