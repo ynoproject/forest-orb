@@ -285,6 +285,10 @@ const allGameUiThemes = {
     '001',
     '006'
   ],
+  'okuri': [
+    'system01',
+    'system02'
+  ],
   'oneshot': [
     'system',
     'system2',
@@ -307,6 +311,11 @@ const allGameUiThemes = {
     'grey-and-chartreuse',
     'chartreuse',
     'customsystem'
+  ],
+  'scarynikki': [
+    'fc',
+    'main',
+    'systaaem'
   ],
   'sheawaits': [
     'system_sa1',
@@ -334,6 +343,13 @@ const allGameUiThemes = {
     'zapnef',
     'monochrome_mk2',
     'monochrome'
+  ],
+  'space': [
+    'system1',
+    'system1b',
+    'system2',
+    'system3',
+    'system4'
   ],
   'tsushin': [
     'SystemM',
@@ -413,11 +429,14 @@ const allGameFullBgUiThemes = {
   'mikan': [],
   'muma': [],
   'nostalgic': [],
+  'okuri': [],
   'oneshot': [],
   'oversomnia': [],
   'prayers': [ 'grey-and-chartreuse', 'chartreuse', 'customsystem' ],
+  'scarynikki': [],
   'sheawaits': [],
   'someday': [],
+  'space': [ 'system1', 'system1b', 'system2', 'system3', 'system4' ],
   'tsushin': [],
   'ultraviolet': [ 'ss-システムsilver' ],
   'unaccomplished': [],

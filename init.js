@@ -1,4 +1,4 @@
-const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cold', 'unconscious', 'deepdreams', 'flow', 'fog', 'genie', 'if', 'loveyou', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'oneshot', 'prayers', 'sheawaits', 'someday', 'tsushin', 'ultraviolet', 'unaccomplished', 'unevendream', 'yume' ];
+const gameIds = [ '2kki', 'amillusion', 'braingirl', 'cold', 'unconscious', 'deepdreams', 'flow', 'fog', 'genie', 'if', 'loveyou', 'mikan', 'muma', 'nostalgic', 'oversomnia', 'okuri', 'oneshot', 'prayers', 'scarynikki', 'sheawaits', 'someday', 'space', 'tsushin', 'ultraviolet', 'unaccomplished', 'unevendream', 'yume' ];
 const gameIdMatch = new RegExp('(?:' + gameIds.join('|') + ')').exec(window.location);
 const gameId = gameIdMatch ? gameIdMatch[0] : gameIds[0];
 const ynoGameId = gameIdMatch || !new RegExp('dev').exec(window.location) ? gameId : 'dev';
@@ -8,7 +8,8 @@ const gameDefaultLangs = {
   'if': 'ja',
   'mikan': 'ja',
   'ultraviolet': 'ja',
-  'nostalgic': 'ja'
+  'nostalgic': 'ja',
+  'okuri': 'ja'
 };
 const gameDefaultSprite = {
   '2kki': 'syujinkou1',
@@ -25,11 +26,14 @@ const gameDefaultSprite = {
   'mikan': 'syuzinkou_01',
   'muma': 'muma1',
   'nostalgic': 'syujinkou',
+  'okuri': 'mitsuki01',
   'oneshot': { sprite: 'niko1', idx: 4 },
   'oversomnia': 'player-01',
   'prayers': 'Flourette',
+  'scarynikki': 'CHARSET2 WIP',
   'sheawaits': 'sprite-noelia',
   'someday': 'itsuki1',
+  'space': 'charsettest',
   'tsushin': 'actor',
   'ultraviolet': 'ch-主人公1',
   'unaccomplished': 'YM_1',

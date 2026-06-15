@@ -44,6 +44,9 @@
     case "nostalgic":
       $gameName = "nostAlgic";
       break;
+    case "okuri":
+      $gameName = "Okuri";
+      break;
     case "oneshot":
       $gameName = "OneShot";
       break;
@@ -53,11 +56,17 @@
     case "prayers":
       $gameName = "Answered Prayers";
       break;
+    case "scarynikki":
+      $gameName = "Scary Nikki";
+      break;
     case "sheawaits":
       $gameName = "She Awaits";
       break;
     case "someday":
       $gameName = "Someday";
+      break;
+    case "space":
+      $gameName = "Space Funeral";
       break;
     case "tsushin":
       $gameName = "Yume Tsushin";
@@ -2213,7 +2222,7 @@
     <div>
       <div id="gameEndDate" class="notice" style="display: none;"></div>
       <?php $gameIdsWithDisclaimer = [ "flow", "someday", "deepdreams", "prayers", "amillusion", "unevendream", "braingirl",
-      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog", "cold", "loveyou" ]; ?>
+      "muma", "genie", "mikan", "ultraviolet", "sheawaits", "oversomnia", "tsushin", "nostalgic", "oneshot", "if", "unaccomplished", "fog", "cold", "loveyou", "okuri", "space", "scarynikki" ]; ?>
       <?php if ($gameId == "2kki"): ?>
       <br>
       <div class="notice version">Yume 2kki Version <span id="2kkiVersion"></span></div>
