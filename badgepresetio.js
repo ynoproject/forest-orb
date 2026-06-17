@@ -32,6 +32,7 @@ function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
   if (maxRows && badgeSlots.length > maxRows)
     return false;
 
+  const badgeIds = new Set();
   for (const row of badgeSlots) {
     if (!Array.isArray(row))
       return false;
@@ -45,6 +46,9 @@ function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
         return false;
       if (!BADGE_ID_PATTERN.test(badgeId))
         return false;
+      if (badgeIds.has(badgeId))
+        return false;
+      badgeIds.add(badgeId);
     }
   }
 
