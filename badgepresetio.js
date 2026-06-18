@@ -4,7 +4,6 @@ const PRESET_FILE_MAX_BYTES = 64 * 1024;
 const PRESET_FILE_MAX_ROWS = 10; // max badge slot based on server
 const PRESET_FILE_MAX_COLS = 7;
 const BADGE_ID_PATTERN = /^[a-zA-Z0-9_ ]+$/;
-const SLOT_SET_CONCURRENCY = 8;
 
 function getPresetIoMessage(key, fallback) {
   return i18next.t(`modal.badgePreset.io.${key}`, fallback);
@@ -46,7 +45,7 @@ function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
         return false;
       if (!BADGE_ID_PATTERN.test(badgeId))
         return false;
-      if (badgeIds.has(badgeId))
+      if (badgeIds.has(badgeId)) // check for duplicate badge
         return false;
       badgeIds.add(badgeId);
     }
@@ -123,43 +122,41 @@ function fetchSlotSet(badgeId, row, col) {
 }
 
 async function clearChangedSlotsFromChanges(changes) {
-  const tasks = [];
+  const results = [];
   for (const { r, c, currentId } of changes) {
     if (currentId === 'null')
       continue;
 
-    tasks.push(
-      fetchSlotSet('null', r + 1, c + 1)
-        .then(response => ({ ok: response.ok }))
-        .catch(() => ({ ok: false }))
-    );
+    try {
+      const response = await fetchSlotSet('null', r + 1, c + 1);
+      results.push({ ok: response.ok });
+    } catch {
+      results.push({ ok: false });
+    }
   }
-
-  return Promise.all(tasks);
+  return results;
 }
 
-async function placeNonNullSlotsConcurrent(changes, concurrency) {
-  const tasks = changes
-    .filter(change => change.targetId !== 'null')
-    .map(({ r, c, targetId }) => async () => {
-      try {
-        const response = await fetchSlotSet(targetId, r + 1, c + 1);
-        if (response.ok)
-          return { ok: true };
-        const message = await response.text();
-        return {
-          ok: message.includes('unknown badge')
-            || message.includes('specified badge is locked')
-        };
-      } catch {
-        return { ok: false };
-      }
-    });
-
+async function placeNonNullSlots(changes) {
   const results = [];
-  for (let index = 0; index < tasks.length; index += concurrency) {
-    const batch = tasks.slice(index, index + concurrency).map(task => task());
-    results.push(...await Promise.all(batch));
+  for (const { r, c, targetId } of changes) {
+    if (targetId === 'null')
+      continue;
+
+    try {
+      const response = await fetchSlotSet(targetId, r + 1, c + 1);
+      if (response.ok) {
+        results.push({ ok: true });
+        continue;
+      }
+      const message = await response.text();
+      results.push({
+        ok: message.includes('unknown badge')
+          || message.includes('specified badge is locked')
+      });
+    } catch {
+      results.push({ ok: false });
+    }
   }
   return results;
 }
@@ -168,14 +165,16 @@ async function rollbackSlots(backupSlots) {
   if (!Array.isArray(backupSlots))
     return;
 
-  const promises = [];
   for (let r = 0; r < backupSlots.length; r++) {
     for (let c = 0; c < backupSlots[r].length; c++) {
       const badgeId = backupSlots[r]?.[c] || 'null';
-      promises.push(fetchSlotSet(badgeId, r + 1, c + 1).catch(() => null));
+      try {
+        await fetchSlotSet(badgeId, r + 1, c + 1);
+      } catch {
+        // rollback
+      }
     }
   }
-  await Promise.all(promises);
 }
 
 async function getPresetData(presetId) {
@@ -298,7 +297,7 @@ async function applyPresetToSlot(badgeSlots) {
     const changes = computeChanges(normalizedSlots, backupSlots, playerRows, playerCols);
     const clearResults = await clearChangedSlotsFromChanges(changes);
     // if invalid badge id, skip place
-    const placeResults = await placeNonNullSlotsConcurrent(changes, SLOT_SET_CONCURRENCY);
+    const placeResults = await placeNonNullSlots(changes);
     changedServerSlots = true;
 
     const allResults = [...clearResults, ...placeResults];
