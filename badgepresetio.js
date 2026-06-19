@@ -1,10 +1,11 @@
 const PRESET_FILE_EXT = '.badgepreset';
 const PRESET_FILE_ACCEPT = '.badgepreset,.json';
 const PRESET_FILE_MAX_BYTES = 64 * 1024;
-const PRESET_FILE_MAX_ROWS = 10; // max badge slot based on server
+const PRESET_FILE_MAX_ROWS = 10; // max badge slot rows based on server
 const PRESET_FILE_MAX_COLS = 7;
-const BADGE_ID_PATTERN = /^[a-zA-Z0-9_ ]+$/;
-const SLOT_SET_CONCURRENCY = 8;
+const BADGE_ID_PATTERN = /^[a-zA-Z0-9_]+$/;
+
+let badgePresetImportInProgress = false; // lock import in progress
 
 function getPresetIoMessage(key, fallback) {
   return i18next.t(`modal.badgePreset.io.${key}`, fallback);
@@ -32,6 +33,7 @@ function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
   if (maxRows && badgeSlots.length > maxRows)
     return false;
 
+  const badgeIds = new Set();
   for (const row of badgeSlots) {
     if (!Array.isArray(row))
       return false;
@@ -45,6 +47,9 @@ function validateBadgeSlots(badgeSlots, maxRows, maxCols) {
         return false;
       if (!BADGE_ID_PATTERN.test(badgeId))
         return false;
+      if (badgeIds.has(badgeId)) // check for duplicate badge
+        return false;
+      badgeIds.add(badgeId);
     }
   }
 
@@ -119,59 +124,77 @@ function fetchSlotSet(badgeId, row, col) {
 }
 
 async function clearChangedSlotsFromChanges(changes) {
-  const tasks = [];
-  for (const { r, c, currentId } of changes) {
-    if (currentId === 'null')
-      continue;
-
-    tasks.push(
+  const tasks = changes
+    .filter(({ currentId }) => currentId !== 'null')
+    .map(({ r, c }) =>
       fetchSlotSet('null', r + 1, c + 1)
         .then(response => ({ ok: response.ok }))
         .catch(() => ({ ok: false }))
     );
-  }
-
   return Promise.all(tasks);
 }
 
-async function placeNonNullSlotsConcurrent(changes, concurrency) {
+async function placeNonNullSlots(changes) {
+  const skippedBadges = [];
   const tasks = changes
-    .filter(change => change.targetId !== 'null')
+    .filter(({ targetId }) => targetId !== 'null')
     .map(({ r, c, targetId }) => async () => {
       try {
         const response = await fetchSlotSet(targetId, r + 1, c + 1);
         if (response.ok)
           return { ok: true };
         const message = await response.text();
-        return {
-          ok: message.includes('unknown badge')
-            || message.includes('specified badge is locked')
-        };
+        if (message.includes('unknown badge') || message.includes('specified badge is locked')) {
+          const nullResponse = await fetchSlotSet('null', r + 1, c + 1);
+          if (nullResponse.ok) {
+            skippedBadges.push({
+              badgeId: targetId,
+              row: r + 1,
+              col: c + 1,
+              reason: message.includes('unknown badge') ? 'unknown' : 'locked'
+            });
+          }
+          return { ok: nullResponse.ok };
+        }
+        return { ok: false };
       } catch {
         return { ok: false };
       }
     });
+  const results = await Promise.all(tasks.map(task => task()));
+  return { results, skippedBadges };
+}
 
-  const results = [];
-  for (let index = 0; index < tasks.length; index += concurrency) {
-    const batch = tasks.slice(index, index + concurrency).map(task => task());
-    results.push(...await Promise.all(batch));
+function warnSkippedPresetBadges(skippedBadges) {
+  if (!skippedBadges.length)
+    return;
+
+  for (const skip of skippedBadges) {
+    const reason = skip.reason === 'locked'
+      ? 'not unlocked'
+      : 'not owned or no longer exists!';
+    console.warn(`Badge preset import: omitted ${skip.badgeId} at row ${skip.row}, col ${skip.col} (${reason})`);
   }
-  return results;
+  console.warn(`Badge preset import: ${skippedBadges.length} badge(s) were set to null.`);
 }
 
 async function rollbackSlots(backupSlots) {
   if (!Array.isArray(backupSlots))
-    return;
+    return true;
 
   const promises = [];
   for (let r = 0; r < backupSlots.length; r++) {
     for (let c = 0; c < backupSlots[r].length; c++) {
       const badgeId = backupSlots[r]?.[c] || 'null';
-      promises.push(fetchSlotSet(badgeId, r + 1, c + 1).catch(() => null));
+      promises.push(
+        fetchSlotSet(badgeId, r + 1, c + 1)
+          .then(response => response.ok)
+          .catch(() => false)
+      );
     }
   }
-  await Promise.all(promises);
+  const results = await Promise.all(promises);
+  return results.every(ok => ok);
 }
 
 async function getPresetData(presetId) {
@@ -249,7 +272,9 @@ async function handleExport() {
     }
 
     const { rows, cols } = getCurrentGridDimensions(presetSlots);
-    const fullGridSlots = expandBadgeSlotsToGrid(presetSlots, rows, cols);
+    const clampedRows = Math.min(rows, maxBadgeSlotRows);
+    const clampedCols = Math.min(cols, maxBadgeSlotCols);
+    const fullGridSlots = expandBadgeSlotsToGrid(presetSlots, clampedRows, clampedCols);
     const exportData = { badgeSlots: fullGridSlots };
     if (fileHandle) {
       const writable = await fileHandle.createWritable();
@@ -293,8 +318,7 @@ async function applyPresetToSlot(badgeSlots) {
     const normalizedSlots = expandBadgeSlotsToGrid(badgeSlots, playerRows, playerCols);
     const changes = computeChanges(normalizedSlots, backupSlots, playerRows, playerCols);
     const clearResults = await clearChangedSlotsFromChanges(changes);
-    // if invalid badge id, skip place
-    const placeResults = await placeNonNullSlotsConcurrent(changes, SLOT_SET_CONCURRENCY);
+    const { results: placeResults, skippedBadges } = await placeNonNullSlots(changes);
     changedServerSlots = true;
 
     const allResults = [...clearResults, ...placeResults];
@@ -308,11 +332,15 @@ async function applyPresetToSlot(badgeSlots) {
     if (typeof initBadgePresetModal === 'function')
       initBadgePresetModal();
     success = true;
+    warnSkippedPresetBadges(skippedBadges);
     return true;
   } finally {
     try {
-      if (changedServerSlots && backupSlots)
-        await rollbackSlots(backupSlots);
+      if (changedServerSlots && backupSlots) {
+        const rolledBack = await rollbackSlots(backupSlots);
+        if (!rolledBack)
+          console.error('Badge preset import rollback failed');
+      }
     } catch (error) {
       console.error('Badge preset import rollback failed:', error);
     } finally {
@@ -340,6 +368,11 @@ function handleImport() {
 
     const reader = new FileReader();
     reader.onload = async (loadEvent) => {
+      if (badgePresetImportInProgress) {
+        console.warn('Badge preset import already in progress.');
+        return;
+      }
+      badgePresetImportInProgress = true;
       try {
         const badgeSlots = parsePresetFile(loadEvent.target.result, PRESET_FILE_MAX_ROWS, PRESET_FILE_MAX_COLS);
 
@@ -359,6 +392,8 @@ function handleImport() {
       } catch (error) {
         console.error('Import failed:', error);
         alert(getPresetIoMessage('importFailed', 'Import failed.'));
+      } finally {
+        badgePresetImportInProgress = false;
       }
     };
     reader.onerror = () => {
