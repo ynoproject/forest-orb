@@ -67,10 +67,10 @@
       "hostedWithPermission": "Размещено с разрешения разработчиков Yume 2kki."
     },
     "disclaimer": {
-      "pendingApproval": "Pending approval from developer/publisher",
-      "hostedWithPermission": "Hosted with permission from the developer(s)",
-      "originalCreation": "Original creation by the YNOproject community",
-      "gameEndDate": "Available to play on YNOproject until {{date}}"
+      "pendingApproval": "Ожидается разрешение от разработчика/издателя",
+      "hostedWithPermission": "Размещено с разрешения разработчика(ов)",
+      "originalCreation": "Создано сообществом YNOproject",
+      "gameEndDate": "Доступно для игры на YNOproject до {{date}}"
     },
     "modal": {
       "common": {
@@ -173,12 +173,12 @@
           },
           "toggleQuestionablePreloads": "Предзагрузить обои ПК",
           "toggleSchedules": "События",
-          "unicodeFont": "Alternate Font",
+          "unicodeFont": "Альтернативный шрифт",
           "toggleSingleplayerMode": {
-            "label": "Singleplayer Mode",
-            "helpText": "Turns Private Mode into Singleplayer Mode, hiding all friends and party members from view. Perfect if you want to explore entirely by yourself."
+            "label": "Одиночный режим",
+            "helpText": "Превращает Приватный режим в Одиночный режим. Скрывает всех друзей и участников группы. Отлично подойдёт тем, кто хочет путешествовать в одиночку."
           },
-          "toggleHideUnnamedPlayers": "Hide Unnamed Players"
+          "toggleHideUnnamedPlayers": "Скрывать безымянных игроков"
         },
         "blocklist": "Заблокированные",
         "chatSettings": "Чат",
@@ -323,9 +323,9 @@
             }
           },
           "timeTrials": {
-            "label": "Time Trials",
+            "label": "Испытания на время",
             "fields": {
-              "goalReached": "Goal Reached"
+              "goalReached": "Цель достигнута"
             }
           },
           "screenshots": {
@@ -403,7 +403,7 @@
             "label": "Поиск:&nbsp;",
             "name": "Название:",
             "location": "Локация:",
-            "artist": "Artist:"
+            "artist": "Художник:"
           }
         }
       },
@@ -700,7 +700,7 @@
       "1": "В сети",
       "2": "Соединение...",
       "3": "Приватный режим",
-      "4": "Singleplayer"
+      "4": "Одиночный режим"
     },
     "lastOnline": {
       "template": "Был(а) в сети:\n{INTERVAL} назад",
@@ -833,14 +833,14 @@
           "fail": "Значка с таким ID не найдено."
         },
         "tempban": {
-          "label": "Tempban {PLAYER}",
-          "prompt": "When to unban {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempbanned."
+          "label": "Временно забанить {PLAYER}",
+          "prompt": "Когда разбанить {PLAYER}? (UTC time)",
+          "success": "Вы временно забанили {PLAYER}."
         },
         "tempmute": {
-          "label": "Tempmute {PLAYER}",
-          "prompt": "When to unmute {PLAYER}? (UTC time)",
-          "success": "{PLAYER} has been tempmuted."
+          "label": "Временно заглушить {PLAYER}",
+          "prompt": "Когда вернуть голос {PLAYER}? (UTC time)",
+          "success": "Голос {PLAYER} возвращён."
         }
       }
     },
@@ -918,7 +918,7 @@
         "badgeControls": "В меню Галлереи значков, вы можете перетаскивать значки, чтобы поменять их местами, либо удалить много значков разом в режиме Уборки значков.",
         "cacheSettings": "Проблемы со старыми локациями или устаревшими картами? Настройки позволяют очистить кэш карт и локаций, чтобы вы могли получить последние данные.",
         "openSource": "YNOproject - проект с открытым исходным кодом. С его репозиториями можно ознакомиться по ссылке: https://github.com/ynoproject/",
-        "useYnoEmoji": "When you type a colon (:) in the chat field, an YNO emoji palette will appear. You can select and click an emoji from there to input it into the chat field in the format :emojiName:."
+        "useYnoEmoji": "Если ввести двоеточие (:) в поле чата, появится набор эмодзи YNO. Нажмите на эмодзи, чтобы добавить его в чат в формате :emojiName:."
       }
     },
     "save": {
@@ -1064,7 +1064,7 @@
       "loading": "Загрузка...",
       "bp": "{BP} ОЗ",
       "count": "{COUNT} значков",
-      "empty": "Badge gallery not set"
+      "empty": "Галерея значков не создана"
     },
     "badgePreset": {
       "empty": "This preset is empty."
@@ -1239,14 +1239,14 @@
           "playerPrompt": "Введите имя аккаунта, у которого необходимо забрать значок"
         },
         "tempban": {
-          "label": "Tempban a Player",
-          "playerPrompt": "Enter the name of the account to tempban",
-          "timePrompt": "Enter the datetime when the ban expires (UTC time)"
+          "label": "Временно забанить игрока",
+          "playerPrompt": "Введите имя аккаунта, который необходимо временно забанить",
+          "timePrompt": "Введите время, когда аккаунт будет разбанен (UTC time)"
         },
         "tempmute": {
-          "label": "Tempmute a Player",
-          "playerPrompt": "Enter the name of the account to tempmute",
-          "timePrompt": "Enter the datetime when the mute expires (UTC time)"
+          "label": "Временно заглушить игрока",
+          "playerPrompt": "Введите имя аккаунта, который необходимо временно заглушить",
+          "timePrompt": "Введите время, когда аккаунту будет возвращён голос (UTC time)"
         }
       }
     }
