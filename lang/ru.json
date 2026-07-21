@@ -74,8 +74,8 @@
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Сохранить",
+        "apply": "Применить"
       },
       "confirm": {
         "ok": "ОК",
