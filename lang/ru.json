@@ -74,8 +74,8 @@
     },
     "modal": {
       "common": {
-        "save": "Save",
-        "apply": "Apply"
+        "save": "Сохранить",
+        "apply": "Применить"
       },
       "confirm": {
         "ok": "ОК",
@@ -143,10 +143,10 @@
           "musicVolume": "Громкость музыки",
           "togglePlayerSounds": "Звуки игроков",
           "toggleEnableBadgeHints": {
-            "label": "Badge Hints",
-            "helpText": "Badge hints become available once you have unlocked the 'Badge Collector Amulet EX' badge. When enabled, an icon will appear in the top right when you enter a location with at least one badge you haven't unlocked."
+            "label": "Подсказки о значках",
+            "helpText": "Подсказки о значках станут доступны после получения 'Амулета Собирателя значков EX'. Если эта опция включена, при входе в локацию с минимум одним не найденным значком в правом верхнем углу экрана появится символ."
           },
-          "togglePlayBadgeHintSound": "Play Badge Hint Sound",
+          "togglePlayBadgeHintSound": "Звук при появлении подсказок о значках",
           "toggleEnableExplorer": {
             "label": "Навигатор Yume 2kki",
             "helpText": "Навигатор Yume 2kki - Интеграция Yume 2kki Explorer, позволяющая вам просматривать соединения с вашей локацией. Эта функция может значительно повлиять на ваш исследовательский опыт игры, потому, советуем исследовать игру настолько, насколько возможно, не прибегая к ней. Вы должны войти в аккаунт на сайте, чтобы пользоваться Навигатором Yume 2kki."
@@ -415,21 +415,21 @@
           "activate": "Убрать значки",
           "deactivate": "Готово"
         },
-        "manageBadgePreset": "Manage Presets"
+        "manageBadgePreset": "Настроить пресеты"
       },
       "badgePreset": {
-        "title": "Manage Badge Presets",
-        "selectPreset": "Select Preset",
-        "presetName": "Preset {{index}}",
-        "export": "Export",
-        "import": "Import",
+        "title": "Настройка пресетов значков",
+        "selectPreset": "Выберите пресет",
+        "presetName": "Пресет {{index}}",
+        "export": "Экспорт",
+        "import": "Импорт",
         "io": {
-          "exportSuccess": "Badge preset exported successfully.",
-          "importSuccess": "Badge preset imported successfully.",
-          "empty": "This preset is empty.",
-          "invalidFile": "Invalid preset file.",
-          "exportFailed": "Export failed.",
-          "importFailed": "Import failed."
+          "exportSuccess": "Пресет значка успешно экспортирован.",
+          "importSuccess": "Пресет значка успешно импортирован.",
+          "empty": "Этот пресет пустой.",
+          "invalidFile": "Неверный файл пресета.",
+          "exportFailed": "Ошибка экспорта.",
+          "importFailed": "Ошибка импорта."
         }
       },
       "save": {
