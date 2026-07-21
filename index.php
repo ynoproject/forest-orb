@@ -2201,6 +2201,30 @@
         <div class="modalOverlay"></div>
       </div>
       <div id="modalFadeOutContainer" class="modalContainer"></div>
+      <div class="modalContainer hidden">
+        <div id="chatAgeWarningModal" class="modal hidden">
+          <a href="javascript:void(0);" class="modalClose">✖</a>
+          <div class="modalHeader">
+            <h1 class="modalTitle" data-i18n="[html]modal.chatAgeWarning.title">Before you chat...</h1>
+          </div>
+          <div class="modalContent chatRulesInfo">
+            <p data-i18n="[html]modal.chatAgeWarning.1">
+              Game chat is reserved for players of ages 16 and older.
+            </p>
+            <p data-i18n="[html]modal.chatAgeWarning.2">
+              By participating in the chat, you confirm that you are 16 or older.
+            </p>
+            <p data-i18n="[html]modal.chatAgeWarning.2">
+              Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.
+            </p>
+          </div>
+          <div class="modalFooter">
+            <button class="jsConfirm unselectable" type="button" data-i18n="[html]modal.chatAgeWarning.ok">Confirm</button>
+            <button class="jsCancel unselectable" type="button" data-i18n="[html]modal.chatAgeWarning.cancel">Do not participate in chat</button>
+          </div>
+        </div>
+        <div class="modalOverlay"></div>
+      </div>
       <div id="confirmModalContainer" class="confirmModalContainer modalContainer hidden">
         <div id="confirmModal" class="confirmModal modal hidden">
           <a href="javascript:void(0);" class="modalClose">✖</a>
@@ -2210,8 +2234,8 @@
             </div>
           </div>
           <div class="modalFooter">
-            <button class="confirmOkButton unselectable" type="button" data-i18n="[html]modal.confirm.ok">Ok</button>
-            <button class="confirmCancelButton unselectable" type="button" data-i18n="[html]modal.confirm.cancel">Cancel</button>
+            <button class="jsConfirm confirmOkButton unselectable" type="button" data-i18n="[html]modal.confirm.ok">Ok</button>
+            <button class="jsCancel confirmCancelButton unselectable" type="button" data-i18n="[html]modal.confirm.cancel">Cancel</button>
           </div>
         </div>
         <div class="modalOverlay"></div>

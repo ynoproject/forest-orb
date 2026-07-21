@@ -456,7 +456,9 @@ function updateGameChatMessageVisibility() {
   }
 }
 
-function chatInputActionFired() {
+async function chatInputActionFired() {
+  if (!await ensurePlayerConfirmedChatAgeWarning()) return;
+
   const chatInput = document.getElementById("chatInput");
   if (!chatInput?.value.trim().length)
     return;
@@ -563,7 +565,7 @@ function initChat() {
     document.getSelection().collapseToEnd();
   };
   gameChatInput.onblur = () => gameChatContainer.classList.remove('focused');
-  gameChatInput.onkeydown = function (e) {
+  gameChatInput.onkeydown = async function (e) {
     if (e.key === 'Tab') {
       e.preventDefault();
       cycleGameChatMode();
@@ -576,6 +578,7 @@ function initChat() {
       e.preventDefault();
       if (!playerName)
         return;
+      if (!await ensurePlayerConfirmedChatAgeWarning()) return;
       switch (gameChatModeIndex) {
         case 0:
           if (!trySendMapMessage(chatMessageContent))
@@ -652,6 +655,18 @@ function trySendGlobalMessage(content) {
   }
 
   return false;
+}
+
+async function ensurePlayerConfirmedChatAgeWarning() {
+  if (globalConfig.chatAgeWarningConfirmed) return true;
+
+  return new Promise(resolve => {
+    showConfirmLikeModal('chatAgeWarningModal', () => {
+      resolve(true);
+      globalConfig.chatAgeWarningConfirmed = true;
+      updateConfig(globalConfig, true);
+    }, () => resolve(false));
+  })
 }
 
 function addChatTip() {

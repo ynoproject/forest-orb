@@ -96,6 +96,7 @@ let globalConfig = {
   questionablePreloads: false,
   rulesReviewed: false,
   warningsReviewed: false,
+  chatAgeWarningConfirmed: false,
   badgeToolsData: null,
   pushNotificationToastDismissed: false,
   unicodeFont: false,
@@ -804,8 +805,6 @@ function closeModal() {
 }
 
 function showConfirmModal(message, okCallback, cancelCallback) {
-  const modalContainer = document.getElementById('confirmModalContainer');
-
   const modal = document.getElementById('confirmModal');
   
   if (!modal.classList.contains('hidden')) {
@@ -813,13 +812,39 @@ function showConfirmModal(message, okCallback, cancelCallback) {
     return;
   }
 
+  modal.querySelector('.confirmMessage').innerHTML = getMassagedLabel(message, true);
+  showConfirmLikeModal('confirmModal', okCallback, cancelCallback);
+}
+
+function showConfirmLikeModal(modalId, okCallback, cancelCallback) {
+  const modal = document.getElementById(modalId);
+  if (!modal.classList.contains('hidden')) {
+    setTimeout(() => showConfirmLikeModal(modalId, okCallback, cancelCallback), modalTransitionDuration);
+    return;
+  }
+
+  const modalContainer = modal.parentElement;
+
+  function closeConfirmModal(callback) {
+    modalContainer.classList.add('fadeOut');
+    modal.classList.add('fadeOut');
+
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modal.classList.remove('fadeOut');
+      modalContainer.classList.add('hidden');
+      modalContainer.classList.remove('fadeOut');
+    }, modalTransitionDuration);
+
+    if (callback)
+      callback();
+  } 
+
   modalContainer.classList.remove('fadeOut', 'hidden');
   modalContainer.classList.add('fadeIn');
 
-  modal.querySelector('.confirmMessage').innerHTML = getMassagedLabel(message, true);
-
-  modal.querySelector('.confirmOkButton').onclick = () => closeConfirmModal(okCallback);
-  modal.querySelector('.confirmCancelButton').onclick = () => closeConfirmModal(cancelCallback);
+  modal.querySelector('.jsConfirm').onclick = () => closeConfirmModal(okCallback);
+  modal.querySelector('.jsCancel').onclick = () => closeConfirmModal(cancelCallback);
 
   modal.classList.add('fadeIn');
   modal.classList.remove('hidden');
@@ -833,29 +858,12 @@ function showConfirmModal(message, okCallback, cancelCallback) {
   }, modalTransitionDuration);
 }
 
-function closeConfirmModal(callback) {
-  const modalContainer = document.getElementById('confirmModalContainer');
-  const modal = document.getElementById('confirmModal');
-
-  modalContainer.classList.add('fadeOut');
-  modal.classList.add('fadeOut');
-
-  setTimeout(() => {
-    modal.classList.add('hidden');
-    modal.classList.remove('fadeOut');
-    modalContainer.classList.add('hidden');
-    modalContainer.classList.remove('fadeOut');
-  }, modalTransitionDuration);
-
-  if (callback)
-    callback();
-}
-
 document.getElementById('enterNameForm').onsubmit = function () {
   setName(document.getElementById('nameInput').value);
 };
 
 {
+  /** @this {HTMLInputElement} */
   function oninputYnomoji() {
     const ynomojiPattern = /:([a-z0-9_\-]+(?::|$)|$)/gi;
     const ynomojiContainer = document.getElementById('ynomojiContainer');
