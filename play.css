@@ -345,7 +345,7 @@ body {
   flex-wrap: wrap;
 }
 
-.uiControl {
+.uiControl, .chatRulesInfo {
   text-align: center;
 }
 

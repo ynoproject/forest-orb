@@ -574,7 +574,8 @@
             "placeholder": "50자 한도 내로 상세히 서술하여 주십시오.",
             "other": "기타 (직접 작성)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "규칙",
@@ -619,6 +620,14 @@
             }
           }
         }
+      },
+      "chatAgeWarning": {
+        "1": "Game chat is reserved for players of ages 16 and older.",
+        "2": "By participating in the chat, you confirm that you are 16 or older.",
+        "3": "Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.",
+        "title": "Before you chat...",
+        "ok": "Confirm",
+        "cancel": "Do not participate in chat"
       }
     },
     "tooltips": {

@@ -560,6 +560,7 @@
       },
       "report": {
         "title": "Report",
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized.",
         "submit": "Submit",
         "fields": {
           "reason": {
@@ -619,6 +620,14 @@
             }
           }
         }
+      },
+      "chatAgeWarning": {
+        "1": "Game chat is reserved for players of ages 16 and older.",
+        "2": "By participating in the chat, you confirm that you are 16 or older.",
+        "3": "Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.",
+        "title": "Before you chat...",
+        "ok": "Confirm",
+        "cancel": "Do not participate in chat"
       }
     },
     "tooltips": {
