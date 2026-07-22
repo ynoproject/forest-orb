@@ -574,7 +574,8 @@
             "placeholder": "任意の理由を記入してください",
             "other": "その他 (任意記入)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "ルール",

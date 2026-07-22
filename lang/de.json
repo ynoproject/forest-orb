@@ -574,7 +574,8 @@
             "placeholder": "Sonstiger Grund (maximal 50 Zeichen)",
             "other": "Sonstiges (begründen)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Regeln",

@@ -574,7 +574,8 @@
             "placeholder": "Своя причина (до 50 символов)",
             "other": "Другое (укажите)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Правила",

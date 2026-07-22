@@ -574,7 +574,8 @@
             "placeholder": "Raison personnalisée (maximum 50 caractères)",
             "other": "Autre (spécifier)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Règles",

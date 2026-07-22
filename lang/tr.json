@@ -574,7 +574,8 @@
             "placeholder": "Özel Sebep (en fazla 50 karakter)",
             "other": "Başka (detaylandırın)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Kurallar",

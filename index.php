@@ -1755,6 +1755,7 @@
           <a href="javascript:void(0);" class="modalClose">✖</a>
           <div class="modalHeader">
             <h1 class="modalTitle" data-i18n="[html]modal.report.title">Report</h1>
+            <h3 class="modalSubtitle" data-i18n="[html]modal.report.subtitle">Please create reports responsibly. Repeated frivolous reports will be penalized.</h3>
           </div>
           <div class="modalContent">
             <ul class="formControls" style="width:100%">

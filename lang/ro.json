@@ -574,7 +574,8 @@
             "placeholder": "Motiv personalizat (max 50 caractere)",
             "other": "Altul (specifică)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Reguli",

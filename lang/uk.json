@@ -574,7 +574,8 @@
             "placeholder": "Інша причина (макс. 50 символів)",
             "other": "Інше (вкажіть причину)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Правила",

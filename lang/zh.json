@@ -574,7 +574,8 @@
             "placeholder": "自定义原因（最多50个字符）",
             "other": "其他（请注明）"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "多人游戏守则",

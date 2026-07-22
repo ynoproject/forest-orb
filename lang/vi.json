@@ -574,7 +574,8 @@
             "placeholder": "Lý do khác (tối đa 50 ký tự)",
             "other": "Khác (nêu rõ)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Nội quy",

@@ -574,7 +574,8 @@
             "placeholder": "50자 한도 내로 상세히 서술하여 주십시오.",
             "other": "기타 (직접 작성)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "규칙",

@@ -574,7 +574,8 @@
             "placeholder": "Custom reason (max 50 characters)",
             "other": "Other (specify)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Reguloj",

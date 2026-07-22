@@ -574,7 +574,8 @@
             "placeholder": "Motivo customizado (maximo de 50 Caracteres, em inglês)",
             "other": "Outro (especifique)"
           }
-        }
+        },
+        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
       },
       "rules": {
         "title": "Regras",
