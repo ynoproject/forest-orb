@@ -2214,7 +2214,7 @@
             <p data-i18n="[html]modal.chatAgeWarning.2">
               By participating in the chat, you confirm that you are 16 or older.
             </p>
-            <p data-i18n="[html]modal.chatAgeWarning.2">
+            <p data-i18n="[html]modal.chatAgeWarning.3">
               Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.
             </p>
           </div>

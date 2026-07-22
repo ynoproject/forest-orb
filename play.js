@@ -55,6 +55,8 @@ let gameMapHandle = new WeakRef({});
 
 const modalTransitionDuration = 230;
 
+const confirmLikeModals = ['confirmModal', 'chatAgeWarningModal'];
+
 const langLabelMassageFunctions = {
   'ja': (value, isUI) => {
     if (typeof value === 'string' && /<[^>]+>/.test(value)) {
@@ -783,7 +785,8 @@ function closeModal() {
     updateFullscreenPolling();
   }
 
-  setModalUiTheme('confirmModal', config.uiTheme === 'auto' ? systemName : config.uiTheme);
+  for (const modal of confirmLikeModals)
+    setModalUiTheme(modal, config.uiTheme === 'auto' ? systemName : config.uiTheme);
 
   if (modalContainer.dataset.lastModalId) {
     const lastModalIdSeparatorIndex = modalContainer.dataset.lastModalId.lastIndexOf(',');
