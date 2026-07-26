@@ -111,6 +111,8 @@ const allGameUiThemes = {
     'PGR_SYS_06',
     'eur_menusys2',
     'eur_menusys3',
+    'Trombone_Renegade_Sys_Flower',
+    'Trombone_Renegade_Sys_Heaven',
 
     'system_E_eye',
     'System_kuraud',
