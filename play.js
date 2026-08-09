@@ -2379,7 +2379,7 @@ function fetchAndInitLocations(lang, game) {
             resolve();
       })
       .catch(err => {
-        gameLocalizedMapLocations[game] = null;
+        gameLocalizedMapLocations[game] = {};
         if (game === gameId) {
           ignoredMapIds = [];
           localizedMapLocations = null;
