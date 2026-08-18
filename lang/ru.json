@@ -436,7 +436,7 @@
         "title": "Управление данными сохранений",
         "reload": "Сохранить изменения и перезагрузить",
         "info": "Если при сохранении вы играли на переведённой версии RPG_RT, в игре могут возникать ошибки до тех пор, пока вы снова не сохранитесь в EasyRPG без включённых переводов.",
-        "manageOther": "Manage Different Game&hellip;"
+        "manageOther": "Настройка других игр&hellip;"
       },
       "uiTheme": {
         "title": "Стиль интерфейса",
@@ -575,7 +575,7 @@
             "other": "Другое (укажите)"
           }
         },
-        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
+        "subtitle": "Пожалуйста, подавайте жалобы ответственно. Повторные необоснованные жалобы будут караться."
       },
       "rules": {
         "title": "Правила",
@@ -584,16 +584,16 @@
         "rule3": "Никакой политики.",
         "rule4": "Никаких провокаций, оскорблений и унижений.",
         "rule5": "Запрещено читерство в любом виде под каким-бы то ни было предлогом.",
-        "rule6": "Refrain from spamming or monopolizing chat for yourselves or your own groups, particularly in global.",
+        "rule6": "Воздержитесь от спама или приватизации чата для себя или своей группы, особенно в общем чате.",
         "closingRule": "При возникновении проблем, пожалуйста, свяжитесь с модераторами."
       },
       "warnings": {
-        "title": "Warnings",
-        "subtitle": "Some games may contain the following content. Viewer discretion is advised.",
-        "warning1": "Flashing light sequences or patterns that may affect photosensitive viewers.",
-        "warning2": "References to self-harm or suicide.",
-        "warning3": "Disturbing imagery.",
-        "warning4": "Depictions of drug use."
+        "title": "Внимание",
+        "subtitle": "Некоторые игры содержат следующие материалы. Рекомендуется соблюдать осторожность при просмотре.",
+        "warning1": "Сцены с мерцающим светом и вспышками, не рекомендуемые зрителям повышенной светочувствительностью.",
+        "warning2": "Упоминания селфхарма или самоубийства.",
+        "warning3": "Шокирующие изображения.",
+        "warning4": "Сцены с употреблением наркотиков."
       },
       "explorerUndiscoveredLocations": {
         "title": "Неисследованная локация",
@@ -622,12 +622,12 @@
         }
       },
       "chatAgeWarning": {
-        "1": "Game chat is reserved for players of ages 16 and older.",
-        "2": "By participating in the chat, you confirm that you are 16 or older.",
-        "3": "Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.",
-        "title": "Before you chat...",
-        "ok": "Confirm",
-        "cancel": "Do not participate in chat"
+        "1": "Чат в игре предназначен для пользователей старше 16 лет.",
+        "2": "Входя в чат, вы подтверждаете, что ваш возраст составляет 16 лет и более.",
+        "3": "Нарушители этого правила будут подвергнуты модерации, включая перманентную блокировку сетевых функций игры.",
+        "title": "Перед входом в чат...",
+        "ok": "Подтвердить",
+        "cancel": "Отказаться от чата"
       }
     },
     "tooltips": {
@@ -654,7 +654,7 @@
         "disbandParty": "Распустить группу"
       },
       "events": "Походы",
-      "badges": "Badges",
+      "badges": "Значки",
       "locations": "Локации",
       "communityScreenshots": "Снимки сообщества",
       "rankings": "Рейтинги",
@@ -668,7 +668,7 @@
       "scheduleDescription": "Доступен Markdown, используйте {\\{l:World,имя ссылки (опционально)}} чтобы вставить ссылку на yume.wiki"
     },
     "reviewRules": "Просмотреть правила",
-    "reviewWarnings": "Review Warnings"
+    "reviewWarnings": "Предупреждения"
   },
   "messages": {
     "games": {
