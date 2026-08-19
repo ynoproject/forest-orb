@@ -575,7 +575,7 @@
             "other": "その他 (任意記入)"
           }
         },
-        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
+        "subtitle": "通報は責任を持って行ってください。軽率な報告を繰り返した場合は、ペナルティが科されます。"
       },
       "rules": {
         "title": "ルール",
@@ -622,12 +622,12 @@
         }
       },
       "chatAgeWarning": {
-        "1": "Game chat is reserved for players of ages 16 and older.",
-        "2": "By participating in the chat, you confirm that you are 16 or older.",
-        "3": "Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.",
-        "title": "Before you chat...",
-        "ok": "Confirm",
-        "cancel": "Do not participate in chat"
+        "1": "ゲーム内のチャットは、16歳以上のプレイヤーのみが利用できます。",
+        "2": "チャットに参加することにより、あなたが16歳以上であると確認したものとみなされます。",
+        "3": "このルールに違反したことが判明したプレイヤーは、モデレーションの対象となり、マルチプレイヤー機能の利用を永久に禁止される場合もあります。",
+        "title": "チャットを始める前に……",
+        "ok": "承認",
+        "cancel": "チャットに参加しない"
       }
     },
     "tooltips": {
