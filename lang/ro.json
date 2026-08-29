@@ -403,7 +403,8 @@
             "label": "Caută:&nbsp;",
             "name": "Nume:",
             "location": "Locație:",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },

@@ -403,7 +403,8 @@
             "label": "Tìm kiếm:&nbsp;",
             "name": "Tên:",
             "location": "Địa điểm:",
-            "artist": "Họa sĩ:"
+            "artist": "Họa sĩ:",
+            "contents": "Nội dung:"
           }
         }
       },

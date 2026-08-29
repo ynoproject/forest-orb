@@ -1080,6 +1080,7 @@
                 <label for="badgeSortOrder" class="unselectable" data-i18n="[html]modal.badges.fields.sortOrder.label">Sort Order:&nbsp;</label>
                 <select id="badgeSortOrder">
                   <option value="" data-i18n="[html]modal.badges.fields.sortOrder.values.default">Default</option>
+                  <option value="_desc" data-i18n="[html]modal.badges.fields.sortOrder.values.reverse">Reversed</option>
                 </select>
               </div>
               <div class="uiControl">
@@ -1101,6 +1102,10 @@
                     <path
                       d="m10 4a1 1 90 000 5 1 1 90 000-5M5 17c0-5 1-7 5-7s5 2 5 7q-5 2-10 0" />
                   </svg>
+                  <svg data-kind="contents" class="icon searchIcon hidden" viewBox="0 0 10 10" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" height="12">
+                    <path d="M7 6H16M2 10H16M2 14H16" />
+                  </svg>
                   <input id="badgeSearch" type="text" autocomplete="off">
                   <div class="dropdown hidden" id="badgeDropdown">
                     <div class="dropdownItem" tabindex="0">
@@ -1111,6 +1116,9 @@
                     </div>
                     <div class="dropdownItem" tabindex="0">
                       <i data-i18n="[html]modal.badges.fields.search.artist">Artist:</i> <span id="searchArtist"></span>
+                    </div>
+                    <div class="dropdownItem" tabindex="0">
+                      <i data-i18n="[html]modal.badges.fields.search.contents">Text:</i> <span id="searchContents"></span>
                     </div>
                   </div>
                 </div>

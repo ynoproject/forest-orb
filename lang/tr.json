@@ -403,7 +403,8 @@
             "label": "Ara:&nbsp;",
             "name": "İsim:",
             "location": "Konum:",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },

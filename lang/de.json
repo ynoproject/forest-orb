@@ -403,7 +403,8 @@
             "label": "Suchen nach:&nbsp;",
             "name": "Name:",
             "location": "Ort:",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },
