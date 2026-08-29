@@ -403,7 +403,8 @@
             "label": "Cerca :&nbsp;",
             "name": "Nome :",
             "location": "Luogo :",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },

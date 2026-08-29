@@ -403,7 +403,8 @@
             "label": "Serĉi:&nbsp;",
             "name": "Nomo:",
             "location": "Loko:",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },

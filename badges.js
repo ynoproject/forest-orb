@@ -15,6 +15,7 @@
   @property {boolean} [unlocked]
   @property {boolean} hidden
   @property {boolean} [secret]
+  @property {boolean} [secretCondition]
   @property {number} originalOrder
 */
 
@@ -202,7 +203,7 @@ function initBadgeControls() {
           return -1;
         return 1;
       }
-      return a.originalOrder - b.originalOrder;
+      return sortOrderDesc ? b.originalOrder - a.originalOrder : a.originalOrder - b.originalOrder;
     };
 
     // If we already have cache and it hasn't been invalidated, only update the modal.
@@ -566,6 +567,14 @@ function initBadgeControls() {
       exactMatch = true;
     }
 
+    function isMatch(haystack, needle, exact) {
+      if (!haystack) return false;
+      if (exact) {
+        return haystack.localeCompare(needle, undefined, { sensitivity: 'base', usage: 'search' }) === 0;
+      }
+      return haystack.toLocaleLowerCase().indexOf(needle) > -1;
+    }
+
     const gameVisibilities = {};
     const gameGroupVisibilities = {};
 
@@ -579,9 +588,10 @@ function initBadgeControls() {
           visible &= item.el.classList.contains('locked') === !parseInt(unlockStatus);
         if (searchTerm.trim().length) {
           switch (searchMode) {
-            case 'name':
+            case 'name': { 
               visible &= item.title && (exactMatch ? item.title === parsedSearchTerm : item.title.indexOf(parsedSearchTerm) > -1);
               break;
+            }
             case 'location': {
               const localizedLocation = gameLocalizedMapLocations[item.game]?.[item.mapId];
               let title = determineTitle(localizedLocation, item.mapX, item.mapY);
@@ -596,11 +606,20 @@ function initBadgeControls() {
                   title = globalConfig.lang === 'ja' ? desc.titleJP : desc.title;
                 }
               }
-              visible &= title && (exactMatch ? title.toLocaleLowerCase() === parsedSearchTerm : title.toLocaleLowerCase().indexOf(parsedSearchTerm) > -1);
+              visible &= isMatch(title, parsedSearchTerm, exactMatch);
               break;
             }
             case 'artist': {
               visible &= item.art && (exactMatch ? item.art.split(/ & |, /).includes(parsedSearchTerm) : item.art.indexOf(parsedSearchTerm) > -1);
+              break;
+            }
+            case 'contents': {
+              const gameBadgeLocalizations = localizedBadges && localizedBadges[item.game];
+              const badgeLocalization = gameBadgeLocalizations && gameBadgeLocalizations[item.badgeId];
+              visible &= badgeLocalization && (
+                (item.unlocked || !item.secret) && isMatch(badgeLocalization.description, parsedSearchTerm, exactMatch)
+                || (item.unlocked || !item.secretCondition) && isMatch(badgeLocalization.condition, parsedSearchTerm, exactMatch)
+              );
               break;
             }
           }
@@ -638,29 +657,30 @@ function initBadgeControls() {
       return;
     }
 
+    let parsedValue = this.value;
+    let modifier = null;
+    if (parsedValue.startsWith('=')) {
+      parsedValue = parsedValue.slice(1);
+      modifier = 'exactMatch';
+    }
+    let value = parsedValue;
+    if (modifier)
+      value += localizedMessages.badges.search.modifier.template.replace('{MODIFIER}', localizedMessages.badges.search.modifier[modifier]);
+
+    // mappings for user input sanitization
+    const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      "/": '&#x2F;',
+    };
+    const reg = /[&<>"'/]/ig;
+    value = value.replace(reg, match => map[match]);
+
     for (const span of badgeDropdown.querySelectorAll('.dropdownItem span')) {
-      let parsedValue = this.value;
-      let modifier = null;
-      if (parsedValue.startsWith('=')) {
-        parsedValue = parsedValue.slice(1);
-        modifier = 'exactMatch';
-      }
-      let value = parsedValue;
-      if (modifier)
-        value += localizedMessages.badges.search.modifier.template.replace('{MODIFIER}', localizedMessages.badges.search.modifier[modifier]);
-
-      // mappings for user input sanitization
-      const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#x27;',
-        "/": '&#x2F;',
-      };
-
-      const reg = /[&<>"'/]/ig;
-      span.innerHTML = value.replace(reg, (match)=>(map[match]));
+      span.innerHTML = value;
     }
   };
 
@@ -702,6 +722,9 @@ function initBadgeControls() {
 
   const searchArtist = document.getElementById('searchArtist').parentElement;
   onDropdownActivate(searchArtist, () => searchBadges('artist'));
+
+  const searchContents = document.getElementById('searchContents').parentElement;
+  onDropdownActivate(searchContents, () => searchBadges('contents'));
 
   function searchBadges(mode) {
     badgeDropdown.classList.add('hidden');
@@ -1083,6 +1106,10 @@ function getBadgeItem(badge, includeTooltip, emptyIcon, lockedIcon, scaled, filt
       percent: badge.percent,
       badgeId: badge.badgeId,
       art: '',
+      originalOrder: badge.originalOrder,
+      unlocked: badge.unlocked,
+      secret: badge.secret,
+      secretCondition: badge.secretCondition,
     };
     item.dataset.cacheIndex = badgeFilterCache.push(filterItem) - 1;
   }

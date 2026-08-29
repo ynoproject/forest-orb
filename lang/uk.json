@@ -403,7 +403,8 @@
             "label": "Пошук:&nbsp;",
             "name": "Назва:",
             "location": "Місце:",
-            "artist": "Artist:"
+            "artist": "Artist:",
+            "contents": "Text:"
           }
         }
       },
