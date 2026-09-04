@@ -356,7 +356,8 @@ document.getElementById('scheduleForm').addEventListener('submit', function edit
   schedule.datetime = new Date(schedule.datetime).toISOString();
   schedule.systemName = document.getElementById('scheduleThemeButton').nextElementSibling.value;
   schedule.game = gameId;
-  schedule.official = document.getElementById('eventOfficial').classList.contains('toggled');
+  if (playerData.rank > 0)
+    schedule.official = document.getElementById('eventOfficial').classList.contains('toggled');
 
   schedule.ownerUuid = playerData.uuid;
   if (editingScheduleId && playerData.rank > 0 && !document.getElementById('resetOrganizer').classList.contains('toggled'))
