@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Thứ tự lọc:&nbsp;",
             "values": {
-              "default": "Mặc định"
+              "default": "Mặc định",
+              "reverse": "Reversed"
             }
           },
           "search": {

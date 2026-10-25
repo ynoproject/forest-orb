@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Ordiga Ordo:&nbsp;",
             "values": {
-              "default": "Norma"
+              "default": "Norma",
+              "reverse": "Reversed"
             }
           },
           "search": {

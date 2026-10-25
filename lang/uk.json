@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Сортувати:&nbsp;",
             "values": {
-              "default": "За замовчуванням"
+              "default": "За замовчуванням",
+              "reverse": "Reversed"
             }
           },
           "search": {

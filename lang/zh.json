@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "排序方式:&nbsp;",
             "values": {
-              "default": "默认"
+              "default": "默认",
+              "reverse": "Reversed"
             }
           },
           "search": {
