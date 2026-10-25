@@ -397,7 +397,7 @@
             "label": "ソート：",
             "values": {
               "default": "デフォルト",
-              "reverse": "Reversed"
+              "reverse": "逆順"
             }
           },
           "search": {
