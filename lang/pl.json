@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Układ sortowania:&nbsp;",
             "values": {
-              "default": "Domyślny"
+              "default": "Domyślny",
+              "reverse": "Reversed"
             }
           },
           "search": {

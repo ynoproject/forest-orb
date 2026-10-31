@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Ordine:&nbsp;",
             "values": {
-              "default": "Implicită"
+              "default": "Implicită",
+              "reverse": "Reversed"
             }
           },
           "search": {

@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "ソート：",
             "values": {
-              "default": "デフォルト"
+              "default": "デフォルト",
+              "reverse": "逆順"
             }
           },
           "search": {

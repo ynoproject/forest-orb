@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Listeleme Sırası:&nbsp;",
             "values": {
-              "default": "Temel"
+              "default": "Temel",
+              "reverse": "Reversed"
             }
           },
           "search": {

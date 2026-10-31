@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "ترتيب:&nbsp;",
             "values": {
-              "default": "افتراضي"
+              "default": "افتراضي",
+              "reverse": "Reversed"
             }
           },
           "search": {

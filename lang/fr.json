@@ -396,7 +396,8 @@
           "sortOrder": {
             "label": "Ordre de classement :&nbsp;",
             "values": {
-              "default": "Défaut"
+              "default": "Défaut",
+              "reverse": "Reversed"
             }
           },
           "search": {
