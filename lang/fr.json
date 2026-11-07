@@ -397,7 +397,7 @@
             "label": "Ordre de classement :&nbsp;",
             "values": {
               "default": "Défaut",
-              "reverse": "Reversed"
+              "reverse": "Inversé"
             }
           },
           "search": {
@@ -423,15 +423,15 @@
         "title": "Gérer les préréglages de badges",
         "selectPreset": "Choisir un préréglage",
         "presetName": "Préréglage {{index}}",
-        "export": "Export",
-        "import": "Import",
+        "export": "Exporter",
+        "import": "Importer",
         "io": {
-          "exportSuccess": "Badge preset exported successfully.",
-          "importSuccess": "Badge preset imported successfully.",
-          "empty": "This preset is empty.",
-          "invalidFile": "Invalid preset file.",
-          "exportFailed": "Export failed.",
-          "importFailed": "Import failed."
+          "exportSuccess": "Le préréglage de badges a correctement été exporté.",
+          "importSuccess": "Le préréglage de badges a correctement été importé.",
+          "empty": "Ce préréglage est vide.",
+          "invalidFile": "Le fichier de préréglage n'est pas valide.",
+          "exportFailed": "L'export a échoué.",
+          "importFailed": "L'import a échoué."
         }
       },
       "save": {
@@ -577,7 +577,7 @@
             "other": "Autre (spécifier)"
           }
         },
-        "subtitle": "Please create reports responsibly. Repeated frivolous reports will be penalized."
+        "subtitle": "Veuillez créer des signalements de façon responsable. Tout abus de signalements infondés sera pénalisé."
       },
       "rules": {
         "title": "Règles",
@@ -624,12 +624,12 @@
         }
       },
       "chatAgeWarning": {
-        "1": "Game chat is reserved for players of ages 16 and older.",
-        "2": "By participating in the chat, you confirm that you are 16 or older.",
-        "3": "Players found to be in violation of this rule are subject to moderation actions, up to and including permanent bans from multiplayer interactions.",
-        "title": "Before you chat...",
-        "ok": "Confirm",
-        "cancel": "Do not participate in chat"
+        "1": "Le tchat de jeu est réservé aux joueurs de 16 ans et plus.",
+        "2": "En participant dans ce tchat, vous confirmez avoir 16 ans ou plus.",
+        "3": "Tout joueur enfreignant ces règles s'expose aux actions des modérateurs, pouvant aller jusqu'à l'interdiction définitive de tout type d'interaction multijoueur.",
+        "title": "Avant de tchatter...",
+        "ok": "Confirmer",
+        "cancel": "Ne pas participer dans le tchat"
       }
     },
     "tooltips": {
