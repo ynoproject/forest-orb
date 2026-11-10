@@ -107,7 +107,7 @@
   <link rel="stylesheet" href="play.css">
   <link rel="stylesheet" href="gamecanvas.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/animations/scale.css" />
-  <script src="https://cdn.jsdelivr.net/npm/wasm-feature-detect/dist/umd/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/wasm-feature-detect@1.9.0/dist/umd/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.4/dist/umd/i18next.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/loc-i18next@0.1.4/dist/umd/loc-i18next.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.4.2/tinycolor.min.js"></script>
